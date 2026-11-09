@@ -8,7 +8,7 @@ Produce tre file in docs/data/:
   - nucleare.json         centrali nucleari (Europa, Ucraina, Russia, Medio Oriente, Nord Africa)
 
 Solo libreria standard. Fonti:
-  1. Overpass API (overpass-api.de): tentata per prima con una prova breve; se non risponde si passa oltre.
+  1. Overpass API (overpass-api.de): solo con ELETTRICITA_OVERPASS=1 (prova breve, poi riquadri da 10 gradi).
   2. Tessere vettoriali di OpenInfraMap (dati OpenStreetMap, ODbL), zoom 5: fonte usata di norma.
   3. PyPSA-Eur "Prebuilt Electricity Network" su Zenodo (ODbL): riserva per l'Europa e geometrie HVDC.
   4. Global Energy Monitor, Global Nuclear Power Tracker (CC BY 4.0), file geojson della mappa pubblica.
@@ -481,9 +481,9 @@ INTERCONNESSIONI = [
     {"id": "EL-IC-05", "nome": "ELMED (Italia - Tunisia)", "paesi": ["IT", "TN"], "tipo": "HVDC sottomarino",
      "da": "Partanna (TP)", "a": "Mlaabi (Menzel Temime)", "mw": 600, "km": 220, "stato": "in costruzione", "anno": "previsto 2028",
      "sottostazioni": ["Partanna", "Mlaabi"],
-     "fonte": "Hitachi Energy, comunicato del 24-25 giugno 2026", "link": "https://www.hitachienergy.com/news-and-events/press-releases/2026/06/terna-steg-and-hitachi-energy-770-million-contract-for-elmed-converter-stations-the-first-direct-current-interconnection-between-europe-and-north-africa",
+     "fonte": "Hitachi Energy, comunicato del 24 giugno 2026", "link": "https://www.hitachienergy.com/news-and-events/press-releases/2026/06/terna-steg-and-hitachi-energy-770-million-contract-for-elmed-converter-stations-the-first-direct-current-interconnection-between-europe-and-north-africa",
      "data_fonte": "2026-06-24", "affidabilita": "alta",
-     "note": "Primo collegamento in corrente continua Europa - Nord Africa. Contratto da 770 milioni di euro per le stazioni di conversione a Hitachi Energy (giugno 2026). Costo totale circa 850 milioni, 307 milioni di contributo UE (CEF). Data di entrata in esercizio non confermata da fonte del 2026."},
+     "note": "Primo collegamento in corrente continua Europa - Nord Africa. Contratto da 770 milioni di euro per le stazioni di conversione a Hitachi Energy (giugno 2026). Investimento totale 1.420 milioni di euro, di cui 307 milioni dal programma UE CEF (primo finanziamento UE a un progetto con un paese terzo). Profondita' massima circa 800 m nel Canale di Sicilia. Data di entrata in esercizio non confermata da fonte del 2026."},
     {"id": "EL-IC-06", "nome": "Tyrrhenian Link - ramo est (Campania - Sicilia)", "paesi": ["IT"], "tipo": "HVDC sottomarino",
      "da": "Eboli (SA)", "a": "Termini Imerese (PA)", "mw": 1000, "kv": 500, "km": 490, "stato": "in costruzione",
      "anno": "primo polo previsto 2026, intera opera 2028", "sottostazioni": ["Eboli", "Termini Imerese"],
@@ -728,7 +728,7 @@ def main():
 
     # --- 1. rete
     fonti_rete, feats, subs, metodo = [], None, [], None
-    if os.environ.get("ELETTRICITA_OVERPASS", "1") != "0" and prova_overpass():
+    if os.environ.get("ELETTRICITA_OVERPASS", "0") == "1" and prova_overpass():
         feats = rete_overpass()
         metodo = "overpass"
         fonti_rete.append({"nome": "OpenStreetMap via Overpass API", "link": "https://overpass-api.de/",
