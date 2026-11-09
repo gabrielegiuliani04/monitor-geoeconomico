@@ -1,0 +1,194 @@
+{
+  "nota": "Porti del teatro Mare del Nord e Baltico, curati a mano dall'agente NORD (9 novembre 2026). portwatch = id IMF PortWatch (Daily Ports Data): se sono più di uno, raccogli.py somma le chiamate giornaliere (es. Anversa + Zeebrugge + Bruges = Antwerp-Bruges). traffico = dato annuo pubblicato dall'autorità portuale o dalla statistica ufficiale, con anno e fonte; null quando la fonte non è stata trovata (scritto in nota). Coordinate: quelle del database porti di PortWatch (non inventate). ruolo = valutazione dell'agente.",
+  "porti": [
+    {"id": "rotterdam", "nome": "Rotterdam", "paese": "NL", "portwatch": ["port1114"],
+     "specializzazione": ["container", "rinfuse liquide (greggio, prodotti, chimica)", "GNL (Gate terminal)", "carbone", "hub idrogeno e approdo eolico (IJmuiden Ver Gamma a Maasvlakte)"],
+     "traffico": [
+       {"anno": 2025, "valore": 428.4, "unita": "milioni di t", "var_pct": -1.7, "fonte": "Port of Rotterdam Authority", "link": "https://www.portofrotterdam.com/en/node/5524"},
+       {"anno": 2025, "valore": 14.24, "unita": "milioni di TEU", "var_pct": 3.1, "fonte": "Port of Rotterdam Authority", "link": "https://www.portofrotterdam.com/en/news-and-press-releases/between-growth-and-pressure-rotterdams-2025-container-year-under-review"},
+       {"anno": 2025, "valore": 13.0, "unita": "milioni di t di GNL", "var_pct": 15.1, "fonte": "Port of Rotterdam Authority (via SWZ Maritime)", "link": "https://swzmaritime.nl/news/2026/03/02/port-of-rotterdam-throughput-declined-in-2025/"},
+       {"anno": 2025, "valore": 197.0, "unita": "milioni di t di rinfuse liquide", "var_pct": -1.5, "fonte": "Port of Rotterdam Authority (via SWZ Maritime)", "link": "https://swzmaritime.nl/news/2026/03/02/port-of-rotterdam-throughput-declined-in-2025/"}
+     ],
+     "peso_economico": {"valore": "valore aggiunto 30,6 miliardi di euro, 3,2% del PIL olandese, circa 193.000 posti di lavoro diretti e indiretti (anno non indicato dalla pagina)", "fonte": "Port of Rotterdam, facts and figures", "link": "https://portofrotterdam.com/en/experience-online/facts-and-figures"},
+     "ruolo": "Primo porto d'Europa: porta d'ingresso di greggio, GNL e container per Paesi Bassi, Germania renana e Belgio."},
+    {"id": "anversa-bruges", "nome": "Anversa-Bruges (Anversa + Zeebrugge)", "paese": "BE", "portwatch": ["port57", "port1424", "port178"],
+     "specializzazione": ["container", "chimica e rinfuse liquide", "GNL (Zeebrugge, Fluxys, 17,1 mld m³/anno)", "ro-ro e auto"],
+     "traffico": [
+       {"anno": 2025, "valore": 266.5, "unita": "milioni di t", "var_pct": -4.1, "fonte": "Port of Antwerp-Bruges, cifre annuali 2025", "link": "https://newsroom.portofantwerpbruges.com/hubfs/260122_Factsheet_Jaarcijfers_2025_DUI.pdf"},
+       {"anno": 2025, "valore": 13.63, "unita": "milioni di TEU", "var_pct": 0.7, "fonte": "Port of Antwerp-Bruges", "link": "https://newsroom.portofantwerpbruges.com/hubfs/260122_Factsheet_Jaarcijfers_2025_DUI.pdf"}
+     ],
+     "ruolo": "Secondo porto d'Europa. Zeebrugge è il terminale europeo che ha importato più GNL russo nel primo trimestre 2026 (IEEFA); circa 25 giorni di scioperi nel 2025 (perdita stimata 2,4 Mt)."},
+    {"id": "amburgo", "nome": "Amburgo", "paese": "DE", "portwatch": ["port446"],
+     "specializzazione": ["container (HHLA, Eurogate)", "rinfuse", "ferrovia verso Europa centrale"],
+     "traffico": [
+       {"anno": 2025, "valore": 114.6, "unita": "milioni di t", "var_pct": 2.6, "fonte": "Hamburg Port Authority (via VerkehrsRundschau)", "link": "https://www.verkehrsrundschau.de/nachrichten/transport-logistik/containerumschlag-treibt-hafen-hamburg-ins-plus-3770706"},
+       {"anno": 2025, "valore": 8.3, "unita": "milioni di TEU", "var_pct": 7.3, "fonte": "Hafen Hamburg Marketing", "link": "https://www.verkehrsrundschau.de/nachrichten/transport-logistik/containerumschlag-treibt-hafen-hamburg-ins-plus-3770706"}
+     ],
+     "ruolo": "Primo porto tedesco; primo semestre 2026 a 56,1 Mt (-3,1%)."},
+    {"id": "brema-bremerhaven", "nome": "Brema / Bremerhaven", "paese": "DE", "portwatch": ["port168", "port167"],
+     "specializzazione": ["container (Bremerhaven)", "auto ro-ro", "logistica militare NATO"],
+     "traffico": [
+       {"anno": 2025, "valore": 65.3, "unita": "milioni di t", "var_pct": 5.4, "fonte": "bremenports, rapporto mensile dicembre 2025", "link": "https://www.bremenports.de/fileadmin/bremenports/Haefen/Monatsberichte/2025_12_Monatsbericht.pdf"},
+       {"anno": 2025, "valore": 4.90, "unita": "milioni di TEU", "var_pct": 10.3, "fonte": "bremenports, rapporto mensile dicembre 2025", "link": "https://www.bremenports.de/fileadmin/bremenports/Haefen/Monatsberichte/2025_12_Monatsbericht.pdf"}
+     ],
+     "ruolo": "Bremerhaven cresce più di Amburgo nel 2025; 53% del traffico container con l'entroterra va su ferrovia."},
+    {"id": "wilhelmshaven", "nome": "Wilhelmshaven (JadeWeserPort)", "paese": "DE", "portwatch": ["port1396"],
+     "specializzazione": ["GNL (due FSRU: Höegh Esperanza e, dall'agosto 2025, Excelsior)", "greggio (terminale NWO)", "container in acque profonde"],
+     "traffico": [
+       {"anno": 2025, "valore": 1.47, "unita": "milioni di TEU", "var_pct": 74, "fonte": "Eurogate / Niedersachsen Ports (via VerkehrsRundschau)", "link": "https://www.verkehrsrundschau.de/nachrichten/lager-umschlag/niedersachsens-seehaefen-steigern-umschlag-deutlich-im-jahr-2025-3783323"}
+     ],
+     "nota": "Tonnellaggio totale 2025 non trovato.",
+     "ruolo": "Principale porta d'ingresso del GNL in Germania (FSRU del governo federale, Deutsche Energy Terminal)."},
+    {"id": "amsterdam", "nome": "Amsterdam", "paese": "NL", "portwatch": ["port45"],
+     "specializzazione": ["benzine e prodotti petroliferi", "carbone (in calo)", "cacao", "rinfuse agricole"],
+     "traffico": [
+       {"anno": 2025, "valore": 62.1, "unita": "milioni di t", "var_pct": -0.2, "fonte": "Port of Amsterdam, Annual Report 2025", "link": "https://www.portofamsterdam.com/en/annual-report-2025-steadfast-and-motion"}
+     ],
+     "ruolo": "Hub mondiale della benzina; IJmuiden (approdo di IJmuiden Ver) è nella stessa regione portuale."},
+    {"id": "eemshaven", "nome": "Eemshaven (Groningen Seaports)", "paese": "NL", "portwatch": ["port316"],
+     "specializzazione": ["GNL (EemsEnergyTerminal, FSRU)", "base eolica offshore (installazione e O&M)", "approdo di NorNed e COBRAcable", "data center"],
+     "traffico": [
+       {"anno": 2025, "valore": 15.7, "unita": "milioni di t (Delfzijl + Eemshaven, dato provvisorio, record)", "var_pct": null, "fonte": "Groningen Seaports", "link": "https://en.groningen-seaports.com/en/?p=20812"}
+     ],
+     "nota": "La fonte non divide il totale tra Eemshaven e Delfzijl; una testata di settore riporta 15,2 Mt (+2,7%).",
+     "ruolo": "Nodo energetico del nord dei Paesi Bassi: gas, elettrodotti verso Norvegia e Danimarca, eolico."},
+    {"id": "esbjerg", "nome": "Esbjerg", "paese": "DK", "portwatch": ["port328"],
+     "specializzazione": ["eolico offshore (installazione)", "oil & gas (servizi Mare del Nord)", "ro-ro"],
+     "traffico": [
+       {"anno": 2025, "valore": 4.0, "unita": "milioni di t", "var_pct": null, "fonte": "Port Esbjerg, Annual report 2025", "link": "https://portesbjerg.dk/pdflibrary/Annual-report-2025-EN.pdf"},
+       {"anno": 2025, "valore": 5426, "unita": "scali di navi", "var_pct": -5.0, "fonte": "Port Esbjerg, Annual report 2025", "link": "https://portesbjerg.dk/pdflibrary/Annual-report-2025-EN.pdf"},
+       {"anno": 2025, "valore": 27.5, "unita": "GW di eolico offshore spediti dal porto (cumulato, oltre)", "var_pct": null, "fonte": "Port Esbjerg", "link": "https://portesbjerg.dk/en/news/record-number-of-wind-vessels-calling-at-port-esbjerg-in-2025"}
+     ],
+     "ruolo": "Primo porto europeo per l'eolico offshore: da qui sono partiti circa quattro quinti della capacità offshore europea (dichiarazione del porto)."},
+    {"id": "aarhus", "nome": "Aarhus", "paese": "DK", "portwatch": ["port67"],
+     "specializzazione": ["container (primo porto container danese)", "rinfuse", "ro-ro"],
+     "traffico": [
+       {"anno": 2025, "valore": 11.34, "unita": "milioni di t", "var_pct": 14, "fonte": "Aarhus Havn", "link": "https://portofaarhus.dk/nyheder/aarhus-havn-godt-fra-land-i-2025-med-oget-containeromsaetning-og-effektiv-drift"},
+       {"anno": 2025, "valore": 0.844, "unita": "milioni di TEU (843.665, record danese)", "var_pct": 28, "fonte": "Aarhus Havn", "link": "https://www.porttechnology.org/news/cargo-handling/port-of-aarhus-sets-danish-container-record-at-843665-teus/"}
+     ],
+     "ruolo": "Porta container della Danimarca."},
+    {"id": "copenaghen-malmo", "nome": "Copenaghen-Malmö (CMP)", "paese": "DK", "portwatch": ["port582", "port690"],
+     "specializzazione": ["prodotti petroliferi", "ro-ro e auto", "crociere", "rinfuse"],
+     "traffico": [
+       {"anno": 2025, "valore": 12.8, "unita": "milioni di t", "var_pct": null, "fonte": "Copenhagen Malmö Port, risultati 2025", "link": "https://www.mynewsdesk.com/copenhagen-malmo-port-cmp/pressreleases/cmp-publishes-results-for-2025-continued-stability-in-a-changing-world-3445494"}
+     ],
+     "ruolo": "Società unica su due Paesi (DK, SE) affacciata sull'Øresund, il passaggio che PortWatch misura come «Stretti danesi»."},
+    {"id": "goteborg", "nome": "Göteborg", "paese": "SE", "portwatch": ["port408"],
+     "specializzazione": ["container (primo porto scandinavo)", "energia (greggio e prodotti, raffinerie)", "ro-ro", "auto"],
+     "traffico": [
+       {"anno": 2025, "valore": 0.934, "unita": "milioni di TEU (record)", "var_pct": 4, "fonte": "Göteborgs Hamn", "link": "https://www.mynewsdesk.com/goteborgs_hamn/pressreleases/record-year-2025-port-of-gothenburg-handled-more-containers-than-ever-3430268"},
+       {"anno": 2025, "valore": 20.7, "unita": "milioni di t di prodotti energetici", "var_pct": -5, "fonte": "Göteborgs Hamn", "link": "https://www.mynewsdesk.com/goteborgs_hamn/pressreleases/record-year-2025-port-of-gothenburg-handled-more-containers-than-ever-3430268"}
+     ],
+     "ruolo": "Unico porto svedese fuori dal Baltico con collegamenti oceanici diretti."},
+    {"id": "danzica", "nome": "Danzica (Gdańsk)", "paese": "PL", "portwatch": ["port380"],
+     "specializzazione": ["container (Baltic Hub, servizi diretti dall'Asia)", "greggio e prodotti (terminale Naftoport)", "carbone", "FSRU in costruzione (2028)"],
+     "traffico": [
+       {"anno": 2025, "valore": 80.4, "unita": "milioni di t (record)", "var_pct": 4, "fonte": "Port of Gdańsk (via DailyMare)", "link": "https://dailymare.com/news/port-of-gdansk-posts-strong-2025-performance-as-liquid-fuels-dominate-and-container-volumes-hit-record-high,2192"},
+       {"anno": 2025, "valore": 2.77, "unita": "milioni di TEU (Baltic Hub 2.766.475)", "var_pct": 23, "fonte": "Port of Gdańsk (via DailyMare)", "link": "https://dailymare.com/news/port-of-gdansk-posts-strong-2025-performance-as-liquid-fuels-dominate-and-container-volumes-hit-record-high,2192"},
+       {"anno": 2025, "valore": 39.6, "unita": "milioni di t di combustibili liquidi (49,3% del totale)", "var_pct": 0.4, "fonte": "Port of Gdańsk (via DailyMare)", "link": "https://dailymare.com/news/port-of-gdansk-posts-strong-2025-performance-as-liquid-fuels-dominate-and-container-volumes-hit-record-high,2192"}
+     ],
+     "ruolo": "Primo porto del Baltico non russo; è la via del greggio via mare per le raffinerie polacche e tedesche orientali dopo lo stop al petrolio russo."},
+    {"id": "gdynia", "nome": "Gdynia", "paese": "PL", "portwatch": ["port381"],
+     "specializzazione": ["container", "ro-ro e traghetti", "logistica militare"],
+     "traffico": [
+       {"anno": 2025, "valore": 25.7, "unita": "milioni di t", "var_pct": -4.4, "fonte": "Port of Gdynia (via DailyMare)", "link": "https://dailymare.com/news/port-of-gdynia-surpasses-1-million-teu-for-the-first-time-in-history,2196"},
+       {"anno": 2025, "valore": 1.0, "unita": "milioni di TEU (superato per la prima volta)", "var_pct": null, "fonte": "Port of Gdynia (via DailyMare)", "link": "https://dailymare.com/news/port-of-gdynia-surpasses-1-million-teu-for-the-first-time-in-history,2196"}
+     ],
+     "ruolo": "Porto della marina polacca e degli sbarchi militari alleati."},
+    {"id": "swinoujscie", "nome": "Świnoujście (con Stettino)", "paese": "PL", "portwatch": ["port1242", "port1246"],
+     "specializzazione": ["GNL (terminale Lech Kaczyński, ampliato 2024)", "rinfuse", "traghetti"],
+     "traffico": [
+       {"anno": 2025, "valore": 34.79, "unita": "milioni di t (Stettino + Świnoujście, record)", "var_pct": 7.5, "fonte": "Autorità portuale Szczecin-Świnoujście (via trade.gov.pl)", "link": "https://www.trade.gov.pl/en/news/the-ports-of-szczecin-and-swinoujscie-summed-up-the-record-year-2025"},
+       {"anno": 2025, "valore": 80, "unita": "carichi di GNL ricevuti", "var_pct": null, "fonte": "Autorità portuale Szczecin-Świnoujście (via trade.gov.pl)", "link": "https://www.trade.gov.pl/en/news/the-ports-of-szczecin-and-swinoujscie-summed-up-the-record-year-2025"}
+     ],
+     "ruolo": "Unico terminale GNL polacco (capacità 8,3 mld m³ nel 2026, IEEFA); nel primo trimestre 2026 il 75% del GNL polacco veniva dagli USA e il 21% dal Qatar."},
+    {"id": "klaipeda", "nome": "Klaipėda", "paese": "LT", "portwatch": ["port579"],
+     "specializzazione": ["GNL (FSRU Independence)", "container", "ro-ro", "fertilizzanti e rinfuse", "base navale"],
+     "traffico": [
+       {"anno": 2025, "valore": 39.0, "unita": "milioni di t (record)", "var_pct": null, "fonte": "Autorità portuale di Klaipėda (via Hellenic Shipping News)", "link": "https://www.hellenicshippingnews.com/2025-a-record-breaking-year-for-the-port-of-klaipeda/"},
+       {"anno": 2025, "valore": 1.30, "unita": "milioni di TEU (provvisorio)", "var_pct": 22, "fonte": "India Seatrade News (non verificato sulla fonte primaria)", "link": "https://indiaseatradenews.com/klaipeda-port-sees-historic-growth-exceeds-1-3-million-teus/"},
+       {"anno": 2025, "valore": 2.4, "unita": "milioni di t di GNL", "var_pct": null, "fonte": "Autorità portuale di Klaipėda (via Hellenic Shipping News)", "link": "https://www.hellenicshippingnews.com/2025-a-record-breaking-year-for-the-port-of-klaipeda/"}
+     ],
+     "ruolo": "Primo porto dei Baltici (quota 41,4% nel 2025); il terminale GNL rifornisce Lituania, Lettonia, Estonia, Finlandia e dal 2025 anche Ucraina."},
+    {"id": "riga", "nome": "Riga", "paese": "LV", "portwatch": ["port1100"],
+     "specializzazione": ["rinfuse (legname, grano, carbone in calo)", "container", "prodotti petroliferi"],
+     "traffico": [
+       {"anno": 2025, "valore": 16.7, "unita": "milioni di t", "var_pct": -7.6, "fonte": "Statistica ufficiale della Lettonia (CSP)", "link": "https://stat.gov.lv/en/statistics-themes/business-sectors/freight-transport/press-releases/27620-freight-carried-and"}
+     ],
+     "ruolo": "Porto in calo strutturale dopo la fine dei transiti russi e bielorussi."},
+    {"id": "ventspils", "nome": "Ventspils", "paese": "LV", "portwatch": ["port1357"],
+     "specializzazione": ["prodotti petroliferi (47% del traffico 2025)", "rinfuse", "traghetti"],
+     "traffico": [
+       {"anno": 2025, "valore": 8.53, "unita": "milioni di t", "var_pct": 3.6, "fonte": "Ventspils Freeport (via transport.lv)", "link": "https://mail.transport.lv/en/ventspils-brivosta/"}
+     ],
+     "ruolo": "Ex terminale del petrolio russo, oggi ridimensionato; approdo del cavo LVRTC danneggiato a gennaio 2025."},
+    {"id": "tallinn", "nome": "Tallinn (Muuga e porto vecchio)", "paese": "EE", "portwatch": ["port781", "port1258"],
+     "specializzazione": ["rinfuse liquide (+46,7% nel 2025)", "ro-ro e traghetti Helsinki-Tallinn", "container"],
+     "traffico": [
+       {"anno": 2025, "valore": 13.8, "unita": "milioni di t (13.799 migliaia)", "var_pct": 5.1, "fonte": "AS Tallinna Sadam, volumi operativi 2025", "link": "https://www.inderes.dk/en/releases/as-tallinna-sadam-operational-volumes-for-2025-full-year-and-q4"}
+     ],
+     "ruolo": "Asse con Helsinki: i cavi e l'elettrodotto Estlink attraversano il Golfo di Finlandia proprio qui."},
+    {"id": "helsinki", "nome": "Helsinki", "paese": "FI", "portwatch": ["port460"],
+     "specializzazione": ["ro-ro e traghetti (Tallinn, Stoccolma, Travemünde)", "container"],
+     "traffico": [
+       {"anno": 2025, "valore": 13.4, "unita": "milioni di t", "var_pct": -4.7, "fonte": "Port of Helsinki", "link": "https://www.portofhelsinki.fi/en/about-us/port-of-helsinki/whats-new/cargo-and-passenger-traffic-volumes-in-the-port-of-helsinki-remained-stable-in-2025/"}
+     ],
+     "ruolo": "Porta della Finlandia verso l'Europa: con la Finlandia «isola» logistica, quasi tutto il commercio passa per mare."},
+    {"id": "hamina-kotka", "nome": "HaminaKotka", "paese": "FI", "portwatch": ["port597", "port448"],
+     "specializzazione": ["prodotti forestali", "container", "rinfuse liquide e chimica", "GNL (piccolo terminale di Hamina)"],
+     "traffico": [
+       {"anno": 2025, "valore": 7.12, "unita": "milioni di t nel primo semestre 2025", "var_pct": 4.6, "fonte": "Port of HaminaKotka (via Città di Kotka)", "link": "https://www.kotka.fi/?p=109393"},
+       {"anno": 2026, "valore": 6.31, "unita": "milioni di t nel primo semestre 2026", "var_pct": -11.4, "fonte": "Container News", "link": "https://container-news.com/port-of-haminakotka-handles-6-3-million-tonnes-in-first-half-of-2026/"}
+     ],
+     "nota": "Totale annuo 2025 non trovato: Statistics Finland lo classifica terzo porto finlandese dopo Sköldvik (Porvoo) e Helsinki.",
+     "ruolo": "Ultimo grande porto finlandese prima del confine russo (40 km)."},
+    {"id": "primorsk", "nome": "Primorsk", "paese": "RU", "portwatch": ["port1020"],
+     "specializzazione": ["greggio Urals (terminale Transneft BTS-1)", "gasolio (oleodotto Sever)"],
+     "traffico": [
+       {"anno": 2025, "valore": 16.8, "unita": "milioni di t di prodotti petroliferi esportati", "var_pct": null, "fonte": "Reuters (via Maritime Professional)", "link": "https://www.maritimeprofessional.com/news/transneft-looks-redirect-from-attacked-417333"}
+     ],
+     "nota": "Tonnellaggio totale 2025 non trovato. Primorsk e Ust-Luga caricavano circa 1,7 milioni di barili al giorno prima degli attacchi di droni di marzo 2026 (stima Bloomberg).",
+     "ruolo": "Primo terminale del greggio russo sul Baltico; punto di partenza di gran parte della flotta ombra che passa dagli Stretti danesi."},
+    {"id": "ust-luga", "nome": "Ust-Luga", "paese": "RU", "portwatch": ["port1095"],
+     "specializzazione": ["greggio e prodotti", "complesso gas Novatek (condensato, GNL in progetto)", "carbone (fine dal gennaio 2026 in un terminale)", "fertilizzanti", "traghetto per Kaliningrad"],
+     "traffico": [
+       {"anno": 2025, "valore": 130.5, "unita": "milioni di t", "var_pct": -3.4, "fonte": "ASOP (associazione dei porti russi) via The Moscow Times", "link": "https://www.themoscowtimes.com/2026/03/05/russian-ports-warn-of-cargo-slowdown-due-to-tighter-inspections-and-ice-conditions"},
+       {"anno": 2025, "valore": 32.9, "unita": "milioni di t di prodotti petroliferi esportati", "var_pct": null, "fonte": "Reuters (via Maritime Professional)", "link": "https://www.maritimeprofessional.com/news/transneft-looks-redirect-from-attacked-417333"}
+     ],
+     "ruolo": "Primo porto del Baltico per tonnellaggio; colpito ripetutamente dai droni ucraini dal marzo 2026."},
+    {"id": "san-pietroburgo", "nome": "San Pietroburgo (Grande porto, con Bronka)", "paese": "RU", "portwatch": ["port1150", "port2435"],
+     "specializzazione": ["container", "metalli e fertilizzanti", "prodotti petroliferi", "base navale (Kronštadt)"],
+     "traffico": [
+       {"anno": 2025, "valore": 54.6, "unita": "milioni di t", "var_pct": 3.0, "fonte": "ASOP via The Moscow Times", "link": "https://www.themoscowtimes.com/2026/03/05/russian-ports-warn-of-cargo-slowdown-due-to-tighter-inspections-and-ice-conditions"}
+     ],
+     "ruolo": "Porta container della Russia europea; i porti russi del bacino baltico hanno movimentato 271,3 Mt nel 2025 (-0,6%)."},
+    {"id": "kaliningrad", "nome": "Kaliningrad e Baltijsk", "paese": "RU", "portwatch": ["port530", "port104"],
+     "specializzazione": ["ro-ro e ferry per Ust-Luga e San Pietroburgo", "prodotti petroliferi", "base della Flotta del Baltico (Baltijsk)"],
+     "traffico": [
+       {"anno": 2021, "valore": 10.65, "unita": "milioni di t (porto di Kaliningrad, ultimo anno completo trovato)", "var_pct": 2, "fonte": "PortNews", "link": "https://en.portnews.ru/news/324033"},
+       {"anno": 2025, "valore": 1.1, "unita": "milioni di t di ro-ro e vagoni a Baltijsk nel primo semestre 2025", "var_pct": 19, "fonte": "Interfax", "link": "https://interfax.com/newsroom/top-stories/113207/"}
+     ],
+     "nota": "Totale 2025 non trovato. Dal 2022 l'exclave dipende dalla linea marittima: oltre 2 Mt nel 2025 sulla sola linea container Oboronlogistics San Pietroburgo-Kaliningrad.",
+     "ruolo": "Exclave militarizzata: base navale, sorgente principale stimata del disturbo GNSS nel Baltico."},
+    {"id": "skoldvik", "nome": "Sköldvik (Porvoo)", "paese": "FI", "portwatch": ["port1015"],
+     "specializzazione": ["greggio e prodotti (raffineria Neste)"],
+     "traffico": [],
+     "nota": "Primo porto finlandese per volume nel 2025 secondo Statistics Finland; valore non raccolto (stat.fi non raggiungibile dalla sessione).",
+     "ruolo": "Porto della sola raffineria finlandese."},
+    {"id": "vysotsk", "nome": "Vysotsk", "paese": "RU", "portwatch": ["port378"],
+     "specializzazione": ["prodotti petroliferi (Lukoil)", "GNL di piccola scala (Cryogas Vysotsk, sanzionato)"],
+     "traffico": [], "nota": "Dato annuo non trovato.", "ruolo": "Terminale vicino al confine finlandese, sanzionato da USA e UE per il GNL."},
+    {"id": "paldiski", "nome": "Paldiski", "paese": "EE", "portwatch": ["port874"],
+     "specializzazione": ["ro-ro", "molo per FSRU (Balticconnector)", "base di approdo Estlink"],
+     "traffico": [], "nota": "Dato annuo non raccolto (è nel gruppo Tallinna Sadam).", "ruolo": "Approdo estone del Balticconnector e di Estlink."},
+    {"id": "inkoo", "nome": "Inkoo", "paese": "FI", "portwatch": ["port497"],
+     "specializzazione": ["GNL (FSRU Exemplar, Gasgrid)", "approdo del Balticconnector"],
+     "traffico": [], "nota": "Dato annuo non raccolto.", "ruolo": "Unica porta d'ingresso del gas in Finlandia dopo lo stop del gas russo (maggio 2022) insieme al Balticconnector."},
+    {"id": "rostock", "nome": "Rostock", "paese": "DE", "portwatch": ["port1111"],
+     "specializzazione": ["greggio via mare per la raffineria PCK di Schwedt", "ro-ro e traghetti", "rinfuse"],
+     "traffico": [], "nota": "Dato annuo non raccolto.", "ruolo": "Porta del greggio per la Germania orientale dopo lo stop all'oleodotto Druzhba (2023)."},
+    {"id": "brunsbuttel", "nome": "Brunsbüttel", "paese": "DE", "portwatch": ["port179"],
+     "specializzazione": ["GNL (FSRU Höegh Gannet)", "chimica", "imbocco del canale di Kiel"],
+     "traffico": [], "nota": "Dato annuo non raccolto. L'FSRU è rimasta ferma per manutenzione dal 18 settembre a metà novembre 2025 (IEEFA).", "ruolo": "FSRU tedesca e accesso al canale di Kiel, scorciatoia tra Mare del Nord e Baltico."}
+  ]
+}
