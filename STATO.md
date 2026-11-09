@@ -19,21 +19,26 @@ Osservatorio OSINT di rischio geoeconomico: mappa interattiva (eventi militari, 
 - Segreti inseriti da Gabriele il 2026-11-09: `AISSTREAM_API_KEY`, `GFW_API_KEY`, `AGSI_API_KEY`. **La chiave AGSI è finita per errore in un file pubblico (poi ripulito, ma resta nella cronologia git): va rigenerata.** Ora `raccolta/comune/nascondi_chiavi.py` gira prima di ogni salvataggio. Primo giro (2026-11-09 19:16): tutto verde; aisstream ha dato 19 petroliere negli Stretti danesi, nessun dato per Hormuz/Bab el-Mandeb/Suez/Bosforo (copertura AIS terrestre assente lì); AGSI ha risposto con errore. Facoltativo: `BLS_API_KEY` (data.bls.gov/registrationEngine).
 - Non ancora nel workflow (dati statici o lenti): ferrovie, cavi (settimanale da aggiungere), paesi, commercio, elettricità, Ucraina storico.
 
-## Fatto e verificato (dati in `docs/data/`, NON ancora visibili sulla mappa)
-| Dominio | File | Fatti chiave |
-|---|---|---|
-| Mercati | prezzi.json | 27 serie, 1 anno di storico; tassi dal Tesoro USA, resto da Yahoo |
-| Ferrovie | ferrovie.json | rete principale, 9 corridoi (Cina-Europa 20.022 treni 2025), 9 incidenti |
-| Scorte | scorte.json | SPR USA 282 mb, minimo dal 1982; Italia 77 giorni di scorte petrolio (sotto soglia UE); gas UE -24% su media 5 anni |
-| Cavi | cavi.json, cavi-incidenti.json | 713 cavi; tutti i 6 cavi Italia-Asia passano da Suez/Bab el-Mandeb |
-| Energia | terminali-gnl.json, gas-italia.json | 840 terminali GNL; Mazara 34% del gas entrato in Italia; flussi giornalieri ENTSOG |
-| Navi | navi.json | 111 navi nel Golfo di Finlandia (37 petroliere sanzionate); USNI navi militari USA; stretti da aisstream con chiave |
-| Flussi | portwatch.json, noli.json, gpr.json, sanzioni-navi.json | Hormuz -95% di transiti (4,4 navi/giorno vs 90,3); 2.022 navi sanzionate |
-| Calendario | calendario.json | 215 voci; Fed 3,75–4,00%; CPI USA 10/11; Nvidia 17/11; OPEC+ 29/11 |
-| Stretti | stretti-dettaglio.json | 13 schede: cosa passa, chi è esposto, alternative, impatti sui mercati |
+## Fatto e pubblicato (aggiornato 2026-11-09 sera)
+Sito: mappa con apertura su Europa e Medio Oriente (livelli militari spenti), menu Vista, riquadro "Come si usa", barra Report / Notizie / Simulatore / Terminale.
+- **Livelli** (blocco "Strati aggiunti" in docs/index.html, funzioni xLoad/xDrawPoints/xBuildLines/renderExtra): ferrovie, cavi, rete elettrica + interconnessioni, nucleare, GNL, gas Italia, navi AIS, attacchi ucraini in Russia, AI nel mondo, investimenti (archi), incidenti cyber, webcam, rischio, basi nel mondo, porti Nord, eolico offshore, sicurezza Baltico, bunker, idrogeno, attacchi russi (in attesa dati). Selettore del periodo per gli eventi datati (XDATED, XR).
+- **Terminale** (renderTerminal): Rischio (matrice), Nord Europa, Prezzi e tassi (33 serie + curva), Agenda, Stretti, Noli e rischio, Scorte, Paesi, Notizie, Ucraina (lanci, ondate, fronte in km²), Analisti.
+- **Pagine**: docs/report/ (Hormuz e Mar Rosso; Supply chain), docs/notizie.html (57 testate per argomento), docs/simulatore.html, docs/crediti.html.
+- **Dati** in docs/data/ con rapporto per ciascuno in report/agenti/*.md.
+- **Licenze**: fronte senza poligoni di terzi (solo link ISW/DeepState/Majakovsk73; copie private in raccolta/fronte/privato/, escluse da git); Yahoo solo 3 mesi; Baltic Dry non più automatico. Modulo docs/isw-fronte.js pronto ma NON attivo: serve il consenso scritto dell'ISW.
 
-## Agenti non ancora conclusi al momento di questo aggiornamento
-Dati paesi (paesi.json), Risorse e commercio (commercio.json, minerali.json), Reti elettriche (rete-elettrica.json, interconnessioni.json, nucleare.json), Storico Ucraina (ucraina-storico.json; gli sono state passate le fonti Clément Molin, AMK Mapping, "Davide Montingelli"), Serbatoi da satellite (report/agenti/serbatoi.md, solo studio). **Alla ripresa: controllare se i loro file esistono in `docs/data/` e `report/agenti/`, rieseguire gli script e verificare a campione.**
+## Agenti in corso o da riprendere (se la sessione si ferma, rilanciarli con lo stesso compito, dicendo di partire dai file già scritti)
+| Agente | Output atteso | Stato |
+|---|---|---|
+| Revisore report Hormuz | report/revisioni/hormuz-mar-rosso-2026-11.md, report/STANDARD.md, riquadro Revisione nel report | in corso |
+| Revisore report supply chain | report/revisioni/supply-chain-2026-11.md | in corso |
+| Supply chain AI | docs/data/supply-chain-ai.json, docs/report/supply-chain-ai-2026-11.html | in corso (poi: aggiungere a docs/report/index.html) |
+| Italia: impatti (carburanti, scioperi TIR, comportamenti) | docs/data/italia-impatti.json → poi sezione "Cosa succede in Italia" nel simulatore | in corso |
+| Attacchi russi in Ucraina geolocalizzati | docs/data/attacchi-russi.json (livello xru già pronto in mappa) | in corso |
+| Revisione livelli originali (fissi, italia, iran, difesa, mobili, eventi, ibrido) | report/agenti/originali.md, raccolta/originali/controlla.py | in corso |
+| Commercio e minerali | docs/data/commercio.json, minerali.json | in corso da molto: verificare |
+| Filiera eolico offshore | docs/data/eolico-filiera.json | FATTO, da mettere in mappa (porti base) |
+| Assicurazioni war risk | docs/data/assicurazioni.json (27 aree JWC) | FATTO, da mettere in mappa (aree come poligoni) |
 
 ## Da fare (in ordine)
 1. Verificare gli agenti mancanti (sopra) e il primo giro di `aggiorna-dati.yml` (Actions).

@@ -20,11 +20,11 @@ Dati letti il 9 novembre 2026. Ogni numero ha fonte e data; le parti marcate *Va
 
 ## 1. In breve
 
-- **Suez si riprende, Bab el-Mandeb resta a un terzo, Hormuz è chiuso di fatto.** A Suez passano 43,0 navi al giorno (+10% su un anno), il 58% della media gennaio–ottobre 2023; Bab el-Mandeb è a 27,3 (37% di quella media). Hormuz resta a 4,4 navi al giorno con AIS acceso ([IMF PortWatch](https://portwatch.imf.org/), media 7 giorni 26 ottobre–1 novembre 2026); Lloyd's List Intelligence, che ricostruisce anche i transiti con il transponder spento, conta 116 transiti di navi non legate all'Iran nella settimana 19–25 ottobre 2026, circa 17 al giorno ([Lloyd's List Intelligence, Strait of Hormuz Brief del 5 novembre 2026](https://www.lloydslistintelligence.com/resources/blog/strait-of-hormuz-brief-5-november-2026), 5 novembre 2026). Nel cruscotto del rischio dell'osservatorio Hormuz è critico, 22,5 su 25, Bab el-Mandeb alto, 19,0 su 25, Suez medio, 9,9 su 25 (docs/data/rischio.json, 9 novembre 2026; metodo in report/metodo-rischio.md).
+- **Suez si riprende, Bab el-Mandeb resta a poco più di un terzo, Hormuz è chiuso di fatto.** A Suez passano 43,0 navi al giorno (+10% su un anno), il 58% della media gennaio–ottobre 2023; Bab el-Mandeb è a 27,3 (37% di quella media). Hormuz resta a 4,4 navi al giorno con AIS acceso ([IMF PortWatch](https://portwatch.imf.org/), media 7 giorni 26 ottobre–1 novembre 2026); Lloyd's List Intelligence, che ricostruisce anche i transiti con il transponder spento, conta 116 transiti di navi non legate all'Iran nella settimana 19–25 ottobre 2026, circa 17 al giorno ([Lloyd's List Intelligence, Strait of Hormuz Brief](https://www.lloydslistintelligence.com/resources/blog/strait-of-hormuz-brief-5-november-2026), 5 novembre 2026). Nel cruscotto del rischio dell'osservatorio Hormuz è critico, 22,5 su 25, Bab el-Mandeb alto, 19,0 su 25, Suez medio, 9,9 su 25 (docs/data/rischio.json, 9 novembre 2026; metodo in report/metodo-rischio.md).
 - **I noli container sono più del doppio di un anno fa.** Il Drewry WCI è a 4.389 dollari per FEU (5 novembre 2026), +124% sul 6 novembre 2025; Shanghai–Genova 4.166 dollari (+97%). Il trend recente è piatto: FBX globale −6% dal 14 agosto, +3% nelle ultime 4 settimane.
-- **Porti italiani a due velocità.** Negli ultimi 30 giorni calano soprattutto Ravenna (−20%) e Venezia Malamocco (−16%), porti dell'energia e delle rinfuse; calano poco i porti container (Genova −4%, Gioia Tauro −6%) e cresce La Spezia (+28%, ma su numeri piccoli) (chiamate di navi, 30 giorni su un anno, [IMF PortWatch](https://portwatch.imf.org/), dati fino al 30 ottobre 2026).
+- **Porti italiani a due velocità.** Negli ultimi 30 giorni calano soprattutto Ravenna (−20%) e Venezia Malamocco (−16%), porti dell'energia e delle rinfuse; calano poco i porti container (Genova −5%, Gioia Tauro −6%) e cresce La Spezia (+28%, ma su numeri piccoli) (chiamate di navi, 30 giorni su un anno, [IMF PortWatch](https://portwatch.imf.org/), dati fino al 30 ottobre 2026).
 - **L'energia resta il costo più pesante.** Gas TTF a 82,33 €/MWh (+164% su un anno), gasolio self a 2,224 €/litro ([Mimit, Osservatorio prezzi carburanti (media nazionale self), ripreso da Affaritaliani](https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html), 7 novembre 2026) e taglio delle accise scaduto l'8 novembre; stoccaggi gas italiani all'88,9% contro il 58,9% della Germania (GIE AGSI+, 8 novembre 2026).
-- **Nord Europa: meno esposto sui noli, più esposto sul gas.** La rotta Cina–Nord Europa costa 3.422 dollari per FEU contro 4.324 verso il Mediterraneo (Freightos FBX, 6 novembre 2026); gli stoccaggi di gas sono al 63,5% nei Paesi Bassi e al 58,9% in Germania, 18,9 e 29,7 punti sotto la media di 5 anni (GIE AGSI+, 8 novembre 2026); agli Stretti danesi passano 38,7 navi al giorno, −20% su un anno ([IMF PortWatch](https://portwatch.imf.org/)). Dettagli nella sezione 8.
+- **Nord Europa: meno esposto sui noli, più esposto sul gas.** La rotta Cina–Nord Europa costa 3.422 dollari per FEU contro 4.324 verso il Mediterraneo (Freightos FBX, 6 novembre 2026); gli stoccaggi di gas sono al 63,5% nei Paesi Bassi e al 58,9% in Germania, 18,9 e 29,7 punti sotto la media di 5 anni (GIE AGSI+, 8 novembre 2026); agli Stretti danesi passano 38,7 navi al giorno, −21% su un anno ([IMF PortWatch](https://portwatch.imf.org/)). Dettagli nella sezione 8.
 - **Il rischio di questa settimana è sulle materie critiche:** la sospensione dei controlli cinesi all'export di terre rare decisi a ottobre 2025 (annuncio MOFCOM-GAC n. 70 del 2025, compresa la regola dello 0,1% di contenuto cinese nei prodotti esteri) scade il 10 novembre 2026; restano in vigore le licenze di aprile 2025 su sette terre rare medie e pesanti (tra cui disprosio e ittrio). Alla data del report non risultano annunci di proroga ([CIRS Group (testo dell'annuncio n. 70/2025) e Mining Technology](https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/), 9 novembre 2026).
 
 > *Valutazione.* La supply chain europea di novembre 2026 ha due velocità. I container tornano verso Suez e i noli spot non salgono più ma restano circa il doppio di un anno fa, mentre energia, fertilizzanti e materie critiche restano legati a Hormuz e alla Cina. Per l'Italia il rischio più concreto nei prossimi due mesi non è logistico ma di costo: gas, gasolio ed elettricità in inverno con stoccaggi europei bassi.
@@ -43,7 +43,7 @@ Dati letti il 9 novembre 2026. Ogni numero ha fonte e data; le parti marcate *Va
 | Stretto di Hormuz | 4,4 | 1,4 | 0,4 | −95% | −95% |
 | Stretto di Gibilterra | 131,6 | 39,7 | 31,6 | −5% | +1% |
 | Bosforo | 44,4 | 12,7 | 6,0 | −55% | −57% |
-| Stretti danesi | 38,7 | 9,0 | 4,1 | −20% | −10% |
+| Stretti danesi | 38,7 | 9,0 | 4,1 | −21% | −10% |
 | Stretto di Malacca | 202,7 | 70,7 | 56,3 | −15% | −11% |
 | Canale di Panama | 27,3 | 11,3 | 8,1 | −12% | 0% |
 | Stretto di Kerch | 0,0 | 0,0 | 0,0 | −100% | −100% |
@@ -97,7 +97,7 @@ Altre fonti confermano il ritorno a Suez delle portacontainer: capacità contain
 
 | Porto | Chiamate/giorno (7 gg) | su 1 anno | Chiamate/giorno (30 gg) | su 1 anno | portacontainer 7 gg | petroliere 7 gg |
 |---|---|---|---|---|---|---|
-| Genova | 8,9 | −4% | 8,4 | −4% | +16% | −15% |
+| Genova | 8,9 | −4% | 8,4 | −5% | +16% | −15% |
 | Trieste | 5,3 | −13% | 5,2 | −6% | −7% | −24% |
 | Gioia Tauro | 5,0 | +2% | 5,0 | −6% | +11% | −33% |
 | La Spezia | 2,4 | +71% | 2,3 | +28% | +109% | 0% |
@@ -124,7 +124,7 @@ Altre fonti confermano il ritorno a Suez delle portacontainer: capacità contain
 
 <small>Variazione delle chiamate di navi al giorno, ultimi 30 giorni contro gli stessi giorni di un anno prima. Fonte: [IMF PortWatch](https://portwatch.imf.org/).</small>
 
-**Fatti.** Ravenna fa 6,4 chiamate al giorno in 30 giorni (−20%), con import stimato −24%. Trieste, porto del greggio per l'oleodotto TAL verso Austria e Germania, è a −6%, petroliere −24% sui 7 giorni. I porti container tengono: Genova −4% sulle chiamate ma portacontainer +16% e import stimato +31% sui 7 giorni; Gioia Tauro, primo porto di trasbordo, portacontainer +11%. ([IMF PortWatch](https://portwatch.imf.org/)).
+**Fatti.** Ravenna fa 6,4 chiamate al giorno in 30 giorni (−20%), con import stimato −24%. Trieste, porto del greggio per l'oleodotto TAL verso Austria e Germania, è a −6%, petroliere −24% sui 7 giorni. I porti container tengono: Genova −5% sulle chiamate ma portacontainer +16% e import stimato +31% sui 7 giorni; Gioia Tauro, primo porto di trasbordo, portacontainer +11%. ([IMF PortWatch](https://portwatch.imf.org/)).
 
 Su base annua: i porti italiani hanno movimentato 12,8 milioni di TEU nel 2025 (11,9 nel 2024); nel 1° semestre 2026 il traffico container italiano è cresciuto dell'1%, contro l'11% dei porti del Nord Africa (Tanger Med) ([Intesa Sanpaolo, SRM (studi sul traffico container nel Mediterraneo, 2026)](https://group.intesasanpaolo.com/it/research/area-media/macro-italia/2026/mediterraneo-traffico-container-porti-italia), luglio 2026); il traffico container nei porti italiani è sceso del 4,6% nel 1° trimestre 2026 sul 1° trimestre 2025 ([9colonne, «Hormuz crisis weighs on container traffic at Italian ports»](https://www.9colonne.it/614809/hormuz-crisis-weighs-on-container-traffic-at-italian-ports), maggio 2026).
 
@@ -211,25 +211,25 @@ Nel resto del Mediterraneo e sull'Atlantico calano Capodistria (Koper) (−16%),
 
 Questa sezione legge gli stessi dati dal punto di vista di chi lavora in un porto o in un'azienda energetica dei Paesi Bassi, della Danimarca o del Baltico. Il resto del report guarda soprattutto all'Italia.
 
-| Porto | Chiamate/giorno (30 gg) | su 1 anno | portacontainer | petroliere | rinfuse secche |
-|---|---|---|---|---|---|
-| Rotterdam (NL) | 81,4 | +2% | +4% | +2% | −18% |
-| Anversa (BE) | 52,3 | +5% | +20% | +9% | −39% |
-| Amsterdam (NL) | 20,4 | −7% | −40% | −6% | −21% |
-| Amburgo (DE) | 16,2 | −2% | −4% | +19% | −16% |
-| Bremerhaven (DE) | 11,3 | −13% | −14% | 0% | +600% |
-| Danzica (Gdańsk) (PL) | 9,5 | −5% | −16% | −4% | +50% |
-| Göteborg (SE) | 9,3 | −8% | −35% | −1% | n.d. |
-| Klaipėda (LT) | 8,3 | −3% | −2% | +22% | +37% |
-| Wilhelmshaven (DE) | 4,4 | +16% | +29% | −14% | +125% |
-| Aarhus (DK) | 3,9 | 0% | −24% | +16% | +12% |
-| Esbjerg (DK) | 3,3 | −8% | +100% | +57% | −100% |
+| Porto | Chiamate/giorno (30 gg) | su 1 anno | portacontainer | petroliere |
+|---|---|---|---|---|
+| Rotterdam (NL) | 81,4 | +2% | +4% | +2% |
+| Anversa (BE) | 52,3 | +5% | +20% | +9% |
+| Amsterdam (NL) | 20,4 | −7% | −40% | −6% |
+| Amburgo (DE) | 16,2 | −2% | −4% | +19% |
+| Bremerhaven (DE) | 11,3 | −13% | −14% | 0% |
+| Danzica (Gdańsk) (PL) | 9,5 | −5% | −16% | −4% |
+| Göteborg (SE) | 9,3 | −8% | −35% | −1% |
+| Klaipėda (LT) | 8,3 | −3% | −2% | +22% |
+| Wilhelmshaven (DE) | 4,4 | +16% | +29% | −14% |
+| Aarhus (DK) | 3,9 | 0% | −24% | +16% |
+| Esbjerg (DK) | 3,3 | −8% | +100% | +57% |
 
 <small>Fonte: [IMF PortWatch](https://portwatch.imf.org/), media 30 giorni al 30 ottobre 2026 contro gli stessi giorni di un anno prima (report/dati/porti-europei.json). Chiamate di navi stimate da AIS, non tonnellate né TEU; nei porti piccoli poche navi spostano molto la percentuale.</small>
 
 **Porti.** Crescono Rotterdam (+2%), Anversa (+5%), Wilhelmshaven (+16%); calano Bremerhaven (−13%), Göteborg (−8%), Esbjerg (−8%) (chiamate al giorno, 30 giorni su un anno, [IMF PortWatch](https://portwatch.imf.org/)).
 
-**Stretti danesi e Baltico.** Agli Stretti danesi passano 38,7 navi al giorno (di cui 9,0 petroliere), −20% sulla stessa settimana di un anno prima ([IMF PortWatch](https://portwatch.imf.org/), settimana al 1 novembre 2026). Nel cruscotto del rischio gli Stretti danesi sono medio, 8,3 su 25 e il Baltico (cavi, condotte, elettrodotti) medio, 9,0 su 25: flussi in giallo, scorte di gas in rosso (rischio.json). Nel Baltico passano 34 cavi (TeleGeography); l'archivio dell'osservatorio conta 6 incidenti a cavi e condotte nel Baltico dal 2023, l'ultimo il 31 dicembre 2025, nessuno nel 2026 (cavi-incidenti.json). Nel Golfo di Finlandia 38 delle 96 petroliere viste con AIS sono sanzionate; agli Stretti danesi 0 su 19, ma con una sola fonte AIS gratuita (navi.json, 9 novembre 2026).
+**Stretti danesi e Baltico.** Agli Stretti danesi passano 38,7 navi al giorno (di cui 9,0 petroliere), −21% sulla stessa settimana di un anno prima ([IMF PortWatch](https://portwatch.imf.org/), settimana al 1 novembre 2026). Nel cruscotto del rischio gli Stretti danesi sono medio, 8,3 su 25 e il Baltico (cavi, condotte, elettrodotti) medio, 9,0 su 25: flussi in giallo, scorte di gas in rosso (rischio.json). Nel Baltico passano 34 cavi (TeleGeography); l'archivio dell'osservatorio conta 6 incidenti a cavi e condotte nel Baltico dal 2023, l'ultimo il 31 dicembre 2025, nessuno nel 2026 (cavi-incidenti.json). Nel Golfo di Finlandia 38 delle 96 petroliere viste con AIS sono sanzionate; agli Stretti danesi 0 su 19, ma con una sola fonte AIS gratuita (navi.json, 9 novembre 2026).
 
 **Noli.** La rotta Cina–Nord Europa costa 3.422 dollari per FEU, −21% rispetto alla Cina–Mediterraneo (Freightos FBX, 6 novembre 2026). Il WCI Shanghai–Rotterdam è a 3.615 dollari, +84% su un anno (Drewry, 5 novembre 2026; anno prima da [Drewry WCI del 6 novembre 2025, ripreso da Cyprus Shipping News e Alchempro/Fibre2Fashion](https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/), 6 novembre 2025).
 

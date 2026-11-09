@@ -31,6 +31,7 @@ scritte qui sono:
 import argparse
 import calendar
 import datetime as dt
+import decimal
 import html
 import json
 import os
@@ -88,7 +89,7 @@ FATTI_ESTERNI = {
         "attuale": True,
         "data": "2026-11-05", "transiti_settimana": 116,
         "testo": "116 transiti di navi non legate all'Iran nella settimana 19–25 ottobre 2026, circa 17 al giorno",
-        "fonte": "Lloyd's List Intelligence, Strait of Hormuz Brief del 5 novembre 2026",
+        "fonte": "Lloyd's List Intelligence, Strait of Hormuz Brief",
         "link": "https://www.lloydslistintelligence.com/resources/blog/strait-of-hormuz-brief-5-november-2026",
         "affidabilita": "alta", "letto": "pagina aperta in revisione il 9 novembre 2026",
     },
@@ -302,6 +303,8 @@ def num(v, dec=1, segno=False):
     """Numero all'italiana: virgola decimale, punto per le migliaia."""
     if v is None:
         return "n.d."
+    # arrotondamento «commerciale» (metà per eccesso), non quello bancario di Python: −20,5 → −21
+    v = float(decimal.Decimal(repr(v)).quantize(decimal.Decimal(1).scaleb(-dec), rounding=decimal.ROUND_HALF_UP))
     s = f"{v:+,.{dec}f}" if segno else f"{v:,.{dec}f}"
     s = s.replace(",", "§").replace(".", ",").replace("§", ".")
     return s.replace("-", "−")
@@ -310,7 +313,7 @@ def num(v, dec=1, segno=False):
 def pct(v, dec=0, segno=True):
     if v is None:
         return "n.d."
-    if round(v, dec) == 0:
+    if abs(v) < 0.5 * 10 ** -dec:
         return "0%"
     return num(v, dec, segno) + "%"
 
@@ -1072,7 +1075,7 @@ def costruisci_blocchi(v, oggi, edizione):
     B.append(("h2", "in-breve", "1. In breve"))
     voci = []
     pr = v["pre_ratio"]
-    voci.append(f"**Suez si riprende, Bab el-Mandeb resta a un terzo, Hormuz è chiuso di fatto.** A Suez passano "
+    voci.append(f"**Suez si riprende, Bab el-Mandeb resta a poco più di un terzo, Hormuz è chiuso di fatto.** A Suez passano "
                 f"{num(suez['media7']['n_total'], 1)} navi al giorno ({pct(suez['var7_anno_pct']['n_total'])} su un anno), "
                 f"{il(num(pr['Canale di Suez'], 0))}% della media gennaio–ottobre 2023; Bab el-Mandeb è a {num(bab['media7']['n_total'], 1)} "
                 f"({num(pr['Bab el-Mandeb'], 0)}% di quella media). Hormuz resta a {num(hor['media7']['n_total'], 1)} navi al giorno con AIS acceso "
@@ -1577,10 +1580,9 @@ def blocchi_nord(v, pw_link):
         nord.sort(key=lambda e: -(e["media30"]["portcalls"] or 0))
         for e in nord:
             righe.append([f"{e['nome']} ({e['paese']})", num(e["media30"]["portcalls"], 1), pct(e["var30_anno_pct"]["portcalls"]),
-                          pct(e["var30_anno_pct"].get("portcalls_container")), pct(e["var30_anno_pct"].get("portcalls_tanker")),
-                          pct(e["var30_anno_pct"].get("portcalls_dry_bulk"))])
+                          pct(e["var30_anno_pct"].get("portcalls_container")), pct(e["var30_anno_pct"].get("portcalls_tanker"))])
         if righe:
-            B.append(("tab", ["Porto", "Chiamate/giorno (30 gg)", "su 1 anno", "portacontainer", "petroliere", "rinfuse secche"], righe,
+            B.append(("tab", ["Porto", "Chiamate/giorno (30 gg)", "su 1 anno", "portacontainer", "petroliere"], righe,
                       f"Fonte: {link('IMF PortWatch', pw_link)}, media 30 giorni al {data_it(v['porti_ue']['fonti'][0]['data_dato'])} contro gli "
                       f"stessi giorni di un anno prima (report/dati/porti-europei.json). Chiamate di navi stimate da AIS, non tonnellate né TEU; "
                       f"nei porti piccoli poche navi spostano molto la percentuale."))
