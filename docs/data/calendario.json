@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-09T19:02Z",
+ "aggiornato": "2026-11-09T19:03Z",
  "finestra": {
   "da": "2026-10-10",
   "a": "2027-11-10",
@@ -129,7 +129,7 @@
    "importanza": "alta",
    "valore_precedente": "agosto: +0,4% m/m",
    "valore_atteso": null,
-   "valore_uscito": "+0,6% m/m (dest,), +3,7% a/a; core +0,3% m/m",
+   "valore_uscito": "+0,6% m/m (dest.), +3,7% a/a; core +0,3% m/m",
    "fonte": "BLS, calendario comunicati",
    "link": "https://www.bls.gov/schedule/news_release/cpi.htm",
    "data_fonte": "2026-11-09",
@@ -245,11 +245,11 @@
    "ora_utc": "18:00",
    "paese": "US",
    "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione October 27-28)",
+   "titolo": "Fed: decisione FOMC (riunione 27-28 ottobre)",
    "importanza": "alta",
    "valore_precedente": null,
    "valore_atteso": null,
-   "valore_uscito": "Tassi fed funds invariato: 3,75-4,00% (voto 10-2); contrari: Lisa D",
+   "valore_uscito": "Fed funds invariati: 3,75-4,00% (voto 10-2); contrari: Lisa D",
    "fonte": "Federal Reserve, calendario FOMC",
    "link": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
    "data_fonte": "2026-11-09",
@@ -289,7 +289,7 @@
    "importanza": "alta",
    "valore_precedente": null,
    "valore_atteso": null,
-   "valore_uscito": "PIL reale +3,4% annualizzato (third trimestre 2026, stima advance)",
+   "valore_uscito": "PIL reale +3,4% annualizzato (terzo trimestre 2026, stima preliminare)",
    "fonte": "BEA, calendario comunicati",
    "link": "https://www.bea.gov/news/schedule",
    "data_fonte": "2026-11-09",
@@ -647,7 +647,7 @@
    "categoria": "dato-macro",
    "titolo": "USA: Consumer Price Index (CPI)",
    "importanza": "alta",
-   "valore_precedente": "settembre 2026: +0,6% m/m (dest,), +3,7% a/a; core +0,3% m/m",
+   "valore_precedente": "settembre 2026: +0,6% m/m (dest.), +3,7% a/a; core +0,3% m/m",
    "valore_atteso": null,
    "valore_uscito": null,
    "fonte": "BLS, calendario comunicati",
@@ -887,7 +887,7 @@
    "categoria": "dato-macro",
    "titolo": "USA: PIL - GDP (Second Estimate) and Corporate Profits, 3rd Quarter 2026",
    "importanza": "alta",
-   "valore_precedente": "PIL reale +3,4% annualizzato (third trimestre 2026, stima advance)",
+   "valore_precedente": "PIL reale +3,4% annualizzato (terzo trimestre 2026, stima preliminare)",
    "valore_atteso": null,
    "valore_uscito": null,
    "fonte": "BEA, calendario comunicati",
@@ -1183,7 +1183,7 @@
    "data": "2026-12-06",
    "data_fine": null,
    "ora_utc": null,
-   "paese": "CY",
+   "paese": null,
    "categoria": "elezioni",
    "titolo": "Northern Cyprus: Northern Cypriot Assembly of the Republic",
    "importanza": "bassa",
@@ -1194,7 +1194,7 @@
    "link": "https://www.electionguide.org/elections/id/5208/",
    "data_fonte": "2026-11-09",
    "affidabilita": "alta",
-   "note": "Data confermata. Elezione anticipata.",
+   "note": "Data confermata. Elezione anticipata. Paese: Northern Cyprus (codice ISO non mappato).",
    "origine": "auto",
    "stato": "futuro",
    "id": "CAL-20261206-054"
@@ -1265,7 +1265,7 @@
    "ora_utc": "19:00",
    "paese": "US",
    "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione December 8-9) con proiezioni economiche (SEP)",
+   "titolo": "Fed: decisione FOMC (riunione 8-9 dicembre) con proiezioni economiche (SEP)",
    "importanza": "alta",
    "valore_precedente": "3,75-4,00%",
    "valore_atteso": null,
@@ -1382,26 +1382,6 @@
   {
    "data": "2026-12-16",
    "data_fine": null,
-   "ora_utc": "13:15",
-   "paese": "EU",
-   "categoria": "banca-centrale",
-   "titolo": "BCE: decisione di politica monetaria (con conferenza stampa)",
-   "importanza": "alta",
-   "valore_precedente": "deposito 2,5%, rifinanziamento principale 2,65%, marginale 2,9% (in vigore dal 2026-09-16)",
-   "valore_atteso": null,
-   "valore_uscito": null,
-   "fonte": "BCE, calendario riunioni del Consiglio direttivo",
-   "link": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "alta",
-   "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
-   "origine": "auto",
-   "stato": "futuro",
-   "id": "CAL-20261216-064"
-  },
-  {
-   "data": "2026-12-16",
-   "data_fine": null,
    "ora_utc": "15:30",
    "paese": "US",
    "categoria": "energia",
@@ -1417,7 +1397,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261216-065"
+   "id": "CAL-20261216-064"
   },
   {
    "data": "2026-12-17",
@@ -1437,7 +1417,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261217-066"
+   "id": "CAL-20261217-065"
   },
   {
    "data": "2026-12-17",
@@ -1457,7 +1437,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261217-067"
+   "id": "CAL-20261217-066"
   },
   {
    "data": "2026-12-17",
@@ -1477,7 +1457,7 @@
    "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261217-068"
+   "id": "CAL-20261217-067"
   },
   {
    "data": "2026-12-17",
@@ -1497,7 +1477,7 @@
    "note": "Temi attesi: Ucraina, sanzioni alla Russia, energia, difesa.",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20261217-069"
+   "id": "CAL-20261217-068"
   },
   {
    "data": "2026-12-18",
@@ -1517,7 +1497,7 @@
    "note": "Orario non fisso (di solito a fine mattinata ora di Tokyo, notte in Europa). Il tasso attuale e' nelle voci manuali.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261218-070"
+   "id": "CAL-20261218-069"
   },
   {
    "data": "2026-12-22",
@@ -1537,7 +1517,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261222-071"
+   "id": "CAL-20261222-070"
   },
   {
    "data": "2026-12-22",
@@ -1557,7 +1537,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261222-072"
+   "id": "CAL-20261222-071"
   },
   {
    "data": "2026-12-22",
@@ -1577,7 +1557,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261222-073"
+   "id": "CAL-20261222-072"
   },
   {
    "data": "2026-12-23",
@@ -1597,7 +1577,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261223-074"
+   "id": "CAL-20261223-073"
   },
   {
    "data": "2026-12-23",
@@ -1617,7 +1597,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261223-075"
+   "id": "CAL-20261223-074"
   },
   {
    "data": "2026-12-24",
@@ -1637,7 +1617,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261224-076"
+   "id": "CAL-20261224-075"
   },
   {
    "data": "2026-12-31",
@@ -1657,7 +1637,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261231-077"
+   "id": "CAL-20261231-076"
   },
   {
    "data": "2026-12-31",
@@ -1677,7 +1657,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20261231-078"
+   "id": "CAL-20261231-077"
   },
   {
    "data": "2027-01-06",
@@ -1697,7 +1677,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270106-079"
+   "id": "CAL-20270106-078"
   },
   {
    "data": "2027-01-07",
@@ -1717,7 +1697,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270107-080"
+   "id": "CAL-20270107-079"
   },
   {
    "data": "2027-01-10",
@@ -1737,7 +1717,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270110-081"
+   "id": "CAL-20270110-080"
   },
   {
    "data": "2027-01-12",
@@ -1757,7 +1737,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270112-082"
+   "id": "CAL-20270112-081"
   },
   {
    "data": "2027-01-13",
@@ -1777,7 +1757,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270113-083"
+   "id": "CAL-20270113-082"
   },
   {
    "data": "2027-01-16",
@@ -1797,7 +1777,7 @@
    "note": "Data confermata.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270116-084"
+   "id": "CAL-20270116-083"
   },
   {
    "data": "2027-01-16",
@@ -1817,7 +1797,7 @@
    "note": "Data confermata.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270116-085"
+   "id": "CAL-20270116-084"
   },
   {
    "data": "2027-01-16",
@@ -1837,7 +1817,7 @@
    "note": "Data confermata.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270116-086"
+   "id": "CAL-20270116-085"
   },
   {
    "data": "2027-01-19",
@@ -1857,7 +1837,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270119-087"
+   "id": "CAL-20270119-086"
   },
   {
    "data": "2027-01-20",
@@ -1877,7 +1857,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270120-088"
+   "id": "CAL-20270120-087"
   },
   {
    "data": "2027-01-22",
@@ -1897,27 +1877,7 @@
    "note": "Orario non fisso (di solito a fine mattinata ora di Tokyo, notte in Europa). Il tasso attuale e' nelle voci manuali.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270122-089"
-  },
-  {
-   "data": "2027-01-26",
-   "data_fine": null,
-   "ora_utc": "19:00",
-   "paese": "US",
-   "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione January 25-26)",
-   "importanza": "alta",
-   "valore_precedente": "3,75-4,00%",
-   "valore_atteso": null,
-   "valore_uscito": null,
-   "fonte": "Federal Reserve, calendario FOMC",
-   "link": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "alta",
-   "note": "Tasso attuale 3,75-4,00% (ultima decisione 2026-10-28).",
-   "origine": "auto",
-   "stato": "futuro",
-   "id": "CAL-20270126-090"
+   "id": "CAL-20270122-088"
   },
   {
    "data": "2027-01-27",
@@ -1925,7 +1885,7 @@
    "ora_utc": "19:00",
    "paese": "US",
    "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione January 26-27)",
+   "titolo": "Fed: decisione FOMC (riunione 26-27 gennaio)",
    "importanza": "alta",
    "valore_precedente": "3,75-4,00%",
    "valore_atteso": null,
@@ -1937,7 +1897,7 @@
    "note": "Tasso attuale 3,75-4,00% (ultima decisione 2026-10-28).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270127-091"
+   "id": "CAL-20270127-089"
   },
   {
    "data": "2027-01-27",
@@ -1957,7 +1917,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270127-092"
+   "id": "CAL-20270127-090"
   },
   {
    "data": "2027-01-28",
@@ -1977,7 +1937,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270128-093"
+   "id": "CAL-20270128-091"
   },
   {
    "data": "2027-01-28",
@@ -1997,7 +1957,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270128-094"
+   "id": "CAL-20270128-092"
   },
   {
    "data": "2027-01-30",
@@ -2017,7 +1977,7 @@
    "note": "Elezione indiretta.",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20270130-095"
+   "id": "CAL-20270130-093"
   },
   {
    "data": "2027-01-31",
@@ -2037,7 +1997,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270131-096"
+   "id": "CAL-20270131-094"
   },
   {
    "data": "2027-02-01",
@@ -2057,7 +2017,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270201-097"
+   "id": "CAL-20270201-095"
   },
   {
    "data": "2027-02-02",
@@ -2077,27 +2037,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270202-098"
-  },
-  {
-   "data": "2027-02-03",
-   "data_fine": null,
-   "ora_utc": "13:15",
-   "paese": "EU",
-   "categoria": "banca-centrale",
-   "titolo": "BCE: decisione di politica monetaria (con conferenza stampa)",
-   "importanza": "alta",
-   "valore_precedente": "deposito 2,5%, rifinanziamento principale 2,65%, marginale 2,9% (in vigore dal 2026-09-16)",
-   "valore_atteso": null,
-   "valore_uscito": null,
-   "fonte": "BCE, calendario riunioni del Consiglio direttivo",
-   "link": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "alta",
-   "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
-   "origine": "auto",
-   "stato": "futuro",
-   "id": "CAL-20270203-099"
+   "id": "CAL-20270202-096"
   },
   {
    "data": "2027-02-04",
@@ -2117,7 +2057,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270204-100"
+   "id": "CAL-20270204-097"
   },
   {
    "data": "2027-02-04",
@@ -2137,7 +2077,7 @@
    "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270204-101"
+   "id": "CAL-20270204-098"
   },
   {
    "data": "2027-02-09",
@@ -2157,7 +2097,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270209-102"
+   "id": "CAL-20270209-099"
   },
   {
    "data": "2027-02-15",
@@ -2177,7 +2117,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270215-103"
+   "id": "CAL-20270215-100"
   },
   {
    "data": "2027-02-20",
@@ -2197,7 +2137,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270220-104"
+   "id": "CAL-20270220-101"
   },
   {
    "data": "2027-02-24",
@@ -2217,7 +2157,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270224-105"
+   "id": "CAL-20270224-102"
   },
   {
    "data": "2027-02-24",
@@ -2237,7 +2177,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270224-106"
+   "id": "CAL-20270224-103"
   },
   {
    "data": "2027-02-25",
@@ -2257,7 +2197,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270225-107"
+   "id": "CAL-20270225-104"
   },
   {
    "data": "2027-02-25",
@@ -2277,7 +2217,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270225-108"
+   "id": "CAL-20270225-105"
   },
   {
    "data": "2027-02-28",
@@ -2297,7 +2237,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270228-109"
+   "id": "CAL-20270228-106"
   },
   {
    "data": "2027-02-28",
@@ -2317,7 +2257,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270228-110"
+   "id": "CAL-20270228-107"
   },
   {
    "data": "2027-02-28",
@@ -2337,7 +2277,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270228-111"
+   "id": "CAL-20270228-108"
   },
   {
    "data": "2027-03-02",
@@ -2357,7 +2297,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270302-112"
+   "id": "CAL-20270302-109"
   },
   {
    "data": "2027-03-02",
@@ -2377,7 +2317,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270302-113"
+   "id": "CAL-20270302-110"
   },
   {
    "data": "2027-03-04",
@@ -2397,7 +2337,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270304-114"
+   "id": "CAL-20270304-111"
   },
   {
    "data": "2027-03-07",
@@ -2417,7 +2357,7 @@
    "note": "Data confermata.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270307-115"
+   "id": "CAL-20270307-112"
   },
   {
    "data": "2027-03-07",
@@ -2437,7 +2377,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270307-116"
+   "id": "CAL-20270307-113"
   },
   {
    "data": "2027-03-09",
@@ -2457,7 +2397,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270309-117"
+   "id": "CAL-20270309-114"
   },
   {
    "data": "2027-03-17",
@@ -2477,27 +2417,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270317-118"
-  },
-  {
-   "data": "2027-03-17",
-   "data_fine": null,
-   "ora_utc": "13:15",
-   "paese": "EU",
-   "categoria": "banca-centrale",
-   "titolo": "BCE: decisione di politica monetaria (con conferenza stampa)",
-   "importanza": "alta",
-   "valore_precedente": "deposito 2,5%, rifinanziamento principale 2,65%, marginale 2,9% (in vigore dal 2026-09-16)",
-   "valore_atteso": null,
-   "valore_uscito": null,
-   "fonte": "BCE, calendario riunioni del Consiglio direttivo",
-   "link": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "alta",
-   "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
-   "origine": "auto",
-   "stato": "futuro",
-   "id": "CAL-20270317-119"
+   "id": "CAL-20270317-115"
   },
   {
    "data": "2027-03-17",
@@ -2505,7 +2425,7 @@
    "ora_utc": "18:00",
    "paese": "US",
    "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione March 16-17) con proiezioni economiche (SEP)",
+   "titolo": "Fed: decisione FOMC (riunione 16-17 marzo) con proiezioni economiche (SEP)",
    "importanza": "alta",
    "valore_precedente": "3,75-4,00%",
    "valore_atteso": null,
@@ -2517,7 +2437,7 @@
    "note": "Tasso attuale 3,75-4,00% (ultima decisione 2026-10-28).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270317-120"
+   "id": "CAL-20270317-116"
   },
   {
    "data": "2027-03-18",
@@ -2537,7 +2457,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270318-121"
+   "id": "CAL-20270318-117"
   },
   {
    "data": "2027-03-18",
@@ -2557,7 +2477,7 @@
    "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270318-122"
+   "id": "CAL-20270318-118"
   },
   {
    "data": "2027-03-18",
@@ -2577,7 +2497,7 @@
    "note": "Orario non fisso (di solito a fine mattinata ora di Tokyo, notte in Europa). Il tasso attuale e' nelle voci manuali.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270318-123"
+   "id": "CAL-20270318-119"
   },
   {
    "data": "2027-03-31",
@@ -2597,7 +2517,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270331-124"
+   "id": "CAL-20270331-120"
   },
   {
    "data": "2027-03-31",
@@ -2617,7 +2537,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270331-125"
+   "id": "CAL-20270331-121"
   },
   {
    "data": "2027-03-31",
@@ -2637,7 +2557,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270331-126"
+   "id": "CAL-20270331-122"
   },
   {
    "data": "2027-04-01",
@@ -2657,7 +2577,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270401-127"
+   "id": "CAL-20270401-123"
   },
   {
    "data": "2027-04-02",
@@ -2677,7 +2597,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270402-128"
+   "id": "CAL-20270402-124"
   },
   {
    "data": "2027-04-06",
@@ -2697,7 +2617,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270406-129"
+   "id": "CAL-20270406-125"
   },
   {
    "data": "2027-04-10",
@@ -2717,7 +2637,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270410-130"
+   "id": "CAL-20270410-126"
   },
   {
    "data": "2027-04-13",
@@ -2737,7 +2657,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270413-131"
+   "id": "CAL-20270413-127"
   },
   {
    "data": "2027-04-18",
@@ -2757,7 +2677,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270418-132"
+   "id": "CAL-20270418-128"
   },
   {
    "data": "2027-04-18",
@@ -2777,7 +2697,7 @@
    "note": "Data non confermata (indicativa).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270418-133"
+   "id": "CAL-20270418-129"
   },
   {
    "data": "2027-04-19",
@@ -2797,27 +2717,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270419-134"
-  },
-  {
-   "data": "2027-04-28",
-   "data_fine": null,
-   "ora_utc": "12:15",
-   "paese": "EU",
-   "categoria": "banca-centrale",
-   "titolo": "BCE: decisione di politica monetaria (con conferenza stampa)",
-   "importanza": "alta",
-   "valore_precedente": "deposito 2,5%, rifinanziamento principale 2,65%, marginale 2,9% (in vigore dal 2026-09-16)",
-   "valore_atteso": null,
-   "valore_uscito": null,
-   "fonte": "BCE, calendario riunioni del Consiglio direttivo",
-   "link": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "alta",
-   "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
-   "origine": "auto",
-   "stato": "futuro",
-   "id": "CAL-20270428-135"
+   "id": "CAL-20270419-130"
   },
   {
    "data": "2027-04-28",
@@ -2825,7 +2725,7 @@
    "ora_utc": "18:00",
    "paese": "US",
    "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione April 27-28)",
+   "titolo": "Fed: decisione FOMC (riunione 27-28 aprile)",
    "importanza": "alta",
    "valore_precedente": "3,75-4,00%",
    "valore_atteso": null,
@@ -2837,7 +2737,7 @@
    "note": "Tasso attuale 3,75-4,00% (ultima decisione 2026-10-28).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270428-136"
+   "id": "CAL-20270428-131"
   },
   {
    "data": "2027-04-28",
@@ -2857,7 +2757,7 @@
    "note": "Orario non fisso (di solito a fine mattinata ora di Tokyo, notte in Europa). Il tasso attuale e' nelle voci manuali.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270428-137"
+   "id": "CAL-20270428-132"
   },
   {
    "data": "2027-04-29",
@@ -2877,7 +2777,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270429-138"
+   "id": "CAL-20270429-133"
   },
   {
    "data": "2027-04-29",
@@ -2897,7 +2797,7 @@
    "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270429-139"
+   "id": "CAL-20270429-134"
   },
   {
    "data": "2027-04-29",
@@ -2917,7 +2817,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270429-140"
+   "id": "CAL-20270429-135"
   },
   {
    "data": "2027-04-29",
@@ -2937,7 +2837,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270429-141"
+   "id": "CAL-20270429-136"
   },
   {
    "data": "2027-04-29",
@@ -2957,7 +2857,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270429-142"
+   "id": "CAL-20270429-137"
   },
   {
    "data": "2027-04-30",
@@ -2977,7 +2877,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270430-143"
+   "id": "CAL-20270430-138"
   },
   {
    "data": "2027-04-30",
@@ -2997,7 +2897,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270430-144"
+   "id": "CAL-20270430-139"
   },
   {
    "data": "2027-05-03",
@@ -3017,7 +2917,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270503-145"
+   "id": "CAL-20270503-140"
   },
   {
    "data": "2027-05-11",
@@ -3037,7 +2937,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270511-146"
+   "id": "CAL-20270511-141"
   },
   {
    "data": "2027-05-14",
@@ -3057,7 +2957,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270514-147"
+   "id": "CAL-20270514-142"
   },
   {
    "data": "2027-05-18",
@@ -3077,7 +2977,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270518-148"
+   "id": "CAL-20270518-143"
   },
   {
    "data": "2027-05-20",
@@ -3097,7 +2997,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270520-149"
+   "id": "CAL-20270520-144"
   },
   {
    "data": "2027-05-27",
@@ -3117,7 +3017,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270527-150"
+   "id": "CAL-20270527-145"
   },
   {
    "data": "2027-05-27",
@@ -3137,7 +3037,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270527-151"
+   "id": "CAL-20270527-146"
   },
   {
    "data": "2027-05-28",
@@ -3157,7 +3057,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270528-152"
+   "id": "CAL-20270528-147"
   },
   {
    "data": "2027-06-01",
@@ -3177,7 +3077,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270601-153"
+   "id": "CAL-20270601-148"
   },
   {
    "data": "2027-06-01",
@@ -3197,7 +3097,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270601-154"
+   "id": "CAL-20270601-149"
   },
   {
    "data": "2027-06-01",
@@ -3217,7 +3117,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270601-155"
+   "id": "CAL-20270601-150"
   },
   {
    "data": "2027-06-06",
@@ -3237,7 +3137,7 @@
    "note": "Rilevante per USMCA e commercio con gli USA.",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20270606-156"
+   "id": "CAL-20270606-151"
   },
   {
    "data": "2027-06-08",
@@ -3257,27 +3157,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270608-157"
-  },
-  {
-   "data": "2027-06-09",
-   "data_fine": null,
-   "ora_utc": "12:15",
-   "paese": "EU",
-   "categoria": "banca-centrale",
-   "titolo": "BCE: decisione di politica monetaria (con conferenza stampa)",
-   "importanza": "alta",
-   "valore_precedente": "deposito 2,5%, rifinanziamento principale 2,65%, marginale 2,9% (in vigore dal 2026-09-16)",
-   "valore_atteso": null,
-   "valore_uscito": null,
-   "fonte": "BCE, calendario riunioni del Consiglio direttivo",
-   "link": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "alta",
-   "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
-   "origine": "auto",
-   "stato": "futuro",
-   "id": "CAL-20270609-158"
+   "id": "CAL-20270608-152"
   },
   {
    "data": "2027-06-09",
@@ -3285,7 +3165,7 @@
    "ora_utc": "18:00",
    "paese": "US",
    "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione June 8-9) con proiezioni economiche (SEP)",
+   "titolo": "Fed: decisione FOMC (riunione 8-9 giugno) con proiezioni economiche (SEP)",
    "importanza": "alta",
    "valore_precedente": "3,75-4,00%",
    "valore_atteso": null,
@@ -3297,7 +3177,7 @@
    "note": "Tasso attuale 3,75-4,00% (ultima decisione 2026-10-28).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270609-159"
+   "id": "CAL-20270609-153"
   },
   {
    "data": "2027-06-10",
@@ -3317,7 +3197,7 @@
    "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270610-160"
+   "id": "CAL-20270610-154"
   },
   {
    "data": "2027-06-11",
@@ -3337,7 +3217,7 @@
    "note": "Orario non fisso (di solito a fine mattinata ora di Tokyo, notte in Europa). Il tasso attuale e' nelle voci manuali.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270611-161"
+   "id": "CAL-20270611-155"
   },
   {
    "data": "2027-06-17",
@@ -3357,7 +3237,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270617-162"
+   "id": "CAL-20270617-156"
   },
   {
    "data": "2027-06-17",
@@ -3377,7 +3257,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270617-163"
+   "id": "CAL-20270617-157"
   },
   {
    "data": "2027-06-23",
@@ -3397,7 +3277,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270623-164"
+   "id": "CAL-20270623-158"
   },
   {
    "data": "2027-06-25",
@@ -3417,7 +3297,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270625-165"
+   "id": "CAL-20270625-159"
   },
   {
    "data": "2027-06-25",
@@ -3437,7 +3317,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270625-166"
+   "id": "CAL-20270625-160"
   },
   {
    "data": "2027-07-01",
@@ -3457,7 +3337,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270701-167"
+   "id": "CAL-20270701-161"
   },
   {
    "data": "2027-07-01",
@@ -3477,7 +3357,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270701-168"
+   "id": "CAL-20270701-162"
   },
   {
    "data": "2027-07-06",
@@ -3497,7 +3377,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270706-169"
+   "id": "CAL-20270706-163"
   },
   {
    "data": "2027-07-18",
@@ -3517,7 +3397,7 @@
    "note": "Data confermata.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270718-170"
+   "id": "CAL-20270718-164"
   },
   {
    "data": "2027-07-18",
@@ -3537,7 +3417,7 @@
    "note": "Data confermata.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270718-171"
+   "id": "CAL-20270718-165"
   },
   {
    "data": "2027-07-18",
@@ -3557,7 +3437,7 @@
    "note": "Data confermata.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270718-172"
+   "id": "CAL-20270718-166"
   },
   {
    "data": "2027-07-19",
@@ -3577,27 +3457,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270719-173"
-  },
-  {
-   "data": "2027-07-21",
-   "data_fine": null,
-   "ora_utc": "12:15",
-   "paese": "EU",
-   "categoria": "banca-centrale",
-   "titolo": "BCE: decisione di politica monetaria (con conferenza stampa)",
-   "importanza": "alta",
-   "valore_precedente": "deposito 2,5%, rifinanziamento principale 2,65%, marginale 2,9% (in vigore dal 2026-09-16)",
-   "valore_atteso": null,
-   "valore_uscito": null,
-   "fonte": "BCE, calendario riunioni del Consiglio direttivo",
-   "link": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "alta",
-   "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
-   "origine": "auto",
-   "stato": "futuro",
-   "id": "CAL-20270721-174"
+   "id": "CAL-20270719-167"
   },
   {
    "data": "2027-07-22",
@@ -3617,7 +3477,7 @@
    "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270722-175"
+   "id": "CAL-20270722-168"
   },
   {
    "data": "2027-07-22",
@@ -3637,7 +3497,7 @@
    "note": "Orario non fisso (di solito a fine mattinata ora di Tokyo, notte in Europa). Il tasso attuale e' nelle voci manuali.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270722-176"
+   "id": "CAL-20270722-169"
   },
   {
    "data": "2027-07-28",
@@ -3645,7 +3505,7 @@
    "ora_utc": "18:00",
    "paese": "US",
    "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione July 27-28)",
+   "titolo": "Fed: decisione FOMC (riunione 27-28 luglio)",
    "importanza": "alta",
    "valore_precedente": "3,75-4,00%",
    "valore_atteso": null,
@@ -3657,7 +3517,7 @@
    "note": "Tasso attuale 3,75-4,00% (ultima decisione 2026-10-28).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270728-177"
+   "id": "CAL-20270728-170"
   },
   {
    "data": "2027-07-29",
@@ -3677,7 +3537,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270729-178"
+   "id": "CAL-20270729-171"
   },
   {
    "data": "2027-07-29",
@@ -3697,7 +3557,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270729-179"
+   "id": "CAL-20270729-172"
   },
   {
    "data": "2027-07-29",
@@ -3717,7 +3577,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270729-180"
+   "id": "CAL-20270729-173"
   },
   {
    "data": "2027-07-30",
@@ -3737,7 +3597,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270730-181"
+   "id": "CAL-20270730-174"
   },
   {
    "data": "2027-07-31",
@@ -3757,7 +3617,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270731-182"
+   "id": "CAL-20270731-175"
   },
   {
    "data": "2027-08-03",
@@ -3777,7 +3637,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270803-183"
+   "id": "CAL-20270803-176"
   },
   {
    "data": "2027-08-10",
@@ -3797,7 +3657,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270810-184"
+   "id": "CAL-20270810-177"
   },
   {
    "data": "2027-08-10",
@@ -3817,7 +3677,7 @@
    "note": "",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20270810-185"
+   "id": "CAL-20270810-178"
   },
   {
    "data": "2027-08-13",
@@ -3837,7 +3697,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270813-186"
+   "id": "CAL-20270813-179"
   },
   {
    "data": "2027-08-18",
@@ -3857,7 +3717,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270818-187"
+   "id": "CAL-20270818-180"
   },
   {
    "data": "2027-08-25",
@@ -3877,7 +3737,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270825-188"
+   "id": "CAL-20270825-181"
   },
   {
    "data": "2027-08-25",
@@ -3897,7 +3757,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270825-189"
+   "id": "CAL-20270825-182"
   },
   {
    "data": "2027-09-01",
@@ -3917,7 +3777,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270901-190"
+   "id": "CAL-20270901-183"
   },
   {
    "data": "2027-09-01",
@@ -3937,7 +3797,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270901-191"
+   "id": "CAL-20270901-184"
   },
   {
    "data": "2027-09-07",
@@ -3957,27 +3817,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270907-192"
-  },
-  {
-   "data": "2027-09-08",
-   "data_fine": null,
-   "ora_utc": "12:15",
-   "paese": "EU",
-   "categoria": "banca-centrale",
-   "titolo": "BCE: decisione di politica monetaria (con conferenza stampa)",
-   "importanza": "alta",
-   "valore_precedente": "deposito 2,5%, rifinanziamento principale 2,65%, marginale 2,9% (in vigore dal 2026-09-16)",
-   "valore_atteso": null,
-   "valore_uscito": null,
-   "fonte": "BCE, calendario riunioni del Consiglio direttivo",
-   "link": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "alta",
-   "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
-   "origine": "auto",
-   "stato": "futuro",
-   "id": "CAL-20270908-193"
+   "id": "CAL-20270907-185"
   },
   {
    "data": "2027-09-09",
@@ -3997,7 +3837,7 @@
    "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270909-194"
+   "id": "CAL-20270909-186"
   },
   {
    "data": "2027-09-15",
@@ -4005,7 +3845,7 @@
    "ora_utc": "18:00",
    "paese": "US",
    "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione September 14-15) con proiezioni economiche (SEP)",
+   "titolo": "Fed: decisione FOMC (riunione 14-15 settembre) con proiezioni economiche (SEP)",
    "importanza": "alta",
    "valore_precedente": "3,75-4,00%",
    "valore_atteso": null,
@@ -4017,7 +3857,7 @@
    "note": "Tasso attuale 3,75-4,00% (ultima decisione 2026-10-28).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270915-195"
+   "id": "CAL-20270915-187"
   },
   {
    "data": "2027-09-16",
@@ -4037,7 +3877,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270916-196"
+   "id": "CAL-20270916-188"
   },
   {
    "data": "2027-09-17",
@@ -4057,7 +3897,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270917-197"
+   "id": "CAL-20270917-189"
   },
   {
    "data": "2027-09-22",
@@ -4077,7 +3917,7 @@
    "note": "Orario non fisso (di solito a fine mattinata ora di Tokyo, notte in Europa). Il tasso attuale e' nelle voci manuali.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270922-198"
+   "id": "CAL-20270922-190"
   },
   {
    "data": "2027-09-28",
@@ -4097,7 +3937,7 @@
    "note": "Rilevante per transito del gas russo e unanimita' UE sulle sanzioni.",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20270928-199"
+   "id": "CAL-20270928-191"
   },
   {
    "data": "2027-09-30",
@@ -4117,7 +3957,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270930-200"
+   "id": "CAL-20270930-192"
   },
   {
    "data": "2027-09-30",
@@ -4137,7 +3977,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270930-201"
+   "id": "CAL-20270930-193"
   },
   {
    "data": "2027-09-30",
@@ -4157,7 +3997,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20270930-202"
+   "id": "CAL-20270930-194"
   },
   {
    "data": "2027-10-01",
@@ -4177,7 +4017,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271001-203"
+   "id": "CAL-20271001-195"
   },
   {
    "data": "2027-10-09",
@@ -4197,7 +4037,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271009-204"
+   "id": "CAL-20271009-196"
   },
   {
    "data": "2027-10-09",
@@ -4217,7 +4057,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271009-205"
+   "id": "CAL-20271009-197"
   },
   {
    "data": "2027-10-12",
@@ -4237,7 +4077,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271012-206"
+   "id": "CAL-20271012-198"
   },
   {
    "data": "2027-10-15",
@@ -4257,7 +4097,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271015-207"
+   "id": "CAL-20271015-199"
   },
   {
    "data": "2027-10-19",
@@ -4277,7 +4117,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271019-208"
+   "id": "CAL-20271019-200"
   },
   {
    "data": "2027-10-24",
@@ -4297,7 +4137,7 @@
    "note": "Vaca Muerta: shale oil e gas.",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20271024-209"
+   "id": "CAL-20271024-201"
   },
   {
    "data": "2027-10-24",
@@ -4317,27 +4157,7 @@
    "note": "",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20271024-210"
-  },
-  {
-   "data": "2027-10-27",
-   "data_fine": null,
-   "ora_utc": "12:15",
-   "paese": "EU",
-   "categoria": "banca-centrale",
-   "titolo": "BCE: decisione di politica monetaria (con conferenza stampa)",
-   "importanza": "alta",
-   "valore_precedente": "deposito 2,5%, rifinanziamento principale 2,65%, marginale 2,9% (in vigore dal 2026-09-16)",
-   "valore_atteso": null,
-   "valore_uscito": null,
-   "fonte": "BCE, calendario riunioni del Consiglio direttivo",
-   "link": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "alta",
-   "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
-   "origine": "auto",
-   "stato": "futuro",
-   "id": "CAL-20271027-211"
+   "id": "CAL-20271024-202"
   },
   {
    "data": "2027-10-27",
@@ -4345,7 +4165,7 @@
    "ora_utc": "18:00",
    "paese": "US",
    "categoria": "banca-centrale",
-   "titolo": "Fed: decisione FOMC (riunione October 26-27)",
+   "titolo": "Fed: decisione FOMC (riunione 26-27 ottobre)",
    "importanza": "alta",
    "valore_precedente": "3,75-4,00%",
    "valore_atteso": null,
@@ -4357,7 +4177,7 @@
    "note": "Tasso attuale 3,75-4,00% (ultima decisione 2026-10-28).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271027-212"
+   "id": "CAL-20271027-203"
   },
   {
    "data": "2027-10-28",
@@ -4377,7 +4197,7 @@
    "note": "Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271028-213"
+   "id": "CAL-20271028-204"
   },
   {
    "data": "2027-10-28",
@@ -4397,7 +4217,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271028-214"
+   "id": "CAL-20271028-205"
   },
   {
    "data": "2027-10-28",
@@ -4417,7 +4237,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271028-215"
+   "id": "CAL-20271028-206"
   },
   {
    "data": "2027-10-29",
@@ -4437,7 +4257,7 @@
    "note": "Orario non fisso (di solito a fine mattinata ora di Tokyo, notte in Europa). Il tasso attuale e' nelle voci manuali.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271029-216"
+   "id": "CAL-20271029-207"
   },
   {
    "data": "2027-10-31",
@@ -4457,7 +4277,7 @@
    "note": "Data di scadenza indicata da Sanctions Map; di norma il Consiglio rinnova prima. Se la data e' passata e non e' stata aggiornata, il rinnovo potrebbe non essere ancora registrato.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271031-217"
+   "id": "CAL-20271031-208"
   },
   {
    "data": "2027-11-03",
@@ -4477,7 +4297,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271103-218"
+   "id": "CAL-20271103-209"
   },
   {
    "data": "2027-11-04",
@@ -4497,7 +4317,7 @@
    "note": "Ora: di norma 11:00 di Lussemburgo.",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271104-219"
+   "id": "CAL-20271104-210"
   },
   {
    "data": "2027-11-04",
@@ -4517,7 +4337,7 @@
    "note": "",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271104-220"
+   "id": "CAL-20271104-211"
   },
   {
    "data": "2027-11-09",
@@ -4537,7 +4357,7 @@
    "note": "Data stimata con la regola EIA. Ora indicativa (mezzogiorno ET).",
    "origine": "auto",
    "stato": "futuro",
-   "id": "CAL-20271109-221"
+   "id": "CAL-20271109-212"
   },
   {
    "data": "2027",
@@ -4557,7 +4377,7 @@
    "note": "Data non ancora fissata. Rilevante per armatori e trasporto marittimo.",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20270000-222"
+   "id": "CAL-20270000-213"
   },
   {
    "data": "2027",
@@ -4577,7 +4397,7 @@
    "note": "Legislatura eletta il 25/9/2022: scadenza naturale nel 2027. Data non ancora fissata. Licenza Wikipedia CC BY-SA.",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20270000-223"
+   "id": "CAL-20270000-214"
   },
   {
    "data": "2027",
@@ -4597,14 +4417,14 @@
    "note": "Data non ancora fissata.",
    "origine": "manuale",
    "stato": "futuro",
-   "id": "CAL-20270000-224"
+   "id": "CAL-20270000-215"
   }
  ],
  "errori": [
   {
    "fonte": "BLS API v1",
    "errore": "Request could not be serviced, as the daily threshold for total number of requests allocated to the user with registration key  has been reached.",
-   "quando": "2026-11-09T19:02Z"
+   "quando": "2026-11-09T19:03Z"
   }
  ]
 }

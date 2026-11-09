@@ -830,6 +830,15 @@ def manuali():
         return
     n = 0
     for v in j.get("voci", []):
+        if v.get("integra"):
+            # completa campi di una voce automatica (es. valore_atteso con fonte)
+            for e in ELEMENTI:
+                if e["data"] == v.get("data") and e["titolo"].startswith(v.get("titolo_inizia", "~")):
+                    for k in ("valore_atteso", "valore_precedente", "note"):
+                        if v.get(k):
+                            e[k] = (e.get(k) + " " if k == "note" and e.get(k) else "") + v[k]
+                    e["fonte"] += "; " + v.get("fonte", "")
+            continue
         if v.get("solo_se_manca") and v.get("sostituisce") not in FONTI_FALLITE:
             continue
         d = v.get("data", "")

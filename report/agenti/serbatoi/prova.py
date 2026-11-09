@@ -89,24 +89,30 @@ def bande(item, bounds):
 
 
 def trova_serbatoi(lumin):
-    """Oggetti chiari e compatti sulla mediana multi-data."""
-    soglia = np.nanpercentile(lumin, 97)
-    m = ndimage.binary_opening(lumin > soglia, iterations=1)
-    lab, n = ndimage.label(m)
+    """Serbatoi = dischi chiari sulla mediana multi-data.
+
+    I serbatoi a Cushing sono spesso a contatto fra loro, quindi una semplice
+    etichettatura li fonde: si usa la trasformata di distanza della maschera
+    chiara e se ne prendono i massimi locali (centro del disco, raggio = distanza).
+    """
+    soglia = np.nanpercentile(lumin, 90)
+    m = ndimage.binary_fill_holes(lumin > soglia)
+    dist = ndimage.distance_transform_edt(m)
+    picchi = (dist == ndimage.maximum_filter(dist, size=7)) & (dist >= 3.0) & (dist <= 7.5)
     tanks = []
-    for k, sl in enumerate(ndimage.find_objects(lab), start=1):
-        reg = lab[sl] == k
-        area = int(reg.sum())
-        if not 30 <= area <= 150:
+    for cy, cx in zip(*np.nonzero(picchi)):
+        r = float(dist[cy, cx])
+        # scarta doppioni troppo vicini (plateau della distanza)
+        if any(math.hypot(cy - t["cy"], cx - t["cx"]) < 0.8 * (r + t["r"]) for t in tanks):
             continue
-        hgt, wid = reg.shape
-        if max(hgt, wid) / max(1, min(hgt, wid)) > 1.4:      # non tondo
+        # il disco deve essere quasi tutto chiaro (forma tonda, non un tetto rettangolare)
+        yy, xx = np.ogrid[-int(r):int(r) + 1, -int(r):int(r) + 1]
+        disco = (yy ** 2 + xx ** 2) <= r ** 2
+        y0, x0 = cy - int(r), cx - int(r)
+        sub = m[max(0, y0):y0 + disco.shape[0], max(0, x0):x0 + disco.shape[1]]
+        if sub.shape != disco.shape or sub[disco].mean() < 0.95:
             continue
-        if area / (hgt * wid) < 0.6:                          # cerchio riempie ~78 % del riquadro
-            continue
-        cy, cx = ndimage.center_of_mass(reg)
-        tanks.append({"cy": sl[0].start + cy, "cx": sl[1].start + cx,
-                      "r": math.sqrt(area / math.pi), "area": area})
+        tanks.append({"cy": float(cy), "cx": float(cx), "r": r + 0.5, "area": int(disco.sum())})
     return tanks
 
 
@@ -179,14 +185,15 @@ def main():
           f"{np.median([2 * t['r'] for t in tanks]) * 10:.0f} m)")
 
     eia = serie_eia()
-    t_eia = eia["data"].astype("int64").to_numpy() / 8.64e13
+    t_eia = eia["data"].to_numpy().astype("datetime64[D]").astype("int64")
     righe = []
     for it, r in dati:
         img = r["red"] + r["green"] + r["blue"]
         ns, lm = zip(*[indice_ns(img, t, H, W) for t in tanks])
         el = it.properties["view:sun_elevation"]
         d = pd.Timestamp(it.datetime.date())
-        stock = float(np.interp(d.value / 8.64e13, t_eia, eia["kbbl"].to_numpy()))
+        giorno = np.datetime64(d.date(), "D").astype("int64")
+        stock = float(np.interp(giorno, t_eia, eia["kbbl"].to_numpy().astype(float)))
         righe.append({"data": d.date().isoformat(), "elev_sole": round(el, 2),
                       "ns_mediano": float(np.nanmedian(ns)),
                       "ns_x_tan": float(np.nanmedian(ns) * math.tan(math.radians(el))),
