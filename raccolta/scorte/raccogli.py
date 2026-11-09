@@ -35,7 +35,17 @@ errori = []
 fonti = []
 
 
+def _nascondi(msg):
+    """Mai scrivere chiavi nei file pubblici: toglie i valori delle variabili *_API_KEY e le stringhe che sembrano chiavi."""
+    msg = str(msg)
+    for k, v in os.environ.items():
+        if (k.endswith("_KEY") or k.endswith("_TOKEN")) and len(v) >= 8:
+            msg = msg.replace(v, "[chiave nascosta]")
+    return re.sub(r"(?i)(api[ _-]?key\W*)[A-Za-z0-9._-]{16,}", r"\1[chiave nascosta]", msg)
+
+
 def avviso(msg):
+    msg = _nascondi(msg)
     print("AVVISO:", msg, file=sys.stderr)
     errori.append(msg)
 
