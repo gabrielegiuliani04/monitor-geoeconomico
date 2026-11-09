@@ -379,7 +379,7 @@ def partner_ref():
         ref = {}
         for r in d["results"]:
             ref[r["PartnerCode"]] = (r.get("PartnerCodeIsoAlpha2") or "", r["PartnerDesc"], r.get("isGroup"))
-        ref[490] = ("TW", "Taiwan", False)
+        ref[490] = ("TW", "Taiwan", False)  # "Other Asia, nes": in pratica Taiwan, ma alcuni esportatori vi mettono destinazioni riservate
         return ref
     except Exception as e:
         avviso(f"Comtrade: elenco partner non letto: {e}")
@@ -406,6 +406,22 @@ def partner_validi(righe, ref):
             continue
         parti.append(x)
     return tot, parti
+
+
+def escludi_nes(ref, parti):
+    res = []
+    for x in parti:
+        iso, nome, grp = ref.get(x["partnerCode"], ("", "", False))
+        if x["partnerCode"] == 0 or grp or (("nes" in nome.lower() or "bunkers" in nome.lower()
+                                               or "free zones" in nome.lower()) and x["partnerCode"] != 490):
+            continue
+        res.append(x)
+    return res
+
+
+def copertura(parti, tot):
+    """Quota del totale attribuita a partner identificati (il resto e' 'nes'/riservato)."""
+    return tondo(100 * sum(x["primaryValue"] for x in parti) / tot, 1) if tot else None
 
 
 def top(ref, parti, tot, n=5):
@@ -438,10 +454,12 @@ def raccogli_comtrade(iso2, m49, ref):
     tot_x, px = partner_validi(righe_x, ref)
     out["export_totale_usd"] = tot_x
     out["partner_export"] = top(ref, px, tot_x)
+    out["copertura_export"] = copertura(px, tot_x)
     try:
         tot_m, pm = partner_validi(comtrade(reporterCode=m49, period=anno, flowCode="M", cmdCode="TOTAL"), ref)
         out["import_totale_usd"] = tot_m
         out["partner_import"] = top(ref, pm, tot_m)
+        out["copertura_import"] = copertura(pm, tot_m)
     except Exception as e:
         avviso(f"Comtrade {iso2} import totale: {e}")
     # Energia: greggio 2709, GNL 271111, gas via gasdotto 271121
@@ -465,7 +483,7 @@ def raccogli_comtrade(iso2, m49, ref):
                 tot[x["cmdCode"]] = x["primaryValue"]
             else:
                 forn[x["cmdCode"]].append(x)
-        out["fornitori"] = (forn, tot)
+        out["fornitori"] = ({k: escludi_nes(ref, v) for k, v in forn.items()}, tot)
     except Exception as e:
         avviso(f"Comtrade {iso2} fornitori di greggio/GNL: {e}")
     return out
@@ -607,8 +625,11 @@ def main():
                                  ("gas_production", "gas_produzione", "gas naturale"),
                                  ("oil_consumption", "petrolio_consumo", "petrolio"),
                                  ("gas_consumption", "gas_consumo", "gas naturale")):
-            if o.get(col):
-                v, a = ultimo(o[col])
+            v, a = ultimo(o.get(col))
+            if v is not None and a < ANNO - 5:
+                buchi.append(f"{col}: ultimo dato OWID/EI del {a} (paese non piu' riportato separatamente), omesso")
+                v = None
+            if v is not None:
                 ind[chiave] = voce(tondo(v, 1), a, "Energy Institute, Statistical Review of World Energy (via Our World in Data)",
                                    "https://github.com/owid/energy-data", "TWh (energia primaria)")
             elif col.endswith("production"):
@@ -653,10 +674,16 @@ def main():
                 ind["export_merci_usd"] = voce(round(commercio["export_totale_usd"]), a, fc, lk, "USD", nota_tw)
             if commercio.get("import_totale_usd"):
                 ind["import_merci_usd"] = voce(round(commercio["import_totale_usd"]), a, fc, lk, "USD", nota_tw)
-            if commercio.get("partner_export"):
-                ind["partner_export"] = voce(commercio["partner_export"], a, fc, lk, "primi 5 mercati di sbocco, USD e % dell'export")
-            if commercio.get("partner_import"):
-                ind["partner_import"] = voce(commercio["partner_import"], a, fc, lk, "primi 5 fornitori, USD e % dell'import")
+            for ch, cop, un in (("partner_export", "copertura_export", "primi 5 mercati di sbocco, USD e % dell'export"),
+                                ("partner_import", "copertura_import", "primi 5 fornitori, USD e % dell'import")):
+                if not commercio.get(ch):
+                    continue
+                c = commercio.get(cop)
+                nt = f"Partner identificati: {c}% del totale; il resto e' dichiarato come aree non specificate o riservate." if c is not None else None
+                if any(x["paese"] == "TW" for x in commercio[ch]):
+                    nt = (nt + " " if nt else "") + ("Taiwan = voce Comtrade 'Other Asia, nes' (codice 490): per alcuni esportatori "
+                                                     "di petrolio puo' includere destinazioni riservate, non solo Taiwan.")
+                ind[ch] = voce(commercio[ch], a, fc, lk, un, nt)
             en = commercio.get("energia", {})
             for (fl, cmd), ch in ((("X", "2709"), "export_greggio"), (("M", "2709"), "import_greggio"),
                                   (("X", "271111"), "export_gnl"), (("M", "271111"), "import_gnl"),
@@ -669,9 +696,16 @@ def main():
             if commercio.get("fornitori"):
                 forn, tot = commercio["fornitori"]
                 for cmd, ch in (("2709", "greggio"), ("271111", "gnl")):
-                    if not tot.get(cmd) or tot[cmd] < 1e8:  # sotto 100 milioni di USD non e' significativo
+                    if not tot.get(cmd) or tot[cmd] < 1e9:  # sotto 1 miliardo di USD non e' significativo
                         continue
-                    ind[f"fornitori_{ch}"] = voce(top(ref, forn[cmd], tot[cmd]), a, fc, lk, "primi 5 fornitori, USD e % del totale importato")
+                    c = copertura(forn[cmd], tot[cmd])
+                    if not forn[cmd] or c < 50:
+                        buchi.append(f"fornitori di {ch}: origine non dichiarata per {round(100 - c, 1)}% del valore importato")
+                        continue
+                    ind[f"fornitori_{ch}"] = voce(top(ref, forn[cmd], tot[cmd]), a, fc, lk, "primi 5 fornitori, USD e % del totale importato",
+                                                 f"Origine identificata per {c}% del valore" if c < 95 else None)
+                    if iso2 in GOLFO_SOLO_HORMUZ or iso2 in GOLFO_CON_BYPASS or iso2 == "OM":
+                        continue  # per i produttori del Golfo la quota di import dal Golfo non misura l'esposizione allo stretto
                     somma_h = sum(x["primaryValue"] for x in forn[cmd] if x["partnerCode"] in GOLFO_SOLO_HORMUZ.values())
                     somma_b = sum(x["primaryValue"] for x in forn[cmd] if x["partnerCode"] in GOLFO_CON_BYPASS.values())
                     ind[f"quota_{ch}_golfo_persico"] = voce(
