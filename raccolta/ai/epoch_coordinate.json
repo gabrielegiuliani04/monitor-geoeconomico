@@ -1,0 +1,24 @@
+{
+  "nota": "Coordinate per i data center fuori dagli USA del tracker 'AI data centers' di Epoch AI (che dà indirizzi, non coordinate). Chiave = campo Name di Epoch. Stimate da me con geocodifica OSM Nominatim dell'indirizzo o del comune (2026-11-09). Se Epoch aggiunge un sito nuovo non presente qui, lo script lo segnala in 'errori' e non lo mette in mappa finché non si aggiunge la riga. Campo 'note' = contesto aggiunto a mano.",
+  "siti": {
+    "DayOne Nusajaya": {"lat": 1.4308, "lon": 103.5951, "precisione_km": 5, "origine": "geocodifica OSM di Nusajaya Tech Park (Epoch non dà l'indirizzo)", "note": "Gestore DayOne, ex GDS International, gruppo di origine cinese. Polo di Johor, al confine con Singapore."},
+    "DayOne Kempas": {"lat": 1.5642, "lon": 103.7193, "precisione_km": 1, "origine": "decodifica del Plus Code HP79+MP indicato da Epoch", "note": "Gestore DayOne (ex GDS International)."},
+    "Bridge Data Centres MY06": {"lat": 1.7127, "lon": 103.5257, "precisione_km": 4, "origine": "geocodifica OSM di Sedenak (Sedenak Tech Park)", "note": "Secondo Epoch utilizzatore probabile ByteDance."},
+    "YTL Johor": {"lat": 1.6667, "lon": 103.6, "precisione_km": 15, "origine": "geocodifica OSM del distretto di Kulai", "note": "YTL Green Data Center Park."},
+    "Google Waltham Cross": {"lat": 51.7021, "lon": -0.0336, "precisione_km": 3, "origine": "geocodifica OSM di Cheshunt (indirizzo Epoch: Maxwell's Farm West)", "note": "Parte dei 5 mld GBP di Google nel Regno Unito (2025-09)."},
+    "VNET Bayin Ulanqab": {"lat": 40.9903, "lon": 113.1316, "precisione_km": 20, "origine": "geocodifica OSM della città di Ulanqab", "note": "Mongolia Interna, polo del programma cinese 'dati da Est, calcolo a Ovest'. Utilizzatore ByteDance secondo Epoch (speculativo)."},
+    "Oracle Batam": {"lat": 1.1031, "lon": 104.0384, "precisione_km": 15, "origine": "geocodifica OSM di Batam", "note": "Isola indonesiana di fronte a Singapore."},
+    "Huawei Horinger": {"lat": 40.2952, "lon": 111.9045, "precisione_km": 20, "origine": "geocodifica OSM della contea di Horinger", "note": "Mongolia Interna (Hohhot)."},
+    "Huawei Wuhu": {"lat": 31.1801, "lon": 118.2142, "precisione_km": 30, "origine": "geocodifica OSM dell'area di Wuhu", "note": "Anhui."},
+    "CoreWeave Norway": {"lat": 58.2576, "lon": 7.8921, "precisione_km": 1, "origine": "geocodifica OSM dell'indirizzo Stølevegen 39, Øvrebø", "note": ""},
+    "Nebius Mantsala": {"lat": 60.6353, "lon": 25.3159, "precisione_km": 5, "origine": "geocodifica OSM di Mäntsälä", "note": "Secondo Epoch utilizzatore Microsoft (speculativo)."},
+    "Envision Galaxy Ulanqab": {"lat": 40.9903, "lon": 113.1316, "precisione_km": 30, "origine": "geocodifica OSM della città di Ulanqab", "note": ""},
+    "Southgate Melbourne": {"lat": -37.8136, "lon": 144.9631, "precisione_km": 20, "origine": "centro di Melbourne (Epoch non dà l'indirizzo)", "note": ""},
+    "Alibaba Zhangbei": {"lat": 41.2878, "lon": 114.7693, "precisione_km": 20, "origine": "geocodifica OSM della contea di Zhangbei", "note": "Hebei, a nord-ovest di Pechino."},
+    "Start Campus Sines Data Campus": {"lat": 37.9565, "lon": -8.869, "precisione_km": 5, "origine": "geocodifica OSM di Sines", "note": "Qui Microsoft investe circa 10 mld USD con Nscale e Nvidia (annuncio 2025-11-11). Sines è anche approdo di cavi sottomarini verso Africa e Americhe."},
+    "Nscale Keflavik": {"lat": 63.9754, "lon": -22.578, "precisione_km": 2, "origine": "geocodifica OSM di Valhallarbraut, Reykjanesbær", "note": ""},
+    "EcoDataCenter 2": {"lat": 60.5378, "lon": 15.4127, "precisione_km": 3, "origine": "geocodifica OSM di Kvarnsvedsvägen, Borlänge", "note": "Utilizzatore Mistral AI."},
+    "Microsoft Narvik Norway": {"lat": 68.4384, "lon": 17.4272, "precisione_km": 15, "origine": "geocodifica OSM di Narvik (il sito è a Kvandal, fuori città)", "note": "È il sito annunciato come 'Stargate Norway' (Nscale-Aker-OpenAI, 230 MW iniziali, luglio 2025). Marzo 2026: la JV confluisce in Nscale. Aprile 2026: Microsoft prende la capacità (oltre 30.000 GPU Rubin) dopo che le trattative OpenAI-Nscale si chiudono senza accordo (ITPro); impegno Microsoft precedente 6,2 mld USD."},
+    "OpenAI Stargate UAE": {"lat": 24.1873, "lon": 54.4924, "precisione_km": 25, "origine": "geocodifica OSM di Al Bihouth (ufficio di progetto indicato da Epoch)", "note": "1 GW dentro il campus AI Emirati-USA da 5 GW. Sviluppatore Khazna (G42); gestori OpenAI e Oracle; partner Nvidia, Cisco, SoftBank. Prima fase 200 MW attesa nel 3° trimestre 2026 (The National, 2025-12-05)."}
+  }
+}

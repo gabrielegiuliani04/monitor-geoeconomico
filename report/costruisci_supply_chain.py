@@ -315,6 +315,16 @@ def al(numtesto):
     return ("all'" if apostrofo(numtesto) else "al ") + numtesto
 
 
+def da(numtesto):
+    return ("dall'" if apostrofo(numtesto) else "dal ") + numtesto
+
+
+def data_tab(x):
+    """Data compatta per le tabelle: 9 nov 2026."""
+    x = d(x) if not isinstance(x, dt.date) else x
+    return f"{x.day} {MESI_BREVI[x.month - 1]} {x.year}"
+
+
 def fonte_breve(s):
     """Nome corto della fonte per il testo del link: taglia a ' (', ',' o ':' fuori dalle parentesi."""
     out, liv = "", 0
@@ -684,7 +694,7 @@ def mese_idx(k):
 
 def grafico_transiti(v, largo=True):
     w, h, fs = (720, 380, 12) if largo else (360, 330, 11)
-    ml, mr, mt, mb = (40, 92, 46, 34) if largo else (30, 66, 52, 30)
+    ml, mr, mt, mb = (40, 118, 46, 34) if largo else (30, 92, 52, 30)
     serie = [("Capo di Buona Speranza", "Capo", "s2"), ("Canale di Suez", "Suez", "s3"),
              ("Bab el-Mandeb", "Bab el-Mandeb", "s1")]
     tutti = [x for k, _, _ in serie for x in v["mensili"][k]]
@@ -716,16 +726,18 @@ def grafico_transiti(v, largo=True):
         if i0 <= i <= i1:
             x = X(i)
             out.append(f'<line x1="{x:.1f}" x2="{x:.1f}" y1="{mt}" y2="{h - mb}" class="ev"/>')
+            # etichette nella fascia bassa del grafico, dove non passano linee (valori sotto 20)
             etichetta = testo if largo else testo.split(":")[0]
             ancora = "start" if x < w * 0.6 else "end"
             dx = 4 if ancora == "start" else -4
-            out.append(f'<text x="{x + dx:.1f}" y="{mt + 12 + k * 14}" text-anchor="{ancora}" class="t-faint">{esc(etichetta)}</text>')
+            yl = Y(tk[-1] * (0.16 if k == 0 else 0.08))
+            out.append(f'<text x="{x + dx:.1f}" y="{yl:.1f}" text-anchor="{ancora}" class="t-faint">{esc(etichetta)}</text>')
     # linee
     finali = []
     for k, etich, col in serie:
         pts = [(X(mese_idx(m)), Y(val)) for m, val in v["mensili"][k]]
         out.append(f'<path d="M' + " L".join(f"{x:.1f},{y:.1f}" for x, y in pts) + f'" class="l c-{col}"/>')
-        finali.append([pts[-1][1], etich, col, v["mensili"][k][-1][1], pts[-1][0]])
+        finali.append([pts[-1][1], etich if largo or len(etich) < 9 else etich.split()[0], col, v["mensili"][k][-1][1], pts[-1][0]])
     # etichette dirette a fine linea, distanziate
     finali.sort()
     for j in range(1, len(finali)):
@@ -789,7 +801,7 @@ def grafico_noli(v, largo=True):
         X = Scala(st[0][0].toordinal(), st[-1][0].toordinal(), ml, w - mr)
         Y = Scala(y0, y1, h_trend - mb, mt)
         out.append(f'<text x="{ml}" y="18" class="t-ink t-b">Freightos FBX globale, $ per FEU</text>')
-        out.append(f'<text x="{ml}" y="34" class="t-faint">serie settimanale disponibile gratis: {esc(data_it(st[0][0]))} – {esc(data_it(st[-1][0]))}</text>')
+        out.append(f'<text x="{ml}" y="34" class="t-faint">{"serie settimanale disponibile gratis: " if largo else "settimanale, "}{esc(data_it(st[0][0], anno=largo))} – {esc(data_it(st[-1][0]))}</text>')
         passo = 500 if (y1 - y0) <= 2500 else 1000
         t = y0
         while t <= y1:
@@ -907,12 +919,12 @@ def indicatori_cruscotto(v):
         b = nl["bdi"]
         out.append({"nome": "Baltic Dry (rinfuse)", "valore": num(b["valore"], 0), "unita": "punti",
                     "delta": b.get("var_anno_pct"), "delta_txt": "su un anno",
-                    "stato": stato("bdi", b["valore"]), "data": b["data"], "fonte": "Trading Economics"})
+                    "stato": stato("bdi", b["valore"]), "data": b["data"], "fonte": "Trading Econ."})
     t = pz.get("ttf")
     if t:
         out.append({"nome": "Gas TTF", "valore": num(t["ultimo"], 1), "unita": "€/MWh",
                     "delta": t["var"].get("1m"), "delta_txt": "su un mese",
-                    "stato": stato("ttf", t["ultimo"]), "data": t["data"], "fonte": "Yahoo Finance"})
+                    "stato": stato("ttf", t["ultimo"]), "data": t["data"], "fonte": "Yahoo Fin."})
     g = v["sc"].get("gas_stoccaggio_pct_it")
     if g:
         out.append({"nome": "Stoccaggi gas Italia", "valore": num(g["valore"], 1), "unita": "% pieno",
@@ -928,7 +940,7 @@ def grafico_cruscotto(v, largo=True):
     fs = 12 if largo else 11
     gap = 10
     cw = (w - gap * (cols - 1)) / cols
-    ch = 128 if largo else 132
+    ch = 150 if largo else 156
     righe = (len(ind) + cols - 1) // cols
     h = righe * ch + (righe - 1) * gap + 2
     idg = "g-cruscotto" + ("" if largo else "-m")
@@ -952,7 +964,8 @@ def grafico_cruscotto(v, largo=True):
         freccia = "→" if dv is None or abs(dv) < 1 else ("↑" if dv > 0 else "↓")
         out.append(f'<text x="{X0 + 12:.1f}" y="{Y0 + 96:.1f}" class="t-ink"><tspan class="t-b">{freccia}</tspan> <tspan class="num">{esc(dtesto)}</tspan></text>')
         cls, ic, lab = icone[x["stato"]]
-        out.append(f'<text x="{X0 + 12:.1f}" y="{Y0 + 116:.1f}"><tspan class="{cls}">{ic}</tspan> <tspan class="t-ink">{lab}</tspan> <tspan class="t-faint">· {esc(data_it(x["data"], anno=False))}, {esc(x["fonte"])}</tspan></text>')
+        out.append(f'<text x="{X0 + 12:.1f}" y="{Y0 + 118:.1f}"><tspan class="{cls}">{ic}</tspan> <tspan class="t-ink t-b">{lab}</tspan></text>')
+        out.append(f'<text x="{X0 + 12:.1f}" y="{Y0 + 138:.1f}" class="t-faint">{esc(data_it(x["data"], anno=False))} · {esc(x["fonte"])}</text>')
         out.append(f'<rect x="{X0:.1f}" y="{Y0:.1f}" width="{cw:.1f}" height="{ch}" class="hit"><title>{esc(x["nome"])}: {esc(x["valore"])} {esc(x["unita"])}; {esc(dtesto)}; stato {lab} (valutazione)</title></rect>')
     out.append("</svg>")
     return "\n".join(out), ind
@@ -994,7 +1007,7 @@ def costruisci_blocchi(v, oggi, edizione):
         voci.append(f"**I noli container sono più del doppio di un anno fa.** Il Drewry WCI è a {num(wci['valore'], 0)} dollari per FEU "
                     f"({data_it(wci['data'])}), {pct(v['wci_yoy'])} sul {data_it(est_wci['data'])}; Shanghai–Genova "
                     f"{num(wci['rotte'].get('Shanghai-Genoa'), 0)} dollari ({pct(v['wci_rotte_yoy'].get('Shanghai-Genoa'))}). "
-                    + (f"Il trend recente è piatto: FBX globale {pct(v['fbx_var_inizio'])} da {data_it(v['fbx_inizio'][0], anno=False)}, "
+                    + (f"Il trend recente è piatto: FBX globale {pct(v['fbx_var_inizio'])} {da(data_it(v['fbx_inizio'][0], anno=False))}, "
                        f"{pct(v['fbx_var4s'])} nelle ultime 4 settimane." if v.get("fbx_var4s") is not None else ""))
     if cali_it:
         peggiori = sorted(cali_it, key=lambda r: r[1])[:2]
@@ -1064,41 +1077,41 @@ def costruisci_blocchi(v, oggi, edizione):
     B.append(("h3", "Noli container e rinfuse"))
     rn = []
     if wci:
-        rn.append(["Drewry WCI composito", f"{num(wci['valore'], 0)} $/FEU", data_it(wci["data"]),
-                   f"{pct(v['wci_yoy'])} su un anno*", link("Drewry", wci["link"])])
+        rn.append(["Drewry WCI composito", f"{num(wci['valore'], 0)} $/FEU", data_tab(wci["data"]),
+                   f"{pct(v['wci_yoy'])} su un anno (a)", link("Drewry", wci["link"])])
         for k, nome in (("Shanghai-Genoa", "WCI Shanghai–Genova"), ("Shanghai-Rotterdam", "WCI Shanghai–Rotterdam")):
             if k in wci["rotte"]:
-                rn.append([nome, f"{num(wci['rotte'][k], 0)} $/FEU", data_it(wci["data"]),
-                           f"{pct(v['wci_rotte_yoy'].get(k))} su un anno*", link("Drewry", wci["link"])])
+                rn.append([nome, f"{num(wci['rotte'][k], 0)} $/FEU", data_tab(wci["data"]),
+                           f"{pct(v['wci_rotte_yoy'].get(k))} su un anno (a)", link("Drewry", wci["link"])])
     if fbx:
-        rn.append(["Freightos FBX globale", f"{num(fbx['valore'], 0)} $/FEU", data_it(fbx["data"]),
+        rn.append(["Freightos FBX globale", f"{num(fbx['valore'], 0)} $/FEU", data_tab(fbx["data"]),
                    f"{pct(v.get('fbx_var4s'))} su 4 settimane", link("Freightos", fbx["link"])])
         for k, nome in (("FBX13", "FBX Cina–Mediterraneo"), ("FBX11", "FBX Cina–Nord Europa")):
             r = fbx.get("rotte", {}).get(k)
             if r:
-                rn.append([nome, f"{num(r['valore'], 0)} $/FEU", data_it(fbx["data"]), f"{r['var'].replace('.', ',')} sulla settimana",
+                rn.append([nome, f"{num(r['valore'], 0)} $/FEU", data_tab(fbx["data"]), f"{r['var'].replace('.', ',')} sulla settimana",
                            link("Freightos", fbx["link"])])
     if scfi:
-        rn.append(["SCFI (Shanghai, composito)", f"{num(scfi['valore'], 2)} punti", data_it(scfi["data"]),
+        rn.append(["SCFI (Shanghai, composito)", f"{num(scfi['valore'], 2)} punti", data_tab(scfi["data"]),
                    f"{pct(scfi.get('var_pct'), 1)} sulla settimana", link("SSE", scfi["link"])])
     if ccfi:
         med = ccfi.get("rotte", {}).get("MEDITERRANEAN")
-        rn.append(["CCFI (Cina, composito)", f"{num(ccfi['valore'], 2)} punti", data_it(ccfi["data"]),
+        rn.append(["CCFI (Cina, composito)", f"{num(ccfi['valore'], 2)} punti", data_tab(ccfi["data"]),
                    f"{pct(ccfi.get('var_pct'), 1)} sulla settimana", link("SSE", ccfi["link"])])
         if med:
-            rn.append(["CCFI rotta Mediterraneo", f"{num(med['valore'], 2)} punti", data_it(ccfi["data"]),
+            rn.append(["CCFI rotta Mediterraneo", f"{num(med['valore'], 2)} punti", data_tab(ccfi["data"]),
                        f"{pct(med['var_pct'], 1)} sulla settimana", link("SSE", ccfi["link"])])
     if bdi:
-        rn.append(["Baltic Dry Index (rinfuse)", f"{num(bdi['valore'], 0)} punti", data_it(bdi["data"]),
+        rn.append(["Baltic Dry Index (rinfuse)", f"{num(bdi['valore'], 0)} punti", data_tab(bdi["data"]),
                    f"{pct(bdi.get('var_anno_pct'))} su un anno", link("Trading Economics", bdi["link"])])
     B.append(("tab", ["Indice", "Valore", "Data", "Variazione", "Fonte"], rn,
-              f"Valori da docs/data/noli.json. *Variazione su un anno calcolata sul WCI del {data_it(est_wci['data'])} "
+              f"Valori da docs/data/noli.json. (a) Variazione su un anno calcolata sul WCI del {data_it(est_wci['data'])} "
               f"({fonte_est('wci_anno_prima')}, affidabilità media). Il Baltic Dry viene da un CFD: affidabilità media."))
     B.append(("fig", "noli", f"Sopra: Freightos FBX globale, serie settimanale disponibile gratis ({link('Freightos', fbx['link']) if fbx else 'n.d.'}). "
-              f"Sotto: Drewry WCI per rotta al {data_it(wci['data']) if wci else 'n.d.'}; la tacca nera è il valore di un anno prima "
+              f"Sotto: Drewry WCI per rotta al {data_it(wci['data']) if wci else 'n.d.'}; la tacca verticale è il valore di un anno prima "
               f"({fonte_est('wci_anno_prima')})."))
     if fbx and v.get("fbx_max"):
-        B.append(("p", f"**Trend.** L'FBX globale è a {num(fbx['valore'], 0)} dollari: {pct(v['fbx_var_inizio'])} da {data_it(v['fbx_inizio'][0])} "
+        B.append(("p", f"**Trend.** L'FBX globale è a {num(fbx['valore'], 0)} dollari: {pct(v['fbx_var_inizio'])} {da(data_it(v['fbx_inizio'][0]))} "
                   f"({num(v['fbx_inizio'][1], 0)}), massimo della serie {num(v['fbx_max'][1], 0)} il {data_it(v['fbx_max'][0])}. "
                   + (f"La rotta Cina–Mediterraneo (FBX13, {num(fbx['rotte']['FBX13']['valore'], 0)}) costa più della Cina–Nord Europa "
                      f"(FBX11, {num(fbx['rotte']['FBX11']['valore'], 0)}), come nel WCI Shanghai–Genova contro Shanghai–Rotterdam. "
@@ -1206,13 +1219,13 @@ def costruisci_blocchi(v, oggi, edizione):
     for k, nome in (("brent", "Brent"), ("ttf", "Gas TTF"), ("hh", "Gas Henry Hub")):
         s = pz.get(k)
         if s:
-            re2.append([nome, f"{num(s['ultimo'], 2)} {s['unita']}", data_it(s["data"]), pct(s["var"].get("1m")), pct(s["var"].get("1a")),
+            re2.append([nome, f"{num(s['ultimo'], 2)} {s['unita']}", data_tab(s["data"]), pct(s["var"].get("1m")), pct(s["var"].get("1a")),
                         "Yahoo Finance (prezzi.json)"])
-    re2.append(["Gasolio self, media Italia", f"{num(gaso['self'], 3)} €/litro", data_it(gaso["data"]), "n.d.",
-                f"circa {pct(var(gaso['self'], FATTI_ESTERNI['gasolio_anno_prima']['self']))}**", link("Mimit via Affaritaliani", gaso["link"])])
+    re2.append(["Gasolio self, media Italia", f"{num(gaso['self'], 3)} €/litro", data_tab(gaso["data"]), "—",
+                f"circa {pct(var(gaso['self'], FATTI_ESTERNI['gasolio_anno_prima']['self']))} (b)", link("Mimit via Affaritaliani", gaso["link"])])
     re2.append(["Elettricità, PUN Italia", "dato mancante", "ottobre 2026", "", "", "le fonti secondarie divergono (vedi sotto)"])
     B.append(("tab", ["Voce", "Ultimo", "Data", "1 mese", "1 anno", "Fonte"], re2,
-              f"**Gasolio un anno prima: {num(FATTI_ESTERNI['gasolio_anno_prima']['self'], 3)} €/litro, {fonte_est('gasolio_anno_prima')}, affidabilità bassa."))
+              f"(b) Gasolio un anno prima: {num(FATTI_ESTERNI['gasolio_anno_prima']['self'], 3)} €/litro, {fonte_est('gasolio_anno_prima')}, affidabilità bassa."))
     q = v["quote_gas"]
     B.append(("p", f"**Gas in Italia.** Negli ultimi 12 mesi i primi ingressi sono " +
               ", ".join(f"{x['nome'].split(' (')[0]} {num(x['quota_ingressi_pct'], 1)}%" for x in q[:4]) +
@@ -1308,7 +1321,7 @@ def costruisci_blocchi(v, oggi, edizione):
     sab = [e for e in ib if e["categoria"] == "sabotaggio" and "starlink" in e["nome"].lower()]
     t = "**Sabotaggi e attacchi informatici alla logistica.** "
     if fr:
-        t += "La catena del freddo è il bersaglio nuovo: " + "; ".join(f"{e['nome']} ({data_it(e['data_evento'])}, {link(fonte_breve(e['fonte']), e['link'])})" for e in fr) + ". "
+        t += "La catena del freddo è il bersaglio nuovo: " + "; ".join(f"{e['nome'][:1].lower() + e['nome'][1:]} ({data_it(e['data_evento'])}, {link(fonte_breve(e['fonte']), e['link'])})" for e in fr) + ". "
     if sab:
         t += f"Tre attacchi a stazioni Starlink in Europa centro-orientale tra settembre e ottobre ({', '.join(e['paese'] for e in sab)}), attribuiti alla Russia dai governi. "
     noname = next((e for e in ib if e["id"] == "IB-20261107-12"), None)
@@ -1348,26 +1361,26 @@ def costruisci_blocchi(v, oggi, edizione):
 
     def riga(nome, val_txt, data_s, chiave, valore_stato, soglia_txt, fonte):
         ri.append([nome, val_txt, data_s, soglia_txt, stato(chiave, valore_stato), fonte])
-    riga("Hormuz, navi/giorno (7 gg)", num(hor["media7"]["n_total"], 1), data_it(hor["ultima_data"]), "hormuz", hor["media7"]["n_total"],
+    riga("Hormuz, navi/giorno (7 gg)", num(hor["media7"]["n_total"], 1), data_tab(hor["ultima_data"]), "hormuz", hor["media7"]["n_total"],
          "attenzione sotto 60, critico sotto 20", "PortWatch")
-    riga("Suez, % di fine 2023", num(v["suez_ratio"], 0) + "%", data_it(suez["ultima_data"]), "suez_ratio", v["suez_ratio"],
+    riga("Suez, % di fine 2023", num(v["suez_ratio"], 0) + "%", data_tab(suez["ultima_data"]), "suez_ratio", v["suez_ratio"],
          "attenzione sotto 80%, critico sotto 50%", "PortWatch")
-    riga("Bab el-Mandeb, % di fine 2023", num(v["bab_ratio"], 0) + "%", data_it(bab["ultima_data"]), "bab_ratio", v["bab_ratio"],
+    riga("Bab el-Mandeb, % di fine 2023", num(v["bab_ratio"], 0) + "%", data_tab(bab["ultima_data"]), "bab_ratio", v["bab_ratio"],
          "attenzione sotto 60%, critico sotto 25%", "PortWatch")
     if fbx:
-        riga("FBX globale, $/FEU", num(fbx["valore"], 0), data_it(fbx["data"]), "fbx", fbx["valore"], "attenzione sopra 2.500, critico sopra 4.000", "Freightos")
+        riga("FBX globale, $/FEU", num(fbx["valore"], 0), data_tab(fbx["data"]), "fbx", fbx["valore"], "attenzione sopra 2.500, critico sopra 4.000", "Freightos")
     if wci and "Shanghai-Genoa" in wci["rotte"]:
-        riga("WCI Shanghai–Genova, $/FEU", num(wci["rotte"]["Shanghai-Genoa"], 0), data_it(wci["data"]), "wci_genova", wci["rotte"]["Shanghai-Genoa"],
+        riga("WCI Shanghai–Genova, $/FEU", num(wci["rotte"]["Shanghai-Genoa"], 0), data_tab(wci["data"]), "wci_genova", wci["rotte"]["Shanghai-Genoa"],
              "attenzione sopra 3.000, critico sopra 5.000", "Drewry")
     if bdi:
-        riga("Baltic Dry, punti", num(bdi["valore"], 0), data_it(bdi["data"]), "bdi", bdi["valore"], "attenzione sopra 2.000, critico sopra 3.500", "Trading Economics")
+        riga("Baltic Dry, punti", num(bdi["valore"], 0), data_tab(bdi["data"]), "bdi", bdi["valore"], "attenzione sopra 2.000, critico sopra 3.500", "Trading Economics")
     if brent:
-        riga("Brent, $/barile", num(brent["ultimo"], 2), data_it(brent["data"]), "brent", brent["ultimo"], "attenzione sopra 85, critico sopra 110", "Yahoo Finance")
+        riga("Brent, $/barile", num(brent["ultimo"], 2), data_tab(brent["data"]), "brent", brent["ultimo"], "attenzione sopra 85, critico sopra 110", "Yahoo Finance")
     if ttf:
-        riga("TTF, €/MWh", num(ttf["ultimo"], 2), data_it(ttf["data"]), "ttf", ttf["ultimo"], "attenzione sopra 40, critico sopra 70", "Yahoo Finance")
+        riga("TTF, €/MWh", num(ttf["ultimo"], 2), data_tab(ttf["data"]), "ttf", ttf["ultimo"], "attenzione sopra 40, critico sopra 70", "Yahoo Finance")
     if git:
-        riga("Stoccaggi gas Italia, %", num(git["valore"], 2), data_it(git["data"]), "stoccaggi_it", git["valore"], "attenzione sotto 90%, critico sotto 80%", "GIE AGSI+")
-    riga("Gasolio self Italia, €/litro", num(gaso["self"], 3), data_it(gaso["data"]), "gasolio", gaso["self"], "attenzione sopra 1,90, critico sopra 2,20", "Mimit")
+        riga("Stoccaggi gas Italia, %", num(git["valore"], 2), data_tab(git["data"]), "stoccaggi_it", git["valore"], "attenzione sotto 90%, critico sotto 80%", "GIE AGSI+")
+    riga("Gasolio self Italia, €/litro", num(gaso["self"], 3), data_tab(gaso["data"]), "gasolio", gaso["self"], "attenzione sopra 1,90, critico sopra 2,20", "Mimit")
     B.append(("tab", ["Indicatore", "Ultimo", "Data", "Soglie (valutazione)", "Stato", "Fonte"], ri,
               "Stato calcolato dallo script sulle soglie dichiarate. Fonti e link nelle sezioni precedenti."))
     B.append(("p", "**Eventi da seguire** (dal calendario dell'osservatorio e dalle schede degli stretti):"))
@@ -1493,13 +1506,13 @@ nav.indice li{margin:0 0 4px;break-inside:avoid}
 @media (max-width:560px){nav.indice ol{columns:1}}
 .valutazione{border-left:3px solid var(--accent);background:var(--band);padding:10px 14px;margin:0 0 18px;border-radius:0 6px 6px 0;font-size:16px}
 .valutazione .etichetta{font:600 12px/1 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
-.tabella{overflow-x:auto;margin:0 0 6px;-webkit-overflow-scrolling:touch;border:1px solid var(--rule);border-radius:6px;background:var(--card)}
+.tabella{overflow-x:auto;margin:0 0 16px;-webkit-overflow-scrolling:touch;border:1px solid var(--rule);border-radius:6px;background:var(--card)}
 table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
 th,td{padding:7px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
 th{font-weight:600;color:var(--soft);background:var(--band);white-space:nowrap}
 tr:last-child td{border-bottom:0}
 td:first-child{font-weight:500}
-.nota{font-size:13px;color:var(--soft);margin:0 0 20px}
+.nota{font-size:13px;color:var(--soft);margin:-8px 0 20px}
 figure{margin:20px 0 22px}
 figure .grafico{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px}
 figcaption{font-size:13px;color:var(--soft);margin-top:8px}
@@ -1631,9 +1644,10 @@ def main():
                         "con l'Italia in evidenza."),
         "edizione_lunga": edizione_lunga,
         "data_lettura": data_it(oggi),
-        "nota_ai": ("Nota: questo report è stato preparato con l'aiuto di un assistente AI (Claude, Anthropic), che ha "
-                    "scritto lo script di costruzione e le bozze del testo a partire dai dati dell'osservatorio; "
-                    "fonti, numeri e valutazioni sono stati controllati e sono responsabilità dell'autore."),
+        "nota_ai": ("Nota sull'uso dell'AI: questo report è stato preparato con l'aiuto di un assistente AI (Claude, "
+                    "Anthropic), che ha scritto lo script di costruzione, i calcoli e la bozza del testo a partire dai dati "
+                    "dell'osservatorio e dalle fonti citate. I numeri vengono dai file di dati e dalle fonti linkate; le "
+                    "valutazioni sono marcate come tali. La responsabilità della pubblicazione è dell'autore."),
     }
     md = render_md(B, meta, figure)
     with open(os.path.join(RADICE, "report", f"supply-chain-{mese}.md"), "w", encoding="utf-8") as f:

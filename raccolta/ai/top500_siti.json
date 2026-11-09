@@ -1,0 +1,43 @@
+{
+  "nota": "Posizione dei siti della TOP500 (chiave = id del sito nell'URL top500.org/site/<id>). Stimate da me (geocodifica OSM del centro di ricerca, o coordinate del dataset GPU clusters di Epoch AI dove indicato). Quando il sito non è pubblico uso il centroide del paese e lo dichiaro (origine 'centroide-paese'). Siti nuovi non in elenco: lo script usa il centroide del paese e lo segnala in 'errori'.",
+  "siti": {
+    "50287": {"luogo": "National Supercomputing Centre, Shenzhen", "lat": 22.587, "lon": 113.975, "precisione_km": 5, "origine": "stimata: area di Xili, Nanshan (Shenzhen)"},
+    "49763": {"luogo": "Lawrence Livermore National Laboratory, California", "lat": 37.687, "lon": -121.706, "precisione_km": 2, "origine": "stimata: sede del laboratorio"},
+    "48553": {"luogo": "Oak Ridge National Laboratory, Tennessee", "lat": 35.931, "lon": -84.31, "precisione_km": 2, "origine": "stimata: sede del laboratorio"},
+    "47347": {"luogo": "Argonne National Laboratory, Illinois", "lat": 41.715, "lon": -87.982, "precisione_km": 2, "origine": "stimata: sede del laboratorio"},
+    "51016": {"luogo": "Forschungszentrum Jülich", "lat": 50.9217, "lon": 6.3583, "precisione_km": 3, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
+    "50489": {"luogo": "Eni Green Data Center, Ferrera Erbognone", "lat": 45.101, "lon": 8.8596, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
+    "50981": {"luogo": "Microsoft Azure (sito non pubblicato)", "lat": 39.83, "lon": -98.58, "precisione_km": 2000, "origine": "centroide-paese: posizione del sistema non pubblicata"},
+    "50831": {"luogo": "RIKEN Center for Computational Science, Kobe", "lat": 34.653, "lon": 135.22, "precisione_km": 2, "origine": "stimata: isola di Port Island, Kobe"},
+    "50422": {"luogo": "CSCS, Lugano", "lat": 46.0244, "lon": 8.9601, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
+    "50908": {"luogo": "CSC, Kajaani (LUMI)", "lat": 64.2337, "lon": 27.7033, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
+    "50944": {"luogo": "CINECA, Tecnopolo di Bologna", "lat": 44.5221, "lon": 11.3384, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
+    "49136": {"luogo": "Bristol and Bath Science Park (Isambard-AI)", "lat": 51.501, "lon": -2.4777, "precisione_km": 2, "origine": "stimata: geocodifica OSM del parco scientifico"},
+    "50986": {"luogo": "Nebius (sito non indicato; la TOP500 dà i Paesi Bassi, Epoch dà l'Islanda)", "lat": 52.13, "lon": 5.29, "precisione_km": 2000, "origine": "centroide-paese: posizione in disaccordo tra fonti"},
+    "50979": {"luogo": "Barcelona Supercomputing Center", "lat": 41.3898, "lon": 2.1155, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
+    "50949": {"luogo": "ExxonMobil (sito non pubblicato)", "lat": 39.83, "lon": -98.58, "precisione_km": 2000, "origine": "centroide-paese: posizione del sistema non pubblicata"},
+    "51131": {"luogo": "Core42, Stati Uniti (sito non pubblicato)", "lat": 39.83, "lon": -98.58, "precisione_km": 2000, "origine": "centroide-paese: posizione del sistema non pubblicata"},
+    "50762": {"luogo": "AIST, Kashiwa (ABCI)", "lat": 35.8955, "lon": 139.9475, "precisione_km": 3, "origine": "stimata: geocodifica OSM dell'area di Kashiwa-no-ha"},
+    "51133": {"luogo": "NHN Cloud, centro dati AI nazionale di Gwangju", "lat": 35.2162, "lon": 126.8357, "precisione_km": 10, "origine": "stimata: distretto di Cheomdan, Gwangju (sito presunto, da verificare)"},
+    "51045": {"luogo": "SoftBank Corp. (sito non pubblicato)", "lat": 36.2, "lon": 138.25, "precisione_km": 1000, "origine": "centroide-paese: posizione del sistema non pubblicata"},
+    "50205": {"luogo": "KAUST, Thuwal", "lat": 22.31, "lon": 39.105, "precisione_km": 3, "origine": "stimata: campus KAUST"},
+    "48448": {"luogo": "NVIDIA (sito non pubblicato)", "lat": 39.83, "lon": -98.58, "precisione_km": 2000, "origine": "centroide-paese: posizione del sistema non pubblicata"}
+  },
+  "centroidi_paese": {
+    "United States": [39.83, -98.58], "China": [35.86, 104.2], "Germany": [51.17, 10.45], "Italy": [42.5, 12.5], "Japan": [36.2, 138.25],
+    "Switzerland": [46.82, 8.23], "Finland": [64.0, 26.0], "United Kingdom": [54.0, -2.0], "Netherlands": [52.13, 5.29], "Spain": [40.0, -4.0],
+    "South Korea": [36.5, 127.8], "Saudi Arabia": [23.9, 45.1], "France": [46.6, 2.2], "Taiwan": [23.7, 121.0], "India": [21.0, 78.0],
+    "Russia": [61.5, 105.3], "Australia": [-25.3, 133.8], "Canada": [56.1, -106.3], "Brazil": [-14.2, -51.9], "Norway": [60.5, 8.5],
+    "Sweden": [60.1, 18.6], "Poland": [52.0, 19.1], "Singapore": [1.35, 103.82], "United Arab Emirates": [23.4, 53.8], "Denmark": [56.0, 10.0],
+    "Czechia": [49.8, 15.5], "Austria": [47.5, 14.6], "Belgium": [50.5, 4.5], "Luxembourg": [49.8, 6.1], "Slovenia": [46.15, 14.99], "Portugal": [39.4, -8.2],
+    "Israel": [31.0, 34.85], "Iceland": [64.96, -19.02], "Thailand": [15.87, 100.99], "Malaysia": [4.21, 101.98], "Morocco": [31.8, -7.1], "Hungary": [47.16, 19.5]
+  },
+  "iso": {
+    "United States": "US", "China": "CN", "Germany": "DE", "Italy": "IT", "Japan": "JP", "Switzerland": "CH", "Finland": "FI", "United Kingdom": "GB",
+    "Netherlands": "NL", "Spain": "ES", "South Korea": "KR", "Korea, South": "KR", "Saudi Arabia": "SA", "France": "FR", "Taiwan": "TW", "India": "IN", "Russia": "RU",
+    "Australia": "AU", "Canada": "CA", "Brazil": "BR", "Norway": "NO", "Sweden": "SE", "Poland": "PL", "Singapore": "SG", "United Arab Emirates": "AE",
+    "Denmark": "DK", "Czechia": "CZ", "Czech Republic": "CZ", "Austria": "AT", "Belgium": "BE", "Luxembourg": "LU", "Slovenia": "SI", "Portugal": "PT",
+    "Israel": "IL", "Iceland": "IS", "Thailand": "TH", "Malaysia": "MY", "Morocco": "MA", "Hungary": "HU", "Indonesia": "ID", "Ireland": "IE", "Mexico": "MX",
+    "Chile": "CL", "Argentina": "AR", "Kenya": "KE", "Qatar": "QA", "Hong Kong": "HK", "Vietnam": "VN", "Philippines": "PH"
+  }
+}

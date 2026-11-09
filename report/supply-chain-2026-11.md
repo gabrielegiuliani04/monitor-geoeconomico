@@ -20,7 +20,7 @@ Dati letti il 9 novembre 2026. Ogni numero ha fonte e data; le parti marcate *Va
 ## 1. In breve
 
 - **Il Mar Rosso si riapre, Hormuz no.** A Suez passano 43,0 navi al giorno (+10% su un anno), ma è ancora il 57% di fine 2023; Bab el-Mandeb è a 27,3 (−22% su un anno). Hormuz resta a 4,4 navi al giorno con AIS acceso ([IMF PortWatch](https://portwatch.imf.org/), media 7 giorni 26 ottobre–1 novembre 2026).
-- **I noli container sono più del doppio di un anno fa.** Il Drewry WCI è a 4.389 dollari per FEU (5 novembre 2026), +124% sul 6 novembre 2025; Shanghai–Genova 4.166 dollari (+97%). Il trend recente è piatto: FBX globale −6% da 14 agosto, +3% nelle ultime 4 settimane.
+- **I noli container sono più del doppio di un anno fa.** Il Drewry WCI è a 4.389 dollari per FEU (5 novembre 2026), +124% sul 6 novembre 2025; Shanghai–Genova 4.166 dollari (+97%). Il trend recente è piatto: FBX globale −6% dal 14 agosto, +3% nelle ultime 4 settimane.
 - **Porti italiani a due velocità.** Negli ultimi 30 giorni calano soprattutto Ravenna (−20%) e Venezia Malamocco (−16%), porti dell'energia e delle rinfuse; tengono i porti container e cresce La Spezia (+28%) ([IMF PortWatch](https://portwatch.imf.org/)).
 - **L'energia resta il costo più pesante.** Gas TTF a 82,33 €/MWh (+164% su un anno), gasolio self a 2,224 €/litro ([Mimit, Osservatorio prezzi carburanti (media nazionale self), ripreso da Affaritaliani](https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html), 7 novembre 2026) e taglio delle accise scaduto l'8 novembre; stoccaggi gas italiani all'88,9% contro il 58,9% della Germania (GIE AGSI+, 8 novembre 2026).
 - **Il rischio di questa settimana è sulle materie critiche:** la sospensione dei controlli cinesi all'export di terre rare decisi a ottobre 2025 (annuncio MOFCOM-GAC n. 70 del 2025, compresa la regola dello 0,1% di contenuto cinese nei prodotti esteri) scade il 10 novembre 2026; restano in vigore le licenze di aprile 2025 su sette terre rare medie e pesanti (tra cui disprosio e ittrio). Alla data del report non risultano annunci di proroga ([CIRS Group (testo dell'annuncio n. 70/2025) e Mining Technology](https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/), 9 novembre 2026).
@@ -65,24 +65,24 @@ Altre fonti confermano il ritorno a Suez delle portacontainer: capacità contain
 
 | Indice | Valore | Data | Variazione | Fonte |
 |---|---|---|---|---|
-| Drewry WCI composito | 4.389 $/FEU | 5 novembre 2026 | +124% su un anno* | [Drewry](https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry) |
-| WCI Shanghai–Genova | 4.166 $/FEU | 5 novembre 2026 | +97% su un anno* | [Drewry](https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry) |
-| WCI Shanghai–Rotterdam | 3.615 $/FEU | 5 novembre 2026 | +84% su un anno* | [Drewry](https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry) |
-| Freightos FBX globale | 3.452 $/FEU | 6 novembre 2026 | +3% su 4 settimane | [Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/) |
-| FBX Cina–Mediterraneo | 4.324 $/FEU | 6 novembre 2026 | -1,17% sulla settimana | [Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/) |
-| FBX Cina–Nord Europa | 3.422 $/FEU | 6 novembre 2026 | -4,8% sulla settimana | [Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/) |
-| SCFI (Shanghai, composito) | 3.633,45 punti | 6 novembre 2026 | −1,5% sulla settimana | [SSE](https://en.sse.net.cn/indices/scfinew.jsp) |
-| CCFI (Cina, composito) | 1.924,69 punti | 6 novembre 2026 | +2,3% sulla settimana | [SSE](https://en.sse.net.cn/indices/ccfinew.jsp) |
-| CCFI rotta Mediterraneo | 2.438,38 punti | 6 novembre 2026 | +6,8% sulla settimana | [SSE](https://en.sse.net.cn/indices/ccfinew.jsp) |
-| Baltic Dry Index (rinfuse) | 2.854 punti | 9 novembre 2026 | +37% su un anno | [Trading Economics](https://tradingeconomics.com/commodity/baltic) |
+| Drewry WCI composito | 4.389 $/FEU | 5 nov 2026 | +124% su un anno (a) | [Drewry](https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry) |
+| WCI Shanghai–Genova | 4.166 $/FEU | 5 nov 2026 | +97% su un anno (a) | [Drewry](https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry) |
+| WCI Shanghai–Rotterdam | 3.615 $/FEU | 5 nov 2026 | +84% su un anno (a) | [Drewry](https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry) |
+| Freightos FBX globale | 3.452 $/FEU | 6 nov 2026 | +3% su 4 settimane | [Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/) |
+| FBX Cina–Mediterraneo | 4.324 $/FEU | 6 nov 2026 | -1,17% sulla settimana | [Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/) |
+| FBX Cina–Nord Europa | 3.422 $/FEU | 6 nov 2026 | -4,8% sulla settimana | [Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/) |
+| SCFI (Shanghai, composito) | 3.633,45 punti | 6 nov 2026 | −1,5% sulla settimana | [SSE](https://en.sse.net.cn/indices/scfinew.jsp) |
+| CCFI (Cina, composito) | 1.924,69 punti | 6 nov 2026 | +2,3% sulla settimana | [SSE](https://en.sse.net.cn/indices/ccfinew.jsp) |
+| CCFI rotta Mediterraneo | 2.438,38 punti | 6 nov 2026 | +6,8% sulla settimana | [SSE](https://en.sse.net.cn/indices/ccfinew.jsp) |
+| Baltic Dry Index (rinfuse) | 2.854 punti | 9 nov 2026 | +37% su un anno | [Trading Economics](https://tradingeconomics.com/commodity/baltic) |
 
-<small>Valori da docs/data/noli.json. *Variazione su un anno calcolata sul WCI del 6 novembre 2025 ([Drewry WCI del 6 novembre 2025, ripreso da Cyprus Shipping News e Alchempro/Fibre2Fashion](https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/), 6 novembre 2025, affidabilità media). Il Baltic Dry viene da un CFD: affidabilità media.</small>
+<small>Valori da docs/data/noli.json. (a) Variazione su un anno calcolata sul WCI del 6 novembre 2025 ([Drewry WCI del 6 novembre 2025, ripreso da Cyprus Shipping News e Alchempro/Fibre2Fashion](https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/), 6 novembre 2025, affidabilità media). Il Baltic Dry viene da un CFD: affidabilità media.</small>
 
 ![noli](grafici/sc-2026-11-noli.svg)
 
-<small>Sopra: Freightos FBX globale, serie settimanale disponibile gratis ([Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/)). Sotto: Drewry WCI per rotta al 5 novembre 2026; la tacca nera è il valore di un anno prima ([Drewry WCI del 6 novembre 2025, ripreso da Cyprus Shipping News e Alchempro/Fibre2Fashion](https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/), 6 novembre 2025).</small>
+<small>Sopra: Freightos FBX globale, serie settimanale disponibile gratis ([Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/)). Sotto: Drewry WCI per rotta al 5 novembre 2026; la tacca verticale è il valore di un anno prima ([Drewry WCI del 6 novembre 2025, ripreso da Cyprus Shipping News e Alchempro/Fibre2Fashion](https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/), 6 novembre 2025).</small>
 
-**Trend.** L'FBX globale è a 3.452 dollari: −6% da 14 agosto 2026 (3.690), massimo della serie 3.690 il 14 agosto 2026. La rotta Cina–Mediterraneo (FBX13, 4.324) costa più della Cina–Nord Europa (FBX11, 3.422), come nel WCI Shanghai–Genova contro Shanghai–Rotterdam. Lo SCFI scende (−1,5%) mentre il CCFI, che pesa i contratti, sale (+2,3%), con la rotta Mediterraneo a +6,8% (SSE, 6 novembre 2026).
+**Trend.** L'FBX globale è a 3.452 dollari: −6% dal 14 agosto 2026 (3.690), massimo della serie 3.690 il 14 agosto 2026. La rotta Cina–Mediterraneo (FBX13, 4.324) costa più della Cina–Nord Europa (FBX11, 3.422), come nel WCI Shanghai–Genova contro Shanghai–Rotterdam. Lo SCFI scende (−1,5%) mentre il CCFI, che pesa i contratti, sale (+2,3%), con la rotta Mediterraneo a +6,8% (SSE, 6 novembre 2026).
 
 Le rinfuse secche vanno in senso opposto ai container: Baltic Dry a 2.854 punti il 9 novembre 2026, +37% su un anno ([Trading Economics](https://tradingeconomics.com/commodity/baltic), affidabilità media).
 
@@ -157,13 +157,13 @@ In Europa e nel Mediterraneo crescono Anversa (+5%), Rotterdam (+2%); calano Cap
 
 | Voce | Ultimo | Data | 1 mese | 1 anno | Fonte |
 |---|---|---|---|---|---|
-| Brent | 92,62 USD/barile | 9 novembre 2026 | −12% | +46% | Yahoo Finance (prezzi.json) |
-| Gas TTF | 82,33 EUR/MWh | 9 novembre 2026 | +1% | +164% | Yahoo Finance (prezzi.json) |
-| Gas Henry Hub | 3,21 USD/MMBtu | 9 novembre 2026 | 0% | −26% | Yahoo Finance (prezzi.json) |
-| Gasolio self, media Italia | 2,224 €/litro | 7 novembre 2026 | n.d. | circa +37%** | [Mimit via Affaritaliani](https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html) |
+| Brent | 92,62 USD/barile | 9 nov 2026 | −12% | +46% | Yahoo Finance (prezzi.json) |
+| Gas TTF | 82,33 EUR/MWh | 9 nov 2026 | +1% | +164% | Yahoo Finance (prezzi.json) |
+| Gas Henry Hub | 3,21 USD/MMBtu | 9 nov 2026 | 0% | −26% | Yahoo Finance (prezzi.json) |
+| Gasolio self, media Italia | 2,224 €/litro | 7 nov 2026 | — | circa +37% (b) | [Mimit via Affaritaliani](https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html) |
 | Elettricità, PUN Italia | dato mancante | ottobre 2026 |  |  | le fonti secondarie divergono (vedi sotto) |
 
-<small>**Gasolio un anno prima: 1,627 €/litro, [QuiFinanza, osservatorio prezzi di ottobre 2025 (data esatta non indicata nell'estratto)](https://quifinanza.it/osservatorio-prezzi/prezzi-carburanti-benzina-diesel-ottobre-2025/933821/), ottobre 2025, affidabilità bassa.</small>
+<small>(b) Gasolio un anno prima: 1,627 €/litro, [QuiFinanza, osservatorio prezzi di ottobre 2025 (data esatta non indicata nell'estratto)](https://quifinanza.it/osservatorio-prezzi/prezzi-carburanti-benzina-diesel-ottobre-2025/933821/), ottobre 2025, affidabilità bassa.</small>
 
 **Gas in Italia.** Negli ultimi 12 mesi i primi ingressi sono Mazara del Vallo 34,0%, Melendugno 16,5%, Adriatic LNG 14,1%, Passo Gries 13,0% ([ENTSOG](https://transparency.entsog.eu/), dati Snam fino all'8 novembre 2026). Ingressi medi a ottobre 2026: 1.696 GWh al giorno. Stoccaggi italiani all'88,93% l'8 novembre 2026, −4,7 punti su un anno e −1,07 punti dall'obiettivo UE del 90% (GIE AGSI+). La Germania è al 58,9%, −29,7 punti sotto la media di 5 anni.
 
@@ -197,7 +197,7 @@ In Europa e nel Mediterraneo crescono Anversa (+5%), Rotterdam (+2%); calano Cap
 
 **Cavi sottomarini.** L'Italia ha 37 cavi e 55 approdi; i cavi attivi che la collegano all'Asia passando da Bab el-Mandeb sono 6 (2Africa, Asia Africa Europe-1 (AAE-1), IMEWE, Middle East North Africa (MENA) Cable System/Gulf Bridge International, SeaMeWe-4, SeaMeWe-5). Nel Mar Rosso passano 24 cavi, nel Baltico 34 ([TeleGeography](https://www.submarinecablemap.com/), CC BY-NC-SA, 9 novembre 2026). L'osservatorio registra 14 incidenti dal 2023, 3 nel 2026; l'ultimo: Australia: guasti a Indigo West e Indigo Central nella zona protetta di Perth (8 agosto 2026, [iTnews](https://www.itnews.com.au/news/afp-assessing-report-in-connection-with-perth-cable-faults-628061)).
 
-**Sabotaggi e attacchi informatici alla logistica.** La catena del freddo è il bersaglio nuovo: Attacco informatico ai frigoriferi di centinaia di supermercati in Francia (12 ottobre 2026, [Al Jazeera](https://www.aljazeera.com/news/2026/10/13/unprecedented-cyberattack-hits-french-supermarkets-causing-food-losses)); Attacchi ai frigoriferi dei supermercati in Belgio, Lussemburgo, Svezia, Irlanda ed Estonia (2 novembre 2026, [Reuters](https://www.aljazeera.com/news/2026/11/2/freezers-in-sweden-belgium-overheat-following-possible-cyberattacks)). Tre attacchi a stazioni Starlink in Europa centro-orientale tra settembre e ottobre (LT, BG, PL), attribuiti alla Russia dai governi. In Italia NoName057(16) ha rivendicato DDoS anche contro Terminal Container Ravenna e Interporto Padova a metà ottobre, senza conferma delle vittime ([QN](https://www.quotidiano.net/cronaca/guerra--hacker-russi-italia-ucraina-mlj9s3di)).
+**Sabotaggi e attacchi informatici alla logistica.** La catena del freddo è il bersaglio nuovo: attacco informatico ai frigoriferi di centinaia di supermercati in Francia (12 ottobre 2026, [Al Jazeera](https://www.aljazeera.com/news/2026/10/13/unprecedented-cyberattack-hits-french-supermarkets-causing-food-losses)); attacchi ai frigoriferi dei supermercati in Belgio, Lussemburgo, Svezia, Irlanda ed Estonia (2 novembre 2026, [Reuters](https://www.aljazeera.com/news/2026/11/2/freezers-in-sweden-belgium-overheat-following-possible-cyberattacks)). Tre attacchi a stazioni Starlink in Europa centro-orientale tra settembre e ottobre (LT, BG, PL), attribuiti alla Russia dai governi. In Italia NoName057(16) ha rivendicato DDoS anche contro Terminal Container Ravenna e Interporto Padova a metà ottobre, senza conferma delle vittime ([QN](https://www.quotidiano.net/cronaca/guerra--hacker-russi-italia-ucraina-mlj9s3di)).
 
 **GNSS jamming.** Interferenze GNSS lungo quasi tutto il fianco est della NATO dal Baltico al Mar Nero (3 novembre 2026, [Militarnyi](https://militarnyi.com/en/news/from-the-baltic-to-the-black-sea-large-scale-gps-jamming-detected-along-nato-borders/), affidabilità media). Nel Golfo: nel 1° trimestre 2026 Hormuz, Golfo Persico e Golfo di Oman hanno concentrato il 98% degli eventi di disturbo GNSS (jamming) registrati nel mondo, con oltre 1.100 navi colpite; posizioni AIS spostate su aeroporti e nell'entroterra ([Windward, «What is GPS jamming and why are we seeing so much of it?»](https://windward.ai/blog/what-is-gps-jamming-and-why-are-we-seeing-so-much-of-it/), aprile 2026). Nei dati AIS dell'osservatorio 4 navi risultano con posizioni impossibili (oltre 40 nodi o nell'entroterra), segno di spoofing o disturbo (navi.json, 9 novembre 2026).
 
@@ -217,16 +217,16 @@ In Europa e nel Mediterraneo crescono Anversa (+5%), Rotterdam (+2%); calano Cap
 
 | Indicatore | Ultimo | Data | Soglie (valutazione) | Stato | Fonte |
 |---|---|---|---|---|---|
-| Hormuz, navi/giorno (7 gg) | 4,4 | 1 novembre 2026 | attenzione sotto 60, critico sotto 20 | critico | PortWatch |
-| Suez, % di fine 2023 | 57% | 1 novembre 2026 | attenzione sotto 80%, critico sotto 50% | attenzione | PortWatch |
-| Bab el-Mandeb, % di fine 2023 | 34% | 1 novembre 2026 | attenzione sotto 60%, critico sotto 25% | attenzione | PortWatch |
-| FBX globale, $/FEU | 3.452 | 6 novembre 2026 | attenzione sopra 2.500, critico sopra 4.000 | attenzione | Freightos |
-| WCI Shanghai–Genova, $/FEU | 4.166 | 5 novembre 2026 | attenzione sopra 3.000, critico sopra 5.000 | attenzione | Drewry |
-| Baltic Dry, punti | 2.854 | 9 novembre 2026 | attenzione sopra 2.000, critico sopra 3.500 | attenzione | Trading Economics |
-| Brent, $/barile | 92,62 | 9 novembre 2026 | attenzione sopra 85, critico sopra 110 | attenzione | Yahoo Finance |
-| TTF, €/MWh | 82,33 | 9 novembre 2026 | attenzione sopra 40, critico sopra 70 | critico | Yahoo Finance |
-| Stoccaggi gas Italia, % | 88,93 | 8 novembre 2026 | attenzione sotto 90%, critico sotto 80% | attenzione | GIE AGSI+ |
-| Gasolio self Italia, €/litro | 2,224 | 7 novembre 2026 | attenzione sopra 1,90, critico sopra 2,20 | critico | Mimit |
+| Hormuz, navi/giorno (7 gg) | 4,4 | 1 nov 2026 | attenzione sotto 60, critico sotto 20 | critico | PortWatch |
+| Suez, % di fine 2023 | 57% | 1 nov 2026 | attenzione sotto 80%, critico sotto 50% | attenzione | PortWatch |
+| Bab el-Mandeb, % di fine 2023 | 34% | 1 nov 2026 | attenzione sotto 60%, critico sotto 25% | attenzione | PortWatch |
+| FBX globale, $/FEU | 3.452 | 6 nov 2026 | attenzione sopra 2.500, critico sopra 4.000 | attenzione | Freightos |
+| WCI Shanghai–Genova, $/FEU | 4.166 | 5 nov 2026 | attenzione sopra 3.000, critico sopra 5.000 | attenzione | Drewry |
+| Baltic Dry, punti | 2.854 | 9 nov 2026 | attenzione sopra 2.000, critico sopra 3.500 | attenzione | Trading Economics |
+| Brent, $/barile | 92,62 | 9 nov 2026 | attenzione sopra 85, critico sopra 110 | attenzione | Yahoo Finance |
+| TTF, €/MWh | 82,33 | 9 nov 2026 | attenzione sopra 40, critico sopra 70 | critico | Yahoo Finance |
+| Stoccaggi gas Italia, % | 88,93 | 8 nov 2026 | attenzione sotto 90%, critico sotto 80% | attenzione | GIE AGSI+ |
+| Gasolio self Italia, €/litro | 2,224 | 7 nov 2026 | attenzione sopra 1,90, critico sopra 2,20 | critico | Mimit |
 
 <small>Stato calcolato dallo script sulle soglie dichiarate. Fonti e link nelle sezioni precedenti.</small>
 
@@ -270,7 +270,7 @@ In Europa e nel Mediterraneo crescono Anversa (+5%), Rotterdam (+2%); calano Cap
 | sanzioni-navi.json | 2026-11-09 19:16 |
 | navi.json | 2026-11-09 19:29 |
 | paesi.json | 2026-11-09 19:08 |
-| report/dati/porti-europei.json | 2026-11-09 19:46 |
+| report/dati/porti-europei.json | 2026-11-09 19:51 |
 
 - PortWatch conta solo le navi con AIS acceso, con circa una settimana di ritardo: a Hormuz e nel Mar Nero i transiti «dark» sfuggono (Lloyd's List Intelligence conta molti più transiti a Hormuz).
 - Le chiamate nei porti contano le navi, non le tonnellate né i TEU; sui 7 giorni i numeri sono piccoli e oscillano.
@@ -283,4 +283,4 @@ In Europa e nel Mediterraneo crescono Anversa (+5%), Rotterdam (+2%); calano Cap
 
 Gabriele Giuliani · Monitor geoeconomico · Novembre 2026
 
-Nota: questo report è stato preparato con l'aiuto di un assistente AI (Claude, Anthropic), che ha scritto lo script di costruzione e le bozze del testo a partire dai dati dell'osservatorio; fonti, numeri e valutazioni sono stati controllati e sono responsabilità dell'autore.
+Nota sull'uso dell'AI: questo report è stato preparato con l'aiuto di un assistente AI (Claude, Anthropic), che ha scritto lo script di costruzione, i calcoli e la bozza del testo a partire dai dati dell'osservatorio e dalle fonti citate. I numeri vengono dai file di dati e dalle fonti linkate; le valutazioni sono marcate come tali. La responsabilità della pubblicazione è dell'autore.
