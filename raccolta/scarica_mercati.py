@@ -95,11 +95,16 @@ def yahoo(sym):
     meta, ts = r["meta"], r.get("timestamp", [])
     closes = r["indicators"]["quote"][0]["close"]
     off = meta.get("gmtoffset", 0)
+    try:  # fuso della borsa con l'ora legale corretta per ogni data (gmtoffset vale solo per oggi)
+        from zoneinfo import ZoneInfo
+        tzb = ZoneInfo(meta.get("exchangeTimezoneName") or "UTC")
+    except Exception:
+        tzb = None
     serie, seen = [], set()
     for t, c in zip(ts, closes):
         if c is None:
             continue
-        d = datetime.fromtimestamp(t + off, tz=timezone.utc).date().isoformat()
+        d = (datetime.fromtimestamp(t, tz=tzb) if tzb else datetime.fromtimestamp(t + off, tz=timezone.utc)).date().isoformat()
         if d in seen:
             serie[-1] = [d, c]
         else:

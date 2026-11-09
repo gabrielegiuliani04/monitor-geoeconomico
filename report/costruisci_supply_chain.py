@@ -183,10 +183,11 @@ FATTI_ESTERNI = {
 REVISIONE = {
     "data": "2026-11-09",
     "resoconto": "report/revisioni/supply-chain-2026-11.md",
-    "verificate": ("72 affermazioni numeriche controllate: 61 contro i file di docs/data (portwatch, noli, prezzi, scorte, "
-                   "gas-italia, paesi, cavi, sanzioni-navi, navi, ferrovie, rischio) e 11 contro la fonte esterna aperta "
-                   "(BIMCO, Lloyd's List Intelligence, Affaritaliani/Mimit, Cyprus Shipping News per il WCI 2025, The Loadstar per "
-                   "il WCI per rotta, Mining Technology, Baltic Exchange per l'FBX settimanale)."),
+    "verificate": ("59 affermazioni controllate (oltre 100 numeri): 43 contro i file di docs/data (portwatch, noli, prezzi, "
+                   "scorte, gas-italia, paesi, cavi, sanzioni-navi, navi, ferrovie, rischio) e 16 anche contro la fonte esterna: "
+                   "10 confermate (BIMCO, Lloyd's List Intelligence, Mimit via Affaritaliani, Cyprus Shipping News per il WCI 2025, "
+                   "The Loadstar per il WCI per rotta, Mining Technology, Baltic Exchange per l'FBX settimanale, Commissione UE), "
+                   "6 non verificabili (elenco sotto). Nessun errore di calcolo nei dati; 9 errori o imprecisioni nel testo, corretti."),
     "correzioni": [
         "Baltic Dry: il valore di Trading Economics (2.854, +37% su un anno) non è più nei dati; ora è citato a mano "
         "(2.805 punti, 6 novembre, Baltic Exchange) senza variazione su un anno e senza soglia nel cruscotto.",
@@ -208,6 +209,8 @@ REVISIONE = {
         "Stretti danesi, noli, stoccaggi, flotta ombra, cavi); Stretti danesi aggiunti alla tabella dei transiti e al cruscotto, "
         "con l'avvertenza che PortWatch misura solo l'Øresund.",
         "Testo sui file commercio.json e minerali.json aggiornato: esistono da oggi ma il report non li legge ancora.",
+        "Adeguamento a report/STANDARD.md: «In breve» da 6 a 5 punti brevi, con numeri presenti anche nel corpo; glossario; "
+        "didascalie dei grafici con file e data del dato.",
     ],
     "non_verificabile": [
         "WCI composito di 4.389 $ (5 novembre): sito Drewry non raggiungibile; i valori per rotta (Genova 4.166, Rotterdam 3.615) "
@@ -217,6 +220,7 @@ REVISIONE = {
         "contro 3.452 e 3.422 di noli.json: istantanee diverse della stessa settimana, scarto 1–1,3%.",
         "Accise sul gasolio (Motor1), GNSS nel Golfo (Windward), costi della deviazione (Riviera/LSEG), TEU della ferrovia "
         "Cina–Europa (Railmarket), gasolio di un anno prima (QuiFinanza): pagine non aperte o bloccate.",
+        "Molte frasi del corpo superano le 30 parole indicate dallo standard: non sono state riscritte tutte.",
         "Le schede curate (stretti-dettaglio.json, ferrovie.json, ibrido.json, esposizione-nord.json) sono state controllate solo a "
         "campione; in esposizione-nord.json la scheda della Lituania data a «gennaio 2026» un danno ai cavi che cavi-incidenti.json "
         "registra il 26 gennaio 2025: segnalato a chi cura i dati, il report usa cavi-incidenti.json.",
@@ -1124,46 +1128,36 @@ def costruisci_blocchi(v, oggi, edizione):
 
     # ------------------------------------------------------------- 1. In breve
     B.append(("h2", "in-breve", "1. In breve"))
+    # Standard editoriale (report/STANDARD.md): al massimo 5 punti, ognuno sotto le 60 parole circa, con cifra e fonte,
+    # e nessun numero che non sia anche nel corpo del report.
     voci = []
     pr = v["pre_ratio"]
-    voci.append(f"**Suez si riprende, Bab el-Mandeb resta a poco più di un terzo, Hormuz è chiuso di fatto.** A Suez passano "
-                f"{num(suez['media7']['n_total'], 1)} navi al giorno ({pct(suez['var7_anno_pct']['n_total'])} su un anno), "
-                f"{il(num(pr['Canale di Suez'], 0))}% della media gennaio–ottobre 2023; Bab el-Mandeb è a {num(bab['media7']['n_total'], 1)} "
-                f"({num(pr['Bab el-Mandeb'], 0)}% di quella media). Hormuz resta a {num(hor['media7']['n_total'], 1)} navi al giorno con AIS acceso "
-                f"({fpw}); Lloyd's List Intelligence, che ricostruisce anche i transiti con il transponder spento, conta "
-                f"{FATTI_ESTERNI['lli_hormuz']['testo']} ({fonte_est('lli_hormuz')}). "
-                f"Nel cruscotto del rischio dell'osservatorio Hormuz è {livello_txt(v, 'hormuz')}, Bab el-Mandeb {livello_txt(v, 'bab-el-mandeb')}, "
-                f"Suez {livello_txt(v, 'suez')} (rischio.json, {data_it(v['rischio_data'])}).")
+    voci.append(f"**Suez si riprende, Bab el-Mandeb resta a poco più di un terzo, Hormuz è chiuso di fatto.** Navi al giorno con AIS acceso: "
+                f"Suez {num(suez['media7']['n_total'], 1)}, {il(num(pr['Canale di Suez'], 0))}% della media gennaio–ottobre 2023; "
+                f"Bab el-Mandeb {num(bab['media7']['n_total'], 1)} ({num(pr['Bab el-Mandeb'], 0)}%); Hormuz {num(hor['media7']['n_total'], 1)} ({fpw}). "
+                f"Nel cruscotto del rischio Hormuz è a livello {unita_rischio(v, 'hormuz')['livello']}, Bab el-Mandeb {unita_rischio(v, 'bab-el-mandeb')['livello']}, "
+                f"Suez {unita_rischio(v, 'suez')['livello']}.")
     if wci:
-        voci.append(f"**I noli container sono più del doppio di un anno fa.** Il Drewry WCI è a {num(wci['valore'], 0)} dollari per FEU "
-                    f"({data_it(wci['data'])}), {pct(v['wci_yoy'])} sul {data_it(est_wci['data'])}; Shanghai–Genova "
-                    f"{num(wci['rotte'].get('Shanghai-Genoa'), 0)} dollari ({pct(v['wci_rotte_yoy'].get('Shanghai-Genoa'))}). "
-                    + (f"Il trend recente è piatto: FBX globale {pct(v['fbx_var_inizio'])} {da(data_it(v['fbx_inizio'][0], anno=False))}, "
-                       f"{pct(v['fbx_var4s'])} nelle ultime 4 settimane." if v.get("fbx_var4s") is not None else ""))
-    if cali_it:
-        peggiori = sorted(cali_it, key=lambda r: r[1])[:2]
-        voci.append(f"**Porti italiani a due velocità.** Negli ultimi 30 giorni calano soprattutto "
-                    + " e ".join(f"{nome_porto(r[0])} ({pct(r[1])})" for r in peggiori)
-                    + ", porti dell'energia e delle rinfuse; calano poco i porti container ("
-                    + ", ".join(f"{nome_porto(n_)} {pct(it_ports[n_]['var30_anno_pct'])}" for n_ in ("Genova", "Gioia Tauro") if n_ in it_ports) + ")"
-                    + (f" e cresce {nome_porto(su_it[0][0])} ({pct(su_it[0][1])}, ma su numeri piccoli)" if su_it else "")
-                    + f" (chiamate di navi, 30 giorni su un anno, {link('IMF PortWatch', pw_link)}, dati fino al {data_it(v['porti_it_data'])}).")
+        peggiori = sorted(cali_it, key=lambda r: r[1])[:2] if cali_it else []
+        voci.append(f"**Noli container più che doppi, porti italiani a due velocità.** Drewry WCI a {num(wci['valore'], 0)} dollari per FEU "
+                    f"({data_it(wci['data'])}), {pct(v['wci_yoy'])} su un anno; FBX globale {pct(v['fbx_var4s'])} in 4 settimane. "
+                    + (f"Sui 30 giorni calano " + " e ".join(f"{nome_porto(r[0])} ({pct(r[1])})" for r in peggiori)
+                       + f", porti di energia e rinfuse; Genova {pct(it_ports['Genova']['var30_anno_pct'])} ({link('IMF PortWatch', pw_link)}, al {data_it(v['porti_it_data'])})."
+                       if peggiori and "Genova" in it_ports else ""))
     if ttf and git:
-        voci.append(f"**L'energia resta il costo più pesante.** Gas TTF a {num(ttf['ultimo'], 2)} €/MWh ({pct(ttf['var']['1a'])} su un anno), "
-                    f"gasolio self a {num(gaso['self'], 3)} €/litro ({fonte_est('gasolio')}) e taglio delle accise scaduto l'8 novembre; "
-                    f"stoccaggi gas italiani {al(num(git['valore'], 1))}% contro {il(num(gde['valore'], 1)) if gde else 'n.d.'}% della Germania (GIE AGSI+, {data_it(git['data'])}).")
+        voci.append(f"**L'energia resta il costo più pesante.** Gas TTF a {num(ttf['ultimo'], 2)} €/MWh, {pct(ttf['var']['1a'])} su un anno (Yahoo Finance, {data_it(ttf['data'])}); "
+                    f"gasolio self a {num(gaso['self'], 3)} €/litro ({fonte_est('gasolio')}); stoccaggi gas italiani {al(num(git['valore'], 1))}% "
+                    f"(GIE AGSI+, {data_it(git['data'])}).")
     sdn = cp.get("Stretti danesi")
     gnl_ = sc.get("gas_stoccaggio_pct_nl")
     f11 = (fbx or {}).get("rotte", {}).get("FBX11")
     f13 = (fbx or {}).get("rotte", {}).get("FBX13")
     if sdn and gnl_ and gde and f11 and f13:
-        voci.append(f"**Nord Europa: meno esposto sui noli, più esposto sul gas.** La rotta Cina–Nord Europa costa "
-                    f"{num(f11['valore'], 0)} dollari per FEU contro {num(f13['valore'], 0)} verso il Mediterraneo (Freightos FBX, {data_it(fbx['data'])}); "
-                    f"gli stoccaggi di gas sono {al(num(gnl_['valore'], 1))}% nei Paesi Bassi e {al(num(gde['valore'], 1))}% in Germania, "
-                    f"{num(-gnl_['media_5_anni']['scarto'], 1)} e {num(-gde['media_5_anni']['scarto'], 1)} punti sotto la media di 5 anni (GIE AGSI+, {data_it(gde['data'])}); "
-                    f"all'Øresund (Stretti danesi) passano {num(sdn['media7']['n_total'], 1)} navi al giorno, {pct(sdn['var7_anno_pct']['n_total'])} su un anno "
-                    f"({link('IMF PortWatch', pw_link)}). Dettagli nella sezione 8.")
-    voci.append(f"**Il rischio di questa settimana è sulle materie critiche:** {FATTI_ESTERNI['terre_rare']['testo']} ({fonte_est('terre_rare')}).")
+        voci.append(f"**Nord Europa: meno esposto sui noli, più esposto sul gas.** Cina–Nord Europa {num(f11['valore'], 0)} dollari per FEU contro "
+                    f"{num(f13['valore'], 0)} verso il Mediterraneo (Freightos, {data_it(fbx['data'])}); stoccaggi {al(num(gnl_['valore'], 1))}% nei Paesi Bassi e "
+                    f"{al(num(gde['valore'], 1))}% in Germania, molto sotto la media di 5 anni (GIE AGSI+). Dettagli nella sezione 8.")
+    voci.append(f"**Materie critiche: decisione cinese il {data_it(FATTI_ESTERNI['terre_rare']['scadenza'], anno=False)}.** Scade la sospensione dei controlli "
+                f"all'export di terre rare decisi a ottobre 2025; al {data_it(oggi, anno=False)} non risultano annunci di proroga ({fonte_est('terre_rare')}).")
     B.append(("ul", voci))
     B.append(("val", "La supply chain europea di novembre 2026 ha due velocità. I container tornano verso Suez e i noli spot "
               "non salgono più ma restano circa il doppio di un anno fa, mentre energia, fertilizzanti e materie critiche restano legati a Hormuz e alla Cina. "
@@ -1186,14 +1180,17 @@ def costruisci_blocchi(v, oggi, edizione):
                      f"è prima degli attacchi houthi. Il cruscotto del rischio usa per Suez e Bab el-Mandeb la media gennaio–ottobre 2023 "
                      f"e per Hormuz la media del 2025: le percentuali possono differire di qualche punto."))
     B.append(("fig", "transiti", f"Navi al giorno, media mensile dei mesi completi. Fonte: {link('IMF PortWatch', pw_link)}, "
-              f"dati fino al {data_it(v['pw_data'])}. Linee tratteggiate: eventi con fonte nel testo."))
+              f"file portwatch.json, dati fino al {data_it(v['pw_data'])}. Linee tratteggiate: eventi (dicembre 2023, attacchi houthi; 2 marzo 2026, Hormuz chiuso di fatto), con fonte nello script."))
     sm = v["suez_min"]
     cm = v["capo_max"]
     B.append(("p", f"**Fatti.** Prima della crisi del Mar Rosso (media gennaio–ottobre 2023) Suez faceva {num(v['pre_crisi']['Canale di Suez'], 0)} navi al giorno "
               f"e il Capo {num(v['pre_crisi']['Capo di Buona Speranza'], 0)}. Da dicembre 2023 il rapporto si è rovesciato: il minimo mensile di Suez dal 2024 "
               f"è {num(sm[1], 1)} ({mese_it(sm[0])}), il massimo del Capo {num(cm[1], 1)} ({mese_it(cm[0])}). "
               f"Nell'ultima settimana misurata il Capo è a {num(capo['media7']['n_total'], 1)} navi al giorno, {il(num(v['pre_ratio']['Capo di Buona Speranza'], 0))}% della media gennaio–ottobre 2023 "
-              f"({fpw})."))
+              f"({fpw}). Suez è {al(num(v['pre_ratio']['Canale di Suez'], 0))}% e Bab el-Mandeb {al(num(v['pre_ratio']['Bab el-Mandeb'], 0))}% di quella media. A Hormuz PortWatch vede {num(hor['media7']['n_total'], 1)} navi al giorno; Lloyd's List Intelligence, che ricostruisce anche i "
+              f"transiti con il transponder spento, conta {FATTI_ESTERNI['lli_hormuz']['testo']} ({fonte_est('lli_hormuz')}). "
+              f"Nel cruscotto del rischio Hormuz è {livello_txt(v, 'hormuz')}, Bab el-Mandeb {livello_txt(v, 'bab-el-mandeb')} e Suez "
+              f"{livello_txt(v, 'suez')} (rischio.json, {data_it(v['rischio_data'])}; dettagli nella sezione 9)."))
     bt = v["voce"]("suez", "flussi", "Container")
     nt = v["voce"]("suez", "flussi", "Navi in totale")
     extra = []
@@ -1259,7 +1256,7 @@ def costruisci_blocchi(v, oggi, edizione):
               f"({fonte_est('wci_anno_prima')}, affidabilità media). (b) Il Baltic Dry non è più raccolto in automatico dall'osservatorio "
               f"(termini d'uso di Trading Economics): è citato a mano, un solo valore, senza serie e senza variazione su un anno verificata "
               f"({fonte_est('bdi')}, affidabilità media)."))
-    B.append(("fig", "noli", f"Sopra: Freightos FBX globale, serie settimanale disponibile gratis ({link('Freightos', fbx['link']) if fbx else 'n.d.'}). "
+    B.append(("fig", "noli", f"Dollari per FEU (noli.json). Sopra: Freightos FBX globale, serie settimanale disponibile gratis ({link('Freightos', fbx['link']) if fbx else 'n.d.'}). "
               f"Sotto: Drewry WCI per rotta al {data_it(wci['data']) if wci else 'n.d.'}; la tacca verticale è il valore di un anno prima "
               f"({fonte_est('wci_anno_prima')})."))
     if fbx and v.get("fbx_max"):
@@ -1299,8 +1296,8 @@ def costruisci_blocchi(v, oggi, edizione):
         B.append(("tab", ["Porto (Mediterraneo e Atlantico)", "Chiamate/giorno (30 gg)", "su 1 anno", "portacontainer", "petroliere"], re_,
                   f"Fonte: {link('IMF PortWatch', pw_link)}, dati fino al {data_it(dfu)}, scaricati dallo script del report "
                   f"(report/dati/porti-europei.json) con lo stesso metodo di portwatch.json. I porti del Nord Europa sono nella sezione 8."))
-    B.append(("fig", "porti", f"Variazione delle chiamate di navi al giorno, ultimi 30 giorni contro gli stessi giorni di un anno prima. "
-              f"Fonte: {link('IMF PortWatch', pw_link)}."))
+    B.append(("fig", "porti", f"Variazione percentuale delle chiamate di navi al giorno, ultimi 30 giorni contro gli stessi giorni di un anno prima, "
+              f"dati fino al {data_it(v['porti_it_data'])}. Fonte: {link('IMF PortWatch', pw_link)} (portwatch.json, report/dati/porti-europei.json, porti-nord.json)."))
     gen, gt, tri, rav = it_ports.get("Genova"), it_ports.get("Gioia Tauro"), it_ports.get("Trieste"), it_ports.get("Ravenna")
     t = "**Fatti.** "
     if rav:
@@ -1528,7 +1525,8 @@ def costruisci_blocchi(v, oggi, edizione):
               "un dato cambia il quadro. Brent 85 $, TTF 70 € e WCI Shanghai–Genova 5.000 $ coincidono con le soglie degli scenari "
               "del report «Hormuz e Mar Rosso». Lo stato è ricalcolato dallo script a ogni edizione."))
     B.append(("fig", "cruscotto", "Cruscotto: valore, direzione recente e stato. Transiti con le soglie del metodo del cruscotto del rischio, "
-              "prezzi e stoccaggi con le soglie di livello della tabella qui sotto. ● verde, ▲ giallo, ■ rosso. Fonti e date nei singoli riquadri."))
+              "prezzi e stoccaggi con le soglie di livello della tabella qui sotto. ● verde, ▲ giallo, ■ rosso. Fonti e date nei singoli riquadri "
+              "(portwatch.json, rischio.json, noli.json, prezzi.json, scorte.json)."))
     ri = []
 
     def ind_rischio(uid, prefisso):
@@ -1616,6 +1614,13 @@ def costruisci_blocchi(v, oggi, edizione):
         "La sezione sul Nord Europa usa porti scaricati da PortWatch dallo script del report e i file paesi.json, scorte.json, navi.json e cavi-incidenti.json: per la Danimarca mancano gli indicatori paese (non è in paesi.json).",
     ]
     B.append(("ul", lim))
+    B.append(("p", "**Glossario.** **AIS**: transponder con cui le navi trasmettono posizione e identità; chi lo spegne sparisce dai conteggi. "
+              "**FEU / TEU**: container da 40 / 20 piedi. **WCI, FBX, SCFI, CCFI**: indici dei noli container di Drewry, Freightos, "
+              "Shanghai Shipping Exchange. **Baltic Dry**: indice dei noli delle navi per rinfuse secche (minerali, carbone, grano). "
+              "**GNL**: gas naturale liquefatto. **TTF**: prezzo di riferimento del gas in Europa, scambiato sull'hub olandese. "
+              "**Brent**: prezzo di riferimento del greggio. **Flotta ombra**: petroliere vecchie, con proprietà opaca, usate per aggirare "
+              "le sanzioni. **GNSS jamming / spoofing**: disturbo o falsificazione dei segnali satellitari di posizione. "
+              "**Chiamata (port call)**: arrivo di una nave in porto, stimato da PortWatch con l'AIS."))
     r = REVISIONE
     B.append(("riquadro", "revisione", f"Revisione · {data_it(r['data'])}", [
         ("p", "Verifica indipendente dei numeri, della logica e della coerenza con il report «Hormuz e Mar Rosso» e con il "

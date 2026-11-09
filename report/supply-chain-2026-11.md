@@ -20,12 +20,11 @@ Dati letti il 9 novembre 2026. Ogni numero ha fonte e data; le parti marcate *Va
 
 ## 1. In breve
 
-- **Suez si riprende, Bab el-Mandeb resta a poco più di un terzo, Hormuz è chiuso di fatto.** A Suez passano 43,0 navi al giorno (+10% su un anno), il 58% della media gennaio–ottobre 2023; Bab el-Mandeb è a 27,3 (37% di quella media). Hormuz resta a 4,4 navi al giorno con AIS acceso ([IMF PortWatch](https://portwatch.imf.org/), media 7 giorni 26 ottobre–1 novembre 2026); Lloyd's List Intelligence, che ricostruisce anche i transiti con il transponder spento, conta 116 transiti di navi non legate all'Iran nella settimana 19–25 ottobre 2026, circa 17 al giorno ([Lloyd's List Intelligence, Strait of Hormuz Brief](https://www.lloydslistintelligence.com/resources/blog/strait-of-hormuz-brief-5-november-2026), 5 novembre 2026). Nel cruscotto del rischio dell'osservatorio Hormuz è a livello critico (22,5 su 25), Bab el-Mandeb a livello alto (19,0 su 25), Suez a livello medio (9,9 su 25) (rischio.json, 9 novembre 2026).
-- **I noli container sono più del doppio di un anno fa.** Il Drewry WCI è a 4.389 dollari per FEU (5 novembre 2026), +124% sul 6 novembre 2025; Shanghai–Genova 4.166 dollari (+97%). Il trend recente è piatto: FBX globale −6% dal 14 agosto, +3% nelle ultime 4 settimane.
-- **Porti italiani a due velocità.** Negli ultimi 30 giorni calano soprattutto Ravenna (−20%) e Venezia Malamocco (−16%), porti dell'energia e delle rinfuse; calano poco i porti container (Genova −5%, Gioia Tauro −6%) e cresce La Spezia (+28%, ma su numeri piccoli) (chiamate di navi, 30 giorni su un anno, [IMF PortWatch](https://portwatch.imf.org/), dati fino al 30 ottobre 2026).
-- **L'energia resta il costo più pesante.** Gas TTF a 82,33 €/MWh (+164% su un anno), gasolio self a 2,224 €/litro ([Mimit, Osservatorio prezzi carburanti (media nazionale self), ripreso da Affaritaliani](https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html), 7 novembre 2026) e taglio delle accise scaduto l'8 novembre; stoccaggi gas italiani all'88,9% contro il 58,9% della Germania (GIE AGSI+, 8 novembre 2026).
-- **Nord Europa: meno esposto sui noli, più esposto sul gas.** La rotta Cina–Nord Europa costa 3.422 dollari per FEU contro 4.324 verso il Mediterraneo (Freightos FBX, 6 novembre 2026); gli stoccaggi di gas sono al 63,5% nei Paesi Bassi e al 58,9% in Germania, 18,9 e 29,7 punti sotto la media di 5 anni (GIE AGSI+, 8 novembre 2026); all'Øresund (Stretti danesi) passano 38,7 navi al giorno, −21% su un anno ([IMF PortWatch](https://portwatch.imf.org/)). Dettagli nella sezione 8.
-- **Il rischio di questa settimana è sulle materie critiche:** la sospensione dei controlli cinesi all'export di terre rare decisi a ottobre 2025 (annuncio MOFCOM-GAC n. 70 del 2025, compresa la regola dello 0,1% di contenuto cinese nei prodotti esteri) scade il 10 novembre 2026; restano in vigore le licenze di aprile 2025 su sette terre rare medie e pesanti (tra cui disprosio e ittrio). Alla data del report non risultano annunci di proroga ([CIRS Group (testo dell'annuncio n. 70/2025) e Mining Technology](https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/), 9 novembre 2026).
+- **Suez si riprende, Bab el-Mandeb resta a poco più di un terzo, Hormuz è chiuso di fatto.** Navi al giorno con AIS acceso: Suez 43,0, il 58% della media gennaio–ottobre 2023; Bab el-Mandeb 27,3 (37%); Hormuz 4,4 ([IMF PortWatch](https://portwatch.imf.org/), media 7 giorni 26 ottobre–1 novembre 2026). Nel cruscotto del rischio Hormuz è a livello critico, Bab el-Mandeb alto, Suez medio.
+- **Noli container più che doppi, porti italiani a due velocità.** Drewry WCI a 4.389 dollari per FEU (5 novembre 2026), +124% su un anno; FBX globale +3% in 4 settimane. Sui 30 giorni calano Ravenna (−20%) e Venezia Malamocco (−16%), porti di energia e rinfuse; Genova −5% ([IMF PortWatch](https://portwatch.imf.org/), al 30 ottobre 2026).
+- **L'energia resta il costo più pesante.** Gas TTF a 82,33 €/MWh, +164% su un anno (Yahoo Finance, 9 novembre 2026); gasolio self a 2,224 €/litro ([Mimit, Osservatorio prezzi carburanti (media nazionale self), ripreso da Affaritaliani](https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html), 7 novembre 2026); stoccaggi gas italiani all'88,9% (GIE AGSI+, 8 novembre 2026).
+- **Nord Europa: meno esposto sui noli, più esposto sul gas.** Cina–Nord Europa 3.422 dollari per FEU contro 4.324 verso il Mediterraneo (Freightos, 6 novembre 2026); stoccaggi al 63,5% nei Paesi Bassi e al 58,9% in Germania, molto sotto la media di 5 anni (GIE AGSI+). Dettagli nella sezione 8.
+- **Materie critiche: decisione cinese il 10 novembre.** Scade la sospensione dei controlli all'export di terre rare decisi a ottobre 2025; al 9 novembre non risultano annunci di proroga ([CIRS Group (testo dell'annuncio n. 70/2025) e Mining Technology](https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/), 9 novembre 2026).
 
 > *Valutazione.* La supply chain europea di novembre 2026 ha due velocità. I container tornano verso Suez e i noli spot non salgono più ma restano circa il doppio di un anno fa, mentre energia, fertilizzanti e materie critiche restano legati a Hormuz e alla Cina. Per l'Italia il rischio più concreto nei prossimi due mesi non è logistico ma di costo: gas, gasolio ed elettricità in inverno con stoccaggi europei bassi.
 
@@ -52,9 +51,9 @@ Dati letti il 9 novembre 2026. Ogni numero ha fonte e data; le parti marcate *Va
 
 ![transiti](grafici/sc-2026-11-transiti.svg)
 
-<small>Navi al giorno, media mensile dei mesi completi. Fonte: [IMF PortWatch](https://portwatch.imf.org/), dati fino al 1 novembre 2026. Linee tratteggiate: eventi con fonte nel testo.</small>
+<small>Navi al giorno, media mensile dei mesi completi. Fonte: [IMF PortWatch](https://portwatch.imf.org/), file portwatch.json, dati fino al 1 novembre 2026. Linee tratteggiate: eventi (dicembre 2023, attacchi houthi; 2 marzo 2026, Hormuz chiuso di fatto), con fonte nello script.</small>
 
-**Fatti.** Prima della crisi del Mar Rosso (media gennaio–ottobre 2023) Suez faceva 74 navi al giorno e il Capo 49. Da dicembre 2023 il rapporto si è rovesciato: il minimo mensile di Suez dal 2024 è 34,1 (febbraio 2025), il massimo del Capo 98,1 (agosto 2025). Nell'ultima settimana misurata il Capo è a 92,0 navi al giorno, il 188% della media gennaio–ottobre 2023 ([IMF PortWatch](https://portwatch.imf.org/), media 7 giorni 26 ottobre–1 novembre 2026).
+**Fatti.** Prima della crisi del Mar Rosso (media gennaio–ottobre 2023) Suez faceva 74 navi al giorno e il Capo 49. Da dicembre 2023 il rapporto si è rovesciato: il minimo mensile di Suez dal 2024 è 34,1 (febbraio 2025), il massimo del Capo 98,1 (agosto 2025). Nell'ultima settimana misurata il Capo è a 92,0 navi al giorno, il 188% della media gennaio–ottobre 2023 ([IMF PortWatch](https://portwatch.imf.org/), media 7 giorni 26 ottobre–1 novembre 2026). Suez è al 58% e Bab el-Mandeb al 37% di quella media. A Hormuz PortWatch vede 4,4 navi al giorno; Lloyd's List Intelligence, che ricostruisce anche i transiti con il transponder spento, conta 116 transiti di navi non legate all'Iran nella settimana 19–25 ottobre 2026, circa 17 al giorno ([Lloyd's List Intelligence, Strait of Hormuz Brief](https://www.lloydslistintelligence.com/resources/blog/strait-of-hormuz-brief-5-november-2026), 5 novembre 2026). Nel cruscotto del rischio Hormuz è a livello critico (22,5 su 25), Bab el-Mandeb a livello alto (19,0 su 25) e Suez a livello medio (9,9 su 25) (rischio.json, 9 novembre 2026; dettagli nella sezione 9).
 
 Altre fonti confermano il ritorno a Suez delle portacontainer: capacità container: 753.000 TEU a settimana nelle prime due settimane di ottobre 2026, contro 1.457.000 nello stesso periodo del 2023: per la prima volta sopra il 50% dei livelli pre-crisi ([BIMCO, Shipping Number of the Week, su dati Clarksons](https://www.bimco.org/news-insights/market-analysis/shipping-number-of-the-week/2026/1014-snow/)); transiti: 1.195 transiti e 111 milioni di tpl dal 28 settembre al 25 ottobre 2026; tonnellaggio ancora −36% sul periodo prima degli Houthi ([Lloyd's List Intelligence, Red Sea Brief del 29 ottobre 2026](https://www.lloydslistintelligence.com/resources/blog/red-sea-brief---29-october-2026)).
 
@@ -83,7 +82,7 @@ Altre fonti confermano il ritorno a Suez delle portacontainer: capacità contain
 
 ![noli](grafici/sc-2026-11-noli.svg)
 
-<small>Sopra: Freightos FBX globale, serie settimanale disponibile gratis ([Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/)). Sotto: Drewry WCI per rotta al 5 novembre 2026; la tacca verticale è il valore di un anno prima ([Drewry WCI del 6 novembre 2025, ripreso da Cyprus Shipping News e Alchempro/Fibre2Fashion](https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/), 6 novembre 2025).</small>
+<small>Dollari per FEU (noli.json). Sopra: Freightos FBX globale, serie settimanale disponibile gratis ([Freightos](https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/)). Sotto: Drewry WCI per rotta al 5 novembre 2026; la tacca verticale è il valore di un anno prima ([Drewry WCI del 6 novembre 2025, ripreso da Cyprus Shipping News e Alchempro/Fibre2Fashion](https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/), 6 novembre 2025).</small>
 
 **Trend.** L'FBX globale è a 3.452 dollari: −6% dal 14 agosto 2026 (3.690), massimo della serie 3.690 il 14 agosto 2026. La rotta Cina–Mediterraneo (FBX13, 4.324) costa più della Cina–Nord Europa (FBX11, 3.422), come nel WCI Shanghai–Genova contro Shanghai–Rotterdam. Lo SCFI scende (−1,5%) mentre il CCFI, che pesa i contratti, sale (+2,3%), con la rotta Mediterraneo a +6,8% (SSE, 6 novembre 2026).
 
@@ -122,7 +121,7 @@ Altre fonti confermano il ritorno a Suez delle portacontainer: capacità contain
 
 ![porti](grafici/sc-2026-11-porti.svg)
 
-<small>Variazione delle chiamate di navi al giorno, ultimi 30 giorni contro gli stessi giorni di un anno prima. Fonte: [IMF PortWatch](https://portwatch.imf.org/).</small>
+<small>Variazione percentuale delle chiamate di navi al giorno, ultimi 30 giorni contro gli stessi giorni di un anno prima, dati fino al 30 ottobre 2026. Fonte: [IMF PortWatch](https://portwatch.imf.org/) (portwatch.json, report/dati/porti-europei.json, porti-nord.json).</small>
 
 **Fatti.** Ravenna fa 6,4 chiamate al giorno in 30 giorni (−20%), con import stimato −24%. Trieste, porto del greggio per l'oleodotto TAL verso Austria e Germania, è a −6%, petroliere −24% sui 7 giorni. I porti container tengono: Genova −5% sulle chiamate ma portacontainer +16% e import stimato +31% sui 7 giorni; Gioia Tauro, primo porto di trasbordo, portacontainer +11%. ([IMF PortWatch](https://portwatch.imf.org/)).
 
@@ -248,7 +247,7 @@ Due letture affiancate. **Flussi negli stretti:** stessi riferimenti e stesse so
 
 ![cruscotto](grafici/sc-2026-11-cruscotto.svg)
 
-<small>Cruscotto: valore, direzione recente e stato. Transiti con le soglie del metodo del cruscotto del rischio, prezzi e stoccaggi con le soglie di livello della tabella qui sotto. ● verde, ▲ giallo, ■ rosso. Fonti e date nei singoli riquadri.</small>
+<small>Cruscotto: valore, direzione recente e stato. Transiti con le soglie del metodo del cruscotto del rischio, prezzi e stoccaggi con le soglie di livello della tabella qui sotto. ● verde, ▲ giallo, ■ rosso. Fonti e date nei singoli riquadri (portwatch.json, rischio.json, noli.json, prezzi.json, scorte.json).</small>
 
 | Indicatore | Ultimo | Data | Soglie | Stato | Cruscotto del rischio | Fonte |
 |---|---|---|---|---|---|---|
@@ -308,7 +307,7 @@ Due letture affiancate. **Flussi negli stretti:** stessi riferimenti e stesse so
 | rischio.json | 2026-11-09 20:03 |
 | porti-nord.json | 2026-11-09 20:05 |
 | esposizione-nord.json | 2026-11-09 20:05 |
-| report/dati/porti-europei.json | 2026-11-09 20:17 |
+| report/dati/porti-europei.json | 2026-11-09 20:20 |
 
 - PortWatch conta solo le navi con AIS acceso, con circa una settimana di ritardo: a Hormuz e nel Mar Nero i transiti «dark» sfuggono (Lloyd's List Intelligence conta molti più transiti a Hormuz).
 - Le chiamate nei porti contano le navi, non le tonnellate né i TEU; sui 7 giorni i numeri sono piccoli e oscillano.
@@ -320,6 +319,8 @@ Due letture affiancate. **Flussi negli stretti:** stessi riferimenti e stesse so
 - Alcune fonti esterne non sono state aperte (Trading Economics, Motor1, Windward, Riviera, Railmarket): quei fatti sono letti dai risultati di ricerca e marcati con affidabilità media o bassa. Le fonti aperte in revisione sono elencate nel riquadro finale.
 - La sezione sul Nord Europa usa porti scaricati da PortWatch dallo script del report e i file paesi.json, scorte.json, navi.json e cavi-incidenti.json: per la Danimarca mancano gli indicatori paese (non è in paesi.json).
 
+**Glossario.** **AIS**: transponder con cui le navi trasmettono posizione e identità; chi lo spegne sparisce dai conteggi. **FEU / TEU**: container da 40 / 20 piedi. **WCI, FBX, SCFI, CCFI**: indici dei noli container di Drewry, Freightos, Shanghai Shipping Exchange. **Baltic Dry**: indice dei noli delle navi per rinfuse secche (minerali, carbone, grano). **GNL**: gas naturale liquefatto. **TTF**: prezzo di riferimento del gas in Europa, scambiato sull'hub olandese. **Brent**: prezzo di riferimento del greggio. **Flotta ombra**: petroliere vecchie, con proprietà opaca, usate per aggirare le sanzioni. **GNSS jamming / spoofing**: disturbo o falsificazione dei segnali satellitari di posizione. **Chiamata (port call)**: arrivo di una nave in porto, stimato da PortWatch con l'AIS.
+
 <a id="revisione"></a>
 
 ---
@@ -328,7 +329,7 @@ Due letture affiancate. **Flussi negli stretti:** stessi riferimenti e stesse so
 
 Verifica indipendente dei numeri, della logica e della coerenza con il report «Hormuz e Mar Rosso» e con il cruscotto del rischio, fatta prima della pubblicazione da un secondo passaggio con un assistente AI (Claude). Resoconto completo: report/revisioni/supply-chain-2026-11.md.
 
-**Affermazioni verificate.** 72 affermazioni numeriche controllate: 61 contro i file di docs/data (portwatch, noli, prezzi, scorte, gas-italia, paesi, cavi, sanzioni-navi, navi, ferrovie, rischio) e 11 contro la fonte esterna aperta (BIMCO, Lloyd's List Intelligence, Affaritaliani/Mimit, Cyprus Shipping News per il WCI 2025, The Loadstar per il WCI per rotta, Mining Technology, Baltic Exchange per l'FBX settimanale).
+**Affermazioni verificate.** 59 affermazioni controllate (oltre 100 numeri): 43 contro i file di docs/data (portwatch, noli, prezzi, scorte, gas-italia, paesi, cavi, sanzioni-navi, navi, ferrovie, rischio) e 16 anche contro la fonte esterna: 10 confermate (BIMCO, Lloyd's List Intelligence, Mimit via Affaritaliani, Cyprus Shipping News per il WCI 2025, The Loadstar per il WCI per rotta, Mining Technology, Baltic Exchange per l'FBX settimanale, Commissione UE), 6 non verificabili (elenco sotto). Nessun errore di calcolo nei dati; 9 errori o imprecisioni nel testo, corretti.
 
 **Correzioni.**
 
@@ -342,6 +343,7 @@ Verifica indipendente dei numeri, della logica e della coerenza con il report «
 - Germania «−29,7 punti sotto la media» (doppia negazione) corretto in «29,7 punti sotto»; arrotondamenti allineati a quelli del cruscotto (−20,5 diventa −21%, non −20%).
 - Aggiunta la sezione «Cosa significa per il Nord Europa» (porti da porti-nord.json, GNL per origine da esposizione-nord.json, Stretti danesi, noli, stoccaggi, flotta ombra, cavi); Stretti danesi aggiunti alla tabella dei transiti e al cruscotto, con l'avvertenza che PortWatch misura solo l'Øresund.
 - Testo sui file commercio.json e minerali.json aggiornato: esistono da oggi ma il report non li legge ancora.
+- Adeguamento a report/STANDARD.md: «In breve» da 6 a 5 punti brevi, con numeri presenti anche nel corpo; glossario; didascalie dei grafici con file e data del dato.
 
 **Cosa resta non verificabile.**
 
@@ -349,6 +351,7 @@ Verifica indipendente dei numeri, della logica e della coerenza con il report «
 - Baltic Dry 2.805: una sola fonte secondaria (Trading Economics), pagina non aperta.
 - FBX: il comunicato settimanale del Baltic Exchange (6 novembre) dà 3.497 $ per l'indice e 3.384 $ per la Cina–Nord Europa, contro 3.452 e 3.422 di noli.json: istantanee diverse della stessa settimana, scarto 1–1,3%.
 - Accise sul gasolio (Motor1), GNSS nel Golfo (Windward), costi della deviazione (Riviera/LSEG), TEU della ferrovia Cina–Europa (Railmarket), gasolio di un anno prima (QuiFinanza): pagine non aperte o bloccate.
+- Molte frasi del corpo superano le 30 parole indicate dallo standard: non sono state riscritte tutte.
 - Le schede curate (stretti-dettaglio.json, ferrovie.json, ibrido.json, esposizione-nord.json) sono state controllate solo a campione; in esposizione-nord.json la scheda della Lituania data a «gennaio 2026» un danno ai cavi che cavi-incidenti.json registra il 26 gennaio 2025: segnalato a chi cura i dati, il report usa cavi-incidenti.json.
 
 ---

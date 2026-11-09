@@ -1,0 +1,116 @@
+<svg class="viz" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 414" width="100%" role="img" aria-labelledby="g-catena-l-t g-catena-l-d" style="max-width:720px;height:auto;display:block">
+<title id="g-catena-l-t">La catena del valore dell'AI in otto anelli</title>
+<desc id="g-catena-l-d">Dalla miniera al data center: per ogni anello i paesi con più nodi, il numero di nodi e lo stato peggiore dei colli di bottiglia.</desc>
+<style>
+.viz{--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-card:#FFFFFF;--v-band:#ECE9E0;--v-acc:#A61E6B;
+--v-ok:#0ca30c;--v-warn:#b47d00;--v-crit:#d03b3b;font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-card:#172127;--v-band:#1A252C;--v-acc:#d14f9a;
+--v-ok:#3fbf3f;--v-warn:#fab219;--v-crit:#e5605f}}
+.viz text{fill:var(--v-soft);font-size:12px}.viz .ink{fill:var(--v-ink)}.viz .b{font-weight:600}.viz .faint{fill:var(--v-faint)}
+.viz .box{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}.viz .box-crit{stroke:var(--v-crit);stroke-width:1.5}
+.viz .box-warn{stroke:var(--v-warn);stroke-width:1.5}.viz .num{font-variant-numeric:tabular-nums}
+.viz .arr{stroke:var(--v-faint);stroke-width:1.5;fill:none}.viz .head{fill:var(--v-faint)}
+.viz .acc{fill:var(--v-acc)}.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .bar{fill:var(--v-acc)}.viz .track{fill:var(--v-band)}.viz .grid{stroke:var(--v-grid);stroke-width:1}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.05}
+</style>
+<text x="12" y="18" class="ink b">Dalla miniera al data center</text>
+<text x="12" y="34" class="faint">paesi chiave · nodi e titoli nel file di dati · simbolo = collo di bottiglia peggiore</text>
+<path d="M164.0 108.0 H184.0" class="arr"/><path d="M186.0 108.0 l-7 -4 v8 z" class="head"/>
+<path d="M340.0 108.0 H360.0" class="arr"/><path d="M362.0 108.0 l-7 -4 v8 z" class="head"/>
+<path d="M516.0 108.0 H536.0" class="arr"/><path d="M538.0 108.0 l-7 -4 v8 z" class="head"/>
+<path d="M615.0 174.0 V201.0 H87.0 V226.0" class="arr"/><path d="M87.0 228.0 l-4 -7 h8 z" class="head"/>
+<path d="M164.0 294.0 H184.0" class="arr"/><path d="M186.0 294.0 l-7 -4 v8 z" class="head"/>
+<path d="M340.0 294.0 H360.0" class="arr"/><path d="M362.0 294.0 l-7 -4 v8 z" class="head"/>
+<path d="M516.0 294.0 H536.0" class="arr"/><path d="M538.0 294.0 l-7 -4 v8 z" class="head"/>
+<g><title>Materie prime: 9 nodi; Cina, Congo (RD), Qatar; colli di bottiglia: Controlli cinesi su terre rare, gallio e germanio (critico); Elio del Qatar bloccato a Hormuz (critico); Quarzo ad alta purezza di Spruce Pine (critico); Tantalio dal Kivu e dal Ruanda (critico)</title>
+<rect x="12.0" y="44.0" width="150" height="128" rx="6" class="box box-crit"/>
+<text x="22.0" y="64.0" class="acc b num" style="font-size:13px">1</text>
+<text x="38.0" y="64.0" class="ink b" style="font-size:13px">Miniere e gas</text>
+<text x="22.0" y="86.0">Cina</text>
+<text x="22.0" y="102.0">Congo (RD)</text>
+<text x="22.0" y="118.0">Qatar</text>
+<text x="22.0" y="142.0" class="faint num">9 nodi · 3 titoli</text>
+<rect x="22.0" y="154.0" width="9" height="9" class="f-crit"/>
+<text x="36.0" y="162.0" class="ink">critico</text>
+</g>
+<g><title>Macchine per fare chip: 8 nodi; Paesi Bassi, Stati Uniti, Giappone; colli di bottiglia: Litografia EUV: un solo fornitore, in Olanda (critico)</title>
+<rect x="188.0" y="44.0" width="150" height="128" rx="6" class="box box-crit"/>
+<text x="198.0" y="64.0" class="acc b num" style="font-size:13px">2</text>
+<text x="214.0" y="64.0" class="ink b" style="font-size:13px">Macchine (EUV)</text>
+<text x="198.0" y="86.0">Paesi Bassi</text>
+<text x="198.0" y="102.0">Stati Uniti</text>
+<text x="198.0" y="118.0">Giappone</text>
+<text x="198.0" y="142.0" class="faint num">8 nodi · 6 titoli</text>
+<rect x="198.0" y="154.0" width="9" height="9" class="f-crit"/>
+<text x="212.0" y="162.0" class="ink">critico</text>
+</g>
+<g><title>Wafer e fabbricazione: 13 nodi; Taiwan, Corea del Sud, Stati Uniti; colli di bottiglia: Fonderia avanzata concentrata a Taiwan (critico); Energia di Taiwan per le fab (attenzione)</title>
+<rect x="364.0" y="44.0" width="150" height="128" rx="6" class="box box-crit"/>
+<text x="374.0" y="64.0" class="acc b num" style="font-size:13px">3</text>
+<text x="390.0" y="64.0" class="ink b" style="font-size:13px">Fonderie</text>
+<text x="374.0" y="86.0">Taiwan</text>
+<text x="374.0" y="102.0">Corea del Sud</text>
+<text x="374.0" y="118.0">Stati Uniti</text>
+<text x="374.0" y="142.0" class="faint num">13 nodi · 5 titoli</text>
+<rect x="374.0" y="154.0" width="9" height="9" class="f-crit"/>
+<text x="388.0" y="162.0" class="ink">critico</text>
+</g>
+<g><title>Packaging avanzato e memoria HBM: 9 nodi; Taiwan, Corea del Sud, Stati Uniti; colli di bottiglia: Packaging CoWoS (attenzione); Memoria HBM e DRAM (critico)</title>
+<rect x="540.0" y="44.0" width="150" height="128" rx="6" class="box box-crit"/>
+<text x="550.0" y="64.0" class="acc b num" style="font-size:13px">4</text>
+<text x="566.0" y="64.0" class="ink b" style="font-size:13px">CoWoS e HBM</text>
+<text x="550.0" y="86.0">Taiwan</text>
+<text x="550.0" y="102.0">Corea del Sud</text>
+<text x="550.0" y="118.0">Stati Uniti</text>
+<text x="550.0" y="142.0" class="faint num">9 nodi · 6 titoli</text>
+<rect x="550.0" y="154.0" width="9" height="9" class="f-crit"/>
+<text x="564.0" y="162.0" class="ink">critico</text>
+</g>
+<g><title>Progetto dei chip e acceleratori: 5 nodi; Stati Uniti, Cina; colli di bottiglia: Un solo progettista dominante e regole USA sui chip (critico)</title>
+<rect x="12.0" y="230.0" width="150" height="128" rx="6" class="box box-crit"/>
+<text x="22.0" y="250.0" class="acc b num" style="font-size:13px">5</text>
+<text x="38.0" y="250.0" class="ink b" style="font-size:13px">GPU e ASIC</text>
+<text x="22.0" y="272.0">Stati Uniti</text>
+<text x="22.0" y="288.0">Cina</text>
+<text x="22.0" y="328.0" class="faint num">5 nodi · 5 titoli</text>
+<rect x="22.0" y="340.0" width="9" height="9" class="f-crit"/>
+<text x="36.0" y="348.0" class="ink">critico</text>
+</g>
+<g><title>Server, rete e assemblaggio: 7 nodi; Taiwan, Messico, Cina; colli di bottiglia: Ottica: chip laser EML per l&#x27;1,6T (critico)</title>
+<rect x="188.0" y="230.0" width="150" height="128" rx="6" class="box box-crit"/>
+<text x="198.0" y="250.0" class="acc b num" style="font-size:13px">6</text>
+<text x="214.0" y="250.0" class="ink b" style="font-size:13px">Server e ottica</text>
+<text x="198.0" y="272.0">Taiwan</text>
+<text x="198.0" y="288.0">Messico</text>
+<text x="198.0" y="304.0">Cina</text>
+<text x="198.0" y="328.0" class="faint num">7 nodi · 8 titoli</text>
+<rect x="198.0" y="340.0" width="9" height="9" class="f-crit"/>
+<text x="212.0" y="348.0" class="ink">critico</text>
+</g>
+<g><title>Logistica: 10 nodi; Taiwan, Corea del Sud, Paesi Bassi; colli di bottiglia: Elio del Qatar bloccato a Hormuz (critico); Fonderia avanzata concentrata a Taiwan (critico); Energia di Taiwan per le fab (attenzione)</title>
+<rect x="364.0" y="230.0" width="150" height="128" rx="6" class="box box-crit"/>
+<text x="374.0" y="250.0" class="acc b num" style="font-size:13px">7</text>
+<text x="390.0" y="250.0" class="ink b" style="font-size:13px">Logistica</text>
+<text x="374.0" y="272.0">Taiwan</text>
+<text x="374.0" y="288.0">Corea del Sud</text>
+<text x="374.0" y="304.0">Paesi Bassi</text>
+<text x="374.0" y="328.0" class="faint num">10 nodi · 2 titoli</text>
+<rect x="374.0" y="340.0" width="9" height="9" class="f-crit"/>
+<text x="388.0" y="348.0" class="ink">critico</text>
+</g>
+<g><title>Energia e data center: 9 nodi; Stati Uniti, Emirati, Taiwan; colli di bottiglia: Trasformatori e allacci alla rete (critico); Energia di Taiwan per le fab (attenzione); Costo dell&#x27;energia per i data center (critico)</title>
+<rect x="540.0" y="230.0" width="150" height="128" rx="6" class="box box-crit"/>
+<text x="550.0" y="250.0" class="acc b num" style="font-size:13px">8</text>
+<text x="566.0" y="250.0" class="ink b" style="font-size:13px">Energia e DC</text>
+<text x="550.0" y="272.0">Stati Uniti</text>
+<text x="550.0" y="288.0">Emirati</text>
+<text x="550.0" y="304.0">Taiwan</text>
+<text x="550.0" y="328.0" class="faint num">9 nodi · 8 titoli</text>
+<rect x="550.0" y="340.0" width="9" height="9" class="f-crit"/>
+<text x="564.0" y="348.0" class="ink">critico</text>
+</g>
+<rect x="12.0" y="390.0" width="9" height="9" class="f-crit"/><text x="26" y="398">critico</text>
+<path d="M91.5 399.0 l5 -9 l5 9 z" class="f-warn"/><text x="106" y="398">attenzione</text>
+<circle cx="196.5" cy="394.5" r="4.5" class="f-ok"/><text x="206" y="398">normale</text>
+</svg>

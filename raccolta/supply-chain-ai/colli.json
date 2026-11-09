@@ -1,87 +1,581 @@
 {
  "nota": "Colli di bottiglia con indicatori. Le SOGLIE sono una valutazione dell'osservatorio, non un dato. 'direzione': alto-male = peggio quando sale; basso-male = peggio quando scende. 'tipo': strutturale (concentrazione che cambia in anni) o congiunturale (si muove in settimane). 'sorgente' dice da dove raccogli.py prende il valore: manuale (fonte citata qui), prezzi, portwatch, scadenza (giorni a una data di controlli.json), cavi-incidenti, materie (quota calcolata da USGS).",
  "elementi": [
-  {"id": "C01", "anello": "materie", "nome": "Controlli cinesi su terre rare, gallio e germanio", "rischio": "geopolitico",
+  {
+   "id": "C01",
+   "anello": "materie",
+   "nome": "Controlli cinesi su terre rare, gallio e germanio",
+   "rischio": "geopolitico",
    "perche": "La Cina fa il 99% del gallio primario e il 69% delle terre rare estratte; le licenze di aprile 2025 restano, le misure di ottobre 2025 e il divieto verso gli USA sono solo sospesi.",
-   "nodi": ["bayan-obo", "sillamae", "narva"], "titoli": ["MP", "LYC.AX"],
+   "nodi": [
+    "bayan-obo",
+    "sillamae",
+    "narva"
+   ],
+   "titoli": [
+    "MP",
+    "LYC.AX"
+   ],
    "indicatori": [
-    {"nome": "Giorni alla fine della sospensione delle misure di ottobre 2025 (terre rare, regola dello 0,1%)", "tipo": "congiunturale", "sorgente": {"tipo": "scadenza", "controllo": "CN-2025-10-TR"}, "unita": "giorni", "direzione": "basso-male", "soglia_attenzione": 60, "soglia_critica": 14},
-    {"nome": "Giorni alla fine della sospensione del divieto di export di gallio e germanio verso gli USA", "tipo": "congiunturale", "sorgente": {"tipo": "scadenza", "controllo": "CN-2024-USBAN"}, "unita": "giorni", "direzione": "basso-male", "soglia_attenzione": 60, "soglia_critica": 14},
-    {"nome": "Quota cinese dell'estrazione di terre rare", "tipo": "strutturale", "sorgente": {"tipo": "materie", "materia": "terre-rare", "paesi": ["CN"]}, "unita": "%", "direzione": "alto-male", "soglia_attenzione": 40, "soglia_critica": 60}
-   ]},
-  {"id": "C02", "anello": "materie", "nome": "Elio del Qatar bloccato a Hormuz", "rischio": "logistico e bellico",
+    {
+     "nome": "Giorni alla fine della sospensione delle misure di ottobre 2025 (terre rare, regola dello 0,1%)",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "scadenza",
+      "controllo": "CN-2025-10-TR"
+     },
+     "unita": "giorni",
+     "direzione": "basso-male",
+     "soglia_attenzione": 60,
+     "soglia_critica": 14
+    },
+    {
+     "nome": "Giorni alla fine della sospensione del divieto di export di gallio e germanio verso gli USA",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "scadenza",
+      "controllo": "CN-2024-USBAN"
+     },
+     "unita": "giorni",
+     "direzione": "basso-male",
+     "soglia_attenzione": 60,
+     "soglia_critica": 14
+    },
+    {
+     "nome": "Quota cinese dell'estrazione di terre rare",
+     "tipo": "strutturale",
+     "sorgente": {
+      "tipo": "materie",
+      "materia": "terre-rare",
+      "paesi": [
+       "CN"
+      ]
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 40,
+     "soglia_critica": 60
+    }
+   ]
+  },
+  {
+   "id": "C02",
+   "anello": "materie",
+   "nome": "Elio del Qatar bloccato a Hormuz",
+   "rischio": "logistico e bellico",
    "perche": "Il Qatar fa un terzo dell'elio mondiale da Ras Laffan; dal 2 marzo 2026 Hormuz è chiuso di fatto. Le fab hanno scorte, ma l'elio non ha sostituti nel raffreddamento dei wafer.",
-   "nodi": ["ras-laffan", "hormuz"], "titoli": [],
+   "nodi": [
+    "ras-laffan",
+    "hormuz"
+   ],
+   "titoli": [],
    "indicatori": [
-    {"nome": "Transiti a Hormuz, media 7 giorni rispetto a un anno prima", "tipo": "congiunturale", "sorgente": {"tipo": "portwatch", "id": "chokepoint6", "campo": "var7_anno_pct.n_total"}, "unita": "%", "direzione": "basso-male", "soglia_attenzione": -20, "soglia_critica": -50},
-    {"nome": "Quota del Qatar nella produzione mondiale di elio", "tipo": "strutturale", "sorgente": {"tipo": "materie", "materia": "elio", "paesi": ["QA"]}, "unita": "%", "direzione": "alto-male", "soglia_attenzione": 20, "soglia_critica": 30}
-   ]},
-  {"id": "C03", "anello": "materie", "nome": "Quarzo ad alta purezza di Spruce Pine", "rischio": "fisico (uragani)",
+    {
+     "nome": "Transiti a Hormuz, media 7 giorni rispetto a un anno prima",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "portwatch",
+      "id": "chokepoint6",
+      "campo": "var7_anno_pct.n_total"
+     },
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -20,
+     "soglia_critica": -50
+    },
+    {
+     "nome": "Quota del Qatar nella produzione mondiale di elio",
+     "tipo": "strutturale",
+     "sorgente": {
+      "tipo": "materie",
+      "materia": "elio",
+      "paesi": [
+       "QA"
+      ]
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 20,
+     "soglia_critica": 30
+    }
+   ]
+  },
+  {
+   "id": "C03",
+   "anello": "materie",
+   "nome": "Quarzo ad alta purezza di Spruce Pine",
+   "rischio": "fisico (uragani)",
    "perche": "Due impianti in una sola valle della North Carolina forniscono la maggior parte del quarzo per i crogioli; l'uragano Helene li ha fermati nel 2024.",
-   "nodi": ["spruce-pine"], "titoli": [],
+   "nodi": [
+    "spruce-pine"
+   ],
+   "titoli": [],
    "indicatori": [
-    {"nome": "Quota stimata di Spruce Pine nell'offerta di quarzo ad alta purezza (stima BloombergNEF: oltre l'80%)", "tipo": "strutturale", "sorgente": {"tipo": "manuale", "valore": 80, "fonte": "BNN Bloomberg (BloombergNEF)", "link": "https://bnnbloomberg.ca/investing/commodities/2024/10/02/hurricane-helene-halts-quartz-mines-vital-for-chipmaking-and-solar", "data_fonte": "2024-10-02", "affidabilita": "media"}, "unita": "%", "direzione": "alto-male", "soglia_attenzione": 50, "soglia_critica": 75}
-   ]},
-  {"id": "C04", "anello": "materie", "nome": "Tantalio dal Kivu e dal Ruanda", "rischio": "conflitto e conformità (minerali di conflitto)",
+    {
+     "nome": "Quota stimata di Spruce Pine nell'offerta di quarzo ad alta purezza (stima BloombergNEF: oltre l'80%)",
+     "tipo": "strutturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 80,
+      "fonte": "BNN Bloomberg (BloombergNEF)",
+      "link": "https://bnnbloomberg.ca/investing/commodities/2024/10/02/hurricane-helene-halts-quartz-mines-vital-for-chipmaking-and-solar",
+      "data_fonte": "2024-10-02",
+      "affidabilita": "media"
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 50,
+     "soglia_critica": 75
+    }
+   ]
+  },
+  {
+   "id": "C04",
+   "anello": "materie",
+   "nome": "Tantalio dal Kivu e dal Ruanda",
+   "rischio": "conflitto e conformità (minerali di conflitto)",
    "perche": "Congo e Ruanda fanno la maggior parte del tantalio estratto; la miniera di Rubaya è in mano al gruppo M23 da aprile 2024.",
-   "nodi": ["rubaya"], "titoli": [],
+   "nodi": [
+    "rubaya"
+   ],
+   "titoli": [],
    "indicatori": [
-    {"nome": "Quota di Congo e Ruanda nell'estrazione di tantalio", "tipo": "strutturale", "sorgente": {"tipo": "materie", "materia": "tantalio", "paesi": ["CD", "RW"]}, "unita": "%", "direzione": "alto-male", "soglia_attenzione": 40, "soglia_critica": 60}
-   ]},
-  {"id": "C05", "anello": "attrezzature", "nome": "Litografia EUV: un solo fornitore, in Olanda", "rischio": "concentrazione e geopolitica (controlli USA/Paesi Bassi)",
+    {
+     "nome": "Quota di Congo e Ruanda nell'estrazione di tantalio",
+     "tipo": "strutturale",
+     "sorgente": {
+      "tipo": "materie",
+      "materia": "tantalio",
+      "paesi": [
+       "CD",
+       "RW"
+      ]
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 40,
+     "soglia_critica": 60
+    }
+   ]
+  },
+  {
+   "id": "C05",
+   "anello": "attrezzature",
+   "nome": "Litografia EUV: un solo fornitore, in Olanda",
+   "rischio": "concentrazione e geopolitica (controlli USA/Paesi Bassi)",
    "perche": "Ogni chip AI avanzato passa da scanner EUV costruiti solo a Veldhoven, con ottiche da Oberkochen e laser da Ditzingen. Gli USA spingono per estendere i limiti alle DUV e all'assistenza in Cina.",
-   "nodi": ["veldhoven", "oberkochen", "ditzingen", "san-diego"], "titoli": ["ASML"],
+   "nodi": [
+    "veldhoven",
+    "oberkochen",
+    "ditzingen",
+    "san-diego"
+   ],
+   "titoli": [
+    "ASML"
+   ],
    "indicatori": [
-    {"nome": "Fornitori di scanner EUV al mondo", "tipo": "strutturale", "sorgente": {"tipo": "manuale", "valore": 1, "fonte": "ai-mondo.json (ASML, fornitore unico al mondo di scanner EUV)", "link": "https://statementdog.com/analysis/ASML/earnings_calls/316926", "data_fonte": "2026-07", "affidabilita": "alta"}, "unita": "fornitori", "direzione": "basso-male", "soglia_attenzione": 2, "soglia_critica": 1},
-    {"nome": "Quota della Cina nelle vendite ASML 2026 (guida)", "tipo": "congiunturale", "sorgente": {"tipo": "manuale", "valore": 20, "fonte": "XenoSpectrum / Seeking Alpha sui risultati ASML del 3° trimestre 2026 (guida del direttore finanziario Roger Dassen)", "link": "https://xenospectrum.com/en/asml-china-sales-q3-2026/", "data_fonte": "2026-10-14", "affidabilita": "media"}, "unita": "%", "direzione": "alto-male", "soglia_attenzione": 25, "soglia_critica": 40},
-    {"nome": "ASML in borsa, variazione a 1 mese", "tipo": "congiunturale", "sorgente": {"tipo": "prezzi", "id": "asml", "campo": "var.1m"}, "unita": "%", "direzione": "basso-male", "soglia_attenzione": -10, "soglia_critica": -25}
-   ]},
-  {"id": "C06", "anello": "fabbricazione", "nome": "Fonderia avanzata concentrata a Taiwan", "rischio": "geopolitico, sismico, energetico",
+    {
+     "nome": "Fornitori di scanner EUV al mondo",
+     "tipo": "strutturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 1,
+      "fonte": "ai-mondo.json (ASML, fornitore unico al mondo di scanner EUV)",
+      "link": "https://statementdog.com/analysis/ASML/earnings_calls/316926",
+      "data_fonte": "2026-07",
+      "affidabilita": "alta"
+     },
+     "unita": "fornitori",
+     "direzione": "basso-male",
+     "soglia_attenzione": 2,
+     "soglia_critica": 1
+    },
+    {
+     "nome": "Quota della Cina nelle vendite ASML 2026 (guida)",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 20,
+      "fonte": "XenoSpectrum / Seeking Alpha sui risultati ASML del 3° trimestre 2026 (guida del direttore finanziario Roger Dassen)",
+      "link": "https://xenospectrum.com/en/asml-china-sales-q3-2026/",
+      "data_fonte": "2026-10-14",
+      "affidabilita": "media"
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 25,
+     "soglia_critica": 40
+    },
+    {
+     "nome": "ASML in borsa, variazione a 1 mese",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "prezzi",
+      "id": "asml",
+      "campo": "var.1m"
+     },
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -10,
+     "soglia_critica": -25
+    }
+   ]
+  },
+  {
+   "id": "C06",
+   "anello": "fabbricazione",
+   "nome": "Fonderia avanzata concentrata a Taiwan",
+   "rischio": "geopolitico, sismico, energetico",
    "perche": "TSMC ha il 72,5% dei ricavi di fonderia e il 2 nm è in volume solo a Hsinchu e Kaohsiung; lo Stretto di Taiwan è il punto unico di rottura.",
-   "nodi": ["tsmc-hsinchu", "tsmc-kaohsiung", "stretto-taiwan"], "titoli": ["TSM", "SOX"],
+   "nodi": [
+    "tsmc-hsinchu",
+    "tsmc-kaohsiung",
+    "stretto-taiwan"
+   ],
+   "titoli": [
+    "TSM",
+    "SOX"
+   ],
    "indicatori": [
-    {"nome": "Quota TSMC dei ricavi mondiali di fonderia (2° trimestre 2026)", "tipo": "strutturale", "sorgente": {"tipo": "manuale", "valore": 72.5, "fonte": "TrendForce, classifica fonderie 2° trimestre 2026", "link": "https://www.trendforce.com/presscenter/news/20260909-13225.html", "data_fonte": "2026-09-09", "affidabilita": "alta"}, "unita": "%", "direzione": "alto-male", "soglia_attenzione": 50, "soglia_critica": 70},
-    {"nome": "Transiti nello Stretto di Taiwan, media 7 giorni rispetto a un anno prima", "tipo": "congiunturale", "sorgente": {"tipo": "portwatch", "id": "chokepoint11", "campo": "var7_anno_pct.n_total"}, "unita": "%", "direzione": "basso-male", "soglia_attenzione": -15, "soglia_critica": -40},
-    {"nome": "Danni a cavi sottomarini intorno a Taiwan negli ultimi 365 giorni", "tipo": "congiunturale", "sorgente": {"tipo": "cavi-incidenti", "paese": "TW", "giorni": 365}, "unita": "eventi", "direzione": "alto-male", "soglia_attenzione": 1, "soglia_critica": 3},
-    {"nome": "TSMC (ADR) in borsa, variazione a 1 mese", "tipo": "congiunturale", "sorgente": {"tipo": "prezzi", "id": "tsm", "campo": "var.1m"}, "unita": "%", "direzione": "basso-male", "soglia_attenzione": -10, "soglia_critica": -25}
-   ]},
-  {"id": "C07", "anello": "packaging-memoria", "nome": "Packaging CoWoS", "rischio": "capacità",
+    {
+     "nome": "Quota TSMC dei ricavi mondiali di fonderia (2° trimestre 2026)",
+     "tipo": "strutturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 72.5,
+      "fonte": "TrendForce, classifica fonderie 2° trimestre 2026",
+      "link": "https://www.trendforce.com/presscenter/news/20260909-13225.html",
+      "data_fonte": "2026-09-09",
+      "affidabilita": "alta"
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 50,
+     "soglia_critica": 70
+    },
+    {
+     "nome": "Transiti nello Stretto di Taiwan, media 7 giorni rispetto a un anno prima",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "portwatch",
+      "id": "chokepoint11",
+      "campo": "var7_anno_pct.n_total"
+     },
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -15,
+     "soglia_critica": -40
+    },
+    {
+     "nome": "Danni a cavi sottomarini intorno a Taiwan negli ultimi 365 giorni",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "cavi-incidenti",
+      "paese": "TW",
+      "giorni": 365
+     },
+     "unita": "eventi",
+     "direzione": "alto-male",
+     "soglia_attenzione": 1,
+     "soglia_critica": 3
+    },
+    {
+     "nome": "TSMC (ADR) in borsa, variazione a 1 mese",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "prezzi",
+      "id": "tsm",
+      "campo": "var.1m"
+     },
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -10,
+     "soglia_critica": -25
+    }
+   ]
+  },
+  {
+   "id": "C07",
+   "anello": "packaging-memoria",
+   "nome": "Packaging CoWoS",
+   "rischio": "capacità",
    "perche": "Ogni GPU di fascia alta passa dal CoWoS di TSMC a Taiwan; Nvidia ha prenotato circa il 60% della capacità 2026. Il packaging in Arizona arriverà dal 2028.",
-   "nodi": ["tsmc-ap8", "tsmc-ap7"], "titoli": ["TSM", "NVDA", "AVGO"],
+   "nodi": [
+    "tsmc-ap8",
+    "tsmc-ap7"
+   ],
+   "titoli": [
+    "TSM",
+    "NVDA",
+    "AVGO"
+   ],
    "indicatori": [
-    {"nome": "Divario tra domanda e offerta CoWoS a fine 2026", "tipo": "congiunturale", "sorgente": {"tipo": "manuale", "valore": 10, "fonte": "TrendForce (ripreso in ai-mondo.json): dal 20% al 10% a fine 2026", "link": "https://www.trendforce.com/news/2026/01/21/news-tsmc-advanced-packaging-capex-projected-to-grow-24-cagr-in-2025-27-chiayi-ap7-targets-wmcm-and-copos/", "data_fonte": "2026-06-15", "affidabilita": "media"}, "unita": "%", "direzione": "alto-male", "soglia_attenzione": 5, "soglia_critica": 15}
-   ]},
-  {"id": "C08", "anello": "packaging-memoria", "nome": "Memoria HBM e DRAM", "rischio": "capacità e prezzo",
+    {
+     "nome": "Divario tra domanda e offerta CoWoS a fine 2026",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 10,
+      "fonte": "TrendForce (ripreso in ai-mondo.json): dal 20% al 10% a fine 2026",
+      "link": "https://www.trendforce.com/news/2026/01/21/news-tsmc-advanced-packaging-capex-projected-to-grow-24-cagr-in-2025-27-chiayi-ap7-targets-wmcm-and-copos/",
+      "data_fonte": "2026-06-15",
+      "affidabilita": "media"
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 5,
+     "soglia_critica": 15
+    }
+   ]
+  },
+  {
+   "id": "C08",
+   "anello": "packaging-memoria",
+   "nome": "Memoria HBM e DRAM",
+   "rischio": "capacità e prezzo",
    "perche": "Tre produttori (SK Hynix, Samsung, Micron) fanno tutta l'HBM occidentale; l'AI toglie capacità alla DRAM normale e i prezzi salgono. SK Hynix vede carenza fino al 2030.",
-   "nodi": ["hynix-icheon", "hynix-cheongju", "samsung-onyang", "micron-hiroshima", "cxmt-hefei"], "titoli": ["000660.KS", "005930.KS", "MU", "WDC"],
+   "nodi": [
+    "hynix-icheon",
+    "hynix-cheongju",
+    "samsung-onyang",
+    "micron-hiroshima",
+    "cxmt-hefei"
+   ],
+   "titoli": [
+    "000660.KS",
+    "005930.KS",
+    "MU",
+    "WDC"
+   ],
    "indicatori": [
-    {"nome": "Prezzi contrattuali DRAM nel 4° trimestre 2026, variazione sul trimestre (previsione)", "tipo": "congiunturale", "sorgente": {"tipo": "manuale", "valore": 20, "fonte": "TrendForce, «DRAM prices seen rising 20% QoQ in 4Q26»", "link": "https://www.trendforce.com/news/2026/10/20/news-dram-prices-seen-rising-20-qoq-in-4q26-despite-slower-gains-ai-demand", "data_fonte": "2026-10-20", "affidabilita": "media"}, "unita": "%", "direzione": "alto-male", "soglia_attenzione": 10, "soglia_critica": 30},
-    {"nome": "SK Hynix in borsa, variazione a 1 mese", "tipo": "congiunturale", "sorgente": {"tipo": "prezzi", "id": "hynix", "campo": "var.1m"}, "unita": "%", "direzione": "basso-male", "soglia_attenzione": -10, "soglia_critica": -25}
-   ]},
-  {"id": "C09", "anello": "server-rete", "nome": "Ottica: chip laser EML per l'1,6T", "rischio": "capacità",
+    {
+     "nome": "Prezzi contrattuali DRAM nel 4° trimestre 2026, variazione sul trimestre (previsione)",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 20,
+      "fonte": "TrendForce, «DRAM prices seen rising 20% QoQ in 4Q26»",
+      "link": "https://www.trendforce.com/news/2026/10/20/news-dram-prices-seen-rising-20-qoq-in-4q26-despite-slower-gains-ai-demand",
+      "data_fonte": "2026-10-20",
+      "affidabilita": "media"
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 10,
+     "soglia_critica": 30
+    },
+    {
+     "nome": "SK Hynix in borsa, variazione a 1 mese",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "prezzi",
+      "id": "hynix",
+      "campo": "var.1m"
+     },
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -10,
+     "soglia_critica": -25
+    }
+   ]
+  },
+  {
+   "id": "C09",
+   "anello": "server-rete",
+   "nome": "Ottica: chip laser EML per l'1,6T",
+   "rischio": "capacità",
    "perche": "I chip EML da 200G per corsia vengono da pochi fornitori (Coherent, Lumentum e un terzo); per Yole sono il vincolo dell'1,6T nel 2026. I moduli sono assemblati soprattutto in Cina.",
-   "nodi": ["innolight", "eoptolink", "coherent"], "titoli": ["COHR", "300308.SZ", "300502.SZ"],
+   "nodi": [
+    "innolight",
+    "eoptolink",
+    "coherent"
+   ],
+   "titoli": [
+    "COHR",
+    "300308.SZ",
+    "300502.SZ"
+   ],
    "indicatori": [
-    {"nome": "Carenza di chip EML da 200G per corsia (stima)", "tipo": "congiunturale", "sorgente": {"tipo": "manuale", "valore": 60, "fonte": "cnyes (analisi di settore in cinese): divario oltre il 60%", "link": "https://hao.cnyes.com/post/271963", "data_fonte": "2026", "affidabilita": "bassa"}, "unita": "%", "direzione": "alto-male", "soglia_attenzione": 10, "soglia_critica": 30}
-   ]},
-  {"id": "C10", "anello": "energia-dc", "nome": "Trasformatori e allacci alla rete", "rischio": "capacità industriale",
+    {
+     "nome": "Carenza di chip EML da 200G per corsia (stima)",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 60,
+      "fonte": "cnyes (analisi di settore in cinese): divario oltre il 60%",
+      "link": "https://hao.cnyes.com/post/271963",
+      "data_fonte": "2026",
+      "affidabilita": "bassa"
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 10,
+     "soglia_critica": 30
+    }
+   ]
+  },
+  {
+   "id": "C10",
+   "anello": "energia-dc",
+   "nome": "Trasformatori e allacci alla rete",
+   "rischio": "capacità industriale",
    "perche": "Il denaro c'è, i trasformatori no: i tempi di consegna dei trasformatori elevatori superano i tre anni e le utility comprano con cinque anni di anticipo.",
-   "nodi": ["dc-abilene", "dc-colossus2", "dc-new-carlisle", "dc-fairwater"], "titoli": ["MSFT", "AMZN", "GOOGL", "META", "ORCL"],
+   "nodi": [
+    "dc-abilene",
+    "dc-colossus2",
+    "dc-new-carlisle",
+    "dc-fairwater"
+   ],
+   "titoli": [
+    "MSFT",
+    "AMZN",
+    "GOOGL",
+    "META",
+    "ORCL"
+   ],
    "indicatori": [
-    {"nome": "Tempi di consegna dei trasformatori elevatori (GSU), 1° trimestre 2026", "tipo": "strutturale", "sorgente": {"tipo": "manuale", "valore": 160, "fonte": "Reuters, ripreso da Kitco: «US power companies scramble to secure equipment»", "link": "https://www.kitco.com/news/off-the-wire/2026-07-09/us-power-companies-scramble-secure-equipment-surging-data-center", "data_fonte": "2026-07-09", "affidabilita": "alta"}, "unita": "settimane", "direzione": "alto-male", "soglia_attenzione": 52, "soglia_critica": 104}
-   ]},
-  {"id": "C11", "anello": "energia-dc", "nome": "Energia di Taiwan per le fab", "rischio": "energetico",
+    {
+     "nome": "Tempi di consegna dei trasformatori elevatori (GSU), 1° trimestre 2026",
+     "tipo": "strutturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 160,
+      "fonte": "Reuters, ripreso da Kitco: «US power companies scramble to secure equipment»",
+      "link": "https://www.kitco.com/news/off-the-wire/2026-07-09/us-power-companies-scramble-secure-equipment-surging-data-center",
+      "data_fonte": "2026-07-09",
+      "affidabilita": "alta"
+     },
+     "unita": "settimane",
+     "direzione": "alto-male",
+     "soglia_attenzione": 52,
+     "soglia_critica": 104
+    }
+   ]
+  },
+  {
+   "id": "C11",
+   "anello": "energia-dc",
+   "nome": "Energia di Taiwan per le fab",
+   "rischio": "energetico",
    "perche": "Taiwan importa quasi tutta l'energia, produce metà dell'elettricità col gas e tiene scorte di GNL per meno di due settimane: un blocco navale colpirebbe le fab anche senza toccarle.",
-   "nodi": ["maanshan", "kaohsiung-port", "tsmc-kaohsiung"], "titoli": ["TSM"],
+   "nodi": [
+    "maanshan",
+    "kaohsiung-port",
+    "tsmc-kaohsiung"
+   ],
+   "titoli": [
+    "TSM"
+   ],
    "indicatori": [
-    {"nome": "Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)", "tipo": "congiunturale", "sorgente": {"tipo": "manuale", "valore": 12, "fonte": "Focus Taiwan (dichiarazione del presidente Lai)", "link": "https://focustaiwan.tw/business/202603210010", "data_fonte": "2026-03-21", "affidabilita": "media"}, "unita": "giorni", "direzione": "basso-male", "soglia_attenzione": 14, "soglia_critica": 11}
-   ]},
-  {"id": "C12", "anello": "energia-dc", "nome": "Costo dell'energia per i data center", "rischio": "prezzo",
+    {
+     "nome": "Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 12,
+      "fonte": "Focus Taiwan (dichiarazione del presidente Lai)",
+      "link": "https://focustaiwan.tw/business/202603210010",
+      "data_fonte": "2026-03-21",
+      "affidabilita": "media"
+     },
+     "unita": "giorni",
+     "direzione": "basso-male",
+     "soglia_attenzione": 14,
+     "soglia_critica": 11
+    }
+   ]
+  },
+  {
+   "id": "C12",
+   "anello": "energia-dc",
+   "nome": "Costo dell'energia per i data center",
+   "rischio": "prezzo",
    "perche": "In Europa i progetti a gas (come Ferrera Erbognone) legano l'AI al TTF e quindi a Hormuz; negli USA conta il prezzo dell'Henry Hub e la capacità di rete.",
-   "nodi": ["dc-ferrera", "dc-fouju", "dc-abilene"], "titoli": ["TTF", "HH"],
+   "nodi": [
+    "dc-ferrera",
+    "dc-fouju",
+    "dc-abilene"
+   ],
+   "titoli": [
+    "TTF",
+    "HH"
+   ],
    "indicatori": [
-    {"nome": "Gas TTF (Europa)", "tipo": "congiunturale", "sorgente": {"tipo": "prezzi", "id": "ttf", "campo": "ultimo"}, "unita": "EUR/MWh", "direzione": "alto-male", "soglia_attenzione": 40, "soglia_critica": 70},
-    {"nome": "Gas Henry Hub (USA)", "tipo": "congiunturale", "sorgente": {"tipo": "prezzi", "id": "hh", "campo": "ultimo"}, "unita": "USD/MMBtu", "direzione": "alto-male", "soglia_attenzione": 4, "soglia_critica": 6}
-   ]}
+    {
+     "nome": "Gas TTF (Europa)",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "prezzi",
+      "id": "ttf",
+      "campo": "ultimo"
+     },
+     "unita": "EUR/MWh",
+     "direzione": "alto-male",
+     "soglia_attenzione": 40,
+     "soglia_critica": 70
+    },
+    {
+     "nome": "Gas Henry Hub (USA)",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "prezzi",
+      "id": "hh",
+      "campo": "ultimo"
+     },
+     "unita": "USD/MMBtu",
+     "direzione": "alto-male",
+     "soglia_attenzione": 4,
+     "soglia_critica": 6
+    }
+   ]
+  },
+  {
+   "id": "C13",
+   "anello": "progettazione",
+   "nome": "Un solo progettista dominante e regole USA sui chip",
+   "rischio": "concentrazione e geopolitica",
+   "perche": "Nvidia ha la grande maggioranza dei chip AI per data center; dove vanno i chip lo decidono le licenze USA (H200 per la Cina con dazio del 25%) e la risposta di Pechino.",
+   "nodi": [
+    "nvidia-sc",
+    "huawei",
+    "broadcom"
+   ],
+   "titoli": [
+    "NVDA",
+    "AMD",
+    "AVGO"
+   ],
+   "indicatori": [
+    {
+     "nome": "Quota di Nvidia nei chip AI per data center 2026 (stima IDC riportata da terzi; forchetta delle stime 75–86%)",
+     "tipo": "strutturale",
+     "sorgente": {
+      "tipo": "manuale",
+      "valore": 81,
+      "fonte": "commandlinux.com (sintesi di stime IDC)",
+      "link": "https://commandlinux.com/ai/ai-chip-market-share/",
+      "data_fonte": "2026",
+      "affidabilita": "bassa"
+     },
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 50,
+     "soglia_critica": 70
+    },
+    {
+     "nome": "Nvidia in borsa, variazione a 1 mese",
+     "tipo": "congiunturale",
+     "sorgente": {
+      "tipo": "prezzi",
+      "id": "nvda",
+      "campo": "var.1m"
+     },
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -10,
+     "soglia_critica": -25
+    }
+   ]
+  }
  ]
 }

@@ -1,0 +1,61 @@
+<svg class="viz" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="100%" role="img" aria-labelledby="g-conc-l-t g-conc-l-d" style="max-width:720px;height:auto;display:block">
+<title id="g-conc-l-t">Quota del primo paese produttore per materia</title>
+<desc id="g-conc-l-d">USGS Mineral Commodity Summaries 2026, dati 2025. Quote calcolate dalla produzione per paese.</desc>
+<style>
+.viz{--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-card:#FFFFFF;--v-band:#ECE9E0;--v-acc:#A61E6B;
+--v-ok:#0ca30c;--v-warn:#b47d00;--v-crit:#d03b3b;font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-card:#172127;--v-band:#1A252C;--v-acc:#d14f9a;
+--v-ok:#3fbf3f;--v-warn:#fab219;--v-crit:#e5605f}}
+.viz text{fill:var(--v-soft);font-size:12px}.viz .ink{fill:var(--v-ink)}.viz .b{font-weight:600}.viz .faint{fill:var(--v-faint)}
+.viz .box{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}.viz .box-crit{stroke:var(--v-crit);stroke-width:1.5}
+.viz .box-warn{stroke:var(--v-warn);stroke-width:1.5}.viz .num{font-variant-numeric:tabular-nums}
+.viz .arr{stroke:var(--v-faint);stroke-width:1.5;fill:none}.viz .head{fill:var(--v-faint)}
+.viz .acc{fill:var(--v-acc)}.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .bar{fill:var(--v-acc)}.viz .track{fill:var(--v-band)}.viz .grid{stroke:var(--v-grid);stroke-width:1}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.05}
+</style>
+<text x="8" y="18" class="ink b">Quota del primo produttore, %</text>
+<text x="8" y="34" class="faint">USGS MCS 2026, dati 2025 · solo materie con primo produttore ≥ 30%</text>
+<line x1="230.0" x2="230.0" y1="44" y2="234" class="grid"/>
+<text x="230.0" y="250" text-anchor="middle" class="faint num">0</text>
+<line x1="447.0" x2="447.0" y1="44" y2="234" class="grid"/>
+<text x="447.0" y="250" text-anchor="middle" class="faint num">50</text>
+<line x1="664.0" x2="664.0" y1="44" y2="234" class="grid"/>
+<text x="664.0" y="250" text-anchor="middle" class="faint num">100</text>
+<g><title>Gallio (primario a bassa purezza): Cina 99,0% (USGS, Mineral Commodity Summaries 2026: Gallium)</title>
+<rect x="0" y="46" width="720" height="30" class="hit"/>
+<text x="222" y="62" text-anchor="end" class="ink">Gallio · Cina</text>
+<rect x="230.0" y="51" width="429.7" height="14" rx="2" class="bar"/>
+<text x="665.7" y="62" class="ink b num">99,0</text>
+</g>
+<g><title>Silicio metallico (grado metallurgico, base del polisilicio): Cina 87,0% (USGS, Mineral Commodity Summaries 2026: Silicon)</title>
+<rect x="0" y="76" width="720" height="30" class="hit"/>
+<text x="222" y="92" text-anchor="end" class="ink">Silicio metallico · Cina</text>
+<rect x="230.0" y="81" width="377.6" height="14" rx="2" class="bar"/>
+<text x="613.6" y="92" class="ink b num">87,0</text>
+</g>
+<g><title>Terre rare (estrazione, ossidi equivalenti): Cina 69,2% (USGS, Mineral Commodity Summaries 2026: Rare Earths)</title>
+<rect x="0" y="106" width="720" height="30" class="hit"/>
+<text x="222" y="122" text-anchor="end" class="ink">Terre rare · Cina</text>
+<rect x="230.0" y="111" width="300.3" height="14" rx="2" class="bar"/>
+<text x="536.3" y="122" class="ink b num">69,2</text>
+</g>
+<g><title>Fluorite: Cina 60,0% (USGS, Mineral Commodity Summaries 2026: Fluorspar)</title>
+<rect x="0" y="136" width="720" height="30" class="hit"/>
+<text x="222" y="152" text-anchor="end" class="ink">Fluorite · Cina</text>
+<rect x="230.0" y="141" width="260.4" height="14" rx="2" class="bar"/>
+<text x="496.4" y="152" class="ink b num">60,0</text>
+</g>
+<g><title>Tantalio (coltan): Congo (RD) 52,0% (USGS, Mineral Commodity Summaries 2026: Tantalum)</title>
+<rect x="0" y="166" width="720" height="30" class="hit"/>
+<text x="222" y="182" text-anchor="end" class="ink">Tantalio · Congo (RD)</text>
+<rect x="230.0" y="171" width="225.7" height="14" rx="2" class="bar"/>
+<text x="461.7" y="182" class="ink b num">52,0</text>
+</g>
+<g><title>Elio: Stati Uniti 42,6% (USGS, Mineral Commodity Summaries 2026: Helium and rare gases)</title>
+<rect x="0" y="196" width="720" height="30" class="hit"/>
+<text x="222" y="212" text-anchor="end" class="ink">Elio · Stati Uniti</text>
+<rect x="230.0" y="201" width="184.9" height="14" rx="2" class="bar"/>
+<text x="420.9" y="212" class="ink b num">42,6</text>
+</g>
+</svg>
