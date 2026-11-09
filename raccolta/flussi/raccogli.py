@@ -141,6 +141,7 @@ def confronti(righe, campi):
     m7 = finestra(u, 7)
     m7_1a = finestra(u - timedelta(days=364), 7)  # 52 settimane: stessi giorni della settimana
     m7_2a = finestra(u - timedelta(days=728), 7)
+    m7_3a = finestra(u - timedelta(days=1092), 7)  # per Suez e Bab el-Mandeb: prima della crisi del Mar Rosso
     m30 = finestra(u, 30)
     m30_1a = finestra(u - timedelta(days=364), 30)
     c0 = campi[0]
@@ -148,8 +149,10 @@ def confronti(righe, campi):
         "ultima_data": ultima,
         "ultimo_giorno": {c: per_data[ultima].get(c) for c in campi},
         "media7": m7, "media7_anno_prima": m7_1a, "media7_due_anni_prima": m7_2a,
+        "media7_tre_anni_prima": m7_3a,
         "var7_anno_pct": {c: var_pct(m7[c], m7_1a[c]) for c in campi},
         "var7_due_anni_pct": {c: var_pct(m7[c], m7_2a[c]) for c in campi},
+        "var7_tre_anni_pct": {c: var_pct(m7[c], m7_3a[c]) for c in campi},
         "media30": m30, "media30_anno_prima": m30_1a,
         "var30_anno_pct": var_pct(m30[c0], m30_1a[c0]),
         "periodo_media7": [(u - timedelta(days=6)).isoformat(), ultima],
@@ -185,8 +188,8 @@ def raccogli_portwatch(errori):
             "link": PW_LINK, "data_fonte": cf["ultima_data"], "affidabilita": "alta",
             "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
             **cf,
-            # serie giornaliere degli ultimi 3 anni: totale e petroliere; container solo dove contano
-            "serie": {k: serie_di(r, k) for k in ("n_total", "n_tanker", "n_container")},
+            # serie giornaliere dal 1° gennaio di 3 anni fa: totale e petroliere (il file deve restare leggero)
+            "serie": {k: serie_di(r, k) for k in ("n_total", "n_tanker")},
             "note": nota or "",
         })
     coord_p = pw_coordinate("PortWatch_ports_database", [p[0] for p in PORTI_IT])
@@ -208,7 +211,7 @@ def raccogli_portwatch(errori):
             "affidabilita": "alta",
             "unita": "chiamate di navi al giorno (portcalls*), tonnellate stimate (import/export)",
             **cf,
-            "serie": {k: serie_di(r, k) for k in ("portcalls", "portcalls_tanker")},
+            "serie": {k: serie_di(r, k) for k in ("portcalls",)},
             "note": "Venezia è divisa da PortWatch in due porti: Lido e Malamocco (porto petroli e Marghera)." if "Venezia" in nome else "",
         })
     ultima = max(fonti_date) if fonti_date else None
@@ -219,7 +222,7 @@ def raccogli_portwatch(errori):
                    "data_dato": ultima}],
         "nota": ("Passaggi giornalieri di navi stimati da PortWatch con i segnali AIS. Media a 7 giorni all'ultima "
                  "data disponibile, confrontata con gli stessi 7 giorni di 52 e 104 settimane prima. "
-                 "I dati arrivano con circa una settimana di ritardo e l'ultimo giorno può essere rivisto. "
+                 "Per Suez e Bab el-Mandeb il confronto utile è a 3 anni (fine 2023, prima degli attacchi houthi). I dati arrivano con circa una settimana di ritardo e l'ultimo giorno può essere rivisto. "
                  "Le navi che spengono l'AIS (flotta ombra, zone di guerra) non sono contate."),
         "elementi": elementi, "errori": [e for e in errori if e.startswith("PortWatch")],
     })
