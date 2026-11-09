@@ -252,6 +252,7 @@ button, input, select { font: inherit; color: inherit; }
 .trm-evt { margin: 0; font-size: 13px; } .trm-evt .mono { font-family: var(--f-mono); font-size: 11px; color: var(--ink-soft); }
 .trm-evd { margin: 2px 0 0; font-size: 12px; color: var(--ink-soft); } .trm-src { font-size: 11.5px; color: var(--water-ink); }
 .mkt-grp.old { color: var(--ink-faint); }
+.xper { border-top: 1px solid var(--line); margin-top: 8px; } .xper-row { display: flex; gap: 6px; align-items: center; } .xper-row input { flex: 1 1 0; min-width: 0; background: var(--control); border: 1px solid var(--line); border-radius: 4px; padding: 3px 5px; font-size: 12px; }
 .rk-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
 .nav { display: flex; gap: 6px; } .nav-a { text-decoration: none; font-weight: 500; color: var(--accent); }
 .vsel { padding: 5px 8px; }
@@ -402,9 +403,18 @@ button, input, select { font: inherit; color: inherit; }
               <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="var(--rus)"/></svg></span>Basi nel mondo<span class="cnt" id="n-xbm"></span></label><p class="hint">USA, Russia, Cina, NATO e alleati all'estero. Colore = chi la usa; vuoto = lasciata o ridotta</p></li>
             <li id="li-xcam" hidden><label><input type="checkbox" id="lyr-xcam" data-layer="xcam">
               <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="none" stroke="var(--cam)" stroke-width="1.6"/></svg></span>Webcam pubbliche<span class="cnt" id="n-xcam"></span></label><p class="hint">Porti, stretti e canali dal vivo, solo webcam pubblicate dai proprietari</p></li>
+            <li id="li-xru" hidden><label><input type="checkbox" id="lyr-xru" data-layer="xru">
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="var(--ev1)"/></svg></span>Attacchi russi in Ucraina<span class="cnt" id="n-xru"></span></label><p class="hint">Grandi attacchi documentati dal 2022: energia, porti, ferrovie, città</p></li>
             <li id="li-xnavi" hidden><label><input type="checkbox" id="lyr-xnavi" data-layer="xnavi" checked>
               <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--sanz)" stroke-width="2.4"/></svg></span>Navi (AIS)<span class="cnt" id="n-xnavi"></span></label><p class="hint">Rosso: sanzionata. Oggi copre il Golfo di Finlandia</p></li>
           </ul>
+
+          <div class="xper" id="xper">
+            <p class="range-lbl">Periodo degli eventi storici (attacchi, cyber, Baltico)</p>
+            <div class="xper-row"><input type="date" id="xper-da" value="2022-02-24" min="2014-01-01" aria-label="Dal"><span>→</span><input type="date" id="xper-a" aria-label="Al"></div>
+            <div class="range" id="xper-pre"><button class="chip" type="button" data-p="2022">2022</button><button class="chip" type="button" data-p="2023">2023</button><button class="chip" type="button" data-p="2024">2024</button><button class="chip" type="button" data-p="2025">2025</button><button class="chip" type="button" data-p="2026">2026</button><button class="chip" type="button" data-p="30">30 giorni</button><button class="chip" type="button" data-p="all" aria-pressed="true">Tutto</button></div>
+            <p class="hint" id="xper-n" style="margin-left:0"></p>
+          </div>
 
           <details class="sec" id="sec-legend">
             <summary>Legenda</summary>
@@ -550,7 +560,7 @@ let VB = [], VP = [], LN = null, SB = null, RT = null, ST = null;   // SB: subma
 let FRONT = null, areasOn = false;                // Ukraine: areas of control; whether they are in view in this frame
 let evRange = 7, REPORTS = [], CTX = null, liveKey = '', MK = null, DOS = null;
 let setPanel = () => {};
-const L = { xh2: false, xpn: true, xwind: true, xbs: true, xbk: false, xbm: false, xrisk: true, xcam: false, xai: false, xinv: false, xcy: false, xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
+const L = { xru: false, xh2: false, xpn: true, xwind: true, xbs: true, xbk: false, xbm: false, xrisk: true, xcam: false, xai: false, xinv: false, xcy: false, xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
 const TH = {};                                    // theater switches, filled from the data
 const C = {}, FF = {};
 const TODAY = new Date(); TODAY.setHours(12, 0, 0, 0);
@@ -1898,7 +1908,7 @@ function wire() {
     const id = cb.dataset.layer;
     if (id in L) cb.checked = !!L[id];
     if (saved && typeof saved[id] === 'boolean' && id !== 'front' && id !== 'routes' && id !== 'subsea' && id !== 'ai') { L[id] = saved[id]; cb.checked = saved[id]; }   // the front and the routes always start switched off
-    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua', 'xai', 'xinv', 'xcy', 'xcam', 'xrisk', 'xbm', 'xpn', 'xwind', 'xbs', 'xbk', 'xh2'].includes(id)) refilter(); else schedule(); });
+    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua', 'xai', 'xinv', 'xcy', 'xcam', 'xrisk', 'xbm', 'xpn', 'xwind', 'xbs', 'xbk', 'xh2', 'xru'].includes(id)) refilter(); else schedule(); });
   });
 
   const input = $('goto-input'), msg = $('goto-msg');
@@ -1920,13 +1930,14 @@ function wire() {
 /* ---------- Strati aggiunti: infrastrutture, flussi, navi, terminale (prezzi, agenda, stretti) ---------- */
 const XF = { ferrovie: 'data/ferrovie.json', cavi: 'data/cavi.json', caviInc: 'data/cavi-incidenti.json', gnl: 'data/terminali-gnl.json', gasit: 'data/gas-italia.json',
   navi: 'data/navi.json', pw: 'data/portwatch.json', sd: 'data/stretti-dettaglio.json', prezzi: 'data/prezzi.json', cal: 'data/calendario.json',
-  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json', aim: 'data/ai-mondo.json', inv: 'data/investimenti.json', cy: 'data/cyber-energia.json', cam: 'data/webcam.json', rk: 'data/rischio.json', bm: 'data/basi-mondo.json', pn: 'data/porti-nord.json', on: 'data/offshore-nord.json', bs: 'data/baltico-sicurezza.json', en: 'data/esposizione-nord.json', bk: 'data/bunker-emissioni.json', h2: 'data/idrogeno.json' };
+  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json', aim: 'data/ai-mondo.json', inv: 'data/investimenti.json', cy: 'data/cyber-energia.json', cam: 'data/webcam.json', rk: 'data/rischio.json', bm: 'data/basi-mondo.json', pn: 'data/porti-nord.json', on: 'data/offshore-nord.json', bs: 'data/baltico-sicurezza.json', en: 'data/esposizione-nord.json', bk: 'data/bunker-emissioni.json', h2: 'data/idrogeno.json', ru: 'data/attacchi-russi.json' };
 const X = { lines: {}, pts: {}, data: {} };
+const XDATED = new Set(['xua', 'xru', 'xcy', 'xbs']), XR = { da: '2022-02-24', a: '2099-12-31' };
 const XLAYERS = {   // layer -> colour token, label
   xrail: ['rail', 'Ferrovie'], xcable: ['cable', 'Cavi sottomarini'], xpower: ['power', 'Rete elettrica'], xlng: ['lng', 'Terminali GNL'],
-  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'], xua: ['uastrike', 'Attacchi ucraini in Russia'], xai: ['ai', 'AI nel mondo'], xinv: ['inv', 'Investimenti AI'], xcy: ['cy', 'Incidenti cyber'], xcam: ['cam', 'Webcam pubbliche'], xrisk: ['rk3', 'Rischio'], xbm: ['bm', 'Basi nel mondo'], xpn: ['pn', 'Porti del Nord'], xwind: ['wind', 'Eolico offshore'], xbs: ['bs', 'Sicurezza nel Baltico'], xbk: ['bk', 'Bunker'], xh2: ['h2', 'Idrogeno'] };
+  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'], xua: ['uastrike', 'Attacchi ucraini in Russia'], xai: ['ai', 'AI nel mondo'], xinv: ['inv', 'Investimenti AI'], xcy: ['cy', 'Incidenti cyber'], xcam: ['cam', 'Webcam pubbliche'], xrisk: ['rk3', 'Rischio'], xbm: ['bm', 'Basi nel mondo'], xpn: ['pn', 'Porti del Nord'], xwind: ['wind', 'Eolico offshore'], xbs: ['bs', 'Sicurezza nel Baltico'], xbk: ['bk', 'Bunker'], xh2: ['h2', 'Idrogeno'], xru: ['ev1', 'Attacchi russi in Ucraina'] };
 const num = v => (v == null || v === '' ? null : +v);
-const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare', xua: 'Attacco ucraino in profondità', xai: 'Infrastruttura AI', xinv: 'Investimento', xcy: 'Incidente cyber', xcam: 'Webcam pubblica', xrisk: 'Rischio', xbm: 'Base militare', xpn: 'Porto', xwind: 'Energia offshore', xbs: 'Sicurezza Baltico e Mare del Nord', xbk: 'Hub del bunker', xh2: 'Idrogeno e ammoniaca' };
+const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare', xua: 'Attacco ucraino in profondità', xai: 'Infrastruttura AI', xinv: 'Investimento', xcy: 'Incidente cyber', xcam: 'Webcam pubblica', xrisk: 'Rischio', xbm: 'Base militare', xpn: 'Porto', xwind: 'Energia offshore', xbs: 'Sicurezza Baltico e Mare del Nord', xbk: 'Hub del bunker', xh2: 'Idrogeno e ammoniaca', xru: 'Attacco russo in Ucraina' };
 
 function xBuildLines(layer, items, styleOf) {           // items with g = parts of [lon, lat]
   const groups = {}; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; const list = [];
@@ -1981,6 +1992,7 @@ async function xLoad(opt) {
     xBuildLines('xwind', polys.concat(links), e => e.categoria === 'eolico-offshore' ? { key: e.stato === 'operativo' ? 'op' : 'pl', w: 1.1, dash: e.stato === 'operativo' ? null : [3, 2], a: .95 } : { key: 'cl', w: 2, dash: [6, 3], a: .9 });
     xAddPoints('xwind', D2.on.parchi.concat(D2.on.hub || [], D2.on.giacimenti || []), { style: e => ({ shape: e.categoria === 'hub-energetico' ? 'sq' : e.categoria === 'giacimento-oil-gas' ? 'down' : 'dot', r: e.categoria === 'eolico-offshore' ? Math.min(6, 2 + Math.sqrt(+e.mw || 10) / 8) : 5, hollow: e.stato && !/operativ|produzione|esercizio/.test(e.stato) }) }); }
   if (D2.bs && D2.bs.eventi) xAddPoints('xbs', D2.bs.eventi, { style: () => ({ shape: 'x' }) });
+  if (D2.ru && D2.ru.elementi) xAddPoints('xru', D2.ru.elementi, { style: e => ({ shape: 'dot', r: /energia|porto|ferrovia|grano/.test(e.categoria || '') ? 4.6 : 3.6, col: 'ev1' }) });
   if (D2.h2 && D2.h2.elementi) { xAddPoints('xh2', D2.h2.elementi, { style: e => ({ shape: e.categoria === 'elettrolizzatore' ? 'dot' : 'sq', r: e.mw ? Math.min(7, 3 + Math.sqrt(+e.mw) / 5) : 4, hollow: !/operativ|esercizio/.test(e.stato || '') }) }); if (D2.h2.pipeline) xBuildLines('xh2', D2.h2.pipeline, e => ({ key: /costruz|esercizio/.test(e.stato || '') ? 'a' : 'p', w: 1.8, dash: /costruz|esercizio/.test(e.stato || '') ? null : [4, 3], a: .9 })); }
   if (D2.bk && D2.bk.elementi) xAddPoints('xbk', D2.bk.elementi, { style: () => ({ shape: 'sq', r: 4.5 }) });
   if (D2.bm && D2.bm.elementi) xAddPoints('xbm', D2.bm.elementi, { style: e => ({ shape: 'sq', r: 3.4, col: { US: 'usa', RU: 'rus', CN: 'chn', IR: 'irn' }[e.appartenenza] || (['GB','FR','DE','NATO','IT','JP','TR','IN','AU','KR'].includes(e.appartenenza) ? 'ally' : 'oth'), hollow: /lasciat|ridott/.test(e.stato || '') }) });
@@ -1994,6 +2006,12 @@ async function xLoad(opt) {
   for (const l in XLAYERS) { const li = $('li-' + l); if (li) li.hidden = !(X.lines[l] || X.pts[l]); const n = $('n-' + l); if (n) n.textContent = ((X.lines[l] ? X.lines[l].list.length : 0) + (X.pts[l] || []).length) || ''; }
   $('x-h').hidden = $('x-ul').hidden = !Object.keys(XLAYERS).some(l => X.lines[l] || X.pts[l]);
   xInitTerminal();
+  const today = new Date().toISOString().slice(0, 10), da = $('xper-da'), aa = $('xper-a'); aa.value = today; aa.max = today; da.max = today;
+  const cnt = () => { let n = 0, t = 0; for (const l of XDATED) for (const p of (X.pts[l] || [])) { if (!L[l]) continue; t++; const dd = p.d.data_evento || p.d.data || ''; if (!dd || (dd >= XR.da && dd <= XR.a)) n++; } $('xper-n').textContent = t ? n + ' eventi su ' + t + ' nei livelli accesi' : 'Accendi un livello con eventi datati (es. attacchi ucraini in Russia).'; };
+  const setR = (d1, d2, btn) => { XR.da = d1; XR.a = d2; da.value = d1; aa.value = d2 > today ? today : d2; document.querySelectorAll('#xper-pre .chip').forEach(b => b.setAttribute('aria-pressed', String(b === btn))); cnt(); schedule(); };
+  da.addEventListener('change', () => setR(da.value || '2014-01-01', aa.value || today, null)); aa.addEventListener('change', () => setR(da.value || '2014-01-01', aa.value || today, null));
+  document.querySelectorAll('#xper-pre .chip').forEach(b => b.addEventListener('click', () => { const v = b.dataset.p; if (v === 'all') setR('2014-01-01', '2099-12-31', b); else if (v === '30') setR(new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10), today, b); else setR(v + '-01-01', v + '-12-31', b); }));
+  document.querySelectorAll('input[data-layer]').forEach(cb => cb.addEventListener('change', cnt)); XR.da = '2014-01-01'; cnt();
   for (const [id, url] of [['nav-news', 'notizie.html'], ['nav-sim', 'simulatore.html']]) fetch(url, { method: 'HEAD' }).then(r => { if (r.ok) $(id).hidden = false; }).catch(() => {});
   const intro = $('intro'), seen = (() => { try { return localStorage.getItem('monitor-geo.intro'); } catch (e) { return '1'; } })();
   if (!seen) intro.hidden = false;
@@ -2015,11 +2033,13 @@ function xDrawLines(k, z, vx0, vy0, vx1, vy1) {        // in base units, under t
   if (picked && picked.kind === 'extra' && picked.path) { ctx.strokeStyle = C.haloLand; ctx.lineWidth = 6 / k; ctx.stroke(picked.path); ctx.strokeStyle = C[XLAYERS[picked.layer][0]]; ctx.lineWidth = 2.6 / k; ctx.stroke(picked.path); }
 }
 function xDrawPoints(z) {                                 // in screen units, after the labels; they add themselves to the taps
-  for (const l of ['xrisk', 'xh2', 'xpn', 'xwind', 'xbs', 'xbk', 'xbm', 'xcam', 'xai', 'xcy', 'xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
+  for (const l of ['xru', 'xrisk', 'xh2', 'xpn', 'xwind', 'xbs', 'xbk', 'xbm', 'xcam', 'xai', 'xcy', 'xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
     const P = X.pts[l]; if (!P || !L[l]) continue;
     if (l === 'xlng' && z < 3.2) continue;
     const col = C[XLAYERS[l][0]];
+    const dated = XDATED.has(l);
     for (const p of P) {
+      if (dated) { const dd = p.d.data_evento || p.d.data || ''; if (dd && (dd < XR.da || dd > XR.a)) continue; }
       const x = T.applyX(p.bx), y = T.applyY(p.by); if (x < -10 || y < -10 || x > w + 10 || y > h + 10) continue;
       const s = p.st, r = s.r || 4.5, on = picked === p;
       ctx.lineWidth = 1.3; ctx.strokeStyle = C.paper; ctx.fillStyle = s.col ? C[s.col] : col; if (l === 'xrisk') ctx.globalAlpha = .55; ctx.beginPath();
@@ -2084,6 +2104,8 @@ function renderExtra(card, p) {
     fact('Tipo', d.categoria && cap(String(d.categoria).replace(/-/g, ' '))); fact('Stato', d.stato); fact('Potenza', d.mw ? itNum(+d.mw) + ' MW' : null); fact('Turbine', d.turbine); fact('Anno', d.anno); fact('Operatore', d.operatore || d.operatori); fact('Mare', d.mare); fact('Distanza dalla costa', d.distanza_costa_km ? d.distanza_costa_km + ' km' : null); fact('Capacità', d.capacita); fact('Fatti', d.fatti);
   } else if (lay === 'xbs') {
     fact('Data', d.data); fact('Categoria', d.categoria); fact('Paese', PAESI[d.paese] || d.paese);
+  } else if (lay === 'xru') {
+    fact('Data', d.data); fact('Luogo', [d.citta, d.oblast].filter(Boolean).join(', ')); fact('Bersaglio', d.categoria); fact('Mezzi', d.mezzi); fact('Quanti', d.quanti); fact('Effetto', d.effetto);
   } else if (lay === 'xh2') {
     fact('Tipo', d.categoria); fact('Porto', d.porto); fact('Stato', d.stato); fact('Potenza', d.mw ? d.mw + ' MW' : null); fact('Capacità', d.capacita); fact('Anno', d.anno); fact('Operatore', d.operatore); fact('Lunghezza', d.km ? d.km + ' km' : null);
   } else if (lay === 'xbk') {

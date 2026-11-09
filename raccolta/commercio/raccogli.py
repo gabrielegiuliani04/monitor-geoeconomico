@@ -122,7 +122,9 @@ def riferimenti():
     for x in par:
         partner[x["PartnerCode"]] = {"nome": x["PartnerDesc"], "iso2": x.get("PartnerCodeIsoAlpha2"),
                                      "iso3": x.get("PartnerCodeIsoAlpha3"), "gruppo": x.get("isGroup")}
-    partner[490] = {"nome": "Taiwan (Comtrade: Other Asia, nes)", "iso2": "TW", "iso3": "TWN", "gruppo": False}
+    # 490 "Other Asia, nes": per molti paesi e' Taiwan, ma alcuni esportatori (es. Arabia Saudita, Iran) vi mettono
+    # destinazioni asiatiche non dichiarate. Per prudenza resta senza ISO2.
+    partner[490] = {"nome": "Other Asia, nes (di norma Taiwan)", "iso2": None, "iso3": "S19", "gruppo": False}
     hsdesc = {x["id"]: re.sub(r"^\S+ - ", "", x["text"]) for x in hs}
     return iso2_rep, partner, hsdesc
 
@@ -248,6 +250,17 @@ def paese_dichiarato(iso, code, anno, partner):
         tot = tot_p or sum(val.values())
         d[k + "_totale_usd"] = round(tot)
         d[k + "_prodotti"] = top_hs2(val, tot)
+    # Molti esportatori del Golfo non dichiarano la destinazione del petrolio ("Areas, nes"):
+    # in quel caso si aggiungono i partner ricostruiti dalle dichiarazioni dei paesi importatori.
+    ignoti = sum(p["quota"] or 0 for p in d.get("export_partner", []) if not p["iso2"])
+    if ignoti > 20:
+        anno_s = min(anno, ANNO_SPECCHIO)
+        pr = comtrade(period=anno_s, partnerCode=code, flowCode="M", cmdCode="TOTAL")
+        if pr:
+            tot, top = specchio_partner(pr, partner)
+            d["export_partner_specchio"] = {"anno": anno_s, "totale_usd": round(tot), "partner": top,
+                                            "nota": f"Il paese non indica la destinazione per il {round(ignoti)}% del suo export: "
+                                                    "partner ricostruiti dalle importazioni dichiarate dai paesi acquirenti (CIF)."}
     s = comtrade(reporterCode=code, period=anno, partnerCode=0, flowCode="X,M", cmdCode=",".join(HS4))
     if s:
         d["voci_strategiche"] = voci(s, d)
@@ -266,6 +279,26 @@ def voci(righe, d):
     return sorted(out, key=lambda v: -(v["export_usd"] + v["import_usd"]))
 
 
+def aggrega_reporter(pr, partner):
+    per_rep = {}
+    for x in pr:
+        p = partner.get(x["reporterCode"], {})
+        if p.get("gruppo") and x["reporterCode"] != 490:
+            continue
+        per_rep[x["reporterCode"]] = per_rep.get(x["reporterCode"], 0) + x["primaryValue"]
+    return per_rep
+
+
+def specchio_partner(pr, partner, n=5):
+    per_rep = aggrega_reporter(pr, partner)
+    tot = sum(per_rep.values())
+    top = sorted(per_rep.items(), key=lambda kv: -kv[1])[:n]
+    nome = lambda c: "Taiwan (Comtrade: Other Asia, nes)" if c == 490 else partner.get(c, {}).get("nome", str(c))
+    iso = lambda c: "TW" if c == 490 else partner.get(c, {}).get("iso2")  # come dichiarante, 490 e' Taiwan
+    return tot, [{"partner": nome(c), "iso2": iso(c), "valore_usd": round(v), "quota": r1(100 * v / tot) if tot else None}
+                 for c, v in top]
+
+
 def paese_specchio(iso, code, partner):
     """Commercio ricostruito dai dati dei partner: le loro importazioni dal paese = sue esportazioni."""
     anno = ANNO_SPECCHIO
@@ -276,17 +309,11 @@ def paese_specchio(iso, code, partner):
         pr = comtrade(period=anno, partnerCode=code, flowCode=fl_p, cmdCode="TOTAL")
         if not pr:
             continue
-        per_rep = {}
-        for x in pr:
-            p = partner.get(x["reporterCode"], {})
-            if p.get("gruppo") and x["reporterCode"] != 490:
-                continue
-            per_rep[x["reporterCode"]] = per_rep.get(x["reporterCode"], 0) + x["primaryValue"]
+        per_rep = aggrega_reporter(pr, partner)
         tot = sum(per_rep.values())
         top = sorted(per_rep.items(), key=lambda kv: -kv[1])
         d[k + "_totale_usd"] = round(tot)
-        d[k + "_partner"] = [{"partner": partner.get(c, {}).get("nome", str(c)), "iso2": partner.get(c, {}).get("iso2"),
-                              "valore_usd": round(v), "quota": r1(100 * v / tot) if tot else None} for c, v in top[:5]]
+        d[k + "_partner"] = specchio_partner(pr, partner)[1]
         # prodotti: capitoli HS dai primi 15 partner (5 per chiamata, <=500 righe)
         val, coperto = {}, 0
         primi = [c for c, _ in top[:15]]
@@ -322,9 +349,10 @@ def dipendenze(partner):
             tot, tp = top_partner(rr, partner, n=3)
             if not tot or not tp:
                 continue
+            rilevante = tot >= 5e6  # sotto 5 milioni di USD la quota non dice molto
             out.append({"importatore": rep_nome, "iso2": rep_iso, "hs": hs, "prodotto": nome, "anno": anno,
-                        "import_totale_usd": round(tot), "fornitori": tp,
-                        "dipendenza_oltre_50": bool(tp[0]["quota"] and tp[0]["quota"] > 50)})
+                        "import_totale_usd": round(tot), "fornitori": tp, "valore_trascurabile": not rilevante,
+                        "dipendenza_oltre_50": bool(rilevante and tp[0]["quota"] and tp[0]["quota"] > 50)})
     return out
 
 
@@ -452,7 +480,7 @@ def tabella(rr, det, anno, nome_iso2, chiave):
 EIA_SERIE = {"petrolio": ("57-1", "TBPD", "Petrolio greggio e condensati, produzione", "migliaia di barili/giorno"),
              "gas": ("26-1", "BCM", "Gas naturale secco, produzione", "miliardi di m3"),
              "carbone": ("7-1", "MT", "Carbone, produzione", "migliaia di t"),
-             "carbone-riserve": ("7-6", "MST", "Carbone, riserve", "milioni di short ton")}
+             "carbone-riserve": ("7-6", "MST", "Carbone, riserve", "milioni di t")}
 
 
 def eia(iso3_iso2):
@@ -476,6 +504,8 @@ def eia(iso3_iso2):
                         dati[k][geo] = serie
     out = {}
     for k, (c, u, nome, unita) in EIA_SERIE.items():
+        if k == "carbone-riserve":
+            continue
         mondo = dati[k].get("WORL", {})
         anno = max((a for a in mondo), default=None)
         if not anno:
@@ -491,6 +521,16 @@ def eia(iso3_iso2):
         out[k] = {"id": k, "minerale": nome, "anno": int(anno), "unita": unita, "mondo_produzione": r1(mondo[anno]),
                   "produttori": [p for p in paesi if p["valore"] > 0],
                   "fonte": "EIA International Energy Data (bulk INTL)", "link": "https://www.eia.gov/international/data/world"}
+    # riserve di carbone: milioni di short ton -> milioni di tonnellate metriche
+    ris = dati["carbone-riserve"]
+    mondo = ris.get("WORL", {})
+    anno = max((a for a in mondo), default=None)
+    if anno and "carbone" in out:
+        st = 0.90718474
+        paesi = [{"paese": geo, "iso2": iso3_iso2[geo], "valore": r1(s_[anno] * st), "quota": r1(100 * s_[anno] / mondo[anno])}
+                 for geo, s_ in ris.items() if iso3_iso2.get(geo) and anno in s_ and s_[anno] > 0]
+        out["carbone"].update({"riserve": sorted(paesi, key=lambda p: -p["valore"]), "anno_riserve": int(anno),
+                               "unita_riserve": "milioni di t", "mondo_riserve": r1(mondo[anno] * st)})
     return out
 
 
@@ -501,7 +541,7 @@ FB = {"US": "north-america/us", "CN": "east-n-southeast-asia/ch", "RU": "central
       "IQ": "middle-east/iz", "KW": "middle-east/ku", "OM": "middle-east/mu", "YE": "middle-east/ym", "EG": "africa/eg",
       "TR": "middle-east/tu", "IN": "south-asia/in", "JP": "east-n-southeast-asia/ja", "KR": "east-n-southeast-asia/ks",
       "TW": "east-n-southeast-asia/tw", "DE": "europe/gm", "FR": "europe/fr", "IT": "europe/it", "GB": "europe/uk",
-      "ES": "europe/sp", "NL": "europe/nl", "PL": "europe/pl", "NO": "europe/no", "AZ": "middle-east/aj",
+      "ES": "europe/sp", "NL": "europe/nl", "PL": "europe/pl", "NO": "europe/no", "AZ": "central-asia/aj",
       "KZ": "central-asia/kz", "DZ": "africa/ag", "LY": "africa/ly", "BR": "south-america/br", "NG": "africa/ni",
       "AU": "australia-oceania/as", "CL": "south-america/ci", "CD": "africa/cg", "ID": "east-n-southeast-asia/id",
       "ZA": "africa/sf", "WORLD": "world/xx"}
@@ -673,7 +713,7 @@ def risorse_paese(iso, minerali, energia, fb):
                             "quota_mondiale": p.get("quota"), "rango": i + 1, "fonte": e["fonte"]})
         for p in e.get("riserve", []):
             if p.get("iso2") == iso and (p.get("valore") or 0) > 0:
-                out.append({"risorsa": e["minerale"] + " - riserve", "riserve": p["valore"], "unita": e.get("unita_riserve"),
+                out.append({"risorsa": e["minerale"].replace(", produzione", "") + " - riserve", "riserve": p["valore"], "unita": e.get("unita_riserve"),
                             "anno": e.get("anno_riserve"), "quota_mondiale": p.get("quota"), "fonte": e["fonte"]})
     f, w = fb.get(iso) or {}, fb.get("WORLD") or {}
     for k, nome, u in (("petrolio", "Petrolio greggio - riserve provate", "miliardi di barili"),

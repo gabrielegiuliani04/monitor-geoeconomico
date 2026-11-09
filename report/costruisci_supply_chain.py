@@ -212,7 +212,7 @@ PW = "https://services9.arcgis.com/weJ1QsnbMYJlCHdG/arcgis/rest/services"
 
 # =====================================================================================
 # Soglie degli indicatori (VALUTAZIONE dell'osservatorio, dichiarata nel report)
-# stato: "normale" / "attenzione" / "critico"; 'alto_male' = valori alti sono peggiori
+# stato: "verde" / "giallo" / "rosso"; 'alto_male' = valori alti sono peggiori
 # =====================================================================================
 # Stati con lo stesso vocabolario del cruscotto del rischio (report/metodo-rischio.md): verde / giallo / rosso.
 # I FLUSSI (transiti negli stretti) non hanno soglie proprie: si usano quelle del metodo (−10% / −30% sul
@@ -533,7 +533,7 @@ def porti_europei(oggi, senza_rete):
 # =====================================================================================
 
 def calcola(oggi, senza_rete):
-    v = {"mancanti": []}
+    v = {"mancanti": [], "oggi": oggi}
     pw = leggi("portwatch.json")
     noli = leggi("noli.json")
     sd = leggi("stretti-dettaglio.json")
@@ -978,28 +978,24 @@ def grafico_porti(v, largo=True):
 def indicatori_cruscotto(v):
     cp, nl, pz, sc = v["cp"], v["noli"], v["pz"], v["sc"]
     out = []
-    h = cp["Stretto di Hormuz"]
-    out.append({"nome": "Hormuz, transiti", "valore": num(h["media7"]["n_total"], 1), "unita": "navi/giorno (7 gg)",
-                "delta": var(h["media7"]["n_total"], h["media30"]["n_total"]), "delta_txt": "su media 30 gg",
-                "stato": stato("hormuz", h["media7"]["n_total"]), "data": h["ultima_data"], "fonte": "IMF PortWatch"})
-    s = cp["Canale di Suez"]
-    out.append({"nome": "Suez, transiti", "valore": num(s["media7"]["n_total"], 1), "unita": "navi/giorno (7 gg)",
-                "delta": var(s["media7"]["n_total"], s["media7_anno_prima"]["n_total"]), "delta_txt": "su un anno",
-                "stato": stato("suez_ratio", v["suez_ratio"]), "data": s["ultima_data"], "fonte": "IMF PortWatch"})
+    # transiti: stato con le soglie del metodo del cruscotto del rischio (stesso riferimento di rischio.json)
+    for uid, nome_s, titolo in (("hormuz", "Stretto di Hormuz", "Hormuz, transiti"), ("bab-el-mandeb", "Bab el-Mandeb", "Bab el-Mandeb, transiti"),
+                                ("stretti-danesi", "Stretti danesi", "Stretti danesi, transiti")):
+        e, fr = cp.get(nome_s), flusso_rischio(v, uid)
+        if not (e and fr):
+            continue
+        out.append({"nome": titolo, "valore": num(e["media7"]["n_total"], 1), "unita": "navi/giorno (7 gg)",
+                    "delta": fr["valore"], "delta_txt": "sul riferimento",
+                    "stato": stato_flussi(fr["valore"]), "data": e["ultima_data"], "fonte": "IMF PortWatch"})
     if nl.get("fbx"):
         f = nl["fbx"]
         out.append({"nome": "Noli container FBX", "valore": num(f["valore"], 0), "unita": "$ per FEU",
                     "delta": v.get("fbx_var4s"), "delta_txt": "su 4 settimane",
                     "stato": stato("fbx", f["valore"]), "data": f["data"], "fonte": "Freightos"})
-    if nl.get("bdi"):
-        b = nl["bdi"]
-        out.append({"nome": "Baltic Dry (rinfuse)", "valore": num(b["valore"], 0), "unita": "punti",
-                    "delta": b.get("var_anno_pct"), "delta_txt": "su un anno",
-                    "stato": stato("bdi", b["valore"]), "data": b["data"], "fonte": "Trading Econ."})
     t = pz.get("ttf")
     if t:
         out.append({"nome": "Gas TTF", "valore": num(t["ultimo"], 1), "unita": "€/MWh",
-                    "delta": t["var"].get("1m"), "delta_txt": "su un mese",
+                    "delta": t["var"].get("1a"), "delta_txt": "su un anno",
                     "stato": stato("ttf", t["ultimo"]), "data": t["data"], "fonte": "Yahoo Fin."})
     g = v["sc"].get("gas_stoccaggio_pct_it")
     if g:
@@ -1022,8 +1018,8 @@ def grafico_cruscotto(v, largo=True):
     idg = "g-cruscotto" + ("" if largo else "-m")
     out = svg_apri(w, h, "Cruscotto: sei indicatori della supply chain",
                    "Valore, direzione recente e stato (valutazione con soglie dichiarate) di sei indicatori.", idg, fs)
-    icone = {"normale": ("f-ok", "●", "normale"), "attenzione": ("f-warn", "▲", "attenzione"),
-             "critico": ("f-crit", "■", "critico"), "n.d.": ("t-faint", "○", "n.d.")}
+    icone = {"verde": ("f-ok", "●", "verde"), "giallo": ("f-warn", "▲", "giallo"),
+             "rosso": ("f-crit", "■", "rosso"), "n.d.": ("t-faint", "○", "n.d.")}
     for i, x in enumerate(ind):
         r, c = divmod(i, cols)
         X0, Y0 = c * (cw + gap) + 1, r * (ch + gap) + 1
@@ -1042,7 +1038,7 @@ def grafico_cruscotto(v, largo=True):
         cls, ic, lab = icone[x["stato"]]
         out.append(f'<text x="{X0 + 12:.1f}" y="{Y0 + 118:.1f}"><tspan class="{cls}">{ic}</tspan> <tspan class="t-ink t-b">{lab}</tspan></text>')
         out.append(f'<text x="{X0 + 12:.1f}" y="{Y0 + 138:.1f}" class="t-faint">{esc(data_it(x["data"], anno=False))} · {esc(x["fonte"])}</text>')
-        out.append(f'<rect x="{X0:.1f}" y="{Y0:.1f}" width="{cw:.1f}" height="{ch}" class="hit"><title>{esc(x["nome"])}: {esc(x["valore"])} {esc(x["unita"])}; {esc(dtesto)}; stato {lab} (valutazione)</title></rect>')
+        out.append(f'<rect x="{X0:.1f}" y="{Y0:.1f}" width="{cw:.1f}" height="{ch}" class="hit"><title>{esc(x["nome"])}: {esc(x["valore"])} {esc(x["unita"])}; {esc(dtesto)}; stato {lab}</title></rect>')
     out.append("</svg>")
     return "\n".join(out), ind
 
@@ -1462,38 +1458,71 @@ def costruisci_blocchi(v, oggi, edizione):
               "di controllo (refrigerazione, terminal) e il disturbo GNSS nel Baltico e nel Golfo, che rende meno affidabili "
               "i dati AIS su cui si basano anche questi numeri."))
 
-    # ------------------------------------------------------------- 8. Indicatori
-    B.append(("h2", "indicatori", "8. Indicatori da seguire nelle prossime settimane"))
-    B.append(("val", "Le soglie sono una **valutazione dell'osservatorio**, non soglie ufficiali: servono a dire quando un dato "
-              "cambia il quadro. Lo stato è ricalcolato dallo script a ogni edizione."))
-    B.append(("fig", "cruscotto", "Cruscotto: valore, direzione recente e stato rispetto alle soglie qui sotto. "
-              "● normale, ▲ attenzione, ■ critico. Fonti nei singoli riquadri."))
+    # ------------------------------------------------------------- 8. Nord Europa
+    B += blocchi_nord(v, pw_link)
+
+    # ------------------------------------------------------------- 9. Indicatori
+    B.append(("h2", "indicatori", "9. Indicatori da seguire nelle prossime settimane"))
+    B.append(("p", "Due letture affiancate. **Flussi negli stretti:** stessi riferimenti e stesse soglie del cruscotto del rischio "
+              "(report/metodo-rischio.md): verde se il calo sul riferimento è entro il 10%, giallo tra −10% e −30%, rosso oltre −30%; "
+              "sotto −50% il metodo considera la disruption in corso. **Prezzi, noli, gasolio e stoccaggi:** il report usa soglie di "
+              "*livello*, cioè quanto costa oggi a chi importa o trasporta; il cruscotto del rischio misura invece le *variazioni* "
+              "(contro la media di 90 giorni e contro un anno prima). Per questo un prezzo può essere rosso qui e verde nel cruscotto: "
+              "alto, ma non in salita. La colonna «Cruscotto del rischio» riporta la lettura del metodo dove esiste."))
+    B.append(("val", "Le soglie di livello sono una **valutazione dell'osservatorio**, non soglie ufficiali: servono a dire quando "
+              "un dato cambia il quadro. Brent 85 $, TTF 70 € e WCI Shanghai–Genova 5.000 $ coincidono con le soglie degli scenari "
+              "del report «Hormuz e Mar Rosso». Lo stato è ricalcolato dallo script a ogni edizione."))
+    B.append(("fig", "cruscotto", "Cruscotto: valore, direzione recente e stato. Transiti con le soglie del metodo del cruscotto del rischio, "
+              "prezzi e stoccaggi con le soglie di livello della tabella qui sotto. ● verde, ▲ giallo, ■ rosso. Fonti e date nei singoli riquadri."))
     ri = []
 
-    def riga(nome, val_txt, data_s, chiave, valore_stato, soglia_txt, fonte):
-        ri.append([nome, val_txt, data_s, soglia_txt, stato(chiave, valore_stato), fonte])
-    riga("Hormuz, navi/giorno (7 gg)", num(hor["media7"]["n_total"], 1), data_tab(hor["ultima_data"]), "hormuz", hor["media7"]["n_total"],
-         "attenzione sotto 60, critico sotto 20", "PortWatch")
-    riga("Suez, % di fine 2023", num(v["suez_ratio"], 0) + "%", data_tab(suez["ultima_data"]), "suez_ratio", v["suez_ratio"],
-         "attenzione sotto 80%, critico sotto 50%", "PortWatch")
-    riga("Bab el-Mandeb, % di fine 2023", num(v["bab_ratio"], 0) + "%", data_tab(bab["ultima_data"]), "bab_ratio", v["bab_ratio"],
-         "attenzione sotto 60%, critico sotto 25%", "PortWatch")
+    def ind_rischio(uid, prefisso):
+        u = unita_rischio(v, uid)
+        for i in (u or {}).get("indicatori", []):
+            if i.get("nome", "").startswith(prefisso):
+                return i
+        return None
+
+    def lettura(i, testo):
+        return f"{i['stato']}: {pct(i['valore'], 1)} {testo}" if i else "n.d."
+
+    for uid, nome_s, nome_r in (("hormuz", "Stretto di Hormuz", "Hormuz"), ("bab-el-mandeb", "Bab el-Mandeb", "Bab el-Mandeb"),
+                                ("suez", "Canale di Suez", "Suez"), ("stretti-danesi", "Stretti danesi", "Stretti danesi")):
+        fr = flusso_rischio(v, uid)
+        e = cp.get(nome_s)
+        if not (fr and e):
+            continue
+        ri.append([f"{nome_r}, navi/giorno (7 gg)", f"{num(e['media7']['n_total'], 1)} ({pct(fr['valore'])} sul riferimento {num(fr['riferimento'], 1)})",
+                   data_tab(e["ultima_data"]), "metodo: −10% / −30% sul riferimento", stato_flussi(fr["valore"]),
+                   f"{unita_rischio(v, uid)['livello']} ({num(unita_rischio(v, uid)['punteggio'], 1)}/25)", "PortWatch"])
+
+    def riga(nome, val_txt, data_s, chiave, valore_stato, soglia_txt, crusc, fonte):
+        ri.append([nome, val_txt, data_s, soglia_txt, stato(chiave, valore_stato), crusc, fonte])
     if fbx:
-        riga("FBX globale, $/FEU", num(fbx["valore"], 0), data_tab(fbx["data"]), "fbx", fbx["valore"], "attenzione sopra 2.500, critico sopra 4.000", "Freightos")
+        riga("FBX globale, $/FEU", num(fbx["valore"], 0), data_tab(fbx["data"]), "fbx", fbx["valore"], "giallo sopra 2.500, rosso sopra 4.000",
+             "—", "Freightos")
     if wci and "Shanghai-Genoa" in wci["rotte"]:
         riga("WCI Shanghai–Genova, $/FEU", num(wci["rotte"]["Shanghai-Genoa"], 0), data_tab(wci["data"]), "wci_genova", wci["rotte"]["Shanghai-Genoa"],
-             "attenzione sopra 3.000, critico sopra 5.000", "Drewry")
-    if bdi:
-        riga("Baltic Dry, punti", num(bdi["valore"], 0), data_tab(bdi["data"]), "bdi", bdi["valore"], "attenzione sopra 2.000, critico sopra 3.500", "Trading Economics")
+             "giallo sopra 3.000, rosso sopra 5.000", "—", "Drewry")
     if brent:
-        riga("Brent, $/barile", num(brent["ultimo"], 2), data_tab(brent["data"]), "brent", brent["ultimo"], "attenzione sopra 85, critico sopra 110", "Yahoo Finance")
+        riga("Brent, $/barile", num(brent["ultimo"], 2), data_tab(brent["data"]), "brent", brent["ultimo"], "giallo sopra 85, rosso sopra 110",
+             lettura(ind_rischio("hormuz", "Petrolio Brent contro la media 90"), "sulla media 90 gg") + "; "
+             + lettura(ind_rischio("hormuz", "Petrolio Brent contro un anno"), "su un anno"), "Yahoo Finance")
     if ttf:
-        riga("TTF, €/MWh", num(ttf["ultimo"], 2), data_tab(ttf["data"]), "ttf", ttf["ultimo"], "attenzione sopra 40, critico sopra 70", "Yahoo Finance")
+        riga("TTF, €/MWh", num(ttf["ultimo"], 2), data_tab(ttf["data"]), "ttf", ttf["ultimo"], "giallo sopra 40, rosso sopra 70",
+             lettura(ind_rischio("hormuz", "Gas TTF (Europa) contro la media 90"), "sulla media 90 gg") + "; "
+             + lettura(ind_rischio("hormuz", "Gas TTF (Europa) contro un anno"), "su un anno"), "Yahoo Finance")
     if git:
-        riga("Stoccaggi gas Italia, %", num(git["valore"], 2), data_tab(git["data"]), "stoccaggi_it", git["valore"], "attenzione sotto 90%, critico sotto 80%", "GIE AGSI+")
-    riga("Gasolio self Italia, €/litro", num(gaso["self"], 3), data_tab(gaso["data"]), "gasolio", gaso["self"], "attenzione sopra 1,90, critico sopra 2,20", "Mimit")
-    B.append(("tab", ["Indicatore", "Ultimo", "Data", "Soglie (valutazione)", "Stato", "Fonte"], ri,
-              "Stato calcolato dallo script sulle soglie dichiarate. Fonti e link nelle sezioni precedenti."))
+        riga("Stoccaggi gas Italia, %", num(git["valore"], 2), data_tab(git["data"]), "stoccaggi_it", git["valore"], "giallo sotto 90%, rosso sotto 80%",
+             lettura(ind_rischio("transmed", "Stoccaggi gas Italia"), "sulla media 5 anni"), "GIE AGSI+")
+    riga("Gasolio self Italia, €/litro", num(gaso["self"], 3), data_tab(gaso["data"]), "gasolio", gaso["self"], "giallo sopra 1,90, rosso sopra 2,20",
+         "—", "Mimit")
+    B.append(("tab", ["Indicatore", "Ultimo", "Data", "Soglie", "Stato", "Cruscotto del rischio", "Fonte"], ri,
+              f"Stato calcolato dallo script. Per i transiti la colonna «Cruscotto del rischio» dà il livello dell'unità (probabilità × impatto, "
+              f"su 25); per i prezzi lo stato dei singoli indicatori del metodo (docs/data/rischio.json, {data_it(v['rischio_data'])}). "
+              f"Riferimenti dei transiti: Hormuz media 2025; Suez e Bab el-Mandeb media gennaio–ottobre 2023; Stretti danesi stessa settimana "
+              f"di un anno prima. Prezzi di Yahoo Finance: l'ultimo valore del 9 novembre è provvisorio. Il Baltic Dry è uscito dalla tabella: "
+              f"non è più raccolto in automatico. Fonti e link nelle sezioni precedenti."))
     B.append(("p", "**Eventi da seguire** (dal calendario dell'osservatorio e dalle schede degli stretti):"))
     ag = []
     for data_s, titolo, fonte, url in v["agenda"]:
@@ -1505,10 +1534,10 @@ def costruisci_blocchi(v, oggi, edizione):
               "sopra le 20 navi al giorno, che farebbe scendere TTF e premi di guerra."))
 
     # ------------------------------------------------------------- 9. Metodo
-    B.append(("h2", "metodo", "9. Metodo e limiti"))
+    B.append(("h2", "metodo", "10. Metodo e limiti"))
     B.append(("p", "**Come è fatto.** Testo, tabelle e grafici sono generati da `report/costruisci_supply_chain.py`, che legge i file "
               "di `docs/data/` del giorno e si può rilanciare ogni mese. I numeri dei dati non sono scritti a mano. I fatti che i file "
-              "non contengono (gasolio, terre rare, memorie, GNSS nel Golfo, noli di un anno fa, traffico annuo dei porti) sono in una "
+              "non contengono (gasolio, terre rare, memorie, GNSS nel Golfo, noli di un anno fa, Baltic Dry, traffico annuo dei porti) sono in una "
               "tabella dello script con fonte, link, data e affidabilità, e lo script avvisa quando invecchiano. Le parti marcate "
               "*Valutazione* sono ragionamenti dell'osservatorio sulle fonti citate, non fatti."))
     rf = []
@@ -1523,12 +1552,104 @@ def costruisci_blocchi(v, oggi, edizione):
     lim = [
         "PortWatch conta solo le navi con AIS acceso, con circa una settimana di ritardo: a Hormuz e nel Mar Nero i transiti «dark» sfuggono (Lloyd's List Intelligence conta molti più transiti a Hormuz).",
         "Le chiamate nei porti contano le navi, non le tonnellate né i TEU; sui 7 giorni i numeri sono piccoli e oscillano.",
-        "I noli non hanno serie storiche gratuite: il confronto su un anno del WCI usa un valore ripreso da fonti secondarie; il Baltic Dry viene da un CFD.",
+        "I noli non hanno serie storiche gratuite: il confronto su un anno del WCI usa un valore ripreso da una fonte secondaria. Il Baltic Dry non è più raccolto in automatico (termini d'uso di Trading Economics): è citato a mano, un solo valore, senza variazione su un anno.",
+        "Prezzi (Brent, TTF, Henry Hub, borsa): future da Yahoo Finance, non prezzi ufficiali; l'osservatorio pubblica solo circa 3 mesi di serie, quindi le variazioni a un anno e da inizio anno vengono dal campo «var» calcolato in raccolta e non si possono ricalcolare dal file. L'ultimo valore del giorno di lettura è provvisorio.",
+        "Le soglie di livello dei prezzi sono valutazioni; i transiti usano le soglie del metodo del cruscotto del rischio. Hormuz e il GNL del Qatar condividono gli stessi transiti e Brent e TTF compaiono in più unità del cruscotto: i livelli non si sommano.",
         "Le ferrovie sono schede curate a mano: i volumi sono annuali o trimestrali e alcune fonti sono di parte.",
         "Mancano: prezzo dell'elettricità (PUN), volumi Cina–Europa diretti all'Italia, dipendenze italiane per minerale e componente (" + (", ".join(v["mancanti"]) + " non esistono" if v["mancanti"] else "file presenti") + "), prezzi attuali di urea e grano da fonte primaria.",
-        "Diversi siti (Drewry, Yahoo Finance, Mining Technology, Windward) non erano raggiungibili da questa sessione: i fatti esterni sono letti dai risultati di ricerca e marcati con affidabilità media o bassa.",
+        "Alcune fonti esterne non sono state aperte (Trading Economics, Motor1, Windward, Riviera, Railmarket): quei fatti sono letti dai risultati di ricerca e marcati con affidabilità media o bassa. Le fonti aperte in revisione sono elencate nel riquadro finale.",
+        "La sezione sul Nord Europa usa porti scaricati da PortWatch dallo script del report e i file paesi.json, scorte.json, navi.json e cavi-incidenti.json: per la Danimarca mancano gli indicatori paese (non è in paesi.json).",
     ]
     B.append(("ul", lim))
+    return B
+
+
+def blocchi_nord(v, pw_link):
+    """Sezione «Cosa significa per il Nord Europa»: porti del Mare del Nord e del Baltico, Stretti danesi,
+    noli verso il Nord Europa, gas, flotta ombra e cavi. Solo numeri dai JSON (porti da report/dati)."""
+    B = [("h2", "nord", "8. Cosa significa per il Nord Europa")]
+    cp, nl, sc, pe = v["cp"], v["noli"], v["sc"], v["paesi"]
+    B.append(("p", "Questa sezione legge gli stessi dati dal punto di vista di chi lavora in un porto o in un'azienda energetica "
+              "dei Paesi Bassi, della Danimarca o del Baltico. Il resto del report guarda soprattutto all'Italia."))
+    righe = []
+    if v["porti_ue"]:
+        nord = [e for e in v["porti_ue"]["elementi"] if e.get("gruppo") == "nord"]
+        nord.sort(key=lambda e: -(e["media30"]["portcalls"] or 0))
+        for e in nord:
+            righe.append([f"{e['nome']} ({e['paese']})", num(e["media30"]["portcalls"], 1), pct(e["var30_anno_pct"]["portcalls"]),
+                          pct(e["var30_anno_pct"].get("portcalls_container")), pct(e["var30_anno_pct"].get("portcalls_tanker")),
+                          pct(e["var30_anno_pct"].get("portcalls_dry_bulk"))])
+        if righe:
+            B.append(("tab", ["Porto", "Chiamate/giorno (30 gg)", "su 1 anno", "portacontainer", "petroliere", "rinfuse secche"], righe,
+                      f"Fonte: {link('IMF PortWatch', pw_link)}, media 30 giorni al {data_it(v['porti_ue']['fonti'][0]['data_dato'])} contro gli "
+                      f"stessi giorni di un anno prima (report/dati/porti-europei.json). Chiamate di navi stimate da AIS, non tonnellate né TEU; "
+                      f"nei porti piccoli poche navi spostano molto la percentuale."))
+            su = [e for e in nord if (e["var30_anno_pct"]["portcalls"] or 0) > 0]
+            giu = sorted([e for e in nord if (e["var30_anno_pct"]["portcalls"] or 0) < 0], key=lambda e: e["var30_anno_pct"]["portcalls"])
+            t = "**Porti.** "
+            if su:
+                t += "Crescono " + ", ".join(f"{e['nome']} ({pct(e['var30_anno_pct']['portcalls'])})" for e in su[:4]) + "; "
+            if giu:
+                t += "calano " + ", ".join(f"{e['nome']} ({pct(e['var30_anno_pct']['portcalls'])})" for e in giu[:3]) + " "
+            B.append(("p", t.rstrip("; ") + f" (chiamate al giorno, 30 giorni su un anno, {link('IMF PortWatch', pw_link)})."))
+    sdn = cp.get("Stretti danesi")
+    t = "**Stretti danesi e Baltico.** "
+    if sdn:
+        t += (f"Agli Stretti danesi passano {num(sdn['media7']['n_total'], 1)} navi al giorno (di cui {num(sdn['media7']['n_tanker'], 1)} petroliere), "
+              f"{pct(sdn['var7_anno_pct']['n_total'])} sulla stessa settimana di un anno prima ({link('IMF PortWatch', pw_link)}, settimana al {data_it(sdn['ultima_data'])}). ")
+    if unita_rischio(v, "stretti-danesi") and unita_rischio(v, "baltico"):
+        t += (f"Nel cruscotto del rischio gli Stretti danesi sono {livello_txt(v, 'stretti-danesi')} e il Baltico (cavi, condotte, elettrodotti) "
+              f"{livello_txt(v, 'baltico')}: flussi in giallo, scorte di gas in rosso (rischio.json). ")
+    rc = v["cavi_riep"]
+    inc_b = [e for e in v["incidenti_cavi"] if "altic" in json.dumps(e, ensure_ascii=False)]
+    if inc_b:
+        ult = max(inc_b, key=lambda e: e["data_evento"])
+        n_anno = sum(1 for e in inc_b if e["data_evento"].startswith(str(v["oggi"].year)))
+        t += (f"Nel Baltico passano {rc['cavi_per_passaggio'].get('Mar Baltico')} cavi (TeleGeography); l'archivio dell'osservatorio conta "
+              f"{len(inc_b)} incidenti a cavi e condotte nel Baltico dal {min(e['data_evento'] for e in inc_b)[:4]}, l'ultimo il {data_it(ult['data_evento'])}, "
+              f"{'nessuno' if n_anno == 0 else n_anno} nel {v['oggi'].year} (cavi-incidenti.json). ")
+    gf = v["navi_aree"].get("Golfo di Finlandia", {})
+    sd = v["navi_aree"].get("Stretti danesi", {})
+    if gf:
+        t += (f"Nel Golfo di Finlandia {gf.get('sanzionate')} delle {gf.get('petroliere_viste')} petroliere viste con AIS sono sanzionate; "
+              f"agli Stretti danesi {sd.get('sanzionate', 'n.d.')} su {sd.get('petroliere_viste', 'n.d.')}, ma con una sola fonte AIS gratuita "
+              f"(navi.json, {data_it(v['navi_agg'])}).")
+    B.append(("p", t))
+    fbx, wci = nl.get("fbx"), nl.get("wci")
+    t = "**Noli.** "
+    if fbx and "FBX11" in fbx.get("rotte", {}) and "FBX13" in fbx.get("rotte", {}):
+        f11, f13 = fbx["rotte"]["FBX11"]["valore"], fbx["rotte"]["FBX13"]["valore"]
+        t += (f"La rotta Cina–Nord Europa costa {num(f11, 0)} dollari per FEU, {pct(var(f11, f13))} rispetto alla Cina–Mediterraneo "
+              f"(Freightos FBX, {data_it(fbx['data'])}). ")
+    if wci and "Shanghai-Rotterdam" in wci.get("rotte", {}):
+        t += (f"Il WCI Shanghai–Rotterdam è a {num(wci['rotte']['Shanghai-Rotterdam'], 0)} dollari, "
+              f"{pct(v['wci_rotte_yoy'].get('Shanghai-Rotterdam'))} su un anno (Drewry, {data_it(wci['data'])}; anno prima da {fonte_est('wci_anno_prima')}).")
+    B.append(("p", t))
+    gnl_, gde = sc.get("gas_stoccaggio_pct_nl"), sc.get("gas_stoccaggio_pct_de")
+    nlp = pe.get("NL", {}).get("indicatori", {})
+    t = "**Gas.** "
+    if gnl_ and gde:
+        t += (f"L'8 novembre gli stoccaggi sono {al(num(gnl_['valore'], 1))}% nei Paesi Bassi ({num(-gnl_['media_5_anni']['scarto'], 1)} punti sotto la media di 5 anni) "
+              f"e {al(num(gde['valore'], 1))}% in Germania ({num(-gde['media_5_anni']['scarto'], 1)} punti sotto), contro "
+              f"{il(num(sc['gas_stoccaggio_pct_it']['valore'], 1))}% dell'Italia (GIE AGSI+). ")
+    if nlp.get("dipendenza_gas") and nlp.get("fornitori_gnl"):
+        fg = nlp["fornitori_gnl"]["valore"]
+        qg = nlp.get("quota_gnl_golfo_persico", {}).get("valore", {})
+        t += (f"I Paesi Bassi importano {il(num(nlp['dipendenza_gas']['valore'], 1))}% del gas che consumano (Eurostat, {nlp['dipendenza_gas']['anno']}); "
+              f"il loro GNL nel 2025 veniva per {il(num(fg[0]['quota_pct'], 1))}% da {fg[0]['nome']} e per {il(num(fg[1]['quota_pct'], 1))}% da {fg[1]['nome']}, "
+              f"{'per nulla' if qg.get('max_pct') == 0 else 'per ' + num(qg.get('max_pct'), 1) + '%'} dal Golfo Persico "
+              f"({link('UN Comtrade', nlp['fornitori_gnl']['link'])}, quote sul valore). ")
+    if nlp.get("quota_greggio_golfo_persico"):
+        q = nlp["quota_greggio_golfo_persico"]["valore"]
+        t += f"Dal Golfo arriva {il(num(q['min_pct'], 1))}–{num(q['max_pct'], 1)}% del greggio importato dai Paesi Bassi (UN Comtrade 2025)."
+    B.append(("p", t))
+    B.append(("val", "Per un porto del Mare del Nord la crisi di Hormuz arriva più dal prezzo che dai volumi. I noli verso il Nord "
+              "Europa costano meno di quelli verso il Mediterraneo e il ritorno a Suez aggiunge capacità sulla rotta Asia–Europa; "
+              "il GNL olandese viene quasi tutto dall'Atlantico, non dal Golfo. Il punto debole è il gas: con stoccaggi olandesi e "
+              "tedeschi molto sotto la media, il TTF (che si forma proprio in Olanda) resta sensibile a ogni notizia su Qatar e Hormuz "
+              "e a un inverno freddo. Per chi opera nel Baltico e negli Stretti danesi il rischio è ibrido: cavi, flotta ombra e "
+              "disturbo GNSS, che pesa anche sulle navi che installano e servono i parchi eolici offshore. I dati non dicono "
+              "perché calano i transiti agli Stretti danesi: possono pesare il calo dell'export russo, le sanzioni o le navi con AIS spento."))
     return B
 
 
@@ -1631,9 +1752,9 @@ figcaption{font-size:13px;color:var(--soft);margin-top:8px}
 @media (max-width:600px){.largo{display:none}.stretto{display:block}figure .grafico{padding:8px}}
 details{margin-top:6px;font-size:13px}
 summary{cursor:pointer;color:var(--soft)}
-.s-normale::before{content:"● ";color:var(--ok)}
-.s-attenzione::before{content:"▲ ";color:var(--warn)}
-.s-critico::before{content:"■ ";color:var(--crit)}
+.s-verde::before{content:"● ";color:var(--ok)}
+.s-giallo::before{content:"▲ ";color:var(--warn)}
+.s-rosso::before{content:"■ ";color:var(--crit)}
 footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);font-size:14px;color:var(--soft)}
 footer .firma{font-weight:600;color:var(--ink)}
 """

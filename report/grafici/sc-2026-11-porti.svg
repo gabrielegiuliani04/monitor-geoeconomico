@@ -1,4 +1,4 @@
-<svg class="viz" id="g-porti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 554" width="100%" role="img" aria-labelledby="g-porti-t g-porti-d" style="--fs:12px;max-width:720px;height:auto;display:block">
+<svg class="viz" id="g-porti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 772" width="100%" role="img" aria-labelledby="g-porti-t g-porti-d" style="--fs:12px;max-width:720px;height:auto;display:block">
 <title id="g-porti-t">Porti: chiamate di navi, variazione anno su anno (media 30 giorni)</title><desc id="g-porti-d">Variazione percentuale delle chiamate di navi al giorno negli ultimi 30 giorni rispetto agli stessi giorni di un anno prima, IMF PortWatch.</desc>
 <style>
 .viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
@@ -21,7 +21,7 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 .viz .tick{stroke:var(--v-ink);stroke-width:2}
 </style>
 <text x="8" y="18" class="t-ink t-b">Chiamate di navi al giorno: ultimi 30 giorni contro un anno prima</text>
-<text x="8" y="34" class="t-faint">IMF PortWatch · blu = aumento, magenta = calo · numero con segno</text>
+<text x="8" y="34" class="t-faint">IMF PortWatch, dati fino al 30 ottobre 2026 · blu = aumento, magenta = calo</text>
 <text x="8" y="68" class="t-ink t-b">Porti italiani</text>
 <line x1="404.0" x2="404.0" y1="74" y2="292" class="base"/>
 <text x="150" y="87" text-anchor="end" class="t-ink">La Spezia</text>
@@ -60,42 +60,76 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <rect x="243.1" y="268" width="160.9" height="14" rx="3" class="f-s1"/>
 <text x="237.1" y="279" text-anchor="end" class="t-ink num">−20%</text>
 <rect x="0" y="264" width="720" height="24" class="hit"><title>Ravenna: 6,4 chiamate al giorno negli ultimi 30 giorni, 8,0 un anno prima (−20%)</title></rect>
-<text x="8" y="310" class="t-ink t-b">Porti europei e mediterranei</text>
-<line x1="404.0" x2="404.0" y1="316" y2="534" class="base"/>
-<text x="150" y="329" text-anchor="end" class="t-ink">Anversa</text>
-<rect x="404.0" y="318" width="40.2" height="14" rx="3" class="f-s3"/>
-<text x="450.2" y="329" text-anchor="start" class="t-ink num">+5%</text>
-<rect x="0" y="314" width="720" height="24" class="hit"><title>Anversa: 52,3 chiamate al giorno negli ultimi 30 giorni, 49,8 un anno prima (+5%)</title></rect>
-<text x="150" y="353" text-anchor="end" class="t-ink">Rotterdam</text>
-<rect x="404.0" y="342" width="18.5" height="14" rx="3" class="f-s3"/>
-<text x="428.5" y="353" text-anchor="start" class="t-ink num">+2%</text>
-<rect x="0" y="338" width="720" height="24" class="hit"><title>Rotterdam: 81,4 chiamate al giorno negli ultimi 30 giorni, 79,6 un anno prima (+2%)</title></rect>
-<text x="150" y="377" text-anchor="end" class="t-ink">Amburgo</text>
-<rect x="387.9" y="366" width="16.1" height="14" rx="3" class="f-s1"/>
-<text x="381.9" y="377" text-anchor="end" class="t-ink num">−2%</text>
-<rect x="0" y="362" width="720" height="24" class="hit"><title>Amburgo: 16,2 chiamate al giorno negli ultimi 30 giorni, 16,5 un anno prima (−2%)</title></rect>
-<text x="150" y="401" text-anchor="end" class="t-ink">Tanger Med</text>
-<rect x="383.1" y="390" width="20.9" height="14" rx="3" class="f-s1"/>
-<text x="377.1" y="401" text-anchor="end" class="t-ink num">−3%</text>
-<rect x="0" y="386" width="720" height="24" class="hit"><title>Tanger Med: 12,4 chiamate al giorno negli ultimi 30 giorni, 12,8 un anno prima (−3%)</title></rect>
-<text x="150" y="425" text-anchor="end" class="t-ink">Marsiglia</text>
-<rect x="361.4" y="414" width="42.6" height="14" rx="3" class="f-s1"/>
-<text x="355.4" y="425" text-anchor="end" class="t-ink num">−5%</text>
-<rect x="0" y="410" width="720" height="24" class="hit"><title>Marsiglia: 3,0 chiamate al giorno negli ultimi 30 giorni, 3,1 un anno prima (−5%)</title></rect>
-<text x="150" y="449" text-anchor="end" class="t-ink">Algeciras</text>
-<rect x="358.1" y="438" width="45.9" height="14" rx="3" class="f-s1"/>
-<text x="352.1" y="449" text-anchor="end" class="t-ink num">−6%</text>
-<rect x="0" y="434" width="720" height="24" class="hit"><title>Algeciras: 16,0 chiamate al giorno negli ultimi 30 giorni, 17,0 un anno prima (−6%)</title></rect>
-<text x="150" y="473" text-anchor="end" class="t-ink">Valencia</text>
-<rect x="350.9" y="462" width="53.1" height="14" rx="3" class="f-s1"/>
-<text x="344.9" y="473" text-anchor="end" class="t-ink num">−7%</text>
-<rect x="0" y="458" width="720" height="24" class="hit"><title>Valencia: 10,3 chiamate al giorno negli ultimi 30 giorni, 11,0 un anno prima (−7%)</title></rect>
-<text x="150" y="497" text-anchor="end" class="t-ink">Pireo</text>
-<rect x="288.2" y="486" width="115.8" height="14" rx="3" class="f-s1"/>
-<text x="282.2" y="497" text-anchor="end" class="t-ink num">−14%</text>
-<rect x="0" y="482" width="720" height="24" class="hit"><title>Pireo: 12,1 chiamate al giorno negli ultimi 30 giorni, 14,1 un anno prima (−14%)</title></rect>
-<text x="150" y="521" text-anchor="end" class="t-ink">Capodistria (Koper)</text>
-<rect x="272.9" y="510" width="131.1" height="14" rx="3" class="f-s1"/>
-<text x="266.9" y="521" text-anchor="end" class="t-ink num">−16%</text>
-<rect x="0" y="506" width="720" height="24" class="hit"><title>Capodistria (Koper): 3,4 chiamate al giorno negli ultimi 30 giorni, 4,1 un anno prima (−16%)</title></rect>
+<text x="8" y="310" class="t-ink t-b">Mediterraneo e Atlantico</text>
+<line x1="404.0" x2="404.0" y1="316" y2="462" class="base"/>
+<text x="150" y="329" text-anchor="end" class="t-ink">Tanger Med</text>
+<rect x="383.1" y="318" width="20.9" height="14" rx="3" class="f-s1"/>
+<text x="377.1" y="329" text-anchor="end" class="t-ink num">−3%</text>
+<rect x="0" y="314" width="720" height="24" class="hit"><title>Tanger Med: 12,4 chiamate al giorno negli ultimi 30 giorni, 12,8 un anno prima (−3%)</title></rect>
+<text x="150" y="353" text-anchor="end" class="t-ink">Marsiglia</text>
+<rect x="361.4" y="342" width="42.6" height="14" rx="3" class="f-s1"/>
+<text x="355.4" y="353" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="338" width="720" height="24" class="hit"><title>Marsiglia: 3,0 chiamate al giorno negli ultimi 30 giorni, 3,1 un anno prima (−5%)</title></rect>
+<text x="150" y="377" text-anchor="end" class="t-ink">Algeciras</text>
+<rect x="358.1" y="366" width="45.9" height="14" rx="3" class="f-s1"/>
+<text x="352.1" y="377" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="0" y="362" width="720" height="24" class="hit"><title>Algeciras: 16,0 chiamate al giorno negli ultimi 30 giorni, 17,0 un anno prima (−6%)</title></rect>
+<text x="150" y="401" text-anchor="end" class="t-ink">Valencia</text>
+<rect x="350.9" y="390" width="53.1" height="14" rx="3" class="f-s1"/>
+<text x="344.9" y="401" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="386" width="720" height="24" class="hit"><title>Valencia: 10,3 chiamate al giorno negli ultimi 30 giorni, 11,0 un anno prima (−7%)</title></rect>
+<text x="150" y="425" text-anchor="end" class="t-ink">Pireo</text>
+<rect x="288.2" y="414" width="115.8" height="14" rx="3" class="f-s1"/>
+<text x="282.2" y="425" text-anchor="end" class="t-ink num">−14%</text>
+<rect x="0" y="410" width="720" height="24" class="hit"><title>Pireo: 12,1 chiamate al giorno negli ultimi 30 giorni, 14,1 un anno prima (−14%)</title></rect>
+<text x="150" y="449" text-anchor="end" class="t-ink">Capodistria (Koper)</text>
+<rect x="272.9" y="438" width="131.1" height="14" rx="3" class="f-s1"/>
+<text x="266.9" y="449" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="0" y="434" width="720" height="24" class="hit"><title>Capodistria (Koper): 3,4 chiamate al giorno negli ultimi 30 giorni, 4,1 un anno prima (−16%)</title></rect>
+<text x="8" y="480" class="t-ink t-b">Nord Europa e Baltico</text>
+<line x1="404.0" x2="404.0" y1="486" y2="752" class="base"/>
+<text x="150" y="499" text-anchor="end" class="t-ink">Wilhelmshaven</text>
+<rect x="404.0" y="488" width="126.3" height="14" rx="3" class="f-s3"/>
+<text x="536.3" y="499" text-anchor="start" class="t-ink num">+16%</text>
+<rect x="0" y="484" width="720" height="24" class="hit"><title>Wilhelmshaven: 4,4 chiamate al giorno negli ultimi 30 giorni, 3,8 un anno prima (+16%)</title></rect>
+<text x="150" y="523" text-anchor="end" class="t-ink">Anversa</text>
+<rect x="404.0" y="512" width="40.2" height="14" rx="3" class="f-s3"/>
+<text x="450.2" y="523" text-anchor="start" class="t-ink num">+5%</text>
+<rect x="0" y="508" width="720" height="24" class="hit"><title>Anversa: 52,3 chiamate al giorno negli ultimi 30 giorni, 49,8 un anno prima (+5%)</title></rect>
+<text x="150" y="547" text-anchor="end" class="t-ink">Rotterdam</text>
+<rect x="404.0" y="536" width="18.5" height="14" rx="3" class="f-s3"/>
+<text x="428.5" y="547" text-anchor="start" class="t-ink num">+2%</text>
+<rect x="0" y="532" width="720" height="24" class="hit"><title>Rotterdam: 81,4 chiamate al giorno negli ultimi 30 giorni, 79,6 un anno prima (+2%)</title></rect>
+<text x="150" y="571" text-anchor="end" class="t-ink">Aarhus</text>
+<rect x="404.0" y="560" width="1.0" height="14" rx="3" class="f-s3"/>
+<text x="410.0" y="571" text-anchor="start" class="t-ink num">0%</text>
+<rect x="0" y="556" width="720" height="24" class="hit"><title>Aarhus: 3,9 chiamate al giorno negli ultimi 30 giorni, 3,9 un anno prima (0%)</title></rect>
+<text x="150" y="595" text-anchor="end" class="t-ink">Amburgo</text>
+<rect x="387.9" y="584" width="16.1" height="14" rx="3" class="f-s1"/>
+<text x="381.9" y="595" text-anchor="end" class="t-ink num">−2%</text>
+<rect x="0" y="580" width="720" height="24" class="hit"><title>Amburgo: 16,2 chiamate al giorno negli ultimi 30 giorni, 16,5 un anno prima (−2%)</title></rect>
+<text x="150" y="619" text-anchor="end" class="t-ink">Klaipėda</text>
+<rect x="382.3" y="608" width="21.7" height="14" rx="3" class="f-s1"/>
+<text x="376.3" y="619" text-anchor="end" class="t-ink num">−3%</text>
+<rect x="0" y="604" width="720" height="24" class="hit"><title>Klaipėda: 8,3 chiamate al giorno negli ultimi 30 giorni, 8,6 un anno prima (−3%)</title></rect>
+<text x="150" y="643" text-anchor="end" class="t-ink">Danzica (Gdańsk)</text>
+<rect x="363.8" y="632" width="40.2" height="14" rx="3" class="f-s1"/>
+<text x="357.8" y="643" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="628" width="720" height="24" class="hit"><title>Danzica (Gdańsk): 9,5 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−5%)</title></rect>
+<text x="150" y="667" text-anchor="end" class="t-ink">Amsterdam</text>
+<rect x="348.5" y="656" width="55.5" height="14" rx="3" class="f-s1"/>
+<text x="342.5" y="667" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="652" width="720" height="24" class="hit"><title>Amsterdam: 20,4 chiamate al giorno negli ultimi 30 giorni, 21,9 un anno prima (−7%)</title></rect>
+<text x="150" y="691" text-anchor="end" class="t-ink">Esbjerg</text>
+<rect x="343.7" y="680" width="60.3" height="14" rx="3" class="f-s1"/>
+<text x="337.7" y="691" text-anchor="end" class="t-ink num">−8%</text>
+<rect x="0" y="676" width="720" height="24" class="hit"><title>Esbjerg: 3,3 chiamate al giorno negli ultimi 30 giorni, 3,6 un anno prima (−8%)</title></rect>
+<text x="150" y="715" text-anchor="end" class="t-ink">Göteborg</text>
+<rect x="342.9" y="704" width="61.1" height="14" rx="3" class="f-s1"/>
+<text x="336.9" y="715" text-anchor="end" class="t-ink num">−8%</text>
+<rect x="0" y="700" width="720" height="24" class="hit"><title>Göteborg: 9,3 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−8%)</title></rect>
+<text x="150" y="739" text-anchor="end" class="t-ink">Bremerhaven</text>
+<rect x="298.6" y="728" width="105.4" height="14" rx="3" class="f-s1"/>
+<text x="292.6" y="739" text-anchor="end" class="t-ink num">−13%</text>
+<rect x="0" y="724" width="720" height="24" class="hit"><title>Bremerhaven: 11,3 chiamate al giorno negli ultimi 30 giorni, 13,0 un anno prima (−13%)</title></rect>
 </svg>
