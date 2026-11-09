@@ -1,0 +1,2005 @@
+{
+ "descrizione": "Vendite mensili di prodotti petroliferi sul mercato interno (preconsuntivi MASE, DGSAIE), migliaia di tonnellate. Estratte una tantum dai file XLS/XLSX (la libreria standard di Python non legge i file Excel binari): valori copiati dalle righe BENZINA, GASOLIO MOTORI, GASOLIO RETE, GASOLIO EXTRARETE, AGRICOLO, TOTALE VENDITE del foglio 'Italiano'. 'kt_anno_prec' è il valore dello stesso mese dell'anno prima come riportato nello stesso file (preconsuntivo). Gasolio extrarete = forniture fuori dalla rete stradale (flotte, autotrasporto, imprese).",
+ "fonte": "MASE, DGSAIE, Consumi petroliferi (preconsuntivi)",
+ "link": "https://sisen.mase.gov.it/dgsaie/consumi-petroliferi",
+ "licenza": "dati pubblici MASE (riuso consentito citando la fonte)",
+ "estratto_il": "2026-11-09",
+ "affidabilita": "alta",
+ "elementi": [
+  {
+   "mese": "2022-01",
+   "benzina": {
+    "kt": 502,
+    "kt_anno_prec": 396,
+    "var_pct": 26.8
+   },
+   "gasolio_motori": {
+    "kt": 1677,
+    "kt_anno_prec": 1499,
+    "var_pct": 11.9
+   },
+   "gasolio_rete": {
+    "kt": 1040,
+    "kt_anno_prec": 903,
+    "var_pct": 15.2
+   },
+   "gasolio_extrarete": {
+    "kt": 841,
+    "kt_anno_prec": 761,
+    "var_pct": 10.5
+   },
+   "gasolio_agricolo": {
+    "kt": 50,
+    "kt_anno_prec": 42,
+    "var_pct": 19.0
+   },
+   "totale_vendite": {
+    "kt": 3679,
+    "kt_anno_prec": 3440.0,
+    "var_pct": 6.9
+   },
+   "file": "Consumi_Petrolio_2022_01.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d67"
+  },
+  {
+   "mese": "2022-02",
+   "benzina": {
+    "kt": 539,
+    "kt_anno_prec": 457,
+    "var_pct": 17.9
+   },
+   "gasolio_motori": {
+    "kt": 1847,
+    "kt_anno_prec": 1681,
+    "var_pct": 9.9
+   },
+   "gasolio_rete": {
+    "kt": 1121,
+    "kt_anno_prec": 1019,
+    "var_pct": 10.0
+   },
+   "gasolio_extrarete": {
+    "kt": 939,
+    "kt_anno_prec": 843,
+    "var_pct": 11.4
+   },
+   "gasolio_agricolo": {
+    "kt": 108,
+    "kt_anno_prec": 91,
+    "var_pct": 18.7
+   },
+   "totale_vendite": {
+    "kt": 3888.0,
+    "kt_anno_prec": 3500.0,
+    "var_pct": 11.1
+   },
+   "file": "Consumi_Petrolio_2022_02.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba19b"
+  },
+  {
+   "mese": "2022-03",
+   "benzina": {
+    "kt": 619,
+    "kt_anno_prec": 466,
+    "var_pct": 32.8
+   },
+   "gasolio_motori": {
+    "kt": 2095,
+    "kt_anno_prec": 1797,
+    "var_pct": 16.6
+   },
+   "gasolio_rete": {
+    "kt": 1270,
+    "kt_anno_prec": 1070,
+    "var_pct": 18.7
+   },
+   "gasolio_extrarete": {
+    "kt": 1061,
+    "kt_anno_prec": 910,
+    "var_pct": 16.6
+   },
+   "gasolio_agricolo": {
+    "kt": 159,
+    "kt_anno_prec": 168,
+    "var_pct": -5.4
+   },
+   "totale_vendite": {
+    "kt": 4478,
+    "kt_anno_prec": 3931,
+    "var_pct": 13.9
+   },
+   "file": "Consumi_Petrolio_2022_03.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba195"
+  },
+  {
+   "mese": "2022-04",
+   "benzina": {
+    "kt": 619,
+    "kt_anno_prec": 486,
+    "var_pct": 27.4
+   },
+   "gasolio_motori": {
+    "kt": 1990,
+    "kt_anno_prec": 1772,
+    "var_pct": 12.3
+   },
+   "gasolio_rete": {
+    "kt": 1227,
+    "kt_anno_prec": 1054,
+    "var_pct": 16.4
+   },
+   "gasolio_extrarete": {
+    "kt": 991,
+    "kt_anno_prec": 903,
+    "var_pct": 9.7
+   },
+   "gasolio_agricolo": {
+    "kt": 129,
+    "kt_anno_prec": 153,
+    "var_pct": -15.7
+   },
+   "totale_vendite": {
+    "kt": 4239,
+    "kt_anno_prec": 3779,
+    "var_pct": 12.2
+   },
+   "file": "Consumi_Petrolio_2022_04.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d56"
+  },
+  {
+   "mese": "2022-05",
+   "benzina": {
+    "kt": 658,
+    "kt_anno_prec": 587,
+    "var_pct": 12.1
+   },
+   "gasolio_motori": {
+    "kt": 2075,
+    "kt_anno_prec": 1939,
+    "var_pct": 7.0
+   },
+   "gasolio_rete": {
+    "kt": 1278,
+    "kt_anno_prec": 1191,
+    "var_pct": 7.3
+   },
+   "gasolio_extrarete": {
+    "kt": 1034,
+    "kt_anno_prec": 970,
+    "var_pct": 6.6
+   },
+   "gasolio_agricolo": {
+    "kt": 174,
+    "kt_anno_prec": 173,
+    "var_pct": 0.6
+   },
+   "totale_vendite": {
+    "kt": 4492,
+    "kt_anno_prec": 4142.0,
+    "var_pct": 8.5
+   },
+   "file": "Consumi_Petrolio_2022_05.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba18c"
+  },
+  {
+   "mese": "2022-06",
+   "benzina": {
+    "kt": 692,
+    "kt_anno_prec": 670,
+    "var_pct": 3.3
+   },
+   "gasolio_motori": {
+    "kt": 2062,
+    "kt_anno_prec": 2072,
+    "var_pct": -0.5
+   },
+   "gasolio_rete": {
+    "kt": 1306,
+    "kt_anno_prec": 1300,
+    "var_pct": 0.5
+   },
+   "gasolio_extrarete": {
+    "kt": 995,
+    "kt_anno_prec": 1014,
+    "var_pct": -1.9
+   },
+   "gasolio_agricolo": {
+    "kt": 203,
+    "kt_anno_prec": 227,
+    "var_pct": -10.6
+   },
+   "totale_vendite": {
+    "kt": 4525,
+    "kt_anno_prec": 4461,
+    "var_pct": 1.4
+   },
+   "file": "Consumi_Petrolio_2022_06.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d57"
+  },
+  {
+   "mese": "2022-07",
+   "benzina": {
+    "kt": 731,
+    "kt_anno_prec": 747,
+    "var_pct": -2.1
+   },
+   "gasolio_motori": {
+    "kt": 2136,
+    "kt_anno_prec": 2196,
+    "var_pct": -2.7
+   },
+   "gasolio_rete": {
+    "kt": 1375,
+    "kt_anno_prec": 1415,
+    "var_pct": -2.8
+   },
+   "gasolio_extrarete": {
+    "kt": 1026,
+    "kt_anno_prec": 1057,
+    "var_pct": -2.9
+   },
+   "gasolio_agricolo": {
+    "kt": 220,
+    "kt_anno_prec": 222,
+    "var_pct": -0.9
+   },
+   "totale_vendite": {
+    "kt": 4600.0,
+    "kt_anno_prec": 4711,
+    "var_pct": -2.4
+   },
+   "file": "Consumi_Petrolio_2022_07.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d5e"
+  },
+  {
+   "mese": "2022-08",
+   "benzina": {
+    "kt": 752,
+    "kt_anno_prec": 700,
+    "var_pct": 7.4
+   },
+   "gasolio_motori": {
+    "kt": 1978,
+    "kt_anno_prec": 1969,
+    "var_pct": 0.5
+   },
+   "gasolio_rete": {
+    "kt": 1336,
+    "kt_anno_prec": 1295,
+    "var_pct": 3.2
+   },
+   "gasolio_extrarete": {
+    "kt": 897,
+    "kt_anno_prec": 919,
+    "var_pct": -2.4
+   },
+   "gasolio_agricolo": {
+    "kt": 192,
+    "kt_anno_prec": 198,
+    "var_pct": -3.0
+   },
+   "totale_vendite": {
+    "kt": 4430,
+    "kt_anno_prec": 4395,
+    "var_pct": 0.8
+   },
+   "file": "Consumi_Petrolio_2022_08.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d68"
+  },
+  {
+   "mese": "2022-09",
+   "benzina": {
+    "kt": 722.0,
+    "kt_anno_prec": 672.0,
+    "var_pct": 7.4
+   },
+   "gasolio_motori": {
+    "kt": 2131.0,
+    "kt_anno_prec": 2107.0,
+    "var_pct": 1.1
+   },
+   "gasolio_rete": {
+    "kt": 1352.0,
+    "kt_anno_prec": 1313.0,
+    "var_pct": 3.0
+   },
+   "gasolio_extrarete": {
+    "kt": 1032.0,
+    "kt_anno_prec": 1039.0,
+    "var_pct": -0.7
+   },
+   "gasolio_agricolo": {
+    "kt": 221.0,
+    "kt_anno_prec": 238.0,
+    "var_pct": -7.1
+   },
+   "totale_vendite": {
+    "kt": 4640.0,
+    "kt_anno_prec": 4574.0,
+    "var_pct": 1.4
+   },
+   "file": "Consumi_Petrolio_2022_09.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba18e"
+  },
+  {
+   "mese": "2022-10",
+   "benzina": {
+    "kt": 675.0,
+    "kt_anno_prec": 637.0,
+    "var_pct": 6.0
+   },
+   "gasolio_motori": {
+    "kt": 1997.0,
+    "kt_anno_prec": 2039.0,
+    "var_pct": -2.1
+   },
+   "gasolio_rete": {
+    "kt": 1289.0,
+    "kt_anno_prec": 1284.0,
+    "var_pct": 0.4
+   },
+   "gasolio_extrarete": {
+    "kt": 948.0,
+    "kt_anno_prec": 994.0,
+    "var_pct": -4.6
+   },
+   "gasolio_agricolo": {
+    "kt": 190.0,
+    "kt_anno_prec": 228.0,
+    "var_pct": -16.7
+   },
+   "totale_vendite": {
+    "kt": 4419.0,
+    "kt_anno_prec": 4474.0,
+    "var_pct": -1.2
+   },
+   "file": "Consumi_Petrolio_2022_10.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba18d"
+  },
+  {
+   "mese": "2022-11",
+   "benzina": {
+    "kt": 669,
+    "kt_anno_prec": 591,
+    "var_pct": 13.2
+   },
+   "gasolio_motori": {
+    "kt": 2052,
+    "kt_anno_prec": 1968,
+    "var_pct": 4.3
+   },
+   "gasolio_rete": {
+    "kt": 1305,
+    "kt_anno_prec": 1231,
+    "var_pct": 6.0
+   },
+   "gasolio_extrarete": {
+    "kt": 983,
+    "kt_anno_prec": 960,
+    "var_pct": 2.4
+   },
+   "gasolio_agricolo": {
+    "kt": 170,
+    "kt_anno_prec": 166,
+    "var_pct": 2.4
+   },
+   "totale_vendite": {
+    "kt": 4302,
+    "kt_anno_prec": 4314,
+    "var_pct": -0.3
+   },
+   "file": "Consumi_Petrolio_2022_11.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba19c"
+  },
+  {
+   "mese": "2022-12",
+   "benzina": {
+    "kt": 671,
+    "kt_anno_prec": 645,
+    "var_pct": 4.0
+   },
+   "gasolio_motori": {
+    "kt": 1960,
+    "kt_anno_prec": 2083,
+    "var_pct": -5.9
+   },
+   "gasolio_rete": {
+    "kt": 1282,
+    "kt_anno_prec": 1315,
+    "var_pct": -2.5
+   },
+   "gasolio_extrarete": {
+    "kt": 909,
+    "kt_anno_prec": 1010,
+    "var_pct": -10.0
+   },
+   "gasolio_agricolo": {
+    "kt": 175,
+    "kt_anno_prec": 180,
+    "var_pct": -2.8
+   },
+   "totale_vendite": {
+    "kt": 4241,
+    "kt_anno_prec": 4449,
+    "var_pct": -4.7
+   },
+   "file": "Consumi_Petrolio_2022_12.xlsx",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d5f"
+  },
+  {
+   "mese": "2023-01",
+   "benzina": {
+    "kt": 588.0,
+    "kt_anno_prec": 501.0,
+    "var_pct": 17.4
+   },
+   "gasolio_motori": {
+    "kt": 1724.0,
+    "kt_anno_prec": 1693.0,
+    "var_pct": 1.8
+   },
+   "gasolio_rete": {
+    "kt": 1145.0,
+    "kt_anno_prec": 1046.0,
+    "var_pct": 9.5
+   },
+   "gasolio_extrarete": {
+    "kt": 781.0,
+    "kt_anno_prec": 854.0,
+    "var_pct": -8.5
+   },
+   "gasolio_agricolo": {
+    "kt": 36.0,
+    "kt_anno_prec": 52.0,
+    "var_pct": -30.8
+   },
+   "totale_vendite": {
+    "kt": 3693.0,
+    "kt_anno_prec": 3744.0,
+    "var_pct": -1.4
+   },
+   "file": "Consumi_Petrolio_2023_01.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d6a"
+  },
+  {
+   "mese": "2023-02",
+   "benzina": {
+    "kt": 568.0,
+    "kt_anno_prec": 545.0,
+    "var_pct": 4.2
+   },
+   "gasolio_motori": {
+    "kt": 1827.0,
+    "kt_anno_prec": 1839.0,
+    "var_pct": -0.7
+   },
+   "gasolio_rete": {
+    "kt": 1150.0,
+    "kt_anno_prec": 1131.0,
+    "var_pct": 1.7
+   },
+   "gasolio_extrarete": {
+    "kt": 879.0,
+    "kt_anno_prec": 926.0,
+    "var_pct": -5.1
+   },
+   "gasolio_agricolo": {
+    "kt": 98.0,
+    "kt_anno_prec": 103.0,
+    "var_pct": -4.9
+   },
+   "totale_vendite": {
+    "kt": 3844.0,
+    "kt_anno_prec": 3932.0,
+    "var_pct": -2.2
+   },
+   "file": "Consumi_Petrolio_2023_02.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d69"
+  },
+  {
+   "mese": "2023-03",
+   "benzina": {
+    "kt": 677.0,
+    "kt_anno_prec": 618.0,
+    "var_pct": 9.5
+   },
+   "gasolio_motori": {
+    "kt": 2034.0,
+    "kt_anno_prec": 2041.0,
+    "var_pct": -0.3
+   },
+   "gasolio_rete": {
+    "kt": 1298.0,
+    "kt_anno_prec": 1274.0,
+    "var_pct": 1.9
+   },
+   "gasolio_extrarete": {
+    "kt": 951.0,
+    "kt_anno_prec": 1004.0,
+    "var_pct": -5.3
+   },
+   "gasolio_agricolo": {
+    "kt": 169.0,
+    "kt_anno_prec": 163.0,
+    "var_pct": 3.7
+   },
+   "totale_vendite": {
+    "kt": 4315.0,
+    "kt_anno_prec": 4314.0,
+    "var_pct": 0.0
+   },
+   "file": "Consumi_Petrolio_2023_03.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba1a5"
+  },
+  {
+   "mese": "2023-04",
+   "benzina": {
+    "kt": 629.0,
+    "kt_anno_prec": 622.0,
+    "var_pct": 1.1
+   },
+   "gasolio_motori": {
+    "kt": 1835.0,
+    "kt_anno_prec": 1940.0,
+    "var_pct": -5.4
+   },
+   "gasolio_rete": {
+    "kt": 1185.0,
+    "kt_anno_prec": 1235.0,
+    "var_pct": -4.0
+   },
+   "gasolio_extrarete": {
+    "kt": 846.0,
+    "kt_anno_prec": 935.0,
+    "var_pct": -9.5
+   },
+   "gasolio_agricolo": {
+    "kt": 117.0,
+    "kt_anno_prec": 130.0,
+    "var_pct": -10.0
+   },
+   "totale_vendite": {
+    "kt": 3991.0,
+    "kt_anno_prec": 4200.0,
+    "var_pct": -5.0
+   },
+   "file": "Consumi_Petrolio_2023_04.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d60"
+  },
+  {
+   "mese": "2023-05",
+   "benzina": {
+    "kt": 710.0,
+    "kt_anno_prec": 663.0,
+    "var_pct": 7.1
+   },
+   "gasolio_motori": {
+    "kt": 2061.0,
+    "kt_anno_prec": 2041.0,
+    "var_pct": 1.0
+   },
+   "gasolio_rete": {
+    "kt": 1317.0,
+    "kt_anno_prec": 1289.0,
+    "var_pct": 2.2
+   },
+   "gasolio_extrarete": {
+    "kt": 968.0,
+    "kt_anno_prec": 993.0,
+    "var_pct": -2.5
+   },
+   "gasolio_agricolo": {
+    "kt": 164.0,
+    "kt_anno_prec": 178.0,
+    "var_pct": -7.9
+   },
+   "totale_vendite": {
+    "kt": 4530.0,
+    "kt_anno_prec": 4468.0,
+    "var_pct": 1.4
+   },
+   "file": "Consumi_Petrolio_2023_05.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba18f"
+  },
+  {
+   "mese": "2023-06",
+   "benzina": {
+    "kt": 729.0,
+    "kt_anno_prec": 698.0,
+    "var_pct": 4.4
+   },
+   "gasolio_motori": {
+    "kt": 2043.0,
+    "kt_anno_prec": 2038.0,
+    "var_pct": 0.2
+   },
+   "gasolio_rete": {
+    "kt": 1302.0,
+    "kt_anno_prec": 1318.0,
+    "var_pct": -1.2
+   },
+   "gasolio_extrarete": {
+    "kt": 978.0,
+    "kt_anno_prec": 967.0,
+    "var_pct": 1.1
+   },
+   "gasolio_agricolo": {
+    "kt": 202.0,
+    "kt_anno_prec": 203.0,
+    "var_pct": -0.5
+   },
+   "totale_vendite": {
+    "kt": 4450.0,
+    "kt_anno_prec": 4370.0,
+    "var_pct": 1.8
+   },
+   "file": "Consumi_Petrolio_2023_06.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba1a6"
+  },
+  {
+   "mese": "2023-07",
+   "benzina": {
+    "kt": 779.0,
+    "kt_anno_prec": 728.0,
+    "var_pct": 7.0
+   },
+   "gasolio_motori": {
+    "kt": 2136.0,
+    "kt_anno_prec": 2118.0,
+    "var_pct": 0.8
+   },
+   "gasolio_rete": {
+    "kt": 1371.0,
+    "kt_anno_prec": 1373.0,
+    "var_pct": -0.1
+   },
+   "gasolio_extrarete": {
+    "kt": 1017.0,
+    "kt_anno_prec": 1003.0,
+    "var_pct": 1.4
+   },
+   "gasolio_agricolo": {
+    "kt": 222.0,
+    "kt_anno_prec": 217.0,
+    "var_pct": 2.3
+   },
+   "totale_vendite": {
+    "kt": 4750.0,
+    "kt_anno_prec": 4667.0,
+    "var_pct": 1.8
+   },
+   "file": "Consumi_Petrolio_2023_07.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba19d"
+  },
+  {
+   "mese": "2023-08",
+   "benzina": {
+    "kt": 759.0,
+    "kt_anno_prec": 756.0,
+    "var_pct": 0.4
+   },
+   "gasolio_motori": {
+    "kt": 1887.0,
+    "kt_anno_prec": 1964.0,
+    "var_pct": -3.9
+   },
+   "gasolio_rete": {
+    "kt": 1268.0,
+    "kt_anno_prec": 1343.0,
+    "var_pct": -5.6
+   },
+   "gasolio_extrarete": {
+    "kt": 853.0,
+    "kt_anno_prec": 880.0,
+    "var_pct": -3.1
+   },
+   "gasolio_agricolo": {
+    "kt": 173.0,
+    "kt_anno_prec": 193.0,
+    "var_pct": -10.4
+   },
+   "totale_vendite": {
+    "kt": 4326.0,
+    "kt_anno_prec": 4358.0,
+    "var_pct": -0.7
+   },
+   "file": "Consumi_Petrolio_2023_08.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba190"
+  },
+  {
+   "mese": "2023-09",
+   "benzina": {
+    "kt": 703.0,
+    "kt_anno_prec": 724.0,
+    "var_pct": -2.9
+   },
+   "gasolio_motori": {
+    "kt": 1996.0,
+    "kt_anno_prec": 2089.0,
+    "var_pct": -4.5
+   },
+   "gasolio_rete": {
+    "kt": 1255.0,
+    "kt_anno_prec": 1356.0,
+    "var_pct": -7.4
+   },
+   "gasolio_extrarete": {
+    "kt": 971.0,
+    "kt_anno_prec": 987.0,
+    "var_pct": -1.6
+   },
+   "gasolio_agricolo": {
+    "kt": 198.0,
+    "kt_anno_prec": 225.0,
+    "var_pct": -12.0
+   },
+   "totale_vendite": {
+    "kt": 4453.0,
+    "kt_anno_prec": 4577.0,
+    "var_pct": -2.7
+   },
+   "file": "Consumi_Petrolio_2023_09.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba196"
+  },
+  {
+   "mese": "2023-10",
+   "benzina": {
+    "kt": 706.0,
+    "kt_anno_prec": 680.0,
+    "var_pct": 3.8
+   },
+   "gasolio_motori": {
+    "kt": 2012.0,
+    "kt_anno_prec": 1995.0,
+    "var_pct": 0.9
+   },
+   "gasolio_rete": {
+    "kt": 1281.0,
+    "kt_anno_prec": 1297.0,
+    "var_pct": -1.2
+   },
+   "gasolio_extrarete": {
+    "kt": 959.0,
+    "kt_anno_prec": 941.0,
+    "var_pct": 1.9
+   },
+   "gasolio_agricolo": {
+    "kt": 212.0,
+    "kt_anno_prec": 185.0,
+    "var_pct": 14.6
+   },
+   "totale_vendite": {
+    "kt": 4507.0,
+    "kt_anno_prec": 4312.0,
+    "var_pct": 4.5
+   },
+   "file": "Consumi_Petrolio_2023_10.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d6b"
+  },
+  {
+   "mese": "2023-11",
+   "benzina": {
+    "kt": 654.0,
+    "kt_anno_prec": 675.0,
+    "var_pct": -3.1
+   },
+   "gasolio_motori": {
+    "kt": 1934.0,
+    "kt_anno_prec": 2044.0,
+    "var_pct": -5.4
+   },
+   "gasolio_rete": {
+    "kt": 1212.0,
+    "kt_anno_prec": 1308.0,
+    "var_pct": -7.3
+   },
+   "gasolio_extrarete": {
+    "kt": 934.0,
+    "kt_anno_prec": 970.0,
+    "var_pct": -3.7
+   },
+   "gasolio_agricolo": {
+    "kt": 188.0,
+    "kt_anno_prec": 166.0,
+    "var_pct": 13.3
+   },
+   "totale_vendite": {
+    "kt": 4262.0,
+    "kt_anno_prec": 4269.0,
+    "var_pct": -0.2
+   },
+   "file": "Consumi_Petrolio_2023_11.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800b9d61"
+  },
+  {
+   "mese": "2023-12",
+   "benzina": {
+    "kt": 658.0,
+    "kt_anno_prec": 673.0,
+    "var_pct": -2.2
+   },
+   "gasolio_motori": {
+    "kt": 1877.0,
+    "kt_anno_prec": 1949.0,
+    "var_pct": -3.7
+   },
+   "gasolio_rete": {
+    "kt": 1201.0,
+    "kt_anno_prec": 1287.0,
+    "var_pct": -6.7
+   },
+   "gasolio_extrarete": {
+    "kt": 887.0,
+    "kt_anno_prec": 894.0,
+    "var_pct": -0.8
+   },
+   "gasolio_agricolo": {
+    "kt": 162.0,
+    "kt_anno_prec": 171.0,
+    "var_pct": -5.3
+   },
+   "totale_vendite": {
+    "kt": 4143.0,
+    "kt_anno_prec": 4198.0,
+    "var_pct": -1.3
+   },
+   "file": "Consumi_Petrolio_2023_12.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba19e"
+  },
+  {
+   "mese": "2024-01",
+   "benzina": {
+    "kt": 634.0,
+    "kt_anno_prec": 584.0,
+    "var_pct": 8.6
+   },
+   "gasolio_motori": {
+    "kt": 1867.0,
+    "kt_anno_prec": 1689.0,
+    "var_pct": 10.5
+   },
+   "gasolio_rete": {
+    "kt": 1173.0,
+    "kt_anno_prec": 1142.0,
+    "var_pct": 2.7
+   },
+   "gasolio_extrarete": {
+    "kt": 905.0,
+    "kt_anno_prec": 744.0,
+    "var_pct": 21.6
+   },
+   "gasolio_agricolo": {
+    "kt": 48.0,
+    "kt_anno_prec": 34.0,
+    "var_pct": 41.2
+   },
+   "totale_vendite": {
+    "kt": 3957.0,
+    "kt_anno_prec": 3659.0,
+    "var_pct": 8.1
+   },
+   "file": "Consumi_Petrolio_2024_01.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba1a7"
+  },
+  {
+   "mese": "2024-02",
+   "benzina": {
+    "kt": 617.0,
+    "kt_anno_prec": 568.0,
+    "var_pct": 8.6
+   },
+   "gasolio_motori": {
+    "kt": 1825.0,
+    "kt_anno_prec": 1815.0,
+    "var_pct": 0.6
+   },
+   "gasolio_rete": {
+    "kt": 1148.0,
+    "kt_anno_prec": 1149.0,
+    "var_pct": -0.1
+   },
+   "gasolio_extrarete": {
+    "kt": 878.0,
+    "kt_anno_prec": 864.0,
+    "var_pct": 1.6
+   },
+   "gasolio_agricolo": {
+    "kt": 78.0,
+    "kt_anno_prec": 94.0,
+    "var_pct": -17.0
+   },
+   "totale_vendite": {
+    "kt": 3917.0,
+    "kt_anno_prec": 3827.0,
+    "var_pct": 2.4
+   },
+   "file": "Consumi_Petrolio_2024_02.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba1af"
+  },
+  {
+   "mese": "2024-03",
+   "benzina": {
+    "kt": 674.0,
+    "kt_anno_prec": 676.0,
+    "var_pct": -0.3
+   },
+   "gasolio_motori": {
+    "kt": 1962.0,
+    "kt_anno_prec": 2050.0,
+    "var_pct": -4.3
+   },
+   "gasolio_rete": {
+    "kt": 1236.0,
+    "kt_anno_prec": 1302.0,
+    "var_pct": -5.1
+   },
+   "gasolio_extrarete": {
+    "kt": 939.0,
+    "kt_anno_prec": 963.0,
+    "var_pct": -2.5
+   },
+   "gasolio_agricolo": {
+    "kt": 136.0,
+    "kt_anno_prec": 168.0,
+    "var_pct": -19.0
+   },
+   "totale_vendite": {
+    "kt": 4210.0,
+    "kt_anno_prec": 4375.0,
+    "var_pct": -3.8
+   },
+   "file": "Consumi_Petroliferi_2024_03.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ba2ea"
+  },
+  {
+   "mese": "2024-04",
+   "benzina": {
+    "kt": 694.0,
+    "kt_anno_prec": 645.0,
+    "var_pct": 7.6
+   },
+   "gasolio_motori": {
+    "kt": 1923.0,
+    "kt_anno_prec": 1829.0,
+    "var_pct": 5.1
+   },
+   "gasolio_rete": {
+    "kt": 1231.0,
+    "kt_anno_prec": 1200.0,
+    "var_pct": 2.6
+   },
+   "gasolio_extrarete": {
+    "kt": 915.0,
+    "kt_anno_prec": 836.0,
+    "var_pct": 9.4
+   },
+   "gasolio_agricolo": {
+    "kt": 149.0,
+    "kt_anno_prec": 115.0,
+    "var_pct": 29.6
+   },
+   "totale_vendite": {
+    "kt": 4213.0,
+    "kt_anno_prec": 3965.0,
+    "var_pct": 6.3
+   },
+   "file": "Consumi_Petrolio_2024_04.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800bc19c"
+  },
+  {
+   "mese": "2024-05",
+   "benzina": {
+    "kt": 741.0,
+    "kt_anno_prec": 707.0,
+    "var_pct": 4.8
+   },
+   "gasolio_motori": {
+    "kt": 2044.0,
+    "kt_anno_prec": 2048.0,
+    "var_pct": -0.2
+   },
+   "gasolio_rete": {
+    "kt": 1302.0,
+    "kt_anno_prec": 1318.0,
+    "var_pct": -1.2
+   },
+   "gasolio_extrarete": {
+    "kt": 975.0,
+    "kt_anno_prec": 953.0,
+    "var_pct": 2.3
+   },
+   "gasolio_agricolo": {
+    "kt": 172.0,
+    "kt_anno_prec": 158.0,
+    "var_pct": 8.9
+   },
+   "totale_vendite": {
+    "kt": 4493.0,
+    "kt_anno_prec": 4416.0,
+    "var_pct": 1.7
+   },
+   "file": "Consumi_Petrolio_2024_05.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800bce6e"
+  },
+  {
+   "mese": "2024-06",
+   "benzina": {
+    "kt": 718.0,
+    "kt_anno_prec": 738.0,
+    "var_pct": -2.7
+   },
+   "gasolio_motori": {
+    "kt": 1942.0,
+    "kt_anno_prec": 2052.0,
+    "var_pct": -5.4
+   },
+   "gasolio_rete": {
+    "kt": 1233.0,
+    "kt_anno_prec": 1316.0,
+    "var_pct": -6.3
+   },
+   "gasolio_extrarete": {
+    "kt": 939.0,
+    "kt_anno_prec": 968.0,
+    "var_pct": -3.0
+   },
+   "gasolio_agricolo": {
+    "kt": 199.0,
+    "kt_anno_prec": 210.0,
+    "var_pct": -5.2
+   },
+   "totale_vendite": {
+    "kt": 4434.0,
+    "kt_anno_prec": 4497.0,
+    "var_pct": -1.4
+   },
+   "file": "Consumi_Petrolio_2024_06.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800bd5b1"
+  },
+  {
+   "mese": "2024-07",
+   "benzina": {
+    "kt": 839.0,
+    "kt_anno_prec": 773.0,
+    "var_pct": 8.5
+   },
+   "gasolio_motori": {
+    "kt": 2201.0,
+    "kt_anno_prec": 2124.0,
+    "var_pct": 3.6
+   },
+   "gasolio_rete": {
+    "kt": 1410.0,
+    "kt_anno_prec": 1365.0,
+    "var_pct": 3.3
+   },
+   "gasolio_extrarete": {
+    "kt": 1054.0,
+    "kt_anno_prec": 1003.0,
+    "var_pct": 5.1
+   },
+   "gasolio_agricolo": {
+    "kt": 213.0,
+    "kt_anno_prec": 215.0,
+    "var_pct": -0.9
+   },
+   "totale_vendite": {
+    "kt": 4994.0,
+    "kt_anno_prec": 4717.0,
+    "var_pct": 5.9
+   },
+   "file": "Consumi_Petrolio_2024_07.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800bd9eb"
+  },
+  {
+   "mese": "2024-08",
+   "benzina": {
+    "kt": 814.0,
+    "kt_anno_prec": 760.0,
+    "var_pct": 7.1
+   },
+   "gasolio_motori": {
+    "kt": 1897.0,
+    "kt_anno_prec": 1879.0,
+    "var_pct": 1.0
+   },
+   "gasolio_rete": {
+    "kt": 1276.0,
+    "kt_anno_prec": 1280.0,
+    "var_pct": -0.3
+   },
+   "gasolio_extrarete": {
+    "kt": 860.0,
+    "kt_anno_prec": 843.0,
+    "var_pct": 2.0
+   },
+   "gasolio_agricolo": {
+    "kt": 188.0,
+    "kt_anno_prec": 169.0,
+    "var_pct": 11.2
+   },
+   "totale_vendite": {
+    "kt": 4456.0,
+    "kt_anno_prec": 4340.0,
+    "var_pct": 2.7
+   },
+   "file": "Consumi_Petrolio_2024_08.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800bdb6a"
+  },
+  {
+   "mese": "2024-09",
+   "benzina": {
+    "kt": 727.0,
+    "kt_anno_prec": 709.0,
+    "var_pct": 2.5
+   },
+   "gasolio_motori": {
+    "kt": 1949.0,
+    "kt_anno_prec": 1997.0,
+    "var_pct": -2.4
+   },
+   "gasolio_rete": {
+    "kt": 1259.0,
+    "kt_anno_prec": 1258.0,
+    "var_pct": 0.1
+   },
+   "gasolio_extrarete": {
+    "kt": 914.0,
+    "kt_anno_prec": 971.0,
+    "var_pct": -5.9
+   },
+   "gasolio_agricolo": {
+    "kt": 184.0,
+    "kt_anno_prec": 192.0,
+    "var_pct": -4.2
+   },
+   "totale_vendite": {
+    "kt": 4525.0,
+    "kt_anno_prec": 4483.0,
+    "var_pct": 0.9
+   },
+   "file": "Consumi_Petrolio_2024_09.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800be63a"
+  },
+  {
+   "mese": "2024-10",
+   "benzina": {
+    "kt": 762.0,
+    "kt_anno_prec": 703.0,
+    "var_pct": 8.4
+   },
+   "gasolio_motori": {
+    "kt": 2113.0,
+    "kt_anno_prec": 2002.0,
+    "var_pct": 5.5
+   },
+   "gasolio_rete": {
+    "kt": 1337.0,
+    "kt_anno_prec": 1273.0,
+    "var_pct": 5.0
+   },
+   "gasolio_extrarete": {
+    "kt": 1005.0,
+    "kt_anno_prec": 956.0,
+    "var_pct": 5.1
+   },
+   "gasolio_agricolo": {
+    "kt": 191.0,
+    "kt_anno_prec": 205.0,
+    "var_pct": -6.8
+   },
+   "totale_vendite": {
+    "kt": 4716.0,
+    "kt_anno_prec": 4581.0,
+    "var_pct": 2.9
+   },
+   "file": "Consumi_Petrolio_2024_10.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800bf517"
+  },
+  {
+   "mese": "2024-11",
+   "benzina": {
+    "kt": 677.0,
+    "kt_anno_prec": 640.0,
+    "var_pct": 5.8
+   },
+   "gasolio_motori": {
+    "kt": 1891.0,
+    "kt_anno_prec": 1912.0,
+    "var_pct": -1.1
+   },
+   "gasolio_rete": {
+    "kt": 1197.0,
+    "kt_anno_prec": 1194.0,
+    "var_pct": 0.3
+   },
+   "gasolio_extrarete": {
+    "kt": 903.0,
+    "kt_anno_prec": 925.0,
+    "var_pct": -2.4
+   },
+   "gasolio_agricolo": {
+    "kt": 202.0,
+    "kt_anno_prec": 193.0,
+    "var_pct": 4.7
+   },
+   "totale_vendite": {
+    "kt": 4258.0,
+    "kt_anno_prec": 4219.0,
+    "var_pct": 0.9
+   },
+   "file": "Consumi_Petrolio_2024_11.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800bfd1a"
+  },
+  {
+   "mese": "2024-12",
+   "benzina": {
+    "kt": 711.0,
+    "kt_anno_prec": 667.0,
+    "var_pct": 6.6
+   },
+   "gasolio_motori": {
+    "kt": 1902.0,
+    "kt_anno_prec": 1898.0,
+    "var_pct": 0.2
+   },
+   "gasolio_rete": {
+    "kt": 1230.0,
+    "kt_anno_prec": 1216.0,
+    "var_pct": 1.2
+   },
+   "gasolio_extrarete": {
+    "kt": 888.0,
+    "kt_anno_prec": 898.0,
+    "var_pct": -1.1
+   },
+   "gasolio_agricolo": {
+    "kt": 160.0,
+    "kt_anno_prec": 154.0,
+    "var_pct": 3.9
+   },
+   "totale_vendite": {
+    "kt": 4202.0,
+    "kt_anno_prec": 4103.0,
+    "var_pct": 2.4
+   },
+   "file": "Consumi_Petrolio_2024_12.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800c1154"
+  },
+  {
+   "mese": "2025-01",
+   "benzina": {
+    "kt": 661.0,
+    "kt_anno_prec": 651.0,
+    "var_pct": 1.5
+   },
+   "gasolio_motori": {
+    "kt": 1805.0,
+    "kt_anno_prec": 1907.0,
+    "var_pct": -5.3
+   },
+   "gasolio_rete": {
+    "kt": 1160.0,
+    "kt_anno_prec": 1189.0,
+    "var_pct": -2.4
+   },
+   "gasolio_extrarete": {
+    "kt": 855.0,
+    "kt_anno_prec": 948.0,
+    "var_pct": -9.8
+   },
+   "gasolio_agricolo": {
+    "kt": 44.0,
+    "kt_anno_prec": 48.0,
+    "var_pct": -8.3
+   },
+   "totale_vendite": {
+    "kt": 3832.0,
+    "kt_anno_prec": 4005.0,
+    "var_pct": -4.3
+   },
+   "file": "Consumi_Petrolio_2025_01.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800c3249"
+  },
+  {
+   "mese": "2025-02",
+   "benzina": {
+    "kt": 600.0,
+    "kt_anno_prec": 612.0,
+    "var_pct": -2.0
+   },
+   "gasolio_motori": {
+    "kt": 1775.0,
+    "kt_anno_prec": 1810.0,
+    "var_pct": -1.9
+   },
+   "gasolio_rete": {
+    "kt": 1122.0,
+    "kt_anno_prec": 1147.0,
+    "var_pct": -2.2
+   },
+   "gasolio_extrarete": {
+    "kt": 850.0,
+    "kt_anno_prec": 864.0,
+    "var_pct": -1.6
+   },
+   "gasolio_agricolo": {
+    "kt": 76.0,
+    "kt_anno_prec": 72.0,
+    "var_pct": 5.6
+   },
+   "totale_vendite": {
+    "kt": 3883.0,
+    "kt_anno_prec": 4050.0,
+    "var_pct": -4.1
+   },
+   "file": "Consumi_Petrolio_2025_02.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800c452b"
+  },
+  {
+   "mese": "2025-03",
+   "benzina": {
+    "kt": 684.0,
+    "kt_anno_prec": 678.0,
+    "var_pct": 0.9
+   },
+   "gasolio_motori": {
+    "kt": 1907.0,
+    "kt_anno_prec": 1969.0,
+    "var_pct": -3.1
+   },
+   "gasolio_rete": {
+    "kt": 1214.0,
+    "kt_anno_prec": 1243.0,
+    "var_pct": -2.3
+   },
+   "gasolio_extrarete": {
+    "kt": 902.0,
+    "kt_anno_prec": 942.0,
+    "var_pct": -4.2
+   },
+   "gasolio_agricolo": {
+    "kt": 117.0,
+    "kt_anno_prec": 104.0,
+    "var_pct": 12.5
+   },
+   "totale_vendite": {
+    "kt": 4087.0,
+    "kt_anno_prec": 4176.0,
+    "var_pct": -2.1
+   },
+   "file": "Consumi_Petrolio_2025_03.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800c562d"
+  },
+  {
+   "mese": "2025-04",
+   "benzina": {
+    "kt": 736.0,
+    "kt_anno_prec": 691.0,
+    "var_pct": 6.5
+   },
+   "gasolio_motori": {
+    "kt": 1925.0,
+    "kt_anno_prec": 1908.0,
+    "var_pct": 0.9
+   },
+   "gasolio_rete": {
+    "kt": 1256.0,
+    "kt_anno_prec": 1230.0,
+    "var_pct": 2.1
+   },
+   "gasolio_extrarete": {
+    "kt": 886.0,
+    "kt_anno_prec": 899.0,
+    "var_pct": -1.4
+   },
+   "gasolio_agricolo": {
+    "kt": 165.1,
+    "kt_anno_prec": 145.0,
+    "var_pct": 13.9
+   },
+   "totale_vendite": {
+    "kt": 4281.0,
+    "kt_anno_prec": 4127.0,
+    "var_pct": 3.7
+   },
+   "file": "Consumi_Petrolio_2025_04.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800c633d"
+  },
+  {
+   "mese": "2025-05",
+   "benzina": {
+    "kt": 770.0,
+    "kt_anno_prec": 738.0,
+    "var_pct": 4.3
+   },
+   "gasolio_motori": {
+    "kt": 1993.0,
+    "kt_anno_prec": 2040.0,
+    "var_pct": -2.3
+   },
+   "gasolio_rete": {
+    "kt": 1296.0,
+    "kt_anno_prec": 1300.0,
+    "var_pct": -0.3
+   },
+   "gasolio_extrarete": {
+    "kt": 922.0,
+    "kt_anno_prec": 969.0,
+    "var_pct": -4.9
+   },
+   "gasolio_agricolo": {
+    "kt": 188.0,
+    "kt_anno_prec": 172.0,
+    "var_pct": 9.3
+   },
+   "totale_vendite": {
+    "kt": 4507.0,
+    "kt_anno_prec": 4551.0,
+    "var_pct": -1.0
+   },
+   "file": "Consumi_Petrolio_2025_05.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800c75b4"
+  },
+  {
+   "mese": "2025-06",
+   "benzina": {
+    "kt": 777.0,
+    "kt_anno_prec": 714.0,
+    "var_pct": 8.8
+   },
+   "gasolio_motori": {
+    "kt": 1954.0,
+    "kt_anno_prec": 1935.0,
+    "var_pct": 1.0
+   },
+   "gasolio_rete": {
+    "kt": 1262.0,
+    "kt_anno_prec": 1228.0,
+    "var_pct": 2.8
+   },
+   "gasolio_extrarete": {
+    "kt": 917.0,
+    "kt_anno_prec": 933.0,
+    "var_pct": -1.7
+   },
+   "gasolio_agricolo": {
+    "kt": 215.0,
+    "kt_anno_prec": 192.0,
+    "var_pct": 12.0
+   },
+   "totale_vendite": {
+    "kt": 4457.0,
+    "kt_anno_prec": 4441.0,
+    "var_pct": 0.4
+   },
+   "file": "Consumi_Petrolio_2025_06.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800c8ca3"
+  },
+  {
+   "mese": "2025-07",
+   "benzina": {
+    "kt": 875.0,
+    "kt_anno_prec": 840.0,
+    "var_pct": 4.2
+   },
+   "gasolio_motori": {
+    "kt": 2266.0,
+    "kt_anno_prec": 2216.0,
+    "var_pct": 2.3
+   },
+   "gasolio_rete": {
+    "kt": 1429.0,
+    "kt_anno_prec": 1413.0,
+    "var_pct": 1.1
+   },
+   "gasolio_extrarete": {
+    "kt": 1091.0,
+    "kt_anno_prec": 1069.0,
+    "var_pct": 2.1
+   },
+   "gasolio_agricolo": {
+    "kt": 196.0,
+    "kt_anno_prec": 212.0,
+    "var_pct": -7.5
+   },
+   "totale_vendite": {
+    "kt": 4910.0,
+    "kt_anno_prec": 4972.0,
+    "var_pct": -1.2
+   },
+   "file": "Consumi_Petrolio_2025_07.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800ca509"
+  },
+  {
+   "mese": "2025-08",
+   "benzina": {
+    "kt": 799.0,
+    "kt_anno_prec": 803.0,
+    "var_pct": -0.5
+   },
+   "gasolio_motori": {
+    "kt": 1791.0,
+    "kt_anno_prec": 1907.0,
+    "var_pct": -6.1
+   },
+   "gasolio_rete": {
+    "kt": 1213.0,
+    "kt_anno_prec": 1279.0,
+    "var_pct": -5.2
+   },
+   "gasolio_extrarete": {
+    "kt": 811.0,
+    "kt_anno_prec": 867.0,
+    "var_pct": -6.5
+   },
+   "gasolio_agricolo": {
+    "kt": 151.0,
+    "kt_anno_prec": 186.0,
+    "var_pct": -18.8
+   },
+   "totale_vendite": {
+    "kt": 4174.0,
+    "kt_anno_prec": 4467.0,
+    "var_pct": -6.6
+   },
+   "file": "Consumi_Petrolio_2025_08.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800cb654"
+  },
+  {
+   "mese": "2025-09",
+   "benzina": {
+    "kt": 786.0,
+    "kt_anno_prec": 724.0,
+    "var_pct": 8.6
+   },
+   "gasolio_motori": {
+    "kt": 2006.0,
+    "kt_anno_prec": 1940.0,
+    "var_pct": 3.4
+   },
+   "gasolio_rete": {
+    "kt": 1276.0,
+    "kt_anno_prec": 1254.0,
+    "var_pct": 1.8
+   },
+   "gasolio_extrarete": {
+    "kt": 950.0,
+    "kt_anno_prec": 905.0,
+    "var_pct": 5.0
+   },
+   "gasolio_agricolo": {
+    "kt": 186.0,
+    "kt_anno_prec": 177.0,
+    "var_pct": 5.1
+   },
+   "totale_vendite": {
+    "kt": 4422.0,
+    "kt_anno_prec": 4405.0,
+    "var_pct": 0.4
+   },
+   "file": "Consumi_Petrolio_2025_09.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800cd1d7"
+  },
+  {
+   "mese": "2025-10",
+   "benzina": {
+    "kt": 796.0,
+    "kt_anno_prec": 763.0,
+    "var_pct": 4.3
+   },
+   "gasolio_motori": {
+    "kt": 2151.0,
+    "kt_anno_prec": 2132.0,
+    "var_pct": 0.9
+   },
+   "gasolio_rete": {
+    "kt": 1359.0,
+    "kt_anno_prec": 1339.0,
+    "var_pct": 1.5
+   },
+   "gasolio_extrarete": {
+    "kt": 1021.0,
+    "kt_anno_prec": 1024.0,
+    "var_pct": -0.3
+   },
+   "gasolio_agricolo": {
+    "kt": 215.0,
+    "kt_anno_prec": 188.0,
+    "var_pct": 14.4
+   },
+   "totale_vendite": {
+    "kt": 4654.0,
+    "kt_anno_prec": 4748.0,
+    "var_pct": -2.0
+   },
+   "file": "Consumi_Petrolio_2025_10.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800cf754"
+  },
+  {
+   "mese": "2025-11",
+   "benzina": {
+    "kt": 677.0,
+    "kt_anno_prec": 675.0,
+    "var_pct": 0.3
+   },
+   "gasolio_motori": {
+    "kt": 1851.0,
+    "kt_anno_prec": 1865.0,
+    "var_pct": -0.8
+   },
+   "gasolio_rete": {
+    "kt": 1164.0,
+    "kt_anno_prec": 1196.0,
+    "var_pct": -2.7
+   },
+   "gasolio_extrarete": {
+    "kt": 895.0,
+    "kt_anno_prec": 876.0,
+    "var_pct": 2.2
+   },
+   "gasolio_agricolo": {
+    "kt": 149.0,
+    "kt_anno_prec": 194.0,
+    "var_pct": -23.2
+   },
+   "totale_vendite": {
+    "kt": 3951.0,
+    "kt_anno_prec": 4131.0,
+    "var_pct": -4.4
+   },
+   "file": "Consumi_Petrolio_2025_11.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800d2f58"
+  },
+  {
+   "mese": "2025-12",
+   "benzina": {
+    "kt": 771.0,
+    "kt_anno_prec": 716.0,
+    "var_pct": 7.7
+   },
+   "gasolio_motori": {
+    "kt": 1987.0,
+    "kt_anno_prec": 1892.0,
+    "var_pct": 5.0
+   },
+   "gasolio_rete": {
+    "kt": 1287.0,
+    "kt_anno_prec": 1238.0,
+    "var_pct": 4.0
+   },
+   "gasolio_extrarete": {
+    "kt": 921.0,
+    "kt_anno_prec": 875.0,
+    "var_pct": 5.3
+   },
+   "gasolio_agricolo": {
+    "kt": 152.0,
+    "kt_anno_prec": 156.0,
+    "var_pct": -2.6
+   },
+   "totale_vendite": {
+    "kt": 4225.0,
+    "kt_anno_prec": 4127.0,
+    "var_pct": 2.4
+   },
+   "file": "Consumi_Petrolio_2025_12.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800d47be"
+  },
+  {
+   "mese": "2026-01",
+   "benzina": {
+    "kt": 691.0,
+    "kt_anno_prec": 652.0,
+    "var_pct": 6.0
+   },
+   "gasolio_motori": {
+    "kt": 1721.0,
+    "kt_anno_prec": 1777.0,
+    "var_pct": -3.2
+   },
+   "gasolio_rete": {
+    "kt": 1123.0,
+    "kt_anno_prec": 1150.0,
+    "var_pct": -2.3
+   },
+   "gasolio_extrarete": {
+    "kt": 794.0,
+    "kt_anno_prec": 829.0,
+    "var_pct": -4.2
+   },
+   "gasolio_agricolo": {
+    "kt": 44.0,
+    "kt_anno_prec": 41.0,
+    "var_pct": 7.3
+   },
+   "totale_vendite": {
+    "kt": 3668.0,
+    "kt_anno_prec": 3870.0,
+    "var_pct": -5.2
+   },
+   "file": "Consumi_Petrolio_2026_01.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800d6501"
+  },
+  {
+   "mese": "2026-02",
+   "benzina": {
+    "kt": 658.0,
+    "kt_anno_prec": 610.0,
+    "var_pct": 7.9
+   },
+   "gasolio_motori": {
+    "kt": 1710.0,
+    "kt_anno_prec": 1760.0,
+    "var_pct": -2.8
+   },
+   "gasolio_rete": {
+    "kt": 1112.0,
+    "kt_anno_prec": 1120.0,
+    "var_pct": -0.7
+   },
+   "gasolio_extrarete": {
+    "kt": 793.0,
+    "kt_anno_prec": 835.0,
+    "var_pct": -5.0
+   },
+   "gasolio_agricolo": {
+    "kt": 67.0,
+    "kt_anno_prec": 75.0,
+    "var_pct": -10.7
+   },
+   "totale_vendite": {
+    "kt": 3663.0,
+    "kt_anno_prec": 3814.0,
+    "var_pct": -4.0
+   },
+   "file": "Consumi_Petrolio_2026_02.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800d831e"
+  },
+  {
+   "mese": "2026-03",
+   "benzina": {
+    "kt": 748.0,
+    "kt_anno_prec": 683.0,
+    "var_pct": 9.5
+   },
+   "gasolio_motori": {
+    "kt": 1879.0,
+    "kt_anno_prec": 1889.0,
+    "var_pct": -0.5
+   },
+   "gasolio_rete": {
+    "kt": 1254.0,
+    "kt_anno_prec": 1212.0,
+    "var_pct": 3.5
+   },
+   "gasolio_extrarete": {
+    "kt": 822.0,
+    "kt_anno_prec": 885.0,
+    "var_pct": -7.1
+   },
+   "gasolio_agricolo": {
+    "kt": 125.0,
+    "kt_anno_prec": 108.0,
+    "var_pct": 15.7
+   },
+   "totale_vendite": {
+    "kt": 4033.0,
+    "kt_anno_prec": 4044.0,
+    "var_pct": -0.3
+   },
+   "file": "Consumi_Petrolio_2026_03.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800e018c"
+  },
+  {
+   "mese": "2026-04",
+   "benzina": {
+    "kt": 795.0,
+    "kt_anno_prec": 741.0,
+    "var_pct": 7.3
+   },
+   "gasolio_motori": {
+    "kt": 1873.0,
+    "kt_anno_prec": 1923.0,
+    "var_pct": -2.6
+   },
+   "gasolio_rete": {
+    "kt": 1268.0,
+    "kt_anno_prec": 1263.0,
+    "var_pct": 0.4
+   },
+   "gasolio_extrarete": {
+    "kt": 819.0,
+    "kt_anno_prec": 883.0,
+    "var_pct": -7.2
+   },
+   "gasolio_agricolo": {
+    "kt": 154.0,
+    "kt_anno_prec": 165.0,
+    "var_pct": -6.7
+   },
+   "totale_vendite": {
+    "kt": 4102.0,
+    "kt_anno_prec": 4192.0,
+    "var_pct": -2.1
+   },
+   "file": "Consumi_Petrolio_2026_04.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800e1734"
+  },
+  {
+   "mese": "2026-05",
+   "benzina": {
+    "kt": 751.0,
+    "kt_anno_prec": 773.0,
+    "var_pct": -2.8
+   },
+   "gasolio_motori": {
+    "kt": 1793.0,
+    "kt_anno_prec": 2011.0,
+    "var_pct": -10.8
+   },
+   "gasolio_rete": {
+    "kt": 1202.0,
+    "kt_anno_prec": 1299.0,
+    "var_pct": -7.5
+   },
+   "gasolio_extrarete": {
+    "kt": 806.0,
+    "kt_anno_prec": 941.0,
+    "var_pct": -14.3
+   },
+   "gasolio_agricolo": {
+    "kt": 154.0,
+    "kt_anno_prec": 186.0,
+    "var_pct": -17.2
+   },
+   "totale_vendite": {
+    "kt": 4133.0,
+    "kt_anno_prec": 4479.0,
+    "var_pct": -7.7
+   },
+   "file": "Consumi_Petrolio_2026_05.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800e31af"
+  },
+  {
+   "mese": "2026-06",
+   "benzina": {
+    "kt": 832.0,
+    "kt_anno_prec": 778.0,
+    "var_pct": 6.9
+   },
+   "gasolio_motori": {
+    "kt": 1908.0,
+    "kt_anno_prec": 1937.0,
+    "var_pct": -1.5
+   },
+   "gasolio_rete": {
+    "kt": 1268.0,
+    "kt_anno_prec": 1262.0,
+    "var_pct": 0.5
+   },
+   "gasolio_extrarete": {
+    "kt": 859.0,
+    "kt_anno_prec": 901.0,
+    "var_pct": -4.7
+   },
+   "gasolio_agricolo": {
+    "kt": 202.0,
+    "kt_anno_prec": 216.0,
+    "var_pct": -6.5
+   },
+   "totale_vendite": {
+    "kt": 4315.0,
+    "kt_anno_prec": 4331.0,
+    "var_pct": -0.4
+   },
+   "file": "Consumi_Petrolio_2026_06.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800e3e90"
+  },
+  {
+   "mese": "2026-07",
+   "benzina": {
+    "kt": 900.0,
+    "kt_anno_prec": 873.0,
+    "var_pct": 3.1
+   },
+   "gasolio_motori": {
+    "kt": 2075.0,
+    "kt_anno_prec": 2266.0,
+    "var_pct": -8.4
+   },
+   "gasolio_rete": {
+    "kt": 1371.0,
+    "kt_anno_prec": 1426.0,
+    "var_pct": -3.9
+   },
+   "gasolio_extrarete": {
+    "kt": 949.0,
+    "kt_anno_prec": 1092.0,
+    "var_pct": -13.1
+   },
+   "gasolio_agricolo": {
+    "kt": 204.0,
+    "kt_anno_prec": 195.0,
+    "var_pct": 4.6
+   },
+   "totale_vendite": {
+    "kt": 4687.0,
+    "kt_anno_prec": 4892.0,
+    "var_pct": -4.2
+   },
+   "file": "Consumi_Petrolio_2026_07.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800e4f50"
+  },
+  {
+   "mese": "2026-08",
+   "benzina": {
+    "kt": 815.0,
+    "kt_anno_prec": 791.0,
+    "var_pct": 3.0
+   },
+   "gasolio_motori": {
+    "kt": 1767.0,
+    "kt_anno_prec": 1773.0,
+    "var_pct": -0.3
+   },
+   "gasolio_rete": {
+    "kt": 1179.0,
+    "kt_anno_prec": 1203.0,
+    "var_pct": -2.0
+   },
+   "gasolio_extrarete": {
+    "kt": 810.0,
+    "kt_anno_prec": 796.0,
+    "var_pct": 1.8
+   },
+   "gasolio_agricolo": {
+    "kt": 163.0,
+    "kt_anno_prec": 157.0,
+    "var_pct": 3.8
+   },
+   "totale_vendite": {
+    "kt": 4077.0,
+    "kt_anno_prec": 4035.0,
+    "var_pct": 1.0
+   },
+   "file": "Consumi_Petrolio_2026_08.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800e6937"
+  },
+  {
+   "mese": "2026-09",
+   "benzina": {
+    "kt": 829.0,
+    "kt_anno_prec": 790.0,
+    "var_pct": 4.9
+   },
+   "gasolio_motori": {
+    "kt": 1841.0,
+    "kt_anno_prec": 1990.0,
+    "var_pct": -7.5
+   },
+   "gasolio_rete": {
+    "kt": 1226.0,
+    "kt_anno_prec": 1291.0,
+    "var_pct": -5.0
+   },
+   "gasolio_extrarete": {
+    "kt": 838.0,
+    "kt_anno_prec": 925.0,
+    "var_pct": -9.4
+   },
+   "gasolio_agricolo": {
+    "kt": 171.0,
+    "kt_anno_prec": 184.0,
+    "var_pct": -7.1
+   },
+   "totale_vendite": {
+    "kt": 4307.0,
+    "kt_anno_prec": 4384.0,
+    "var_pct": -1.8
+   },
+   "file": "Consumi_Petrolio_2026_09.xls",
+   "link": "https://sisen.mase.gov.it/dgsaie/api/v1/cmis/documents/0900fde8800e80dc"
+  }
+ ]
+}
