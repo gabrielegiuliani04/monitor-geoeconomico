@@ -1105,7 +1105,7 @@ def costruisci_blocchi(v, oggi, edizione):
     if sdn and gnl_ and gde and f11 and f13:
         voci.append(f"**Nord Europa: meno esposto sui noli, più esposto sul gas.** La rotta Cina–Nord Europa costa "
                     f"{num(f11['valore'], 0)} dollari per FEU contro {num(f13['valore'], 0)} verso il Mediterraneo (Freightos FBX, {data_it(fbx['data'])}); "
-                    f"gli stoccaggi sono al {num(gnl_['valore'], 1)}% nei Paesi Bassi e al {num(gde['valore'], 1)}% in Germania, "
+                    f"gli stoccaggi di gas sono {al(num(gnl_['valore'], 1))}% nei Paesi Bassi e {al(num(gde['valore'], 1))}% in Germania, "
                     f"{num(-gnl_['media_5_anni']['scarto'], 1)} e {num(-gde['media_5_anni']['scarto'], 1)} punti sotto la media di 5 anni (GIE AGSI+, {data_it(gde['data'])}); "
                     f"agli Stretti danesi passano {num(sdn['media7']['n_total'], 1)} navi al giorno, {pct(sdn['var7_anno_pct']['n_total'])} su un anno "
                     f"({link('IMF PortWatch', pw_link)}). Dettagli nella sezione 8.")
@@ -1121,14 +1121,16 @@ def costruisci_blocchi(v, oggi, edizione):
     B.append(("h3", "Transiti negli stretti"))
     righe = []
     for nome in ("Canale di Suez", "Bab el-Mandeb", "Capo di Buona Speranza", "Stretto di Hormuz", "Stretto di Gibilterra",
-                 "Bosforo", "Stretto di Malacca", "Canale di Panama", "Stretto di Kerch"):
+                 "Bosforo", "Stretti danesi", "Stretto di Malacca", "Canale di Panama", "Stretto di Kerch"):
         e = cp.get(nome)
         if not e:
             continue
         righe.append([nome, num(e["media7"]["n_total"], 1), num(e["media7"]["n_tanker"], 1), num(e["media7"]["n_container"], 1),
                       pct(e["var7_anno_pct"]["n_total"]), pct(e["var7_tre_anni_pct"]["n_total"])])
-    B.append(("tab", ["Passaggio", "Navi/giorno", "di cui petroliere", "di cui portacontainer", "su 1 anno", "su 3 anni (fine 2023)"],
-              righe, f"Fonte: {fpw}. Navi con AIS acceso: chi lo spegne non è contato."))
+    B.append(("tab", ["Passaggio", "Navi/giorno", "di cui petroliere", "di cui portacontainer", "su 1 anno", "sulla stessa settimana del 2023"],
+              righe, f"Fonte: {fpw}. Navi con AIS acceso: chi lo spegne non è contato. La stessa settimana del 2023 (fine ottobre) "
+                     f"è prima degli attacchi houthi. Il cruscotto del rischio usa per Suez e Bab el-Mandeb la media gennaio–ottobre 2023 "
+                     f"e per Hormuz la media del 2025: le percentuali possono differire di qualche punto."))
     B.append(("fig", "transiti", f"Navi al giorno, media mensile dei mesi completi. Fonte: {link('IMF PortWatch', pw_link)}, "
               f"dati fino al {data_it(v['pw_data'])}. Linee tratteggiate: eventi con fonte nel testo."))
     sm = v["suez_min"]
@@ -1136,7 +1138,7 @@ def costruisci_blocchi(v, oggi, edizione):
     B.append(("p", f"**Fatti.** Prima della crisi del Mar Rosso (media gennaio–ottobre 2023) Suez faceva {num(v['pre_crisi']['Canale di Suez'], 0)} navi al giorno "
               f"e il Capo {num(v['pre_crisi']['Capo di Buona Speranza'], 0)}. Da dicembre 2023 il rapporto si è rovesciato: il minimo mensile di Suez dal 2024 "
               f"è {num(sm[1], 1)} ({mese_it(sm[0])}), il massimo del Capo {num(cm[1], 1)} ({mese_it(cm[0])}). "
-              f"Nell'ultima settimana misurata il Capo è a {num(capo['media7']['n_total'], 1)} navi al giorno, {il(num(v['capo_ratio'], 0))}% del livello di fine 2023 "
+              f"Nell'ultima settimana misurata il Capo è a {num(capo['media7']['n_total'], 1)} navi al giorno, {il(num(v['pre_ratio']['Capo di Buona Speranza'], 0))}% della media gennaio–ottobre 2023 "
               f"({fpw})."))
     bt = v["voce"]("suez", "flussi", "Container")
     nt = v["voce"]("suez", "flussi", "Navi in totale")
@@ -1191,12 +1193,18 @@ def costruisci_blocchi(v, oggi, edizione):
         if med:
             rn.append(["CCFI rotta Mediterraneo", f"{num(med['valore'], 2)} punti", data_tab(ccfi["data"]),
                        f"{pct(med['var_pct'], 1)} sulla settimana", link("SSE", ccfi["link"])])
-    if bdi:
+    eb = FATTI_ESTERNI["bdi"]
+    if bdi:  # se un giorno il Baltic Dry torna in noli.json
         rn.append(["Baltic Dry Index (rinfuse)", f"{num(bdi['valore'], 0)} punti", data_tab(bdi["data"]),
-                   f"{pct(bdi.get('var_anno_pct'))} su un anno", link("Trading Economics", bdi["link"])])
+                   f"{pct(bdi.get('var_anno_pct'))} su un anno", link("fonte", bdi["link"])])
+    else:
+        rn.append(["Baltic Dry Index (rinfuse) (b)", f"{num(eb['valore'], 0)} punti", data_tab(eb["data"]),
+                   f"{pct(eb['var_giorno_pct'], 1)} sul giorno", link("Baltic Exchange via Trading Economics", eb["link"])])
     B.append(("tab", ["Indice", "Valore", "Data", "Variazione", "Fonte"], rn,
-              f"Valori da docs/data/noli.json. (a) Variazione su un anno calcolata sul WCI del {data_it(est_wci['data'])} "
-              f"({fonte_est('wci_anno_prima')}, affidabilità media). Il Baltic Dry viene da un CFD: affidabilità media."))
+              f"Container: valori da docs/data/noli.json. (a) Variazione su un anno calcolata sul WCI del {data_it(est_wci['data'])} "
+              f"({fonte_est('wci_anno_prima')}, affidabilità media). (b) Il Baltic Dry non è più raccolto in automatico dall'osservatorio "
+              f"(termini d'uso di Trading Economics): è citato a mano, un solo valore, senza serie e senza variazione su un anno verificata "
+              f"({fonte_est('bdi')}, affidabilità media)."))
     B.append(("fig", "noli", f"Sopra: Freightos FBX globale, serie settimanale disponibile gratis ({link('Freightos', fbx['link']) if fbx else 'n.d.'}). "
               f"Sotto: Drewry WCI per rotta al {data_it(wci['data']) if wci else 'n.d.'}; la tacca verticale è il valore di un anno prima "
               f"({fonte_est('wci_anno_prima')})."))
@@ -1209,9 +1217,9 @@ def costruisci_blocchi(v, oggi, edizione):
                   + (f"Lo SCFI scende ({pct(scfi['var_pct'], 1)}) mentre il CCFI, che pesa i contratti, sale ({pct(ccfi['var_pct'], 1)}), "
                      f"con la rotta Mediterraneo a {pct(ccfi['rotte']['MEDITERRANEAN']['var_pct'], 1)} (SSE, {data_it(ccfi['data'])})."
                      if scfi and ccfi and "MEDITERRANEAN" in ccfi.get("rotte", {}) else "")))
-    if bdi:
-        B.append(("p", f"Le rinfuse secche vanno in senso opposto ai container: Baltic Dry a {num(bdi['valore'], 0)} punti il {data_it(bdi['data'])}, "
-                  f"{pct(bdi.get('var_anno_pct'))} su un anno ({link('Trading Economics', bdi['link'])}, affidabilità media)."))
+    B.append(("p", f"**Rinfuse secche.** Il Baltic Dry è a {num(eb['valore'], 0)} punti il {data_it(eb['data'])}, "
+              f"{eb['testo']} ({fonte_est('bdi')}, citato a mano, affidabilità media). Senza una serie non si può dire "
+              f"se le rinfuse vadano nella stessa direzione dei container."))
     B.append(("val", "Due forze opposte sui noli container: il ritorno a Suez libera navi (ribassista, ed è quello che si vede "
               "nell'FBX) mentre il premio di guerra legato a Hormuz e al Golfo tiene alti i noli verso il Mediterraneo e il "
               "Medio Oriente. Per un importatore italiano lo scenario base è un calo lento, non un ritorno ai livelli di fine 2025."))

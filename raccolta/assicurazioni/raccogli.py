@@ -329,16 +329,21 @@ def serie_premi(premi):
         per_area[a].sort()
     ultimi = {}
     for a, nome in premi.get("aree", {}).items():
-        punti = [p for p in premi.get("punti", []) if p["area"] == a and not p.get("non_pubblico") and p.get("base") == "scafo"]
+        punti = [p for p in premi.get("punti", []) if p["area"] == a and p.get("in_serie") and not p.get("non_pubblico")]
         if not punti:
             continue
         u = max(punti, key=lambda p: p["data"])
+        fuori = [p for p in premi.get("punti", []) if p["area"] == a and not p.get("in_serie") and not p.get("non_pubblico")
+                 and p.get("base") == "scafo" and p["data"] > u["data"]]
+        picco = max(fuori, key=lambda p: p["max"]) if fuori else None
         eta = (OGGI - a_data(u["data"])).days
         np_ = [p for p in premi.get("punti", []) if p["area"] == a and p.get("non_pubblico")]
         ultimi[a] = {"area": a, "nome": nome, "data": u["data"], "min": u["min"], "max": u["max"], "segmento": u.get("segmento"),
                      "fonte": u["fonte"], "link": u["link"], "giorni": eta,
                      "aggiornato_pubblico": eta <= GIORNI_PREMIO_VECCHIO,
-                     "nota_non_pubblico": np_[-1]["note"] if np_ else None}
+                     "nota_non_pubblico": np_[-1]["note"] if np_ else None,
+                     "piu_recente_fuori_serie": ({"data": picco["data"], "min": picco["min"], "max": picco["max"], "segmento": picco.get("segmento"),
+                                                  "fonte": picco["fonte"], "link": picco["link"]} if picco else None)}
         documentato = any((OGGI - a_data(x["data_fonte"])).days <= 14 for x in np_ if data_ok(x.get("data_fonte", "")))
         if eta > GIORNI_PREMIO_VECCHIO and not documentato:
             avviso(f"premi/{a}: ultima quotazione pubblica del {u['data']} ({eta} giorni): cercarne una più recente")
@@ -475,8 +480,9 @@ def controlla_jwc(circ):
         if not trovate:
             avviso("controllo JWC: nessuna circolare letta dalla pagina IUA (struttura cambiata?)")
         date_note = {c["id"]: c.get("data_iua") for c in circ.get("circolari", [])}
+        prima_curata = min(c["data"] for c in circ.get("circolari", []))
         for c in trovate:
-            if c["id"] not in noti and c["data"] >= "2021-01-01":
+            if c["id"] not in noti and c["data"] >= prima_curata:
                 esito["cambiamenti"].append(f"IUA: nuova circolare {c['id']} del {c['data']} («{c['titolo']}»)")
             elif c["id"] in date_note and date_note[c["id"]] and date_note[c["id"]] != c["data"]:
                 esito["cambiamenti"].append(f"IUA: data di {c['id']} diversa ({c['data']} contro {date_note[c['id']]})")
@@ -492,13 +498,16 @@ def controlla_jwc(circ):
 
 # ---------------------------------------------------------------- confronto percepito / misurato
 
-def confronti(ultimi, aree_out):
+# area dei premi -> (area elencata, passaggio PortWatch, centro e raggio in km per contare gli attacchi a navi)
+CONFRONTI = {"golfo-hormuz": ("golfo-oceano-indiano-mar-rosso", "Stretto di Hormuz", (26.6, 56.45, 300)),
+             "mar-rosso": ("golfo-oceano-indiano-mar-rosso", "Bab el-Mandeb", (12.6, 43.3, 350)),
+             "mar-nero": ("mar-nero-azov", "Bosforo", (44.5, 33.5, 500))}
+
+
+def confronti(ultimi, aree_out, eventi):
     """Accosta l'ultimo premio pubblico ai transiti PortWatch e agli attacchi recenti. Solo numeri dai file."""
-    mappa = {"golfo-hormuz": ("golfo-oceano-indiano-mar-rosso", "Stretto di Hormuz"),
-             "mar-rosso": ("golfo-oceano-indiano-mar-rosso", "Bab el-Mandeb"),
-             "mar-nero": ("mar-nero-azov", "Bosforo")}
     out = []
-    for premio_area, (area_id, cp) in mappa.items():
+    for premio_area, (area_id, cp, (la, lo, r)) in CONFRONTI.items():
         u = ultimi.get(premio_area)
         a = next((x for x in aree_out if x["id"] == area_id), None)
         if not u or not a:
@@ -509,7 +518,9 @@ def confronti(ultimi, aree_out):
                     "transiti_passaggio": cp,
                     "navi_giorno_7g": t and t["navi_giorno_7g"], "var_anno_pct": t and t["var_anno_pct"],
                     "var_tre_anni_pct": t and t["var_tre_anni_pct"], "transiti_data": t and t["ultima_data"],
-                    "attacchi_navi_30g": (a.get("eventi_recenti") or {}).get("eventi_navi")})
+                    "premio_fuori_serie_piu_recente": u.get("piu_recente_fuori_serie"),
+                    "attacchi_navi_30g": (collega_eventi({"centro_eventi": [la, lo], "raggio_eventi_km": r}, eventi) or {}).get("eventi_navi"),
+                    "attacchi_raggio_km": r})
     return out
 
 
@@ -607,7 +618,7 @@ def main():
         "eventi_assicurativi": sorted(ev_ass.get("eventi", []), key=lambda e: e["data"], reverse=True),
         "circolari": circ.get("circolari", []),
         "controllo_jwc": controllo or {"stato": "non eseguito (--offline o --controlla)"},
-        "percepito_misurato": confronti(ultimi, aree_out),
+        "percepito_misurato": confronti(ultimi, aree_out, eventi),
         "come_funziona": concetti.get("concetti", []),
         "errori": errori,
         "avvisi": avvisi,
