@@ -70,7 +70,7 @@ Il formato è quello di AGENTI.md (`aggiornato`, `fonti`, `nota`, `elementi`, `e
 Ogni notizia contiene:
 - **Dati di base:** `id`, `titolo`, `data_utc`, `data_fonte`, `link` (più `link_x` per i thread di X), `fonte`, `via` (per Google News), `editore` (dominio), `famiglia`, `lingua`, `affidabilita`, `sommario` (al massimo 400 caratteri), `stato` (sempre "da verificare").
 - **Classificazione:**
-  - `temi`: 16 temi a parole chiave (inglese, italiano, più qualche parola ucraina e francese): hormuz, mar_rosso_houthi, ucraina_fronte, guerra_iran, attacchi_energia, droni_missili, cavi_sottomarini, sabotaggi_ibrido, flotta_ombra_sanzioni, gnl_gas, petrolio, banche_centrali, sicurezza_marittima, nucleare, logistica_noli, elettricita_blackout, diplomazia_negoziati.
+  - `temi`: 17 temi a parole chiave (inglese, italiano, più qualche parola ucraina e francese): hormuz, mar_rosso_houthi, ucraina_fronte, guerra_iran, attacchi_energia, droni_missili, cavi_sottomarini, sabotaggi_ibrido, flotta_ombra_sanzioni, gnl_gas, petrolio, banche_centrali, sicurezza_marittima, nucleare, logistica_noli, elettricita_blackout, diplomazia_negoziati.
   - `luoghi`: fino a 6 toponimi di `labels.json` (paesi, città, stretti, mari, regioni), con nomi inglesi e ucraini tradotti nei nomi di `labels.json`.
   - `lat`, `lon`, `precisione_km` e `origine_coord`: vengono dal luogo più preciso citato nel titolo. La precisione dichiarata è 15 km per una città, 50 per uno stretto, 100 per una regione, 300 per un mare e 500 per un paese. **È il centro del toponimo, non il punto del fatto.**
   - `paese` (ISO2) e `teatro` proposto (RU-UA, MO, NATO).

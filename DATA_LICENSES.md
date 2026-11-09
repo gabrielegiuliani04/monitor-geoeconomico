@@ -10,7 +10,7 @@ Each JSON file also lists its sources in its own `fonti[]` field (name, link, li
 
 - **Non-commercial files** (marked NC below): personal, educational and research use only. Using them inside a company, including a port or logistics operator, needs the rights holder's permission or a replacement source.
 - **Share-alike files** (marked SA, and ODbL): if you publish a modified version, it must carry the same license.
-- **No open license** (marked "permission pending" or "terms of service"): the file is published as part of a personal, non-commercial analysis project, with attribution. Do not reuse it without asking the original author. The project will remove it if the rights holder asks.
+- **No open license** (marked "permission not yet obtained" or "terms of service"): the file is published as part of a personal, non-commercial analysis project, with attribution. Do not reuse it without asking the original author. The project will remove it if the rights holder asks.
 - Facts taken from press articles (events, dates, figures) are cited with a link and a short excerpt at most. The articles themselves belong to their publishers.
 
 ## File by file
@@ -40,8 +40,8 @@ Each JSON file also lists its sources in its own `fonti[]` field (name, link, li
 | `stretti.json`, `stretti-dettaglio.json` | IEA (CC BY 4.0), EIA, Lloyd's List, Howden Re, press (around 100 cited sources) | Facts with citation | Text is the project's own; figures belong to the cited sources |
 | `prezzi.json` | U.S. Treasury (public domain) for rates; **Yahoo Finance** for indices, stocks, futures, FX and crypto | Treasury: public domain. Yahoo: **no license, personal use only** | Do not reuse the Yahoo series. Indicative values for context, not official prices |
 | `mercati.json` | Press and market sites, quoted values with links | Facts with citation | None beyond citation |
-| `fronte.json` | Map "Ucraina (2025)" by **@Majakovsk73** on Google My Maps | **No license declared: permission pending** | Do not reuse. Will be removed if the author asks |
-| `fronte-storico.json` | **DeepStateMap** history API; ISW and AEI Critical Threats; Natural Earth | **DeepState license: no redistribution of API data without permission; permission pending.** ISW/CTP: copyright, cited | Do not reuse. Cite DeepStateMap with a link |
+| `fronte.json` | Map "Ucraina (2025)" by **@Majakovsk73** on Google My Maps | **No license declared: permission not yet obtained** | Do not reuse. Will be removed if the author asks |
+| `fronte-storico.json` | **DeepStateMap** history API; ISW and AEI Critical Threats; Natural Earth | **DeepState license: no redistribution of API data without permission; permission not yet obtained.** ISW/CTP: copyright, cited | Do not reuse. Cite DeepStateMap with a link |
 | `ucraina-storico.json` | *Massive Missile Attacks on Ukraine* by Petro Ivaniuk (Kaggle), via the Narretz/sbs-stats copy; curated strike points (Kyiv Independent, Wikipedia, press; coordinates from OSM Nominatim) | **CC BY-NC-SA 4.0** (series); facts with citation; ODbL coordinates | NC, attribution "Petro Ivaniuk, Kaggle", same license for derivatives |
 | `eventi.json`, `mobili.json`, `ibrido.json`, `report.json`, `dossier.json` | Press, official statements and OSINT accounts, each point with its own `fonti[]` | Facts with citation | Text is the project's own |
 | `ai.json` | Epoch AI (CC BY 4.0), company statements | CC BY 4.0; facts with citation | Attribute Epoch AI |

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crediti e licenze</title>
+<meta name="description" content="Fonti, crediti e licenze dei dati del Monitor geoeconomico di Gabriele Giuliani.">
+<meta name="author" content="Gabriele Giuliani">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@1,400&display=swap">
+<style>
+:root{
+  --ink:#1D272D;--ink-soft:#52606A;--ink-faint:#86929A;--accent:#A61E6B;--paper:#F6F5F0;--card:#FCFBF7;
+  --line:#D6D9D6;--line-soft:#E6E6E0;--note:#ECEFEE;--nc:#F3E6EC;--warn:#A3341F;
+  --f-sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-cond:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-serif:"IBM Plex Serif",Georgia,serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ink:#DAE0E2;--ink-soft:#A0ABB1;--ink-faint:#6C787F;--accent:#F27DB9;--paper:#10181D;--card:#151F25;
+  --line:#2B373E;--line-soft:#1F2A31;--note:#18232A;--nc:#2A1B24;--warn:#FF9C85;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ink:#DAE0E2;--ink-soft:#A0ABB1;--ink-faint:#6C787F;--accent:#F27DB9;--paper:#10181D;--card:#151F25;
+  --line:#2B373E;--line-soft:#1F2A31;--note:#18232A;--nc:#2A1B24;--warn:#FF9C85;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--f-sans);overflow-x:hidden}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.barra{border-bottom:1px solid var(--line);font:500 13px/1 var(--f-cond);letter-spacing:.02em}
+.barra-in{max-width:880px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.barra a{color:var(--ink-soft);text-decoration:none}.barra a:hover{color:var(--accent)}
+.pagina{max-width:880px;margin:0 auto;padding:0 16px 64px}
+header.testata{padding:40px 0 8px;max-width:70ch}
+.occhiello{font:600 13px/1.3 var(--f-cond);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font:600 clamp(30px,6vw,44px)/1.1 var(--f-cond);margin:0 0 10px;letter-spacing:-.01em}
+.sottotitolo{font:italic 400 19px/1.4 var(--f-serif);color:var(--ink-soft);margin:0 0 18px}
+main h2{font:600 24px/1.2 var(--f-cond);margin:44px 0 12px;padding-top:14px;border-top:2px solid var(--ink)}
+main p,main ul{max-width:70ch}
+main p{margin:0 0 14px}
+main ul{padding-left:1.3em;margin:0 0 16px}
+main li{margin:0 0 6px}
+code{font:13.5px var(--f-mono);background:var(--note);padding:1px 4px;border-radius:3px;overflow-wrap:anywhere}
+aside.nota{background:var(--note);border-radius:6px;padding:12px 16px;font-size:15px;margin:16px 0 20px;max-width:70ch}
+.tabella{overflow-x:auto;margin:8px 0 22px;border:1px solid var(--line);border-radius:6px;background:var(--card);-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.45;min-width:600px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line-soft)}
+thead th{font:600 12.5px/1.3 var(--f-cond);letter-spacing:.03em;color:var(--ink-soft);background:var(--note);border-bottom:1px solid var(--line)}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.tag{display:inline-block;font:600 11.5px/1.5 var(--f-cond);letter-spacing:.04em;text-transform:uppercase;padding:0 6px;border-radius:3px;border:1px solid var(--line);color:var(--ink-soft);white-space:nowrap}
+.tag.nc{background:var(--nc);border-color:transparent;color:var(--accent)}
+.tag.no{color:var(--warn);border-color:var(--warn)}
+footer{border-top:1px solid var(--line);margin-top:48px;padding-top:14px;font-size:14px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<div class="barra"><div class="barra-in">
+  <a href="./">&larr; Torna alla mappa</a>
+  <a href="report/">Report</a>
+</div></div>
+<div class="pagina">
+<header class="testata">
+  <p class="occhiello">Monitor geoeconomico</p>
+  <h1>Crediti e licenze</h1>
+  <p class="sottotitolo">Da dove vengono i dati della mappa, a chi vanno i crediti e cosa si può riusare.</p>
+</header>
+<main>
+
+<aside class="nota"><strong>In breve.</strong> Il codice del sito e degli script è sotto licenza MIT. I dati no: ogni file resta sotto la licenza delle sue fonti, e alcune sono <span class="tag nc">non commerciali</span> o chiedono di condividere i derivati con la stessa licenza. Il progetto è personale e non commerciale. Elenco completo file per file: <a href="https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/DATA_LICENSES.md">DATA_LICENSES.md</a>.</aside>
+
+<h2>Cartografia e infrastrutture</h2>
+<div class="tabella"><table>
+<thead><tr><th>Fonte</th><th>Cosa dà alla mappa</th><th>Licenza</th></tr></thead>
+<tbody>
+<tr><td><a href="https://www.naturalearthdata.com/">Natural Earth</a></td><td>Terre, confini, fiumi, laghi, nomi, ferrovie principali</td><td>Pubblico dominio</td></tr>
+<tr><td><a href="https://globalenergymonitor.org/">Global Energy Monitor</a></td><td>Oleodotti, gasdotti, condotte sottomarine, terminali GNL, centrali nucleari</td><td>CC BY 4.0</td></tr>
+<tr><td>Benden, P. (2022), <a href="https://doi.org/10.5281/zenodo.6361763">Global Shipping Lanes</a></td><td>Rotte marittime</td><td>CC BY-NC 4.0 <span class="tag nc">NC</span></td></tr>
+<tr><td><a href="https://msi.nga.mil/Publications/WPI">World Port Index (NGA)</a></td><td>Porti</td><td>Pubblico dominio</td></tr>
+<tr><td><a href="https://ourairports.com/">OurAirports</a>, <a href="https://www.wikidata.org/">Wikidata</a></td><td>Coordinate di basi e luoghi</td><td>Pubblico dominio, CC0</td></tr>
+<tr><td><a href="https://www.submarinecablemap.com/">TeleGeography</a></td><td>Cavi sottomarini e approdi</td><td>CC BY-NC-SA 3.0 <span class="tag nc">NC-SA</span></td></tr>
+<tr><td>© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, via <a href="https://openinframap.org/">OpenInfraMap</a></td><td>Rete elettrica ad alta tensione, sottostazioni</td><td>ODbL 1.0 <span class="tag">SA</span></td></tr>
+<tr><td><a href="https://zenodo.org/records/23896564">PyPSA-Eur</a></td><td>Collegamenti HVDC europei</td><td>ODbL 1.0 <span class="tag">SA</span></td></tr>
+<tr><td><a href="https://epoch.ai/">Epoch AI</a></td><td>Data center e infrastruttura AI</td><td>CC BY 4.0</td></tr>
+</tbody></table></div>
+
+<h2>Navi, flussi e sanzioni</h2>
+<div class="tabella"><table>
+<thead><tr><th>Fonte</th><th>Cosa dà alla mappa</th><th>Licenza</th></tr></thead>
+<tbody>
+<tr><td><a href="https://portwatch.imf.org/">IMF PortWatch</a> (FMI e Università di Oxford)</td><td>Transiti giornalieri negli stretti e chiamate nei porti italiani</td><td>Dati pubblici FMI, con citazione</td></tr>
+<tr><td>Fintraffic / <a href="https://www.digitraffic.fi/">digitraffic.fi</a></td><td>Posizioni AIS nel Golfo di Finlandia e nel Baltico settentrionale</td><td>CC BY 4.0</td></tr>
+<tr><td><a href="https://aisstream.io/">aisstream.io</a></td><td>Posizioni AIS negli stretti</td><td>Termini del servizio</td></tr>
+<tr><td><a href="https://globalfishingwatch.org/">Global Fishing Watch</a></td><td>Interruzioni AIS e incontri in mare</td><td>CC BY-NC 4.0 <span class="tag nc">NC</span></td></tr>
+<tr><td><a href="https://news.usni.org/category/fleet-tracker">USNI News Fleet Tracker</a></td><td>Aree delle navi militari USA (solo fatti)</td><td>Citazione</td></tr>
+<tr><td>OFAC (Tesoro USA)</td><td>Navi sanzionate dagli USA</td><td>Pubblico dominio</td></tr>
+<tr><td>UK Sanctions List (FCDO)</td><td>Navi sanzionate dal Regno Unito</td><td>Open Government Licence v3.0</td></tr>
+<tr><td><a href="https://www.opensanctions.org/">OpenSanctions</a></td><td>Navi sanzionate dall'UE (dagli atti in Gazzetta ufficiale)</td><td>CC BY-NC 4.0 <span class="tag nc">NC</span></td></tr>
+<tr><td>Drewry, Freightos, Shanghai Shipping Exchange, Baltic Exchange</td><td>Indici dei noli (ultimo valore con data)</td><td>Indici proprietari, citati</td></tr>
+<tr><td>Caldara e Iacoviello, <a href="https://www.matteoiacoviello.com/gpr.htm">Geopolitical Risk Index</a></td><td>Rischio geopolitico giornaliero e per paese</td><td>Libero per la ricerca, con citazione</td></tr>
+</tbody></table></div>
+
+<h2>Energia, scorte, paesi e agenda</h2>
+<div class="tabella"><table>
+<thead><tr><th>Fonte</th><th>Cosa dà alla mappa</th><th>Licenza</th></tr></thead>
+<tbody>
+<tr><td>ENTSOG Transparency Platform</td><td>Flussi di gas giornalieri ai punti d'ingresso in Italia</td><td>Riuso con citazione</td></tr>
+<tr><td>GIE AGSI+, Eurostat</td><td>Stoccaggi di gas UE, scorte petrolifere di emergenza, dipendenza energetica</td><td>Citazione; CC BY 4.0</td></tr>
+<tr><td>EIA, USDA, Fed, BLS, BEA</td><td>Scorte USA di petrolio, grano, calendario macro</td><td>Pubblico dominio</td></tr>
+<tr><td>FMI (WEO, IRFCL), Banca Mondiale</td><td>Crescita, inflazione, debito, riserve d'oro</td><td>Termini FMI; CC BY 4.0</td></tr>
+<tr><td>SIPRI</td><td>Spesa militare</td><td>Non commerciale, con citazione <span class="tag nc">NC</span></td></tr>
+<tr><td>UN Comtrade, Our World in Data / Energy Institute</td><td>Partner commerciali, petrolio e gas per paese</td><td>Termini UN Comtrade; CC BY 4.0</td></tr>
+<tr><td>BCE, Bank of England, Bank of Japan, IFES ElectionGuide</td><td>Riunioni delle banche centrali, elezioni</td><td>Citazione</td></tr>
+<tr><td>IEA</td><td>Dati sullo Stretto di Hormuz</td><td>CC BY 4.0</td></tr>
+</tbody></table></div>
+
+<h2>Mercati</h2>
+<div class="tabella"><table>
+<thead><tr><th>Fonte</th><th>Cosa dà alla mappa</th><th>Licenza</th></tr></thead>
+<tbody>
+<tr><td>U.S. Department of the Treasury</td><td>Rendimenti dei titoli di Stato USA e curva</td><td>Pubblico dominio</td></tr>
+<tr><td>Yahoo Finance</td><td>Indici, titoli, materie prime, cambi, cripto</td><td>Nessuna licenza: valori indicativi, solo per contesto <span class="tag no">non riusare</span></td></tr>
+</tbody></table></div>
+
+<h2>Russia-Ucraina</h2>
+<div class="tabella"><table>
+<thead><tr><th>Fonte</th><th>Cosa dà alla mappa</th><th>Licenza</th></tr></thead>
+<tbody>
+<tr><td>@Majakovsk73, <a href="https://www.google.com/maps/d/u/0/viewer?mid=1jr8PSIJFsRWyI5f8HqXRWIODpvg7TBk">mappa «Ucraina (2025)»</a></td><td>Aree controllate e contese, avanzate del giorno, colpi lungo il fronte</td><td>Nessuna licenza dichiarata, permesso dell'autore ancora da ottenere <span class="tag no">non riusare</span></td></tr>
+<tr><td><a href="https://deepstatemap.live/en">DeepStateMap</a></td><td>Storico mensile delle aree occupate</td><td>Diritti riservati, permesso ancora da ottenere <span class="tag no">non riusare</span></td></tr>
+<tr><td>ISW e AEI Critical Threats Project</td><td>Aree all'inizio dell'invasione (2022) e confronto tra fonti</td><td>© ISW/CTP, citazione</td></tr>
+<tr><td>Petro Ivaniuk, <a href="https://www.kaggle.com/datasets/piterfm/massive-missile-attacks-on-ukraine">Massive Missile Attacks on Ukraine</a></td><td>Missili e droni lanciati e abbattuti, dal 2022</td><td>CC BY-NC-SA 4.0 <span class="tag nc">NC-SA</span></td></tr>
+<tr><td>Kyiv Independent, Wikipedia, stampa internazionale, Clément Molin, AMK Mapping</td><td>Attacchi ucraini a energia e basi in Russia, eventi</td><td>Fatti citati con link</td></tr>
+</tbody></table></div>
+
+<h2>Eventi, notizie e analisti</h2>
+<p>Ogni punto della mappa conserva le fonti che sono state lette (<code>fonti[]</code>): agenzie, giornali, comunicati ufficiali, centri di analisi e account OSINT. Si riportano fatti, data e link, al massimo un breve estratto. Le notizie del giorno vengono da feed RSS (Google News, UKMTO, JMIC, MARAD e altri): solo titolo, data, editore e link. I video degli analisti su YouTube sono opinioni dei loro autori: si salvano solo titolo, una breve descrizione e il link.</p>
+
+<h2>Codice e testi</h2>
+<ul>
+  <li>Codice del sito, degli script di raccolta e dei workflow: <a href="https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/LICENSE">licenza MIT</a>.</li>
+  <li>Caratteri: IBM Plex (SIL Open Font License), da Google Fonts. Grafici: d3.</li>
+  <li>Testi, schede e report: Gabriele Giuliani, scritti con l'aiuto di un assistente AI (Claude). Fonti e verifiche sono indicate punto per punto.</li>
+</ul>
+
+<aside class="nota">Se sei titolare dei diritti su uno di questi dati e vuoi un credito diverso o la rimozione, apri una segnalazione nel <a href="https://github.com/gabrielegiuliani04/monitor-geoeconomico/issues">repository</a>. Il progetto è di analisi: non è uno strumento di tracciamento operativo e non dà consigli di investimento.</aside>
+
+</main>
+<footer>Monitor geoeconomico · Gabriele Giuliani · elenco aggiornato al 9 novembre 2026 · <a href="./">Torna alla mappa</a></footer>
+</div>
+</body>
+</html>
