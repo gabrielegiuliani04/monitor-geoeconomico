@@ -19,9 +19,9 @@ import sys
 
 QUI = os.path.dirname(os.path.abspath(__file__))
 RADICE = os.path.normpath(os.path.join(QUI, "..", ".."))
-DATI = os.path.join(RADICE, "docs", "data")
+DATI = os.environ.get("RISCHIO_DATI") or os.path.join(RADICE, "docs", "data")      # sostituibili per le prove
 USCITA = os.path.join(DATI, "rischio.json")
-STORICO = os.path.join(QUI, "storico.json")
+STORICO = os.environ.get("RISCHIO_STORICO") or os.path.join(QUI, "storico.json")
 SCENARI = os.path.join(QUI, "scenari.json")
 METODO_LINK = "report/metodo-rischio.md"
 
@@ -43,6 +43,10 @@ FINESTRA_CAVI = 365
 LIVELLI = [(20, "critico"), (12, "alto"), (6, "medio"), (0, "basso")]
 SOGLIA_TENDENZA = 1.0          # variazione del punteggio (scala 1–25) per dire "in aumento/in calo"
 
+NOMI_GPR = {"GPRC_SAU": "Arabia Saudita", "GPRC_EGY": "Egitto", "GPRC_TUR": "Turchia", "GPRC_UKR": "Ucraina",
+            "GPRC_RUS": "Russia", "GPRC_TWN": "Taiwan", "GPRC_CHN": "Cina", "GPRC_ISR": "Israele", "GPRC_ITA": "Italia",
+            "GPRC_USA": "Stati Uniti"}
+ESITI_GIUDIZIARI = ("condann", "arrest", "processo", "sentenza")
 CATEGORIE_EVENTO_ESCLUSE = {"esercitazione", "rischieramento", "avanzamento", "falso-allarme", "spionaggio"}
 CATEGORIE_INTERRUZIONE = {"blackout", "chiusura-passaggio"}
 
@@ -91,6 +95,10 @@ def taglia(serie, ritardo):
     serie = [p for p in (serie or []) if p and p[1] is not None]
     if not serie or ritardo <= 0:
         return serie
+    if len(serie) >= 3:
+        passi = sorted((giorno(serie[i][0]) - giorno(serie[i - 1][0])).days for i in range(len(serie) - 3, len(serie)))
+        if passi[1] >= 25 and ritardo < 25:
+            return serie  # serie mensile o annuale: una settimana fa il dato più recente era lo stesso
     limite = giorno(serie[-1][0]) - dt.timedelta(days=ritardo)
     return [p for p in serie if giorno(p[0]) <= limite]
 
@@ -111,6 +119,15 @@ def fmt(x, dec=1):
         return "n.d."
     s = f"{x:,.{dec}f}".replace(",", "X").replace(".", ",").replace("X", ".")
     return s
+
+
+def corto(t, n):
+    t = str(t or "")
+    return t if len(t) <= n else t[:n].rsplit(" ", 1)[0].rstrip(",;:(") + "…"
+
+
+def plur(n, uno, molti):
+    return f"{n} {uno if n == 1 else molti}"
 
 
 def pct(x):
@@ -175,7 +192,7 @@ def i_transiti(nome_pw, rif, ritardo, campo="n_total", etichetta=None):
 
 def i_transiti_precalcolati(nome_pw, tipo_nave, confronto):
     """Usa le variazioni già calcolate da PortWatch per tipi di nave senza serie (es. container)."""
-    nome = f"Portacontainer a {nome_pw} (media 7 gg)"
+    nome = f"Portacontainer, {nome_pw} (media 7 gg)"
     soglie = {"verde": "≥ −10%", "giallo": "tra −10% e −30%", "rosso": "< −30%", "disruption": "≤ −50%"}
     pw = carica("portwatch.json")
     el = next((e for e in (pw or {}).get("elementi", []) if e.get("nome") == nome_pw), None)
@@ -253,6 +270,13 @@ def vicini(eventi, centri, oggi, giorni, raggio=RAGGIO_KM, tipi=None, filtro=Non
             continue
         if e.get("affidabilita") == "bassa" or e.get("categoria") in CATEGORIE_EVENTO_ESCLUSE:
             continue
+        try:
+            if e["_tipo"] != "cavi" and float(e.get("precisione_km") or 0) > raggio:
+                continue  # coordinate troppo vaghe (centro di un paese o di un mare)
+        except ValueError:
+            pass
+        if e["_tipo"] != "cavi" and any(k in str(e.get("nome", "")).lower() for k in ESITI_GIUDIZIARI):
+            continue  # esito giudiziario di un fatto passato, non un evento sul terreno
         if filtro and not filtro(e):
             continue
         if any(km(e["_lat"], e["_lon"], la, lo) <= raggio for la, lo in centri):
@@ -268,7 +292,7 @@ def i_eventi(eventi, centri, oggi, ritardo, nome="Eventi entro 150 km (ultimi 30
     n = len(sel)
     stato = classifica(n, soglie_n[0], soglie_n[1], "alto_male")
     esempi = sorted(sel, key=lambda e: e["_d"], reverse=True)[:3]
-    testo = f"{n} eventi" + (": " + "; ".join(f"{e['_d'].isoformat()} {(e.get('breve') or e.get('nome', ''))[:60]}" for e in esempi) if esempi else "")
+    testo = plur(n, "evento", "eventi") + (": " + "; ".join(f"{e['_d'].isoformat()} {corto(e.get('breve') or e.get('nome', ''), 60)}" for e in esempi) if esempi else "")
     out = ind(nome, "minaccia", n, testo, stato,
               {"verde": f"meno di {soglie_n[0]}", "giallo": f"{soglie_n[0]}–{soglie_n[1] - 1}", "rosso": f"{soglie_n[1]} o più"},
               "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)", "", "eventi.json, ibrido.json, ucraina-storico.json",
@@ -288,7 +312,7 @@ def i_cavi(eventi, centri, oggi, ritardo, raggio=300):
     oggi_r = oggi - dt.timedelta(days=ritardo)
     sel = vicini(eventi, centri, oggi_r, FINESTRA_CAVI, raggio=raggio, tipi={"cavi"})
     n = len(sel)
-    testo = f"{n} incidenti" + (": " + "; ".join(f"{e['_d'].isoformat()} {e.get('nome', '')[:70]} (causa: {str(e.get('causa', ''))[:60]})" for e in sel) if sel else "")
+    testo = plur(n, "incidente", "incidenti") + (": " + "; ".join(f"{e['_d'].isoformat()} {corto(e.get('nome', ''), 70)} (causa: {corto(e.get('causa', ''), 70)})" for e in sel) if sel else "")
     return ind(nome, "minaccia", n, testo, classifica(n, 1, 2, "alto_male"),
                {"verde": "nessuno", "giallo": "1", "rosso": "2 o più"},
                "Stampa e operatori, curati dall'agente CAVI", "", "cavi-incidenti.json", oggi_r.isoformat(),
@@ -303,7 +327,7 @@ def i_flotta_ombra():
     sel = [e for e in nv.get("elementi", []) if e.get("flotta_ombra_probabile") and
            any(k in (e.get("area") or "") for k in ("Baltico", "Finlandia", "danesi"))]
     n = len(sel)
-    return ind(nome, "minaccia", n, f"{n} navi nella fotografia AIS di oggi", classifica(n, 10, 30, "alto_male"),
+    return ind(nome, "minaccia", n, plur(n, "nave", "navi") + " nella fotografia AIS di oggi", classifica(n, 10, 30, "alto_male"),
                {"verde": "meno di 10", "giallo": "10–29", "rosso": "30 o più"},
                "Digitraffic (Fintraffic), aisstream.io; incrocio con liste sanzioni", "https://www.digitraffic.fi/",
                "navi.json", (nv.get("aggiornato") or "")[:10],
@@ -337,7 +361,7 @@ def i_ondate_rete(oggi, ritardo):
     oggi_r = oggi - dt.timedelta(days=ritardo)
     sel = [o for o in u.get("ondate_rete_ucraina", []) if oggi_r - dt.timedelta(days=30) <= giorno(o["data"]) <= oggi_r]
     n = len(sel)
-    return ind(nome, "minaccia", n, f"{n} ondate" + (": " + "; ".join(f"{o['data']} {o['nome'][:60]}" for o in sel) if sel else ""),
+    return ind(nome, "minaccia", n, plur(n, "ondata", "ondate") + (": " + "; ".join(f"{o['data']} {o['nome'][:60]}" for o in sel) if sel else ""),
                classifica(n, 1, 2, "alto_male"), {"verde": "nessuna", "giallo": "1", "rosso": "2 o più"},
                "Ondate curate dall'agente UCRAINA (DiXi Group, Ukrenergo, stampa)", "", "ucraina-storico.json",
                oggi_r.isoformat(), "Elenco curato a mano: dipende dall'aggiornamento dell'agente.", "ondate")
@@ -352,7 +376,7 @@ def i_eventi_rete_ua(eventi, oggi, ritardo):
            and (str(e.get("bersaglio", "")).startswith("energia") or e.get("categoria") == "blackout")
            and e.get("affidabilita") != "bassa" and oggi_r - dt.timedelta(days=30) <= e["_d"] <= oggi_r]
     n = len(sel)
-    out = ind(nome, "minaccia", n, f"{n} eventi, di cui {sum(1 for e in sel if e.get('categoria') == 'blackout')} blackout",
+    out = ind(nome, "minaccia", n, plur(n, "evento", "eventi") + f", di cui {sum(1 for e in sel if e.get('categoria') == 'blackout')} blackout",
               classifica(n, 1, 5, "alto_male"), {"verde": "nessuno", "giallo": "1–4", "rosso": "5 o più"},
               "Agenzie, DTEK, Ukrenergo, OSINT", "", "eventi.json", oggi_r.isoformat(),
               "Il file degli eventi copre una finestra recente: il conteggio è un minimo.", "eventi")
@@ -365,7 +389,7 @@ def i_gpr(codici, ritardo):
     """GPR per paese (mensile) contro la propria media degli ultimi 5 anni; se il paese manca, GPR globale (media 30 gg)."""
     g = carica("gpr.json")
     if not g:
-        return nd("Rischio geopolitico (GPR)", "clima", "gpr.json mancante", "Caldara e Iacoviello", "gpr.json")
+        return [nd("Rischio geopolitico (GPR)", "clima", "gpr.json mancante", "Caldara e Iacoviello", "gpr.json")]
     soglie = {"verde": "sotto la propria media 5 anni (×<1)", "giallo": "×1–1,5", "rosso": "×1,5 o più"}
     fonte, link = "Caldara e Iacoviello, Geopolitical Risk Index", "https://www.matteoiacoviello.com/gpr.htm"
     out = []
@@ -381,13 +405,13 @@ def i_gpr(codici, ritardo):
             media = sum(v for _, v in serie) / len(serie)
             r = m30 / media
             testo = f"media 30 gg {fmt(m30)} contro {fmt(media)} di media 5 anni (×{fmt(r, 2)})"
-            nome, data = "GPR globale giornaliero (media 30 gg)", fine.isoformat()
+            nome, data = "Rischio geopolitico globale (GPR giornaliero, media 30 gg)", fine.isoformat()
         else:
             ultimo = serie[-1][1]
             media = sum(v for _, v in serie) / len(serie)
             r = ultimo / media if media else None
             testo = f"{fmt(ultimo, 2)} contro {fmt(media, 2)} di media 5 anni (×{fmt(r, 2)})"
-            nome, data = f"GPR {el.get('nome', c).replace('GPR mensile per ', '')}", serie[-1][0]
+            nome, data = f"Rischio geopolitico: {NOMI_GPR.get(c, c)}", serie[-1][0]
         out.append(ind(nome, "clima", r, testo, classifica(r, 1.0, 1.5, "alto_male"), soglie, fonte, link, "gpr.json", data,
                        "Conta gli articoli di 10 giornali su tensioni e guerre: misura l'attenzione, non il danno.", "rapporto"))
     return out
@@ -421,14 +445,24 @@ def i_prezzo_anno(pid, ritardo):
         return nd(nome, "costo", "prezzi.json mancante o serie assente", "Yahoo Finance", "prezzi.json")
     fine = giorno(serie[-1][0])
     rif = [v for d, v in serie if giorno(d) <= fine - dt.timedelta(days=365)]
-    if not rif:
-        return nd(nome, "costo", "manca il valore di un anno prima", "Yahoo Finance", "prezzi.json")
     ultimo = serie[-1][1]
-    var = (ultimo / rif[-1] - 1) * 100
-    return ind(nome, "costo", var, f"{fmt(ultimo, 2)} {el.get('unita', '')} contro {fmt(rif[-1], 2)} un anno prima: {pct(var)}",
-               classifica(var, 10, 40, "alto_male"), {"verde": "meno di +10%", "giallo": "+10% / +40%", "rosso": "oltre +40%"},
-               el.get("fonte", "Yahoo Finance"), el.get("link", ""), "prezzi.json", fine.isoformat(),
-               "Il costo che famiglie e imprese pagano già.", "% su un anno")
+    nota = "Il costo che famiglie e imprese pagano già."
+    if rif:
+        var = (ultimo / rif[-1] - 1) * 100
+        testo = f"{fmt(ultimo, 2)} {el.get('unita', '')} contro {fmt(rif[-1], 2)} un anno prima: {pct(var)}"
+    else:
+        # prezzi.json pubblica solo ~3 mesi di serie: si usa la variazione a 1 anno calcolata dallo script dei mercati
+        var = (el.get("var") or {}).get("1a")
+        if var is None:
+            return nd(nome, "costo", "manca il valore di un anno prima", "Yahoo Finance", "prezzi.json")
+        testo = f"{fmt(el.get('ultimo'), 2)} {el.get('unita', '')}, {pct(var)} su un anno (variazione pubblicata in prezzi.json)"
+        nota += " Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale."
+        fine = giorno(el.get("data") or fine.isoformat())
+    out = ind(nome, "costo", var, testo,
+              classifica(var, 10, 40, "alto_male"), {"verde": "meno di +10%", "giallo": "+10% / +40%", "rosso": "oltre +40%"},
+              el.get("fonte", "Yahoo Finance"), el.get("link", ""), "prezzi.json", fine.isoformat(), nota, "% su un anno")
+    out["fisso"] = not rif
+    return out
 
 
 def _nolo(idx):
@@ -522,39 +556,56 @@ def i_quota_paese(paese, chiave, nome):
                "paesi.json", str(x.get("anno", "")), "Quota in valore dichiarata dall'importatore: approssima l'esposizione.", "%")
 
 
-def i_scorte(sid, ritardo):
-    s = carica("scorte.json")
-    el = next((e for e in (s or {}).get("elementi", []) if e.get("id") == sid), None)
-    nome = (el or {}).get("nome", sid) + " contro la media 5 anni"
-    if not el:
-        return nd(nome, "scorte", "scorte.json mancante o voce assente", "", "scorte.json")
-    serie = taglia(el.get("serie"), ritardo)
+def _scarto_proprio(serie):
+    """Scarto % dell'ultimo valore dalla media dello stesso giorno (±4) negli anni precedenti (almeno 2)."""
     if not serie:
-        return nd(nome, "scorte", "serie vuota", el.get("fonte", ""), "scorte.json")
+        return None
     fine = giorno(serie[-1][0])
-    ultimo = serie[-1][1]
-    # media dello stesso giorno (± 3 giorni) nei 5 anni precedenti; per le serie mensili/annuali lo stesso mese/anno
     vals = []
     for k in range(1, 6):
         try:
             rif = fine.replace(year=fine.year - k)
         except ValueError:
             rif = fine.replace(year=fine.year - k, day=28)
-        vicino = [v for d, v in serie if abs((giorno(d) - rif).days) <= 3]
+        vicino = sorted(((abs((giorno(d) - rif).days), v) for d, v in serie if abs((giorno(d) - rif).days) <= 4))
         if vicino:
-            vals.append(vicino[-1])
-    if len(vals) < 3:
-        sc = ((el.get("ultimo") or {}).get("media_5_anni") or {}).get("scarto_pct") if ritardo == 0 else None
-        if sc is None:
-            return nd(nome, "scorte", "media 5 anni non calcolabile", el.get("fonte", ""), "scorte.json")
+            vals.append(vicino[0][1])
+    if len(vals) < 2:
+        return None
+    m = sum(vals) / len(vals)
+    return (serie[-1][1] / m - 1) * 100 if m else None
+
+
+def i_scorte(sid, ritardo):
+    """Scarto dalla media 5 anni calcolato da scorte.json (che usa lo storico completo).
+    Nello storico ricostruito si applica allo scarto pubblicato la variazione calcolata sulla serie disponibile."""
+    s = carica("scorte.json")
+    el = next((e for e in (s or {}).get("elementi", []) if e.get("id") == sid), None)
+    nome = (el or {}).get("nome", sid) + " contro la media 5 anni"
+    if not el:
+        return nd(nome, "scorte", "scorte.json mancante o voce assente", "", "scorte.json")
+    piena = [p for p in (el.get("serie") or []) if p and p[1] is not None]
+    serie = taglia(piena, ritardo)
+    if not serie:
+        return nd(nome, "scorte", "serie vuota", el.get("fonte", ""), "scorte.json")
+    ult = el.get("ultimo") or {}
+    pubblicato = (ult.get("media_5_anni") or {}).get("scarto_pct")
+    media = (ult.get("media_5_anni") or {}).get("valore")
+    if pubblicato is not None and serie[-1][0] == ult.get("data"):
+        sc = pubblicato
+    elif pubblicato is not None:
+        a, b = _scarto_proprio(serie), _scarto_proprio(piena)
+        sc = pubblicato + (a - b) if a is not None and b is not None else None
         media = None
     else:
-        media = sum(vals) / len(vals)
-        sc = (ultimo / media - 1) * 100
-    testo = f"{fmt(ultimo)} {el.get('unita', '')} il {fine.isoformat()}" + (f" contro {fmt(media)} di media 5 anni" if media else "") + f": {pct(sc)}"
+        sc, media = _scarto_proprio(serie), None
+    if sc is None:
+        return nd(nome, "scorte", "media 5 anni non calcolabile", el.get("fonte", ""), "scorte.json")
+    fine, ultimo = serie[-1][0], serie[-1][1]
+    testo = f"{fmt(ultimo)} {el.get('unita', '')} il {fine}" + (f" contro {fmt(media)} di media 5 anni" if media else "") + f": {pct(sc)}"
     return ind(nome, "scorte", sc, testo, classifica(sc, -5, -15, "basso_male"),
                {"verde": "≥ −5% sulla media 5 anni", "giallo": "tra −5% e −15%", "rosso": "< −15%"},
-               el.get("fonte", ""), el.get("link", ""), "scorte.json", fine.isoformat(), el.get("note", "") or "", "% sulla media 5 anni")
+               el.get("fonte", ""), el.get("link", ""), "scorte.json", fine, el.get("note", "") or "", "% sulla media 5 anni")
 
 
 # ---------------------------------------------------------------- unità valutate
@@ -736,6 +787,8 @@ def media_pesata(indicatori, pesi):
     disp = {g: w for g, w in pesi.items() if g in per_gruppo}
     if not disp:
         return None, {}
+    if pesi is PESI_PROB and not ({"flussi", "minaccia"} & set(disp)):
+        return None, {}  # senza flussi né minacce la probabilità non si calcola dal solo clima o dal solo mercato
     tot = sum(disp.values())
     val = sum(w / tot * (sum(per_gruppo[g]) / len(per_gruppo[g])) for g, w in disp.items())
     for x in indicatori:  # peso effettivo di ciascun indicatore, per trasparenza
@@ -752,28 +805,35 @@ def livello(p):
     return next(n for s, n in LIVELLI if p >= s)
 
 
-def valuta(u, oggi, eventi, ritardo=0):
+def fisso(x):
+    """Indicatore che non si può ricostruire nel passato (file con sola finestra recente o senza serie):
+    nello storico ricostruito resta uguale al valore di oggi."""
+    x["fisso"] = True
+    return x
+
+
+def valuta(u, oggi, eventi, ritardo=0, correnti=None):
     prob, imp = [], []
     for f in u.get("flussi", []):
         try:
             if f[0] == "pw":
                 prob.append(i_transiti(f[1], f[2], ritardo, f[3],
-                                       etichetta=("Petroliere e metaniere a " if f[3] == "n_tanker" else "Transiti a ") + f[1] + " (media 7 gg)"))
+                                       etichetta=("Petroliere e metaniere, " if f[3] == "n_tanker" else "Transiti, ") + f[1] + " (media 7 gg)"))
             elif f[0] == "pwc":
-                prob.append(i_transiti_precalcolati(f[1], f[2], f[3]))
+                prob.append(fisso(i_transiti_precalcolati(f[1], f[2], f[3])))
             elif f[0] == "gas":
                 prob.append(i_gas_flusso(f[1], ritardo, f[2]))
         except Exception as e:
             prob.append(nd(str(f[1]), "flussi", f"errore di calcolo: {e}"))
     try:
         if u.get("ucraina"):
-            prob += [i_lanci_ucraina(ritardo), i_ondate_rete(oggi, ritardo), i_eventi_rete_ua(eventi, oggi, ritardo)]
+            prob += [i_lanci_ucraina(ritardo), i_ondate_rete(oggi, ritardo), fisso(i_eventi_rete_ua(eventi, oggi, ritardo))]
         else:
-            prob.append(i_eventi(eventi, u["centri"], oggi, ritardo))
+            prob.append(fisso(i_eventi(eventi, u["centri"], oggi, ritardo)))
             if u.get("cavi"):
                 prob.append(i_cavi(eventi, u["centri"], oggi, ritardo))
             if "flotta_ombra" in u.get("minaccia_extra", []):
-                prob.append(i_flotta_ombra())
+                prob.append(fisso(i_flotta_ombra()))
     except Exception as e:
         prob.append(nd("Eventi", "minaccia", f"errore di calcolo: {e}"))
     try:
@@ -787,7 +847,7 @@ def valuta(u, oggi, eventi, ritardo=0):
             prob.append(nd(pid, "mercato", f"errore di calcolo: {e}"))
     for n in u.get("noli", []):
         try:
-            prob.append(i_premio_med() if n[0] == "premio" else i_nolo_var(n[1], n[2], n[3]) if n[0] == "var" else i_nolo_storico(n[1], n[2]))
+            prob.append(fisso(i_premio_med() if n[0] == "premio" else i_nolo_var(n[1], n[2], n[3]) if n[0] == "var" else i_nolo_storico(n[1], n[2])))
         except Exception as e:
             prob.append(nd("Noli", "mercato", f"errore di calcolo: {e}"))
 
@@ -808,6 +868,15 @@ def valuta(u, oggi, eventi, ritardo=0):
         except Exception as e:
             imp.append(nd(pid, "costo", f"errore di calcolo: {e}"))
 
+    if ritardo and correnti:  # storico ricostruito: gli indicatori non ricostruibili restano quelli di oggi
+        oggi_per_nome = {x["nome"]: x for x in correnti["prob"] + correnti["imp"]}
+        prob = [dict(oggi_per_nome[x["nome"]]) if x.get("fisso") and x["nome"] in oggi_per_nome else x for x in prob]
+        imp = [dict(oggi_per_nome[x["nome"]]) if x.get("fisso") and x["nome"] in oggi_per_nome else x for x in imp]
+        for x in prob + imp:
+            x.pop("peso", None)
+            if x.get("tipo") != "valutazione":
+                x.pop("punti", None)
+
     p, pesi_p = media_pesata(prob, PESI_PROB)
     i, pesi_i = media_pesata(imp, PESI_IMP)
     disruption = [x for x in prob if x.get("disruption")]
@@ -822,23 +891,28 @@ def valuta(u, oggi, eventi, ritardo=0):
     p = round(p, 1) if p is not None else None
     i = round(i, 1) if i is not None else None
     s = round(p * i, 1) if p is not None and i is not None else None
-    return dict(prob=prob, imp=imp, p=p, i=i, s=s, pesi_p=pesi_p, pesi_i=pesi_i, regola=regola)
+    cop_p = sum(w for g, w in PESI_PROB.items() if any(x["gruppo"] == g and x["stato"] != "n.d." for x in prob)) if p is not None else 0
+    cop_i = sum(w for g, w in PESI_IMP.items() if any(x["gruppo"] == g and x["stato"] != "n.d." for x in imp)) if i is not None else 0
+    return dict(prob=prob, imp=imp, p=p, i=i, s=s, pesi_p=pesi_p, pesi_i=pesi_i, regola=regola,
+                copertura=round((cop_p + cop_i) / 2, 2))
 
 
 def perche(u, r, tend):
     frasi = []
+    if r["p"] is None or r["i"] is None:
+        return "Punteggio non calcolabile oggi: mancano i dati su flussi e minacce (vedi errori)."
     attivi = sorted([x for x in r["prob"] if x["stato"] in ("rosso", "giallo")],
                     key=lambda x: -(x.get("punti") or 0) * (x.get("peso") or 0))
     if r["regola"]:
         frasi.append(f"La disruption è già in corso ({r['regola']}): per regola la probabilità è 5.")
     elif attivi:
         a = attivi[:2]
-        frasi.append(f"La probabilità ({fmt(r['p'])}/5) è spinta da " + " e da ".join(f"{x['nome'].lower()} ({x['testo']})" for x in a) + ".")
+        frasi.append(f"La probabilità ({fmt(r['p'])}/5) è spinta da " + " e da ".join(f"«{x['nome']}» ({x['testo']})" for x in a) + ".")
     else:
         frasi.append(f"Nessun indicatore anticipatore è in allerta: probabilità {fmt(r['p'])}/5.")
     alti = sorted([x for x in r["imp"] if x["stato"] in ("rosso",)], key=lambda x: -(x.get("peso") or 0))
     if alti:
-        frasi.append(f"L'impatto ({fmt(r['i'])}/5) è alto per " + "; ".join(f"{x['nome'].lower()}: {x['testo'][:140]}" for x in alti[:2]) + ".")
+        frasi.append(f"L'impatto ({fmt(r['i'])}/5) è alto per " + "; ".join(f"«{x['nome']}» ({corto(x['testo'], 140)})" for x in alti[:2]) + ".")
     else:
         frasi.append(f"L'impatto è contenuto ({fmt(r['i'])}/5): nessuna voce di impatto è in rosso.")
     n_nd = sum(1 for x in r["prob"] + r["imp"] if x["stato"] == "n.d.")
@@ -847,6 +921,8 @@ def perche(u, r, tend):
                      + (f"; {n_nd} indicatori sono n.d." if n_nd else "") + ".")
     elif n_nd:
         frasi.append(f"{n_nd} indicatori non sono disponibili oggi: il punteggio poggia su meno dati.")
+    if r.get("copertura", 1) < 0.7:
+        frasi.append(f"Attenzione: le domande con dati coprono solo il {round(r['copertura'] * 100)}% dei pesi.")
     return " ".join(frasi)
 
 
@@ -857,15 +933,15 @@ def cosa_osservare(u, r, oggi, scen):
             if x.get("disruption"):
                 rif = x.get("riferimento")
                 soglia = f" (circa {fmt(rif * 0.7)} navi/g)" if rif else ""
-                out.append(f"Fine della disruption: {x['nome'].lower()} sopra −30% del riferimento{soglia} per due settimane di fila.")
+                out.append(f"Fine della disruption: «{x['nome']}» sopra −30% del riferimento{soglia} per due settimane di fila.")
             elif x["stato"] != "verde":
                 out.append(f"{x['nome']}: oggi {pct(x['valore'])}; sotto −50% scatta la regola della disruption in corso.")
     for x in r["prob"]:
         if x["gruppo"] != "flussi" and x["stato"] == "giallo":
-            out.append(f"{x['nome']}: oggi {x['testo'][:90]}; diventa rosso con {x['soglie'].get('rosso', '')}.")
+            out.append(f"{x['nome']}: oggi {corto(x['testo'], 90)}; diventa rosso con {x['soglie'].get('rosso', '')}.")
     for x in r["imp"]:
         if x["gruppo"] == "scorte" and x["stato"] in ("giallo", "rosso"):
-            out.append(f"{x['nome']}: {x['testo'][:110]}.")
+            out.append(f"{x['nome']}: {corto(x['testo'], 110)}.")
     cal = carica("calendario.json")
     if cal and u.get("calendario"):
         import re
@@ -1029,12 +1105,21 @@ def principale():
     eventi = raccogli_eventi(oggi)
     st = leggi_storico()
 
+    risultati = {}
+    for u in U:
+        try:
+            risultati[u["id"]] = valuta(u, oggi, eventi)
+        except Exception as e:  # una sola unità rotta non deve fermare le altre
+            ERRORI.append(f"{u['id']}: calcolo non riuscito ({e.__class__.__name__}: {e})")
+
     # storico: se manca un giorno intorno a 7 giorni fa, lo ricostruisce togliendo 7 giorni da ogni serie
     if not riferimento_7g(st, oggi):
         rif = {}
         for u in U:
+            if u["id"] not in risultati:
+                continue
             try:
-                r7 = valuta(u, oggi, eventi, ritardo=7)
+                r7 = valuta(u, oggi, eventi, ritardo=7, correnti=risultati[u["id"]])
                 rif[u["id"]] = {"p": r7["p"], "i": r7["i"], "s": r7["s"], "livello": livello(r7["s"]) if r7["s"] is not None else "n.d."}
             except Exception as e:
                 ERRORI.append(f"{u['id']}: ricostruzione a 7 giorni non riuscita ({e})")
@@ -1044,10 +1129,8 @@ def principale():
     letture, sintesi_scenari = leggi_scenari(oggi, eventi)
     unita, punteggi = [], {}
     for u in U:
-        try:
-            r = valuta(u, oggi, eventi)
-        except Exception as e:  # una sola unità rotta non deve fermare le altre
-            ERRORI.append(f"{u['id']}: calcolo non riuscito ({e.__class__.__name__}: {e})")
+        r = risultati.get(u["id"])
+        if not r:
             continue
         prima = ((base7 or {}).get("unita") or {}).get(u["id"], {}).get("s")
         if r["s"] is None or prima is None:
@@ -1060,7 +1143,7 @@ def principale():
         indicatori = []
         for asse, lista in (("probabilita", r["prob"]), ("impatto", r["imp"])):
             for x in lista:
-                x = {k: v for k, v in x.items() if k not in ("interruzioni_7g",)}
+                x = {k: v for k, v in x.items() if k not in ("interruzioni_7g", "fisso")}
                 x["asse"] = asse
                 x["domanda"] = NOMI_GRUPPI.get(x["gruppo"], x["gruppo"])
                 indicatori.append(x)
@@ -1072,6 +1155,7 @@ def principale():
             "data_7g_fa": base7["data"] if base7 and tend["prima"] is not None else None,
             "storico_ricostruito": bool(base7 and base7.get("ricostruito")),
             "regola_disruption": r["regola"],
+            "copertura": r["copertura"],
             "pesi_usati": {"probabilita": r["pesi_p"], "impatto": r["pesi_i"]},
             "indicatori": indicatori,
             "perche": perche(u, r, tend),
@@ -1092,6 +1176,7 @@ def principale():
                 "Ogni indicatore ha valore, soglie, stato, fonte e data. È una valutazione con regole esplicite, "
                 "non una previsione: vedi il metodo per cosa il punteggio NON dice.",
         "regole": {
+            "copertura": "quota dei pesi (media dei due assi) coperta da domande con almeno un indicatore disponibile; sotto 0,7 il punteggio è fragile",
             "punti_stato": PUNTI, "pesi_probabilita": PESI_PROB, "pesi_impatto": PESI_IMP,
             "regola_disruption": f"transiti o flussi ≤ {SOGLIA_DISRUPTION:.0f}% del riferimento, oppure blackout/chiusura confermati negli ultimi 7 giorni: probabilità = 5",
             "livelli": {"basso": "< 6", "medio": "6–11,9", "alto": "12–19,9", "critico": "≥ 20"},

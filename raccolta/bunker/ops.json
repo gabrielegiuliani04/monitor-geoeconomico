@@ -1,0 +1,91 @@
+{
+  "nota": "Stato dell'allaccio elettrico in banchina (OPS, cold ironing) e dei carburanti alternativi nei porti seguiti. Voci curate a mano. 'stato' e' una valutazione sintetica: operativo / parziale / in costruzione / in progetto. I conteggi BREEZE sono 'disponibili o impegnati' a settembre 2025 rispetto a quelli richiesti da AFIR al 2030. Coordinate: centro approssimato dell'area portuale.",
+  "porti": [
+    {
+      "id": "ops-rotterdam", "nome": "Rotterdam", "paese": "NL", "lat": 51.95, "lon": 4.05,
+      "stato": "parziale",
+      "ops": "7 punti di connessione OPS su 8 richiesti da AFIR al 2030 disponibili o impegnati (container 6 su 7, crociere 1 su 1), settembre 2025. Rotterdam Shore Power (joint venture Port of Rotterdam-Eneco) attrezzera' 8 km di banchina con 35 punti per portacontainer in tre terminal deep-sea; prestito BEI di 90 milioni e circa 70 milioni di contributo CEF-AFIF; piena operativita' a Maasvlakte II prevista a inizio 2029. Ostacolo principale: congestione della rete elettrica dichiarata dal 2023.",
+      "carburanti_alternativi": "GNL (215.420 m3 venduti nel 3o trimestre 2026), bio-GNL (23.613 m3), bio-metanolo (4.166 t), primo bio-etanolo (1.025 t nel 2o trimestre 2026); dal 1/1/2026 obbligo di misuratori di massa (MFM) sulle bettoline a Rotterdam e Anversa-Bruges",
+      "fonti": [
+        {"nome": "Interreg BREEZE, OPS analysis v2", "link": "https://www.interregeurope.eu/sites/default/files/2026-04/OPS%20Analysis%20BREEZE.pdf", "data_fonte": "2026-04-17"},
+        {"nome": "Port of Rotterdam, prestito BEI", "link": "https://www.portofrotterdam.com/en/news-and-press-releases/port-rotterdam-continues-greening-efforts-eu-financing", "data_fonte": "2026"},
+        {"nome": "Rotterdam Maritime Capital", "link": "https://www.rotterdammaritimecapital.com/news/engines-off-shore-power-on-rotterdams-biggest-clean-energy-bet", "data_fonte": "2026"},
+        {"nome": "Port of Rotterdam, bunker sales 2024-2026", "link": "https://www.portofrotterdam.com/sites/default/files/2026-10/bunker-sales-2024-2026.pdf", "data_fonte": "2026-10-22"}
+      ],
+      "affidabilita": "alta"
+    },
+    {
+      "id": "ops-amburgo", "nome": "Amburgo", "paese": "DE", "lat": 53.54, "lon": 9.93,
+      "stato": "parziale",
+      "ops": "14 punti OPS su 25 (container 10 su 21, crociere 4 su 4), settembre 2025; secondo il porto nel corso del 2026 tutti i terminal crociere e i grandi terminal container avranno punti OPS. Prima portacontainer allacciata: CMA CGM Vasco de Gama (18.000 TEU) al Container Terminal Hamburg. Sconto sulle tariffe portuali per chi usa l'OPS.",
+      "carburanti_alternativi": "non verificato in questa raccolta",
+      "fonti": [
+        {"nome": "Interreg BREEZE, OPS analysis v2", "link": "https://www.interregeurope.eu/sites/default/files/2026-04/OPS%20Analysis%20BREEZE.pdf", "data_fonte": "2026-04-17"},
+        {"nome": "Maritime Executive", "link": "https://maritime-executive.com/article/hamburg-first-in-europe-to-supply-shore-power-for-containerships", "data_fonte": "non indicata"}
+      ],
+      "affidabilita": "alta"
+    },
+    {
+      "id": "ops-anversa", "nome": "Anversa-Bruges", "paese": "BE", "lat": 51.28, "lon": 4.32,
+      "stato": "in costruzione",
+      "ops": "2 punti OPS su 28 richiesti al 2030 (settembre 2025); 11 ormeggi in costruzione per crociere, container e ro-ro (3 sotto AFIR: 2 crociere, 1 container). PSA Europa Terminal: impianto da 7,5 MW previsto dal 2026, fino a 100 portacontainer l'anno; Antwerp Euroterminal: 2 connessioni da 5 MW per car carrier e con-ro. Il porto si e' impegnato a servire le portacontainer piu' grandi entro il 2028.",
+      "carburanti_alternativi": "Il Belgio potrebbe recepire RED III solo dal 2027: nel 2026 Anversa ha un vantaggio di prezzo sul bunker rispetto a Rotterdam (valutazione di Ship & Bunker)",
+      "fonti": [
+        {"nome": "Interreg BREEZE, OPS analysis v2", "link": "https://www.interregeurope.eu/sites/default/files/2026-04/OPS%20Analysis%20BREEZE.pdf", "data_fonte": "2026-04-17"},
+        {"nome": "PSA Antwerp", "link": "https://psa-antwerp.be/en/node/2416", "data_fonte": "2024"},
+        {"nome": "Port of Antwerp-Bruges newsroom", "link": "https://newsroom.portofantwerpbruges.com/first-shore-power-for-seagoing-vessels-arrives-at-antwerp-euroterminal", "data_fonte": "2024-05"}
+      ],
+      "affidabilita": "media"
+    },
+    {
+      "id": "ops-esbjerg", "nome": "Esbjerg", "paese": "DK", "lat": 55.46, "lon": 8.44,
+      "stato": "operativo",
+      "ops": "OPS attivo da gennaio 2021 (due unita' da 500 A, fino a 11.000 kWh al giorno), usato soprattutto da navi per l'eolico offshore e piattaforme. Nel 2025 forniti 1.740 MWh, circa 386 tCO2e evitate.",
+      "carburanti_alternativi": "porto posizionato su eolico offshore e power-to-X; nessun bunkeraggio di ammoniaca o metanolo verificato",
+      "fonti": [
+        {"nome": "Port Esbjerg, Onshore power supply and electricity", "link": "https://portesbjerg.dk/en/our-focus/onshore-power-supply-and-electricity", "data_fonte": "2026"},
+        {"nome": "Port Esbjerg, 2021", "link": "https://portesbjerg.dk/en/news/esbjerg-makes-a-success-of-green-shore-to-ship-power", "data_fonte": "2021-11-17"}
+      ],
+      "affidabilita": "alta"
+    },
+    {
+      "id": "ops-genova", "nome": "Genova", "paese": "IT", "lat": 44.40, "lon": 8.91,
+      "stato": "in costruzione",
+      "ops": "Banchine crociere (Ponte dei Mille e Ponte Andrea Doria): lavori di elettrificazione in corso, oltre i tempi previsti, test entro fine 2026. Traghetti (progetto 'add-on', 32 milioni di PNRR salvati con un decreto MIT): completamento non prima del 2028. MSC (luglio 2026) chiede tariffe competitive: oggi all'ormeggio costa meno il GNL dell'elettricita' di rete. Dati sui terminal container non trovati.",
+      "carburanti_alternativi": "rifornimento GNL del traghetto GNV Aurora (comunicato AdSP); piano di transizione energetica da 110 milioni",
+      "fonti": [
+        {"nome": "Shipping Italy, 19/6/2026", "link": "https://www.shippingitaly.it/2026/06/19/salvi-i-fondi-per-il-cold-ironing-dei-traghetti-nel-porto-di-genova/", "data_fonte": "2026-06-19"},
+        {"nome": "Shipping Italy, 23/7/2026", "link": "https://www.shippingitaly.it/2026/07/23/msc-preoccupata-dal-costo-del-cold-ironing-nei-porti-italiani/", "data_fonte": "2026-07-23"},
+        {"nome": "Ports of Genoa", "link": "https://www.portsofgenoa.com/it/magazine/news/genova-accelera-transizione-energetica-porti-110-milioni-investiti-rifornimento-traghetto-gnv-aurora.pdf?format=pdf", "data_fonte": "2026-03"}
+      ],
+      "affidabilita": "media"
+    },
+    {
+      "id": "ops-trieste", "nome": "Trieste", "paese": "IT", "lat": 45.65, "lon": 13.76,
+      "stato": "in costruzione",
+      "ops": "Punti di connessione realizzati (oltre 46 milioni) al Molo Bersaglieri (crociere), Riva Traiana e Molo V (ro-ro), Molo VII (container), Piattaforma logistica e Monfalcone; smart grid AcegasApsAmga (26 milioni); potenziamento Terna (circa 80 milioni) in autorizzazione. Test con banchi resistivi in corso al Molo V e VII; prove su nave con MSC (crociere) e DFDS (ro-ro); gara per il gestore del servizio entro fine anno. Manca ancora una disciplina operativa (chi collega il cavo, responsabilita', misura).",
+      "carburanti_alternativi": "non verificato",
+      "fonti": [
+        {"nome": "Il Nord Est", "link": "https://www.ilnordest.it/economia/infrastrutture/cold-ironing-trieste-accende-i-moli-gara-per-il-gestore-entro-fine-anno-uhlmlcdj", "data_fonte": "2026-09"},
+        {"nome": "Shipping Italy, 25/5/2026", "link": "https://www.shippingitaly.it/2026/05/25/cold-ironing-armatori-pronti-ma-i-porti-frenano-appello-per-infrastrutture-e-regole-certe/", "data_fonte": "2026-05-25"}
+      ],
+      "affidabilita": "media"
+    },
+    {
+      "id": "ops-venezia", "nome": "Venezia", "paese": "IT", "lat": 45.44, "lon": 12.30,
+      "stato": "in costruzione",
+      "ops": "Due progetti dell'AdSP del Mare Adriatico Settentrionale: 'Elettrificazione banchine aree di Marghera' (57,6 milioni: Canale Nord e terminal di Fusina) e 'Aree di Venezia' (32,2 milioni: Marittima, Riva Sette Martiri, Santa Marta-San Basilio). Stato di avanzamento 2026 non verificato.",
+      "carburanti_alternativi": "non verificato",
+      "fonti": [
+        {"nome": "Shipping Italy, ripartizione fondi aggiuntivi cold ironing", "link": "https://www.shippingitaly.it/2025/07/25/ecco-la-ripartizione-dei-fondi-aggiuntivi-per-il-cold-ironing-nei-porti-italiani/", "data_fonte": "2025-07-25"},
+        {"nome": "AdSP MAS, Piano operativo triennale 2026-2028", "link": "https://trasparenza.port.venice.it/wp-content/uploads/2026/02/POT-2026_2028_10_02_2026.pdf", "data_fonte": "2026-02-10"}
+      ],
+      "affidabilita": "bassa"
+    }
+  ],
+  "trasbordo_extra_ue": [
+    {"id": "tanger-med", "nome": "Tanger Med", "paese": "MA", "lat": 35.89, "lon": -5.50, "stato": "nella lista UE dei porti di trasbordo vicini (ETS dal 2024, FuelEU dal 2025)", "link": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R2297", "data_fonte": "2023-10-26"},
+    {"id": "east-port-said", "nome": "East Port Said", "paese": "EG", "lat": 31.23, "lon": 32.37, "stato": "nella lista UE dei porti di trasbordo vicini (ETS dal 2024, FuelEU dal 2025)", "link": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R2297", "data_fonte": "2023-10-26"}
+  ],
+  "candidati_citati_nella_revisione_2026": ["Damietta (EG)", "Tekirdag (TR)", "Nador West Med (MA)", "Dakhla (MA)", "Cherchell (DZ)"]
+}

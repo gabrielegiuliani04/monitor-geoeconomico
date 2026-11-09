@@ -1,0 +1,25 @@
+{
+  "nota": "Hub del bunkeraggio seguiti dallo script. 'sb' e' il percorso della pagina prezzi di Ship & Bunker (https://shipandbunker.com/prices/<sb>). Alcune pagine (Genova, Algeciras, Amburgo, Malta, Port Said) sono riservate agli abbonati: lo script lo rileva e lo scrive in 'stato_prezzi'. Coordinate: centro approssimato dell'area portuale (WGS84), non un punto di ormeggio preciso.",
+  "data_prima_guerra": "2026-02-27",
+  "hub": [
+    {"id": "rotterdam", "nome": "Rotterdam", "paese": "NL", "lat": 51.95, "lon": 4.05, "sb": "emea/nwe/nl-rtm-rotterdam", "focus": true},
+    {"id": "anversa", "nome": "Anversa", "paese": "BE", "lat": 51.28, "lon": 4.32, "sb": "emea/nwe/be-anr-antwerp", "focus": true},
+    {"id": "amburgo", "nome": "Amburgo", "paese": "DE", "lat": 53.54, "lon": 9.93, "sb": "emea/nwe/de-ham-hamburg", "focus": false},
+    {"id": "skaw", "nome": "Skagen (Skaw)", "paese": "DK", "lat": 57.75, "lon": 10.65, "sb": "emea/nwe/dk-skw-skaw", "focus": true},
+    {"id": "goteborg", "nome": "Göteborg", "paese": "SE", "lat": 57.69, "lon": 11.85, "sb": "emea/nwe/se-got-gothenburg", "focus": false},
+    {"id": "danzica", "nome": "Danzica", "paese": "PL", "lat": 54.40, "lon": 18.67, "sb": "emea/nwe/pl-gdn-gdansk", "focus": false},
+    {"id": "gibilterra", "nome": "Gibilterra", "paese": "GI", "lat": 36.13, "lon": -5.35, "sb": "emea/medabs/gi-gib-gibraltar", "focus": true},
+    {"id": "algeciras", "nome": "Algeciras", "paese": "ES", "lat": 36.13, "lon": -5.43, "sb": "emea/medabs/es-alg-algeciras", "focus": true},
+    {"id": "genova", "nome": "Genova", "paese": "IT", "lat": 44.40, "lon": 8.91, "sb": "emea/medabs/it-goa-genoa", "focus": true},
+    {"id": "pireo", "nome": "Pireo", "paese": "GR", "lat": 37.94, "lon": 23.62, "sb": "emea/medabs/gr-pir-piraeus", "focus": false},
+    {"id": "malta", "nome": "Malta (La Valletta)", "paese": "MT", "lat": 35.89, "lon": 14.52, "sb": "emea/medabs/mt-mla-valletta-malta", "focus": false},
+    {"id": "port-said", "nome": "Port Said", "paese": "EG", "lat": 31.26, "lon": 32.31, "sb": "emea/medabs/eg-psd-port-said", "focus": false},
+    {"id": "istanbul", "nome": "Istanbul", "paese": "TR", "lat": 41.00, "lon": 28.97, "sb": "emea/medabs/tr-ist-istanbul", "focus": false},
+    {"id": "fujairah", "nome": "Fujairah", "paese": "AE", "lat": 25.17, "lon": 56.37, "sb": "emea/me/ae-fjr-fujairah", "focus": true},
+    {"id": "singapore", "nome": "Singapore", "paese": "SG", "lat": 1.26, "lon": 103.82, "sb": "apac/sea/sg-sin-singapore", "focus": true}
+  ],
+  "indici": [
+    {"id": "g20", "nome": "Media di 20 porti principali (Ship & Bunker G20)", "sb": "port/AV-G20"},
+    {"id": "eua", "nome": "EUA e costo EUA per tonnata di carburante (Ship & Bunker)", "sb": "port/EU-EUA"}
+  ]
+}

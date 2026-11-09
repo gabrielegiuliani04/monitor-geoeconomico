@@ -1,0 +1,613 @@
+{
+  "_nota": "Porti base per l'eolico offshore (installazione, fabbricazione, O&M). Voci curate a mano: ogni numero ha fonte, link e data. null = dato non trovato. Coordinate da OpenStreetMap/Nominatim (ODbL), riferite alla localita' o al bacino portuale, non al singolo terminal salvo dove indicato.",
+  "porti": [
+    {
+      "id": "esbjerg",
+      "nome": "Esbjerg",
+      "paese": "DK",
+      "mare": "Mare del Nord",
+      "lat": 55.4723,
+      "lon": 8.4273,
+      "coord_nota": "Porto di Esbjerg (OSM)",
+      "categoria": "porto installazione",
+      "ruoli": ["installazione turbine", "fondazioni", "O&M", "CCS"],
+      "area_nuova_ha": 57,
+      "area_nota": "Quinta fase di espansione completata: +570.000 m2 a est del porto (equivalenti a 80 campi da calcio), pronti per il leasing entro fine anno.",
+      "banchine": "Canale d'accesso approfondito da 9,3 a 12,8 m (fonte: Port Esbjerg). Nuova banchina di circa 350 m prevista operativa nel 2026 (fonte secondaria, stato non confermato).",
+      "portata_t_m2": null,
+      "progetti_serviti": ["Thor (RWE, 1 GW): turbine installate da Esbjerg con la nave Brave Tern; 36 di 72 turbine installate a luglio 2026, il resto entro fine 2026"],
+      "indicatori": [
+        {"nome": "Capacita' offshore europea spedita da Esbjerg", "valore": 27.5, "unita": "GW", "nota": "circa quattro quinti della capacita' europea secondo il porto"},
+        {"nome": "Capacita' da spedire nei prossimi 5 anni", "valore": 13.5, "unita": "GW", "nota": "progetti soprattutto tedeschi e britannici, stima del porto"}
+      ],
+      "investimenti": "Espansione est (quinta fase) con oltre 4 milioni di m3 di sabbia e argilla dragati; circa 500 milioni DKK per l'espansione (fonte secondaria).",
+      "colli_bottiglia": "Nessuna fonte recente trovata su saturazione delle aree. Il porto stesso lega la nuova area anche a CCS e merci modulari, quindi lo spazio e' conteso tra usi diversi.",
+      "stato": "operativo",
+      "fonte": "Port Esbjerg, 'Port Esbjerg expands by 570,000 square metres'",
+      "link": "https://portesbjerg.dk/en/news/port-esbjerg-expands-by-570-000-square-metres",
+      "data_fonte": "2025",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, Thor a meta' installazione", "link": "https://www.offshorewind.biz/2026/07/17/turbine-installation-at-thor-offshore-wind-farm-reaches-halfway-point", "data": "2026-07-17"},
+        {"nome": "Port Esbjerg, canale a 12,8 m", "link": "https://portesbjerg.dk/en/news/port-esbjerg-significantly-expands-its-capacity", "data": "n.d."},
+        {"nome": "Port Esbjerg, 'Why Esbjerg holds strong cards'", "link": "https://portesbjerg.dk/en/news/why-esbjerg-holds-strong-cards", "data": "2026"}
+      ],
+      "note": "Data esatta del comunicato sull'espansione non riportata nella pagina; collocata nel 2025 in base al contesto (CCS 'a fine 2025')."
+    },
+    {
+      "id": "eemshaven",
+      "nome": "Eemshaven",
+      "paese": "NL",
+      "mare": "Mare del Nord",
+      "lat": 53.4484,
+      "lon": 6.8465,
+      "coord_nota": "Eemshaven (OSM)",
+      "categoria": "porto installazione",
+      "ruoli": ["installazione turbine", "stoccaggio fondazioni", "O&M"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": "Buss Terminal Eemshaven: banchina heavy-lift di Julianahaven rinforzata (progetto WINdQUAY), completata ad aprile 2026; ora puo' servire due parchi eolici contemporaneamente.",
+      "portata_t_m2": 40,
+      "progetti_serviti": [
+        "Hollandse Kust West VI / Ecowende (760 MW): prime torri caricate sulla nave Boreas a fine maggio 2026, operativo previsto a fine 2026",
+        "OranjeWind (RWE/TotalEnergies, 795 MW): installazione turbine prevista da inizio 2027",
+        "Nordseecluster A (RWE, Germania): fondazioni scaricate al Buss Terminal, turbine nel 2026",
+        "Nordlicht (Vattenfall, Germania): base O&M in costruzione a Eemshaven, completamento previsto ottobre 2026"
+      ],
+      "indicatori": [],
+      "investimenti": "Ampliamento banchina heavy-lift e area di stoccaggio heavy-duty (Buss Ports, partner Groningen Seaports).",
+      "colli_bottiglia": "Capacita' dichiarata: due progetti in parallelo. Nel 2026-2027 sono in coda almeno tre progetti (Ecowende, Nordseecluster, OranjeWind): finestra stretta.",
+      "stato": "operativo",
+      "fonte": "offshoreWIND.biz, 'Dutch Terminal Equipped to Handle Two Offshore Wind Projects at Once After Upgrade'",
+      "link": "https://www.offshorewind.biz/2026/04/16/dutch-terminal-equipped-to-handle-two-offshore-wind-projects-at-once-after-upgrade/",
+      "data_fonte": "2026-04-16",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, prima turbina a Hollandse Kust West VI", "link": "https://www.offshorewind.biz/2026/06/01/first-wind-turbine-installed-at-hollandse-kust-west-vi-site", "data": "2026-06-01"},
+        {"nome": "offshoreWIND.biz, OranjeWind da Eemshaven", "link": "https://www.offshorewind.biz/2024/12/10/rwe-totalenergies-to-build-oranjewind-offshore-wind-farm-from-eemshaven/", "data": "2024-12-10"},
+        {"nome": "offshoreWIND.biz, base O&M Nordlicht", "link": "https://www.offshorewind.biz/2026/01/19/construction-starts-on-om-base-for-vattenfalls-new-german-offshore-wind-farms", "data": "2026-01-19"}
+      ],
+      "note": "La valutazione sulla 'finestra stretta' e' nostra, non della fonte."
+    },
+    {
+      "id": "vlissingen",
+      "nome": "Vlissingen (North Sea Port)",
+      "paese": "NL",
+      "mare": "Mare del Nord",
+      "lat": 51.4667,
+      "lon": 3.6954,
+      "coord_nota": "Vlissingen-Oost (OSM)",
+      "categoria": "porto fabbricazione",
+      "ruoli": ["costruzione cassoni isola energetica belga", "hub monopile (storico)"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": null,
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Isola energetica Princess Elisabeth (Belgio): costruzione dei cassoni a Vlissingen; a giugno 2026 installati 17 cassoni su 23",
+        "Storico: hub intermedio per i monopile Sif trasportati su pontoni (2014)"
+      ],
+      "indicatori": [],
+      "investimenti": null,
+      "colli_bottiglia": "Nessun dato 2026 trovato su aree e banchine dedicate all'eolico.",
+      "stato": "operativo",
+      "fonte": "offshoreWIND.biz, 'Construction Progressing on World's First Artificial Energy Island'",
+      "link": "https://www.offshorewind.biz/2026/06/18/construction-progressing-on-worlds-first-artificial-energy-island",
+      "data_fonte": "2026-06-18",
+      "affidabilita": "media",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, Verbrugge Terminals e monopile Luchterduinen", "link": "https://www.offshorewind.biz/2014/06/04/verbrugge-terminals-loads-in-first-eneco-luchterduinen-monopile/", "data": "2014-06-04"}
+      ],
+      "note": "Dati infrastrutturali (ettari, portata banchine) mancanti: da cercare su North Sea Port."
+    },
+    {
+      "id": "rotterdam-maasvlakte",
+      "nome": "Rotterdam - Maasvlakte 2",
+      "paese": "NL",
+      "mare": "Mare del Nord",
+      "lat": 51.959,
+      "lon": 3.9824,
+      "coord_nota": "Maasvlakte 2 (OSM)",
+      "categoria": "porto fabbricazione",
+      "ruoli": ["fabbrica monopile Sif", "mobilitazione navi", "futuro terminal installazione"],
+      "area_nuova_ha": 45,
+      "area_nota": "Terminal per l'eolico offshore di 45 ha previsto nell'angolo nord-ovest della Maasvlakte (Arianehaven): stoccaggio, trasbordo, assemblaggio, installazione e smantellamento. Richiesta di informazioni 26/11/2025-8/1/2026; operativo previsto a meta' 2029.",
+      "banchine": "Sif carica i monopile direttamente dalla banchina deep-sea di Maasvlakte 2.",
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Sif: monopile per Empire Wind 1, Ecowende, East Anglia Two (64 monopile), OranjeWind, Baltyk 2 e 3 (completati)",
+        "Wind Ally (Cadeler) mobilitata a Rotterdam per le fondazioni di Hornsea 3 (inizio 2026)"
+      ],
+      "indicatori": [
+        {"nome": "Investimento fabbrica Sif Maasvlakte 2", "valore": 328, "unita": "milioni EUR", "nota": "decisione febbraio 2023"},
+        {"nome": "Produzione Sif primi 9 mesi 2026", "valore": 211, "unita": "kton", "nota": "124 kton nello stesso periodo 2025; 141 monopile; ritmo 4 monopile/settimana"},
+        {"nome": "Capacita' annua Sif dopo l'espansione", "valore": 500, "unita": "kton circa", "nota": "stima Rystad"}
+      ],
+      "investimenti": "Fabbrica Sif (328 milioni EUR); terminal offshore wind 45 ha in fase di gara.",
+      "colli_bottiglia": "Opposto della scarsita': Sif chiudera' una delle tre linee di Maasvlakte 2 nel quarto trimestre 2026 per carenza di ordini e ha dichiarato dubbi rilevanti sulla continuita' aziendale; assemblea straordinaria il 22/12/2026 per un aumento di capitale.",
+      "stato": "operativo; terminal 45 ha in progetto",
+      "fonte": "Windtech International, 'Sif faces funding uncertainty despite improved third-quarter performance'",
+      "link": "https://www.windtech-international.com/company-news/sif-faces-funding-uncertainty-despite-improved-third-quarter-performance",
+      "data_fonte": "2026-11",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "Renewable Energy Industry, terminal 45 ha", "link": "https://www.renewable-energy-industry.com/countries/article-7128-port-of-rotterdam-accelerates-offshore-wind-expansion-new-45-hectare-terminal-in-the-port-of-rotterdam-eliminates-capacity-bottlenecks", "data": "2025-11"},
+        {"nome": "Port of Rotterdam, sviluppo terminal offshore wind", "link": "https://www.portofrotterdam.com/en/setting/offshore/development-offshore-wind-terminal-rotterdam", "data": "2025-2026"},
+        {"nome": "offshoreWIND.biz, inaugurazione mega-fabbrica Sif", "link": "https://www.offshorewind.biz/2025/05/15/sif-officially-opens-monopile-mega-factory-new-facility-already-rolled-out-30-empire-wind-1-foundations", "data": "2025-05-15"},
+        {"nome": "Rystad Energy, monopile da scarsita' a surplus", "link": "https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze", "data": "2026-09-18"}
+      ],
+      "note": "Data del comunicato Sif Q3 2026 non riportata nella pagina; il periodo coperto e' gennaio-settembre 2026."
+    },
+    {
+      "id": "cuxhaven",
+      "nome": "Cuxhaven",
+      "paese": "DE",
+      "mare": "Mare del Nord",
+      "lat": 53.8255,
+      "lon": 8.694,
+      "coord_nota": "Cuxhaven citta' (OSM)",
+      "categoria": "porto installazione",
+      "ruoli": ["installazione", "marshalling", "fabbricazione"],
+      "area_nuova_ha": 38,
+      "area_nota": "Ampliamento del terminal offshore (ormeggi 5-7): 38 ha di area di stoccaggio, gestito da Niedersachsen Ports.",
+      "banchine": "Ormeggi 5-7: 1.250 m di banchina per carichi pesanti; contratto a DEME (con Depenbrock e TAGU) a novembre 2024; avvio lavori inizio 2025, durata circa 3,5 anni; oltre 3 milioni di m3 di terreno da bonificare.",
+      "portata_t_m2": null,
+      "progetti_serviti": ["MoU Dajin Heavy Industry - Briese Schiffahrts per un hub di marshalling a Cuxhaven (dicembre 2025)"],
+      "indicatori": [
+        {"nome": "Banchina heavy-load in costruzione", "valore": 1250, "unita": "m", "nota": "ormeggi 5-7"}
+      ],
+      "investimenti": "Ampliamento ormeggi 5-7 (importo non riportato nelle fonti consultate).",
+      "colli_bottiglia": "La nuova capacita' arriva solo verso il 2028 (calcolo: avvio 2025 + 3,5 anni). Fino ad allora il Mare del Nord tedesco ha poca banchina pesante dedicata.",
+      "stato": "in ampliamento",
+      "fonte": "offshoreWIND.biz, 'DEME Bags Contract for Offshore Wind Terminal in Cuxhaven'",
+      "link": "https://www.offshorewind.biz/2024/11/28/deme-bags-contract-for-offshore-wind-terminal-in-cuxhaven",
+      "data_fonte": "2024-11-28",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, accordo Dajin a Cuxhaven", "link": "https://www.offshorewind.biz/2025/12/04/dajin-german-port-terminal-operator-enter-offshore-wind-agreement/", "data": "2025-12-04"}
+      ],
+      "note": "Il coinvolgimento di Dajin (Cina) e' rilevante per il dibattito su dipendenza da fornitori cinesi."
+    },
+    {
+      "id": "bremerhaven",
+      "nome": "Bremerhaven",
+      "paese": "DE",
+      "mare": "Mare del Nord",
+      "lat": 53.5505,
+      "lon": 8.5852,
+      "coord_nota": "Bremerhaven citta' (OSM)",
+      "categoria": "porto installazione",
+      "ruoli": ["installazione (storico)", "logistica"],
+      "area_nuova_ha": 25,
+      "area_nota": "Offshore Terminal Bremerhaven (OTB) progettato: banchina di 500 m e area logistica di 25 ha, 180 milioni EUR, fino a 160 turbine e fondazioni l'anno. Lavori fermati a tempo indeterminato dal ricorso dell'associazione ambientalista BUND.",
+      "banchine": "OTB: 500 m (progetto, non realizzato).",
+      "portata_t_m2": null,
+      "progetti_serviti": [],
+      "indicatori": [],
+      "investimenti": "OTB 180 milioni EUR (progetto 2012-2016, bloccato).",
+      "colli_bottiglia": "Terminal dedicato mai entrato in esercizio secondo le fonti trovate; nessuna fonte 2026 su un rilancio.",
+      "stato": "progetto bloccato",
+      "fonte": "offshoreWIND.biz, 'BLG Signs 30-Year Deal to Operate Offshore Terminal Bremerhaven' e articoli correlati",
+      "link": "https://www.offshorewind.biz/2016/02/08/blg-signs-30-year-deal-to-operate-offshore-terminal-bremerhaven/",
+      "data_fonte": "2016-02-08",
+      "affidabilita": "media",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, approvazione edilizia OTB", "link": "https://www.offshorewind.biz/2015/12/02/offshore-terminal-bremerhaven-gets-building-approval/", "data": "2015-12-02"}
+      ],
+      "note": "Fonti datate: verificare lo stato attuale presso bremenports."
+    },
+    {
+      "id": "rostock",
+      "nome": "Rostock",
+      "paese": "DE",
+      "mare": "Baltico",
+      "lat": 54.1158,
+      "lon": 12.1642,
+      "coord_nota": "Rostock Seehafen (OSM)",
+      "categoria": "porto fabbricazione",
+      "ruoli": ["fabbrica monopile EEW SPC", "caricamento fondazioni"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": "Porto senza marea: EEW lo indica come vantaggio per caricamenti di precisione.",
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Thor (RWE): 36 monopile prodotti da EEW SPC a Rostock (2025)",
+        "Primo parco polacco da 1,5 GW: primi monopile caricati a gennaio 2026"
+      ],
+      "indicatori": [
+        {"nome": "Diametro massimo monopile oggi", "valore": 10, "unita": "m", "nota": "fino a 12 m dopo i lavori (inizio 2027), possibile 15 m dopo il 2030"},
+        {"nome": "Capacita' produttiva", "valore": 100, "unita": "monopile/anno (oltre)", "nota": "pagina aziendale EEW"}
+      ],
+      "investimenti": "Ristrutturazione e nuovo capannone avviati a meta' 2026, completamento previsto inizio 2027 (importo non pubblicato).",
+      "colli_bottiglia": "Rischio di sottoutilizzo piu' che di scarsita' (vedi scheda fondazioni).",
+      "stato": "operativo, in ampliamento",
+      "fonte": "offshoreWIND.biz, 'EEW SPC Prepares Rostock Plant for 12-Metre-Diameter Monopiles'",
+      "link": "https://www.offshorewind.biz/2026/09/15/eew-spc-prepares-rostock-plant-for-12-metre-diameter-monopiles-eyes-further-upgrade-after-2030",
+      "data_fonte": "2026-09-15",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "EEW, sito di Rostock", "link": "https://eew-group.com/company/our-facilities/eew-spc-rostock/", "data": "n.d."},
+        {"nome": "offshoreWIND.biz, primi monopile per il parco polacco", "link": "https://www.offshorewind.biz/2026/01/22/eew-loads-out-first-monopiles-for-polish-offshore-wind-farm", "data": "2026-01-22"}
+      ],
+      "note": null
+    },
+    {
+      "id": "sassnitz-mukran",
+      "nome": "Sassnitz-Mukran",
+      "paese": "DE",
+      "mare": "Baltico",
+      "lat": 54.4986,
+      "lon": 13.5889,
+      "coord_nota": "Mukran, Sassnitz (OSM)",
+      "categoria": "porto installazione",
+      "ruoli": ["preassemblaggio e installazione turbine", "O&M"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": null,
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Windanker (Iberdrola, 315 MW, 21 turbine Siemens Gamesa SG 14-236 DD): componenti preassemblati a Mukran nel 2026, installazione con la nave Norse Energi (DEME)",
+        "Baltic Hub di Iberdrola (Wikinger, Baltic Eagle 476 MW, Windanker): circa 1,1 GW gestiti da basi O&M a Mukran",
+        "Arcadis Ost 1 (Parkwind): base O&M aperta a Sassnitz-Mukran nel 2023"
+      ],
+      "indicatori": [],
+      "investimenti": null,
+      "colli_bottiglia": null,
+      "stato": "operativo",
+      "fonte": "offshoreWIND.biz, 'Windanker Turbine Components Arriving at German Port Ahead of Offshore Installation'",
+      "link": "https://www.offshorewind.biz/2026/06/10/windanker-turbine-components-arriving-at-german-port-ahead-of-offshore-installation/",
+      "data_fonte": "2026-06-10",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, base O&M Arcadis Ost 1", "link": "https://www.offshorewind.biz/2023/06/22/arcadis-ost-1-om-base-opens/", "data": "2023-06-22"},
+        {"nome": "offshoreWIND.biz, Windanker in rete", "link": "https://www.offshorewind.biz/2026/09/01/iberdrolas-new-german-offshore-wind-farm-feeding-electricity-into-grid/", "data": "2026-09-01"}
+      ],
+      "note": "Mukran e' anche sede del terminal GNL galleggiante tedesco: possibile conflitto d'uso degli spazi (valutazione, da verificare)."
+    },
+    {
+      "id": "ronne",
+      "nome": "Rønne (Bornholm)",
+      "paese": "DK",
+      "mare": "Baltico",
+      "lat": 55.0939,
+      "lon": 14.6927,
+      "coord_nota": "Rønne Havn (OSM)",
+      "categoria": "porto installazione",
+      "ruoli": ["marshalling", "installazione turbine", "futuro hub Isola energetica Bornholm"],
+      "area_nuova_ha": 15,
+      "area_nota": "Prima fase completata nel 2019: +150.000 m2, fondale a 11 m, nuovo frangiflutti, terminal multiuso di 300 m.",
+      "banchine": "Terminal multiuso di 300 m, fondale 11 m.",
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Arcadis Ost 1 (257 MW): hub di stoccaggio e marshalling scelto da DEME",
+        "Baltic Eagle (Iberdrola): 50 turbine preassemblate e installate da Rønne nel 2024"
+      ],
+      "indicatori": [
+        {"nome": "Isola energetica Bornholm, capacita' prevista", "valore": 3, "unita": "GW", "nota": "a dicembre 2025 la gara per i parchi attendeva la decisione del governo danese"}
+      ],
+      "investimenti": "Seconda fase di ampliamento avviata nel 2022 (dettagli non trovati).",
+      "colli_bottiglia": "Pipeline dipendente dalla decisione politica sull'Isola energetica Bornholm.",
+      "stato": "operativo",
+      "fonte": "offshoreWIND.biz, 'Danish Port Starting New Upgrade to Meet Increased Offshore Wind Demand in Baltic Sea'",
+      "link": "https://www.offshorewind.biz/2022/06/30/danish-port-starting-new-upgrade-to-meet-increased-offshore-wind-demand-in-baltic-sea/",
+      "data_fonte": "2022-06-30",
+      "affidabilita": "media",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, Stillstrom e Port of Rønne (stato isola energetica)", "link": "https://www.offshorewind.biz/2025/12/02/stillstrom-danish-port-exploring-large-scale-maritime-electrification-at-energy-island-bornholm", "data": "2025-12-02"},
+        {"nome": "offshoreWIND.biz, DEME sceglie Rønne per Arcadis Ost 1", "link": "https://www.offshorewind.biz/2022/01/27/deme-selects-port-of-roenne-as-arcadis-ost-1-base/", "data": "2022-01-27"}
+      ],
+      "note": null
+    },
+    {
+      "id": "grenaa",
+      "nome": "Grenaa",
+      "paese": "DK",
+      "mare": "Kattegat",
+      "lat": 56.4128,
+      "lon": 10.906,
+      "coord_nota": "Grenaa Havn (OSM)",
+      "categoria": "porto installazione",
+      "ruoli": ["preassemblaggio", "stoccaggio", "O&M"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": null,
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Anholt (10-18 miglia nautiche dal porto): base di costruzione e O&M",
+        "Hesselo' (Kattegat, almeno 800 MW, vinto da Vattenfall ad agosto 2026; il porto si propone come base): messa in servizio prevista 2032"
+      ],
+      "indicatori": [],
+      "investimenti": null,
+      "colli_bottiglia": null,
+      "stato": "operativo",
+      "fonte": "Grenaa Havn, brochure offshore wind",
+      "link": "https://grenaahavn.dk/wp-content/uploads/Offshorewind-en.pdf",
+      "data_fonte": "n.d.",
+      "affidabilita": "media",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, accordi finali Vattenfall per Hesselo' e Holmsland", "link": "https://www.offshorewind.biz/2026/11/06/vattenfall-signs-final-agreements-for-new-danish-offshore-wind-farms", "data": "2026-11-06"}
+      ],
+      "note": "La scelta del porto base per Hesselo' non risulta ancora annunciata."
+    },
+    {
+      "id": "hvide-sande",
+      "nome": "Hvide Sande",
+      "paese": "DK",
+      "mare": "Mare del Nord",
+      "lat": 56.0058,
+      "lon": 8.1288,
+      "coord_nota": "Hvide Sande (OSM)",
+      "categoria": "porto O&M",
+      "ruoli": ["O&M", "crew boat", "supporto jack-up"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": null,
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Holmsland (ex North Sea I Mid, almeno 1 GW, Vattenfall): parco previsto vicino a Hvide Sande, messa in servizio obiettivo 2032"
+      ],
+      "indicatori": [],
+      "investimenti": null,
+      "colli_bottiglia": null,
+      "stato": "operativo",
+      "fonte": "offshoreWIND.biz, 'Vattenfall Signs Final Agreements for New Danish Offshore Wind Farms'",
+      "link": "https://www.offshorewind.biz/2026/11/06/vattenfall-signs-final-agreements-for-new-danish-offshore-wind-farms",
+      "data_fonte": "2026-11-06",
+      "affidabilita": "media",
+      "fonti_extra": [
+        {"nome": "TGS 4C Offshore, scheda porto Hvide Sande", "link": "https://www.4coffshore.com/ports/port-suppliers-hvide-sande-denmark-pid24.html", "data": "n.d."}
+      ],
+      "note": "Ruolo O&M descritto in fonti generiche; mancano dati su aree e banchine."
+    },
+    {
+      "id": "ostenda",
+      "nome": "Ostenda (Oostende)",
+      "paese": "BE",
+      "mare": "Mare del Nord",
+      "lat": 51.2259,
+      "lon": 2.9195,
+      "coord_nota": "Oostende citta' (OSM)",
+      "categoria": "porto installazione",
+      "ruoli": ["installazione (terminal REBO)", "O&M", "coordinamento Isola Princess Elisabeth"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": null,
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Isola energetica Princess Elisabeth: coordinamento del progetto da Ostenda; 17 cassoni su 23 installati a giugno 2026, 45 km al largo",
+        "Centro servizi offshore di Elia (gestore di rete) sulla banchina"
+      ],
+      "indicatori": [
+        {"nome": "Occupati stabili nell'eolico offshore nel porto", "valore": 500, "unita": "persone (oltre)", "nota": "dato 2019"}
+      ],
+      "investimenti": "Prestito BEI di 650 milioni EUR per l'isola energetica (2024).",
+      "colli_bottiglia": "La gara per la Princess Elisabeth Zone e' stata rinviata (decisione 2025, apertura prevista nel 2026): pipeline belga ferma fino ad allora.",
+      "stato": "operativo",
+      "fonte": "offshoreWIND.biz, 'Construction Progressing on World's First Artificial Energy Island'",
+      "link": "https://www.offshorewind.biz/2026/06/18/construction-progressing-on-worlds-first-artificial-energy-island",
+      "data_fonte": "2026-06-18",
+      "affidabilita": "media",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, porto di Ostenda proprietario del terminal REBO", "link": "https://www.offshorewind.biz/2019/10/01/port-of-oostende-takes-full-ownership-of-rebo-terminal/", "data": "2019-10-01"},
+        {"nome": "offshoreWIND.biz, centro servizi Elia", "link": "https://www.offshorewind.biz/2023/05/17/port-of-ostend-to-house-elias-new-offshore-wind-service-centre", "data": "2023-05-17"},
+        {"nome": "offshoreWIND.biz, BEI 650 milioni per l'isola", "link": "https://www.offshorewind.biz/2024/10/28/belgian-energy-island-secures-eur-650-million-from-eib", "data": "2024-10-28"}
+      ],
+      "note": "Coordinate della citta' (OSM non restituisce il bacino portuale). WindEurope prevede zero nuova capacita' offshore belga 2026-2030."
+    },
+    {
+      "id": "hull",
+      "nome": "Hull (Green Port Hull)",
+      "paese": "GB",
+      "mare": "Mare del Nord",
+      "lat": 53.7448,
+      "lon": -0.2945,
+      "coord_nota": "Alexandra Dock, Hull (OSM)",
+      "categoria": "porto fabbricazione",
+      "ruoli": ["fabbrica pale Siemens Gamesa", "preassemblaggio"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": null,
+      "portata_t_m2": null,
+      "progetti_serviti": ["Hornsea 3 (Orsted): produzione pale avviata nella fabbrica Siemens Gamesa di Hull (agosto 2026)"],
+      "indicatori": [
+        {"nome": "Addetti fabbrica pale Siemens Gamesa", "valore": 1400, "unita": "persone (oltre)", "nota": "dato agosto 2026"}
+      ],
+      "investimenti": null,
+      "colli_bottiglia": null,
+      "stato": "operativo",
+      "fonte": "Hornsea Project Three, 'First UK blades produced for Orsted's Hornsea 3 offshore wind farm'",
+      "link": "https://hornseaproject3.co.uk/news/2026/08/first-uk-blades-produced-for-orsteds-hornsea-3-offshore-wind-farm",
+      "data_fonte": "2026-08",
+      "affidabilita": "alta",
+      "fonti_extra": [],
+      "note": "Fabbrica aperta nel 2016."
+    },
+    {
+      "id": "grimsby",
+      "nome": "Grimsby",
+      "paese": "GB",
+      "mare": "Mare del Nord",
+      "lat": 53.5798,
+      "lon": -0.0729,
+      "coord_nota": "Royal Dock, Grimsby (OSM)",
+      "categoria": "porto O&M",
+      "ruoli": ["O&M (East Coast Hub Orsted)"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": null,
+      "portata_t_m2": null,
+      "progetti_serviti": ["East Coast Hub di Orsted (Royal Dock): parchi Hornsea, Westermost Rough, Lincs, Race Bank, Gunfleet Sands; estensione affidata a Hobson & Porter, descritta come la piu' grande base O&M offshore del Regno Unito"],
+      "indicatori": [],
+      "investimenti": null,
+      "colli_bottiglia": null,
+      "stato": "operativo, in ampliamento",
+      "fonte": "Hull & Humber Chamber of Commerce, 'Orsted appoints firm to build UK's largest O&M hub for offshore wind in Grimsby'",
+      "link": "https://www.hull-humber-chamber.co.uk/articles/orsted-appoints-firm-to-build-uk-s-largest-o-m-hub-for-offshore-wind-in-grimsby",
+      "data_fonte": "n.d.",
+      "affidabilita": "media",
+      "fonti_extra": [],
+      "note": "Data dell'annuncio e stato di completamento dell'estensione non verificati."
+    },
+    {
+      "id": "able-seaton",
+      "nome": "Able Seaton Port (Teesside)",
+      "paese": "GB",
+      "mare": "Mare del Nord",
+      "lat": 54.6582,
+      "lon": -1.2005,
+      "coord_nota": "Seaton Carew, Hartlepool (OSM): localita', non il terminal",
+      "categoria": "porto installazione",
+      "ruoli": ["installazione fondazioni", "marshalling turbine"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": null,
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Hornsea One (1,2 GW): base di installazione delle fondazioni (2018)",
+        "Triton Knoll (90 turbine MHI Vestas 9,5 MW): componenti turbine (2020-2021)",
+        "Dogger Bank A e B: base di marshalling per l'installazione turbine (annuncio 2020)"
+      ],
+      "indicatori": [],
+      "investimenti": null,
+      "colli_bottiglia": null,
+      "stato": "operativo",
+      "fonte": "offshoreWIND.biz, 'Dogger Bank Team Confirms Able Seaton Port for Wind Turbine Installation'",
+      "link": "https://www.offshorewind.biz/2020/09/22/dogger-bank-team-confirms-able-seaton-port-for-wind-turbine-installation/",
+      "data_fonte": "2020-09-22",
+      "affidabilita": "media",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, monopile Hornsea One ad Able Seaton", "link": "https://www.offshorewind.biz/2018/02/08/hornsea-one-monopiles-start-rolling-into-able-seaton-port", "data": "2018-02-08"}
+      ],
+      "note": "Nessun dato 2026 trovato."
+    },
+    {
+      "id": "nigg",
+      "nome": "Nigg (Cromarty Firth)",
+      "paese": "GB",
+      "mare": "Mare del Nord",
+      "lat": 57.7187,
+      "lon": -4.0089,
+      "coord_nota": "Nigg, Highland (OSM): localita'",
+      "categoria": "porto installazione",
+      "ruoli": ["installazione", "fabbrica cavi Sumitomo Electric", "logistica energia"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": "Nuova banchina heavy-duty e rampa ro-ro (FID marzo 2026). Progetto West Quay: nuovo ormeggio ultra-profondo di 160 m e +420 m di banchina, totale 1.555 m (in valutazione SOWEC, senza FID).",
+      "portata_t_m2": null,
+      "progetti_serviti": ["Fabbrica di cavi ad alta tensione Sumitomo Electric nello stesso sito: la nuova banchina ne aumenta la capacita' di spedizione"],
+      "indicatori": [
+        {"nome": "Investimento approvato (banchina heavy-duty + ro-ro)", "valore": 30, "unita": "milioni GBP (oltre)", "nota": "FID marzo 2026"}
+      ],
+      "investimenti": "Oltre 30 milioni GBP (Maraen, ex Global Energy Group, acquisita da Mitsui & Co. Europe e Mitsui O.S.K. Lines nel 2025).",
+      "colli_bottiglia": null,
+      "stato": "operativo, in ampliamento",
+      "fonte": "offshoreWIND.biz, 'Mitsui Greenlights GBP 30 Million Investment in Port of Nigg'",
+      "link": "https://www.offshorewind.biz/2026/03/30/mitsui-greenlights-gbp-30-million-investment-in-port-of-nigg",
+      "data_fonte": "2026-03-30",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "OE Digital, Maraen approva l'upgrade di Nigg", "link": "https://www.oedigital.com/amp/news/537366-maraen-approves-40m-port-of-nigg-upgrade-after-rebrand", "data": "2026-03"}
+      ],
+      "note": "Il passaggio a proprieta' giapponese (Mitsui/MOL) e' un dato geoeconomico rilevante."
+    },
+    {
+      "id": "gdansk-t5",
+      "nome": "Danzica - Terminal T5",
+      "paese": "PL",
+      "mare": "Baltico",
+      "lat": 54.3966,
+      "lon": 18.6916,
+      "coord_nota": "Port Polnocny, Gdansk (OSM)",
+      "categoria": "porto installazione",
+      "ruoli": ["installazione turbine", "stoccaggio", "preassemblaggio"],
+      "area_nuova_ha": 21,
+      "area_nota": "Terminal T5 su 21 ha di terreno bonificato, ormeggi in acque profonde; concessione a Istrana (gruppo Baltic Hub) fino al 2055.",
+      "banchine": "Due ormeggi per il caricamento di jack-up e una rampa ro-ro (fonte secondaria).",
+      "portata_t_m2": null,
+      "progetti_serviti": [
+        "Baltica 2 (PGE/Orsted, 1,5 GW, 107 turbine Siemens Gamesa 14 MW): affitto del T5 dal quarto trimestre 2026 a fine 2028; 111 monopile gia' installati (agosto 2026); messa in servizio 2027",
+        "BC-Wind (Ocean Winds): prenotazione del T5 per installare le turbine nel 2028"
+      ],
+      "indicatori": [
+        {"nome": "Investimento totale", "valore": 253, "unita": "milioni EUR", "nota": "di cui circa 194 milioni di aiuto di Stato (fondi RRF) approvati dalla Commissione UE"}
+      ],
+      "investimenti": "253 milioni EUR (Istrana), contributo pubblico circa 194 milioni EUR.",
+      "colli_bottiglia": "Terminal pronto solo a ridosso dell'installazione di Baltica 2 (fine lavori prevista quarto trimestre 2026): margine minimo in caso di ritardi.",
+      "stato": "in costruzione / avvio 2026",
+      "fonte": "offshoreWIND.biz, 'Poles Getting Ready to Build EUR 253 Million Offshore Wind Terminal at Port of Gdansk'",
+      "link": "https://www.offshorewind.biz/2024/07/16/poles-getting-ready-to-build-eur-253-million-offshore-wind-terminal-at-port-of-gdansk",
+      "data_fonte": "2024-07-16",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, affitto T5 per Baltica 2", "link": "https://www.offshorewind.biz/2024/09/16/orsted-pge-sign-gdansk-port-lease-for-baltica-2-offshore-wind-project", "data": "2024-09-16"},
+        {"nome": "offshoreWIND.biz, Ocean Winds prenota il T5", "link": "https://www.offshorewind.biz/2025/06/25/ocean-winds-to-use-polish-terminal-as-installation-hub-for-bc-wind-turbines", "data": "2025-06-25"},
+        {"nome": "offshoreWIND.biz, Van Oord completa i monopile di Baltica 2", "link": "https://www.offshorewind.biz/2026/08/21/van-oord-completes-monopile-installation-at-1-5-gw-polish-offshore-wind-project/", "data": "2026-08-21"}
+      ],
+      "note": null
+    },
+    {
+      "id": "swinoujscie",
+      "nome": "Swinoujscie - Terminal offshore ORLEN",
+      "paese": "PL",
+      "mare": "Baltico",
+      "lat": 53.9014,
+      "lon": 14.2603,
+      "coord_nota": "Swinoujscie Port (OSM): bacino, non il terminal",
+      "categoria": "porto installazione",
+      "ruoli": ["installazione", "marshalling"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": "Accoglie jack-up e navi heavy-lift di ultima generazione e turbine da circa 15 MW e oltre; componenti di sottostazione fino a quasi 3.000 t.",
+      "portata_t_m2": 50,
+      "progetti_serviti": [
+        "Primo terminal di installazione polacco, aperto a giugno 2025 (ORLEN Neptun)",
+        "Progetti ORLEN di seconda fase Baltic East e Baltic West; clienti esterni Ocean Winds e Smulders"
+      ],
+      "indicatori": [],
+      "investimenti": "Lettera d'intenti (giugno 2026) tra ORLEN Neptun e Autorita' portuale di Szczecin e Swinoujscie per ampliare il terminal (nuove banchine offshore e ro-ro); fonti secondarie parlano di raddoppio della capacita' entro il 2030. Non vincolante: dipende da analisi e finanziamento.",
+      "colli_bottiglia": "Il gestore parla di 'utilizzo soddisfacente' gia' nel primo anno e prevede progetti in parallelo: l'ampliamento serve a evitare congestione a fine decennio.",
+      "stato": "operativo",
+      "fonte": "Daily Mare (Gazeta Morska), 'Swinoujscie offshore wind terminal moves towards expansion after a strong first year'",
+      "link": "https://dailymare.com/news/swinoujscie-offshore-wind-terminal-moves-towards-expansion-after-a-strong-first-year,2578",
+      "data_fonte": "2026-06-08",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "OE Digital, ORLEN apre il primo terminal di installazione polacco", "link": "https://www.oedigital.com/amp/news/526721-orlen-group-opens-poland-s-first-offshore-wind-installation-terminal", "data": "2025-06"}
+      ],
+      "note": null
+    },
+    {
+      "id": "klaipeda",
+      "nome": "Klaipeda",
+      "paese": "LT",
+      "mare": "Baltico",
+      "lat": 55.6606,
+      "lon": 21.1589,
+      "coord_nota": "Penisola di Smelte, Klaipeda (OSM): area dei lavori",
+      "categoria": "porto installazione",
+      "ruoli": ["assemblaggio, stoccaggio e movimentazione turbine", "O&M"],
+      "area_nuova_ha": null,
+      "area_nota": null,
+      "banchine": "Ricostruzione di circa 453 m di banchine sulla penisola di Smelte (ex porto traghetti internazionale), contratto da 36,6 milioni EUR (2025).",
+      "portata_t_m2": 40,
+      "progetti_serviti": [
+        "Curonian Nord (circa 37 km dalla costa lituana): VIA positiva a luglio 2026, permesso di costruzione atteso nel 2027",
+        "Primo parco lituano (Ignitis), circa 60 km dal porto"
+      ],
+      "indicatori": [
+        {"nome": "Programma di investimento portuale", "valore": 201, "unita": "milioni EUR", "nota": "di cui prestito BEI da 100 milioni EUR (settembre 2026)"}
+      ],
+      "investimenti": "201 milioni EUR, prestito BEI 100 milioni EUR; completamento previsto fine 2027 (la fonte 2025 indicava fine 2026).",
+      "colli_bottiglia": "Pipeline lituana fragile: l'asta CfD da 0,7 GW del 2025 e' stata invalidata per meno di due offerte.",
+      "stato": "in costruzione",
+      "fonte": "offshoreWIND.biz, 'EIB Backs Lithuanian Port's Offshore Wind Upgrade'",
+      "link": "https://www.offshorewind.biz/2026/09/15/eib-backs-lithuanian-ports-offshore-wind-upgrade",
+      "data_fonte": "2026-09-15",
+      "affidabilita": "alta",
+      "fonti_extra": [
+        {"nome": "offshoreWIND.biz, contratto per le banchine di Klaipeda", "link": "https://www.offshorewind.biz/2025/02/10/lithuanian-port-to-undergo-upgrades-for-offshore-wind-development/", "data": "2025-02-10"}
+      ],
+      "note": null
+    }
+  ]
+}

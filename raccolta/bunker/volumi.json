@@ -1,0 +1,52 @@
+{
+  "nota": "Volumi di bunker venduti per porto, voci curate a mano da fonti pubbliche (Singapore invece e' scaricato dallo script da data.gov.sg). Rotterdam: tabella ufficiale del Port of Rotterdam (PDF trimestrale); il GNL e' in m3 nella tabella e nel 'Subtotal' il porto lo converte con densita' 0,45 t/m3. Fujairah: dati FOIZ / S&P Global riportati da Ship & Bunker ed Engine (FOIZ pubblica in m3, Engine converte in tonnellate: le unita' non sono confrontabili tra loro senza conversione).",
+  "rotterdam": {
+    "fonte": "Port of Rotterdam, Bunker sales 2024-2026 (PDF)",
+    "link": "https://www.portofrotterdam.com/sites/default/files/2026-10/bunker-sales-2024-2026.pdf",
+    "pagina": "https://www.portofrotterdam.com/en/sea-shipping/bunkering-in-rotterdam",
+    "file_pdf_noto": "2026-10/bunker-sales-2024-2026.pdf",
+    "data_fonte": "2026-10-22",
+    "licenza": "pubblicazione del Port of Rotterdam Authority, 'no rights can be derived'; citare la fonte",
+    "unita": "tonnellate (GNL in m3)",
+    "trimestri": [
+      {"periodo": "2024", "fossili_t": 9062277, "bio_t": 757300, "gnl_m3": 941366, "vlsfo_t": 3076817, "hsfo_t": 3330327, "mgo_t": 1027724},
+      {"periodo": "2025-T1", "fossili_t": 2316057, "bio_t": 109527, "gnl_m3": 261200, "vlsfo_t": 789218, "hsfo_t": 829197, "mgo_t": 295127},
+      {"periodo": "2025-T2", "fossili_t": 2321429, "bio_t": 171316, "gnl_m3": 207658, "vlsfo_t": 679442, "hsfo_t": 914672, "mgo_t": 308292},
+      {"periodo": "2025-T3", "fossili_t": 2276837, "bio_t": 201319, "gnl_m3": 331620, "vlsfo_t": 635638, "hsfo_t": 872077, "mgo_t": 311235},
+      {"periodo": "2025-T4", "fossili_t": 2259162, "bio_t": 167303, "gnl_m3": 192433, "vlsfo_t": 745786, "hsfo_t": 804962, "mgo_t": 338962},
+      {"periodo": "2025", "fossili_t": 9173485, "bio_t": 649466, "gnl_m3": 992911, "vlsfo_t": 2850083, "hsfo_t": 3420908, "mgo_t": 1253616},
+      {"periodo": "2026-T1", "fossili_t": 1685991, "bio_t": 112493, "gnl_m3": 232263, "vlsfo_t": 439804, "hsfo_t": 619010, "mgo_t": 273696},
+      {"periodo": "2026-T2", "fossili_t": 1636483, "bio_t": 247123, "gnl_m3": 273021, "vlsfo_t": 354448, "hsfo_t": 704637, "mgo_t": 266570},
+      {"periodo": "2026-T3", "fossili_t": 1793464, "bio_t": 154234, "gnl_m3": 215420, "vlsfo_t": 427347, "hsfo_t": 754853, "mgo_t": 291852}
+    ],
+    "alternativi_2026": {"bio_metanolo_t": {"2026-T1": 996, "2026-T2": 2845, "2026-T3": 4166}, "bio_gnl_m3": {"2026-T1": 15260, "2026-T2": 7506, "2026-T3": 23613}, "bio_etanolo_t": {"2026-T2": 1025}},
+    "commento": "Il porto e la stampa di settore collegano il calo 2026 soprattutto al recepimento olandese di RED III dal 1/1/2026 (obbligo per i fornitori di ridurre l'intensita' GHG del pool di carburanti) e allo spostamento di volumi verso porti fuori dall'area ARA; il Belgio potrebbe recepire RED III solo dal 2027.",
+    "fonte_commento": "Ship & Bunker, 23 ottobre 2026",
+    "link_commento": "https://shipandbunker.com/news/emea/661476-analysis-rotterdam-bunker-sales-down-249-in-first-nine-months-as-red-iii-bites"
+  },
+  "fujairah": {
+    "fonte": "Fujairah Oil Industry Zone (FOIZ) / S&P Global Commodity Insights, riportati da Ship & Bunker, Engine e Reuters/Baird Maritime",
+    "unita": "m3 se non indicato (FOIZ); Engine riporta tonnellate",
+    "annuale": [
+      {"anno": 2025, "valore": 7.4, "unita": "milioni di m3 (circa 7,33 milioni di t)", "var_anno_pct": -3, "fonte": "Reuters via Baird Maritime, dati FOIZ/S&P Global", "link": "https://www.bairdmaritime.com/shipping/tankers/bunker-hub-fujairah-logs-softer-marine-fuel-sales-in-2025", "data_fonte": "2026-01"}
+    ],
+    "mensile": [
+      {"mese": "2026-01", "valore": 635835, "unita": "m3", "nota": "+6,1% su dicembre, ultimo mese prima della guerra", "fonte": "WAM (agenzia emiratina), dati FOIZ", "link": "https://www.wam.ae/en/article/173d8j6-fujairah-bunker-sales-reach-four-month-high", "data_fonte": "2026-02"},
+      {"mese": "2026-03", "valore": 158852, "unita": "m3", "nota": "-71,1% su febbraio, -75,2% su marzo 2025: minimo storico; il porto e le navi in zona attaccati ripetutamente", "fonte": "Ship & Bunker, dati FOIZ/S&P Global", "link": "https://shipandbunker.com/news/emea/321874-fujairah-march-bunker-sales-sink-by-71-from-february-as-iran-war-breaks-out", "data_fonte": "2026-04-16"},
+      {"mese": "2026-08", "valore": 225767, "unita": "m3", "nota": "-2,6% su luglio, -65,3% su agosto 2025; VLSFO 380 cSt 149.202 m3, HSFO 58.339 m3", "fonte": "Ship & Bunker, dati FOIZ/S&P Global", "link": "https://shipandbunker.com/news/emea/764284-fujairah-bunker-sales-more-than-halve-from-last-year", "data_fonte": "2026-09-21"},
+      {"mese": "2026-09", "valore": 231000, "unita": "t", "nota": "+5% su agosto (circa 7.700 t/giorno); VLSFO 143.000 t, HSFO 68.000 t, LSMGO 19.000 t", "fonte": "Engine, dati FOIZ/S&P Global", "link": "https://engine.online/news/fujairah-bunker-sales-increased-in-september-82e8", "data_fonte": "2026-10-19"}
+    ],
+    "cumulato": [
+      {"periodo": "2026-01..2026-08", "valore": 2.12, "unita": "milioni di m3", "confronto": "4,96 milioni di m3 nello stesso periodo 2025 (-57,3%)", "fonte": "Ship & Bunker, dati FOIZ/S&P Global", "link": "https://shipandbunker.com/news/emea/764284-fujairah-bunker-sales-more-than-halve-from-last-year", "data_fonte": "2026-09-21"}
+    ]
+  },
+  "singapore_riserva": {
+    "nota": "Usato solo se data.gov.sg non risponde.",
+    "mese": "2026-09", "valore": 4726.39, "unita": "migliaia di t", "fonte": "MPA via data.gov.sg (Bunker Sales Total, Monthly)", "link": "https://data.gov.sg/datasets/d_89d2874dad74a273270369334f1e7d28/view", "data_fonte": "2026-10-21"
+  },
+  "mancanti": [
+    "Gibilterra e Algeciras: nessuna statistica mensile pubblica trovata in formato ripetibile (Gibilterra pubblica dati annuali sul sito del governo, non verificati in questa raccolta).",
+    "Genova e porti italiani: nessuna statistica pubblica dei volumi di bunker per porto trovata.",
+    "Fujairah: FOIZ non pubblica un file scaricabile; i dati arrivano tramite S&P Global e stampa di settore, con circa 3 settimane di ritardo."
+  ]
+}

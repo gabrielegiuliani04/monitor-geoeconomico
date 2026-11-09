@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulatore «E se…»</title>
+<meta name="description" content="Che cosa succede se uno stretto rallenta o si chiude: flussi, bypass, rotte, noli, prezzi e paesi esposti, con ogni numero legato alla sua fonte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F5F0;--card:#FFFFFF;--ink:#1D272D;--soft:#52606A;--faint:#86929A;--rule:#DCDFDD;--band:#ECE9E0;
+  --accent:#A61E6B;--accent-bg:#F6E7EF;--oil:#4B3B2B;--gas:#7A55B5;--route:#3F6680;--up:#B42D24;--down:#1C7A3E;--neutral:#5F6A72;
+  --bar-a:#C9CFD1;--bar-b:#7E9AAD;
+  --f-sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-cond:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-serif:"IBM Plex Serif",Georgia,serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#10181D;--card:#172127;--ink:#DAE0E2;--soft:#A0ABB1;--faint:#6C787F;--rule:#2B373E;--band:#1A252C;
+    --accent:#F27DB9;--accent-bg:#2C1A25;--oil:#C8B08E;--gas:#B9A0F0;--route:#86A9C2;--up:#FF8A7E;--down:#6FD08C;--neutral:#AEB7BC;
+    --bar-a:#34424A;--bar-b:#5D7F96;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#10181D;--card:#172127;--ink:#DAE0E2;--soft:#A0ABB1;--faint:#6C787F;--rule:#2B373E;--band:#1A252C;
+  --accent:#F27DB9;--accent-bg:#2C1A25;--oil:#C8B08E;--gas:#B9A0F0;--route:#86A9C2;--up:#FF8A7E;--down:#6FD08C;--neutral:#AEB7BC;
+  --bar-a:#34424A;--bar-b:#5D7F96;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--f-sans);overflow-wrap:anywhere}
+a{color:var(--accent);text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pagina{max-width:1120px;margin:0 auto;padding:20px 16px 64px}
+.torna{display:inline-block;font-size:14px;margin-bottom:20px;text-decoration:none}
+.torna:hover{text-decoration:underline}
+.occhiello{font:600 13px/1.4 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h1{font:600 clamp(28px,4.6vw,40px)/1.15 var(--f-serif);margin:0 0 10px;letter-spacing:-.01em;text-wrap:balance}
+.sottotitolo{font-size:18px;color:var(--soft);margin:0 0 20px;max-width:68ch}
+h2{font:600 22px/1.25 var(--f-serif);margin:0 0 10px}
+h3{font:600 13px/1.3 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--soft);margin:18px 0 8px}
+p{margin:0 0 12px}
+.piccolo{font-size:14px;color:var(--soft)}
+
+/* ---- comandi ---- */
+.comandi{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 16px 6px;margin:0 0 18px}
+fieldset{border:0;margin:0 0 10px;padding:0;min-width:0}
+legend{font:600 12px/1.3 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soft);padding:0;margin:0 0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{display:inline-flex;align-items:center;min-height:36px;padding:6px 12px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);font:500 14px/1.2 var(--f-sans);cursor:pointer;user-select:none}
+.chips label:hover{border-color:var(--soft)}
+.chips input:checked+label{background:var(--accent);border-color:var(--accent);color:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chips input:checked+label{color:#10181D}}
+:root[data-theme="dark"] .chips input:checked+label{color:#10181D}
+.chips input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+.riga-comandi{display:flex;flex-wrap:wrap;gap:4px 28px}
+
+/* ---- stato e avviso ---- */
+.stato{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;font-size:14px;color:var(--soft);margin:0 0 12px}
+.stato b{color:var(--ink);font-weight:600}
+.avviso{border-left:3px solid var(--accent);background:var(--accent-bg);padding:10px 14px;border-radius:0 6px 6px 0;margin:0 0 16px;font-size:15px}
+
+/* ---- sintesi ---- */
+.sintesi{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 22px}
+@media (max-width:860px){.sintesi{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;min-width:0}
+.kpi .et{font:600 12px/1.3 var(--f-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--soft);margin:0 0 6px}
+.kpi .val{font:600 clamp(20px,2.6vw,26px)/1.15 var(--f-cond);font-variant-numeric:tabular-nums;margin:0 0 4px}
+.kpi .sub{font-size:13px;color:var(--soft);line-height:1.4}
+.su{color:var(--up)}.giu{color:var(--down)}.nd{color:var(--faint)}
+
+/* ---- impaginazione ---- */
+.colonne{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;align-items:start}
+@media (max-width:980px){.colonne{grid-template-columns:minmax(0,1fr)}}
+.lato{position:sticky;top:12px;display:flex;flex-direction:column;gap:14px}
+@media (max-width:980px){.lato{position:static}}
+
+/* ---- catena ---- */
+.catena{list-style:none;margin:0;padding:0;counter-reset:passo}
+.passo{position:relative;padding:0 0 18px 44px;counter-increment:passo}
+.passo::before{content:counter(passo);position:absolute;left:0;top:2px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font:600 15px/30px var(--f-mono);text-align:center}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .passo::before{color:#10181D}}
+:root[data-theme="dark"] .passo::before{color:#10181D}
+.passo::after{content:"";position:absolute;left:14px;top:36px;bottom:4px;width:2px;background:var(--rule)}
+.passo:last-child::after{display:none}
+.scheda{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+.scheda h2{font-size:20px;margin:2px 0 4px}
+.scheda .domanda{font-size:14px;color:var(--soft);margin:0 0 10px}
+.calcolo{font:14px/1.5 var(--f-mono);background:var(--band);border-radius:6px;padding:8px 10px;margin:8px 0 10px;color:var(--ink)}
+.calcolo b{font-weight:600}
+ul.voci{list-style:none;margin:0;padding:0}
+ul.voci li{padding:7px 0;border-top:1px solid var(--rule);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:baseline}
+ul.voci li:first-child{border-top:0}
+ul.voci .nome{font-weight:500}
+ul.voci .num{font:600 15px/1.3 var(--f-cond);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+ul.voci .desc{grid-column:1/-1;font-size:14px;color:var(--soft)}
+.tipo{display:inline-block;font:600 11px/1 var(--f-mono);letter-spacing:.04em;text-transform:uppercase;padding:3px 6px;border-radius:4px;margin-right:6px;vertical-align:1px;background:var(--band);color:var(--soft)}
+.tipo.petrolio{color:var(--oil)}.tipo.gnl{color:var(--gas)}.tipo.container,.tipo.rotta{color:var(--route)}
+.val-et{font-size:12px;font-family:var(--f-mono);color:var(--accent);text-transform:uppercase;letter-spacing:.04em}
+
+/* fonte */
+.src{display:inline-block;font:500 11.5px/1.3 var(--f-mono);color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--faint);margin-left:4px;white-space:normal}
+a.src:hover{color:var(--accent);border-color:var(--accent)}
+
+/* barre */
+.barra{position:relative;height:22px;border-radius:4px;background:var(--band);overflow:hidden;margin:6px 0 4px;display:flex}
+.barra span{display:block;height:100%}
+.legenda{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--soft)}
+.legenda i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.intervallo{position:relative;height:18px;margin:8px 0 2px}
+.intervallo .asse{position:absolute;left:0;right:0;top:8px;height:2px;background:var(--rule)}
+.intervallo .zero{position:absolute;top:2px;width:1px;height:14px;background:var(--faint)}
+.intervallo .rng{position:absolute;top:4px;height:10px;border-radius:5px;background:var(--accent);min-width:4px}
+.intervallo .ep{position:absolute;top:0;width:2px;height:18px;background:var(--ink)}
+.scala-et{display:flex;justify-content:space-between;font:11px var(--f-mono);color:var(--faint)}
+
+/* paesi */
+.paesi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.paesi{grid-template-columns:minmax(0,1fr)}}
+.paese{border:1px solid var(--rule);border-radius:8px;padding:10px 12px;background:var(--paper)}
+.paese h4{margin:0 0 6px;font:600 15px/1.3 var(--f-sans);display:flex;justify-content:space-between;gap:8px}
+.paese h4 small{font:500 12px var(--f-mono);color:var(--faint)}
+.paese .riga{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;font-size:14px;padding:3px 0}
+.paese .riga b{font:600 15px var(--f-cond);font-variant-numeric:tabular-nums}
+.paese .mini{height:6px;background:var(--band);border-radius:3px;position:relative;margin:2px 0 6px}
+.paese .mini span{position:absolute;top:0;height:6px;border-radius:3px;background:var(--accent)}
+.paese .nota{font-size:13px;color:var(--soft);margin-top:4px}
+.altri{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr) auto;gap:4px 10px;align-items:center;font-size:14px}
+.altri .bar{height:8px;background:var(--band);border-radius:4px;position:relative}
+.altri .bar span{position:absolute;top:0;height:8px;border-radius:4px;background:var(--bar-b)}
+.altri .n{font:600 14px var(--f-cond);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+
+/* porti */
+.segno{display:inline-block;width:22px;height:22px;border-radius:50%;text-align:center;font:600 14px/22px var(--f-mono);margin-right:8px;flex:none}
+.segno.m{background:var(--up);color:#fff}.segno.p{background:var(--down);color:#fff}.segno.q{background:var(--band);color:var(--soft)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .segno.m,:root:not([data-theme="light"]) .segno.p{color:#10181D}}
+:root[data-theme="dark"] .segno.m,:root[data-theme="dark"] .segno.p{color:#10181D}
+.porto{display:flex;align-items:flex-start;padding:8px 0;border-top:1px solid var(--rule)}
+.porto:first-child{border-top:0}
+.porto div{min-width:0}
+.porto .pn{font-weight:500}
+.porto .pd{font-size:14px;color:var(--soft)}
+.valutazione{border-left:3px solid var(--accent);background:var(--band);padding:8px 12px;border-radius:0 6px 6px 0;font-size:14px;margin:10px 0 0}
+.valutazione .etichetta{display:block;font:600 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+
+/* riquadri laterali */
+.riquadro{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+.riquadro h2{font-size:18px}
+.riquadro.ipotesi{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+.riquadro ol,.riquadro ul{margin:0;padding-left:1.2em;font-size:14px}
+.riquadro li{margin:0 0 6px}
+.regola{font-size:14px;margin:0 0 8px}
+.regola b{font-weight:600}
+details{margin-top:8px}
+summary{cursor:pointer;font-size:14px;color:var(--accent)}
+.limiti{margin-top:26px}
+.limiti ul{padding-left:1.2em;margin:0;columns:2;column-gap:32px}
+.limiti li{margin:0 0 8px;break-inside:avoid}
+@media (max-width:760px){.limiti ul{columns:1}}
+.fonti{font-size:14px;color:var(--soft)}
+.fonti li{margin:0 0 4px}
+footer{margin-top:36px;border-top:1px solid var(--rule);padding-top:14px;font-size:14px;color:var(--soft)}
+.firma{font:600 15px var(--f-sans);color:var(--ink);margin:0 0 6px}
+.errore{color:var(--up);font-weight:600}
+.carica{color:var(--soft);font-style:italic}
+</style>
+</head>
+<body>
+<main class="pagina">
+  <a class="torna" href="index.html">← Torna alla mappa</a>
+  <p class="occhiello">Simulatore «E se…» · Monitor geoeconomico</p>
+  <h1>Che cosa succede se uno stretto rallenta o si chiude?</h1>
+  <p class="sottotitolo">Scegli un passaggio, quanto traffico si perde e per quanto tempo. Il simulatore segue la catena: flussi, alternative, rotte, noli, prezzi, paesi e porti esposti. È una stima semplice e dichiarata: ogni numero dice da dove viene.</p>
+
+  <form class="comandi" id="comandi" aria-label="Scenario" onsubmit="return false">
+    <fieldset><legend>Passaggio</legend><div class="chips" id="sc-passaggio"></div></fieldset>
+    <div class="riga-comandi">
+      <fieldset><legend>Intensità</legend><div class="chips" id="sc-intensita"></div></fieldset>
+      <fieldset><legend>Durata</legend><div class="chips" id="sc-durata"></div></fieldset>
+    </div>
+  </form>
+
+  <div id="risultato"><p class="carica">Carico i dati dell'osservatorio…</p></div>
+
+  <section class="limiti riquadro" id="limiti" aria-labelledby="t-limiti">
+    <h2 id="t-limiti">Limiti: cosa il modello non considera</h2>
+    <ul id="lista-limiti"></ul>
+  </section>
+
+  <section class="riquadro" style="margin-top:14px" aria-labelledby="t-fonti">
+    <h2 id="t-fonti">Fonti e file usati</h2>
+    <ul class="fonti" id="lista-fonti"></ul>
+    <p class="piccolo" style="margin-top:8px">Il modello (opzioni, episodi, regole, parametri per passaggio) è in <a href="data/simulatore.json"><code>data/simulatore.json</code></a> e si può modificare; lo script <code>raccolta/simulatore/controlla.py</code> verifica che ogni numero corrisponda ai file di dati.</p>
+  </section>
+
+  <footer>
+    <p class="firma">Gabriele Giuliani · Monitor geoeconomico</p>
+    <p id="agg">Novembre 2026.</p>
+    <p>Nota sull'uso dell'AI: il simulatore è stato preparato con l'aiuto di un assistente AI (Claude, Anthropic) a partire dai dati dell'osservatorio e dalle fonti citate. È uno strumento di ragionamento, non una previsione.</p>
+    <p><a href="index.html">← Torna alla mappa</a></p>
+  </footer>
+</main>
+
+<script>
+"use strict";
+const FILE = ["simulatore", "stretti-dettaglio", "portwatch", "noli", "prezzi", "paesi", "gas-italia", "terminali-gnl", "scorte", "rotte", "cavi"];
+const D = {};
+const NF = (d) => new Intl.NumberFormat("it-IT", { minimumFractionDigits: d, maximumFractionDigits: d });
+const MESI = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+
+function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function n(x, d = 1) { return x == null || isNaN(x) ? "n.d." : NF(d).format(x); }
+function sgn(x, d = 0) { if (x == null || isNaN(x)) return "n.d."; const r = Number(x.toFixed(d)); return (r > 0 ? "+" : r < 0 ? "−" : "") + NF(d).format(Math.abs(r)); }
+function rng(a, b, d = 1, f = n) { if (a == null || b == null) return "n.d."; return Math.abs(a - b) < Math.pow(10, -d) / 2 ? f(a, d) : f(a, d) + "–" + f(b, d).replace(/^\+/, "+"); }
+function rngS(a, b, d = 0) { if (a == null || b == null) return "n.d."; if (Math.abs(a - b) < Math.pow(10, -d) / 2) return sgn(a, d) + "%"; return sgn(a, d) + " / " + sgn(b, d) + "%"; }
+function dataIt(s) { if (!s) return ""; const [y, m, g] = s.slice(0, 10).split("-").map(Number); return g ? `${g} ${MESI[m - 1]} ${y}` : `${MESI[m - 1]} ${y}`; }
+function dataBreve(s) { if (!s) return ""; const [y, m, g] = s.slice(0, 10).split("-"); return `${+g}/${+m}/${y}`; }
+
+/* --- fonti --- */
+function voce(r) { if (!r) return null; const s = D.schede[r.s]; return s && s[r.sez] ? s[r.sez][r.i] : null; }
+function fonteBreve(f) { return String(f || "").split(/[,«:(]/)[0].replace(/\s+$/, "").slice(0, 46); }
+function srcRif(r, extra) {
+  const v = voce(r); if (!v) return "";
+  const tip = esc(`${v.fonte} — ${v.anno}${v.tipo ? " (" + v.tipo + ")" : ""}${/^https?:/.test(v.link) ? "" : " — " + (v.link || "")}`);
+  const testo = `${esc(v.tipo === "valutazione" ? "Valutazione dell'osservatorio" : fonteBreve(v.fonte))} · ${esc(v.anno)}${extra ? " · " + esc(extra) : ""}`;
+  if (/^https?:/.test(v.link)) return `<a class="src" href="${esc(v.link)}" target="_blank" rel="noopener" title="${tip}">${testo}</a>`;
+  return `<span class="src" title="${tip}">${testo}</span>`;
+}
+function srcFile(nome, quando, link) {
+  const href = link || ("data/" + nome);
+  return `<a class="src" href="${esc(href)}" target="_blank" rel="noopener" title="File dell'osservatorio: ${esc(nome)}">${esc(nome)}${quando ? " · " + esc(quando) : ""}</a>`;
+}
+function srcTesto(t, link) { return link ? `<a class="src" href="${esc(link)}" target="_blank" rel="noopener">${esc(t)}</a>` : `<span class="src">${esc(t)}</span>`; }
+function tipoVoce(r) { const v = voce(r); return v ? v.tipo : ""; }
+
+/* --- caricamento --- */
+async function carica() {
+  const res = await Promise.all(FILE.map(f => fetch("data/" + f + ".json").then(r => { if (!r.ok) throw new Error(f + ".json: " + r.status); return r.json(); })));
+  FILE.forEach((f, i) => D[f] = res[i]);
+  D.M = D["simulatore"];
+  D.schede = Object.fromEntries(D["stretti-dettaglio"].elementi.map(e => [e.id, e]));
+  D.pw = Object.fromEntries(D.portwatch.elementi.map(e => [e.nome, e]));
+  D.paesi = Object.fromEntries(D.paesi.elementi.map(p => [p.paese, p]));
+  D.prezzi = Object.fromEntries(D.prezzi.serie.map(s => [s.id, s]));
+  D.noli = Object.fromEntries(D.noli.elementi.map(e => [e.id, e]));
+  D.scorte = Object.fromEntries(D.scorte.elementi.map(e => [e.id, e]));
+  D.gas = D["gas-italia"];
+  D.gnl = D["terminali-gnl"].elementi;
+}
+
+/* --- comandi --- */
+const S = {};
+function chip(gruppo, id, etichetta, title) {
+  return `<input type="radio" name="${gruppo}" id="${gruppo}-${id}" value="${esc(id)}"><label for="${gruppo}-${id}"${title ? ` title="${esc(title)}"` : ""}>${esc(etichetta)}</label>`;
+}
+function costruisciComandi() {
+  const M = D.M;
+  document.getElementById("sc-passaggio").innerHTML = M.passaggi.map(p => chip("passaggio", p.id, p.breve, p.nome)).join("");
+  document.getElementById("sc-intensita").innerHTML = M.opzioni.intensita.map(o => chip("intensita", o.id, o.etichetta, o.spiegazione)).join("");
+  document.getElementById("sc-durata").innerHTML = M.opzioni.durate.map(o => chip("durata", o.id, o.etichetta)).join("");
+  const [hp, hi, hd] = location.hash.replace("#", "").split("/");
+  const def = M.opzioni.predefinito;
+  S.passaggio = M.passaggi.some(p => p.id === hp) ? hp : def.passaggio;
+  S.intensita = M.opzioni.intensita.some(o => o.id === hi) ? hi : def.intensita;
+  S.durata = M.opzioni.durate.some(o => o.id === hd) ? hd : def.durata;
+  for (const k of ["passaggio", "intensita", "durata"]) document.getElementById(`${k}-${S[k]}`).checked = true;
+  document.getElementById("comandi").addEventListener("change", e => {
+    S[e.target.name] = e.target.value;
+    history.replaceState(null, "", `#${S.passaggio}/${S.intensita}/${S.durata}`);
+    disegna();
+  });
+}
+
+/* --- modello --- */
+function scalaGiorni(rotta) {
+  if (!rotta || !rotta.giorni) return null;
+  if (rotta.episodio) return [1, 1];
+  const capo = [14, 24];
+  return [rotta.giorni[0] / capo[1], rotta.giorni[1] / capo[0]];
+}
+function bypassGnlItalia() { const c = D.M.calcolato.gnl_italia; return [{ nome: "Capacità libera dei rigassificatori italiani", min: 0, max: c.libera_bcm, calcolato: true }]; }
+function calcola(p, q, giorni, w) {
+  const M = D.M, H = M.episodi.hormuz_2026.calcolato, RS = M.episodi.mar_rosso_2023.calcolato;
+  const r = { q, giorni, w };
+  const scala = scalaGiorni(p.rotta);
+  r.scala = scala;
+  // petrolio
+  if (p.petrolio && p.petrolio.flusso != null) {
+    const by = p.petrolio.bypass || [];
+    const bmin = by.reduce((a, b) => a + b.min, 0), bmax = by.reduce((a, b) => a + b.max, 0);
+    const col = p.petrolio.flusso * q;
+    r.oil = { flusso: p.petrolio.flusso, colpito: col, bmin, bmax, scop: [Math.max(0, col - bmax), Math.max(0, col - bmin)], mecc: p.petrolio.meccanismo };
+    r.oil.ass = [Math.min(col, bmin), Math.min(col, bmax)];
+    r.oil.cum = [r.oil.scop[0] * giorni, r.oil.scop[1] * giorni];
+  }
+  // Brent
+  const perdita = r.oil && r.oil.mecc === "perdita" && r.oil.scop[1] > 0;
+  if (perdita) {
+    const c = H.coeff_brent_per_mbg[w];
+    r.brent = { regola: "brent_perdita", pct: [r.oil.scop[0] * c.min, r.oil.scop[1] * c.max], c };
+  } else if (scala && p.petrolio) {
+    const f = RS.brent.finestre[w];
+    r.brent = { regola: "brent_deviazione", pct: [q * scala[0] * f.media_pct, q * scala[1] * f.max_pct], f };
+  } else r.brent = { regola: null, pct: null };
+  // gas
+  if (p.gnl && p.gnl.meccanismo === "perdita") {
+    const by = p.gnl.bypass_calcolato === "gnl_italia" ? bypassGnlItalia() : (p.gnl.bypass || []);
+    const bmin = by.reduce((a, b) => a + b.min, 0), bmax = by.reduce((a, b) => a + b.max, 0);
+    const col = p.gnl.flusso_bcm * q;
+    const c = H.coeff_ttf_per_bcm[w];
+    r.gas = { flusso: p.gnl.flusso_bcm, colpito: col, by, bmin, bmax, scop: [Math.max(0, col - bmax), Math.max(0, col - bmin)] };
+    r.gas.ass = [Math.min(col, bmin), Math.min(col, bmax)];
+    r.ttf = { regola: "ttf_perdita", pct: [r.gas.scop[0] * c.min, r.gas.scop[1] * c.max], c };
+    const kwh = M.costanti.kwh_per_smc.valore;
+    r.gas.gwhGiorno = r.gas.scop.map(b => b * kwh * 1000 / 365); // bcm/anno -> GWh/giorno
+    r.gas.twhPeriodo = r.gas.gwhGiorno.map(g => g * giorni / 1000);
+  } else if (p.gnl && p.gnl.meccanismo === "deviazione") {
+    r.ttf = { regola: "ttf_deviazione", pct: [0, 0], f: RS.ttf.finestre[w] };
+  } else r.ttf = { regola: null, pct: null };
+  // noli container
+  if (p.container && p.container.meccanismo === "deviazione" && scala) {
+    const reg = M.regole.noli_container_deviazione, rs = M.episodi.mar_rosso_2023;
+    const rampa = Math.min(1, giorni / reg.rampa_giorni);
+    r.noli = { inc: [rs.costo_capo_feu.valore * q * scala[0], RS.wci_salto_usd_feu * q * scala[1] * rampa], rampa };
+  } else if (p.container && p.container.meccanismo === "sovrapprezzo") r.noli = { sovrapprezzo: true };
+  else r.noli = null;
+  return r;
+}
+
+/* --- quote paese --- */
+function quotaPaese(paese, regola) {
+  const P = D.paesi[paese]; if (!P) return null;
+  const ind = P.indicatori[regola.ind]; if (!ind || ind.valore == null) return null;
+  const v = ind.valore;
+  const base = { anno: ind.anno, fonte: ind.fonte, link: ind.link };
+  if (regola.partner) {
+    if (!Array.isArray(v) || !v.length) return null;
+    const t = v.find(x => x.paese === regola.partner);
+    if (t) return { ...base, min: t.quota_pct, max: t.quota_pct };
+    if (v.length >= 5) return { ...base, min: 0, max: v[v.length - 1].quota_pct, sotto: true };
+    return { ...base, min: 0, max: 0 };
+  }
+  if (typeof v === "object" && "min_pct" in v) return { ...base, min: v.min_pct, max: v.max_pct };
+  return null;
+}
+function fmtQuota(x) {
+  if (!x) return "n.d.";
+  if (x.sotto) return "meno di " + n(x.max, 1) + "%";
+  return (Math.abs(x.min - x.max) < 0.05 ? n(x.max, 1) : n(x.min, 1) + "–" + n(x.max, 1)) + "%";
+}
+
+/* --- disegno --- */
+function barraIntervallo(lo, hi, ep, max) {
+  const m = Math.max(max, 1);
+  const L = v => Math.max(0, Math.min(100, (v / m) * 100));
+  const neg = Math.min(0, lo);
+  const off = neg < 0 ? 0 : 0;
+  return `<div class="intervallo" aria-hidden="true"><div class="asse"></div><div class="zero" style="left:${off}%"></div>
+    <div class="rng" style="left:${L(Math.max(0, lo))}%;width:${Math.max(1, L(hi) - L(Math.max(0, lo)))}%"></div>
+    ${ep != null ? `<div class="ep" style="left:${L(ep)}%" title="episodio di riferimento"></div>` : ""}</div>
+    <div class="scala-et"><span>0%</span><span>+${n(m / 2, 0)}%</span><span>+${n(m, 0)}%</span></div>`;
+}
+function disegna() {
+  const M = D.M;
+  const p = M.passaggi.find(x => x.id === S.passaggio);
+  const io = M.opzioni.intensita.find(o => o.id === S.intensita);
+  const du = M.opzioni.durate.find(o => o.id === S.durata);
+  const w = String(du.giorni);
+  const r = calcola(p, io.quota, du.giorni, w);
+  const sch = D.schede[p.stretto];
+  const pw = p.portwatch ? D.pw[p.portwatch] : null;
+  const H = M.episodi.hormuz_2026, RS = M.episodi.mar_rosso_2023;
+  const brent = D.prezzi.brent, ttf = D.prezzi.ttf, wci = D.noli.wci;
+  const titolo = `${p.nome}: ${io.etichetta.toLowerCase()} per ${du.etichetta}`;
+  let h = "";
+
+  // stato oggi
+  h += `<div class="stato" aria-label="Stato oggi"><span>Stato oggi: <b>${esc(sch.stato)}</b> ${srcFile("stretti-dettaglio.json", dataBreve(D["stretti-dettaglio"].aggiornato))}</span>`;
+  if (pw) h += `<span>Navi al giorno (media 7 gg al ${dataBreve(pw.ultima_data)}): <b>${n(pw.media7.n_total, 1)}</b>, ${sgn(pw.var7_anno_pct.n_total, 0)}% su un anno ${srcTesto("IMF PortWatch · " + dataBreve(pw.data_fonte), pw.link)}</span>`;
+  h += `</div>`;
+  if (p.avviso) h += `<div class="avviso">${esc(p.avviso)} ${p.avviso_rif ? srcRif(p.avviso_rif) : ""}</div>`;
+
+  // sintesi
+  const kOil = r.oil ? `${rng(r.oil.scop[0], r.oil.scop[1], 1)} mb/g` : "n.d.";
+  const kOilSub = r.oil ? `su ${n(r.oil.flusso, 1)} mb/g che passano; ${r.oil.mecc === "deviazione" ? "le navi girano: nessuna perdita di offerta" : "senza via alternativa"}` : (p.gnl && r.gas ? `gas: ${rng(r.gas.scop[0], r.gas.scop[1], 1)} bcm/anno scoperti` : "nessun volume di petrolio nei file");
+  const pct = (x, cls = true) => x ? `<span class="${cls ? (x[1] > 0.5 ? "su" : x[1] < -0.5 ? "giu" : "") : ""}">${rngS(x[0], x[1], 0)}</span>` : `<span class="nd">n.d.</span>`;
+  const rotRot = wci.rotte && wci.rotte["Shanghai-Rotterdam"];
+  h += `<h2 style="margin-top:4px">${esc(titolo)}</h2>`;
+  h += `<div class="sintesi" role="list">
+    <div class="kpi" role="listitem"><p class="et">Petrolio scoperto</p><p class="val">${kOil}</p><p class="sub">${esc(kOilSub)}</p></div>
+    <div class="kpi" role="listitem"><p class="et">Brent</p><p class="val">${pct(r.brent.pct)}</p><p class="sub">${r.brent.pct ? `oggi ${n(brent.ultimo, 2)} $ → ${rng(brent.ultimo * (1 + r.brent.pct[0] / 100), brent.ultimo * (1 + r.brent.pct[1] / 100), 0)} $` : "non stimato"}</p></div>
+    <div class="kpi" role="listitem"><p class="et">Gas TTF</p><p class="val">${pct(r.ttf.pct)}</p><p class="sub">${r.ttf.pct ? `oggi ${n(ttf.ultimo, 2)} € → ${rng(ttf.ultimo * (1 + r.ttf.pct[0] / 100), ttf.ultimo * (1 + r.ttf.pct[1] / 100), 0)} €/MWh` : "nessun flusso di gas rilevante nei file"}</p></div>
+    <div class="kpi" role="listitem"><p class="et">Nolo Shanghai–Rotterdam</p><p class="val">${r.noli && r.noli.inc ? "+" + rng(r.noli.inc[0], r.noli.inc[1], 0) + " $" : r.noli && r.noli.sovrapprezzo ? "+1.500 $/TEU" : '<span class="nd">n.d.</span>'}</p><p class="sub">${r.noli && r.noli.inc ? `per FEU, da ${n(rotRot, 0)} $ oggi (WCI)` : r.noli && r.noli.sovrapprezzo ? "sovrapprezzo di guerra applicato nel 2026" : "nessun episodio documentato per stimarlo"}</p></div>
+  </div>`;
+
+  h += `<div class="colonne"><div><ol class="catena">`;
+
+  // 1. flussi
+  h += `<li class="passo"><div class="scheda"><h2>Flussi coinvolti</h2><p class="domanda">Che cosa passa da ${esc(p.nome)} in condizioni normali (anno accanto a ogni numero) e quanto ne viene colpito.</p><ul class="voci">`;
+  for (const f of p.flussi) {
+    const col = f.valore != null ? ` <span class="piccolo">→ colpiti ${n(f.valore * io.quota, f.valore * io.quota < 10 ? 2 : 1)} ${esc(f.unita)}</span>` : "";
+    let fonte = f.rif ? srcRif(f.rif) + (f.rif2 ? srcRif(f.rif2) : "") : "";
+    if (f.gas_italia) fonte = srcRif(f.rif) + srcFile("gas-italia.json", "ENTSOG, 12 mesi");
+    h += `<li><span class="nome"><span class="tipo ${f.tipo}">${esc(f.tipo)}</span>${esc(f.etichetta)}</span>
+      <span class="num">${f.valore != null ? n(f.valore, f.valore % 1 ? 2 : 0) + " " + esc(f.unita) : ""}</span>
+      <span class="desc">${f.testo ? esc(f.testo) + " " : ""}${col}${fonte}${!f.rif && !f.gas_italia ? '<span class="src">nessuna fonte nei file</span>' : ""}</span></li>`;
+  }
+  if (pw) {
+    const a = pw.media7_anno_prima || {}, b = pw.media7;
+    h += `<li><span class="nome"><span class="tipo container">navi</span>Navi al giorno per tipo, un anno fa → oggi</span><span class="num"></span>
+      <span class="desc">petroliere ${n(a.n_tanker, 1)} → ${n(b.n_tanker, 1)}; portacontainer ${n(a.n_container, 1)} → ${n(b.n_container, 1)}; rinfuse ${n(a.n_dry_bulk, 1)} → ${n(b.n_dry_bulk, 1)} ${srcTesto("IMF PortWatch · " + dataBreve(pw.data_fonte), pw.link)}</span></li>`;
+  }
+  h += `</ul></div></li>`;
+
+  // 2. bypass
+  h += `<li class="passo"><div class="scheda"><h2>Alternative e volume scoperto</h2><p class="domanda">Quanto del flusso colpito può prendere un'altra strada (oleodotti, altri stretti, altri terminali) e quanto resta senza uscita.</p>`;
+  if (r.oil) {
+    const o = r.oil, tot = o.flusso;
+    const pc = v => (v / tot * 100).toFixed(2);
+    h += `<h3>Petrolio</h3><ul class="voci">`;
+    for (const b of p.petrolio.bypass) h += `<li><span class="nome">${esc(b.nome)}</span><span class="num">${b.min === b.max ? n(b.max, 1) : n(b.min, 1) + "–" + n(b.max, 1)} mb/g</span><span class="desc">${srcRif(b.rif)}</span></li>`;
+    if (!p.petrolio.bypass.length) h += `<li><span class="nome">Nessun bypass con capacità nota nei file</span><span class="num">—</span></li>`;
+    h += `</ul>`;
+    if (o.mecc === "deviazione") {
+      h += `<div class="calcolo">${n(tot, 2)} mb/g × ${n(io.quota * 100, 0)}% = <b>${n(o.colpito, 2)} mb/g</b> devono cambiare strada. Le navi girano: il petrolio arriva più tardi ma non si perde → scoperto <b>0 mb/g</b>.</div>`;
+    } else {
+      h += `<div class="calcolo">${n(tot, 2)} mb/g × ${n(io.quota * 100, 0)}% = ${n(o.colpito, 2)} mb/g colpiti − bypass ${rng(o.bmin, o.bmax, 1)} mb/g = <b>${rng(o.scop[0], o.scop[1], 1)} mb/g scoperti</b><br>× ${du.giorni} giorni = <b>${rng(o.cum[0], o.cum[1], 0)} milioni di barili</b> mancanti nel periodo (riserve IEA rilasciate nel 2026: 400 milioni ${srcRif(M.regole.volume_cumulato.rif)})</div>`;
+      h += `<div class="barra" role="img" aria-label="Flusso: non colpito, assorbito dai bypass, scoperto">
+        <span style="width:${pc(tot - o.colpito)}%;background:var(--bar-a)"></span>
+        <span style="width:${pc(o.ass[0])}%;background:var(--bar-b)"></span>
+        <span style="width:${pc(o.ass[1] - o.ass[0])}%;background:repeating-linear-gradient(45deg,var(--bar-b) 0 4px,var(--accent) 4px 8px)"></span>
+        <span style="width:${pc(o.scop[0])}%;background:var(--accent)"></span></div>
+        <div class="legenda"><span><i style="background:var(--bar-a)"></i>non colpito</span><span><i style="background:var(--bar-b)"></i>preso dai bypass</span><span><i style="background:repeating-linear-gradient(45deg,var(--bar-b) 0 3px,var(--accent) 3px 6px)"></i>incerto</span><span><i style="background:var(--accent)"></i>scoperto</span></div>`;
+    }
+    if (p.petrolio.nota) h += `<p class="piccolo" style="margin-top:8px">${esc(p.petrolio.nota)} ${p.petrolio.nota_rif ? srcRif(p.petrolio.nota_rif) : ""}</p>`;
+  } else if (p.petrolio && p.petrolio.nota) {
+    h += `<h3>Petrolio</h3><p class="piccolo">${esc(p.petrolio.nota)}</p>`;
+  }
+  if (r.gas) {
+    const g = r.gas;
+    h += `<h3>Gas</h3><ul class="voci">`;
+    for (const b of g.by) {
+      if (b.calcolato) {
+        const c = M.calcolato.gnl_italia;
+        h += `<li><span class="nome">${esc(b.nome)}</span><span class="num">0–${n(b.max, 1)} bcm/anno</span><span class="desc">capacità ${n(c.capacita_bcm, 1)} bcm/anno ${srcFile("terminali-gnl.json", "GEM 2026")} meno uso degli ultimi 12 mesi ${n(c.uso_12m_bcm, 1)} ${srcFile("gas-italia.json", "ENTSOG")}</span></li>`;
+      } else h += `<li><span class="nome">${esc(b.nome)}</span><span class="num">${n(b.max, 1)} bcm/anno</span><span class="desc">${srcRif(b.rif)}</span></li>`;
+    }
+    h += `</ul><div class="calcolo">${n(g.flusso, 2)} bcm/anno × ${n(io.quota * 100, 0)}% = ${n(g.colpito, 1)} colpiti − alternative ${rng(g.bmin, g.bmax, 1)} = <b>${rng(g.scop[0], g.scop[1], 1)} bcm/anno scoperti</b>`;
+    if (p.id === "canale-di-sicilia") {
+      const st = D.scorte.gas_stoccaggio_twh_it;
+      h += `<br>= ${rng(g.gwhGiorno[0], g.gwhGiorno[1], 0)} GWh al giorno; in ${du.giorni} giorni <b>${rng(g.twhPeriodo[0], g.twhPeriodo[1], 1)} TWh</b>, cioè ${rng(g.twhPeriodo[0] / st.ultimo.valore * 100, g.twhPeriodo[1] / st.ultimo.valore * 100, 0)}% del gas negli stoccaggi italiani (${n(st.ultimo.valore, 1)} TWh al ${dataBreve(st.ultimo.data)} ${srcTesto("GIE AGSI+", st.link)})`;
+    }
+    h += `</div>`;
+    if (p.gnl.nota) h += `<p class="piccolo">${esc(p.gnl.nota)} ${p.gnl.nota_rif ? srcRif(p.gnl.nota_rif) : ""}</p>`;
+  } else if (p.gnl && p.gnl.meccanismo === "deviazione") {
+    h += `<h3>Gas</h3><p class="piccolo">Le metaniere possono girare: il modello non conta GNL perso.</p>`;
+  }
+  h += `</div></li>`;
+
+  // 3. rotte
+  h += `<li class="passo"><div class="scheda"><h2>Rotte alternative: giorni e km in più</h2><p class="domanda">Dove vanno le navi che non passano e quanto si allunga il viaggio.</p>`;
+  if (p.rotta) {
+    const ro = p.rotta;
+    h += `<ul class="voci"><li><span class="nome"><span class="tipo rotta">rotta</span>${esc(ro.nome)}</span><span class="num">${ro.giorni ? "+" + rng(ro.giorni[0], ro.giorni[1], 0) + " giorni" : "giorni n.d."}</span>
+      <span class="desc">${ro.km ? "+" + n(ro.km[0], 0) + " km" : "km non indicati nelle fonti dei file"}${ro.per ? " · " + esc(ro.per) : ""} ${srcRif(ro.rif)}${ro.rif2 ? srcRif(ro.rif2) : ""}</span></li>`;
+    if (ro.nome.includes("Capo")) {
+      const capo = D.pw["Capo di Buona Speranza"];
+      if (capo) h += `<li><span class="nome">Oggi al Capo di Buona Speranza</span><span class="num">${n(capo.media7.n_total, 1)} navi/g</span><span class="desc">${sgn(capo.var7_anno_pct.n_total, 0)}% su un anno, ${sgn(capo.var7_tre_anni_pct.n_total, 0)}% sul 2023 ${srcTesto("IMF PortWatch · " + dataBreve(capo.data_fonte), capo.link)}</span></li>`;
+    }
+    h += `</ul>`;
+    if (r.scala) h += `<div class="calcolo">Scala dei giorni usata per noli e prezzi: <b>${r.scala[0] === r.scala[1] ? n(r.scala[0], 2) : n(r.scala[0], 2) + "–" + n(r.scala[1], 2)}</b> ${p.rotta.episodio ? "(stessa rotta della crisi del Mar Rosso)" : `(= ${rng(ro.giorni[0], ro.giorni[1], 0)} giorni / 14–24 giorni del Capo)`}</div>`;
+    else h += `<p class="piccolo">Senza un numero di giorni da fonte verificata il modello non stima noli e prezzi della deviazione.</p>`;
+  } else {
+    h += `<p>Nessuna rotta marittima alternativa: ${p.petrolio || p.gnl ? "le uniche alternative sono quelle del passo 2." : "il traffico si ferma o aspetta."}</p>`;
+  }
+  const corsie = D.rotte.rotte.filter(x => x.s.includes(p.rotte));
+  if (p.rotte) h += `<p class="piccolo">Corsie di navigazione che attraversano il passaggio nella mappa: ${corsie.length} (${n(corsie.reduce((a, x) => a + x.km, 0), 0)} km in tutto) ${srcTesto("rotte.json · Benden 2022", "data/rotte.json")}${p.cavi ? ` · cavi sottomarini: ${D.cavi.riepilogo.cavi_per_passaggio[p.cavi]} ${srcTesto("cavi.json · TeleGeography", "data/cavi.json")}` : ""}</p>`;
+  h += `</div></li>`;
+
+  // 4. noli
+  h += `<li class="passo"><div class="scheda"><h2>Noli</h2><p class="domanda">Quanto costa in più spedire, con un intervallo preso dagli episodi documentati.</p>`;
+  if (r.noli && r.noli.inc) {
+    const gen = wci.rotte["Shanghai-Genoa"], rot = wci.rotte["Shanghai-Rotterdam"];
+    h += `<div class="calcolo">minimo: +${n(M.episodi.mar_rosso_2023.costo_capo_feu.valore, 0)} $/FEU (costo puro del giro) ${srcRif(M.episodi.mar_rosso_2023.costo_capo_feu.rif)}<br>massimo: +${n(RS.calcolato.wci_salto_usd_feu, 0)} $/FEU (WCI da ${n(RS.wci.da, 0)} a ${n(RS.wci.a, 0)} in ${M.episodi.mar_rosso_2023.calcolato.wci_giorni} giorni) ${srcRif(RS.wci.rif)}<br>× intensità ${n(io.quota, 2)} × scala ${r.scala[0] === r.scala[1] ? n(r.scala[0], 2) : n(r.scala[0], 2) + "–" + n(r.scala[1], 2)} × rampa ${n(r.noli.rampa, 2)} (${du.giorni} su ${M.regole.noli_container_deviazione.rampa_giorni} giorni) = <b>+${rng(r.noli.inc[0], r.noli.inc[1], 0)} $/FEU</b></div>`;
+    h += `<ul class="voci">
+      <li><span class="nome">Shanghai–Rotterdam</span><span class="num">${n(rot, 0)} → ${rng(rot + r.noli.inc[0], rot + r.noli.inc[1], 0)} $</span><span class="desc">per container da 40 piedi; valore di oggi ${srcTesto("Drewry WCI · " + dataBreve(wci.data), wci.link)}</span></li>
+      <li><span class="nome">Shanghai–Genova</span><span class="num">${n(gen, 0)} → ${rng(gen + r.noli.inc[0], gen + r.noli.inc[1], 0)} $</span><span class="desc">${srcTesto("Drewry WCI · " + dataBreve(wci.data), wci.link)}</span></li></ul>`;
+  } else if (r.noli && r.noli.sovrapprezzo) {
+    h += `<p>Per Hormuz non c'è una rotta alternativa da misurare: il modello mostra quello che è successo nel 2026, in proporzione all'intensità scelta (${n(io.quota * 100, 0)}%) solo come ordine di grandezza.</p>`;
+  } else {
+    h += `<p class="piccolo">Nessun episodio documentato nei file per stimare i noli di questo passaggio: il modello non inventa un numero.</p>`;
+  }
+  if (p.noli_episodi.length) {
+    h += `<h3>Episodi documentati</h3><ul class="voci">`;
+    for (const e of p.noli_episodi) { const v = voce(e); if (v) h += `<li><span class="nome">${esc(v.voce)}</span><span class="num"></span><span class="desc">${esc(v.valore)} ${srcRif(e)}</span></li>`; }
+    h += `</ul>`;
+  }
+  h += `</div></li>`;
+
+  // 5. prezzi
+  const f30 = H.calcolato.brent.finestre[w], g30 = H.calcolato.ttf.finestre[w];
+  const fr = RS.calcolato.brent.finestre[w], gr = RS.calcolato.ttf.finestre[w];
+  const maxScala = Math.max(100, Math.ceil(Math.max(r.brent.pct ? r.brent.pct[1] : 0, r.ttf.pct ? r.ttf.pct[1] : 0) / 25) * 25);
+  h += `<li class="passo"><div class="scheda"><h2>Prezzi: Brent e TTF</h2><p class="domanda">Effetto indicativo, come intervallo, con una regola dichiarata e calibrata sugli episodi storici (finestra di ${du.giorni} giorni).</p>`;
+  h += `<h3>Brent</h3>`;
+  if (r.brent.regola === "brent_perdita") {
+    h += `<div class="calcolo">${rng(r.oil.scop[0], r.oil.scop[1], 1)} mb/g scoperti × ${n(r.brent.c.min, 2)}–${n(r.brent.c.max, 2)}% per mb/g = <b>${rngS(r.brent.pct[0], r.brent.pct[1], 0)}</b></div>`;
+    h += barraIntervallo(r.brent.pct[0], r.brent.pct[1], null, maxScala);
+    h += `<p class="piccolo">Coefficiente da Hormuz 2026: Brent da ${n(H.calcolato.brent.base, 2)} $ (media 23–27 febbraio) a una media di ${n(f30.media, 2)} $ (${sgn(f30.media_pct, 1)}%) e un picco di ${n(f30.max, 2)} $ il ${dataBreve(f30.data_max)} (${sgn(f30.max_pct, 1)}%) nei primi ${du.giorni} giorni, con ${n(H.calcolato.scoperto_petrolio_mbg.centrale, 1)} mb/g scoperti. ${srcTesto("Yahoo Finance BZ=F", M.fonti[2].link)}</p>`;
+  } else if (r.brent.regola === "brent_deviazione") {
+    h += `<div class="calcolo">intensità ${n(io.quota, 2)} × scala ${r.scala[0] === r.scala[1] ? n(r.scala[0], 2) : n(r.scala[0], 2) + "–" + n(r.scala[1], 2)} × (${sgn(fr.media_pct, 1)}% … ${sgn(fr.max_pct, 1)}%) = <b>${rngS(r.brent.pct[0], r.brent.pct[1], 1)}</b></div>`;
+    h += barraIntervallo(r.brent.pct[0], r.brent.pct[1], null, Math.max(25, Math.ceil(r.brent.pct[1] / 5) * 5));
+    h += `<p class="piccolo">Regola delle deviazioni, dalla crisi del Mar Rosso: Brent da ${n(RS.calcolato.brent.base, 2)} $ (11–15 dicembre 2023) a una media di ${n(fr.media, 2)} $ e un picco di ${n(fr.max, 2)} $ nei primi ${du.giorni} giorni dal 18 dicembre. ${srcTesto("Yahoo Finance BZ=F", M.fonti[2].link)}</p>`;
+  } else h += `<p class="piccolo">Non stimato: ${p.rotta && !p.rotta.giorni ? "manca un numero di giorni in più da fonte verificata." : "nessun volume di petrolio rilevante nei file."}</p>`;
+  h += `<h3>Gas TTF</h3>`;
+  if (r.ttf.regola === "ttf_perdita") {
+    h += `<div class="calcolo">${rng(r.gas.scop[0], r.gas.scop[1], 1)} bcm/anno scoperti × ${n(r.ttf.c.min, 2)}–${n(r.ttf.c.max, 2)}% per bcm = <b>${rngS(r.ttf.pct[0], r.ttf.pct[1], 0)}</b></div>`;
+    h += barraIntervallo(r.ttf.pct[0], r.ttf.pct[1], null, maxScala);
+    h += `<p class="piccolo">Coefficiente da Hormuz 2026: TTF da ${n(H.calcolato.ttf.base, 2)} € a una media di ${n(g30.media, 2)} € (${sgn(g30.media_pct, 1)}%) e un picco di ${n(g30.max, 2)} € (${sgn(g30.max_pct, 1)}%) nei primi ${du.giorni} giorni, con ${n(H.calcolato.gnl_fermo_bcm, 0)} bcm/anno di GNL fermi. ${srcTesto("Yahoo Finance TTF=F", M.fonti[2].link)}${p.id === "canale-di-sicilia" ? " Affidabilità bassa: il TransMed arriva direttamente in Europa, mentre il GNL del Golfo andava soprattutto in Asia; il PSV italiano salirebbe sopra il TTF " + srcRif(p.prezzi_episodi[0]) : ""}</p>`;
+  } else if (r.ttf.regola === "ttf_deviazione") {
+    h += `<div class="calcolo">deviazione → effetto assunto <b>0%</b>. Nella crisi del Mar Rosso il TTF ha fatto ${sgn(gr.media_pct, 1)}% in media nei primi ${du.giorni} giorni (picco ${sgn(gr.max_pct, 1)}%): inverno mite e stoccaggi pieni hanno pesato più delle rotte.</div>`;
+  } else h += `<p class="piccolo">Nessun flusso di gas rilevante per questo passaggio nei file.</p>`;
+  if (p.avviso && p.id === "hormuz") h += `<p class="piccolo"><b>Attenzione:</b> i prezzi «da oggi» nei riquadri in alto applicano la variazione al Brent (${n(brent.ultimo, 2)} $) e al TTF (${n(ttf.ultimo, 2)} €) del ${dataBreve(brent.data)}, che incorporano già la chiusura di Hormuz ${srcFile("prezzi.json", dataBreve(brent.data))}.</p>`;
+  if (p.prezzi_episodi.length) {
+    h += `<h3>Altri fatti documentati</h3><ul class="voci">`;
+    for (const e of p.prezzi_episodi) { const v = voce(e); if (v) h += `<li><span class="nome">${esc(v.voce)}</span><span class="num"></span><span class="desc">${esc(v.valore)} ${srcRif(e)}</span></li>`; }
+    h += `</ul>`;
+  }
+  h += `</div></li>`;
+
+  // 6. paesi
+  h += `<li class="passo"><div class="scheda"><h2>Chi è esposto</h2><p class="domanda">Quote di importazione (in valore) che passano dal passaggio, da UN Comtrade 2025 via paesi.json; in evidenza Italia, Paesi Bassi, Germania e Danimarca.</p>`;
+  h += disegnaPaesi(p, r, du);
+  h += `</div></li>`;
+
+  // 7. porti e settori
+  h += `<li class="passo"><div class="scheda"><h2>Porti e settori più toccati</h2><p class="domanda">− perde, + guadagna, ? effetto incerto. I dati di traffico sono di PortWatch (media 30 giorni).</p>`;
+  for (const po of p.porti) {
+    const cls = po.segno === "-" ? "m" : po.segno === "+" ? "p" : "q";
+    let extra = "";
+    if (po.portwatch && D.pw[po.portwatch]) { const x = D.pw[po.portwatch]; extra = ` Oggi ${n(x.media30.portcalls, 1)} navi al giorno, ${sgn(x.var30_anno_pct.portcalls, 0)}% su un anno ${srcTesto("PortWatch · " + dataBreve(x.data_fonte), x.link)}`; }
+    if (po.gnl) { const t = D.gnl.find(e => e.nome === po.gnl); if (t) extra = ` Capacità ${n(t.capacita_operativa_mtpa, 1)} Mt/anno ${srcTesto("GEM · " + dataBreve(t.data_fonte), t.link)}`; }
+    if (po.gas_italia) { const q = D.gas.quote_12_mesi.find(e => e.id === po.gas_italia); if (q) extra = ` ${n(q.twh_12m, 1)} TWh negli ultimi 12 mesi, ${n(q.quota_ingressi_pct, 1)}% degli ingressi ${srcFile("gas-italia.json", "ENTSOG")}`; }
+    if (po.cavi_approdo) extra = ` ${srcFile("cavi.json", "TeleGeography")}`;
+    const fonte = po.rif ? srcRif(po.rif) : "";
+    h += `<div class="porto"><span class="segno ${cls}" aria-label="${cls === "m" ? "perde" : cls === "p" ? "guadagna" : "incerto"}">${po.segno === "-" ? "−" : po.segno}</span><div><div class="pn">${esc(po.nome)}${po.paese ? ` <span class="piccolo">${esc(po.paese)}</span>` : ""}</div><div class="pd">${esc(po.testo)}.${extra} ${fonte}</div></div></div>`;
+  }
+  const vs = voce(p.settori_rif);
+  if (vs) h += `<div class="valutazione"><span class="etichetta">${vs.tipo === "valutazione" ? "Valutazione dell'osservatorio" : "Fatto"} · settori</span>${esc(vs.valore)} ${srcRif(p.settori_rif)}</div>`;
+  h += `</div></li>`;
+  h += `</ol></div>`;
+
+  // colonna laterale
+  h += `<aside class="lato">${disegnaIpotesi(p, r, du, io)}</aside></div>`;
+  document.getElementById("risultato").innerHTML = h;
+}
+
+function disegnaPaesi(p, r, du) {
+  const M = D.M;
+  let h = "";
+  const regole = p.esposizione || [];
+  const focus = M.focus_paesi;
+  const nomi = { IT: "Italia", NL: "Paesi Bassi", DE: "Germania", DK: "Danimarca" };
+  h += `<div class="paesi">`;
+  for (const c of focus) {
+    const P = D.paesi[c];
+    h += `<div class="paese"><h4><span>${esc(P ? P.nome : nomi[c] || c)}</span><small>${c}</small></h4>`;
+    if (!P) {
+      h += `<div class="nota">La Danimarca non è nelle schede paese (paesi.json) né nelle scorte (scorte.json): nessuna quota calcolata. ${esc(p.nota_dk || "")} ${p.nota_dk_rif ? srcRif(p.nota_dk_rif) : ""}</div></div>`;
+      continue;
+    }
+    for (const reg of regole) {
+      const q = quotaPaese(c, reg);
+      h += `<div class="riga"><span>${esc(reg.etichetta)}</span><b>${fmtQuota(q)}</b></div>`;
+      if (q && !q.sotto) h += `<div class="mini"><span style="left:${q.min}%;width:${Math.max(1, q.max - q.min)}%"></span></div>`;
+    }
+    if (p.esposizione_gas_italia && c === "IT") {
+      const q = D.gas.quote_12_mesi.find(e => e.id === p.esposizione_gas_italia);
+      h += `<div class="riga"><span>Gas entrato in Italia dal TransMed (12 mesi)</span><b>${n(q.quota_ingressi_pct, 1)}%</b></div><div class="mini"><span style="left:0;width:${q.quota_ingressi_pct}%"></span></div>`;
+    } else if (p.esposizione_gas_italia) {
+      h += `<div class="nota">Nessun flusso diretto: il TransMed finisce in Italia.</div>`;
+    }
+    const gs = D.scorte["gas_stoccaggio_pct_" + c.toLowerCase()], og = D.scorte["petrolio_emergenza_giorni_" + c.toLowerCase()];
+    const cuscini = [];
+    if (gs) cuscini.push(`stoccaggi gas ${n(gs.ultimo.valore, 0)}% al ${dataBreve(gs.ultimo.data)}`);
+    if (og) cuscini.push(`scorte di petrolio di emergenza ${n(og.ultimo.valore, 0)} giorni (${MESI[+og.ultimo.data.slice(5, 7) - 1]} ${og.ultimo.data.slice(0, 4)})`);
+    if (cuscini.length) h += `<div class="nota">Cuscinetti: ${cuscini.join("; ")} ${srcFile("scorte.json", "AGSI+, Eurostat")}</div>`;
+    h += `</div>`;
+  }
+  h += `</div>`;
+  if (regole.length) {
+    const fonteR = (() => { const P = D.paesi.IT; const ind = P && P.indicatori[regole[0].ind]; return ind ? srcTesto(`${ind.fonte.split(" (")[0]} · ${ind.anno}`, ind.link) : ""; })();
+    for (const reg of regole.filter(x => !x.solo_contesto)) {
+      const altri = Object.keys(D.paesi).filter(c => !focus.includes(c) && c !== reg.partner)
+        .map(c => ({ c, q: quotaPaese(c, reg) })).filter(x => x.q && !x.q.sotto && x.q.max > 0)
+        .sort((a, b) => b.q.max - a.q.max).slice(0, 6);
+      if (!altri.length) continue;
+      h += `<h3>${esc(reg.etichetta)}: i paesi più esposti</h3><div class="altri">`;
+      for (const a of altri) {
+        h += `<span>${esc(D.paesi[a.c].nome)}</span><div class="bar"><span style="left:${a.q.min}%;width:${Math.max(1, a.q.max - a.q.min)}%"></span></div><span class="n">${fmtQuota(a.q)}</span>`;
+      }
+      h += `</div>`;
+    }
+    h += `<p class="piccolo" style="margin-top:8px">Quote in valore dichiarate dall'importatore; un intervallo (per il Golfo) va dai soli fornitori senza uscita alternativa (Iraq, Kuwait, Qatar, Bahrein, Iran) fino ad Arabia Saudita ed Emirati inclusi. «Meno di x%»: il fornitore non è tra i primi 5. ${fonteR}</p>`;
+  }
+  if (r.oil && r.oil.mecc === "perdita" && r.oil.scop[1] > 0) {
+    h += `<p class="piccolo">Volume mancante nel periodo: ${rng(r.oil.cum[0], r.oil.cum[1], 0)} milioni di barili, ${rng(r.oil.cum[0] / 4, r.oil.cum[1] / 4, 0)}% del rilascio record IEA di 400 milioni del marzo 2026 ${srcRif(D.M.regole.volume_cumulato.rif)}</p>`;
+  }
+  return h;
+}
+
+function disegnaIpotesi(p, r, du, io) {
+  const M = D.M, R = M.regole;
+  const usate = [];
+  usate.push(["volume_scoperto", R.volume_scoperto]);
+  if (r.brent.regola) usate.push([r.brent.regola, R[r.brent.regola]]);
+  if (r.ttf.regola) usate.push([r.ttf.regola, R[r.ttf.regola]]);
+  if (r.noli && r.noli.inc) usate.push(["noli_container_deviazione", R.noli_container_deviazione]);
+  if (r.noli && r.noli.sovrapprezzo) usate.push(["noli_hormuz", R.noli_hormuz]);
+  usate.push(["esposizione_paesi", R.esposizione_paesi]);
+  let h = `<section class="riquadro ipotesi" aria-labelledby="t-ipotesi"><h2 id="t-ipotesi">Ipotesi del modello</h2>`;
+  h += `<p class="piccolo">Scenario: ${esc(io.etichetta.toLowerCase())} (${esc(io.spiegazione)}) per ${esc(du.etichetta)} (${du.giorni} giorni).</p>`;
+  h += `<h3 style="margin-top:6px">Regole usate qui</h3>`;
+  for (const [k, reg] of usate) h += `<p class="regola"><b>${esc(nomeRegola(k))}.</b> ${esc(reg.testo)} <span class="piccolo">Affidabilità: ${esc(reg.affidabilita || "n.d.")}.</span></p>`;
+  h += `<h3>Ipotesi generali</h3><ol>${M.ipotesi.map(x => `<li>${esc(x)}</li>`).join("")}</ol>`;
+  h += `<details><summary>Episodi di riferimento</summary>${Object.values(M.episodi).map(e => `<p class="regola" style="margin-top:8px"><b>${esc(e.nome)}.</b> ${esc(e.spiegazione)} Inizio: ${dataBreve(e.inizio)}; base: media ${dataBreve(e.base.da)}–${dataBreve(e.base.a)}. <span class="piccolo">${esc(e.fonte_prezzi)}.</span></p>`).join("")}</details>`;
+  h += `<p class="piccolo" style="margin-top:10px">Modello versione ${esc(M.versione)}, ${dataBreve(M.aggiornato)} · <a href="data/simulatore.json">simulatore.json</a></p></section>`;
+  return h;
+}
+function nomeRegola(k) {
+  return ({ volume_scoperto: "Volume scoperto", brent_perdita: "Brent, perdita di offerta", brent_deviazione: "Brent, deviazione", ttf_perdita: "TTF, perdita di offerta", ttf_deviazione: "TTF, deviazione", noli_container_deviazione: "Noli container", noli_hormuz: "Noli a Hormuz", esposizione_paesi: "Paesi esposti" })[k] || k;
+}
+
+function disegnaFisso() {
+  const M = D.M;
+  document.getElementById("lista-limiti").innerHTML = M.limiti.map(x => `<li>${esc(x)}</li>`).join("");
+  document.getElementById("lista-fonti").innerHTML = M.fonti.map(f => `<li>${esc(f.nome)}${f.file ? ` — <code>${esc(f.file)}</code>` : ""}${f.link ? ` — <a href="${esc(f.link)}" target="_blank" rel="noopener">link</a>` : ""}${f.licenza ? ` <span class="piccolo">(${esc(f.licenza)})</span>` : ""}</li>`).join("");
+  document.getElementById("agg").textContent = `Dati dell'osservatorio aggiornati al ${dataIt(D["stretti-dettaglio"].aggiornato)} (schede), ${dataIt(D.prezzi.brent.data)} (prezzi), ${dataIt(D.noli.wci.data)} (noli), ${dataIt(D.portwatch.elementi[0].ultima_data)} (PortWatch).`;
+}
+
+carica().then(() => { costruisciComandi(); disegnaFisso(); disegna(); })
+  .catch(e => { document.getElementById("risultato").innerHTML = `<p class="errore">Non riesco a caricare i dati: ${esc(e.message)}. Apri la pagina da un server (per esempio <code>python3 -m http.server</code> nella cartella docs).</p>`; console.error(e); });
+</script>
+</body>
+</html>

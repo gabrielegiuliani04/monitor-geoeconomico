@@ -1,0 +1,292 @@
+{
+  "nota": "Regole su emissioni e carburanti navali, voci curate a mano dai testi ufficiali (EUR-Lex, Commissione europea, IMO). Ogni voce ha fonte, link e data. 'stato' distingue: in vigore, proposta, rinviato.",
+  "fattori": {
+    "nota": "Fattori usati negli esempi di calcolo. Fonte: Regolamento (UE) 2023/1805 (FuelEU), Allegato II, valori di default; GWP: FuelEU usa i GWP della direttiva RED (CH4 25, N2O 298); per l'ETS marittimo il monitoraggio MRV dal 2024 include CH4 e N2O, qui con GWP AR5 (CH4 28, N2O 265).",
+    "link": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1805",
+    "carburanti": {
+      "HFO_VLSFO_residuo": {
+        "pci_MJ_per_g": 0.0405,
+        "wtt_gCO2e_per_MJ": 13.5,
+        "cf_co2": 3.114,
+        "cf_ch4": 5e-05,
+        "cf_n2o": 0.00018,
+        "nota": "classe HFO (ISO 8217 RME-RMK): il VLSFO 0,5% S e' di norma un residuo RMG 380"
+      },
+      "LFO": {
+        "pci_MJ_per_g": 0.041,
+        "wtt_gCO2e_per_MJ": 13.2,
+        "cf_co2": 3.151,
+        "cf_ch4": 5e-05,
+        "cf_n2o": 0.00018
+      },
+      "MGO_MDO": {
+        "pci_MJ_per_g": 0.0427,
+        "wtt_gCO2e_per_MJ": 14.4,
+        "cf_co2": 3.206,
+        "cf_ch4": 5e-05,
+        "cf_n2o": 0.00018
+      },
+      "GNL_Otto_lento": {
+        "pci_MJ_per_g": 0.0491,
+        "wtt_gCO2e_per_MJ": 18.5,
+        "cf_co2": 2.75,
+        "cf_ch4": 0,
+        "cf_n2o": 0.00011,
+        "slip_pct": 1.7
+      }
+    },
+    "gwp_fueleu": {
+      "ch4": 25,
+      "n2o": 298
+    },
+    "gwp_ets_mrv": {
+      "ch4": 28,
+      "n2o": 265
+    },
+    "fueleu_riferimento_gCO2e_per_MJ": 91.16,
+    "fueleu_penale_eur_per_t_vlsfo_eq": 2400,
+    "fueleu_MJ_per_t_vlsfo_eq": 41000
+  },
+  "eu_ets_marittimo": {
+    "norma": "Direttiva (UE) 2023/959 che modifica la direttiva 2003/87/CE; Regolamento MRV (UE) 2015/757 modificato dal Regolamento (UE) 2023/957",
+    "link": "https://climate.ec.europa.eu/eu-action/transport-decarbonisation/reducing-emissions-shipping-sector/faq-maritime-transport-eu-emissions-trading-system-ets_en",
+    "data_fonte": "2026-11-09",
+    "stato": "in vigore dal 1/1/2024",
+    "voci": [
+      {
+        "tema": "navi coperte",
+        "valore": "navi da carico e passeggeri >= 5.000 GT; navi offshore >= 5.000 GT dal periodo di rendicontazione 2027; navi da carico generale e offshore 400-5.000 GT nel solo MRV dal 2025"
+      },
+      {
+        "tema": "quota di emissioni da coprire con EUA (phase-in)",
+        "valore": "40% delle emissioni 2024 (restituite entro il 30/9/2025), 70% delle emissioni 2025 (entro il 30/9/2026), 100% dalle emissioni 2026 (entro il 30/9/2027)",
+        "serie": [
+          [
+            2024,
+            0.4
+          ],
+          [
+            2025,
+            0.7
+          ],
+          [
+            2026,
+            1.0
+          ]
+        ]
+      },
+      {
+        "tema": "copertura geografica",
+        "valore": "100% delle emissioni nei viaggi tra porti UE/SEE e all'ormeggio nei porti UE; 50% dei viaggi in arrivo da o in partenza verso porti extra UE"
+      },
+      {
+        "tema": "gas coperti",
+        "valore": "solo CO2 nel 2024 e 2025; CH4 e N2O dal 2026"
+      },
+      {
+        "tema": "porti di trasbordo vicini",
+        "valore": "la sosta di una portacontainer in un porto di trasbordo extra UE entro 300 miglia nautiche da un porto UE e con trasbordo > 65% del traffico non conta come 'porto di scalo': il viaggio si calcola dal porto precedente. Lista attuale: East Port Said (Egitto) e Tanger Med (Marocco)",
+        "fonte": "Regolamento di esecuzione (UE) 2023/2297",
+        "link": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R2297",
+        "data_fonte": "2023-10-26"
+      },
+      {
+        "tema": "sanzione per mancata restituzione",
+        "valore": "100 euro per tonnellata di CO2e non coperta, indicizzati all'inflazione (art. 16 direttiva 2003/87/CE), oltre all'obbligo di restituire comunque le quote"
+      }
+    ],
+    "revisione_2026": {
+      "stato": "proposta della Commissione del 17 luglio 2026, in discussione a Parlamento e Consiglio",
+      "voci": [
+        "soglia di trasbordo per i porti vicini dal 65% al 50%, lista rivista ogni anno invece che ogni due",
+        "esclusi dalla definizione di porto di scalo gli impianti con infrastruttura di trasbordo container a meno di 150 miglia nautiche da un porto UE, salvo misure equivalenti nel paese terzo (la WSC critica il criterio basato sulla sola infrastruttura)",
+        "porti citati come possibili nuove voci: Damietta (Egitto), Tekirdag (Turchia); in sviluppo: Nador West Med e Dakhla (Marocco), Cherchell (Algeria)",
+        "navi da carico generale e offshore da 400 GT nell'ETS dal 1/1/2029",
+        "meccanismo SMAP (Sustainable Maritime Alternative Propulsion): 110 milioni di quote tra il 2028 e il 2040 per coprire parte del differenziale di prezzo dei carburanti alternativi"
+      ],
+      "fonti": [
+        {
+          "nome": "El Estrecho Digital",
+          "link": "https://www.elestrechodigital.com/en/imprimir/the-european-commission-reduces-the-threshold-for-neighboring-transshipment-ports-to-50-in-its-review-of-the-maritime-ets",
+          "data_fonte": "2026-07-17"
+        },
+        {
+          "nome": "World Shipping Council",
+          "link": "https://www.worldshipping.org/news/wsc-ets-rightly-reinvests-more-into-maritime-decarbonisation-but-new-port-rules-risk-targeting-competition-rather-than-emissions",
+          "data_fonte": "2026-07-17"
+        },
+        {
+          "nome": "Shipping Italy",
+          "link": "https://www.shippingitaly.it/2026/07/17/revisione-ets-ecco-cosa-sono-riusciti-a-ottenere-e-cosa-no-armatori-e-porti/",
+          "data_fonte": "2026-07-17"
+        }
+      ],
+      "affidabilita": "media (stampa di settore e associazioni; testo della proposta non letto direttamente)"
+    }
+  },
+  "fueleu_maritime": {
+    "norma": "Regolamento (UE) 2023/1805",
+    "link": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32023R1805",
+    "data_fonte": "2023-09-13",
+    "stato": "in vigore dal 1/1/2025",
+    "voci": [
+      {
+        "tema": "ambito",
+        "valore": "navi > 5.000 GT che trasportano passeggeri o merci, di qualsiasi bandiera: 100% dell'energia tra porti UE e all'ormeggio, 50% nei viaggi da o verso porti extra UE (art. 2)"
+      },
+      {
+        "tema": "limite di intensita' GHG (well-to-wake) rispetto a 91,16 gCO2e/MJ",
+        "valore": "-2% dal 2025, -6% dal 2030, -14,5% dal 2035, -31% dal 2040, -62% dal 2045, -80% dal 2050 (art. 4)",
+        "serie": [
+          [
+            2025,
+            -2
+          ],
+          [
+            2030,
+            -6
+          ],
+          [
+            2035,
+            -14.5
+          ],
+          [
+            2040,
+            -31
+          ],
+          [
+            2045,
+            -62
+          ],
+          [
+            2050,
+            -80
+          ]
+        ]
+      },
+      {
+        "tema": "penalita'",
+        "valore": "2.400 euro per tonnellata di VLSFO-equivalente (41.000 MJ) di deficit di conformita'; moltiplicata per 1 + (n-1)/10 se il deficit si ripete per n anni consecutivi (art. 23, all. IV)"
+      },
+      {
+        "tema": "flessibilita'",
+        "valore": "banking del surplus, borrowing di un anticipo dall'anno successivo (con maggiorazione 1,1 se non restituito), pooling volontario tra navi anche di societa' diverse (art. 20-21)"
+      },
+      {
+        "tema": "RFNBO (carburanti sintetici da idrogeno rinnovabile)",
+        "valore": "moltiplicatore 2 fino al 2033; sotto-obiettivo del 2% dal 2034 se nel 2031 la quota e' sotto l'1%"
+      },
+      {
+        "tema": "obbligo di allaccio elettrico in banchina (OPS)",
+        "valore": "dal 1/1/2030 portacontainer e navi passeggeri all'ormeggio > 2 ore nei porti coperti dall'art. 9 del Regolamento AFIR (UE) 2023/1804 (porti TEN-T centrali e globali sopra le soglie di traffico) devono collegarsi all'OPS; dal 1/1/2035 in ogni porto UE dove la banchina ha l'OPS (art. 6)"
+      },
+      {
+        "tema": "penalita' OPS",
+        "valore": "1,5 euro x potenza elettrica richiesta all'ormeggio (kW) x ore di sosta non conformi (art. 23(5))"
+      },
+      {
+        "tema": "porti di trasbordo vicini (FuelEU)",
+        "valore": "stessa lista dell'ETS: East Port Said e Tanger Med",
+        "fonte": "Regolamento di esecuzione (UE) 2025/1127",
+        "link": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32025R1127",
+        "data_fonte": "2025-06-06"
+      }
+    ]
+  },
+  "afir_porti": {
+    "norma": "Regolamento (UE) 2023/1804 (AFIR), art. 9 e 11",
+    "link": "https://eur-lex.europa.eu/eli/reg/2023/1804/oj",
+    "stato": "in vigore",
+    "voci": [
+      {
+        "tema": "OPS nei porti TEN-T",
+        "valore": "entro il 31/12/2029 i porti marittimi TEN-T sopra le soglie di scali (portacontainer > 5.000 GT, ro-pax, navi passeggeri veloci, crociere) devono poter servire con OPS almeno il 90% degli scali di quelle navi"
+      },
+      {
+        "tema": "GNL nei porti centrali TEN-T",
+        "valore": "punti di rifornimento GNL adeguati nei porti marittimi della rete centrale entro il 2025"
+      }
+    ],
+    "affidabilita": "media (sintesi dall'articolato; soglie numeriche da verificare sul testo)"
+  },
+  "imo": {
+    "net_zero_framework": {
+      "stato": "rinviato",
+      "cronologia": [
+        {
+          "data": "2025-04-11",
+          "fatto": "MEPC 83 approva il testo del Net-Zero Framework (nuovo capitolo 5 dell'Allegato VI MARPOL): standard globale sull'intensita' GHG dei carburanti (GFI) e meccanismo di prezzo per navi > 5.000 GT (85% delle emissioni CO2 del trasporto marittimo internazionale)",
+          "link": "https://www.imo.org/en/MediaCentre/MeetingSummaries/Pages/MEPC-83rd-session.aspx"
+        },
+        {
+          "data": "2025-10-17",
+          "fatto": "La sessione straordinaria MEPC/ES.2 (14-17 ottobre 2025) viene aggiornata di 12 mesi invece di votare l'adozione; voto procedurale 57 a favore del rinvio, 49 contrari (conteggio dei voti riportato da Ship Technology; il resoconto IMO dice solo che la sessione e' aggiornata)",
+          "link": "https://www.imo.org/en/MediaCentre/MeetingSummaries/Pages/MEPC-ES-2.aspx",
+          "link_voti": "https://www.ship-technology.com/news/imos-net-zero-strategy-adoption-pushed-back-another-year-by-saudi-vote/"
+        },
+        {
+          "data": "2026-05-01",
+          "fatto": "MEPC 84 (27 aprile-1 maggio 2026) non vota: crea un gruppo di lavoro intersessionale, consente nuovi emendamenti al testo e fissa la ripresa della sessione straordinaria al 4 dicembre 2026, da confermare a MEPC 85. Adotta una risoluzione di condanna degli attacchi alle navi nell'area di Hormuz e la nuova ECA del Nord-Est Atlantico (in vigore dal 1/9/2027, efficace 12 mesi dopo)",
+          "link": "https://www.imo.org/en/MediaCentre/MeetingSummaries/Pages/Temporary-MEPC-84th-session.aspx"
+        },
+        {
+          "data": "2026-09-04",
+          "fatto": "ISWG-GHG 22 (1-4 settembre) chiude senza accordo finale; rinvia linee guida e LCA a ISWG-GHG 23",
+          "link": "https://www.imo.org/en/MediaCentre/MeetingSummaries/Pages/iswg-ghg-22.aspx"
+        },
+        {
+          "data": "2026-11-23",
+          "fatto": "In calendario: ISWG-GHG 23 (23-27 novembre), MEPC 85 (30 novembre-3 dicembre), ripresa di MEPC/ES.2 il 4 dicembre 2026 (soggetta a conferma)",
+          "link": "https://www.imo.org/en/MediaCentre/MeetingSummaries/Pages/PREVIEW-MEPC-85.aspx"
+        }
+      ],
+      "parametri_testo_2025": {
+        "valore": "riferimento GFI 93,3 gCO2e/MJ (media 2008); obiettivi 2028: -4% (base) e -17% (diretto); 2030: -8% e -21%; 2035: -30% e -43%; unita' correttive 2028-2030: Tier 1 100 USD/tCO2e, Tier 2 380 USD/tCO2e; entrata in vigore 16 mesi dopo l'adozione (accettazione tacita); adozione con maggioranza di due terzi delle Parti presenti e votanti",
+        "fonte": "testo approvato a MEPC 83 (lettera circolare IMO CL.5005), riportato da AIFILTECH (30/10/2026); i valori possono cambiare prima dell'adozione",
+        "link": "https://www.aifiltech.com/en/imo-net-zero-framework-vote-december-2026/",
+        "affidabilita": "media"
+      }
+    },
+    "cii": {
+      "stato": "in vigore dal 2023",
+      "valore": "Carbon Intensity Indicator: rating annuale A-E per navi >= 5.000 GT; riduzione richiesta rispetto alla linea 2019: 5% (2023), 7% (2024), 9% (2025), 11% (2026), 13,625% (2027), 16,25% (2028), 18,875% (2029), 21,5% (2030). Le navi con D per 3 anni o E per 1 anno devono presentare un piano correttivo nel SEEMP",
+      "serie": [
+        [
+          2023,
+          5
+        ],
+        [
+          2024,
+          7
+        ],
+        [
+          2025,
+          9
+        ],
+        [
+          2026,
+          11
+        ],
+        [
+          2027,
+          13.625
+        ],
+        [
+          2028,
+          16.25
+        ],
+        [
+          2029,
+          18.875
+        ],
+        [
+          2030,
+          21.5
+        ]
+      ],
+      "fonte": "IMO, MEPC 83 (risoluzione MEPC.400(83), fattori 2027-2030); DNV",
+      "link": "https://www.dnv.com/news/2025/imo-mepc-83-ghg-requirements-approved-taking-effect-from-2028/",
+      "data_fonte": "2025-04-11"
+    }
+  }
+}
