@@ -259,17 +259,18 @@ def carica_ondate(giorno):
     out = []
     for o in doc['ondate']:
         d = dt.date.fromisoformat(o['data'])
-        # la notte dell'attacco è registrata alla data d'inizio: guardo il giorno e quello prima
-        cand = [x.isoformat() for x in (d - dt.timedelta(days=1), d)]
-        best = max(cand, key=lambda x: giorno.get(x, {}).get('totale', [0, 0])[0])
-        t = giorno.get(best, {})
         o = dict(o)
-        o['dataset'] = {
-            'data_registrata': best if best in giorno else None,
-            'lanciati': t.get('totale', [None])[0], 'abbattuti': t.get('totale', [None, None])[1],
-            'missili_lanciati': (t.get('cat_crociera', [0, 0])[0] + t.get('cat_balistico', [0, 0])[0]) if t else None,
-            'droni_lanciati': t.get('cat_drone', [None])[0],
-        }
+        # la notte dell'attacco è registrata alla data d'inizio: riporto il giorno prima e il giorno stesso
+        o['dataset'] = {}
+        for x in (d - dt.timedelta(days=1), d):
+            t = giorno.get(x.isoformat())
+            if not t:
+                continue
+            o['dataset'][x.isoformat()] = {
+                'lanciati': t['totale'][0], 'abbattuti': t['totale'][1],
+                'missili_lanciati': t.get('cat_crociera', [0, 0])[0] + t.get('cat_balistico', [0, 0])[0],
+                'droni_lanciati': t.get('cat_drone', [0, 0])[0],
+            }
         out.append(o)
     return out
 
@@ -328,6 +329,7 @@ def main():
                  'dell\'attacco (notte). Le cifre sono dichiarazioni di una delle parti. Dal 13/8/2026 l\'Aeronautica non pubblica '
                  'alcune cifre sui balistici: quei giorni sono in giorni_non_divulgati e i lanciati vanno letti come minimo. '
                  'Le righe regionali di soli Shahed/Geran già comprese nel comunicato nazionale sono tolte (' + str(scartate) + ' righe). '
+                 'Attenzione: fino a luglio 2025 gli abbattuti escludono i droni «persi in volo» per guerra elettronica (colonna not_reach_goal, circa 1.300-2.000 al mese nel 2025); da agosto 2025 il dato non è più separato, quindi il tasso di abbattimento salta da circa 50% a oltre 80% per un cambio di conteggio, non solo per una difesa migliore. '
                  'elementi = attacchi ucraini a raffinerie, depositi, porti, stazioni di pompaggio e basi aeree in Russia (punti).'),
         'gruppi': GRUPPI,
         'serie': s,

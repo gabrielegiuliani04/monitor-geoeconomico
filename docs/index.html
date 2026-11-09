@@ -252,6 +252,8 @@ button, input, select { font: inherit; color: inherit; }
 .trm-evt { margin: 0; font-size: 13px; } .trm-evt .mono { font-family: var(--f-mono); font-size: 11px; color: var(--ink-soft); }
 .trm-evd { margin: 2px 0 0; font-size: 12px; color: var(--ink-soft); } .trm-src { font-size: 11.5px; color: var(--water-ink); }
 .mkt-grp.old { color: var(--ink-faint); }
+.facts dd.wide { grid-column: 1 / -1; }
+.trm-sel { margin: 6px 0 8px; padding: 4px 8px; background: var(--control); border: 1px solid var(--line); border-radius: 4px; font-size: 13px; }
 .facts { grid-template-columns: fit-content(42%) minmax(0, 1fr); } .facts dt { overflow-wrap: anywhere; }
 #trm.card.wide { width: 500px; }
 .trm-st { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 7px 2px; cursor: pointer; }
@@ -438,7 +440,7 @@ button, input, select { font: inherit; color: inherit; }
           <div><h2>Terminale</h2></div>
           <button class="x" id="trm-close" type="button" aria-label="Chiudi il terminale">×</button>
         </div>
-        <div id="trm-tabs" role="group" aria-label="Sezione"><button class="chip" type="button" data-tab="prezzi">Prezzi e tassi</button><button class="chip" type="button" data-tab="agenda">Agenda</button><button class="chip" type="button" data-tab="stretti">Stretti</button></div>
+        <div id="trm-tabs" role="group" aria-label="Sezione"><button class="chip" type="button" data-tab="prezzi">Prezzi e tassi</button><button class="chip" type="button" data-tab="agenda">Agenda</button><button class="chip" type="button" data-tab="stretti">Stretti</button><button class="chip" type="button" data-tab="logistica">Noli e rischio</button><button class="chip" type="button" data-tab="scorte">Scorte</button><button class="chip" type="button" data-tab="paesi">Paesi</button></div>
         <p class="mkt-note" id="trm-note"></p>
         <div id="trm-body"></div>
       </aside>
@@ -1877,7 +1879,7 @@ function wire() {
 /* ---------- Strati aggiunti: infrastrutture, flussi, navi, terminale (prezzi, agenda, stretti) ---------- */
 const XF = { ferrovie: 'data/ferrovie.json', cavi: 'data/cavi.json', caviInc: 'data/cavi-incidenti.json', gnl: 'data/terminali-gnl.json', gasit: 'data/gas-italia.json',
   navi: 'data/navi.json', pw: 'data/portwatch.json', sd: 'data/stretti-dettaglio.json', prezzi: 'data/prezzi.json', cal: 'data/calendario.json',
-  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json' };
+  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json' };
 const X = { lines: {}, pts: {}, data: {} };
 const XLAYERS = {   // layer -> colour token, label
   xrail: ['rail', 'Ferrovie'], xcable: ['cable', 'Cavi sottomarini'], xpower: ['power', 'Rete elettrica'], xlng: ['lng', 'Terminali GNL'],
@@ -1926,6 +1928,7 @@ async function xLoad(opt) {
     if (D2.caviInc) xAddPoints('xcable', D2.caviInc.elementi, { style: () => ({ shape: 'x' }) });
   }
   if (D2.rete && D2.rete.elementi) xBuildLines('xpower', D2.rete.elementi, e => (e.hvdc === true || e.hvdc === 'sì' || e.hvdc === 'si') ? { key: 'dc', w: 1.4, dash: [5, 3], a: .9 } : { key: 'ac', w: .9, dash: null, a: .7 });
+  if (D2.ic && D2.ic.elementi) { const ic = D2.ic.elementi.filter(e => e.g && e.g.length); const keep = X.lines.xpower; xBuildLines('xpower', ic, () => ({ key: 'ic', w: 2.6, dash: null, a: 1 })); if (keep) { const n = X.lines.xpower; n.groups = keep.groups.concat(n.groups); n.list = keep.list.concat(n.list); n.x0 = Math.min(n.x0, keep.x0); n.y0 = Math.min(n.y0, keep.y0); n.x1 = Math.max(n.x1, keep.x1); n.y1 = Math.max(n.y1, keep.y1); } }
   if (D2.nucleare && D2.nucleare.elementi) xAddPoints('xnuke', D2.nucleare.elementi, { style: () => ({ shape: 'sq' }) });
   if (D2.gnl) xAddPoints('xlng', D2.gnl.elementi, { skip: e => e.stato !== 'operativo' && e.stato !== 'in-costruzione', style: e => ({ shape: e.categoria === 'gnl-liquefazione' ? 'up' : 'down', hollow: e.stato !== 'operativo', r: Math.min(7, 2.6 + Math.sqrt(num(e.capacita_operativa_mtpa) || 1) * .6) }) });
   if (D2.gasit) xAddPoints('xgas', D2.gasit.elementi, { style: () => ({ shape: 'dot', r: 5.5 }) });
@@ -2013,7 +2016,8 @@ function renderExtra(card, p) {
     fact('Paesi', d.paesi); fact('Stato', d.stato); fact('Data', d.data_evento); fact('Lunghezza', d.km ? itNum(+d.km) + ' km' : null); fact('Tracciato', d.tracciato);
     for (const v of (d.volumi || []).slice(0, 4)) fact(v.voce, [v.valore, v.unita, v.anno && '(' + v.anno + ')', v.trend].filter(Boolean).join(' '));
   } else {
-    for (const k of ['stato', 'tensione_kv', 'capacita_mw', 'operatore', 'paesi', 'anno']) fact(cap(k.replace(/_/g, ' ')), d[k]);
+    if (d.categoria === 'interconnessione-elettrica') { fact('Tipo', d.tipo); fact('Da – a', [d.da, d.a].filter(Boolean).join(' – ')); fact('Capacità', d.mw ? d.mw + ' MW' + (d.mw_progetto ? ' (progetto ' + d.mw_progetto + ' MW)' : '') : null); fact('Tensione', d.kv ? d.kv + ' kV' : null); fact('Lunghezza', d.km ? d.km + ' km' : null); fact('Stato', d.stato); fact('Anno', d.anno); fact('Paesi', d.paesi); fact('Tracciato', d.tracciato); }
+    else for (const k of ['stato', 'tensione_kv', 'hvdc', 'capacita_mw', 'mw_installati', 'mw_in_esercizio', 'operatore', 'paesi', 'anno']) fact(cap(k.replace(/_/g, ' ')), d[k]);
   }
   if (d.affidabilita) fact('Affidabilità', AFF_IT[d.affidabilita] || d.affidabilita);
   if (p.lat != null) fact('Posizione', fmtLL(p.lat, p.lon, 2) + (d.precisione_km ? ', ± ' + d.precisione_km + ' km' : ''));
@@ -2029,6 +2033,7 @@ function xStrait(s, fact, src) {                          // the strait card, wi
     const v = pw.var7_anno_pct || {}, sg = x => x == null ? '' : ' (' + (x > 0 ? '+' : '') + itNum(x) + '% su un anno)';
     fact('Navi al giorno', [el('b', null, itNum(pw.media7.n_total)), sg(v.n_total) + ', media 7 giorni al ' + dateLong(new Date(pw.ultima_data + 'T12:00:00')) + '. Un anno prima: ' + itNum(pw.media7_anno_prima.n_total) + '.']);
     fact('Petroliere al giorno', [el('b', null, itNum(pw.media7.n_tanker)), sg(v.n_tanker)]);
+    if (pw.serie && pw.serie.n_total) fact('Navi al giorno dal ' + pw.serie.n_total[0][0].slice(0, 4) + ', media settimanale', xWeekly(pw.serie.n_total), 'wide');
     src.appendChild(srcItem('IMF PortWatch, transiti giornalieri', pw.link, pw.data_fonte));
   }
   if (sd) {
@@ -2107,7 +2112,63 @@ function renderTerminal() {
       r.addEventListener('click', () => { const s = D.straits.find(o => (e.chiavi_stretti || []).includes(o.n)); if (s) { if (window.innerWidth <= 640) setPanel(false); pick(s, 5.6); } else flyTo(+e.lon, +e.lat, 5.6, true); });
       body.appendChild(r);
     }
+  } else if (trmTab === 'logistica' && (X.data.noli || X.data.gpr || PW)) {
+    $('trm-note').textContent = 'Noli dei container e delle rinfuse, rischio geopolitico e traffico nei porti italiani. Valori dalle pagine pubbliche, con la data di ciascuno.';
+    if (X.data.noli) { body.appendChild(el('h3', 'mkt-grp', 'Noli'));
+      for (const n of X.data.noli.elementi) { const r = el('a', 'trm-row'); if (n.link) { r.href = n.link; r.target = '_blank'; r.rel = 'noopener noreferrer'; } const sp = el('span', 'mkt-sp'), sv = xSpark(n.storico, 60); if (sv) sp.appendChild(sv);
+        r.append(el('span', 'nm', n.nome.replace(/\s*\(.*\)$/, '').replace('Freightos Baltic Index FBX', 'Freightos FBX').replace('Drewry World Container Index', 'Drewry WCI').replace('Shanghai Containerized Freight Index SCFI', 'SCFI Shanghai').replace('China Containerized Freight Index CCFI', 'CCFI Cina')), sp, el('span', 'mkt-v', itNumber(+n.valore)), xVar(n.var_pct != null ? +n.var_pct : null), el('span', 'mkt-d flat', n.data ? n.data.slice(5) : ''), el('span', 'mkt-d flat', ''));
+        r.title = (n.unita || '') + ' · ' + n.fonte; body.appendChild(r); } }
+    if (X.data.gpr) { const g = X.data.gpr.elementi.find(e => e.id === 'GPRD') || X.data.gpr.elementi[0]; body.appendChild(el('h3', 'mkt-grp', 'Rischio geopolitico (GPR, media 1985–2019 = 100)'));
+      const p1 = el('p', 'trm-evd'); p1.append(el('b', null, 'Media 30 giorni: ' + itNum(+g.media30)), ' (un anno prima ' + itNum(+g.media30_anno_prima) + '). Ultimo dato ' + g.data + ': ' + itNum(+g.ultimo) + '.'); body.appendChild(p1);
+      if (g.serie) body.appendChild(xWeekly(g.serie, 7, 'GPR, media settimanale')); }
+    if (PW) { body.appendChild(el('h3', 'mkt-grp', 'Porti italiani: navi in arrivo, media 7 giorni'));
+      for (const e of PW.elementi.filter(e => e.tipo !== 'chokepoint')) { const r = el('div', 'trm-row'), v = e.var7_anno_pct && e.var7_anno_pct.portcalls;
+        const sp = el('span', 'mkt-sp'), sv = e.serie && e.serie.portcalls ? xSpark(e.serie.portcalls, 120) : null; if (sv) sp.appendChild(sv);
+        r.append(el('span', 'nm', e.nome), sp, el('span', 'mkt-v', e.media7 && e.media7.portcalls != null ? itNum(e.media7.portcalls) : '—'), xVar(v != null ? v : null), el('span', 'mkt-d flat', 'su 1 anno'), el('span', 'mkt-d flat', '')); body.appendChild(r); } }
+  } else if (trmTab === 'scorte' && X.data.scorte) {
+    const S = X.data.scorte; $('trm-note').textContent = S.nota || '';
+    const grp = {}; for (const e of S.elementi) (grp[e.gruppo] = grp[e.gruppo] || []).push(e);
+    for (const g in grp) { body.appendChild(el('h3', 'mkt-grp', g));
+      for (const e of grp[g]) { const r = el('a', 'trm-row'); if (e.link) { r.href = e.link; r.target = '_blank'; r.rel = 'noopener noreferrer'; }
+        const sp = el('span', 'mkt-sp'), sv = xSpark(e.serie, 60); if (sv) sp.appendChild(sv); const u = e.ultimo || {};
+        const nm = e.nome.replace(/ – .*$/, '').replace(/\s*\(.*\)$/, '');
+        const ya = e.confronto && e.confronto.var_anno_pct != null ? +e.confronto.var_anno_pct : (u.var_anno_pct != null ? +u.var_anno_pct : null);
+        r.append(el('span', 'nm', nm), sp, el('span', 'mkt-v', u.valore != null ? itNumber(+u.valore) : '—'), xVar(ya), el('span', 'mkt-d flat', (u.data || '').slice(0, 7)), el('span', 'mkt-d flat', ''));
+        r.title = (e.unita || '') + ' · ' + e.fonte + (e.note ? ' · ' + e.note : ''); body.appendChild(r); } }
+  } else if (trmTab === 'paesi' && X.data.paesi) {
+    $('trm-note').textContent = 'Indicatori per paese: FMI (WEO ottobre 2026), Banca Mondiale, SIPRI, Eurostat, UN Comtrade, Energy Institute. Scegli un paese.';
+    const P2 = X.data.paesi.elementi.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'it')), sel2 = el('select', 'trm-sel');
+    for (const c of P2) { const o = el('option', null, c.nome); o.value = c.paese; sel2.appendChild(o); }
+    sel2.value = xPaese; body.appendChild(sel2); const box = el('div'); body.appendChild(box);
+    const show = iso => { xPaese = iso; box.textContent = ''; const c = P2.find(x => x.paese === iso); if (!c) return; const I = c.indicatori || {}, dl = el('dl', 'facts');
+      const f = (k, v) => { if (v == null || v === '') return; dl.append(el('dt', null, k), el('dd', null, v)); };
+      const val = (k, fmt) => { const o = I[k]; if (!o || o.valore == null) return null; return fmt(o.valore) + ' (' + o.anno + ')'; };
+      const big = v => v >= 1e12 ? itNum(v / 1e12) + ' mila mld $' : v >= 1e9 ? itNum(v / 1e9) + ' mld $' : itNum(v / 1e6) + ' mln $';
+      f('PIL', val('pil_usd', big)); f('Crescita', [val('crescita_pil', v => itNum(v) + '%'), val('crescita_pil_previsione', v => 'prev. ' + itNum(v) + '%')].filter(Boolean).join(' · '));
+      f('Inflazione', [val('inflazione', v => itNum(v) + '%'), val('inflazione_previsione', v => 'prev. ' + itNum(v) + '%')].filter(Boolean).join(' · '));
+      f('Debito pubblico', val('debito_pubblico_pil', v => itNum(v) + '% del PIL')); f('Partite correnti', val('partite_correnti_pil', v => itNum(v) + '% del PIL'));
+      f('Popolazione', val('popolazione', v => itNum(v / 1e6) + ' milioni')); f('Spesa militare', [val('spesa_militare_pil', v => itNum(v) + '% del PIL'), val('spesa_militare_usd', big)].filter(Boolean).join(' · '));
+      f('Dipendenza energetica', [val('dipendenza_energetica', v => 'totale ' + itNum(v) + '%'), val('dipendenza_gas', v => 'gas ' + itNum(v) + '%'), val('dipendenza_petrolio', v => 'petrolio ' + itNum(v) + '%')].filter(Boolean).join(' · '));
+      f('Petrolio e gas, produzione', [val('petrolio_produzione', v => 'petrolio ' + itNum(v) + ' TWh'), val('gas_produzione', v => 'gas ' + itNum(v) + ' TWh')].filter(Boolean).join(' · '));
+      const top = k => { const o = I[k]; return o && Array.isArray(o.valore) ? o.valore.slice(0, 5).map(x => x.nome + ' ' + itNum(x.quota_pct) + '%').join(', ') + ' (' + o.anno + ')' : null; };
+      f('Primi clienti', top('partner_export')); f('Primi fornitori', top('partner_import')); f('Fornitori di greggio', top('fornitori_greggio')); f('Fornitori di GNL', top('fornitori_gnl'));
+      const hz = k => { const o = I[k]; return o && o.valore ? itNum(o.valore.min_pct) + (o.valore.max_pct !== o.valore.min_pct ? '–' + itNum(o.valore.max_pct) : '') + '% (' + o.anno + ')' : null; };
+      f('Greggio dal Golfo Persico', hz('quota_greggio_golfo_persico')); f('GNL dal Golfo Persico', hz('quota_gnl_golfo_persico'));
+      box.appendChild(dl); if (c.buchi && c.buchi.length) box.appendChild(el('p', 'trm-evd', 'Dati mancanti: ' + c.buchi.join('; ')));
+      const lab = D.countries.find(x => x.n === c.nome); if (lab) { const b = el('button', 'chip', 'Vai sulla mappa'); b.type = 'button'; b.addEventListener('click', () => flyTo(lab.x, lab.y, 4.2, true)); box.appendChild(b); } };
+    sel2.addEventListener('change', () => show(sel2.value)); show(xPaese);
   } else body.appendChild(el('p', 'empty', 'Dati non disponibili.'));
+}
+let xPaese = 'IT';
+function xWeekly(serie, step = 7, label) {                 // a weekly-average line chart of a daily series, inline SVG
+  const pts = []; for (let i = 0; i + step <= serie.length; i += step) { const w2 = serie.slice(i, i + step).map(x => +x[1]); pts.push([serie[i][0], w2.reduce((a, b) => a + b, 0) / w2.length]); }
+  if (pts.length < 4) return '';
+  const W = 300, H = 70, lo = 0, hi = Math.max(...pts.map(p => p[1])) * 1.05, sv = svgEl('svg', { width: '100%', viewBox: `0 0 ${W} ${H + 14}`, role: 'img', 'aria-label': label || 'Andamento settimanale' });
+  const x = i => 2 + i * (W - 4) / (pts.length - 1), y = v => H - (v - lo) / (hi - lo || 1) * (H - 6);
+  sv.appendChild(svgEl('path', { d: pts.map((p, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(p[1]).toFixed(1)).join(''), fill: 'none', stroke: 'var(--accent)', 'stroke-width': 1.5 }));
+  let yr = '', lastX = -99; pts.forEach((p, i) => { const Y = p[0].slice(0, 4); if (Y !== yr) { yr = Y; if (x(i) - lastX < 30) return; lastX = x(i); sv.appendChild(svgEl('line', { x1: x(i), x2: x(i), y1: 0, y2: H, stroke: 'var(--line)' })); const t = svgEl('text', { x: x(i) + 2, y: H + 11, 'font-size': 9, fill: 'var(--ink-soft)' }); t.textContent = Y; sv.appendChild(t); } });
+  const t = svgEl('text', { x: W - 2, y: 9, 'font-size': 9, 'text-anchor': 'end', fill: 'var(--ink-soft)' }); t.textContent = 'max ' + itNum(Math.round(hi / 1.05)); sv.appendChild(t);
+  const box = el('div', 'trm-curve'); box.appendChild(sv); return box;
 }
 function xInitTerminal() {
   if (!X.data.prezzi && !X.data.cal && !X.data.sd) return;
