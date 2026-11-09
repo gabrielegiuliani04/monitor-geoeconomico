@@ -1,0 +1,69 @@
+# Rapporto agente RETI ELETTRICHE (2026-11-09)
+
+Script: `raccolta/elettricita/raccogli.py` (solo libreria standard, eseguito il 2026-11-09, circa 3 minuti, nessun errore).
+File prodotti: `docs/data/rete-elettrica.json` (0,91 MB), `docs/data/interconnessioni.json` (17 kB), `docs/data/nucleare.json` (103 kB).
+
+## Fonti provate
+
+| Fonte | Esito | Licenza | Uso |
+|---|---|---|---|
+| Overpass API (overpass-api.de, z./lz4., osm.jp, private.coffee, mail.ru) | **non funziona da qui**: connessione chiusa dal proxy o timeout | ODbL | nel codice, attivabile con `ELETTRICITA_OVERPASS=1` (riquadri da 10 gradi, pause di 5 s). Da provare su GitHub Actions |
+| Tessere vettoriali OpenInfraMap (`openinframap.org/tiles/{z}/{x}/{y}.pbf`, zoom 5) | **funziona**: 81 tessere, 9.747 tratti OSM ≥ 380 kV o HVDC | ODbL (© OpenStreetMap contributors, OpenInfraMap) | fonte principale della rete. Decoder MVT scritto a mano. Una richiesta al secondo |
+| PyPSA-Eur "Prebuilt Electricity Network" su Zenodo (v0.8, 2026-11-02, record 23896564) | **funziona** | ODbL | tracciati e MW dei collegamenti HVDC europei; riserva per la rete (solo Europa + UA) |
+| Global Energy Monitor, Global Nuclear Power Tracker (`gnpt_map_2026-08.geojson`, indirizzo letto da `config.js` della mappa pubblica) | **funziona** | CC BY 4.0 | nucleare.json |
+| IAEA PRIS | non usabile: il sito è ora un'app Angular/Power BI senza API pubblica; www.iaea.org risponde 403 | — | — |
+| Wikidata SPARQL | funziona, non necessario | CC0 | — |
+| Wikipedia (API) | 429 (limite di richieste); le pagine normali funzionano | CC BY-SA | coordinate di 6 stazioni di conversione |
+| Notizie (Al Jazeera, Moscow Times, ANS, DiXi Group, pv magazine) | funzionano via curl; Euronews, Pravda, report.az bloccati | citazione | fatti del rapporto e degli eventi di Zaporizhzhia |
+
+Nessuna chiave API richiesta.
+
+## Cosa contengono i file
+
+**rete-elettrica.json** — 2.367 elementi (tratti uniti per nome, tensione, HVDC, operatore, stato, cavo/aereo), circa 318.000 km di geometria semplificata, di cui 182 elementi HVDC (circa 25.800 km). Campi: `nome`, `tensione_kv`, `hvdc`, `operatore` (presente in 1.707 elementi su 2.367), `stato` (in esercizio / in costruzione: 77), `tipo` (linea aerea / cavo), `km_mappa`, `osm` (n. di tratti OSM uniti), `g` (parti di `[lon, lat]`, 3 decimali, Douglas-Peucker 0,012°). Tensioni principali: 400 kV (1.108 elementi), 380 kV (891), 500 kV (102), 750 kV (21: rete ex sovietica UA/RU/BY/HU/PL). Riquadro lon −25…65, lat 12…72.
+
+**interconnessioni.json** — 16 voci curate: SA.PE.I., MON.ITA, GRITA, Piemonte–Savoia, ELMED, Tyrrhenian Link (est e ovest), Estlink 1 e 2, NordBalt, LitPol, sincronizzazione dei Baltici, Ucraina/Moldova–ENTSO-E, Francia–Spagna (INELFE), Great Sea Interconnector, Egitto–Arabia Saudita. Per ognuna: `mw`, `kv`, `km`, `stato`, `anno`, `fonte`, `link`, `data_fonte`, `affidabilita`, `note`; `mw_pypsa` come controllo incrociato; `g` = tracciato OSM reale per 9 voci, retta schematica per LitPol, mancante per le opere non ancora in OSM (campo `tracciato` lo dichiara). Coordinate dei terminali solo da Wikipedia (stazioni di conversione) o da sottostazioni OSM trovate per nome (`terminali_fonte`).
+
+**nucleare.json** — 167 centrali (una per progetto GEM, unità cancellate escluse) in 29 paesi: 64 con unità in esercizio per 159.158 MW (Francia 65.690, Russia 29.795, Ucraina 7.835 di cui 0 a Zaporizhzhia, Spagna 7.408, Svezia 7.184, Regno Unito 6.534, Emirati 5.668). In costruzione tra gli altri Akkuyu (TR, 4.800 MW), El Dabaa (EG, 4.800), Russia 5.440, Bushehr-2 (IR, 1.057). Zaporizhzhia ha `stato_attuale`, `mw_installati` = 6.000, `mw_esercizio` = 0 e un elenco `eventi` datati con fonte.
+
+## Fatti attuali (con data e fonte)
+
+**Attacchi alla rete ucraina**
+1. 2026-02-07: "attacco massiccio" russo, colpite le centrali di Burshtyn e Dobrotvir nell'ovest; Kyiv chiede aiuto d'emergenza alla Polonia; blackout d'emergenza nella maggior parte delle regioni (AFP via [Daily Tribune](https://tribune.net.ph/2026/02/07/russia-attacks-ukraine-power-grid)). A febbraio 2026 sei attacchi su larga scala, deficit di potenza fino a 5–6 GW, import record di 1.262,8 GWh nel mese ([DiXi Group](https://dixigroup.org/en/the-last-month-of-winter-became-a-record-for-electricity-imports-to-ukraine/)).
+2. Notte del 2026-10-14: 39 missili balistici e 120 droni, 26 elementi della rete danneggiati, colpite tutte e tre le centrali termiche di Kyiv, circa 600.000 utenti senza corrente. 2026-10-16: oltre 15 impianti di generazione e trasmissione colpiti, 370.000 utenti al buio in Volinia ([DiXi Group, 21.10.2026](https://dixigroup.org/en/analytic/russian-war-against-ukraine-energy-dimension-dixi-group-alert-weekly-review-163/); [Al Jazeera, 17.10.2026](https://www.aljazeera.com/news/2026/10/17/russian-attacks-in-ukraine-kill-at-least-8-cut-power-to-1-million): oltre 1 milione di persone senza corrente).
+3. 2026-10-19 e 2026-10-23: oltre 550.000 e 500.000 utenti senza corrente; circa 60 attacchi mirati tra il 19 e il 21 ottobre; 2.147 attacchi al settore energetico dal 16 luglio ([DiXi Group, 28.10.2026](https://dixigroup.org/en/analytic/russian-war-against-ukraine-energy-dimension-dixi-group-alert-weekly-review-164/)).
+4. 2026-10-27, 30 e 31: nuovi attacchi su Kyiv e Dnipropetrovsk (oltre 350.000 utenti al buio nella regione di Dnipropetrovsk); perse tutte le linee 330 kV della sottostazione di Slavutych che alimenta il sito di Chornobyl. La Commissione d'inchiesta ONU qualifica gli attacchi alla rete come crimini di guerra e contro l'umanità ([DiXi Group, 05.11.2026](https://dixigroup.org/en/analytic/russian-war-against-ukraine-energy-dimension-dixi-group-alert-weekly-review-165/)).
+5. 2026-11-08: attacco notturno sulla regione di Dnipropetrovsk, oltre 600.000 persone senza elettricità secondo DTEK ([The Moscow Times](https://www.themoscowtimes.com/2026/11/08/zaporizhzhia-nuclear-plant-relying-on-generators-again-after-losing-internal-power-supply-a94202)).
+
+**Zaporizhzhia**
+6. Persa l'ultima linea esterna il 2026-08-20 (26ª volta secondo l'IAEA), circa 10 giorni di gasolio; ripristinata la linea 330 kV Ferosplavna-1 dopo il settimo cessate il fuoco locale mediato dall'IAEA ([ANS, 2026-09-09](https://www.ans.org/news/2026-09-09/article-8377/zaporizhzhia-restores-offsite-power-following-iaeabrokered-local-ceasefire/)). Il 2026-11-08 la centrale perde di nuovo l'alimentazione esterna (Ferosplavna disconnessa, causa ignota), gasolio per circa due settimane; la linea principale 750 kV Dniprovska è fuori servizio almeno dal 23 ottobre ([The Moscow Times / IAEA](https://www.themoscowtimes.com/2026/11/08/zaporizhzhia-nuclear-plant-relying-on-generators-again-after-losing-internal-power-supply-a94202)). Nessuna produzione dal settembre 2022.
+
+**Interconnessioni e blackout**
+7. Penisola iberica, 2025-04-28: tra le 12:32:00 e le 12:33:19 persi oltre 2,5 GW di generazione con tensioni sopra 435 kV, poi perdita di sincronismo con l'Europa; rapporto finale ENTSO-E (440 pagine, 20 marzo 2026): cause sistemiche nel controllo della tensione e della potenza reattiva, protezioni contro le sovratensioni tarate sotto i limiti, 22 raccomandazioni ([pv magazine, 2026-03-23](https://www.pv-magazine.com/2026/03/23/entso-e-report-finds-systemic-failures-behind-2025-iberian-blackout/)).
+8. Berlino, 2026-01-03: incendio doloso (rivendicato da estremisti di sinistra) su un ponte cavi sul Teltowkanal; circa 45.500 famiglie e 2.200 imprese senza corrente, ritorno completo previsto per l'8 gennaio; il blackout più lungo nella città dal dopoguerra ([Stromnetz Berlin](https://www.stromnetz.berlin/en/about-us/press/press-releases-2026/following-the-arson-attack-in-lichterfelde-power-supply-restored-to-more-households-and-businesses/)). Valutazione: la rete è anche un bersaglio di sabotaggio interno, non solo militare.
+9. Baltico: Estlink 2 (650 MW) tranciato il 2024-12-25 dall'ancora della Eagle S, tornato in servizio a giugno 2025 ([Helsinki Times](https://www.helsinkitimes.fi/finland/finland-news/domestic/27201-estlink-2-power-link-restored-after-six-month-outage.html)); Baltici staccati dal sistema russo l'8 e sincronizzati con l'Europa il 2025-02-09 ([ENTSO-E](https://www.entsoe.eu/news/2025/02/09/entso-e-confirms-successful-synchronization-of-the-continental-european-electricity-system-with-the-systems-of-the-baltic-countries/)).
+10. Mediterraneo: ELMED Italia–Tunisia (600 MW, 220 km) con contratto da 770 milioni a Hitachi Energy per le stazioni di Partanna e Mlaabi, investimento totale 1.420 milioni, 307 dall'UE ([Hitachi Energy, 2026-06-24](https://www.hitachienergy.com/news-and-events/press-releases/2026/06/terna-steg-and-hitachi-energy-770-million-contract-for-elmed-converter-stations-the-first-direct-current-interconnection-between-europe-and-north-africa)). Great Sea Interconnector Grecia–Cipro fermo: Nexans prevede di riprendere la produzione forse nel 2028 ([Cyprus Mail, 2026-10-24](https://cyprus-mail.com/2026/10/24/nexans-prepares-for-possible-gsi-restart-in-2028-as-uncertainty-persists)).
+
+## Legami con prezzi e data center
+
+- **Prezzi in Ucraina**: tetto dei prezzi spot alzato a 15.000 UAH/MWh (circa 300 €) per attirare import (febbraio 2026); limite d'importazione dall'UE 2,45 GW da gennaio 2026 ([DiXi Group](https://dixigroup.org/en/the-last-month-of-winter-became-a-record-for-electricity-imports-to-ukraine/)). Indice BCM base del primo decennio di novembre 2026: 5.286,2 UAH/MWh (+4,6%), indice mensile RDD 7.000 UAH/MWh (+15%) ([DiXi, 05.11.2026](https://dixigroup.org/en/analytic/russian-war-against-ukraine-energy-dimension-dixi-group-alert-weekly-review-165/)). Valutazione: ogni ondata di attacchi aumenta l'import dai vicini (PL, SK, HU, RO) e spinge i prezzi dell'Europa centro-orientale nelle ore di punta.
+- **Italia**: le interconnessioni (Francia, Svizzera, Montenegro, Grecia, poi Tunisia) servono a importare elettricità più economica; il prezzo elettrico italiano segue il gas (vedi `mercati.json`, gruppo energia). Non ho trovato un dato ufficiale GME di ottobre 2026 coerente tra le fonti: lo lascio mancante.
+- **Data center**: le richieste di connessione di data center alla rete Terna superano i 100 GW (quasi 600 iniziative, ad di Terna, 14 ottobre 2026, [Teleborsa](https://www.borsaitaliana.it/borsa/notizie/teleborsa/finanza/terna-monti-oltre-100-gw-di-richieste-di-connessione-per-data-center-107_2026-10-14_TLB.html?lang=it)) cioè più del picco di domanda elettrica italiano (valutazione: dato del picco non raccolto qui); secondo la stampa la Lombardia concentra circa metà delle richieste. Gran parte è speculativa, ma la rete a 380 kV del Nord (vedi `rete-elettrica.json`) e i nuovi collegamenti HVDC sono il collo di bottiglia. Il dossier AI (`ai.json`) oggi copre solo gli Stati Uniti: quando arriveranno i dossier europei e del Golfo, conviene incrociare i siti con le sottostazioni a 380/400 kV più vicine e con le centrali nucleari (es. Barakah negli Emirati, 5.668 MW in esercizio: valutazione, è la fonte di base più vicina ai progetti AI di Abu Dhabi).
+
+## Collegamenti con gli altri livelli della mappa
+- **Cavi e condotte sottomarine** (`condotte.json`, livello cavi): stessi corridoi e stesso rischio di ancore (Baltico: Estlink 2, Balticconnector; Canale di Sicilia: ELMED accanto a Transmed/Greenstream).
+- **Stretti**: Canale di Sicilia (ELMED, Tyrrhenian Link), Mar Rosso (Egitto–Arabia Saudita, attraversamento sottomarino), Golfo di Finlandia.
+- **Fronte ucraino** (`fronte.json`): Zaporizhzhia e la linea 750 kV Dniprovska sono sulla linea del fronte; gli attacchi del giorno possono essere legati alle sottostazioni della rete.
+- **Eventi** (`eventi.json`): blackout e attacchi come eventi datati; collegare a interconnessioni e centrali per "chi è esposto".
+
+## Proposta per la mappa
+- Rete: linee sottili grigie per 380–420 kV, più spesse per 500–750 kV; HVDC in colore distinto (es. viola) e tratteggio per `stato = in costruzione`. Visibile da zoom medio; a zoom basso solo HVDC e ≥ 500 kV.
+- Interconnessioni: linea spessa con etichetta MW; colore per stato (esercizio / costruzione / rinviato); retta tratteggiata quando `tracciato` è schematico. Le voci senza coordinate (Ucraina–ENTSO-E, GSI) vanno nel pannello laterale.
+- Nucleare: cerchi proporzionali a `mw_totale_attivo`, colore per stato; Zaporizhzhia sempre visibile con icona di allerta e la cronologia `eventi` nel dettaglio.
+
+## Limiti
+- Overpass non raggiungibile da questo ambiente: la rete viene dalle tessere OpenInfraMap a zoom 5, già generalizzate; alcuni tratti brevi possono mancare (confronto: zoom 5 dà circa l'8% di linee in più dello zoom 4 nella stessa area). Le tessere OpenInfraMap sono un servizio gratuito: lo script fa 81 richieste con pausa di 1 s.
+- La copertura OSM della Russia, dell'Iran e di parte del Nord Africa è più scarsa di quella europea: assenza di una linea in mappa non vuol dire assenza della linea.
+- `paese` non è assegnato alle linee (le tessere non lo riportano). L'operatore manca in circa il 28% degli elementi.
+- Interconnessioni: schede curate a mano, da aggiornare quando cambia lo stato (Tyrrhenian Link est atteso nel 2026, nessuna conferma di entrata in esercizio trovata; Egitto–Arabia Saudita: fase di prova a febbraio 2026, esercizio commerciale non confermato). Le pagine Terna dei progetti MON.ITA e Piemonte–Savoia si caricano via JavaScript e non ho potuto rileggerle: MW e date sono quelli noti di progetto (affidabilità media).
+- Nucleare: il file GEM è di agosto 2026; GEM segna "operating" anche unità ferme per guerra (corretto a mano solo per Zaporizhzhia). Gli eventi di Zaporizhzhia sono scritti nello script e vanno aggiornati a mano; un ripristino della linea Ferosplavna nella stessa giornata dell'8 novembre è riportato da alcune fonti ma non l'ho verificato.

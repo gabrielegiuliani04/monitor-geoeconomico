@@ -154,6 +154,35 @@ def png_rgb(r, path, scala=3, tanks=None, box=None):
     return os.path.getsize(path)
 
 
+def naip_demo(bounds_utm, crs_utm, path):
+    """Ritaglio NAIP 2023 (30 cm, USDA, pubblico dominio) dallo STAC di Microsoft
+    Planetary Computer: token SAS anonimo, nessun account. Una sola data: serve a
+    vedere come appaiono le ombre interne ad alta risoluzione, non per la serie."""
+    import json
+    from rasterio.warp import transform_bounds
+    cl = Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
+    cx, cy = (bounds_utm[0] + bounds_utm[2]) / 2, (bounds_utm[1] + bounds_utm[3]) / 2
+    lon, lat = transform(crs_utm, "EPSG:4326", [cx], [cy])
+    its = [i for i in cl.search(collections=["naip"], datetime="2023-01-01/2023-12-31",
+                                intersects={"type": "Point", "coordinates": [lon[0], lat[0]]}).items()]
+    if not its:
+        print("NAIP: nessuna scena")
+        return
+    tok = json.load(urllib.request.urlopen(
+        "https://planetarycomputer.microsoft.com/api/sas/v1/token/naip", timeout=30))["token"]
+    href = its[0].assets["image"].href + "?" + tok
+    with rasterio.open(href) as src:
+        b = transform_bounds(crs_utm, src.crs, *bounds_utm)
+        w = from_bounds(*b, src.transform)
+        larg = int(round(bounds_utm[2] - bounds_utm[0]))   # 1 pixel = ~1 m in uscita
+        alt = int(round(bounds_utm[3] - bounds_utm[1]))
+        a = src.read([1, 2, 3], window=w, out_shape=(3, alt, larg),
+                     resampling=rasterio.enums.Resampling.average)
+    im = Image.fromarray(np.moveaxis(a, 0, -1).astype("uint8"))
+    im.quantize(colors=128, method=Image.Quantize.MEDIANCUT).save(path, optimize=True)
+    print(os.path.basename(path), its[0].id, os.path.getsize(path), "byte")
+
+
 def main():
     items = scene()
     print(f"scene trovate (tile {TILE}, nuvole<5%): {len(items)}")
@@ -161,6 +190,7 @@ def main():
     tmp = cl.get_collection(COLL).get_item(items[0].id)
     with rasterio.open(tmp.assets["red"].href) as src:
         xs, ys = transform("EPSG:4326", src.crs, [CENTRO[0]], [CENTRO[1]])
+        crs = src.crs
     x, y = xs[0], ys[0]
     bounds = (x - MEZZO_LATO, y - MEZZO_LATO, x + MEZZO_LATO, y + MEZZO_LATO)
 
@@ -248,6 +278,17 @@ def main():
     for d in dict.fromkeys(scelte):
         fn = f"zoom_{d}.png"
         print(fn, png_rgb(per_data[d], os.path.join(OUT, fn), scala=4, box=zoom), "byte")
+
+    # stessa zona dei primi serbatoi dello zoom, vista da NAIP a 1 m
+    y0, y1, x0, x1 = zoom
+    nb = (bounds[0] + x0 * 10, bounds[3] - (y0 + 85) * 10, bounds[0] + (x0 + 80) * 10, bounds[3] - (y0 + 45) * 10)
+    try:
+        naip_demo(nb, crs, os.path.join(OUT, "naip_2023_1m.png"))
+        png_rgb(per_data[df.loc[df["elev_sole"].idxmin(), "data"]], os.path.join(OUT, "s2_stessa_zona.png"),
+                scala=10, box=(y0 + 45, y0 + 85, x0, x0 + 80))
+        print("s2_stessa_zona.png", os.path.getsize(os.path.join(OUT, "s2_stessa_zona.png")), "byte")
+    except Exception as e:
+        print("NAIP non disponibile:", e)
 
     import matplotlib
     matplotlib.use("Agg")

@@ -233,6 +233,34 @@ button, input, select { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) { .panel-head::after, .sec > summary::after { transition: none; } }
 </style>
 
+
+<style>
+:root { --rail: #6E5A44; --cable: #0B7F8C; --power: #C27C0E; --lng: #7A55B5; --gasit: #2F6FB0; --sanz: #C0262D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; } }
+:root[data-theme="dark"] { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; }
+#trm-tabs { display: flex; gap: 6px; margin: 8px 0 4px; flex-wrap: wrap; }
+.trm-row { display: grid; grid-template-columns: minmax(0, 1.5fr) 64px minmax(64px, auto) 56px 56px 62px; gap: 6px; align-items: center; padding: 3px 0; font-size: 12.5px; color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
+.trm-row:hover { background: var(--control-hover); }
+.trm-row .nm { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trm-row .mkt-v, .trm-row .mkt-d { font-family: var(--f-mono); font-size: 11.5px; text-align: right; white-space: nowrap; }
+.trm-hd { font-size: 10.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .05em; border-bottom: 0; }
+.trm-hd span { text-align: right; } .trm-hd .nm { text-align: left; }
+.mkt-d.up { color: var(--ally); } .mkt-d.down { color: var(--error); } .mkt-d.flat { color: var(--ink-soft); }
+.trm-curve svg { width: 100%; height: auto; display: block; }
+.trm-lg { margin: 2px 0 8px; font-size: 11.5px; color: var(--ink-soft); } .trm-lg .k1 { color: var(--accent); font-weight: 600; }
+.trm-ev { padding: 5px 0 6px 9px; border-left: 2px solid var(--line); margin: 0 0 4px; } .trm-ev.hi { border-left-color: var(--accent); }
+.trm-evt { margin: 0; font-size: 13px; } .trm-evt .mono { font-family: var(--f-mono); font-size: 11px; color: var(--ink-soft); }
+.trm-evd { margin: 2px 0 0; font-size: 12px; color: var(--ink-soft); } .trm-src { font-size: 11.5px; color: var(--water-ink); }
+.mkt-grp.old { color: var(--ink-faint); }
+.facts { grid-template-columns: fit-content(42%) minmax(0, 1fr); } .facts dt { overflow-wrap: anywhere; }
+#trm.card.wide { width: 500px; }
+.trm-st { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 7px 2px; cursor: pointer; }
+.trm-st:hover { background: var(--control-hover); } .trm-lv { color: var(--error); font-weight: 500; }
+@media (max-width: 640px) {
+  .bl .credit { display: none; } .bl .credit:first-of-type { display: block; }
+  .bl { padding: 5px 7px; } .trm-row { grid-template-columns: minmax(0, 1.3fr) 48px auto 50px 50px; } .trm-row > :last-child { display: none; }
+}
+</style>
 <div class="app">
   <header class="bar">
     <div class="bar-in">
@@ -240,6 +268,7 @@ button, input, select { font: inherit; color: inherit; }
       <div class="views" id="views" role="group" aria-label="Vai a una vista"></div>
       <button class="chip news-btn" id="news-btn" type="button" aria-expanded="false" aria-controls="news" hidden>News<span id="news-btn-date"></span></button>
       <button class="chip news-btn" id="mkt-btn" type="button" aria-expanded="false" aria-controls="mkt" hidden>Mercati<span id="mkt-btn-date"></span></button>
+      <button class="chip news-btn" id="trm-btn" type="button" aria-expanded="false" aria-controls="trm" hidden>Terminale</button>
       <button class="chip news-btn" id="dos-btn" type="button" aria-expanded="false" aria-controls="dos" hidden>Dossier<span id="dos-btn-n"></span></button>
       <form class="goto" id="goto" novalidate>
         <label for="goto-input">Vai a coordinate</label>
@@ -318,6 +347,24 @@ button, input, select { font: inherit; color: inherit; }
               <p class="hint">Le grandi rotte commerciali del mondo, da una carta della CIA. Spente all’apertura</p></li>
           </ul>
 
+          <h2 class="sub" id="x-h" hidden>Infrastrutture e flussi</h2>
+          <ul class="layers" id="x-ul" hidden>
+            <li id="li-xrail" hidden><label><input type="checkbox" id="lyr-xrail" data-layer="xrail">
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--rail)" stroke-width="2.4"/></svg></span>Ferrovie<span class="cnt" id="n-xrail"></span></label><p class="hint">Linee principali; tratteggio spesso: corridoi strategici; croci: sabotaggi e attacchi</p></li>
+            <li id="li-xcable" hidden><label><input type="checkbox" id="lyr-xcable" data-layer="xcable">
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--cable)" stroke-width="2.4"/></svg></span>Cavi sottomarini<span class="cnt" id="n-xcable"></span></label><p class="hint">713 cavi (TeleGeography); croci: incidenti 2023–2026</p></li>
+            <li id="li-xpower" hidden><label><input type="checkbox" id="lyr-xpower" data-layer="xpower">
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--power)" stroke-width="2.4"/></svg></span>Rete elettrica<span class="cnt" id="n-xpower"></span></label><p class="hint">Altissima tensione; tratteggio: HVDC</p></li>
+            <li id="li-xnuke" hidden><label><input type="checkbox" id="lyr-xnuke" data-layer="xnuke">
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--power)" stroke-width="2.4"/></svg></span>Centrali nucleari<span class="cnt" id="n-xnuke"></span></label></li>
+            <li id="li-xlng" hidden><label><input type="checkbox" id="lyr-xlng" data-layer="xlng">
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--lng)" stroke-width="2.4"/></svg></span>Terminali GNL<span class="cnt" id="n-xlng"></span></label><p class="hint">Triangolo in su: export; in giù: import; vuoto: in costruzione</p></li>
+            <li id="li-xgas" hidden><label><input type="checkbox" id="lyr-xgas" data-layer="xgas" checked>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--gasit)" stroke-width="2.4"/></svg></span>Gas in Italia<span class="cnt" id="n-xgas"></span></label><p class="hint">Punti di ingresso con i flussi giornalieri ENTSOG</p></li>
+            <li id="li-xnavi" hidden><label><input type="checkbox" id="lyr-xnavi" data-layer="xnavi" checked>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--sanz)" stroke-width="2.4"/></svg></span>Navi (AIS)<span class="cnt" id="n-xnavi"></span></label><p class="hint">Rosso: sanzionata. Oggi copre il Golfo di Finlandia</p></li>
+          </ul>
+
           <details class="sec" id="sec-legend">
             <summary>Legenda</summary>
             <div class="legend" id="legend"></div>
@@ -386,6 +433,16 @@ button, input, select { font: inherit; color: inherit; }
         <div id="mkt-body"></div>
       </aside>
 
+      <aside class="card wide" id="trm" hidden aria-label="Terminale: prezzi, agenda, stretti">
+        <div class="card-head">
+          <div><h2>Terminale</h2></div>
+          <button class="x" id="trm-close" type="button" aria-label="Chiudi il terminale">×</button>
+        </div>
+        <div id="trm-tabs" role="group" aria-label="Sezione"><button class="chip" type="button" data-tab="prezzi">Prezzi e tassi</button><button class="chip" type="button" data-tab="agenda">Agenda</button><button class="chip" type="button" data-tab="stretti">Stretti</button></div>
+        <p class="mkt-note" id="trm-note"></p>
+        <div id="trm-body"></div>
+      </aside>
+
       <aside class="card wide" id="dos" hidden aria-label="Dossier AI">
         <div class="card-head">
           <div><h2>Dossier AI</h2><p class="news-when"><span id="dos-date"></span><select id="dos-pick" aria-label="Scegli il dossier" hidden></select></p></div>
@@ -451,7 +508,7 @@ let VB = [], VP = [], LN = null, SB = null, RT = null, ST = null;   // SB: subma
 let FRONT = null, areasOn = false;                // Ukraine: areas of control; whether they are in view in this frame
 let evRange = 7, REPORTS = [], CTX = null, liveKey = '', MK = null, DOS = null;
 let setPanel = () => {};
-const L = { ships: true, air: true, events: true, hybrid: true, adv: true, front: false, bases: true, iran: true, ita: true, ad: true, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
+const L = { xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: true, air: true, events: true, hybrid: true, adv: true, front: false, bases: true, iran: true, ita: true, ad: true, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
 const TH = {};                                    // theater switches, filled from the data
 const C = {}, FF = {};
 const TODAY = new Date(); TODAY.setHours(12, 0, 0, 0);
@@ -462,6 +519,7 @@ function readTheme() {
   Object.assign(C, { sea: g('sea'), land: g('land'), coast: g('coast'), border: g('border'), river: g('river'), ink: g('ink'), inkSoft: g('ink-soft'),
     inkFaint: g('ink-faint'), waterInk: g('water-ink'), accent: g('accent'), grat: g('grat'), haloLand: g('halo-land'), haloSea: g('halo-sea'),
     paper: g('control'), ally: g('ally'), partner: g('partner'), adv: g('adv'), rus: g('rus'), oth: g('oth'), contesa: g('contesa'), oil: g('oil'), gas: g('gas'), port: g('port'), route: g('route'), onSide: g('on-side'), ev: [g('ev0'), g('ev1'), g('ev2'), g('ev-old')] });
+  Object.assign(C, { rail: g('rail'), cable: g('cable'), power: g('power'), lng: g('lng'), gasit: g('gasit'), sanz: g('sanz') });
   C.evText = C.ev.map(c => lum(c) > .22 ? '#16100F' : '#FFFFFF');   // the count written on a bubble of that colour
   Object.assign(FF, { sans: g('f-sans'), cond: g('f-cond'), serif: g('f-serif'), mono: g('f-mono') });
 }
@@ -670,7 +728,7 @@ function refilter() {
   VS = take('nave'); VA = take('aereo'); VF = take('fronte'); VV = take('avanzata'); VB = all('base').filter(baseOn); VP = take('porto');
   VE = all('evento').filter(p => p.ib ? L.hybrid : L.events).sort((a, b) => (a.affidabilita === 'alta' ? 0 : 1) - (b.affidabilita === 'alta' ? 0 : 1) || a.age - b.age);   // drawing priority: confirmed first, then the freshest
   VIS = new Set([...VS, ...VA, ...VE, ...VF, ...VV, ...VB, ...VP]);
-  if (picked && (picked.kind === 'linea' ? !(picked.sea ? L.subsea : L[picked.cat === 'o' ? 'oil' : 'gas'] && TH.MO !== false) : picked.kind === 'rotta' ? !L.routes : picked.kind === 'stretto' ? false : !VIS.has(picked))) { picked = null; renderCard(); }
+  if (picked && (picked.kind === 'linea' ? !(picked.sea ? L.subsea : L[picked.cat === 'o' ? 'oil' : 'gas'] && TH.MO !== false) : picked.kind === 'rotta' ? !L.routes : picked.kind === 'stretto' ? false : picked.kind === 'extra' ? !L[picked.layer] : !VIS.has(picked))) { picked = null; renderCard(); }
   for (const [id, kind] of [['n-ships', 'nave'], ['n-air', 'aereo'], ['n-front', 'fronte'], ['n-adv', 'avanzata'], ['n-ports', 'porto']]) $(id).textContent = all(kind).length;
   $('n-events').textContent = all('evento').filter(p => !p.ib).length; $('n-hyb').textContent = all('evento').filter(p => p.ib).length;
   $('n-bases').textContent = all('base').filter(p => !p.ir && !p.ita && !p.ad && !p.ai).length; $('n-ai').textContent = all('base').filter(p => p.ai).length; $('n-ita').textContent = all('base').filter(p => p.ita && !p.ad).length; $('n-ad').textContent = all('base').filter(p => p.ad).length; if (RT) $('n-routes').textContent = RT.items.length; if (SB) $('n-subsea').textContent = SB.items.length; $('n-iran').textContent = all('base').filter(p => p.ir && !p.ad).length;
@@ -822,7 +880,7 @@ function buildLists() {
 function pick(p, zMin) {                                 // open a point's card; zMin != null also flies to it
   picked = p || null; renderCard();
   document.querySelectorAll('.pt-row').forEach(r => r.setAttribute('aria-current', String(!!picked && r.dataset.id === picked.id)));
-  if (picked && ready && picked.kind !== 'linea' && picked.kind !== 'rotta') {      // on a phone the card covers the lower chart: aim for the part left free
+  if (picked && ready && picked.kind !== 'linea' && picked.kind !== 'rotta' && !(picked.kind === 'extra' && picked.path)) {      // on a phone the card covers the lower chart: aim for the part left free
     const narrow = window.innerWidth <= 640, top = narrow ? $('card').getBoundingClientRect().top - stage.getBoundingClientRect().top : h;
     const cy = narrow ? Math.max(50, top / 2) : h / 2;
     if (zMin != null) flyTo(picked.slon, picked.slat, zMin, true, w / 2, cy);
@@ -842,6 +900,7 @@ function renderCard() {
   if (picked.kind === 'linea') { renderLine(card, picked); return; }
   if (picked.kind === 'rotta') { renderRoute(card, picked); return; }
   if (picked.kind === 'stretto') { renderStrait(card, picked); return; }
+  if (picked.kind === 'extra') { renderExtra(card, picked); return; }
   const p = picked, ev = p.classe === 'evento';
   $('cd-kind').textContent = (ev ? ['Evento', CAT_IT[p.categoria] || p.categoria, TNAME[p.teatro]] : [kindName(p), p.dettaglio, PAESI[p.appartenenza] || p.appartenenza]).filter(Boolean).join(' · ');
   $('cd-name').textContent = p.nome + (p.identificativo ? ' (' + p.identificativo + ')' : '');
@@ -923,7 +982,7 @@ function renderNews(i) {
     else { ul = null; const p = el('p'); inline(p, t); body.appendChild(p); }
   }
 }
-const SIDES = ['news', 'mkt', 'dos'];                 // the cards on the right besides a point's: one at a time
+const SIDES = ['news', 'mkt', 'dos', 'trm'];                 // the cards on the right besides a point's: one at a time
 function showSide(id, open) {
   if (open && picked) { picked = null; renderCard(); schedule(); }
   if (open) for (const o of SIDES) if (o !== id) { $(o).hidden = true; $(o + '-btn').setAttribute('aria-expanded', 'false'); }
@@ -1217,16 +1276,18 @@ function renderStrait(card, s) {
   const cs = $('cd-sil'); cs.textContent = ''; const dm = svgEl('svg', { width: 26, height: 26, 'aria-hidden': 'true' }); dm.appendChild(svgEl('path', { d: 'M13 2 24 13 13 24 2 13Z', fill: 'var(--accent)' })); cs.appendChild(dm);
   const facts = $('cd-facts'); facts.textContent = '';
   const fact = (k, v, cls) => { const dd = el('dd', cls); dd.append(...[].concat(v)); facts.append(el('dt', null, k), dd); };
+  const xsrc = el('ul'), xsint = xStrait(s, fact, xsrc);
   if (!d) fact('Quote mondiali', 'Dati non caricati.');
   else if (!d.voci.length) fact('Quote mondiali', d.vuoto || 'Nessun dato.');
   else for (const x of d.voci) fact(x.voce, [el('b', null, x.quota), '. ' + cap(x.valore) + '. ', el('span', 'muted', 'Dato: ' + x.anno + (x.nota ? '. ' + x.nota : ''))]);
   for (const o of (d && d.oggi) || []) fact('Più recente', o.testo);
   fact('Posizione', [el('span', 'mono', fmtLL(s.y, s.x, 2)), ', indicativa: il centro del passaggio']);
-  $('cd-info').textContent = ST ? ST.nota : '';
+  $('cd-info').textContent = xsint || (ST ? ST.nota : '');
   const mt = $('cd-mates'); mt.textContent = '';
   if (RT && !L.routes) { const b = el('button', 'chip', 'Mostra le rotte marittime'); b.type = 'button'; b.addEventListener('click', () => { L.routes = true; $('lyr-routes').checked = true; refilter(); b.remove(); }); const box = el('div', 'mates'); box.appendChild(b); mt.appendChild(box); }
   const src = $('cd-src'); src.textContent = ''; const seen = new Set();
   for (const x of [...((d && d.voci) || []), ...((d && d.oggi) || [])]) { if (seen.has(x.link)) continue; seen.add(x.link); src.appendChild(srcItem(x.fonte, x.link, x.data_fonte)); }
+  src.append(...xsrc.children);
   card.hidden = false; card.scrollTop = 0;
 }
 
@@ -1285,12 +1346,14 @@ function draw() {
     drawSet(t, k); ctx.restore();
   }
   if (SB && L.subsea && SB.x1 > vx0 && SB.x0 < vx1 && SB.y1 > vy0 && SB.y0 < vy1) drawLines(k, z, SB);
+  xDrawLines(k, z, vx0, vy0, vx1, vy1);
   if (RT && L.routes && RT.x1 > vx0 && RT.x0 < vx1 && RT.y1 > vy0 && RT.y0 < vy1) drawRoutes(k, z);
   if (LN && TH.MO !== false && (L.oil || L.gas) && LN.x1 > vx0 && LN.x0 < vx1 && LN.y1 > vy0 && LN.y0 < vy1) drawLines(k, z);
   ctx.restore();
 
   if (L.grat) drawGraticule(z, vx0, vy0, vx1, vy1);
   drawLabels(z);
+  xDrawPoints(z);
   if (!pointer && coarse) {           // touch: mark the centre the read-out refers to
     const cx = Math.round(w / 2) + .5, cy = Math.round(h / 2) + .5;
     ctx.strokeStyle = C.ink; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(cx - 7, cy); ctx.lineTo(cx + 7, cy); ctx.moveTo(cx, cy - 7); ctx.lineTo(cx, cy + 7); ctx.stroke();
@@ -1764,7 +1827,7 @@ function wire() {
     if (!d || !ready || Math.hypot(ev.clientX - d.x, ev.clientY - d.y) > 6 || ev.timeStamp - d.t > 600) return;
     const r = canvas.getBoundingClientRect(), o = hitAt(ev.clientX - r.left, ev.clientY - r.top);
     if (o && o.cl) { openCluster(o.cl); return; }
-    const ln = o ? null : lineAt(ev.clientX - r.left, ev.clientY - r.top) || routeAt(ev.clientX - r.left, ev.clientY - r.top);   // nothing under the finger: maybe a pipeline, then a route
+    const ln = o ? null : lineAt(ev.clientX - r.left, ev.clientY - r.top) || xLineAt(ev.clientX - r.left, ev.clientY - r.top) || routeAt(ev.clientX - r.left, ev.clientY - r.top);   // nothing under the finger: maybe a pipeline, then a route
     if (o || ln || picked) pick(o ? o.p : ln, null);
   });
   $('cd-close').addEventListener('click', () => pick(null, null));
@@ -1792,7 +1855,7 @@ function wire() {
   document.querySelectorAll('input[data-layer]').forEach(cb => {
     const id = cb.dataset.layer;
     if (saved && typeof saved[id] === 'boolean' && id !== 'front' && id !== 'routes' && id !== 'subsea' && id !== 'ai') { L[id] = saved[id]; cb.checked = saved[id]; }   // the front and the routes always start switched off
-    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai'].includes(id)) refilter(); else schedule(); });
+    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi'].includes(id)) refilter(); else schedule(); });
   });
 
   const input = $('goto-input'), msg = $('goto-msg');
@@ -1809,6 +1872,249 @@ function wire() {
 
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { readTheme(); schedule(); });
   new MutationObserver(() => { readTheme(); schedule(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class', 'style'] });
+}
+
+/* ---------- Strati aggiunti: infrastrutture, flussi, navi, terminale (prezzi, agenda, stretti) ---------- */
+const XF = { ferrovie: 'data/ferrovie.json', cavi: 'data/cavi.json', caviInc: 'data/cavi-incidenti.json', gnl: 'data/terminali-gnl.json', gasit: 'data/gas-italia.json',
+  navi: 'data/navi.json', pw: 'data/portwatch.json', sd: 'data/stretti-dettaglio.json', prezzi: 'data/prezzi.json', cal: 'data/calendario.json',
+  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json' };
+const X = { lines: {}, pts: {}, data: {} };
+const XLAYERS = {   // layer -> colour token, label
+  xrail: ['rail', 'Ferrovie'], xcable: ['cable', 'Cavi sottomarini'], xpower: ['power', 'Rete elettrica'], xlng: ['lng', 'Terminali GNL'],
+  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'] };
+const num = v => (v == null || v === '' ? null : +v);
+const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare' };
+
+function xBuildLines(layer, items, styleOf) {           // items with g = parts of [lon, lat]
+  const groups = {}; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; const list = [];
+  for (const it of items) {
+    if (!it.g || !it.g.length) continue;
+    const st = styleOf(it), key = st.key, P = groups[key] || (groups[key] = { path: new Path2D(), st }), path = new Path2D(), parts = [], bb = [1e9, 1e9, -1e9, -1e9];
+    const partsIn = Array.isArray(it.g[0][0]) ? it.g : [it.g];
+    for (const part of partsIn) {
+      const a = new Float64Array(part.length * 2);
+      part.forEach(([lon, lat], j) => { const x = bx(lon), y = by(lat); a[2 * j] = x; a[2 * j + 1] = y; if (j) { path.lineTo(x, y); P.path.lineTo(x, y); } else { path.moveTo(x, y); P.path.moveTo(x, y); }
+        if (x < bb[0]) bb[0] = x; if (y < bb[1]) bb[1] = y; if (x > bb[2]) bb[2] = x; if (y > bb[3]) bb[3] = y; });
+      parts.push(a);
+    }
+    x0 = Math.min(x0, bb[0]); y0 = Math.min(y0, bb[1]); x1 = Math.max(x1, bb[2]); y1 = Math.max(y1, bb[3]);
+    list.push({ kind: 'extra', layer, id: layer + '-' + (it.id || list.length), d: it, parts, bb, path, label: it.nome || XFAM[layer] });
+  }
+  X.lines[layer] = { groups: Object.values(groups), list, x0, y0, x1, y1 };
+}
+function xAddPoints(layer, items, opt = {}) {
+  const out = [];
+  for (const it of items || []) {
+    const lat = num(it.lat), lon = num(it.lon); if (lat == null || lon == null || isNaN(lat) || isNaN(lon)) continue;
+    if (opt.skip && opt.skip(it)) continue;
+    out.push({ kind: 'extra', layer, id: layer + '-' + (it.id || it.mmsi || it.gem_id || out.length), d: it, lat, lon, slat: lat, slon: lon, bx: bx(lon), by: by(lat), label: it.nome || XFAM[layer], st: opt.style ? opt.style(it) : {} });
+  }
+  X.pts[layer] = (X.pts[layer] || []).concat(out);
+}
+
+async function xLoad(opt) {
+  const keys = Object.keys(XF), vals = await Promise.all(keys.map(k => opt(XF[k])));
+  keys.forEach((k, i) => { X.data[k] = vals[i]; });
+  const D2 = X.data;
+  if (D2.ferrovie) {
+    const el2 = D2.ferrovie.elementi || [];
+    xBuildLines('xrail', el2.filter(e => e.g), e => e.categoria === 'corridoio-strategico' ? { key: 'c', w: 2.2, dash: [6, 4], a: .95 } : { key: 'l', w: .8, dash: null, a: .7 });
+    xAddPoints('xrail', el2.filter(e => !e.g), { style: () => ({ shape: 'x' }) });
+  }
+  if (D2.cavi) {
+    xBuildLines('xcable', D2.cavi.elementi || [], e => e.stato === 'attivo' ? { key: 'a', w: .9, dash: null, a: .75 } : { key: 'p', w: .8, dash: [3, 3], a: .55 });
+    if (D2.caviInc) xAddPoints('xcable', D2.caviInc.elementi, { style: () => ({ shape: 'x' }) });
+  }
+  if (D2.rete && D2.rete.elementi) xBuildLines('xpower', D2.rete.elementi, e => (e.hvdc === true || e.hvdc === 'sì' || e.hvdc === 'si') ? { key: 'dc', w: 1.4, dash: [5, 3], a: .9 } : { key: 'ac', w: .9, dash: null, a: .7 });
+  if (D2.nucleare && D2.nucleare.elementi) xAddPoints('xnuke', D2.nucleare.elementi, { style: () => ({ shape: 'sq' }) });
+  if (D2.gnl) xAddPoints('xlng', D2.gnl.elementi, { skip: e => e.stato !== 'operativo' && e.stato !== 'in-costruzione', style: e => ({ shape: e.categoria === 'gnl-liquefazione' ? 'up' : 'down', hollow: e.stato !== 'operativo', r: Math.min(7, 2.6 + Math.sqrt(num(e.capacita_operativa_mtpa) || 1) * .6) }) });
+  if (D2.gasit) xAddPoints('xgas', D2.gasit.elementi, { style: () => ({ shape: 'dot', r: 5.5 }) });
+  if (D2.navi) xAddPoints('xnavi', D2.navi.elementi, { skip: e => !!e.avviso_posizione, style: e => ({ shape: 'ship', sanz: /^s[iì]/i.test(String(e.sanzionata || '')), hdg: num(e.rotta_gradi) }) });
+  for (const l in XLAYERS) { const li = $('li-' + l); if (li) li.hidden = !(X.lines[l] || X.pts[l]); const n = $('n-' + l); if (n) n.textContent = ((X.lines[l] ? X.lines[l].list.length : 0) + (X.pts[l] || []).length) || ''; }
+  $('x-h').hidden = $('x-ul').hidden = !Object.keys(XLAYERS).some(l => X.lines[l] || X.pts[l]);
+  xInitTerminal();
+  if (picked && picked.kind === 'stretto') renderCard();
+  schedule();
+}
+
+function xDrawLines(k, z, vx0, vy0, vx1, vy1) {        // in base units, under the pipelines
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const f = z < 4 ? 1 : z < 6 ? 1.3 : 1.6;
+  for (const l of ['xpower', 'xrail', 'xcable']) {
+    const S = X.lines[l]; if (!S || !L[l] || S.x1 < vx0 || S.x0 > vx1 || S.y1 < vy0 || S.y0 > vy1) continue;
+    ctx.strokeStyle = C[XLAYERS[l][0]];
+    for (const g of S.groups) { ctx.globalAlpha = g.st.a; ctx.lineWidth = g.st.w * f / k; ctx.setLineDash(g.st.dash ? g.st.dash.map(v => v / k) : []); ctx.stroke(g.path); }
+  }
+  ctx.globalAlpha = 1; ctx.setLineDash([]);
+  if (picked && picked.kind === 'extra' && picked.path) { ctx.strokeStyle = C.haloLand; ctx.lineWidth = 6 / k; ctx.stroke(picked.path); ctx.strokeStyle = C[XLAYERS[picked.layer][0]]; ctx.lineWidth = 2.6 / k; ctx.stroke(picked.path); }
+}
+function xDrawPoints(z) {                                 // in screen units, after the labels; they add themselves to the taps
+  for (const l of ['xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
+    const P = X.pts[l]; if (!P || !L[l]) continue;
+    if (l === 'xlng' && z < 3.2) continue;
+    const col = C[XLAYERS[l][0]];
+    for (const p of P) {
+      const x = T.applyX(p.bx), y = T.applyY(p.by); if (x < -10 || y < -10 || x > w + 10 || y > h + 10) continue;
+      const s = p.st, r = s.r || 4.5, on = picked === p;
+      ctx.lineWidth = 1.3; ctx.strokeStyle = C.paper; ctx.fillStyle = col; ctx.beginPath();
+      if (s.shape === 'up' || s.shape === 'down') { const d = s.shape === 'up' ? -1 : 1; ctx.moveTo(x, y + d * r); ctx.lineTo(x + r, y - d * r * .8); ctx.lineTo(x - r, y - d * r * .8); ctx.closePath(); }
+      else if (s.shape === 'sq') { ctx.rect(x - r, y - r, 2 * r, 2 * r); }
+      else if (s.shape === 'x') { ctx.strokeStyle = col; ctx.lineWidth = 2.4; ctx.moveTo(x - 4, y - 4); ctx.lineTo(x + 4, y + 4); ctx.moveTo(x + 4, y - 4); ctx.lineTo(x - 4, y + 4); ctx.stroke(); hits.push({ p, x, y, r: 8 }); continue; }
+      else if (s.shape === 'ship') { const a = ((s.hdg || 0) - 90) * Math.PI / 180, c = Math.cos(a), sn = Math.sin(a); const pt = (u, v) => [x + u * c - v * sn, y + u * sn + v * c];
+        ctx.fillStyle = s.sanz ? C.sanz : C.inkSoft; const q = [pt(6, 0), pt(-4, 3.6), pt(-4, -3.6)]; ctx.moveTo(...q[0]); ctx.lineTo(...q[1]); ctx.lineTo(...q[2]); ctx.closePath(); }
+      else ctx.arc(x, y, r, 0, 2 * Math.PI);
+      if (s.hollow) { ctx.fillStyle = C.paper; ctx.fill(); ctx.strokeStyle = col; ctx.stroke(); } else { ctx.fill(); ctx.stroke(); }
+      if (on) { ctx.beginPath(); ctx.arc(x, y, r + 4, 0, 2 * Math.PI); ctx.strokeStyle = C.ink; ctx.lineWidth = 1.5; ctx.stroke(); }
+      hits.push({ p, x, y, r: Math.max(r, 7) });
+    }
+  }
+}
+function xLineAt(x, y) {
+  const px = (x - T.x) / T.k, py = (y - T.y) / T.k, tol = 6 / T.k; let best = null, bd = tol;
+  for (const l of ['xcable', 'xrail', 'xpower']) {
+    const S = X.lines[l]; if (!S || !L[l]) continue;
+    for (const it of S.list) {
+      if (px < it.bb[0] - tol || px > it.bb[2] + tol || py < it.bb[1] - tol || py > it.bb[3] + tol) continue;
+      for (const a of it.parts) for (let i = 2; i < a.length; i += 2) {
+        const x1 = a[i - 2], y1 = a[i - 1], dx = a[i] - x1, dy = a[i + 1] - y1, L2 = dx * dx + dy * dy;
+        let t = L2 ? ((px - x1) * dx + (py - y1) * dy) / L2 : 0; t = t < 0 ? 0 : t > 1 ? 1 : t;
+        const d = Math.hypot(px - x1 - t * dx, py - y1 - t * dy); if (d < bd) { bd = d; best = it; }
+      }
+    }
+  }
+  return best;
+}
+const xList = v => Array.isArray(v) ? v.join(', ') : v;
+function renderExtra(card, p) {
+  const d = p.d, lay = p.layer;
+  $('cd-kind').textContent = [XFAM[lay], d.categoria && cap(String(d.categoria).replace(/-/g, ' ')), d.paese].filter(Boolean).join(' · ');
+  $('cd-name').textContent = d.nome || p.label;
+  const cs = $('cd-sil'); cs.textContent = ''; cs.appendChild(svgLine('var(--' + XLAYERS[lay][0] + ')', null, 40));
+  const facts = $('cd-facts'); facts.textContent = '';
+  const fact = (k, v) => { if (v == null || v === '' || (Array.isArray(v) && !v.length)) return; facts.append(el('dt', null, k), el('dd', null, String(xList(v)))); };
+  if (lay === 'xnavi') {
+    fact('Tipo', d.tipo); fact('Bandiera', d.bandiera); fact('IMO / MMSI', [d.imo, d.mmsi].filter(Boolean).join(' / '));
+    fact('Sanzionata', d.sanzionata); if (String(d.flotta_ombra_probabile) === 'true') fact('Flotta ombra', 'probabile');
+    fact('Velocità', d.velocita_nodi != null ? d.velocita_nodi + ' nodi' : null); fact('Rotta', d.rotta_gradi != null ? d.rotta_gradi + '°' : null);
+    fact('Destinazione AIS', d.destinazione); fact('Ultima posizione', d.ora_utc); fact('Area', d.area);
+  } else if (lay === 'xlng') {
+    fact('Tipo', d.categoria === 'gnl-liquefazione' ? 'Liquefazione (export)' : 'Rigassificazione (import)'); fact('Stato', d.stato);
+    fact('Capacità operativa', d.capacita_operativa_mtpa != null ? d.capacita_operativa_mtpa + ' Mt/anno' : null); fact('Capacità totale', d.capacita_totale_mtpa != null ? d.capacita_totale_mtpa + ' Mt/anno' : null);
+    fact('Proprietario', d.proprietario); fact('Area', d.area);
+  } else if (lay === 'xgas') {
+    fact('Provenienza', d.provenienza); fact('Stato', d.stato);
+    const r = d.flussi && d.flussi.entry && d.flussi.entry.riassunto;
+    if (r) for (const k in r) if (typeof r[k] !== 'object') fact(cap(k.replace(/_/g, ' ')), r[k] + (/gwh|media|ultimo|tot/i.test(k) ? '' : ''));
+    const q = X.data.gasit && X.data.gasit.quote_12_mesi; if (q && typeof q === 'object') { const v = Array.isArray(q) ? q.find(o => o.id === d.id) : q[d.id]; if (v) fact('Quota degli ingressi, 12 mesi', typeof v === 'object' ? (v.quota_pct != null ? v.quota_pct + '%' : JSON.stringify(v)) : v + '%'); }
+  } else if (lay === 'xcable') {
+    fact('Stato', d.stato); fact('Anno', d.anno || d.data_evento); fact('Lunghezza', d.km ? itNum(+d.km) + ' km' : null); fact('Proprietari', d.proprietari);
+    fact('Passaggi strategici', d.s); fact('Approdi in Italia', d.approdi_it); fact('Cavi coinvolti', d.cavi); fact('Causa', d.causa); fact('Esito', d.esito);
+  } else if (lay === 'xrail') {
+    fact('Paesi', d.paesi); fact('Stato', d.stato); fact('Data', d.data_evento); fact('Lunghezza', d.km ? itNum(+d.km) + ' km' : null); fact('Tracciato', d.tracciato);
+    for (const v of (d.volumi || []).slice(0, 4)) fact(v.voce, [v.valore, v.unita, v.anno && '(' + v.anno + ')', v.trend].filter(Boolean).join(' '));
+  } else {
+    for (const k of ['stato', 'tensione_kv', 'capacita_mw', 'operatore', 'paesi', 'anno']) fact(cap(k.replace(/_/g, ' ')), d[k]);
+  }
+  if (d.affidabilita) fact('Affidabilità', AFF_IT[d.affidabilita] || d.affidabilita);
+  if (p.lat != null) fact('Posizione', fmtLL(p.lat, p.lon, 2) + (d.precisione_km ? ', ± ' + d.precisione_km + ' km' : ''));
+  $('cd-info').textContent = d.note || d.sintesi || '';
+  $('cd-mates').textContent = '';
+  const src = $('cd-src'); src.textContent = ''; src.appendChild(srcItem(d.fonte || 'Fonte', d.link || d.sito, d.data_fonte));
+  card.hidden = false; card.scrollTop = 0;
+}
+function xStrait(s, fact, src) {                          // the strait card, with the measured traffic and the details
+  const pw = X.data.pw && (X.data.pw.elementi || []).find(e => e.tipo === 'chokepoint' && (e.nome === s.n || (e.nome || '').includes(s.n.replace(/^Stretto (di |dei |del )?/, ''))));
+  const sd = X.data.sd && (X.data.sd.elementi || []).find(e => (e.chiavi_stretti || []).includes(s.n) || e.nome === s.n);
+  if (pw && pw.media7) {
+    const v = pw.var7_anno_pct || {}, sg = x => x == null ? '' : ' (' + (x > 0 ? '+' : '') + itNum(x) + '% su un anno)';
+    fact('Navi al giorno', [el('b', null, itNum(pw.media7.n_total)), sg(v.n_total) + ', media 7 giorni al ' + dateLong(new Date(pw.ultima_data + 'T12:00:00')) + '. Un anno prima: ' + itNum(pw.media7_anno_prima.n_total) + '.']);
+    fact('Petroliere al giorno', [el('b', null, itNum(pw.media7.n_tanker)), sg(v.n_tanker)]);
+    src.appendChild(srcItem('IMF PortWatch, transiti giornalieri', pw.link, pw.data_fonte));
+  }
+  if (sd) {
+    if (sd.stato_attuale) fact('Stato oggi', [el('b', null, sd.stato_attuale.livello || sd.stato || ''), ' ', el('span', 'muted', sd.stato_attuale.data || '')]);
+    for (const x of (sd.flussi || []).slice(0, 4)) fact('Passa: ' + x.voce, x.valore + (x.anno ? ' (' + x.anno + ')' : ''));
+    for (const x of (sd.esposizione_italia_ue || []).slice(0, 2)) fact(x.voce, x.valore);
+    for (const x of (sd.alternative || []).slice(0, 2)) fact('Alternativa: ' + x.voce, x.valore);
+    for (const x of (sd.impatti_mercato || []).slice(0, 3)) fact('Mercato: ' + x.voce, x.valore);
+    for (const x of (sd.prezzi_collegati_valori || []).slice(0, 4)) fact('Prezzo: ' + x.nome, itNumber(+x.ultimo) + (x.var && x.var['1g'] != null ? ' (' + (x.var['1g'] > 0 ? '+' : '') + itNum(x.var['1g']) + '% oggi)' : ''));
+    const seen = new Set(); for (const x of [...(sd.flussi || []).slice(0, 4), ...(sd.impatti_mercato || []).slice(0, 3)]) { if (!x.link || seen.has(x.link)) continue; seen.add(x.link); src.appendChild(srcItem(x.fonte || 'Fonte', x.link, x.data_fonte)); }
+    return sd.sintesi || '';
+  }
+  return '';
+}
+
+/* ---------- Terminale: prezzi, curva dei tassi, agenda, stretti ---------- */
+let trmTab = 'prezzi';
+function xSpark(serie, n = 90) {
+  const pts = (serie || []).slice(-n).map(x => +x[1]); if (pts.length < 5) return null;
+  const lo = Math.min(...pts), hi = Math.max(...pts), sv = svgEl('svg', { width: 64, height: 18, viewBox: '0 0 64 18', 'aria-hidden': 'true' });
+  const d = pts.map((v, i) => (i ? 'L' : 'M') + (i * 62 / (pts.length - 1) + 1).toFixed(1) + ' ' + (hi === lo ? 9 : 16 - (v - lo) / (hi - lo) * 14).toFixed(1)).join('');
+  sv.appendChild(svgEl('path', { d, fill: 'none', stroke: pts[pts.length - 1] >= pts[0] ? 'var(--ally)' : 'var(--error)', 'stroke-width': 1.3, 'stroke-linejoin': 'round' })); return sv;
+}
+function xVar(v, pb) { if (v == null) return el('span', 'mkt-d flat', '—'); const a = Math.abs(v).toLocaleString('it-IT', { maximumFractionDigits: pb ? 0 : 2 }); return el('span', 'mkt-d ' + (v > 0 ? 'up' : v < 0 ? 'down' : 'flat'), (v > 0 ? '+' : v < 0 ? '−' : '') + a + (pb ? ' pb' : '%')); }
+function xCurve(c) {
+  const sv = svgEl('svg', { width: 360, height: 120, viewBox: '0 0 360 120', role: 'img', 'aria-label': 'Curva dei rendimenti USA oggi, un mese fa e un anno fa' });
+  const ks = c.scadenze, sets = [['un_anno_fa', 'var(--ink-faint)', '3 3'], ['un_mese_fa', 'var(--ink-soft)', '5 3'], ['oggi', 'var(--accent)', null]];
+  const all = sets.flatMap(([k]) => ks.map(s => c[k] && c[k].v[s]).filter(v => v != null)), lo = Math.floor(Math.min(...all) * 4) / 4, hi = Math.ceil(Math.max(...all) * 4) / 4;
+  const X0 = 34, X1 = 352, Y0 = 8, Y1 = 96, xs = i => X0 + i * (X1 - X0) / (ks.length - 1), ys = v => Y1 - (v - lo) / (hi - lo || 1) * (Y1 - Y0);
+  for (let v = lo; v <= hi + 1e-9; v += .25) { sv.appendChild(svgEl('line', { x1: X0, x2: X1, y1: ys(v), y2: ys(v), stroke: 'var(--line)', 'stroke-width': 1 })); const t = svgEl('text', { x: 2, y: ys(v) + 3.5, 'font-size': 9.5, fill: 'var(--ink-soft)', 'font-family': 'IBM Plex Mono, monospace' }); t.textContent = v.toFixed(2) + '%'; sv.appendChild(t); }
+  ks.forEach((s, i) => { if (i % 2) return; const t = svgEl('text', { x: xs(i), y: 112, 'font-size': 9.5, 'text-anchor': 'middle', fill: 'var(--ink-soft)' }); t.textContent = s.replace(' Mo', 'm').replace(' Yr', 'a'); sv.appendChild(t); });
+  for (const [k, col, dash] of sets) { if (!c[k]) continue; const d = ks.map((s, i) => c[k].v[s] == null ? null : [xs(i), ys(c[k].v[s])]).filter(Boolean).map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(''); sv.appendChild(svgEl('path', Object.assign({ d, fill: 'none', stroke: col, 'stroke-width': k === 'oggi' ? 2 : 1.4 }, dash ? { 'stroke-dasharray': dash } : {}))); }
+  const lg = el('p', 'trm-lg'); lg.append(el('span', 'k1', 'oggi ' + c.oggi.data), ' · ', el('span', 'k2', 'un mese fa'), ' · ', el('span', 'k3', 'un anno fa'));
+  const box = el('div', 'trm-curve'); box.append(sv, lg); return box;
+}
+function renderTerminal() {
+  const body = $('trm-body'); body.textContent = '';
+  document.querySelectorAll('#trm-tabs .chip').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tab === trmTab)));
+  const P = X.data.prezzi, Cal = X.data.cal, SD = X.data.sd, PW = X.data.pw;
+  if (trmTab === 'prezzi' && P) {
+    $('trm-note').textContent = 'Chiusure giornaliere, ' + (P.serie.some(s => s.provvisorio) ? 'alcune di seduta ancora aperta (segnate con *). ' : '') + 'Grafico: ultimi 3 mesi. Aggiornato ' + P.aggiornato.replace('T', ' ') + '. Non è una quotazione in tempo reale né un consiglio.';
+    for (const g of P.gruppi) {
+      const rows = P.serie.filter(s => s.gruppo === g); if (!rows.length) continue;
+      body.appendChild(el('h3', 'mkt-grp', g));
+      const hd = el('div', 'trm-row trm-hd'); hd.append(el('span', 'nm', ''), el('span', null, ''), el('span', 'mkt-v', 'ultimo'), el('span', null, '1 g'), el('span', null, '1 m'), el('span', null, 'inizio anno')); body.appendChild(hd);
+      for (const s of rows) {
+        const pb = s.var_unita === 'punti base', r = el('a', 'trm-row'); if (s.link) { r.href = s.link; r.target = '_blank'; r.rel = 'noopener noreferrer'; }
+        const sp = el('span', 'mkt-sp'), sv = xSpark(s.serie); if (sv) sp.appendChild(sv);
+        r.append(el('span', 'nm', s.nome), sp, el('span', 'mkt-v', itNumber(s.ultimo) + (s.provvisorio ? '*' : '')), xVar(s.var['1g'], pb), xVar(s.var['1m'], pb), xVar(s.var.ytd, pb));
+        r.title = (s.unita || '') + ' · ' + s.fonte + ' · ' + s.data; body.appendChild(r);
+      }
+      if (g === 'Tassi USA' && P.curva) { body.appendChild(el('h3', 'mkt-grp', 'Curva dei rendimenti USA')); body.appendChild(xCurve(P.curva)); }
+    }
+  } else if (trmTab === 'agenda' && Cal) {
+    $('trm-note').textContent = 'Banche centrali, dati macro, energia, elezioni, vertici e sanzioni. Orari in UTC. Fonti ufficiali dove possibile.';
+    const today = new Date().toISOString().slice(0, 10), lim = new Date(Date.now() + 21 * 864e5).toISOString().slice(0, 10), past = new Date(Date.now() - 10 * 864e5).toISOString().slice(0, 10);
+    const items = Cal.elementi.filter(e => e.data >= past && e.data <= lim && e.importanza !== 'bassa').sort((a, b) => (a.data + (a.ora_utc || '')).localeCompare(b.data + (b.ora_utc || '')));
+    let lastD = '';
+    for (const e of items) {
+      if (e.data !== lastD) { lastD = e.data; body.appendChild(el('h3', 'mkt-grp' + (e.data < today ? ' old' : ''), (e.data === today ? 'Oggi, ' : '') + dateLong(new Date(e.data + 'T12:00:00')))); }
+      const r = el('div', 'trm-ev' + (e.importanza === 'alta' ? ' hi' : '')), t = el('p', 'trm-evt');
+      t.append(el('span', 'mono', e.ora_utc || '—'), ' ', e.titolo); r.appendChild(t);
+      const det = [e.valore_uscito && 'Uscito: ' + e.valore_uscito, e.valore_atteso && 'Atteso: ' + e.valore_atteso, e.valore_precedente && 'Precedente: ' + e.valore_precedente].filter(Boolean).join(' · ');
+      if (det) r.appendChild(el('p', 'trm-evd', det));
+      if (e.link) { const a = el('a', 'trm-src', e.fonte || 'fonte'); a.href = e.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); }
+      body.appendChild(r);
+    }
+  } else if (trmTab === 'stretti' && SD) {
+    $('trm-note').textContent = 'Cosa passa, chi è esposto e quali prezzi si muovono. Navi al giorno: IMF PortWatch, media 7 giorni. Tocca un nome per andarci.';
+    for (const e of SD.elementi) {
+      const pw = PW && PW.elementi.find(p => p.tipo === 'chokepoint' && (e.portwatch_nomi || []).includes(p.nome_portwatch));
+      const r = el('button', 'trm-st'); r.type = 'button';
+      const h = el('p', 'trm-evt'); h.append(el('b', null, e.nome), ' · ', el('span', 'trm-lv', e.stato || ''));
+      if (pw && pw.media7) { h.append(' · ' + itNum(pw.media7.n_total) + ' navi/g '); h.appendChild(xVar(pw.var7_anno_pct && pw.var7_anno_pct.n_total)); }
+      r.appendChild(h); if (e.sintesi) r.appendChild(el('p', 'trm-evd', e.sintesi));
+      r.addEventListener('click', () => { const s = D.straits.find(o => (e.chiavi_stretti || []).includes(o.n)); if (s) { if (window.innerWidth <= 640) setPanel(false); pick(s, 5.6); } else flyTo(+e.lon, +e.lat, 5.6, true); });
+      body.appendChild(r);
+    }
+  } else body.appendChild(el('p', 'empty', 'Dati non disponibili.'));
+}
+function xInitTerminal() {
+  if (!X.data.prezzi && !X.data.cal && !X.data.sd) return;
+  const btn = $('trm-btn'); btn.hidden = false;
+  btn.addEventListener('click', () => { const open = $('trm').hidden; showSide('trm', open); if (open) renderTerminal(); });
+  $('trm-close').addEventListener('click', () => showSide('trm', false));
+  document.querySelectorAll('#trm-tabs .chip').forEach(b => b.addEventListener('click', () => { trmTab = b.dataset.tab; renderTerminal(); }));
 }
 
 async function start(snap) {
@@ -1835,7 +2141,7 @@ async function start(snap) {
   if (cdt && cdt.linee) { buildLines(cdt, true); }
   if (ln && ln.linee) { buildLines(ln); const cg = $('credit-gem'); cg.textContent = 'Oleodotti e gasdotti: Global Energy Monitor'; cg.hidden = false; }
   if (fr && fr.aree) { buildFront(fr); const cf = $('credit-front'); cf.textContent = 'Fronte: ' + fr.autore; cf.hidden = false; }
-  addPoints(mob && mob.punti); addPoints(evt && evt.punti); addPoints(fr && fr.punti); addPoints(fx && fx.punti); addPoints(ir && ir.punti); addPoints(ib && ib.punti); addPoints(ita && ita.punti); addPoints(dif && dif.punti); addPoints(aip && aip.punti); finishPoints(); buildPanel(); initNews(rep); initMkt(mk); initDos(dos);
+  addPoints(mob && mob.punti); addPoints(evt && evt.punti); addPoints(fr && fr.punti); addPoints(fx && fx.punti); addPoints(ir && ir.punti); addPoints(ib && ib.punti); addPoints(ita && ita.punti); addPoints(dif && dif.punti); addPoints(aip && aip.punti); finishPoints(); buildPanel(); initNews(rep); initMkt(mk); initDos(dos); xLoad(opt);
   const upd = [mob, evt].map(o => o && o.aggiornato).filter(Boolean).sort().pop();
   $('note').textContent = 'Dati da fonti aperte' + (upd ? ', aggiornati al ' + dateLong(new Date(upd + 'T12:00:00')) : '') + '. Non è un radar in tempo reale: ogni punto ha data, fonte e margine di incertezza nella sua scheda.';
 
