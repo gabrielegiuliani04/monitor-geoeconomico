@@ -163,10 +163,12 @@ def naip_demo(bounds_utm, crs_utm, path):
     cl = Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
     cx, cy = (bounds_utm[0] + bounds_utm[2]) / 2, (bounds_utm[1] + bounds_utm[3]) / 2
     lon, lat = transform(crs_utm, "EPSG:4326", [cx], [cy])
+    lb = transform_bounds(crs_utm, "EPSG:4326", *bounds_utm)
     its = [i for i in cl.search(collections=["naip"], datetime="2023-01-01/2023-12-31",
-                                intersects={"type": "Point", "coordinates": [lon[0], lat[0]]}).items()]
+                                intersects={"type": "Point", "coordinates": [lon[0], lat[0]]}).items()
+           if i.bbox[0] <= lb[0] and i.bbox[1] <= lb[1] and i.bbox[2] >= lb[2] and i.bbox[3] >= lb[3]]
     if not its:
-        print("NAIP: nessuna scena")
+        print("NAIP: nessuna scena 2023 contiene tutto il ritaglio")
         return
     tok = json.load(urllib.request.urlopen(
         "https://planetarycomputer.microsoft.com/api/sas/v1/token/naip", timeout=30))["token"]
