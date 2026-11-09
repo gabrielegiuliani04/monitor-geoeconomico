@@ -41,7 +41,7 @@ Ogni agente scrive anche `raccolta/<dominio>/raccogli.py` e `report/agenti/<domi
 3. Aggiungere i nuovi livelli alla mappa (`docs/index.html`): ferrovie, cavi, GNL, rete elettrica, nucleare, scorte, calendario, schede paese, navi, pannello Mercati con le serie di `prezzi.json` (oltre a `mercati.json` delle notizie).
 4. Primo report: "Hormuz e Mar Rosso: energia, logistica e mercati" in `report/`.
 5. Proporre e, dopo l'ok di Gabriele, attivare la regia automatica: coordinatore quotidiano + agente "Miglioramento" a giorni alterni (militare, OSINT, mercati, finanza) + agenti tematici 1–2 volte a settimana, inizialmente su un ramo da rivedere.
-6. Agente analisti: seguire le live di BNP Paribas, Stefano Bottaioli, Vito Lops e "Aldo Quefalia" (nome da confermare) tramite trascrizioni. **Servono i link dei canali da Gabriele.**
+6. Agente analisti: canali in `raccolta/analisti/canali.json` (Bottaioli, Lops, Aldo Qefalia, Marco Lippiello, BNP Paribas). Feed RSS funzionanti (titoli, date, descrizioni). Trascrizioni bloccate da YouTube per gli IP cloud: valutare Remote Control sul computer di Gabriele o i sottotitoli caricati a mano.
 6b. Fonti OSINT preferite da Gabriele per Ucraina e militare: Clément Molin, AMK Mapping, "Davide Montingelli" (nome da verificare). Da usare e seguire nella raccolta quotidiana (attacchi, logistica, fronte).
 7. Chiavi API gratuite da chiedere quando servono: AISSTREAM_API_KEY, GFW_API_KEY, eventualmente AGSI_API_KEY, EIA_API_KEY.
 
