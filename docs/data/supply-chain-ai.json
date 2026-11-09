@@ -1,0 +1,5585 @@
+{
+ "aggiornato": "2026-11-09T20:16Z",
+ "data_riferimento": "2026-11-09",
+ "fonti": [
+  {
+   "nome": "USGS, Mineral Commodity Summaries 2026",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf",
+   "licenza": "pubblico dominio (governo USA)",
+   "data_dato": "2026-02-05"
+  },
+  {
+   "nome": "Voci curate a mano (stampa, società, governi, analisti)",
+   "link": null,
+   "file": "raccolta/supply-chain-ai/*.json",
+   "licenza": "fatti citati con fonte e link per ogni voce",
+   "data_dato": "2026-11-09"
+  },
+  {
+   "nome": "OpenStreetMap Nominatim (geocodifica una tantum)",
+   "link": "https://nominatim.openstreetmap.org/",
+   "licenza": "ODbL 1.0",
+   "data_dato": "2026-11-09"
+  }
+ ],
+ "fonti_osservatorio": [
+  {
+   "nome": "prezzi.json",
+   "aggiornato": "2026-11-09T19:47Z"
+  },
+  {
+   "nome": "portwatch.json",
+   "aggiornato": "2026-11-09T19:16Z"
+  },
+  {
+   "nome": "ai.json",
+   "aggiornato": "2026-11-09"
+  },
+  {
+   "nome": "ai-mondo.json",
+   "aggiornato": "2026-11-09T19:56Z"
+  },
+  {
+   "nome": "stretti-dettaglio.json",
+   "aggiornato": "2026-11-09T19:30Z"
+  },
+  {
+   "nome": "cavi-incidenti.json",
+   "aggiornato": "2026-11-09T18:57Z"
+  },
+  {
+   "nome": "rete-elettrica.json",
+   "aggiornato": "2026-11-09T19:17Z"
+  },
+  {
+   "nome": "cavi.json",
+   "aggiornato": "2026-11-09T18:57Z"
+  }
+ ],
+ "nota": "Catena del valore dell'AI dalla miniera al data center, in 8 anelli. elementi = nodi (punti con lat/lon); archi = collegamenti da → a (g = [[lon, lat], ...]); colli = colli di bottiglia con indicatori, valori e stato rispetto a soglie che sono una VALUTAZIONE dell'osservatorio; controlli = controlli all'export 2022-2026; materie = produzione per paese (USGS) con quote calcolate; titoli = titoli quotati collegati, con prezzo da prezzi.json quando seguito. Gli archi di tipo 'valutazione' sono percorsi tipici, non tracciati reali. Non è una raccomandazione di investimento.",
+ "anelli": [
+  {
+   "id": "materie",
+   "ordine": 1,
+   "nome": "Materie prime",
+   "breve": "Miniere e gas",
+   "dove": "Cina (gallio, terre rare, fluorite, silicio), Cile e Congo (rame), Congo e Ruanda (tantalio), USA e Qatar (elio), North Carolina (quarzo), Ucraina (neon, fino al 2022).",
+   "chi_controlla": "Lo Stato cinese, con licenze all'export; poche società per il quarzo (Sibelco, The Quartz Corp); QatarEnergy per l'elio; gruppi armati nel Kivu per una parte del coltan.",
+   "testo": [
+    "Un chip per l'AI contiene poche decine di grammi di materiali, ma senza alcuni di essi la fabbrica si ferma. Il gallio serve ai semiconduttori di potenza e all'ottica, il germanio alla fibra, l'elio al raffreddamento dei wafer, il neon ai laser della litografia, la fluorite ai gas di incisione, il quarzo di Spruce Pine ai crogioli in cui si fonde il silicio. Rame e terre rare servono a valle: cavi, trasformatori, motori delle ventole e dei sistemi di raffreddamento, dischi rigidi.",
+    "La concentrazione è estrema e misurabile con l'ultima edizione del [USGS Mineral Commodity Summaries 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf) (5 febbraio 2026, dati 2025): la tabella sotto calcola le quote dai dati di produzione per paese.",
+    "Il rischio di questa settimana sono i controlli cinesi. Le licenze su gallio e germanio (agosto 2023) e sulle sette terre rare medie e pesanti (aprile 2025) sono in vigore. Il divieto di export di gallio e germanio verso gli USA (dicembre 2024) è sospeso fino al 27 novembre 2026; le misure di ottobre 2025, compresa la regola dello 0,1% di contenuto cinese nei prodotti esteri, erano sospese fino al 10 novembre 2026. Il 9 novembre le fonti non concordano: [Tech Times](https://www.techtimes.com/articles/330288/20261109/china-rare-earth-export-controls-pause-ends-tuesday-law-beijing-has-published-no-extension.htm) scrive che nessun testo cinese sposta la data, [Shanghai Metals Market](https://news.metal.com/newscontent/CNTOCBN4QTSC2L3BEOVBYILPAZVOOIHVV6INVPY-china-extends-suspension-of-rare-earth-export-controls-until-january-2027) riporta una proroga al 10 gennaio 2027.",
+    "L'elio è il caso di scuola di un rischio logistico che diventa industriale: il Qatar fa un terzo dell'elio mondiale a Ras Laffan e da marzo 2026 la produzione è in gran parte ferma per la guerra con l'Iran e la chiusura di fatto di Hormuz ([WTOP/AP](https://wtop.com/news/2026/03/iran-war-halts-qatar-helium-output-threatening-global-tech-supply-chains/)). A giugno però [Morningstar/Dow Jones](https://www.morningstar.com/news/dow-jones/202606253275/why-the-middle-east-helium-supply-shock-didnt-hit-chip-makers) spiegava perché lo shock non aveva colpito i produttori di chip: scorte, carichi già in viaggio, elio americano.",
+    "Valutazione: per l'Europa del Nord l'anello debole sono le terre rare. Il Baltico ha l'unico tratto europeo di filiera completa fuori dalla Cina, a Sillamäe e Narva in Estonia, a pochi chilometri dal confine russo; la Groenlandia (Danimarca) ha 1,5 milioni di tonnellate di riserve ma nessuna produzione."
+   ],
+   "indicatori": [
+    "Annunci MOFCOM sulle sospensioni (10 novembre e 27 novembre 2026)",
+    "Tassi di approvazione delle licenze cinesi e dati doganali di export di terre rare, gallio, germanio",
+    "Transiti a Hormuz (PortWatch) e stato di Ras Laffan",
+    "Stagione degli uragani in North Carolina (giugno–novembre)",
+    "Notizie su Rubaya e sul Kivu (M23)"
+   ],
+   "titoli": [
+    "MP",
+    "LYC.AX",
+    "FCX"
+   ],
+   "colli": [
+    "C01",
+    "C02",
+    "C03",
+    "C04"
+   ]
+  },
+  {
+   "id": "attrezzature",
+   "ordine": 2,
+   "nome": "Macchine per fare chip",
+   "breve": "Litografia, deposizione, incisione",
+   "dove": "Paesi Bassi (Veldhoven), Germania (Oberkochen, Ditzingen), California (San Diego, Santa Clara, Fremont, Milpitas), Giappone (Tokyo).",
+   "chi_controlla": "ASML per la litografia (unico fornitore EUV), Applied Materials, Lam Research, KLA e Tokyo Electron per il resto; i governi di USA, Paesi Bassi e Giappone con le licenze.",
+   "testo": [
+    "È l'anello in cui l'Europa conta di più, e il legame più diretto con l'area di lavoro di questo osservatorio: **ogni scanner EUV del mondo esce da Veldhoven**, vicino a Eindhoven. Dentro ci sono le ottiche di Carl Zeiss SMT (Oberkochen, ASML ne possiede il 24,9%), il laser CO2 di Trumpf (Ditzingen) e la sorgente di luce di Cymer, società di ASML a San Diego ([The Value Edge](https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials)). La catena delle EUV attraversa quindi Paesi Bassi, Germania e Stati Uniti prima di arrivare a Taiwan, Corea, Giappone e Arizona.",
+    "Nel 3° trimestre 2026 ASML ha venduto 113 sistemi nuovi e 11,7 miliardi di euro, con una guida 2026 di 44–45 miliardi ([comunicato ASML, 14 ottobre 2026](https://seekingalpha.com/pr/20684919)). La Cina compra solo DUV e pesa circa il 20% delle vendite dell'anno secondo la guida del direttore finanziario.",
+    "I controlli si sono stratificati: USA ottobre 2022 e ottobre 2023; Paesi Bassi dal 1° settembre 2023 e dal 7 settembre 2024 per le DUV a immersione 1970i e 1980i; Giappone dal 23 luglio 2023 per 23 tipi di macchine; USA 2 dicembre 2024 per 24 tipi di macchine, l'HBM e 140 entità ([BIS](https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military)). Nel 2026 il fronte aperto è l'assistenza alle macchine già installate in Cina, che l'Aia ancora permette, e la proposta americana (MATCH Act) di obbligare gli alleati ad allinearsi ([Bits&Chips](https://bits-chips.com/article/dutch-minister-pushes-back-on-us-bid-to-tighten-china-chip-controls/)).",
+    "Valutazione: un blocco dell'EUV è il colpo più grave per la catena, ma è anche il più improbabile perché tocca Paesi alleati. Il rischio concreto per Veldhoven è politico e commerciale (regole sulle DUV e sui servizi in Cina), non fisico."
+   ],
+   "indicatori": [
+    "Ordini e quota Cina nei conti trimestrali ASML (prossimi a gennaio 2027)",
+    "Testo e iter del MATCH Act; decisioni del governo olandese sulle licenze di assistenza",
+    "Elenco BIS delle entità e regola sulle affiliate (sospesa fino al 10 gennaio 2027)"
+   ],
+   "titoli": [
+    "ASML",
+    "AMAT",
+    "LRCX",
+    "KLAC",
+    "8035.T",
+    "SOX"
+   ],
+   "colli": [
+    "C05"
+   ]
+  },
+  {
+   "id": "fabbricazione",
+   "ordine": 3,
+   "nome": "Wafer e fabbricazione",
+   "breve": "Fonderie",
+   "dove": "Taiwan (Hsinchu, Kaohsiung, Taichung), Arizona, Giappone (Kumamoto, Hokkaido), Corea (Pyeongtaek), Cina (Shanghai), Germania (Dresda), Irlanda.",
+   "chi_controlla": "TSMC, con distacco; poi Samsung, SMIC e Intel; Rapidus come progetto statale giapponese.",
+   "testo": [
+    "TSMC ha avuto il 72,5% dei ricavi mondiali di fonderia nel 2° trimestre 2026, Samsung il 5,9%, SMIC il 5,4% ([TrendForce, 9 settembre 2026](https://www.trendforce.com/presscenter/news/20260909-13225.html)). Sui nodi avanzati la concentrazione è più forte: il 2 nm è in volume solo a Hsinchu e Kaohsiung dalla fine del 2025, e i chip AI di Nvidia, AMD, Broadcom e Google escono da linee TSMC a 3–4 nm. Quote per nodo da fonte verificata: non trovate.",
+    "La diversificazione è reale ma lenta. In Arizona TSMC produce a 4 nm, il 3 nm arriverà nel 2° semestre 2027 e il piano è salito a 265 miliardi di dollari ([BetaNews](https://betanews.com/article/tsmc-100-billion-arizona-chip-expansion/)); però i wafer americani tornano a Taiwan per il packaging. In Europa ESMC a Dresda farà chip da 28–12 nm per l'auto, non per l'AI, e i macchinari arriveranno solo nel 2° semestre 2027.",
+    "SMIC produce a 7 nm senza EUV i chip Huawei; i suoi ricavi sono cresciuti del 20% nel trimestre. Nexperia (Nijmegen) mostra l'altro lato del rischio europeo: un intervento statale olandese a settembre 2025 ha diviso la società in due, con la parte cinese a Dongguan."
+   ],
+   "indicatori": [
+    "Quote di fonderia trimestrali (TrendForce, prossima a dicembre 2026)",
+    "Ricavi mensili di TSMC (pubblicati intorno al 10 di ogni mese)",
+    "Avanzamento di Arizona Fab 2 e del packaging AP1"
+   ],
+   "titoli": [
+    "TSM",
+    "005930.KS",
+    "INTC",
+    "0981.HK",
+    "SOX"
+   ],
+   "colli": [
+    "C06"
+   ]
+  },
+  {
+   "id": "packaging-memoria",
+   "ordine": 4,
+   "nome": "Packaging avanzato e memoria HBM",
+   "breve": "CoWoS e HBM",
+   "dove": "Taiwan (Tainan, Chiayi) per il CoWoS; Corea (Icheon, Cheongju, Onyang) per l'HBM; Giappone, Singapore e Indiana per la memoria in arrivo; Hefei per l'HBM cinese.",
+   "chi_controlla": "TSMC per il CoWoS; SK Hynix, Samsung e Micron per l'HBM; CXMT in Cina.",
+   "testo": [
+    "Una GPU per l'AI non è un chip ma un pacchetto: il die logico di TSMC viene montato accanto a più pile di memoria HBM su un interposer (CoWoS). Questo passaggio avviene quasi tutto a Taiwan. La capacità CoWoS di TSMC a fine 2026 è stimata in 125.000–130.000 wafer al mese, con 170.000 a fine 2027 secondo [KGI](https://www.kgi.com.hk/en/-/media/files/kgishk/research-reports/tw-reports/tsmc_2330-tt_09032026e.pdf); Nvidia ne avrebbe prenotato circa il 60% (stime di analisti riportate dalla stampa).",
+    "Nel 2° trimestre 2026 l'HBM era divisa tra SK Hynix 50%, Samsung 33% e Micron 18% ([Counterpoint](https://counterpointresearch.com/insights/global-dram-and-hbm-market-share)): Samsung ha recuperato dodici punti in un trimestre. L'AI toglie capacità alla DRAM normale: TrendForce prevede prezzi contrattuali DRAM +20% sul trimestre nel 4° trimestre 2026 ([TrendForce, 20 ottobre 2026](https://www.trendforce.com/news/2026/10/20/news-dram-prices-seen-rising-20-qoq-in-4q26-despite-slower-gains-ai-demand)).",
+    "Per la Cina l'HBM è il vincolo vero: i controlli USA di dicembre 2024 hanno tolto la memoria coreana, e secondo [Epoch AI](https://epoch.ai/publications/huaweis-roadmap-to-2031) Huawei produrrà nel 2026 meno del 4% del calcolo AI di Nvidia."
+   ],
+   "indicatori": [
+    "Prezzi contrattuali DRAM e HBM (TrendForce, mensili)",
+    "Quote HBM trimestrali (Counterpoint)",
+    "Capacità CoWoS e nuove sedi (AP7, AP8, Arizona AP1)",
+    "Qualifiche HBM4 presso Nvidia"
+   ],
+   "titoli": [
+    "TSM",
+    "005930.KS",
+    "000660.KS",
+    "MU",
+    "WDC",
+    "SOX"
+   ],
+   "colli": [
+    "C07",
+    "C08"
+   ]
+  },
+  {
+   "id": "progettazione",
+   "ordine": 5,
+   "nome": "Progetto dei chip e acceleratori",
+   "breve": "GPU e ASIC",
+   "dove": "California (Santa Clara, Palo Alto, Mountain View), Shenzhen.",
+   "chi_controlla": "Nvidia, con larga maggioranza; AMD; Broadcom e Marvell come co-progettisti dei chip dei grandi cloud (TPU di Google, Trainium di Amazon, MTIA di Meta); Huawei in Cina.",
+   "testo": [
+    "Il progetto è l'anello più ricco e il meno fisico: nessuno di questi gruppi possiede una fabbrica di chip avanzati. Le stime della quota di Nvidia nel 2026 vanno dal 75% all'86% a seconda della definizione, con IDC intorno all'81% (stime riportate da terzi; [Tom's Hardware](https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia) sugli ASIC su misura). Broadcom è il secondo cliente CoWoS di TSMC.",
+    "Le regole americane decidono dove vanno i chip: da gennaio 2026 gli USA permettono di vendere l'H200 in Cina con dazio del 25% e verifiche, ma a maggio nessun chip risultava spedito perché Pechino non aveva dato il via libera ([TechRepublic](https://www.techrepublic.com/article/news-nvidia-h200-ai-chip-sales-china-stalled/)). Huawei prevede circa 12 miliardi di dollari di ricavi da chip AI nel 2026.",
+    "Valutazione: il potere di mercato di questo anello dipende da anelli che non controlla (CoWoS, HBM, EUV). In borsa si vede: da inizio anno Nvidia e Broadcom sono in calo mentre memoria e macchine salgono (tabella dei titoli)."
+   ],
+   "indicatori": [
+    "Conti trimestrali di Nvidia (prossimi a fine novembre 2026)",
+    "Licenze USA per la Cina e risposta di Pechino",
+    "Quota degli ASIC nei server AI (TrendForce)"
+   ],
+   "titoli": [
+    "NVDA",
+    "AMD",
+    "AVGO",
+    "GOOGL",
+    "SOX"
+   ],
+   "colli": []
+  },
+  {
+   "id": "server-rete",
+   "ordine": 6,
+   "nome": "Server, rete e assemblaggio",
+   "breve": "Rack, ottica, trasformatori",
+   "dove": "Taiwan (Nuova Taipei, Taoyuan), Messico (Jalisco), Texas (Houston, Dallas), Cina (Suzhou, Chengdu) per l'ottica, USA (Pennsylvania) per i laser.",
+   "chi_controlla": "Foxconn, Quanta e Wistron per i rack; InnoLight, Coherent ed Eoptolink per l'ottica; Coherent e Lumentum per i laser EML.",
+   "testo": [
+    "Le GPU impacchettate diventano schede, vassoi e rack completi (GB300, VR200) negli impianti dei grandi assemblatori taiwanesi. Foxconn è il primo con circa il 40% dei server AI ([TechNews](https://finance.technews.tw/2026/05/12/foxconn-leads-quanta-and-wistron-in-ai-server-shipments/)). L'assemblaggio si sta spostando verso il mercato finale: Messico (Jalisco), Texas (Foxconn a Houston, Wistron a Dallas), Thailandia. Il risultato si vede nell'export di Taiwan: server e computer sono diventati la prima voce, 192,6 miliardi di dollari in gennaio–agosto 2026, +87,5% ([STAT Times](https://www.stattimes.com/latest-news/is-taiwans-ai-engine-on-fire-1360979)).",
+    "La rete ottica dei cluster dipende dalla Cina per i moduli (InnoLight intorno al 27% dei ricavi) e da due società americane per i chip laser EML: per [Yole](https://www.yolegroup.com/strategy-insights/opinion-optical-transceivers-at-the-chokepoint-of-ai-growth-and-supply-chain-constraints/) è il vincolo dell'1,6T nel 2026.",
+    "Fuori dal rack, il collo di bottiglia è elettrico: i tempi di consegna dei trasformatori elevatori hanno superato le 160 settimane nel 1° trimestre 2026 ([Reuters via Kitco](https://www.kitco.com/news/off-the-wire/2026-07-09/us-power-companies-scramble-secure-equipment-surging-data-center))."
+   ],
+   "indicatori": [
+    "Export mensile di Taiwan per categoria (Ministero delle Finanze)",
+    "Ricavi mensili di Foxconn, Quanta, Wistron",
+    "Tempi di consegna di trasformatori e quadri (Wood Mackenzie)",
+    "Prezzi e disponibilità dei transceiver 1,6T"
+   ],
+   "titoli": [
+    "WDC",
+    "AVGO",
+    "2317.TW",
+    "2382.TW",
+    "3231.TW",
+    "COHR",
+    "300308.SZ",
+    "300502.SZ"
+   ],
+   "colli": [
+    "C09"
+   ]
+  },
+  {
+   "id": "logistica",
+   "ordine": 7,
+   "nome": "Logistica",
+   "breve": "Aerei, navi, stretti",
+   "dove": "Aeroporti di Taoyuan, Incheon, Schiphol, Anchorage, Pudong; Stretto di Taiwan, Mar Cinese Meridionale, Malacca, Hormuz.",
+   "chi_controlla": "Vettori cargo (China Airlines, EVA Air, integratori), aeroporti e, in caso di crisi, le marine militari.",
+   "testo": [
+    "I chip e i server viaggiano in aereo: valgono molto e pesano poco. Le macchine viaggiano smontate: una EUV richiede circa 40 container, 20 camion e 3 Boeing 747 cargo ([Asia Times](https://asiatimes.com/2021/09/the-150mn-machine-that-is-changing-the-world/); [DHL](https://www.dhl.com/global-en/delivered/innovation/focus-on-the-details.html)); una High-NA è andata in Oregon in 43 container. Le materie (elio, quarzo, GNL per le centrali di Taiwan) viaggiano per nave.",
+    "Il cargo aereo di Taiwan è trainato dall'AI: per EVA Air il carico legato all'AI vale il 40–50% del cargo, il Nord America circa il 70% dei ricavi cargo (stampa taiwanese). Le rotte transpacifiche fanno scalo ad Anchorage.",
+    "Lo Stretto di Taiwan è il punto unico di rottura. Ci passa metà delle portacontainer del mondo; un blocco o un conflitto costerebbero all'economia mondiale circa 10.600 miliardi di dollari (9,6% del PIL mondiale) nel primo anno nello scenario estremo di Bloomberg Economics ([Insurance Journal](https://www.insurancejournal.com/news/international/2026/02/12/857770.htm)), e le aziende dipendenti dai chip di Taiwan perderebbero fino a 1.600 miliardi di ricavi l'anno secondo [Rhodium](https://rhg.com/research/taiwan-economic-disruptions/). I cavi sottomarini intorno all'isola sono già stati danneggiati più volte (cavi-incidenti.json).",
+    "Valutazione: in un blocco navale gli aerei potrebbero continuare a portare chip per qualche tempo, ma il GNL no: Taiwan si fermerebbe per mancanza di energia prima che per mancanza di trasporti. Terremoti (aprile 2024: TSMC ha recuperato oltre il 70% delle macchine in 10 ore, [Tom's Hardware](https://www.tomshardware.com/tech-industry/tsmc-resumes-chip-production-following-biggest-earthquake-in-25-years-incurred-no-damage-to-its-critical-tools)), siccità e blackout sono i rischi ricorrenti."
+   ],
+   "indicatori": [
+    "Transiti nello Stretto di Taiwan, di Luzon e di Malacca (PortWatch, settimanali)",
+    "Incidenti ai cavi intorno a Taiwan",
+    "Esercitazioni cinesi intorno a Taiwan",
+    "Tariffe cargo aereo Asia–Nord America"
+   ],
+   "titoli": [
+    "2618.TW",
+    "2610.TW"
+   ],
+   "colli": []
+  },
+  {
+   "id": "energia-dc",
+   "ordine": 8,
+   "nome": "Energia e data center",
+   "breve": "Elettricità e campus",
+   "dove": "Stati Uniti (Texas, Tennessee, Indiana, Georgia), Golfo, Malesia (Johor), Europa (Francia, Paesi del Nord, Italia); Taiwan per l'energia delle fab.",
+   "chi_controlla": "I grandi cloud (Microsoft, Amazon, Google, Meta, Oracle), i laboratori (OpenAI, xAI, Anthropic come cliente), i gestori di rete e i produttori di energia.",
+   "testo": [
+    "Secondo l'IEA i data center hanno consumato circa 485 TWh nel 2025 e arriveranno a circa 950 TWh nel 2030, intorno al 3% dell'elettricità mondiale; i siti dedicati all'AI crescono molto più in fretta ([IEA, Key questions on energy and AI](https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary)).",
+    "L'energia entra nella catena due volte. A monte, Taiwan produce metà dell'elettricità col gas e tiene scorte di GNL per 12–14 giorni ([Focus Taiwan](https://focustaiwan.tw/business/202603210010)); ha spento le centrali nucleari e ora valuta il riavvio di Maanshan ([FDD](https://www.fdd.org/analysis/in-major-reversal-taiwan-seeks-to-rewire-its-energy-strategy-by-restarting-its-nuclear-plants/)). A valle, i campus americani si scontrano con i tempi dei trasformatori e degli allacci, quelli europei con il prezzo: i progetti a gas come Ferrera Erbognone legano l'AI italiana al TTF, la Francia sfrutta il nucleare (Fouju è vicino a Nogent).",
+    "Valutazione: per l'Europa del Nord il vantaggio è l'elettricità pulita e il clima freddo (Paesi nordici, Finlandia), il limite è la capacità di rete; il legame con la mappa è nei livelli rete-elettrica e interconnessioni."
+   ],
+   "indicatori": [
+    "Prezzi del gas TTF e Henry Hub (prezzi.json)",
+    "Aste di capacità PJM e code di allaccio",
+    "Iter del riavvio di Maanshan",
+    "Aggiornamenti IEA sui consumi dei data center"
+   ],
+   "titoli": [
+    "FCX",
+    "GOOGL",
+    "MSFT",
+    "AMZN",
+    "META",
+    "ORCL",
+    "TTF",
+    "HH"
+   ],
+   "colli": [
+    "C10",
+    "C11",
+    "C12"
+   ]
+  }
+ ],
+ "elementi": [
+  {
+   "id": "spruce-pine",
+   "anello": "materie",
+   "nome": "Spruce Pine (North Carolina): quarzo ad alta purezza",
+   "ruolo": "quarzo per i crogioli dei lingotti di silicio",
+   "azienda": "Sibelco (Belgio), The Quartz Corp (Norvegia)",
+   "paese": "US",
+   "lat": 35.9148,
+   "lon": -82.0664,
+   "origine_coord": "OSM Nominatim (comune)",
+   "precisione_km": 10,
+   "stato": "operativo",
+   "materie": [
+    "quarzo"
+   ],
+   "quota": "70–90% del quarzo commerciale ad alta purezza (stima Everstream); oltre 80% (BloombergNEF)",
+   "fonte": "BNN Bloomberg, «Hurricane Helene halts quartz mines vital for chipmaking and solar»",
+   "link": "https://bnnbloomberg.ca/investing/commodities/2024/10/02/hurricane-helene-halts-quartz-mines-vital-for-chipmaking-and-solar",
+   "data_fonte": "2024-10-02",
+   "affidabilita": "media",
+   "note": "Fermo dopo l'uragano Helene (settembre 2024). The Quartz Corp ha impianti di purificazione in Norvegia con scorte. USGS 2026 conferma due produttori attivi nel 2025.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "bayan-obo",
+   "anello": "materie",
+   "nome": "Bayan Obo (Mongolia Interna): terre rare",
+   "ruolo": "prima miniera di terre rare della Cina",
+   "azienda": "gruppo statale cinese",
+   "paese": "CN",
+   "lat": 41.7678,
+   "lon": 109.9678,
+   "origine_coord": "OSM Nominatim (distretto minerario)",
+   "precisione_km": 10,
+   "stato": "operativo",
+   "materie": [
+    "terre-rare"
+   ],
+   "quota": "Cina 69,2% di terre rare nel 2025 (calcolata da USGS, Mineral Commodity Summaries 2026)",
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "media",
+   "note": "USGS non nomina la miniera: il punto rappresenta l'estrazione cinese nel suo sito più noto. La quota cinese nella separazione e nei magneti è più alta ma senza tabella USGS.",
+   "quota_da": {
+    "materia": "terre-rare",
+    "paese": "CN"
+   },
+   "quota_pct": 69.2,
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "mountain-pass",
+   "anello": "materie",
+   "nome": "Mountain Pass (California): terre rare",
+   "ruolo": "unica miniera di terre rare degli USA",
+   "azienda": "MP Materials",
+   "paese": "US",
+   "lat": 35.4703,
+   "lon": -115.545,
+   "origine_coord": "OSM Nominatim (località)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "materie": [
+    "terre-rare"
+   ],
+   "quota": "Stati Uniti 13,1% di terre rare nel 2025 (calcolata da USGS, Mineral Commodity Summaries 2026)",
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "media",
+   "titoli": [
+    "MP"
+   ],
+   "note": "USGS attribuisce la produzione USA a una miniera in California.",
+   "quota_da": {
+    "materia": "terre-rare",
+    "paese": "US"
+   },
+   "quota_pct": 13.1,
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "rubaya",
+   "anello": "materie",
+   "nome": "Rubaya (Nord Kivu, Congo): coltan",
+   "ruolo": "tantalio per condensatori e bersagli di deposizione",
+   "azienda": "miniera artigianale sotto controllo del gruppo armato M23 da aprile 2024",
+   "paese": "CD",
+   "lat": -1.5472,
+   "lon": 28.8743,
+   "origine_coord": "OSM Nominatim (località)",
+   "precisione_km": 5,
+   "stato": "operativo-conteso",
+   "materie": [
+    "tantalio"
+   ],
+   "quota": "circa 15% della produzione mondiale di coltan (stampa di settore)",
+   "fonte": "Argus Media, «Rubaya mine collapse and the tantalum supply chain»",
+   "link": "https://www.argusmedia.com/en/news-and-insights/market-opinion-and-analysis-blog/rubaya-mine-collapse-tantalum-supply-chain",
+   "data_fonte": "2026-02-12",
+   "affidabilita": "media",
+   "note": "Global Witness (giugno 2026): almeno 1.400 t di coltan contrabbandate in Ruanda nel primo anno di controllo M23. A febbraio 2026 Kinshasa ha offerto Rubaya agli USA nell'accordo sui minerali (Mining Weekly).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "ras-laffan",
+   "anello": "materie",
+   "nome": "Ras Laffan (Qatar): elio dal gas naturale",
+   "ruolo": "secondo produttore mondiale di elio",
+   "azienda": "QatarEnergy",
+   "paese": "QA",
+   "lat": 25.8977,
+   "lon": 51.5332,
+   "origine_coord": "OSM Nominatim (città industriale)",
+   "precisione_km": 5,
+   "stato": "fermo-parziale",
+   "materie": [
+    "elio"
+   ],
+   "quota": "Qatar 33,2% di elio nel 2025 (calcolata da USGS, Mineral Commodity Summaries 2026)",
+   "fonte": "WTOP (AP), «Iran war halts Qatar helium output, threatening global tech supply chains»",
+   "link": "https://wtop.com/news/2026/03/iran-war-halts-qatar-helium-output-threatening-global-tech-supply-chains/",
+   "data_fonte": "2026-03",
+   "affidabilita": "alta",
+   "note": "Colpita all'inizio di marzo 2026; Hormuz chiuso di fatto dal 2 marzo. Gli attacchi hanno tolto il 17% della capacità GNL del Qatar e la riparazione potrebbe richiedere fino a cinque anni (stampa, luglio 2026). Morningstar/Dow Jones (giugno 2026): lo shock dell'elio non ha colpito i produttori di chip, grazie a scorte e carichi in viaggio.",
+   "quota_da": {
+    "materia": "elio",
+    "paese": "QA"
+   },
+   "quota_pct": 33.2,
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "odesa",
+   "anello": "materie",
+   "nome": "Odesa (Ucraina): purificazione del neon",
+   "ruolo": "neon per i laser della litografia DUV",
+   "azienda": "Cryoin",
+   "paese": "UA",
+   "lat": 46.4843,
+   "lon": 30.7323,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 15,
+   "stato": "incerto",
+   "materie": [
+    "neon"
+   ],
+   "quota": "Ucraina circa 50% del neon mondiale nel 2022 (USITC)",
+   "fonte": "USITC, Executive Briefing on Trade «Ukraine, neon, and semiconductors»",
+   "link": "https://www.usitc.gov/publications/332/executive_briefings/ebot_decarlo_goodman_ukraine_neon_and_semiconductors.pdf",
+   "data_fonte": "2022",
+   "affidabilita": "media",
+   "note": "Cryoin raffinava a Odesa neon grezzo in parte russo (Resilinc). Stato attuale dell'impianto non verificato.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "mariupol",
+   "anello": "materie",
+   "nome": "Mariupol (Ucraina occupata): neon",
+   "ruolo": "ex fornitore di neon per chip",
+   "azienda": "Ingas",
+   "paese": "UA",
+   "lat": 47.0958,
+   "lon": 37.55,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 15,
+   "stato": "fermo",
+   "materie": [
+    "neon"
+   ],
+   "quota": null,
+   "fonte": "USITC, Executive Briefing on Trade «Ukraine, neon, and semiconductors»",
+   "link": "https://www.usitc.gov/publications/332/executive_briefings/ebot_decarlo_goodman_ukraine_neon_and_semiconductors.pdf",
+   "data_fonte": "2022",
+   "affidabilita": "media",
+   "note": "Città occupata dalla Russia dal 2022: produzione ferma secondo la stampa del 2022.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "sillamae",
+   "anello": "materie",
+   "nome": "Sillamäe (Estonia): separazione di terre rare",
+   "ruolo": "separazione di terre rare leggere e, dal 2026, pesanti (terbio, disprosio)",
+   "azienda": "Neo Performance Materials (NPM Silmet)",
+   "paese": "EE",
+   "lat": 59.4035,
+   "lon": 27.7292,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "materie": [
+    "terre-rare"
+   ],
+   "quota": null,
+   "fonte": "Shanghai Metals Market, «Neo Performance Materials Commissions Rare Earth Extraction Line in Estonia»",
+   "link": "https://news.metal.com/newscontent/103853488-Neo-Performance-Materials-Commissions-Rare-Earth-Extraction-Line-in-Estonia-Strengthening-European-Supply-Chain",
+   "data_fonte": "2026-04",
+   "affidabilita": "media",
+   "note": "Ad aprile 2026 avviata la linea di estrazione con solvente: primi lotti di ossido di terbio e disprosio. Legame baltico con la catena europea delle terre rare.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "narva",
+   "anello": "materie",
+   "nome": "Narva (Estonia): magneti di terre rare",
+   "ruolo": "fabbrica di magneti NdFeB, la prima di questa scala in Europa",
+   "azienda": "Neo Performance Materials",
+   "paese": "EE",
+   "lat": 59.3767,
+   "lon": 28.1919,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 5,
+   "stato": "operativo-parziale",
+   "materie": [
+    "terre-rare"
+   ],
+   "quota": "2.000 t/anno di capacità iniziale, poi 5.000",
+   "fonte": "Shanghai Metals Market, «Neo Performance opens Europe's first rare earth magnet plant»",
+   "link": "https://news.metal.com/newscontent/103541038/Neo-Performance-opens-Europe%E2%80%99s-first-rare-earth-magnet-plant",
+   "data_fonte": "2025-09",
+   "affidabilita": "media",
+   "note": "Investimento di 75 milioni di dollari, contributo UE fino a 18,7 milioni di euro. Clienti iniziali dell'auto (Schaeffler, Bosch): per l'AI conta come capacità europea di magneti fuori dalla Cina. A 2 km dal confine russo.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "veldhoven",
+   "anello": "attrezzature",
+   "nome": "ASML, Veldhoven (Paesi Bassi): scanner EUV",
+   "ruolo": "unico produttore al mondo di macchine litografiche EUV; assemblaggio finale",
+   "azienda": "ASML",
+   "paese": "NL",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "ASML, Veldhoven (macchine litografiche EUV)"
+   },
+   "stato": "operativo",
+   "quota": "100% delle EUV; Cina circa 20% delle vendite ASML 2026 (guida del direttore finanziario, solo DUV)",
+   "fonte": "ASML, risultati del 3° trimestre 2026 (comunicato)",
+   "link": "https://seekingalpha.com/pr/20684919",
+   "data_fonte": "2026-10-14",
+   "affidabilita": "alta",
+   "titoli": [
+    "ASML"
+   ],
+   "note": "3° trimestre 2026: ricavi 11,7 mld EUR, 113 sistemi litografici nuovi venduti; guida 2026 44–45 mld EUR. Circa 65 EUV Low-NA previste nel 2026 (ai-mondo.json). Quota Cina 23% delle vendite di sistemi nel trimestre secondo una sintesi non ufficiale (aiweekly).",
+   "lat": 51.4077,
+   "lon": 5.3927,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del comune)",
+   "precisione_km": 3,
+   "nodo": "fornitore unico al mondo di scanner EUV (Low-NA e High-NA)",
+   "proprietario": "ASML",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "oberkochen",
+   "anello": "attrezzature",
+   "nome": "Carl Zeiss SMT, Oberkochen (Germania): ottiche EUV",
+   "ruolo": "specchi multistrato dell'ottica EUV",
+   "azienda": "Carl Zeiss SMT (ASML ne possiede il 24,9%)",
+   "paese": "DE",
+   "lat": 48.781,
+   "lon": 10.1013,
+   "origine_coord": "OSM Nominatim (comune)",
+   "precisione_km": 3,
+   "stato": "operativo",
+   "quota": "fornitore unico delle ottiche EUV di ASML",
+   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...»",
+   "link": "https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials",
+   "data_fonte": "2025",
+   "affidabilita": "media",
+   "note": "Non quotata (Fondazione Carl Zeiss).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "ditzingen",
+   "anello": "attrezzature",
+   "nome": "Trumpf, Ditzingen (Germania): laser CO2 per EUV",
+   "ruolo": "laser di potenza che vaporizza le gocce di stagno della sorgente EUV",
+   "azienda": "Trumpf",
+   "paese": "DE",
+   "lat": 48.8374,
+   "lon": 9.0259,
+   "origine_coord": "OSM Nominatim (comune)",
+   "precisione_km": 3,
+   "stato": "operativo",
+   "quota": "fornitore unico del laser della sorgente EUV",
+   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...»",
+   "link": "https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials",
+   "data_fonte": "2025",
+   "affidabilita": "media",
+   "note": "Società familiare non quotata.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "san-diego",
+   "anello": "attrezzature",
+   "nome": "Cymer, San Diego (California): sorgenti di luce",
+   "ruolo": "modulo sorgente EUV e laser ad eccimeri DUV (usano neon)",
+   "azienda": "Cymer (ASML dal 2013)",
+   "paese": "US",
+   "lat": 32.7157,
+   "lon": -117.1638,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 15,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...»",
+   "link": "https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials",
+   "data_fonte": "2025",
+   "affidabilita": "media",
+   "titoli": [
+    "ASML"
+   ],
+   "note": "Per le regole USA la presenza di Cymer in California rende parte della tecnologia EUV soggetta a giurisdizione americana.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "santa-clara-amat",
+   "anello": "attrezzature",
+   "nome": "Applied Materials, Santa Clara (California)",
+   "ruolo": "deposizione, incisione, impianto ionico, ispezione",
+   "azienda": "Applied Materials",
+   "paese": "US",
+   "lat": 37.3541,
+   "lon": -121.9552,
+   "origine_coord": "OSM Nominatim (città della sede)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": "Cina circa il 35% delle vendite nel trimestre maggio–luglio 2025",
+   "fonte": "TipRanks, «Applied Materials stock slides after warning of $600M revenue hit from new U.S. export rules»",
+   "link": "https://www.tipranks.com/news/applied-materials-stock-amat-slides-after-warning-of-600m-revenue-hit-from-new-u-s-export-rules",
+   "data_fonte": "2025-10-02",
+   "affidabilita": "media",
+   "titoli": [
+    "AMAT"
+   ],
+   "note": "Quote di mercato dei singoli fornitori di macchine non trovate da fonte verificata (Gartner e Yole a pagamento).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "fremont-lam",
+   "anello": "attrezzature",
+   "nome": "Lam Research, Fremont (California)",
+   "ruolo": "incisione e deposizione (chiave per HBM e memoria 3D)",
+   "azienda": "Lam Research",
+   "paese": "US",
+   "lat": 37.5483,
+   "lon": -121.9886,
+   "origine_coord": "OSM Nominatim (città della sede)",
+   "precisione_km": 8,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "TipRanks (reazione dei titoli alla Affiliates Rule)",
+   "link": "https://www.tipranks.com/news/applied-materials-stock-amat-slides-after-warning-of-600m-revenue-hit-from-new-u-s-export-rules",
+   "data_fonte": "2025-10-02",
+   "affidabilita": "media",
+   "titoli": [
+    "LRCX"
+   ],
+   "note": "Quota di mercato: dato mancante.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "milpitas-kla",
+   "anello": "attrezzature",
+   "nome": "KLA, Milpitas (California)",
+   "ruolo": "ispezione e metrologia dei wafer",
+   "azienda": "KLA",
+   "paese": "US",
+   "lat": 37.4332,
+   "lon": -121.8989,
+   "origine_coord": "OSM Nominatim (città della sede)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "TipRanks (reazione dei titoli alla Affiliates Rule)",
+   "link": "https://www.tipranks.com/news/applied-materials-stock-amat-slides-after-warning-of-600m-revenue-hit-from-new-u-s-export-rules",
+   "data_fonte": "2025-10-02",
+   "affidabilita": "media",
+   "titoli": [
+    "KLAC"
+   ],
+   "note": "Quota di mercato: dato mancante.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "tokyo-tel",
+   "anello": "attrezzature",
+   "nome": "Tokyo Electron, Tokyo (Giappone)",
+   "ruolo": "deposizione, rivestimento e sviluppo del resist (coater/developer), incisione",
+   "azienda": "Tokyo Electron",
+   "paese": "JP",
+   "lat": 35.6717,
+   "lon": 139.7356,
+   "origine_coord": "OSM Nominatim (quartiere della sede, Akasaka)",
+   "precisione_km": 3,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "Hogan Lovells (HLC), regole giapponesi del 2023",
+   "link": "https://www.hlc.com/en/publications/japans-new-chip-equipment-export-rules-take-effect",
+   "data_fonte": "2023-07",
+   "affidabilita": "media",
+   "titoli": [
+    "8035.T"
+   ],
+   "note": "Soggetta ai controlli METI del luglio 2023. Quota di mercato: dato mancante.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "tsmc-hsinchu",
+   "anello": "fabbricazione",
+   "nome": "TSMC Fab 20, Hsinchu (Baoshan): 2 nm",
+   "ruolo": "nodo più avanzato in volume al mondo",
+   "azienda": "TSMC",
+   "paese": "TW",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "TSMC Fab 20, Baoshan (Hsinchu)"
+   },
+   "stato": "operativo",
+   "quota": "TSMC 72,5% dei ricavi mondiali di fonderia nel 2° trimestre 2026",
+   "fonte": "TrendForce, classifica fonderie 2° trimestre 2026",
+   "link": "https://www.trendforce.com/presscenter/news/20260909-13225.html",
+   "data_fonte": "2026-09-09",
+   "affidabilita": "alta",
+   "titoli": [
+    "TSM"
+   ],
+   "note": "Nel 2° trimestre 2026 le linee a 5/4 e 3 nm erano piene e il 2 nm ha dato i primi ricavi (TrendForce).",
+   "lat": 24.7602,
+   "lon": 120.9909,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM di Baoshan)",
+   "precisione_km": 3,
+   "nodo": "N2 (2 nm), poi A16",
+   "proprietario": "TSMC",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "tsmc-kaohsiung",
+   "anello": "fabbricazione",
+   "nome": "TSMC Fab 22, Kaohsiung: 2 nm",
+   "ruolo": "seconda sede del 2 nm",
+   "azienda": "TSMC",
+   "paese": "TW",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "TSMC Fab 22, Kaohsiung (Nanzih)"
+   },
+   "stato": "operativo-parziale",
+   "quota": null,
+   "titoli": [
+    "TSM"
+   ],
+   "lat": 22.7355,
+   "lon": 120.3272,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del distretto)",
+   "precisione_km": 4,
+   "fonte": "TrendForce",
+   "link": "https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/",
+   "data_fonte": "2026-02-23",
+   "affidabilita": "alta",
+   "note": "P1 in volume dal 2° semestre 2025 (circa 10.000 wafer al mese), P2 in prova, P3 in costruzione. Stime di capacità 2 nm totale a fine 2026 molto diverse (100.000-140.000 wafer al mese).",
+   "nodo": "N2 (2 nm), poi A16",
+   "proprietario": "TSMC",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "tsmc-arizona",
+   "anello": "fabbricazione",
+   "nome": "TSMC Arizona Fab 21, Phoenix",
+   "ruolo": "4 nm in produzione; 3 nm dal 2° semestre 2027",
+   "azienda": "TSMC",
+   "paese": "US",
+   "rif": {
+    "file": "ai.json",
+    "nome": "TSMC Arizona Fab 21"
+   },
+   "stato": "operativo-parziale",
+   "quota": null,
+   "fonte": "BetaNews, «TSMC adds $100 billion to Arizona plan»",
+   "link": "https://betanews.com/article/tsmc-100-billion-arizona-chip-expansion/",
+   "data_fonte": "2026-07",
+   "affidabilita": "alta",
+   "titoli": [
+    "TSM"
+   ],
+   "note": "Piano portato a 265 mld USD (10 fabbriche, 2 impianti di packaging). I chip fatti in Arizona tornano a Taiwan per il packaging avanzato (TrendForce): il packaging AP1 in Arizona è previsto dal 2028.",
+   "lat": 33.78,
+   "lon": -112.14,
+   "origine_coord": "da ai.json (stimata)",
+   "precisione_km": 3,
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "tsmc-kumamoto",
+   "anello": "fabbricazione",
+   "nome": "TSMC-JASM, Kumamoto (Giappone)",
+   "ruolo": "12–28 nm, poi 3 nm",
+   "azienda": "JASM (TSMC con Sony, Denso, Toyota)",
+   "paese": "JP",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "TSMC-JASM, Kumamoto (fabbriche 1 e 2)"
+   },
+   "stato": "operativo-parziale",
+   "quota": null,
+   "titoli": [
+    "TSM"
+   ],
+   "lat": 32.8626,
+   "lon": 130.8284,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del comune)",
+   "precisione_km": 3,
+   "fonte": "Remio",
+   "link": "https://www.remio.ai/post/tsmc-kumamoto-3nm-fab-approved-but-japan-is-trading-volume-for-advanced-chips",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "Fab 1 in produzione. Fab 2: a febbraio 2026 TSMC annuncia il passaggio a 3 nm (Taiwan approva il 2026-03-31), obiettivo 2028; segnali di rallentamento del cantiere. Importo = stima stampa per la sola Fab 2, non confermata da TSMC.",
+   "nodo": "Fab 1: 12-28 nm; Fab 2: 3 nm (previsto)",
+   "proprietario": "JASM (TSMC con Sony, Denso, Toyota)",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "esmc-dresda",
+   "anello": "fabbricazione",
+   "nome": "ESMC (TSMC), Dresda (Germania)",
+   "ruolo": "28–12 nm per auto e industria, non per GPU",
+   "azienda": "ESMC (TSMC 70%, Bosch, Infineon, NXP)",
+   "paese": "DE",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "ESMC (TSMC con Bosch, Infineon, NXP), Dresda"
+   },
+   "stato": "in-costruzione",
+   "quota": null,
+   "titoli": [
+    "TSM"
+   ],
+   "lat": 51.1202,
+   "lon": 13.7202,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del quartiere)",
+   "precisione_km": 3,
+   "fonte": "Focus Taiwan",
+   "link": "https://focustaiwan.tw/business/202609150007",
+   "data_fonte": "2026-09-15",
+   "affidabilita": "alta",
+   "note": "Festa di fine strutture a settembre 2026. Macchinari spostati al 2° semestre 2027 (correzione dpa-AFX del 2026-09-14): produzione realistica nel 2028. 40.000 wafer al mese. Aiuto di Stato tedesco approvato dalla UE. Chip per auto e industria, non per GPU.",
+   "nodo": "28/22 nm e 16/12 nm FinFET",
+   "proprietario": "ESMC (TSMC 70%)",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "samsung-pyeongtaek",
+   "anello": "fabbricazione",
+   "nome": "Samsung, Pyeongtaek (Corea)",
+   "ruolo": "fonderia 2 nm e DRAM per HBM",
+   "azienda": "Samsung Electronics",
+   "paese": "KR",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "Samsung, campus di Pyeongtaek (P4, P5)"
+   },
+   "stato": "operativo-parziale",
+   "quota": "Samsung 5,9% della fonderia mondiale nel 2° trimestre 2026",
+   "fonte": "TrendForce, classifica fonderie 2° trimestre 2026",
+   "link": "https://www.trendforce.com/presscenter/news/20260909-13225.html",
+   "data_fonte": "2026-09-09",
+   "affidabilita": "alta",
+   "titoli": [
+    "005930.KS"
+   ],
+   "lat": 37.0481,
+   "lon": 127.0364,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del quartiere)",
+   "precisione_km": 3,
+   "note": "P4 a piena attività anticipata al 2026 (50.000 mld KRW = 50 trilioni). P5 in fondazione (agosto 2026). Fonti in disaccordo sull'uso di P4 (memoria o fonderia). A settembre 2026 avvio di una fabbrica HBM da 6 trilioni KRW a Onyang.",
+   "nodo": "DRAM 1c e base die HBM4; fonderia 2 nm",
+   "proprietario": "Samsung Electronics",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "samsung-taylor",
+   "anello": "fabbricazione",
+   "nome": "Samsung, Taylor (Texas)",
+   "ruolo": "fonderia avanzata negli USA",
+   "azienda": "Samsung Electronics",
+   "paese": "US",
+   "rif": {
+    "file": "ai.json",
+    "nome": "Samsung Taylor"
+   },
+   "stato": "in-costruzione",
+   "quota": null,
+   "titoli": [
+    "005930.KS"
+   ],
+   "lat": 30.57,
+   "lon": -97.42,
+   "origine_coord": "da ai.json (stimata)",
+   "precisione_km": 5,
+   "fonte": "TrendForce News",
+   "link": "https://www.trendforce.com/news/?p=42788",
+   "data_fonte": "2025-07-28",
+   "affidabilita": "bassa",
+   "note": "Riconvertita a 2 nm. Produzione attesa a fine 2026 secondo fonti secondarie. Da verificare",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "intel-ocotillo",
+   "anello": "fabbricazione",
+   "nome": "Intel Fab 52, Ocotillo (Arizona): 18A",
+   "ruolo": "nodo avanzato di Intel",
+   "azienda": "Intel",
+   "paese": "US",
+   "rif": {
+    "file": "ai.json",
+    "nome": "Intel Fab 52 (Ocotillo)"
+   },
+   "stato": "operativo",
+   "quota": null,
+   "titoli": [
+    "INTC"
+   ],
+   "lat": 33.27,
+   "lon": -111.88,
+   "origine_coord": "da ai.json (stimata)",
+   "precisione_km": 2,
+   "fonte": "Telepolis (cita CNBC)",
+   "link": "https://www.telepolis.pl/tech/intel-tsmc-usa-produkcja-ukladow-polprzewodnikowych",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "media",
+   "note": "Processo 18A. Rese ancora in salita secondo la fonte. Quattro scanner EUV Low-NA. Fab 62 prevista",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "intel-leixlip",
+   "anello": "fabbricazione",
+   "nome": "Intel Fab 34, Leixlip (Irlanda)",
+   "ruolo": "unica fabbrica EUV di Intel in Europa",
+   "azienda": "Intel",
+   "paese": "IE",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "Intel Fab 34, Leixlip"
+   },
+   "stato": "operativo",
+   "quota": null,
+   "titoli": [
+    "INTC"
+   ],
+   "lat": 53.3645,
+   "lon": -6.4897,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM della città)",
+   "precisione_km": 3,
+   "fonte": "Tom's Hardware",
+   "link": "https://www.tomshardware.com/tech-industry/intel-commits-5-7-billion-to-ireland-one-year-after-cancelling-its-german-and-polish-fab-projects",
+   "data_fonte": "2026",
+   "affidabilita": "alta",
+   "note": "Unica fabbrica EUV di Intel in Europa. Nuovo investimento (circa 5 mld EUR) per produrre Intel 3 per Xeon 6; quota del 49% di Apollo riacquistata ad aprile 2026.",
+   "nodo": "Intel 4 / Intel 3 (EUV)",
+   "proprietario": "Intel (100% da aprile 2026)",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "smic-shanghai",
+   "anello": "fabbricazione",
+   "nome": "SMIC, Shanghai: 7 nm senza EUV",
+   "ruolo": "produce i chip Huawei Ascend",
+   "azienda": "SMIC",
+   "paese": "CN",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "SMIC, linee avanzate di Shanghai"
+   },
+   "stato": "operativo-parziale",
+   "quota": "SMIC 5,4% della fonderia mondiale nel 2° trimestre 2026 (+20% di ricavi sul trimestre)",
+   "fonte": "TrendForce, classifica fonderie 2° trimestre 2026",
+   "link": "https://www.trendforce.com/presscenter/news/20260909-13225.html",
+   "data_fonte": "2026-09-09",
+   "affidabilita": "alta",
+   "titoli": [
+    "0981.HK"
+   ],
+   "lat": 31.2073,
+   "lon": 121.6102,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM di Zhangjiang (sede SMIC); le linee 7/5 nm non hanno posizione pubblica)",
+   "precisione_km": 25,
+   "note": "Stima SemiAnalysis: capacità a 7 nm e meno di 45.000 wafer al mese a fine 2025, 60.000 nel 2026. Produce i chip Huawei Ascend; il vincolo indicato è la memoria HBM, non la fonderia. La Cina punterebbe a quintuplicare la produzione a 7/5 nm (TrendForce). Numeri di analisti, non ufficiali.",
+   "nodo": "7 nm (N+2), 5 nm in prova; senza EUV",
+   "proprietario": "SMIC",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "rapidus",
+   "anello": "fabbricazione",
+   "nome": "Rapidus IIM-1, Chitose (Hokkaido)",
+   "ruolo": "2 nm giapponese, volume dal 2027",
+   "azienda": "Rapidus",
+   "paese": "JP",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "Rapidus IIM-1, Chitose (Hokkaido)"
+   },
+   "stato": "in-costruzione",
+   "quota": null,
+   "lat": 42.8209,
+   "lon": 141.651,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM della città)",
+   "precisione_km": 8,
+   "fonte": "Tom's Hardware",
+   "link": "https://www.tomshardware.com/tech-industry/semiconductors/rapidus-fab-roadmap-examined",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "Prototipi a 2 nm dal luglio 2025; produzione di massa nel 2° semestre dell'esercizio 2027, senza ancora un grande cliente. Importo = sostegno pubblico approvato per ricerca e sviluppo (2.354 mld JPY, aprile 2026); altra fonte parla di circa 2.900 mld JPY pianificati. Unico sito, nessuna riserva.",
+   "nodo": "2 nm GAA",
+   "proprietario": "Rapidus (sostenuta dallo Stato giapponese)",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "nexperia-nijmegen",
+   "anello": "fabbricazione",
+   "nome": "Nexperia, Nijmegen (Paesi Bassi)",
+   "ruolo": "chip discreti e di potenza (fronte-end in Europa, back-end a Dongguan)",
+   "azienda": "Nexperia (Wingtech, sotto controllo olandese)",
+   "paese": "NL",
+   "lat": 51.8475,
+   "lon": 5.8638,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "WTOP (AP), «Dutch court orders investigation into chipmaker Nexperia»",
+   "link": "https://wtop.com/world/2026/02/dutch-court-orders-investigation-into-semiconductor-chipmaker-nexperia/",
+   "data_fonte": "2026-02",
+   "affidabilita": "alta",
+   "note": "Non è un anello dei chip per l'AI ma mostra come un intervento statale nei Paesi Bassi possa spezzare una catena Europa–Cina.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "nexperia-dongguan",
+   "anello": "fabbricazione",
+   "nome": "Nexperia, Dongguan (Cina): assemblaggio e test",
+   "ruolo": "back-end: oltre 50 miliardi di pezzi l'anno, circa metà della produzione pre-crisi",
+   "azienda": "Nexperia China",
+   "paese": "CN",
+   "lat": 23.0184,
+   "lon": 113.7452,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 20,
+   "stato": "separato",
+   "quota": null,
+   "fonte": "Model Diplomat, «Nexperia's Split Signals Chip Decoupling»",
+   "link": "https://modeldiplomat.com/story/nexperias-split-signals-chip-decoupling",
+   "data_fonte": "2026",
+   "affidabilita": "bassa",
+   "note": "Volume citato da una fonte secondaria.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "tsmc-ap8",
+   "anello": "packaging-memoria",
+   "nome": "TSMC AP8, Tainan: CoWoS",
+   "ruolo": "impacchettamento CoWoS delle GPU con l'HBM",
+   "azienda": "TSMC",
+   "paese": "TW",
+   "lat": 23.1065,
+   "lon": 120.2736,
+   "origine_coord": "OSM Nominatim (Parco scientifico di Tainan)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": "capacità CoWoS di TSMC a fine 2026 stimata 125.000–130.000 wafer al mese; Nvidia circa il 60% della capacità 2026",
+   "fonte": "KGI Securities, nota su TSMC (marzo 2026) e stime di settore",
+   "link": "https://www.kgi.com.hk/en/-/media/files/kgishk/research-reports/tw-reports/tsmc_2330-tt_09032026e.pdf",
+   "data_fonte": "2026-03-09",
+   "affidabilita": "media",
+   "titoli": [
+    "TSM"
+   ],
+   "note": "Ripartizione per cliente non dichiarata da TSMC (stime Morgan Stanley riportate dalla stampa). KGI prevede 170.000 wafer al mese a fine 2027. Coordinate del parco scientifico, non dell'edificio.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "tsmc-ap7",
+   "anello": "packaging-memoria",
+   "nome": "TSMC AP7, Chiayi: SoIC e WMCM",
+   "ruolo": "impacchettamento avanzato 3D (SoIC)",
+   "azienda": "TSMC",
+   "paese": "TW",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "TSMC AP7, impacchettamento avanzato di Chiayi"
+   },
+   "stato": "operativo-parziale",
+   "quota": null,
+   "titoli": [
+    "TSM"
+   ],
+   "lat": 23.4759,
+   "lon": 120.3107,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del parco scientifico)",
+   "precisione_km": 3,
+   "fonte": "TrendForce",
+   "link": "https://www.trendforce.com/news/2026/01/21/news-tsmc-advanced-packaging-capex-projected-to-grow-24-cagr-in-2025-27-chiayi-ap7-targets-wmcm-and-copos/",
+   "data_fonte": "2026-01-21",
+   "affidabilita": "alta",
+   "note": "Inaugurato il 2025-12-04, otto fasi. Il collo di bottiglia CoWoS per le GPU è soprattutto nel campus AP8 di Tainan. Capacità CoWoS TSMC 2026 stimata 120.000-140.000 wafer al mese; il divario domanda-offerta scenderebbe dal 20% al 10% a fine 2026 (TrendForce).",
+   "nodo": "impacchettamento avanzato (WMCM, SoIC, poi CoPoS)",
+   "proprietario": "TSMC",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "hynix-icheon",
+   "anello": "packaging-memoria",
+   "nome": "SK Hynix, Icheon (Corea): sede e DRAM",
+   "ruolo": "primo produttore di HBM",
+   "azienda": "SK Hynix",
+   "paese": "KR",
+   "lat": 37.2809,
+   "lon": 127.4429,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 10,
+   "stato": "operativo",
+   "quota": "SK Hynix 50% dei ricavi HBM nel 2° trimestre 2026 (58% nel 1°)",
+   "fonte": "Counterpoint Research, quote HBM 2° trimestre 2026 (ripreso da SamMobile e Daum)",
+   "link": "https://counterpointresearch.com/insights/global-dram-and-hbm-market-share",
+   "data_fonte": "2026-09-03",
+   "affidabilita": "alta",
+   "titoli": [
+    "000660.KS"
+   ],
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "hynix-cheongju",
+   "anello": "packaging-memoria",
+   "nome": "SK Hynix M15X, Cheongju: DRAM per HBM",
+   "ruolo": "nuova fabbrica di DRAM per HBM",
+   "azienda": "SK Hynix",
+   "paese": "KR",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "SK Hynix M15X, Cheongju"
+   },
+   "stato": "operativo-parziale",
+   "quota": null,
+   "titoli": [
+    "000660.KS"
+   ],
+   "lat": 36.6708,
+   "lon": 127.4559,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM dell'area Technopolis)",
+   "precisione_km": 4,
+   "fonte": "The Star (Reuters)",
+   "link": "https://www.thestar.com.my/tech/tech-news/2026/01/15/exclusive-sk-hynix-speeds-up-new-chip-fab-opening-to-meet-memory-demand-executive-says",
+   "data_fonte": "2026-01-15",
+   "affidabilita": "media",
+   "note": "Wafer in ingresso da febbraio 2026, produzione di massa dalla prima camera bianca nel 1° semestre 2026. Importo indicativo (oltre 20 trilioni KRW, fonti discordi). Accanto, impianto di impacchettamento P&T7 (circa 19 trilioni KRW) da fine 2027.",
+   "nodo": "DRAM per HBM",
+   "proprietario": "SK Hynix",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "hynix-indiana",
+   "anello": "packaging-memoria",
+   "nome": "SK Hynix, West Lafayette (Indiana): HBM",
+   "ruolo": "packaging HBM negli USA dal 2029",
+   "azienda": "SK Hynix",
+   "paese": "US",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "SK Hynix, impacchettamento HBM di West Lafayette (Indiana)"
+   },
+   "stato": "in-costruzione",
+   "quota": null,
+   "titoli": [
+    "000660.KS"
+   ],
+   "lat": 40.4259,
+   "lon": -86.9081,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM della città)",
+   "precisione_km": 5,
+   "fonte": "Korea Times (Reuters)",
+   "link": "https://www.koreatimes.co.kr/world/20260828/sk-hynix-to-start-ai-chip-volume-production-in-indiana-in-2029",
+   "data_fonte": "2026-08-28",
+   "affidabilita": "alta",
+   "note": "Negli USA ma non presente in ai.json. Prima pietra il 2026-08-27; volume HBM4E dal 3° trimestre 2029. SK Hynix vede la carenza di memoria fino al 2030. Quota HBM di SK Hynix 58% nel 1° trimestre 2026 (Counterpoint).",
+   "nodo": "impacchettamento HBM4E",
+   "proprietario": "SK Hynix",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "samsung-onyang",
+   "anello": "packaging-memoria",
+   "nome": "Samsung, Onyang (Asan): packaging HBM",
+   "ruolo": "assemblaggio e test HBM",
+   "azienda": "Samsung Electronics",
+   "paese": "KR",
+   "lat": 36.7824,
+   "lon": 127.0089,
+   "origine_coord": "OSM Nominatim (quartiere)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": "Samsung 33% dei ricavi HBM nel 2° trimestre 2026 (21% nel 1°)",
+   "fonte": "Counterpoint Research, quote HBM 2° trimestre 2026",
+   "link": "https://counterpointresearch.com/insights/global-dram-and-hbm-market-share",
+   "data_fonte": "2026-09-03",
+   "affidabilita": "alta",
+   "titoli": [
+    "005930.KS"
+   ],
+   "note": "A settembre 2026 avvio di un nuovo impianto HBM da 6.000 mld KRW a Onyang (ai-mondo.json).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "micron-hiroshima",
+   "anello": "packaging-memoria",
+   "nome": "Micron, Hiroshima (Giappone): DRAM con EUV e HBM",
+   "ruolo": "DRAM avanzata per HBM",
+   "azienda": "Micron Technology",
+   "paese": "JP",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "Micron, Hiroshima"
+   },
+   "stato": "in-costruzione",
+   "quota": "Micron 18% dei ricavi HBM nel 2° trimestre 2026 (21% nel 1°)",
+   "fonte": "Counterpoint Research, quote HBM 2° trimestre 2026",
+   "link": "https://counterpointresearch.com/insights/global-dram-and-hbm-market-share",
+   "data_fonte": "2026-09-03",
+   "affidabilita": "alta",
+   "titoli": [
+    "MU"
+   ],
+   "lat": 34.4272,
+   "lon": 132.7416,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM della città)",
+   "precisione_km": 8,
+   "note": "Fabbrica esistente in produzione; l'ampliamento (1.500 mld JPY secondo Nikkei, 9,3 mld USD secondo un'altra fonte, aiuti pubblici fino a circa 3 mld USD) parte da maggio 2026 con consegne nel 2028. Prima EUV in produzione di massa in Giappone.",
+   "nodo": "DRAM con EUV e HBM",
+   "proprietario": "Micron Technology",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "micron-singapore",
+   "anello": "packaging-memoria",
+   "nome": "Micron, Singapore: packaging HBM",
+   "ruolo": "assemblaggio HBM",
+   "azienda": "Micron Technology",
+   "paese": "SG",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "Micron, impacchettamento HBM di Singapore"
+   },
+   "stato": "in-costruzione",
+   "quota": null,
+   "titoli": [
+    "MU"
+   ],
+   "lat": 1.3801,
+   "lon": 103.8421,
+   "origine_coord": "da ai-mondo.json (stimata: area di Ang Mo Kio (sito non verificato))",
+   "precisione_km": 10,
+   "fonte": "Micron via Researchpool",
+   "link": "https://app.researchpool.com/company/mu-us5951121038-micron-technology-inc-HzQHxJMipr/press/micron-technology-inc-mu-micron-breaks-ground-on-new-hbm-advanced-packaging-facility-in-singapo-D8fDEA5799",
+   "data_fonte": "2025-01",
+   "affidabilita": "media",
+   "note": "Prima pietra a gennaio 2025, avvio previsto nel 2026: apertura non confermata nelle fonti trovate.",
+   "nodo": "impacchettamento HBM",
+   "proprietario": "Micron Technology",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "cxmt-hefei",
+   "anello": "packaging-memoria",
+   "nome": "CXMT, Hefei (Cina): DRAM e HBM cinese",
+   "ruolo": "memoria per i chip AI cinesi",
+   "azienda": "ChangXin Memory Technologies",
+   "paese": "CN",
+   "lat": 31.8666,
+   "lon": 117.2814,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 20,
+   "stato": "operativo",
+   "quota": "CXMT 10% del mercato DRAM+HBM nel 2° trimestre 2026",
+   "fonte": "Counterpoint Research (ripreso da Huawei Central)",
+   "link": "https://www.huaweicentral.com/cxmt-records-strong-growth-in-q2-2026-global-dram-and-hbm-market/",
+   "data_fonte": "2026-08",
+   "affidabilita": "media",
+   "note": "Epoch AI: a inizio 2026 l'HBM di CXMT era troppo poca per centinaia di migliaia di Ascend.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "nvidia-sc",
+   "anello": "progettazione",
+   "nome": "Nvidia, Santa Clara (California)",
+   "ruolo": "GPU per data center (Blackwell, Rubin), reti NVLink e InfiniBand",
+   "azienda": "Nvidia",
+   "paese": "US",
+   "lat": 37.3541,
+   "lon": -121.9552,
+   "origine_coord": "OSM Nominatim (città della sede)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": "circa 81% del mercato dei chip AI per data center nel 2026 (stima IDC riportata da terzi; altre stime 75–86%)",
+   "fonte": "Tom's Hardware, «The custom AI ASIC state of play (May 2026)» e sintesi di stime IDC",
+   "link": "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia",
+   "data_fonte": "2026-05",
+   "affidabilita": "media",
+   "titoli": [
+    "NVDA"
+   ],
+   "note": "Le quote dipendono dalla definizione (ricavi o unità; con o senza TPU interni).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "amd-sc",
+   "anello": "progettazione",
+   "nome": "AMD, Santa Clara (California)",
+   "ruolo": "acceleratori Instinct",
+   "azienda": "AMD",
+   "paese": "US",
+   "lat": 37.3541,
+   "lon": -121.9552,
+   "origine_coord": "OSM Nominatim (città della sede)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": "circa 10% (stima IDC riportata da terzi)",
+   "fonte": "sintesi di stime IDC (commandlinux.com)",
+   "link": "https://commandlinux.com/ai/ai-chip-market-share/",
+   "data_fonte": "2026",
+   "affidabilita": "bassa",
+   "titoli": [
+    "AMD"
+   ],
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "broadcom",
+   "anello": "progettazione",
+   "nome": "Broadcom, Palo Alto (California): ASIC su misura",
+   "ruolo": "co-progetta i TPU di Google e i chip di Meta; switch Ethernet",
+   "azienda": "Broadcom",
+   "paese": "US",
+   "lat": 37.4443,
+   "lon": -122.1598,
+   "origine_coord": "OSM Nominatim (città della sede)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": "60–80% del mercato degli ASIC su misura (stime discordi); secondo cliente CoWoS di TSMC (oltre 240.000 wafer nel 2026)",
+   "fonte": "Tom's Hardware, «The custom AI ASIC state of play (May 2026)»",
+   "link": "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia",
+   "data_fonte": "2026-05",
+   "affidabilita": "media",
+   "titoli": [
+    "AVGO"
+   ],
+   "note": "Ricavi AI dei semiconduttori 8,4 mld USD nel 1° trimestre fiscale 2026 (+106%).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "google-tpu",
+   "anello": "progettazione",
+   "nome": "Google, Mountain View (California): TPU",
+   "ruolo": "acceleratori propri (TPU) per uso interno e cloud",
+   "azienda": "Alphabet",
+   "paese": "US",
+   "lat": 37.3894,
+   "lon": -122.0832,
+   "origine_coord": "OSM Nominatim (città della sede)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "Tom's Hardware, «The custom AI ASIC state of play (May 2026)»",
+   "link": "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia",
+   "data_fonte": "2026-05",
+   "affidabilita": "media",
+   "titoli": [
+    "GOOGL"
+   ],
+   "note": "Il TPU è descritto come il progetto di silicio proprio più maturo tra i grandi cloud.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "huawei",
+   "anello": "progettazione",
+   "nome": "Huawei, Shenzhen: Ascend",
+   "ruolo": "acceleratori Ascend (910C, 950) prodotti da SMIC",
+   "azienda": "Huawei (non quotata)",
+   "paese": "CN",
+   "lat": 22.63,
+   "lon": 114.0651,
+   "origine_coord": "OSM Nominatim (Bantian, distretto della sede)",
+   "precisione_km": 3,
+   "stato": "operativo",
+   "quota": "ricavi attesi dai chip AI circa 12 mld USD nel 2026 (7,5 nel 2025); meno del 4% del calcolo AI prodotto da Nvidia nel 2026 secondo Epoch AI",
+   "fonte": "Epoch AI, «Huawei's roadmap to 2031»",
+   "link": "https://epoch.ai/publications/huaweis-roadmap-to-2031",
+   "data_fonte": "2026",
+   "affidabilita": "alta",
+   "note": "Vincolo: HBM (controlli USA di dicembre 2024). Il 950PR userebbe una DRAM non HBM. Ricavi da Tom's Hardware.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "foxconn-tw",
+   "anello": "server-rete",
+   "nome": "Foxconn (Hon Hai), Tucheng (Nuova Taipei)",
+   "ruolo": "primo assemblatore di server AI e rack completi",
+   "azienda": "Hon Hai Precision (Foxconn)",
+   "paese": "TW",
+   "lat": 24.9722,
+   "lon": 121.4433,
+   "origine_coord": "OSM Nominatim (distretto della sede)",
+   "precisione_km": 3,
+   "stato": "operativo",
+   "quota": "circa 40% dei server AI mondiali, oltre 44% dei rack secondo stampa taiwanese",
+   "fonte": "TechNews, «AI 伺服器出貨鴻海領先廣達、緯創»",
+   "link": "https://finance.technews.tw/2026/05/12/foxconn-leads-quanta-and-wistron-in-ai-server-shipments/",
+   "data_fonte": "2026-05-12",
+   "affidabilita": "media",
+   "titoli": [
+    "2317.TW"
+   ],
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "quanta-tw",
+   "anello": "server-rete",
+   "nome": "Quanta Computer, Guishan (Taoyuan)",
+   "ruolo": "secondo assemblatore di server AI",
+   "azienda": "Quanta Computer",
+   "paese": "TW",
+   "lat": 24.9925,
+   "lon": 121.3378,
+   "origine_coord": "OSM Nominatim (distretto della sede)",
+   "precisione_km": 3,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "TrendForce, Server Market Bulletin (gennaio 2026)",
+   "link": "https://www.trendforce.com/research/download/RP260122RF3",
+   "data_fonte": "2026-01-22",
+   "affidabilita": "media",
+   "titoli": [
+    "2382.TW"
+   ],
+   "note": "Quanta e Wistron aumentano il capex per produrre in USA, Messico e Thailandia (TrendForce).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "foxconn-mx",
+   "anello": "server-rete",
+   "nome": "Foxconn, Guadalajara (Jalisco, Messico): server GB200",
+   "ruolo": "assemblaggio di server Nvidia per i data center USA (Stargate)",
+   "azienda": "Hon Hai Precision (Foxconn)",
+   "paese": "MX",
+   "lat": 20.6784,
+   "lon": -103.3357,
+   "origine_coord": "OSM Nominatim (città; il comune esatto è conteso tra El Salto e Tonalá)",
+   "precisione_km": 20,
+   "stato": "operativo-parziale",
+   "quota": null,
+   "fonte": "Expansión, «Foxconn ya hace data centers de Nvidia en México»",
+   "link": "https://expansion.mx/tecnologia/2025/04/07/foxconn-ya-hace-data-centers-de-nvidia-en-mexico",
+   "data_fonte": "2025-04-07",
+   "affidabilita": "media",
+   "titoli": [
+    "2317.TW"
+   ],
+   "note": "Investimento di circa 900 milioni di dollari annunciato; Nvidia: la produzione di GB200 NVL72 in Messico va soprattutto a Stargate. Stato 2026 non verificato.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "foxconn-houston",
+   "anello": "server-rete",
+   "nome": "Foxconn, Houston (Texas): supercomputer Nvidia",
+   "ruolo": "assemblaggio negli USA",
+   "azienda": "Hon Hai Precision (Foxconn)",
+   "paese": "US",
+   "lat": 29.7589,
+   "lon": -95.3677,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 25,
+   "stato": "in-avvio",
+   "quota": null,
+   "fonte": "Nvidia, «NVIDIA to Manufacture American-Made AI Supercomputers in US for First Time»",
+   "link": "https://blogs.nvidia.com/blog/nvidia-manufacture-american-made-ai-supercomputers-us/",
+   "data_fonte": "2025-04-14",
+   "affidabilita": "alta",
+   "titoli": [
+    "2317.TW",
+    "NVDA"
+   ],
+   "note": "Wistron a Dallas; produzione di massa attesa in 12–15 mesi dall'annuncio (aprile 2025). Stato 2026 non verificato.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "innolight",
+   "anello": "server-rete",
+   "nome": "InnoLight (Zhongji Innolight), Suzhou: moduli ottici",
+   "ruolo": "primo produttore di transceiver ottici 800G e 1,6T",
+   "azienda": "Zhongji Innolight",
+   "paese": "CN",
+   "lat": 31.3111,
+   "lon": 120.6213,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 20,
+   "stato": "operativo",
+   "quota": "circa 27% dei ricavi mondiali dei transceiver per data center (Counterpoint); 50–60% dell'1,6T nel 2026 (Yole)",
+   "fonte": "Yole Group, «Optical transceivers at the chokepoint of AI growth»",
+   "link": "https://www.yolegroup.com/strategy-insights/opinion-optical-transceivers-at-the-chokepoint-of-ai-growth-and-supply-chain-constraints/",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "titoli": [
+    "300308.SZ"
+   ],
+   "note": "Quote diverse a seconda della fonte (un'altra classifica dà 23,4%).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "eoptolink",
+   "anello": "server-rete",
+   "nome": "Eoptolink, Chengdu: moduli ottici",
+   "ruolo": "terzo produttore di transceiver per data center",
+   "azienda": "Eoptolink",
+   "paese": "CN",
+   "lat": 30.6599,
+   "lon": 104.0633,
+   "origine_coord": "OSM Nominatim (città)",
+   "precisione_km": 20,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "Counterpoint Research, «FCC China ban: AI component»",
+   "link": "https://counterpointresearch.com/en/insights/fcc-china-ban-ai-component",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "titoli": [
+    "300502.SZ"
+   ],
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "coherent",
+   "anello": "server-rete",
+   "nome": "Coherent, Saxonburg (Pennsylvania): laser e moduli ottici",
+   "ruolo": "secondo produttore di transceiver; chip laser EML insieme a Lumentum",
+   "azienda": "Coherent Corp.",
+   "paese": "US",
+   "lat": 40.7506,
+   "lon": -79.8141,
+   "origine_coord": "OSM Nominatim (comune della sede)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": "circa 17% dei ricavi dei transceiver per data center (Counterpoint)",
+   "fonte": "Counterpoint Research, «FCC China ban: AI component»",
+   "link": "https://counterpointresearch.com/en/insights/fcc-china-ban-ai-component",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "titoli": [
+    "COHR"
+   ],
+   "note": "Yole: la carenza di chip EML da 200G per corsia (Coherent e Lumentum) è il fattore che limita l'1,6T nel 2026.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "tpe",
+   "anello": "logistica",
+   "nome": "Aeroporto di Taipei Taoyuan (TPE)",
+   "ruolo": "uscita aerea di server e chip di Taiwan",
+   "azienda": "Taoyuan International Airport Corp.; vettori China Airlines, EVA Air",
+   "paese": "TW",
+   "lat": 25.0793,
+   "lon": 121.2346,
+   "origine_coord": "OSM Nominatim (aeroporto)",
+   "precisione_km": 2,
+   "stato": "operativo",
+   "quota": "carico AI tra il 40 e il 50% del cargo di EVA Air; Nord America circa il 70% dei ricavi cargo",
+   "fonte": "DIGITIMES / Taiwan News (sintesi di stampa)",
+   "link": "https://www.digitimes.com/news/a20260527PD246.html",
+   "data_fonte": "2026-05-27",
+   "affidabilita": "media",
+   "titoli": [
+    "2618.TW",
+    "2610.TW"
+   ],
+   "note": "Server e computer (macchine per l'elaborazione dati) sono la prima voce dell'export di Taiwan: 192,6 mld USD in gennaio–agosto 2026, +87,5% (STAT Times).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "anc",
+   "anello": "logistica",
+   "nome": "Aeroporto di Anchorage (ANC)",
+   "ruolo": "scalo tecnico dei cargo transpacifici Asia–USA",
+   "azienda": "Stato dell'Alaska",
+   "paese": "US",
+   "lat": 61.181,
+   "lon": -149.9979,
+   "origine_coord": "OSM Nominatim (aeroporto)",
+   "precisione_km": 2,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "The Loadstar, «Air cargo cashes in on AI boom – but who has the edge?»",
+   "link": "https://theloadstar.com/?p=327930",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "Ruolo di scalo descritto dalla stampa del cargo aereo; volumi AI per Anchorage non trovati.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "ams",
+   "anello": "logistica",
+   "nome": "Aeroporto di Amsterdam Schiphol (AMS)",
+   "ruolo": "partenza per via aerea delle macchine ASML",
+   "azienda": "Royal Schiphol Group",
+   "paese": "NL",
+   "lat": 52.327,
+   "lon": 4.7415,
+   "origine_coord": "OSM Nominatim (aeroporto)",
+   "precisione_km": 2,
+   "stato": "operativo",
+   "quota": "una EUV: circa 40 container, 20 camion e 3 Boeing 747 cargo",
+   "fonte": "Asia Times, «The $150mn machine that is changing the world»",
+   "link": "https://asiatimes.com/2021/09/the-150mn-machine-that-is-changing-the-world/",
+   "data_fonte": "2021-09",
+   "affidabilita": "media",
+   "note": "DHL cita ASML: le macchine più grandi riempiono 20 camion e le stive di 3 aerei cargo. Una EXE:5000 High-NA è andata in Oregon in 43 container (Converge Digest). Schiphol come aeroporto di partenza è una valutazione: ASML non pubblica gli aeroporti usati.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "icn",
+   "anello": "logistica",
+   "nome": "Aeroporto di Incheon (ICN)",
+   "ruolo": "uscita aerea di HBM e memorie coreane",
+   "azienda": "Incheon International Airport Corp.",
+   "paese": "KR",
+   "lat": 37.4635,
+   "lon": 126.4417,
+   "origine_coord": "OSM Nominatim (aeroporto)",
+   "precisione_km": 2,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "AJOT (Reuters), «AI race redraws Asian air cargo»",
+   "link": "https://www.ajot.com/news/ai-race-redraws-asian-air-cargo-replacing-e-commerce-as-growth-engine",
+   "data_fonte": "2026-07-29",
+   "affidabilita": "media",
+   "note": "Volumi specifici di HBM via Incheon non trovati: il ruolo è una valutazione basata sulla posizione dei produttori.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "pvg",
+   "anello": "logistica",
+   "nome": "Aeroporto di Shanghai Pudong (PVG)",
+   "ruolo": "uscita aerea dei moduli ottici cinesi",
+   "azienda": "Shanghai Airport Authority",
+   "paese": "CN",
+   "lat": 31.1427,
+   "lon": 121.8041,
+   "origine_coord": "OSM Nominatim (aeroporto)",
+   "precisione_km": 2,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "China Daily, «Air cargo service injects impetus into AI chains»",
+   "link": "https://www.chinaservicesinfo.com/s/202603/18/WS69bd1371498e23165e06e3ea/air-cargo-service-injects-impetus-into-ai-chains.html",
+   "data_fonte": "2026-03-18",
+   "affidabilita": "media",
+   "note": "Ruolo per i transceiver: valutazione.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "dfw",
+   "anello": "logistica",
+   "nome": "Aeroporto di Dallas/Fort Worth (DFW)",
+   "ruolo": "arrivo dei server verso i campus del Texas",
+   "azienda": "DFW Airport",
+   "paese": "US",
+   "lat": 32.8962,
+   "lon": -97.0459,
+   "origine_coord": "OSM Nominatim (aeroporto)",
+   "precisione_km": 2,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "DIGITIMES, export di Taiwan verso gli USA (+83% nei primi due mesi 2026)",
+   "link": "https://www.digitimes.com/news/a20260316PD217.html",
+   "data_fonte": "2026-03-16",
+   "affidabilita": "bassa",
+   "note": "Aeroporto di arrivo scelto come esempio vicino ad Abilene e alle fabbriche Wistron di Dallas: valutazione, non dato di traffico.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "kaohsiung-port",
+   "anello": "logistica",
+   "nome": "Porto di Kaohsiung",
+   "ruolo": "primo porto di Taiwan: GNL, materie, componenti pesanti",
+   "azienda": "Taiwan International Ports Corp.",
+   "paese": "TW",
+   "lat": 22.5725,
+   "lon": 120.3057,
+   "origine_coord": "OSM Nominatim (porto)",
+   "precisione_km": 5,
+   "stato": "operativo",
+   "quota": null,
+   "fonte": "stretti-dettaglio.json (Stretto di Taiwan) e PortWatch",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-11-01",
+   "affidabilita": "media",
+   "note": "Ruolo descrittivo.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "stretto-taiwan",
+   "anello": "logistica",
+   "nome": "Stretto di Taiwan",
+   "ruolo": "passaggio di metà delle portacontainer del mondo; attraversato da ogni carico da e per le fab di Taiwan",
+   "azienda": null,
+   "paese": "TW",
+   "rif": {
+    "file": "stretti-dettaglio.json",
+    "id": "taiwan"
+   },
+   "stato": "aperto, pressione della guardia costiera cinese",
+   "quota": null,
+   "lat": 24.4,
+   "lon": 119.6,
+   "origine_coord": "da stretti-dettaglio.json (coordinate del livello)",
+   "fonte": "CSIS ChinaPower (ripreso da stretti.json)",
+   "link": "https://features.csis.org/chinapower/china-taiwan-strait-trade/",
+   "data_fonte": "2024-08-22",
+   "affidabilita": "alta",
+   "note": "Più di un quinto del commercio marittimo mondiale e metà delle portacontainer del mondo ci passano; Taiwan produce la gran parte dei chip avanzati. Il rischio è un blocco cinese: Bloomberg Economics stima −5% del PIL mondiale nel primo anno.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "hormuz",
+   "anello": "logistica",
+   "nome": "Stretto di Hormuz",
+   "ruolo": "uscita del GNL e dell'elio del Qatar",
+   "azienda": null,
+   "paese": "OM",
+   "rif": {
+    "file": "stretti-dettaglio.json",
+    "id": "hormuz"
+   },
+   "stato": "chiuso di fatto",
+   "quota": null,
+   "lat": 26.6,
+   "lon": 56.45,
+   "origine_coord": "da stretti-dettaglio.json (coordinate del livello)",
+   "fonte": "IEA, Strait of Hormuz Factsheet (febbraio 2026), su dati Kpler",
+   "link": "https://iea.blob.core.windows.net/assets/c8248eba-8689-46d9-ae4b-b858b59c0f1c/StraitofHormuz2026-Factsheet.pdf",
+   "data_fonte": "2026-02",
+   "affidabilita": "alta",
+   "note": "Il passaggio più importante per petrolio e GNL: prima della guerra circa 20 mb/g (un quarto del petrolio via mare) e quasi un quinto del GNL mondiale. Dal 2 marzo 2026 è chiuso di fatto, con brevi riaperture; a novembre 2026 i Pasdaran attaccano le navi su rotte «non autorizzate» e gli USA bloccano i porti iraniani.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "malacca",
+   "anello": "logistica",
+   "nome": "Stretto di Malacca",
+   "ruolo": "rotta marittima Europa/Golfo–Asia orientale; accanto ai data center di Johor",
+   "azienda": null,
+   "paese": "MY",
+   "rif": {
+    "file": "stretti-dettaglio.json",
+    "id": "malacca"
+   },
+   "stato": "aperto, traffico petrolifero ridotto",
+   "quota": null,
+   "lat": 2.6,
+   "lon": 101.2,
+   "origine_coord": "da stretti-dettaglio.json (coordinate del livello)",
+   "fonte": "Anadolu Agency, su dati IEA ed EIA (ripreso da stretti.json)",
+   "link": "https://www.aa.com.tr/en/energy/general/around-70-of-global-oil-demand-transported-through-strategic-maritime-chokepoints/55347",
+   "data_fonte": "2026-03-10",
+   "affidabilita": "media",
+   "note": "Il primo passaggio del petrolio al mondo per volume (23,2 mb/g nel 1° semestre 2025): porta in Cina, Giappone e Corea il greggio del Golfo. Con Hormuz chiuso il flusso è sceso (16,6 mb/g nel 2° trimestre 2026); le petroliere iraniane che sfuggono al blocco USA passano anche da Lombok.",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "maanshan",
+   "anello": "energia-dc",
+   "nome": "Centrale nucleare di Maanshan (Taiwan)",
+   "ruolo": "nucleare spento nel 2025, riavvio in esame",
+   "azienda": "Taipower",
+   "paese": "TW",
+   "lat": 21.9585,
+   "lon": 120.7499,
+   "origine_coord": "OSM Nominatim (centrale)",
+   "precisione_km": 1,
+   "stato": "spento-in-riesame",
+   "quota": "gas al 50,5% della generazione di Taiwan a luglio 2026; scorte di GNL 12–14 giorni (minimo legale 11)",
+   "fonte": "Focus Taiwan (scorte di GNL dette dal presidente Lai)",
+   "link": "https://focustaiwan.tw/business/202603210010",
+   "data_fonte": "2026-03-21",
+   "affidabilita": "media",
+   "note": "Domanda di riavvio presentata da Taipower a marzo 2026; il ministero dell'Economia indica il 2028 come prima data possibile (stampa). Quota del gas da fonte secondaria (oilprice.com).",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "dc-abilene",
+   "anello": "energia-dc",
+   "nome": "Stargate Abilene (Texas)",
+   "ruolo": "campus OpenAI-Oracle-Crusoe",
+   "azienda": "Crusoe, Oracle, OpenAI",
+   "paese": "US",
+   "rif": {
+    "file": "ai.json",
+    "nome": "Stargate Abilene (Crusoe-Oracle-OpenAI)"
+   },
+   "stato": "operativo",
+   "quota": null,
+   "titoli": [
+    "ORCL"
+   ],
+   "lat": 32.45,
+   "lon": -99.73,
+   "origine_coord": "da ai.json (stimata)",
+   "precisione_km": 10,
+   "fonte": "Epoch AI",
+   "link": "https://epoch.ai/blog/openai-stargate-where-the-us-sites-stand",
+   "data_fonte": "2026-04-17",
+   "affidabilita": "alta",
+   "note": "Operativo in parte. 1200 MW pianificati. Capacità attuale 0.3-0.6 GW o 421-618 MW a seconda di data e definizione (Epoch). Gas in loco e rete ERCOT. Completamento previsto T3-T4 2026",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "dc-colossus2",
+   "anello": "energia-dc",
+   "nome": "xAI Colossus 2, Memphis",
+   "ruolo": "il più grande campus AI operativo (Epoch)",
+   "azienda": "xAI",
+   "paese": "US",
+   "rif": {
+    "file": "ai.json",
+    "nome": "xAI Colossus 2"
+   },
+   "stato": "operativo",
+   "quota": null,
+   "lat": 35.15,
+   "lon": -90.05,
+   "origine_coord": "da ai.json (stimata)",
+   "precisione_km": 15,
+   "fonte": "Epoch AI (via techjacksolutions)",
+   "link": "https://techjacksolutions.com/?p=83881",
+   "data_fonte": "2026-09-22",
+   "affidabilita": "media",
+   "note": "946 MW IT, il maggiore operativo al 2026-09-22. 1112k H100e. Previsti 1531 MW nel 2027. Posizione dentro l'area di Memphis",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "dc-new-carlisle",
+   "anello": "energia-dc",
+   "nome": "Amazon-Anthropic New Carlisle (Indiana)",
+   "ruolo": "campus Amazon usato da Anthropic (Project Rainier)",
+   "azienda": "Amazon",
+   "paese": "US",
+   "rif": {
+    "file": "ai.json",
+    "nome": "Amazon-Anthropic New Carlisle (Project Rainier)"
+   },
+   "stato": "operativo",
+   "quota": null,
+   "titoli": [
+    "AMZN"
+   ],
+   "lat": 41.7,
+   "lon": -86.51,
+   "origine_coord": "da ai.json (stimata)",
+   "precisione_km": 5,
+   "fonte": "Epoch AI (via techjacksolutions)",
+   "link": "https://techjacksolutions.com/?p=83881",
+   "data_fonte": "2026-09-22",
+   "affidabilita": "media",
+   "note": "Circa 910 MW IT, operativo in parte. Previsti 1925 MW nel 2028. Cliente Anthropic (chi scrive è un modello di Anthropic)",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "dc-fairwater",
+   "anello": "energia-dc",
+   "nome": "Microsoft Fairwater Atlanta",
+   "ruolo": "campus AI di Microsoft",
+   "azienda": "Microsoft",
+   "paese": "US",
+   "rif": {
+    "file": "ai.json",
+    "nome": "Microsoft Fairwater Atlanta"
+   },
+   "stato": "operativo",
+   "quota": null,
+   "titoli": [
+    "MSFT"
+   ],
+   "lat": 33.75,
+   "lon": -84.39,
+   "origine_coord": "da ai.json (stimata)",
+   "precisione_km": 20,
+   "fonte": "Epoch AI (via techjacksolutions)",
+   "link": "https://techjacksolutions.com/?p=83881",
+   "data_fonte": "2026-09-22",
+   "affidabilita": "media",
+   "note": "636 MW IT secondo Epoch. Posizione solo all'area di Atlanta",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "dc-johor",
+   "anello": "energia-dc",
+   "nome": "DayOne Nusajaya, Johor (Malesia)",
+   "ruolo": "primo polo AI fuori dagli USA nei dati Epoch",
+   "azienda": "DayOne",
+   "paese": "MY",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "DayOne Nusajaya"
+   },
+   "stato": "operativo",
+   "quota": null,
+   "lat": 1.4308,
+   "lon": 103.5951,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM di Nusajaya Tech Park (Epoch non dà l'indirizzo))",
+   "precisione_km": 5,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-10-02",
+   "affidabilita": "alta",
+   "note": "Gestore DayOne, ex GDS International, gruppo di origine cinese. Polo di Johor, al confine con Singapore. Ultima osservazione Epoch (2026-10-02, in inglese): Buildings 7-10 are operational. Judging by their state in April 2026, we expect 3 months to finish construction and another 3 months to ramp to full capacity.",
+   "mw": 473.0,
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "dc-uae",
+   "anello": "energia-dc",
+   "nome": "Stargate UAE, Abu Dhabi",
+   "ruolo": "campus da 5 GW (1.000 MW IT previsti nel 2028)",
+   "azienda": "G42, OpenAI",
+   "paese": "AE",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "OpenAI Stargate UAE"
+   },
+   "stato": "in-costruzione",
+   "quota": null,
+   "lat": 24.1873,
+   "lon": 54.4924,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM di Al Bihouth (ufficio di progetto indicato da Epoch))",
+   "precisione_km": 25,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2025-11-16",
+   "affidabilita": "media",
+   "note": "1 GW dentro il campus AI Emirati-USA da 5 GW. Sviluppatore Khazna (G42); gestori OpenAI e Oracle; partner Nvidia, Cisco, SoftBank. Prima fase 200 MW attesa nel 3° trimestre 2026 (The National, 2025-12-05). Ultima osservazione Epoch (2025-11-16, in inglese): Building 1 and 2 are partly constructed. No clear evidence of more buildings starting construction. Certezza Epoch su proprietario/utilizzatori: G42: likely; OpenAI: confident",
+   "mw": 0.0,
+   "mw_previsto": 1000.0,
+   "proprietario": "G42",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "dc-fouju",
+   "anello": "energia-dc",
+   "nome": "Campus IA di Fouju (Francia)",
+   "ruolo": "1,4 GW vicino al nucleare di Nogent",
+   "azienda": "MGX, Bpifrance, Mistral AI, Nvidia",
+   "paese": "FR",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "Campus IA di Fouju (MGX, Bpifrance, Mistral AI, Nvidia)"
+   },
+   "stato": "in-costruzione",
+   "quota": null,
+   "lat": 48.5864,
+   "lon": 2.7785,
+   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del comune)",
+   "precisione_km": 3,
+   "fonte": "Eiffage, comunicato",
+   "link": "https://www.privacy.eiffage.com/files/live/sites/metal/files/publications/PR_Eiffage_Campus%2520AI%2520enters%2520the%2520implementation%2520phase_20260602.pdf",
+   "data_fonte": "2026-06-02",
+   "affidabilita": "media",
+   "note": "Il più grande campus AI annunciato in Europa. Giugno 2026: Eiffage capocommessa della sottostazione 400/33 kV (oltre 120 mln EUR). Messa in servizio prevista nel 2028. Importo: quadro Emirati-Francia di 30-50 mld EUR (uso il minimo). Si parla di un secondo sito per arrivare a 3 GW.",
+   "mw": 1400,
+   "proprietario": "JV MGX (Emirati), Bpifrance, Mistral AI, Nvidia",
+   "categoria": "supply-chain-ai"
+  },
+  {
+   "id": "dc-ferrera",
+   "anello": "energia-dc",
+   "nome": "Campus AI Eni-Khazna, Ferrera Erbognone",
+   "ruolo": "progetto italiano a gas con cattura della CO2",
+   "azienda": "Eni, Khazna (MGX-G42)",
+   "paese": "IT",
+   "rif": {
+    "file": "ai-mondo.json",
+    "nome": "Campus AI Eni-Khazna, Ferrera Erbognone (Pavia)"
+   },
+   "stato": "annunciato",
+   "quota": null,
+   "lat": 45.101,
+   "lon": 8.8596,
+   "origine_coord": "da ai-mondo.json (stimata: coordinate del Green Data Center Eni dal dataset GPU clusters di Epoch AI)",
+   "precisione_km": 2,
+   "fonte": "DatacenterDynamics",
+   "link": "https://www.datacenterdynamics.com/es/noticias/las-empresas-italianas-eni-y-khazna-se-asocian-para-construir-un-centro-de-datos-de-500-mw-en-las-afueras-de-mil%C3%A1n/",
+   "data_fonte": "2025-07",
+   "affidabilita": "media",
+   "note": "Prima fase (500 MW IT, in due tappe) di un programma fino a 1 GW in Italia. Energia da centrali a gas Eni con cattura della CO2. Legato all'impegno degli Emirati da 40 mld USD in Italia (2025-02), che non attribuisce una cifra al progetto. Nessun aggiornamento 2026 trovato: stato da verificare. Sullo stesso sito ci sono i supercalcolatori Eni HPC6 e HPC7 (TOP500).",
+   "mw": 500,
+   "proprietario": "JV Eni - Khazna Data Centers (gruppo G42, Emirati); intesa iniziale Eni-MGX-G42",
+   "categoria": "supply-chain-ai"
+  }
+ ],
+ "archi": [
+  {
+   "id": "A01",
+   "da": "spruce-pine",
+   "a": "tsmc-hsinchu",
+   "cosa": "quarzo per crogioli → lingotti e wafer di silicio (passando per i produttori di wafer, non mostrati)",
+   "modo": "nave",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "BNN Bloomberg (uso del quarzo di Spruce Pine nei crogioli)",
+   "link": "https://bnnbloomberg.ca/investing/commodities/2024/10/02/hurricane-helene-halts-quartz-mines-vital-for-chipmaking-and-solar",
+   "data_fonte": "2024-10-02",
+   "affidabilita": "media",
+   "anello_da": "materie",
+   "anello_a": "fabbricazione",
+   "da_nome": "Spruce Pine (North Carolina): quarzo ad alta purezza",
+   "a_nome": "TSMC Fab 20, Hsinchu (Baoshan): 2 nm",
+   "da_lat": 35.9148,
+   "da_lon": -82.0664,
+   "a_lat": 24.7602,
+   "a_lon": 120.9909,
+   "km": 12847,
+   "g": [
+    [
+     [
+      -82.0664,
+      35.9148
+     ],
+     [
+      120.9909,
+      24.7602
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A02",
+   "da": "ras-laffan",
+   "a": "tsmc-hsinchu",
+   "cosa": "elio liquido in contenitori criogenici per le fab asiatiche",
+   "modo": "nave",
+   "via": [
+    "hormuz",
+    "malacca"
+   ],
+   "stato": "ridotto",
+   "tipo": "fatto",
+   "fonte": "Tom's Hardware, «The global helium shortage is a direct threat to chipmaking»",
+   "link": "https://www.tomshardware.com/tech-industry/semiconductors/the-global-helium-shortage-is-a-direct-threat-to-chipmaking",
+   "data_fonte": "2026-03",
+   "affidabilita": "media",
+   "note": "Il flusso esiste per le fab asiatiche in generale; Hsinchu è il nodo rappresentativo.",
+   "anello_da": "materie",
+   "anello_a": "fabbricazione",
+   "da_nome": "Ras Laffan (Qatar): elio dal gas naturale",
+   "a_nome": "TSMC Fab 20, Hsinchu (Baoshan): 2 nm",
+   "da_lat": 25.8977,
+   "da_lon": 51.5332,
+   "a_lat": 24.7602,
+   "a_lon": 120.9909,
+   "km": 6893,
+   "g": [
+    [
+     [
+      51.5332,
+      25.8977
+     ],
+     [
+      56.45,
+      26.6
+     ],
+     [
+      101.2,
+      2.6
+     ],
+     [
+      120.9909,
+      24.7602
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A03",
+   "da": "odesa",
+   "a": "san-diego",
+   "cosa": "neon per le miscele dei laser ad eccimeri",
+   "modo": "misto",
+   "via": [],
+   "stato": "storico",
+   "tipo": "fatto",
+   "fonte": "USITC, «Ukraine, neon, and semiconductors»",
+   "link": "https://www.usitc.gov/publications/332/executive_briefings/ebot_decarlo_goodman_ukraine_neon_and_semiconductors.pdf",
+   "data_fonte": "2022",
+   "affidabilita": "media",
+   "note": "Fino al 2022 quasi tutto il neon ultrapuro importato negli USA veniva dall'Ucraina; destinazione Cymer come esempio di produttore di laser (valutazione).",
+   "anello_da": "materie",
+   "anello_a": "attrezzature",
+   "da_nome": "Odesa (Ucraina): purificazione del neon",
+   "a_nome": "Cymer, San Diego (California): sorgenti di luce",
+   "da_lat": 46.4843,
+   "da_lon": 30.7323,
+   "a_lat": 32.7157,
+   "a_lon": -117.1638,
+   "km": 10638,
+   "g": [
+    [
+     [
+      30.7323,
+      46.4843
+     ],
+     [
+      -117.1638,
+      32.7157
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A04",
+   "da": "rubaya",
+   "a": "foxconn-tw",
+   "cosa": "tantalio (coltan) → condensatori dei server, via Ruanda e raffinatori in Asia",
+   "modo": "misto",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "IntelliNews, «Conflict coltan from DRC entering global supply chains via Rwanda, says Global Witness»",
+   "link": "https://www.intellinews.com/conflict-coltan-from-drc-entering-global-supply-chains-via-rwanda-says-global-witness-448678/",
+   "data_fonte": "2026-06",
+   "affidabilita": "media",
+   "anello_da": "materie",
+   "anello_a": "server-rete",
+   "da_nome": "Rubaya (Nord Kivu, Congo): coltan",
+   "a_nome": "Foxconn (Hon Hai), Tucheng (Nuova Taipei)",
+   "da_lat": -1.5472,
+   "da_lon": 28.8743,
+   "a_lat": 24.9722,
+   "a_lon": 121.4433,
+   "km": 10339,
+   "g": [
+    [
+     [
+      28.8743,
+      -1.5472
+     ],
+     [
+      121.4433,
+      24.9722
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A05",
+   "da": "oberkochen",
+   "a": "veldhoven",
+   "cosa": "ottiche EUV",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "fatto",
+   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...»",
+   "link": "https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials",
+   "data_fonte": "2025",
+   "affidabilita": "media",
+   "anello_da": "attrezzature",
+   "anello_a": "attrezzature",
+   "da_nome": "Carl Zeiss SMT, Oberkochen (Germania): ottiche EUV",
+   "a_nome": "ASML, Veldhoven (Paesi Bassi): scanner EUV",
+   "da_lat": 48.781,
+   "da_lon": 10.1013,
+   "a_lat": 51.4077,
+   "a_lon": 5.3927,
+   "km": 445,
+   "g": [
+    [
+     [
+      10.1013,
+      48.781
+     ],
+     [
+      5.3927,
+      51.4077
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A06",
+   "da": "ditzingen",
+   "a": "san-diego",
+   "cosa": "laser CO2 di potenza → modulo sorgente EUV",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "fatto",
+   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...»",
+   "link": "https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials",
+   "data_fonte": "2025",
+   "affidabilita": "media",
+   "anello_da": "attrezzature",
+   "anello_a": "attrezzature",
+   "da_nome": "Trumpf, Ditzingen (Germania): laser CO2 per EUV",
+   "a_nome": "Cymer, San Diego (California): sorgenti di luce",
+   "da_lat": 48.8374,
+   "da_lon": 9.0259,
+   "a_lat": 32.7157,
+   "a_lon": -117.1638,
+   "km": 9498,
+   "g": [
+    [
+     [
+      9.0259,
+      48.8374
+     ],
+     [
+      -117.1638,
+      32.7157
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A07",
+   "da": "san-diego",
+   "a": "veldhoven",
+   "cosa": "modulo sorgente EUV per l'assemblaggio finale",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "fatto",
+   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...»",
+   "link": "https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials",
+   "data_fonte": "2025",
+   "affidabilita": "media",
+   "anello_da": "attrezzature",
+   "anello_a": "attrezzature",
+   "da_nome": "Cymer, San Diego (California): sorgenti di luce",
+   "a_nome": "ASML, Veldhoven (Paesi Bassi): scanner EUV",
+   "da_lat": 32.7157,
+   "da_lon": -117.1638,
+   "a_lat": 51.4077,
+   "a_lon": 5.3927,
+   "km": 9113,
+   "g": [
+    [
+     [
+      -117.1638,
+      32.7157
+     ],
+     [
+      5.3927,
+      51.4077
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A08",
+   "da": "veldhoven",
+   "a": "ams",
+   "cosa": "scanner EUV smontato in moduli (circa 40 container, 20 camion)",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "DHL, «Focus on the details» (citazione ASML)",
+   "link": "https://www.dhl.com/global-en/delivered/innovation/focus-on-the-details.html",
+   "data_fonte": "2021",
+   "affidabilita": "media",
+   "anello_da": "attrezzature",
+   "anello_a": "logistica",
+   "da_nome": "ASML, Veldhoven (Paesi Bassi): scanner EUV",
+   "a_nome": "Aeroporto di Amsterdam Schiphol (AMS)",
+   "da_lat": 51.4077,
+   "da_lon": 5.3927,
+   "a_lat": 52.327,
+   "a_lon": 4.7415,
+   "km": 112,
+   "g": [
+    [
+     [
+      5.3927,
+      51.4077
+     ],
+     [
+      4.7415,
+      52.327
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A09",
+   "da": "ams",
+   "a": "tpe",
+   "cosa": "scanner EUV: 3 aerei cargo per macchina",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Asia Times, «The $150mn machine that is changing the world»",
+   "link": "https://asiatimes.com/2021/09/the-150mn-machine-that-is-changing-the-world/",
+   "data_fonte": "2021-09",
+   "affidabilita": "media",
+   "anello_da": "logistica",
+   "anello_a": "logistica",
+   "da_nome": "Aeroporto di Amsterdam Schiphol (AMS)",
+   "a_nome": "Aeroporto di Taipei Taoyuan (TPE)",
+   "da_lat": 52.327,
+   "da_lon": 4.7415,
+   "a_lat": 25.0793,
+   "a_lon": 121.2346,
+   "km": 9443,
+   "g": [
+    [
+     [
+      4.7415,
+      52.327
+     ],
+     [
+      121.2346,
+      25.0793
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A10",
+   "da": "tpe",
+   "a": "tsmc-hsinchu",
+   "cosa": "macchine EUV → montaggio e calibrazione in fab",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Igor's Lab (moduli assemblati e calibrati sul posto)",
+   "link": "https://www.igorslab.de/en/asml-rejects-euv-allegation-no-lithography-system-or-special-components-delivered-to-china/",
+   "data_fonte": "2025",
+   "affidabilita": "media",
+   "anello_da": "logistica",
+   "anello_a": "fabbricazione",
+   "da_nome": "Aeroporto di Taipei Taoyuan (TPE)",
+   "a_nome": "TSMC Fab 20, Hsinchu (Baoshan): 2 nm",
+   "da_lat": 25.0793,
+   "da_lon": 121.2346,
+   "a_lat": 24.7602,
+   "a_lon": 120.9909,
+   "km": 43,
+   "g": [
+    [
+     [
+      121.2346,
+      25.0793
+     ],
+     [
+      120.9909,
+      24.7602
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A11",
+   "da": "veldhoven",
+   "a": "tsmc-arizona",
+   "cosa": "scanner EUV per le fab americane",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Converge Digest (EXE:5000 in Oregon: 43 container, aerei cargo fino a Seattle, poi 20 camion)",
+   "link": "https://convergedigest.com/?p=95539",
+   "data_fonte": "2024",
+   "affidabilita": "media",
+   "anello_da": "attrezzature",
+   "anello_a": "fabbricazione",
+   "da_nome": "ASML, Veldhoven (Paesi Bassi): scanner EUV",
+   "a_nome": "TSMC Arizona Fab 21, Phoenix",
+   "da_lat": 51.4077,
+   "da_lon": 5.3927,
+   "a_lat": 33.78,
+   "a_lon": -112.14,
+   "km": 8758,
+   "g": [
+    [
+     [
+      5.3927,
+      51.4077
+     ],
+     [
+      -112.14,
+      33.78
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A12",
+   "da": "veldhoven",
+   "a": "samsung-pyeongtaek",
+   "cosa": "scanner EUV per DRAM e fonderia",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "ai-mondo.json (Samsung Pyeongtaek, DRAM 1c e 2 nm)",
+   "link": "https://v.daum.net/v/UVoAWRXSTG",
+   "data_fonte": "2026",
+   "affidabilita": "bassa",
+   "anello_da": "attrezzature",
+   "anello_a": "fabbricazione",
+   "da_nome": "ASML, Veldhoven (Paesi Bassi): scanner EUV",
+   "a_nome": "Samsung, Pyeongtaek (Corea)",
+   "da_lat": 51.4077,
+   "da_lon": 5.3927,
+   "a_lat": 37.0481,
+   "a_lon": 127.0364,
+   "km": 8661,
+   "g": [
+    [
+     [
+      5.3927,
+      51.4077
+     ],
+     [
+      127.0364,
+      37.0481
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A13",
+   "da": "santa-clara-amat",
+   "a": "tsmc-hsinchu",
+   "cosa": "macchine di deposizione e incisione (anche Lam, KLA)",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "TrendForce, classifica fonderie (Taiwan primo cliente delle macchine avanzate)",
+   "link": "https://www.trendforce.com/presscenter/news/20260909-13225.html",
+   "data_fonte": "2026-09-09",
+   "affidabilita": "bassa",
+   "anello_da": "attrezzature",
+   "anello_a": "fabbricazione",
+   "da_nome": "Applied Materials, Santa Clara (California)",
+   "a_nome": "TSMC Fab 20, Hsinchu (Baoshan): 2 nm",
+   "da_lat": 37.3541,
+   "da_lon": -121.9552,
+   "a_lat": 24.7602,
+   "a_lon": 120.9909,
+   "km": 10481,
+   "g": [
+    [
+     [
+      -121.9552,
+      37.3541
+     ],
+     [
+      120.9909,
+      24.7602
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A14",
+   "da": "tsmc-hsinchu",
+   "a": "tsmc-ap8",
+   "cosa": "wafer di GPU a 3–4 nm → CoWoS",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "fatto",
+   "fonte": "ai-mondo.json (collo di bottiglia CoWoS nel campus AP8 di Tainan)",
+   "link": "https://www.trendforce.com/news/2026/01/21/news-tsmc-advanced-packaging-capex-projected-to-grow-24-cagr-in-2025-27-chiayi-ap7-targets-wmcm-and-copos/",
+   "data_fonte": "2026-01-21",
+   "affidabilita": "media",
+   "anello_da": "fabbricazione",
+   "anello_a": "packaging-memoria",
+   "da_nome": "TSMC Fab 20, Hsinchu (Baoshan): 2 nm",
+   "a_nome": "TSMC AP8, Tainan: CoWoS",
+   "da_lat": 24.7602,
+   "da_lon": 120.9909,
+   "a_lat": 23.1065,
+   "a_lon": 120.2736,
+   "km": 198,
+   "g": [
+    [
+     [
+      120.9909,
+      24.7602
+     ],
+     [
+      120.2736,
+      23.1065
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A15",
+   "da": "tsmc-arizona",
+   "a": "tsmc-ap8",
+   "cosa": "wafer fatti in Arizona rimandati a Taiwan per il packaging avanzato",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "fatto",
+   "fonte": "TrendForce, «TSMC reportedly accelerates Arizona 2nd fab»",
+   "link": "https://www.trendforce.com/news/2025/12/18/news-tsmc-reportedly-accelerates-arizona-2nd-fab-eyes-3q26-tool-install-2027-3nm-production/",
+   "data_fonte": "2025-12-18",
+   "affidabilita": "media",
+   "anello_da": "fabbricazione",
+   "anello_a": "packaging-memoria",
+   "da_nome": "TSMC Arizona Fab 21, Phoenix",
+   "a_nome": "TSMC AP8, Tainan: CoWoS",
+   "da_lat": 33.78,
+   "da_lon": -112.14,
+   "a_lat": 23.1065,
+   "a_lon": 120.2736,
+   "km": 11605,
+   "g": [
+    [
+     [
+      -112.14,
+      33.78
+     ],
+     [
+      120.2736,
+      23.1065
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A16",
+   "da": "hynix-icheon",
+   "a": "icn",
+   "cosa": "pile HBM",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Counterpoint (SK Hynix primo fornitore HBM)",
+   "link": "https://counterpointresearch.com/insights/global-dram-and-hbm-market-share",
+   "data_fonte": "2026-09-03",
+   "affidabilita": "bassa",
+   "anello_da": "packaging-memoria",
+   "anello_a": "logistica",
+   "da_nome": "SK Hynix, Icheon (Corea): sede e DRAM",
+   "a_nome": "Aeroporto di Incheon (ICN)",
+   "da_lat": 37.2809,
+   "da_lon": 127.4429,
+   "a_lat": 37.4635,
+   "a_lon": 126.4417,
+   "km": 91,
+   "g": [
+    [
+     [
+      127.4429,
+      37.2809
+     ],
+     [
+      126.4417,
+      37.4635
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A17",
+   "da": "icn",
+   "a": "tpe",
+   "cosa": "HBM verso il CoWoS di TSMC",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Counterpoint (quote HBM) e TrendForce (CoWoS)",
+   "link": "https://counterpointresearch.com/insights/global-dram-and-hbm-market-share",
+   "data_fonte": "2026-09-03",
+   "affidabilita": "bassa",
+   "anello_da": "logistica",
+   "anello_a": "logistica",
+   "da_nome": "Aeroporto di Incheon (ICN)",
+   "a_nome": "Aeroporto di Taipei Taoyuan (TPE)",
+   "da_lat": 37.4635,
+   "da_lon": 126.4417,
+   "a_lat": 25.0793,
+   "a_lon": 121.2346,
+   "km": 1463,
+   "g": [
+    [
+     [
+      126.4417,
+      37.4635
+     ],
+     [
+      121.2346,
+      25.0793
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A18",
+   "da": "tpe",
+   "a": "tsmc-ap8",
+   "cosa": "HBM → integrazione accanto alla GPU",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Counterpoint e TrendForce",
+   "link": "https://counterpointresearch.com/insights/global-dram-and-hbm-market-share",
+   "data_fonte": "2026-09-03",
+   "affidabilita": "bassa",
+   "anello_da": "logistica",
+   "anello_a": "packaging-memoria",
+   "da_nome": "Aeroporto di Taipei Taoyuan (TPE)",
+   "a_nome": "TSMC AP8, Tainan: CoWoS",
+   "da_lat": 25.0793,
+   "da_lon": 121.2346,
+   "a_lat": 23.1065,
+   "a_lon": 120.2736,
+   "km": 240,
+   "g": [
+    [
+     [
+      121.2346,
+      25.0793
+     ],
+     [
+      120.2736,
+      23.1065
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A19",
+   "da": "tsmc-ap8",
+   "a": "foxconn-tw",
+   "cosa": "GPU impacchettate (moduli) → schede e rack",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "TechNews (Foxconn primo assemblatore di server AI)",
+   "link": "https://finance.technews.tw/2026/05/12/foxconn-leads-quanta-and-wistron-in-ai-server-shipments/",
+   "data_fonte": "2026-05-12",
+   "affidabilita": "media",
+   "anello_da": "packaging-memoria",
+   "anello_a": "server-rete",
+   "da_nome": "TSMC AP8, Tainan: CoWoS",
+   "a_nome": "Foxconn (Hon Hai), Tucheng (Nuova Taipei)",
+   "da_lat": 23.1065,
+   "da_lon": 120.2736,
+   "a_lat": 24.9722,
+   "a_lon": 121.4433,
+   "km": 239,
+   "g": [
+    [
+     [
+      120.2736,
+      23.1065
+     ],
+     [
+      121.4433,
+      24.9722
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A20",
+   "da": "tsmc-ap8",
+   "a": "quanta-tw",
+   "cosa": "GPU impacchettate → rack",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "TrendForce, Server Market Bulletin",
+   "link": "https://www.trendforce.com/research/download/RP261008MA3",
+   "data_fonte": "2026-10-08",
+   "affidabilita": "media",
+   "anello_da": "packaging-memoria",
+   "anello_a": "server-rete",
+   "da_nome": "TSMC AP8, Tainan: CoWoS",
+   "a_nome": "Quanta Computer, Guishan (Taoyuan)",
+   "da_lat": 23.1065,
+   "da_lon": 120.2736,
+   "a_lat": 24.9925,
+   "a_lon": 121.3378,
+   "km": 236,
+   "g": [
+    [
+     [
+      120.2736,
+      23.1065
+     ],
+     [
+      121.3378,
+      24.9925
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A21",
+   "da": "foxconn-tw",
+   "a": "tpe",
+   "cosa": "rack e server AI completi",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "DIGITIMES (cargo aereo di Taiwan a livelli record per server AI e chip verso gli USA)",
+   "link": "https://www.digitimes.com/news/a20260121PD203.html",
+   "data_fonte": "2026-01-21",
+   "affidabilita": "media",
+   "anello_da": "server-rete",
+   "anello_a": "logistica",
+   "da_nome": "Foxconn (Hon Hai), Tucheng (Nuova Taipei)",
+   "a_nome": "Aeroporto di Taipei Taoyuan (TPE)",
+   "da_lat": 24.9722,
+   "da_lon": 121.4433,
+   "a_lat": 25.0793,
+   "a_lon": 121.2346,
+   "km": 24,
+   "g": [
+    [
+     [
+      121.4433,
+      24.9722
+     ],
+     [
+      121.2346,
+      25.0793
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A22",
+   "da": "tpe",
+   "a": "anc",
+   "cosa": "server AI verso gli USA (scalo tecnico)",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "The Loadstar, «Air cargo cashes in on AI boom»",
+   "link": "https://theloadstar.com/?p=327930",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "anello_da": "logistica",
+   "anello_a": "logistica",
+   "da_nome": "Aeroporto di Taipei Taoyuan (TPE)",
+   "a_nome": "Aeroporto di Anchorage (ANC)",
+   "da_lat": 25.0793,
+   "da_lon": 121.2346,
+   "a_lat": 61.181,
+   "a_lon": -149.9979,
+   "km": 7519,
+   "g": [
+    [
+     [
+      121.2346,
+      25.0793
+     ],
+     [
+      -149.9979,
+      61.181
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A23",
+   "da": "anc",
+   "a": "dfw",
+   "cosa": "server AI",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "DIGITIMES (export di Taiwan verso gli USA +83% a gennaio–febbraio 2026)",
+   "link": "https://www.digitimes.com/news/a20260316PD217.html",
+   "data_fonte": "2026-03-16",
+   "affidabilita": "bassa",
+   "anello_da": "logistica",
+   "anello_a": "logistica",
+   "da_nome": "Aeroporto di Anchorage (ANC)",
+   "a_nome": "Aeroporto di Dallas/Fort Worth (DFW)",
+   "da_lat": 61.181,
+   "da_lon": -149.9979,
+   "a_lat": 32.8962,
+   "a_lon": -97.0459,
+   "km": 4889,
+   "g": [
+    [
+     [
+      -149.9979,
+      61.181
+     ],
+     [
+      -97.0459,
+      32.8962
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A24",
+   "da": "dfw",
+   "a": "dc-abilene",
+   "cosa": "server AI → campus",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Epoch AI (Stargate Abilene)",
+   "link": "https://epoch.ai/blog/openai-stargate-where-the-us-sites-stand",
+   "data_fonte": "2026-04-17",
+   "affidabilita": "bassa",
+   "anello_da": "logistica",
+   "anello_a": "energia-dc",
+   "da_nome": "Aeroporto di Dallas/Fort Worth (DFW)",
+   "a_nome": "Stargate Abilene (Texas)",
+   "da_lat": 32.8962,
+   "da_lon": -97.0459,
+   "a_lat": 32.45,
+   "a_lon": -99.73,
+   "km": 256,
+   "g": [
+    [
+     [
+      -97.0459,
+      32.8962
+     ],
+     [
+      -99.73,
+      32.45
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A25",
+   "da": "foxconn-mx",
+   "a": "dc-abilene",
+   "cosa": "server GB200 NVL72 «soprattutto per Stargate»",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "fatto",
+   "fonte": "Expansión, «Foxconn ya hace data centers de Nvidia en México»",
+   "link": "https://expansion.mx/tecnologia/2025/04/07/foxconn-ya-hace-data-centers-de-nvidia-en-mexico",
+   "data_fonte": "2025-04-07",
+   "affidabilita": "media",
+   "anello_da": "server-rete",
+   "anello_a": "energia-dc",
+   "da_nome": "Foxconn, Guadalajara (Jalisco, Messico): server GB200",
+   "a_nome": "Stargate Abilene (Texas)",
+   "da_lat": 20.6784,
+   "da_lon": -103.3357,
+   "a_lat": 32.45,
+   "a_lon": -99.73,
+   "km": 1357,
+   "g": [
+    [
+     [
+      -103.3357,
+      20.6784
+     ],
+     [
+      -99.73,
+      32.45
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A26",
+   "da": "tpe",
+   "a": "foxconn-mx",
+   "cosa": "GPU e schede da Taiwan all'assemblaggio messicano",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "TrendForce, Server Market Bulletin (gennaio 2026: capex in USA, Messico, Thailandia)",
+   "link": "https://www.trendforce.com/research/download/RP260122RF3",
+   "data_fonte": "2026-01-22",
+   "affidabilita": "bassa",
+   "anello_da": "logistica",
+   "anello_a": "server-rete",
+   "da_nome": "Aeroporto di Taipei Taoyuan (TPE)",
+   "a_nome": "Foxconn, Guadalajara (Jalisco, Messico): server GB200",
+   "da_lat": 25.0793,
+   "da_lon": 121.2346,
+   "a_lat": 20.6784,
+   "a_lon": -103.3357,
+   "km": 13010,
+   "g": [
+    [
+     [
+      121.2346,
+      25.0793
+     ],
+     [
+      -103.3357,
+      20.6784
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A27",
+   "da": "foxconn-houston",
+   "a": "dc-abilene",
+   "cosa": "supercomputer assemblati in Texas",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Nvidia, «NVIDIA to Manufacture American-Made AI Supercomputers in US for First Time»",
+   "link": "https://blogs.nvidia.com/blog/nvidia-manufacture-american-made-ai-supercomputers-us/",
+   "data_fonte": "2025-04-14",
+   "affidabilita": "media",
+   "anello_da": "server-rete",
+   "anello_a": "energia-dc",
+   "da_nome": "Foxconn, Houston (Texas): supercomputer Nvidia",
+   "a_nome": "Stargate Abilene (Texas)",
+   "da_lat": 29.7589,
+   "da_lon": -95.3677,
+   "a_lat": 32.45,
+   "a_lon": -99.73,
+   "km": 512,
+   "g": [
+    [
+     [
+      -95.3677,
+      29.7589
+     ],
+     [
+      -99.73,
+      32.45
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A28",
+   "da": "innolight",
+   "a": "pvg",
+   "cosa": "transceiver ottici 800G/1,6T",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Yole Group (InnoLight primo fornitore 1,6T)",
+   "link": "https://www.yolegroup.com/strategy-insights/opinion-optical-transceivers-at-the-chokepoint-of-ai-growth-and-supply-chain-constraints/",
+   "data_fonte": "2026",
+   "affidabilita": "bassa",
+   "anello_da": "server-rete",
+   "anello_a": "logistica",
+   "da_nome": "InnoLight (Zhongji Innolight), Suzhou: moduli ottici",
+   "a_nome": "Aeroporto di Shanghai Pudong (PVG)",
+   "da_lat": 31.3111,
+   "da_lon": 120.6213,
+   "a_lat": 31.1427,
+   "a_lon": 121.8041,
+   "km": 114,
+   "g": [
+    [
+     [
+      120.6213,
+      31.3111
+     ],
+     [
+      121.8041,
+      31.1427
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A29",
+   "da": "pvg",
+   "a": "dc-colossus2",
+   "cosa": "transceiver per le reti dei cluster",
+   "modo": "aereo",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "valutazione",
+   "fonte": "Counterpoint Research (FCC e componenti AI cinesi)",
+   "link": "https://counterpointresearch.com/en/insights/fcc-china-ban-ai-component",
+   "data_fonte": "2026",
+   "affidabilita": "bassa",
+   "anello_da": "logistica",
+   "anello_a": "energia-dc",
+   "da_nome": "Aeroporto di Shanghai Pudong (PVG)",
+   "a_nome": "xAI Colossus 2, Memphis",
+   "da_lat": 31.1427,
+   "da_lon": 121.8041,
+   "a_lat": 35.15,
+   "a_lon": -90.05,
+   "km": 11927,
+   "g": [
+    [
+     [
+      121.8041,
+      31.1427
+     ],
+     [
+      -90.05,
+      35.15
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A30",
+   "da": "nexperia-nijmegen",
+   "a": "nexperia-dongguan",
+   "cosa": "wafer europei → assemblaggio e test in Cina",
+   "modo": "aereo",
+   "via": [],
+   "stato": "interrotto",
+   "tipo": "fatto",
+   "fonte": "WTOP (AP); Nexperia ha fermato i wafer verso Nexperia China dopo il blocco cinese",
+   "link": "https://wtop.com/world/2026/02/dutch-court-orders-investigation-into-semiconductor-chipmaker-nexperia/",
+   "data_fonte": "2026-02",
+   "affidabilita": "alta",
+   "anello_da": "fabbricazione",
+   "anello_a": "fabbricazione",
+   "da_nome": "Nexperia, Nijmegen (Paesi Bassi)",
+   "a_nome": "Nexperia, Dongguan (Cina): assemblaggio e test",
+   "da_lat": 51.8475,
+   "da_lon": 5.8638,
+   "a_lat": 23.0184,
+   "a_lon": 113.7452,
+   "km": 9158,
+   "g": [
+    [
+     [
+      5.8638,
+      51.8475
+     ],
+     [
+      113.7452,
+      23.0184
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A31",
+   "da": "sillamae",
+   "a": "narva",
+   "cosa": "ossidi di terre rare separati → leghe e magneti",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "fatto",
+   "fonte": "Shanghai Metals Market (impianto di magneti accanto alla separazione esistente)",
+   "link": "https://news.metal.com/newscontent/103541038/Neo-Performance-opens-Europe%E2%80%99s-first-rare-earth-magnet-plant",
+   "data_fonte": "2025-09",
+   "affidabilita": "media",
+   "anello_da": "materie",
+   "anello_a": "materie",
+   "da_nome": "Sillamäe (Estonia): separazione di terre rare",
+   "a_nome": "Narva (Estonia): magneti di terre rare",
+   "da_lat": 59.4035,
+   "da_lon": 27.7292,
+   "a_lat": 59.3767,
+   "a_lon": 28.1919,
+   "km": 26,
+   "g": [
+    [
+     [
+      27.7292,
+      59.4035
+     ],
+     [
+      28.1919,
+      59.3767
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A32",
+   "da": "smic-shanghai",
+   "a": "huawei",
+   "cosa": "die Ascend a 7 nm",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "fatto",
+   "fonte": "Epoch AI, «Huawei's roadmap to 2031»",
+   "link": "https://epoch.ai/publications/huaweis-roadmap-to-2031",
+   "data_fonte": "2026",
+   "affidabilita": "alta",
+   "anello_da": "fabbricazione",
+   "anello_a": "progettazione",
+   "da_nome": "SMIC, Shanghai: 7 nm senza EUV",
+   "a_nome": "Huawei, Shenzhen: Ascend",
+   "da_lat": 31.2073,
+   "da_lon": 121.6102,
+   "a_lat": 22.63,
+   "a_lon": 114.0651,
+   "km": 1211,
+   "g": [
+    [
+     [
+      121.6102,
+      31.2073
+     ],
+     [
+      114.0651,
+      22.63
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A33",
+   "da": "cxmt-hefei",
+   "a": "huawei",
+   "cosa": "DRAM e HBM cinese per gli Ascend",
+   "modo": "camion",
+   "via": [],
+   "stato": "attivo",
+   "tipo": "fatto",
+   "fonte": "Epoch AI, «Huawei's roadmap to 2031»",
+   "link": "https://epoch.ai/publications/huaweis-roadmap-to-2031",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "anello_da": "packaging-memoria",
+   "anello_a": "progettazione",
+   "da_nome": "CXMT, Hefei (Cina): DRAM e HBM cinese",
+   "a_nome": "Huawei, Shenzhen: Ascend",
+   "da_lat": 31.8666,
+   "da_lon": 117.2814,
+   "a_lat": 22.63,
+   "a_lon": 114.0651,
+   "km": 1075,
+   "g": [
+    [
+     [
+      117.2814,
+      31.8666
+     ],
+     [
+      114.0651,
+      22.63
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "A34",
+   "da": "maanshan",
+   "a": "tsmc-kaohsiung",
+   "cosa": "elettricità (oggi sostituita dal gas: riavvio in esame)",
+   "modo": "rete",
+   "via": [],
+   "stato": "interrotto",
+   "tipo": "valutazione",
+   "fonte": "Focus Taiwan; FDD Policy Brief (riavvio del nucleare)",
+   "link": "https://www.fdd.org/analysis/in-major-reversal-taiwan-seeks-to-rewire-its-energy-strategy-by-restarting-its-nuclear-plants/",
+   "data_fonte": "2026-03-24",
+   "affidabilita": "media",
+   "anello_da": "energia-dc",
+   "anello_a": "fabbricazione",
+   "da_nome": "Centrale nucleare di Maanshan (Taiwan)",
+   "a_nome": "TSMC Fab 22, Kaohsiung: 2 nm",
+   "da_lat": 21.9585,
+   "da_lon": 120.7499,
+   "a_lat": 22.7355,
+   "a_lon": 120.3272,
+   "km": 97,
+   "g": [
+    [
+     [
+      120.7499,
+      21.9585
+     ],
+     [
+      120.3272,
+      22.7355
+     ]
+    ]
+   ]
+  }
+ ],
+ "colli": [
+  {
+   "id": "C01",
+   "anello": "materie",
+   "nome": "Controlli cinesi su terre rare, gallio e germanio",
+   "rischio": "geopolitico",
+   "perche": "La Cina fa il 99% del gallio primario e il 69% delle terre rare estratte; le licenze di aprile 2025 restano, le misure di ottobre 2025 e il divieto verso gli USA sono solo sospesi.",
+   "nodi": [
+    "bayan-obo",
+    "sillamae",
+    "narva"
+   ],
+   "titoli": [
+    "MP",
+    "LYC.AX"
+   ],
+   "indicatori": [
+    {
+     "nome": "Giorni alla fine della sospensione delle misure di ottobre 2025 (terre rare, regola dello 0,1%)",
+     "tipo": "congiunturale",
+     "unita": "giorni",
+     "direzione": "basso-male",
+     "soglia_attenzione": 60,
+     "soglia_critica": 14,
+     "fonte": "Tech Times, «China Rare Earth Export Controls Pause Ends Tuesday in Law; Beijing Has Published No Extension»",
+     "link": "https://www.techtimes.com/articles/330288/20261109/china-rare-earth-export-controls-pause-ends-tuesday-law-beijing-has-published-no-extension.htm",
+     "data": "2026-11-09",
+     "affidabilita": "media",
+     "nota": "scadenza 2026-11-10; stato del controllo: incerto",
+     "valore": 1,
+     "stato": "critico"
+    },
+    {
+     "nome": "Giorni alla fine della sospensione del divieto di export di gallio e germanio verso gli USA",
+     "tipo": "congiunturale",
+     "unita": "giorni",
+     "direzione": "basso-male",
+     "soglia_attenzione": 60,
+     "soglia_critica": 14,
+     "fonte": "Fastmarkets, «China suspends export prohibition on gallium, germanium, antimony, superhard materials to US»",
+     "link": "https://www.fastmarkets.com/insights/china-suspends-export-prohibition-on-superhard-materials-us/",
+     "data": "2026-11-09",
+     "affidabilita": "alta",
+     "nota": "scadenza 2026-11-27; stato del controllo: sospeso",
+     "valore": 18,
+     "stato": "attenzione"
+    },
+    {
+     "nome": "Quota cinese dell'estrazione di terre rare",
+     "tipo": "strutturale",
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 40,
+     "soglia_critica": 60,
+     "fonte": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+     "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf",
+     "data": "2026-02-05",
+     "affidabilita": "alta",
+     "nota": "calcolata dalla produzione 2025 (stima) per paese",
+     "valore": 69.2,
+     "stato": "critico"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "critico"
+  },
+  {
+   "id": "C02",
+   "anello": "materie",
+   "nome": "Elio del Qatar bloccato a Hormuz",
+   "rischio": "logistico e bellico",
+   "perche": "Il Qatar fa un terzo dell'elio mondiale da Ras Laffan; dal 2 marzo 2026 Hormuz è chiuso di fatto. Le fab hanno scorte, ma l'elio non ha sostituti nel raffreddamento dei wafer.",
+   "nodi": [
+    "ras-laffan",
+    "hormuz"
+   ],
+   "titoli": [],
+   "indicatori": [
+    {
+     "nome": "Transiti a Hormuz, media 7 giorni rispetto a un anno prima",
+     "tipo": "congiunturale",
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -20,
+     "soglia_critica": -50,
+     "fonte": "IMF PortWatch (portwatch.json)",
+     "link": "https://portwatch.imf.org/",
+     "data": "2026-11-01",
+     "affidabilita": "alta",
+     "nota": "media 7 giorni 2026-10-26 – 2026-11-01; navi con AIS acceso",
+     "dettaglio": {
+      "navi_giorno": 4.4,
+      "anno_prima": 90.3
+     },
+     "valore": -95.1,
+     "stato": "critico"
+    },
+    {
+     "nome": "Quota del Qatar nella produzione mondiale di elio",
+     "tipo": "strutturale",
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 20,
+     "soglia_critica": 30,
+     "fonte": "USGS, Mineral Commodity Summaries 2026: Helium and rare gases",
+     "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-helium.pdf",
+     "data": "2026-02-05",
+     "affidabilita": "alta",
+     "nota": "calcolata dalla produzione 2025 (stima) per paese",
+     "valore": 33.2,
+     "stato": "critico"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "critico"
+  },
+  {
+   "id": "C03",
+   "anello": "materie",
+   "nome": "Quarzo ad alta purezza di Spruce Pine",
+   "rischio": "fisico (uragani)",
+   "perche": "Due impianti in una sola valle della North Carolina forniscono la maggior parte del quarzo per i crogioli; l'uragano Helene li ha fermati nel 2024.",
+   "nodi": [
+    "spruce-pine"
+   ],
+   "titoli": [],
+   "indicatori": [
+    {
+     "nome": "Quota stimata di Spruce Pine nell'offerta di quarzo ad alta purezza (stima BloombergNEF: oltre l'80%)",
+     "tipo": "strutturale",
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 50,
+     "soglia_critica": 75,
+     "fonte": "BNN Bloomberg (BloombergNEF)",
+     "link": "https://bnnbloomberg.ca/investing/commodities/2024/10/02/hurricane-helene-halts-quartz-mines-vital-for-chipmaking-and-solar",
+     "data": "2024-10-02",
+     "affidabilita": "media",
+     "valore": 80,
+     "stato": "critico"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "non misurato"
+  },
+  {
+   "id": "C04",
+   "anello": "materie",
+   "nome": "Tantalio dal Kivu e dal Ruanda",
+   "rischio": "conflitto e conformità (minerali di conflitto)",
+   "perche": "Congo e Ruanda fanno la maggior parte del tantalio estratto; la miniera di Rubaya è in mano al gruppo M23 da aprile 2024.",
+   "nodi": [
+    "rubaya"
+   ],
+   "titoli": [],
+   "indicatori": [
+    {
+     "nome": "Quota di Congo e Ruanda nell'estrazione di tantalio",
+     "tipo": "strutturale",
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 40,
+     "soglia_critica": 60,
+     "fonte": "USGS, Mineral Commodity Summaries 2026: Tantalum",
+     "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-tantalum.pdf",
+     "data": "2026-02-05",
+     "affidabilita": "alta",
+     "nota": "calcolata dalla produzione 2025 (stima) per paese",
+     "valore": 68.0,
+     "stato": "critico"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "non misurato"
+  },
+  {
+   "id": "C05",
+   "anello": "attrezzature",
+   "nome": "Litografia EUV: un solo fornitore, in Olanda",
+   "rischio": "concentrazione e geopolitica (controlli USA/Paesi Bassi)",
+   "perche": "Ogni chip AI avanzato passa da scanner EUV costruiti solo a Veldhoven, con ottiche da Oberkochen e laser da Ditzingen. Gli USA spingono per estendere i limiti alle DUV e all'assistenza in Cina.",
+   "nodi": [
+    "veldhoven",
+    "oberkochen",
+    "ditzingen",
+    "san-diego"
+   ],
+   "titoli": [
+    "ASML"
+   ],
+   "indicatori": [
+    {
+     "nome": "Fornitori di scanner EUV al mondo",
+     "tipo": "strutturale",
+     "unita": "fornitori",
+     "direzione": "basso-male",
+     "soglia_attenzione": 2,
+     "soglia_critica": 1,
+     "fonte": "ai-mondo.json (ASML, fornitore unico al mondo di scanner EUV)",
+     "link": "https://statementdog.com/analysis/ASML/earnings_calls/316926",
+     "data": "2026-07",
+     "affidabilita": "alta",
+     "valore": 1,
+     "stato": "critico"
+    },
+    {
+     "nome": "Quota della Cina nelle vendite ASML 2026 (guida)",
+     "tipo": "congiunturale",
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 25,
+     "soglia_critica": 40,
+     "fonte": "XenoSpectrum / Seeking Alpha sui risultati ASML del 3° trimestre 2026 (guida del direttore finanziario Roger Dassen)",
+     "link": "https://xenospectrum.com/en/asml-china-sales-q3-2026/",
+     "data": "2026-10-14",
+     "affidabilita": "media",
+     "valore": 20,
+     "stato": "normale"
+    },
+    {
+     "nome": "ASML in borsa, variazione a 1 mese",
+     "tipo": "congiunturale",
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -10,
+     "soglia_critica": -25,
+     "fonte": "Yahoo Finance (prezzi.json)",
+     "link": "https://finance.yahoo.com/quote/ASML",
+     "data": "2026-11-09",
+     "affidabilita": "media",
+     "nota": "serie marcata provvisoria in prezzi.json",
+     "valore": -14.7,
+     "stato": "attenzione"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "attenzione"
+  },
+  {
+   "id": "C06",
+   "anello": "fabbricazione",
+   "nome": "Fonderia avanzata concentrata a Taiwan",
+   "rischio": "geopolitico, sismico, energetico",
+   "perche": "TSMC ha il 72,5% dei ricavi di fonderia e il 2 nm è in volume solo a Hsinchu e Kaohsiung; lo Stretto di Taiwan è il punto unico di rottura.",
+   "nodi": [
+    "tsmc-hsinchu",
+    "tsmc-kaohsiung",
+    "stretto-taiwan"
+   ],
+   "titoli": [
+    "TSM",
+    "SOX"
+   ],
+   "indicatori": [
+    {
+     "nome": "Quota TSMC dei ricavi mondiali di fonderia (2° trimestre 2026)",
+     "tipo": "strutturale",
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 50,
+     "soglia_critica": 70,
+     "fonte": "TrendForce, classifica fonderie 2° trimestre 2026",
+     "link": "https://www.trendforce.com/presscenter/news/20260909-13225.html",
+     "data": "2026-09-09",
+     "affidabilita": "alta",
+     "valore": 72.5,
+     "stato": "critico"
+    },
+    {
+     "nome": "Transiti nello Stretto di Taiwan, media 7 giorni rispetto a un anno prima",
+     "tipo": "congiunturale",
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -15,
+     "soglia_critica": -40,
+     "fonte": "IMF PortWatch (portwatch.json)",
+     "link": "https://portwatch.imf.org/",
+     "data": "2026-11-01",
+     "affidabilita": "alta",
+     "nota": "media 7 giorni 2026-10-26 – 2026-11-01; navi con AIS acceso",
+     "dettaglio": {
+      "navi_giorno": 247.0,
+      "anno_prima": 230.6
+     },
+     "valore": 7.1,
+     "stato": "normale"
+    },
+    {
+     "nome": "Danni a cavi sottomarini intorno a Taiwan negli ultimi 365 giorni",
+     "tipo": "congiunturale",
+     "unita": "eventi",
+     "direzione": "alto-male",
+     "soglia_attenzione": 1,
+     "soglia_critica": 3,
+     "fonte": "cavi-incidenti.json (osservatorio)",
+     "link": "https://www.submarinecablemap.com/",
+     "data": "2026-11-09",
+     "affidabilita": "media",
+     "eventi": [
+      "Matsu: cavo Taiwan-Matsu n. 3 tagliato al largo di Dongyin"
+     ],
+     "valore": 1,
+     "stato": "attenzione"
+    },
+    {
+     "nome": "TSMC (ADR) in borsa, variazione a 1 mese",
+     "tipo": "congiunturale",
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -10,
+     "soglia_critica": -25,
+     "fonte": "Yahoo Finance (prezzi.json)",
+     "link": "https://finance.yahoo.com/quote/TSM",
+     "data": "2026-11-09",
+     "affidabilita": "media",
+     "nota": "serie marcata provvisoria in prezzi.json",
+     "valore": -13.8,
+     "stato": "attenzione"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "attenzione"
+  },
+  {
+   "id": "C07",
+   "anello": "packaging-memoria",
+   "nome": "Packaging CoWoS",
+   "rischio": "capacità",
+   "perche": "Ogni GPU di fascia alta passa dal CoWoS di TSMC a Taiwan; Nvidia ha prenotato circa il 60% della capacità 2026. Il packaging in Arizona arriverà dal 2028.",
+   "nodi": [
+    "tsmc-ap8",
+    "tsmc-ap7"
+   ],
+   "titoli": [
+    "TSM",
+    "NVDA",
+    "AVGO"
+   ],
+   "indicatori": [
+    {
+     "nome": "Divario tra domanda e offerta CoWoS a fine 2026",
+     "tipo": "congiunturale",
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 5,
+     "soglia_critica": 15,
+     "fonte": "TrendForce (ripreso in ai-mondo.json): dal 20% al 10% a fine 2026",
+     "link": "https://www.trendforce.com/news/2026/01/21/news-tsmc-advanced-packaging-capex-projected-to-grow-24-cagr-in-2025-27-chiayi-ap7-targets-wmcm-and-copos/",
+     "data": "2026-06-15",
+     "affidabilita": "media",
+     "valore": 10,
+     "stato": "attenzione"
+    }
+   ],
+   "stato": "attenzione",
+   "stato_congiunturale": "attenzione"
+  },
+  {
+   "id": "C08",
+   "anello": "packaging-memoria",
+   "nome": "Memoria HBM e DRAM",
+   "rischio": "capacità e prezzo",
+   "perche": "Tre produttori (SK Hynix, Samsung, Micron) fanno tutta l'HBM occidentale; l'AI toglie capacità alla DRAM normale e i prezzi salgono. SK Hynix vede carenza fino al 2030.",
+   "nodi": [
+    "hynix-icheon",
+    "hynix-cheongju",
+    "samsung-onyang",
+    "micron-hiroshima",
+    "cxmt-hefei"
+   ],
+   "titoli": [
+    "000660.KS",
+    "005930.KS",
+    "MU",
+    "WDC"
+   ],
+   "indicatori": [
+    {
+     "nome": "Prezzi contrattuali DRAM nel 4° trimestre 2026, variazione sul trimestre (previsione)",
+     "tipo": "congiunturale",
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 10,
+     "soglia_critica": 30,
+     "fonte": "TrendForce, «DRAM prices seen rising 20% QoQ in 4Q26»",
+     "link": "https://www.trendforce.com/news/2026/10/20/news-dram-prices-seen-rising-20-qoq-in-4q26-despite-slower-gains-ai-demand",
+     "data": "2026-10-20",
+     "affidabilita": "media",
+     "valore": 20,
+     "stato": "attenzione"
+    },
+    {
+     "nome": "SK Hynix in borsa, variazione a 1 mese",
+     "tipo": "congiunturale",
+     "unita": "%",
+     "direzione": "basso-male",
+     "soglia_attenzione": -10,
+     "soglia_critica": -25,
+     "fonte": "Yahoo Finance (prezzi.json)",
+     "link": "https://finance.yahoo.com/quote/000660.KS",
+     "data": "2026-11-06",
+     "affidabilita": "alta",
+     "valore": -34.3,
+     "stato": "critico"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "critico"
+  },
+  {
+   "id": "C09",
+   "anello": "server-rete",
+   "nome": "Ottica: chip laser EML per l'1,6T",
+   "rischio": "capacità",
+   "perche": "I chip EML da 200G per corsia vengono da pochi fornitori (Coherent, Lumentum e un terzo); per Yole sono il vincolo dell'1,6T nel 2026. I moduli sono assemblati soprattutto in Cina.",
+   "nodi": [
+    "innolight",
+    "eoptolink",
+    "coherent"
+   ],
+   "titoli": [
+    "COHR",
+    "300308.SZ",
+    "300502.SZ"
+   ],
+   "indicatori": [
+    {
+     "nome": "Carenza di chip EML da 200G per corsia (stima)",
+     "tipo": "congiunturale",
+     "unita": "%",
+     "direzione": "alto-male",
+     "soglia_attenzione": 10,
+     "soglia_critica": 30,
+     "fonte": "cnyes (analisi di settore in cinese): divario oltre il 60%",
+     "link": "https://hao.cnyes.com/post/271963",
+     "data": "2026",
+     "affidabilita": "bassa",
+     "valore": 60,
+     "stato": "critico"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "critico"
+  },
+  {
+   "id": "C10",
+   "anello": "energia-dc",
+   "nome": "Trasformatori e allacci alla rete",
+   "rischio": "capacità industriale",
+   "perche": "Il denaro c'è, i trasformatori no: i tempi di consegna dei trasformatori elevatori superano i tre anni e le utility comprano con cinque anni di anticipo.",
+   "nodi": [
+    "dc-abilene",
+    "dc-colossus2",
+    "dc-new-carlisle",
+    "dc-fairwater"
+   ],
+   "titoli": [
+    "MSFT",
+    "AMZN",
+    "GOOGL",
+    "META",
+    "ORCL"
+   ],
+   "indicatori": [
+    {
+     "nome": "Tempi di consegna dei trasformatori elevatori (GSU), 1° trimestre 2026",
+     "tipo": "strutturale",
+     "unita": "settimane",
+     "direzione": "alto-male",
+     "soglia_attenzione": 52,
+     "soglia_critica": 104,
+     "fonte": "Reuters, ripreso da Kitco: «US power companies scramble to secure equipment»",
+     "link": "https://www.kitco.com/news/off-the-wire/2026-07-09/us-power-companies-scramble-secure-equipment-surging-data-center",
+     "data": "2026-07-09",
+     "affidabilita": "alta",
+     "valore": 160,
+     "stato": "critico"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "non misurato"
+  },
+  {
+   "id": "C11",
+   "anello": "energia-dc",
+   "nome": "Energia di Taiwan per le fab",
+   "rischio": "energetico",
+   "perche": "Taiwan importa quasi tutta l'energia, produce metà dell'elettricità col gas e tiene scorte di GNL per meno di due settimane: un blocco navale colpirebbe le fab anche senza toccarle.",
+   "nodi": [
+    "maanshan",
+    "kaohsiung-port",
+    "tsmc-kaohsiung"
+   ],
+   "titoli": [
+    "TSM"
+   ],
+   "indicatori": [
+    {
+     "nome": "Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)",
+     "tipo": "congiunturale",
+     "unita": "giorni",
+     "direzione": "basso-male",
+     "soglia_attenzione": 14,
+     "soglia_critica": 11,
+     "fonte": "Focus Taiwan (dichiarazione del presidente Lai)",
+     "link": "https://focustaiwan.tw/business/202603210010",
+     "data": "2026-03-21",
+     "affidabilita": "media",
+     "valore": 12,
+     "stato": "attenzione"
+    }
+   ],
+   "stato": "attenzione",
+   "stato_congiunturale": "attenzione"
+  },
+  {
+   "id": "C12",
+   "anello": "energia-dc",
+   "nome": "Costo dell'energia per i data center",
+   "rischio": "prezzo",
+   "perche": "In Europa i progetti a gas (come Ferrera Erbognone) legano l'AI al TTF e quindi a Hormuz; negli USA conta il prezzo dell'Henry Hub e la capacità di rete.",
+   "nodi": [
+    "dc-ferrera",
+    "dc-fouju",
+    "dc-abilene"
+   ],
+   "titoli": [
+    "TTF",
+    "HH"
+   ],
+   "indicatori": [
+    {
+     "nome": "Gas TTF (Europa)",
+     "tipo": "congiunturale",
+     "unita": "EUR/MWh",
+     "direzione": "alto-male",
+     "soglia_attenzione": 40,
+     "soglia_critica": 70,
+     "fonte": "Yahoo Finance (prezzi.json)",
+     "link": "https://finance.yahoo.com/quote/TTF%3DF",
+     "data": "2026-11-09",
+     "affidabilita": "media",
+     "nota": "serie marcata provvisoria in prezzi.json",
+     "valore": 82.3,
+     "stato": "critico"
+    },
+    {
+     "nome": "Gas Henry Hub (USA)",
+     "tipo": "congiunturale",
+     "unita": "USD/MMBtu",
+     "direzione": "alto-male",
+     "soglia_attenzione": 4,
+     "soglia_critica": 6,
+     "fonte": "Yahoo Finance (prezzi.json)",
+     "link": "https://finance.yahoo.com/quote/NG%3DF",
+     "data": "2026-11-09",
+     "affidabilita": "media",
+     "nota": "serie marcata provvisoria in prezzi.json",
+     "valore": 3.2,
+     "stato": "normale"
+    }
+   ],
+   "stato": "critico",
+   "stato_congiunturale": "critico"
+  }
+ ],
+ "controlli": [
+  {
+   "id": "US-2022-10",
+   "paese": "US",
+   "autorita": "Dipartimento del Commercio, BIS",
+   "data_annuncio": "2022-10-07",
+   "data_effetto": "2022-10-07",
+   "misura": "Prime regole su chip avanzati per l'AI e macchine per produrre chip avanzati in Cina; aggiornate nell'ottobre 2023.",
+   "materie": [],
+   "anelli": [
+    "attrezzature",
+    "progettazione"
+   ],
+   "stato": "in-vigore",
+   "scadenza": null,
+   "fonte": "CSIS, «Understanding the Biden Administration's Updated Export Controls»",
+   "link": "https://www.csis.org/analysis/understanding-biden-administrations-updated-export-controls",
+   "data_fonte": "2024-12",
+   "affidabilita": "alta",
+   "note": ""
+  },
+  {
+   "id": "JP-2023-07",
+   "paese": "JP",
+   "autorita": "METI",
+   "data_annuncio": "2023-05-23",
+   "data_effetto": "2023-07-23",
+   "misura": "23 tipi di macchine per chip (pulizia, deposizione, trattamento termico, esposizione, incisione, ispezione, comprese parti EUV) sotto licenza fuori dai 42 paesi «amici».",
+   "materie": [],
+   "anelli": [
+    "attrezzature"
+   ],
+   "stato": "in-vigore",
+   "scadenza": null,
+   "fonte": "Hogan Lovells (HLC), «Japan's new chip equipment export rules take effect»",
+   "link": "https://www.hlc.com/en/publications/japans-new-chip-equipment-export-rules-take-effect",
+   "data_fonte": "2023-07",
+   "affidabilita": "alta",
+   "note": ""
+  },
+  {
+   "id": "NL-2023-09",
+   "paese": "NL",
+   "autorita": "Governo dei Paesi Bassi",
+   "data_annuncio": "2023-06-30",
+   "data_effetto": "2023-09-01",
+   "misura": "Licenza nazionale per esportare fuori dall'UE le macchine litografiche DUV a immersione più avanzate.",
+   "materie": [],
+   "anelli": [
+    "attrezzature"
+   ],
+   "stato": "in-vigore",
+   "scadenza": null,
+   "fonte": "Hogan Lovells (HLC), «Japan's new chip equipment export rules take effect» (cita le misure olandesi del 30 giugno 2023)",
+   "link": "https://www.hlc.com/en/publications/japans-new-chip-equipment-export-rules-take-effect",
+   "data_fonte": "2023-07",
+   "affidabilita": "media",
+   "note": ""
+  },
+  {
+   "id": "CN-2023-GAGE",
+   "paese": "CN",
+   "autorita": "MOFCOM e Dogane cinesi",
+   "data_annuncio": "2023-07-03",
+   "data_effetto": "2023-08-01",
+   "misura": "Licenza obbligatoria per esportare gallio e germanio e loro composti.",
+   "materie": [
+    "gallio",
+    "germanio"
+   ],
+   "anelli": [
+    "materie"
+   ],
+   "stato": "in-vigore",
+   "scadenza": null,
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Gallium",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-gallium.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "note": "Le licenze restano anche durante la sospensione del divieto verso gli USA (Fastmarkets, novembre 2025)."
+  },
+  {
+   "id": "NL-2024-09",
+   "paese": "NL",
+   "autorita": "Governo dei Paesi Bassi",
+   "data_annuncio": "2024-09-06",
+   "data_effetto": "2024-09-07",
+   "misura": "Licenza olandese anche per i sistemi DUV a immersione NXT:1970i e 1980i (prima sotto regole USA).",
+   "materie": [],
+   "anelli": [
+    "attrezzature"
+   ],
+   "stato": "in-vigore",
+   "scadenza": null,
+   "fonte": "Export Compliance Daily",
+   "link": "https://exportcompliancedaily.com/article/2024/09/10/netherlands-expands-chip-equipment-controls-asml-expects-no-impact-2409090024",
+   "data_fonte": "2024-09-10",
+   "affidabilita": "alta",
+   "note": "Ad aprile 2026 i Paesi Bassi permettevano ancora assistenza e riparazione delle macchine già in Cina, a differenza degli USA (Bits&Chips)."
+  },
+  {
+   "id": "US-2024-12",
+   "paese": "US",
+   "autorita": "Dipartimento del Commercio, BIS",
+   "data_annuncio": "2024-12-02",
+   "data_effetto": "2024-12-02",
+   "misura": "Controlli su 24 tipi di macchine per chip e 3 software, su tutta la memoria HBM in produzione; 140 entità aggiunte alla Entity List.",
+   "materie": [],
+   "anelli": [
+    "attrezzature",
+    "packaging-memoria"
+   ],
+   "stato": "in-vigore",
+   "scadenza": null,
+   "fonte": "BIS, comunicato «Commerce Strengthens Export Controls to Restrict China's Capability to Produce Advanced Semiconductors for Military Applications»",
+   "link": "https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military",
+   "data_fonte": "2024-12-02",
+   "affidabilita": "alta",
+   "note": "È la regola che toglie l'HBM coreana ai chip Huawei: per Epoch AI la memoria è il vincolo principale della produzione Ascend."
+  },
+  {
+   "id": "CN-2024-USBAN",
+   "paese": "CN",
+   "autorita": "MOFCOM",
+   "data_annuncio": "2024-12-03",
+   "data_effetto": "2024-12-03",
+   "misura": "Divieto di export verso gli USA di gallio, germanio, antimonio e materiali superduri.",
+   "materie": [
+    "gallio",
+    "germanio"
+   ],
+   "anelli": [
+    "materie"
+   ],
+   "stato": "sospeso",
+   "scadenza": "2026-11-27",
+   "fonte": "Fastmarkets, «China suspends export prohibition on gallium, germanium, antimony, superhard materials to US»",
+   "link": "https://www.fastmarkets.com/insights/china-suspends-export-prohibition-on-superhard-materials-us/",
+   "data_fonte": "2025-11-09",
+   "affidabilita": "alta",
+   "note": "Sospeso il 9 novembre 2025 fino al 27 novembre 2026 (annuncio MOFCOM n. 72 del 2025). Restano licenze e divieto verso utilizzatori militari. Alla data del 9 novembre 2026 non trovata una proroga pubblicata.",
+   "giorni_alla_scadenza": 18
+  },
+  {
+   "id": "CN-2025-04-TR",
+   "paese": "CN",
+   "autorita": "MOFCOM e Dogane cinesi",
+   "data_annuncio": "2025-04-04",
+   "data_effetto": "2025-04-04",
+   "misura": "Licenze su sette terre rare medie e pesanti: samario, gadolinio, terbio, disprosio, lutezio, scandio, ittrio (e relativi magneti).",
+   "materie": [
+    "terre-rare"
+   ],
+   "anelli": [
+    "materie"
+   ],
+   "stato": "in-vigore",
+   "scadenza": null,
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "note": "Mai sospese; la Cina ha iniziato a rilasciare licenze generali ad alcuni esportatori (USGS)."
+  },
+  {
+   "id": "US-2025-09-AFF",
+   "paese": "US",
+   "autorita": "Dipartimento del Commercio, BIS",
+   "data_annuncio": "2025-09-29",
+   "data_effetto": "2025-09-29",
+   "misura": "«Affiliates Rule»: le società possedute al 50% o più da entità in lista subiscono gli stessi limiti.",
+   "materie": [],
+   "anelli": [
+    "attrezzature"
+   ],
+   "stato": "sospeso",
+   "scadenza": "2027-01-10",
+   "fonte": "Tech Times (regola BIS pubblicata nel Federal Register il 9 novembre 2026, FR Doc. 2026-22793)",
+   "link": "https://www.techtimes.com/articles/330288/20261109/china-rare-earth-export-controls-pause-ends-tuesday-law-beijing-has-published-no-extension.htm",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "media",
+   "note": "Applied Materials stimava 600 milioni di dollari di ricavi persi nell'esercizio 2026 (TipRanks, ottobre 2025). Sospesa da novembre 2025 con la tregua di Busan; sospensione prorogata al 10 gennaio 2027.",
+   "giorni_alla_scadenza": 62
+  },
+  {
+   "id": "NL-2025-NEXPERIA",
+   "paese": "NL",
+   "autorita": "Governo dei Paesi Bassi (legge sulla disponibilità dei beni)",
+   "data_annuncio": "2025-09-30",
+   "data_effetto": "2025-09-30",
+   "misura": "Presa di controllo di Nexperia (proprietà Wingtech); la Cina blocca l'export dei chip Nexperia prodotti a Dongguan.",
+   "materie": [],
+   "anelli": [
+    "fabbricazione"
+   ],
+   "stato": "interrotto",
+   "scadenza": null,
+   "fonte": "WTOP (AP), «Dutch court orders investigation into chipmaker Nexperia»",
+   "link": "https://wtop.com/world/2026/02/dutch-court-orders-investigation-into-semiconductor-chipmaker-nexperia/",
+   "data_fonte": "2026-02",
+   "affidabilita": "alta",
+   "note": "Non è un controllo all'export ma ha diviso la catena: a febbraio 2026 la Camera delle imprese di Amsterdam ha ordinato un'inchiesta e confermato la sospensione dell'amministratore cinese; Wingtech chiede risarcimenti. Chip per auto e industria, non per GPU."
+  },
+  {
+   "id": "CN-2025-10-TR",
+   "paese": "CN",
+   "autorita": "MOFCOM e Dogane cinesi (annunci n. 55, 56, 57, 58, 61, 62 del 2025)",
+   "data_annuncio": "2025-10-09",
+   "data_effetto": null,
+   "misura": "Altre cinque terre rare (olmio, erbio, tulio, europio, itterbio); regola extraterritoriale dello 0,1% di contenuto cinese nei prodotti esteri; tecnologie ed impianti per estrazione, separazione e magneti; batterie e materiali superduri.",
+   "materie": [
+    "terre-rare"
+   ],
+   "anelli": [
+    "materie",
+    "attrezzature"
+   ],
+   "stato": "incerto",
+   "scadenza": "2026-11-10",
+   "fonte": "Tech Times, «China Rare Earth Export Controls Pause Ends Tuesday in Law; Beijing Has Published No Extension»",
+   "link": "https://www.techtimes.com/articles/330288/20261109/china-rare-earth-export-controls-pause-ends-tuesday-law-beijing-has-published-no-extension.htm",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "media",
+   "note": "Sospesi dall'annuncio n. 70 del 7 novembre 2025 fino al 10 novembre 2026. Il 28 settembre 2026 il MOFCOM ha detto che l'intesa Cina–USA vale fino al 10 gennaio 2027, ma secondo Tech Times nessun testo numerato sposta la data legale. Shanghai Metals Market riporta invece una proroga al 10 gennaio 2027 (https://news.metal.com/newscontent/CNTOCBN4QTSC2L3BEOVBYILPAZVOOIHVV6INVPY-china-extends-suspension-of-rare-earth-export-controls-until-january-2027). Fonti in disaccordo: da ricontrollare l'11 novembre.",
+   "giorni_alla_scadenza": 1
+  },
+  {
+   "id": "US-2026-MATCH",
+   "paese": "US",
+   "autorita": "Congresso USA (MATCH Act, proposta)",
+   "data_annuncio": "2026",
+   "data_effetto": null,
+   "misura": "Obbligherebbe gli alleati ad allineare i controlli a quelli USA entro 150 giorni: potrebbe toccare vendite e assistenza delle DUV ASML già in Cina.",
+   "materie": [],
+   "anelli": [
+    "attrezzature"
+   ],
+   "stato": "proposto",
+   "scadenza": null,
+   "fonte": "Bits&Chips, «Dutch minister pushes back on US bid to tighten China chip controls»",
+   "link": "https://bits-chips.com/article/dutch-minister-pushes-back-on-us-bid-to-tighten-china-chip-controls/",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "TrendForce (25 agosto 2026): gli USA potrebbero spingere per un divieto quasi totale di vendita e assistenza DUV in Cina. L'Aia ha fatto pressione contro (giugno 2026)."
+  },
+  {
+   "id": "US-2026-01-H200",
+   "paese": "US",
+   "autorita": "Dipartimento del Commercio, BIS",
+   "data_annuncio": "2026-01",
+   "data_effetto": "2026-01",
+   "misura": "Licenze per vendere Nvidia H200 alla Cina con condizioni: verifica di laboratorio negli USA, dazio del 25%, tetti per cliente; Blackwell e Rubin esclusi.",
+   "materie": [],
+   "anelli": [
+    "progettazione"
+   ],
+   "stato": "in-vigore",
+   "scadenza": null,
+   "fonte": "TechRepublic, «US Approves Nvidia H200 Sales to China, But Shipments Remain Stalled»",
+   "link": "https://www.techrepublic.com/article/news-nvidia-h200-ai-chip-sales-china-stalled/",
+   "data_fonte": "2026-05",
+   "affidabilita": "media",
+   "note": "A maggio 2026 nessun H200 risultava spedito: Pechino non aveva dato il via libera agli acquisti (Reuters ripreso dalla stampa). Stato più recente non trovato."
+  }
+ ],
+ "materie": [
+  {
+   "id": "gallio",
+   "nome": "Gallio (primario a bassa purezza)",
+   "uso_ai": "semiconduttori composti (GaN, GaAs): elettronica di potenza degli alimentatori dei server, radiofrequenza, laser e fotodiodi per l'ottica",
+   "unita": "kg",
+   "anno": "2025 (stima)",
+   "tipo": "produzione primaria",
+   "produzione": {
+    "CN": 900000,
+    "RU": 6000,
+    "JP": 3000
+   },
+   "mondo": 900000,
+   "quota_dichiarata": {
+    "CN": 99
+   },
+   "nota_quota": "USGS: «China accounted for 99% of worldwide primary low-purity gallium production». La somma dei paesi supera il totale arrotondato, per questo si usa la quota dichiarata.",
+   "fatti": [
+    "Prezzo medio all'import USA 580 $/kg nel 2025 (+30% sul 2024).",
+    "Capacità cinese 1.600.000 kg su 1.700.000 mondiali."
+   ],
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Gallium",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-gallium.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [
+    "CN-2023-GAGE",
+    "CN-2024-USBAN"
+   ],
+   "quote": [
+    {
+     "paese": "CN",
+     "nome_paese": "Cina",
+     "quota_pct": 99.0,
+     "metodo": "dichiarata dalla fonte"
+    },
+    {
+     "paese": "RU",
+     "nome_paese": "Russia",
+     "valore": 6000,
+     "quota_pct": 0.7,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "JP",
+     "nome_paese": "Giappone",
+     "valore": 3000,
+     "quota_pct": 0.3,
+     "metodo": "calcolata: paese / totale mondiale"
+    }
+   ],
+   "primo_produttore": {
+    "paese": "CN",
+    "nome_paese": "Cina",
+    "quota_pct": 99.0
+   },
+   "hhi": null,
+   "copertura_pct": 100.0
+  },
+  {
+   "id": "germanio",
+   "nome": "Germanio (raffinato)",
+   "uso_ai": "fibra ottica (tetracloruro di germanio) per le reti dei data center, ottiche infrarosse, substrati",
+   "unita": "kg",
+   "anno": "2025",
+   "tipo": "raffinazione",
+   "produzione": {},
+   "mondo": null,
+   "nota_quota": "USGS non pubblica una tabella mondiale: «global production data were limited». La Cina è indicata come primo produttore ed esportatore. Quota mondiale: dato mancante.",
+   "fatti": [
+    "Export cinese di germanio metallo gennaio–settembre 2025: 7.520 kg, contro 18.787 nel 2024 e 36.656 nel 2023 (stessi mesi).",
+    "Destinazioni 2025: Russia 28%, Belgio 26%, Germania 26%, Giappone 18%.",
+    "Prezzo medio del germanio metallo: 4.100 $/kg nel 2025 contro 1.991 nel 2024."
+   ],
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Germanium",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-germanium.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [
+    "CN-2023-GAGE",
+    "CN-2024-USBAN"
+   ],
+   "quote": [],
+   "primo_produttore": null
+  },
+  {
+   "id": "silicio",
+   "nome": "Silicio metallico (grado metallurgico, base del polisilicio)",
+   "uso_ai": "materia di partenza del polisilicio e dei wafer di silicio",
+   "unita": "migliaia di t",
+   "anno": "2025 (stima)",
+   "tipo": "produzione",
+   "produzione": {
+    "CN": 4000,
+    "BR": 180,
+    "NO": 130,
+    "FR": 68,
+    "AU": 47,
+    "RU": 35,
+    "CA": 34
+   },
+   "mondo": 4600,
+   "nota_quota": "La quota riguarda il silicio metallico, non il polisilicio di grado elettronico (11N) che serve ai chip: per quello USGS non dà una tabella e la quota non è stata trovata da fonte verificata. Produzione USA non pubblicata (W).",
+   "fatti": [
+    "Tre società producevano polisilicio negli USA nel 2025 (USGS)."
+   ],
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Silicon",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-silicon.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [],
+   "quote": [
+    {
+     "paese": "CN",
+     "nome_paese": "Cina",
+     "valore": 4000,
+     "quota_pct": 87.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "BR",
+     "nome_paese": "Brasile",
+     "valore": 180,
+     "quota_pct": 3.9,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "NO",
+     "nome_paese": "Norvegia",
+     "valore": 130,
+     "quota_pct": 2.8,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "FR",
+     "nome_paese": "Francia",
+     "valore": 68,
+     "quota_pct": 1.5,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "AU",
+     "nome_paese": "Australia",
+     "valore": 47,
+     "quota_pct": 1.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "RU",
+     "nome_paese": "Russia",
+     "valore": 35,
+     "quota_pct": 0.8,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "CA",
+     "nome_paese": "Canada",
+     "valore": 34,
+     "quota_pct": 0.7,
+     "metodo": "calcolata: paese / totale mondiale"
+    }
+   ],
+   "primo_produttore": {
+    "paese": "CN",
+    "nome_paese": "Cina",
+    "quota_pct": 87.0
+   },
+   "hhi": 7596,
+   "copertura_pct": 97.7
+  },
+  {
+   "id": "quarzo",
+   "nome": "Quarzo ad alta purezza (Spruce Pine)",
+   "uso_ai": "crogioli in cui si fonde il silicio per tirare i lingotti dei wafer",
+   "unita": "t",
+   "anno": "2025",
+   "tipo": "produzione",
+   "produzione": {},
+   "mondo": null,
+   "quota_stima": {
+    "testo": "70–90% dell'offerta mondiale di quarzo commerciale ad alta purezza da Spruce Pine (Everstream); oltre l'80% secondo BloombergNEF",
+    "fonte": "Everstream Analytics e BNN Bloomberg (BloombergNEF)",
+    "link": "https://bnnbloomberg.ca/investing/commodities/2024/10/02/hurricane-helene-halts-quartz-mines-vital-for-chipmaking-and-solar",
+    "data_fonte": "2024-10-02",
+    "affidabilita": "media"
+   },
+   "nota_quota": "USGS conferma due produttori a Spruce Pine (North Carolina) ma non pubblica quote mondiali.",
+   "fatti": [
+    "Dopo l'uragano Helene (fine settembre 2024) entrambi i produttori si sono fermati; Sibelco ha dichiarato forza maggiore il 1° ottobre 2024 (BNN Bloomberg).",
+    "BloombergNEF: a Spruce Pine si producono solo circa 20.000 t l'anno di quarzo di altissima purezza."
+   ],
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Quartz (high-purity)",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-quartz.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [],
+   "quote": [],
+   "primo_produttore": null
+  },
+  {
+   "id": "terre-rare",
+   "nome": "Terre rare (estrazione, ossidi equivalenti)",
+   "uso_ai": "magneti permanenti di motori, ventole, pompe di raffreddamento e dischi rigidi; macchine di fabbrica; lucidatura (cerio)",
+   "unita": "t REO",
+   "anno": "2025 (stima)",
+   "tipo": "estrazione",
+   "produzione": {
+    "CN": 270000,
+    "US": 51000,
+    "AU": 29000,
+    "MM": 22000,
+    "TH": 4800,
+    "IN": 2900,
+    "MG": 2700,
+    "RU": 2600,
+    "BR": 2000,
+    "NG": 1500
+   },
+   "mondo": 390000,
+   "riserve": {
+    "CN": 44000000,
+    "BR": 11000000,
+    "AU": 6300000,
+    "RU": 3800000,
+    "VN": 3500000,
+    "US": 1900000,
+    "GL": 1500000
+   },
+   "nota_quota": "La quota sull'estrazione sottostima il peso cinese nella separazione e nei magneti, per cui USGS non dà una tabella mondiale.",
+   "fatti": [
+    "Riserve della Groenlandia (Danimarca): 1.500.000 t REO, nessuna produzione nel 2025.",
+    "Aprile 2025: licenze cinesi su sette terre rare medie e pesanti; ottobre 2025 estese ad altre cinque, sospese a novembre 2025 per un anno (USGS)."
+   ],
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [
+    "CN-2025-04-TR",
+    "CN-2025-10-TR"
+   ],
+   "quote": [
+    {
+     "paese": "CN",
+     "nome_paese": "Cina",
+     "valore": 270000,
+     "quota_pct": 69.2,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "US",
+     "nome_paese": "Stati Uniti",
+     "valore": 51000,
+     "quota_pct": 13.1,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "AU",
+     "nome_paese": "Australia",
+     "valore": 29000,
+     "quota_pct": 7.4,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "MM",
+     "nome_paese": "Myanmar",
+     "valore": 22000,
+     "quota_pct": 5.6,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "TH",
+     "nome_paese": "Thailandia",
+     "valore": 4800,
+     "quota_pct": 1.2,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "IN",
+     "nome_paese": "India",
+     "valore": 2900,
+     "quota_pct": 0.7,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "MG",
+     "nome_paese": "Madagascar",
+     "valore": 2700,
+     "quota_pct": 0.7,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "RU",
+     "nome_paese": "Russia",
+     "valore": 2600,
+     "quota_pct": 0.7,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "BR",
+     "nome_paese": "Brasile",
+     "valore": 2000,
+     "quota_pct": 0.5,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "NG",
+     "nome_paese": "Nigeria",
+     "valore": 1500,
+     "quota_pct": 0.4,
+     "metodo": "calcolata: paese / totale mondiale"
+    }
+   ],
+   "primo_produttore": {
+    "paese": "CN",
+    "nome_paese": "Cina",
+    "quota_pct": 69.2
+   },
+   "hhi": 5050,
+   "copertura_pct": 99.5
+  },
+  {
+   "id": "rame",
+   "nome": "Rame (miniera e raffinazione)",
+   "uso_ai": "cavi di alimentazione, sbarre, trasformatori, interconnessioni in rame dentro i rack",
+   "unita": "migliaia di t",
+   "anno": "2025 (stima)",
+   "tipo": "estrazione",
+   "produzione": {
+    "CL": 5300,
+    "CD": 3200,
+    "PE": 2700,
+    "CN": 1800,
+    "RU": 1300,
+    "US": 1000,
+    "ZM": 940
+   },
+   "mondo": 23000,
+   "produzione_raffinazione": {
+    "CN": 14000,
+    "CD": 2800,
+    "CL": 1700,
+    "JP": 1400,
+    "RU": 950,
+    "US": 850
+   },
+   "mondo_raffinazione": 29000,
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Copper",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-copper.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [],
+   "quote": [
+    {
+     "paese": "CL",
+     "nome_paese": "Cile",
+     "valore": 5300,
+     "quota_pct": 23.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "CD",
+     "nome_paese": "Congo (RD)",
+     "valore": 3200,
+     "quota_pct": 13.9,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "PE",
+     "nome_paese": "Perù",
+     "valore": 2700,
+     "quota_pct": 11.7,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "CN",
+     "nome_paese": "Cina",
+     "valore": 1800,
+     "quota_pct": 7.8,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "RU",
+     "nome_paese": "Russia",
+     "valore": 1300,
+     "quota_pct": 5.7,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "US",
+     "nome_paese": "Stati Uniti",
+     "valore": 1000,
+     "quota_pct": 4.3,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "ZM",
+     "nome_paese": "Zambia",
+     "valore": 940,
+     "quota_pct": 4.1,
+     "metodo": "calcolata: paese / totale mondiale"
+    }
+   ],
+   "quote_raffinazione": [
+    {
+     "paese": "CN",
+     "nome_paese": "Cina",
+     "valore": 14000,
+     "quota_pct": 48.3
+    },
+    {
+     "paese": "CD",
+     "nome_paese": "Congo (RD)",
+     "valore": 2800,
+     "quota_pct": 9.7
+    },
+    {
+     "paese": "CL",
+     "nome_paese": "Cile",
+     "valore": 1700,
+     "quota_pct": 5.9
+    },
+    {
+     "paese": "JP",
+     "nome_paese": "Giappone",
+     "valore": 1400,
+     "quota_pct": 4.8
+    },
+    {
+     "paese": "RU",
+     "nome_paese": "Russia",
+     "valore": 950,
+     "quota_pct": 3.3
+    },
+    {
+     "paese": "US",
+     "nome_paese": "Stati Uniti",
+     "valore": 850,
+     "quota_pct": 2.9
+    }
+   ],
+   "primo_produttore": {
+    "paese": "CL",
+    "nome_paese": "Cile",
+    "quota_pct": 23.0
+   },
+   "hhi": null,
+   "copertura_pct": 70.5
+  },
+  {
+   "id": "tantalio",
+   "nome": "Tantalio (coltan)",
+   "uso_ai": "condensatori al tantalio delle schede madri e degli alimentatori; bersagli di deposizione (sputtering) nei chip",
+   "unita": "t",
+   "anno": "2025 (stima)",
+   "tipo": "estrazione",
+   "produzione": {
+    "CD": 1300,
+    "RW": 400,
+    "NG": 390,
+    "BR": 190,
+    "CN": 80,
+    "AU": 50,
+    "ET": 40,
+    "RU": 30
+   },
+   "mondo": 2500,
+   "nota_quota": "La quota del Ruanda include coltan contrabbandato dal Congo secondo Global Witness (giugno 2026): almeno 1.400 t nel primo anno di controllo M23 di Rubaya.",
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Tantalum",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-tantalum.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [],
+   "quote": [
+    {
+     "paese": "CD",
+     "nome_paese": "Congo (RD)",
+     "valore": 1300,
+     "quota_pct": 52.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "RW",
+     "nome_paese": "Ruanda",
+     "valore": 400,
+     "quota_pct": 16.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "NG",
+     "nome_paese": "Nigeria",
+     "valore": 390,
+     "quota_pct": 15.6,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "BR",
+     "nome_paese": "Brasile",
+     "valore": 190,
+     "quota_pct": 7.6,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "CN",
+     "nome_paese": "Cina",
+     "valore": 80,
+     "quota_pct": 3.2,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "AU",
+     "nome_paese": "Australia",
+     "valore": 50,
+     "quota_pct": 2.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "ET",
+     "nome_paese": "Etiopia",
+     "valore": 40,
+     "quota_pct": 1.6,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "RU",
+     "nome_paese": "Russia",
+     "valore": 30,
+     "quota_pct": 1.2,
+     "metodo": "calcolata: paese / totale mondiale"
+    }
+   ],
+   "primo_produttore": {
+    "paese": "CD",
+    "nome_paese": "Congo (RD)",
+    "quota_pct": 52.0
+   },
+   "hhi": 3279,
+   "copertura_pct": 99.2
+  },
+  {
+   "id": "fluorite",
+   "nome": "Fluorite",
+   "uso_ai": "acido fluoridrico e gas fluorurati per l'incisione e la pulizia dei wafer",
+   "unita": "migliaia di t",
+   "anno": "2025",
+   "tipo": "estrazione",
+   "produzione": {
+    "CN": 6000,
+    "MX": 1500,
+    "MN": 1500,
+    "ZA": 410,
+    "VN": 160,
+    "ES": 140,
+    "BR": 100
+   },
+   "mondo": 10000,
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Fluorspar",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-fluorspar.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [],
+   "quote": [
+    {
+     "paese": "CN",
+     "nome_paese": "Cina",
+     "valore": 6000,
+     "quota_pct": 60.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "MX",
+     "nome_paese": "Messico",
+     "valore": 1500,
+     "quota_pct": 15.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "MN",
+     "nome_paese": "Mongolia",
+     "valore": 1500,
+     "quota_pct": 15.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "ZA",
+     "nome_paese": "Sudafrica",
+     "valore": 410,
+     "quota_pct": 4.1,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "VN",
+     "nome_paese": "Vietnam",
+     "valore": 160,
+     "quota_pct": 1.6,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "ES",
+     "nome_paese": "Spagna",
+     "valore": 140,
+     "quota_pct": 1.4,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "BR",
+     "nome_paese": "Brasile",
+     "valore": 100,
+     "quota_pct": 1.0,
+     "metodo": "calcolata: paese / totale mondiale"
+    }
+   ],
+   "primo_produttore": {
+    "paese": "CN",
+    "nome_paese": "Cina",
+    "quota_pct": 60.0
+   },
+   "hhi": 4072,
+   "copertura_pct": 98.1
+  },
+  {
+   "id": "elio",
+   "nome": "Elio",
+   "uso_ai": "raffreddamento dei wafer e atmosfera inerte in litografia, deposizione e incisione; nessun sostituto pratico nei processi attuali",
+   "unita": "milioni di m³",
+   "anno": "2025 (stima)",
+   "tipo": "produzione",
+   "produzione": {
+    "US": 81,
+    "QA": 63,
+    "RU": 18,
+    "DZ": 11,
+    "CA": 6,
+    "CN": 3,
+    "PL": 3
+   },
+   "mondo": 190,
+   "nota_quota": "Il Qatar estrae l'elio dal gas di Ras Laffan: con Hormuz chiuso di fatto dal 2 marzo 2026 la produzione è in gran parte ferma (stampa, marzo 2026).",
+   "fatti": [
+    "Fonti USA dell'elio importato 2021–24: Canada 47%, Qatar 28%, Algeria 10%.",
+    "UE e USA vietano l'import di elio russo."
+   ],
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Helium and rare gases",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-helium.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [],
+   "quote": [
+    {
+     "paese": "US",
+     "nome_paese": "Stati Uniti",
+     "valore": 81,
+     "quota_pct": 42.6,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "QA",
+     "nome_paese": "Qatar",
+     "valore": 63,
+     "quota_pct": 33.2,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "RU",
+     "nome_paese": "Russia",
+     "valore": 18,
+     "quota_pct": 9.5,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "DZ",
+     "nome_paese": "Algeria",
+     "valore": 11,
+     "quota_pct": 5.8,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "CA",
+     "nome_paese": "Canada",
+     "valore": 6,
+     "quota_pct": 3.2,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "CN",
+     "nome_paese": "Cina",
+     "valore": 3,
+     "quota_pct": 1.6,
+     "metodo": "calcolata: paese / totale mondiale"
+    },
+    {
+     "paese": "PL",
+     "nome_paese": "Polonia",
+     "valore": 3,
+     "quota_pct": 1.6,
+     "metodo": "calcolata: paese / totale mondiale"
+    }
+   ],
+   "primo_produttore": {
+    "paese": "US",
+    "nome_paese": "Stati Uniti",
+    "quota_pct": 42.6
+   },
+   "hhi": 3056,
+   "copertura_pct": 97.5
+  },
+  {
+   "id": "neon",
+   "nome": "Neon",
+   "uso_ai": "miscele dei laser ad eccimeri della litografia DUV (sorgenti Cymer e Gigaphoton)",
+   "unita": "milioni di litri",
+   "anno": "2025 (stima)",
+   "tipo": "produzione",
+   "produzione": {
+    "US": 110
+   },
+   "mondo": 800,
+   "quota_stima": {
+    "testo": "Ucraina circa il 50% del neon mondiale nel 2022 (Cryoin a Odesa, Ingas a Mariupol); quasi tutto il neon ultrapuro importato dagli USA veniva dall'Ucraina",
+    "fonte": "USITC, Executive Briefing on Trade «Ukraine, neon, and semiconductors»",
+    "link": "https://www.usitc.gov/publications/332/executive_briefings/ebot_decarlo_goodman_ukraine_neon_and_semiconductors.pdf",
+    "data_fonte": "2022",
+    "affidabilita": "media"
+   },
+   "nota_quota": "USGS dà solo USA e totale mondiale. Dopo il 2022 la produzione si è spostata (Cina, Corea, Giappone, USA): quota attuale dell'Ucraina non trovata.",
+   "fatti": [
+    "USGS 2026: l'offerta di gas rari da Russia e Ucraina resta limitata dal conflitto; nuove unità di separazione dell'aria soprattutto in Asia.",
+    "Usi del neon negli USA: lampade 53%, semiconduttori 32%."
+   ],
+   "fonte": "USGS, Mineral Commodity Summaries 2026: Helium and rare gases",
+   "link": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-helium.pdf",
+   "data_fonte": "2026-02-05",
+   "affidabilita": "alta",
+   "controlli": [],
+   "quote": [
+    {
+     "paese": "US",
+     "nome_paese": "Stati Uniti",
+     "valore": 110,
+     "quota_pct": 13.8,
+     "metodo": "calcolata: paese / totale mondiale"
+    }
+   ],
+   "primo_produttore": {
+    "paese": "US",
+    "nome_paese": "Stati Uniti",
+    "quota_pct": 13.8
+   },
+   "hhi": null,
+   "copertura_pct": 13.8
+  }
+ ],
+ "titoli": [
+  {
+   "simbolo": "MP",
+   "nome": "MP Materials",
+   "borsa": "NYSE",
+   "anelli": [
+    "materie"
+   ],
+   "ruolo": "terre rare USA (Mountain Pass)",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "LYC.AX",
+   "nome": "Lynas Rare Earths",
+   "borsa": "ASX",
+   "anelli": [
+    "materie"
+   ],
+   "ruolo": "terre rare fuori dalla Cina (Australia, Malesia)",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "FCX",
+   "nome": "Freeport-McMoRan",
+   "borsa": "NYSE",
+   "anelli": [
+    "materie",
+    "energia-dc"
+   ],
+   "ruolo": "rame",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "ASML",
+   "nome": "ASML",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "attrezzature"
+   ],
+   "ruolo": "litografia EUV e DUV (Veldhoven)",
+   "prezzi_id": "asml",
+   "prezzo": {
+    "ultimo": 1518.3,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 6.56,
+     "1m": -14.72,
+     "ytd": 41.91,
+     "1a": 49.29
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/ASML",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "AMAT",
+   "nome": "Applied Materials",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "attrezzature"
+   ],
+   "ruolo": "deposizione, incisione",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "LRCX",
+   "nome": "Lam Research",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "attrezzature"
+   ],
+   "ruolo": "incisione e deposizione",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "KLAC",
+   "nome": "KLA",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "attrezzature"
+   ],
+   "ruolo": "ispezione e metrologia",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "8035.T",
+   "nome": "Tokyo Electron",
+   "borsa": "Tokyo",
+   "anelli": [
+    "attrezzature"
+   ],
+   "ruolo": "deposizione, coater/developer, incisione",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "TSM",
+   "nome": "TSMC (ADR)",
+   "borsa": "NYSE",
+   "anelli": [
+    "fabbricazione",
+    "packaging-memoria"
+   ],
+   "ruolo": "fonderia avanzata e CoWoS",
+   "prezzi_id": "tsm",
+   "prezzo": {
+    "ultimo": 390.98,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 4.14,
+     "1m": -13.75,
+     "ytd": 28.66,
+     "1a": 36.47
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/TSM",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "005930.KS",
+   "nome": "Samsung Electronics",
+   "borsa": "Corea",
+   "anelli": [
+    "fabbricazione",
+    "packaging-memoria"
+   ],
+   "ruolo": "fonderia, DRAM, HBM",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "INTC",
+   "nome": "Intel",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "fabbricazione"
+   ],
+   "ruolo": "fonderia 18A negli USA",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "0981.HK",
+   "nome": "SMIC",
+   "borsa": "Hong Kong",
+   "anelli": [
+    "fabbricazione"
+   ],
+   "ruolo": "fonderia cinese (chip Huawei)",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "000660.KS",
+   "nome": "SK Hynix",
+   "borsa": "Corea",
+   "anelli": [
+    "packaging-memoria"
+   ],
+   "ruolo": "primo produttore di HBM",
+   "prezzi_id": "hynix",
+   "prezzo": {
+    "ultimo": 1132000.0,
+    "valuta": "KRW",
+    "data": "2026-11-06",
+    "var": {
+     "1g": -10.44,
+     "1m": -34.3,
+     "ytd": 73.89,
+     "1a": 90.89
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/000660.KS",
+    "provvisorio": false
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "MU",
+   "nome": "Micron Technology",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "packaging-memoria"
+   ],
+   "ruolo": "HBM e DRAM",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "WDC",
+   "nome": "Western Digital",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "packaging-memoria",
+    "server-rete"
+   ],
+   "ruolo": "dischi rigidi per i data center (magneti di terre rare)",
+   "prezzi_id": "wdc",
+   "prezzo": {
+    "ultimo": 289.95,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 9.92,
+     "1m": -27.02,
+     "ytd": 68.31,
+     "1a": 77.93
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/WDC",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "NVDA",
+   "nome": "Nvidia",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "progettazione"
+   ],
+   "ruolo": "GPU per data center",
+   "prezzi_id": "nvda",
+   "prezzo": {
+    "ultimo": 177.4,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": -4.95,
+     "1m": -22.63,
+     "ytd": -4.88,
+     "1a": -5.71
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/NVDA",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "AMD",
+   "nome": "AMD",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "progettazione"
+   ],
+   "ruolo": "acceleratori Instinct",
+   "prezzi_id": "amd",
+   "prezzo": {
+    "ultimo": 509.71,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 13.51,
+     "1m": -16.18,
+     "ytd": 138.0,
+     "1a": 118.25
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/AMD",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "AVGO",
+   "nome": "Broadcom",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "progettazione",
+    "server-rete"
+   ],
+   "ruolo": "ASIC su misura (TPU) e switch",
+   "prezzi_id": "avgo",
+   "prezzo": {
+    "ultimo": 320.77,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 9.22,
+     "1m": -11.28,
+     "ytd": -7.32,
+     "1a": -8.2
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/AVGO",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "GOOGL",
+   "nome": "Alphabet",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "progettazione",
+    "energia-dc"
+   ],
+   "ruolo": "TPU e data center",
+   "prezzi_id": "googl",
+   "prezzo": {
+    "ultimo": 290.16,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 1.89,
+     "1m": -17.49,
+     "ytd": -7.3,
+     "1a": 4.06
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/GOOGL",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "2317.TW",
+   "nome": "Hon Hai (Foxconn)",
+   "borsa": "Taiwan",
+   "anelli": [
+    "server-rete"
+   ],
+   "ruolo": "assemblaggio server AI",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "2382.TW",
+   "nome": "Quanta Computer",
+   "borsa": "Taiwan",
+   "anelli": [
+    "server-rete"
+   ],
+   "ruolo": "assemblaggio server AI",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "3231.TW",
+   "nome": "Wistron",
+   "borsa": "Taiwan",
+   "anelli": [
+    "server-rete"
+   ],
+   "ruolo": "assemblaggio server AI",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "COHR",
+   "nome": "Coherent",
+   "borsa": "NYSE",
+   "anelli": [
+    "server-rete"
+   ],
+   "ruolo": "laser EML e transceiver",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "300308.SZ",
+   "nome": "Zhongji Innolight",
+   "borsa": "Shenzhen",
+   "anelli": [
+    "server-rete"
+   ],
+   "ruolo": "transceiver 800G/1,6T",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "300502.SZ",
+   "nome": "Eoptolink",
+   "borsa": "Shenzhen",
+   "anelli": [
+    "server-rete"
+   ],
+   "ruolo": "transceiver",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "2618.TW",
+   "nome": "EVA Airways",
+   "borsa": "Taiwan",
+   "anelli": [
+    "logistica"
+   ],
+   "ruolo": "cargo aereo AI da Taoyuan",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "2610.TW",
+   "nome": "China Airlines",
+   "borsa": "Taiwan",
+   "anelli": [
+    "logistica"
+   ],
+   "ruolo": "cargo aereo AI da Taoyuan",
+   "prezzi_id": null,
+   "in_prezzi": false
+  },
+  {
+   "simbolo": "MSFT",
+   "nome": "Microsoft",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "energia-dc"
+   ],
+   "ruolo": "data center (Fairwater)",
+   "prezzi_id": "msft",
+   "prezzo": {
+    "ultimo": 547.67,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 3.22,
+     "1m": 2.35,
+     "ytd": 13.24,
+     "1a": 10.24
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/MSFT",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "AMZN",
+   "nome": "Amazon",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "energia-dc"
+   ],
+   "ruolo": "data center (New Carlisle), chip Trainium",
+   "prezzi_id": "amzn",
+   "prezzo": {
+    "ultimo": 268.97,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 3.73,
+     "1m": 2.49,
+     "ytd": 16.53,
+     "1a": 10.05
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/AMZN",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "META",
+   "nome": "Meta",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "energia-dc"
+   ],
+   "ruolo": "data center",
+   "prezzi_id": "meta",
+   "prezzo": {
+    "ultimo": 645.1,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 5.73,
+     "1m": -10.24,
+     "ytd": -2.27,
+     "1a": 3.76
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/META",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "ORCL",
+   "nome": "Oracle",
+   "borsa": "NYSE",
+   "anelli": [
+    "energia-dc"
+   ],
+   "ruolo": "data center Stargate (Abilene)",
+   "prezzi_id": "orcl",
+   "prezzo": {
+    "ultimo": 119.3,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 2.76,
+     "1m": -15.63,
+     "ytd": -38.79,
+     "1a": -50.14
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/ORCL",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "SOX",
+   "nome": "Indice dei semiconduttori (PHLX SOX)",
+   "borsa": "Nasdaq",
+   "anelli": [
+    "attrezzature",
+    "fabbricazione",
+    "packaging-memoria",
+    "progettazione"
+   ],
+   "ruolo": "termometro dell'intera filiera dei chip",
+   "prezzi_id": "sox",
+   "prezzo": {
+    "ultimo": 10046.2,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 6.99,
+     "1m": -20.09,
+     "ytd": 41.83,
+     "1a": 44.6
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/%5ESOX",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "TTF",
+   "nome": "Gas TTF (Europa)",
+   "borsa": "ICE/NYMEX",
+   "anelli": [
+    "energia-dc"
+   ],
+   "ruolo": "costo dell'energia dei data center europei a gas",
+   "prezzi_id": "ttf",
+   "prezzo": {
+    "ultimo": 82.33,
+    "valuta": "EUR",
+    "data": "2026-11-09",
+    "var": {
+     "1g": -3.81,
+     "1m": 1.11,
+     "ytd": 192.37,
+     "1a": 163.88
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/TTF%3DF",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  },
+  {
+   "simbolo": "HH",
+   "nome": "Gas Henry Hub (USA)",
+   "borsa": "NYMEX",
+   "anelli": [
+    "energia-dc"
+   ],
+   "ruolo": "costo del gas per le centrali dei data center USA",
+   "prezzi_id": "hh",
+   "prezzo": {
+    "ultimo": 3.214,
+    "valuta": "USD",
+    "data": "2026-11-09",
+    "var": {
+     "1g": 7.2,
+     "1m": -0.19,
+     "ytd": -12.81,
+     "1a": -25.52
+    },
+    "fonte": "Yahoo Finance",
+    "link": "https://finance.yahoo.com/quote/NG%3DF",
+    "provvisorio": true
+   },
+   "in_prezzi": true
+  }
+ ],
+ "legami": {
+  "rete_380kv": [
+   {
+    "nodo": "ras-laffan",
+    "nome": "Ras Laffan (Qatar): elio dal gas naturale",
+    "km": 0.0,
+    "linea": "400 kV"
+   },
+   {
+    "nodo": "odesa",
+    "nome": "Odesa (Ucraina): purificazione del neon",
+    "km": 63.3,
+    "linea": "400 kV"
+   },
+   {
+    "nodo": "mariupol",
+    "nome": "Mariupol (Ucraina occupata): neon",
+    "km": 23.5,
+    "linea": "750 kV"
+   },
+   {
+    "nodo": "sillamae",
+    "nome": "Sillamäe (Estonia): separazione di terre rare",
+    "km": 37.6,
+    "linea": "450 kV HVDC Estlink 2"
+   },
+   {
+    "nodo": "narva",
+    "nome": "Narva (Estonia): magneti di terre rare",
+    "km": 63.7,
+    "linea": "450 kV HVDC Estlink 2"
+   },
+   {
+    "nodo": "veldhoven",
+    "nome": "ASML, Veldhoven (Paesi Bassi): scanner EUV",
+    "km": 10.8,
+    "linea": "380 kV"
+   },
+   {
+    "nodo": "oberkochen",
+    "nome": "Carl Zeiss SMT, Oberkochen (Germania): ottiche EUV",
+    "km": 7.2,
+    "linea": "380 kV Goldshöfe - Rotensohl"
+   },
+   {
+    "nodo": "ditzingen",
+    "nome": "Trumpf, Ditzingen (Germania): laser CO2 per EUV",
+    "km": 2.0,
+    "linea": "380 kV 2x 380 kV, 2x 110 kV"
+   },
+   {
+    "nodo": "esmc-dresda",
+    "nome": "ESMC (TSMC), Dresda (Germania)",
+    "km": 17.5,
+    "linea": "380 kV Ltg 555 und 556 Schmölln - Dresden Süd"
+   },
+   {
+    "nodo": "intel-leixlip",
+    "nome": "Intel Fab 34, Leixlip (Irlanda)",
+    "km": 12.3,
+    "linea": "400 kV East-West Interconnector"
+   },
+   {
+    "nodo": "nexperia-nijmegen",
+    "nome": "Nexperia, Nijmegen (Paesi Bassi)",
+    "km": 5.5,
+    "linea": "380 kV"
+   },
+   {
+    "nodo": "ams",
+    "nome": "Aeroporto di Amsterdam Schiphol (AMS)",
+    "km": 4.1,
+    "linea": "380 kV"
+   },
+   {
+    "nodo": "dc-uae",
+    "nome": "Stargate UAE, Abu Dhabi",
+    "km": 2.2,
+    "linea": "400 kV"
+   },
+   {
+    "nodo": "dc-fouju",
+    "nome": "Campus IA di Fouju (Francia)",
+    "km": 1.3,
+    "linea": "400 kV Liaison 400 kV n°1 Le Chesnoy - Morbras"
+   },
+   {
+    "nodo": "dc-ferrera",
+    "nome": "Campus AI Eni-Khazna, Ferrera Erbognone",
+    "km": 0.3,
+    "linea": "380 kV Pieve Albignola-Ferrera Erbognone"
+   }
+  ],
+  "cavi_attivi_per_paese": {
+   "AE": 18,
+   "CD": 5,
+   "CN": 21,
+   "DE": 9,
+   "EE": 7,
+   "FR": 30,
+   "IE": 14,
+   "IT": 32,
+   "JP": 43,
+   "KR": 12,
+   "MX": 8,
+   "MY": 24,
+   "NL": 10,
+   "OM": 15,
+   "QA": 7,
+   "SG": 34,
+   "TW": 17,
+   "UA": 2,
+   "US": 90
+  },
+  "nota": "Distanza in linea d'aria dalla linea >= 380 kV più vicina in rete-elettrica.json (OpenStreetMap via openinframap, riquadro Europa-Medio Oriente); conteggio dei cavi sottomarini attivi con almeno un approdo nel paese (cavi.json, TeleGeography CC BY-NC-SA)."
+ },
+ "riepilogo": {
+  "nodi_per_anello": {
+   "materie": 9,
+   "attrezzature": 8,
+   "fabbricazione": 13,
+   "packaging-memoria": 9,
+   "progettazione": 5,
+   "server-rete": 7,
+   "logistica": 10,
+   "energia-dc": 9
+  },
+  "archi_per_modo": {
+   "nave": 2,
+   "misto": 2,
+   "camion": 16,
+   "aereo": 13,
+   "rete": 1
+  },
+  "colli_per_stato": {
+   "critico": 10,
+   "attenzione": 2
+  },
+  "controlli_per_stato": {
+   "in-vigore": 8,
+   "sospeso": 2,
+   "interrotto": 1,
+   "incerto": 1,
+   "proposto": 1
+  },
+  "archi_tra_anelli": {
+   "materie → fabbricazione": 2,
+   "materie → attrezzature": 1,
+   "materie → server-rete": 1,
+   "attrezzature → logistica": 1,
+   "logistica → fabbricazione": 1,
+   "attrezzature → fabbricazione": 3,
+   "fabbricazione → packaging-memoria": 2,
+   "packaging-memoria → logistica": 1,
+   "logistica → packaging-memoria": 1,
+   "packaging-memoria → server-rete": 2,
+   "server-rete → logistica": 2,
+   "logistica → energia-dc": 2,
+   "server-rete → energia-dc": 2,
+   "logistica → server-rete": 1,
+   "fabbricazione → progettazione": 1,
+   "packaging-memoria → progettazione": 1,
+   "energia-dc → fabbricazione": 1
+  },
+  "nodi_per_paese": {
+   "US": 22,
+   "CN": 8,
+   "CD": 1,
+   "QA": 1,
+   "UA": 2,
+   "EE": 2,
+   "NL": 3,
+   "DE": 3,
+   "JP": 4,
+   "TW": 10,
+   "KR": 5,
+   "IE": 1,
+   "SG": 1,
+   "MX": 1,
+   "OM": 1,
+   "MY": 2,
+   "AE": 1,
+   "FR": 1,
+   "IT": 1
+  }
+ },
+ "avvisi": [
+  "materia germanio: nessuna quota per paese (dato mancante dichiarato)",
+  "collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare",
+  "collo C09: valore manuale «Carenza di chip EML da 200G per corsia (stima)» del 2026, da ricontrollare",
+  "collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
+ ],
+ "errori": []
+}

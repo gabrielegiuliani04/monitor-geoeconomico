@@ -50,12 +50,16 @@ figure{margin:20px 0 22px}
 figure .grafico{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px}
 figcaption{font-size:13px;color:var(--soft);margin-top:8px}
 .stretto{display:none}
-@media (max-width:600px){.largo{display:none}.stretto{display:block}figure .grafico{padding:8px}}
+@media (max-width:600px){.largo{display:none}.stretto{display:block}figure .grafico{padding:8px}
+td{min-width:5.5em}td:first-child{min-width:7.5em}td:last-child{min-width:15em}}
 details{margin-top:6px;font-size:13px}
 summary{cursor:pointer;color:var(--soft)}
 .s-verde::before{content:"● ";color:var(--ok)}
 .s-giallo::before{content:"▲ ";color:var(--warn)}
 .s-rosso::before{content:"■ ";color:var(--crit)}
+.revisione{margin:40px 0 0;padding:16px 18px;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--soft);border-radius:0 8px 8px 0;font-size:15px}
+.revisione h2{font:600 13px/1.4 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin:0 0 10px;padding:0}
+.revisione p,.revisione ul{margin:0 0 10px}
 footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);font-size:14px;color:var(--soft)}
 footer .firma{font-weight:600;color:var(--ink)}
 </style>
@@ -80,7 +84,7 @@ footer .firma{font-weight:600;color:var(--ink)}
 <li><a href="#metodo">Metodo e limiti</a></li>
 </ol></nav>
 <h2 id="in-breve">1. In breve</h2>
-<ul><li><strong>Suez si riprende, Bab el-Mandeb resta a poco più di un terzo, Hormuz è chiuso di fatto.</strong> A Suez passano 43,0 navi al giorno (+10% su un anno), il 58% della media gennaio–ottobre 2023; Bab el-Mandeb è a 27,3 (37% di quella media). Hormuz resta a 4,4 navi al giorno con AIS acceso (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, media 7 giorni 26 ottobre–1 novembre 2026); Lloyd&#x27;s List Intelligence, che ricostruisce anche i transiti con il transponder spento, conta 116 transiti di navi non legate all&#x27;Iran nella settimana 19–25 ottobre 2026, circa 17 al giorno (<a href="https://www.lloydslistintelligence.com/resources/blog/strait-of-hormuz-brief-5-november-2026" rel="noopener">Lloyd&#x27;s List Intelligence, Strait of Hormuz Brief</a>, 5 novembre 2026). Nel cruscotto del rischio dell&#x27;osservatorio Hormuz è critico, 22,5 su 25, Bab el-Mandeb alto, 19,0 su 25, Suez medio, 9,9 su 25 (docs/data/rischio.json, 9 novembre 2026; metodo in report/metodo-rischio.md).</li><li><strong>I noli container sono più del doppio di un anno fa.</strong> Il Drewry WCI è a 4.389 dollari per FEU (5 novembre 2026), +124% sul 6 novembre 2025; Shanghai–Genova 4.166 dollari (+97%). Il trend recente è piatto: FBX globale −6% dal 14 agosto, +3% nelle ultime 4 settimane.</li><li><strong>Porti italiani a due velocità.</strong> Negli ultimi 30 giorni calano soprattutto Ravenna (−20%) e Venezia Malamocco (−16%), porti dell&#x27;energia e delle rinfuse; calano poco i porti container (Genova −5%, Gioia Tauro −6%) e cresce La Spezia (+28%, ma su numeri piccoli) (chiamate di navi, 30 giorni su un anno, <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, dati fino al 30 ottobre 2026).</li><li><strong>L&#x27;energia resta il costo più pesante.</strong> Gas TTF a 82,33 €/MWh (+164% su un anno), gasolio self a 2,224 €/litro (<a href="https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html" rel="noopener">Mimit, Osservatorio prezzi carburanti (media nazionale self), ripreso da Affaritaliani</a>, 7 novembre 2026) e taglio delle accise scaduto l&#x27;8 novembre; stoccaggi gas italiani all&#x27;88,9% contro il 58,9% della Germania (GIE AGSI+, 8 novembre 2026).</li><li><strong>Nord Europa: meno esposto sui noli, più esposto sul gas.</strong> La rotta Cina–Nord Europa costa 3.422 dollari per FEU contro 4.324 verso il Mediterraneo (Freightos FBX, 6 novembre 2026); gli stoccaggi di gas sono al 63,5% nei Paesi Bassi e al 58,9% in Germania, 18,9 e 29,7 punti sotto la media di 5 anni (GIE AGSI+, 8 novembre 2026); agli Stretti danesi passano 38,7 navi al giorno, −21% su un anno (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>). Dettagli nella sezione 8.</li><li><strong>Il rischio di questa settimana è sulle materie critiche:</strong> la sospensione dei controlli cinesi all&#x27;export di terre rare decisi a ottobre 2025 (annuncio MOFCOM-GAC n. 70 del 2025, compresa la regola dello 0,1% di contenuto cinese nei prodotti esteri) scade il 10 novembre 2026; restano in vigore le licenze di aprile 2025 su sette terre rare medie e pesanti (tra cui disprosio e ittrio). Alla data del report non risultano annunci di proroga (<a href="https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/" rel="noopener">CIRS Group (testo dell&#x27;annuncio n. 70/2025) e Mining Technology</a>, 9 novembre 2026).</li></ul>
+<ul><li><strong>Suez si riprende, Bab el-Mandeb resta a poco più di un terzo, Hormuz è chiuso di fatto.</strong> A Suez passano 43,0 navi al giorno (+10% su un anno), il 58% della media gennaio–ottobre 2023; Bab el-Mandeb è a 27,3 (37% di quella media). Hormuz resta a 4,4 navi al giorno con AIS acceso (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, media 7 giorni 26 ottobre–1 novembre 2026); Lloyd&#x27;s List Intelligence, che ricostruisce anche i transiti con il transponder spento, conta 116 transiti di navi non legate all&#x27;Iran nella settimana 19–25 ottobre 2026, circa 17 al giorno (<a href="https://www.lloydslistintelligence.com/resources/blog/strait-of-hormuz-brief-5-november-2026" rel="noopener">Lloyd&#x27;s List Intelligence, Strait of Hormuz Brief</a>, 5 novembre 2026). Nel cruscotto del rischio dell&#x27;osservatorio Hormuz è a livello critico (22,5 su 25), Bab el-Mandeb a livello alto (19,0 su 25), Suez a livello medio (9,9 su 25) (rischio.json, 9 novembre 2026).</li><li><strong>I noli container sono più del doppio di un anno fa.</strong> Il Drewry WCI è a 4.389 dollari per FEU (5 novembre 2026), +124% sul 6 novembre 2025; Shanghai–Genova 4.166 dollari (+97%). Il trend recente è piatto: FBX globale −6% dal 14 agosto, +3% nelle ultime 4 settimane.</li><li><strong>Porti italiani a due velocità.</strong> Negli ultimi 30 giorni calano soprattutto Ravenna (−20%) e Venezia Malamocco (−16%), porti dell&#x27;energia e delle rinfuse; calano poco i porti container (Genova −5%, Gioia Tauro −6%) e cresce La Spezia (+28%, ma su numeri piccoli) (chiamate di navi, 30 giorni su un anno, <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, dati fino al 30 ottobre 2026).</li><li><strong>L&#x27;energia resta il costo più pesante.</strong> Gas TTF a 82,33 €/MWh (+164% su un anno), gasolio self a 2,224 €/litro (<a href="https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html" rel="noopener">Mimit, Osservatorio prezzi carburanti (media nazionale self), ripreso da Affaritaliani</a>, 7 novembre 2026) e taglio delle accise scaduto l&#x27;8 novembre; stoccaggi gas italiani all&#x27;88,9% contro il 58,9% della Germania (GIE AGSI+, 8 novembre 2026).</li><li><strong>Nord Europa: meno esposto sui noli, più esposto sul gas.</strong> La rotta Cina–Nord Europa costa 3.422 dollari per FEU contro 4.324 verso il Mediterraneo (Freightos FBX, 6 novembre 2026); gli stoccaggi di gas sono al 63,5% nei Paesi Bassi e al 58,9% in Germania, 18,9 e 29,7 punti sotto la media di 5 anni (GIE AGSI+, 8 novembre 2026); all&#x27;Øresund (Stretti danesi) passano 38,7 navi al giorno, −21% su un anno (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>). Dettagli nella sezione 8.</li><li><strong>Il rischio di questa settimana è sulle materie critiche:</strong> la sospensione dei controlli cinesi all&#x27;export di terre rare decisi a ottobre 2025 (annuncio MOFCOM-GAC n. 70 del 2025, compresa la regola dello 0,1% di contenuto cinese nei prodotti esteri) scade il 10 novembre 2026; restano in vigore le licenze di aprile 2025 su sette terre rare medie e pesanti (tra cui disprosio e ittrio). Alla data del report non risultano annunci di proroga (<a href="https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/" rel="noopener">CIRS Group (testo dell&#x27;annuncio n. 70/2025) e Mining Technology</a>, 9 novembre 2026).</li></ul>
 <aside class="valutazione"><span class="etichetta">Valutazione</span>La supply chain europea di novembre 2026 ha due velocità. I container tornano verso Suez e i noli spot non salgono più ma restano circa il doppio di un anno fa, mentre energia, fertilizzanti e materie critiche restano legati a Hormuz e alla Cina. Per l&#x27;Italia il rischio più concreto nei prossimi due mesi non è logistico ma di costo: gas, gasolio ed elettricità in inverno con stoccaggi europei bassi.</aside>
 <h2 id="rotte">2. Rotte marittime: stretti e noli</h2>
 <h3>Transiti negli stretti</h3>
@@ -307,7 +311,7 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <p><strong>Stato di Bab el-Mandeb.</strong> UKMTO: nessun attacco nel Mar Rosso dal 24 agosto 2026, ma più contatti radio con sedicenti «autorità yemenite»; attività sospetta di pirati nel Golfo di Aden il 28 ottobre. (<a href="https://www.lloydslistintelligence.com/resources/blog/red-sea-brief---29-october-2026" rel="noopener">Lloyd&#x27;s List Intelligence</a>, 29 ottobre 2026). Transiti a Bab el-Mandeb: 295 nella settimana 12–18 ottobre (−8% sulla settimana), tonnellaggio −46% sul periodo prima degli Houthi. (<a href="https://www.lloydslistintelligence.com/resources/blog/red-sea-brief---29-october-2026" rel="noopener">Lloyd&#x27;s List Intelligence</a>, 18 ottobre 2026).</p>
 <aside class="valutazione"><span class="etichetta">Valutazione</span>Il ritorno a Suez è reale ma parziale e fragile. Le portacontainer rientrano, mentre il greggio saudita che esce da Yanbu rende Bab el-Mandeb un «secondo Hormuz»: un attacco riuscito a una petroliera riporterebbe le navi sul Capo in pochi giorni. Il dato da guardare è Bab el-Mandeb, non Suez.</aside>
 <h3>Noli container e rinfuse</h3>
-<div class="tabella"><table><thead><tr><th scope="col">Indice</th><th scope="col">Valore</th><th scope="col">Data</th><th scope="col">Variazione</th><th scope="col">Fonte</th></tr></thead><tbody><tr><td>Drewry WCI composito</td><td>4.389 $/FEU</td><td>5 nov 2026</td><td>+124% su un anno (a)</td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" rel="noopener">Drewry</a></td></tr><tr><td>WCI Shanghai–Genova</td><td>4.166 $/FEU</td><td>5 nov 2026</td><td>+97% su un anno (a)</td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" rel="noopener">Drewry</a></td></tr><tr><td>WCI Shanghai–Rotterdam</td><td>3.615 $/FEU</td><td>5 nov 2026</td><td>+84% su un anno (a)</td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" rel="noopener">Drewry</a></td></tr><tr><td>Freightos FBX globale</td><td>3.452 $/FEU</td><td>6 nov 2026</td><td>+3% su 4 settimane</td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a></td></tr><tr><td>FBX Cina–Mediterraneo</td><td>4.324 $/FEU</td><td>6 nov 2026</td><td>-1,17% sulla settimana</td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a></td></tr><tr><td>FBX Cina–Nord Europa</td><td>3.422 $/FEU</td><td>6 nov 2026</td><td>-4,8% sulla settimana</td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a></td></tr><tr><td>SCFI (Shanghai, composito)</td><td>3.633,45 punti</td><td>6 nov 2026</td><td>−1,5% sulla settimana</td><td><a href="https://en.sse.net.cn/indices/scfinew.jsp" rel="noopener">SSE</a></td></tr><tr><td>CCFI (Cina, composito)</td><td>1.924,69 punti</td><td>6 nov 2026</td><td>+2,3% sulla settimana</td><td><a href="https://en.sse.net.cn/indices/ccfinew.jsp" rel="noopener">SSE</a></td></tr><tr><td>CCFI rotta Mediterraneo</td><td>2.438,38 punti</td><td>6 nov 2026</td><td>+6,8% sulla settimana</td><td><a href="https://en.sse.net.cn/indices/ccfinew.jsp" rel="noopener">SSE</a></td></tr><tr><td>Baltic Dry Index (rinfuse) (b)</td><td>2.805 punti</td><td>6 nov 2026</td><td>+2,4% sul giorno</td><td><a href="https://tradingeconomics.com/commodity/baltic/news/599210" rel="noopener">Baltic Exchange via Trading Economics</a></td></tr></tbody></table></div>
+<div class="tabella"><table><thead><tr><th scope="col">Indice</th><th scope="col">Valore</th><th scope="col">Data</th><th scope="col">Variazione</th><th scope="col">Fonte</th></tr></thead><tbody><tr><td>Drewry WCI composito</td><td>4.389 $/FEU</td><td>5 nov 2026</td><td>+124% su un anno (a)</td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" rel="noopener">Drewry</a></td></tr><tr><td>WCI Shanghai–Genova</td><td>4.166 $/FEU</td><td>5 nov 2026</td><td>+97% su un anno (a)</td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" rel="noopener">Drewry</a></td></tr><tr><td>WCI Shanghai–Rotterdam</td><td>3.615 $/FEU</td><td>5 nov 2026</td><td>+84% su un anno (a)</td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" rel="noopener">Drewry</a></td></tr><tr><td>Freightos FBX globale</td><td>3.452 $/FEU</td><td>6 nov 2026</td><td>+3% su 4 settimane</td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a></td></tr><tr><td>FBX Cina–Mediterraneo</td><td>4.324 $/FEU</td><td>6 nov 2026</td><td>−1,2% sulla settimana</td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a></td></tr><tr><td>FBX Cina–Nord Europa</td><td>3.422 $/FEU</td><td>6 nov 2026</td><td>−4,8% sulla settimana</td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a></td></tr><tr><td>SCFI (Shanghai, composito)</td><td>3.633,45 punti</td><td>6 nov 2026</td><td>−1,5% sulla settimana</td><td><a href="https://en.sse.net.cn/indices/scfinew.jsp" rel="noopener">SSE</a></td></tr><tr><td>CCFI (Cina, composito)</td><td>1.924,69 punti</td><td>6 nov 2026</td><td>+2,3% sulla settimana</td><td><a href="https://en.sse.net.cn/indices/ccfinew.jsp" rel="noopener">SSE</a></td></tr><tr><td>CCFI rotta Mediterraneo</td><td>2.438,38 punti</td><td>6 nov 2026</td><td>+6,8% sulla settimana</td><td><a href="https://en.sse.net.cn/indices/ccfinew.jsp" rel="noopener">SSE</a></td></tr><tr><td>Baltic Dry Index (rinfuse) (b)</td><td>2.805 punti</td><td>6 nov 2026</td><td>+2,4% sul giorno</td><td><a href="https://tradingeconomics.com/commodity/baltic/news/599210" rel="noopener">Baltic Exchange via Trading Economics</a></td></tr></tbody></table></div>
 <p class="nota">Container: valori da docs/data/noli.json. (a) Variazione su un anno calcolata sul WCI del 6 novembre 2025 (<a href="https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/" rel="noopener">Drewry WCI del 6 novembre 2025, ripreso da Cyprus Shipping News e Alchempro/Fibre2Fashion</a>, 6 novembre 2025, affidabilità media). (b) Il Baltic Dry non è più raccolto in automatico dall&#x27;osservatorio (termini d&#x27;uso di Trading Economics): è citato a mano, un solo valore, senza serie e senza variazione su un anno verificata (<a href="https://tradingeconomics.com/commodity/baltic/news/599210" rel="noopener">Baltic Exchange, valore ripreso dalla nota di mercato di Trading Economics</a>, 6 novembre 2026, affidabilità media).</p>
 <figure><div class="grafico"><div class="largo"><svg class="viz" id="g-noli" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 454" width="100%" role="img" aria-labelledby="g-noli-t g-noli-d" style="--fs:12px;max-width:720px;height:auto;display:block">
 <title id="g-noli-t">Noli container: andamento FBX e ultimo valore WCI per rotta</title><desc id="g-noli-d">Freightos FBX globale settimanale e Drewry WCI per rotta, in dollari per container da 40 piedi, con il valore di un anno prima dove disponibile.</desc>
@@ -465,7 +469,7 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <text x="174.0" y="188" text-anchor="middle">25 settembre</text>
 <text x="308.0" y="188" text-anchor="end">6 novembre</text>
 <text x="8" y="220" class="t-ink t-b">Drewry WCI per rotta, $ per FEU</text>
-<text x="8" y="236" class="t-faint">barra: 5 novembre 2026 · tacca: 6 novembre 2025 (fonte secondaria)</text>
+<text x="8" y="236" class="t-faint">barra: 5 nov 2026 · tacca: 6 nov 2025</text>
 <text x="118" y="266" text-anchor="end" class="t-ink">WCI composito</text>
 <rect x="126" y="254" width="79.2" height="16" rx="3" class="f-s1"/>
 <text x="211.2" y="266" class="t-ink num t-b">4.389</text>
@@ -500,7 +504,7 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <p class="nota">Fonte: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, dati fino al 30 ottobre 2026. Sui 7 giorni i numeri sono piccoli: la media a 30 giorni è più stabile.</p>
 <div class="tabella"><table><thead><tr><th scope="col">Porto (Mediterraneo e Atlantico)</th><th scope="col">Chiamate/giorno (30 gg)</th><th scope="col">su 1 anno</th><th scope="col">portacontainer</th><th scope="col">petroliere</th></tr></thead><tbody><tr><td>Valencia</td><td>10,3</td><td>−7%</td><td>−4%</td><td>0%</td></tr><tr><td>Algeciras</td><td>16,0</td><td>−6%</td><td>−12%</td><td>−1%</td></tr><tr><td>Tanger Med</td><td>12,4</td><td>−3%</td><td>−6%</td><td>+15%</td></tr><tr><td>Pireo</td><td>12,1</td><td>−14%</td><td>−8%</td><td>−21%</td></tr><tr><td>Marsiglia</td><td>3,0</td><td>−5%</td><td>+4%</td><td>−37%</td></tr><tr><td>Capodistria (Koper)</td><td>3,4</td><td>−16%</td><td>−10%</td><td>−17%</td></tr></tbody></table></div>
 <p class="nota">Fonte: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, dati fino al 30 ottobre 2026, scaricati dallo script del report (report/dati/porti-europei.json) con lo stesso metodo di portwatch.json. I porti del Nord Europa sono nella sezione 8.</p>
-<figure><div class="grafico"><div class="largo"><svg class="viz" id="g-porti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 772" width="100%" role="img" aria-labelledby="g-porti-t g-porti-d" style="--fs:12px;max-width:720px;height:auto;display:block">
+<figure><div class="grafico"><div class="largo"><svg class="viz" id="g-porti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 796" width="100%" role="img" aria-labelledby="g-porti-t g-porti-d" style="--fs:12px;max-width:720px;height:auto;display:block">
 <title id="g-porti-t">Porti: chiamate di navi, variazione anno su anno (media 30 giorni)</title><desc id="g-porti-d">Variazione percentuale delle chiamate di navi al giorno negli ultimi 30 giorni rispetto agli stessi giorni di un anno prima, IMF PortWatch.</desc>
 <style>
 .viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
@@ -527,8 +531,8 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <text x="8" y="68" class="t-ink t-b">Porti italiani</text>
 <line x1="404.0" x2="404.0" y1="74" y2="292" class="base"/>
 <text x="150" y="87" text-anchor="end" class="t-ink">La Spezia</text>
-<rect x="404.0" y="76" width="223.6" height="14" rx="3" class="f-s3"/>
-<text x="633.6" y="87" text-anchor="start" class="t-ink num">+28%</text>
+<rect x="404.0" y="76" width="153.1" height="14" rx="3" class="f-s3"/>
+<text x="563.1" y="87" text-anchor="start" class="t-ink num">+28%</text>
 <rect x="0" y="72" width="720" height="24" class="hit"><title>La Spezia: 2,3 chiamate al giorno negli ultimi 30 giorni, 1,8 un anno prima (+28%)</title></rect>
 <text x="150" y="111" text-anchor="end" class="t-ink">Livorno</text>
 <rect x="404.0" y="100" width="1.0" height="14" rx="3" class="f-s3"/>
@@ -539,102 +543,106 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <text x="410.0" y="135" text-anchor="start" class="t-ink num">0%</text>
 <rect x="0" y="120" width="720" height="24" class="hit"><title>Augusta: 4,3 chiamate al giorno negli ultimi 30 giorni, 4,3 un anno prima (0%)</title></rect>
 <text x="150" y="159" text-anchor="end" class="t-ink">Genova</text>
-<rect x="367.8" y="148" width="36.2" height="14" rx="3" class="f-s1"/>
-<text x="361.8" y="159" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="379.2" y="148" width="24.8" height="14" rx="3" class="f-s1"/>
+<text x="373.2" y="159" text-anchor="end" class="t-ink num">−5%</text>
 <rect x="0" y="144" width="720" height="24" class="hit"><title>Genova: 8,4 chiamate al giorno negli ultimi 30 giorni, 8,8 un anno prima (−5%)</title></rect>
 <text x="150" y="183" text-anchor="end" class="t-ink">Trieste</text>
-<rect x="359.8" y="172" width="44.2" height="14" rx="3" class="f-s1"/>
-<text x="353.8" y="183" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="373.7" y="172" width="30.3" height="14" rx="3" class="f-s1"/>
+<text x="367.7" y="183" text-anchor="end" class="t-ink num">−6%</text>
 <rect x="0" y="168" width="720" height="24" class="hit"><title>Trieste: 5,2 chiamate al giorno negli ultimi 30 giorni, 5,5 un anno prima (−6%)</title></rect>
 <text x="150" y="207" text-anchor="end" class="t-ink">Gioia Tauro</text>
-<rect x="358.1" y="196" width="45.9" height="14" rx="3" class="f-s1"/>
-<text x="352.1" y="207" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="372.6" y="196" width="31.4" height="14" rx="3" class="f-s1"/>
+<text x="366.6" y="207" text-anchor="end" class="t-ink num">−6%</text>
 <rect x="0" y="192" width="720" height="24" class="hit"><title>Gioia Tauro: 5,0 chiamate al giorno negli ultimi 30 giorni, 5,3 un anno prima (−6%)</title></rect>
 <text x="150" y="231" text-anchor="end" class="t-ink">Venezia (Lido)</text>
-<rect x="318.7" y="220" width="85.3" height="14" rx="3" class="f-s1"/>
-<text x="312.7" y="231" text-anchor="end" class="t-ink num">−11%</text>
+<rect x="345.6" y="220" width="58.4" height="14" rx="3" class="f-s1"/>
+<text x="339.6" y="231" text-anchor="end" class="t-ink num">−11%</text>
 <rect x="0" y="216" width="720" height="24" class="hit"><title>Venezia (Lido): 5,9 chiamate al giorno negli ultimi 30 giorni, 6,6 un anno prima (−11%)</title></rect>
 <text x="150" y="255" text-anchor="end" class="t-ink">Venezia (Malamocco)</text>
-<rect x="275.3" y="244" width="128.7" height="14" rx="3" class="f-s1"/>
-<text x="269.3" y="255" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="315.9" y="244" width="88.1" height="14" rx="3" class="f-s1"/>
+<text x="309.9" y="255" text-anchor="end" class="t-ink num">−16%</text>
 <rect x="0" y="240" width="720" height="24" class="hit"><title>Venezia (Malamocco): 2,1 chiamate al giorno negli ultimi 30 giorni, 2,5 un anno prima (−16%)</title></rect>
 <text x="150" y="279" text-anchor="end" class="t-ink">Ravenna</text>
-<rect x="243.1" y="268" width="160.9" height="14" rx="3" class="f-s1"/>
-<text x="237.1" y="279" text-anchor="end" class="t-ink num">−20%</text>
+<rect x="293.8" y="268" width="110.2" height="14" rx="3" class="f-s1"/>
+<text x="287.8" y="279" text-anchor="end" class="t-ink num">−20%</text>
 <rect x="0" y="264" width="720" height="24" class="hit"><title>Ravenna: 6,4 chiamate al giorno negli ultimi 30 giorni, 8,0 un anno prima (−20%)</title></rect>
 <text x="8" y="310" class="t-ink t-b">Mediterraneo e Atlantico</text>
 <line x1="404.0" x2="404.0" y1="316" y2="462" class="base"/>
 <text x="150" y="329" text-anchor="end" class="t-ink">Tanger Med</text>
-<rect x="383.1" y="318" width="20.9" height="14" rx="3" class="f-s1"/>
-<text x="377.1" y="329" text-anchor="end" class="t-ink num">−3%</text>
+<rect x="389.7" y="318" width="14.3" height="14" rx="3" class="f-s1"/>
+<text x="383.7" y="329" text-anchor="end" class="t-ink num">−3%</text>
 <rect x="0" y="314" width="720" height="24" class="hit"><title>Tanger Med: 12,4 chiamate al giorno negli ultimi 30 giorni, 12,8 un anno prima (−3%)</title></rect>
 <text x="150" y="353" text-anchor="end" class="t-ink">Marsiglia</text>
-<rect x="361.4" y="342" width="42.6" height="14" rx="3" class="f-s1"/>
-<text x="355.4" y="353" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="374.8" y="342" width="29.2" height="14" rx="3" class="f-s1"/>
+<text x="368.8" y="353" text-anchor="end" class="t-ink num">−5%</text>
 <rect x="0" y="338" width="720" height="24" class="hit"><title>Marsiglia: 3,0 chiamate al giorno negli ultimi 30 giorni, 3,1 un anno prima (−5%)</title></rect>
 <text x="150" y="377" text-anchor="end" class="t-ink">Algeciras</text>
-<rect x="358.1" y="366" width="45.9" height="14" rx="3" class="f-s1"/>
-<text x="352.1" y="377" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="372.6" y="366" width="31.4" height="14" rx="3" class="f-s1"/>
+<text x="366.6" y="377" text-anchor="end" class="t-ink num">−6%</text>
 <rect x="0" y="362" width="720" height="24" class="hit"><title>Algeciras: 16,0 chiamate al giorno negli ultimi 30 giorni, 17,0 un anno prima (−6%)</title></rect>
 <text x="150" y="401" text-anchor="end" class="t-ink">Valencia</text>
-<rect x="350.9" y="390" width="53.1" height="14" rx="3" class="f-s1"/>
-<text x="344.9" y="401" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="367.6" y="390" width="36.4" height="14" rx="3" class="f-s1"/>
+<text x="361.6" y="401" text-anchor="end" class="t-ink num">−7%</text>
 <rect x="0" y="386" width="720" height="24" class="hit"><title>Valencia: 10,3 chiamate al giorno negli ultimi 30 giorni, 11,0 un anno prima (−7%)</title></rect>
 <text x="150" y="425" text-anchor="end" class="t-ink">Pireo</text>
-<rect x="288.2" y="414" width="115.8" height="14" rx="3" class="f-s1"/>
-<text x="282.2" y="425" text-anchor="end" class="t-ink num">−14%</text>
+<rect x="324.7" y="414" width="79.3" height="14" rx="3" class="f-s1"/>
+<text x="318.7" y="425" text-anchor="end" class="t-ink num">−14%</text>
 <rect x="0" y="410" width="720" height="24" class="hit"><title>Pireo: 12,1 chiamate al giorno negli ultimi 30 giorni, 14,1 un anno prima (−14%)</title></rect>
 <text x="150" y="449" text-anchor="end" class="t-ink">Capodistria (Koper)</text>
-<rect x="272.9" y="438" width="131.1" height="14" rx="3" class="f-s1"/>
-<text x="266.9" y="449" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="314.2" y="438" width="89.8" height="14" rx="3" class="f-s1"/>
+<text x="308.2" y="449" text-anchor="end" class="t-ink num">−16%</text>
 <rect x="0" y="434" width="720" height="24" class="hit"><title>Capodistria (Koper): 3,4 chiamate al giorno negli ultimi 30 giorni, 4,1 un anno prima (−16%)</title></rect>
-<text x="8" y="480" class="t-ink t-b">Nord Europa e Baltico</text>
-<line x1="404.0" x2="404.0" y1="486" y2="752" class="base"/>
-<text x="150" y="499" text-anchor="end" class="t-ink">Wilhelmshaven</text>
-<rect x="404.0" y="488" width="126.3" height="14" rx="3" class="f-s3"/>
-<text x="536.3" y="499" text-anchor="start" class="t-ink num">+16%</text>
-<rect x="0" y="484" width="720" height="24" class="hit"><title>Wilhelmshaven: 4,4 chiamate al giorno negli ultimi 30 giorni, 3,8 un anno prima (+16%)</title></rect>
-<text x="150" y="523" text-anchor="end" class="t-ink">Anversa</text>
-<rect x="404.0" y="512" width="40.2" height="14" rx="3" class="f-s3"/>
-<text x="450.2" y="523" text-anchor="start" class="t-ink num">+5%</text>
-<rect x="0" y="508" width="720" height="24" class="hit"><title>Anversa: 52,3 chiamate al giorno negli ultimi 30 giorni, 49,8 un anno prima (+5%)</title></rect>
-<text x="150" y="547" text-anchor="end" class="t-ink">Rotterdam</text>
-<rect x="404.0" y="536" width="18.5" height="14" rx="3" class="f-s3"/>
-<text x="428.5" y="547" text-anchor="start" class="t-ink num">+2%</text>
-<rect x="0" y="532" width="720" height="24" class="hit"><title>Rotterdam: 81,4 chiamate al giorno negli ultimi 30 giorni, 79,6 un anno prima (+2%)</title></rect>
-<text x="150" y="571" text-anchor="end" class="t-ink">Aarhus</text>
-<rect x="404.0" y="560" width="1.0" height="14" rx="3" class="f-s3"/>
-<text x="410.0" y="571" text-anchor="start" class="t-ink num">0%</text>
-<rect x="0" y="556" width="720" height="24" class="hit"><title>Aarhus: 3,9 chiamate al giorno negli ultimi 30 giorni, 3,9 un anno prima (0%)</title></rect>
-<text x="150" y="595" text-anchor="end" class="t-ink">Amburgo</text>
-<rect x="387.9" y="584" width="16.1" height="14" rx="3" class="f-s1"/>
-<text x="381.9" y="595" text-anchor="end" class="t-ink num">−2%</text>
-<rect x="0" y="580" width="720" height="24" class="hit"><title>Amburgo: 16,2 chiamate al giorno negli ultimi 30 giorni, 16,5 un anno prima (−2%)</title></rect>
-<text x="150" y="619" text-anchor="end" class="t-ink">Klaipėda</text>
-<rect x="382.3" y="608" width="21.7" height="14" rx="3" class="f-s1"/>
-<text x="376.3" y="619" text-anchor="end" class="t-ink num">−3%</text>
-<rect x="0" y="604" width="720" height="24" class="hit"><title>Klaipėda: 8,3 chiamate al giorno negli ultimi 30 giorni, 8,6 un anno prima (−3%)</title></rect>
-<text x="150" y="643" text-anchor="end" class="t-ink">Danzica (Gdańsk)</text>
-<rect x="363.8" y="632" width="40.2" height="14" rx="3" class="f-s1"/>
-<text x="357.8" y="643" text-anchor="end" class="t-ink num">−5%</text>
-<rect x="0" y="628" width="720" height="24" class="hit"><title>Danzica (Gdańsk): 9,5 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−5%)</title></rect>
-<text x="150" y="667" text-anchor="end" class="t-ink">Amsterdam</text>
-<rect x="348.5" y="656" width="55.5" height="14" rx="3" class="f-s1"/>
-<text x="342.5" y="667" text-anchor="end" class="t-ink num">−7%</text>
-<rect x="0" y="652" width="720" height="24" class="hit"><title>Amsterdam: 20,4 chiamate al giorno negli ultimi 30 giorni, 21,9 un anno prima (−7%)</title></rect>
-<text x="150" y="691" text-anchor="end" class="t-ink">Esbjerg</text>
-<rect x="343.7" y="680" width="60.3" height="14" rx="3" class="f-s1"/>
-<text x="337.7" y="691" text-anchor="end" class="t-ink num">−8%</text>
-<rect x="0" y="676" width="720" height="24" class="hit"><title>Esbjerg: 3,3 chiamate al giorno negli ultimi 30 giorni, 3,6 un anno prima (−8%)</title></rect>
+<text x="8" y="480" class="t-ink t-b">Nord Europa e Baltico (12 maggiori, senza la Russia)</text>
+<line x1="404.0" x2="404.0" y1="486" y2="776" class="base"/>
+<text x="150" y="499" text-anchor="end" class="t-ink">Świnoujście</text>
+<rect x="404.0" y="488" width="223.6" height="14" rx="3" class="f-s3"/>
+<text x="633.6" y="499" text-anchor="start" class="t-ink num">+41%</text>
+<rect x="0" y="484" width="720" height="24" class="hit"><title>Świnoujście: 9,7 chiamate al giorno negli ultimi 30 giorni, 6,9 un anno prima (+41%)</title></rect>
+<text x="150" y="523" text-anchor="end" class="t-ink">Riga</text>
+<rect x="404.0" y="512" width="45.2" height="14" rx="3" class="f-s3"/>
+<text x="455.2" y="523" text-anchor="start" class="t-ink num">+8%</text>
+<rect x="0" y="508" width="720" height="24" class="hit"><title>Riga: 6,6 chiamate al giorno negli ultimi 30 giorni, 6,1 un anno prima (+8%)</title></rect>
+<text x="150" y="547" text-anchor="end" class="t-ink">Rostock</text>
+<rect x="404.0" y="536" width="27.5" height="14" rx="3" class="f-s3"/>
+<text x="437.5" y="547" text-anchor="start" class="t-ink num">+5%</text>
+<rect x="0" y="532" width="720" height="24" class="hit"><title>Rostock: 6,3 chiamate al giorno negli ultimi 30 giorni, 6,0 un anno prima (+5%)</title></rect>
+<text x="150" y="571" text-anchor="end" class="t-ink">Anversa-Bruges</text>
+<rect x="404.0" y="560" width="19.3" height="14" rx="3" class="f-s3"/>
+<text x="429.3" y="571" text-anchor="start" class="t-ink num">+4%</text>
+<rect x="0" y="556" width="720" height="24" class="hit"><title>Anversa-Bruges: 65,5 chiamate al giorno negli ultimi 30 giorni, 63,3 un anno prima (+4%)</title></rect>
+<text x="150" y="595" text-anchor="end" class="t-ink">Rotterdam</text>
+<rect x="404.0" y="584" width="12.7" height="14" rx="3" class="f-s3"/>
+<text x="422.7" y="595" text-anchor="start" class="t-ink num">+2%</text>
+<rect x="0" y="580" width="720" height="24" class="hit"><title>Rotterdam: 81,4 chiamate al giorno negli ultimi 30 giorni, 79,6 un anno prima (+2%)</title></rect>
+<text x="150" y="619" text-anchor="end" class="t-ink">Amburgo</text>
+<rect x="394.1" y="608" width="9.9" height="14" rx="3" class="f-s1"/>
+<text x="388.1" y="619" text-anchor="end" class="t-ink num">−2%</text>
+<rect x="0" y="604" width="720" height="24" class="hit"><title>Amburgo: 16,2 chiamate al giorno negli ultimi 30 giorni, 16,5 un anno prima (−2%)</title></rect>
+<text x="150" y="643" text-anchor="end" class="t-ink">Klaipėda</text>
+<rect x="384.7" y="632" width="19.3" height="14" rx="3" class="f-s1"/>
+<text x="378.7" y="643" text-anchor="end" class="t-ink num">−4%</text>
+<rect x="0" y="628" width="720" height="24" class="hit"><title>Klaipėda: 8,3 chiamate al giorno negli ultimi 30 giorni, 8,6 un anno prima (−4%)</title></rect>
+<text x="150" y="667" text-anchor="end" class="t-ink">Danzica</text>
+<rect x="376.5" y="656" width="27.5" height="14" rx="3" class="f-s1"/>
+<text x="370.5" y="667" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="652" width="720" height="24" class="hit"><title>Danzica: 9,5 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−5%)</title></rect>
+<text x="150" y="691" text-anchor="end" class="t-ink">Amsterdam</text>
+<rect x="366.5" y="680" width="37.5" height="14" rx="3" class="f-s1"/>
+<text x="360.5" y="691" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="676" width="720" height="24" class="hit"><title>Amsterdam: 20,4 chiamate al giorno negli ultimi 30 giorni, 21,9 un anno prima (−7%)</title></rect>
 <text x="150" y="715" text-anchor="end" class="t-ink">Göteborg</text>
-<rect x="342.9" y="704" width="61.1" height="14" rx="3" class="f-s1"/>
-<text x="336.9" y="715" text-anchor="end" class="t-ink num">−8%</text>
-<rect x="0" y="700" width="720" height="24" class="hit"><title>Göteborg: 9,3 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−8%)</title></rect>
-<text x="150" y="739" text-anchor="end" class="t-ink">Bremerhaven</text>
-<rect x="298.6" y="728" width="105.4" height="14" rx="3" class="f-s1"/>
-<text x="292.6" y="739" text-anchor="end" class="t-ink num">−13%</text>
-<rect x="0" y="724" width="720" height="24" class="hit"><title>Bremerhaven: 11,3 chiamate al giorno negli ultimi 30 giorni, 13,0 un anno prima (−13%)</title></rect>
-</svg></div><div class="stretto"><svg class="viz" id="g-porti-m" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 720" width="100%" role="img" aria-labelledby="g-porti-m-t g-porti-m-d" style="--fs:11px;max-width:360px;height:auto;display:block">
+<rect x="365.4" y="704" width="38.6" height="14" rx="3" class="f-s1"/>
+<text x="359.4" y="715" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="700" width="720" height="24" class="hit"><title>Göteborg: 9,3 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−7%)</title></rect>
+<text x="150" y="739" text-anchor="end" class="t-ink">Brema / Bremerhaven</text>
+<rect x="361.6" y="728" width="42.4" height="14" rx="3" class="f-s1"/>
+<text x="355.6" y="739" text-anchor="end" class="t-ink num">−8%</text>
+<rect x="0" y="724" width="720" height="24" class="hit"><title>Brema / Bremerhaven: 14,3 chiamate al giorno negli ultimi 30 giorni, 15,5 un anno prima (−8%)</title></rect>
+<text x="150" y="763" text-anchor="end" class="t-ink">Brunsbüttel</text>
+<rect x="314.8" y="752" width="89.2" height="14" rx="3" class="f-s1"/>
+<text x="308.8" y="763" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="0" y="748" width="720" height="24" class="hit"><title>Brunsbüttel: 6,7 chiamate al giorno negli ultimi 30 giorni, 8,0 un anno prima (−16%)</title></rect>
+</svg></div><div class="stretto"><svg class="viz" id="g-porti-m" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 742" width="100%" role="img" aria-labelledby="g-porti-m-t g-porti-m-d" style="--fs:11px;max-width:360px;height:auto;display:block">
 <title id="g-porti-m-t">Porti: chiamate di navi, variazione anno su anno (media 30 giorni)</title><desc id="g-porti-m-d">Variazione percentuale delle chiamate di navi al giorno negli ultimi 30 giorni rispetto agli stessi giorni di un anno prima, IMF PortWatch.</desc>
 <style>
 .viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
@@ -657,12 +665,12 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 .viz .tick{stroke:var(--v-ink);stroke-width:2}
 </style>
 <text x="8" y="18" class="t-ink t-b">Chiamate di navi, 30 giorni, anno su anno</text>
-<text x="8" y="34" class="t-faint">IMF PortWatch, dati fino al 30 ottobre 2026 · blu = aumento, magenta = calo</text>
+<text x="8" y="34" class="t-faint">IMF PortWatch, al 30 ottobre 2026 · blu su, magenta giù</text>
 <text x="8" y="68" class="t-ink t-b">Porti italiani</text>
 <line x1="215.0" x2="215.0" y1="74" y2="274" class="base"/>
 <text x="112" y="87" text-anchor="end" class="t-ink">La Spezia</text>
-<rect x="215.0" y="76" width="86.4" height="14" rx="3" class="f-s3"/>
-<text x="307.4" y="87" text-anchor="start" class="t-ink num">+28%</text>
+<rect x="215.0" y="76" width="59.1" height="14" rx="3" class="f-s3"/>
+<text x="280.1" y="87" text-anchor="start" class="t-ink num">+28%</text>
 <rect x="0" y="72" width="360" height="22" class="hit"><title>La Spezia: 2,3 chiamate al giorno negli ultimi 30 giorni, 1,8 un anno prima (+28%)</title></rect>
 <text x="112" y="109" text-anchor="end" class="t-ink">Livorno</text>
 <rect x="215.0" y="98" width="1.0" height="14" rx="3" class="f-s3"/>
@@ -673,102 +681,106 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <text x="221.0" y="131" text-anchor="start" class="t-ink num">0%</text>
 <rect x="0" y="116" width="360" height="22" class="hit"><title>Augusta: 4,3 chiamate al giorno negli ultimi 30 giorni, 4,3 un anno prima (0%)</title></rect>
 <text x="112" y="153" text-anchor="end" class="t-ink">Genova</text>
-<rect x="201.0" y="142" width="14.0" height="14" rx="3" class="f-s1"/>
-<text x="195.0" y="153" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="205.4" y="142" width="9.6" height="14" rx="3" class="f-s1"/>
+<text x="199.4" y="153" text-anchor="end" class="t-ink num">−5%</text>
 <rect x="0" y="138" width="360" height="22" class="hit"><title>Genova: 8,4 chiamate al giorno negli ultimi 30 giorni, 8,8 un anno prima (−5%)</title></rect>
 <text x="112" y="175" text-anchor="end" class="t-ink">Trieste</text>
-<rect x="197.9" y="164" width="17.1" height="14" rx="3" class="f-s1"/>
-<text x="191.9" y="175" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="203.3" y="164" width="11.7" height="14" rx="3" class="f-s1"/>
+<text x="197.3" y="175" text-anchor="end" class="t-ink num">−6%</text>
 <rect x="0" y="160" width="360" height="22" class="hit"><title>Trieste: 5,2 chiamate al giorno negli ultimi 30 giorni, 5,5 un anno prima (−6%)</title></rect>
 <text x="112" y="197" text-anchor="end" class="t-ink">Gioia Tauro</text>
-<rect x="197.3" y="186" width="17.7" height="14" rx="3" class="f-s1"/>
-<text x="191.3" y="197" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="202.9" y="186" width="12.1" height="14" rx="3" class="f-s1"/>
+<text x="196.9" y="197" text-anchor="end" class="t-ink num">−6%</text>
 <rect x="0" y="182" width="360" height="22" class="hit"><title>Gioia Tauro: 5,0 chiamate al giorno negli ultimi 30 giorni, 5,3 un anno prima (−6%)</title></rect>
 <text x="112" y="219" text-anchor="end" class="t-ink">Venezia (Lido)</text>
-<rect x="182.1" y="208" width="32.9" height="14" rx="3" class="f-s1"/>
-<text x="176.1" y="219" text-anchor="end" class="t-ink num">−11%</text>
+<rect x="192.5" y="208" width="22.5" height="14" rx="3" class="f-s1"/>
+<text x="186.5" y="219" text-anchor="end" class="t-ink num">−11%</text>
 <rect x="0" y="204" width="360" height="22" class="hit"><title>Venezia (Lido): 5,9 chiamate al giorno negli ultimi 30 giorni, 6,6 un anno prima (−11%)</title></rect>
 <text x="112" y="241" text-anchor="end" class="t-ink">Venezia (Malamocco)</text>
-<rect x="165.3" y="230" width="49.7" height="14" rx="3" class="f-s1"/>
-<text x="159.3" y="241" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="181.0" y="230" width="34.0" height="14" rx="3" class="f-s1"/>
+<text x="175.0" y="241" text-anchor="end" class="t-ink num">−16%</text>
 <rect x="0" y="226" width="360" height="22" class="hit"><title>Venezia (Malamocco): 2,1 chiamate al giorno negli ultimi 30 giorni, 2,5 un anno prima (−16%)</title></rect>
 <text x="112" y="263" text-anchor="end" class="t-ink">Ravenna</text>
-<rect x="152.9" y="252" width="62.1" height="14" rx="3" class="f-s1"/>
-<text x="146.9" y="263" text-anchor="end" class="t-ink num">−20%</text>
+<rect x="172.5" y="252" width="42.5" height="14" rx="3" class="f-s1"/>
+<text x="166.5" y="263" text-anchor="end" class="t-ink num">−20%</text>
 <rect x="0" y="248" width="360" height="22" class="hit"><title>Ravenna: 6,4 chiamate al giorno negli ultimi 30 giorni, 8,0 un anno prima (−20%)</title></rect>
 <text x="8" y="292" class="t-ink t-b">Mediterraneo e Atlantico</text>
 <line x1="215.0" x2="215.0" y1="298" y2="432" class="base"/>
 <text x="112" y="311" text-anchor="end" class="t-ink">Tanger Med</text>
-<rect x="206.9" y="300" width="8.1" height="14" rx="3" class="f-s1"/>
-<text x="200.9" y="311" text-anchor="end" class="t-ink num">−3%</text>
+<rect x="209.5" y="300" width="5.5" height="14" rx="3" class="f-s1"/>
+<text x="203.5" y="311" text-anchor="end" class="t-ink num">−3%</text>
 <rect x="0" y="296" width="360" height="22" class="hit"><title>Tanger Med: 12,4 chiamate al giorno negli ultimi 30 giorni, 12,8 un anno prima (−3%)</title></rect>
 <text x="112" y="333" text-anchor="end" class="t-ink">Marsiglia</text>
-<rect x="198.5" y="322" width="16.5" height="14" rx="3" class="f-s1"/>
-<text x="192.5" y="333" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="203.7" y="322" width="11.3" height="14" rx="3" class="f-s1"/>
+<text x="197.7" y="333" text-anchor="end" class="t-ink num">−5%</text>
 <rect x="0" y="318" width="360" height="22" class="hit"><title>Marsiglia: 3,0 chiamate al giorno negli ultimi 30 giorni, 3,1 un anno prima (−5%)</title></rect>
 <text x="112" y="355" text-anchor="end" class="t-ink">Algeciras</text>
-<rect x="197.3" y="344" width="17.7" height="14" rx="3" class="f-s1"/>
-<text x="191.3" y="355" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="202.9" y="344" width="12.1" height="14" rx="3" class="f-s1"/>
+<text x="196.9" y="355" text-anchor="end" class="t-ink num">−6%</text>
 <rect x="0" y="340" width="360" height="22" class="hit"><title>Algeciras: 16,0 chiamate al giorno negli ultimi 30 giorni, 17,0 un anno prima (−6%)</title></rect>
 <text x="112" y="377" text-anchor="end" class="t-ink">Valencia</text>
-<rect x="194.5" y="366" width="20.5" height="14" rx="3" class="f-s1"/>
-<text x="188.5" y="377" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="201.0" y="366" width="14.0" height="14" rx="3" class="f-s1"/>
+<text x="195.0" y="377" text-anchor="end" class="t-ink num">−7%</text>
 <rect x="0" y="362" width="360" height="22" class="hit"><title>Valencia: 10,3 chiamate al giorno negli ultimi 30 giorni, 11,0 un anno prima (−7%)</title></rect>
 <text x="112" y="399" text-anchor="end" class="t-ink">Pireo</text>
-<rect x="170.3" y="388" width="44.7" height="14" rx="3" class="f-s1"/>
-<text x="164.3" y="399" text-anchor="end" class="t-ink num">−14%</text>
+<rect x="184.4" y="388" width="30.6" height="14" rx="3" class="f-s1"/>
+<text x="178.4" y="399" text-anchor="end" class="t-ink num">−14%</text>
 <rect x="0" y="384" width="360" height="22" class="hit"><title>Pireo: 12,1 chiamate al giorno negli ultimi 30 giorni, 14,1 un anno prima (−14%)</title></rect>
 <text x="112" y="421" text-anchor="end" class="t-ink">Capodistria (Koper)</text>
-<rect x="164.4" y="410" width="50.6" height="14" rx="3" class="f-s1"/>
-<text x="158.4" y="421" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="180.3" y="410" width="34.7" height="14" rx="3" class="f-s1"/>
+<text x="174.3" y="421" text-anchor="end" class="t-ink num">−16%</text>
 <rect x="0" y="406" width="360" height="22" class="hit"><title>Capodistria (Koper): 3,4 chiamate al giorno negli ultimi 30 giorni, 4,1 un anno prima (−16%)</title></rect>
-<text x="8" y="450" class="t-ink t-b">Nord Europa e Baltico</text>
-<line x1="215.0" x2="215.0" y1="456" y2="700" class="base"/>
-<text x="112" y="469" text-anchor="end" class="t-ink">Wilhelmshaven</text>
-<rect x="215.0" y="458" width="48.8" height="14" rx="3" class="f-s3"/>
-<text x="269.8" y="469" text-anchor="start" class="t-ink num">+16%</text>
-<rect x="0" y="454" width="360" height="22" class="hit"><title>Wilhelmshaven: 4,4 chiamate al giorno negli ultimi 30 giorni, 3,8 un anno prima (+16%)</title></rect>
-<text x="112" y="491" text-anchor="end" class="t-ink">Anversa</text>
-<rect x="215.0" y="480" width="15.5" height="14" rx="3" class="f-s3"/>
-<text x="236.5" y="491" text-anchor="start" class="t-ink num">+5%</text>
-<rect x="0" y="476" width="360" height="22" class="hit"><title>Anversa: 52,3 chiamate al giorno negli ultimi 30 giorni, 49,8 un anno prima (+5%)</title></rect>
-<text x="112" y="513" text-anchor="end" class="t-ink">Rotterdam</text>
-<rect x="215.0" y="502" width="7.1" height="14" rx="3" class="f-s3"/>
-<text x="228.1" y="513" text-anchor="start" class="t-ink num">+2%</text>
-<rect x="0" y="498" width="360" height="22" class="hit"><title>Rotterdam: 81,4 chiamate al giorno negli ultimi 30 giorni, 79,6 un anno prima (+2%)</title></rect>
-<text x="112" y="535" text-anchor="end" class="t-ink">Aarhus</text>
-<rect x="215.0" y="524" width="1.0" height="14" rx="3" class="f-s3"/>
-<text x="221.0" y="535" text-anchor="start" class="t-ink num">0%</text>
-<rect x="0" y="520" width="360" height="22" class="hit"><title>Aarhus: 3,9 chiamate al giorno negli ultimi 30 giorni, 3,9 un anno prima (0%)</title></rect>
-<text x="112" y="557" text-anchor="end" class="t-ink">Amburgo</text>
-<rect x="208.8" y="546" width="6.2" height="14" rx="3" class="f-s1"/>
-<text x="202.8" y="557" text-anchor="end" class="t-ink num">−2%</text>
-<rect x="0" y="542" width="360" height="22" class="hit"><title>Amburgo: 16,2 chiamate al giorno negli ultimi 30 giorni, 16,5 un anno prima (−2%)</title></rect>
-<text x="112" y="579" text-anchor="end" class="t-ink">Klaipėda</text>
-<rect x="206.6" y="568" width="8.4" height="14" rx="3" class="f-s1"/>
-<text x="200.6" y="579" text-anchor="end" class="t-ink num">−3%</text>
-<rect x="0" y="564" width="360" height="22" class="hit"><title>Klaipėda: 8,3 chiamate al giorno negli ultimi 30 giorni, 8,6 un anno prima (−3%)</title></rect>
-<text x="112" y="601" text-anchor="end" class="t-ink">Danzica (Gdańsk)</text>
-<rect x="199.5" y="590" width="15.5" height="14" rx="3" class="f-s1"/>
-<text x="193.5" y="601" text-anchor="end" class="t-ink num">−5%</text>
-<rect x="0" y="586" width="360" height="22" class="hit"><title>Danzica (Gdańsk): 9,5 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−5%)</title></rect>
-<text x="112" y="623" text-anchor="end" class="t-ink">Amsterdam</text>
-<rect x="193.6" y="612" width="21.4" height="14" rx="3" class="f-s1"/>
-<text x="187.6" y="623" text-anchor="end" class="t-ink num">−7%</text>
-<rect x="0" y="608" width="360" height="22" class="hit"><title>Amsterdam: 20,4 chiamate al giorno negli ultimi 30 giorni, 21,9 un anno prima (−7%)</title></rect>
-<text x="112" y="645" text-anchor="end" class="t-ink">Esbjerg</text>
-<rect x="191.7" y="634" width="23.3" height="14" rx="3" class="f-s1"/>
-<text x="185.7" y="645" text-anchor="end" class="t-ink num">−8%</text>
-<rect x="0" y="630" width="360" height="22" class="hit"><title>Esbjerg: 3,3 chiamate al giorno negli ultimi 30 giorni, 3,6 un anno prima (−8%)</title></rect>
+<text x="8" y="450" class="t-ink t-b">Nord Europa e Baltico (12 maggiori, senza la Russia)</text>
+<line x1="215.0" x2="215.0" y1="456" y2="722" class="base"/>
+<text x="112" y="469" text-anchor="end" class="t-ink">Świnoujście</text>
+<rect x="215.0" y="458" width="86.4" height="14" rx="3" class="f-s3"/>
+<text x="307.4" y="469" text-anchor="start" class="t-ink num">+41%</text>
+<rect x="0" y="454" width="360" height="22" class="hit"><title>Świnoujście: 9,7 chiamate al giorno negli ultimi 30 giorni, 6,9 un anno prima (+41%)</title></rect>
+<text x="112" y="491" text-anchor="end" class="t-ink">Riga</text>
+<rect x="215.0" y="480" width="17.4" height="14" rx="3" class="f-s3"/>
+<text x="238.4" y="491" text-anchor="start" class="t-ink num">+8%</text>
+<rect x="0" y="476" width="360" height="22" class="hit"><title>Riga: 6,6 chiamate al giorno negli ultimi 30 giorni, 6,1 un anno prima (+8%)</title></rect>
+<text x="112" y="513" text-anchor="end" class="t-ink">Rostock</text>
+<rect x="215.0" y="502" width="10.6" height="14" rx="3" class="f-s3"/>
+<text x="231.6" y="513" text-anchor="start" class="t-ink num">+5%</text>
+<rect x="0" y="498" width="360" height="22" class="hit"><title>Rostock: 6,3 chiamate al giorno negli ultimi 30 giorni, 6,0 un anno prima (+5%)</title></rect>
+<text x="112" y="535" text-anchor="end" class="t-ink">Anversa-Bruges</text>
+<rect x="215.0" y="524" width="7.4" height="14" rx="3" class="f-s3"/>
+<text x="228.4" y="535" text-anchor="start" class="t-ink num">+4%</text>
+<rect x="0" y="520" width="360" height="22" class="hit"><title>Anversa-Bruges: 65,5 chiamate al giorno negli ultimi 30 giorni, 63,3 un anno prima (+4%)</title></rect>
+<text x="112" y="557" text-anchor="end" class="t-ink">Rotterdam</text>
+<rect x="215.0" y="546" width="4.9" height="14" rx="3" class="f-s3"/>
+<text x="225.9" y="557" text-anchor="start" class="t-ink num">+2%</text>
+<rect x="0" y="542" width="360" height="22" class="hit"><title>Rotterdam: 81,4 chiamate al giorno negli ultimi 30 giorni, 79,6 un anno prima (+2%)</title></rect>
+<text x="112" y="579" text-anchor="end" class="t-ink">Amburgo</text>
+<rect x="211.2" y="568" width="3.8" height="14" rx="3" class="f-s1"/>
+<text x="205.2" y="579" text-anchor="end" class="t-ink num">−2%</text>
+<rect x="0" y="564" width="360" height="22" class="hit"><title>Amburgo: 16,2 chiamate al giorno negli ultimi 30 giorni, 16,5 un anno prima (−2%)</title></rect>
+<text x="112" y="601" text-anchor="end" class="t-ink">Klaipėda</text>
+<rect x="207.6" y="590" width="7.4" height="14" rx="3" class="f-s1"/>
+<text x="201.6" y="601" text-anchor="end" class="t-ink num">−4%</text>
+<rect x="0" y="586" width="360" height="22" class="hit"><title>Klaipėda: 8,3 chiamate al giorno negli ultimi 30 giorni, 8,6 un anno prima (−4%)</title></rect>
+<text x="112" y="623" text-anchor="end" class="t-ink">Danzica</text>
+<rect x="204.4" y="612" width="10.6" height="14" rx="3" class="f-s1"/>
+<text x="198.4" y="623" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="608" width="360" height="22" class="hit"><title>Danzica: 9,5 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−5%)</title></rect>
+<text x="112" y="645" text-anchor="end" class="t-ink">Amsterdam</text>
+<rect x="200.5" y="634" width="14.5" height="14" rx="3" class="f-s1"/>
+<text x="194.5" y="645" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="630" width="360" height="22" class="hit"><title>Amsterdam: 20,4 chiamate al giorno negli ultimi 30 giorni, 21,9 un anno prima (−7%)</title></rect>
 <text x="112" y="667" text-anchor="end" class="t-ink">Göteborg</text>
-<rect x="191.4" y="656" width="23.6" height="14" rx="3" class="f-s1"/>
-<text x="185.4" y="667" text-anchor="end" class="t-ink num">−8%</text>
-<rect x="0" y="652" width="360" height="22" class="hit"><title>Göteborg: 9,3 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−8%)</title></rect>
-<text x="112" y="689" text-anchor="end" class="t-ink">Bremerhaven</text>
-<rect x="174.3" y="678" width="40.7" height="14" rx="3" class="f-s1"/>
-<text x="168.3" y="689" text-anchor="end" class="t-ink num">−13%</text>
-<rect x="0" y="674" width="360" height="22" class="hit"><title>Bremerhaven: 11,3 chiamate al giorno negli ultimi 30 giorni, 13,0 un anno prima (−13%)</title></rect>
-</svg></div></div><figcaption>Variazione delle chiamate di navi al giorno, ultimi 30 giorni contro gli stessi giorni di un anno prima. Fonte: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>.</figcaption><details><summary>Dati del grafico in tabella</summary><div class="tabella"><table><thead><tr><th>Porto</th><th>Chiamate/giorno 30 gg</th><th>Un anno prima</th><th>Variazione</th></tr></thead><tbody><tr><td>La Spezia</td><td>2,3</td><td>1,8</td><td>+28%</td></tr><tr><td>Livorno</td><td>6,1</td><td>6,1</td><td>0%</td></tr><tr><td>Augusta</td><td>4,3</td><td>4,3</td><td>0%</td></tr><tr><td>Genova</td><td>8,4</td><td>8,8</td><td>−5%</td></tr><tr><td>Trieste</td><td>5,2</td><td>5,5</td><td>−6%</td></tr><tr><td>Gioia Tauro</td><td>5,0</td><td>5,3</td><td>−6%</td></tr><tr><td>Venezia (Lido)</td><td>5,9</td><td>6,6</td><td>−11%</td></tr><tr><td>Venezia (Malamocco)</td><td>2,1</td><td>2,5</td><td>−16%</td></tr><tr><td>Ravenna</td><td>6,4</td><td>8,0</td><td>−20%</td></tr><tr><td>Tanger Med</td><td>12,4</td><td>12,8</td><td>−3%</td></tr><tr><td>Marsiglia</td><td>3,0</td><td>3,1</td><td>−5%</td></tr><tr><td>Algeciras</td><td>16,0</td><td>17,0</td><td>−6%</td></tr><tr><td>Valencia</td><td>10,3</td><td>11,0</td><td>−7%</td></tr><tr><td>Pireo</td><td>12,1</td><td>14,1</td><td>−14%</td></tr><tr><td>Capodistria (Koper)</td><td>3,4</td><td>4,1</td><td>−16%</td></tr><tr><td>Wilhelmshaven</td><td>4,4</td><td>3,8</td><td>+16%</td></tr><tr><td>Anversa</td><td>52,3</td><td>49,8</td><td>+5%</td></tr><tr><td>Rotterdam</td><td>81,4</td><td>79,6</td><td>+2%</td></tr><tr><td>Aarhus</td><td>3,9</td><td>3,9</td><td>0%</td></tr><tr><td>Amburgo</td><td>16,2</td><td>16,5</td><td>−2%</td></tr><tr><td>Klaipėda</td><td>8,3</td><td>8,6</td><td>−3%</td></tr><tr><td>Danzica (Gdańsk)</td><td>9,5</td><td>10,0</td><td>−5%</td></tr><tr><td>Amsterdam</td><td>20,4</td><td>21,9</td><td>−7%</td></tr><tr><td>Esbjerg</td><td>3,3</td><td>3,6</td><td>−8%</td></tr><tr><td>Göteborg</td><td>9,3</td><td>10,0</td><td>−8%</td></tr><tr><td>Bremerhaven</td><td>11,3</td><td>13,0</td><td>−13%</td></tr></tbody></table></div></details></figure>
+<rect x="200.1" y="656" width="14.9" height="14" rx="3" class="f-s1"/>
+<text x="194.1" y="667" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="652" width="360" height="22" class="hit"><title>Göteborg: 9,3 chiamate al giorno negli ultimi 30 giorni, 10,0 un anno prima (−7%)</title></rect>
+<text x="112" y="689" text-anchor="end" class="t-ink">Brema / Bremerhaven</text>
+<rect x="198.6" y="678" width="16.4" height="14" rx="3" class="f-s1"/>
+<text x="192.6" y="689" text-anchor="end" class="t-ink num">−8%</text>
+<rect x="0" y="674" width="360" height="22" class="hit"><title>Brema / Bremerhaven: 14,3 chiamate al giorno negli ultimi 30 giorni, 15,5 un anno prima (−8%)</title></rect>
+<text x="112" y="711" text-anchor="end" class="t-ink">Brunsbüttel</text>
+<rect x="180.5" y="700" width="34.5" height="14" rx="3" class="f-s1"/>
+<text x="174.5" y="711" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="0" y="696" width="360" height="22" class="hit"><title>Brunsbüttel: 6,7 chiamate al giorno negli ultimi 30 giorni, 8,0 un anno prima (−16%)</title></rect>
+</svg></div></div><figcaption>Variazione delle chiamate di navi al giorno, ultimi 30 giorni contro gli stessi giorni di un anno prima. Fonte: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>.</figcaption><details><summary>Dati del grafico in tabella</summary><div class="tabella"><table><thead><tr><th>Porto</th><th>Chiamate/giorno 30 gg</th><th>Un anno prima</th><th>Variazione</th></tr></thead><tbody><tr><td>La Spezia</td><td>2,3</td><td>1,8</td><td>+28%</td></tr><tr><td>Livorno</td><td>6,1</td><td>6,1</td><td>0%</td></tr><tr><td>Augusta</td><td>4,3</td><td>4,3</td><td>0%</td></tr><tr><td>Genova</td><td>8,4</td><td>8,8</td><td>−5%</td></tr><tr><td>Trieste</td><td>5,2</td><td>5,5</td><td>−6%</td></tr><tr><td>Gioia Tauro</td><td>5,0</td><td>5,3</td><td>−6%</td></tr><tr><td>Venezia (Lido)</td><td>5,9</td><td>6,6</td><td>−11%</td></tr><tr><td>Venezia (Malamocco)</td><td>2,1</td><td>2,5</td><td>−16%</td></tr><tr><td>Ravenna</td><td>6,4</td><td>8,0</td><td>−20%</td></tr><tr><td>Tanger Med</td><td>12,4</td><td>12,8</td><td>−3%</td></tr><tr><td>Marsiglia</td><td>3,0</td><td>3,1</td><td>−5%</td></tr><tr><td>Algeciras</td><td>16,0</td><td>17,0</td><td>−6%</td></tr><tr><td>Valencia</td><td>10,3</td><td>11,0</td><td>−7%</td></tr><tr><td>Pireo</td><td>12,1</td><td>14,1</td><td>−14%</td></tr><tr><td>Capodistria (Koper)</td><td>3,4</td><td>4,1</td><td>−16%</td></tr><tr><td>Świnoujście</td><td>9,7</td><td>6,9</td><td>+41%</td></tr><tr><td>Riga</td><td>6,6</td><td>6,1</td><td>+8%</td></tr><tr><td>Rostock</td><td>6,3</td><td>6,0</td><td>+5%</td></tr><tr><td>Anversa-Bruges</td><td>65,5</td><td>63,3</td><td>+4%</td></tr><tr><td>Rotterdam</td><td>81,4</td><td>79,6</td><td>+2%</td></tr><tr><td>Amburgo</td><td>16,2</td><td>16,5</td><td>−2%</td></tr><tr><td>Klaipėda</td><td>8,3</td><td>8,6</td><td>−4%</td></tr><tr><td>Danzica</td><td>9,5</td><td>10,0</td><td>−5%</td></tr><tr><td>Amsterdam</td><td>20,4</td><td>21,9</td><td>−7%</td></tr><tr><td>Göteborg</td><td>9,3</td><td>10,0</td><td>−7%</td></tr><tr><td>Brema / Bremerhaven</td><td>14,3</td><td>15,5</td><td>−8%</td></tr><tr><td>Brunsbüttel</td><td>6,7</td><td>8,0</td><td>−16%</td></tr></tbody></table></div></details></figure>
 <p><strong>Fatti.</strong> Ravenna fa 6,4 chiamate al giorno in 30 giorni (−20%), con import stimato −24%. Trieste, porto del greggio per l&#x27;oleodotto TAL verso Austria e Germania, è a −6%, petroliere −24% sui 7 giorni. I porti container tengono: Genova −5% sulle chiamate ma portacontainer +16% e import stimato +31% sui 7 giorni; Gioia Tauro, primo porto di trasbordo, portacontainer +11%. (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>).</p>
 <p>Su base annua: i porti italiani hanno movimentato 12,8 milioni di TEU nel 2025 (11,9 nel 2024); nel 1° semestre 2026 il traffico container italiano è cresciuto dell&#x27;1%, contro l&#x27;11% dei porti del Nord Africa (Tanger Med) (<a href="https://group.intesasanpaolo.com/it/research/area-media/macro-italia/2026/mediterraneo-traffico-container-porti-italia" rel="noopener">Intesa Sanpaolo, SRM (studi sul traffico container nel Mediterraneo, 2026)</a>, luglio 2026); il traffico container nei porti italiani è sceso del 4,6% nel 1° trimestre 2026 sul 1° trimestre 2025 (<a href="https://www.9colonne.it/614809/hormuz-crisis-weighs-on-container-traffic-at-italian-ports" rel="noopener">9colonne, «Hormuz crisis weighs on container traffic at Italian ports»</a>, maggio 2026).</p>
 <p>Nel resto del Mediterraneo e sull&#x27;Atlantico calano Capodistria (Koper) (−16%), Pireo (−14%), Valencia (−7%) (chiamate al giorno, 30 giorni su un anno, <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>).</p>
@@ -792,7 +804,7 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <p><strong>Chip e AI.</strong> S&amp;P Global Mobility prevede prezzi DRAM +70–100% nel 2026 sui nuovi contratti, perché i produttori spostano capacità verso i chip per i data center AI; Micron (giugno 2026) dice che l&#x27;offerta di memorie resterà scarsa oltre il 2027 (<a href="https://www.spglobal.com/automotive-insights/en/blogs/2025/12/dram-makers-ai-data-centers-semiconductor-shortage" rel="noopener">S&amp;P Global Mobility (dicembre 2025); Counterpoint Research su Micron (giugno 2026)</a>, giugno 2026). In borsa l&#x27;indice dei semiconduttori SOX è a 10.046 punti, −20% in un mese ma +42% da inizio anno; TSMC −14% in un mese (Yahoo Finance, 9 novembre 2026). Lo Stretto di Taiwan: le aziende che dipendono dai chip di Taiwan perderebbero fino a 1.600 miliardi di dollari di ricavi l&#x27;anno in un blocco; oltre 2.000 miliardi di attività economica a rischio (<a href="https://rhg.com/research/taiwan-economic-disruptions/" rel="noopener">Rhodium Group, «Taiwan economic disruptions»</a>).</p>
 <p><strong>Fertilizzanti.</strong> Da Hormuz passava quasi un quarto dell&#x27;export mondiale di urea (<a href="https://blogs.worldbank.org/en/opendata/fertilizer-prices-surge-as-strait-of-hormuz-disruptions-tighten-" rel="noopener">Banca Mondiale</a>); per S&amp;P Global la chiusura di Hormuz toglie il 29% del commercio mondiale di urea (<a href="https://www.fertilizerdaily.com/20261020-global-food-crisis-hormuz-sp-global-el-nino/" rel="noopener">Fertilizer Daily, su S&amp;P Global</a>, 20 ottobre 2026). Prezzi: l&#x27;indice della Banca Mondiale ad aprile 2026 al massimo da ottobre 2022; l&#x27;urea ha superato brevemente gli 850 $/t ad aprile (+80% da febbraio, secondo la stampa sul dato) (<a href="https://blogs.worldbank.org/en/opendata/fertilizer-prices-surge-as-strait-of-hormuz-disruptions-tighten-" rel="noopener">Banca Mondiale</a>). Export di fertilizzanti del Medio Oriente: calo del 70% per la guerra (<a href="https://www.thenationalnews.com/business/energy/2026/10/31/middle-east-fertiliser-exports-decline-by-70-as-iran-war-disrupts-supplies/" rel="noopener">The National</a>, ottobre 2026).</p>
 <p><strong>Grano.</strong> USDA stima scorte finali mondiali 2026/27 a 276,0 milioni di tonnellate (−2,0%), ma l&#x27;UE scende a 11,7 (−38%), con scorte pari al 10% del consumo; la Russia sale a 19,1 (USDA PSD). Ucraina: export settimanale di grano e semi oleosi −90% da inizio luglio 2026 (Kpler); il ministero ucraino ha tagliato del 54% la previsione di export agricolo 2026-27 (<a href="https://euromaidanpress.com/2026/08/11/russia-port-strikes-ukraine-farm-export-forecast/" rel="noopener">Euromaidan Press</a>). Kerch, ultimo aggiornamento: i permessi di passaggio sono rilasciati fino al 15 novembre, con scorta della marina russa. (<a href="https://www.bairdmaritime.com/shipping/dry-cargo/bulkers/sea-of-azov-reopens-to-grain-export-ships-after-months-long-shutdown-russian-naval-escorts-involved" rel="noopener">Baird Maritime</a>).</p>
-<p><strong>Dipendenze dell&#x27;Italia.</strong> L&#x27;Italia importa il 95,2% del gas e l&#x27;89,8% del petrolio che consuma (<a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_ind_id/default/table" rel="noopener">Eurostat</a>, 2024). La Cina è il secondo fornitore di merci con il 10,2% delle importazioni (<a href="https://comtradeplus.un.org/TradeFlow?Frequency=A&amp;Flows=X&amp;CommodityCodes=TOTAL&amp;Partners=0&amp;Reporters=380&amp;period=2025&amp;AggregateBy=none&amp;BreakdownMode=plus" rel="noopener">UN Comtrade</a>, 2025). Il greggio arriva soprattutto da Libia (24,5%), Azerbaigian (15,9%), Kazakistan (12,5%); dal Golfo Persico solo il 5,6–10,2% (UN Comtrade 2025). Mancano i dati per minerali e componenti: vedi commercio.json e minerali.json.</p>
+<p><strong>Dipendenze dell&#x27;Italia.</strong> L&#x27;Italia importa il 95,2% del gas e l&#x27;89,8% del petrolio che consuma (<a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_ind_id/default/table" rel="noopener">Eurostat</a>, 2024). La Cina è il secondo fornitore di merci con il 10,2% delle importazioni (<a href="https://comtradeplus.un.org/TradeFlow?Frequency=A&amp;Flows=X&amp;CommodityCodes=TOTAL&amp;Partners=0&amp;Reporters=380&amp;period=2025&amp;AggregateBy=none&amp;BreakdownMode=plus" rel="noopener">UN Comtrade</a>, 2025). Il greggio arriva soprattutto da Libia (24,5%), Azerbaigian (15,9%), Kazakistan (12,5%); dal Golfo Persico solo il 5,6–10,2% (UN Comtrade 2025). Mancano i dati per minerali e componenti: i file commercio.json e minerali.json sono arrivati nell&#x27;osservatorio il giorno di questa edizione e non sono ancora integrati nel report.</p>
 <aside class="valutazione"><span class="etichetta">Valutazione</span>I colli di bottiglia di fine 2026 non sono tutti in mare. Le terre rare (decisione cinese attesa il 10 novembre) e le memorie per l&#x27;auto (capacità assorbita dall&#x27;AI) possono fermare linee produttive europee più di un nolo alto. Per i fertilizzanti il problema è il gas caro in Europa più che la logistica. Sul grano l&#x27;UE ha il cuscinetto più sottile da anni.</aside>
 <h2 id="rischi">7. Rischi digitali e fisici</h2>
 <p><strong>Cavi sottomarini.</strong> L&#x27;Italia ha 37 cavi e 55 approdi; i cavi attivi che la collegano all&#x27;Asia passando da Bab el-Mandeb sono 6 (2Africa, Asia Africa Europe-1 (AAE-1), IMEWE, Middle East North Africa (MENA) Cable System/Gulf Bridge International, SeaMeWe-4, SeaMeWe-5). Nel Mar Rosso passano 24 cavi, nel Baltico 34 (<a href="https://www.submarinecablemap.com/" rel="noopener">TeleGeography</a>, CC BY-NC-SA, 9 novembre 2026). L&#x27;osservatorio registra 14 incidenti dal 2023, 3 nel 2026; l&#x27;ultimo: Australia: guasti a Indigo West e Indigo Central nella zona protetta di Perth (8 agosto 2026, <a href="https://www.itnews.com.au/news/afp-assessing-report-in-connection-with-perth-cable-faults-628061" rel="noopener">iTnews</a>).</p>
@@ -802,13 +814,13 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <aside class="valutazione"><span class="etichetta">Valutazione</span>Il rischio fisico più probabile per l&#x27;Italia non è un taglio dei cavi nel Mediterraneo ma un incidente nel Mar Rosso (ancore di navi colpite, come nel 2024) che degrada la capacità verso Asia e Golfo, con riparazioni lente in zona di guerra. Il rischio nuovo per la logistica europea sono gli attacchi informatici ai sistemi di controllo (refrigerazione, terminal) e il disturbo GNSS nel Baltico e nel Golfo, che rende meno affidabili i dati AIS su cui si basano anche questi numeri.</aside>
 <h2 id="nord">8. Cosa significa per il Nord Europa</h2>
 <p>Questa sezione legge gli stessi dati dal punto di vista di chi lavora in un porto o in un&#x27;azienda energetica dei Paesi Bassi, della Danimarca o del Baltico. Il resto del report guarda soprattutto all&#x27;Italia.</p>
-<div class="tabella"><table><thead><tr><th scope="col">Porto</th><th scope="col">Chiamate/giorno (30 gg)</th><th scope="col">su 1 anno</th><th scope="col">portacontainer</th><th scope="col">petroliere</th></tr></thead><tbody><tr><td>Rotterdam (NL)</td><td>81,4</td><td>+2%</td><td>+4%</td><td>+2%</td></tr><tr><td>Anversa (BE)</td><td>52,3</td><td>+5%</td><td>+20%</td><td>+9%</td></tr><tr><td>Amsterdam (NL)</td><td>20,4</td><td>−7%</td><td>−40%</td><td>−6%</td></tr><tr><td>Amburgo (DE)</td><td>16,2</td><td>−2%</td><td>−4%</td><td>+19%</td></tr><tr><td>Bremerhaven (DE)</td><td>11,3</td><td>−13%</td><td>−14%</td><td>0%</td></tr><tr><td>Danzica (Gdańsk) (PL)</td><td>9,5</td><td>−5%</td><td>−16%</td><td>−4%</td></tr><tr><td>Göteborg (SE)</td><td>9,3</td><td>−8%</td><td>−35%</td><td>−1%</td></tr><tr><td>Klaipėda (LT)</td><td>8,3</td><td>−3%</td><td>−2%</td><td>+22%</td></tr><tr><td>Wilhelmshaven (DE)</td><td>4,4</td><td>+16%</td><td>+29%</td><td>−14%</td></tr><tr><td>Aarhus (DK)</td><td>3,9</td><td>0%</td><td>−24%</td><td>+16%</td></tr><tr><td>Esbjerg (DK)</td><td>3,3</td><td>−8%</td><td>+100%</td><td>+57%</td></tr></tbody></table></div>
-<p class="nota">Fonte: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, media 30 giorni al 30 ottobre 2026 contro gli stessi giorni di un anno prima (report/dati/porti-europei.json). Chiamate di navi stimate da AIS, non tonnellate né TEU; nei porti piccoli poche navi spostano molto la percentuale.</p>
-<p><strong>Porti.</strong> Crescono Rotterdam (+2%), Anversa (+5%), Wilhelmshaven (+16%); calano Bremerhaven (−13%), Göteborg (−8%), Esbjerg (−8%) (chiamate al giorno, 30 giorni su un anno, <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>).</p>
-<p><strong>Stretti danesi e Baltico.</strong> Agli Stretti danesi passano 38,7 navi al giorno (di cui 9,0 petroliere), −21% sulla stessa settimana di un anno prima (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, settimana al 1 novembre 2026). Nel cruscotto del rischio gli Stretti danesi sono medio, 8,3 su 25 e il Baltico (cavi, condotte, elettrodotti) medio, 9,0 su 25: flussi in giallo, scorte di gas in rosso (rischio.json). Nel Baltico passano 34 cavi (TeleGeography); l&#x27;archivio dell&#x27;osservatorio conta 6 incidenti a cavi e condotte nel Baltico dal 2023, l&#x27;ultimo il 31 dicembre 2025, nessuno nel 2026 (cavi-incidenti.json). Nel Golfo di Finlandia 38 delle 96 petroliere viste con AIS sono sanzionate; agli Stretti danesi 0 su 19, ma con una sola fonte AIS gratuita (navi.json, 9 novembre 2026).</p>
+<div class="tabella"><table><thead><tr><th scope="col">Porto</th><th scope="col">Paese</th><th scope="col">Chiamate/giorno (30 gg)</th><th scope="col">su 1 anno</th><th scope="col">Traffico 2025</th></tr></thead><tbody><tr><td>Rotterdam</td><td>NL</td><td>81,4</td><td>+2%</td><td>428,4 mln t; 14,24 mln TEU (<a href="https://www.portofrotterdam.com/en/node/5524" rel="noopener">Port of Rotterdam Authority</a>)</td></tr><tr><td>Anversa-Bruges (Anversa + Zeebrugge)</td><td>BE</td><td>65,5</td><td>+4%</td><td>266,5 mln t; 13,63 mln TEU (<a href="https://newsroom.portofantwerpbruges.com/hubfs/260122_Factsheet_Jaarcijfers_2025_DUI.pdf" rel="noopener">Port of Antwerp-Bruges</a>)</td></tr><tr><td>Amsterdam</td><td>NL</td><td>20,4</td><td>−7%</td><td>62,1 mln t (<a href="https://www.portofamsterdam.com/en/annual-report-2025-steadfast-and-motion" rel="noopener">Port of Amsterdam</a>)</td></tr><tr><td>Amburgo</td><td>DE</td><td>16,2</td><td>−2%</td><td>114,6 mln t; 8,3 mln TEU (<a href="https://www.verkehrsrundschau.de/nachrichten/transport-logistik/containerumschlag-treibt-hafen-hamburg-ins-plus-3770706" rel="noopener">Hamburg Port Authority</a>)</td></tr><tr><td>Brema / Bremerhaven</td><td>DE</td><td>14,3</td><td>−8%</td><td>65,3 mln t; 4,9 mln TEU (<a href="https://www.bremenports.de/fileadmin/bremenports/Haefen/Monatsberichte/2025_12_Monatsbericht.pdf" rel="noopener">bremenports</a>)</td></tr><tr><td>Świnoujście (con Stettino)</td><td>PL</td><td>9,7</td><td>+41%</td><td>34,79 mln t (Stettino + Świnoujście, record); 80 carichi di GNL ricevuti (<a href="https://www.trade.gov.pl/en/news/the-ports-of-szczecin-and-swinoujscie-summed-up-the-record-year-2025" rel="noopener">Autorità portuale Szczecin-Świnoujście</a>)</td></tr><tr><td>Danzica (Gdańsk)</td><td>PL</td><td>9,5</td><td>−5%</td><td>80,4 mln t (record); 2,77 mln TEU (Baltic Hub 2.766.475) (<a href="https://dailymare.com/news/port-of-gdansk-posts-strong-2025-performance-as-liquid-fuels-dominate-and-container-volumes-hit-record-high,2192" rel="noopener">Port of Gdańsk</a>)</td></tr><tr><td>Göteborg</td><td>SE</td><td>9,3</td><td>−7%</td><td>0,934 mln TEU (record); 20,7 mln t di prodotti energetici (<a href="https://www.mynewsdesk.com/goteborgs_hamn/pressreleases/record-year-2025-port-of-gothenburg-handled-more-containers-than-ever-3430268" rel="noopener">Göteborgs Hamn</a>)</td></tr><tr><td>Klaipėda</td><td>LT</td><td>8,3</td><td>−4%</td><td>39 mln t (record); 1,3 mln TEU (provvisorio) (<a href="https://www.hellenicshippingnews.com/2025-a-record-breaking-year-for-the-port-of-klaipeda/" rel="noopener">Autorità portuale di Klaipėda</a>)</td></tr><tr><td>Copenaghen-Malmö (CMP)</td><td>DK</td><td>4,8</td><td>−26%</td><td>12,8 mln t (<a href="https://www.mynewsdesk.com/copenhagen-malmo-port-cmp/pressreleases/cmp-publishes-results-for-2025-continued-stability-in-a-changing-world-3445494" rel="noopener">Copenhagen Malmö Port</a>)</td></tr><tr><td>Aarhus</td><td>DK</td><td>3,9</td><td>0%</td><td>11,34 mln t; 0,844 mln TEU (843.665, record danese) (<a href="https://portofaarhus.dk/nyheder/aarhus-havn-godt-fra-land-i-2025-med-oget-containeromsaetning-og-effektiv-drift" rel="noopener">Aarhus Havn</a>)</td></tr><tr><td>Esbjerg</td><td>DK</td><td>3,3</td><td>−8%</td><td>4 mln t; 5.426 scali di navi (<a href="https://portesbjerg.dk/pdflibrary/Annual-report-2025-EN.pdf" rel="noopener">Port Esbjerg</a>)</td></tr></tbody></table></div>
+<p class="nota">Chiamate: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, media 30 giorni al 30 ottobre 2026 contro gli stessi giorni di un anno prima (docs/data/porti-nord.json; alcuni porti sommano più id PortWatch). Sono navi stimate da AIS, non tonnellate né TEU; nei porti piccoli poche navi spostano molto la percentuale. Traffico 2025: autorità portuali, con fonte per ogni riga.</p>
+<p><strong>Porti.</strong> Sui 30 giorni i grandi porti del Mare del Nord sono vicini all&#x27;anno scorso: Rotterdam +2%, Anversa-Bruges +4%, Amsterdam −7%. Calano di più Copenaghen-Malmö (−26%), Esbjerg (−8%), Brema / Bremerhaven (−8%); crescono Świnoujście (+41%), Anversa-Bruges (+4%), Rotterdam (+2%). Sui soli 7 giorni Rotterdam è a −11%: la settimana singola oscilla molto, per questo il report usa i 30 giorni. Nei porti petroliferi russi del Golfo di Finlandia le chiamate visibili sono Primorsk −52%, Ust-Luga −16%, ma qui PortWatch sottostima: molte petroliere della flotta ombra viaggiano con l&#x27;AIS spento (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, porti-nord.json).</p>
+<p><strong>Stretti danesi e Baltico.</strong> Agli Stretti danesi passano 38,7 navi al giorno (di cui 9,0 petroliere), −21% sulla stessa settimana di un anno prima (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, settimana al 1 novembre 2026). Attenzione: PortWatch misura solo l&#x27;Øresund, non il Grande Belt, dove passano le petroliere più grandi (nota di porti-nord.json). Nel cruscotto del rischio gli Stretti danesi sono a livello medio (8,3 su 25) e il Baltico (cavi, condotte, elettrodotti) a livello medio (9,0 su 25); per il Baltico i flussi sono in giallo e gli stoccaggi di gas tedeschi e olandesi in rosso (rischio.json). Nel Baltico passano 34 cavi (TeleGeography); l&#x27;archivio dell&#x27;osservatorio conta 6 incidenti a cavi e condotte nel Baltico dal 2023, l&#x27;ultimo il 31 dicembre 2025, nessuno nel 2026 (cavi-incidenti.json). Nel Golfo di Finlandia 38 delle 96 petroliere viste con AIS sono sanzionate; agli Stretti danesi 0 su 19, ma con una sola fonte AIS gratuita (navi.json, 9 novembre 2026).</p>
 <p><strong>Noli.</strong> La rotta Cina–Nord Europa costa 3.422 dollari per FEU, −21% rispetto alla Cina–Mediterraneo (Freightos FBX, 6 novembre 2026). Il WCI Shanghai–Rotterdam è a 3.615 dollari, +84% su un anno (Drewry, 5 novembre 2026; anno prima da <a href="https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/" rel="noopener">Drewry WCI del 6 novembre 2025, ripreso da Cyprus Shipping News e Alchempro/Fibre2Fashion</a>, 6 novembre 2025).</p>
-<p><strong>Gas.</strong> L&#x27;8 novembre gli stoccaggi sono al 63,5% nei Paesi Bassi (18,9 punti sotto la media di 5 anni) e al 58,9% in Germania (29,7 punti sotto), contro l&#x27;88,9% dell&#x27;Italia (GIE AGSI+). I Paesi Bassi importano il 56,5% del gas che consumano (Eurostat, 2024); il loro GNL nel 2025 veniva per il 75,2% da Stati Uniti e per il 10,3% da Russia, per nulla dal Golfo Persico (<a href="https://comtradeplus.un.org/TradeFlow?Frequency=A&amp;Flows=X&amp;CommodityCodes=TOTAL&amp;Partners=0&amp;Reporters=528&amp;period=2025&amp;AggregateBy=none&amp;BreakdownMode=plus" rel="noopener">UN Comtrade</a>, quote sul valore). Dal Golfo arriva l&#x27;8,1–9,4% del greggio importato dai Paesi Bassi (UN Comtrade 2025).</p>
-<aside class="valutazione"><span class="etichetta">Valutazione</span>Per un porto del Mare del Nord la crisi di Hormuz arriva più dal prezzo che dai volumi. I noli verso il Nord Europa costano meno di quelli verso il Mediterraneo e il ritorno a Suez aggiunge capacità sulla rotta Asia–Europa; il GNL olandese viene quasi tutto dall&#x27;Atlantico, non dal Golfo. Il punto debole è il gas: con stoccaggi olandesi e tedeschi molto sotto la media, il TTF (che si forma proprio in Olanda) resta sensibile a ogni notizia su Qatar e Hormuz e a un inverno freddo. Per chi opera nel Baltico e negli Stretti danesi il rischio è ibrido: cavi, flotta ombra e disturbo GNSS, che pesa anche sulle navi che installano e servono i parchi eolici offshore. I dati non dicono perché calano i transiti agli Stretti danesi: possono pesare il calo dell&#x27;export russo, le sanzioni o le navi con AIS spento.</aside>
+<p><strong>Gas.</strong> L&#x27;8 novembre gli stoccaggi sono al 63,5% nei Paesi Bassi (18,9 punti sotto la media di 5 anni) e al 58,9% in Germania (29,7 punti sotto), contro l&#x27;88,9% dell&#x27;Italia (GIE AGSI+, scorte.json). Il GNL importato viene soprattutto dagli Stati Uniti: Paesi Bassi 77% dagli Stati Uniti e 12% dalla Russia; Germania 89% dagli Stati Uniti; Polonia 75% dagli Stati Uniti e 21% dal Qatar (<a href="https://ieefa.org/european-lng-tracker" rel="noopener">IEEFA European LNG Tracker, maggio 2026</a>, 1° trimestre 2026). Tra questi la Polonia è la più esposta a un blocco del GNL del Qatar. La Danimarca è esportatrice netta di gas (dipendenza dalle importazioni −17,5% nel 2024, Eurostat) ed è paese di transito del Baltic Pipe tra Norvegia e Polonia (esposizione-nord.json). Dal Golfo Persico arriva l&#x27;8,1–9,4% del greggio importato dai Paesi Bassi (UN Comtrade 2025).</p>
+<aside class="valutazione"><span class="etichetta">Valutazione</span>Per un porto del Mare del Nord la crisi di Hormuz arriva più dal prezzo che dai volumi. I noli verso il Nord Europa costano meno di quelli verso il Mediterraneo e il ritorno a Suez aggiunge capacità sulla rotta Asia–Europa; il GNL olandese e tedesco viene soprattutto dagli Stati Uniti, non dal Golfo. Il punto debole è il gas: con stoccaggi olandesi e tedeschi molto sotto la media, il TTF (che si forma proprio in Olanda) resta sensibile a ogni notizia su Qatar e Hormuz e a un inverno freddo. Per chi opera nel Baltico e negli Stretti danesi il rischio è ibrido: cavi, flotta ombra e disturbo GNSS, che pesa anche sulle navi che installano e servono i parchi eolici offshore. I dati non dicono perché calano i transiti agli Stretti danesi: possono pesare il calo dell&#x27;export russo, le sanzioni o le navi con AIS spento.</aside>
 <h2 id="indicatori">9. Indicatori da seguire nelle prossime settimane</h2>
 <p>Due letture affiancate. <strong>Flussi negli stretti:</strong> stessi riferimenti e stesse soglie del cruscotto del rischio (report/metodo-rischio.md): verde se il calo sul riferimento è entro il 10%, giallo tra −10% e −30%, rosso oltre −30%; sotto −50% il metodo considera la disruption in corso. <strong>Prezzi, noli, gasolio e stoccaggi:</strong> il report usa soglie di <em>livello</em>, cioè quanto costa oggi a chi importa o trasporta; il cruscotto del rischio misura invece le <em>variazioni</em> (contro la media di 90 giorni e contro un anno prima). Per questo un prezzo può essere rosso qui e verde nel cruscotto: alto, ma non in salita. La colonna «Cruscotto del rischio» riporta la lettura del metodo dove esiste.</p>
 <aside class="valutazione"><span class="etichetta">Valutazione</span>Le soglie di livello sono una <strong>valutazione dell&#x27;osservatorio</strong>, non soglie ufficiali: servono a dire quando un dato cambia il quadro. Brent 85 $, TTF 70 € e WCI Shanghai–Genova 5.000 $ coincidono con le soglie degli scenari del report «Hormuz e Mar Rosso». Lo stato è ricalcolato dallo script a ogni edizione.</aside>
@@ -960,8 +972,9 @@ font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
 <aside class="valutazione"><span class="etichetta">Valutazione</span>Tre segnali cambierebbero il quadro prima della prossima edizione: (1) la Cina non proroga la sospensione sulle terre rare; (2) un attacco riuscito a una petroliera a Bab el-Mandeb, che si vedrebbe nei transiti del Capo in risalita e nell&#x27;FBX Cina–Mediterraneo; (3) un&#x27;intesa su Hormuz con riapertura verificata dai transiti PortWatch sopra le 20 navi al giorno, che farebbe scendere TTF e premi di guerra.</aside>
 <h2 id="metodo">10. Metodo e limiti</h2>
 <p><strong>Come è fatto.</strong> Testo, tabelle e grafici sono generati da <code>report/costruisci_supply_chain.py</code>, che legge i file di <code>docs/data/</code> del giorno e si può rilanciare ogni mese. I numeri dei dati non sono scritti a mano. I fatti che i file non contengono (gasolio, terre rare, memorie, GNSS nel Golfo, noli di un anno fa, Baltic Dry, traffico annuo dei porti) sono in una tabella dello script con fonte, link, data e affidabilità, e lo script avvisa quando invecchiano. Le parti marcate <em>Valutazione</em> sono ragionamenti dell&#x27;osservatorio sulle fonti citate, non fatti.</p>
-<div class="tabella"><table><thead><tr><th scope="col">File letto</th><th scope="col">Aggiornato (UTC)</th></tr></thead><tbody><tr><td>portwatch.json</td><td>2026-11-09 19:16</td></tr><tr><td>noli.json</td><td>2026-11-09 19:16</td></tr><tr><td>stretti-dettaglio.json</td><td>2026-11-09 19:30</td></tr><tr><td>ferrovie.json</td><td>2026-11-09 18:54</td></tr><tr><td>cavi.json</td><td>2026-11-09 18:57</td></tr><tr><td>cavi-incidenti.json</td><td>2026-11-09 18:57</td></tr><tr><td>ibrido.json</td><td>2026-11-09</td></tr><tr><td>scorte.json</td><td>2026-11-09 19:19</td></tr><tr><td>gas-italia.json</td><td>2026-11-09 19:30</td></tr><tr><td>terminali-gnl.json</td><td>2026-11-09 19:30</td></tr><tr><td>calendario.json</td><td>2026-11-09 19:29</td></tr><tr><td>prezzi.json</td><td>2026-11-09 19:47</td></tr><tr><td>sanzioni-navi.json</td><td>2026-11-09 19:16</td></tr><tr><td>navi.json</td><td>2026-11-09 19:29</td></tr><tr><td>paesi.json</td><td>2026-11-09 19:08</td></tr><tr><td>rischio.json</td><td>2026-11-09 20:03</td></tr><tr><td>report/dati/porti-europei.json</td><td>2026-11-09 20:13</td></tr></tbody></table></div>
-<ul><li>PortWatch conta solo le navi con AIS acceso, con circa una settimana di ritardo: a Hormuz e nel Mar Nero i transiti «dark» sfuggono (Lloyd&#x27;s List Intelligence conta molti più transiti a Hormuz).</li><li>Le chiamate nei porti contano le navi, non le tonnellate né i TEU; sui 7 giorni i numeri sono piccoli e oscillano.</li><li>I noli non hanno serie storiche gratuite: il confronto su un anno del WCI usa un valore ripreso da una fonte secondaria. Il Baltic Dry non è più raccolto in automatico (termini d&#x27;uso di Trading Economics): è citato a mano, un solo valore, senza variazione su un anno.</li><li>Prezzi (Brent, TTF, Henry Hub, borsa): future da Yahoo Finance, non prezzi ufficiali; l&#x27;osservatorio pubblica solo circa 3 mesi di serie, quindi le variazioni a un anno e da inizio anno vengono dal campo «var» calcolato in raccolta e non si possono ricalcolare dal file. L&#x27;ultimo valore del giorno di lettura è provvisorio.</li><li>Le soglie di livello dei prezzi sono valutazioni; i transiti usano le soglie del metodo del cruscotto del rischio. Hormuz e il GNL del Qatar condividono gli stessi transiti e Brent e TTF compaiono in più unità del cruscotto: i livelli non si sommano.</li><li>Le ferrovie sono schede curate a mano: i volumi sono annuali o trimestrali e alcune fonti sono di parte.</li><li>Mancano: prezzo dell&#x27;elettricità (PUN), volumi Cina–Europa diretti all&#x27;Italia, dipendenze italiane per minerale e componente (file presenti), prezzi attuali di urea e grano da fonte primaria.</li><li>Alcune fonti esterne non sono state aperte (Trading Economics, Motor1, Windward, Riviera, Railmarket): quei fatti sono letti dai risultati di ricerca e marcati con affidabilità media o bassa. Le fonti aperte in revisione sono elencate nel riquadro finale.</li><li>La sezione sul Nord Europa usa porti scaricati da PortWatch dallo script del report e i file paesi.json, scorte.json, navi.json e cavi-incidenti.json: per la Danimarca mancano gli indicatori paese (non è in paesi.json).</li></ul>
+<div class="tabella"><table><thead><tr><th scope="col">File letto</th><th scope="col">Aggiornato (UTC)</th></tr></thead><tbody><tr><td>portwatch.json</td><td>2026-11-09 19:16</td></tr><tr><td>noli.json</td><td>2026-11-09 19:16</td></tr><tr><td>stretti-dettaglio.json</td><td>2026-11-09 19:30</td></tr><tr><td>ferrovie.json</td><td>2026-11-09 18:54</td></tr><tr><td>cavi.json</td><td>2026-11-09 18:57</td></tr><tr><td>cavi-incidenti.json</td><td>2026-11-09 18:57</td></tr><tr><td>ibrido.json</td><td>2026-11-09</td></tr><tr><td>scorte.json</td><td>2026-11-09 19:19</td></tr><tr><td>gas-italia.json</td><td>2026-11-09 19:30</td></tr><tr><td>terminali-gnl.json</td><td>2026-11-09 19:30</td></tr><tr><td>calendario.json</td><td>2026-11-09 19:29</td></tr><tr><td>prezzi.json</td><td>2026-11-09 19:47</td></tr><tr><td>sanzioni-navi.json</td><td>2026-11-09 19:16</td></tr><tr><td>navi.json</td><td>2026-11-09 19:29</td></tr><tr><td>paesi.json</td><td>2026-11-09 19:08</td></tr><tr><td>rischio.json</td><td>2026-11-09 20:03</td></tr><tr><td>porti-nord.json</td><td>2026-11-09 20:05</td></tr><tr><td>esposizione-nord.json</td><td>2026-11-09 20:05</td></tr><tr><td>report/dati/porti-europei.json</td><td>2026-11-09 20:17</td></tr></tbody></table></div>
+<ul><li>PortWatch conta solo le navi con AIS acceso, con circa una settimana di ritardo: a Hormuz e nel Mar Nero i transiti «dark» sfuggono (Lloyd&#x27;s List Intelligence conta molti più transiti a Hormuz).</li><li>Le chiamate nei porti contano le navi, non le tonnellate né i TEU; sui 7 giorni i numeri sono piccoli e oscillano.</li><li>I noli non hanno serie storiche gratuite: il confronto su un anno del WCI usa un valore ripreso da una fonte secondaria. Il Baltic Dry non è più raccolto in automatico (termini d&#x27;uso di Trading Economics): è citato a mano, un solo valore, senza variazione su un anno.</li><li>Prezzi (Brent, TTF, Henry Hub, borsa): future da Yahoo Finance, non prezzi ufficiali; l&#x27;osservatorio pubblica solo circa 3 mesi di serie, quindi le variazioni a un anno e da inizio anno vengono dal campo «var» calcolato in raccolta e non si possono ricalcolare dal file. L&#x27;ultimo valore del giorno di lettura è provvisorio.</li><li>Le soglie di livello dei prezzi sono valutazioni; i transiti usano le soglie del metodo del cruscotto del rischio. Hormuz e il GNL del Qatar condividono gli stessi transiti e Brent e TTF compaiono in più unità del cruscotto: i livelli non si sommano.</li><li>Le ferrovie sono schede curate a mano: i volumi sono annuali o trimestrali e alcune fonti sono di parte.</li><li>Mancano: prezzo dell&#x27;elettricità (PUN), volumi Cina–Europa diretti all&#x27;Italia, dipendenze italiane per minerale e componente (commercio.json e minerali.json esistono ma non sono ancora letti dal report), prezzi attuali di urea e grano da fonte primaria.</li><li>Alcune fonti esterne non sono state aperte (Trading Economics, Motor1, Windward, Riviera, Railmarket): quei fatti sono letti dai risultati di ricerca e marcati con affidabilità media o bassa. Le fonti aperte in revisione sono elencate nel riquadro finale.</li><li>La sezione sul Nord Europa usa porti scaricati da PortWatch dallo script del report e i file paesi.json, scorte.json, navi.json e cavi-incidenti.json: per la Danimarca mancano gli indicatori paese (non è in paesi.json).</li></ul>
+<aside class="revisione" id="revisione"><h2>Revisione · 9 novembre 2026</h2><p>Verifica indipendente dei numeri, della logica e della coerenza con il report «Hormuz e Mar Rosso» e con il cruscotto del rischio, fatta prima della pubblicazione da un secondo passaggio con un assistente AI (Claude). Resoconto completo: report/revisioni/supply-chain-2026-11.md.</p><p><strong>Affermazioni verificate.</strong> 72 affermazioni numeriche controllate: 61 contro i file di docs/data (portwatch, noli, prezzi, scorte, gas-italia, paesi, cavi, sanzioni-navi, navi, ferrovie, rischio) e 11 contro la fonte esterna aperta (BIMCO, Lloyd&#x27;s List Intelligence, Affaritaliani/Mimit, Cyprus Shipping News per il WCI 2025, The Loadstar per il WCI per rotta, Mining Technology, Baltic Exchange per l&#x27;FBX settimanale).</p><p><strong>Correzioni.</strong></p><ul><li>Baltic Dry: il valore di Trading Economics (2.854, +37% su un anno) non è più nei dati; ora è citato a mano (2.805 punti, 6 novembre, Baltic Exchange) senza variazione su un anno e senza soglia nel cruscotto.</li><li>Titolo «Il Mar Rosso si riapre» sostituito: Bab el-Mandeb è al 37% della media 2023 ed è «alto» nel cruscotto del rischio; il report Hormuz dice che il rischio si è spostato sul Mar Rosso.</li><li>Soglie dei transiti allineate al metodo del cruscotto (−10% / −30% sul riferimento): con le vecchie soglie Suez e Bab el-Mandeb risultavano solo «attenzione», per il metodo sono rossi. Stati rinominati verde/giallo/rosso per non confonderli con il livello «critico» del cruscotto; per prezzi e noli la differenza di metodo è spiegata.</li><li>«% di fine 2023» corretto: era la stessa settimana del 2023; ora i rapporti usano la media gennaio–ottobre 2023 come il cruscotto (Suez 58% invece di 57%, Bab el-Mandeb 37% invece di 34%).</li><li>Valutazione sui porti adriatici corretta: attribuiva i cali a «meno greggio dal Golfo», ma dal Golfo arriva solo il 5,6–10,2% del greggio italiano. «I porti container beneficiano del ritorno a Suez» ridimensionato: sui 30 giorni calano.</li><li>Fonti delle ferrovie: il link del Middle Corridor puntava a BESA Center ma era etichettato «Organizzazione degli Stati turchi», quello dell&#x27;INSTC al Gulf Research Center ma etichettato «Ferrovie russe»; ora il nome della fonte è completo.</li><li>Starlink: «attribuiti alla Russia dai governi» precisato (premier lituano e governo polacco, attribuzioni politiche).</li><li>Germania «−29,7 punti sotto la media» (doppia negazione) corretto in «29,7 punti sotto»; arrotondamenti allineati a quelli del cruscotto (−20,5 diventa −21%, non −20%).</li><li>Aggiunta la sezione «Cosa significa per il Nord Europa» (porti da porti-nord.json, GNL per origine da esposizione-nord.json, Stretti danesi, noli, stoccaggi, flotta ombra, cavi); Stretti danesi aggiunti alla tabella dei transiti e al cruscotto, con l&#x27;avvertenza che PortWatch misura solo l&#x27;Øresund.</li><li>Testo sui file commercio.json e minerali.json aggiornato: esistono da oggi ma il report non li legge ancora.</li></ul><p><strong>Cosa resta non verificabile.</strong></p><ul><li>WCI composito di 4.389 $ (5 novembre): sito Drewry non raggiungibile; i valori per rotta (Genova 4.166, Rotterdam 3.615) sono confermati da The Loadstar, il composito è coerente con 4.429 $ del 29 ottobre −1%.</li><li>Baltic Dry 2.805: una sola fonte secondaria (Trading Economics), pagina non aperta.</li><li>FBX: il comunicato settimanale del Baltic Exchange (6 novembre) dà 3.497 $ per l&#x27;indice e 3.384 $ per la Cina–Nord Europa, contro 3.452 e 3.422 di noli.json: istantanee diverse della stessa settimana, scarto 1–1,3%.</li><li>Accise sul gasolio (Motor1), GNSS nel Golfo (Windward), costi della deviazione (Riviera/LSEG), TEU della ferrovia Cina–Europa (Railmarket), gasolio di un anno prima (QuiFinanza): pagine non aperte o bloccate.</li><li>Le schede curate (stretti-dettaglio.json, ferrovie.json, ibrido.json, esposizione-nord.json) sono state controllate solo a campione; in esposizione-nord.json la scheda della Lituania data a «gennaio 2026» un danno ai cavi che cavi-incidenti.json registra il 26 gennaio 2025: segnalato a chi cura i dati, il report usa cavi-incidenti.json.</li></ul></aside>
 <footer><p class="firma">Gabriele Giuliani · Monitor geoeconomico</p><p>Novembre 2026. Nota sull&#x27;uso dell&#x27;AI: questo report è stato preparato con l&#x27;aiuto di un assistente AI (Claude, Anthropic), che ha scritto lo script di costruzione, i calcoli e la bozza del testo a partire dai dati dell&#x27;osservatorio e dalle fonti citate. I numeri vengono dai file di dati e dalle fonti linkate; le valutazioni sono marcate come tali. La responsabilità della pubblicazione è dell&#x27;autore.</p><p><a href="../index.html">← Torna alla mappa</a></p></footer>
 </main>
 </body>

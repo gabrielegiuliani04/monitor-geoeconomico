@@ -596,8 +596,12 @@ def uranio(nome_iso2):
         v = num(r[-1])
         if v is None:
             continue
-        if nome.lower().startswith("total") or nome.lower() == "world":
-            mondo = v
+        low = nome.lower()
+        if low.startswith("world total") or low.startswith("total"):
+            if "u3o8" not in low:
+                mondo = v
+        elif "%" in low or "demand" in low:
+            continue
         elif nome.lower() == "others":
             paesi.append({"paese": "Altri", "iso2": None, "valore": v})
         else:
