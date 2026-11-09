@@ -12,8 +12,8 @@ in raccolta/basi/basi.json. Questo script, solo libreria standard, ogni volta:
      se l'utilizzatore è diverso (es. Giappone e USA sullo stesso aeroporto di Gibuti) resta, con un avviso.
      Controlla anche i doppioni interni (entro 1 km, stesso utilizzatore).
   3. COLLEGA ogni base agli altri livelli, leggendo i file degli altri agenti (non li rifà):
-       - labels.json  -> passaggio strategico più vicino e distanza in km
-       - rotte.json   -> distanza dalla rotta marittima principale (tipo M) più vicina
+       - labels.json  -> passaggio strategico più vicino (entro 1.000 km) e distanza in km
+       - rotte.json   -> rotta marittima più vicina (entro 500 km): distanza, tipo, passaggi che attraversa
        - cavi.json    -> approdi di cavi sottomarini entro 100 km
   4. Con --verifica-coordinate confronta le coordinate con la fonte indicata in 'rif_coord':
      OurAirports (airports.csv, pubblico dominio) e Wikidata (SPARQL, CC0). Scarti oltre 1 km
@@ -66,6 +66,9 @@ RE_QID = re.compile(r"^Q\d+$")
 KM_DUPLICATO = 5.0       # con i livelli esistenti
 KM_DOPPIONE_INTERNO = 1.0
 KM_CAVI = 100.0
+KM_STRETTO = 1000.0       # oltre questa distanza il passaggio più vicino non si indica
+KM_ROTTA = 500.0
+TIPI_ROTTA = {"M": "principale", "m": "media", "n": "secondaria"}
 KM_SCARTO_COORD = 1.0
 GIORNI_STATO_VECCHIO = 365  # stati che cambiano (in costruzione, ridotta, pianificata)
 ALTRI_LIVELLI = ["fissi.json", "italia.json", "difesa.json", "iran.json"]
@@ -258,7 +261,8 @@ def collega(v, stretti, rotte, approdi):
     out = {}
     if stretti:
         n, d = min(((s["n"], km(v["lat"], v["lon"], s["y"], s["x"])) for s in stretti), key=lambda t: t[1])
-        out["stretto_vicino"] = {"nome": n, "km": round(d)}
+        if d <= KM_STRETTO:
+            out["stretto_vicino"] = {"nome": n, "km": round(d)}
     if rotte:
         best = None
         for r in rotte:
@@ -269,11 +273,9 @@ def collega(v, stretti, rotte, approdi):
                 for a, b in zip(parte, parte[1:]):
                     d = km_segmento(v["lat"], v["lon"], a, b)
                     if best is None or d < best[0]:
-                        best = (d, r.get("s") or [])
-        if best:
-            out["rotta_principale_km"] = round(best[0])
-            if best[1]:
-                out["rotta_principale_passaggi"] = best[1]
+                        best = (d, r.get("t", ""), r.get("s") or [])
+        if best and best[0] <= KM_ROTTA:
+            out["rotta_vicina"] = {"km": round(best[0]), "tipo": TIPI_ROTTA.get(best[1], best[1]), "passaggi": best[2]}
     if approdi is not None:
         vicini = sorted(((km(v["lat"], v["lon"], a["lat"], a["lon"]), a["nome"]) for a in approdi
                          if isinstance(a.get("lat"), (int, float))), key=lambda t: t[0])
@@ -366,7 +368,8 @@ def riepilogo(elementi):
             "per_teatro": conta("teatro"), "per_tipo": conta("tipo"),
             "verificate_su_fonte_letta": sum(1 for e in elementi if e["verificata"]),
             "coordinate_stimate": sum(1 for e in elementi if e["origine_coord"] == "stimata"),
-            "vicine_a_un_passaggio_entro_300km": sum(1 for e in elementi if e.get("stretto_vicino", {}).get("km", 1e9) <= 300)}
+            "vicine_a_un_passaggio_entro_300km": sum(1 for e in elementi if e.get("stretto_vicino", {}).get("km", 1e9) <= 300),
+            "con_approdi_di_cavi_entro_100km": sum(1 for e in elementi if e.get("approdi_cavi_100km", 0) > 0)}
 
 
 FONTI_GENERALI = [
@@ -402,7 +405,7 @@ def main():
         verifica_coordinate(valide)
 
     rotte_d = carica("rotte.json") or {}
-    rotte = [r for r in rotte_d.get("rotte", []) if r.get("t") == "M"]
+    rotte = rotte_d.get("rotte", [])
     cavi = carica("cavi.json")
     approdi = cavi.get("approdi", []) if cavi else None
 

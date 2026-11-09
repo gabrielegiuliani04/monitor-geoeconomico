@@ -1,0 +1,1841 @@
+{
+ "aggiornato": "2026-11-09T21:00Z",
+ "versione": "1.0",
+ "nota": "Modello del simulatore «E se…» (docs/simulatore.html). Tutto ciò che il simulatore calcola sta qui: opzioni, episodi storici di riferimento, regole e parametri per passaggio. Ogni numero ha un riferimento ('rif') alla voce di docs/data/stretti-dettaglio.json da cui viene (s = id della scheda, sez = sezione, i = posizione, cerca = testo che deve comparire nella voce). Le parti 'calcolato' degli episodi sono riscritte da raccolta/simulatore/controlla.py --scrivi; controlla.py senza opzioni verifica la coerenza con i file di dati. Si può modificare a mano: dopo ogni modifica eseguire controlla.py.",
+ "fonti": [
+  {
+   "nome": "Schede degli stretti dell'osservatorio",
+   "file": "docs/data/stretti-dettaglio.json"
+  },
+  {
+   "nome": "Prezzi di chiusura Brent e TTF 2025–2026 (Yahoo Finance)",
+   "file": "docs/data/prezzi.json"
+  },
+  {
+   "nome": "Chiusure Brent (BZ=F) e TTF (TTF=F) dicembre 2023 – marzo 2024",
+   "link": "https://finance.yahoo.com/quote/BZ%3DF/history/",
+   "licenza": "Yahoo Finance, uso informativo, non ufficiale",
+   "data_dato": "2026-11-09",
+   "nota": "Scaricate con l'API chart di Yahoo Finance il 9/11/2026 e copiate in episodi.mar_rosso_2023.serie: prezzi.json parte da ottobre 2025."
+  },
+  {
+   "nome": "IMF PortWatch",
+   "file": "docs/data/portwatch.json"
+  },
+  {
+   "nome": "Noli container (Drewry WCI)",
+   "file": "docs/data/noli.json"
+  },
+  {
+   "nome": "Schede paese (UN Comtrade, Eurostat)",
+   "file": "docs/data/paesi.json"
+  },
+  {
+   "nome": "Scorte di gas e petrolio (GIE AGSI+, Eurostat)",
+   "file": "docs/data/scorte.json"
+  },
+  {
+   "nome": "Flussi di gas in Italia (ENTSOG)",
+   "file": "docs/data/gas-italia.json"
+  },
+  {
+   "nome": "Terminali GNL (Global Energy Monitor)",
+   "file": "docs/data/terminali-gnl.json"
+  },
+  {
+   "nome": "Rotte marittime (Benden 2022) e cavi sottomarini (TeleGeography)",
+   "file": "docs/data/rotte.json, docs/data/cavi.json"
+  }
+ ],
+ "opzioni": {
+  "intensita": [
+   {
+    "id": "r25",
+    "etichetta": "Rallentamento 25%",
+    "quota": 0.25,
+    "spiegazione": "un quarto del traffico non passa"
+   },
+   {
+    "id": "r50",
+    "etichetta": "Rallentamento 50%",
+    "quota": 0.5,
+    "spiegazione": "metà del traffico non passa"
+   },
+   {
+    "id": "chiuso",
+    "etichetta": "Chiusura totale",
+    "quota": 1.0,
+    "spiegazione": "non passa nulla"
+   }
+  ],
+  "durate": [
+   {
+    "id": "2s",
+    "etichetta": "2 settimane",
+    "giorni": 14
+   },
+   {
+    "id": "1m",
+    "etichetta": "1 mese",
+    "giorni": 30
+   },
+   {
+    "id": "3m",
+    "etichetta": "3 mesi",
+    "giorni": 91
+   }
+  ],
+  "predefinito": {
+   "passaggio": "hormuz",
+   "intensita": "chiuso",
+   "durata": "1m"
+  }
+ },
+ "costanti": {
+  "gnl_mt_in_bcm": {
+   "valore": 1.36,
+   "spiegazione": "1 milione di tonnellate di GNL ≈ 1,36 miliardi di m³ di gas",
+   "fonte": "docs/data/terminali-gnl.json (nota)"
+  },
+  "kwh_per_smc": {
+   "valore": 10.57275,
+   "spiegazione": "potere calorifico usato da gas-italia.json per convertire GWh in Smc",
+   "fonte": "docs/data/gas-italia.json (nota)"
+  }
+ },
+ "episodi": {
+  "hormuz_2026": {
+   "nome": "Chiusura di Hormuz, marzo 2026",
+   "inizio": "2026-03-02",
+   "base": {
+    "da": "2026-02-23",
+    "a": "2026-02-27",
+    "spiegazione": "media delle chiusure dell'ultima settimana prima della guerra"
+   },
+   "fonte_prezzi": "docs/data/prezzi.json (serie 'brent' e 'ttf', chiusure Yahoo Finance)",
+   "spiegazione": "Il 2 marzo 2026 i transiti a Hormuz crollano (PortWatch). È l'unico episodio nei dati con una vera perdita di offerta di petrolio e GNL. I prezzi includono anche altri fattori (Ras Laffan colpita, attacchi, tregue): il modello attribuisce tutto allo stretto.",
+   "riferimento": "hormuz",
+   "calcolato": {}
+  },
+  "mar_rosso_2023": {
+   "nome": "Crisi del Mar Rosso, dicembre 2023 – marzo 2024",
+   "inizio": "2023-12-18",
+   "base": {
+    "da": "2023-12-11",
+    "a": "2023-12-15",
+    "spiegazione": "media della settimana prima che le grandi compagnie sospendessero i transiti (metà dicembre 2023)"
+   },
+   "fonte_prezzi": "chiusure Yahoo Finance BZ=F e TTF=F copiate qui sotto in 'serie' (scaricate il 9/11/2026)",
+   "spiegazione": "Le navi girano dal Capo: nessuna perdita di offerta, ma viaggi più lunghi. Il WCI di Drewry passa da 1.521 a 3.777 $/FEU in cinque settimane. Il Brent sale poco; il TTF scende (inverno mite e stoccaggi pieni): l'episodio non mostra un effetto del Mar Rosso sul gas europeo.",
+   "wci": {
+    "da": 1521,
+    "a": 3777,
+    "data_da": "2023-12-14",
+    "data_a": "2024-01-18",
+    "giorni": 35,
+    "rif": {
+     "s": "bab-el-mandeb",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "3.777"
+    }
+   },
+   "costo_capo_feu": {
+    "valore": 160,
+    "spiegazione": "costo in più per FEU di una portacontainer media via Capo (1 milione via Suez, 1,7 via Capo)",
+    "rif": {
+     "s": "suez",
+     "sez": "alternative",
+     "i": 0,
+     "cerca": "160 dollari"
+    }
+   },
+   "serie": {
+    "brent": [
+     ["2023-12-01", 78.88],
+     ["2023-12-04", 78.03],
+     ["2023-12-05", 77.2],
+     ["2023-12-06", 74.3],
+     ["2023-12-07", 74.05],
+     ["2023-12-08", 75.84],
+     ["2023-12-11", 76.03],
+     ["2023-12-12", 73.24],
+     ["2023-12-13", 74.26],
+     ["2023-12-14", 76.61],
+     ["2023-12-15", 76.55],
+     ["2023-12-18", 77.95],
+     ["2023-12-19", 79.23],
+     ["2023-12-20", 79.7],
+     ["2023-12-21", 79.39],
+     ["2023-12-22", 79.07],
+     ["2023-12-26", 81.07],
+     ["2023-12-27", 79.65],
+     ["2023-12-28", 78.39],
+     ["2023-12-29", 77.04],
+     ["2024-01-02", 75.89],
+     ["2024-01-03", 78.25],
+     ["2024-01-04", 77.59],
+     ["2024-01-05", 78.76],
+     ["2024-01-08", 76.12],
+     ["2024-01-09", 77.59],
+     ["2024-01-10", 76.8],
+     ["2024-01-11", 77.41],
+     ["2024-01-12", 78.29],
+     ["2024-01-16", 78.29],
+     ["2024-01-17", 77.88],
+     ["2024-01-18", 79.1],
+     ["2024-01-19", 78.56],
+     ["2024-01-22", 80.06],
+     ["2024-01-23", 79.55],
+     ["2024-01-24", 80.04],
+     ["2024-01-25", 82.43],
+     ["2024-01-26", 83.55],
+     ["2024-01-29", 82.4],
+     ["2024-01-30", 82.87],
+     ["2024-01-31", 81.71],
+     ["2024-02-01", 78.7],
+     ["2024-02-02", 77.33],
+     ["2024-02-05", 77.99],
+     ["2024-02-06", 78.59],
+     ["2024-02-07", 79.21],
+     ["2024-02-08", 81.63],
+     ["2024-02-09", 82.19],
+     ["2024-02-12", 82.0],
+     ["2024-02-13", 82.77],
+     ["2024-02-14", 81.6],
+     ["2024-02-15", 82.86],
+     ["2024-02-16", 83.47],
+     ["2024-02-20", 82.34],
+     ["2024-02-21", 83.03],
+     ["2024-02-22", 83.67],
+     ["2024-02-23", 81.62],
+     ["2024-02-26", 82.53],
+     ["2024-02-27", 83.65],
+     ["2024-02-28", 83.68],
+     ["2024-02-29", 83.62],
+     ["2024-03-01", 83.55],
+     ["2024-03-04", 82.8],
+     ["2024-03-05", 82.04],
+     ["2024-03-06", 82.96],
+     ["2024-03-07", 82.96],
+     ["2024-03-08", 82.08],
+     ["2024-03-11", 82.21],
+     ["2024-03-12", 81.92],
+     ["2024-03-13", 84.03],
+     ["2024-03-14", 85.42],
+     ["2024-03-15", 85.34],
+     ["2024-03-18", 86.89],
+     ["2024-03-19", 87.38],
+     ["2024-03-20", 85.95],
+     ["2024-03-21", 85.78],
+     ["2024-03-22", 85.43],
+     ["2024-03-25", 86.75],
+     ["2024-03-26", 86.25],
+     ["2024-03-27", 86.09],
+     ["2024-03-28", 87.48]
+    ],
+    "ttf": [
+     ["2023-12-01", 43.5],
+     ["2023-12-04", 40.1],
+     ["2023-12-05", 38.13],
+     ["2023-12-06", 39.31],
+     ["2023-12-07", 39.97],
+     ["2023-12-08", 38.6],
+     ["2023-12-11", 36.12],
+     ["2023-12-12", 34.7],
+     ["2023-12-13", 35.81],
+     ["2023-12-14", 34.85],
+     ["2023-12-15", 33.19],
+     ["2023-12-18", 35.52],
+     ["2023-12-19", 32.57],
+     ["2023-12-20", 33.52],
+     ["2023-12-21", 34.2],
+     ["2023-12-22", 34.17],
+     ["2023-12-26", 34.17],
+     ["2023-12-27", 35.51],
+     ["2023-12-28", 33.1],
+     ["2023-12-29", 32.35],
+     ["2024-01-02", 30.57],
+     ["2024-01-03", 32.79],
+     ["2024-01-04", 33.41],
+     ["2024-01-05", 34.55],
+     ["2024-01-08", 31.58],
+     ["2024-01-09", 30.64],
+     ["2024-01-10", 30.94],
+     ["2024-01-11", 30.82],
+     ["2024-01-12", 31.99],
+     ["2024-01-16", 29.66],
+     ["2024-01-17", 27.71],
+     ["2024-01-18", 27.89],
+     ["2024-01-19", 28.43],
+     ["2024-01-22", 27.26],
+     ["2024-01-23", 27.23],
+     ["2024-01-24", 28.93],
+     ["2024-01-25", 27.78],
+     ["2024-01-26", 28.08],
+     ["2024-01-29", 28.17],
+     ["2024-01-30", 29.39],
+     ["2024-01-31", 30.24],
+     ["2024-02-01", 28.99],
+     ["2024-02-02", 29.3],
+     ["2024-02-05", 28.34],
+     ["2024-02-06", 28.61],
+     ["2024-02-07", 28.19],
+     ["2024-02-08", 27.81],
+     ["2024-02-09", 27.12],
+     ["2024-02-12", 25.73],
+     ["2024-02-13", 25.44],
+     ["2024-02-14", 24.86],
+     ["2024-02-15", 24.97],
+     ["2024-02-16", 24.82],
+     ["2024-02-20", 24.17],
+     ["2024-02-21", 23.98],
+     ["2024-02-22", 23.19],
+     ["2024-02-23", 22.93],
+     ["2024-02-26", 24.01],
+     ["2024-02-27", 24.39],
+     ["2024-02-28", 25.62],
+     ["2024-02-29", 24.86],
+     ["2024-03-01", 25.81],
+     ["2024-03-04", 26.89],
+     ["2024-03-05", 27.47],
+     ["2024-03-06", 26.57],
+     ["2024-03-07", 25.99],
+     ["2024-03-08", 26.39],
+     ["2024-03-11", 24.93],
+     ["2024-03-12", 24.77],
+     ["2024-03-13", 24.9],
+     ["2024-03-14", 26.05],
+     ["2024-03-15", 27.03],
+     ["2024-03-18", 28.82],
+     ["2024-03-19", 28.87],
+     ["2024-03-20", 27.74],
+     ["2024-03-21", 26.4],
+     ["2024-03-22", 27.78],
+     ["2024-03-25", 28.49],
+     ["2024-03-26", 27.13],
+     ["2024-03-27", 27.69],
+     ["2024-03-28", 27.34]
+    ]
+   },
+   "calcolato": {}
+  }
+ },
+ "regole": {
+  "volume_scoperto": {
+   "testo": "Volume colpito = flusso × intensità. Volume scoperto = volume colpito − capacità libera di bypass (mai sotto zero). Il minimo usa il bypass massimo, il massimo usa il bypass minimo.",
+   "affidabilita": "media"
+  },
+  "brent_perdita": {
+   "testo": "Se il petrolio non ha una via alternativa (meccanismo 'perdita'), la variazione del Brent = mb/g scoperti × coefficiente. Il coefficiente viene dall'episodio di Hormuz 2026: variazione del Brent nella finestra della durata scelta diviso per i mb/g scoperti a Hormuz chiuso (valore centrale). Minimo = variazione media nella finestra, massimo = picco nella finestra.",
+   "episodio": "hormuz_2026",
+   "affidabilita": "bassa per shock piccoli (estrapolazione lineare da un solo episodio grande)"
+  },
+  "ttf_perdita": {
+   "testo": "Se il gas non ha una via alternativa, la variazione del TTF = bcm/anno scoperti × coefficiente. Il coefficiente viene dall'episodio di Hormuz 2026: variazione del TTF nella finestra diviso 112 bcm/anno di GNL fermo.",
+   "episodio": "hormuz_2026",
+   "affidabilita": "bassa: il GNL del Golfo andava per il 90% in Asia, il TransMed invece arriva direttamente in Europa"
+  },
+  "brent_deviazione": {
+   "testo": "Se le navi possono girare (meccanismo 'deviazione'), non si perde offerta: la variazione del Brent = intensità × scala dei giorni × variazione del Brent nella crisi del Mar Rosso (stessa finestra). Scala dei giorni = 1 per la rotta del Capo; per le altre rotte = giorni in più della rotta / giorni in più del Capo (14–24).",
+   "episodio": "mar_rosso_2023",
+   "affidabilita": "bassa"
+  },
+  "ttf_deviazione": {
+   "testo": "Per le deviazioni il modello assume zero effetto sul TTF: nella crisi del Mar Rosso il TTF è sceso. Mostra comunque la variazione osservata.",
+   "episodio": "mar_rosso_2023",
+   "affidabilita": "bassa"
+  },
+  "noli_container_deviazione": {
+   "testo": "Aumento del nolo container in dollari per FEU, sommato ai valori di oggi del WCI (Shanghai–Genova e Shanghai–Rotterdam). Minimo = solo il costo in più del viaggio via Capo (+160 $/FEU). Massimo = salto del WCI nella crisi del Mar Rosso (+2.256 $/FEU in 35 giorni). Entrambi × intensità × scala dei giorni; il massimo cresce in modo lineare nei primi 35 giorni e poi resta fermo. Si usa un aumento in dollari e non in percentuale perché oggi il nolo parte già da un livello alto.",
+   "episodio": "mar_rosso_2023",
+   "rampa_giorni": 35,
+   "affidabilita": "media per Suez e Bab el-Mandeb, bassa per le altre rotte"
+  },
+  "noli_hormuz": {
+   "testo": "Per Hormuz non c'è una rotta alternativa: il modello non calcola un nolo ma mostra quello che è successo nel 2026 (TD3C quasi triplicato, war risk da 0,25% a 3% del valore della nave, sovrapprezzo container 1.500 $/TEU), scalato con l'intensità solo in modo indicativo.",
+   "affidabilita": "media"
+  },
+  "volume_cumulato": {
+   "testo": "Barili mancanti nel periodo = mb/g scoperti × giorni. Si confrontano con il rilascio record di 400 milioni di barili delle riserve IEA (marzo 2026) e con i giorni di scorte di emergenza dei paesi UE (Eurostat).",
+   "rif": {
+    "s": "hormuz",
+    "sez": "impatti_mercato",
+    "i": 13,
+    "cerca": "400 milioni"
+   }
+  },
+  "esposizione_paesi": {
+   "testo": "Per ogni passaggio il modello legge da paesi.json una o due quote (in valore, UN Comtrade 2025) che approssimano l'esposizione: quota di greggio o GNL dal Golfo, quota di un fornitore che usa il passaggio, quota della Cina nelle importazioni di merci. Se il fornitore non è tra i primi 5 del paese, la quota è inferiore a quella del quinto: il simulatore la mostra come «meno di x%».",
+   "affidabilita": "media: è un'approssimazione, non una misura dei transiti"
+  }
+ },
+ "ipotesi": [
+  "Lo scenario parte da condizioni normali di traffico, con i flussi di riferimento della scheda di ogni passaggio (anno indicato accanto al numero).",
+  "Il traffico perso è proporzionale all'intensità: un rallentamento del 25% toglie il 25% di ogni flusso.",
+  "La capacità libera dei bypass è disponibile da subito e per tutta la durata.",
+  "L'effetto sui prezzi è lineare nel volume scoperto e calibrato su un solo episodio per tipo (Hormuz 2026 per la perdita di offerta, Mar Rosso 2023–24 per le deviazioni).",
+  "Le finestre di prezzo partono dal primo giorno dello shock e durano 14, 30 o 91 giorni; la base è la media della settimana precedente.",
+  "Tutta la variazione dei prezzi nell'episodio è attribuita allo stretto, anche se nello stesso periodo hanno pesato altri fattori (attacchi a Ras Laffan, tagli OPEC+, meteo).",
+  "Gli effetti dei passaggi non si sommano: il simulatore guarda un passaggio alla volta.",
+  "Le riserve strategiche, le scorte e la risposta della domanda non sono sottratte dal volume scoperto: sono mostrate solo come confronto."
+ ],
+ "limiti": [
+  "Non considera la domanda: prezzi alti riducono i consumi e accorciano lo shock.",
+  "Non considera le politiche: rilascio di riserve, scorte militari, deroghe, razionamenti, sussidi.",
+  "Non considera le aspettative di mercato: uno stretto minacciato muove i prezzi anche senza perdita di volumi, e una tregua li fa scendere prima della riapertura.",
+  "Non considera gli effetti di secondo giro: inflazione, tassi delle banche centrali, crescita, cambio euro/dollaro.",
+  "Non somma più passaggi chiusi insieme (per esempio Hormuz e Bab el-Mandeb nello stesso momento).",
+  "Non stima i prezzi di grano, fertilizzanti, chip e premi assicurativi: mostra solo i numeri documentati degli episodi.",
+  "Panama e Taiwan hanno pochi numeri verificati (giorni in più, petrolio): molte stime restano «non disponibili».",
+  "La Danimarca non è nelle schede paese (paesi.json) né nelle scorte (scorte.json): la sua esposizione è descritta a parole, senza quote.",
+  "PortWatch conta solo le navi con l'AIS acceso e arriva con circa una settimana di ritardo.",
+  "Le quote paese sono in valore (dollari), non in volume, e si basano sulle dichiarazioni dell'importatore."
+ ],
+ "focus_paesi": [
+  "IT",
+  "NL",
+  "DE",
+  "DK"
+ ],
+ "terminali_gnl_italia": [
+  {
+   "gem": "Adriatic LNG Terminal",
+   "gas_italia": "adriatic"
+  },
+  {
+   "gem": "Piombino FSRU",
+   "gas_italia": "piombino"
+  },
+  {
+   "gem": "Ravenna FSRU",
+   "gas_italia": "ravenna"
+  },
+  {
+   "gem": "Toscana FSRU",
+   "gas_italia": "olt"
+  },
+  {
+   "gem": "Panigaglia LNG Terminal",
+   "gas_italia": "panigaglia"
+  }
+ ],
+ "passaggi": [
+  {
+   "id": "hormuz",
+   "nome": "Stretto di Hormuz",
+   "breve": "Hormuz",
+   "stretto": "hormuz",
+   "portwatch": "Stretto di Hormuz",
+   "cavi": "Stretto di Hormuz",
+   "rotte": "Stretto di Hormuz",
+   "avviso": "Hormuz è chiuso di fatto dal 2 marzo 2026: è proprio l'episodio su cui il modello è calibrato. Per questo passaggio il risultato descrive ciò che è già successo, non un rialzo nuovo a partire dai prezzi di oggi, che incorporano già lo shock.",
+   "flussi": [
+    {
+     "tipo": "petrolio",
+     "etichetta": "Petrolio (greggio e prodotti)",
+     "valore": 19.87,
+     "unita": "mb/g",
+     "rif": {
+      "s": "hormuz",
+      "sez": "flussi",
+      "i": 0,
+      "cerca": "19,87"
+     }
+    },
+    {
+     "tipo": "gnl",
+     "etichetta": "GNL (Qatar ed Emirati)",
+     "valore": 112,
+     "unita": "bcm/anno",
+     "rif": {
+      "s": "hormuz",
+      "sez": "flussi",
+      "i": 4,
+      "cerca": "112"
+     }
+    },
+    {
+     "tipo": "fertilizzanti",
+     "etichetta": "Urea",
+     "testo": "da un quarto (tutto l'export) al 43% (solo via mare) dell'urea mondiale",
+     "rif": {
+      "s": "hormuz",
+      "sez": "flussi",
+      "i": 7,
+      "cerca": "un quarto"
+     },
+     "rif2": {
+      "s": "hormuz",
+      "sez": "flussi",
+      "i": 8,
+      "cerca": "43%"
+     }
+    },
+    {
+     "tipo": "container",
+     "etichetta": "Container",
+     "testo": "nessun volume in TEU nei file; si vedono le navi al giorno di PortWatch qui sopra",
+     "rif": null
+    },
+    {
+     "tipo": "grano",
+     "etichetta": "Cibo verso il Golfo",
+     "testo": "flusso in entrata: il 70% delle importazioni caloriche del Golfo interrotto a metà marzo 2026",
+     "rif": {
+      "s": "hormuz",
+      "sez": "flussi",
+      "i": 10,
+      "cerca": "70%"
+     }
+    }
+   ],
+   "petrolio": {
+    "flusso": 19.87,
+    "meccanismo": "perdita",
+    "bypass": [
+     {
+      "nome": "Oleodotto Est-Ovest (Abqaiq–Yanbu), capacità libera",
+      "min": 3.0,
+      "max": 5.0,
+      "rif": {
+       "s": "hormuz",
+       "sez": "alternative",
+       "i": 0,
+       "cerca": "3–5 mb/g liberi"
+      }
+     },
+     {
+      "nome": "ADCOP (Habshan–Fujairah), capacità libera",
+      "min": 0.0,
+      "max": 0.7,
+      "rif": {
+       "s": "hormuz",
+       "sez": "alternative",
+       "i": 3,
+       "cerca": "0,7"
+      }
+     },
+     {
+      "nome": "Goreh–Jask (Iran): fermo",
+      "min": 0.0,
+      "max": 0.0,
+      "rif": {
+       "s": "hormuz",
+       "sez": "alternative",
+       "i": 4,
+       "cerca": "fermi"
+      }
+     }
+    ],
+    "nota": "Il porto di Yanbu limita l'export di greggio a circa 5 mb/g: per questo il massimo del bypass saudita è 5 e non 7.",
+    "nota_rif": {
+     "s": "hormuz",
+     "sez": "alternative",
+     "i": 2,
+     "cerca": "5 mb/g"
+    }
+   },
+   "gnl": {
+    "flusso_bcm": 112,
+    "meccanismo": "perdita",
+    "bypass": [
+     {
+      "nome": "Nessuna via alternativa per il GNL (Dolphin ha poca capacità libera)",
+      "min": 0,
+      "max": 0,
+      "rif": {
+       "s": "hormuz",
+       "sez": "alternative",
+       "i": 8,
+       "cerca": "non esistono rotte alternative"
+      }
+     }
+    ]
+   },
+   "rotta": null,
+   "container": {
+    "meccanismo": "sovrapprezzo"
+   },
+   "noli_episodi": [
+    {
+     "s": "hormuz",
+     "sez": "impatti_mercato",
+     "i": 5,
+     "cerca": "quasi triplicato"
+    },
+    {
+     "s": "hormuz",
+     "sez": "impatti_mercato",
+     "i": 2,
+     "cerca": "0,25%"
+    },
+    {
+     "s": "hormuz",
+     "sez": "impatti_mercato",
+     "i": 6,
+     "cerca": "1.500 dollari"
+    }
+   ],
+   "prezzi_episodi": [
+    {
+     "s": "hormuz",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "119"
+    },
+    {
+     "s": "hormuz",
+     "sez": "impatti_mercato",
+     "i": 10,
+     "cerca": "475 a 680"
+    },
+    {
+     "s": "hormuz",
+     "sez": "impatti_mercato",
+     "i": 13,
+     "cerca": "400 milioni"
+    }
+   ],
+   "esposizione": [
+    {
+     "ind": "quota_greggio_golfo_persico",
+     "etichetta": "Greggio importato dal Golfo Persico"
+    },
+    {
+     "ind": "quota_gnl_golfo_persico",
+     "etichetta": "GNL importato dal Golfo Persico"
+    }
+   ],
+   "nota_dk": "Esposizione diretta bassa sui volumi (nessun dato nei file); la Danimarca è esposta attraverso i prezzi europei di gas e petrolio.",
+   "porti": [
+    {
+     "nome": "Adriatic LNG (Rovigo)",
+     "paese": "IT",
+     "segno": "-",
+     "testo": "il terminale che riceveva il GNL del Qatar: 14,1% degli ingressi di gas in Italia negli ultimi 12 mesi",
+     "rif": {
+      "s": "hormuz",
+      "sez": "esposizione_italia_ue",
+      "i": 1,
+      "cerca": "14,1%"
+     }
+    },
+    {
+     "nome": "Ravenna",
+     "paese": "IT",
+     "segno": "-",
+     "testo": "porto di energia e rinfuse: chiamate in calo su un anno",
+     "portwatch": "Ravenna"
+    },
+    {
+     "nome": "Trieste",
+     "paese": "IT",
+     "segno": "-",
+     "testo": "porto del greggio per l'oleodotto TAL verso Austria e Germania",
+     "portwatch": "Trieste"
+    },
+    {
+     "nome": "Gate LNG (Rotterdam)",
+     "paese": "NL",
+     "segno": "?",
+     "testo": "il più grande rigassificatore olandese: con il GNL del Golfo fermo, l'Europa compete con l'Asia per i carichi atlantici (valutazione)",
+     "gnl": "Gate LNG Terminal"
+    },
+    {
+     "nome": "Fujairah e Yanbu",
+     "paese": "",
+     "segno": "+",
+     "testo": "porti di uscita dei bypass: più traffico, ma Fujairah è stata colpita più volte (valutazione)"
+    }
+   ],
+   "settori_rif": {
+    "s": "hormuz",
+    "sez": "impatti_mercato",
+    "i": 15,
+    "cerca": "Chi ne beneficia"
+   }
+  },
+  {
+   "id": "bab-el-mandeb",
+   "nome": "Bab el-Mandeb",
+   "breve": "Bab el-Mandeb",
+   "stretto": "bab-el-mandeb",
+   "portwatch": "Bab el-Mandeb",
+   "cavi": "Bab el-Mandeb",
+   "rotte": "Bab el-Mandeb",
+   "avviso": "Il flusso di riferimento è quello del 2026 (8,1 mb/g), gonfiato dal greggio saudita deviato a Yanbu perché Hormuz è chiuso: oggi Bab el-Mandeb è il «secondo Hormuz».",
+   "flussi": [
+    {
+     "tipo": "petrolio",
+     "etichetta": "Petrolio (2° trimestre 2026)",
+     "valore": 8.1,
+     "unita": "mb/g",
+     "rif": {
+      "s": "bab-el-mandeb",
+      "sez": "flussi",
+      "i": 1,
+      "cerca": "8,1 mb/g"
+     }
+    },
+    {
+     "tipo": "gnl",
+     "etichetta": "GNL (Mar Rosso con Suez e SUMED)",
+     "testo": "circa l'8% del GNL mondiale nel 2023; nel 2026 il GNL del Golfo è già fermo a Hormuz",
+     "rif": {
+      "s": "bab-el-mandeb",
+      "sez": "flussi",
+      "i": 2,
+      "cerca": "8%"
+     }
+    },
+    {
+     "tipo": "container",
+     "etichetta": "Container e auto",
+     "testo": "rotta Asia–Europa; 144 viaggi di car carrier nel 3° trimestre 2026",
+     "rif": {
+      "s": "bab-el-mandeb",
+      "sez": "flussi",
+      "i": 4,
+      "cerca": "144"
+     }
+    },
+    {
+     "tipo": "grano",
+     "etichetta": "Cereali",
+     "testo": "circa l'8% del commercio mondiale di cereali passa dal Mar Rosso",
+     "rif": {
+      "s": "bab-el-mandeb",
+      "sez": "flussi",
+      "i": 5,
+      "cerca": "8%"
+     }
+    }
+   ],
+   "petrolio": {
+    "flusso": 8.1,
+    "meccanismo": "perdita",
+    "bypass": [
+     {
+      "nome": "SUMED (Ain Sukhna–Sidi Kerir) verso il Mediterraneo",
+      "min": 2.5,
+      "max": 2.5,
+      "rif": {
+       "s": "bab-el-mandeb",
+       "sez": "alternative",
+       "i": 0,
+       "cerca": "2,5 mb/g"
+      }
+     }
+    ],
+    "nota": "Il resto del greggio saudita diretto in Asia non ha alternative se non un giro di settimane (valutazione dell'osservatorio): il modello lo tratta come offerta persa nel periodo.",
+    "nota_rif": {
+     "s": "bab-el-mandeb",
+     "sez": "alternative",
+     "i": 2,
+     "cerca": "settimane in più"
+    }
+   },
+   "gnl": {
+    "meccanismo": "deviazione"
+   },
+   "rotta": {
+    "nome": "Capo di Buona Speranza",
+    "km": [
+     7000,
+     7000
+    ],
+    "giorni": [
+     14,
+     24
+    ],
+    "episodio": true,
+    "rif": {
+     "s": "bab-el-mandeb",
+     "sez": "alternative",
+     "i": 1,
+     "cerca": "7.000 km e 14–24 giorni"
+    }
+   },
+   "container": {
+    "meccanismo": "deviazione"
+   },
+   "noli_episodi": [
+    {
+     "s": "bab-el-mandeb",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "3.777"
+    },
+    {
+     "s": "bab-el-mandeb",
+     "sez": "impatti_mercato",
+     "i": 1,
+     "cerca": "933.000"
+    }
+   ],
+   "prezzi_episodi": [
+    {
+     "s": "bab-el-mandeb",
+     "sez": "impatti_mercato",
+     "i": 3,
+     "cerca": "non stima"
+    }
+   ],
+   "esposizione": [
+    {
+     "ind": "fornitori_greggio",
+     "partner": "SA",
+     "etichetta": "Greggio importato dall'Arabia Saudita"
+    },
+    {
+     "ind": "partner_import",
+     "partner": "CN",
+     "etichetta": "Merci importate dalla Cina (rotta Asia–Europa)"
+    }
+   ],
+   "nota_dk": "Nessun dato paese nei file. Il gruppo Maersk (Danimarca) è tra le compagnie container che deviano dal Capo quando il Mar Rosso è insicuro (valutazione, nessun dato nei file).",
+   "porti": [
+    {
+     "nome": "Gioia Tauro, Genova, Trieste, La Spezia",
+     "paese": "IT",
+     "segno": "-",
+     "testo": "con il giro dal Capo l'Italia perde il vantaggio di primo approdo",
+     "rif": {
+      "s": "suez",
+      "sez": "esposizione_italia_ue",
+      "i": 2,
+      "cerca": "Gioia Tauro"
+     }
+    },
+    {
+     "nome": "Tanger Med, Algeciras, Valencia",
+     "paese": "",
+     "segno": "+",
+     "testo": "le navi entrano da Gibilterra e scaricano prima qui",
+     "rif": {
+      "s": "suez",
+      "sez": "esposizione_italia_ue",
+      "i": 2,
+      "cerca": "Tanger Med"
+     }
+    },
+    {
+     "nome": "Rotterdam, Anversa, Amburgo",
+     "paese": "NL",
+     "segno": "+",
+     "testo": "i porti del nord Europa guadagnano quota sulla rotta del Capo (valutazione)",
+     "rif": {
+      "s": "capo",
+      "sez": "esposizione_italia_ue",
+      "i": 0,
+      "cerca": "nord Europa"
+     }
+    },
+    {
+     "nome": "Yanbu",
+     "paese": "",
+     "segno": "-",
+     "testo": "terminale saudita sul Mar Rosso: senza Bab el-Mandeb il greggio per l'Asia resta bloccato",
+     "rif": {
+      "s": "bab-el-mandeb",
+      "sez": "alternative",
+      "i": 2,
+      "cerca": "Bab el-Mandeb"
+     }
+    }
+   ],
+   "settori_rif": {
+    "s": "bab-el-mandeb",
+    "sez": "impatti_mercato",
+    "i": 4,
+    "cerca": "Ne soffrirebbero"
+   }
+  },
+  {
+   "id": "suez",
+   "nome": "Canale di Suez",
+   "breve": "Suez",
+   "stretto": "suez",
+   "portwatch": "Canale di Suez",
+   "cavi": "Canale di Suez",
+   "rotte": "Canale di Suez",
+   "avviso": null,
+   "flussi": [
+    {
+     "tipo": "petrolio",
+     "etichetta": "Petrolio (2° trimestre 2026)",
+     "valore": 5.8,
+     "unita": "mb/g",
+     "rif": {
+      "s": "suez",
+      "sez": "flussi",
+      "i": 1,
+      "cerca": "5,8 mb/g"
+     }
+    },
+    {
+     "tipo": "container",
+     "etichetta": "Container",
+     "testo": "753.000 TEU a settimana a inizio ottobre 2026, contro 1.457.000 nel 2023",
+     "rif": {
+      "s": "suez",
+      "sez": "flussi",
+      "i": 3,
+      "cerca": "753.000"
+     }
+    },
+    {
+     "tipo": "gnl",
+     "etichetta": "GNL",
+     "testo": "140 metaniere nel 2025 (509 nel 2021)",
+     "rif": {
+      "s": "suez",
+      "sez": "flussi",
+      "i": 4,
+      "cerca": "140"
+     }
+    },
+    {
+     "tipo": "altro",
+     "etichetta": "Commercio mondiale",
+     "testo": "dal 12 al 15% del commercio mondiale (2023)",
+     "rif": {
+      "s": "suez",
+      "sez": "flussi",
+      "i": 2,
+      "cerca": "12 al 15%"
+     }
+    }
+   ],
+   "petrolio": {
+    "flusso": 5.8,
+    "meccanismo": "deviazione",
+    "bypass": [
+     {
+      "nome": "SUMED (solo greggio, tra Mar Rosso e Mediterraneo)",
+      "min": 2.5,
+      "max": 2.5,
+      "rif": {
+       "s": "suez",
+       "sez": "alternative",
+       "i": 2,
+       "cerca": "2,5 mb/g"
+      }
+     }
+    ],
+    "nota": "Il petrolio che non passa dal SUMED gira dal Capo: arriva più tardi ma non è perso."
+   },
+   "gnl": {
+    "meccanismo": "deviazione"
+   },
+   "rotta": {
+    "nome": "Capo di Buona Speranza",
+    "km": [
+     7000,
+     7000
+    ],
+    "giorni": [
+     14,
+     24
+    ],
+    "episodio": true,
+    "rif": {
+     "s": "suez",
+     "sez": "alternative",
+     "i": 0,
+     "cerca": "7.000 km e 14–24 giorni"
+    }
+   },
+   "container": {
+    "meccanismo": "deviazione"
+   },
+   "noli_episodi": [
+    {
+     "s": "suez",
+     "sez": "impatti_mercato",
+     "i": 2,
+     "cerca": "3.777"
+    },
+    {
+     "s": "suez",
+     "sez": "alternative",
+     "i": 0,
+     "cerca": "160 dollari"
+    }
+   ],
+   "prezzi_episodi": [
+    {
+     "s": "suez",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "10,2"
+    }
+   ],
+   "esposizione": [
+    {
+     "ind": "partner_import",
+     "partner": "CN",
+     "etichetta": "Merci importate dalla Cina (rotta Asia–Europa)"
+    },
+    {
+     "ind": "fornitori_greggio",
+     "partner": "SA",
+     "etichetta": "Greggio importato dall'Arabia Saudita"
+    }
+   ],
+   "nota_dk": "Nessun dato paese nei file. Per i porti danesi conta soprattutto l'effetto sui noli Asia–Nord Europa (valutazione).",
+   "porti": [
+    {
+     "nome": "Gioia Tauro",
+     "paese": "IT",
+     "segno": "-",
+     "testo": "primo approdo europeo della rotta di Suez",
+     "rif": {
+      "s": "suez",
+      "sez": "esposizione_italia_ue",
+      "i": 2,
+      "cerca": "Gioia Tauro"
+     },
+     "portwatch": "Gioia Tauro"
+    },
+    {
+     "nome": "Genova",
+     "paese": "IT",
+     "segno": "-",
+     "testo": "porto container",
+     "rif": {
+      "s": "suez",
+      "sez": "esposizione_italia_ue",
+      "i": 2,
+      "cerca": "Genova"
+     },
+     "portwatch": "Genova"
+    },
+    {
+     "nome": "Trieste",
+     "paese": "IT",
+     "segno": "-",
+     "testo": "porto container e del greggio TAL",
+     "rif": {
+      "s": "suez",
+      "sez": "esposizione_italia_ue",
+      "i": 2,
+      "cerca": "Trieste"
+     },
+     "portwatch": "Trieste"
+    },
+    {
+     "nome": "Tanger Med, Algeciras, Valencia",
+     "paese": "",
+     "segno": "+",
+     "testo": "favoriti dalla rotta del Capo",
+     "rif": {
+      "s": "suez",
+      "sez": "esposizione_italia_ue",
+      "i": 2,
+      "cerca": "Tanger Med"
+     }
+    },
+    {
+     "nome": "Rotterdam, Anversa, Amburgo",
+     "paese": "NL",
+     "segno": "+",
+     "testo": "i porti del nord Europa guadagnano quota sulla rotta del Capo (valutazione)",
+     "rif": {
+      "s": "capo",
+      "sez": "esposizione_italia_ue",
+      "i": 0,
+      "cerca": "nord Europa"
+     }
+    }
+   ],
+   "settori_rif": {
+    "s": "capo",
+    "sez": "impatti_mercato",
+    "i": 1,
+    "cerca": "Ne beneficiano"
+   }
+  },
+  {
+   "id": "malacca",
+   "nome": "Stretto di Malacca",
+   "breve": "Malacca",
+   "stretto": "malacca",
+   "portwatch": "Stretto di Malacca",
+   "cavi": "Stretto di Malacca",
+   "rotte": "Stretto di Malacca",
+   "avviso": null,
+   "flussi": [
+    {
+     "tipo": "petrolio",
+     "etichetta": "Petrolio (2° trimestre 2026)",
+     "valore": 16.6,
+     "unita": "mb/g",
+     "rif": {
+      "s": "malacca",
+      "sez": "flussi",
+      "i": 1,
+      "cerca": "16,6 mb/g"
+     }
+    },
+    {
+     "tipo": "gnl",
+     "etichetta": "GNL",
+     "testo": "il 17% delle traversate delle metaniere del mondo",
+     "rif": {
+      "s": "malacca",
+      "sez": "flussi",
+      "i": 2,
+      "cerca": "17%"
+     }
+    },
+    {
+     "tipo": "container",
+     "etichetta": "Container e commercio",
+     "testo": "con lo Stretto di Taiwan, quasi metà del commercio mondiale via mare",
+     "rif": {
+      "s": "malacca",
+      "sez": "flussi",
+      "i": 4,
+      "cerca": "metà"
+     }
+    },
+    {
+     "tipo": "grano",
+     "etichetta": "Soia",
+     "testo": "oltre un quarto dell'export mondiale di soia (studio del 2017)",
+     "rif": {
+      "s": "malacca",
+      "sez": "flussi",
+      "i": 3,
+      "cerca": "un quarto"
+     }
+    }
+   ],
+   "petrolio": {
+    "flusso": 16.6,
+    "meccanismo": "deviazione",
+    "bypass": [
+     {
+      "nome": "Stretti di Lombok e della Sonda (rotta, non oleodotto)",
+      "min": 16.6,
+      "max": 16.6,
+      "rif": {
+       "s": "lombok-sonda",
+       "sez": "impatti_mercato",
+       "i": 0,
+       "cerca": "nessuna perdita fisica"
+      }
+     }
+    ],
+    "nota": "Lombok e Sonda assorbono tutto il traffico con qualche giorno in più (valutazione dell'osservatorio): il volume scoperto è zero, il costo è nel tempo di viaggio."
+   },
+   "gnl": {
+    "meccanismo": "deviazione"
+   },
+   "rotta": {
+    "nome": "Stretti di Lombok o della Sonda",
+    "km": null,
+    "giorni": [
+     2,
+     3
+    ],
+    "per": "per tratta",
+    "episodio": false,
+    "rif": {
+     "s": "lombok-sonda",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "2–3 giorni"
+    },
+    "rif2": {
+     "s": "malacca",
+     "sez": "alternative",
+     "i": 0,
+     "cerca": "5 giorni"
+    }
+   },
+   "container": {
+    "meccanismo": "deviazione"
+   },
+   "noli_episodi": [],
+   "prezzi_episodi": [
+    {
+     "s": "malacca",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "meno che con Hormuz"
+    }
+   ],
+   "esposizione": [
+    {
+     "ind": "quota_greggio_golfo_persico",
+     "etichetta": "Greggio dal Golfo (per l'Asia orientale passa da Malacca; non per l'India)"
+    },
+    {
+     "ind": "partner_import",
+     "partner": "CN",
+     "etichetta": "Merci importate dalla Cina (rotta Asia–Europa)"
+    }
+   ],
+   "nota_dk": "Nessun dato paese nei file. Effetto indiretto via noli e tempi di consegna Asia–Europa (valutazione).",
+   "porti": [
+    {
+     "nome": "Singapore",
+     "paese": "",
+     "segno": "-",
+     "testo": "bunker e trasbordo: il porto più colpito da una chiusura",
+     "rif": {
+      "s": "malacca",
+      "sez": "impatti_mercato",
+      "i": 0,
+      "cerca": "Singapore"
+     }
+    },
+    {
+     "nome": "Porti container europei (Rotterdam, Genova, Gioia Tauro)",
+     "paese": "",
+     "segno": "-",
+     "testo": "le navi Asia–Europa partono da Cina e Corea e passano da Malacca: ritardi di qualche giorno (valutazione)",
+     "rif": {
+      "s": "malacca",
+      "sez": "esposizione_italia_ue",
+      "i": 0,
+      "cerca": "Malacca"
+     }
+    }
+   ],
+   "settori_rif": {
+    "s": "malacca",
+    "sez": "impatti_mercato",
+    "i": 0,
+    "cerca": "Ne soffrirebbero"
+   }
+  },
+  {
+   "id": "taiwan",
+   "nome": "Stretto di Taiwan",
+   "breve": "Taiwan",
+   "stretto": "taiwan",
+   "portwatch": "Stretto di Taiwan",
+   "cavi": "Stretto di Taiwan",
+   "rotte": "Stretto di Taiwan",
+   "avviso": "Il modello tratta solo la rotta marittima (aggirare l'isola a est). Un blocco militare di Taiwan colpirebbe soprattutto i semiconduttori, che il modello non quantifica: Bloomberg Economics stima −5% del PIL mondiale per un anno di blocco.",
+   "avviso_rif": {
+    "s": "taiwan",
+    "sez": "impatti_mercato",
+    "i": 0,
+    "cerca": "−5%"
+   },
+   "flussi": [
+    {
+     "tipo": "container",
+     "etichetta": "Portacontainer",
+     "testo": "il 48% delle 5.400 portacontainer del mondo è passato dallo stretto (gennaio–luglio 2022)",
+     "rif": {
+      "s": "taiwan",
+      "sez": "flussi",
+      "i": 1,
+      "cerca": "48%"
+     }
+    },
+    {
+     "tipo": "altro",
+     "etichetta": "Commercio marittimo",
+     "testo": "oltre un quinto del commercio marittimo mondiale",
+     "rif": {
+      "s": "taiwan",
+      "sez": "flussi",
+      "i": 0,
+      "cerca": "un quinto"
+     }
+    },
+    {
+     "tipo": "altro",
+     "etichetta": "Semiconduttori",
+     "testo": "fino a 1.600 miliardi di dollari di ricavi l'anno a rischio in un blocco",
+     "rif": {
+      "s": "taiwan",
+      "sez": "flussi",
+      "i": 2,
+      "cerca": "1.600"
+     }
+    }
+   ],
+   "petrolio": {
+    "flusso": null,
+    "meccanismo": "deviazione",
+    "bypass": [],
+    "nota": "Nei file non c'è un volume di petrolio per lo Stretto di Taiwan: il modello non calcola mb/g scoperti."
+   },
+   "gnl": {
+    "meccanismo": "deviazione"
+   },
+   "rotta": {
+    "nome": "Rotta a est di Taiwan",
+    "km": null,
+    "giorni": [
+     3,
+     3
+    ],
+    "per": "di ritardo",
+    "episodio": false,
+    "rif": {
+     "s": "taiwan",
+     "sez": "alternative",
+     "i": 0,
+     "cerca": "tre giorni"
+    }
+   },
+   "container": {
+    "meccanismo": "deviazione"
+   },
+   "noli_episodi": [],
+   "prezzi_episodi": [
+    {
+     "s": "taiwan",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "10.000 miliardi"
+    }
+   ],
+   "esposizione": [
+    {
+     "ind": "partner_import",
+     "partner": "CN",
+     "etichetta": "Merci importate dalla Cina"
+    },
+    {
+     "ind": "quota_gnl_golfo_persico",
+     "etichetta": "GNL dal Golfo (proxy della dipendenza dal GNL spot via mare)",
+     "solo_contesto": true
+    }
+   ],
+   "nota_dk": "Nessun dato paese nei file. Esposizione indiretta ma grande via chip per industria e macchinari (valutazione).",
+   "porti": [
+    {
+     "nome": "Porti container europei",
+     "paese": "",
+     "segno": "-",
+     "testo": "ritardi di qualche giorno sulle partenze dalla Cina orientale, dalla Corea e dal Giappone (valutazione)"
+    },
+    {
+     "nome": "Industria europea dei chip e dell'auto",
+     "paese": "",
+     "segno": "-",
+     "testo": "esposizione indiretta ma grande: chip per auto, macchinari ed elettronica",
+     "rif": {
+      "s": "taiwan",
+      "sez": "esposizione_italia_ue",
+      "i": 0,
+      "cerca": "chip"
+     }
+    }
+   ],
+   "settori_rif": {
+    "s": "taiwan",
+    "sez": "impatti_mercato",
+    "i": 1,
+    "cerca": "semiconduttori"
+   }
+  },
+  {
+   "id": "stretti-turchi",
+   "nome": "Bosforo (stretti turchi)",
+   "breve": "Bosforo",
+   "stretto": "stretti-turchi",
+   "portwatch": "Bosforo",
+   "cavi": null,
+   "rotte": "Bosforo",
+   "avviso": "Il traffico del Bosforo è già −55% su un anno (PortWatch) per la guerra sui porti del Mar Nero.",
+   "flussi": [
+    {
+     "tipo": "petrolio",
+     "etichetta": "Petrolio (2° trimestre 2026)",
+     "valore": 4.1,
+     "unita": "mb/g",
+     "rif": {
+      "s": "stretti-turchi",
+      "sez": "flussi",
+      "i": 1,
+      "cerca": "4,1 mb/g"
+     }
+    },
+    {
+     "tipo": "petrolio",
+     "etichetta": "Greggio kazako CPC",
+     "testo": "il terminale CPC di Novorossiysk tratta l'80% dell'export di greggio del Kazakistan",
+     "rif": {
+      "s": "stretti-turchi",
+      "sez": "flussi",
+      "i": 4,
+      "cerca": "80%"
+     }
+    },
+    {
+     "tipo": "grano",
+     "etichetta": "Grano",
+     "testo": "Russia e Ucraina valgono il 27,3% dell'export mondiale di grano; circa un quinto passa dagli stretti",
+     "rif": {
+      "s": "stretti-turchi",
+      "sez": "flussi",
+      "i": 2,
+      "cerca": "27,3%"
+     },
+     "rif2": {
+      "s": "stretti-turchi",
+      "sez": "flussi",
+      "i": 3,
+      "cerca": "un quinto"
+     }
+    }
+   ],
+   "petrolio": {
+    "flusso": 4.1,
+    "meccanismo": "perdita",
+    "bypass": [
+     {
+      "nome": "Nessuna alternativa vera per il greggio CPC e l'Urals del Mar Nero",
+      "min": 0,
+      "max": 0,
+      "rif": {
+       "s": "stretti-turchi",
+       "sez": "alternative",
+       "i": 0,
+       "cerca": "non c'è alternativa vera"
+      }
+     }
+    ]
+   },
+   "gnl": null,
+   "rotta": null,
+   "container": {
+    "meccanismo": null
+   },
+   "noli_episodi": [],
+   "prezzi_episodi": [
+    {
+     "s": "stretti-turchi",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "−90%"
+    }
+   ],
+   "esposizione": [
+    {
+     "ind": "fornitori_greggio",
+     "partner": "KZ",
+     "etichetta": "Greggio importato dal Kazakistan (CPC)"
+    },
+    {
+     "ind": "fornitori_greggio",
+     "partner": "RU",
+     "etichetta": "Greggio importato dalla Russia"
+    }
+   ],
+   "nota_dk": "Nessun dato paese nei file; nessun flusso diretto noto.",
+   "porti": [
+    {
+     "nome": "Raffinerie italiane (Augusta, Trieste per il TAL)",
+     "paese": "IT",
+     "segno": "-",
+     "testo": "lo stop del greggio CPC tocca direttamente le raffinerie italiane (valutazione)",
+     "rif": {
+      "s": "stretti-turchi",
+      "sez": "esposizione_italia_ue",
+      "i": 0,
+      "cerca": "raffinerie italiane"
+     },
+     "portwatch": "Augusta"
+    },
+    {
+     "nome": "Novorossiysk, Odesa",
+     "paese": "",
+     "segno": "-",
+     "testo": "porti di carico del Mar Nero, già sotto attacco nel 2026",
+     "rif": {
+      "s": "stretti-turchi",
+      "sez": "episodi",
+      "i": 1,
+      "cerca": "CPC"
+     }
+    }
+   ],
+   "settori_rif": {
+    "s": "stretti-turchi",
+    "sez": "impatti_mercato",
+    "i": 1,
+    "cerca": "Ne soffrono"
+   }
+  },
+  {
+   "id": "stretti-danesi",
+   "nome": "Stretti danesi",
+   "breve": "Stretti danesi",
+   "stretto": "stretti-danesi",
+   "portwatch": "Stretti danesi",
+   "cavi": "Stretti danesi",
+   "rotte": "Stretti danesi",
+   "avviso": "PortWatch misura solo l'Øresund, non il Grande Belt dove passano le petroliere più grandi.",
+   "flussi": [
+    {
+     "tipo": "petrolio",
+     "etichetta": "Petrolio (2° trimestre 2026)",
+     "valore": 4.7,
+     "unita": "mb/g",
+     "rif": {
+      "s": "stretti-danesi",
+      "sez": "flussi",
+      "i": 2,
+      "cerca": "4,7 mb/g"
+     }
+    },
+    {
+     "tipo": "petrolio",
+     "etichetta": "Quota russa",
+     "testo": "circa un terzo dell'export di petrolio russo via mare",
+     "rif": {
+      "s": "stretti-danesi",
+      "sez": "flussi",
+      "i": 3,
+      "cerca": "un terzo"
+     }
+    },
+    {
+     "tipo": "container",
+     "etichetta": "Container",
+     "testo": "nessun volume in TEU nei file; l'accesso container al Baltico passa da qui (valutazione)",
+     "rif": null
+    }
+   ],
+   "petrolio": {
+    "flusso": 4.7,
+    "meccanismo": "perdita",
+    "bypass": [
+     {
+      "nome": "Nessuna alternativa marittima per il petrolio russo del Baltico",
+      "min": 0,
+      "max": 0,
+      "rif": {
+       "s": "stretti-danesi",
+       "sez": "alternative",
+       "i": 0,
+       "cerca": "non ha alternativa"
+      }
+     }
+    ],
+    "nota": "Se il blocco toccasse solo le petroliere russe, l'osservatorio stima circa 2 mb/g tolti al mercato invece di 4,7.",
+    "nota_rif": {
+     "s": "stretti-danesi",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "2 mb/g"
+    }
+   },
+   "gnl": null,
+   "rotta": null,
+   "container": {
+    "meccanismo": null
+   },
+   "noli_episodi": [],
+   "prezzi_episodi": [
+    {
+     "s": "stretti-danesi",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "diesel"
+    }
+   ],
+   "esposizione": [
+    {
+     "ind": "fornitori_greggio",
+     "partner": "RU",
+     "etichetta": "Greggio importato dalla Russia"
+    }
+   ],
+   "nota_dk": "La Danimarca è lo Stato costiero: il rischio è più ambientale (petroliere vecchie senza assicurazione) e di sicurezza (cavi e gasdotti del Baltico) che di approvvigionamento.",
+   "nota_dk_rif": {
+    "s": "stretti-danesi",
+    "sez": "esposizione_italia_ue",
+    "i": 0,
+    "cerca": "ambientale"
+   },
+   "porti": [
+    {
+     "nome": "Primorsk e Ust-Luga",
+     "paese": "",
+     "segno": "-",
+     "testo": "terminali russi del Baltico: senza gli stretti il petrolio non esce",
+     "rif": {
+      "s": "stretti-danesi",
+      "sez": "alternative",
+      "i": 0,
+      "cerca": "Baltico"
+     }
+    },
+    {
+     "nome": "Porti del Baltico (Danzica, Klaipėda, porti finlandesi)",
+     "paese": "",
+     "segno": "-",
+     "testo": "tutto il traffico oceanico verso il Baltico passa dagli stretti danesi; il Canale di Kiel serve solo navi più piccole (valutazione, nessun dato nei file)"
+    },
+    {
+     "nome": "Rotterdam e Amburgo",
+     "paese": "NL",
+     "segno": "+",
+     "testo": "possibili porti di trasbordo verso il Baltico via feeder e Canale di Kiel (valutazione, nessun dato nei file)"
+    }
+   ],
+   "settori_rif": {
+    "s": "stretti-danesi",
+    "sez": "impatti_mercato",
+    "i": 0,
+    "cerca": "Ne beneficerebbero"
+   }
+  },
+  {
+   "id": "panama",
+   "nome": "Canale di Panama",
+   "breve": "Panama",
+   "stretto": "panama",
+   "portwatch": "Canale di Panama",
+   "cavi": null,
+   "rotte": "Canale di Panama",
+   "avviso": null,
+   "flussi": [
+    {
+     "tipo": "petrolio",
+     "etichetta": "Petrolio (2° trimestre 2026)",
+     "valore": 3.2,
+     "unita": "mb/g",
+     "rif": {
+      "s": "panama",
+      "sez": "flussi",
+      "i": 1,
+      "cerca": "3,2 mb/g"
+     }
+    },
+    {
+     "tipo": "container",
+     "etichetta": "Container",
+     "testo": "il 40% del traffico container degli Stati Uniti",
+     "rif": {
+      "s": "panama",
+      "sez": "flussi",
+      "i": 3,
+      "cerca": "40%"
+     }
+    },
+    {
+     "tipo": "grano",
+     "etichetta": "Soia e mais",
+     "testo": "il 29% della soia e il 18% del mais esportati dagli USA",
+     "rif": {
+      "s": "panama",
+      "sez": "flussi",
+      "i": 4,
+      "cerca": "29%"
+     }
+    },
+    {
+     "tipo": "gnl",
+     "etichetta": "GNL",
+     "testo": "32 metaniere nel 2025 (251 nel 2021)",
+     "rif": {
+      "s": "panama",
+      "sez": "flussi",
+      "i": 5,
+      "cerca": "32"
+     }
+    }
+   ],
+   "petrolio": {
+    "flusso": 3.2,
+    "meccanismo": "deviazione",
+    "bypass": [],
+    "nota": "Le alternative (Suez, Capo, Capo Horn, ponte terrestre USA) sono più lunghe di molti giorni, ma nei file non c'è un numero di giorni verificato."
+   },
+   "gnl": {
+    "meccanismo": "deviazione"
+   },
+   "rotta": {
+    "nome": "Suez, Capo di Buona Speranza o Capo Horn",
+    "km": null,
+    "giorni": null,
+    "episodio": false,
+    "rif": {
+     "s": "panama",
+     "sez": "alternative",
+     "i": 1,
+     "cerca": "Nessun numero di giorni"
+    }
+   },
+   "container": {
+    "meccanismo": "deviazione"
+   },
+   "noli_episodi": [
+    {
+     "s": "panama",
+     "sez": "episodi",
+     "i": 0,
+     "cerca": "18"
+    }
+   ],
+   "prezzi_episodi": [
+    {
+     "s": "panama",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "32 al giorno"
+    }
+   ],
+   "esposizione": [
+    {
+     "ind": "fornitori_gnl",
+     "partner": "US",
+     "etichetta": "GNL importato dagli Stati Uniti"
+    },
+    {
+     "ind": "fornitori_greggio",
+     "partner": "US",
+     "etichetta": "Greggio importato dagli Stati Uniti"
+    }
+   ],
+   "nota_dk": "Nessun dato paese nei file. Esposizione diretta bassa, come per il resto d'Europa (valutazione).",
+   "porti": [
+    {
+     "nome": "Porti della costa est USA",
+     "paese": "",
+     "segno": "-",
+     "testo": "ricevono i container asiatici via Panama",
+     "rif": {
+      "s": "panama",
+      "sez": "destinazioni",
+      "i": 0,
+      "cerca": "costa est"
+     }
+    },
+    {
+     "nome": "Porti europei",
+     "paese": "",
+     "segno": "?",
+     "testo": "esposizione diretta bassa: Panama conta per i noli mondiali e i prezzi agricoli USA",
+     "rif": {
+      "s": "panama",
+      "sez": "esposizione_italia_ue",
+      "i": 0,
+      "cerca": "bassa"
+     }
+    }
+   ],
+   "settori_rif": {
+    "s": "panama",
+    "sez": "impatti_mercato",
+    "i": 1,
+    "cerca": "Ne beneficiano"
+   }
+  },
+  {
+   "id": "canale-di-sicilia",
+   "nome": "Canale di Sicilia (TransMed)",
+   "breve": "Sicilia/TransMed",
+   "stretto": "canale-di-sicilia",
+   "portwatch": null,
+   "cavi": "Canale di Sicilia",
+   "rotte": "Canale di Sicilia",
+   "avviso": "Lo scenario riguarda il gasdotto TransMed (Algeria–Tunisia–Mazara del Vallo), non il traffico navale: PortWatch non misura il Canale di Sicilia.",
+   "flussi": [
+    {
+     "tipo": "gnl",
+     "etichetta": "Gas, TransMed",
+     "valore": 20.86,
+     "unita": "bcm/anno",
+     "testo": "220,5 TWh negli ultimi 12 mesi, il 34% degli ingressi di gas in Italia",
+     "rif": {
+      "s": "canale-di-sicilia",
+      "sez": "flussi",
+      "i": 0,
+      "cerca": "220,5"
+     },
+     "gas_italia": "mazara"
+    },
+    {
+     "tipo": "gnl",
+     "etichetta": "Gas, Greenstream (Libia–Gela)",
+     "testo": "5,1 TWh negli ultimi 12 mesi (0,8% degli ingressi); il modello non lo include",
+     "rif": {
+      "s": "canale-di-sicilia",
+      "sez": "flussi",
+      "i": 1,
+      "cerca": "5,1 TWh"
+     }
+    }
+   ],
+   "petrolio": null,
+   "gnl": {
+    "flusso_bcm": 20.86,
+    "meccanismo": "perdita",
+    "bypass_calcolato": "gnl_italia",
+    "bypass": [],
+    "nota": "Bypass = capacità libera dei rigassificatori italiani (capacità GEM meno uso degli ultimi 12 mesi da ENTSOG). Minimo zero: nel 2026 il GNL è scarso e i carichi non sono garantiti (ipotesi).",
+    "nota_rif": {
+     "s": "canale-di-sicilia",
+     "sez": "alternative",
+     "i": 0,
+     "cerca": "più GNL"
+    }
+   },
+   "rotta": null,
+   "container": {
+    "meccanismo": null
+   },
+   "noli_episodi": [],
+   "prezzi_episodi": [
+    {
+     "s": "canale-di-sicilia",
+     "sez": "impatti_mercato",
+     "i": 0,
+     "cerca": "PSV"
+    }
+   ],
+   "esposizione": [],
+   "esposizione_gas_italia": "mazara",
+   "nota_dk": "Nessun flusso diretto: il TransMed finisce in Italia.",
+   "porti": [
+    {
+     "nome": "Mazara del Vallo",
+     "paese": "IT",
+     "segno": "-",
+     "testo": "punto di ingresso del TransMed nella rete Snam",
+     "gas_italia": "mazara"
+    },
+    {
+     "nome": "Rigassificatori (Rovigo, Piombino, Livorno, Ravenna, Panigaglia)",
+     "paese": "IT",
+     "segno": "+",
+     "testo": "dovrebbero lavorare al massimo per sostituire il gas algerino",
+     "rif": {
+      "s": "canale-di-sicilia",
+      "sez": "alternative",
+      "i": 0,
+      "cerca": "Panigaglia"
+     }
+    },
+    {
+     "nome": "Cavi sottomarini (Mazara del Vallo)",
+     "paese": "IT",
+     "segno": "?",
+     "testo": "Mazara è anche il primo approdo di cavi d'Italia (8 cavi): un danno fisico nel Canale potrebbe toccare anche le telecomunicazioni (valutazione)",
+     "cavi_approdo": "Mazara del Vallo"
+    }
+   ],
+   "settori_rif": {
+    "s": "canale-di-sicilia",
+    "sez": "impatti_mercato",
+    "i": 0,
+    "cerca": "industria energivora"
+   }
+  }
+ ]
+}
