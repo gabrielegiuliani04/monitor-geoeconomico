@@ -1,0 +1,64 @@
+<svg class="viz" id="g-gas-720" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="100%" role="img" aria-labelledby="g-gas-720-t g-gas-720-d" style="max-width:720px;height:auto;display:block">
+<title id="g-gas-720-t">Da dove entra il gas in Italia: quote degli ultimi 12 mesi</title><desc id="g-gas-720-d">Quota di ogni punto sugli ingressi da gasdotti e GNL, novembre 2025 – novembre 2026: Mazara del Vallo (Algeria) 34,0%; Melendugno, TAP (Azerbaigian) 16,5%; Adriatic LNG, Rovigo (GNL) 14,1%; Passo Gries (Nord Europa) 13,0%; Piombino (GNL) 6,9%; OLT Livorno (GNL) 6,7%; Ravenna (GNL) 3,5%; Tarvisio (Austria) 2,7%; Panigaglia (GNL) 1,5%; Gela, Greenstream (Libia) 0,8%; Gorizia (Slovenia) 0,2%. Fonte: ENTSOG, dati Snam, al 2026-11-08.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-oil:#4B3B2B;--v-gas:#7A55B5;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;--v-oil:#C8B08E;--v-gas:#B9A0F0;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}
+.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .band{fill:var(--v-band)}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .c-oil{stroke:var(--v-oil)}.viz .c-gas{stroke:var(--v-gas)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-oil{fill:var(--v-oil)}.viz .f-gas{fill:var(--v-gas)}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .badge{fill:var(--v-bg);stroke:var(--v-faint);stroke-width:1}
+</style>
+<g style="--fs:12px">
+<line x1="12" y1="11.8" x2="28" y2="11.8" class="l c-s3" style="stroke-width:3"/>
+<text x="33" y="16" class="t-ink">gasdotto</text>
+<line x1="104.76" y1="11.8" x2="120.76" y2="11.8" class="l c-s2" style="stroke-width:3"/>
+<text x="125.76" y="16" class="t-ink">GNL via nave</text>
+<text x="212" y="57.0" text-anchor="end" class="t-ink">Mazara del Vallo (Algeria)</text>
+<path d="M222,45.0 h374.0 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-374.0 z" class="f-s3"><title>Mazara del Vallo (TransMed / Transmed): 34,0% degli ingressi, 220,5 TWh in 12 mesi (Algeria via Tunisia)</title></path>
+<text x="606.0" y="57.0" class="t-ink num"><tspan class="t-b">34,0%</tspan><tspan class="t-faint"> · 220,5 TWh</tspan></text>
+<text x="212" y="83.0" text-anchor="end" class="t-ink">Melendugno, TAP (Azerbaigian)</text>
+<path d="M222,71.0 h179.4 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-179.4 z" class="f-s3"><title>Melendugno (TAP): 16,5% degli ingressi, 106,6 TWh in 12 mesi (Azerbaigian via Turchia, Grecia, Albania)</title></path>
+<text x="411.4" y="83.0" class="t-ink num"><tspan class="t-b">16,5%</tspan><tspan class="t-faint"> · 106,6 TWh</tspan></text>
+<text x="212" y="109.0" text-anchor="end" class="t-ink">Adriatic LNG, Rovigo (GNL)</text>
+<path d="M222,97.0 h152.8 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-152.8 z" class="f-s2"><title>Adriatic LNG (Porto Levante, Rovigo; ingresso a Cavarzere): 14,1% degli ingressi, 91,3 TWh in 12 mesi (GNL via nave)</title></path>
+<text x="384.8" y="109.0" class="t-ink num"><tspan class="t-b">14,1%</tspan><tspan class="t-faint"> · 91,3 TWh</tspan></text>
+<text x="212" y="135.0" text-anchor="end" class="t-ink">Passo Gries (Nord Europa)</text>
+<path d="M222,123.0 h140.5 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-140.5 z" class="f-s3"><title>Passo Gries (Transitgas): 13,0% degli ingressi, 84,3 TWh in 12 mesi (Nord Europa via Svizzera)</title></path>
+<text x="372.5" y="135.0" class="t-ink num"><tspan class="t-b">13,0%</tspan><tspan class="t-faint"> · 84,3 TWh</tspan></text>
+<text x="212" y="161.0" text-anchor="end" class="t-ink">Piombino (GNL)</text>
+<path d="M222,149.0 h72.7 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-72.7 z" class="f-s2"><title>Piombino FSRU (Italis LNG): 6,9% degli ingressi, 45,0 TWh in 12 mesi (GNL via nave)</title></path>
+<text x="304.7" y="161.0" class="t-ink num"><tspan class="t-b">6,9%</tspan><tspan class="t-faint"> · 45,0 TWh</tspan></text>
+<text x="212" y="187.0" text-anchor="end" class="t-ink">OLT Livorno (GNL)</text>
+<path d="M222,175.0 h70.5 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-70.5 z" class="f-s2"><title>OLT Livorno (FSRU Toscana): 6,7% degli ingressi, 43,7 TWh in 12 mesi (GNL via nave)</title></path>
+<text x="302.5" y="187.0" class="t-ink num"><tspan class="t-b">6,7%</tspan><tspan class="t-faint"> · 43,7 TWh</tspan></text>
+<text x="212" y="213.0" text-anchor="end" class="t-ink">Ravenna (GNL)</text>
+<path d="M222,201.0 h34.9 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-34.9 z" class="f-s2"><title>Ravenna FSRU (Italis LNG, BW Singapore): 3,5% degli ingressi, 22,5 TWh in 12 mesi (GNL via nave)</title></path>
+<text x="266.9" y="213.0" class="t-ink num"><tspan class="t-b">3,5%</tspan><tspan class="t-faint"> · 22,5 TWh</tspan></text>
+<text x="212" y="239.0" text-anchor="end" class="t-ink">Tarvisio (Austria)</text>
+<path d="M222,227.0 h26.0 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-26.0 z" class="f-s3"><title>Tarvisio (TAG): 2,7% degli ingressi, 17,5 TWh in 12 mesi (Austria (storicamente gas russo))</title></path>
+<text x="258.0" y="239.0" class="t-ink num"><tspan class="t-b">2,7%</tspan><tspan class="t-faint"> · 17,5 TWh</tspan></text>
+<text x="212" y="265.0" text-anchor="end" class="t-ink">Panigaglia (GNL)</text>
+<path d="M222,253.0 h12.7 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-12.7 z" class="f-s2"><title>Panigaglia (GNL Italia): 1,5% degli ingressi, 9,8 TWh in 12 mesi (GNL via nave)</title></path>
+<text x="244.7" y="265.0" class="t-ink num"><tspan class="t-b">1,5%</tspan><tspan class="t-faint"> · 9,8 TWh</tspan></text>
+<text x="212" y="291.0" text-anchor="end" class="t-ink">Gela, Greenstream (Libia)</text>
+<path d="M222,279.0 h4.9 a4,4 0 0 1 4,4 v8.0 a4,4 0 0 1 -4,4 h-4.9 z" class="f-s3"><title>Gela (Greenstream): 0,8% degli ingressi, 5,1 TWh in 12 mesi (Libia)</title></path>
+<text x="236.9" y="291.0" class="t-ink num"><tspan class="t-b">0,8%</tspan><tspan class="t-faint"> · 5,1 TWh</tspan></text>
+<text x="212" y="317.0" text-anchor="end" class="t-ink">Gorizia (Slovenia)</text>
+<path d="M222,305.0 h1.1 a1.1117647058823508,1.1117647058823508 0 0 1 1.1117647058823508,1.1117647058823508 v13.8 a1.1117647058823508,1.1117647058823508 0 0 1 -1.1117647058823508,1.1117647058823508 h-1.1 z" class="f-s3"><title>Gorizia (interconnessione con la Slovenia): 0,2% degli ingressi, 1,4 TWh in 12 mesi (Slovenia)</title></path>
+<text x="230.2" y="317.0" class="t-ink num"><tspan class="t-b">0,2%</tspan><tspan class="t-faint"> · 1,4 TWh</tspan></text>
+<line x1="222" y1="38" x2="222" y2="326" class="base"/>
+</g></svg>

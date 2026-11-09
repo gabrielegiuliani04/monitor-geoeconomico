@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Report del Monitor</title>
+<meta name="description" content="Elenco dei report di analisi del Monitor geoeconomico di Gabriele Giuliani.">
+<meta name="author" content="Gabriele Giuliani">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@1,400&display=swap">
+<style>
+:root{
+  --ink:#1D272D;--ink-soft:#52606A;--ink-faint:#86929A;--accent:#A61E6B;--paper:#F6F5F0;--card:#FCFBF7;
+  --line:#D6D9D6;--line-soft:#E6E6E0;--valut:#F3E6EC;--note:#ECEFEE;
+  --f-sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-cond:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-serif:"IBM Plex Serif",Georgia,serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ink:#DAE0E2;--ink-soft:#A0ABB1;--ink-faint:#6C787F;--accent:#F27DB9;--paper:#10181D;--card:#151F25;
+  --line:#2B373E;--line-soft:#1F2A31;--valut:#2A1B24;--note:#18232A;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ink:#DAE0E2;--ink-soft:#A0ABB1;--ink-faint:#6C787F;--accent:#F27DB9;--paper:#10181D;--card:#151F25;
+  --line:#2B373E;--line-soft:#1F2A31;--valut:#2A1B24;--note:#18232A;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:16px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--f-sans);overflow-x:hidden}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.barra{border-bottom:1px solid var(--line);font:500 13px/1 var(--f-cond);letter-spacing:.02em}
+.barra-in{max-width:760px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.barra a{color:var(--ink-soft);text-decoration:none}.barra a:hover{color:var(--accent)}
+.pagina{max-width:760px;margin:0 auto;padding:0 16px 64px}
+.testo{max-width:70ch}
+header.testata{padding:40px 0 8px}
+.occhiello{font:600 13px/1.3 var(--f-cond);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font:600 clamp(30px,6vw,44px)/1.1 var(--f-cond);margin:0 0 10px;letter-spacing:-.01em;text-wrap:balance}
+.sottotitolo{font:italic 400 19px/1.4 var(--f-serif);color:var(--ink-soft);margin:0 0 18px}
+.firma{font-size:14px;color:var(--ink-soft);margin:0;border-top:1px solid var(--line);padding-top:12px}
+.firma strong{color:var(--ink);font-weight:600}
+.cifre{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:28px 0 8px}
+.cifra{background:var(--card);padding:12px 14px}
+.cifra b{display:block;font:600 26px/1.1 var(--f-sans);margin:2px 0 4px}
+.cifra span{display:block;font-size:12.5px;line-height:1.35;color:var(--ink-soft)}
+.cifra .etichetta{font:600 12px/1.2 var(--f-cond);letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint)}
+.fonte-cifre{font-size:12.5px;color:var(--ink-faint);margin:0 0 8px}
+nav.indice{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 18px 10px;margin:24px 0 8px}
+nav.indice h2{font:600 13px/1 var(--f-cond);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 8px;border:0;padding:0}
+nav.indice ol{list-style:none;margin:0;padding:0;columns:2;column-gap:24px}
+nav.indice li{break-inside:avoid;margin:0 0 6px;font-size:15px;line-height:1.35}
+nav.indice a{color:var(--ink);text-decoration:none}nav.indice a:hover{color:var(--accent);text-decoration:underline}
+main h2{font:600 26px/1.2 var(--f-cond);margin:52px 0 14px;padding-top:14px;border-top:2px solid var(--ink);max-width:70ch}
+main h3{font:600 19px/1.3 var(--f-cond);margin:32px 0 8px;max-width:70ch}
+main p,main ul,main ol,aside.nota{max-width:70ch}
+main p{margin:0 0 14px}
+main ul,main ol{padding-left:1.3em;margin:0 0 16px}
+main li{margin:0 0 7px}
+main li::marker{color:var(--ink-faint)}
+#in-breve + ol{counter-reset:k;list-style:none;padding:0}
+#in-breve + ol li{counter-increment:k;position:relative;padding-left:44px;margin:0 0 14px}
+#in-breve + ol li::before{content:counter(k);position:absolute;left:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--paper);font:600 14px/28px var(--f-sans);text-align:center}
+strong{font-weight:600}
+code{font:13.5px var(--f-mono);background:var(--note);padding:1px 4px;border-radius:3px;overflow-wrap:anywhere}
+a code{background:none;padding:0;color:inherit}
+p.valutazione{background:var(--valut);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 4px 4px 0}
+p.valutazione em:first-child,li em{font-style:normal;font-weight:600;color:var(--accent)}
+aside.nota{background:var(--note);border-radius:6px;padding:12px 16px;font-size:15px;margin:16px 0 20px}
+aside.nota strong{color:var(--ink)}
+.tabella{overflow-x:auto;margin:8px 0 22px;border:1px solid var(--line);border-radius:6px;background:var(--card);-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.45}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line-soft)}
+thead th{font:600 12.5px/1.3 var(--f-cond);letter-spacing:.03em;color:var(--ink-soft);background:var(--note);border-bottom:1px solid var(--line)}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+td:first-child{white-space:nowrap}
+table.scenari{min-width:640px}table.scenari td:first-child,table.scenari th[scope=row]{white-space:normal}
+table.scenari th[scope=row]{font-weight:600;width:20%;color:var(--ink)}
+figure.grafico{margin:20px 0 28px;padding:16px 16px 12px;background:var(--card);border:1px solid var(--line);border-radius:6px}
+figure.grafico figcaption{font-size:13.5px;line-height:1.5;color:var(--ink-soft);margin-top:10px;max-width:70ch}
+.graf-stretto{display:none}
+@media (max-width:560px){
+  body{font-size:16px}
+  .graf-largo{display:none}.graf-stretto{display:block}
+  figure.grafico{margin-left:-8px;margin-right:-8px;padding:12px 8px 10px}
+  .cifre{grid-template-columns:repeat(2,minmax(0,1fr))}
+  nav.indice ol{columns:1}
+  main h2{font-size:23px}
+  td:first-child{white-space:normal}
+  table{font-size:13.5px}
+}
+footer.piede{margin-top:56px;border-top:2px solid var(--ink);padding-top:16px;font-size:14px;color:var(--ink-soft);max-width:70ch}
+footer.piede p{margin:0 0 10px}
+.ai{background:var(--note);border-radius:6px;padding:12px 16px}
+@media print{.barra,nav.indice{display:none}body{background:#fff}}
+
+.elenco{list-style:none;margin:28px 0 0;padding:0}
+.elenco li{border-top:1px solid var(--line);padding:22px 0}
+.elenco li:last-child{border-bottom:1px solid var(--line)}
+.elenco .meta{font:600 12.5px/1.3 var(--f-cond);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 6px}
+.elenco h2{font:600 24px/1.2 var(--f-cond);margin:0 0 8px;border:0;padding:0}
+.elenco h2 a{color:var(--ink);text-decoration:none}.elenco h2 a:hover{color:var(--accent);text-decoration:underline}
+.elenco p{margin:0 0 8px;max-width:70ch;color:var(--ink-soft)}
+.elenco .temi{font-size:13.5px;color:var(--ink-faint)}
+</style>
+</head>
+<body>
+<div class="barra"><div class="barra-in"><a href="../index.html">← Torna alla mappa</a><span style="color:var(--ink-faint)">Report</span></div></div>
+<div class="pagina">
+<header class="testata">
+<p class="occhiello">Monitor geoeconomico</p>
+<h1>Report di analisi</h1>
+<p class="sottotitolo">Analisi a tema costruite sui dati dell'osservatorio: ogni numero con fonte e data, le valutazioni marcate come tali.</p>
+<p class="firma"><strong>Gabriele Giuliani · Monitor geoeconomico</strong></p>
+</header>
+<main>
+<ol class="elenco" reversed>
+<li>
+<p class="meta">N. 1 · <time datetime="2026-11-09">9 novembre 2026</time></p>
+<h2><a href="hormuz-mar-rosso-2026-11.html">Hormuz e Mar Rosso: energia, logistica e mercati</a></h2>
+<p>Hormuz chiuso di fatto dal 2 marzo, il rischio che si sposta su Bab el-Mandeb, Suez che si riapre. Le conseguenze su noli, Brent, TTF, inflazione e banche centrali; chi è esposto in Asia, nell'UE e in Italia; tre scenari per i prossimi tre mesi con le soglie da osservare.</p>
+<p class="temi">Stretti · energia · logistica · mercati · Italia · 4 grafici</p>
+</li>
+</ol>
+</main>
+<footer class="piede">
+<p class="ai"><strong>Nota sull'uso dell'AI.</strong> Raccolta dei dati e prima stesura dei report sono fatte con l'aiuto di un assistente AI (Claude, di Anthropic); fonti e verifiche sono riportate punto per punto.</p>
+<p><a href="../index.html">Torna alla mappa</a> · <a href="https://github.com/gabrielegiuliani04/monitor-geoeconomico" rel="noopener">Codice e dati su GitHub</a></p>
+</footer>
+</div>
+</body>
+</html>

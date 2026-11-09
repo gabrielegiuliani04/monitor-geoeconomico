@@ -18,7 +18,7 @@ Fonti (nessuna chiave richiesta):
 Uso:  python3 raccolta/commercio/raccogli.py [cartella_docs_data]
 Solo libreria standard. Se una fonte non risponde, la salta e lo scrive in "errori".
 """
-import csv, io, json, os, re, sys, time, urllib.parse, urllib.request, zipfile
+import csv, hashlib, io, json, os, re, sys, time, urllib.parse, urllib.request, zipfile
 from datetime import datetime, timezone
 
 UA = {"User-Agent": "Mozilla/5.0 (monitor-osint commercio)"}
@@ -61,22 +61,33 @@ _ultima = [0.0]
 def comtrade(**q):
     """Una chiamata all'endpoint preview. Ritorna la lista 'data' (righe gia' filtrate sui totali)."""
     url = CT + "?" + urllib.parse.urlencode({k: v for k, v in q.items() if v is not None})
+    cache = os.environ.get("COMMERCIO_CACHE")  # facoltativo: cartella per riusare le risposte (solo sviluppo)
+    fcache = os.path.join(cache, hashlib.sha1(url.encode()).hexdigest() + ".json") if cache else None
     for i in range(6):
-        attesa = 1.3 - (time.time() - _ultima[0])
-        if attesa > 0:
-            time.sleep(attesa)
-        _ultima[0] = time.time()
-        try:
-            d = json.loads(get(url, tries=3))
-        except Exception as e:
-            d = {"error": str(e)}
+        if fcache and os.path.exists(fcache):
+            with open(fcache, encoding="utf-8") as f:
+                d = json.load(f)
+        else:
+            attesa = 1.2 - (time.time() - _ultima[0])
+            if attesa > 0:
+                time.sleep(attesa)
+            _ultima[0] = time.time()
+            try:
+                d = json.loads(get(url, tries=2, timeout=60))
+            except Exception as e:
+                d = {"error": str(e)}
+            if fcache and isinstance(d, dict) and isinstance(d.get("data"), list):
+                os.makedirs(cache, exist_ok=True)
+                with open(fcache, "w", encoding="utf-8") as f:
+                    json.dump(d, f)
         if isinstance(d, dict) and isinstance(d.get("data"), list):
             righe = [x for x in d["data"] if x.get("partner2Code") in (0, None) and x.get("motCode") in (0, None)
                      and x.get("customsCode") in ("C00", None)]
             if d.get("count", 0) >= 500:
                 ERR.append(f"Comtrade: risposta troncata a 500 righe per {q}")
             return righe
-        time.sleep(6 * (i + 1))
+        print(f"  comtrade riprovo ({i + 1}): {str(d)[:120]}", file=sys.stderr)
+        time.sleep(5 * (i + 1))
     ERR.append(f"Comtrade: nessuna risposta valida per {q}: {str(d)[:200]}")
     return None
 

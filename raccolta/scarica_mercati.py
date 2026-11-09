@@ -20,6 +20,10 @@ TITOLI = [
     ("ndx", "Nasdaq 100", "Indici", "^NDX"),
     ("ixic", "Nasdaq Composite", "Indici", "^IXIC"),
     ("sox", "Semiconduttori (SOX)", "Indici", "^SOX"),
+    ("vix", "VIX (volatilità S&P 500)", "Indici", "^VIX"),
+    ("ftsemib", "FTSE MIB", "Indici", "FTSEMIB.MI"),
+    ("sx5e", "Euro Stoxx 50", "Indici", "^STOXX50E"),
+    ("dax", "DAX", "Indici", "^GDAXI"),
     ("nvda", "Nvidia", "AI", "NVDA"),
     ("msft", "Microsoft", "AI", "MSFT"),
     ("googl", "Alphabet", "AI", "GOOGL"),
@@ -39,9 +43,11 @@ TITOLI = [
     ("ttf", "Gas TTF (Europa)", "Materie prime", "TTF=F"),
     ("hh", "Gas Henry Hub (USA)", "Materie prime", "NG=F"),
     ("eurusd", "EUR/USD", "Valute", "EURUSD=X"),
+    ("btc", "Bitcoin", "Cripto", "BTC-USD"),
+    ("eth", "Ethereum", "Cripto", "ETH-USD"),
 ]
 UNITA = {"gold": "USD/oncia", "silver": "USD/oncia", "brent": "USD/barile", "wti": "USD/barile",
-         "ttf": "EUR/MWh", "hh": "USD/MMBtu", "eurusd": "USD per 1 EUR"}
+         "ttf": "EUR/MWh", "hh": "USD/MMBtu", "eurusd": "USD per 1 EUR", "btc": "USD", "eth": "USD"}
 SCADENZE = ["1 Mo", "3 Mo", "6 Mo", "1 Yr", "2 Yr", "3 Yr", "5 Yr", "7 Yr", "10 Yr", "20 Yr", "30 Yr"]
 
 
@@ -175,7 +181,7 @@ def main(out_path):
     except Exception as e:
         errori.append(f"Tesoro USA: {e}"); print(f"ERR Tesoro USA: {e}")
 
-    ordine = ["Indici", "AI", "Tassi USA", "Materie prime", "Valute"]
+    ordine = ["Indici", "AI", "Tassi USA", "Materie prime", "Valute", "Cripto"]
     tutte = serie_out + tassi
     tutte.sort(key=lambda x: ordine.index(x["gruppo"]))
     out = {"aggiornato": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ"),

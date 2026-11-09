@@ -1,0 +1,67 @@
+{
+ "nota": "Fonti del raccoglitore di notizie (raccolta/notizie/raccogli.py). tipo: rss (RSS/Atom/RDF), gnews (ricerca Google News RSS: per le fonti bloccate da qui, la notizia resta dell'editore indicato in <source>), telegram (anteprima pubblica t.me/s/<canale>), threadreader (thread X srotolati da threadreaderapp.com), bdi_html (pagina comunicati della Banca d'Italia). famiglia: marittima, conflitti, energia, macro. affidabilita: valore predefinito (alta/media/bassa); per gnews vale la tabella 'editori' e, se l'editore non c'e', il valore della fonte. solo_con_tema: tiene solo le notizie che toccano almeno un tema. filtro: parole che devono comparire nel titolo o nel sommario. Provato il 2026-11-09.",
+ "fonti": [
+  {"id": "ukmto_gn", "nome": "UKMTO (avvisi ripresi dai media, via Google News)", "tipo": "gnews", "url": "UKMTO when:3d", "famiglia": "marittima", "affidabilita": "media", "lingua": "en", "note": "ukmto.org bloccato da Cloudflare per gli indirizzi cloud (403). Il testo dell'avviso UKMTO e' citato dagli articoli: fonte primaria alta, ripresa media."},
+  {"id": "jmic_gn", "nome": "JMIC (Joint Maritime Information Center, via Google News)", "tipo": "gnews", "url": "\"JMIC\" OR \"Joint Maritime Information Center\" when:7d", "famiglia": "marittima", "affidabilita": "media", "lingua": "en", "note": "Le note JMIC stanno su ukmto.org (bloccato)."},
+  {"id": "marad_gn", "nome": "MARAD, Maritime Administration USA (via Google News)", "tipo": "gnews", "url": "site:maritime.dot.gov when:30d", "famiglia": "marittima", "affidabilita": "alta", "lingua": "en", "filtro": ["advisory", "advisories", "alert", "security", "threat", "Hormuz", "Red Sea", "Gulf", "Bab", "MSCI"], "note": "maritime.dot.gov risponde 403 da qui. Tiene solo i titoli sugli avvisi di sicurezza."},
+  {"id": "nsc_gn", "nome": "NATO Shipping Centre (via Google News)", "tipo": "gnews", "url": "\"NATO Shipping Centre\" when:30d", "famiglia": "marittima", "affidabilita": "media", "lingua": "en", "note": "shipping.nato.int risponde 403 da qui."},
+  {"id": "imb_gn", "nome": "IMB Piracy Reporting Centre e ReCAAP (via Google News)", "tipo": "gnews", "url": "IMB piracy OR ReCAAP OR pirates when:7d", "famiglia": "marittima", "affidabilita": "media", "lingua": "en", "note": "icc-ccs.org: la pagina del rapporto pirateria non e' piu' all'indirizzo noto (404)."},
+  {"id": "gcaptain", "nome": "gCaptain", "tipo": "rss", "url": "https://gcaptain.com/feed/", "famiglia": "marittima", "affidabilita": "media", "lingua": "en"},
+  {"id": "maritime_executive", "nome": "The Maritime Executive", "tipo": "rss", "url": "https://www.maritime-executive.com/articles.rss", "famiglia": "marittima", "affidabilita": "media", "lingua": "en"},
+  {"id": "usni", "nome": "USNI News", "tipo": "rss", "url": "https://news.usni.org/feed", "famiglia": "marittima", "affidabilita": "alta", "lingua": "en"},
+
+  {"id": "isw_gn", "nome": "ISW, Institute for the Study of War (titoli via Google News)", "tipo": "gnews", "url": "site:understandingwar.org when:3d", "famiglia": "conflitti", "affidabilita": "alta", "lingua": "en", "note": "understandingwar.org risponde 403 (Cloudflare). Titoli dei rapporti giornalieri Russia-Ucraina e Iran Update."},
+  {"id": "kyiv_independent", "nome": "The Kyiv Independent", "tipo": "rss", "url": "https://kyivindependent.com/news-archive/rss/", "famiglia": "conflitti", "affidabilita": "media", "lingua": "en"},
+  {"id": "meduza", "nome": "Meduza (inglese)", "tipo": "rss", "url": "https://meduza.io/rss/en/all", "famiglia": "conflitti", "affidabilita": "media", "lingua": "en"},
+  {"id": "al_monitor", "nome": "Al-Monitor", "tipo": "rss", "url": "https://www.al-monitor.com/rss", "famiglia": "conflitti", "affidabilita": "media", "lingua": "en"},
+  {"id": "toi_gn", "nome": "The Times of Israel (via Google News)", "tipo": "gnews", "url": "site:timesofisrael.com when:2d", "famiglia": "conflitti", "affidabilita": "media", "lingua": "en", "solo_con_tema": true, "note": "timesofisrael.com/feed risponde 403 da qui."},
+  {"id": "jpost", "nome": "The Jerusalem Post", "tipo": "rss", "url": "https://www.jpost.com/rss/rssfeedsheadlines.aspx", "famiglia": "conflitti", "affidabilita": "media", "lingua": "en", "solo_con_tema": true},
+  {"id": "oryx", "nome": "Oryx", "tipo": "rss", "url": "https://www.oryxspioenkop.com/feeds/posts/default", "famiglia": "conflitti", "affidabilita": "alta", "lingua": "en", "note": "Aggiorna di rado. Perdite documentate con foto."},
+  {"id": "molin_tr", "nome": "Clement Molin (thread X via Thread Reader)", "tipo": "threadreader", "url": "https://threadreaderapp.com/user/clement_molin", "utente": "clement_molin", "famiglia": "conflitti", "affidabilita": "media", "lingua": "fr", "note": "Analista OSINT francese, scrive su X (@clement_molin). Il Substack clementmolin.substack.com e' vuoto. Valutazioni di un analista, non fatti verificati."},
+  {"id": "amk_tg", "nome": "AMK Mapping (Telegram)", "tipo": "telegram", "url": "https://t.me/s/AMK_Mapping", "famiglia": "conflitti", "affidabilita": "media", "lingua": "en", "note": "Mappatore OSINT indipendente (Ucraina e Medio Oriente). Buono su elenchi di bersagli e mappe, cita spesso fonti di parte."},
+  {"id": "deepstate_tg", "nome": "DeepState (Telegram)", "tipo": "telegram", "url": "https://t.me/s/DeepStateUA", "famiglia": "conflitti", "affidabilita": "media", "lingua": "uk", "note": "Progetto ucraino di mappatura del fronte (deepstatemap.live). Affidabile sui cambi di linea, di parte ucraina."},
+  {"id": "wartranslated_tg", "nome": "WarTranslated (Telegram)", "tipo": "telegram", "url": "https://t.me/s/wartranslated", "famiglia": "conflitti", "affidabilita": "media", "lingua": "en", "note": "Traduce fonti ucraine e russe. Utile per le dichiarazioni, meno per i fatti sul terreno."},
+  {"id": "bbc_world", "nome": "BBC News, World", "tipo": "rss", "url": "https://feeds.bbci.co.uk/news/world/rss.xml", "famiglia": "conflitti", "affidabilita": "alta", "lingua": "en", "solo_con_tema": true},
+  {"id": "aljazeera", "nome": "Al Jazeera English", "tipo": "rss", "url": "https://www.aljazeera.com/xml/rss/all.xml", "famiglia": "conflitti", "affidabilita": "media", "lingua": "en", "solo_con_tema": true},
+  {"id": "ap_gn", "nome": "AP News (via Google News)", "tipo": "gnews", "url": "site:apnews.com (Iran OR Ukraine OR Russia OR Israel OR Houthi OR Hormuz OR drone OR sabotage) when:2d", "famiglia": "conflitti", "affidabilita": "alta", "lingua": "en", "note": "apnews.com/hub/*.rss risponde 403 da qui."},
+  {"id": "iaea", "nome": "IAEA, notizie principali", "tipo": "rss", "url": "https://www.iaea.org/feeds/topnews", "famiglia": "conflitti", "affidabilita": "alta", "lingua": "en", "solo_con_tema": true},
+
+  {"id": "eia_tie", "nome": "EIA, Today in Energy", "tipo": "rss", "url": "https://www.eia.gov/rss/todayinenergy.xml", "famiglia": "energia", "affidabilita": "alta", "lingua": "en"},
+  {"id": "oilprice", "nome": "OilPrice.com", "tipo": "rss", "url": "https://oilprice.com/rss/main", "famiglia": "energia", "affidabilita": "media", "lingua": "en", "note": "Mescola notizie e commenti: titoli spesso enfatici."},
+  {"id": "splash247", "nome": "Splash247", "tipo": "rss", "url": "https://splash247.com/feed/", "famiglia": "energia", "affidabilita": "media", "lingua": "en"},
+  {"id": "hellenic", "nome": "Hellenic Shipping News", "tipo": "rss", "url": "https://www.hellenicshippingnews.com/feed/", "famiglia": "energia", "affidabilita": "media", "lingua": "en", "note": "Ripubblica molti testi di terzi (broker, agenzie)."},
+  {"id": "lloydslist_gn", "nome": "Lloyd's List (solo titoli, via Google News)", "tipo": "gnews", "url": "site:lloydslist.com when:3d", "famiglia": "energia", "affidabilita": "alta", "lingua": "en", "note": "A pagamento; il feed RSS risponde 403. Solo titolo e link."},
+  {"id": "reuters_gn", "nome": "Reuters (via Google News)", "tipo": "gnews", "url": "site:reuters.com (oil OR crude OR LNG OR gas OR Hormuz OR tanker OR shipping OR refinery OR OPEC OR sanctions) when:2d", "famiglia": "energia", "affidabilita": "alta", "lingua": "en", "note": "feeds.reuters.com non esiste piu' (502). Articoli spesso a pagamento: solo titolo e link."},
+  {"id": "lngprime", "nome": "LNG Prime", "tipo": "rss", "url": "https://www.lngprime.com/feed/", "famiglia": "energia", "affidabilita": "media", "lingua": "en"},
+
+  {"id": "fed", "nome": "Federal Reserve, comunicati", "tipo": "rss", "url": "https://www.federalreserve.gov/feeds/press_all.xml", "famiglia": "macro", "affidabilita": "alta", "lingua": "en"},
+  {"id": "bce", "nome": "BCE, comunicati e discorsi", "tipo": "rss", "url": "https://www.ecb.europa.eu/rss/press.html", "famiglia": "macro", "affidabilita": "alta", "lingua": "en"},
+  {"id": "boe", "nome": "Bank of England, notizie", "tipo": "rss", "url": "https://www.bankofengland.co.uk/rss/news", "famiglia": "macro", "affidabilita": "alta", "lingua": "en"},
+  {"id": "bdi", "nome": "Banca d'Italia, comunicati stampa", "tipo": "bdi_html", "url": "https://www.bancaditalia.it/media/comunicati/index.html", "famiglia": "macro", "affidabilita": "alta", "lingua": "it", "note": "Nessun RSS pubblico trovato: si legge la pagina HTML (solo data, senza ora)."},
+  {"id": "opec_gn", "nome": "OPEC, sito ufficiale (via Google News)", "tipo": "gnews", "url": "site:opec.org when:30d", "famiglia": "macro", "affidabilita": "alta", "lingua": "en", "note": "opec.org risponde 403 da qui."}
+ ],
+ "editori": {
+  "alta": ["reuters.com", "apnews.com", "bbc.com", "bbc.co.uk", "ft.com", "bloomberg.com", "wsj.com", "nytimes.com", "washingtonpost.com", "economist.com", "lloydslist.com", "understandingwar.org", "maritime.dot.gov", "opec.org", "nato.int", "ukmto.org", "iaea.org", "usni.org", "news.usni.org", "eia.gov", "federalreserve.gov", "ecb.europa.eu", "bankofengland.co.uk", "bancaditalia.it", "spglobal.com", "argusmedia.com", "kpler.com", "windward.ai", "icc-ccs.org"],
+  "media": ["gcaptain.com", "safety4sea.com", "maritime-executive.com", "splash247.com", "rivieramm.com", "tradewindsnews.com", "seatrade-maritime.com", "hellenicshippingnews.com", "marinelink.com", "theguardian.com", "aljazeera.com", "timesofisrael.com", "jpost.com", "kyivindependent.com", "meduza.io", "al-monitor.com", "arabnews.com", "middleeasteye.net", "iranintl.com", "cnn.com", "cnbc.com", "france24.com", "dw.com", "euronews.com", "thenationalnews.com", "oilprice.com", "lngprime.com", "rigzone.com", "energynow.com", "energynow.ca", "naturalgasintel.com", "newsweek.com", "politico.eu", "politico.com", "axios.com", "foxnews.com", "nbcnews.com", "cbsnews.com", "abcnews.go.com", "skynews.com", "independent.co.uk", "telegraph.co.uk", "lemonde.fr", "ansa.it", "ilsole24ore.com", "corriere.it", "rferl.org", "pravda.com.ua", "ukrinform.net", "united24media.com", "themoscowtimes.com", "novayagazeta.eu", "haaretz.com", "ynetnews.com", "i24news.tv", "breakingdefense.com", "defensenews.com", "twz.com", "navalnews.com", "janes.com", "shippingtelegraph.com", "hindustantimes.com", "thehindu.com", "scmp.com", "nikkei.com", "asia.nikkei.com", "japantimes.co.jp", "dryadglobal.com", "ambrey.com"]
+ },
+ "provate_e_scartate": [
+  {"nome": "UKMTO, incidenti recenti", "url": "https://www.ukmto.org/recent-incidents", "esito": "bloccata (Cloudflare, 403 di fatto)"},
+  {"nome": "JMIC, prodotti", "url": "https://www.ukmto.org/partner-products/jmic-products", "esito": "bloccata (Cloudflare)"},
+  {"nome": "MARAD MSCI advisories", "url": "https://www.maritime.dot.gov/msci-advisories", "esito": "bloccata (403)"},
+  {"nome": "NATO Shipping Centre", "url": "https://shipping.nato.int/nsc", "esito": "bloccata (403)"},
+  {"nome": "IMB Live Piracy Report", "url": "https://www.icc-ccs.org/index.php/piracy-reporting-centre/live-piracy-report", "esito": "non trovata (404)"},
+  {"nome": "ISW RSS", "url": "https://understandingwar.org/feed/", "esito": "bloccata (403)"},
+  {"nome": "Times of Israel RSS", "url": "https://www.timesofisrael.com/feed/", "esito": "bloccata (403)"},
+  {"nome": "Lloyd's List RSS", "url": "https://www.lloydslist.com/rss", "esito": "bloccata (403) e a pagamento"},
+  {"nome": "Reuters RSS", "url": "https://feeds.reuters.com/reuters/worldNews", "esito": "non esiste piu' (502)"},
+  {"nome": "AP RSS", "url": "https://apnews.com/hub/world-news.rss", "esito": "bloccata (403)"},
+  {"nome": "OPEC press room", "url": "https://www.opec.org/opec_web/en/press_room/28.htm", "esito": "bloccata (403)"},
+  {"nome": "Banca d'Italia RSS", "url": "https://www.bancaditalia.it/util/rss/index.html", "esito": "non trovata (404); alert.bancaditalia.it e' una pagina di iscrizione, non un feed"},
+  {"nome": "Clement Molin Substack", "url": "https://clementmolin.substack.com/feed", "esito": "funziona ma vuoto (1 post segnaposto)"},
+  {"nome": "AMK Mapping Substack", "url": "https://amkmapping.substack.com/feed", "esito": "funziona ma vuoto (1 post segnaposto)"},
+  {"nome": "Telegram t.me/s/clementmolin e t.me/s/GeoConfirmed", "url": "https://t.me/s/GeoConfirmed", "esito": "nessuna anteprima pubblica (canale inesistente o senza anteprima)"},
+  {"nome": "Rybar in English (Telegram)", "url": "https://t.me/s/rybar_in_english", "esito": "funziona ma scartata: canale di propaganda russo, affidabilita bassa"},
+  {"nome": "OSINTdefender (Telegram)", "url": "https://t.me/s/osintdefender", "esito": "funziona ma scartata: aggregatore rapido con errori frequenti"},
+  {"nome": "Military Summary (Telegram)", "url": "https://t.me/s/militarysummary", "esito": "funziona ma scartata: commento filorusso"}
+ ]
+}

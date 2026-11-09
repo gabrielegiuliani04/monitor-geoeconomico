@@ -1,0 +1,115 @@
+<svg class="viz" id="g-esposizione-720" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 448" width="100%" role="img" aria-labelledby="g-esposizione-720-t g-esposizione-720-d" style="max-width:720px;height:auto;display:block">
+<title id="g-esposizione-720-t">Quanto greggio e GNL arriva dal Golfo Persico, per paese importatore</title><desc id="g-esposizione-720-d">Quota delle importazioni (in valore) che arriva dai paesi del Golfo Persico. Barra: dal minimo (Iraq, Kuwait, Qatar, Bahrein, Iran: nessuna uscita alternativa) al massimo (con Arabia Saudita ed Emirati, che possono aggirare in parte Hormuz). Giappone: greggio 10,3–93,0%, GNL 5,6–6,7%; Egitto: greggio 0,9–89,7%, GNL 0,0–0,0%; Corea del Sud: greggio 23,0–68,8%, GNL 15,3–15,8%; Taiwan: greggio 19,5–61,1%, GNL 21,6–24,0%; India: greggio 22,6–47,9%, GNL 47,3–60,8%; Polonia: greggio 0,0–47,3%, GNL n.d.; Cina: greggio 16,0–37,8%, GNL 28,0–28,7%; Italia: greggio 5,6–10,2%, GNL 32,6–32,6%; Brasile: greggio 0,0–26,9%, GNL 0,0–0,0%; Spagna: greggio 4,3–10,3%, GNL 2,0–2,0%; Paesi Bassi: greggio 8,1–9,4%, GNL 0,0–0,0%; Stati Uniti: greggio 3,5–8,8%, GNL n.d.; Francia: greggio 6,5–8,7%, GNL 0,0–0,0%; Germania: greggio 4,0–5,8%, GNL n.d.; Regno Unito: greggio 0,0–0,0%, GNL 2,2–2,2%; Nigeria: greggio 0,0–0,0%, GNL n.d.. Fonte: UN Comtrade tramite paesi.json, anno 2025 (Taiwan 2024).</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-oil:#4B3B2B;--v-gas:#7A55B5;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;--v-oil:#C8B08E;--v-gas:#B9A0F0;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}
+.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .band{fill:var(--v-band)}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .c-oil{stroke:var(--v-oil)}.viz .c-gas{stroke:var(--v-gas)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-oil{fill:var(--v-oil)}.viz .f-gas{fill:var(--v-gas)}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .badge{fill:var(--v-bg);stroke:var(--v-faint);stroke-width:1}
+</style>
+<g style="--fs:12px">
+<text x="130" y="16" class="t-ink t-b">Greggio dal Golfo Persico</text>
+<line x1="130.0" y1="54" x2="130.0" y2="414" class="base"/>
+<text x="130.0" y="48" text-anchor="start" class="num t-faint">0%</text>
+<line x1="267.5" y1="54" x2="267.5" y2="414" class="grid"/>
+<text x="267.5" y="48" text-anchor="middle" class="num t-faint">50%</text>
+<line x1="405.0" y1="54" x2="405.0" y2="414" class="grid"/>
+<text x="405.0" y="48" text-anchor="end" class="num t-faint">100%</text>
+<text x="435.0" y="16" class="t-ink t-b">GNL dal Golfo Persico</text>
+<line x1="435.0" y1="54" x2="435.0" y2="414" class="base"/>
+<text x="435.0" y="48" text-anchor="start" class="num t-faint">0%</text>
+<line x1="572.5" y1="54" x2="572.5" y2="414" class="grid"/>
+<text x="572.5" y="48" text-anchor="middle" class="num t-faint">50%</text>
+<line x1="710.0" y1="54" x2="710.0" y2="414" class="grid"/>
+<text x="710.0" y="48" text-anchor="end" class="num t-faint">100%</text>
+<text x="130" y="34" class="t-faint">punti: stima minima e massima · % del valore importato, 2025</text>
+<text x="122" y="77.0" text-anchor="end" class="t-ink">Giappone</text>
+<rect x="158.3" y="69.0" width="227.4" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Giappone, greggio dal Golfo Persico: 10,3–93,0% (2025)</title></rect>
+<circle cx="158.3" cy="73.0" r="4.5" class="f-s3 ring"><title>Giappone, greggio dal Golfo Persico: 10,3–93,0% (2025)</title></circle>
+<circle cx="385.8" cy="73.0" r="4.5" class="f-s3 ring"><title>Giappone, greggio dal Golfo Persico: 10,3–93,0% (2025)</title></circle>
+<circle cx="451.9" cy="73.0" r="4.5" class="f-s2 ring"><title>Giappone, GNL dal Golfo Persico: 5,6–6,7% (2025)</title></circle>
+<text x="122" y="99.0" text-anchor="end" class="t-ink">Egitto</text>
+<rect x="132.5" y="91.0" width="244.2" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Egitto, greggio dal Golfo Persico: 0,9–89,7% (2025)</title></rect>
+<circle cx="132.5" cy="95.0" r="4.5" class="f-s3 ring"><title>Egitto, greggio dal Golfo Persico: 0,9–89,7% (2025)</title></circle>
+<circle cx="376.7" cy="95.0" r="4.5" class="f-s3 ring"><title>Egitto, greggio dal Golfo Persico: 0,9–89,7% (2025)</title></circle>
+<circle cx="435.0" cy="95.0" r="4.5" class="f-s2 ring"><title>Egitto, GNL dal Golfo Persico: 0,0–0,0% (2025)</title></circle>
+<text x="122" y="121.0" text-anchor="end" class="t-ink">Corea del Sud</text>
+<rect x="193.2" y="113.0" width="125.9" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Corea del Sud, greggio dal Golfo Persico: 23,0–68,8% (2025)</title></rect>
+<circle cx="193.2" cy="117.0" r="4.5" class="f-s3 ring"><title>Corea del Sud, greggio dal Golfo Persico: 23,0–68,8% (2025)</title></circle>
+<circle cx="319.2" cy="117.0" r="4.5" class="f-s3 ring"><title>Corea del Sud, greggio dal Golfo Persico: 23,0–68,8% (2025)</title></circle>
+<circle cx="477.8" cy="117.0" r="4.5" class="f-s2 ring"><title>Corea del Sud, GNL dal Golfo Persico: 15,3–15,8% (2025)</title></circle>
+<text x="122" y="143.0" text-anchor="end" class="t-ink">Taiwan</text>
+<rect x="183.6" y="135.0" width="114.4" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Taiwan, greggio dal Golfo Persico: 19,5–61,1% (2024)</title></rect>
+<circle cx="183.6" cy="139.0" r="4.5" class="f-s3 ring"><title>Taiwan, greggio dal Golfo Persico: 19,5–61,1% (2024)</title></circle>
+<circle cx="298.0" cy="139.0" r="4.5" class="f-s3 ring"><title>Taiwan, greggio dal Golfo Persico: 19,5–61,1% (2024)</title></circle>
+<circle cx="497.7" cy="139.0" r="4.5" class="f-s2 ring"><title>Taiwan, GNL dal Golfo Persico: 21,6–24,0% (2024)</title></circle>
+<text x="122" y="165.0" text-anchor="end" class="t-ink">India</text>
+<rect x="192.2" y="157.0" width="69.6" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>India, greggio dal Golfo Persico: 22,6–47,9% (2025)</title></rect>
+<circle cx="192.2" cy="161.0" r="4.5" class="f-s3 ring"><title>India, greggio dal Golfo Persico: 22,6–47,9% (2025)</title></circle>
+<circle cx="261.7" cy="161.0" r="4.5" class="f-s3 ring"><title>India, greggio dal Golfo Persico: 22,6–47,9% (2025)</title></circle>
+<rect x="565.1" y="157.0" width="37.1" height="8" rx="4" class="f-s2" style="fill-opacity:.35"><title>India, GNL dal Golfo Persico: 47,3–60,8% (2025)</title></rect>
+<circle cx="565.1" cy="161.0" r="4.5" class="f-s2 ring"><title>India, GNL dal Golfo Persico: 47,3–60,8% (2025)</title></circle>
+<circle cx="602.2" cy="161.0" r="4.5" class="f-s2 ring"><title>India, GNL dal Golfo Persico: 47,3–60,8% (2025)</title></circle>
+<text x="122" y="187.0" text-anchor="end" class="t-ink">Polonia</text>
+<rect x="130.0" y="179.0" width="130.1" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Polonia, greggio dal Golfo Persico: 0,0–47,3% (2025)</title></rect>
+<circle cx="130.0" cy="183.0" r="4.5" class="f-s3 ring"><title>Polonia, greggio dal Golfo Persico: 0,0–47,3% (2025)</title></circle>
+<circle cx="260.1" cy="183.0" r="4.5" class="f-s3 ring"><title>Polonia, greggio dal Golfo Persico: 0,0–47,3% (2025)</title></circle>
+<text x="437.0" y="187.0" class="t-faint" style="font-size:11px">n.d.</text>
+<text x="122" y="209.0" text-anchor="end" class="t-ink">Cina</text>
+<rect x="174.0" y="201.0" width="59.9" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Cina, greggio dal Golfo Persico: 16,0–37,8% (2025)</title></rect>
+<circle cx="174.0" cy="205.0" r="4.5" class="f-s3 ring"><title>Cina, greggio dal Golfo Persico: 16,0–37,8% (2025)</title></circle>
+<circle cx="233.9" cy="205.0" r="4.5" class="f-s3 ring"><title>Cina, greggio dal Golfo Persico: 16,0–37,8% (2025)</title></circle>
+<circle cx="513.0" cy="205.0" r="4.5" class="f-s2 ring"><title>Cina, GNL dal Golfo Persico: 28,0–28,7% (2025)</title></circle>
+<rect x="2" y="217" width="716" height="20" class="band" rx="3"/>
+<text x="122" y="231.0" text-anchor="end" class="t-ink t-b">Italia</text>
+<rect x="145.4" y="223.0" width="12.7" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Italia, greggio dal Golfo Persico: 5,6–10,2% (2025)</title></rect>
+<circle cx="145.4" cy="227.0" r="4.5" class="f-s3 ring"><title>Italia, greggio dal Golfo Persico: 5,6–10,2% (2025)</title></circle>
+<circle cx="158.1" cy="227.0" r="4.5" class="f-s3 ring"><title>Italia, greggio dal Golfo Persico: 5,6–10,2% (2025)</title></circle>
+<circle cx="524.6" cy="227.0" r="4.5" class="f-s2 ring"><title>Italia, GNL dal Golfo Persico: 32,6–32,6% (2025)</title></circle>
+<text x="122" y="253.0" text-anchor="end" class="t-ink">Brasile</text>
+<rect x="130.0" y="245.0" width="74.0" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Brasile, greggio dal Golfo Persico: 0,0–26,9% (2025)</title></rect>
+<circle cx="130.0" cy="249.0" r="4.5" class="f-s3 ring"><title>Brasile, greggio dal Golfo Persico: 0,0–26,9% (2025)</title></circle>
+<circle cx="204.0" cy="249.0" r="4.5" class="f-s3 ring"><title>Brasile, greggio dal Golfo Persico: 0,0–26,9% (2025)</title></circle>
+<circle cx="435.0" cy="249.0" r="4.5" class="f-s2 ring"><title>Brasile, GNL dal Golfo Persico: 0,0–0,0% (2025)</title></circle>
+<text x="122" y="275.0" text-anchor="end" class="t-ink">Spagna</text>
+<rect x="141.8" y="267.0" width="16.5" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Spagna, greggio dal Golfo Persico: 4,3–10,3% (2025)</title></rect>
+<circle cx="141.8" cy="271.0" r="4.5" class="f-s3 ring"><title>Spagna, greggio dal Golfo Persico: 4,3–10,3% (2025)</title></circle>
+<circle cx="158.3" cy="271.0" r="4.5" class="f-s3 ring"><title>Spagna, greggio dal Golfo Persico: 4,3–10,3% (2025)</title></circle>
+<circle cx="440.5" cy="271.0" r="4.5" class="f-s2 ring"><title>Spagna, GNL dal Golfo Persico: 2,0–2,0% (2025)</title></circle>
+<text x="122" y="297.0" text-anchor="end" class="t-ink">Paesi Bassi</text>
+<circle cx="154.1" cy="293.0" r="4.5" class="f-s3 ring"><title>Paesi Bassi, greggio dal Golfo Persico: 8,1–9,4% (2025)</title></circle>
+<circle cx="435.0" cy="293.0" r="4.5" class="f-s2 ring"><title>Paesi Bassi, GNL dal Golfo Persico: 0,0–0,0% (2025)</title></circle>
+<text x="122" y="319.0" text-anchor="end" class="t-ink">Stati Uniti</text>
+<rect x="139.6" y="311.0" width="14.6" height="8" rx="4" class="f-s3" style="fill-opacity:.35"><title>Stati Uniti, greggio dal Golfo Persico: 3,5–8,8% (2025)</title></rect>
+<circle cx="139.6" cy="315.0" r="4.5" class="f-s3 ring"><title>Stati Uniti, greggio dal Golfo Persico: 3,5–8,8% (2025)</title></circle>
+<circle cx="154.2" cy="315.0" r="4.5" class="f-s3 ring"><title>Stati Uniti, greggio dal Golfo Persico: 3,5–8,8% (2025)</title></circle>
+<text x="437.0" y="319.0" class="t-faint" style="font-size:11px">n.d.</text>
+<text x="122" y="341.0" text-anchor="end" class="t-ink">Francia</text>
+<circle cx="150.9" cy="337.0" r="4.5" class="f-s3 ring"><title>Francia, greggio dal Golfo Persico: 6,5–8,7% (2025)</title></circle>
+<circle cx="435.0" cy="337.0" r="4.5" class="f-s2 ring"><title>Francia, GNL dal Golfo Persico: 0,0–0,0% (2025)</title></circle>
+<text x="122" y="363.0" text-anchor="end" class="t-ink">Germania</text>
+<circle cx="143.5" cy="359.0" r="4.5" class="f-s3 ring"><title>Germania, greggio dal Golfo Persico: 4,0–5,8% (2025)</title></circle>
+<text x="437.0" y="363.0" class="t-faint" style="font-size:11px">n.d.</text>
+<text x="122" y="385.0" text-anchor="end" class="t-ink">Regno Unito</text>
+<circle cx="130.0" cy="381.0" r="4.5" class="f-s3 ring"><title>Regno Unito, greggio dal Golfo Persico: 0,0–0,0% (2025)</title></circle>
+<circle cx="441.1" cy="381.0" r="4.5" class="f-s2 ring"><title>Regno Unito, GNL dal Golfo Persico: 2,2–2,2% (2025)</title></circle>
+<text x="122" y="407.0" text-anchor="end" class="t-ink">Nigeria</text>
+<circle cx="130.0" cy="403.0" r="4.5" class="f-s3 ring"><title>Nigeria, greggio dal Golfo Persico: 0,0–0,0% (2025)</title></circle>
+<text x="437.0" y="407.0" class="t-faint" style="font-size:11px">n.d.</text>
+<text x="130" y="436" class="t-faint" style="font-size:11px">n.d. = dato non calcolato (paese produttore o voce assente in Comtrade)</text>
+</g></svg>

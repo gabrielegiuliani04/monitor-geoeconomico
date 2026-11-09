@@ -1,0 +1,200 @@
+<svg class="viz" id="g-prezzi-720" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 392" width="100%" role="img" aria-labelledby="g-prezzi-720-t g-prezzi-720-d" style="max-width:720px;height:auto;display:block">
+<title id="g-prezzi-720-t">Brent e TTF nell&#x27;ultimo anno, con gli eventi principali</title><desc id="g-prezzi-720-d">Chiusure giornaliere da 8 ott 2025 a 9 nov 2026. Brent ultimo 92,58 dollari al barile, TTF ultimo 82,33 euro al MWh. Fonte: Yahoo Finance tramite prezzi.json.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-oil:#4B3B2B;--v-gas:#7A55B5;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;--v-oil:#C8B08E;--v-gas:#B9A0F0;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}
+.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .band{fill:var(--v-band)}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .c-oil{stroke:var(--v-oil)}.viz .c-gas{stroke:var(--v-gas)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-oil{fill:var(--v-oil)}.viz .f-gas{fill:var(--v-gas)}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .badge{fill:var(--v-bg);stroke:var(--v-faint);stroke-width:1}
+</style>
+<g style="--fs:12px">
+<text x="40" y="36" class="t-ink"><tspan class="t-b">Brent</tspan> · dollari al barile</text>
+<line x1="40" y1="181.0" x2="700" y2="181.0" class="base"/>
+<text x="34" y="185.0" text-anchor="end" class="num">0</text>
+<line x1="40" y1="136.0" x2="700" y2="136.0" class="grid"/>
+<text x="34" y="140.0" text-anchor="end" class="num">50</text>
+<line x1="40" y1="91.0" x2="700" y2="91.0" class="grid"/>
+<text x="34" y="95.0" text-anchor="end" class="num">100</text>
+<line x1="40" y1="46.0" x2="700" y2="46.0" class="grid"/>
+<text x="34" y="50.0" text-anchor="end" class="num">150</text>
+<line x1="281.1" y1="30.0" x2="281.1" y2="181" class="ev"/>
+<circle cx="281.1" cy="22.0" r="8" class="badge"/><text x="281.1" y="26.0" text-anchor="middle" class="t-ink t-b" style="font-size:11px">1</text>
+<line x1="342.6" y1="30.0" x2="342.6" y2="181" class="ev"/>
+<circle cx="342.6" cy="22.0" r="8" class="badge"/><text x="342.6" y="26.0" text-anchor="middle" class="t-ink t-b" style="font-size:11px">2</text>
+<line x1="460.6" y1="30.0" x2="460.6" y2="181" class="ev"/>
+<circle cx="460.6" cy="22.0" r="8" class="badge"/><text x="460.6" y="26.0" text-anchor="middle" class="t-ink t-b" style="font-size:11px">3</text>
+<line x1="601.9" y1="30.0" x2="601.9" y2="181" class="ev"/>
+<circle cx="601.9" cy="22.0" r="8" class="badge"/><text x="601.9" y="26.0" text-anchor="middle" class="t-ink t-b" style="font-size:11px">4</text>
+<line x1="681.7" y1="30.0" x2="681.7" y2="181" class="ev"/>
+<circle cx="681.7" cy="22.0" r="8" class="badge"/><text x="681.7" y="26.0" text-anchor="middle" class="t-ink t-b" style="font-size:11px">5</text>
+<line x1="700.0" y1="30.0" x2="700.0" y2="181" class="ev"/>
+<circle cx="700.0" cy="22.0" r="8" class="badge"/><text x="700.0" y="26.0" text-anchor="middle" class="t-ink t-b" style="font-size:11px">6</text>
+<path d="M40.0,122.3 L41.7,124.5 L46.6,124.0 L48.3,124.8 L50.0,125.3 L51.6,126.0 L53.3,125.8 L58.3,126.1 L59.9,125.8 L61.6,124.7 L63.3,121.6 L64.9,121.7 L69.9,121.9 L71.6,123.0 L73.2,122.6 L74.9,122.5 L76.6,122.4 L83.2,122.6 L84.9,123.0 L86.5,123.8 L88.2,124.0 L89.9,123.7 L94.9,123.3 L96.5,122.4 L98.2,124.6 L99.8,124.3 L101.5,123.0 L106.5,123.2 L108.2,122.6 L109.8,123.8 L111.5,124.0 L113.1,124.7 L118.1,124.0 L119.8,124.8 L121.5,124.2 L124.8,124.1 L129.8,124.1 L131.4,124.8 L133.1,124.6 L134.8,124.1 L136.4,123.6 L141.4,124.8 L143.1,125.3 L144.7,125.0 L146.4,125.8 L148.1,126.0 L153.0,126.5 L154.7,128.0 L156.4,127.3 L158.0,127.2 L159.7,126.6 L164.7,125.1 L166.3,124.9 L168.0,125.0 L171.3,126.4 L176.3,125.3 L178.0,125.3 L179.6,126.2 L183.0,126.3 L188.0,125.4 L189.6,126.4 L191.3,127.0 L192.9,125.2 L194.6,124.0 L199.6,123.5 L201.3,122.1 L202.9,121.1 L204.6,123.6 L206.2,123.3 L212.9,122.6 L214.6,122.3 L216.2,123.3 L217.9,121.7 L222.9,122.0 L224.5,120.2 L226.2,119.4 L227.9,117.4 L229.5,117.4 L234.5,121.3 L236.2,120.4 L237.8,118.5 L239.5,120.2 L241.2,119.8 L246.1,118.9 L247.8,119.1 L249.5,118.5 L251.1,120.2 L252.8,120.0 L259.4,120.3 L261.1,117.7 L262.8,116.5 L264.4,116.4 L269.4,116.7 L271.1,117.3 L272.7,117.2 L274.4,117.3 L276.1,115.8 L281.1,111.0 L282.7,107.7 L284.4,107.7 L286.0,104.1 L287.7,97.6 L291.0,91.9 L292.7,102.0 L294.4,98.2 L296.0,90.6 L297.7,88.2 L302.7,90.8 L304.3,87.9 L306.0,84.4 L307.7,83.2 L309.3,80.0 L314.3,91.1 L316.0,87.0 L317.6,89.0 L319.3,83.8 L321.0,79.7 L325.9,79.5 L327.6,74.5 L329.3,90.0 L330.9,82.9 L337.6,82.2 L339.2,82.7 L340.9,95.7 L342.6,94.7 L344.2,95.3 L349.2,91.6 L350.9,95.7 L352.5,95.6 L354.2,91.5 L355.9,99.7 L360.9,95.1 L362.5,92.4 L364.2,89.3 L365.8,86.4 L367.5,86.2 L372.5,83.6 L374.2,80.9 L375.8,74.8 L377.5,78.4 L379.1,83.6 L384.1,78.0 L385.8,82.1 L387.5,89.9 L389.1,90.9 L390.8,89.8 L395.8,87.2 L397.4,84.0 L399.1,85.9 L400.8,85.9 L402.4,82.7 L407.4,80.1 L409.1,80.8 L410.7,86.5 L412.4,88.7 L414.1,87.8 L420.7,91.4 L422.4,96.1 L424.0,96.7 L425.7,98.2 L430.7,95.5 L432.3,94.6 L434.0,93.0 L435.7,95.5 L437.3,97.2 L442.3,96.2 L444.0,98.7 L445.6,97.2 L447.3,99.7 L449.0,102.4 L454.0,106.1 L455.6,109.9 L457.3,109.4 L458.9,109.1 L465.6,110.9 L467.3,111.6 L468.9,114.6 L470.6,113.3 L472.2,116.2 L477.2,115.2 L478.9,115.4 L480.6,116.6 L482.2,116.4 L488.9,116.2 L490.5,114.3 L492.2,110.8 L493.9,112.3 L495.5,112.6 L500.5,106.0 L502.2,104.7 L503.8,104.5 L505.5,105.2 L507.2,101.7 L512.1,100.7 L513.8,99.1 L515.5,96.3 L517.1,90.4 L518.8,93.9 L523.8,101.5 L525.4,105.3 L527.1,99.3 L528.8,100.9 L530.4,99.9 L535.4,105.6 L537.1,109.6 L538.7,109.5 L540.4,106.8 L542.1,105.8 L547.1,102.1 L548.7,101.0 L550.4,100.9 L552.0,102.6 L553.7,101.3 L558.7,99.2 L560.4,99.1 L562.0,98.5 L563.7,96.6 L565.3,96.0 L570.3,98.0 L572.0,101.3 L573.7,101.9 L575.3,100.3 L577.0,100.6 L582.0,99.6 L583.6,95.8 L585.3,94.9 L587.0,95.0 L588.6,94.3 L595.3,92.9 L596.9,89.9 L598.6,84.1 L600.3,86.9 L605.2,85.9 L606.9,83.1 L608.6,85.8 L610.2,86.7 L611.9,87.5 L616.9,90.7 L618.5,91.7 L620.2,88.2 L621.9,85.1 L623.5,87.1 L628.5,86.2 L630.2,88.7 L631.8,87.8 L633.5,88.9 L635.2,89.0 L640.2,90.7 L641.8,90.5 L643.5,90.8 L645.1,87.1 L646.8,86.8 L651.8,85.0 L653.5,85.9 L655.1,85.5 L656.8,85.7 L658.4,82.1 L663.4,82.4 L665.1,83.1 L666.8,83.1 L668.4,79.1 L670.1,76.0 L675.1,76.8 L676.7,78.5 L678.4,77.2 L680.1,77.6 L681.7,75.1 L688.4,86.7 L690.0,87.8 L691.7,95.8 L693.4,92.5 L695.0,92.5 L700.0,97.7" class="l c-oil"/>
+<circle cx="327.6" cy="74.5" r="4" class="f-oil ring"/>
+<text x="321.6" y="65.5" text-anchor="start" class="t-ink num">massimo 118,35 (30 mar)</text>
+<circle cx="700.0" cy="97.7" r="4" class="f-oil ring"/>
+<text x="693.0" y="117.7" text-anchor="end" class="t-ink num t-b">92,58</text>
+<rect x="40.0" y="46" width="8.3" height="135" class="hit"><title>Brent 63,32 il 12 ott 2025</title></rect>
+<rect x="48.3" y="46" width="11.6" height="135" class="hit"><title>Brent 61,01 il 19 ott 2025</title></rect>
+<rect x="59.9" y="46" width="11.6" height="135" class="hit"><title>Brent 65,62 il 26 ott 2025</title></rect>
+<rect x="71.6" y="46" width="11.6" height="135" class="hit"><title>Brent 65,07 il 30 ott 2025</title></rect>
+<rect x="83.2" y="46" width="11.6" height="135" class="hit"><title>Brent 63,63 il 7 nov 2025</title></rect>
+<rect x="94.9" y="46" width="11.6" height="135" class="hit"><title>Brent 64,39 il 14 nov 2025</title></rect>
+<rect x="106.5" y="46" width="11.6" height="135" class="hit"><title>Brent 62,56 il 21 nov 2025</title></rect>
+<rect x="118.1" y="46" width="11.6" height="135" class="hit"><title>Brent 63,20 il 28 nov 2025</title></rect>
+<rect x="129.8" y="46" width="11.6" height="135" class="hit"><title>Brent 63,75 il 5 dic 2025</title></rect>
+<rect x="141.4" y="46" width="11.6" height="135" class="hit"><title>Brent 61,12 il 12 dic 2025</title></rect>
+<rect x="153.0" y="46" width="11.6" height="135" class="hit"><title>Brent 60,47 il 19 dic 2025</title></rect>
+<rect x="164.7" y="46" width="11.6" height="135" class="hit"><title>Brent 60,64 il 26 dic 2025</title></rect>
+<rect x="176.3" y="46" width="11.6" height="135" class="hit"><title>Brent 60,75 il 2 gen 2026</title></rect>
+<rect x="188.0" y="46" width="11.6" height="135" class="hit"><title>Brent 63,34 il 9 gen 2026</title></rect>
+<rect x="199.6" y="46" width="11.6" height="135" class="hit"><title>Brent 64,13 il 16 gen 2026</title></rect>
+<rect x="211.2" y="46" width="11.6" height="135" class="hit"><title>Brent 65,88 il 23 gen 2026</title></rect>
+<rect x="222.9" y="46" width="11.6" height="135" class="hit"><title>Brent 70,69 il 30 gen 2026</title></rect>
+<rect x="234.5" y="46" width="11.6" height="135" class="hit"><title>Brent 68,05 il 6 feb 2026</title></rect>
+<rect x="246.1" y="46" width="11.6" height="135" class="hit"><title>Brent 67,75 il 13 feb 2026</title></rect>
+<rect x="257.8" y="46" width="11.6" height="135" class="hit"><title>Brent 71,76 il 20 feb 2026</title></rect>
+<rect x="269.4" y="46" width="11.6" height="135" class="hit"><title>Brent 72,48 il 27 feb 2026</title></rect>
+<rect x="281.1" y="46" width="11.6" height="135" class="hit"><title>Brent 98,96 il 8 mar 2026</title></rect>
+<rect x="292.7" y="46" width="11.6" height="135" class="hit"><title>Brent 100,21 il 15 mar 2026</title></rect>
+<rect x="304.3" y="46" width="11.6" height="135" class="hit"><title>Brent 99,94 il 22 mar 2026</title></rect>
+<rect x="316.0" y="46" width="11.6" height="135" class="hit"><title>Brent 112,78 il 29 mar 2026</title></rect>
+<rect x="327.6" y="46" width="11.6" height="135" class="hit"><title>Brent 109,77 il 5 apr 2026</title></rect>
+<rect x="339.2" y="46" width="11.6" height="135" class="hit"><title>Brent 99,36 il 12 apr 2026</title></rect>
+<rect x="350.9" y="46" width="11.6" height="135" class="hit"><title>Brent 95,48 il 19 apr 2026</title></rect>
+<rect x="362.5" y="46" width="11.6" height="135" class="hit"><title>Brent 108,23 il 26 apr 2026</title></rect>
+<rect x="374.2" y="46" width="11.6" height="135" class="hit"><title>Brent 114,44 il 3 mag 2026</title></rect>
+<rect x="385.8" y="46" width="11.6" height="135" class="hit"><title>Brent 104,21 il 10 mag 2026</title></rect>
+<rect x="397.4" y="46" width="11.6" height="135" class="hit"><title>Brent 112,10 il 17 mag 2026</title></rect>
+<rect x="409.1" y="46" width="11.6" height="135" class="hit"><title>Brent 103,54 il 21 mag 2026</title></rect>
+<rect x="420.7" y="46" width="11.6" height="135" class="hit"><title>Brent 94,98 il 31 mag 2026</title></rect>
+<rect x="432.3" y="46" width="11.6" height="135" class="hit"><title>Brent 94,25 il 7 giu 2026</title></rect>
+<rect x="444.0" y="46" width="11.6" height="135" class="hit"><title>Brent 83,17 il 14 giu 2026</title></rect>
+<rect x="455.6" y="46" width="11.6" height="135" class="hit"><title>Brent 77,90 il 21 giu 2026</title></rect>
+<rect x="467.3" y="46" width="11.6" height="135" class="hit"><title>Brent 73,15 il 28 giu 2026</title></rect>
+<rect x="478.9" y="46" width="11.6" height="135" class="hit"><title>Brent 71,99 il 5 lug 2026</title></rect>
+<rect x="490.5" y="46" width="11.6" height="135" class="hit"><title>Brent 83,30 il 12 lug 2026</title></rect>
+<rect x="502.2" y="46" width="11.6" height="135" class="hit"><title>Brent 89,22 il 19 lug 2026</title></rect>
+<rect x="513.8" y="46" width="11.6" height="135" class="hit"><title>Brent 88,36 il 26 lug 2026</title></rect>
+<rect x="525.4" y="46" width="11.6" height="135" class="hit"><title>Brent 83,77 il 2 ago 2026</title></rect>
+<rect x="537.1" y="46" width="11.6" height="135" class="hit"><title>Brent 87,72 il 9 ago 2026</title></rect>
+<rect x="548.7" y="46" width="11.6" height="135" class="hit"><title>Brent 90,87 il 16 ago 2026</title></rect>
+<rect x="560.4" y="46" width="11.6" height="135" class="hit"><title>Brent 92,17 il 23 ago 2026</title></rect>
+<rect x="572.0" y="46" width="11.6" height="135" class="hit"><title>Brent 90,49 il 30 ago 2026</title></rect>
+<rect x="583.6" y="46" width="11.6" height="135" class="hit"><title>Brent 96,28 il 3 set 2026</title></rect>
+<rect x="595.3" y="46" width="11.6" height="135" class="hit"><title>Brent 105,68 il 13 set 2026</title></rect>
+<rect x="606.9" y="46" width="11.6" height="135" class="hit"><title>Brent 100,34 il 20 set 2026</title></rect>
+<rect x="618.5" y="46" width="11.6" height="135" class="hit"><title>Brent 105,28 il 27 set 2026</title></rect>
+<rect x="630.2" y="46" width="11.6" height="135" class="hit"><title>Brent 100,32 il 4 ott 2026</title></rect>
+<rect x="641.8" y="46" width="11.6" height="135" class="hit"><title>Brent 106,65 il 11 ott 2026</title></rect>
+<rect x="653.5" y="46" width="11.6" height="135" class="hit"><title>Brent 109,55 il 18 ott 2026</title></rect>
+<rect x="665.1" y="46" width="11.6" height="135" class="hit"><title>Brent 115,81 il 25 ott 2026</title></rect>
+<rect x="676.7" y="46" width="11.6" height="135" class="hit"><title>Brent 117,64 il 29 ott 2026</title></rect>
+<rect x="688.4" y="46" width="11.6" height="135" class="hit"><title>Brent 98,32 il 6 nov 2026</title></rect>
+<text x="40" y="223" class="t-ink"><tspan class="t-b">TTF</tspan> · euro al MWh</text>
+<line x1="40" y1="368.0" x2="700" y2="368.0" class="base"/>
+<text x="34" y="372.0" text-anchor="end" class="num">0</text>
+<line x1="40" y1="323.0" x2="700" y2="323.0" class="grid"/>
+<text x="34" y="327.0" text-anchor="end" class="num">50</text>
+<line x1="40" y1="278.0" x2="700" y2="278.0" class="grid"/>
+<text x="34" y="282.0" text-anchor="end" class="num">100</text>
+<line x1="40" y1="233.0" x2="700" y2="233.0" class="grid"/>
+<text x="34" y="237.0" text-anchor="end" class="num">150</text>
+<line x1="281.1" y1="233" x2="281.1" y2="368" class="ev"/>
+<line x1="342.6" y1="233" x2="342.6" y2="368" class="ev"/>
+<line x1="460.6" y1="233" x2="460.6" y2="368" class="ev"/>
+<line x1="601.9" y1="233" x2="601.9" y2="368" class="ev"/>
+<line x1="681.7" y1="233" x2="681.7" y2="368" class="ev"/>
+<line x1="700.0" y1="233" x2="700.0" y2="368" class="ev"/>
+<path d="M40.0,338.9 L41.7,339.0 L46.6,339.7 L48.3,339.4 L50.0,339.4 L51.6,338.9 L53.3,339.4 L58.3,339.4 L59.9,339.0 L61.6,339.4 L63.3,338.8 L64.9,339.2 L69.9,339.7 L71.6,339.7 L73.2,339.3 L74.9,340.1 L76.6,340.0 L83.2,339.4 L84.9,338.7 L86.5,339.4 L88.2,339.6 L89.9,339.9 L94.9,340.0 L96.5,340.0 L98.2,340.2 L99.8,340.6 L101.5,339.9 L106.5,339.7 L108.2,339.5 L109.8,340.2 L111.5,340.0 L113.1,340.8 L118.1,341.2 L119.8,341.5 L121.5,341.6 L124.8,342.1 L129.8,342.6 L131.4,342.8 L133.1,342.6 L134.8,343.6 L136.4,343.5 L141.4,343.8 L143.1,343.3 L144.7,344.1 L146.4,343.9 L148.1,343.1 L153.0,343.3 L154.7,343.9 L156.4,343.4 L158.0,343.1 L159.7,342.7 L164.7,343.1 L166.3,343.0 L168.0,342.7 L171.3,342.7 L176.3,342.3 L178.0,343.0 L179.6,342.7 L183.0,341.9 L188.0,343.3 L189.6,342.7 L191.3,342.1 L192.9,343.1 L194.6,342.5 L199.6,340.8 L201.3,339.7 L202.9,339.4 L204.6,338.2 L206.2,334.8 L212.9,335.7 L214.6,332.7 L216.2,333.7 L217.9,332.0 L222.9,332.8 L224.5,333.1 L226.2,333.0 L227.9,331.9 L229.5,332.6 L234.5,337.5 L236.2,338.4 L237.8,337.9 L239.5,337.6 L241.2,335.9 L246.1,337.9 L247.8,339.3 L249.5,339.0 L251.1,338.3 L252.8,338.8 L259.4,341.2 L261.1,339.7 L262.8,337.8 L264.4,339.2 L269.4,339.4 L271.1,340.2 L272.7,340.1 L274.4,339.0 L276.1,339.2 L281.1,327.9 L282.7,319.1 L284.4,324.1 L286.0,322.3 L287.7,320.0 L291.0,317.2 L292.7,325.3 L294.4,323.0 L296.0,322.2 L297.7,322.9 L302.7,322.2 L304.3,321.6 L306.0,318.8 L307.7,312.3 L309.3,314.7 L314.3,317.0 L316.0,319.4 L317.6,320.5 L319.3,318.3 L321.0,319.2 L325.9,318.7 L327.6,322.3 L329.3,325.2 L330.9,323.0 L337.6,323.0 L339.2,320.1 L340.9,327.2 L342.6,326.4 L344.2,328.7 L349.2,326.2 L350.9,329.0 L352.5,330.7 L354.2,329.8 L355.9,333.1 L360.9,331.7 L362.5,330.3 L364.2,328.8 L365.8,327.9 L367.5,327.6 L372.5,327.8 L374.2,328.8 L375.8,325.8 L377.5,326.6 L379.1,326.8 L384.1,324.7 L385.8,325.8 L387.5,328.5 L389.1,328.8 L390.8,328.3 L395.8,326.4 L397.4,326.0 L399.1,325.8 L400.8,325.1 L402.4,322.8 L407.4,322.8 L409.1,321.4 L410.7,323.5 L412.4,323.5 L414.1,324.2 L420.7,325.3 L422.4,326.2 L424.0,325.8 L425.7,326.6 L430.7,323.8 L432.3,325.2 L434.0,324.0 L435.7,324.1 L437.3,324.4 L442.3,323.2 L444.0,324.1 L445.6,323.0 L447.3,323.3 L449.0,325.9 L454.0,329.7 L455.6,330.4 L457.3,330.3 L458.9,331.5 L465.6,330.3 L467.3,330.2 L468.9,331.2 L470.6,331.6 L472.2,331.3 L477.2,329.7 L478.9,328.9 L480.6,329.5 L482.2,328.4 L488.9,328.3 L490.5,326.1 L492.2,323.9 L493.9,322.9 L495.5,324.2 L500.5,321.8 L502.2,320.3 L503.8,319.1 L505.5,318.7 L507.2,316.3 L512.1,315.1 L513.8,314.3 L515.5,311.7 L517.1,312.3 L518.8,310.8 L523.8,315.6 L525.4,316.0 L527.1,313.6 L528.8,315.6 L530.4,314.8 L535.4,316.2 L537.1,317.7 L538.7,320.8 L540.4,317.8 L542.1,318.0 L547.1,313.3 L548.7,315.1 L550.4,313.1 L552.0,313.6 L553.7,312.7 L558.7,312.4 L560.4,310.7 L562.0,311.0 L563.7,309.2 L565.3,308.7 L570.3,306.5 L572.0,308.1 L573.7,308.9 L575.3,306.7 L577.0,307.7 L582.0,305.2 L583.6,303.0 L585.3,301.7 L587.0,303.4 L588.6,303.2 L595.3,299.7 L596.9,296.7 L598.6,294.2 L600.3,296.4 L605.2,293.7 L606.9,295.9 L608.6,297.8 L610.2,299.3 L611.9,296.4 L616.9,302.1 L618.5,302.0 L620.2,303.2 L621.9,300.4 L623.5,303.1 L628.5,301.9 L630.2,305.2 L631.8,302.9 L633.5,301.5 L635.2,300.7 L640.2,301.8 L641.8,299.9 L643.5,297.7 L645.1,297.0 L646.8,294.7 L651.8,292.1 L653.5,289.5 L655.1,289.6 L656.8,290.2 L658.4,289.2 L663.4,288.8 L665.1,291.4 L666.8,289.3 L668.4,287.0 L670.1,283.5 L675.1,281.0 L676.7,281.5 L678.4,277.4 L680.1,279.3 L681.7,274.5 L688.4,282.6 L690.0,285.6 L691.7,288.7 L693.4,286.4 L695.0,291.0 L700.0,293.9" class="l c-gas"/>
+<circle cx="681.7" cy="274.5" r="4" class="f-gas ring"/>
+<text x="679.7" y="265.5" text-anchor="end" class="t-ink num">massimo 103,94 (29 ott)</text>
+<circle cx="700.0" cy="293.9" r="4" class="f-gas ring"/>
+<text x="693.0" y="313.9" text-anchor="end" class="t-ink num t-b">82,33</text>
+<rect x="40.0" y="233" width="8.3" height="135" class="hit"><title>TTF 31,48 il 12 ott 2025</title></rect>
+<rect x="48.3" y="233" width="11.6" height="135" class="hit"><title>TTF 31,74 il 19 ott 2025</title></rect>
+<rect x="59.9" y="233" width="11.6" height="135" class="hit"><title>TTF 31,40 il 26 ott 2025</title></rect>
+<rect x="71.6" y="233" width="11.6" height="135" class="hit"><title>TTF 31,12 il 30 ott 2025</title></rect>
+<rect x="83.2" y="233" width="11.6" height="135" class="hit"><title>TTF 31,20 il 7 nov 2025</title></rect>
+<rect x="94.9" y="233" width="11.6" height="135" class="hit"><title>TTF 31,25 il 14 nov 2025</title></rect>
+<rect x="106.5" y="233" width="11.6" height="135" class="hit"><title>TTF 30,20 il 21 nov 2025</title></rect>
+<rect x="118.1" y="233" width="11.6" height="135" class="hit"><title>TTF 28,82 il 28 nov 2025</title></rect>
+<rect x="129.8" y="233" width="11.6" height="135" class="hit"><title>TTF 27,27 il 5 dic 2025</title></rect>
+<rect x="141.4" y="233" width="11.6" height="135" class="hit"><title>TTF 27,68 il 12 dic 2025</title></rect>
+<rect x="153.0" y="233" width="11.6" height="135" class="hit"><title>TTF 28,16 il 19 dic 2025</title></rect>
+<rect x="164.7" y="233" width="11.6" height="135" class="hit"><title>TTF 28,09 il 26 dic 2025</title></rect>
+<rect x="176.3" y="233" width="11.6" height="135" class="hit"><title>TTF 29,00 il 2 gen 2026</title></rect>
+<rect x="188.0" y="233" width="11.6" height="135" class="hit"><title>TTF 28,37 il 9 gen 2026</title></rect>
+<rect x="199.6" y="233" width="11.6" height="135" class="hit"><title>TTF 36,88 il 16 gen 2026</title></rect>
+<rect x="211.2" y="233" width="11.6" height="135" class="hit"><title>TTF 40,04 il 23 gen 2026</title></rect>
+<rect x="222.9" y="233" width="11.6" height="135" class="hit"><title>TTF 39,28 il 30 gen 2026</title></rect>
+<rect x="234.5" y="233" width="11.6" height="135" class="hit"><title>TTF 35,69 il 6 feb 2026</title></rect>
+<rect x="246.1" y="233" width="11.6" height="135" class="hit"><title>TTF 32,50 il 13 feb 2026</title></rect>
+<rect x="257.8" y="233" width="11.6" height="135" class="hit"><title>TTF 32,03 il 20 feb 2026</title></rect>
+<rect x="269.4" y="233" width="11.6" height="135" class="hit"><title>TTF 31,96 il 27 feb 2026</title></rect>
+<rect x="281.1" y="233" width="11.6" height="135" class="hit"><title>TTF 56,45 il 8 mar 2026</title></rect>
+<rect x="292.7" y="233" width="11.6" height="135" class="hit"><title>TTF 50,89 il 15 mar 2026</title></rect>
+<rect x="304.3" y="233" width="11.6" height="135" class="hit"><title>TTF 56,68 il 22 mar 2026</title></rect>
+<rect x="316.0" y="233" width="11.6" height="135" class="hit"><title>TTF 54,81 il 29 mar 2026</title></rect>
+<rect x="327.6" y="233" width="11.6" height="135" class="hit"><title>TTF 50,04 il 5 apr 2026</title></rect>
+<rect x="339.2" y="233" width="11.6" height="135" class="hit"><title>TTF 46,41 il 12 apr 2026</title></rect>
+<rect x="350.9" y="233" width="11.6" height="135" class="hit"><title>TTF 40,29 il 19 apr 2026</title></rect>
+<rect x="362.5" y="233" width="11.6" height="135" class="hit"><title>TTF 44,65 il 26 apr 2026</title></rect>
+<rect x="374.2" y="233" width="11.6" height="135" class="hit"><title>TTF 48,14 il 3 mag 2026</title></rect>
+<rect x="385.8" y="233" width="11.6" height="135" class="hit"><title>TTF 46,23 il 10 mag 2026</title></rect>
+<rect x="397.4" y="233" width="11.6" height="135" class="hit"><title>TTF 50,25 il 17 mag 2026</title></rect>
+<rect x="409.1" y="233" width="11.6" height="135" class="hit"><title>TTF 48,68 il 21 mag 2026</title></rect>
+<rect x="420.7" y="233" width="11.6" height="135" class="hit"><title>TTF 49,09 il 31 mag 2026</title></rect>
+<rect x="432.3" y="233" width="11.6" height="135" class="hit"><title>TTF 49,83 il 7 giu 2026</title></rect>
+<rect x="444.0" y="233" width="11.6" height="135" class="hit"><title>TTF 42,51 il 14 giu 2026</title></rect>
+<rect x="455.6" y="233" width="11.6" height="135" class="hit"><title>TTF 41,89 il 21 giu 2026</title></rect>
+<rect x="467.3" y="233" width="11.6" height="135" class="hit"><title>TTF 42,56 il 28 giu 2026</title></rect>
+<rect x="478.9" y="233" width="11.6" height="135" class="hit"><title>TTF 44,13 il 5 lug 2026</title></rect>
+<rect x="490.5" y="233" width="11.6" height="135" class="hit"><title>TTF 51,28 il 12 lug 2026</title></rect>
+<rect x="502.2" y="233" width="11.6" height="135" class="hit"><title>TTF 58,74 il 19 lug 2026</title></rect>
+<rect x="513.8" y="233" width="11.6" height="135" class="hit"><title>TTF 58,25 il 26 lug 2026</title></rect>
+<rect x="525.4" y="233" width="11.6" height="135" class="hit"><title>TTF 57,51 il 2 ago 2026</title></rect>
+<rect x="537.1" y="233" width="11.6" height="135" class="hit"><title>TTF 60,80 il 9 ago 2026</title></rect>
+<rect x="548.7" y="233" width="11.6" height="135" class="hit"><title>TTF 61,76 il 16 ago 2026</title></rect>
+<rect x="560.4" y="233" width="11.6" height="135" class="hit"><title>TTF 68,32 il 23 ago 2026</title></rect>
+<rect x="572.0" y="233" width="11.6" height="135" class="hit"><title>TTF 69,81 il 30 ago 2026</title></rect>
+<rect x="583.6" y="233" width="11.6" height="135" class="hit"><title>TTF 71,95 il 3 set 2026</title></rect>
+<rect x="595.3" y="233" width="11.6" height="135" class="hit"><title>TTF 82,57 il 13 set 2026</title></rect>
+<rect x="606.9" y="233" width="11.6" height="135" class="hit"><title>TTF 73,25 il 20 set 2026</title></rect>
+<rect x="618.5" y="233" width="11.6" height="135" class="hit"><title>TTF 73,44 il 27 set 2026</title></rect>
+<rect x="630.2" y="233" width="11.6" height="135" class="hit"><title>TTF 73,51 il 4 ott 2026</title></rect>
+<rect x="641.8" y="233" width="11.6" height="135" class="hit"><title>TTF 84,35 il 11 ott 2026</title></rect>
+<rect x="653.5" y="233" width="11.6" height="135" class="hit"><title>TTF 88,04 il 18 ott 2026</title></rect>
+<rect x="665.1" y="233" width="11.6" height="135" class="hit"><title>TTF 96,68 il 25 ott 2026</title></rect>
+<rect x="676.7" y="233" width="11.6" height="135" class="hit"><title>TTF 103,94 il 29 ott 2026</title></rect>
+<rect x="688.4" y="233" width="11.6" height="135" class="hit"><title>TTF 85,59 il 6 nov 2026</title></rect>
+<line x1="79.9" y1="358" x2="79.9" y2="362" class="base"/>
+<text x="79.9" y="376" text-anchor="middle" class="num">nov</text>
+<line x1="181.3" y1="358" x2="181.3" y2="362" class="base"/>
+<text x="181.3" y="376" text-anchor="middle" class="num">gen 2026</text>
+<line x1="279.4" y1="358" x2="279.4" y2="362" class="base"/>
+<text x="279.4" y="376" text-anchor="middle" class="num">mar</text>
+<line x1="380.8" y1="358" x2="380.8" y2="362" class="base"/>
+<text x="380.8" y="376" text-anchor="middle" class="num">mag</text>
+<line x1="482.2" y1="358" x2="482.2" y2="362" class="base"/>
+<text x="482.2" y="376" text-anchor="middle" class="num">lug</text>
+<line x1="585.3" y1="358" x2="585.3" y2="362" class="base"/>
+<text x="585.3" y="376" text-anchor="middle" class="num">set</text>
+<line x1="686.7" y1="358" x2="686.7" y2="362" class="base"/>
+<text x="686.7" y="376" text-anchor="middle" class="num">nov</text>
+</g></svg>

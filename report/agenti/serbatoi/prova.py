@@ -190,7 +190,6 @@ def sar_demo(bounds_utm, crs_utm, path):
     con i GCP della scena e ricampionato a 10 m sulla stessa griglia del ritaglio Sentinel-2.
     Solo per vedere che aspetto hanno i serbatoi nel radar a questa risoluzione."""
     import json
-    from rasterio.vrt import WarpedVRT
     from rasterio.transform import from_origin
     cl = Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
     lon, lat = transform(crs_utm, "EPSG:4326", [(bounds_utm[0] + bounds_utm[2]) / 2],
@@ -206,11 +205,21 @@ def sar_demo(bounds_utm, crs_utm, path):
         "https://planetarycomputer.microsoft.com/api/sas/v1/token/sentinel-1-grd", timeout=30))["token"]
     n = int((bounds_utm[2] - bounds_utm[0]) / 10)
     tr = from_origin(bounds_utm[0], bounds_utm[3], 10, 10)
+    from rasterio.transform import from_gcps
+    from rasterio.warp import reproject
     with rasterio.open(it.assets["vv"].href + "?" + tok) as src:
         gcps, gcrs = src.gcps
-        with WarpedVRT(src, src_crs=gcrs, crs=crs_utm, transform=tr, width=n, height=n,
-                       resampling=rasterio.enums.Resampling.bilinear) as vrt:
-            a = vrt.read(1).astype("float32")
+        # affine locale stimata con i GCP piu' vicini (la scena intera non e' affine)
+        vicini = sorted(gcps, key=lambda g: (g.x - lon[0]) ** 2 + (g.y - lat[0]) ** 2)[:9]
+        aff = from_gcps(vicini)
+        col, row = ~aff * (lon[0], lat[0])
+        m = 400                                   # margine in pixel (~4 km)
+        r0, c0 = int(row) - m, int(col) - m
+        raw = src.read(1, window=((r0, r0 + 2 * m), (c0, c0 + 2 * m))).astype("float32")
+    a = np.full((n, n), np.nan, dtype="float32")
+    reproject(raw, a, src_transform=aff * rasterio.Affine.translation(c0, r0), src_crs=gcrs,
+              dst_transform=tr, dst_crs=crs_utm, resampling=rasterio.enums.Resampling.bilinear,
+              src_nodata=0, dst_nodata=np.nan)
     db = 10 * np.log10(np.where(a > 0, a, np.nan))
     lo, hi = np.nanpercentile(db, [2, 99.5])
     g = (np.clip((db - lo) / (hi - lo), 0, 1) * 255)
