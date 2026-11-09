@@ -66,7 +66,7 @@ ISO = {  # nomi paese GEM -> ISO 3166-1 alpha-2
     "Zambia": "ZM", "Zimbabwe": "ZW", "Uganda": "UG", "Malawi": "MW", "Botswana": "BW", "Belarus": "BY",
     "Hungary": "HU", "Slovenia": "SI", "Slovakia": "SK", "Czech Republic": "CZ", "Czechia": "CZ",
     "Austria": "AT", "Switzerland": "CH", "Serbia": "RS", "Bosnia and Herzegovina": "BA",
-    "North Macedonia": "MK", "Kosovo": "XK", "Moldova": "MD", "Armenia": "AM", "Kuwait-Saudi Arabia": "KW",
+    "North Macedonia": "MK", "Kosovo": "XK", "Moldova": "MD", "Armenia": "AM", "Kuwait-Saudi Arabia": "KW", "Gibraltar": "GI", "Timor-Leste": "TL", "Western Sahara": "EH",
 }
 
 STATO = {  # stato GEM -> stato in italiano (come linee.json)
@@ -211,7 +211,7 @@ PUNTI = [
      "categoria": "gas-ingresso-gasdotto"},
     {"id": "tarvisio", "nome": "Tarvisio (TAG)", "da": "Austria (storicamente gas russo)", "paese_origine": "AT",
      "entsog": [("IT-TSO-0001", "ITP-00040", "entry"), ("IT-TSO-0001", "ITP-00040", "exit")],
-     "gem": ("Tarvisio-Zimella Gas Pipeline", "", "nord"), "riserva": (46.4768, 13.6636),
+     "gem": ("Tarvisio-Zimella Gas Pipeline", "", "inizio"), "riserva": (46.4768, 13.6636),
      "categoria": "gas-ingresso-gasdotto"},
     {"id": "gorizia", "nome": "Gorizia (interconnessione con la Slovenia)", "da": "Slovenia", "paese_origine": "SI",
      "entsog": [("IT-TSO-0001", "ITP-00049", "entry"), ("IT-TSO-0001", "ITP-00049", "exit")],
@@ -261,6 +261,8 @@ def coordinate_gem(gem, nome, unita, regola):
         return None
     if regola == "fine":
         c = pts[0][0][-1]
+    elif regola == "inizio":
+        c = pts[0][0][0]
     else:
         tutti = [c for parte, _ in pts for c in parte]
         c = {"ovest": min(tutti, key=lambda c: c[0]), "est": max(tutti, key=lambda c: c[0]),
@@ -355,7 +357,7 @@ def gas_italia(gem, gnl_punti, errori):
             note.append("Uscita (export/controflusso) ultimi 12 mesi: %s TWh." % uscita["totale_periodo_twh"])
         elementi.append({
             "id": P["id"], "lat": lat, "lon": lon, "nome": P["nome"], "paese": "IT",
-            "categoria": P["categoria"], "stato": stato, "provenienza": P["da"], "paese_origine": P["paese_origine"],
+            "categoria": P["categoria"], "stato": stato, "stato_regola": "in-flusso se la media degli ingressi negli ultimi 7 giorni supera 1 GWh/giorno", "provenienza": P["da"], "paese_origine": P["paese_origine"],
             "entsog_punto": ", ".join(sorted(set(etichette))) or None,
             "fonte": "ENTSOG Transparency Platform (dati Snam Rete Gas); coordinate Global Energy Monitor",
             "link": links[0], "data_fonte": ultimo,
