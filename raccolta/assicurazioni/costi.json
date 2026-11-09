@@ -1,0 +1,152 @@
+{
+  "nota": "Esempi di costo per viaggio. Ogni ingresso ha valore, fonte, link e data; i risultati NON sono scritti a mano: li calcola raccogli.py dalle 'formule' (solo + - * / e parentesi sui nomi degli ingressi). Un ingresso con 'auto' viene letto da un altro file dell'osservatorio. Gli ingressi segnati 'ipotesi' sono scelte dell'osservatorio per rendere il conto leggibile, dichiarate come tali.",
+  "esempi": [
+    {
+      "id": "hormuz-vlcc-ottobre-2026",
+      "titolo": "Hormuz: premio di guerra per una superpetroliera (VLCC), ottobre 2026",
+      "area": "golfo-hormuz",
+      "data_riferimento": "2026-10-07",
+      "ingressi": {
+        "valore_nave_musd": {"valore": 100, "unita": "milioni di $", "fonte": "Reuters (cinque fonti), ripreso da Insurance Journal: il prezzo medio delle petroliere vecchie è salito sopra 100 milioni di $", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "media", "nota": "valore assicurato tipico scelto per il calcolo; Howden Re indica 200–300 milioni per petroliere e metaniere in generale"},
+        "valore_nave_alt_musd": {"valore": 150, "unita": "milioni di $", "fonte": "Insurance Business, esempio di Marsh: «per una petroliera da 150 milioni di $»", "link": "https://www.insurancebusinessmag.com/us/news/marine/hormuz-warrisk-rates-face-fresh-pressure-as-iranus-clashes-resume-588288.aspx", "data": "2026-09-02", "affidabilita": "media", "nota": "variante di sensibilità"},
+        "premio_min_pct": {"valore": 6, "unita": "% valore scafo", "fonte": "Financial Times (broker), ripreso da Insurance Business", "link": "https://www.insurancebusinessmag.com/ca/news/marine/hormuz-sinking-hands-marine-war-underwriters-another-total-loss-as-attacks-surge-593542.aspx", "data": "2026-10-14", "affidabilita": "media"},
+        "premio_max_pct": {"valore": 10, "unita": "% valore scafo", "fonte": "Financial Times (broker), ripreso da Insurance Business", "link": "https://www.insurancebusinessmag.com/ca/news/marine/hormuz-sinking-hands-marine-war-underwriters-another-total-loss-as-attacks-surge-593542.aspx", "data": "2026-10-14", "affidabilita": "media"},
+        "premio_prebellico_pct": {"valore": 0.25, "unita": "% valore scafo", "fonte": "Marcus Baker (Marsh), ripreso da Insurance Business", "link": "https://www.insurancebusinessmag.com/ca/news/marine/hormuz-sinking-hands-marine-war-underwriters-another-total-loss-as-attacks-surge-593542.aspx", "data": "2026-10-14", "affidabilita": "alta"},
+        "barili_milioni": {"valore": 2, "unita": "milioni di barili", "fonte": "Insurance Business: una VLCC trasporta circa 2 milioni di barili", "link": "https://www.insurancebusinessmag.com/us/news/marine/a-ceasefire-wont-reopen-the-insurance-market--not-yet-571314.aspx", "data": "2026-04-10", "affidabilita": "alta"},
+        "brent_usd": {"auto": "prezzi.json:brent", "unita": "$ al barile"},
+        "nolo_td3c_usd_t": {"valore": 77.96, "unita": "$ per tonnellata", "fonte": "S&P Global, nolo Golfo–Cina per 270.000 t di greggio del 22 luglio 2026, ripreso da Al Jazeera", "link": "https://www.aljazeera.com/economy/2026/7/23/how-shipping-insurance-rates-are-rising-as-hormuz-bab-al-mandeb-shut-down", "data": "2026-07-22", "affidabilita": "alta", "nota": "ultimo nolo pubblico trovato: è di luglio, non di ottobre"},
+        "nolo_medio_5anni_usd_t": {"valore": 18.91, "unita": "$ per tonnellata", "fonte": "S&P Global, media a cinque anni, ripreso da Al Jazeera", "link": "https://www.aljazeera.com/economy/2026/7/23/how-shipping-insurance-rates-are-rising-as-hormuz-bab-al-mandeb-shut-down", "data": "2026-07-22", "affidabilita": "alta"},
+        "tonnellate_carico": {"valore": 270000, "unita": "tonnellate", "fonte": "S&P Global (carico di riferimento della rotta), ripreso da Al Jazeera", "link": "https://www.aljazeera.com/economy/2026/7/23/how-shipping-insurance-rates-are-rising-as-hormuz-bab-al-mandeb-shut-down", "data": "2026-07-22", "affidabilita": "alta"}
+      },
+      "formule": [
+        {"nome": "premio_prebellico_musd", "espr": "valore_nave_musd * premio_prebellico_pct / 100", "unita": "milioni di $", "descrizione": "premio di guerra per un transito prima del 28 febbraio 2026"},
+        {"nome": "premio_min_musd", "espr": "valore_nave_musd * premio_min_pct / 100", "unita": "milioni di $", "descrizione": "premio per un transito al 6%"},
+        {"nome": "premio_max_musd", "espr": "valore_nave_musd * premio_max_pct / 100", "unita": "milioni di $", "descrizione": "premio per un transito al 10%"},
+        {"nome": "premio_max_nave150_musd", "espr": "valore_nave_alt_musd * premio_max_pct / 100", "unita": "milioni di $", "descrizione": "stesso premio al 10% su una nave da 150 milioni"},
+        {"nome": "moltiplicatore", "espr": "premio_max_pct / premio_prebellico_pct", "unita": "volte", "descrizione": "quante volte il premio prebellico"},
+        {"nome": "premio_min_usd_barile", "espr": "premio_min_musd / barili_milioni", "unita": "$ al barile", "descrizione": "premio al 6% diviso per i barili trasportati"},
+        {"nome": "premio_max_usd_barile", "espr": "premio_max_musd / barili_milioni", "unita": "$ al barile", "descrizione": "premio al 10% diviso per i barili trasportati"},
+        {"nome": "premio_max_quota_brent_pct", "espr": "premio_max_usd_barile / brent_usd * 100", "unita": "% del prezzo del Brent", "descrizione": "peso del premio sul valore del carico al Brent di oggi"},
+        {"nome": "nolo_viaggio_musd", "espr": "nolo_td3c_usd_t * tonnellate_carico / 1000000", "unita": "milioni di $", "descrizione": "nolo Golfo–Cina per il carico intero (luglio 2026)"},
+        {"nome": "nolo_medio_viaggio_musd", "espr": "nolo_medio_5anni_usd_t * tonnellate_carico / 1000000", "unita": "milioni di $", "descrizione": "lo stesso nolo alla media dei cinque anni"},
+        {"nome": "nolo_usd_barile", "espr": "nolo_viaggio_musd / barili_milioni", "unita": "$ al barile", "descrizione": "nolo per barile (luglio 2026)"}
+      ],
+      "lettura": "Per Hormuz non esiste un vero aggiramento via mare: le alternative sono gli oleodotti verso Yanbu (Mar Rosso) e Fujairah, entrambi a loro volta in area elencata. Il confronto utile è quindi con la rotta Yanbu (esempio seguente) e con il costo del non partire."
+    },
+    {
+      "id": "yanbu-contro-hormuz-settembre-2026",
+      "titolo": "Aggirare Hormuz con l'oleodotto Est-Ovest: premio a Yanbu contro premio a Hormuz, settembre 2026",
+      "area": "mar-rosso-saudita",
+      "data_riferimento": "2026-09-24",
+      "ingressi": {
+        "valore_nave_musd": {"valore": 100, "unita": "milioni di $", "fonte": "Reuters, ripreso da Insurance Journal (esempio dell'articolo: 3 milioni per un viaggio da Yanbu)", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "alta"},
+        "premio_yanbu_pct": {"valore": 3, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "alta"},
+        "premio_sud_yanbu_pct": {"valore": 7, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "alta"},
+        "premio_hormuz_min_pct": {"valore": 6, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "alta"},
+        "premio_hormuz_max_pct": {"valore": 9, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "alta"},
+        "premio_mar_rosso_neutro_pct": {"valore": 0.25, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal: 0,2–0,3% per le petroliere senza legami sauditi (qui il valore centrale)", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "alta"},
+        "nolo_giornaliero_musd": {"valore": 0.5, "unita": "milioni di $ al giorno", "fonte": "stime di settore riportate da Reuters: «almeno 500.000 $ al giorno» per noleggiare una petroliera", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "media"}
+      },
+      "formule": [
+        {"nome": "premio_yanbu_musd", "espr": "valore_nave_musd * premio_yanbu_pct / 100", "unita": "milioni di $", "descrizione": "premio per un viaggio da Yanbu (nave legata all'Arabia Saudita)"},
+        {"nome": "premio_hormuz_min_musd", "espr": "valore_nave_musd * premio_hormuz_min_pct / 100", "unita": "milioni di $", "descrizione": "premio per un transito di Hormuz, minimo"},
+        {"nome": "premio_hormuz_max_musd", "espr": "valore_nave_musd * premio_hormuz_max_pct / 100", "unita": "milioni di $", "descrizione": "premio per un transito di Hormuz, massimo"},
+        {"nome": "risparmio_min_musd", "espr": "premio_hormuz_min_musd - premio_yanbu_musd", "unita": "milioni di $", "descrizione": "risparmio sul premio caricando a Yanbu invece che nel Golfo, minimo"},
+        {"nome": "risparmio_max_musd", "espr": "premio_hormuz_max_musd - premio_yanbu_musd", "unita": "milioni di $", "descrizione": "risparmio sul premio caricando a Yanbu, massimo"},
+        {"nome": "premio_sud_yanbu_musd", "espr": "valore_nave_musd * premio_sud_yanbu_pct / 100", "unita": "milioni di $", "descrizione": "premio da porti sauditi più a sud (Jizan)"},
+        {"nome": "premio_neutro_musd", "espr": "valore_nave_musd * premio_mar_rosso_neutro_pct / 100", "unita": "milioni di $", "descrizione": "stessa nave nel Mar Rosso senza legami sauditi"},
+        {"nome": "giorni_nolo_equivalenti", "espr": "premio_yanbu_musd / nolo_giornaliero_musd", "unita": "giorni", "descrizione": "a quanti giorni di nolo equivale il premio di Yanbu"}
+      ],
+      "lettura": "La bandiera e il legame con il paese contano quanto la geografia: nello stesso Mar Rosso una petroliera neutrale paga circa un dodicesimo di una legata all'Arabia Saudita."
+    },
+    {
+      "id": "mar-rosso-portacontainer-contro-capo",
+      "titolo": "Mar Rosso: premio di guerra di una grande portacontainer contro il costo del giro dal Capo di Buona Speranza",
+      "area": "mar-rosso",
+      "data_riferimento": "2024-01-16",
+      "ingressi": {
+        "valore_nave_musd": {"valore": 221.7, "unita": "milioni di $", "fonte": "India Seatrade News: prezzo indicativo delle 12 portacontainer da circa 15.500 TEU ordinate da CMA CGM (agosto 2026)", "link": "https://indiaseatradenews.com/cma-cgm-reportedly-behind-order-for-12-new-15500-teu-box-ships/", "data": "2026-08-20", "affidabilita": "media", "nota": "valore a nuovo, quindi un massimo: una nave in esercizio vale meno"},
+        "valore_normalizzato_musd": {"valore": 100, "unita": "milioni di $", "ipotesi": true, "nota": "nave da 100 milioni, per rendere il conto proporzionale"},
+        "teu": {"valore": 15500, "unita": "TEU", "fonte": "India Seatrade News (stessa nave)", "link": "https://indiaseatradenews.com/cma-cgm-reportedly-behind-order-for-12-new-15500-teu-box-ships/", "data": "2026-08-20", "affidabilita": "media"},
+        "premio_gen2024_pct": {"valore": 1.0, "unita": "% valore scafo", "fonte": "Reuters, ripreso da BusinessLive", "link": "https://www.businesslive.co.za/bd/world/2024-01-16-war-risk-premiums-up-as-houthi-attacks-on-ships-in-the-red-sea-persist/", "data": "2024-01-16", "affidabilita": "alta"},
+        "premio_set2024_pct": {"valore": 2.0, "unita": "% valore scafo", "fonte": "Reuters (Marsh), ripreso da MarineLink", "link": "https://marinelink.com/amp/news/red-sea-insurance-costs-skyrocket-amid-517244", "data": "2024-09-19", "affidabilita": "alta"},
+        "premio_set2026_min_pct": {"valore": 0.2, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal (petroliere senza legami sauditi; nessun dato pubblico specifico per le portacontainer)", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "media"},
+        "premio_set2026_max_pct": {"valore": 0.3, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2026/09/25/886769.htm", "data": "2026-09-25", "affidabilita": "media"},
+        "extra_capo_musd": {"valore": 0.7, "unita": "milioni di $ a viaggio", "fonte": "UNCTAD, Review of Maritime Transport 2024: una portacontainer di taglia media spende circa 1 milione di $ via Suez e 1,7 via Capo", "link": "https://unctad.org/system/files/official-document/rmt2024ch2_en.pdf", "data": "2024", "affidabilita": "alta", "nota": "riferito a una nave di taglia media e ai prezzi del carburante del 2024: per una 15.500 TEU il costo in più è maggiore (LSEG: +35% per una grande portacontainer), quindi la soglia calcolata sotto è un minimo"},
+        "giorni_extra_min": {"valore": 14, "unita": "giorni", "fonte": "UNCTAD, Review of Maritime Transport 2024", "link": "https://unctad.org/system/files/official-document/rmt2024ch2_en.pdf", "data": "2024", "affidabilita": "alta"},
+        "giorni_extra_max": {"valore": 24, "unita": "giorni", "fonte": "UNCTAD, Review of Maritime Transport 2024", "link": "https://unctad.org/system/files/official-document/rmt2024ch2_en.pdf", "data": "2024", "affidabilita": "alta"},
+        "wci_shanghai_genova_usd_feu": {"auto": "noli.json:wci:Shanghai-Genoa", "unita": "$ per container da 40 piedi"}
+      },
+      "formule": [
+        {"nome": "premio_gen2024_musd", "espr": "valore_nave_musd * premio_gen2024_pct / 100", "unita": "milioni di $", "descrizione": "premio per un transito all'1% (gennaio 2024)"},
+        {"nome": "premio_set2024_musd", "espr": "valore_nave_musd * premio_set2024_pct / 100", "unita": "milioni di $", "descrizione": "premio per un transito al 2% (picco di settembre 2024)"},
+        {"nome": "premio_set2026_min_musd", "espr": "valore_nave_musd * premio_set2026_min_pct / 100", "unita": "milioni di $", "descrizione": "premio allo 0,2% (settembre 2026)"},
+        {"nome": "premio_set2026_max_musd", "espr": "valore_nave_musd * premio_set2026_max_pct / 100", "unita": "milioni di $", "descrizione": "premio allo 0,3% (settembre 2026)"},
+        {"nome": "soglia_pct_nave_nuova", "espr": "extra_capo_musd / valore_nave_musd * 100", "unita": "% valore scafo", "descrizione": "premio oltre il quale il Capo conviene (solo costi diretti), nave nuova da 221,7 milioni"},
+        {"nome": "soglia_pct_nave100", "espr": "extra_capo_musd / valore_normalizzato_musd * 100", "unita": "% valore scafo", "descrizione": "stessa soglia per una nave da 100 milioni"},
+        {"nome": "premio_gen2024_usd_teu", "espr": "premio_gen2024_musd * 1000000 / teu", "unita": "$ per TEU", "descrizione": "premio all'1% per posto container (nave piena)"},
+        {"nome": "premio_set2026_max_usd_teu", "espr": "premio_set2026_max_musd * 1000000 / teu", "unita": "$ per TEU", "descrizione": "premio allo 0,3% per posto container"},
+        {"nome": "premio_gen2024_quota_nolo_pct", "espr": "premio_gen2024_usd_teu * 2 / wci_shanghai_genova_usd_feu * 100", "unita": "% del nolo Shanghai–Genova di oggi", "descrizione": "peso del premio all'1% su un container da 40 piedi (2 TEU), al nolo WCI attuale"}
+      ],
+      "lettura": "Il premio non spiega da solo la fuga dal Mar Rosso: nel 2024 al Capo andarono anche navi per cui il premio era sotto la soglia, per la sicurezza degli equipaggi, il rifiuto dei marittimi e la regolarità delle linee. Il premio però fissa il prezzo del rientro: con premi allo 0,2–0,3% una nave grande è sotto la soglia e torna a Suez."
+    },
+    {
+      "id": "mar-nero-petroliera-2022",
+      "titolo": "Mar Nero, aprile 2022: un premio più caro del noleggio",
+      "area": "mar-nero",
+      "data_riferimento": "2022-04-08",
+      "ingressi": {
+        "valore_nave_musd": {"valore": 50, "unita": "milioni di $", "fonte": "Bloomberg, ripreso da Insurance Journal: petroliera di 5 anni da 50 milioni con un carico russo da 1 milione di barili", "link": "https://www.insurancejournal.com/news/international/2022/04/11/662371.htm", "data": "2022-04-11", "affidabilita": "alta"},
+        "premio_pct": {"valore": 10, "unita": "% valore scafo", "fonte": "Bloomberg, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2022/04/11/662371.htm", "data": "2022-04-11", "affidabilita": "alta"},
+        "nolo_musd": {"valore": 3.5, "unita": "milioni di $", "fonte": "Bloomberg: noleggio di una petroliera per 1 milione di barili da Novorossiysk all'Italia (meno di 0,7 milioni a inizio anno)", "link": "https://www.insurancejournal.com/news/international/2022/04/11/662371.htm", "data": "2022-04-11", "affidabilita": "alta"},
+        "nolo_prima_musd": {"valore": 0.7, "unita": "milioni di $", "fonte": "Bloomberg, ripreso da Insurance Journal («meno di 700.000 $»)", "link": "https://www.insurancejournal.com/news/international/2022/04/11/662371.htm", "data": "2022-04-11", "affidabilita": "alta"},
+        "barili_milioni": {"valore": 1, "unita": "milioni di barili", "fonte": "Bloomberg, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2022/04/11/662371.htm", "data": "2022-04-11", "affidabilita": "alta"}
+      },
+      "formule": [
+        {"nome": "premio_musd", "espr": "valore_nave_musd * premio_pct / 100", "unita": "milioni di $", "descrizione": "premio di guerra per lo scalo"},
+        {"nome": "premio_meno_nolo_musd", "espr": "premio_musd - nolo_musd", "unita": "milioni di $", "descrizione": "di quanto il premio supera il noleggio"},
+        {"nome": "premio_usd_barile", "espr": "premio_musd / barili_milioni", "unita": "$ al barile", "descrizione": "premio per barile"},
+        {"nome": "nolo_usd_barile", "espr": "nolo_musd / barili_milioni", "unita": "$ al barile", "descrizione": "nolo per barile"},
+        {"nome": "nolo_moltiplicatore", "espr": "nolo_musd / nolo_prima_musd", "unita": "volte", "descrizione": "aumento del noleggio da inizio anno"}
+      ],
+      "lettura": "Il premio di guerra arrivò a superare il noleggio: un caso in cui il rischio diventa la prima voce di costo del viaggio."
+    },
+    {
+      "id": "mar-nero-odessa-2026",
+      "titolo": "Mar Nero dopo JWLA-035: quanto costa in più un viaggio verso Odessa (settembre 2026)",
+      "area": "mar-nero",
+      "data_riferimento": "2026-09-23",
+      "ingressi": {
+        "costo_giornaliero_usd": {"valore": 25000, "unita": "$ al giorno", "fonte": "Marelis Navigation, stima per una nave grande, ripresa da Beinsure", "link": "https://beinsure.com/black-sea-war-risk-expansion-raises-shipping-insurance-costs/", "data": "2026-09-23", "affidabilita": "media"},
+        "giorni_in_area": {"valore": 6, "unita": "giorni", "fonte": "Marelis Navigation, ripreso da Beinsure", "link": "https://beinsure.com/black-sea-war-risk-expansion-raises-shipping-insurance-costs/", "data": "2026-09-23", "affidabilita": "media"},
+        "valore_handysize_musd": {"valore": 12, "unita": "milioni di $", "fonte": "Beinsure (tabella): Handysize assicurata per 12 milioni, premio 12.000–24.000 $", "link": "https://beinsure.com/black-sea-war-risk-expansion-raises-shipping-insurance-costs/", "data": "2026-09-23", "affidabilita": "media"},
+        "premio_handysize_min_usd": {"valore": 12000, "unita": "$", "fonte": "Beinsure", "link": "https://beinsure.com/black-sea-war-risk-expansion-raises-shipping-insurance-costs/", "data": "2026-09-23", "affidabilita": "media"},
+        "premio_handysize_max_usd": {"valore": 24000, "unita": "$", "fonte": "Beinsure", "link": "https://beinsure.com/black-sea-war-risk-expansion-raises-shipping-insurance-costs/", "data": "2026-09-23", "affidabilita": "media"}
+      },
+      "formule": [
+        {"nome": "costo_viaggio_usd", "espr": "costo_giornaliero_usd * giorni_in_area", "unita": "$", "descrizione": "costo di guerra in più per un viaggio di una nave grande"},
+        {"nome": "premio_handysize_min_pct", "espr": "premio_handysize_min_usd / (valore_handysize_musd * 1000000) * 100", "unita": "% valore scafo", "descrizione": "tasso implicito minimo per una Handysize"},
+        {"nome": "premio_handysize_max_pct", "espr": "premio_handysize_max_usd / (valore_handysize_musd * 1000000) * 100", "unita": "% valore scafo", "descrizione": "tasso implicito massimo per una Handysize"}
+      ],
+      "lettura": "Sul carico la stima è 2–3 $ per tonnellata per Odessa e 0,40–0,80 $/t per una Handysize (Beinsure): poco rispetto al prezzo del grano, ma si somma ai noli e al rischio fisico."
+    },
+    {
+      "id": "israele-giugno-2025",
+      "titolo": "Israele, giugno 2025: scalo di 7 giorni per una nave da 100 milioni",
+      "area": "israele",
+      "data_riferimento": "2025-06-17",
+      "ingressi": {
+        "valore_normalizzato_musd": {"valore": 100, "unita": "milioni di $", "ipotesi": true, "nota": "nave da 100 milioni, per rendere il conto proporzionale"},
+        "premio_prima_pct": {"valore": 0.2, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2025/06/17/828193.htm", "data": "2025-06-17", "affidabilita": "alta"},
+        "premio_min_pct": {"valore": 0.7, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2025/06/17/828193.htm", "data": "2025-06-17", "affidabilita": "alta"},
+        "premio_max_pct": {"valore": 1.0, "unita": "% valore scafo", "fonte": "Reuters, ripreso da Insurance Journal", "link": "https://www.insurancejournal.com/news/international/2025/06/17/828193.htm", "data": "2025-06-17", "affidabilita": "alta"}
+      },
+      "formule": [
+        {"nome": "premio_prima_musd", "espr": "valore_normalizzato_musd * premio_prima_pct / 100", "unita": "milioni di $", "descrizione": "premio una settimana prima"},
+        {"nome": "premio_min_musd", "espr": "valore_normalizzato_musd * premio_min_pct / 100", "unita": "milioni di $", "descrizione": "premio durante la guerra, minimo"},
+        {"nome": "premio_max_musd", "espr": "valore_normalizzato_musd * premio_max_pct / 100", "unita": "milioni di $", "descrizione": "premio durante la guerra, massimo"}
+      ],
+      "lettura": "Per il 2026 non c'è una percentuale pubblica per Israele: il conto resta quello del 2025."
+    }
+  ]
+}

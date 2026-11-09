@@ -20,7 +20,7 @@ In questo testo **fatto** vuol dire un dato con fonte e data. **Valutazione** vu
 |---|---|---|---|
 | OurAirports, `airports.csv` | funziona, senza chiave | pubblico dominio | coordinate di 83 basi aeree (codice ICAO o identificativo in `rif_coord`) |
 | Wikidata, servizio SPARQL | funziona, senza chiave | CC0 | coordinate di 97 basi (Q-id in `rif_coord`) |
-| Wikipedia, API e riassunti REST | funziona a tratti: risponde spesso con errore 429 (troppe richieste) | CC BY-SA 4.0 | descrizioni; circa 50 riassunti letti oggi, gli altri citati come link |
+| Wikipedia, API e riassunti REST | funziona a tratti: risponde spesso con errore 429 (troppe richieste) | CC BY-SA 4.0 | descrizioni; 79 riassunti e 9 pagine intere letti oggi, gli altri citati come link |
 | Congressional Research Service, IF12389 (aprile 2026) | funziona con il download diretto; lo strumento di lettura web non risolve il dominio | pubblico dominio | Russia in Africa |
 | Stampa e centri studi (Stars and Stripes, Meduza, Euromaidan Press, Africa Defense Forum/NGA Tearline, Al Jazeera, ITV, Euronews, Newsweek, Critical Threats, USNI News, The Star/AP) | funzionano | citazione con link | stato al 2026 |
 | Associated Press (abcnews.com) | il testo non si legge con lo script | citazione con link | sostituita da Meduza ed Euromaidan per la Siria |
@@ -58,8 +58,8 @@ Per la mappa il campo `categoria` riprende le categorie esistenti (`base-aerea`,
 - Dove Wikidata dà solo il centro di una città, la precisione dichiarata è di 3–10 km e la nota lo dice: Vladivostok, Zhanjiang, Dušanbe, Krychaŭ, Stettino e altre.
 
 **Verifica:**
-- 87 basi su 181 hanno almeno una fonte letta oggi (`verificata: true`).
-- Le altre citano fatti consolidati (apertura, ruolo) con il link alla fonte, ma lo stato al 2026 non è stato riletto. Hanno affidabilità media o bassa, e la nota lo dice.
+- 100 basi su 181 hanno almeno una fonte letta oggi (`verificata: true`): per intero oppure tramite il riassunto del motore di ricerca, con link e data controllati. `data_fonte` è la data dell'articolo; per Wikipedia è la data di consultazione o del fatto citato.
+- Le altre 81 citano fatti consolidati (apertura, ruolo) con il link alla fonte, ma lo stato al 2026 non è stato riletto. Hanno affidabilità media o bassa, e la nota lo dice.
 
 **Duplicati con gli altri livelli:**
 - Nessun duplicato entro 5 km con lo stesso utilizzatore.
@@ -76,7 +76,7 @@ Per la mappa il campo `categoria` riprende le categorie esistenti (`base-aerea`,
 Fatti:
 - In Europa la rete poggia sui comandi in Germania: EUCOM e AFRICOM a Stoccarda, l'Esercito a Wiesbaden, l'aviazione a Ramstein. A maggio 2026 in Germania c'erano circa 34.000 militari USA ([Stars and Stripes, 1° maggio 2026](https://www.stripes.com/theaters/europe/2026-05-01/trump-withdraw-5000-troops-germany-21550153.html)).
 - La rete prosegue verso sud con Rota e Morón su Gibilterra e Souda Bay sul Mediterraneo orientale.
-- Verso est ci sono gli scudi antimissile di Deveselu (2016) e Redzikowo (inaugurata dalla NATO il 13 novembre 2024).
+- Verso est ci sono gli scudi antimissile di Deveselu (2016) e Redzikowo (aperta nel 2024; [Wikipedia, Aegis Ashore](https://en.wikipedia.org/wiki/Aegis_Ashore)).
 - Nell'Indo-Pacifico la catena va da Corea e Giappone (Camp Humphreys, Kadena, Yokosuka) a Guam e all'Australia (Darwin, Tindal, Pine Gap). In mezzo ci sono i nove siti EDCA nelle Filippine: cinque dal 2016 e quattro dal 2023, tre dei quali rivolti a Taiwan ([PTV, aprile 2023](https://ptvnews.ph/ph-us-announce-4-new-edca-sites/)).
 - In Africa la presenza si è ristretta al Corno (Gibuti, Kenya, Somalia).
 - Nell'Artico conta Pituffik.
@@ -126,14 +126,16 @@ A questi si aggiungono il nuovo polo di Mihail Kogălniceanu sul Mar Nero e la p
 
 1. **La Russia in Siria è ridotta a centri di addestramento.** Il 9 agosto 2026 Mosca e Damasco hanno firmato un memorandum: la Siria riprende l'aeroporto di Hmeimim e il quarto molo commerciale di Tartus, e le basi russe diventano centri di addestramento congiunti entro tre mesi ([Meduza su SANA, 10 agosto 2026](https://meduza.io/en/news/2026/08/10/russia-and-syria-agree-to-turn-russian-military-bases-into-joint-training-centers); [Euromaidan Press, 11 agosto](https://euromaidanpress.com/2026/08/11/russias-syrian-foothold-shrinks-to-a-training-center-as-damascus-takes-back-the-airport-and-a-berth/)). Mosca non ha commentato. Nel file entrambe le basi sono «ridotte».
 2. **La logistica russa si è spostata in Libia.** Secondo i dati NGA Tearline ripresi dall'[Africa Defense Forum (11 agosto 2026)](https://adf-magazine.com/2026/08/africa-corps-work-at-libyan-air-bases-raises-concerns/), la Russia lavora su sei basi aeree libiche. Maaten al-Sarra, abbandonata dal 2011, è stata riattivata da dicembre 2024 verso Sudan, Ciad e Sahel. Al-Khadim ha tre nuovi hangar nel 2025 e probabili caserme nel 2026.
-3. **Il modello Africa Corps ha un limite.** All'inizio del 2026 c'erano fino a 2.500 russi in Mali e circa 1.500 nella Repubblica Centrafricana ([CRS, 8 aprile 2026](https://www.everycrsreport.com/files/2026-04-08_IF12389_eafb70071b5b5ecad891e918583c30947bf78996.html)). Il 27 aprile 2026 l'Africa Corps ha confermato il ritiro da Kidal ([NV su CNN](https://english.nv.ua/nation/cnn-reports-russian-setback-in-mali-exposed-wider-africa-role-50606846.html)). La base navale di Port Sudan, prevista dall'accordo del 2020, è sospesa secondo l'ambasciatore russo (fine 2025, CRS).
+3. **Il modello Africa Corps ha un limite.** All'inizio del 2026 c'erano fino a 2.500 russi in Mali e circa 1.500 nella Repubblica Centrafricana ([CRS, 8 aprile 2026](https://www.everycrsreport.com/files/2026-04-08_IF12389_eafb70071b5b5ecad891e918583c30947bf78996.html)). Il 27 aprile 2026 l'Africa Corps ha confermato il ritiro da Kidal ([NV su CNN, 11 maggio 2026](https://english.nv.ua/nation/cnn-reports-russian-setback-in-mali-exposed-wider-africa-role-50606846.html)). La base navale di Port Sudan, prevista dall'accordo del 2020, è sospesa secondo l'ambasciatore russo (fine 2025, CRS).
 4. **La Francia ha chiuso le basi permanenti in Africa occidentale e centrale:**
    - Mali, agosto 2022;
    - Burkina Faso, 2023;
    - Niger, dicembre 2023;
    - Ciad, gennaio 2025;
    - Costa d'Avorio, 20 febbraio 2025;
-   - Senegal, 17 luglio 2025, con circa 350 militari ([Le Temps](https://www.letemps.ch/articles/l-armee-francaise-quitte-le-senegal-et-signe-la-fin-de-sa-presence-permanente-en-afrique-de-l-ouest-et-centrale); [Le Soleil](https://lesoleil.sn/international/infos-afrique/bases-militaires-francaises-en-afrique-de-la-fermeture-a-la-dechirure/)).
+   - Senegal, 17 luglio 2025: consegnati il campo Geille e lo scalo aereo militare di Dakar ([Le Temps con AFP](https://www.letemps.ch/articles/l-armee-francaise-quitte-le-senegal-et-signe-la-fin-de-sa-presence-permanente-en-afrique-de-l-ouest-et-centrale)).
+
+   Le Temps conferma l'elenco dei paesi; i mesi di Ciad e Costa d'Avorio non sono stati riletti oggi.
 
    Restano Gibuti e un campo condiviso in Gabon.
 5. **Gli USA hanno lasciato il Niger.** Più di 1.000 militari sono partiti nel 2024 e i russi sono arrivati nello stesso anno (CRS). La base dei droni di Agadez è passata al Niger.
@@ -144,9 +146,9 @@ A questi si aggiungono il nuovo polo di Mihail Kogălniceanu sul Mar Nero e la p
    - sono così tornati a tre brigate in Europa, il livello del 2021 ([Stars and Stripes, 20 maggio 2026](https://www.stripes.com/theaters/europe/2026-05-20/pentagon-europe-force-posture-changes-21727163.html)).
 8. **L'Artico si è aperto agli USA.** L'accordo USA-Danimarca-Groenlandia del 22 settembre 2026 consente di ampliare Pituffik e di aprire aree di difesa a Narsarsuaq e Mestersvig ([ITV](https://www.itv.com/news/2026-09-22/us-to-build-two-new-military-bases-in-greenland-under-deal-with-denmark); [Euronews](https://www.euronews.com/2026/09/22/trump-signs-greenland-security-deal-allowing-us-to-expand-military-presence)).
 9. **Diego Garcia è in sospeso.** Il trattato del 22 maggio 2025 dà la sovranità sulle Chagos a Mauritius e lascia la base al Regno Unito per 99 anni. Non è in vigore: la legge di ratifica è decaduta con la fine della sessione del Parlamento britannico, il 29 aprile 2026 ([Al Jazeera, 2 ottobre 2026](https://www.aljazeera.com/news/2026/10/2/uk-mauritius-chagos-sovereignty-deal-stalls-amid-fears-of-further-delays)). La base è in `fissi.json`; la nota è qui per il rapporto.
-10. **I Caraibi sono tornati un teatro.** Roosevelt Roads, a Porto Rico, è stata riattivata nel 2025 per l'ammassamento contro il Venezuela, culminato nell'operazione del 3 gennaio 2026 ([CBS](https://www.cbsnews.com/news/u-s-reopens-shuttered-puerto-rico-naval-base-caribbean-military-buildup-continues)). Nel frattempo:
-    - la Turchia ha portato F-16 a Mogadiscio (gennaio 2026) e ha prorogato la missione in Somalia fino al 2028 ([Critical Threats](https://www.criticalthreats.org/analysis/turkey-somalia-niger-africa-file-april-16-2026));
-    - i lavori russi a Ochamchire, in Abcasia, si sono fermati all'inizio del 2026 ([Newsweek](https://www.newsweek.com/photos-show-work-grind-to-halt-at-secret-russian-base-12286620)).
+10. **I Caraibi sono tornati un teatro.** Roosevelt Roads, a Porto Rico, è stata riattivata nel 2025 per l'ammassamento contro il Venezuela, culminato nell'operazione del 3 gennaio 2026 che ha catturato Maduro ([CBS, 14 novembre 2025](https://www.cbsnews.com/news/u-s-reopens-shuttered-puerto-rico-naval-base-caribbean-military-buildup-continues); Wikipedia: operazioni riprese il 14 novembre 2025). Nel frattempo:
+    - la Turchia ha portato F-16 a Mogadiscio (gennaio 2026) e ha portato i suoi militari in Somalia da circa 400 a circa 800 all'inizio del 2025 ([Critical Threats, 16 aprile 2026](https://www.criticalthreats.org/analysis/turkey-somalia-niger-africa-file-april-16-2026); [The War Zone, 3 febbraio 2026](https://www.twz.com/air/turkish-f-16-vipers-seen-operating-out-of-mogadishus-international-airport));
+    - i lavori russi a Ochamchire, in Abcasia, si sono fermati all'inizio del 2026 ([Newsweek, 4 settembre 2026](https://www.newsweek.com/photos-show-work-grind-to-halt-at-secret-russian-base-12286620)).
 
 ---
 
@@ -203,7 +205,7 @@ Altri passaggi sono presidiati da più lontano:
 
 ## 7. Limiti
 
-- 94 voci su 181 non sono state rilette oggi su una fonte datata. Il blocco di Wikipedia (errore 429) ha impedito di leggere tutte le schede. Lo stato di queste voci viene da fatti consolidati fino al 2025 e va ricontrollato. Le prime da rileggere:
+- 81 voci su 181 non sono state rilette oggi su una fonte datata. Il blocco di Wikipedia (errore 429) ha impedito di leggere tutte le schede. Lo stato di queste voci viene da fatti consolidati fino al 2025 e va ricontrollato. Le prime da rileggere:
   - Camp de Gaulle in Gabon;
   - Rzeszów;
   - Mihail Kogălniceanu e la rotazione USA in Romania (le fonti non concordano sull'ottobre 2025);
@@ -214,4 +216,6 @@ Altri passaggi sono presidiati da più lontano:
 - Alcune coordinate sono quelle della città o dell'aeroporto vicino, non della base: la precisione è dichiarata in ogni punto. Krychau-6 (l'Oreshnik in Bielorussia) ha le coordinate della città. Le fonti non concordano nemmeno sul ruolo del sito: base permanente o tecnica.
 - Mancano di proposito i punti senza coordinate affidabili: l'avamposto cinese in Tagikistan, il futuro spazioporto turco in Somalia, i siti USA a Panama.
 - Le isole contese (Spratly, Paracel, Curili) e i territori occupati (Crimea, Abcasia, Ossezia del Sud, Transnistria, Cipro Nord) hanno come paese chi le controlla di fatto o lo stato riconosciuto, e la nota lo spiega. Non è una presa di posizione.
+- Durante il lavoro si è esaurito il budget di ricerche web della sessione. Per Mayun (Perim) e Abd al-Kuri le notizie di Associated Press (2021, 2024, 2025) sono citate attraverso le pagine di Wikipedia che le riportano, non lette direttamente. Per lo stesso motivo non sono stati verificati i link diretti a CSIS (Cuba) e Chatham House (isole Coco), e quindi non sono nel file.
+- Per aggiornare: si modificano le voci in `raccolta/basi/basi.json` e si rilancia lo script. Con `--verifica-coordinate` lo script ricontrolla le coordinate su OurAirports e Wikidata.
 - Licenze: OurAirports e Wikidata sono liberi. Le descrizioni prese da Wikipedia sono riassunte, non copiate (CC BY-SA). Gli articoli di stampa sono citati con link. Nessuna fonte CC BY-NC.

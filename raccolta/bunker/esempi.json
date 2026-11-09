@@ -1,0 +1,40 @@
+{
+  "nota": "Parametri degli esempi di costo. I consumi sono IPOTESI DIDATTICHE dichiarate, non dati misurati: servono a mostrare come si combinano prezzo del bunker, EUA e FuelEU. I prezzi (bunker, EUA, cambio) li legge lo script dalle fonti a ogni esecuzione. Per cambiare l'esempio basta cambiare 'consumo_t'.",
+  "esempi": [
+    {
+      "id": "asia-rotterdam",
+      "nome": "Portacontainer, ultima tratta extra UE verso Rotterdam (es. da Singapore o Colombo, via Suez o Capo)",
+      "carburante": "HFO_VLSFO_residuo",
+      "prezzo_hub": "singapore",
+      "consumo_t": 4000,
+      "ipotesi_consumo": "4.000 t di VLSFO nella tratta che conta per l'UE, cioe' dall'ultimo porto di scalo extra UE (una sosta a Tanger Med o East Port Said non interrompe la tratta) a Rotterdam: ordine di grandezza per una grande portacontainer, da sostituire con il dato reale MRV della nave",
+      "quota_ets": 0.5,
+      "quota_fueleu": 0.5,
+      "fattore_phase_in": 1.0,
+      "teu_ipotesi": null
+    },
+    {
+      "id": "intra-ue",
+      "nome": "Nave che viaggia tra due porti UE (es. Rotterdam-Genova)",
+      "carburante": "HFO_VLSFO_residuo",
+      "prezzo_hub": "rotterdam",
+      "consumo_t": 1000,
+      "ipotesi_consumo": "1.000 t di VLSFO: valore tondo per leggere il costo per ogni 1.000 t bruciate in viaggi intra UE (100% coperti)",
+      "quota_ets": 1.0,
+      "quota_fueleu": 1.0,
+      "fattore_phase_in": 1.0
+    },
+    {
+      "id": "deviazione-tanger",
+      "nome": "Stessa tratta Asia-Rotterdam ma con scalo in un porto extra UE NON in lista (es. un nuovo hub di trasbordo nordafricano) a 1 giorno di navigazione da Algeciras",
+      "carburante": "HFO_VLSFO_residuo",
+      "prezzo_hub": "singapore",
+      "consumo_t": 4000,
+      "consumo_ultima_tratta_t": 500,
+      "ipotesi_consumo": "come il primo esempio; l'ultima tratta dal porto di trasbordo all'UE consuma 500 t (ipotesi): solo questa conta al 50%, il resto del viaggio esce dall'ETS. E' il meccanismo di 'evasione' che la lista dei porti vicini vuole impedire",
+      "quota_ets": 0.5,
+      "quota_fueleu": 0.5,
+      "fattore_phase_in": 1.0
+    }
+  ]
+}

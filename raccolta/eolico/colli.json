@@ -1,0 +1,565 @@
+{
+  "_nota": "Colli di bottiglia della filiera eolica offshore. Ogni scheda: sintesi, indicatori con fonte e data, valutazione (separata dai fatti). 'tensione' e' una nostra valutazione qualitativa: alta / media / bassa / eccesso di capacita'.",
+  "schede": [
+    {
+      "id": "cavi-hvdc",
+      "titolo": "Cavi ad alta tensione e HVDC",
+      "tensione": "alta",
+      "sintesi": "Tre produttori europei (Prysmian, NKT, Nexans) piu' i coreani (LS Cable) e i giapponesi (Sumitomo) servono l'Europa. I portafogli ordini coprono diversi anni di produzione; le nuove fabbriche entrano in funzione dal 2027.",
+      "indicatori": [
+        {
+          "nome": "Prysmian: portafoglio ordini Transmission",
+          "valore": 16.5,
+          "unita": "miliardi EUR",
+          "data": "2026-10-29",
+          "nota": "piu' circa 2 miliardi di progetti aggiudicati non ancora inclusi; include Xtera (cavi telecom sottomarini) dal 2026",
+          "fonte": "Prysmian, comunicato Q3 2026",
+          "link": "https://www.prysmian.com/sites/www.prysmian.com/files/media/documents/PR_Q326_ENGLISH.pdf",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Prysmian: crescita organica Transmission Q3 2026",
+          "valore": 23.1,
+          "unita": "%",
+          "data": "2026-10-29",
+          "nota": "ricavi Transmission Q3 2026 1.088 milioni EUR; margine EBITDA rettificato 20,0%",
+          "fonte": "Prysmian, comunicato Q3 2026",
+          "link": "https://www.prysmian.com/sites/www.prysmian.com/files/media/documents/PR_Q326_ENGLISH.pdf",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "NKT: portafoglio ordini Transmission",
+          "valore": 13.0,
+          "unita": "miliardi EUR",
+          "data": "2026-06-30",
+          "nota": "11,6 miliardi a prezzi standard dei metalli; 13,5 a fine Q1 2026. Esclusi 5 progetti quadro TenneT stimati oltre 2,5 miliardi",
+          "fonte": "NKT, H1 2026 interim report (via Inderes)",
+          "link": "https://www.inderes.se/en/releases/nkt-as-h1-2026-interim-report-solid-financial-and-operational-execution",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "NKT: ordini acquisiti Q1 2026",
+          "valore": 4.2,
+          "unita": "miliardi EUR (oltre)",
+          "data": "2026-03-31",
+          "nota": "record; il contratto maggiore e' Eastern Green Link 3 (oltre 2,2 miliardi). Nuova fabbrica ad alta tensione a Karlskrona (Svezia) operativa nel 2027",
+          "fonte": "NKT, Q1 2026 interim report",
+          "link": "https://investors.nkt.com/financial-reports/nkt-as-q1-2026-interim-report-record-high-order-intake-and-ebitda-of-eur-97m/",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Nexans: portafoglio ordini rettificato",
+          "valore": 7.7,
+          "unita": "miliardi EUR",
+          "data": "2026-06-30",
+          "nota": "stabile rispetto al 31/12/2025; include circa 1,2 miliardi per il Great Sea Interconnector (in riprogrammazione). Linea MI (cavi a impregnazione) piena fino a meta' 2028. Una fonte secondaria indica 7,8 miliardi al 30/09/2026",
+          "fonte": "Nexans, informazioni finanziarie H1 2026 (sintesi secondaria)",
+          "link": "https://www.nexans.com/?p=34243",
+          "affidabilita": "media"
+        },
+        {
+          "nome": "Nexans: avvio produzione cavo HVDC 525 kV per LanWin2 (TenneT) a Halden, Norvegia",
+          "valore": null,
+          "unita": null,
+          "data": "2026-10-16",
+          "nota": "LanWin2 e BalWin3 dichiarati in linea con i tempi; LanWin2 in servizio entro il 2031",
+          "fonte": "Nexans, comunicato",
+          "link": "https://www.nexans.com/app/uploads/2026/10/2026-10-16-pr-nexans-and-tennet-launch-cable-production-for-major-german-offshore-wind-grid-connection.pdf",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "LS Cable: contratto TenneT LanWin4 (2 GW)",
+          "valore": 907.3,
+          "unita": "miliardi KRW",
+          "data": "2025-2026",
+          "nota": "circa 700 milioni USD, forniture fino al 2031; produzione a Donghae (Corea). Fonte coreana di giugno 2026: circa 3.000 miliardi KRW su un progetto TenneT da 7.000 miliardi KRW",
+          "fonte": "Wirenet / Herald Korea",
+          "link": "https://wirenet.org/industry-news/ls-cable-system-reports-multiple-project-orders-connecting-north-sea-to-germany/",
+          "affidabilita": "media"
+        }
+      ],
+      "valutazione": "I portafogli di Prysmian (16,5 mld) e NKT (13 mld) valgono diversi anni di ricavi Transmission: chi non ha prenotato capacita' prima del 2027 aspetta. L'ingresso dei coreani nelle gare TenneT e' il segnale che l'offerta europea non basta. Il rame pesa sul valore dei contratti (NKT riporta il portafoglio anche a prezzi standard dei metalli).",
+      "per_un_porto": "Nigg (fabbrica Sumitomo) e Halden/Karlskrona/Pikkala (fabbriche Nexans, NKT, Prysmian) diventano nodi logistici: banchine per bobine e navi posacavi."
+    },
+    {
+      "id": "convertitori-hvdc",
+      "titolo": "Sottostazioni e convertitori HVDC (piattaforme 2 GW)",
+      "tensione": "alta",
+      "sintesi": "I gestori tedeschi e olandesi hanno standardizzato connessioni HVDC da 2 GW a 525 kV. Pochi fornitori (Hitachi Energy, Siemens Energy, GE Vernova) e pochi cantieri per le piattaforme: i ritardi qui spostano interi parchi.",
+      "indicatori": [
+        {
+          "nome": "BalWin1 (Amprion, 2 GW): nuova data di esercizio",
+          "valore": "2031-09-15",
+          "unita": "data",
+          "data": "2026-07-08",
+          "nota": "prima prevista il 16/09/2030; causa: lavoro aggiuntivo su progettazione e costruzione della piattaforma di conversione offshore e terreni difficili a terra. Anche BalWin2 slitta al 2031. Piattaforme Dragados Offshore + Siemens Energy",
+          "fonte": "HVDC World",
+          "link": "https://hvdcworld.com/news/amprion-delays-balwin1-hvdc-connection-to-2031",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Hitachi Energy: portafoglio ordini",
+          "valore": 30,
+          "unita": "miliardi USD (oltre)",
+          "data": "2025",
+          "nota": "piu' che triplicato in quattro anni; i tempi di consegna allungati incidono su tempi e costi, ma la prima causa dei ritardi resta il permitting",
+          "fonte": "IEA, Building the Future Transmission Grid",
+          "link": "https://iea.blob.core.windows.net/assets/6fbf940a-d4e8-4156-b8e0-07c2f793c094/BuildingtheFutureTransmissionGrid.pdf",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Siemens Energy: prima piattaforma di conversione 2 GW con un cantiere tedesco",
+          "valore": null,
+          "unita": null,
+          "data": "2026-06-17",
+          "nota": "North Sea Connector 2 (50Hertz), con NSORe; circa il 95% dello scope Siemens Energy realizzato in Germania",
+          "fonte": "Siemens Energy, comunicato",
+          "link": "https://www.siemens-energy.com/global/en/home/press-releases/SiemensEnergy_build2GW_converter_platform_German_shipyard.html",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "McDermott: avvio lavori sulla seconda piattaforma 2 GW per TenneT",
+          "valore": null,
+          "unita": null,
+          "data": "2026-02-18",
+          "nota": "BalWin4 in servizio previsto 2029, LanWin1 un anno dopo (fonte secondaria)",
+          "fonte": "offshoreWIND.biz",
+          "link": "https://www.offshorewind.biz/2026/02/18/mcdermott-starts-work-on-second-2-gw-offshore-platform-for-tennet",
+          "affidabilita": "alta"
+        }
+      ],
+      "valutazione": "Un anno di ritardo su una piattaforma da 2 GW blocca 2 GW di turbine gia' contrattate: e' il collo di bottiglia con l'effetto piu' grande per unita'. La scelta di cantieri europei (Germania) e' anche industriale e di sicurezza.",
+      "per_un_porto": "Le piattaforme sono costruite in cantieri specializzati (Spagna, Emirati, Asia, ora Germania): i porti di installazione non le movimentano, ma i ritardi di rete spostano le finestre d'uso dei porti."
+    },
+    {
+      "id": "fondazioni",
+      "titolo": "Fondazioni (monopile)",
+      "tensione": "eccesso di capacita'",
+      "sintesi": "Nel 2021-2022 la scarsita' di monopile era il problema; oggi le fabbriche europee sono semivuote per i ritardi dei progetti e la concorrenza cinese.",
+      "indicatori": [
+        {
+          "nome": "Capacita' europea monopile XXL+",
+          "valore": 2.7,
+          "unita": "milioni di tonnellate/anno dal 2027",
+          "data": "2026-09-18",
+          "nota": "da circa 1,2 Mt nel 2024",
+          "fonte": "Rystad Energy",
+          "link": "https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Utilizzo fabbriche europee monopile",
+          "valore": 19,
+          "unita": "% nel 2028",
+          "data": "2026-09-18",
+          "nota": "circa 32% nel 2026 e 2027, circa 50% nel 2031",
+          "fonte": "Rystad Energy",
+          "link": "https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Costo di produzione Europa vs Cina",
+          "valore": "3,46 vs 2,03",
+          "unita": "milioni USD per kilotonnellata",
+          "data": "2026-09-18",
+          "nota": "Cina circa 41% sotto; un monopile cinese da 1,6 kt arriva in Europa a circa 6,35 milioni USD inclusi nolo e CBAM contro 6,69 milioni del prezzo europeo; margine europeo sceso a circa 0,20 milioni (3%)",
+          "fonte": "Rystad Energy",
+          "link": "https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Quote del tonnellaggio contrattato",
+          "valore": "Sif 31%, EEW 22%, Dajin 12%",
+          "unita": null,
+          "data": "2026-09-18",
+          "nota": null,
+          "fonte": "Rystad Energy",
+          "link": "https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Sif: chiusura di una linea su tre a Maasvlakte 2",
+          "valore": null,
+          "unita": null,
+          "data": "2026-11",
+          "nota": "dubbi rilevanti sulla continuita' aziendale; negoziati con banche e Stato olandese per un progetto esclusivo da 190 kton senza FID",
+          "fonte": "Windtech International",
+          "link": "https://www.windtech-international.com/company-news/sif-faces-funding-uncertainty-despite-improved-third-quarter-performance",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "RWE-Steelwind (Nordenham): prenotazione di capacita'",
+          "valore": 300,
+          "unita": "monopile (fino a)",
+          "data": "2024-10",
+          "nota": "320.000 t di acciaio dal 2027",
+          "fonte": "OE Digital",
+          "link": "https://www.oedigital.com/news/517667-rwe-sets-foundation-for-future-offshore-wind-farms-with-steelwind-support",
+          "affidabilita": "alta"
+        }
+      ],
+      "valutazione": "Collo di bottiglia rientrato: il rischio oggi e' la chiusura di capacita' europea (Sif) e la dipendenza da fornitori cinesi se la domanda riparte dopo il 2030. Il prezzo dell'acciaio e il CBAM decidono il confronto con la Cina.",
+      "per_un_porto": "Rotterdam (Sif), Rostock (EEW), Nordenham (Steelwind): rischio di banchine sottoutilizzate; Cuxhaven ospita un hub di marshalling con il cinese Dajin."
+    },
+    {
+      "id": "turbine",
+      "titolo": "Turbine (Vestas, Siemens Gamesa, GE Vernova)",
+      "tensione": "media",
+      "sintesi": "Due costruttori occidentali dominano l'offshore europeo (Vestas e Siemens Gamesa); GE Vernova ha sospeso nuovi ordini offshore. I costruttori cinesi offrono macchine da 16-25 MW ma l'accesso al mercato europeo e' politicamente conteso.",
+      "indicatori": [
+        {
+          "nome": "Siemens Gamesa: perdita prima delle voci speciali, Q2 esercizio 2026",
+          "valore": -44,
+          "unita": "milioni EUR",
+          "data": "2026-05",
+          "nota": "da -249 milioni un anno prima; obiettivo pareggio nell'esercizio 2026",
+          "fonte": "Renewables Now",
+          "link": "https://renewablesnow.com/news/siemens-gamesa-narrows-loss-in-q2-parent-lifts-2026-outlook-1293658/",
+          "affidabilita": "media"
+        },
+        {
+          "nome": "GE Vernova: EBITDA segmento eolico Q2 2026",
+          "valore": -275,
+          "unita": "milioni USD",
+          "data": "2026-07",
+          "nota": "-165 un anno prima; perdita attesa nel 2026 circa 400 milioni; nuovi ordini offshore sospesi per problemi tecnici",
+          "fonte": "reNEWS",
+          "link": "https://www.renews.biz/other-news/finance/ge-vernova-wind-losses-deepen/",
+          "affidabilita": "media"
+        },
+        {
+          "nome": "Potenza media turbine offshore installate in Europa nel 2025",
+          "valore": 10.7,
+          "unita": "MW",
+          "data": "2026-02",
+          "nota": null,
+          "fonte": "WindEurope, Wind energy in Europe 2025 Statistics",
+          "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Taglia di riferimento dei costruttori occidentali",
+          "valore": 15,
+          "unita": "MW (fino a)",
+          "data": "2026-05-01",
+          "nota": "Siemens discute la commercializzazione di un modello da oltre 20 MW per il prossimo decennio; vari costruttori cinesi sviluppano 16-25 MW e valutano fabbriche in UK ed Europa",
+          "fonte": "Intelatus via Offshore Engineer",
+          "link": "https://www.oedigital.com/news/538691-vessel-sector-deep-dive-wtivs",
+          "affidabilita": "alta"
+        }
+      ],
+      "valutazione": "Il problema non e' piu' la capacita' produttiva ma la redditivita': i costruttori accettano solo contratti con prezzi che coprono i rischi, e questo si scarica sulle aste. Con GE fuori dall'offshore, in Europa restano di fatto due fornitori occidentali.",
+      "per_un_porto": "Fabbriche e porti di preassemblaggio sono legati ai costruttori: Hull (pale Siemens Gamesa, oltre 1.400 addetti). Le altre fabbriche non sono mappate in questa raccolta."
+    },
+    {
+      "id": "navi",
+      "titolo": "Navi di installazione e posacavi",
+      "tensione": "media",
+      "sintesi": "La scarsita' di WTIV del 2020-2023 si e' attenuata con le consegne 2024-2026 (Cadeler, DEME, Van Oord, Jan De Nul) e con il rientro di navi dagli USA. Restano tese le navi per fondazioni (FFIV) e, dal 2030-2032, il segmento per turbine >=15 MW in Europa.",
+      "indicatori": [
+        {
+          "nome": "WTIV >=15 MW (esclusa Cina)",
+          "valore": 25,
+          "unita": "navi (oltre) entro il 2028",
+          "data": "2026-05-01",
+          "nota": "da zero nel 2020",
+          "fonte": "Intelatus via Offshore Engineer",
+          "link": "https://www.oedigital.com/news/538691-vessel-sector-deep-dive-wtivs",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Utilizzo flotta Cadeler H1 2026",
+          "valore": 66,
+          "unita": "%",
+          "data": "2026-08",
+          "nota": "con dieci navi; il primo trimestre era al 47,6%",
+          "fonte": "Cadeler, H1 2026",
+          "link": "https://www.sec.gov/Archives/edgar/data/0001978867/000197886726000095/cadelerh1interimreport2026.htm",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Flotta navi posacavi",
+          "valore": 37,
+          "unita": "navi nel 2025 (48 nel 2030)",
+          "data": "2026",
+          "nota": null,
+          "fonte": "ABS via Offshore Magazine",
+          "link": "https://www.offshore-mag.com/vessels/article/55380893/abs-newbuild-cycle-reshapes-cable-lay-vessel-fleet-for-deepwater-and-offshore-wind-demand",
+          "affidabilita": "media"
+        }
+      ],
+      "valutazione": "Narrativa divisa: gli armatori (Cadeler) parlano di sottofornitura crescente, gli analisti (Intelatus) di utilizzo difficile e pressione sulle tariffe fino al 2030. Le tariffe giornaliere 2026 non sono pubbliche.",
+      "per_un_porto": "Le navi nuove hanno pescaggio, gambe e carichi per banchina superiori: servono fondali profondi e 40-50 t/m2 (vedi Eemshaven, Swinoujscie, Klaipeda)."
+    },
+    {
+      "id": "porti",
+      "titolo": "Porti e gru",
+      "tensione": "media",
+      "sintesi": "La capacita' portuale cresce soprattutto nel Baltico (Danzica T5, Swinoujscie, Klaipeda) e nei Paesi Bassi; nel Mare del Nord tedesco le nuove banchine arrivano verso il 2028 (Cuxhaven) e il terminal di Bremerhaven non e' mai stato costruito.",
+      "indicatori": [
+        {
+          "nome": "Investimenti annunciati dal 2022 in manifattura, porti e navi",
+          "valore": 15.4,
+          "unita": "miliardi EUR",
+          "data": "2026-02",
+          "nota": "per la maggior parte solo eolico offshore",
+          "fonte": "WindEurope, 2025 Statistics",
+          "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Rotterdam: nuovo terminal eolico",
+          "valore": 45,
+          "unita": "ha, operativo a meta' 2029",
+          "data": "2025-11",
+          "nota": null,
+          "fonte": "Renewable Energy Industry",
+          "link": "https://www.renewable-energy-industry.com/countries/article-7128-port-of-rotterdam-accelerates-offshore-wind-expansion-new-45-hectare-terminal-in-the-port-of-rotterdam-eliminates-capacity-bottlenecks",
+          "affidabilita": "media"
+        },
+        {
+          "nome": "Cuxhaven: banchina heavy-load in costruzione",
+          "valore": 1250,
+          "unita": "m, 38 ha",
+          "data": "2024-11-28",
+          "nota": "completamento intorno al 2028",
+          "fonte": "offshoreWIND.biz",
+          "link": "https://www.offshorewind.biz/2024/11/28/deme-bags-contract-for-offshore-wind-terminal-in-cuxhaven",
+          "affidabilita": "alta"
+        }
+      ],
+      "valutazione": "I porti sono il collo di bottiglia 'lento': servono 3-5 anni per una banchina, ma oggi la domanda e' in ritardo di 1-2 anni (WindEurope), quindi per il 2026-2028 la pressione e' locale (Eemshaven, Esbjerg) piu' che sistemica.",
+      "per_un_porto": "Vincono i porti con aree ampie, banchine 40-50 t/m2, fondali profondi e contratti pluriennali con sviluppatori (affitti a progetto come Danzica T5 per Baltica 2)."
+    },
+    {
+      "id": "manodopera",
+      "titolo": "Manodopera specializzata",
+      "tensione": "media",
+      "sintesi": "Domanda di tecnici offshore in crescita con picchi legati ai cicli di costruzione.",
+      "indicatori": [
+        {
+          "nome": "Domanda tecnici offshore (globale)",
+          "valore": "circa 10.000 nel 2028; oltre 19.000 nel 2032-2033",
+          "unita": "tecnici",
+          "data": "2025",
+          "nota": "poi circa 11.500 nel 2035 con il passaggio a O&M",
+          "fonte": "GWO/GWEC, Global Wind Workforce Outlook 2025-2030 (sintesi secondaria)",
+          "link": "https://www.globalwindsafety.org/news/mapping-the-workforce-shift-demand-for-new-technicians-rises-as-germany-prepares-for-the-energy-transition",
+          "affidabilita": "media"
+        },
+        {
+          "nome": "Occupati eolico in Europa al 2030",
+          "valore": 607000,
+          "unita": "persone (circa)",
+          "data": "2026",
+          "nota": "base 2025 circa 442.800 secondo WindEurope (fonte secondaria)",
+          "fonte": "Windtech International su report WindEurope",
+          "link": "https://www.windtech-international.com/industry-news/windeurope-report-outlines-growth-and-skills-needs-in-europes-wind-workforce",
+          "affidabilita": "media"
+        }
+      ],
+      "valutazione": "La manodopera e' un vincolo locale (Esbjerg, Humber, Danzica) piu' che europeo; i dati affidabili per porto mancano.",
+      "per_un_porto": "Centri di formazione GWO e basi O&M creano occupazione stabile (es. oltre 1.400 addetti alla fabbrica pale di Hull)."
+    },
+    {
+      "id": "aste-ricavi",
+      "titolo": "Aste, tassi e contratti per differenza",
+      "tensione": "alta",
+      "sintesi": "Nel 2024-2025 le aste a 'offerta negativa' (lo sviluppatore paga lo Stato per il diritto di costruire) sono fallite in Danimarca, Germania e Paesi Bassi: tassi alti, costi di capitale e prezzi dell'elettricita' incerti hanno reso i progetti non finanziabili. Dove ci sono CfD a due vie (Polonia, Regno Unito, Danimarca 2026) le aste funzionano.",
+      "indicatori": [
+        {
+          "nome": "Capacita' offshore in aste fallite con offerta negativa (2024-2025)",
+          "valore": 6.5,
+          "unita": "GW",
+          "data": "2026-02",
+          "nota": "3 GW Danimarca, 2,5 GW Germania, 1 GW Paesi Bassi; inoltre annullate o invalidate: Norvegia 1,5 GW, Francia 1,2 GW, Lituania 0,7 GW",
+          "fonte": "WindEurope, 2025 Statistics",
+          "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+          "affidabilita": "alta"
+        },
+        {
+          "nome": "Capacita' offshore aggiudicata con CfD a due vie nel 2025",
+          "valore": 5.8,
+          "unita": "GW",
+          "data": "2026-02",
+          "nota": "Polonia 3,4; Francia 1,5; Irlanda 0,9 (piu' 1 GW in Germania con offerta negativa)",
+          "fonte": "WindEurope, 2025 Statistics",
+          "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+          "affidabilita": "alta"
+        }
+      ],
+      "valutazione": "Il fattore decisivo e' il costo del capitale: un parco offshore e' quasi tutto capex iniziale, quindi ogni punto di tasso sposta molto il prezzo necessario. Il CfD trasferisce il rischio di prezzo allo Stato e abbassa il costo del debito.",
+      "per_un_porto": "Senza aste riuscite non ci sono progetti da servire dopo il 2030: i porti olandesi e tedeschi dipendono dalla riforma delle aste 2026-2027."
+    }
+  ],
+  "aste": [
+    {
+      "paese": "DK",
+      "data": "2024-12",
+      "nome": "3 siti nel Mare del Nord (3 GW)",
+      "gw": 3.0,
+      "esito": "nessuna offerta",
+      "meccanismo": "offerta negativa / senza sussidi",
+      "prezzo": null,
+      "perche": "Condizioni e tempistica non attraenti secondo gli osservatori; il governo ha poi introdotto CfD a due vie.",
+      "fonte": "WindEurope 2025 Statistics; offshoreWIND.biz",
+      "link": "https://www.offshorewind.biz/2026/11/06/vattenfall-signs-final-agreements-for-new-danish-offshore-wind-farms",
+      "data_fonte": "2026-11-06",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "DK",
+      "data": "2025",
+      "nome": "Kattegat II, Kriegers Flak II, Hesselo' (senza sussidi)",
+      "gw": null,
+      "esito": "annullate per mancanza di interesse",
+      "meccanismo": "senza sussidi",
+      "prezzo": null,
+      "perche": "Mancanza di interesse.",
+      "fonte": "WindEurope 2025 Statistics, tabella 3",
+      "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+      "data_fonte": "2026-02",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "DK",
+      "data": "2026-08-04",
+      "nome": "North Sea I Mid / Holmsland (1 GW) e Hesselo' (0,8 GW)",
+      "gw": 1.8,
+      "esito": "aggiudicate a Vattenfall; accordi firmati il 06/11/2026; esercizio obiettivo 2032",
+      "meccanismo": "CfD a due vie, 20 anni",
+      "prezzo": "504 DKK/MWh (circa 67,6 EUR) North Sea I Mid, 2 offerte; 542 DKK/MWh (circa 72,7 EUR) Hesselo', 5 offerte",
+      "perche": "Il CfD ha riportato offerte competitive.",
+      "fonte": "offshoreWIND.biz; Ministero danese del clima",
+      "link": "https://www.en.kefm.dk/news/news-archive/2026/aug/vattenfall-vindkraft-as-to-build-off-shore-wind-farms-in-the-north-sea-and-kattegat",
+      "data_fonte": "2026-08-04",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "DE",
+      "data": "2025",
+      "nome": "N-9.4 (1 GW, sito non pre-studiato)",
+      "gw": 1.0,
+      "esito": "aggiudicata",
+      "meccanismo": "offerta negativa",
+      "prezzo": null,
+      "perche": null,
+      "fonte": "WindEurope 2025 Statistics, tabella 3",
+      "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+      "data_fonte": "2026-02",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "DE",
+      "data": "2025-08",
+      "nome": "N-10.1 e N-10.2 (2,5 GW)",
+      "gw": 2.5,
+      "esito": "nessuna offerta (prima volta in Germania); gare 2026 rinviate al 2027",
+      "meccanismo": "offerta negativa senza tetto",
+      "prezzo": null,
+      "perche": "Rischio prezzo interamente sullo sviluppatore, costi e tassi alti, pagamenti anticipati allo Stato.",
+      "fonte": "offshoreWIND.biz",
+      "link": "https://www.offshorewind.biz/2026/08/12/german-govt-proposes-changes-to-offshore-wind-act-industry-says-cfd-mechanism-should-not-be-fallback-option",
+      "data_fonte": "2026-08-12",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "DE",
+      "data": "2026-08-10",
+      "nome": "Riforma WindSeeG (bozza)",
+      "gw": null,
+      "esito": "in iter: gare annuali 2-4,8 GW dal 2027; CfD bilaterali solo come seconda fase se la prima non aggiudica; vita utile standard piu' lunga; obiettivo 70 GW al 2045 confermato",
+      "meccanismo": "due fasi (offerta + CfD di riserva)",
+      "prezzo": "tetti seconda fase 9,487 e 9,6715 ct/kWh (fonte secondaria)",
+      "perche": "L'industria (BWO) chiede CfD come regola, non come ripiego; il Bundesrat ha respinto il modello a due fasi il 16/10/2026 (parere non vincolante, fonte secondaria).",
+      "fonte": "offshoreWIND.biz; balticwind.eu",
+      "link": "https://www.offshorewind.biz/2026/08/12/german-govt-proposes-changes-to-offshore-wind-act-industry-says-cfd-mechanism-should-not-be-fallback-option",
+      "data_fonte": "2026-08-12",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "NL",
+      "data": "2025-10-30",
+      "nome": "Nederwiek I-A (1 GW)",
+      "gw": 1.0,
+      "esito": "nessuna offerta",
+      "meccanismo": "senza sussidi",
+      "prezzo": null,
+      "perche": "Costi in aumento e domanda di elettricita' piu' bassa del previsto; la ministra Hermans: 'il sostegno pubblico e' cruciale'.",
+      "fonte": "offshoreWIND.biz",
+      "link": "https://www.offshorewind.biz/2025/10/31/zero-bids-in-1-gw-dutch-offshore-wind-tender/",
+      "data_fonte": "2025-10-31",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "NL",
+      "data": "2026",
+      "nome": "IJmuiden Ver Gamma-A (1 GW) e Gamma-B (1 GW)",
+      "gw": 2.0,
+      "esito": "in corso: Gamma-A con budget di sussidio 3,98 miliardi EUR (meccanismo temporaneo TOWOZ); Gamma-B aggiunto ad aprile 2026, domande 26/11-10/12/2026 secondo RVO (fonte secondaria); CfD dal 2027",
+      "meccanismo": "sussidio temporaneo TOWOZ",
+      "prezzo": "tetto Gamma-A alzato da 104 a 117 EUR/MWh (fonte secondaria, giugno 2026)",
+      "perche": "Il governo vuole evitare lo stallo della filiera e costi extra per TenneT.",
+      "fonte": "offshoreWIND.biz",
+      "link": "https://www.offshorewind.biz/2026/01/19/dutch-govt-plans-single-site-tender-in-september-temporary-subsidy-mechanism-to-support-1-gw-of-offshore-wind",
+      "data_fonte": "2026-01-19",
+      "affidabilita": "media"
+    },
+    {
+      "paese": "GB",
+      "data": "2026-01-14",
+      "nome": "CfD Allocation Round 7",
+      "gw": 8.4,
+      "esito": "record: 8,2 GW fondazioni fisse, 192,5 MW galleggiante; RWE circa 6,9 GW",
+      "meccanismo": "CfD",
+      "prezzo": "fisse 90,91 GBP/MWh (prezzi 2024); galleggiante 216,46 GBP/MWh",
+      "perche": null,
+      "fonte": "GOV.UK, risultati AR7",
+      "link": "https://www.gov.uk/government/publications/contracts-for-difference-cfd-allocation-round-7-results/contracts-for-difference-cfd-allocation-round-7-results-accessible-webpage",
+      "data_fonte": "2026-01-14",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "PL",
+      "data": "2025-12-17",
+      "nome": "Prima asta CfD offshore",
+      "gw": 3.435,
+      "esito": "Baltica 9 (PGE, 975 MW), Baltic East (ORLEN, 900 MW), Baltyk I (Polenergia/Equinor, 1.560 MW); prossime aste 2027, 2029, 2031",
+      "meccanismo": "CfD a due vie, 25 anni",
+      "prezzo": "circa 113-117 EUR/MWh (WindEurope)",
+      "perche": null,
+      "fonte": "WindEurope 2025 Statistics; Notes from Poland",
+      "link": "https://notesfrompoland.com/2025/12/19/poland-completes-first-offshore-wind-power-auction-allocating-3-4-gw-of-capacity/",
+      "data_fonte": "2025-12-19",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "LT",
+      "data": "2025",
+      "nome": "Seconda asta offshore (riproposta, 0,7 GW)",
+      "gw": 0.7,
+      "esito": "invalidata: meno delle due offerte minime",
+      "meccanismo": "CfD",
+      "prezzo": null,
+      "perche": "Interesse insufficiente.",
+      "fonte": "WindEurope 2025 Statistics",
+      "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+      "data_fonte": "2026-02",
+      "affidabilita": "alta"
+    },
+    {
+      "paese": "NO",
+      "data": "2025",
+      "nome": "Sorvest F (1,5 GW)",
+      "gw": 1.5,
+      "esito": "annullata",
+      "meccanismo": "CfD",
+      "prezzo": null,
+      "perche": null,
+      "fonte": "WindEurope 2025 Statistics",
+      "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+      "data_fonte": "2026-02",
+      "affidabilita": "alta"
+    }
+  ]
+}

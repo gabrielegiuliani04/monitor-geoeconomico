@@ -421,7 +421,8 @@ def main():
         "nota": ("Principali installazioni militari nel mondo, soprattutto all'estero, con il loro significato strategico. "
                  "Completa fissi.json (Medio Oriente), italia.json, iran.json e difesa.json, senza duplicarli. "
                  "Solo fonti aperte; forze presenti come ordini di grandezza pubblicati. 'verificata' = almeno una fonte "
-                 "letta alla data di compilazione; le altre voci citano fatti consolidati da rileggere. Paese = chi "
+                 "letta alla data di compilazione; le altre voci citano fatti consolidati da rileggere. Nelle fonti con "
+                 "'riletta' falsa la data è quella di compilazione della scheda. Paese = chi "
                  "controlla il territorio (per le isole contese è indicato nelle note). Teatri: "
                  + ", ".join(f"{k} = {n}" for k, n in TEATRI.items()) + "."),
         "compilato": curato.get("compilato", ""),

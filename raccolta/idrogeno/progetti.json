@@ -1,0 +1,374 @@
+{
+  "_nota": "Voci curate a mano, una per progetto. Ogni numero viene dalla fonte citata (link + data). Coordinate: 'precisione_coord' dice se il punto e' il sito ('sito'), l'area industriale/portuale ('area') o solo la regione ('regione'): non usare per misure. Stati ammessi: operativo, in costruzione, FID, sviluppo (pre-FID con permessi/grant/ingegneria), annunciato, sospeso, cancellato. Aggiornare la voce e 'data_fonte' quando cambia lo stato.",
+  "progetti": [
+    {
+      "id": "nl-hh1", "nome": "Holland Hydrogen 1 (Shell)", "paese": "NL", "porto": "Rotterdam",
+      "lat": 51.962, "lon": 4.017, "precisione_coord": "area",
+      "categoria": "elettrolizzatore", "stato": "in costruzione", "mw": 200, "capacita": "60 t/giorno di H2 (S&P); Shell indica fino a 44 t/giorno",
+      "anno": 2026, "operatore": "Shell",
+      "fonte": "S&P Global Commodity Insights (via Hellenic Shipping News)", "link": "https://www.hellenicshippingnews.com/shell-readies-europes-largest-refinery-for-green-hydrogen/",
+      "data_fonte": "2026-04-30", "affidabilita": "alta",
+      "note": "Avvio previsto 'later in 2026'; il sito Shell parla di commissioning 2027. 10 stack alcalini da 20 MW thyssenkrupp nucera. Elettricita' dal parco offshore Hollandse Kust Noord (759 MW, Shell/Eneco). Coprira' circa il 5-10% del fabbisogno di H2 della raffineria di Pernis. Annunciato nel 2020 con avvio 2025: rinviato. A marzo 2025 il 'fattore correttivo' olandese era indicato come minaccia al business case (NL Times/AD)."
+    },
+    {
+      "id": "nl-elygator", "nome": "ELYgator (Air Liquide)", "paese": "NL", "porto": "Rotterdam",
+      "lat": 51.958, "lon": 4.024, "precisione_coord": "area",
+      "categoria": "elettrolizzatore", "stato": "in costruzione", "mw": 200, "capacita": null,
+      "anno": 2027, "operatore": "Air Liquide",
+      "fonte": "Air Liquide (FID 23/07/2025); Port of Rotterdam", "link": "https://www.airliquide.com/group/press-releases-news/2025-07-23/air-liquide-takes-final-investment-decision-build-elygator-large-scale-electrolyzer-netherlands",
+      "data_fonte": "2025-07-23", "affidabilita": "alta",
+      "note": "Operativo 'entro fine 2027' secondo il Porto di Rotterdam. Elettricita' da OranjeWind e Hollandse Kust Zuid; fornira' tra gli altri la raffineria TotalEnergies. In costruzione accanto a HH1 (S&P, 30/04/2026)."
+    },
+    {
+      "id": "nl-uniper-maasvlakte", "nome": "H2Maasvlakte (Uniper), fase 1", "paese": "NL", "porto": "Rotterdam",
+      "lat": 51.952, "lon": 4.06, "precisione_coord": "area",
+      "categoria": "elettrolizzatore", "stato": "sviluppo", "mw": 200, "capacita": "circa 22.000 t/anno di H2 (dipende dalle ore di funzionamento); progetto complessivo 500 MW",
+      "anno": 2030, "operatore": "Uniper",
+      "fonte": "Pipeline & Gas Journal", "link": "https://pgjonline.com/news/2026/january/first-rotterdam-hydrogen-pipeline-segment-nears-completion",
+      "data_fonte": "2026-01", "affidabilita": "alta",
+      "note": "Contributo pubblico di 297 milioni di euro. FID attesa nel secondo semestre 2026, costruzione dal 2027, commissioning 'intorno al 2030'. Nel 2025 il piano era 100 MW entro il 2026 (NL Times): rinviato."
+    },
+    {
+      "id": "nl-h2fifty", "nome": "H2-Fifty (BP)", "paese": "NL", "porto": "Rotterdam",
+      "lat": 51.965, "lon": 4.03, "precisione_coord": "area",
+      "categoria": "elettrolizzatore", "stato": "sospeso", "mw": 250, "capacita": null,
+      "anno": null, "operatore": "BP (con HyCC in origine)",
+      "fonte": "enkiai.com (aggregatore); Gasworld per il progetto originario", "link": "https://enkiai.com/bp-green-hydrogen-initiatives-for-2025-key-projects-strategies-and-market-impact/",
+      "data_fonte": "2025-05", "affidabilita": "bassa",
+      "note": "Secondo un aggregatore lo sviluppo congiunto e' stato interrotto a maggio 2025; nessuna FID trovata. Fonte primaria non trovata: da verificare. Nel settembre 2025 BP ha cancellato a Rotterdam anche l'impianto di biocarburanti (progetto diverso)."
+    },
+    {
+      "id": "nl-vtti", "nome": "Terminale ammoniaca + cracker VTTI (Rotterdam)", "paese": "NL", "porto": "Rotterdam",
+      "lat": 51.935, "lon": 4.11, "precisione_coord": "regione",
+      "categoria": "terminale-import", "vettore": "ammoniaca", "stato": "sviluppo", "mw": null, "capacita": null,
+      "anno": null, "operatore": "VTTI",
+      "fonte": "Port of Rotterdam, 'The hydrogen system is taking shape'", "link": "https://www.portofrotterdam.com/en/news-and-press-releases/hydrogen-system-taking-shape",
+      "data_fonte": "2025-05", "affidabilita": "media",
+      "note": "Progetto di Interesse Comune UE; contributo UE di 11,6 milioni di euro per Rotterdam; fase di Heads of Agreement dopo l'open season. Progetto gemello ad Anversa. Coordinate: solo l'area portuale, il sito esatto non e' indicato."
+    },
+    {
+      "id": "nl-ace", "nome": "ACE Terminal (Gasunie, HES, Vopak)", "paese": "NL", "porto": "Rotterdam",
+      "lat": 51.948, "lon": 4.045, "precisione_coord": "area",
+      "categoria": "terminale-import", "vettore": "ammoniaca", "stato": "sviluppo", "mw": null, "capacita": null,
+      "anno": null, "operatore": "Gasunie, HES International, Vopak",
+      "fonte": "Gasunie (annuncio aprile 2022)", "link": "https://www.gasunie.nl/en/news/gasunie-hes-international-and-vopak-join-forces-to-develop-an-import-terminal-for-hydrogen-carrier-in-the-port-of-rotterdam",
+      "data_fonte": "2022-04", "affidabilita": "media",
+      "note": "Annunciato nel 2022 con avvio '2026, previa FID'. Al 9/11/2026 non risulta una FID pubblica. Nel marzo 2026 una consultazione del Porto ha indicato permessi, congestione della rete elettrica e mancanza del collegamento verso la Germania (Delta Rhine Corridor) come freni ai terminali di import (WorldCargo News)."
+    },
+    {
+      "id": "nl-nh3-bunker-pilot", "nome": "Pilota di bunkeraggio ammoniaca nave-nave (Rotterdam)", "paese": "NL", "porto": "Rotterdam",
+      "lat": 51.9, "lon": 4.25, "precisione_coord": "regione",
+      "categoria": "bunkeraggio", "vettore": "ammoniaca", "stato": "operativo", "mw": null, "capacita": "800 m3 di ammoniaca liquida a -33 gradi C trasferiti",
+      "anno": 2025, "operatore": "Trammo, OCI, James Fisher Fendercare",
+      "fonte": "Port of Rotterdam", "link": "https://www.portofrotterdam.com/en/news-and-press-releases/hydrogen-system-taking-shape",
+      "data_fonte": "2025-04", "affidabilita": "alta",
+      "note": "Prova singola (aprile 2025), non servizio commerciale. Il Porto attendeva le prime navi capaci di usare ammoniaca 'nel 2026 o 2027'."
+    },
+    {
+      "id": "nl-eemshydrogen", "nome": "Eemshydrogen (RWE)", "paese": "NL", "porto": "Eemshaven",
+      "lat": 53.44, "lon": 6.835, "precisione_coord": "area",
+      "categoria": "elettrolizzatore", "stato": "sviluppo", "mw": 50, "capacita": null,
+      "anno": 2027, "operatore": "RWE",
+      "fonte": "RWE (comunicato 29/04/2024)", "link": "https://www.rwe.com/en/press/rwe-generation/2024-04-29-rwe-receives-grant-for-eemshydrogen-project-to-build-50-mw-electrolyser/",
+      "data_fonte": "2024-04-29", "affidabilita": "media",
+      "note": "Avvio previsto 2027, soggetto a FID (nessuna FID trovata). Eemshaven ospita gli approdi dei cavi HVDC NorNed (Norvegia) e COBRAcable (Danimarca)."
+    },
+    {
+      "id": "nl-oranjewind-h2", "nome": "Elettrolizzatore OranjeWind (RWE) presso centrale Magnum", "paese": "NL", "porto": "Eemshaven",
+      "lat": 53.445, "lon": 6.865, "precisione_coord": "area",
+      "categoria": "elettrolizzatore", "stato": "sviluppo", "mw": 100, "capacita": null,
+      "anno": null, "operatore": "RWE",
+      "fonte": "WaterstofNet", "link": "https://www.waterstofnet.eu/en/news/dutch-government-grants-551-million-for-rwe-s-100-mw-green-hydrogen-electrolyser-at-eemshaven",
+      "data_fonte": "2025-10", "affidabilita": "media",
+      "note": "Sussidio SDE++ di 551 milioni di euro (RVO, ottobre 2025); permessi approvati; prossime fasi: FEED, appaltatori, contratti di acquisto. Nessuna FID trovata. Alimentato dal parco offshore OranjeWind (RWE/TotalEnergies)."
+    },
+    {
+      "id": "nl-h2m-eemshaven", "nome": "H2M Eemshaven, idrogeno blu con CCS (Equinor)", "paese": "NL", "porto": "Eemshaven",
+      "lat": 53.438, "lon": 6.85, "precisione_coord": "area",
+      "categoria": "idrogeno-blu", "stato": "cancellato", "mw": null, "capacita": null,
+      "anno": 2026, "operatore": "Equinor",
+      "fonte": "BCInsight (CRU); Argus", "link": "https://www.bcinsight.crugroup.com/2026/03/17/equinor-backs-out-of-blue-hydrogen-project/",
+      "data_fonte": "2026-03-17", "affidabilita": "media",
+      "note": "Equinor si ritira citando incertezza normativa e mancanza di finanziamenti; secondo analisi successive pesavano anche la mancanza di infrastruttura H2 locale e di contratti di acquisto. Il progetto belga di Equinor resta attivo (Argus)."
+    },
+    {
+      "id": "be-hyoffwind", "nome": "Hyoffwind (Zeebrugge)", "paese": "BE", "porto": "Zeebrugge (Anversa-Bruges)",
+      "lat": 51.33, "lon": 3.205, "precisione_coord": "area",
+      "categoria": "elettrolizzatore", "stato": "in costruzione", "mw": 25, "capacita": "circa 3.700 t/anno di H2; espandibile a 100 MW",
+      "anno": 2026, "operatore": "Virya Energy, Messer, HyoffGreen",
+      "fonte": "BESIX", "link": "https://www.besix.com/en/news/hyoffwind-reaches-key-milestone-installation-of-the-electrolysers-and-compressors",
+      "data_fonte": "2026-04-01", "affidabilita": "alta",
+      "note": "Primo impianto di H2 rinnovabile in Belgio. Lavori dal febbraio 2025; ad aprile 2026 i 25 MW di elettrolizzatori John Cockerill erano installati; prima produzione attesa nel 2026."
+    },
+    {
+      "id": "be-nh3-antwerp", "nome": "NH3 Antwerp Terminal (Fluxys, Advario)", "paese": "BE", "porto": "Anversa",
+      "lat": 51.285, "lon": 4.295, "precisione_coord": "regione",
+      "categoria": "terminale-import", "vettore": "ammoniaca", "stato": "sviluppo", "mw": null, "capacita": null,
+      "anno": 2028, "operatore": "Fluxys, Advario (50/50)",
+      "fonte": "Fluxys, pagina progetto (aggiornata 08/06/2026)", "link": "https://www.fluxys.com/en/projects/ammonia-antwerp-terminal",
+      "data_fonte": "2026-06-08", "affidabilita": "media",
+      "note": "Joint Development Agreement firmato; obiettivo operativo 2027/2028; spedizione via treno, camion, chiatta ed eventuali condotte; cracking opzionale. Nessuna FID pubblica trovata."
+    },
+    {
+      "id": "de-hghh", "nome": "Hamburg Green Hydrogen Hub (Moorburg)", "paese": "DE", "porto": "Amburgo",
+      "lat": 53.488, "lon": 9.951, "precisione_coord": "sito",
+      "categoria": "elettrolizzatore", "stato": "in costruzione", "mw": 100, "capacita": "le fonti indicano circa 10.000 t/anno (alcune fino a 15.000)",
+      "anno": 2027, "operatore": "Luxcara, Hamburger Energiewerke",
+      "fonte": "Citta' di Amburgo (posa prima pietra 01/12/2025)", "link": "https://hgv.hamburg.de/en/aktuelles/kick-off-for-the-hydrogen-future-foundation-stone-laid-for-100-mw-electrolyzer-in-moorburg",
+      "data_fonte": "2025-12-01", "affidabilita": "alta",
+      "note": "Sul sito dell'ex centrale a carbone di Moorburg. Elettrolizzatore PEM Siemens Energy. Esercizio previsto nel secondo semestre 2027. Si collega alla rete industriale HH-WIN."
+    },
+    {
+      "id": "de-hhwin", "nome": "HH-WIN, rete industriale dell'idrogeno di Amburgo", "paese": "DE", "porto": "Amburgo",
+      "lat": 53.505, "lon": 9.94, "precisione_coord": "regione",
+      "categoria": "rete-h2-locale", "stato": "in costruzione", "mw": null, "capacita": "40 km nella prima fase, 60 km a regime",
+      "anno": 2027, "operatore": "Hamburger Energienetze (Gasnetz Hamburg)",
+      "fonte": "pv magazine Deutschland; ingenieur.de", "link": "https://www.pv-magazine.de/2026/08/21/wasserstoff-fuer-die-industrie-hamburger-energienetze-errichten-h2-connector/",
+      "data_fonte": "2026-08-21", "affidabilita": "media",
+      "note": "Primi 40 km in esercizio dall'autunno 2027; 60 km entro il 2031/2032. Le cifre sul tracciato gia' posato non concordano tra le fonti (18-40 km). Fa parte del Kernnetz."
+    },
+    {
+      "id": "de-uniper-whv", "nome": "Terminale di import ammoniaca Wilhelmshaven (Uniper)", "paese": "DE", "porto": "Wilhelmshaven",
+      "lat": 53.585, "lon": 8.13, "precisione_coord": "regione",
+      "categoria": "terminale-import", "vettore": "ammoniaca", "stato": "sviluppo", "mw": 1000, "capacita": "fino a 2,6 Mt/anno di ammoniaca (massimo, modulare) + cracker + 1 GW di elettrolisi",
+      "anno": 2028, "operatore": "Uniper (cracker con thyssenkrupp Uhde)",
+      "fonte": "Ammonia Energy Association", "link": "https://ammoniaenergy.org/articles/unipers-wilhelmshaven-import-terminal-to-progress-after-successful-open-season/",
+      "data_fonte": "2026-09-13", "affidabilita": "alta",
+      "note": "Open season conclusa con abbastanza prenotazioni per passare a sviluppo, permessi e contratti (settembre 2026); volumi non resi noti. Contratto vincolante (gennaio 2026) con AM Green: 500.000 t/anno di ammoniaca RFNBO dall'India 'gia' dal 2028'. Il campo mw indica l'elettrolisi prevista nel sito, non ancora decisa."
+    },
+    {
+      "id": "de-bp-whv", "nome": "Cracker di ammoniaca BP (Wilhelmshaven)", "paese": "DE", "porto": "Wilhelmshaven",
+      "lat": 53.565, "lon": 8.155, "precisione_coord": "regione",
+      "categoria": "terminale-import", "vettore": "ammoniaca", "stato": "annunciato", "mw": null, "capacita": "fino a 130.000 t/anno di H2 (piano 2023)",
+      "anno": 2028, "operatore": "BP",
+      "fonte": "Ammonia Energy Association", "link": "https://ammoniaenergy.org/articles/new-ammonia-import-infrastructure-under-development-across-europe-and-beyond/",
+      "data_fonte": "2023-01-25", "affidabilita": "bassa",
+      "note": "Annuncio del 2023 (terminale NWO esistente, condotte da convertire). Nessun aggiornamento trovato; nel frattempo BP ha tagliato gran parte dei progetti idrogeno (Teesside, AREH). Stato reale da verificare."
+    },
+    {
+      "id": "de-rwe-brunsbuettel", "nome": "Terminale ammoniaca RWE (Brunsbuettel)", "paese": "DE", "porto": "Brunsbuettel",
+      "lat": 53.89, "lon": 9.185, "precisione_coord": "regione",
+      "categoria": "terminale-import", "vettore": "ammoniaca", "stato": "annunciato", "mw": null, "capacita": "circa 300.000 t/anno (piano 2022-23)",
+      "anno": null, "operatore": "RWE",
+      "fonte": "Ammonia Energy Association; Engineering News (Hyphen)", "link": "https://ammoniaenergy.org/articles/new-ammonia-import-infrastructure-under-development-across-europe-and-beyond/",
+      "data_fonte": "2023-01-25", "affidabilita": "bassa",
+      "note": "Doveva ricevere ammoniaca dalla Namibia (Hyphen) dal 2026. La FID di Hyphen e' slittata a fine 2027 (Engineering News, 25/09/2026). Nessun aggiornamento RWE trovato sul terminale."
+    },
+    {
+      "id": "de-lubmin-h2hub", "nome": "H2-Hub Lubmin (Deutsche ReGas)", "paese": "DE", "porto": "Lubmin",
+      "lat": 54.14, "lon": 13.655, "precisione_coord": "area",
+      "categoria": "elettrolizzatore", "stato": "sospeso", "mw": 210, "capacita": null,
+      "anno": null, "operatore": "Deutsche ReGas",
+      "fonte": "S&P Global (via ricerca)", "link": "https://www.spglobal.com/energy/en/news-research/latest-news/energy-transition/081425-ec-reallocates-hydrogen-funds-as-large-scale-auction-winners-withdraw",
+      "data_fonte": "2025-08-14", "affidabilita": "media",
+      "note": "Ha rinunciato al contributo vinto nella seconda asta della European Hydrogen Bank (agosto 2025). Lubmin e' l'inizio del tratto Kernnetz Lubmin-Bobbau (400 km), riempito di H2 a dicembre 2025."
+    },
+    {
+      "id": "de-lingen-geth2", "nome": "GET H2 Nukleus, elettrolizzatore RWE di Lingen", "paese": "DE", "porto": "(entroterra, Ems)",
+      "lat": 52.48, "lon": 7.3, "precisione_coord": "regione",
+      "categoria": "elettrolizzatore", "stato": "operativo", "mw": 300, "capacita": null,
+      "anno": 2026, "operatore": "RWE (rete: Nowega, OGE, Evonik/SYNEQT)",
+      "fonte": "FNB Gas (comunicato 'Zwei Jahre Wasserstoff-Kernnetz'); RWE", "link": "https://www.pv-magazine.de/unternehmensmeldungen/zwei-jahre-wasserstoff-kernnetz-aus-dem-plan-entsteht-ein-netz/",
+      "data_fonte": "2026-10-22", "affidabilita": "media",
+      "note": "FNB Gas: a Lingen un elettrolizzatore RWE produce H2 rinnovabile che arriva al chimico di Marl via Kernnetz. 300 MW e' la capacita' del progetto secondo RWE; quanta sia gia' in esercizio non e' verificato qui. Non e' un porto: incluso perche' e' il primo flusso reale produzione-rete-industria nel Nord-Ovest."
+    },
+    {
+      "id": "de-am-bremen", "nome": "Acciaieria ArcelorMittal Brema: piano DRI a idrogeno", "paese": "DE", "porto": "Brema",
+      "lat": 53.125, "lon": 8.69, "precisione_coord": "area",
+      "categoria": "domanda-industriale", "stato": "cancellato", "mw": null, "capacita": null,
+      "anno": 2025, "operatore": "ArcelorMittal",
+      "fonte": "Reuters (via Pipeline & Gas Journal)", "link": "https://pgjonline.com/news/2025/july/from-europe-to-australia-green-hydrogen-projects-canceled-before-they-began",
+      "data_fonte": "2025-06", "affidabilita": "alta",
+      "note": "Piano da 2,5 miliardi di euro per convertire due impianti tedeschi (Brema ed Eisenhuettenstadt) accantonato a giugno 2025 nonostante 1,3 miliardi di euro di sussidi offerti. E' la domanda 'ancora' che manca: senza acciaio verde i porti perdono il cliente principale per l'H2 importato."
+    },
+    {
+      "id": "dk-esbjerg-cluster", "nome": "Cluster PtX di Esbjerg (HOST, Njordkraft, Vidar, Frigg, Albatros, Heimdal)", "paese": "DK", "porto": "Esbjerg",
+      "lat": 55.47, "lon": 8.44, "precisione_coord": "regione",
+      "categoria": "elettrolizzatore", "stato": "sviluppo", "mw": null, "capacita": null,
+      "anno": 2030, "operatore": "CIP, MorGen Energy, RWE, Everfuel, Hy2gen, European Energy",
+      "fonte": "State of Green; Pipeline Journal", "link": "https://www.pipeline-journal.net/news/denmark-approves-850-million-funding-boost-hydrogen-pipeline-germany",
+      "data_fonte": "2026-10-01", "affidabilita": "media",
+      "note": "Progetti indicati come potenziali utenti del gasdotto Danish Hydrogen Backbone 1 verso la Germania. Tutti pre-FID. Il gasdotto parte solo se il mercato prenota almeno 0,5 GW entro dicembre 2026. Njordkraft (MorGen, 300 MW) ha vinto la terza asta EHB (maggio 2026), se coincide con 'NJK' di pv magazine."
+    },
+    {
+      "id": "dk-kasso", "nome": "Kasso, impianto di e-metanolo (European Energy)", "paese": "DK", "porto": "(Jutland meridionale)",
+      "lat": 55.03, "lon": 9.31, "precisione_coord": "regione",
+      "categoria": "e-fuel", "vettore": "metanolo", "stato": "operativo", "mw": null, "capacita": "fino a 42.000 t/anno di e-metanolo",
+      "anno": 2025, "operatore": "European Energy",
+      "fonte": "IEA, Northwest European Hydrogen Monitor 2025 (CC BY 4.0)", "link": "https://iea.blob.core.windows.net/assets/e77d3543-065d-49d8-b74c-e6a0283281ee/NorthwestEuropeanHydrogenMonitor2025.pdf",
+      "data_fonte": "2025", "affidabilita": "alta",
+      "note": "Avviato con energia solare e CO2 biogenica locale; tra i clienti Maersk. Il piu' grande impianto europeo di e-metanolo operativo: rilevante per il bunkeraggio di metanolo nei porti del Nord."
+    },
+    {
+      "id": "se-flagshipone", "nome": "FlagshipONE, e-metanolo (Oernskoeldsvik)", "paese": "SE", "porto": "Oernskoeldsvik",
+      "lat": 63.29, "lon": 18.72, "precisione_coord": "regione",
+      "categoria": "e-fuel", "vettore": "metanolo", "stato": "cancellato", "mw": null, "capacita": "55.000 t/anno di e-metanolo previste",
+      "anno": 2024, "operatore": "Orsted",
+      "fonte": "Offshore Energy", "link": "https://www.offshore-energy.biz/slow-developing-e-fuel-market-prompts-orsted-to-terminate-flagshipone-project",
+      "data_fonte": "2024-08", "affidabilita": "alta",
+      "note": "Cancellato ad agosto 2024 (costruzione avviata a meta' 2023) per lo sviluppo lento del mercato degli e-fuel e la difficolta' di firmare contratti di acquisto."
+    },
+    {
+      "id": "pl-orlen-greenh2", "nome": "Green H2, elettrolizzatore raffineria di Danzica (Orlen)", "paese": "PL", "porto": "Danzica",
+      "lat": 54.37, "lon": 18.72, "precisione_coord": "area",
+      "categoria": "elettrolizzatore", "stato": "sviluppo", "mw": 100, "capacita": "fino a 13.600 t/anno (fonte secondaria)",
+      "anno": 2027, "operatore": "Orlen (LOTOS Green H2)",
+      "fonte": "Commissione europea, IP/23/2143 (aiuto di Stato 158 milioni di euro)", "link": "https://ec.europa.eu/commission/presscorner/detail/en/ip_23_2143",
+      "data_fonte": "2023", "affidabilita": "media",
+      "note": "100 MW + 50 MW di fotovoltaico + 20 MWh di batterie; avvio previsto 'dal 2027'. Finanziamento PNRR polacco confermato a giugno 2025. Nessun aggiornamento 2026 trovato sullo stato dei lavori. Nessun terminale di ammoniaca trovato nel porto di Danzica."
+    },
+    {
+      "id": "gb-h2teesside", "nome": "H2Teesside, idrogeno blu (BP)", "paese": "GB", "porto": "Teesside",
+      "lat": 54.6, "lon": -1.15, "precisione_coord": "regione",
+      "categoria": "idrogeno-blu", "stato": "cancellato", "mw": null, "capacita": "da 600 MW a 1,2 GW secondo le fonti",
+      "anno": 2025, "operatore": "BP",
+      "fonte": "The Chemical Engineer", "link": "https://www.thechemicalengineer.com/news/bp-scraps-plans-for-teesside-hydrogen-plant-following-row-over-competing-data-centre/",
+      "data_fonte": "2025-12", "affidabilita": "alta",
+      "note": "BP si ritira a dicembre 2025: sullo stesso terreno ha avuto il permesso un data center per l'IA, e la domanda locale di H2 e' calata (chiusura dello steam cracker SABIC a Wilton)."
+    },
+    {
+      "id": "gb-immingham", "nome": "Immingham Green Energy Terminal (Air Products)", "paese": "GB", "porto": "Immingham",
+      "lat": 53.63, "lon": -0.19, "precisione_coord": "area",
+      "categoria": "terminale-import", "vettore": "ammoniaca", "stato": "cancellato", "mw": 300, "capacita": null,
+      "anno": 2025, "operatore": "Air Products, Associated British Ports",
+      "fonte": "Gasworld", "link": "https://www.gasworld.com/story/air-products-scraps-immingham-green-hydrogen-project-in-uk/2160471.article",
+      "data_fonte": "2025-06", "affidabilita": "media",
+      "note": "Permesso del governo britannico a febbraio 2025, poi abbandonato (giugno-luglio 2025) citando la mancanza di impegno del governo: gli schemi di sostegno UK escludono l'ammoniaca verde importata. Il dato 300 MW si riferisce all'impianto H2 previsto. Le fonti oscillano tra 'cancellato' e 'in pausa'."
+    },
+    {
+      "id": "it-trieste-hub", "nome": "Polo dell'idrogeno verde di Trieste (North Adriatic Hydrogen Valley)", "paese": "IT", "porto": "Trieste",
+      "lat": 45.615, "lon": 13.8, "precisione_coord": "regione",
+      "categoria": "elettrolizzatore", "stato": "in costruzione", "mw": 2.5, "capacita": "circa 370 t/anno di H2 (fotovoltaico 4,5 MW)",
+      "anno": 2026, "operatore": "AcegasApsAmga/Hera e partner (Regione FVG, AdSP, Universita', Trieste Trasporti)",
+      "fonte": "Balkan Green Energy News; Qualenergia; Italpress", "link": "https://balkangreenenergynews.com/north-adriatic-hydrogen-valley-project-targets-first-hydrogen-production-by-2026",
+      "data_fonte": "2026-01", "affidabilita": "media",
+      "note": "Progetto UE NAHV (Italia-Slovenia-Croazia, 25 milioni di euro di fondi UE, 2023-2029). Prima produzione obiettivo fine 2026. Uso: trasporto pubblico locale. Messa in servizio non confermata."
+    },
+    {
+      "id": "it-marghera-sapio", "nome": "Elettrolizzatore Sapio, Porto Marghera", "paese": "IT", "porto": "Venezia (Porto Marghera)",
+      "lat": 45.45, "lon": 12.245, "precisione_coord": "regione",
+      "categoria": "elettrolizzatore", "stato": "operativo", "mw": 5, "capacita": null,
+      "anno": 2026, "operatore": "Sapio",
+      "fonte": "ANSA", "link": "https://www.ansa.it/veneto/notizie/2026/07/16/a-porto-marghera-inaugurato-impianto-sapio-per-la-produzione-di-idrogeno-verde_65f25a30-8957-4e3f-a65b-d32d8f9beade.html",
+      "data_fonte": "2026-07-16", "affidabilita": "alta",
+      "note": "Inaugurato il 16 luglio 2026. Ordine di grandezza: 1/40 di Holland Hydrogen 1."
+    },
+    {
+      "id": "it-brindisi-pghv", "nome": "Puglia Green Hydrogen Valley - Brindisi", "paese": "IT", "porto": "Brindisi",
+      "lat": 40.63, "lon": 17.99, "precisione_coord": "regione",
+      "categoria": "elettrolizzatore", "stato": "annunciato", "mw": 60, "capacita": null,
+      "anno": null, "operatore": "Alboran Hydrogen, Edison, Saipem (Sosteneo 40% secondo fonti successive)",
+      "fonte": "H2 View", "link": "https://www.h2-view.com/story/three-hydrogen-plants-with-a-combined-capacity-of-220mw-planned-for-italy/2052249.article/",
+      "data_fonte": "2021-09", "affidabilita": "bassa",
+      "note": "Tre impianti (Brindisi, Taranto, Cerignola) per 220 MW complessivi annunciati nel 2021; Brindisi il piu' avanzato (60 MW, in autorizzazione allora). Nessuna FID ne' cantiere trovati al 2026."
+    },
+    {
+      "id": "it-taranto-pghv", "nome": "Puglia Green Hydrogen Valley - Taranto", "paese": "IT", "porto": "Taranto",
+      "lat": 40.48, "lon": 17.2, "precisione_coord": "regione",
+      "categoria": "elettrolizzatore", "stato": "annunciato", "mw": null, "capacita": null,
+      "anno": null, "operatore": "Alboran Hydrogen, Edison, Saipem",
+      "fonte": "H2 View", "link": "https://www.h2-view.com/story/three-hydrogen-plants-with-a-combined-capacity-of-220mw-planned-for-italy/2052249.article/",
+      "data_fonte": "2021-09", "affidabilita": "bassa",
+      "note": "Parte dei 220 MW pugliesi; la quota di Taranto non e' indicata. Nessun avanzamento verificato. Nessun terminale di import di ammoniaca/H2 trovato a Taranto."
+    },
+    {
+      "id": "sa-neom", "nome": "NEOM Green Hydrogen Company", "paese": "SA", "porto": "NEOM (Mar Rosso)",
+      "lat": 27.9, "lon": 35.3, "precisione_coord": "regione",
+      "categoria": "export", "vettore": "ammoniaca", "stato": "in costruzione", "mw": null, "capacita": "fino a 600 t/giorno di H2; circa 1,2 Mt/anno di ammoniaca",
+      "anno": 2027, "operatore": "ACWA Power, Air Products, NEOM (1/3 ciascuno)",
+      "fonte": "AGBI; Ammonia Energy Association", "link": "https://www.agbi.com/giga-projects/2026/02/neom-green-hydrogen-project-nears-completion/",
+      "data_fonte": "2026-02", "affidabilita": "alta",
+      "note": "Investimento 8,4 miliardi di dollari, closing finanziario maggio 2023. 2,2 GW solare + 1,6 GW eolico. Air Products (Q1 FY2026): rinnovabili oltre il 95%, produzione da meta' 2027. Air Products acquista tutto per 30 anni; TotalEnergies 70.000 t/anno dal 2030. Coordinate: solo la regione."
+    },
+    {
+      "id": "eg-egh", "nome": "Egypt Green Hydrogen (Ain Sokhna)", "paese": "EG", "porto": "Ain Sokhna (Suez)",
+      "lat": 29.6, "lon": 32.33, "precisione_coord": "regione",
+      "categoria": "export", "vettore": "ammoniaca", "stato": "sviluppo", "mw": 100, "capacita": "fino a 74.000 t/anno di ammoniaca rinnovabile",
+      "anno": 2027, "operatore": "Fertiglobe, Scatec, Orascom, Sovereign Fund of Egypt",
+      "fonte": "BCInsight (CRU); BMWK (H2Global)", "link": "https://www.bundeswirtschaftsministerium.de/Redaktion/EN/Pressemitteilungen/2024/07/20240711-h2global.html",
+      "data_fonte": "2025-03", "affidabilita": "media",
+      "note": "Vincitore della prima asta pilota H2Global (luglio 2024): 19.500 t nel 2027, fino a 397.000 t entro il 2033, valore massimo 397 milioni di euro, prezzo 1.000 euro/t consegnato a Rotterdam (Hintco). FID rinviata piu' volte (2023, poi 2025); a inizio 2026 ancora 'attesa nei prossimi mesi'."
+    },
+    {
+      "id": "om-acme-duqm", "nome": "ACME Duqm, ammoniaca verde", "paese": "OM", "porto": "Duqm",
+      "lat": 19.65, "lon": 57.7, "precisione_coord": "regione",
+      "categoria": "export", "vettore": "ammoniaca", "stato": "in costruzione", "mw": null, "capacita": "fase 1: 100.000 t/anno di ammoniaca; a regime 800.000 t/anno di NH3 e 142.000 t/anno di H2",
+      "anno": 2026, "operatore": "ACME Group (contratto di acquisto con Yara per la fase 1)",
+      "fonte": "Renewable Watch", "link": "https://renewablewatch.in/2026/06/12/acme-progresses-with-oman-green-hydrogen-project/",
+      "data_fonte": "2026-06-12", "affidabilita": "media",
+      "note": "Fase 1 'secondo quanto riportato' in servizio a fine 2026; fasi 2 e 3 nel 2030 e 2033 (investimento 4,2 miliardi di dollari). BP ha lasciato il progetto Duqm Green Hydrogen (Oman Observer, marzo 2026)."
+    },
+    {
+      "id": "na-hyphen", "nome": "Hyphen Hydrogen Energy (Tsau //Khaeb, Luederitz)", "paese": "NA", "porto": "Luederitz",
+      "lat": -26.7, "lon": 15.2, "precisione_coord": "regione",
+      "categoria": "export", "vettore": "ammoniaca", "stato": "sviluppo", "mw": null, "capacita": "fase 1: 1 Mt/anno di ammoniaca",
+      "anno": 2028, "operatore": "Hyphen (Enertrag, Nicholas Holdings)",
+      "fonte": "Engineering News", "link": "https://www.engineeringnews.co.za/article/hyphen-green-hydrogen-project-namibia-update-2026-09-25",
+      "data_fonte": "2026-09-25", "affidabilita": "media",
+      "note": "FID della fase 1 attesa entro fine 2027 (era 2026, poi primo semestre 2026); produzione fase 1 attesa dal 2028. Contributo della Banca africana di sviluppo (settembre 2026). Doveva rifornire il terminale RWE di Brunsbuettel."
+    },
+    {
+      "id": "cl-haru-oni", "nome": "Haru Oni, e-benzina (HIF Global)", "paese": "CL", "porto": "Punta Arenas / Cabo Negro",
+      "lat": -52.95, "lon": -70.9, "precisione_coord": "regione",
+      "categoria": "e-fuel", "vettore": "metanolo/e-benzina", "stato": "operativo", "mw": null, "capacita": "impianto pilota",
+      "anno": 2022, "operatore": "HIF Global",
+      "fonte": "S&P Global (feature 19/03/2026, via ricerca)", "link": "https://www.spglobal.com/energy/en/news-research/latest-news/energy-transition/031926-feature-chiles-green-hydrogen-ambitions-face-skepticism-amid-delays-and-high-costs",
+      "data_fonte": "2026-03-19", "affidabilita": "media",
+      "note": "Pilota operativo con piccole esportazioni di e-benzina. Nel Magallanes i grandi progetti rallentano: EDF ha fermato Energia Verde Austral (dicembre 2025); S&P cita costi di produzione di 4,5 $/kg. IPHE (nov. 2025): 2,12 MW di elettrolisi installati in tutto il Cile."
+    },
+    {
+      "id": "au-pem50", "nome": "PEM50 Gladstone (Fortescue)", "paese": "AU", "porto": "Gladstone",
+      "lat": -23.86, "lon": 151.24, "precisione_coord": "regione",
+      "categoria": "elettrolizzatore", "stato": "cancellato", "mw": 50, "capacita": null,
+      "anno": 2025, "operatore": "Fortescue",
+      "fonte": "Mining Weekly", "link": "https://www.miningweekly.com/article/fortescue-scales-back-hydrogen-ambitions-iron-ore-shipments-at-record-2025-07-24",
+      "data_fonte": "2025-07-24", "affidabilita": "alta",
+      "note": "30 MW + 20 MW; cancellato il 24/07/2025 insieme al progetto di 80 MW in Arizona (svalutazione circa 150 milioni di dollari USA). Fortescue aveva gia' ridotto nel 2024 l'obiettivo di 15 Mt di H2 verde al 2030 (Reuters)."
+    },
+    {
+      "id": "au-cqh2", "nome": "CQ-H2, idrogeno liquido Gladstone (Stanwell)", "paese": "AU", "porto": "Gladstone",
+      "lat": -23.9, "lon": 151.15, "precisione_coord": "regione",
+      "categoria": "export", "vettore": "idrogeno liquido", "stato": "sospeso", "mw": null, "capacita": "200 t/giorno di idrogeno liquefatto al 2028 (piano)",
+      "anno": 2025, "operatore": "Stanwell (Stato del Queensland), gia' con Kansai Electric e Iwatani",
+      "fonte": "Reuters (via Pipeline & Gas Journal)", "link": "https://pgjonline.com/news/2025/july/from-europe-to-australia-green-hydrogen-projects-canceled-before-they-began",
+      "data_fonte": "2025-07", "affidabilita": "alta",
+      "note": "Progetto da 12,5 miliardi di dollari australiani: il Queensland ha ritirato i fondi nel 2025, poi sono usciti Kansai e Iwatani. Futuro 'in serio dubbio'."
+    },
+    {
+      "id": "in-amgreen-kakinada", "nome": "AM Green, ammoniaca verde Kakinada", "paese": "IN", "porto": "Kakinada",
+      "lat": 16.95, "lon": 82.25, "precisione_coord": "regione",
+      "categoria": "export", "vettore": "ammoniaca", "stato": "sviluppo", "mw": 1300, "capacita": null,
+      "anno": 2028, "operatore": "AM Green",
+      "fonte": "Ammonia Energy Association", "link": "https://ammoniaenergy.org/articles/unipers-wilhelmshaven-import-terminal-to-progress-after-successful-open-season/",
+      "data_fonte": "2026-09-13", "affidabilita": "media",
+      "note": "Contratto vincolante di lungo periodo con Uniper (gennaio 2026): 500.000 t/anno di ammoniaca RFNBO verso l'Europa 'gia' dal 2028'. Il dato 1,3 GW e' riportato per il progetto dalla stessa fonte; stato del cantiere non verificato."
+    },
+    {
+      "id": "au-hedland-bunker", "nome": "Prova di bunkeraggio ammoniaca verde, Port Hedland", "paese": "AU", "porto": "Port Hedland",
+      "lat": -20.31, "lon": 118.58, "precisione_coord": "area",
+      "categoria": "bunkeraggio", "vettore": "ammoniaca", "stato": "operativo", "mw": null, "capacita": null,
+      "anno": 2026, "operatore": "Pilbara Ports, CMB.TECH, Fortescue",
+      "fonte": "Seatrade Maritime", "link": "https://www.seatrade-maritime.com/bunkering/world-s-first-ammonia-powered-bulker-bunkers-at-port-hedland",
+      "data_fonte": "2026-11-02", "affidabilita": "media",
+      "note": "2 novembre 2026: prova di bunkeraggio di ammoniaca verde della Mineral Europa (210.000 tpl, prima portarinfuse con motore ad ammoniaca), in due ore. Prova, non servizio regolare."
+    },
+    {
+      "id": "cn-zhoushan-bunker", "nome": "Primo bunkeraggio commerciale nave-nave di ammoniaca verde, Zhoushan", "paese": "CN", "porto": "Zhoushan",
+      "lat": 29.95, "lon": 122.2, "precisione_coord": "regione",
+      "categoria": "bunkeraggio", "vettore": "ammoniaca", "stato": "operativo", "mw": null, "capacita": "1.000 t di ammoniaca verde alla Mineral Europa",
+      "anno": 2026, "operatore": "Energy China (nave Shenghang Yongle)",
+      "fonte": "Marine Log", "link": "https://marinelog.com/news/energy-china-in-world-first-commercial-ship-to-ship-green-ammonia-bunkering",
+      "data_fonte": "2026-10-13", "affidabilita": "media",
+      "note": "13 ottobre 2026, ancoraggio del porto di Zhoushan. Il primo bunkeraggio commerciale di ammoniaca verde e' avvenuto in Cina, non in Europa."
+    },
+    {
+      "id": "sg-methanol-bunker", "nome": "Bunkeraggio di metanolo, Singapore", "paese": "SG", "porto": "Singapore",
+      "lat": 1.26, "lon": 103.82, "precisione_coord": "regione",
+      "categoria": "bunkeraggio", "vettore": "metanolo", "stato": "operativo", "mw": null, "capacita": "1.600 t di metanolo bunkerate nel 2024 (prove)",
+      "anno": 2024, "operatore": "Maritime and Port Authority of Singapore",
+      "fonte": "IEA, Global Hydrogen Review 2025 (CC BY 4.0)", "link": "https://iea.blob.core.windows.net/assets/a6c466dd-b6f0-44bd-a60a-6940eccfb1c3/GlobalHydrogenReview2025.pdf",
+      "data_fonte": "2025-09", "affidabilita": "alta",
+      "note": "Standard tecnico 2025, gara fornitori con oltre 45 risposte, forniture dal 2027; ammoniaca prevista tra 2027 e 2030. Per confronto: a giugno 2025 oltre 60 navi a metanolo in servizio e quasi 300 in ordine nel mondo (IEA)."
+    }
+  ]
+}

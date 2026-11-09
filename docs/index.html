@@ -235,9 +235,9 @@ button, input, select { font: inherit; color: inherit; }
 
 
 <style>
-:root { --rail: #6E5A44; --cable: #0B7F8C; --power: #C27C0E; --lng: #7A55B5; --gasit: #2F6FB0; --sanz: #C0262D; --uastrike: #D9822B; --ai: #0A7A72; --inv: #B07A00; --cy: #6B3FA0; --cam: #1D6FA3; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; --cam: #7FC0EE; } }
-:root[data-theme="dark"] { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; --cam: #7FC0EE; }
+:root { --rail: #6E5A44; --cable: #0B7F8C; --power: #C27C0E; --lng: #7A55B5; --gasit: #2F6FB0; --sanz: #C0262D; --uastrike: #D9822B; --ai: #0A7A72; --inv: #B07A00; --cy: #6B3FA0; --cam: #1D6FA3; --rk0: #3E8E4F; --rk1: #C9A227; --rk2: #D9702B; --rk3: #C0262D; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; --cam: #7FC0EE; --rk0: #6FCF83; --rk1: #E8C64A; --rk2: #F29A5A; --rk3: #FF6B6B; } }
+:root[data-theme="dark"] { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; --cam: #7FC0EE; --rk0: #6FCF83; --rk1: #E8C64A; --rk2: #F29A5A; --rk3: #FF6B6B; }
 #trm-tabs { display: flex; gap: 6px; margin: 8px 0 4px; flex-wrap: wrap; }
 .trm-row { display: grid; grid-template-columns: minmax(0, 1.5fr) 64px minmax(64px, auto) 56px 56px 62px; gap: 6px; align-items: center; padding: 3px 0; font-size: 12.5px; color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
 .trm-row:hover { background: var(--control-hover); }
@@ -252,6 +252,7 @@ button, input, select { font: inherit; color: inherit; }
 .trm-evt { margin: 0; font-size: 13px; } .trm-evt .mono { font-family: var(--f-mono); font-size: 11px; color: var(--ink-soft); }
 .trm-evd { margin: 2px 0 0; font-size: 12px; color: var(--ink-soft); } .trm-src { font-size: 11.5px; color: var(--water-ink); }
 .mkt-grp.old { color: var(--ink-faint); }
+.rk-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
 .nav { display: flex; gap: 6px; } .nav-a { text-decoration: none; font-weight: 500; color: var(--accent); }
 .vsel { padding: 5px 8px; }
 .intro { position: absolute; z-index: 6; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(520px, calc(100% - 32px)); max-height: calc(100% - 32px); overflow: auto; padding: 18px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,.18); }
@@ -385,6 +386,10 @@ button, input, select { font: inherit; color: inherit; }
               <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 7Q11 -2 21 7" fill="none" stroke="var(--inv)" stroke-width="2"/></svg></span>Investimenti AI e chip<span class="cnt" id="n-xinv"></span></label><p class="hint">Archi da chi investe a dove; spessore = importo. Annunci, non spese effettive</p></li>
             <li id="li-xcy" hidden><label><input type="checkbox" id="lyr-xcy" data-layer="xcy">
               <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M1 1L9 9M9 1L1 9" stroke="var(--cy)" stroke-width="2.2"/></svg></span>Incidenti cyber all'energia<span class="cnt" id="n-xcy"></span></label><p class="hint">Eolico, solare, reti, refrigerazione: precedenti dal 2015</p></li>
+            <li id="li-xrisk" hidden><label><input type="checkbox" id="lyr-xrisk" data-layer="xrisk" checked>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--rk3)" fill-opacity=".6"/></svg></span>Rischio (cruscotto)<span class="cnt" id="n-xrisk"></span></label><p class="hint">Cerchi su stretti e corridoi: colore = livello, grandezza = punteggio. Tocca per gli indicatori</p></li>
+            <li id="li-xbm" hidden><label><input type="checkbox" id="lyr-xbm" data-layer="xbm">
+              <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="var(--rus)"/></svg></span>Basi nel mondo<span class="cnt" id="n-xbm"></span></label><p class="hint">USA, Russia, Cina, NATO e alleati all'estero. Colore = chi la usa; vuoto = lasciata o ridotta</p></li>
             <li id="li-xcam" hidden><label><input type="checkbox" id="lyr-xcam" data-layer="xcam">
               <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="none" stroke="var(--cam)" stroke-width="1.6"/></svg></span>Webcam pubbliche<span class="cnt" id="n-xcam"></span></label><p class="hint">Porti, stretti e canali dal vivo, solo webcam pubblicate dai proprietari</p></li>
             <li id="li-xnavi" hidden><label><input type="checkbox" id="lyr-xnavi" data-layer="xnavi" checked>
@@ -464,7 +469,7 @@ button, input, select { font: inherit; color: inherit; }
           <div><h2>Terminale</h2></div>
           <button class="x" id="trm-close" type="button" aria-label="Chiudi il terminale">×</button>
         </div>
-        <div id="trm-tabs" role="group" aria-label="Sezione"><button class="chip" type="button" data-tab="prezzi">Prezzi e tassi</button><button class="chip" type="button" data-tab="agenda">Agenda</button><button class="chip" type="button" data-tab="stretti">Stretti</button><button class="chip" type="button" data-tab="logistica">Noli e rischio</button><button class="chip" type="button" data-tab="scorte">Scorte</button><button class="chip" type="button" data-tab="paesi">Paesi</button><button class="chip" type="button" data-tab="notizie">Notizie</button><button class="chip" type="button" data-tab="ucraina">Ucraina</button><button class="chip" type="button" data-tab="analisti">Analisti</button></div>
+        <div id="trm-tabs" role="group" aria-label="Sezione"><button class="chip" type="button" data-tab="rischio">Rischio</button><button class="chip" type="button" data-tab="prezzi">Prezzi e tassi</button><button class="chip" type="button" data-tab="agenda">Agenda</button><button class="chip" type="button" data-tab="stretti">Stretti</button><button class="chip" type="button" data-tab="logistica">Noli e rischio</button><button class="chip" type="button" data-tab="scorte">Scorte</button><button class="chip" type="button" data-tab="paesi">Paesi</button><button class="chip" type="button" data-tab="notizie">Notizie</button><button class="chip" type="button" data-tab="ucraina">Ucraina</button><button class="chip" type="button" data-tab="analisti">Analisti</button></div>
         <p class="mkt-note" id="trm-note"></p>
         <div id="trm-body"></div>
       </aside>
@@ -535,7 +540,7 @@ let VB = [], VP = [], LN = null, SB = null, RT = null, ST = null;   // SB: subma
 let FRONT = null, areasOn = false;                // Ukraine: areas of control; whether they are in view in this frame
 let evRange = 7, REPORTS = [], CTX = null, liveKey = '', MK = null, DOS = null;
 let setPanel = () => {};
-const L = { xcam: false, xai: false, xinv: false, xcy: false, xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
+const L = { xbm: false, xrisk: true, xcam: false, xai: false, xinv: false, xcy: false, xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
 const TH = {};                                    // theater switches, filled from the data
 const C = {}, FF = {};
 const TODAY = new Date(); TODAY.setHours(12, 0, 0, 0);
@@ -546,7 +551,7 @@ function readTheme() {
   Object.assign(C, { sea: g('sea'), land: g('land'), coast: g('coast'), border: g('border'), river: g('river'), ink: g('ink'), inkSoft: g('ink-soft'),
     inkFaint: g('ink-faint'), waterInk: g('water-ink'), accent: g('accent'), grat: g('grat'), haloLand: g('halo-land'), haloSea: g('halo-sea'),
     paper: g('control'), ally: g('ally'), partner: g('partner'), adv: g('adv'), rus: g('rus'), oth: g('oth'), contesa: g('contesa'), oil: g('oil'), gas: g('gas'), port: g('port'), route: g('route'), onSide: g('on-side'), ev: [g('ev0'), g('ev1'), g('ev2'), g('ev-old')] });
-  Object.assign(C, { cam: g('cam'), ai: g('ai'), inv: g('inv'), cy: g('cy'), uastrike: g('uastrike'), rail: g('rail'), cable: g('cable'), power: g('power'), lng: g('lng'), gasit: g('gasit'), sanz: g('sanz') });
+  Object.assign(C, { rk0: g('rk0'), rk1: g('rk1'), rk2: g('rk2'), rk3: g('rk3'), cam: g('cam'), ai: g('ai'), inv: g('inv'), cy: g('cy'), uastrike: g('uastrike'), rail: g('rail'), cable: g('cable'), power: g('power'), lng: g('lng'), gasit: g('gasit'), sanz: g('sanz') });
   C.evText = C.ev.map(c => lum(c) > .22 ? '#16100F' : '#FFFFFF');   // the count written on a bubble of that colour
   Object.assign(FF, { sans: g('f-sans'), cond: g('f-cond'), serif: g('f-serif'), mono: g('f-mono') });
 }
@@ -1883,7 +1888,7 @@ function wire() {
     const id = cb.dataset.layer;
     if (id in L) cb.checked = !!L[id];
     if (saved && typeof saved[id] === 'boolean' && id !== 'front' && id !== 'routes' && id !== 'subsea' && id !== 'ai') { L[id] = saved[id]; cb.checked = saved[id]; }   // the front and the routes always start switched off
-    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua', 'xai', 'xinv', 'xcy', 'xcam'].includes(id)) refilter(); else schedule(); });
+    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua', 'xai', 'xinv', 'xcy', 'xcam', 'xrisk', 'xbm'].includes(id)) refilter(); else schedule(); });
   });
 
   const input = $('goto-input'), msg = $('goto-msg');
@@ -1905,13 +1910,13 @@ function wire() {
 /* ---------- Strati aggiunti: infrastrutture, flussi, navi, terminale (prezzi, agenda, stretti) ---------- */
 const XF = { ferrovie: 'data/ferrovie.json', cavi: 'data/cavi.json', caviInc: 'data/cavi-incidenti.json', gnl: 'data/terminali-gnl.json', gasit: 'data/gas-italia.json',
   navi: 'data/navi.json', pw: 'data/portwatch.json', sd: 'data/stretti-dettaglio.json', prezzi: 'data/prezzi.json', cal: 'data/calendario.json',
-  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json', aim: 'data/ai-mondo.json', inv: 'data/investimenti.json', cy: 'data/cyber-energia.json', cam: 'data/webcam.json' };
+  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json', aim: 'data/ai-mondo.json', inv: 'data/investimenti.json', cy: 'data/cyber-energia.json', cam: 'data/webcam.json', rk: 'data/rischio.json', bm: 'data/basi-mondo.json' };
 const X = { lines: {}, pts: {}, data: {} };
 const XLAYERS = {   // layer -> colour token, label
   xrail: ['rail', 'Ferrovie'], xcable: ['cable', 'Cavi sottomarini'], xpower: ['power', 'Rete elettrica'], xlng: ['lng', 'Terminali GNL'],
-  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'], xua: ['uastrike', 'Attacchi ucraini in Russia'], xai: ['ai', 'AI nel mondo'], xinv: ['inv', 'Investimenti AI'], xcy: ['cy', 'Incidenti cyber'], xcam: ['cam', 'Webcam pubbliche'] };
+  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'], xua: ['uastrike', 'Attacchi ucraini in Russia'], xai: ['ai', 'AI nel mondo'], xinv: ['inv', 'Investimenti AI'], xcy: ['cy', 'Incidenti cyber'], xcam: ['cam', 'Webcam pubbliche'], xrisk: ['rk3', 'Rischio'], xbm: ['bm', 'Basi nel mondo'] };
 const num = v => (v == null || v === '' ? null : +v);
-const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare', xua: 'Attacco ucraino in profondità', xai: 'Infrastruttura AI', xinv: 'Investimento', xcy: 'Incidente cyber', xcam: 'Webcam pubblica' };
+const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare', xua: 'Attacco ucraino in profondità', xai: 'Infrastruttura AI', xinv: 'Investimento', xcy: 'Incidente cyber', xcam: 'Webcam pubblica', xrisk: 'Rischio', xbm: 'Base militare' };
 
 function xBuildLines(layer, items, styleOf) {           // items with g = parts of [lon, lat]
   const groups = {}; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; const list = [];
@@ -1960,6 +1965,8 @@ async function xLoad(opt) {
   if (D2.gasit) xAddPoints('xgas', D2.gasit.elementi, { style: () => ({ shape: 'dot', r: 5.5 }) });
   if (D2.ua && D2.ua.elementi) xAddPoints('xua', D2.ua.elementi, { style: e => ({ shape: 'dot', r: e.categoria === 'raffineria' ? 4.5 : 3.6 }) });
   if (D2.aim && D2.aim.elementi) xAddPoints('xai', D2.aim.elementi, { style: e => ({ shape: e.categoria === 'fab-chip' ? 'up' : 'sq', r: e.categoria === 'data-center-ai' ? Math.min(7, 3 + Math.sqrt(+e.mw || 50) / 6) : 4, hollow: e.stato && !/operativ|in esercizio/.test(e.stato) }) });
+  if (D2.bm && D2.bm.elementi) xAddPoints('xbm', D2.bm.elementi, { style: e => ({ shape: 'sq', r: 3.4, col: { US: 'usa', RU: 'rus', CN: 'chn', IR: 'irn' }[e.appartenenza] || (['GB','FR','DE','NATO','IT','JP','TR','IN','AU','KR'].includes(e.appartenenza) ? 'ally' : 'oth'), hollow: /lasciat|ridott/.test(e.stato || '') }) });
+  if (D2.rk && D2.rk.unita) xAddPoints('xrisk', D2.rk.unita, { style: e => ({ shape: 'dot', r: 5 + (+e.punteggio || 0) / 3, col: 'rk' + ({ basso: 0, medio: 1, alto: 2, critico: 3 }[e.livello] || 0), hollow: false }) });
   if (D2.cam && D2.cam.elementi) xAddPoints('xcam', D2.cam.elementi, { skip: e => e.stato && e.stato !== 'attiva' && e.stato !== 'non_raggiungibile', style: () => ({ shape: 'sq', r: 3.6, hollow: true }) });
   if (D2.cy && D2.cy.elementi) xAddPoints('xcy', D2.cy.elementi, { style: () => ({ shape: 'x' }) });
   if (D2.inv && D2.inv.elementi) { const arcs = D2.inv.elementi.filter(e => e.da_lat != null && e.a_lat != null && !e.quadro).map(e => { const a = [+e.da_lon, +e.da_lat], b = [+e.a_lon, +e.a_lat], n = 24, mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], k = .18;
@@ -1990,14 +1997,14 @@ function xDrawLines(k, z, vx0, vy0, vx1, vy1) {        // in base units, under t
   if (picked && picked.kind === 'extra' && picked.path) { ctx.strokeStyle = C.haloLand; ctx.lineWidth = 6 / k; ctx.stroke(picked.path); ctx.strokeStyle = C[XLAYERS[picked.layer][0]]; ctx.lineWidth = 2.6 / k; ctx.stroke(picked.path); }
 }
 function xDrawPoints(z) {                                 // in screen units, after the labels; they add themselves to the taps
-  for (const l of ['xcam', 'xai', 'xcy', 'xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
+  for (const l of ['xrisk', 'xbm', 'xcam', 'xai', 'xcy', 'xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
     const P = X.pts[l]; if (!P || !L[l]) continue;
     if (l === 'xlng' && z < 3.2) continue;
     const col = C[XLAYERS[l][0]];
     for (const p of P) {
       const x = T.applyX(p.bx), y = T.applyY(p.by); if (x < -10 || y < -10 || x > w + 10 || y > h + 10) continue;
       const s = p.st, r = s.r || 4.5, on = picked === p;
-      ctx.lineWidth = 1.3; ctx.strokeStyle = C.paper; ctx.fillStyle = col; ctx.beginPath();
+      ctx.lineWidth = 1.3; ctx.strokeStyle = C.paper; ctx.fillStyle = s.col ? C[s.col] : col; if (l === 'xrisk') ctx.globalAlpha = .55; ctx.beginPath();
       if (s.shape === 'up' || s.shape === 'down') { const d = s.shape === 'up' ? -1 : 1; ctx.moveTo(x, y + d * r); ctx.lineTo(x + r, y - d * r * .8); ctx.lineTo(x - r, y - d * r * .8); ctx.closePath(); }
       else if (s.shape === 'sq') { ctx.rect(x - r, y - r, 2 * r, 2 * r); }
       else if (s.shape === 'x') { ctx.strokeStyle = col; ctx.lineWidth = 2.4; ctx.moveTo(x - 4, y - 4); ctx.lineTo(x + 4, y + 4); ctx.moveTo(x + 4, y - 4); ctx.lineTo(x - 4, y + 4); ctx.stroke(); hits.push({ p, x, y, r: 8 }); continue; }
@@ -2005,6 +2012,7 @@ function xDrawPoints(z) {                                 // in screen units, af
         ctx.fillStyle = s.sanz ? C.sanz : C.inkSoft; const q = [pt(6, 0), pt(-4, 3.6), pt(-4, -3.6)]; ctx.moveTo(...q[0]); ctx.lineTo(...q[1]); ctx.lineTo(...q[2]); ctx.closePath(); }
       else ctx.arc(x, y, r, 0, 2 * Math.PI);
       if (s.hollow) { ctx.fillStyle = C.paper; ctx.fill(); ctx.strokeStyle = col; ctx.stroke(); } else { ctx.fill(); ctx.stroke(); }
+      ctx.globalAlpha = 1;
       if (on) { ctx.beginPath(); ctx.arc(x, y, r + 4, 0, 2 * Math.PI); ctx.strokeStyle = C.ink; ctx.lineWidth = 1.5; ctx.stroke(); }
       hits.push({ p, x, y, r: Math.max(r, 7) });
     }
@@ -2050,6 +2058,13 @@ function renderExtra(card, p) {
   } else if (lay === 'xcable') {
     fact('Stato', d.stato); fact('Anno', d.anno || d.data_evento); fact('Lunghezza', d.km ? itNum(+d.km) + ' km' : null); fact('Proprietari', d.proprietari);
     fact('Passaggi strategici', d.s); fact('Approdi in Italia', d.approdi_it); fact('Cavi coinvolti', d.cavi); fact('Causa', d.causa); fact('Esito', d.esito);
+  } else if (lay === 'xbm') {
+    fact('Usata da', PAESI[d.appartenenza] || d.appartenenza); fact('Paese ospite', PAESI[d.paese] || d.paese); fact('Tipo', d.tipo); fact('Stato', d.stato); fact('Anno', d.anno); fact('Forze', d.forze); fact('Perché conta', d.perche_conta || d.perche); fact('Vicino a', d.vicino || d.stretti_vicini);
+  } else if (lay === 'xrisk') {
+    $('cd-name').textContent = d.nome + ' · rischio ' + d.livello;
+    fact('Punteggio', itNum(+d.punteggio) + ' su 25 (probabilità ' + itNum(+d.probabilita) + ' × impatto ' + itNum(+d.impatto) + ')'); fact('Tendenza su 7 giorni', d.tendenza);
+    fact('Perché', d.perche); for (const i of (d.indicatori || []).slice(0, 8)) fact((i.stato === 'rosso' ? '● ' : i.stato === 'giallo' ? '◐ ' : i.stato === 'verde' ? '○ ' : '· ') + i.nome, i.testo || (i.valore != null ? i.valore + ' ' + (i.unita || '') : 'n.d.'));
+    fact('Cosa osservare', (d.cosa_osservare || []).join(' · ')); fact('Chi è esposto', (d.esposti || []).join(' · '));
   } else if (lay === 'xcam') {
     fact('Inquadra', d.inquadra || d.cosa_inquadra); fact('Tipo', d.tipo); fact('Editore', d.proprietario || d.editore); fact('Stato', d.stato); fact('Verificata il', d.verificato_il || d.ultima_verifica_ok);
     const mt = $('cd-mates'); setTimeout(() => { const a = el('a', 'chip', 'Guarda dal vivo ↗'); a.href = d.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.style.textDecoration = 'none'; mt.textContent = ''; mt.appendChild(a); }, 0);
@@ -2099,7 +2114,7 @@ function xStrait(s, fact, src) {                          // the strait card, wi
 }
 
 /* ---------- Terminale: prezzi, curva dei tassi, agenda, stretti ---------- */
-let trmTab = 'prezzi';
+let trmTab = 'rischio';
 function xSpark(serie, n = 90) {
   const pts = (serie || []).slice(-n).map(x => +x[1]); if (pts.length < 5) return null;
   const lo = Math.min(...pts), hi = Math.max(...pts), sv = svgEl('svg', { width: 64, height: 18, viewBox: '0 0 64 18', 'aria-hidden': 'true' });
@@ -2220,6 +2235,14 @@ function renderTerminal() {
     if (U.ondate_rete_ucraina) { body.appendChild(el('h3', 'mkt-grp', 'Ondate contro la rete elettrica ucraina'));
       for (const o of U.ondate_rete_ucraina.slice().reverse()) { const r = el('div', 'trm-ev hi'); const t = el('p', 'trm-evt'); t.append(el('span', 'mono', o.data), ' ', o.nome); r.appendChild(t); if (o.danni_dichiarati) r.appendChild(el('p', 'trm-evd', o.danni_dichiarati)); if (o.link) { const a = el('a', 'trm-src', o.fonte || 'fonte'); a.href = o.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); } body.appendChild(r); } }
     const b2 = el('button', 'chip', L.xua ? 'Attacchi in Russia già sulla mappa' : 'Mostra sulla mappa gli attacchi ucraini in Russia (' + (X.pts.xua || []).length + ')'); b2.type = 'button'; b2.addEventListener('click', () => { L.xua = true; $('lyr-xua').checked = true; refilter(); fitView([22, 42, 60, 62], true); }); body.appendChild(b2);
+  } else if (trmTab === 'rischio' && X.data.rk) {
+    const RK = X.data.rk; $('trm-note').innerHTML = ''; $('trm-note').append('Rischio = probabilità × impatto (1–5 ciascuno, punteggio fino a 25), calcolato ogni giorno da indicatori misurabili: transiti, attacchi vicini, clima geopolitico, prezzi, alternative, scorte. Aggiornato ' + (RK.data_riferimento || RK.aggiornato) + '. ');
+    const ml = el('a', 'trm-src', 'Il metodo'); ml.href = 'https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/metodo-rischio.md'; ml.target = '_blank'; $('trm-note').appendChild(ml);
+    body.appendChild(xMatrix(RK.unita));
+    const U = RK.unita.slice().sort((a, b) => b.punteggio - a.punteggio), col = { basso: 'rk0', medio: 'rk1', alto: 'rk2', critico: 'rk3' };
+    U.forEach((u, k) => { const r = el('button', 'trm-st'); r.type = 'button'; const h = el('p', 'trm-evt'), dot = el('span', 'rk-dot'); dot.style.background = 'var(--' + col[u.livello] + ')';
+      h.append(dot, el('span', 'mono', (k + 1) + ' '), el('b', null, u.nome), ' · ' + u.livello + ' · ' + itNum(+u.punteggio) + (u.tendenza && u.tendenza !== 'stabile' ? ' · ' + u.tendenza : '')); r.appendChild(h); if (u.perche) r.appendChild(el('p', 'trm-evd', u.perche));
+      r.addEventListener('click', () => { const p = (X.pts.xrisk || []).find(q => q.d.id === u.id); if (p) { if (window.innerWidth <= 640) setPanel(false); pick(p, 4.6); } }); body.appendChild(r); });
   } else if (trmTab === 'notizie' && X.data.nt) {
     const N = X.data.nt; $('trm-note').textContent = 'Notizie degli ultimi 7 giorni da ' + ((N.stato_fonti || []).length || 35) + ' fonti aperte (sicurezza marittima, conflitti, energia e logistica, banche centrali). Tutte da verificare: diventano eventi in mappa solo con due fonti indipendenti.';
     const ids = new Set(N.in_evidenza || []), top = N.elementi.filter(e => ids.has(e.id)), rest = N.elementi.filter(e => !ids.has(e.id) && e.possibile_evento).slice(0, 25);
@@ -2247,6 +2270,15 @@ function xBars(rows) {                                    // monthly bars: [mont
   const box = el('div', 'trm-curve'); box.appendChild(sv); return box;
 }
 let xPaese = 'IT';
+function xMatrix(U) {                                     // 5×5 probability × impact matrix
+  const S = 32, P = 34, sv = svgEl('svg', { width: '100%', style: 'max-width:300px', viewBox: `0 0 ${P + 5 * S + 8} ${5 * S + 28}`, role: 'img', 'aria-label': 'Matrice probabilità per impatto' });
+  for (let i = 0; i < 5; i++) for (let j = 0; j < 5; j++) { const sc = (i + 1) * (j + 1), c = sc >= 20 ? 'rk3' : sc >= 12 ? 'rk2' : sc >= 6 ? 'rk1' : 'rk0'; sv.appendChild(svgEl('rect', { x: P + i * S, y: (4 - j) * S, width: S - 1, height: S - 1, fill: 'var(--' + c + ')', 'fill-opacity': .18 })); }
+  const tx = (x, y, t, a) => { const e = svgEl('text', Object.assign({ x, y, 'font-size': 9, fill: 'var(--ink-soft)' }, a || {})); e.textContent = t; sv.appendChild(e); };
+  tx(P, 5 * S + 12, 'probabilità →'); tx(2, 10, 'impatto'); for (let i = 1; i <= 5; i++) { tx(P + (i - .5) * S - 2, 5 * S + 24, i); tx(P - 10, (5 - i + .6) * S, i); }
+  const srt = U.slice().sort((a, b) => b.punteggio - a.punteggio), seen = {};
+  srt.forEach((u, k) => { const key = u.probabilita + '|' + u.impatto, off = (seen[key] = (seen[key] || 0) + 1) - 1; const x = P + (+u.probabilita - .5) * S + (off % 3 - 1) * 9, y = (5 - +u.impatto + .5) * S + Math.floor(off / 3) * 9; sv.appendChild(svgEl('circle', { cx: x, cy: y, r: 5.5, fill: 'var(--ink)' })); const t = svgEl('text', { x, y: y + 2.6, 'font-size': 7, 'text-anchor': 'middle', fill: 'var(--panel)', 'font-weight': 600 }); t.textContent = k + 1; sv.appendChild(t); });
+  const box = el('div', 'trm-curve'); box.appendChild(sv); return box;
+}
 function xWeekly(serie, step = 7, label) {                 // a weekly-average line chart of a daily series, inline SVG
   const pts = []; for (let i = 0; i + step <= serie.length; i += step) { const w2 = serie.slice(i, i + step).map(x => +x[1]); pts.push([serie[i][0], w2.reduce((a, b) => a + b, 0) / w2.length]); }
   if (pts.length < 4) return '';

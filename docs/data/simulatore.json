@@ -350,7 +350,7 @@
    "affidabilita": "media"
   },
   "brent_perdita": {
-   "testo": "Se il petrolio non ha una via alternativa (meccanismo 'perdita'), la variazione del Brent = mb/g scoperti × coefficiente. Il coefficiente viene dall'episodio di Hormuz 2026: variazione del Brent nella finestra della durata scelta diviso per i mb/g scoperti a Hormuz chiuso (valore centrale). Minimo = variazione media nella finestra, massimo = picco nella finestra.",
+   "testo": "Se il petrolio non ha una via alternativa (meccanismo 'perdita'), la variazione del Brent = mb/g scoperti × coefficiente. Il coefficiente viene dall'episodio di Hormuz 2026: variazione del Brent nella finestra della durata scelta diviso per i mb/g scoperti a Hormuz chiuso (valore centrale). Minimo = variazione media nella finestra, massimo = picco nella finestra. Se i bypass assorbono tutto (volume scoperto zero) e c'è una rotta alternativa, si usa la regola delle deviazioni.",
    "episodio": "hormuz_2026",
    "affidabilita": "bassa per shock piccoli (estrapolazione lineare da un solo episodio grande)"
   },
@@ -389,7 +389,7 @@
    }
   },
   "esposizione_paesi": {
-   "testo": "Per ogni passaggio il modello legge da paesi.json una o due quote (in valore, UN Comtrade 2025) che approssimano l'esposizione: quota di greggio o GNL dal Golfo, quota di un fornitore che usa il passaggio, quota della Cina nelle importazioni di merci. Se il fornitore non è tra i primi 5 del paese, la quota è inferiore a quella del quinto: il simulatore la mostra come «meno di x%».",
+   "testo": "Per ogni passaggio il modello legge da paesi.json una o due quote (in valore, UN Comtrade 2025) che approssimano l'esposizione: quota di greggio o GNL dal Golfo, quota di un fornitore che usa il passaggio, quota della Cina nelle importazioni di merci. Se il fornitore non è tra i primi 5 del paese, la quota è inferiore a quella del quinto: il simulatore la mostra come «meno di x%». Per le merci dalla Cina il confronto è limitato ai paesi europei delle schede, perché per gli altri la rotta non passa da Suez o dal Mar Rosso.",
    "affidabilita": "media: è un'approssimazione, non una misura dei transiti"
   }
  },
@@ -814,7 +814,8 @@
     {
      "ind": "partner_import",
      "partner": "CN",
-     "etichetta": "Merci importate dalla Cina (rotta Asia–Europa)"
+     "etichetta": "Merci importate dalla Cina (rotta Asia–Europa)",
+     "altri": "europa"
     }
    ],
    "nota_dk": "Nessun dato paese nei file. Il gruppo Maersk (Danimarca) è tra le compagnie container che deviano dal Capo quando il Mar Rosso è insicuro (valutazione, nessun dato nei file).",
@@ -999,7 +1000,8 @@
     {
      "ind": "partner_import",
      "partner": "CN",
-     "etichetta": "Merci importate dalla Cina (rotta Asia–Europa)"
+     "etichetta": "Merci importate dalla Cina (rotta Asia–Europa)",
+     "altri": "europa"
     },
     {
      "ind": "fornitori_greggio",
@@ -1199,7 +1201,8 @@
     {
      "ind": "partner_import",
      "partner": "CN",
-     "etichetta": "Merci importate dalla Cina (rotta Asia–Europa)"
+     "etichetta": "Merci importate dalla Cina (rotta Asia–Europa)",
+     "altri": "europa"
     }
    ],
    "nota_dk": "Nessun dato paese nei file. Effetto indiretto via noli e tempi di consegna Asia–Europa (valutazione).",
@@ -1327,7 +1330,8 @@
     {
      "ind": "partner_import",
      "partner": "CN",
-     "etichetta": "Merci importate dalla Cina"
+     "etichetta": "Merci importate dalla Cina",
+     "altri": "europa"
     },
     {
      "ind": "quota_gnl_golfo_persico",

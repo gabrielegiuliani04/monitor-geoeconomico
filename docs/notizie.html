@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Notizie per argomento</title>
+<meta name="description" content="Notizie per argomento dalle principali testate internazionali, italiane, del Nord Europa e di settore (porti, shipping, energia offshore), con le fonti OSINT del Monitor geoeconomico di Gabriele Giuliani.">
+<meta name="author" content="Gabriele Giuliani">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@1,400&display=swap">
+<style>
+:root{
+  --ink:#1D272D;--ink-soft:#52606A;--ink-faint:#86929A;--accent:#A61E6B;--accent-soft:#F3E6EC;
+  --paper:#F6F5F0;--card:#FCFBF7;--line:#D6D9D6;--line-soft:#E6E6E0;--chip:#FFFFFF;--chip-hover:#ECEEEC;
+  --pay:#8A4B14;--osint:#ECEFEE;
+  --f-sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-cond:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-serif:"IBM Plex Serif",Georgia,serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ink:#DAE0E2;--ink-soft:#A0ABB1;--ink-faint:#6C787F;--accent:#F27DB9;--accent-soft:#2A1B24;
+  --paper:#10181D;--card:#151F25;--line:#2B373E;--line-soft:#1F2A31;--chip:#18222A;--chip-hover:#22303A;
+  --pay:#F2A65A;--osint:#18232A;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ink:#DAE0E2;--ink-soft:#A0ABB1;--ink-faint:#6C787F;--accent:#F27DB9;--accent-soft:#2A1B24;
+  --paper:#10181D;--card:#151F25;--line:#2B373E;--line-soft:#1F2A31;--chip:#18222A;--chip-hover:#22303A;
+  --pay:#F2A65A;--osint:#18232A;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 var(--f-sans);overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button{font:inherit;color:inherit}
+.barra{border-bottom:1px solid var(--line);font:500 13px/1 var(--f-cond);letter-spacing:.02em}
+.barra-in{max-width:1180px;margin:0 auto;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.barra a{color:var(--ink-soft);text-decoration:none}.barra a:hover{color:var(--accent)}
+.barra nav{display:flex;gap:16px}
+.pagina{max-width:1180px;margin:0 auto;padding:0 16px 64px}
+header.testa{padding:28px 0 6px}
+.occhiello{font:600 13px/1.3 var(--f-cond);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+h1{font:600 30px/1.15 var(--f-sans);margin:0 0 6px;letter-spacing:-.01em}
+.sotto{color:var(--ink-soft);margin:0;max-width:72ch;font-size:15px}
+.meta{font:12px/1.4 var(--f-mono);color:var(--ink-faint);margin-top:8px}
+/* scelta argomento */
+.argomenti{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 6px;padding:0;list-style:none}
+.arg{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:7px 12px;cursor:pointer;
+  font:500 14px/1.1 var(--f-cond);letter-spacing:.01em;display:inline-flex;gap:6px;align-items:baseline}
+.arg:hover{background:var(--chip-hover)}
+.arg .n{font:11px/1 var(--f-mono);color:var(--ink-faint)}
+.arg[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.arg[aria-pressed="true"] .n{color:rgba(255,255,255,.8)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .arg[aria-pressed="true"]{color:#10181D}
+  :root:not([data-theme="light"]) .arg[aria-pressed="true"] .n{color:rgba(16,24,29,.75)}}
+.intro-arg{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding:18px 0 8px;margin-bottom:18px}
+.intro-arg h2{font:600 24px/1.2 var(--f-sans);margin:0}
+.intro-arg p{margin:2px 0 0;color:var(--ink-soft);font-size:14px}
+.condividi{border:1px solid var(--line);background:var(--chip);border-radius:6px;padding:6px 10px;cursor:pointer;font:500 13px var(--f-cond)}
+.condividi:hover{background:var(--chip-hover)}
+.griglia{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}
+@media (max-width:900px){.griglia{grid-template-columns:minmax(0,1fr);gap:24px}}
+h3.sez{font:600 13px/1.3 var(--f-cond);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px}
+/* storie del giorno */
+.storie{list-style:none;margin:0 0 28px;padding:0;counter-reset:s}
+.storia{position:relative;padding:12px 0 12px 40px;border-top:1px solid var(--line-soft);counter-increment:s}
+.storia:first-child{border-top:0;padding-top:4px}
+.storia::before{content:counter(s);position:absolute;left:0;top:10px;font:600 24px/1 var(--f-cond);color:var(--accent)}
+.storia:first-child::before{top:2px}
+.storia h4{font:600 18px/1.3 var(--f-sans);margin:0 0 4px}
+.storia h4 a{text-decoration:none}.storia h4 a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
+.storia p{margin:0 0 6px;color:var(--ink-soft);font-size:14px}
+.testate-g{font:13px/1.5 var(--f-cond);color:var(--ink-soft)}
+.testate-g b{font-weight:600;color:var(--ink)}
+.testate-g a{color:var(--ink-soft);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px}
+.testate-g a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.badge{display:inline-block;font:500 11px/1 var(--f-mono);padding:3px 5px;border-radius:3px;border:1px solid var(--line);color:var(--ink-soft);vertical-align:1px}
+.badge.n{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.badge.pay{color:var(--pay);border-color:currentColor}
+/* filtri */
+.filtri{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:6px;font:500 13px/1.2 var(--f-cond)}
+.filtri .grp{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.filtri .lab{color:var(--ink-faint);margin-right:2px}
+.lng{border:1px solid var(--line);background:var(--chip);border-radius:4px;padding:4px 8px;cursor:pointer;font:500 12px/1 var(--f-mono)}
+.lng[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filtri label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.filtri input{accent-color:var(--accent);width:16px;height:16px;margin:0}
+.conteggio{margin-left:auto;font:12px var(--f-mono);color:var(--ink-faint)}
+/* elenco */
+.giorno{font:600 13px/1.3 var(--f-cond);letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);margin:18px 0 0;padding-bottom:4px;border-bottom:1px solid var(--line-soft)}
+.elenco{list-style:none;margin:0;padding:0}
+.art{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:4px 12px;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+.art .ora{font:500 13px/1.45 var(--f-mono);color:var(--ink-faint)}
+.art .corpo{min-width:0}
+.art .fonte{font:500 13px/1.3 var(--f-cond);color:var(--ink-soft);display:flex;gap:6px;flex-wrap:wrap;align-items:baseline;margin-bottom:2px}
+.art .fonte b{color:var(--ink);font-weight:600}
+.art h4{font:500 16px/1.35 var(--f-sans);margin:0}
+.art h4 a{text-decoration:none}.art h4 a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
+.art p{margin:3px 0 0;color:var(--ink-soft);font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.art .anche{font:12px/1.3 var(--f-cond);color:var(--accent);margin-top:3px}
+.art img{width:96px;height:64px;object-fit:cover;border-radius:3px;background:var(--line-soft);display:block}
+@media (max-width:520px){.art{grid-template-columns:42px minmax(0,1fr)}.art .ora{font-size:12px}.art img{display:none}.art h4{font-size:15.5px}}
+.altri{margin:16px 0;border:1px solid var(--line);background:var(--chip);border-radius:6px;padding:8px 14px;cursor:pointer;font:500 14px var(--f-cond)}
+.altri:hover{background:var(--chip-hover)}
+.vuoto{color:var(--ink-soft);font-style:italic;padding:10px 0}
+/* riquadro OSINT */
+aside.osint{background:var(--osint);border-radius:6px;padding:16px;position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto}
+@media (max-width:900px){aside.osint{position:static;max-height:none}}
+aside.osint h3{margin-bottom:4px}
+aside.osint .nota{font-size:12.5px;color:var(--ink-soft);margin:0 0 10px;line-height:1.4}
+.os{list-style:none;margin:0;padding:0}
+.os li{padding:9px 0;border-top:1px solid var(--line)}
+.os .fonte{font:500 12px/1.3 var(--f-cond);color:var(--ink-soft);margin-bottom:2px}
+.os a{font:500 14px/1.35 var(--f-sans);text-decoration:none}
+.os a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
+.aff{font:11px var(--f-mono);color:var(--ink-faint)}
+footer.piede{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-soft);max-width:80ch}
+footer.piede a{color:var(--accent)}
+.errore{background:var(--accent-soft);padding:12px;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="barra"><div class="barra-in">
+  <a href="index.html">← Torna alla mappa</a>
+  <nav aria-label="Sezioni"><a href="report/">Report</a><a href="crediti.html">Fonti e crediti</a></nav>
+</div></div>
+<main class="pagina">
+  <header class="testa">
+    <p class="occhiello">Monitor geoeconomico · Notizie</p>
+    <h1>Notizie per argomento</h1>
+    <p class="sotto">Scegli un argomento: le storie del giorno riprese da più testate, poi tutti gli articoli in ordine di ora. Ogni titolo apre l'articolo sul sito della testata.</p>
+    <p class="meta" id="meta">Caricamento…</p>
+  </header>
+  <ul class="argomenti" id="argomenti" role="group" aria-label="Argomento"></ul>
+  <section id="vista" aria-live="polite"></section>
+  <footer class="piede">
+    <p><b>Come funziona.</b> Ogni giorno lo script <code>raccolta/notizie/testate.py</code> legge i feed pubblici di circa 60 testate (generaliste USA, UK, UE, Nord Europa e Italia; stampa di settore marittimo ed energetico; centri studi). Tiene solo titolo, un sommario breve del feed e il link: il testo resta dell'editore. Gli argomenti si assegnano con parole chiave in inglese, italiano, danese/norvegese e olandese, quindi possono sbagliare. Le storie uniscono titoli simili usciti su testate diverse nelle ultime 48 ore. Alcune testate passano da Google News perché bloccano i feed. «Paywall» indica che l'articolo può essere a pagamento.</p>
+    <p>Le notizie del riquadro <b>Fonti specialistiche OSINT</b> vengono da <code>raccolta/notizie/raccogli.py</code> (avvisi marittimi, centri di analisi, canali di mappatura) e sono materia prima da verificare.</p>
+  </footer>
+</main>
+<script>
+(() => {
+'use strict';
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const okUrl = (u) => /^https?:\/\//i.test(u || '') ? u : '#';
+const LINGUE = {it: 'Italiano', en: 'English', da: 'Dansk', nl: 'Nederlands', no: 'Norsk'};
+const ORE_STORIE = 36;
+const PASSO = 60;
+const st = {T: null, N: null, arg: null, lingua: 'tutte', senzaPay: false, mostra: PASSO};
+
+function data(s) { return new Date(s); }
+const fOra = new Intl.DateTimeFormat('it-IT', {hour: '2-digit', minute: '2-digit'});
+const fGiorno = new Intl.DateTimeFormat('it-IT', {weekday: 'long', day: 'numeric', month: 'long'});
+const fData = new Intl.DateTimeFormat('it-IT', {day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'});
+function chiaveGiorno(d) { return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(); }
+function nomeGiorno(d) {
+  const oggi = new Date(), ieri = new Date(Date.now() - 864e5);
+  if (chiaveGiorno(d) === chiaveGiorno(oggi)) return 'Oggi, ' + fGiorno.format(d);
+  if (chiaveGiorno(d) === chiaveGiorno(ieri)) return 'Ieri, ' + fGiorno.format(d);
+  return fGiorno.format(d);
+}
+function fa(d) {
+  const m = Math.round((Date.now() - d) / 6e4);
+  if (m < 60) return Math.max(1, m) + ' min fa';
+  const h = Math.round(m / 60);
+  return h < 48 ? h + ' h fa' : fData.format(d);
+}
+
+/* Parole chiave di argomenti.json -> espressioni regolari (stesse regole dello script Python) */
+function compila(parole) {
+  const libere = [], esatte = [];
+  for (const w of parole) {
+    const pref = w.endsWith('*'), w0 = w.replace(/\*+$/, '');
+    const p = w0.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + (pref ? '[\\p{L}\\p{N}_]*' : '');
+    (/[A-ZÀ-Þ]/.test(w0) ? esatte : libere).push(p);
+  }
+  const b = (l, f) => l.length ? new RegExp('(?<![\\p{L}\\p{N}_])(?:' + l.sort((a, c) => c.length - a.length).join('|') + ')(?![\\p{L}\\p{N}_])', f) : null;
+  return [b(libere, 'giu'), b(esatte, 'gu')].filter(Boolean);
+}
+function colpi(testo, rxs) { let n = 0; for (const r of rxs) { r.lastIndex = 0; n += (String(testo || '').match(r) || []).length; } return n; }
+
+function argomentoDaHash() {
+  const h = decodeURIComponent(location.hash.replace(/^#/, ''));
+  return st.T.argomenti.some(a => a.id === h) ? h : null;
+}
+
+function init() {
+  const T = st.T;
+  T.mappa = Object.fromEntries(T.argomenti.map(a => [a.id, a]));
+  T.perId = Object.fromEntries(T.elementi.map(e => [e.id, e]));
+  for (const a of T.argomenti) a.rx = compila(a.parole);
+  const agg = data(T.aggiornato);
+  const nt = new Set(T.elementi.map(e => e.testata)).size;
+  $('meta').textContent = `Aggiornato ${fData.format(agg)} · ${T.elementi.length} articoli da ${nt} testate negli ultimi 3 giorni · ${T.storie.length} storie riprese da più testate`;
+  const ul = $('argomenti');
+  ul.innerHTML = T.argomenti.map(a => {
+    const n = (T.riepilogo.per_argomento[a.id] || {})['24_ore'] || 0;
+    return `<li><button type="button" class="arg" data-arg="${esc(a.id)}" aria-pressed="false" title="${esc(a.breve)}">${esc(a.nome)} <span class="n">${n}</span></button></li>`;
+  }).join('');
+  ul.addEventListener('click', (ev) => {
+    const b = ev.target.closest('.arg'); if (!b) return;
+    if (location.hash !== '#' + b.dataset.arg) location.hash = b.dataset.arg; else scegli(b.dataset.arg);
+  });
+  window.addEventListener('hashchange', () => { const a = argomentoDaHash(); if (a) scegli(a, true); });
+  let pref = null; try { pref = localStorage.getItem('notizie-arg'); } catch (e) {}
+  scegli(argomentoDaHash() || (T.mappa[pref] ? pref : T.argomenti[0].id));
+}
+
+function scegli(id, daHash) {
+  st.arg = id; st.mostra = PASSO;
+  try { localStorage.setItem('notizie-arg', id); } catch (e) {}
+  if (!daHash && location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+  for (const b of document.querySelectorAll('.arg')) b.setAttribute('aria-pressed', String(b.dataset.arg === id));
+  disegna();
+}
+
+function passaFiltri(e) {
+  if (st.lingua !== 'tutte' && e.lingua !== st.lingua) return false;
+  if (st.senzaPay && e.paywall !== 'no') return false;
+  return true;
+}
+
+function articoliArg() {
+  const id = st.arg;
+  return st.T.elementi.filter(e => e.argomenti.includes(id));
+}
+
+/* Le 5 storie: gruppi con più testate (punteggio dell'argomento), poi, se servono, i singoli articoli migliori */
+function storieDelGiorno(arts) {
+  const id = st.arg, limite = Date.now() - ORE_STORIE * 36e5;
+  const out = [];
+  const usati = new Set();
+  const storie = st.T.storie.filter(s => s.argomenti.includes(id) && data(s.ultima) >= limite)
+    .map(s => {
+      const membri = s.articoli.map(x => st.T.perId[x]).filter(Boolean).filter(passaFiltri);
+      return {s, membri};
+    })
+    .filter(x => new Set(x.membri.map(e => e.testata)).size >= 2)
+    .sort((a, b) => (b.s.rilevanza[id] || 0) + 2 * new Set(b.membri.map(e => e.testata)).size
+                  - (a.s.rilevanza[id] || 0) - 2 * new Set(a.membri.map(e => e.testata)).size);
+  for (const x of storie.slice(0, 5)) { out.push(x); x.s.articoli.forEach(a => usati.add(a)); }
+  if (out.length < 5) {
+    const singoli = arts.filter(e => !usati.has(e.id) && data(e.data_utc) >= limite)
+      .sort((a, b) => (b.rilevanza[id] || 0) - (a.rilevanza[id] || 0) || (a.data_utc < b.data_utc ? 1 : -1));
+    const visti = new Set();
+    for (const e of singoli) {
+      if (out.length >= 5) break;
+      if (visti.has(e.gruppo)) continue;
+      visti.add(e.gruppo);
+      out.push({s: null, membri: [e]});
+    }
+  }
+  return out;
+}
+
+function htmlStoria(x) {
+  const id = st.arg;
+  const m = x.membri.slice().sort((a, b) => ({alta: 3, media: 2, bassa: 1}[b.affidabilita] - {alta: 3, media: 2, bassa: 1}[a.affidabilita]) || (b.sommario ? 1 : 0) - (a.sommario ? 1 : 0) || (a.tipo === 'generalista' ? -1 : 1));
+  const rap = (x.s && m.find(e => e.titolo === x.s.titolo)) || m[0];
+  const perTestata = new Map();
+  for (const e of x.membri.slice().sort((a, b) => a.data_utc < b.data_utc ? -1 : 1)) if (!perTestata.has(e.testata)) perTestata.set(e.testata, e);
+  const nT = perTestata.size;
+  const somm = rap.sommario || (m.find(e => e.sommario) || {}).sommario || '';
+  const prime = [...perTestata.values()];
+  const ultima = x.membri.reduce((a, e) => e.data_utc > a ? e.data_utc : a, '');
+  const testate = prime.map(e => `<a href="${esc(okUrl(e.link))}" target="_blank" rel="noopener noreferrer">${esc(e.testata)}</a>${e.paywall !== 'no' ? ' <span class="badge pay" title="Paywall: ' + esc(e.paywall) + '">€</span>' : ''}`).join(', ');
+  return `<li class="storia">
+    <h4><a href="${esc(okUrl(rap.link))}" target="_blank" rel="noopener noreferrer">${esc(rap.titolo)}</a></h4>
+    ${somm ? `<p>${esc(somm)}</p>` : ''}
+    <div class="testate-g">${nT > 1 ? `<span class="badge n">${nT} testate</span> ` : '<span class="badge">una testata</span> '}${testate} · <span title="${esc(fData.format(data(ultima)))}">${esc(fa(data(ultima)))}</span></div>
+  </li>`;
+}
+
+function htmlArticolo(e) {
+  const d = data(e.data_utc);
+  const sez = e.sezioni && e.sezioni[0] && !/^(Tutte|via Google News)/.test(e.sezioni[0]) ? ' · ' + esc(e.sezioni.join(', ')) : '';
+  const altri = e.n_testate > 1 ? `<div class="anche">Anche su altre ${e.n_testate - 1} ${e.n_testate - 1 === 1 ? 'testata' : 'testate'}</div>` : '';
+  const pay = e.paywall !== 'no' ? `<span class="badge pay" title="Paywall: ${esc(e.paywall)}">${e.paywall === 'sì' ? 'paywall' : 'paywall parziale'}</span>` : '';
+  const img = e.immagine ? `<img src="${esc(okUrl(e.immagine))}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : '';
+  return `<li class="art">
+    <div class="ora" title="${esc(fData.format(d))}${e.data_stimata ? ' (data stimata)' : ''}">${esc(fOra.format(d))}</div>
+    <div class="corpo">
+      <div class="fonte"><b>${esc(e.testata)}</b><span>${sez}</span><span class="badge">${esc(e.lingua)}</span>${pay}${e.via ? `<span class="badge" title="Link tramite Google News">via GN</span>` : ''}</div>
+      <h4><a href="${esc(okUrl(e.link))}" target="_blank" rel="noopener noreferrer">${esc(e.titolo)}</a></h4>
+      ${e.sommario ? `<p>${esc(e.sommario)}</p>` : ''}${altri}
+    </div>${img}
+  </li>`;
+}
+
+/* Riquadro OSINT: notizie.json classificate con le stesse parole chiave + i temi equivalenti */
+function osint() {
+  const N = st.N; if (!N) return {lista: [], err: true};
+  const a = st.T.mappa[st.arg];
+  const temi = new Set(a.temi_osint || []);
+  const limite = Date.now() - 72 * 36e5;
+  const out = [];
+  for (const e of N.elementi || []) {
+    const d = data(e.data_utc);
+    if (!(d >= limite)) continue;
+    const t = colpi(e.titolo, a.rx), s = colpi(e.sommario, a.rx);
+    const tema = (e.temi || []).some(x => temi.has(x));
+    if (!(t || s >= 2 || tema)) continue;
+    out.push({e, d, p: (e.punteggio || 0) + 2 * t + (tema ? 1 : 0)});
+  }
+  const visti = new Set();
+  const lista = out.sort((x, y) => y.p - x.p || y.d - x.d).filter(x => { const g = x.e.gruppo || x.e.id; if (visti.has(g)) return false; visti.add(g); return true; }).slice(0, 12)
+    .sort((x, y) => y.d - x.d);
+  return {lista, tot: out.length};
+}
+
+function disegna() {
+  const a = st.T.mappa[st.arg];
+  const tutti = articoliArg();
+  const lingue = [...new Set(tutti.map(e => e.lingua))].sort((x, y) => (x === 'it' ? -1 : 0) - (y === 'it' ? -1 : 0) || (x < y ? -1 : 1));
+  if (st.lingua !== 'tutte' && !lingue.includes(st.lingua)) st.lingua = 'tutte';
+  const arts = tutti.filter(passaFiltri).sort((x, y) => x.data_utc < y.data_utc ? 1 : -1);
+  const storie = storieDelGiorno(tutti);
+
+  let html = `<div class="intro-arg"><div><h2>${esc(a.nome)}</h2><p>${esc(a.breve)}</p></div>
+    <button type="button" class="condividi" id="copia" title="Copia il link a questo argomento">Copia link</button></div>
+    <div class="griglia"><div>
+    <h3 class="sez">Le 5 storie del giorno</h3>`;
+  html += storie.length ? `<ol class="storie">${storie.map(htmlStoria).join('')}</ol>` : `<p class="vuoto">Nessuna storia nelle ultime ${ORE_STORIE} ore con questi filtri.</p>`;
+  html += `<h3 class="sez">Tutti gli articoli, dal più recente</h3>
+    <div class="filtri" role="group" aria-label="Filtri">
+      <div class="grp"><span class="lab">Lingua</span>${['tutte', ...lingue].map(l => `<button type="button" class="lng" data-l="${l}" aria-pressed="${st.lingua === l}" title="${esc(LINGUE[l] || 'Tutte le lingue')}">${l === 'tutte' ? 'tutte' : l}</button>`).join('')}</div>
+      <label><input type="checkbox" id="nopay" ${st.senzaPay ? 'checked' : ''}> Solo senza paywall</label>
+      <span class="conteggio">${arts.length} articoli</span>
+    </div>`;
+  if (!arts.length) html += `<p class="vuoto">Nessun articolo con questi filtri.</p>`;
+  let giorno = '';
+  html += '<div id="elenco">';
+  let aperta = false;
+  for (const e of arts.slice(0, st.mostra)) {
+    const d = data(e.data_utc), k = chiaveGiorno(d);
+    if (k !== giorno) { if (aperta) html += '</ul>'; html += `<h4 class="giorno">${esc(nomeGiorno(d))}</h4><ul class="elenco">`; giorno = k; aperta = true; }
+    html += htmlArticolo(e);
+  }
+  if (aperta) html += '</ul>';
+  html += '</div>';
+  if (arts.length > st.mostra) html += `<button type="button" class="altri" id="altri">Mostra altri ${Math.min(PASSO, arts.length - st.mostra)} (di ${arts.length - st.mostra})</button>`;
+  html += `</div>`;
+
+  const o = osint();
+  html += `<aside class="osint" aria-label="Fonti specialistiche OSINT"><h3 class="sez">Fonti specialistiche OSINT</h3>
+    <p class="nota">Avvisi marittimi, centri di analisi, mappatori e banche centrali sullo stesso argomento (ultimi 3 giorni). Materia prima da verificare.</p>`;
+  if (o.err) html += `<p class="vuoto">Il file delle fonti OSINT (data/notizie.json) non è disponibile.</p>`;
+  else if (!o.lista.length) html += `<p class="vuoto">Nessuna notizia OSINT su questo argomento negli ultimi 3 giorni.</p>`;
+  else html += `<ul class="os">${o.lista.map(({e, d}) => `<li><div class="fonte">${esc(e.fonte)} · ${esc(fa(d))} <span class="aff">affidabilità ${esc(e.affidabilita || 'n.d.')}</span></div>
+      <a href="${esc(okUrl(e.link))}" target="_blank" rel="noopener noreferrer">${esc(e.titolo)}</a></li>`).join('')}</ul>
+      <p class="nota" style="margin-top:10px">${o.tot} notizie OSINT sull'argomento; qui le ${o.lista.length} più rilevanti.</p>`;
+  html += `</aside></div>`;
+  $('vista').innerHTML = html;
+
+  for (const b of document.querySelectorAll('.lng')) b.onclick = () => { st.lingua = b.dataset.l; st.mostra = PASSO; disegna(); };
+  $('nopay').onchange = (ev) => { st.senzaPay = ev.target.checked; st.mostra = PASSO; disegna(); };
+  const alt = $('altri'); if (alt) alt.onclick = () => { st.mostra += PASSO; const y = scrollY; disegna(); scrollTo(0, y); };
+  $('copia').onclick = async (ev) => {
+    const u = location.href.split('#')[0] + '#' + st.arg;
+    try { await navigator.clipboard.writeText(u); ev.target.textContent = 'Link copiato'; }
+    catch (e) { ev.target.textContent = u; }
+    setTimeout(() => { const c = $('copia'); if (c) c.textContent = 'Copia link'; }, 2500);
+  };
+}
+
+Promise.all([
+  fetch('data/notizie-testate.json', {cache: 'no-cache'}).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
+  fetch('data/notizie.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).catch(() => null),
+]).then(([T, N]) => { st.T = T; st.N = N; init(); })
+  .catch(err => { $('meta').textContent = ''; $('vista').innerHTML = `<p class="errore">Non riesco a caricare data/notizie-testate.json (${esc(err.message)}). Se apri il file dal disco, servilo con un piccolo server locale (python3 -m http.server dentro docs/).</p>`; });
+})();
+</script>
+</body>
+</html>
