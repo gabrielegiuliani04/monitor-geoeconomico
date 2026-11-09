@@ -150,7 +150,7 @@ def png_rgb(r, path, scala=3, tanks=None, box=None):
         for t in tanks:
             cx, cy, rr = (t["cx"] + .5) * scala, (t["cy"] + .5) * scala, t["r"] * scala
             dr.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], outline=(255, 60, 60))
-    im.save(path, optimize=True)
+    im.quantize(colors=128, method=Image.Quantize.MEDIANCUT).save(path, optimize=True)  # < 300 KB
     return os.path.getsize(path)
 
 
@@ -186,10 +186,20 @@ def main():
 
     eia = serie_eia()
     t_eia = eia["data"].to_numpy().astype("datetime64[D]").astype("int64")
-    righe = []
+    # matrice date x serbatoi dell'indice Nord-Sud
+    misure = []
     for it, r in dati:
         img = r["red"] + r["green"] + r["blue"]
-        ns, lm = zip(*[indice_ns(img, t, H, W) for t in tanks])
+        misure.append([indice_ns(img, t, H, W) for t in tanks])
+    NS = np.array([[m[0] for m in riga] for riga in misure])
+    # Classificazione SENZA usare l'EIA: un tetto conico/a cupola illuminato da sud ha la
+    # meta' nord piu' scura (indice medio < 0); un tetto galleggiante con ombra interna
+    # ha la meta' sud piu' scura (indice > 0). Teniamo i serbatoi con indice medio > 0.
+    galleggianti = np.nanmean(NS, axis=0) > 0
+    print(f"serbatoi con indice medio > 0 (candidati tetto galleggiante): {galleggianti.sum()}")
+    righe = []
+    for (it, r), riga, ns_g in zip(dati, misure, NS[:, galleggianti]):
+        ns, lm = zip(*riga)
         el = it.properties["view:sun_elevation"]
         d = pd.Timestamp(it.datetime.date())
         giorno = np.datetime64(d.date(), "D").astype("int64")
@@ -197,6 +207,7 @@ def main():
         righe.append({"data": d.date().isoformat(), "elev_sole": round(el, 2),
                       "ns_mediano": float(np.nanmedian(ns)),
                       "ns_x_tan": float(np.nanmedian(ns) * math.tan(math.radians(el))),
+                      "ns_gall_x_tan": float(np.nanmedian(ns_g) * math.tan(math.radians(el))),
                       "lum_media": float(np.nanmedian(lm)), "eia_kbbl": round(stock)})
 
     with open(os.path.join(OUT, "risultati.csv"), "w", newline="") as f:
@@ -207,11 +218,11 @@ def main():
     df = pd.DataFrame(righe)
     print("\ncorrelazioni con le scorte EIA (n=%d):" % len(df))
     res = {}
-    for col in ("ns_mediano", "ns_x_tan", "lum_media", "elev_sole"):
+    for col in ("ns_mediano", "ns_x_tan", "ns_gall_x_tan", "lum_media", "elev_sole"):
         p = stats.pearsonr(df[col], df["eia_kbbl"])
         s = stats.spearmanr(df[col], df["eia_kbbl"])
         res[col] = (p.statistic, p.pvalue, s.statistic)
-        print(f"  {col:11s} Pearson r={p.statistic:+.2f} (p={p.pvalue:.3f})  Spearman={s.statistic:+.2f}")
+        print(f"  {col:13s} Pearson r={p.statistic:+.2f} (p={p.pvalue:.3f})  Spearman={s.statistic:+.2f}")
     # residuo dopo aver tolto l'effetto lineare dell'elevazione solare
     b = np.polyfit(df["elev_sole"], df["ns_mediano"], 1)
     resid = df["ns_mediano"] - np.polyval(b, df["elev_sole"])
@@ -220,8 +231,10 @@ def main():
     # inverno soltanto (sole basso: ombra piu' lunga, piu' misurabile)
     inv = df[df["elev_sole"] < 45]
     if len(inv) >= 4:
-        p = stats.pearsonr(inv["ns_x_tan"], inv["eia_kbbl"])
-        print(f"  solo scene con sole < 45 gradi (n={len(inv)}): r={p.statistic:+.2f} (p={p.pvalue:.3f})")
+        for col in ("ns_x_tan", "ns_gall_x_tan"):
+            p = stats.pearsonr(inv[col], inv["eia_kbbl"])
+            print(f"  {col} solo scene con sole < 45 gradi (n={len(inv)}): "
+                  f"r={p.statistic:+.2f} (p={p.pvalue:.3f})")
 
     # ---- immagini ----
     per_data = {it.datetime.date().isoformat(): r for it, r in dati}

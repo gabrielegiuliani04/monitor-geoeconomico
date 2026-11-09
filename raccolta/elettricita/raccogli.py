@@ -399,7 +399,7 @@ def wkt_parts(s):
 def rete_da_pypsa(tabelle):
     csv.field_size_limit(10 ** 9)
     feats = {}
-    for r in csv.DictReader(io.StringIO(tabelle.get("lines.csv", ""))):
+    for r in csv.DictReader(io.StringIO(tabelle.get("lines.csv", "")), quotechar="'"):
         try:
             kv = float(r["voltage"])
         except ValueError:
@@ -409,7 +409,7 @@ def rete_da_pypsa(tabelle):
         feats[r["line_id"]] = {"props": {"name": "", "operator": "", "construction": r.get("under_construction") == "t",
                                           "type": "cable" if r.get("underground") == "t" else "line"},
                                "kv": kv, "parts": wkt_parts(r["geometry"])}
-    for r in csv.DictReader(io.StringIO(tabelle.get("links.csv", ""))):
+    for r in csv.DictReader(io.StringIO(tabelle.get("links.csv", "")), quotechar="'"):
         feats[r["link_id"]] = {"props": {"name": "", "operator": "", "frequency": "0",
                                           "construction": r.get("under_construction") == "t",
                                           "type": "cable" if r.get("underground") == "t" else "line"},
@@ -457,19 +457,19 @@ def costruisci_rete(feats, tol=0.012):
 INTERCONNESSIONI = [
     {"id": "EL-IC-01", "nome": "SA.PE.I. (Sardegna - Lazio)", "paesi": ["IT"], "tipo": "HVDC sottomarino",
      "da": "Fiume Santo (SS)", "a": "Latina", "mw": 1000, "kv": 500, "km": 435, "stato": "in esercizio", "anno": "2011",
-     "terminali": [[8.30583, 40.84139], [12.80694, 41.42972]], "osm_rel": "relation/8185711",
+     "terminali": [[8.30583, 40.84139], [12.80694, 41.42972]], "osm_rel": "relation/8185711", "osm_nome": "SA\\.?PE\\.?I",
      "fonte": "Wikipedia (SAPEI), dati Terna", "link": "https://en.wikipedia.org/wiki/SAPEI", "data_fonte": "2026-11-09",
      "affidabilita": "alta", "note": "Due poli da 500 MW. Lega la Sardegna al continente; cavo record di profondita' (circa 1.640 m)."},
     {"id": "EL-IC-02", "nome": "MON.ITA (Italia - Montenegro)", "paesi": ["IT", "ME"], "tipo": "HVDC sottomarino",
      "da": "Cepagatti (PE)", "a": "Lastva (Kotor)", "mw": 600, "mw_progetto": 1200, "kv": 500, "km": 445,
      "stato": "in esercizio (1 polo su 2)", "anno": "2019",
-     "osm_rel": "relation/8185767", "sottostazioni": ["Cepagatti", "Lastva"],
+     "osm_rel": "relation/8185767", "osm_nome": "MON\\.?ITA", "sottostazioni": ["Cepagatti", "Lastva"],
      "fonte": "Terna; PyPSA-Eur su OSM indica 1.200 MW di progetto", "link": "https://www.terna.it/it/progetti-territorio/progetti-incentivati/interconnessione-italia-montenegro",
      "data_fonte": "2026-11-09", "affidabilita": "media",
      "note": "Primo polo da 600 MW in esercizio da fine 2019; il secondo polo (altri 600 MW) non risulta completato. Porta dei Balcani verso l'Italia."},
     {"id": "EL-IC-03", "nome": "GRITA (Italia - Grecia)", "paesi": ["IT", "GR"], "tipo": "HVDC sottomarino",
      "da": "Galatina (LE)", "a": "Arachthos", "mw": 500, "kv": 400, "km": 313, "stato": "in esercizio", "anno": "2002",
-     "terminali": [[18.13028, 40.16472], [20.96333, 39.18333]], "osm_rel": "relation/8185664",
+     "terminali": [[18.13028, 40.16472], [20.96333, 39.18333]], "osm_rel": "relation/8185664", "osm_nome": "Italy.Greece",
      "fonte": "Wikipedia (HVDC Italy-Greece)", "link": "https://en.wikipedia.org/wiki/HVDC_Italy%E2%80%93Greece",
      "data_fonte": "2026-11-09", "affidabilita": "alta", "note": "Monopolare. Terna ha in programma un secondo collegamento (GRITA 2)."},
     {"id": "EL-IC-04", "nome": "Piemonte - Savoia (Piossasco - Grand'Ile)", "paesi": ["IT", "FR"], "tipo": "HVDC terrestre in cavo",
@@ -486,7 +486,7 @@ INTERCONNESSIONI = [
      "note": "Primo collegamento in corrente continua Europa - Nord Africa. Contratto da 770 milioni di euro per le stazioni di conversione a Hitachi Energy (giugno 2026). Investimento totale 1.420 milioni di euro, di cui 307 milioni dal programma UE CEF (primo finanziamento UE a un progetto con un paese terzo). Profondita' massima circa 800 m nel Canale di Sicilia. Data di entrata in esercizio non confermata da fonte del 2026."},
     {"id": "EL-IC-06", "nome": "Tyrrhenian Link - ramo est (Campania - Sicilia)", "paesi": ["IT"], "tipo": "HVDC sottomarino",
      "da": "Eboli (SA)", "a": "Termini Imerese (PA)", "mw": 1000, "kv": 500, "km": 490, "stato": "in costruzione",
-     "anno": "primo polo previsto 2026, intera opera 2028", "sottostazioni": ["Eboli", "Termini Imerese"],
+     "anno": "primo polo previsto 2026, intera opera 2028", "sottostazioni": ["Termini Imerese"],
      "fonte": "QualEnergia / Terna (posa completata maggio 2025)", "link": "https://www.qualenergia.it/articoli/completata-la-posa-del-ramo-est-del-tyrrhenian-link-tra-campania-e-sicilia/",
      "data_fonte": "2025-05", "affidabilita": "media",
      "note": "Posato il primo cavo (circa 490 km) tra Termini Imerese e Battipaglia nel maggio 2025. A luglio 2026 consegnati i trasformatori alla stazione di Termini Imerese. Nessuna conferma trovata dell'entrata in esercizio al 2026-11-09."},
@@ -501,13 +501,13 @@ INTERCONNESSIONI = [
      "fonte": "Wikipedia (Estlink)", "link": "https://en.wikipedia.org/wiki/Estlink", "data_fonte": "2026-11-09", "affidabilita": "alta", "note": ""},
     {"id": "EL-IC-09", "nome": "Estlink 2 (Estonia - Finlandia)", "paesi": ["EE", "FI"], "tipo": "HVDC sottomarino",
      "da": "Puessi", "a": "Anttila", "mw": 650, "kv": 450, "km": 170, "stato": "in esercizio", "anno": "2014",
-     "terminali": [[27.06389, 59.36722], [25.36694, 60.37667]], "osm_rel": "relation/6886400",
+     "terminali": [[27.06389, 59.36722], [25.36694, 60.37667]], "osm_rel": "relation/6886400", "osm_nome": "Estlink 2",
      "fonte": "Helsinki Times / Wikipedia", "link": "https://www.helsinkitimes.fi/finland/finland-news/domestic/27201-estlink-2-power-link-restored-after-six-month-outage.html",
      "data_fonte": "2025-06-20", "affidabilita": "alta",
      "note": "Danneggiato il 25 dicembre 2024 dall'ancora della petroliera Eagle S (flotta ombra russa, secondo le autorita' finlandesi); tornato in servizio a giugno 2025 dopo sei mesi."},
     {"id": "EL-IC-10", "nome": "NordBalt (Svezia - Lituania)", "paesi": ["SE", "LT"], "tipo": "HVDC sottomarino",
      "da": "Nybro", "a": "Klaipeda", "mw": 700, "kv": 300, "km": 450, "stato": "in esercizio", "anno": "2016",
-     "terminali": [[15.85417, 56.76778], [21.25667, 55.68167]], "osm_rel": "relation/8185455",
+     "terminali": [[15.85417, 56.76778], [21.25667, 55.68167]], "osm_rel": "relation/8185455", "osm_nome": "NordBalt",
      "fonte": "Wikipedia (NordBalt)", "link": "https://en.wikipedia.org/wiki/NordBalt", "data_fonte": "2026-11-09", "affidabilita": "alta", "note": ""},
     {"id": "EL-IC-11", "nome": "LitPol Link (Lituania - Polonia)", "paesi": ["LT", "PL"], "tipo": "AC 400 kV (ex back-to-back HVDC)",
      "da": "Alytus", "a": "Elk", "mw": 500, "kv": 400, "km": 163, "stato": "in esercizio", "anno": "2015",
@@ -526,7 +526,7 @@ INTERCONNESSIONI = [
      "note": "Limite d'importazione dall'UE verso Ucraina e Moldova portato a 2,45 GW da gennaio 2026 (prima 2,15 GW); circa 2,1 GW disponibili all'Ucraina. Limite d'esportazione 900 MW. Febbraio 2026: import record di 1.262,8 GWh. Nessun punto in mappa: il confine occidentale ucraino e' il fronte di scambio (PL, SK, HU, RO, MD)."},
     {"id": "EL-IC-14", "nome": "Francia - Spagna (Baixas - Santa Llogaia, INELFE)", "paesi": ["FR", "ES"], "tipo": "HVDC terrestre in cavo",
      "da": "Baixas", "a": "Santa Llogaia", "mw": 2000, "kv": 320, "km": 64, "stato": "in esercizio", "anno": "2015",
-     "osm_rel": "relation/9934065",
+     "osm_rel": ["relation/9934065", "relation/9934066"],
      "fonte": "PyPSA-Eur su OpenStreetMap (2 collegamenti da 1.000 MW)", "link": "https://zenodo.org/records/23896564",
      "data_fonte": "2026-11-02", "affidabilita": "media",
      "note": "Il principale ponte della Penisola iberica verso il resto d'Europa; l'isolamento elettrico iberico e' uno dei fattori discussi dopo il blackout del 28 aprile 2025. In costruzione il collegamento sottomarino del Golfo di Biscaglia (2.000 MW)."},
@@ -537,30 +537,38 @@ INTERCONNESSIONI = [
      "note": "Nexans esclude il progetto dalla guida 2026; produzione forse ripresa nel 2028. Gennaio 2026: consegna oltre fine 2029. Agosto 2026: Meridiam entra nel capitale. Progetto di interesse comune UE. Nessun terminale in mappa."},
     {"id": "EL-IC-16", "nome": "Egitto - Arabia Saudita", "paesi": ["EG", "SA"], "tipo": "HVDC (aereo e sottomarino nel Mar Rosso)",
      "da": "Badr (Cairo est)", "a": "Tabuk / Medina est", "mw": 3000, "km": 1350, "stato": "in collaudo (stato attuale non confermato)",
-     "anno": "previsto 2026",
+     "anno": "previsto 2026", "osm_nome": "Saudi Arabia.{0,3}Egypt",
      "fonte": "SolarQuarter (fase finale di prova, febbraio 2026)", "link": "https://solarquarter.com/2026/02/23/egypt-saudi-power-grid-interconnection-enters-final-testing-phase/",
      "data_fonte": "2026-02-23", "affidabilita": "bassa",
      "note": "Due fasi da 1.500 MW, tre stazioni di conversione (Badr, Tabuk, Medina est), costo circa 1,8 miliardi di dollari. Obiettivo del governo egiziano: piena operativita' ad aprile 2026; non trovata conferma dell'esercizio commerciale."},
 ]
 
 
-def costruisci_interconnessioni(pypsa_links, sottostazioni):
+def costruisci_interconnessioni(pypsa_links, sottostazioni, rete=None):
     elementi = []
     for ic in INTERCONNESSIONI:
-        e = {k: v for k, v in ic.items() if k not in ("terminali", "osm_rel", "sottostazioni")}
+        e = {k: v for k, v in ic.items() if k not in ("terminali", "osm_rel", "sottostazioni", "osm_nome")}
         e["categoria"] = "interconnessione-elettrica"
         e["g"] = []
         geo_fonte = None
-        rel = ic.get("osm_rel")
-        if rel and pypsa_links:
+        rels = ic.get("osm_rel") or []
+        rels = [rels] if isinstance(rels, str) else rels
+        if rels and pypsa_links:
             for r in pypsa_links:
-                if r["link_id"].startswith(rel + "-"):
+                rel = r["link_id"].rsplit("-", 2)[0]
+                if rel in rels:
                     parts = arrotonda([dp(p, 0.01) for p in wkt_parts(r["geometry"])], 3)
                     e["g"].extend(parts)
                     e.setdefault("mw_pypsa", 0)
                     e["mw_pypsa"] += int(float(r["p_nom"] or 0))
-                    geo_fonte = "tracciato da PyPSA-Eur/OpenStreetMap (%s)" % rel
-        punti = ic.get("terminali")
+                    geo_fonte = "tracciato da PyPSA-Eur/OpenStreetMap (%s)" % ", ".join(rels)
+        if not e["g"] and ic.get("osm_nome") and rete:
+            rx = re.compile(ic["osm_nome"], re.I)
+            for r in rete:
+                if r["hvdc"] and rx.search(r["nome"] or ""):
+                    e["g"].extend(r["g"])
+                    geo_fonte = "tracciato OpenStreetMap (tessere OpenInfraMap), linee: %s" % r["nome"]
+        punti = ic.get("terminali") or []
         if punti:
             e["terminali_fonte"] = "coordinate delle stazioni di conversione da Wikipedia"
         elif ic.get("sottostazioni") and sottostazioni:
@@ -721,7 +729,7 @@ def main():
     try:
         pypsa_info, pypsa_tab = zenodo_pypsa()
         csv.field_size_limit(10 ** 9)
-        pypsa_links = list(csv.DictReader(io.StringIO(pypsa_tab.get("links.csv", ""))))
+        pypsa_links = list(csv.DictReader(io.StringIO(pypsa_tab.get("links.csv", "")), quotechar="'"))
         log("PyPSA-Eur versione %s del %s" % (pypsa_info["versione"], pypsa_info["data"]))
     except Exception as e:
         errori["rete"].append("Zenodo PyPSA-Eur non scaricato: %s" % str(e)[:120])
@@ -771,7 +779,7 @@ def main():
             scrivi("rete-elettrica.json", old)
 
     # --- 2. interconnessioni
-    inter = costruisci_interconnessioni(pypsa_links, subs)
+    inter = costruisci_interconnessioni(pypsa_links, subs, elementi if feats else [])
     fonti_ic = [{"nome": "Schede curate a mano (Terna, ENTSO-E, Wikipedia, stampa specializzata): fonte per voce", "link": "",
                  "licenza": "fatti con citazione; coordinate Wikipedia CC BY-SA", "data_dato": "2026-11-09"}]
     if pypsa_info:
