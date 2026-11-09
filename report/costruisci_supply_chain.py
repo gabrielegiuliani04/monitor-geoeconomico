@@ -1094,8 +1094,10 @@ def costruisci_blocchi(v, oggi, edizione):
         peggiori = sorted(cali_it, key=lambda r: r[1])[:2]
         voci.append(f"**Porti italiani a due velocità.** Negli ultimi 30 giorni calano soprattutto "
                     + " e ".join(f"{nome_porto(r[0])} ({pct(r[1])})" for r in peggiori)
-                    + ", porti dell'energia e delle rinfuse; tengono i porti container"
-                    + (f" e cresce {nome_porto(su_it[0][0])} ({pct(su_it[0][1])})" if su_it else "") + f" ({link('IMF PortWatch', pw_link)}).")
+                    + ", porti dell'energia e delle rinfuse; calano poco i porti container ("
+                    + ", ".join(f"{nome_porto(n_)} {pct(it_ports[n_]['var30_anno_pct'])}" for n_ in ("Genova", "Gioia Tauro") if n_ in it_ports) + ")"
+                    + (f" e cresce {nome_porto(su_it[0][0])} ({pct(su_it[0][1])}, ma su numeri piccoli)" if su_it else "")
+                    + f" (chiamate di navi, 30 giorni su un anno, {link('IMF PortWatch', pw_link)}, dati fino al {data_it(v['porti_it_data'])}).")
     if ttf and git:
         voci.append(f"**L'energia resta il costo più pesante.** Gas TTF a {num(ttf['ultimo'], 2)} €/MWh ({pct(ttf['var']['1a'])} su un anno), "
                     f"gasolio self a {num(gaso['self'], 3)} €/litro ({fonte_est('gasolio')}) e taglio delle accise scaduto l'8 novembre; "
@@ -1293,14 +1295,15 @@ def costruisci_blocchi(v, oggi, edizione):
         if vol:
             x = vol[0]
             rf.append([c["nome"].split("(")[0].strip(), f"{num_auto(x['valore'])} {x['unita']} ({x['anno']})",
-                       x.get("trend", ""), c["stato"].split(";")[0], link(fonte_breve(x["fonte"]), x["link"])])
+                       x.get("trend", ""), c["stato"].split(";")[0], link(x["fonte"], x["link"])])
         else:
             rf.append([c["nome"].split("(")[0].strip(), "dato mancante", "", c["stato"].split(";")[0], "ferrovie.json"])
     B.append(("tab", ["Corridoio", "Volume", "Andamento", "Stato", "Fonte"], rf, "Fonte: docs/data/ferrovie.json (schede curate con fonte per ogni voce)."))
     ce = v["corridoi"].get("FR-COR-01", {})
     t1 = next((x for x in ce.get("volumi", []) if "2026" in x["anno"]), None)
     if t1:
-        B.append(("p", f"**Fatti.** Ferrovia Cina–Europa: {num(t1['valore'], 0)} treni nel {t1['anno']}, {t1['trend']} ({link(t1['fonte'], t1['link'])}). "
+        periodo = re.sub(r"^(\d{4}) T(\d)$", r"\2° trimestre \1", t1["anno"])
+        B.append(("p", f"**Fatti.** Ferrovia Cina–Europa: {num(t1['valore'], 0)} treni nel {periodo}, {t1['trend']} ({link(t1['fonte'], t1['link'])}). "
                   f"Il ramo occidentale dell'INSTC aspetta ancora il tratto Rasht–Astara: "
                   + next((f"avvio lavori previsto nel {x['valore']} ({link(x['fonte'], x['link'])})" for x in v["corridoi"].get("FR-COR-03", {}).get("volumi", [])
                           if x["voce"].startswith("avvio")), "data non disponibile") + "."))
@@ -1429,7 +1432,9 @@ def costruisci_blocchi(v, oggi, edizione):
     if fr:
         t += "La catena del freddo è il bersaglio nuovo: " + "; ".join(f"{e['nome'][:1].lower() + e['nome'][1:]} ({data_it(e['data_evento'])}, {link(fonte_breve(e['fonte']), e['link'])})" for e in fr) + ". "
     if sab:
-        t += f"Tre attacchi a stazioni Starlink in Europa centro-orientale tra settembre e ottobre ({', '.join(e['paese'] for e in sab)}), attribuiti alla Russia dai governi. "
+        t += (f"Tre attacchi a stazioni Starlink in Europa centro-orientale tra settembre e ottobre ({', '.join(e['paese'] for e in sab)}): "
+              f"il premier lituano li collega e li attribuisce alla Russia, come il governo polacco per l'impianto in Polonia "
+              f"(attribuzioni politiche, senza sentenze; ibrido.json). ")
     noname = next((e for e in ib if e["id"] == "IB-20261107-12"), None)
     if noname:
         t += (f"In Italia NoName057(16) ha rivendicato DDoS anche contro Terminal Container Ravenna e Interporto Padova a metà ottobre, senza conferma delle vittime "
@@ -1728,8 +1733,9 @@ def main():
     fbx = v["noli"].get("fbx")
     tab_noli = tabella_html(["Settimana", "FBX globale ($/FEU)"], [[data_it(x), num(y, 0)] for x, y in fbx["storico"]]) if fbx else ""
     it_rows, ue_rows = righe_porti(v)
+    _, nord_rows = righe_porti(v, "nord")
     tab_porti = tabella_html(["Porto", "Chiamate/giorno 30 gg", "Un anno prima", "Variazione"],
-                             [[n, num(a1, 1), num(b1, 1), pct(c1)] for n, c1, a1, b1 in it_rows + ue_rows])
+                             [[n, num(a1, 1), num(b1, 1), pct(c1)] for n, c1, a1, b1 in it_rows + ue_rows + nord_rows])
     tab_cru = tabella_html(["Indicatore", "Valore", "Unità", "Stato", "Data", "Fonte"],
                            [[x["nome"], x["valore"], x["unita"], x["stato"], data_it(x["data"]), x["fonte"]] for x in ind])
     svg["transiti"] = {"largo": grafico_transiti(v, True), "stretto": grafico_transiti(v, False), "tabella": tab_tr}
