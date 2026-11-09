@@ -1,0 +1,573 @@
+{
+ "aggiornato": "2026-11-09T19:46Z",
+ "fonti": [
+  {
+   "nome": "IMF PortWatch (FMI e Università di Oxford), Daily Ports Data",
+   "link": "https://portwatch.imf.org/",
+   "licenza": "dati pubblici FMI; citare «IMF PortWatch»",
+   "data_dato": "2026-10-30"
+  }
+ ],
+ "nota": "Chiamate di navi al giorno stimate da AIS. Medie a 7 e 30 giorni all'ultima data, confrontate con gli stessi giorni di 52 settimane prima (metodo di raccolta/flussi/raccogli.py). File di supporto del report supply chain, scritto da report/costruisci_supply_chain.py.",
+ "elementi": [
+  {
+   "id": "port1114",
+   "nome": "Rotterdam",
+   "paese": "NL",
+   "fonte": "IMF PortWatch (Daily Ports Data)",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-10-30",
+   "affidabilita": "alta",
+   "ultima_data": "2026-10-30",
+   "media7": {
+    "portcalls": 74.1,
+    "portcalls_container": 15.6,
+    "portcalls_tanker": 39.9,
+    "portcalls_dry_bulk": 2.1,
+    "import": 601466.0,
+    "export": 201083.4
+   },
+   "media7_anno_prima": {
+    "portcalls": 83.1,
+    "portcalls_container": 18.4,
+    "portcalls_tanker": 41.7,
+    "portcalls_dry_bulk": 3.1,
+    "import": 691627.3,
+    "export": 304424.1
+   },
+   "media30": {
+    "portcalls": 81.4,
+    "portcalls_container": 16.7,
+    "portcalls_tanker": 42.7,
+    "portcalls_dry_bulk": 2.2,
+    "import": 670397.3,
+    "export": 246736.5
+   },
+   "media30_anno_prima": {
+    "portcalls": 79.6,
+    "portcalls_container": 16.0,
+    "portcalls_tanker": 41.9,
+    "portcalls_dry_bulk": 2.7,
+    "import": 633306.4,
+    "export": 274353.8
+   },
+   "var7_anno_pct": {
+    "portcalls": -10.8,
+    "portcalls_container": -15.5,
+    "portcalls_tanker": -4.5,
+    "portcalls_dry_bulk": -31.8,
+    "import": -13.0,
+    "export": -33.9
+   },
+   "var30_anno_pct": {
+    "portcalls": 2.3,
+    "portcalls_container": 4.0,
+    "portcalls_tanker": 1.8,
+    "portcalls_dry_bulk": -18.5,
+    "import": 5.9,
+    "export": -10.1
+   },
+   "periodo_media30": [
+    "2026-10-01",
+    "2026-10-30"
+   ]
+  },
+  {
+   "id": "port57",
+   "nome": "Anversa",
+   "paese": "BE",
+   "fonte": "IMF PortWatch (Daily Ports Data)",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-10-30",
+   "affidabilita": "alta",
+   "ultima_data": "2026-10-30",
+   "media7": {
+    "portcalls": 49.0,
+    "portcalls_container": 11.3,
+    "portcalls_tanker": 27.0,
+    "portcalls_dry_bulk": 1.3,
+    "import": 351081.1,
+    "export": 272037.1
+   },
+   "media7_anno_prima": {
+    "portcalls": 55.0,
+    "portcalls_container": 11.9,
+    "portcalls_tanker": 28.7,
+    "portcalls_dry_bulk": 2.1,
+    "import": 373302.1,
+    "export": 297036.9
+   },
+   "media30": {
+    "portcalls": 52.3,
+    "portcalls_container": 12.0,
+    "portcalls_tanker": 29.7,
+    "portcalls_dry_bulk": 1.1,
+    "import": 369316.7,
+    "export": 326988.7
+   },
+   "media30_anno_prima": {
+    "portcalls": 49.8,
+    "portcalls_container": 10.0,
+    "portcalls_tanker": 27.3,
+    "portcalls_dry_bulk": 1.8,
+    "import": 314461.0,
+    "export": 268695.9
+   },
+   "var7_anno_pct": {
+    "portcalls": -10.9,
+    "portcalls_container": -4.8,
+    "portcalls_tanker": -6.0,
+    "portcalls_dry_bulk": -40.0,
+    "import": -6.0,
+    "export": -8.4
+   },
+   "var30_anno_pct": {
+    "portcalls": 5.0,
+    "portcalls_container": 20.4,
+    "portcalls_tanker": 8.7,
+    "portcalls_dry_bulk": -38.9,
+    "import": 17.4,
+    "export": 21.7
+   },
+   "periodo_media30": [
+    "2026-10-01",
+    "2026-10-30"
+   ]
+  },
+  {
+   "id": "port446",
+   "nome": "Amburgo",
+   "paese": "DE",
+   "fonte": "IMF PortWatch (Daily Ports Data)",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-10-30",
+   "affidabilita": "alta",
+   "ultima_data": "2026-10-30",
+   "media7": {
+    "portcalls": 14.7,
+    "portcalls_container": 7.7,
+    "portcalls_tanker": 3.6,
+    "portcalls_dry_bulk": 1.0,
+    "import": 135403.9,
+    "export": 141571.6
+   },
+   "media7_anno_prima": {
+    "portcalls": 16.0,
+    "portcalls_container": 8.0,
+    "portcalls_tanker": 3.1,
+    "portcalls_dry_bulk": 1.1,
+    "import": 116585.4,
+    "export": 195845.6
+   },
+   "media30": {
+    "portcalls": 16.2,
+    "portcalls_container": 8.3,
+    "portcalls_tanker": 3.7,
+    "portcalls_dry_bulk": 1.0,
+    "import": 181144.2,
+    "export": 141720.8
+   },
+   "media30_anno_prima": {
+    "portcalls": 16.5,
+    "portcalls_container": 8.6,
+    "portcalls_tanker": 3.1,
+    "portcalls_dry_bulk": 1.2,
+    "import": 199704.6,
+    "export": 148977.8
+   },
+   "var7_anno_pct": {
+    "portcalls": -8.0,
+    "portcalls_container": -3.6,
+    "portcalls_tanker": 13.6,
+    "portcalls_dry_bulk": -12.5,
+    "import": 16.1,
+    "export": -27.7
+   },
+   "var30_anno_pct": {
+    "portcalls": -2.0,
+    "portcalls_container": -3.5,
+    "portcalls_tanker": 19.1,
+    "portcalls_dry_bulk": -16.2,
+    "import": -9.3,
+    "export": -4.9
+   },
+   "periodo_media30": [
+    "2026-10-01",
+    "2026-10-30"
+   ]
+  },
+  {
+   "id": "port1348",
+   "nome": "Valencia",
+   "paese": "ES",
+   "fonte": "IMF PortWatch (Daily Ports Data)",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-10-30",
+   "affidabilita": "alta",
+   "ultima_data": "2026-10-30",
+   "media7": {
+    "portcalls": 11.4,
+    "portcalls_container": 8.4,
+    "portcalls_tanker": 0.7,
+    "portcalls_dry_bulk": 0.0,
+    "import": 53460.4,
+    "export": 105084.6
+   },
+   "media7_anno_prima": {
+    "portcalls": 11.6,
+    "portcalls_container": 8.9,
+    "portcalls_tanker": 0.7,
+    "portcalls_dry_bulk": 0.1,
+    "import": 57172.3,
+    "export": 75272.3
+   },
+   "media30": {
+    "portcalls": 10.3,
+    "portcalls_container": 8.0,
+    "portcalls_tanker": 0.7,
+    "portcalls_dry_bulk": 0.0,
+    "import": 75724.4,
+    "export": 71602.0
+   },
+   "media30_anno_prima": {
+    "portcalls": 11.0,
+    "portcalls_container": 8.4,
+    "portcalls_tanker": 0.7,
+    "portcalls_dry_bulk": 0.2,
+    "import": 68835.5,
+    "export": 71586.3
+   },
+   "var7_anno_pct": {
+    "portcalls": -1.2,
+    "portcalls_container": -4.8,
+    "portcalls_tanker": 0.0,
+    "portcalls_dry_bulk": -100.0,
+    "import": -6.5,
+    "export": 39.6
+   },
+   "var30_anno_pct": {
+    "portcalls": -6.6,
+    "portcalls_container": -4.0,
+    "portcalls_tanker": 0.0,
+    "portcalls_dry_bulk": -80.0,
+    "import": 10.0,
+    "export": 0.0
+   },
+   "periodo_media30": [
+    "2026-10-01",
+    "2026-10-30"
+   ]
+  },
+  {
+   "id": "port31",
+   "nome": "Algeciras",
+   "paese": "ES",
+   "fonte": "IMF PortWatch (Daily Ports Data)",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-10-30",
+   "affidabilita": "alta",
+   "ultima_data": "2026-10-30",
+   "media7": {
+    "portcalls": 16.0,
+    "portcalls_container": 6.7,
+    "portcalls_tanker": 6.4,
+    "portcalls_dry_bulk": 2.0,
+    "import": 71369.0,
+    "export": 72467.0
+   },
+   "media7_anno_prima": {
+    "portcalls": 16.3,
+    "portcalls_container": 7.4,
+    "portcalls_tanker": 6.4,
+    "portcalls_dry_bulk": 1.3,
+    "import": 104455.6,
+    "export": 83850.6
+   },
+   "media30": {
+    "portcalls": 16.0,
+    "portcalls_container": 7.0,
+    "portcalls_tanker": 6.3,
+    "portcalls_dry_bulk": 1.6,
+    "import": 104307.5,
+    "export": 88976.0
+   },
+   "media30_anno_prima": {
+    "portcalls": 17.0,
+    "portcalls_container": 8.0,
+    "portcalls_tanker": 6.4,
+    "portcalls_dry_bulk": 1.7,
+    "import": 111096.3,
+    "export": 107340.9
+   },
+   "var7_anno_pct": {
+    "portcalls": -1.8,
+    "portcalls_container": -9.6,
+    "portcalls_tanker": 0.0,
+    "portcalls_dry_bulk": 55.6,
+    "import": -31.7,
+    "export": -13.6
+   },
+   "var30_anno_pct": {
+    "portcalls": -5.7,
+    "portcalls_container": -12.1,
+    "portcalls_tanker": -1.0,
+    "portcalls_dry_bulk": -6.0,
+    "import": -6.1,
+    "export": -17.1
+   },
+   "periodo_media30": [
+    "2026-10-01",
+    "2026-10-30"
+   ]
+  },
+  {
+   "id": "port1265",
+   "nome": "Tanger Med",
+   "paese": "MA",
+   "fonte": "IMF PortWatch (Daily Ports Data)",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-10-30",
+   "affidabilita": "alta",
+   "ultima_data": "2026-10-30",
+   "media7": {
+    "portcalls": 12.6,
+    "portcalls_container": 8.9,
+    "portcalls_tanker": 2.1,
+    "portcalls_dry_bulk": 0.6,
+    "import": 189209.6,
+    "export": 176199.4
+   },
+   "media7_anno_prima": {
+    "portcalls": 11.9,
+    "portcalls_container": 8.7,
+    "portcalls_tanker": 2.0,
+    "portcalls_dry_bulk": 0.1,
+    "import": 148411.7,
+    "export": 200781.9
+   },
+   "media30": {
+    "portcalls": 12.4,
+    "portcalls_container": 9.0,
+    "portcalls_tanker": 2.1,
+    "portcalls_dry_bulk": 0.4,
+    "import": 181716.3,
+    "export": 172733.7
+   },
+   "media30_anno_prima": {
+    "portcalls": 12.8,
+    "portcalls_container": 9.5,
+    "portcalls_tanker": 1.8,
+    "portcalls_dry_bulk": 0.2,
+    "import": 195445.7,
+    "export": 186781.1
+   },
+   "var7_anno_pct": {
+    "portcalls": 6.0,
+    "portcalls_container": 1.6,
+    "portcalls_tanker": 7.1,
+    "portcalls_dry_bulk": 300.0,
+    "import": 27.5,
+    "export": -12.2
+   },
+   "var30_anno_pct": {
+    "portcalls": -2.6,
+    "portcalls_container": -5.9,
+    "portcalls_tanker": 14.8,
+    "portcalls_dry_bulk": 116.7,
+    "import": -7.0,
+    "export": -7.5
+   },
+   "periodo_media30": [
+    "2026-10-01",
+    "2026-10-30"
+   ]
+  },
+  {
+   "id": "port908",
+   "nome": "Pireo",
+   "paese": "GR",
+   "fonte": "IMF PortWatch (Daily Ports Data)",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-10-30",
+   "affidabilita": "alta",
+   "ultima_data": "2026-10-30",
+   "media7": {
+    "portcalls": 9.9,
+    "portcalls_container": 5.1,
+    "portcalls_tanker": 2.7,
+    "portcalls_dry_bulk": 0.3,
+    "import": 91549.1,
+    "export": 61474.7
+   },
+   "media7_anno_prima": {
+    "portcalls": 14.9,
+    "portcalls_container": 7.7,
+    "portcalls_tanker": 4.0,
+    "portcalls_dry_bulk": 0.6,
+    "import": 94158.0,
+    "export": 86926.7
+   },
+   "media30": {
+    "portcalls": 12.1,
+    "portcalls_container": 6.2,
+    "portcalls_tanker": 3.1,
+    "portcalls_dry_bulk": 0.6,
+    "import": 91078.7,
+    "export": 68815.3
+   },
+   "media30_anno_prima": {
+    "portcalls": 14.1,
+    "portcalls_container": 6.7,
+    "portcalls_tanker": 3.9,
+    "portcalls_dry_bulk": 0.5,
+    "import": 70564.9,
+    "export": 65674.5
+   },
+   "var7_anno_pct": {
+    "portcalls": -33.7,
+    "portcalls_container": -33.3,
+    "portcalls_tanker": -32.1,
+    "portcalls_dry_bulk": -50.0,
+    "import": -2.8,
+    "export": -29.3
+   },
+   "var30_anno_pct": {
+    "portcalls": -14.4,
+    "portcalls_container": -7.5,
+    "portcalls_tanker": -20.7,
+    "portcalls_dry_bulk": 6.2,
+    "import": 29.1,
+    "export": 4.8
+   },
+   "periodo_media30": [
+    "2026-10-01",
+    "2026-10-30"
+   ]
+  },
+  {
+   "id": "port712",
+   "nome": "Marsiglia",
+   "paese": "FR",
+   "fonte": "IMF PortWatch (Daily Ports Data)",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-10-30",
+   "affidabilita": "alta",
+   "ultima_data": "2026-10-30",
+   "media7": {
+    "portcalls": 2.6,
+    "portcalls_container": 0.9,
+    "portcalls_tanker": 0.4,
+    "portcalls_dry_bulk": 0.0,
+    "import": 1588.4,
+    "export": 1309.1
+   },
+   "media7_anno_prima": {
+    "portcalls": 3.1,
+    "portcalls_container": 1.0,
+    "portcalls_tanker": 0.3,
+    "portcalls_dry_bulk": 0.1,
+    "import": 2516.9,
+    "export": 1461.7
+   },
+   "media30": {
+    "portcalls": 3.0,
+    "portcalls_container": 1.0,
+    "portcalls_tanker": 0.4,
+    "portcalls_dry_bulk": 0.2,
+    "import": 1938.3,
+    "export": 1705.2
+   },
+   "media30_anno_prima": {
+    "portcalls": 3.1,
+    "portcalls_container": 0.9,
+    "portcalls_tanker": 0.6,
+    "portcalls_dry_bulk": 0.1,
+    "import": 2409.6,
+    "export": 1433.2
+   },
+   "var7_anno_pct": {
+    "portcalls": -18.2,
+    "portcalls_container": -14.3,
+    "portcalls_tanker": 50.0,
+    "portcalls_dry_bulk": -100.0,
+    "import": -36.9,
+    "export": -10.4
+   },
+   "var30_anno_pct": {
+    "portcalls": -5.3,
+    "portcalls_container": 3.6,
+    "portcalls_tanker": -36.8,
+    "portcalls_dry_bulk": 100.0,
+    "import": -19.6,
+    "export": 19.0
+   },
+   "periodo_media30": [
+    "2026-10-01",
+    "2026-10-30"
+   ]
+  },
+  {
+   "id": "port592",
+   "nome": "Capodistria (Koper)",
+   "paese": "SI",
+   "fonte": "IMF PortWatch (Daily Ports Data)",
+   "link": "https://portwatch.imf.org/",
+   "data_fonte": "2026-10-30",
+   "affidabilita": "alta",
+   "ultima_data": "2026-10-30",
+   "media7": {
+    "portcalls": 3.3,
+    "portcalls_container": 1.4,
+    "portcalls_tanker": 0.7,
+    "portcalls_dry_bulk": 0.4,
+    "import": 54651.9,
+    "export": 7844.1
+   },
+   "media7_anno_prima": {
+    "portcalls": 4.6,
+    "portcalls_container": 1.7,
+    "portcalls_tanker": 0.7,
+    "portcalls_dry_bulk": 0.3,
+    "import": 67243.9,
+    "export": 9794.0
+   },
+   "media30": {
+    "portcalls": 3.4,
+    "portcalls_container": 1.5,
+    "portcalls_tanker": 0.5,
+    "portcalls_dry_bulk": 0.3,
+    "import": 50731.0,
+    "export": 15332.8
+   },
+   "media30_anno_prima": {
+    "portcalls": 4.1,
+    "portcalls_container": 1.6,
+    "portcalls_tanker": 0.6,
+    "portcalls_dry_bulk": 0.3,
+    "import": 39177.6,
+    "export": 12753.3
+   },
+   "var7_anno_pct": {
+    "portcalls": -28.1,
+    "portcalls_container": -16.7,
+    "portcalls_tanker": 0.0,
+    "portcalls_dry_bulk": 50.0,
+    "import": -18.7,
+    "export": -19.9
+   },
+   "var30_anno_pct": {
+    "portcalls": -16.3,
+    "portcalls_container": -10.2,
+    "portcalls_tanker": -16.7,
+    "portcalls_dry_bulk": -11.1,
+    "import": 29.5,
+    "export": 20.2
+   },
+   "periodo_media30": [
+    "2026-10-01",
+    "2026-10-30"
+   ]
+  }
+ ],
+ "errori": []
+}

@@ -760,7 +760,7 @@ def main():
             "data_utc": fmt(d),
             "data_fonte": d.strftime("%Y-%m-%d"),
             "link": v["link"],
-            "fonte": v.get("nome_editore") or f["nome"],
+            "fonte": (v.get("nome_editore") or f["nome"]) if f["tipo"] == "gnews" else f["nome"],
             "via": f["nome"] if f["tipo"] == "gnews" else "",
             "editore": ed,
             "fonte_id": f["id"],
@@ -859,7 +859,8 @@ def main():
         p += 2 * len(set(e["temi"]) & TEMI_FORTI) + len(set(e["temi"]) - TEMI_FORTI) * 0.5
         p += {"alta": 2, "media": 1}.get(e["affidabilita"], 0)
         p += min(e.get("n_editori_gruppo", 1) - 1, 4)
-        p += 2 if ore <= 24 else 1 if ore <= 48 else 0
+        if not e.get("data_stimata"):   # senza data della fonte la recenza non conta
+            p += 2 if ore <= 24 else 1 if ore <= 48 else 0
         p += 1 if e["lat"] is not None and e["precisione_km"] and e["precisione_km"] <= 100 else 0
         e["punteggio"] = round(p, 1)
 
@@ -869,7 +870,8 @@ def main():
     lim48 = fmt(ORA - timedelta(hours=48))
     evid, gruppi_visti = [], set()
     for e in sorted(tutte, key=lambda e: (-e["punteggio"], e["data_utc"])):
-        if e["data_utc"] < lim48 or e["gruppo"] in gruppi_visti or e["famiglia"] == "macro":
+        if (e["data_utc"] < lim48 or e["gruppo"] in gruppi_visti or e["famiglia"] == "macro"
+                or e.get("data_stimata")):
             continue
         gruppi_visti.add(e["gruppo"])
         evid.append(e["id"])
@@ -881,16 +883,19 @@ def main():
     riep = {"totale": len(tutte), "doppioni_tolti": doppioni, "gruppi": len({e["gruppo"] for e in tutte}),
             "per_famiglia": {}, "oggi_per_famiglia": {}, "ultime_24h_per_famiglia": {}, "per_tema": {},
             "possibili_eventi": sum(1 for e in tutte if e["possibile_evento"]),
+            "senza_data_della_fonte": sum(1 for e in tutte if e.get("data_stimata")),
             "con_coordinate": sum(1 for e in tutte if e["lat"] is not None)}
     lim24 = fmt(ORA - timedelta(hours=24))
     for e in tutte:
         riep["per_famiglia"][e["famiglia"]] = riep["per_famiglia"].get(e["famiglia"], 0) + 1
+        for t in e["temi"]:
+            riep["per_tema"][t] = riep["per_tema"].get(t, 0) + 1
+        if e.get("data_stimata"):
+            continue
         if e["data_utc"].startswith(oggi):
             riep["oggi_per_famiglia"][e["famiglia"]] = riep["oggi_per_famiglia"].get(e["famiglia"], 0) + 1
         if e["data_utc"] >= lim24:
             riep["ultime_24h_per_famiglia"][e["famiglia"]] = riep["ultime_24h_per_famiglia"].get(e["famiglia"], 0) + 1
-        for t in e["temi"]:
-            riep["per_tema"][t] = riep["per_tema"].get(t, 0) + 1
     riep["per_tema"] = dict(sorted(riep["per_tema"].items(), key=lambda x: -x[1]))
 
     uscita = {

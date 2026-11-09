@@ -33,7 +33,7 @@ try:
     import numpy as np
     import shapely
     from shapely.geometry import MultiPolygon, Polygon, shape
-    from shapely.ops import transform, unary_union
+    from shapely.ops import unary_union
 except ImportError:  # pragma: no cover
     shapely = None
 
@@ -119,7 +119,7 @@ def _indietro(x, y, z=None):
 
 
 def in_km(g):
-    return transform(_avanti, g)
+    return shapely.transform(g, lambda c: np.column_stack(_avanti(c[:, 0], c[:, 1])))
 
 
 def km2(g):
@@ -228,7 +228,7 @@ def classe_ds(props):
 def solo_2014(props):
     n = (props.get("name") or "").lower()
     return any(k in n for k in ("territories.crimea", "territories.ordlo", "territories.tuzla",
-                                "окупований крим", "ордло", "тузла"))
+                                "крим", "ордло", "тузла"))
 
 
 def indice_ds():
@@ -253,7 +253,7 @@ def aree_ds(gj, solo_pre=False):
     ru, gr = [], []
     for f in gj.get("features", []):
         geo = f.get("geometry") or {}
-        if geo.get("type") not in ("Polygon", "MultiPolygon"):
+        if geo.get("type") not in ("Polygon", "MultiPolygon", "GeometryCollection"):
             continue
         p = f.get("properties") or {}
         if solo_pre:

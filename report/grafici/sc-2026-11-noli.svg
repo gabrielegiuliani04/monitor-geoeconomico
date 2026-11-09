@@ -1,0 +1,92 @@
+<svg class="viz" id="g-noli" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 454" width="100%" role="img" aria-labelledby="g-noli-t g-noli-d" style="--fs:12px;max-width:720px;height:auto;display:block">
+<title id="g-noli-t">Noli container: andamento FBX e ultimo valore WCI per rotta</title><desc id="g-noli-d">Freightos FBX globale settimanale e Drewry WCI per rotta, in dollari per container da 40 piedi, con il valore di un anno prima dove disponibile.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<text x="44" y="18" class="t-ink t-b">Freightos FBX globale, $ per FEU</text>
+<text x="44" y="34" class="t-faint">serie settimanale disponibile gratis: 14 agosto 2026 – 6 novembre 2026</text>
+<line x1="44" x2="650" y1="192.0" y2="192.0" class="grid"/>
+<text x="38" y="196.0" text-anchor="end" class="num">2.500</text>
+<line x1="44" x2="650" y1="142.7" y2="142.7" class="grid"/>
+<text x="38" y="146.7" text-anchor="end" class="num">3.000</text>
+<line x1="44" x2="650" y1="93.3" y2="93.3" class="grid"/>
+<text x="38" y="97.3" text-anchor="end" class="num">3.500</text>
+<line x1="44" x2="650" y1="44.0" y2="44.0" class="grid"/>
+<text x="38" y="48.0" text-anchor="end" class="num">4.000</text>
+<path d="M44.0,74.6 L94.5,86.3 L145.0,84.5 L195.5,91.4 L246.0,93.5 L296.5,102.5 L347.0,105.1 L397.5,108.8 L448.0,108.7 L498.5,103.5 L549.0,87.4 L599.5,92.0 L650.0,98.1" class="l c-s3"/>
+<circle cx="44.0" cy="74.6" r="3" class="f-s3 ring"/>
+<circle cx="44.0" cy="74.6" r="12" class="hit"><title>14 agosto 2026: 3.690 $/FEU</title></circle>
+<circle cx="94.5" cy="86.3" r="3" class="f-s3 ring"/>
+<circle cx="94.5" cy="86.3" r="12" class="hit"><title>21 agosto 2026: 3.571 $/FEU</title></circle>
+<circle cx="145.0" cy="84.5" r="3" class="f-s3 ring"/>
+<circle cx="145.0" cy="84.5" r="12" class="hit"><title>28 agosto 2026: 3.590 $/FEU</title></circle>
+<circle cx="195.5" cy="91.4" r="3" class="f-s3 ring"/>
+<circle cx="195.5" cy="91.4" r="12" class="hit"><title>4 settembre 2026: 3.520 $/FEU</title></circle>
+<circle cx="246.0" cy="93.5" r="3" class="f-s3 ring"/>
+<circle cx="246.0" cy="93.5" r="12" class="hit"><title>11 settembre 2026: 3.499 $/FEU</title></circle>
+<circle cx="296.5" cy="102.5" r="3" class="f-s3 ring"/>
+<circle cx="296.5" cy="102.5" r="12" class="hit"><title>18 settembre 2026: 3.407 $/FEU</title></circle>
+<circle cx="347.0" cy="105.1" r="3" class="f-s3 ring"/>
+<circle cx="347.0" cy="105.1" r="12" class="hit"><title>25 settembre 2026: 3.380 $/FEU</title></circle>
+<circle cx="397.5" cy="108.8" r="3" class="f-s3 ring"/>
+<circle cx="397.5" cy="108.8" r="12" class="hit"><title>2 ottobre 2026: 3.343 $/FEU</title></circle>
+<circle cx="448.0" cy="108.7" r="3" class="f-s3 ring"/>
+<circle cx="448.0" cy="108.7" r="12" class="hit"><title>9 ottobre 2026: 3.344 $/FEU</title></circle>
+<circle cx="498.5" cy="103.5" r="3" class="f-s3 ring"/>
+<circle cx="498.5" cy="103.5" r="12" class="hit"><title>16 ottobre 2026: 3.397 $/FEU</title></circle>
+<circle cx="549.0" cy="87.4" r="3" class="f-s3 ring"/>
+<circle cx="549.0" cy="87.4" r="12" class="hit"><title>23 ottobre 2026: 3.560 $/FEU</title></circle>
+<circle cx="599.5" cy="92.0" r="3" class="f-s3 ring"/>
+<circle cx="599.5" cy="92.0" r="12" class="hit"><title>30 ottobre 2026: 3.513 $/FEU</title></circle>
+<circle cx="650.0" cy="98.1" r="3" class="f-s3 ring"/>
+<circle cx="650.0" cy="98.1" r="12" class="hit"><title>6 novembre 2026: 3.452 $/FEU</title></circle>
+<text x="44.0" y="64.6" text-anchor="start" class="t-ink num t-b">3.690</text>
+<text x="650.0" y="88.1" text-anchor="end" class="t-ink num t-b">3.452</text>
+<text x="44.0" y="208" text-anchor="start">14 agosto</text>
+<text x="347.0" y="208" text-anchor="middle">25 settembre</text>
+<text x="650.0" y="208" text-anchor="end">6 novembre</text>
+<text x="44" y="240" class="t-ink t-b">Drewry WCI per rotta, $ per FEU</text>
+<text x="44" y="256" class="t-faint">barra: 5 novembre 2026 · tacca: 6 novembre 2025 (fonte secondaria)</text>
+<text x="186" y="286" text-anchor="end" class="t-ink">WCI composito</text>
+<rect x="194" y="274" width="192.1" height="16" rx="3" class="f-s1"/>
+<text x="392.1" y="286" class="t-ink num t-b">4.389</text>
+<line x1="279.7" x2="279.7" y1="271" y2="293" class="tick"/>
+<rect x="44" y="268" width="676" height="28" class="hit"><title>WCI composito: 4.389 $/FEU; un anno prima 1.959 (+124%)</title></rect>
+<text x="186" y="316" text-anchor="end" class="t-ink">Shanghai–Genova</text>
+<rect x="194" y="304" width="182.3" height="16" rx="3" class="f-s1"/>
+<text x="382.3" y="316" class="t-ink num t-b">4.166</text>
+<line x1="286.4" x2="286.4" y1="301" y2="323" class="tick"/>
+<rect x="44" y="298" width="676" height="28" class="hit"><title>Shanghai–Genova: 4.166 $/FEU; un anno prima 2.111 (+97%)</title></rect>
+<text x="186" y="346" text-anchor="end" class="t-ink">Shanghai–Rotterdam</text>
+<rect x="194" y="334" width="158.2" height="16" rx="3" class="f-s1"/>
+<text x="358.2" y="346" class="t-ink num t-b">3.615</text>
+<line x1="279.9" x2="279.9" y1="331" y2="353" class="tick"/>
+<rect x="44" y="328" width="676" height="28" class="hit"><title>Shanghai–Rotterdam: 3.615 $/FEU; un anno prima 1.962 (+84%)</title></rect>
+<text x="186" y="376" text-anchor="end" class="t-ink">Shanghai–Los Angeles</text>
+<rect x="194" y="364" width="329.9" height="16" rx="3" class="f-s1"/>
+<text x="529.9" y="376" class="t-ink num t-b">7.539</text>
+<line x1="309.8" x2="309.8" y1="361" y2="383" class="tick"/>
+<rect x="44" y="358" width="676" height="28" class="hit"><title>Shanghai–Los Angeles: 7.539 $/FEU; un anno prima 2.647 (+185%)</title></rect>
+<text x="186" y="406" text-anchor="end" class="t-ink">Shanghai–New York</text>
+<rect x="194" y="394" width="407.1" height="16" rx="3" class="f-s1"/>
+<text x="607.1" y="406" class="t-ink num t-b">9.303</text>
+<line x1="361.9" x2="361.9" y1="391" y2="413" class="tick"/>
+<rect x="44" y="388" width="676" height="28" class="hit"><title>Shanghai–New York: 9.303 $/FEU; un anno prima 3.837 (+142%)</title></rect>
+</svg>

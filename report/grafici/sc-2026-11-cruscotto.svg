@@ -1,0 +1,65 @@
+<svg class="viz" id="g-cruscotto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 268" width="100%" role="img" aria-labelledby="g-cruscotto-t g-cruscotto-d" style="--fs:12px;max-width:720px;height:auto;display:block">
+<title id="g-cruscotto-t">Cruscotto: sei indicatori della supply chain</title><desc id="g-cruscotto-d">Valore, direzione recente e stato (valutazione con soglie dichiarate) di sei indicatori.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<rect x="1.0" y="1.0" width="231.3" height="126" rx="8" class="card"/>
+<text x="13.0" y="23.0" class="t-ink t-b">Hormuz, transiti</text>
+<text x="13.0" y="59.0" class="t-ink num t-b" style="font-size:26px">4,4</text>
+<text x="13.0" y="77.0">navi/giorno (7 gg)</text>
+<text x="13.0" y="97.0" class="t-ink"><tspan class="t-b">↑</tspan> <tspan class="num">+16% su media 30 gg</tspan></text>
+<text x="13.0" y="117.0"><tspan class="f-crit">■</tspan> <tspan class="t-ink">critico</tspan> <tspan class="t-faint">· 1 novembre, IMF PortWatch</tspan></text>
+<rect x="1.0" y="1.0" width="233.3" height="128" class="hit"><title>Hormuz, transiti: 4,4 navi/giorno (7 gg); +16% su media 30 gg; stato critico (valutazione)</title></rect>
+<rect x="244.3" y="1.0" width="231.3" height="126" rx="8" class="card"/>
+<text x="256.3" y="23.0" class="t-ink t-b">Suez, transiti</text>
+<text x="256.3" y="59.0" class="t-ink num t-b" style="font-size:26px">43,0</text>
+<text x="256.3" y="77.0">navi/giorno (7 gg)</text>
+<text x="256.3" y="97.0" class="t-ink"><tspan class="t-b">↑</tspan> <tspan class="num">+10% su un anno</tspan></text>
+<text x="256.3" y="117.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink">attenzione</tspan> <tspan class="t-faint">· 1 novembre, IMF PortWatch</tspan></text>
+<rect x="244.3" y="1.0" width="233.3" height="128" class="hit"><title>Suez, transiti: 43,0 navi/giorno (7 gg); +10% su un anno; stato attenzione (valutazione)</title></rect>
+<rect x="487.7" y="1.0" width="231.3" height="126" rx="8" class="card"/>
+<text x="499.7" y="23.0" class="t-ink t-b">Noli container FBX</text>
+<text x="499.7" y="59.0" class="t-ink num t-b" style="font-size:26px">3.452</text>
+<text x="499.7" y="77.0">$ per FEU</text>
+<text x="499.7" y="97.0" class="t-ink"><tspan class="t-b">↑</tspan> <tspan class="num">+3% su 4 settimane</tspan></text>
+<text x="499.7" y="117.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink">attenzione</tspan> <tspan class="t-faint">· 6 novembre, Freightos</tspan></text>
+<rect x="487.7" y="1.0" width="233.3" height="128" class="hit"><title>Noli container FBX: 3.452 $ per FEU; +3% su 4 settimane; stato attenzione (valutazione)</title></rect>
+<rect x="1.0" y="139.0" width="231.3" height="126" rx="8" class="card"/>
+<text x="13.0" y="161.0" class="t-ink t-b">Baltic Dry (rinfuse)</text>
+<text x="13.0" y="197.0" class="t-ink num t-b" style="font-size:26px">2.854</text>
+<text x="13.0" y="215.0">punti</text>
+<text x="13.0" y="235.0" class="t-ink"><tspan class="t-b">↑</tspan> <tspan class="num">+37% su un anno</tspan></text>
+<text x="13.0" y="255.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink">attenzione</tspan> <tspan class="t-faint">· 9 novembre, Trading Economics</tspan></text>
+<rect x="1.0" y="139.0" width="233.3" height="128" class="hit"><title>Baltic Dry (rinfuse): 2.854 punti; +37% su un anno; stato attenzione (valutazione)</title></rect>
+<rect x="244.3" y="139.0" width="231.3" height="126" rx="8" class="card"/>
+<text x="256.3" y="161.0" class="t-ink t-b">Gas TTF</text>
+<text x="256.3" y="197.0" class="t-ink num t-b" style="font-size:26px">82,3</text>
+<text x="256.3" y="215.0">€/MWh</text>
+<text x="256.3" y="235.0" class="t-ink"><tspan class="t-b">↑</tspan> <tspan class="num">+1% su un mese</tspan></text>
+<text x="256.3" y="255.0"><tspan class="f-crit">■</tspan> <tspan class="t-ink">critico</tspan> <tspan class="t-faint">· 9 novembre, Yahoo Finance</tspan></text>
+<rect x="244.3" y="139.0" width="233.3" height="128" class="hit"><title>Gas TTF: 82,3 €/MWh; +1% su un mese; stato critico (valutazione)</title></rect>
+<rect x="487.7" y="139.0" width="231.3" height="126" rx="8" class="card"/>
+<text x="499.7" y="161.0" class="t-ink t-b">Stoccaggi gas Italia</text>
+<text x="499.7" y="197.0" class="t-ink num t-b" style="font-size:26px">88,9</text>
+<text x="499.7" y="215.0">% pieno</text>
+<text x="499.7" y="235.0" class="t-ink"><tspan class="t-b">↓</tspan> <tspan class="num">−4,7 p.p. su un anno</tspan></text>
+<text x="499.7" y="255.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink">attenzione</tspan> <tspan class="t-faint">· 8 novembre, GIE AGSI+</tspan></text>
+<rect x="487.7" y="139.0" width="233.3" height="128" class="hit"><title>Stoccaggi gas Italia: 88,9 % pieno; −4,7 p.p. su un anno; stato attenzione (valutazione)</title></rect>
+</svg>
