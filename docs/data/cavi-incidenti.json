@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-09T18:55Z",
+ "aggiornato": "2026-11-09T18:57Z",
  "fonti": [
   {
    "nome": "Curato a mano dall'agente CAVI da notizie e analisti (una fonte per incidente)",
@@ -8,7 +8,7 @@
    "data_dato": "2026-11-05"
   }
  ],
- "nota": "Incidenti a cavi sottomarini (e infrastrutture sottomarine collegate) 2023-2026, curati a mano dall'agente CAVI. lat/lon sono SEMPRE stimati: le fonti indicano una zona, non un punto. precisione_km dice quanto può essere lontano il punto reale. affidabilita si riferisce al fatto (danno avvenuto, data), non alla causa: la causa è nel campo causa e nelle note. Aggiornare a mano questo file; raccogli.py lo copia in docs/data/cavi-incidenti.json.",
+ "nota": "Incidenti a cavi sottomarini (e infrastrutture sottomarine collegate) 2023-2026, curati a mano dall'agente CAVI. lat/lon sono SEMPRE stimati: le fonti indicano una zona, non un punto. precisione_km dice quanto può essere lontano il punto reale. affidabilita si riferisce al fatto (danno avvenuto, data), non alla causa: la causa è nel campo causa e nelle note. Aggiornare a mano questo file; raccogli.py lo copia in docs/data/cavi-incidenti.json. cavi_id = id dei cavi in docs/data/cavi.json (TeleGeography) solo quando la corrispondenza è certa o molto probabile; vuoto se il cavo non è nella mappa TeleGeography o non è identificabile (es. Estlink 2 è un elettrodotto, il cavo Ventspils-Gotland di LVRTC non è distinguibile con certezza da quelli elencati).",
  "elementi": [
   {
    "id": "CI-2026-03",
@@ -33,8 +33,11 @@
    "data_fonte": "2026-08-11",
    "affidabilita": "alta",
    "note": "Coordinate stimate al largo di Perth. Fine riparazione non verificata.",
-   "origine_coord": "stimata",
-   "cavi_id": []
+   "cavi_id": [
+    "indigo-west",
+    "indigo-central"
+   ],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2026-02",
@@ -57,9 +60,11 @@
    "link": "https://www.kentik.com/blog/syrian-subsea-cable-link-downed-in-latest-act-of-telecom-sabotage/",
    "data_fonte": "2026-06-17",
    "affidabilita": "alta",
-   "note": "Coordinate: città di Tartus. È un sabotaggio del tratto terrestre.",
-   "origine_coord": "stimata",
-   "cavi_id": []
+   "note": "Coordinate: città di Tartus. È un sabotaggio del tratto terrestre. Il cavo Tartus-Alessandria corrisponde ad Aletar in TeleGeography.",
+   "cavi_id": [
+    "aletar"
+   ],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2026-01",
@@ -83,8 +88,8 @@
    "data_fonte": "2026-04-30",
    "affidabilita": "alta",
    "note": "Coordinate stimate dalla distanza data dalla fonte.",
-   "origine_coord": "stimata",
-   "cavi_id": []
+   "cavi_id": [],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2025-05",
@@ -111,8 +116,8 @@
    "data_fonte": "2026-11-05",
    "affidabilita": "alta",
    "note": "Coordinate stimate. Stato di riparazione: traffico deviato, servizio non interrotto secondo Elisa.",
-   "origine_coord": "stimata",
-   "cavi_id": []
+   "cavi_id": [],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2025-04",
@@ -140,10 +145,12 @@
    "data_fonte": "2025-09-07",
    "affidabilita": "alta",
    "note": "Coordinate stimate: NetBlocks indica 'vicino a Gedda'. Stato di riparazione non verificato nel dettaglio.",
-   "origine_coord": "stimata",
    "cavi_id": [
-    "imewe"
-   ]
+    "seamewe-4",
+    "imewe",
+    "falcon"
+   ],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2025-03",
@@ -169,8 +176,10 @@
    "data_fonte": "2025-06-13",
    "affidabilita": "alta",
    "note": "Coordinate stimate al largo di Beimen.",
-   "origine_coord": "stimata",
-   "cavi_id": []
+   "cavi_id": [
+    "taiwan-penghu-kinmen-matsu-no-3-tpkm3"
+   ],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2025-02",
@@ -196,8 +205,8 @@
    "data_fonte": "2025-01-27",
    "affidabilita": "alta",
    "note": "Coordinate: punto medio della rotta, stima. Esito dell'indagine non trovato.",
-   "origine_coord": "stimata",
-   "cavi_id": []
+   "cavi_id": [],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2025-01",
@@ -220,9 +229,11 @@
    "link": "https://www.maritime-executive.com/article/chinese-ship-suspected-of-cable-sabotage-may-have-had-two-ais-devices",
    "data_fonte": "2025-01-10",
    "affidabilita": "alta",
-   "note": "Coordinate stimate al largo di Yehliu.",
-   "origine_coord": "stimata",
-   "cavi_id": []
+   "note": "Coordinate stimate al largo di Yehliu. Il legame con TPE (cavi_id) si basa solo sul Financial Times.",
+   "cavi_id": [
+    "trans-pacific-express-tpe-cable-system"
+   ],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2024-04",
@@ -249,8 +260,8 @@
    "data_fonte": "2026-08-27",
    "affidabilita": "alta",
    "note": "Coordinate: tracciato di Estlink 2 nella ZEE finlandese, stima.",
-   "origine_coord": "stimata",
-   "cavi_id": []
+   "cavi_id": [],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2024-03",
@@ -276,10 +287,10 @@
    "data_fonte": "2024-11-20",
    "affidabilita": "alta",
    "note": "Coordinate stimate sulla rotta del cavo.",
-   "origine_coord": "stimata",
    "cavi_id": [
     "c-lion1"
-   ]
+   ],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2024-02",
@@ -305,10 +316,10 @@
    "data_fonte": "2024-11-27",
    "affidabilita": "alta",
    "note": "Coordinate stimate sulla rotta del cavo.",
-   "origine_coord": "stimata",
    "cavi_id": [
     "bcs-east-west-interlink"
-   ]
+   ],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2024-01",
@@ -337,12 +348,12 @@
    "data_fonte": "2024-03-07",
    "affidabilita": "alta",
    "note": "Coordinate: zona dell'affondamento della Rubymar, stima. Kentik: EIG era già fuori servizio.",
-   "origine_coord": "stimata",
    "cavi_id": [
     "asia-africa-europe-1-aae-1",
     "seacomtata-tgn-eurasia",
     "europe-india-gateway-eig"
-   ]
+   ],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2023-02",
@@ -369,8 +380,10 @@
    "data_fonte": "2023-10-25",
    "affidabilita": "alta",
    "note": "Coordinate: tracciato del Balticconnector a metà tra Inkoo e Paldiski, stima.",
-   "origine_coord": "stimata",
-   "cavi_id": []
+   "cavi_id": [
+    "sweden-estonia-ee-s-1"
+   ],
+   "origine_coord": "stimata"
   },
   {
    "id": "CI-2023-01",
@@ -397,10 +410,8 @@
    "data_fonte": "2023-02-21",
    "affidabilita": "alta",
    "note": "Coordinate: punto medio della rotta Taiwan-Matsu, il punto del taglio non è pubblicato.",
-   "origine_coord": "stimata",
-   "cavi_id": [
-    "taiwan-matsu-no-4"
-   ]
+   "cavi_id": [],
+   "origine_coord": "stimata"
   }
  ],
  "errori": []
