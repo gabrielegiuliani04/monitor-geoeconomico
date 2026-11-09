@@ -16,7 +16,7 @@ Osservatorio OSINT di rischio geoeconomico: mappa interattiva (eventi militari, 
 ## Aggiornamento automatico (GitHub Actions)
 - `aggiorna-mercati.yml`: prezzi (`docs/data/prezzi.json`, 27 serie) alle 21:30 UTC lun–ven.
 - `aggiorna-dati.yml`: ogni giorno alle 05:15 UTC, e a mano da Actions → Run workflow. Lancia flussi, scorte, navi, calendario, energia, stretti (ogni passo indipendente).
-- Segreti inseriti da Gabriele il 2026-11-09: `AISSTREAM_API_KEY`, `GFW_API_KEY`, `AGSI_API_KEY`. Facoltativo: `BLS_API_KEY` (data.bls.gov/registrationEngine).
+- Segreti inseriti da Gabriele il 2026-11-09: `AISSTREAM_API_KEY`, `GFW_API_KEY`, `AGSI_API_KEY`. **La chiave AGSI è finita per errore in un file pubblico (poi ripulito, ma resta nella cronologia git): va rigenerata.** Ora `raccolta/comune/nascondi_chiavi.py` gira prima di ogni salvataggio. Primo giro (2026-11-09 19:16): tutto verde; aisstream ha dato 19 petroliere negli Stretti danesi, nessun dato per Hormuz/Bab el-Mandeb/Suez/Bosforo (copertura AIS terrestre assente lì); AGSI ha risposto con errore. Facoltativo: `BLS_API_KEY` (data.bls.gov/registrationEngine).
 - Non ancora nel workflow (dati statici o lenti): ferrovie, cavi (settimanale da aggiungere), paesi, commercio, elettricità, Ucraina storico.
 
 ## Fatto e verificato (dati in `docs/data/`, NON ancora visibili sulla mappa)
@@ -43,6 +43,24 @@ Dati paesi (paesi.json), Risorse e commercio (commercio.json, minerali.json), Re
 5. Agente analisti: canali in `raccolta/analisti/canali.json` (Bottaioli, Lops, Aldo Qefalia, Marco Lippiello, BNP Paribas). Feed RSS funzionano; trascrizioni bloccate da YouTube per gli IP cloud → usare il computer di Gabriele (Remote Control) per le trascrizioni.
 6. Fonti OSINT preferite da Gabriele per Ucraina e militare: Clément Molin, AMK Mapping, "Davide Montingelli" (nome da verificare).
 7. Serbatoi da satellite: decidere se farne un progetto separato in base alla conclusione dello studio.
+
+
+## Lavori in parallelo (più sessioni di Claude Code sullo stesso repository)
+Regole, valide per ogni sessione:
+1. **Solo la sessione "Regia" modifica `docs/index.html`, `docs/data/manifest.json`, i workflow in `.github/` e questo file.** Le altre chiedono alla Regia (scrivendo in `STATO.md` → "Richieste per la Regia" con un commit) o lavorano nelle proprie cartelle.
+2. Ogni sessione tocca **solo le sue cartelle** (vedi tabella) e fa `git pull --rebase origin main` prima di ogni `git push`.
+3. Prima di iniziare: leggere `STATO.md` e `raccolta/AGENTI.md`. Mai numeri inventati, ogni dato con fonte e data.
+4. Mai chiavi nei file: si leggono da variabili d'ambiente / segreti GitHub.
+
+| Sessione | Compito | Cartelle sue |
+|---|---|---|
+| **Regia** (questa) | mappa, terminale, workflow, coordinamento, verifica degli agenti | `docs/index.html`, `docs/data/manifest.json`, `.github/`, `STATO.md` |
+| **Report** | report settimanale geoeconomico + approfondimenti, pagina dei report | `report/` (esclusa `report/agenti/`), `docs/report/` |
+| **Raccolta** | nuovi domini di dati e manutenzione degli script (es. minerali, sanzioni UE dettagliate, satelliti) | `raccolta/<dominio>/`, `docs/data/<file nuovi>.json`, `report/agenti/<dominio>.md` |
+| **Vetrina CV** | README, pagina "Chi sono / Metodo" sul sito, post LinkedIn, sezione CV, presentazione del progetto | `README.md`, `METODO.md`, `docs/progetto/`, `vetrina/` |
+
+## Richieste per la Regia
+(le altre sessioni aggiungono qui una riga: data, sessione, richiesta)
 
 ## Decisioni prese
 - Lingua: italiano. Ogni dato con fonte, data, affidabilità. Mai numeri inventati.

@@ -185,6 +185,39 @@ def naip_demo(bounds_utm, crs_utm, path):
     print(os.path.basename(path), its[0].id, os.path.getsize(path), "byte")
 
 
+def sar_demo(bounds_utm, crs_utm, path):
+    """Ritaglio Sentinel-1 GRD (VV, ultima data) dallo STAC di Planetary Computer, georeferito
+    con i GCP della scena e ricampionato a 10 m sulla stessa griglia del ritaglio Sentinel-2.
+    Solo per vedere che aspetto hanno i serbatoi nel radar a questa risoluzione."""
+    import json
+    from rasterio.vrt import WarpedVRT
+    from rasterio.transform import from_origin
+    cl = Client.open("https://planetarycomputer.microsoft.com/api/stac/v1")
+    lon, lat = transform(crs_utm, "EPSG:4326", [(bounds_utm[0] + bounds_utm[2]) / 2],
+                         [(bounds_utm[1] + bounds_utm[3]) / 2])
+    its = sorted(cl.search(collections=["sentinel-1-grd"], datetime=f"{DATA_DA}/{DATA_A}",
+                           intersects={"type": "Point", "coordinates": [lon[0], lat[0]]}).items(),
+                 key=lambda i: i.datetime)
+    if not its:
+        print("Sentinel-1: nessuna scena")
+        return
+    it = its[-1]
+    tok = json.load(urllib.request.urlopen(
+        "https://planetarycomputer.microsoft.com/api/sas/v1/token/sentinel-1-grd", timeout=30))["token"]
+    n = int((bounds_utm[2] - bounds_utm[0]) / 10)
+    tr = from_origin(bounds_utm[0], bounds_utm[3], 10, 10)
+    with rasterio.open(it.assets["vv"].href + "?" + tok) as src:
+        gcps, gcrs = src.gcps
+        with WarpedVRT(src, src_crs=gcrs, crs=crs_utm, transform=tr, width=n, height=n,
+                       resampling=rasterio.enums.Resampling.bilinear) as vrt:
+            a = vrt.read(1).astype("float32")
+    db = 10 * np.log10(np.where(a > 0, a, np.nan))
+    lo, hi = np.nanpercentile(db, [2, 99.5])
+    g = (np.clip((db - lo) / (hi - lo), 0, 1) * 255)
+    Image.fromarray(np.nan_to_num(g).astype("uint8")).save(path, optimize=True)
+    print(os.path.basename(path), it.id, len(its), "scene S1 nel periodo", os.path.getsize(path), "byte")
+
+
 def main():
     items = scene()
     print(f"scene trovate (tile {TILE}, nuvole<5%): {len(items)}")
@@ -291,6 +324,10 @@ def main():
         print("s2_stessa_zona.png", os.path.getsize(os.path.join(OUT, "s2_stessa_zona.png")), "byte")
     except Exception as e:
         print("NAIP non disponibile:", e)
+    try:
+        sar_demo(bounds, crs, os.path.join(OUT, "s1_vv_ultima.png"))
+    except Exception as e:
+        print("Sentinel-1 non disponibile:", e)
 
     import matplotlib
     matplotlib.use("Agg")
