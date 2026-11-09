@@ -1,0 +1,275 @@
+{
+  "_nota": "Obiettivi dichiarati vs capacita' installata. installato_fine2025_mw e previsione_2030_mw da WindEurope (febbraio 2026), dati nazionali: per Germania, Danimarca, Regno Unito e Francia includono mari diversi dal Mare del Nord. Gli scarti sono calcolati dallo script, non scritti a mano.",
+  "fonte_installato": {
+    "nome": "WindEurope, Wind energy in Europe - 2025 Statistics and the outlook for 2026-2030 (tabelle 1 e 4)",
+    "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+    "data_fonte": "2026-02",
+    "licenza": "(c) WindEurope, citazione con fonte",
+    "affidabilita": "alta"
+  },
+  "dichiarazioni": [
+    {
+      "id": "esbjerg",
+      "nome": "Dichiarazione di Esbjerg",
+      "data": "2022-05-18",
+      "paesi": [
+        "DK",
+        "DE",
+        "NL",
+        "BE"
+      ],
+      "mare": "Mare del Nord",
+      "obiettivo_2030_gw": 65,
+      "obiettivo_2050_gw": 150,
+      "testo": "Almeno 65 GW di eolico offshore nel Mare del Nord entro il 2030 e almeno 150 GW entro il 2050; circa 20 GW di idrogeno verde entro il 2030.",
+      "fonte": "ESPO, Esbjerg Declaration; Ministero danese del clima",
+      "link": "https://en.kefm.dk/Media/637884571703277400/The%20Esbjerg%20Declaration%20(002).pdf",
+      "data_fonte": "2022-05-18",
+      "affidabilita": "alta"
+    },
+    {
+      "id": "ostenda",
+      "nome": "Dichiarazione di Ostenda",
+      "data": "2023-04-24",
+      "paesi": [
+        "BE",
+        "DK",
+        "FR",
+        "DE",
+        "IE",
+        "LU",
+        "NL",
+        "NO",
+        "GB"
+      ],
+      "mare": "Mari del Nord",
+      "obiettivo_2030_gw": 120,
+      "obiettivo_2050_gw": 300,
+      "testo": "Nove paesi: circa 120 GW entro il 2030 e 300 GW entro il 2050 nei Mari del Nord. Nota: i 65 GW al 2030 sono di Esbjerg (4 paesi), i 300 GW al 2050 di Ostenda (9 paesi).",
+      "fonte": "GOV.UK, Ostend energy ministers declaration",
+      "link": "https://www.gov.uk/government/publications/developing-the-north-seas-as-a-green-power-plant-of-europe-north-sea-summit-declarations/ostend-energy-ministers-declaration-on-the-north-seas-as-europes-green-power-plant",
+      "data_fonte": "2023-04",
+      "affidabilita": "alta"
+    },
+    {
+      "id": "amburgo",
+      "nome": "Dichiarazione di Amburgo (North Sea Summit)",
+      "data": "2026-01-26",
+      "paesi": [
+        "BE",
+        "DK",
+        "FR",
+        "DE",
+        "IE",
+        "LU",
+        "NL",
+        "NO",
+        "GB"
+      ],
+      "mare": "Mari del Nord",
+      "obiettivo_2030_gw": null,
+      "obiettivo_2050_gw": 300,
+      "testo": "Conferma dei 300 GW al 2050; fino a 100 GW tramite progetti transfrontalieri; patto per gli investimenti con l'obiettivo di 15 GW l'anno di installazioni in Europa nel 2031-2040.",
+      "fonte": "offshoreWIND.biz, Hamburg Declaration",
+      "link": "https://www.offshorewind.biz/2026/01/26/hamburg-declaration-north-sea-countries-target-100-gw-of-cross-border-offshore-wind-boost-to-offshore-hydrogen",
+      "data_fonte": "2026-01-26",
+      "affidabilita": "alta"
+    },
+    {
+      "id": "marienborg",
+      "nome": "Dichiarazione di Marienborg (Baltico)",
+      "data": "2022-08-30",
+      "paesi": [
+        "DK",
+        "EE",
+        "FI",
+        "DE",
+        "LV",
+        "LT",
+        "PL",
+        "SE"
+      ],
+      "mare": "Baltico",
+      "obiettivo_2030_gw": 19.6,
+      "obiettivo_2050_gw": null,
+      "testo": "Almeno 19,6 GW di eolico offshore nel Baltico entro il 2030, circa sette volte i 2,8 GW presenti alla firma. Quote citate: Danimarca 6,3 GW, Polonia 5,9 GW, Germania 3,8 GW. Potenziale del bacino fino a 93 GW (anno discordante tra le fonti).",
+      "fonte": "Governo svedese, The Marienborg Declaration; Ministero danese del clima",
+      "link": "https://regeringen.se/contentassets/5eff59cd49fe44bba8ab3677e9a70155/the-marienborg-declaration",
+      "data_fonte": "2022-08-30",
+      "affidabilita": "alta",
+      "paesi_calcolo": [
+        "EE",
+        "FI",
+        "LV",
+        "LT",
+        "PL",
+        "SE"
+      ],
+      "nota_calcolo": "Sommati solo i paesi con costa soprattutto baltica (dati nazionali WindEurope). Germania e Danimarca sono escluse perche' i loro totali nazionali sono in gran parte Mare del Nord: la loro quota baltica e' in 'baltico_emodnet' (dal file offshore-nord.json dell'agente Nord, fonte EMODnet)."
+    }
+  ],
+  "paesi": [
+    {
+      "paese": "GB",
+      "nome": "Regno Unito",
+      "installato_fine2025_mw": 16982,
+      "previsione_2030_mw": 31960,
+      "obiettivo_2030_gw": 50,
+      "obiettivo_lungo": null,
+      "fonte_obiettivo": "Dichiarazione di Ostenda ('fino a 50 GW'); WindEurope la cita come obiettivo 2030",
+      "link_obiettivo": "https://www.gov.uk/government/publications/developing-the-north-seas-as-a-green-power-plant-of-europe-north-sea-summit-declarations/ostend-energy-ministers-declaration-on-the-north-seas-as-europes-green-power-plant",
+      "note": "Primo mercato europeo; AR7 da 8,4 GW (gennaio 2026). Dato nazionale include Mare d'Irlanda."
+    },
+    {
+      "paese": "DE",
+      "nome": "Germania",
+      "installato_fine2025_mw": 9624,
+      "previsione_2030_mw": 16520,
+      "obiettivo_2030_gw": 30,
+      "obiettivo_lungo": "70 GW al 2045",
+      "fonte_obiettivo": "WindSeeG, confermato nella bozza di riforma 10/08/2026",
+      "link_obiettivo": "https://www.offshorewind.biz/2026/08/12/german-govt-proposes-changes-to-offshore-wind-act-industry-says-cfd-mechanism-should-not-be-fallback-option",
+      "note": "Mare del Nord e Baltico. Nel 2025 installati 503 MW. Asta 2025 senza offerte, gare 2026 rinviate al 2027; rete in ritardo (BalWin1 al 2031)."
+    },
+    {
+      "paese": "NL",
+      "nome": "Paesi Bassi",
+      "installato_fine2025_mw": 4738,
+      "previsione_2030_mw": 8380,
+      "obiettivo_2030_gw": 21,
+      "obiettivo_lungo": null,
+      "fonte_obiettivo": "Dichiarazioni di Esbjerg e Ostenda ('circa 21 GW intorno al 2030')",
+      "link_obiettivo": "https://nawindpower.com/four-european-countries-commit-to-increase-offshore-wind-to-150-gw-by-2050",
+      "note": "WindEurope prevede solo 3,7 GW aggiunti nel 2026-2030. Nessuna nuova installazione nel 2025."
+    },
+    {
+      "paese": "DK",
+      "nome": "Danimarca",
+      "installato_fine2025_mw": 2652,
+      "previsione_2030_mw": 4010,
+      "obiettivo_2030_gw": 12.9,
+      "obiettivo_lungo": "fino a 35 GW nel Mare del Nord al 2050",
+      "fonte_obiettivo": "Port Esbjerg cita l'innalzamento a 12,9 GW del 2030 (fonte secondaria); Ostenda: almeno 5,3 GW nel solo Mare del Nord al 2030",
+      "link_obiettivo": "https://portesbjerg.dk/en/news/ketchup-effect-turning-pledges-into-reality",
+      "note": "Thor (1 GW) atteso entro il 2027; asta 2024 senza offerte; asta CfD 2026 riuscita (1,8 GW, esercizio 2032)."
+    },
+    {
+      "paese": "BE",
+      "nome": "Belgio",
+      "installato_fine2025_mw": 2261,
+      "previsione_2030_mw": 2170,
+      "obiettivo_2030_gw": 6,
+      "obiettivo_lungo": "8 GW al 2040",
+      "fonte_obiettivo": "Dichiarazione di Ostenda (Esbjerg: 5,8 GW)",
+      "link_obiettivo": "https://www.gov.uk/government/publications/developing-the-north-seas-as-a-green-power-plant-of-europe-north-sea-summit-declarations/ostend-energy-ministers-declaration-on-the-north-seas-as-europes-green-power-plant",
+      "note": "WindEurope non prevede nuova capacita' offshore al 2030 (previsione inferiore all'attuale per dismissioni/arrotondamenti). Gara Princess Elisabeth Zone rinviata."
+    },
+    {
+      "paese": "NO",
+      "nome": "Norvegia",
+      "installato_fine2025_mw": 101,
+      "previsione_2030_mw": 450,
+      "obiettivo_2030_gw": 3,
+      "obiettivo_lungo": "aree per 30 GW al 2040",
+      "fonte_obiettivo": "Dichiarazione di Ostenda",
+      "link_obiettivo": "https://www.gov.uk/government/publications/developing-the-north-seas-as-a-green-power-plant-of-europe-north-sea-summit-declarations/ostend-energy-ministers-declaration-on-the-north-seas-as-europes-green-power-plant",
+      "note": "Asta CfD Sorvest F (1,5 GW) annullata nel 2025."
+    },
+    {
+      "paese": "FR",
+      "nome": "Francia",
+      "installato_fine2025_mw": 1908,
+      "previsione_2030_mw": 3270,
+      "obiettivo_2030_gw": 3.6,
+      "obiettivo_lungo": "45 GW al 2050; 15 GW al 2035",
+      "fonte_obiettivo": "WindEurope su PPE3 (inizio 2026)",
+      "link_obiettivo": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+      "note": "Firmataria di Ostenda; capacita' soprattutto Manica/Atlantico, non Mare del Nord."
+    },
+    {
+      "paese": "IE",
+      "nome": "Irlanda",
+      "installato_fine2025_mw": 25,
+      "previsione_2030_mw": 180,
+      "obiettivo_2030_gw": null,
+      "obiettivo_lungo": null,
+      "fonte_obiettivo": null,
+      "link_obiettivo": null,
+      "note": "Firmataria di Ostenda; ORESS 2.1 (0,9 GW) aggiudicata nel 2025 a 99 EUR/MWh."
+    },
+    {
+      "paese": "PL",
+      "nome": "Polonia",
+      "installato_fine2025_mw": 0,
+      "previsione_2030_mw": 4930,
+      "obiettivo_2030_gw": 5.9,
+      "obiettivo_lungo": null,
+      "fonte_obiettivo": "Dichiarazione di Marienborg (quota citata)",
+      "link_obiettivo": "https://regeringen.se/contentassets/5eff59cd49fe44bba8ab3677e9a70155/the-marienborg-declaration",
+      "note": "Prima capacita' in rete attesa nel 2026 (Baltic Power, Baltica 2 nel 2027); asta CfD 3,4 GW a dicembre 2025."
+    },
+    {
+      "paese": "LT",
+      "nome": "Lituania",
+      "installato_fine2025_mw": 0,
+      "previsione_2030_mw": 630,
+      "obiettivo_2030_gw": null,
+      "obiettivo_lungo": null,
+      "fonte_obiettivo": null,
+      "link_obiettivo": null,
+      "note": "Asta da 0,7 GW invalidata nel 2025; porto di Klaipeda in adeguamento fino a fine 2027."
+    },
+    {
+      "paese": "SE",
+      "nome": "Svezia",
+      "installato_fine2025_mw": 192,
+      "previsione_2030_mw": 190,
+      "obiettivo_2030_gw": null,
+      "obiettivo_lungo": null,
+      "fonte_obiettivo": null,
+      "link_obiettivo": null,
+      "note": "Nessuna nuova capacita' prevista al 2030."
+    },
+    {
+      "paese": "FI",
+      "nome": "Finlandia",
+      "installato_fine2025_mw": 71,
+      "previsione_2030_mw": 70,
+      "obiettivo_2030_gw": null,
+      "obiettivo_lungo": null,
+      "fonte_obiettivo": null,
+      "link_obiettivo": null,
+      "note": null
+    },
+    {
+      "paese": "EE",
+      "nome": "Estonia",
+      "installato_fine2025_mw": 0,
+      "previsione_2030_mw": 0,
+      "obiettivo_2030_gw": null,
+      "obiettivo_lungo": null,
+      "fonte_obiettivo": null,
+      "link_obiettivo": null,
+      "note": null
+    },
+    {
+      "paese": "LV",
+      "nome": "Lettonia",
+      "installato_fine2025_mw": 0,
+      "previsione_2030_mw": 0,
+      "obiettivo_2030_gw": null,
+      "obiettivo_lungo": null,
+      "fonte_obiettivo": null,
+      "link_obiettivo": null,
+      "note": null
+    }
+  ],
+  "europa": {
+    "installato_fine2025_mw": 38617,
+    "aggiunto_2025_mw": 1960,
+    "previsione_2030_mw": 72830,
+    "ue27_installato_fine2025_mw": 21534,
+    "ue27_previsione_2030_mw": 40420,
+    "nota": "2025: circa 2 GW connessi, minimo dal 2016; solo Regno Unito (1.049 MW), Germania (503 MW) e Francia (408 MW) hanno connesso nuova capacita'. WindEurope prevede 34 GW in piu' nel 2026-2030 (73 GW totali) con ritardi di 1-2 anni rispetto ai piani; FID 2025 offshore: 5,4 GW, 22,5 miliardi EUR. I governi erano arrivati a un obiettivo combinato 2030 di 158 GW (settembre 2022), poi ridimensionato."
+  }
+}

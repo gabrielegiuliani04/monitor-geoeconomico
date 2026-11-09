@@ -235,9 +235,9 @@ button, input, select { font: inherit; color: inherit; }
 
 
 <style>
-:root { --rail: #6E5A44; --cable: #0B7F8C; --power: #C27C0E; --lng: #7A55B5; --gasit: #2F6FB0; --sanz: #C0262D; --uastrike: #D9822B; --ai: #0A7A72; --inv: #B07A00; --cy: #6B3FA0; --cam: #1D6FA3; --rk0: #3E8E4F; --rk1: #C9A227; --rk2: #D9702B; --rk3: #C0262D; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; --cam: #7FC0EE; --rk0: #6FCF83; --rk1: #E8C64A; --rk2: #F29A5A; --rk3: #FF6B6B; } }
-:root[data-theme="dark"] { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; --cam: #7FC0EE; --rk0: #6FCF83; --rk1: #E8C64A; --rk2: #F29A5A; --rk3: #FF6B6B; }
+:root { --rail: #6E5A44; --cable: #0B7F8C; --power: #C27C0E; --lng: #7A55B5; --gasit: #2F6FB0; --sanz: #C0262D; --uastrike: #D9822B; --ai: #0A7A72; --inv: #B07A00; --cy: #6B3FA0; --cam: #1D6FA3; --rk0: #3E8E4F; --rk1: #C9A227; --rk2: #D9702B; --rk3: #C0262D; --pn: #1F4FA3; --wind: #0E8A6A; --bs: #B02E6B; --bk: #6B5B2B; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; --cam: #7FC0EE; --rk0: #6FCF83; --rk1: #E8C64A; --rk2: #F29A5A; --rk3: #FF6B6B; --pn: #8AB6FF; --wind: #4FD1A5; --bs: #F27DB9; --bk: #CDB97A; } }
+:root[data-theme="dark"] { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; --cam: #7FC0EE; --rk0: #6FCF83; --rk1: #E8C64A; --rk2: #F29A5A; --rk3: #FF6B6B; --pn: #8AB6FF; --wind: #4FD1A5; --bs: #F27DB9; --bk: #CDB97A; }
 #trm-tabs { display: flex; gap: 6px; margin: 8px 0 4px; flex-wrap: wrap; }
 .trm-row { display: grid; grid-template-columns: minmax(0, 1.5fr) 64px minmax(64px, auto) 56px 56px 62px; gap: 6px; align-items: center; padding: 3px 0; font-size: 12.5px; color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
 .trm-row:hover { background: var(--control-hover); }
@@ -388,6 +388,14 @@ button, input, select { font: inherit; color: inherit; }
               <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M1 1L9 9M9 1L1 9" stroke="var(--cy)" stroke-width="2.2"/></svg></span>Incidenti cyber all'energia<span class="cnt" id="n-xcy"></span></label><p class="hint">Eolico, solare, reti, refrigerazione: precedenti dal 2015</p></li>
             <li id="li-xrisk" hidden><label><input type="checkbox" id="lyr-xrisk" data-layer="xrisk" checked>
               <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--rk3)" fill-opacity=".6"/></svg></span>Rischio (cruscotto)<span class="cnt" id="n-xrisk"></span></label><p class="hint">Cerchi su stretti e corridoi: colore = livello, grandezza = punteggio. Tocca per gli indicatori</p></li>
+            <li id="li-xpn" hidden><label><input type="checkbox" id="lyr-xpn" data-layer="xpn" checked>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--pn)"/></svg></span>Porti del Mare del Nord e Baltico<span class="cnt" id="n-xpn"></span></label><p class="hint">Traffico annuo e navi al giorno (PortWatch) con l'anno prima</p></li>
+            <li id="li-xwind" hidden><label><input type="checkbox" id="lyr-xwind" data-layer="xwind" checked>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--wind)" stroke-width="2.4"/></svg></span>Eolico offshore e hub energetici<span class="cnt" id="n-xwind"></span></label><p class="hint">Parchi (EMODnet), isole energetiche, giacimenti, collegamenti strategici. Tratteggio: in costruzione o pianificato</p></li>
+            <li id="li-xbs" hidden><label><input type="checkbox" id="lyr-xbs" data-layer="xbs" checked>
+              <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M1 1L9 9M9 1L1 9" stroke="var(--bs)" stroke-width="2.2"/></svg></span>Sicurezza nel Baltico e Mare del Nord<span class="cnt" id="n-xbs"></span></label><p class="hint">Cavi, droni, fermi di petroliere, GNSS, esercitazioni</p></li>
+            <li id="li-xbk" hidden><label><input type="checkbox" id="lyr-xbk" data-layer="xbk">
+              <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="var(--bk)"/></svg></span>Hub del bunker<span class="cnt" id="n-xbk"></span></label><p class="hint">Prezzi di VLSFO, HSFO, MGO e GNL per porto</p></li>
             <li id="li-xbm" hidden><label><input type="checkbox" id="lyr-xbm" data-layer="xbm">
               <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="var(--rus)"/></svg></span>Basi nel mondo<span class="cnt" id="n-xbm"></span></label><p class="hint">USA, Russia, Cina, NATO e alleati all'estero. Colore = chi la usa; vuoto = lasciata o ridotta</p></li>
             <li id="li-xcam" hidden><label><input type="checkbox" id="lyr-xcam" data-layer="xcam">
@@ -469,7 +477,7 @@ button, input, select { font: inherit; color: inherit; }
           <div><h2>Terminale</h2></div>
           <button class="x" id="trm-close" type="button" aria-label="Chiudi il terminale">×</button>
         </div>
-        <div id="trm-tabs" role="group" aria-label="Sezione"><button class="chip" type="button" data-tab="rischio">Rischio</button><button class="chip" type="button" data-tab="prezzi">Prezzi e tassi</button><button class="chip" type="button" data-tab="agenda">Agenda</button><button class="chip" type="button" data-tab="stretti">Stretti</button><button class="chip" type="button" data-tab="logistica">Noli e rischio</button><button class="chip" type="button" data-tab="scorte">Scorte</button><button class="chip" type="button" data-tab="paesi">Paesi</button><button class="chip" type="button" data-tab="notizie">Notizie</button><button class="chip" type="button" data-tab="ucraina">Ucraina</button><button class="chip" type="button" data-tab="analisti">Analisti</button></div>
+        <div id="trm-tabs" role="group" aria-label="Sezione"><button class="chip" type="button" data-tab="rischio">Rischio</button><button class="chip" type="button" data-tab="nord">Nord Europa</button><button class="chip" type="button" data-tab="prezzi">Prezzi e tassi</button><button class="chip" type="button" data-tab="agenda">Agenda</button><button class="chip" type="button" data-tab="stretti">Stretti</button><button class="chip" type="button" data-tab="logistica">Noli e rischio</button><button class="chip" type="button" data-tab="scorte">Scorte</button><button class="chip" type="button" data-tab="paesi">Paesi</button><button class="chip" type="button" data-tab="notizie">Notizie</button><button class="chip" type="button" data-tab="ucraina">Ucraina</button><button class="chip" type="button" data-tab="analisti">Analisti</button></div>
         <p class="mkt-note" id="trm-note"></p>
         <div id="trm-body"></div>
       </aside>
@@ -540,7 +548,7 @@ let VB = [], VP = [], LN = null, SB = null, RT = null, ST = null;   // SB: subma
 let FRONT = null, areasOn = false;                // Ukraine: areas of control; whether they are in view in this frame
 let evRange = 7, REPORTS = [], CTX = null, liveKey = '', MK = null, DOS = null;
 let setPanel = () => {};
-const L = { xbm: false, xrisk: true, xcam: false, xai: false, xinv: false, xcy: false, xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
+const L = { xpn: true, xwind: true, xbs: true, xbk: false, xbm: false, xrisk: true, xcam: false, xai: false, xinv: false, xcy: false, xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
 const TH = {};                                    // theater switches, filled from the data
 const C = {}, FF = {};
 const TODAY = new Date(); TODAY.setHours(12, 0, 0, 0);
@@ -551,7 +559,7 @@ function readTheme() {
   Object.assign(C, { sea: g('sea'), land: g('land'), coast: g('coast'), border: g('border'), river: g('river'), ink: g('ink'), inkSoft: g('ink-soft'),
     inkFaint: g('ink-faint'), waterInk: g('water-ink'), accent: g('accent'), grat: g('grat'), haloLand: g('halo-land'), haloSea: g('halo-sea'),
     paper: g('control'), ally: g('ally'), partner: g('partner'), adv: g('adv'), rus: g('rus'), oth: g('oth'), contesa: g('contesa'), oil: g('oil'), gas: g('gas'), port: g('port'), route: g('route'), onSide: g('on-side'), ev: [g('ev0'), g('ev1'), g('ev2'), g('ev-old')] });
-  Object.assign(C, { rk0: g('rk0'), rk1: g('rk1'), rk2: g('rk2'), rk3: g('rk3'), cam: g('cam'), ai: g('ai'), inv: g('inv'), cy: g('cy'), uastrike: g('uastrike'), rail: g('rail'), cable: g('cable'), power: g('power'), lng: g('lng'), gasit: g('gasit'), sanz: g('sanz') });
+  Object.assign(C, { pn: g('pn'), wind: g('wind'), bs: g('bs'), bk: g('bk'), rk0: g('rk0'), rk1: g('rk1'), rk2: g('rk2'), rk3: g('rk3'), cam: g('cam'), ai: g('ai'), inv: g('inv'), cy: g('cy'), uastrike: g('uastrike'), rail: g('rail'), cable: g('cable'), power: g('power'), lng: g('lng'), gasit: g('gasit'), sanz: g('sanz') });
   C.evText = C.ev.map(c => lum(c) > .22 ? '#16100F' : '#FFFFFF');   // the count written on a bubble of that colour
   Object.assign(FF, { sans: g('f-sans'), cond: g('f-cond'), serif: g('f-serif'), mono: g('f-mono') });
 }
@@ -1888,7 +1896,7 @@ function wire() {
     const id = cb.dataset.layer;
     if (id in L) cb.checked = !!L[id];
     if (saved && typeof saved[id] === 'boolean' && id !== 'front' && id !== 'routes' && id !== 'subsea' && id !== 'ai') { L[id] = saved[id]; cb.checked = saved[id]; }   // the front and the routes always start switched off
-    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua', 'xai', 'xinv', 'xcy', 'xcam', 'xrisk', 'xbm'].includes(id)) refilter(); else schedule(); });
+    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua', 'xai', 'xinv', 'xcy', 'xcam', 'xrisk', 'xbm', 'xpn', 'xwind', 'xbs', 'xbk'].includes(id)) refilter(); else schedule(); });
   });
 
   const input = $('goto-input'), msg = $('goto-msg');
@@ -1910,13 +1918,13 @@ function wire() {
 /* ---------- Strati aggiunti: infrastrutture, flussi, navi, terminale (prezzi, agenda, stretti) ---------- */
 const XF = { ferrovie: 'data/ferrovie.json', cavi: 'data/cavi.json', caviInc: 'data/cavi-incidenti.json', gnl: 'data/terminali-gnl.json', gasit: 'data/gas-italia.json',
   navi: 'data/navi.json', pw: 'data/portwatch.json', sd: 'data/stretti-dettaglio.json', prezzi: 'data/prezzi.json', cal: 'data/calendario.json',
-  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json', aim: 'data/ai-mondo.json', inv: 'data/investimenti.json', cy: 'data/cyber-energia.json', cam: 'data/webcam.json', rk: 'data/rischio.json', bm: 'data/basi-mondo.json' };
+  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json', aim: 'data/ai-mondo.json', inv: 'data/investimenti.json', cy: 'data/cyber-energia.json', cam: 'data/webcam.json', rk: 'data/rischio.json', bm: 'data/basi-mondo.json', pn: 'data/porti-nord.json', on: 'data/offshore-nord.json', bs: 'data/baltico-sicurezza.json', en: 'data/esposizione-nord.json', bk: 'data/bunker-emissioni.json' };
 const X = { lines: {}, pts: {}, data: {} };
 const XLAYERS = {   // layer -> colour token, label
   xrail: ['rail', 'Ferrovie'], xcable: ['cable', 'Cavi sottomarini'], xpower: ['power', 'Rete elettrica'], xlng: ['lng', 'Terminali GNL'],
-  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'], xua: ['uastrike', 'Attacchi ucraini in Russia'], xai: ['ai', 'AI nel mondo'], xinv: ['inv', 'Investimenti AI'], xcy: ['cy', 'Incidenti cyber'], xcam: ['cam', 'Webcam pubbliche'], xrisk: ['rk3', 'Rischio'], xbm: ['bm', 'Basi nel mondo'] };
+  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'], xua: ['uastrike', 'Attacchi ucraini in Russia'], xai: ['ai', 'AI nel mondo'], xinv: ['inv', 'Investimenti AI'], xcy: ['cy', 'Incidenti cyber'], xcam: ['cam', 'Webcam pubbliche'], xrisk: ['rk3', 'Rischio'], xbm: ['bm', 'Basi nel mondo'], xpn: ['pn', 'Porti del Nord'], xwind: ['wind', 'Eolico offshore'], xbs: ['bs', 'Sicurezza nel Baltico'], xbk: ['bk', 'Bunker'] };
 const num = v => (v == null || v === '' ? null : +v);
-const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare', xua: 'Attacco ucraino in profondità', xai: 'Infrastruttura AI', xinv: 'Investimento', xcy: 'Incidente cyber', xcam: 'Webcam pubblica', xrisk: 'Rischio', xbm: 'Base militare' };
+const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare', xua: 'Attacco ucraino in profondità', xai: 'Infrastruttura AI', xinv: 'Investimento', xcy: 'Incidente cyber', xcam: 'Webcam pubblica', xrisk: 'Rischio', xbm: 'Base militare', xpn: 'Porto', xwind: 'Energia offshore', xbs: 'Sicurezza Baltico e Mare del Nord', xbk: 'Hub del bunker' };
 
 function xBuildLines(layer, items, styleOf) {           // items with g = parts of [lon, lat]
   const groups = {}; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; const list = [];
@@ -1965,6 +1973,13 @@ async function xLoad(opt) {
   if (D2.gasit) xAddPoints('xgas', D2.gasit.elementi, { style: () => ({ shape: 'dot', r: 5.5 }) });
   if (D2.ua && D2.ua.elementi) xAddPoints('xua', D2.ua.elementi, { style: e => ({ shape: 'dot', r: e.categoria === 'raffineria' ? 4.5 : 3.6 }) });
   if (D2.aim && D2.aim.elementi) xAddPoints('xai', D2.aim.elementi, { style: e => ({ shape: e.categoria === 'fab-chip' ? 'up' : 'sq', r: e.categoria === 'data-center-ai' ? Math.min(7, 3 + Math.sqrt(+e.mw || 50) / 6) : 4, hollow: e.stato && !/operativ|in esercizio/.test(e.stato) }) });
+  if (D2.pn && D2.pn.elementi) xAddPoints('xpn', D2.pn.elementi, { style: e => { const t = e.traffico_annuo && e.traffico_annuo[0] && e.traffico_annuo[0].unita && /t$|di t/.test(e.traffico_annuo[0].unita) ? +e.traffico_annuo[0].valore : 20; return { shape: 'dot', r: Math.min(9, 3 + Math.sqrt(t || 10) / 3) }; } });
+  if (D2.on && D2.on.parchi) { const polys = D2.on.parchi.filter(e => e.poligono).map(e => Object.assign({}, e, { g: e.poligono }));
+    const links = (D2.on.collegamenti || []).filter(e => e.g);
+    xBuildLines('xwind', polys.concat(links), e => e.categoria === 'eolico-offshore' ? { key: e.stato === 'operativo' ? 'op' : 'pl', w: 1.1, dash: e.stato === 'operativo' ? null : [3, 2], a: .95 } : { key: 'cl', w: 2, dash: [6, 3], a: .9 });
+    xAddPoints('xwind', D2.on.parchi.concat(D2.on.hub || [], D2.on.giacimenti || []), { style: e => ({ shape: e.categoria === 'hub-energetico' ? 'sq' : e.categoria === 'giacimento-oil-gas' ? 'down' : 'dot', r: e.categoria === 'eolico-offshore' ? Math.min(6, 2 + Math.sqrt(+e.mw || 10) / 8) : 5, hollow: e.stato && !/operativ|produzione|esercizio/.test(e.stato) }) }); }
+  if (D2.bs && D2.bs.eventi) xAddPoints('xbs', D2.bs.eventi, { style: () => ({ shape: 'x' }) });
+  if (D2.bk && D2.bk.elementi) xAddPoints('xbk', D2.bk.elementi, { style: () => ({ shape: 'sq', r: 4.5 }) });
   if (D2.bm && D2.bm.elementi) xAddPoints('xbm', D2.bm.elementi, { style: e => ({ shape: 'sq', r: 3.4, col: { US: 'usa', RU: 'rus', CN: 'chn', IR: 'irn' }[e.appartenenza] || (['GB','FR','DE','NATO','IT','JP','TR','IN','AU','KR'].includes(e.appartenenza) ? 'ally' : 'oth'), hollow: /lasciat|ridott/.test(e.stato || '') }) });
   if (D2.rk && D2.rk.unita) xAddPoints('xrisk', D2.rk.unita, { style: e => ({ shape: 'dot', r: 5 + (+e.punteggio || 0) / 3, col: 'rk' + ({ basso: 0, medio: 1, alto: 2, critico: 3 }[e.livello] || 0), hollow: false }) });
   if (D2.cam && D2.cam.elementi) xAddPoints('xcam', D2.cam.elementi, { skip: e => e.stato && e.stato !== 'attiva' && e.stato !== 'non_raggiungibile', style: () => ({ shape: 'sq', r: 3.6, hollow: true }) });
@@ -1988,7 +2003,7 @@ async function xLoad(opt) {
 function xDrawLines(k, z, vx0, vy0, vx1, vy1) {        // in base units, under the pipelines
   ctx.lineCap = 'round'; ctx.lineJoin = 'round';
   const f = z < 4 ? 1 : z < 6 ? 1.3 : 1.6;
-  for (const l of ['xpower', 'xrail', 'xcable', 'xinv']) {
+  for (const l of ['xpower', 'xrail', 'xcable', 'xinv', 'xwind']) {
     const S = X.lines[l]; if (!S || !L[l] || S.x1 < vx0 || S.x0 > vx1 || S.y1 < vy0 || S.y0 > vy1) continue;
     ctx.strokeStyle = C[XLAYERS[l][0]];
     for (const g of S.groups) { ctx.globalAlpha = g.st.a; ctx.lineWidth = g.st.w * f / k; ctx.setLineDash(g.st.dash ? g.st.dash.map(v => v / k) : []); ctx.stroke(g.path); }
@@ -1997,7 +2012,7 @@ function xDrawLines(k, z, vx0, vy0, vx1, vy1) {        // in base units, under t
   if (picked && picked.kind === 'extra' && picked.path) { ctx.strokeStyle = C.haloLand; ctx.lineWidth = 6 / k; ctx.stroke(picked.path); ctx.strokeStyle = C[XLAYERS[picked.layer][0]]; ctx.lineWidth = 2.6 / k; ctx.stroke(picked.path); }
 }
 function xDrawPoints(z) {                                 // in screen units, after the labels; they add themselves to the taps
-  for (const l of ['xrisk', 'xbm', 'xcam', 'xai', 'xcy', 'xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
+  for (const l of ['xrisk', 'xpn', 'xwind', 'xbs', 'xbk', 'xbm', 'xcam', 'xai', 'xcy', 'xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
     const P = X.pts[l]; if (!P || !L[l]) continue;
     if (l === 'xlng' && z < 3.2) continue;
     const col = C[XLAYERS[l][0]];
@@ -2020,7 +2035,7 @@ function xDrawPoints(z) {                                 // in screen units, af
 }
 function xLineAt(x, y) {
   const px = (x - T.x) / T.k, py = (y - T.y) / T.k, tol = 6 / T.k; let best = null, bd = tol;
-  for (const l of ['xinv', 'xcable', 'xrail', 'xpower']) {
+  for (const l of ['xwind', 'xinv', 'xcable', 'xrail', 'xpower']) {
     const S = X.lines[l]; if (!S || !L[l]) continue;
     for (const it of S.list) {
       if (px < it.bb[0] - tol || px > it.bb[2] + tol || py < it.bb[1] - tol || py > it.bb[3] + tol) continue;
@@ -2058,6 +2073,17 @@ function renderExtra(card, p) {
   } else if (lay === 'xcable') {
     fact('Stato', d.stato); fact('Anno', d.anno || d.data_evento); fact('Lunghezza', d.km ? itNum(+d.km) + ' km' : null); fact('Proprietari', d.proprietari);
     fact('Passaggi strategici', d.s); fact('Approdi in Italia', d.approdi_it); fact('Cavi coinvolti', d.cavi); fact('Causa', d.causa); fact('Esito', d.esito);
+  } else if (lay === 'xpn') {
+    fact('Specializzazione', d.specializzazione); for (const t of (d.traffico_annuo || []).slice(0, 3)) fact('Traffico ' + t.anno, itNumber(+t.valore) + ' ' + t.unita + (t.var_pct != null ? ' (' + (t.var_pct > 0 ? '+' : '') + itNum(+t.var_pct) + '%)' : ''));
+    if (d.media7) fact('Navi in arrivo al giorno', itNum(d.media7.portcalls) + ' (media 7 gg al ' + d.ultima_data + ')' + (d.var7_anno_pct && d.var7_anno_pct.portcalls != null ? ', ' + (d.var7_anno_pct.portcalls > 0 ? '+' : '') + itNum(d.var7_anno_pct.portcalls) + '% su un anno' : ''));
+    fact('Peso economico', d.peso_economico && (d.peso_economico.valore || d.peso_economico)); fact('Ruolo', d.ruolo);
+  } else if (lay === 'xwind') {
+    fact('Tipo', d.categoria && cap(String(d.categoria).replace(/-/g, ' '))); fact('Stato', d.stato); fact('Potenza', d.mw ? itNum(+d.mw) + ' MW' : null); fact('Turbine', d.turbine); fact('Anno', d.anno); fact('Operatore', d.operatore || d.operatori); fact('Mare', d.mare); fact('Distanza dalla costa', d.distanza_costa_km ? d.distanza_costa_km + ' km' : null); fact('Capacità', d.capacita); fact('Fatti', d.fatti);
+  } else if (lay === 'xbs') {
+    fact('Data', d.data); fact('Categoria', d.categoria); fact('Paese', PAESI[d.paese] || d.paese);
+  } else if (lay === 'xbk') {
+    for (const k in (d.prezzi || {})) { const v = d.prezzi[k]; fact(k, itNumber(+v.ultimo) + ' $/t al ' + v.data + (v.var_pct_prima_guerra != null ? ' (' + (v.var_pct_prima_guerra > 0 ? '+' : '') + itNum(v.var_pct_prima_guerra) + '% dal 27/2)' : '')); }
+    fact('Volume venduto', d.volume_9_mesi_t ? itNum(+d.volume_9_mesi_t[1]) + ' t (' + d.volume_9_mesi_t[0] + ', 9 mesi)' : null);
   } else if (lay === 'xbm') {
     fact('Usata da', PAESI[d.appartenenza] || d.appartenenza); fact('Paese ospite', PAESI[d.paese] || d.paese); fact('Tipo', d.tipo); fact('Stato', d.stato); fact('Anno', d.anno); fact('Forze', d.forze); fact('Perché conta', d.perche_conta || d.perche); fact('Vicino a', d.vicino || d.stretti_vicini);
   } else if (lay === 'xrisk') {
@@ -2243,6 +2269,15 @@ function renderTerminal() {
     U.forEach((u, k) => { const r = el('button', 'trm-st'); r.type = 'button'; const h = el('p', 'trm-evt'), dot = el('span', 'rk-dot'); dot.style.background = 'var(--' + col[u.livello] + ')';
       h.append(dot, el('span', 'mono', (k + 1) + ' '), el('b', null, u.nome), ' · ' + u.livello + ' · ' + itNum(+u.punteggio) + (u.tendenza && u.tendenza !== 'stabile' ? ' · ' + u.tendenza : '')); r.appendChild(h); if (u.perche) r.appendChild(el('p', 'trm-evd', u.perche));
       r.addEventListener('click', () => { const p = (X.pts.xrisk || []).find(q => q.d.id === u.id); if (p) { if (window.innerWidth <= 640) setPanel(false); pick(p, 4.6); } }); body.appendChild(r); });
+  } else if (trmTab === 'nord' && X.data.en) {
+    $('trm-note').textContent = 'Paesi Bassi, Danimarca, Germania, Polonia, Baltici, Paesi nordici: da dove arriva il gas, porti, collegamenti e rischi. Più il costo di un viaggio con carburante, ETS e FuelEU.';
+    const b0 = el('button', 'chip', 'Vai sul Mare del Nord e Baltico'); b0.type = 'button'; b0.addEventListener('click', () => fitView([-6, 50, 32, 66], true)); body.appendChild(b0);
+    for (const c of X.data.en.elementi) { body.appendChild(el('h3', 'mkt-grp', c.nome + (c.livello ? ' · esposizione ' + c.livello : ''))); const dl = el('dl', 'facts'), f = (k, v) => { if (v) dl.append(el('dt', null, k), el('dd', null, Array.isArray(v) ? v.join(' · ') : String(v))); };
+      const dp = c.dipendenza_importazioni_pct || {}; f('Dipendenza dalle importazioni', ['gas', 'petrolio', 'totale'].filter(k => dp[k]).map(k => k + ' ' + itNum(dp[k].pct) + '%').join(' · '));
+      f('Gas', c.gas); if (c.gnl && c.gnl.quota_usa_pct != null) f('GNL', 'USA ' + c.gnl.quota_usa_pct + '%' + (c.gnl.quota_russia_pct != null ? ' · Russia ' + c.gnl.quota_russia_pct + '%' : '') + (c.gnl.periodo ? ' (' + c.gnl.periodo + ')' : '')); f('Porti', c.porti); f('Collegamenti', c.cavi_interconnessioni); f('Rischi', c.rischi); body.appendChild(dl); }
+    const B = X.data.bk; if (B && B.esempi_costo) { body.appendChild(el('h3', 'mkt-grp', 'Quanto pesano carburante, ETS e FuelEU su un viaggio'));
+      for (const e of B.esempi_costo) { const r = el('div', 'trm-ev'); r.appendChild(el('p', 'trm-evt', e.nome)); r.appendChild(el('p', 'trm-evd', 'Carburante ' + itNum(e.costo_carburante_eur / 1e6) + ' mln € · ETS ' + itNum(e.costo_ets_eur / 1e6) + ' mln € (' + itNum(e.quota_ets_su_totale_pct) + '%) · FuelEU al massimo ' + itNum(e.costo_fueleu_max_eur / 1e6) + ' mln €. Ipotesi: ' + e.ipotesi)); body.appendChild(r); }
+      if (B.eua) body.appendChild(el('p', 'trm-evd', 'Prezzo della quota ETS (EUA): ' + JSON.stringify(B.eua).match(/\d+[.,]\d+/) + ' € (asta EEX)')); }
   } else if (trmTab === 'notizie' && X.data.nt) {
     const N = X.data.nt; $('trm-note').textContent = 'Notizie degli ultimi 7 giorni da ' + ((N.stato_fonti || []).length || 35) + ' fonti aperte (sicurezza marittima, conflitti, energia e logistica, banche centrali). Tutte da verificare: diventano eventi in mappa solo con due fonti indipendenti.';
     const ids = new Set(N.in_evidenza || []), top = N.elementi.filter(e => ids.has(e.id)), rest = N.elementi.filter(e => !ids.has(e.id) && e.possibile_evento).slice(0, 25);

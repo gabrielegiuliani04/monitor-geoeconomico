@@ -53,6 +53,12 @@ h1{font:600 30px/1.15 var(--f-sans);margin:0 0 6px;letter-spacing:-.01em}
 .arg[aria-pressed="true"] .n{color:rgba(255,255,255,.8)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .arg[aria-pressed="true"]{color:#10181D}
   :root:not([data-theme="light"]) .arg[aria-pressed="true"] .n{color:rgba(16,24,29,.75)}}
+@media (max-width:600px){
+  .argomenti{display:grid;grid-auto-flow:column;grid-template-rows:repeat(3,auto);justify-content:start;overflow-x:auto;
+    margin:16px -16px 6px;padding:2px 16px 8px;scrollbar-width:thin;scroll-padding:0 16px}
+  .arg{white-space:nowrap;padding:6px 10px;font-size:13.5px}
+  h1{font-size:26px}
+}
 .intro-arg{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;flex-wrap:wrap;
   border-bottom:2px solid var(--ink);padding:18px 0 8px;margin-bottom:18px}
 .intro-arg h2{font:600 24px/1.2 var(--f-sans);margin:0}
@@ -70,7 +76,7 @@ h3.sez{font:600 13px/1.3 var(--f-cond);letter-spacing:.06em;text-transform:upper
 .storia:first-child::before{top:2px}
 .storia h4{font:600 18px/1.3 var(--f-sans);margin:0 0 4px}
 .storia h4 a{text-decoration:none}.storia h4 a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
-.storia p{margin:0 0 6px;color:var(--ink-soft);font-size:14px}
+.storia p{margin:0 0 6px;color:var(--ink-soft);font-size:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .testate-g{font:13px/1.5 var(--f-cond);color:var(--ink-soft)}
 .testate-g b{font-weight:600;color:var(--ink)}
 .testate-g a{color:var(--ink-soft);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px}
@@ -212,7 +218,10 @@ function scegli(id, daHash) {
   st.arg = id; st.mostra = PASSO;
   try { localStorage.setItem('notizie-arg', id); } catch (e) {}
   if (!daHash && location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
-  for (const b of document.querySelectorAll('.arg')) b.setAttribute('aria-pressed', String(b.dataset.arg === id));
+  for (const b of document.querySelectorAll('.arg')) {
+    b.setAttribute('aria-pressed', String(b.dataset.arg === id));
+    if (b.dataset.arg === id) { const ul = b.closest('ul'); if (ul.scrollWidth > ul.clientWidth) ul.scrollLeft = b.parentNode.offsetLeft - 48; }
+  }
   disegna();
 }
 

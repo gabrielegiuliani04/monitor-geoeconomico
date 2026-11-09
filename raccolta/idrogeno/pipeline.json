@@ -1,0 +1,54 @@
+{
+  "_nota": "Gasdotti dell'idrogeno come LINEE SCHEMATICHE: i vertici sono i punti di partenza/arrivo e alcune tappe dichiarate dalle fonti (citta' o nodi), non il tracciato reale. 'tracciato' = 'schematico' sempre. g = lista di parti, ogni parte lista di [lon, lat].",
+  "pipeline": [
+    {
+      "id": "nl-hynetwork-rdam", "nome": "Hynetwork Rotterdam (Maasvlakte - Pernis)", "paesi": ["NL"],
+      "stato": "in costruzione", "anno": 2026, "km": 32, "capacita": null, "operatore": "Hynetwork (Gasunie)",
+      "fonte": "Pipeline & Gas Journal", "link": "https://pgjonline.com/news/2026/january/first-rotterdam-hydrogen-pipeline-segment-nears-completion", "data_fonte": "2026-01", "affidabilita": "alta",
+      "note": "Ultima saldatura fatta (gennaio 2026); restano gli allacci a produttori e utenti. Shell HH1 ha un accordo di trasporto. Primo tratto della rete nazionale olandese.",
+      "g": [[[4.02, 51.96], [4.15, 51.935], [4.3, 51.9], [4.385, 51.885]]]
+    },
+    {
+      "id": "nl-delta-rhine-corridor", "nome": "Delta Rhine Corridor (H2: Rotterdam - Moerdijk - Chemelot - Germania)", "paesi": ["NL", "DE"],
+      "stato": "sviluppo", "anno": 2032, "km": null, "capacita": null, "operatore": "Gasunie (Stato olandese)",
+      "fonte": "Port of Rotterdam", "link": "https://www.portofrotterdam.com/en/news-and-press-releases/hydrogen-system-taking-shape", "data_fonte": "2025-05", "affidabilita": "media",
+      "note": "Completamento del tubo H2 previsto 2031-2032 (era 2028: rinvio di circa 4 anni annunciato nel 2024). La condotta di ammoniaca Rotterdam-Germania e' uscita dal perimetro DRC e procede come progetto separato. Da Rotterdam verso la Germania il trasporto avverra' su chiatta fino al 2032.",
+      "g": [[[4.02, 51.96], [4.4, 51.88], [4.62, 51.68], [5.3, 51.5], [5.79, 50.98]], [[5.3, 51.5], [6.17, 51.37], [6.6, 51.42]]]
+    },
+    {
+      "id": "de-kernnetz-lubmin-bobbau", "nome": "Kernnetz: Lubmin - Bobbau (GASCADE)", "paesi": ["DE"],
+      "stato": "operativo", "anno": 2025, "km": 400, "capacita": null, "operatore": "GASCADE",
+      "fonte": "FNB Gas, 'Zwei Jahre Wasserstoff-Kernnetz' (pv magazine)", "link": "https://www.pv-magazine.de/unternehmensmeldungen/zwei-jahre-wasserstoff-kernnetz-aus-dem-plan-entsteht-ein-netz/", "data_fonte": "2026-10-22", "affidabilita": "alta",
+      "note": "Riempito di H2 a dicembre 2025; condotta di gas convertita. Il tratto piu' lungo del Kernnetz in esercizio.",
+      "g": [[[13.655, 54.14], [13.4, 53.55], [13.1, 52.75], [12.27, 51.69]]]
+    },
+    {
+      "id": "de-kernnetz-lingen-marl", "nome": "Kernnetz: GET H2 Nukleus Lingen - Marl", "paesi": ["DE"],
+      "stato": "operativo", "anno": 2026, "km": 120, "capacita": null, "operatore": "Nowega, OGE, SYNEQT (Evonik)",
+      "fonte": "FNB Gas (pv magazine); ricerca web per i 120 km", "link": "https://www.pv-magazine.de/unternehmensmeldungen/zwei-jahre-wasserstoff-kernnetz-aus-dem-plan-entsteht-ein-netz/", "data_fonte": "2026-10-22", "affidabilita": "media",
+      "note": "Dall'estate 2026 H2 rinnovabile prodotto da RWE a Lingen arriva al chimico di Marl. Lunghezza 'circa 120 km' da fonte secondaria.",
+      "g": [[[7.3, 52.48], [7.25, 52.1], [7.1, 51.66]]]
+    },
+    {
+      "id": "dk-dhb1", "nome": "Danish Hydrogen Backbone 1 ('il 7'): Esbjerg - Egtved - Froeslev (confine DE)", "paesi": ["DK", "DE"],
+      "stato": "sviluppo", "anno": 2030, "km": null, "capacita": "2,7 GW offerti in prenotazione (circa 3 GW a regime)", "operatore": "Energinet",
+      "fonte": "Pipeline Journal (05/02/2026 e 01/10/2026)", "link": "https://www.pipeline-journal.net/news/denmark-opens-capacity-sales-first-hydrogen-pipeline", "data_fonte": "2026-10-01", "affidabilita": "alta",
+      "note": "Si costruisce solo se il mercato prenota almeno 0,5 GW (scadenza richieste 1/12/2026) e 0,1 GW di impegno finanziario; costruzione da meta' 2028, esercizio fine 2030 (in passato Energinet indicava fine 2031). Sostegno statale portato a 16,5 miliardi di DKK per 2030-2059 (+5,6 miliardi, ottobre 2026). Si collega al Kernnetz tedesco (Hyperlink di Gasunie).",
+      "g": [[[8.45, 55.47], [9.3, 55.62], [9.33, 54.83]]]
+    },
+    {
+      "id": "h2med-barmar", "nome": "H2Med - BarMar (Barcellona - Marsiglia, sottomarino)", "paesi": ["ES", "FR"],
+      "stato": "sviluppo", "anno": 2032, "km": null, "capacita": null, "operatore": "Enagas, GRTgaz, NaTran (con OGE per H2Med)",
+      "fonte": "Pipeline & Gas Journal", "link": "https://pgjonline.com/news/2026/july/h2med-s-barmar-hydrogen-pipeline-enters-feed-phase", "data_fonte": "2026-07-16", "affidabilita": "alta",
+      "note": "Entrato in FEED a luglio 2026; esercizio commerciale previsto 2032 (anche per CelZa Portogallo-Spagna). PCI rinnovato il 9/4/2026; oltre 28 milioni di euro CEF (gennaio 2025). Nessuna data di FID confermata. IEEFA avverte del rischio 'gasdotto del gas travestito'.",
+      "g": [[[2.17, 41.35], [3.3, 42.2], [4.88, 43.4]]]
+    },
+    {
+      "id": "south2-corridor", "nome": "SoutH2 Corridor (Nord Africa - Italia - Austria - Germania)", "paesi": ["IT", "AT", "DE"],
+      "stato": "sviluppo", "anno": null, "km": 3300, "capacita": null, "operatore": "Snam (Italian H2 Backbone), TAG, GCA, bayernets",
+      "fonte": "Hydrogen Europe (piano Snam 2026-2030)", "link": "https://hydrogeneurope.eu/snam-to-invest-e200m-in-italian-hydrogen-pipeline-network-by-2030/", "data_fonte": "2026-03", "affidabilita": "media",
+      "note": "PCI UE. Il piano Snam 2026-2030 prevede circa 200 milioni di euro per il backbone italiano (erano 380 nel piano 2025-2029) e la FID 'entro l'inizio del 2030', subordinata a regole e rendimenti adeguati: l'esercizio prima del 2030 e' quindi improbabile. Tracciato puramente indicativo (Mazara del Vallo, Messina, dorsale appenninica, Minerbio, Tarvisio, Baumgarten, Oberkappel, Baviera).",
+      "g": [[[12.59, 37.65], [15.55, 38.2], [16.2, 39.3], [14.8, 41.1], [13.4, 42.9], [11.49, 44.62], [12.4, 45.8], [13.58, 46.5], [16.87, 48.31]], [[16.87, 48.31], [13.79, 48.55], [12.83, 48.17]]]
+    }
+  ]
+}
