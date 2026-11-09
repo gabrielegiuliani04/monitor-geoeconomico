@@ -613,7 +613,7 @@ PAESI = {
     "Montenegro": "ME", "Netherlands": "NL", "North Macedonia": "MK", "Norway": "NO", "Poland": "PL", "Portugal": "PT",
     "Romania": "RO", "Russia": "RU", "Serbia": "RS", "Slovakia": "SK", "Slovenia": "SI", "Spain": "ES", "Sweden": "SE",
     "Switzerland": "CH", "Ukraine": "UA", "United Kingdom": "GB", "Türkiye": "TR", "Turkey": "TR", "Georgia": "GE",
-    "Azerbaijan": "AZ", "Kazakhstan": "KZ", "Uzbekistan": "UZ",
+    "Azerbaijan": "AZ",
     "Iran": "IR", "Iraq": "IQ", "Israel": "IL", "Jordan": "JO", "Kuwait": "KW", "Lebanon": "LB", "Oman": "OM",
     "Qatar": "QA", "Saudi Arabia": "SA", "Syria": "SY", "United Arab Emirates": "AE", "Bahrain": "BH", "Yemen": "YE",
     "Egypt": "EG", "Libya": "LY", "Tunisia": "TN", "Algeria": "DZ", "Morocco": "MA", "Sudan": "SD",
@@ -695,9 +695,9 @@ def costruisci_nucleare():
              "data_fonte": data_file, "affidabilita": "alta" if imp["precisione"] == "exact" else "media",
              "note": "Posizione %s secondo GEM." % (imp["precisione"] or "non indicata")}
         if "Zaporizhzhia" in (imp["nome"] or ""):
-            e.update({"stato": "occupata, reattori in arresto", "stato_attuale": ZAPORIZHZHIA["stato_attuale"],
+            e.update({"stato": "occupata, reattori in arresto", "mw_installati": e["mw_esercizio"], "mw_esercizio": 0, "stato_attuale": ZAPORIZHZHIA["stato_attuale"],
                       "eventi": ZAPORIZHZHIA["eventi"], "data_fonte": "2026-11-08",
-                      "note": "GEM classifica le unita' come 'operating' (capacita' installata, non produzione). Stato reale dai bollettini IAEA riportati negli eventi."})
+                      "note": "GEM classifica le 6 unita' come 'operating' (6.000 MW installati, riportati in mw_installati); qui mw_esercizio = 0 perche' non producono dal settembre 2022. Stato reale dai bollettini IAEA riportati negli eventi."})
         elementi.append(e)
     elementi.sort(key=lambda e: (e["paese"], -e["mw_totale_attivo"]))
     return elementi, url, data_file

@@ -1,55 +1,57 @@
 # Stato del progetto e passaggio di consegne
 
 > File da leggere per primo in ogni nuova chat o sessione. Si aggiorna a ogni passo importante.
-> Ultimo aggiornamento: 2026-11-09, sera.
+> Ultimo aggiornamento: 2026-11-09, sera (fine della prima sessione di lavoro).
+> Per riprendere: "leggi STATO.md nel repository gabrielegiuliani04/monitor-geoeconomico e riprendi dal punto 1 di *Da fare*".
 
 ## In una riga
-Osservatorio OSINT di rischio geoeconomico: mappa interattiva (eventi militari, stretti, energia, logistica, mercati) che deve diventare un "terminale" aggiornato ogni giorno da script automatici e da agenti AI programmati. Progetto personale per il CV di Gabriele (gabrielegiuliani04).
+Osservatorio OSINT di rischio geoeconomico: mappa interattiva (eventi militari, stretti, energia, logistica, mercati) che deve diventare un "terminale" aggiornato ogni giorno da script automatici e da agenti AI programmati. Idea guida: evento → stretto/infrastruttura → flussi → noli → prezzi → chi è esposto (Italia in evidenza). Progetto personale per il CV di Gabriele (gabrielegiuliani04).
 
 ## Dove sta cosa
 - Repository: https://github.com/gabrielegiuliani04/monitor-geoeconomico (pubblico)
-- Sito: https://gabrielegiuliani04.github.io/monitor-geoeconomico/ (GitHub Pages attivo dal 2026-11-09, si aggiorna a ogni push su main)
-- Vecchia pagina su claude.ai: https://claude.ai/artifact/V7PncTJkuaCaEtjJtX8XmV (aggiornata da un'altra chat; copiata nel repository il 2026-11-09, versione 1794248917-373a). Da ora il repository è l'unica fonte.
-- `docs/` sito e dati · `raccolta/` script e regole degli agenti (`raccolta/AGENTI.md`) · `report/agenti/` rapporti degli agenti · `METODO.md` metodo e fonti
+- Sito: https://gabrielegiuliani04.github.io/monitor-geoeconomico/ (GitHub Pages attivo, si aggiorna a ogni push su main; verificato su desktop e telefono il 2026-11-09)
+- Vecchia pagina su claude.ai: https://claude.ai/artifact/V7PncTJkuaCaEtjJtX8XmV — copiata nel repository il 2026-11-09 (versione 1794248917-373a). **Da ora il repository è l'unica fonte**: consigliato a Gabriele di non aggiornare più la vecchia pagina.
+- `docs/` sito e dati · `raccolta/<dominio>/raccogli.py` script · `raccolta/AGENTI.md` regole comuni degli agenti · `report/agenti/<dominio>.md` rapporti · `METODO.md` metodo e fonti
 
-## Fatto
-- Mappa copiata nel repository (21 file di dati), README, METODO.
-- `raccolta/scarica_mercati.py` → `docs/data/prezzi.json`: 27 serie (indici, titoli AI compresi SK Hynix, Western Digital, Oracle; tassi USA 2/10/30 anni dal Tesoro USA; oro, argento, Brent, WTI, TTF, Henry Hub; EUR/USD). Aggiornamento automatico GitHub Actions alle 21:30 UTC nei giorni feriali (`.github/workflows/aggiorna-mercati.yml`), non ancora visto girare.
-- Agente ferrovie: completato e verificato (`docs/data/ferrovie.json`, `report/agenti/ferrovie.md`).
+## Aggiornamento automatico (GitHub Actions)
+- `aggiorna-mercati.yml`: prezzi (`docs/data/prezzi.json`, 27 serie) alle 21:30 UTC lun–ven.
+- `aggiorna-dati.yml`: ogni giorno alle 05:15 UTC, e a mano da Actions → Run workflow. Lancia flussi, scorte, navi, calendario, energia, stretti (ogni passo indipendente).
+- Segreti inseriti da Gabriele il 2026-11-09: `AISSTREAM_API_KEY`, `GFW_API_KEY`, `AGSI_API_KEY`. Facoltativo: `BLS_API_KEY` (data.bls.gov/registrationEngine).
+- Non ancora nel workflow (dati statici o lenti): ferrovie, cavi (settimanale da aggiungere), paesi, commercio, elettricità, Ucraina storico.
 
-## In corso (agenti lanciati il 2026-11-09)
-| Agente | File attesi | Stato |
+## Fatto e verificato (dati in `docs/data/`, NON ancora visibili sulla mappa)
+| Dominio | File | Fatti chiave |
 |---|---|---|
-| Energia (GNL, gas Italia) | terminali-gnl.json, gas-italia.json | in corso |
-| Cavi sottomarini | cavi.json, cavi-incidenti.json | in corso |
-| Scorte nazionali | scorte.json | in corso |
-| Dati paesi | paesi.json | in corso |
-| Calendario mondiale | calendario.json | in corso |
-| Risorse e commercio | commercio.json, minerali.json | in corso |
-| Reti elettriche | rete-elettrica.json, interconnessioni.json, nucleare.json | in corso |
-| Storico Ucraina | ucraina-storico.json | in corso |
-| Flussi, noli, sanzioni | portwatch.json, noli.json, gpr.json, sanzioni-navi.json | in corso |
-| Stretti approfonditi | stretti-dettaglio.json | in corso |
-| Serbatoi da satellite (fattibilità) | report/agenti/serbatoi.md | in corso |
-| Tracciamento navi | navi.json | in corso |
+| Mercati | prezzi.json | 27 serie, 1 anno di storico; tassi dal Tesoro USA, resto da Yahoo |
+| Ferrovie | ferrovie.json | rete principale, 9 corridoi (Cina-Europa 20.022 treni 2025), 9 incidenti |
+| Scorte | scorte.json | SPR USA 282 mb, minimo dal 1982; Italia 77 giorni di scorte petrolio (sotto soglia UE); gas UE -24% su media 5 anni |
+| Cavi | cavi.json, cavi-incidenti.json | 713 cavi; tutti i 6 cavi Italia-Asia passano da Suez/Bab el-Mandeb |
+| Energia | terminali-gnl.json, gas-italia.json | 840 terminali GNL; Mazara 34% del gas entrato in Italia; flussi giornalieri ENTSOG |
+| Navi | navi.json | 111 navi nel Golfo di Finlandia (37 petroliere sanzionate); USNI navi militari USA; stretti da aisstream con chiave |
+| Flussi | portwatch.json, noli.json, gpr.json, sanzioni-navi.json | Hormuz -95% di transiti (4,4 navi/giorno vs 90,3); 2.022 navi sanzionate |
+| Calendario | calendario.json | 215 voci; Fed 3,75–4,00%; CPI USA 10/11; Nvidia 17/11; OPEC+ 29/11 |
+| Stretti | stretti-dettaglio.json | 13 schede: cosa passa, chi è esposto, alternative, impatti sui mercati |
 
-Ogni agente scrive anche `raccolta/<dominio>/raccogli.py` e `report/agenti/<dominio>.md`. Alcuni salvataggi intermedi sono stati caricati come "da verificare".
+## Agenti non ancora conclusi al momento di questo aggiornamento
+Dati paesi (paesi.json), Risorse e commercio (commercio.json, minerali.json), Reti elettriche (rete-elettrica.json, interconnessioni.json, nucleare.json), Storico Ucraina (ucraina-storico.json; gli sono state passate le fonti Clément Molin, AMK Mapping, "Davide Montingelli"), Serbatoi da satellite (report/agenti/serbatoi.md, solo studio). **Alla ripresa: controllare se i loro file esistono in `docs/data/` e `report/agenti/`, rieseguire gli script e verificare a campione.**
 
 ## Da fare (in ordine)
-1. Verificare ogni agente (eseguire lo script, controllare numeri a campione) e caricare.
-2. Aggiungere gli script verificati al workflow quotidiano.
-3. Aggiungere i nuovi livelli alla mappa (`docs/index.html`): ferrovie, cavi, GNL, rete elettrica, nucleare, scorte, calendario, schede paese, navi, pannello Mercati con le serie di `prezzi.json` (oltre a `mercati.json` delle notizie).
-4. Primo report: "Hormuz e Mar Rosso: energia, logistica e mercati" in `report/`.
-5. Proporre e, dopo l'ok di Gabriele, attivare la regia automatica: coordinatore quotidiano + agente "Miglioramento" a giorni alterni (militare, OSINT, mercati, finanza) + agenti tematici 1–2 volte a settimana, inizialmente su un ramo da rivedere.
-6. Agente analisti: canali in `raccolta/analisti/canali.json` (Bottaioli, Lops, Aldo Qefalia, Marco Lippiello, BNP Paribas). Feed RSS funzionanti (titoli, date, descrizioni). Trascrizioni bloccate da YouTube per gli IP cloud: valutare Remote Control sul computer di Gabriele o i sottotitoli caricati a mano.
-6b. Fonti OSINT preferite da Gabriele per Ucraina e militare: Clément Molin, AMK Mapping, "Davide Montingelli" (nome da verificare). Da usare e seguire nella raccolta quotidiana (attacchi, logistica, fronte).
-7. Chiavi API gratuite da chiedere quando servono: AISSTREAM_API_KEY, GFW_API_KEY, eventualmente AGSI_API_KEY, EIA_API_KEY.
+1. Verificare gli agenti mancanti (sopra) e il primo giro di `aggiorna-dati.yml` (Actions).
+2. **Mostrare i nuovi livelli sulla mappa** (`docs/index.html`, ~1.900 righe, canvas + d3; vedi come sono caricati `linee`/`condotte` in `start()` e il manifest `docs/data/manifest.json`): ferrovie, cavi, terminali GNL, gas Italia, rete elettrica, nucleare, navi (petroliere sanzionate in rosso, AIS falsi esclusi), schede stretti con PortWatch e prezzi collegati, pannello Mercati con le serie di `prezzi.json`, calendario, schede paese. Sul telefono ridurre il riquadro scala/fonti in basso a sinistra.
+3. Primo report: "Hormuz e Mar Rosso: energia, logistica e mercati" in `report/` (base: report/agenti/stretti.md, flussi.md, energia.md, scorte.md).
+4. Proporre a Gabriele e, dopo il suo ok, attivare la regia automatica con sessioni programmate di Claude Code: coordinatore quotidiano + agente "Miglioramento" a giorni alterni (militare, OSINT, mercati, finanza) + agenti tematici 1–2 volte a settimana, all'inizio su un ramo da rivedere. Attenzione al consumo dell'abbonamento.
+5. Agente analisti: canali in `raccolta/analisti/canali.json` (Bottaioli, Lops, Aldo Qefalia, Marco Lippiello, BNP Paribas). Feed RSS funzionano; trascrizioni bloccate da YouTube per gli IP cloud → usare il computer di Gabriele (Remote Control) per le trascrizioni.
+6. Fonti OSINT preferite da Gabriele per Ucraina e militare: Clément Molin, AMK Mapping, "Davide Montingelli" (nome da verificare).
+7. Serbatoi da satellite: decidere se farne un progetto separato in base alla conclusione dello studio.
 
 ## Decisioni prese
 - Lingua: italiano. Ogni dato con fonte, data, affidabilità. Mai numeri inventati.
 - Repository pubblico; taglio di analisi, non tracciamento operativo; nessun consiglio di investimento.
-- Prezzi: Tesoro USA per i tassi, Yahoo Finance per il resto (FRED e Stooq rifiutano questo server).
+- Prezzi: Tesoro USA per i tassi, Yahoo Finance per il resto (FRED e Stooq rifiutano il server cloud).
+- Licenze non commerciali presenti (TeleGeography CC BY-NC-SA, OpenSanctions e GFW CC BY-NC): ok perché il progetto è personale.
+- L'email di Gabriele non va usata negli User-Agent senza il suo permesso.
 
 ## Note per chi riprende
 - Creare repository e attivare Pages sono stati bloccati dai controlli di sicurezza: li fa Gabriele a mano.
-- La rete della sessione cloud è aperta; Overpass (OpenStreetMap) risulta bloccato.
+- Dalla sessione cloud: Overpass (OpenStreetMap), EIA, IEA, UNCTAD, OPEC e alcuni siti di stampa sono bloccati; da GitHub Actions possono funzionare.
+- Il push da questa sessione funziona (app Claude installata sul repository).
