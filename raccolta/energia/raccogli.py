@@ -238,6 +238,8 @@ NAZIONALI = [
     {"id": "produzione", "nome": "Produzione nazionale (immissione in rete)", "entsog": [("IT-TSO-0001", "PRD-00154", "entry")]},
     {"id": "stoccaggi_stogit", "nome": "Stoccaggi Stogit: erogazione (entry) e iniezione (exit)",
      "entsog": [("IT-TSO-0001", "UGS-00008", "entry"), ("IT-TSO-0001", "UGS-00008", "exit")]},
+    {"id": "turkstream_ue", "nome": "TurkStream verso l'UE: ingresso in Bulgaria a Strandzha 2 (unico gas russo via tubo verso l'UE)",
+     "entsog": [("BG-TSO-0001", "ITP-00549", "entry")]},
 ]
 
 
@@ -430,7 +432,7 @@ def main():
         "nota": ("Flussi fisici giornalieri in GWh/giorno (giorno gas dalle 6 alle 6, ora CET), ultimi 12 mesi. "
                  "La conversione in milioni di Smc usa 10,57275 kWh/Smc ed è indicativa. 'entry' = gas che entra nella rete "
                  "Snam, 'exit' = gas che esce (export o controflusso). Gli ultimi giorni possono essere ancora provvisori. "
-                 "'serie_nazionali' (produzione, stoccaggi) non ha un punto sulla mappa."),
+                 "'serie_nazionali' (produzione, stoccaggi Stogit e, come riferimento europeo, TurkStream a Strandzha 2 in Bulgaria) non ha un punto sulla mappa."),
         "elementi": elementi,
         "serie_nazionali": nazionali,
         "ingressi_totali": {"unita": "GWh/giorno", "nota": "Somma degli ingressi dei punti in elenco (gasdotti + GNL), senza produzione e stoccaggi.", "serie": tot},

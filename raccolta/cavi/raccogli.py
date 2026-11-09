@@ -389,20 +389,16 @@ def main():
     except Exception as e:  # noqa
         inc, elementi = {"nota": ""}, []
         err_inc.append(f"incidenti.json illeggibile: {e}")
-    nomi_cavi = {l["nome"].lower(): l["id"] for l in linee}
+    id_cavi = {l["id"] for l in linee}
     for e in elementi:
         for k in ("lat", "lon", "nome", "data_evento", "fonte", "link", "affidabilita"):
             if e.get(k) in (None, ""):
                 err_inc.append(f"{e.get('id')}: manca {k}")
         e.setdefault("origine_coord", "stimata")
-        # collega ai cavi di TeleGeography quando il nome coincide in parte
-        legati = []
-        for nome_c in e.get("cavi", []):
-            base = nome_c.split(" (")[0].lower()
-            for n, cid in nomi_cavi.items():
-                if base and (base == n or base in n.split(" (")[0]) and cid not in legati and len(base) > 3:
-                    legati.append(cid)
-        e["cavi_id"] = legati
+        # cavi_id scritti a mano: controlla che esistano ancora in TeleGeography
+        for cid in e.get("cavi_id", []):
+            if cid not in id_cavi:
+                err_inc.append(f"{e.get('id')}: cavo {cid} non più presente in TeleGeography")
     elementi.sort(key=lambda e: e.get("data_evento", ""), reverse=True)
     out_inc = {
         "aggiornato": adesso(),
