@@ -919,12 +919,12 @@ def grafico_noli(v, largo=True):
     return "\n".join(out)
 
 
-def righe_porti(v):
+def righe_porti(v, gruppo="mediterraneo"):
     it = [(e["nome"], e["var30_anno_pct"], e["media30"]["portcalls"], e["media30_anno_prima"]["portcalls"]) for e in v["porti_it"]]
     ue = []
     if v["porti_ue"]:
         ue = [(e["nome"], e["var30_anno_pct"]["portcalls"], e["media30"]["portcalls"], e["media30_anno_prima"]["portcalls"])
-              for e in v["porti_ue"]["elementi"]]
+              for e in v["porti_ue"]["elementi"] if e.get("gruppo") == gruppo]
     it.sort(key=lambda x: (x[1] is None, -(x[1] or 0)))
     ue.sort(key=lambda x: (x[1] is None, -(x[1] or 0)))
     return it, ue
@@ -932,10 +932,12 @@ def righe_porti(v):
 
 def grafico_porti(v, largo=True):
     it, ue = righe_porti(v)
+    _, nord = righe_porti(v, "nord")
     w = 720 if largo else 360
     fs = 12 if largo else 11
     rh = 24 if largo else 22
-    gruppi = [("Porti italiani", it)] + ([("Porti europei e mediterranei", ue)] if ue else [])
+    gruppi = ([("Porti italiani", it)] + ([("Mediterraneo e Atlantico", ue)] if ue else [])
+              + ([("Nord Europa e Baltico", nord)] if nord else []))
     h = 60 + sum(26 + len(r) * rh for _, r in gruppi) + 10
     idg = "g-porti" + ("" if largo else "-m")
     out = svg_apri(w, h, "Porti: chiamate di navi, variazione anno su anno (media 30 giorni)",
@@ -945,7 +947,7 @@ def grafico_porti(v, largo=True):
     destra = 70 if largo else 50
     out.append(f'<text x="8" y="18" class="t-ink t-b">Chiamate di navi al giorno: ultimi 30 giorni contro un anno prima</text>' if largo else
                f'<text x="8" y="18" class="t-ink t-b">Chiamate di navi, 30 giorni, anno su anno</text>')
-    out.append(f'<text x="8" y="34" class="t-faint">IMF PortWatch · blu = aumento, magenta = calo · numero con segno</text>')
+    out.append(f'<text x="8" y="34" class="t-faint">IMF PortWatch, dati fino al {esc(data_it(v["porti_it_data"]))} · blu = aumento, magenta = calo</text>')
     tutti = [r[1] for _, g in gruppi for r in g if r[1] is not None]
     lim = max(20, min(80, max(abs(x) for x in tutti) * 1.1)) if tutti else 50
     X = Scala(-lim, lim, 8 + lab, w - destra)
@@ -1237,12 +1239,14 @@ def costruisci_blocchi(v, oggi, edizione):
     if v["porti_ue"]:
         re_ = []
         for e in v["porti_ue"]["elementi"]:
+            if e.get("gruppo") != "mediterraneo":
+                continue
             re_.append([e["nome"], num(e["media30"]["portcalls"], 1), pct(e["var30_anno_pct"]["portcalls"]),
                         pct(e["var30_anno_pct"].get("portcalls_container")), pct(e["var30_anno_pct"].get("portcalls_tanker"))])
         dfu = v["porti_ue"]["fonti"][0]["data_dato"]
-        B.append(("tab", ["Porto", "Chiamate/giorno (30 gg)", "su 1 anno", "portacontainer", "petroliere"], re_,
+        B.append(("tab", ["Porto (Mediterraneo e Atlantico)", "Chiamate/giorno (30 gg)", "su 1 anno", "portacontainer", "petroliere"], re_,
                   f"Fonte: {link('IMF PortWatch', pw_link)}, dati fino al {data_it(dfu)}, scaricati dallo script del report "
-                  f"(report/dati/porti-europei.json) con lo stesso metodo di portwatch.json."))
+                  f"(report/dati/porti-europei.json) con lo stesso metodo di portwatch.json. I porti del Nord Europa sono nella sezione 8."))
     B.append(("fig", "porti", f"Variazione delle chiamate di navi al giorno, ultimi 30 giorni contro gli stessi giorni di un anno prima. "
               f"Fonte: {link('IMF PortWatch', pw_link)}."))
     gen, gt, tri, rav = it_ports.get("Genova"), it_ports.get("Gioia Tauro"), it_ports.get("Trieste"), it_ports.get("Ravenna")
@@ -1263,16 +1267,20 @@ def costruisci_blocchi(v, oggi, edizione):
     if ue_rows:
         su = [r for r in ue_rows if r[1] is not None and r[1] > 0]
         giu = [r for r in ue_rows if r[1] is not None and r[1] < 0]
-        t = "In Europa e nel Mediterraneo"
+        t = "Nel resto del Mediterraneo e sull'Atlantico"
         if su:
             t += " crescono " + ", ".join(f"{r[0]} ({pct(r[1])})" for r in su[:3])
         if giu:
             t += ("; calano " if su else " calano ") + ", ".join(f"{r[0]} ({pct(r[1])})" for r in sorted(giu, key=lambda r: r[1])[:3])
         B.append(("p", t + f" (chiamate al giorno, 30 giorni su un anno, {link('IMF PortWatch', pw_link)})."))
+    gq = pe["IT"]["indicatori"]["quota_greggio_golfo_persico"]["valore"]
     B.append(("val", "I cali più forti sono nei porti italiani legati all'energia e alle rinfuse dell'Adriatico (Ravenna, "
-              "Venezia, Trieste), coerenti con meno greggio e prodotti dal Golfo e con l'industria che rallenta. I porti "
-              "container del Tirreno e Gioia Tauro beneficiano del ritorno a Suez. Le chiamate contano le navi, non le "
-              "tonnellate né i TEU: per i volumi servono i dati delle Autorità di sistema portuale, che escono con mesi di ritardo."))
+              "Venezia, Trieste). Hormuz da solo li spiega poco: dal Golfo Persico arriva solo "
+              f"{il(num(gq['min_pct'], 1))}–{num(gq['max_pct'], 1)}% del greggio importato dall'Italia (UN Comtrade 2025); più probabili "
+              "la domanda industriale debole e l'energia cara, ma i dati PortWatch non permettono di dirlo. Genova e Gioia Tauro "
+              "vedono più portacontainer sui 7 giorni, coerente con il ritorno a Suez, ma sui 30 giorni le chiamate totali restano "
+              "sotto l'anno scorso. Le chiamate contano le navi, non le tonnellate né i TEU: per i volumi servono i dati delle "
+              "Autorità di sistema portuale, che escono con mesi di ritardo."))
 
     # ------------------------------------------------------------- 4. Ferrovie
     B.append(("h2", "ferrovie", "4. Ferrovie e corridoi terrestri"))
