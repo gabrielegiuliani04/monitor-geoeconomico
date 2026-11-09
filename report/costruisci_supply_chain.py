@@ -72,6 +72,7 @@ FATTI_ESTERNI = {
         "affidabilita": "media", "letto": "ricerca web (pagina non aperta: dominio bloccato dalla rete della sessione)",
     },
     "gasolio": {
+        "attuale": True,
         "data": "2026-11-07", "self": 2.224, "autostrada": 2.277, "self_1nov": 2.241,
         "fonte": "Mimit, Osservatorio prezzi carburanti (media nazionale self), ripreso da Affaritaliani",
         "link": "https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html",
@@ -79,6 +80,7 @@ FATTI_ESTERNI = {
         "affidabilita": "media", "letto": "ricerca web",
     },
     "accise_gasolio": {
+        "attuale": True,
         "data": "2026-11-08", "centesimi": 4.9,
         "testo": "il taglio delle accise sul gasolio deciso il 28 ottobre non è stato rinnovato: dall'8 novembre circa 4,9 centesimi al litro in più tra accise e IVA",
         "fonte": "Motor1 Italia", "link": "https://it.motor1.com/news/814756/stop-taglio-accise-diesel-novembre-2026/",
@@ -91,6 +93,7 @@ FATTI_ESTERNI = {
         "affidabilita": "bassa", "letto": "ricerca web",
     },
     "terre_rare": {
+        "attuale": True,
         "data": "2026-11-09", "scadenza": "2026-11-10",
         "testo": ("la sospensione dei controlli cinesi all'export di terre rare decisi a ottobre 2025 "
                   "(annuncio MOFCOM-GAC n. 70 del 2025, compresa la regola dello 0,1% di contenuto cinese "
@@ -166,7 +169,7 @@ SCADENZE_EXTRA = [
     ("2026-11-10", "Cina: scade la sospensione dei controlli all'export di terre rare (annuncio n. 70/2025)",
      "CIRS Group / Mining Technology", "https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/"),
     ("2026-11-15", "Kerch: scadono i permessi russi di passaggio per le navi del grano dell'Azov",
-     "Baird Maritime (Reuters), in stretti-dettaglio.json", "https://www.bairdmaritime.com/shipping/dry-cargo/bulkers/sea-of-azov-reopens-to-grain-export-ships-a"),
+     "Baird Maritime (Reuters), in stretti-dettaglio.json", "https://www.bairdmaritime.com/shipping/dry-cargo/bulkers/sea-of-azov-reopens-to-grain-export-ships-after-months-long-shutdown-russian-naval-escorts-involved"),
     ("2026-12-01", "UE: fine della finestra per l'obiettivo di riempimento degli stoccaggi gas (90%, con deroghe)",
      "scorte.json (nota dell'indicatore)", "https://agsi.gie.eu/"),
     ("2026-12-31", "Qatar: forza maggiore sul GNL di Ras Laffan estesa almeno a fine dicembre",
@@ -190,8 +193,8 @@ SOGLIE = {
                "perche": "navi al giorno con AIS; prima della guerra circa 85–90"},
     "suez_ratio": {"attenzione": 80, "critico": 50, "alto_male": False,
                    "perche": "% dei transiti di fine 2023, prima degli attacchi houthi"},
-    "bab_ratio": {"attenzione": 70, "critico": 35, "alto_male": False,
-                  "perche": "% dei transiti di fine 2023"},
+    "bab_ratio": {"attenzione": 60, "critico": 25, "alto_male": False,
+                  "perche": "% dei transiti di fine 2023; nel 2024–2025 è oscillato intorno al 40–45%"},
     "fbx": {"attenzione": 2500, "critico": 4000, "alto_male": True,
             "perche": "dollari per FEU, indice globale"},
     "wci_genova": {"attenzione": 3000, "critico": 5000, "alto_male": True,
@@ -246,7 +249,11 @@ def num(v, dec=1, segno=False):
 
 
 def pct(v, dec=0, segno=True):
-    return "n.d." if v is None else num(v, dec, segno) + "%"
+    if v is None:
+        return "n.d."
+    if round(v, dec) == 0:
+        return "0%"
+    return num(v, dec, segno) + "%"
 
 
 def data_it(x, anno=True):
@@ -287,6 +294,55 @@ def medie_mensili(serie):
         if len(gruppi[k]) >= calendar.monthrange(a, m)[1] - 2:
             out.append((k, sum(gruppi[k]) / len(gruppi[k])))
     return out
+
+
+def maiuscola(t):
+    """Prima lettera maiuscola senza toccare il resto (str.capitalize abbassa sigle e nomi)."""
+    return t[:1].upper() + t[1:] if t else t
+
+
+def apostrofo(numtesto):
+    """True se il numero letto in italiano comincia per vocale (8, 11, 18, 80–89, 800...)."""
+    n = numtesto.lstrip("+−-")
+    return n.startswith("8") or re.match(r"^1[18](\D|$)", n) is not None
+
+
+def il(numtesto):
+    return ("l'" if apostrofo(numtesto) else "il ") + numtesto
+
+
+def al(numtesto):
+    return ("all'" if apostrofo(numtesto) else "al ") + numtesto
+
+
+def fonte_breve(s):
+    """Nome corto della fonte per il testo del link: taglia a ' (', ',' o ':' fuori dalle parentesi."""
+    out, liv = "", 0
+    for i, ch in enumerate(s):
+        if ch == "(":
+            if liv == 0 and i > 0 and s[i - 1] == " ":
+                break
+            liv += 1
+        elif ch == ")":
+            liv -= 1
+        elif ch in ",:;" and liv == 0:
+            break
+        out += ch
+    return out.strip()
+
+
+def num_auto(x):
+    """Numero con i decimali che servono (al massimo 3), senza zeri finali."""
+    if float(x) == int(x):
+        return num(x, 0)
+    for dec in (1, 2, 3):
+        if abs(round(x, dec) - x) < 1e-9:
+            return num(x, dec)
+    return num(x, 3)
+
+
+def nome_porto(n):
+    return n.replace(" (", " ").replace(")", "")
 
 
 def link(testo, url):
@@ -545,10 +601,20 @@ def calcola(oggi, senza_rete):
 
     # ---------------- calendario
     fine = oggi + dt.timedelta(days=42)
-    ev = [e for e in cal["elementi"] if oggi.isoformat() <= e["data"] <= fine.isoformat()
-          and e["categoria"] in ("energia", "vertice", "banca-centrale", "sanzioni")
-          and e.get("importanza") in ("alta", "media")]
-    ev = [(e["data"], e["titolo"], e["fonte"], e.get("link")) for e in ev]
+    # solo ciò che muove energia, noli e commercio: energia (un'uscita per tipo), vertici e banche centrali
+    # di importanza alta per UE/USA/Cina, sanzioni su Russia e Iran
+    ev, visti = [], set()
+    for e in cal["elementi"]:
+        if not (oggi.isoformat() <= e["data"] <= fine.isoformat()):
+            continue
+        c, imp, paese = e["categoria"], e.get("importanza"), e.get("paese")
+        tipo = re.sub(r"\s*[-–].*$", "", e["titolo"]).split(":")[0] + ":" + e["titolo"].split(":")[1][:25] if ":" in e["titolo"] else e["titolo"]
+        ok = ((c == "energia" and imp in ("alta", "media")) or
+              (c in ("vertice", "banca-centrale") and imp == "alta" and paese in ("EU", "US", "CN", "BE")) or
+              (c == "sanzioni" and re.search(r"Russia|Iran", e["titolo"])))
+        if ok and tipo not in visti:
+            visti.add(tipo)
+            ev.append((e["data"], e["titolo"], e["fonte"], e.get("link")))
     ev += [x for x in SCADENZE_EXTRA if oggi.isoformat() <= x[0] <= fine.isoformat()]
     v["agenda"] = sorted(ev)
 
@@ -556,8 +622,11 @@ def calcola(oggi, senza_rete):
     for k, f in FATTI_ESTERNI.items():
         s = str(f["data"])
         x = d(s + "-28") if len(s) == 7 else d(s)
-        if (oggi - x).days > 60 and k not in ("crm_ue", "wci_anno_prima", "gasolio_anno_prima"):
-            avviso("fatto esterno «%s» del %s ha più di 60 giorni: ricontrollare" % (k, s))
+        # i fatti «attuali» (prezzi, scadenze) vanno riletti a ogni edizione; gli altri sono riferimenti datati
+        if f.get("attuale") and (oggi - x).days > 21:
+            avviso("fatto esterno «%s» del %s ha più di 3 settimane: rileggere la fonte prima di pubblicare" % (k, s))
+        elif (oggi - x).days > 240 and k not in ("crm_ue", "wci_anno_prima", "gasolio_anno_prima"):
+            avviso("fatto esterno «%s» del %s ha più di 8 mesi: cercare un dato più recente" % (k, s))
     return v
 
 
@@ -918,28 +987,29 @@ def costruisci_blocchi(v, oggi, edizione):
     B.append(("h2", "in-breve", "1. In breve"))
     voci = []
     voci.append(f"**Il Mar Rosso si riapre, Hormuz no.** A Suez passano {num(suez['media7']['n_total'], 1)} navi al giorno "
-                f"({pct(suez['var7_anno_pct']['n_total'])} su un anno), ma è ancora il {num(v['suez_ratio'], 0)}% di fine 2023; "
+                f"({pct(suez['var7_anno_pct']['n_total'])} su un anno), ma è ancora {il(num(v['suez_ratio'], 0))}% di fine 2023; "
                 f"Bab el-Mandeb è a {num(bab['media7']['n_total'], 1)} ({pct(bab['var7_anno_pct']['n_total'])} su un anno). "
                 f"Hormuz resta a {num(hor['media7']['n_total'], 1)} navi al giorno con AIS acceso ({fpw}).")
     if wci:
         voci.append(f"**I noli container sono più del doppio di un anno fa.** Il Drewry WCI è a {num(wci['valore'], 0)} dollari per FEU "
                     f"({data_it(wci['data'])}), {pct(v['wci_yoy'])} sul {data_it(est_wci['data'])}; Shanghai–Genova "
                     f"{num(wci['rotte'].get('Shanghai-Genoa'), 0)} dollari ({pct(v['wci_rotte_yoy'].get('Shanghai-Genoa'))}). "
-                    + (f"Nelle ultime settimane però scendono: FBX globale {pct(v['fbx_var4s'])} in 4 settimane." if v.get("fbx_var4s") is not None and v["fbx_var4s"] < 0 else ""))
+                    + (f"Il trend recente è piatto: FBX globale {pct(v['fbx_var_inizio'])} da {data_it(v['fbx_inizio'][0], anno=False)}, "
+                       f"{pct(v['fbx_var4s'])} nelle ultime 4 settimane." if v.get("fbx_var4s") is not None else ""))
     if cali_it:
         peggiori = sorted(cali_it, key=lambda r: r[1])[:2]
         voci.append(f"**Porti italiani a due velocità.** Negli ultimi 30 giorni calano soprattutto "
-                    + " e ".join(f"{r[0]} ({pct(r[1])})" for r in peggiori)
+                    + " e ".join(f"{nome_porto(r[0])} ({pct(r[1])})" for r in peggiori)
                     + ", porti dell'energia e delle rinfuse; tengono i porti container"
-                    + (f" e cresce {su_it[0][0]} ({pct(su_it[0][1])})" if su_it else "") + f" ({link('IMF PortWatch', pw_link)}).")
+                    + (f" e cresce {nome_porto(su_it[0][0])} ({pct(su_it[0][1])})" if su_it else "") + f" ({link('IMF PortWatch', pw_link)}).")
     if ttf and git:
         voci.append(f"**L'energia resta il costo più pesante.** Gas TTF a {num(ttf['ultimo'], 2)} €/MWh ({pct(ttf['var']['1a'])} su un anno), "
                     f"gasolio self a {num(gaso['self'], 3)} €/litro ({fonte_est('gasolio')}) e taglio delle accise scaduto l'8 novembre; "
-                    f"stoccaggi gas italiani al {num(git['valore'], 1)}% contro il {num(gde['valore'], 1) if gde else 'n.d.'}% della Germania (GIE AGSI+, {data_it(git['data'])}).")
+                    f"stoccaggi gas italiani {al(num(git['valore'], 1))}% contro {il(num(gde['valore'], 1)) if gde else 'n.d.'}% della Germania (GIE AGSI+, {data_it(git['data'])}).")
     voci.append(f"**Il rischio di questa settimana è sulle materie critiche:** {FATTI_ESTERNI['terre_rare']['testo']} ({fonte_est('terre_rare')}).")
     B.append(("ul", voci))
     B.append(("val", "La supply chain europea di novembre 2026 ha due velocità. I container tornano verso Suez e i noli spot "
-              "scendono da settimane, mentre energia, fertilizzanti e materie critiche restano legati a Hormuz e alla Cina. "
+              "non salgono più ma restano circa il doppio di un anno fa, mentre energia, fertilizzanti e materie critiche restano legati a Hormuz e alla Cina. "
               "Per l'Italia il rischio più concreto nei prossimi due mesi non è logistico ma di costo: gas, gasolio ed "
               "elettricità in inverno con stoccaggi europei bassi."))
 
@@ -963,7 +1033,7 @@ def costruisci_blocchi(v, oggi, edizione):
     B.append(("p", f"**Fatti.** Prima della crisi del Mar Rosso (media gennaio–ottobre 2023) Suez faceva {num(v['pre_crisi']['Canale di Suez'], 0)} navi al giorno "
               f"e il Capo {num(v['pre_crisi']['Capo di Buona Speranza'], 0)}. Da dicembre 2023 il rapporto si è rovesciato: il minimo mensile di Suez dal 2024 "
               f"è {num(sm[1], 1)} ({mese_it(sm[0])}), il massimo del Capo {num(cm[1], 1)} ({mese_it(cm[0])}). "
-              f"Nell'ultima settimana misurata il Capo è a {num(capo['media7']['n_total'], 1)} navi al giorno, il {num(v['capo_ratio'], 0)}% del livello di fine 2023 "
+              f"Nell'ultima settimana misurata il Capo è a {num(capo['media7']['n_total'], 1)} navi al giorno, {il(num(v['capo_ratio'], 0))}% del livello di fine 2023 "
               f"({fpw})."))
     bt = v["voce"]("suez", "flussi", "Container")
     nt = v["voce"]("suez", "flussi", "Navi in totale")
@@ -986,7 +1056,7 @@ def costruisci_blocchi(v, oggi, edizione):
     sb = v["schede"].get("bab-el-mandeb", {}).get("stato_attuale", {})
     fatti_bab = [f for f in sb.get("fatti", [])][:2]
     if fatti_bab:
-        B.append(("p", "**Stato di Bab el-Mandeb.** " + " ".join(f"{f['testo']} ({link(f['fonte'].split(',')[0], f['link'])}, {data_it(f['data'])})." for f in fatti_bab)))
+        B.append(("p", "**Stato di Bab el-Mandeb.** " + " ".join(f"{f['testo']} ({link(fonte_breve(f['fonte']), f['link'])}, {data_it(f['data'])})." for f in fatti_bab)))
     B.append(("val", "Il ritorno a Suez è reale ma parziale e fragile. Le portacontainer rientrano, mentre il greggio saudita "
               "che esce da Yanbu rende Bab el-Mandeb un «secondo Hormuz»: un attacco riuscito a una petroliera "
               "riporterebbe le navi sul Capo in pochi giorni. Il dato da guardare è Bab el-Mandeb, non Suez."))
@@ -1103,8 +1173,8 @@ def costruisci_blocchi(v, oggi, edizione):
         vol = c.get("volumi") or []
         if vol:
             x = vol[0]
-            rf.append([c["nome"].split("(")[0].strip(), f"{num(x['valore'], 3 if x['valore'] < 20 and x['valore'] != int(x['valore']) else 0)} {x['unita']} ({x['anno']})",
-                       x.get("trend", ""), c["stato"].split(";")[0], link(x["fonte"].split(" (")[0], x["link"])])
+            rf.append([c["nome"].split("(")[0].strip(), f"{num_auto(x['valore'])} {x['unita']} ({x['anno']})",
+                       x.get("trend", ""), c["stato"].split(";")[0], link(fonte_breve(x["fonte"]), x["link"])])
         else:
             rf.append([c["nome"].split("(")[0].strip(), "dato mancante", "", c["stato"].split(";")[0], "ferrovie.json"])
     B.append(("tab", ["Corridoio", "Volume", "Andamento", "Stato", "Fonte"], rf, "Fonte: docs/data/ferrovie.json (schede curate con fonte per ogni voce)."))
@@ -1123,7 +1193,7 @@ def costruisci_blocchi(v, oggi, edizione):
     inc = sorted(v["incidenti_ferrovie"], key=lambda e: e.get("data_evento") or "", reverse=True)[:3]
     if inc:
         B.append(("p", "**Rischi sulla rete.** " + " ".join(
-            f"{data_it(e['data_evento']) if e.get('data_evento') and len(e['data_evento']) == 10 else e.get('data_evento', '')}: {e['nome']} ({link(e['fonte'].split(';')[0], e['link'])})."
+            f"{data_it(e['data_evento']) if e.get('data_evento') and len(e['data_evento']) == 10 else e.get('data_evento', '')}: {e['nome']} ({link(fonte_breve(e['fonte']), e['link'])})."
             for e in inc)))
     B.append(("val", "La ferrovia non è un'alternativa al mare per volumi: è un'assicurazione per merci di valore alto e urgenti. "
               "La rotta nord passa da Russia e Bielorussia (rischio sanzioni e confine polacco); il Middle Corridor "
@@ -1146,20 +1216,20 @@ def costruisci_blocchi(v, oggi, edizione):
     q = v["quote_gas"]
     B.append(("p", f"**Gas in Italia.** Negli ultimi 12 mesi i primi ingressi sono " +
               ", ".join(f"{x['nome'].split(' (')[0]} {num(x['quota_ingressi_pct'], 1)}%" for x in q[:4]) +
-              f" ({link('ENTSOG', 'https://transparency.entsog.eu/')}, dati Snam fino al {data_it(v['gas_data'])}). "
+              f" ({link('ENTSOG', 'https://transparency.entsog.eu/')}, dati Snam fino {al(data_it(v['gas_data']))}). "
               + (f"Ingressi medi a {mese_it(v['ingressi_mese'][0])}: {num(v['ingressi_mese'][1], 0)} GWh al giorno. " if v.get("ingressi_mese") else "")
-              + (f"Stoccaggi italiani al {num(git['valore'], 2)}% l'{data_it(git['data'])}, {num(git['anno_scorso']['variazione'], 1, True)} punti su un anno e "
+              + (f"Stoccaggi italiani {al(num(git['valore'], 2))}% {('l' + chr(39)) if apostrofo(data_it(git['data'])) else 'il '}{data_it(git['data'])}, {num(git['anno_scorso']['variazione'], 1, True)} punti su un anno e "
                  f"{num(git['distanza_obiettivo_pp'], 2, True)} punti dall'obiettivo UE del 90% (GIE AGSI+). " if git else "")
-              + (f"La Germania è al {num(gde['valore'], 1)}%, {num(gde['media_5_anni']['scarto'], 1, True)} punti sotto la media di 5 anni." if gde else "")))
-    B.append(("p", f"**GNL.** Dietro Hormuz c'è il {num(100 * v['gnl_liq_golfo'] / v['gnl_liq_tot'], 1)}% della capacità mondiale di liquefazione operativa "
+              + (f"La Germania è {al(num(gde['valore'], 1))}%, {num(gde['media_5_anni']['scarto'], 1, True)} punti sotto la media di 5 anni." if gde else "")))
+    B.append(("p", f"**GNL.** Dietro Hormuz c'è {il(num(100 * v['gnl_liq_golfo'] / v['gnl_liq_tot'], 1))}% della capacità mondiale di liquefazione operativa "
               f"({num(v['gnl_liq_golfo'], 1)} su {num(v['gnl_liq_tot'], 0)} Mt/anno); l'Italia ha {num(v['gnl_it_regas'], 1)} Mt/anno di rigassificazione operativa "
               f"({link('Global Energy Monitor', 'https://globalenergymonitor.org/projects/global-gas-infrastructure-tracker/')}, file di {data_breve(v['gnl_data'][:7])}). "
-              + (lambda f: f"Nel 2025 il GNL italiano veniva per il {num(f[0]['quota_pct'], 1)}% dagli Stati Uniti e per il {num(f[1]['quota_pct'], 1)}% dal Qatar "
+              + (lambda f: f"Nel 2025 il GNL italiano veniva per {il(num(f[0]['quota_pct'], 1))}% dagli Stati Uniti e per {il(num(f[1]['quota_pct'], 1))}% dal Qatar "
                  f"({link('UN Comtrade', pe['IT']['indicatori']['fornitori_gnl']['link'])}, quote sul valore)." )(pe["IT"]["indicatori"]["fornitori_gnl"]["valore"])))
     dist = sc.get("petrolio_usa_distillati")
     emer = sc.get("petrolio_emergenza_giorni_it")
     t = "**Gasolio e scorte.** "
-    t += f"{FATTI_ESTERNI['accise_gasolio']['testo'].capitalize()} ({fonte_est('accise_gasolio')}). "
+    t += f"{maiuscola(FATTI_ESTERNI['accise_gasolio']['testo'])} ({fonte_est('accise_gasolio')}). "
     if dist:
         t += (f"Le scorte di distillati USA, riferimento per il mercato atlantico del gasolio, sono a {num(dist['valore'], 1)} milioni di barili, "
               f"{pct(dist['media_5_anni']['scarto_pct'], 1)} sulla media di 5 anni (EIA, {data_it(dist['data'])}). ")
@@ -1177,10 +1247,10 @@ def costruisci_blocchi(v, oggi, edizione):
 
     # ------------------------------------------------------------- 6. Materie critiche
     B.append(("h2", "materie", "6. Materie critiche e colli di bottiglia"))
-    B.append(("p", f"**Terre rare.** {FATTI_ESTERNI['terre_rare']['testo'].capitalize()} ({fonte_est('terre_rare')}). "
+    B.append(("p", f"**Terre rare.** {maiuscola(FATTI_ESTERNI['terre_rare']['testo'])} ({fonte_est('terre_rare')}). "
               f"Per l'UE la dipendenza è quasi totale: {FATTI_ESTERNI['crm_ue']['testo']} ({fonte_est('crm_ue')})."))
     sox, tsm = pz.get("sox"), pz.get("tsm")
-    B.append(("p", f"**Chip e AI.** {FATTI_ESTERNI['dram']['testo'].capitalize()} ({fonte_est('dram')}). "
+    B.append(("p", f"**Chip e AI.** {maiuscola(FATTI_ESTERNI['dram']['testo'])} ({fonte_est('dram')}). "
               + (f"In borsa l'indice dei semiconduttori SOX è a {num(sox['ultimo'], 0)} punti, {pct(sox['var']['1m'])} in un mese ma {pct(sox['var']['ytd'])} da inizio anno; "
                  f"TSMC {pct(tsm['var']['1m'])} in un mese (Yahoo Finance, {data_it(sox['data'])}). " if sox and tsm else "")
               + (lambda x: f"Lo Stretto di Taiwan: {x['valore']} ({link(x['fonte'], x['link'])})." if x else "")(v["voce"]("taiwan", "flussi", "Semiconduttori"))))
@@ -1189,32 +1259,32 @@ def costruisci_blocchi(v, oggi, edizione):
     u3 = v["voce"]("hormuz", "impatti_mercato", "Export di fertilizzanti")
     t = "**Fertilizzanti.** "
     if u1:
-        t += f"Da Hormuz passava {u1['valore']} ({link(u1['fonte'].split(':')[0], u1['link'])}); {FATTI_ESTERNI['urea_sp']['testo']} ({fonte_est('urea_sp')}). "
+        t += f"Da Hormuz passava {u1['valore']} ({link(fonte_breve(u1['fonte']), u1['link'])}); {FATTI_ESTERNI['urea_sp']['testo']} ({fonte_est('urea_sp')}). "
     if u2:
-        t += f"Prezzi: {u2['valore']} ({link(u2['fonte'].split(':')[0], u2['link'])}). "
+        t += f"Prezzi: {u2['valore']} ({link(fonte_breve(u2['fonte']), u2['link'])}). "
     if u3:
-        t += f"Export di fertilizzanti del Medio Oriente: {u3['valore']} ({link(u3['fonte'].split(',')[0], u3['link'])}, {u3['anno']})."
+        t += f"Export di fertilizzanti del Medio Oriente: {u3['valore']} ({link(fonte_breve(u3['fonte']), u3['link'])}, {u3['anno']})."
     B.append(("p", t))
     gw, geu, gru = sc.get("grano_scorte_finali_wd"), sc.get("grano_scorte_finali_eu"), sc.get("grano_scorte_finali_ru")
     gk = v["voce"]("stretti-turchi", "impatti_mercato", "Grano ucraino")
     t = "**Grano.** "
     if gw and geu:
         t += (f"USDA stima scorte finali mondiali 2026/27 a {num(gw['valore'], 1)} milioni di tonnellate ({pct(gw['anno_scorso']['variazione_pct'], 1)}), "
-              f"ma l'UE scende a {num(geu['valore'], 1)} ({pct(geu['anno_scorso']['variazione_pct'], 0)}), con scorte pari al {num(geu['rapporto_scorte_consumo_pct'], 0)}% del consumo; "
+              f"ma l'UE scende a {num(geu['valore'], 1)} ({pct(geu['anno_scorso']['variazione_pct'], 0)}), con scorte pari {al(num(geu['rapporto_scorte_consumo_pct'], 0))}% del consumo; "
               f"la Russia sale a {num(gru['valore'], 1)} (USDA PSD). " if gru else "")
     if gk:
-        t += f"Ucraina: {gk['valore']} ({link(gk['fonte'].split(',')[0], gk['link'])}). "
+        t += f"Ucraina: {gk['valore']} ({link(fonte_breve(gk['fonte']), gk['link'])}). "
     kerch = v["schede"].get("kerch", {}).get("stato_attuale", {}).get("fatti", [])
     if kerch:
-        t += f"Kerch: {kerch[-1]['testo']} ({link(kerch[-1]['fonte'].split(',')[0], kerch[-1]['link'])})."
+        t += f"Kerch, ultimo aggiornamento: {kerch[-1]['testo'][:1].lower() + kerch[-1]['testo'][1:]} ({link(fonte_breve(kerch[-1]['fonte']), kerch[-1]['link'])})."
     B.append(("p", t))
     it = pe["IT"]["indicatori"]
     cn = next((x for x in it["partner_import"]["valore"] if x["paese"] == "CN"), None)
-    B.append(("p", f"**Dipendenze dell'Italia.** L'Italia importa il {num(it['dipendenza_gas']['valore'], 1)}% del gas e il {num(it['dipendenza_petrolio']['valore'], 1)}% "
+    B.append(("p", f"**Dipendenze dell'Italia.** L'Italia importa {il(num(it['dipendenza_gas']['valore'], 1))}% del gas e {il(num(it['dipendenza_petrolio']['valore'], 1))}% "
               f"del petrolio che consuma ({link('Eurostat', it['dipendenza_gas']['link'])}, {it['dipendenza_gas']['anno']}). "
-              + (f"La Cina è il secondo fornitore di merci con il {num(cn['quota_pct'], 1)}% delle importazioni ({link('UN Comtrade', it['partner_import']['link'])}, {it['partner_import']['anno']}). " if cn else "")
+              + (f"La Cina è il secondo fornitore di merci con {il(num(cn['quota_pct'], 1))}% delle importazioni ({link('UN Comtrade', it['partner_import']['link'])}, {it['partner_import']['anno']}). " if cn else "")
               + f"Il greggio arriva soprattutto da " + ", ".join(f"{x['nome']} ({num(x['quota_pct'], 1)}%)" for x in it["fornitori_greggio"]["valore"][:3])
-              + f"; dal Golfo Persico solo il {num(it['quota_greggio_golfo_persico']['valore']['min_pct'], 1)}–{num(it['quota_greggio_golfo_persico']['valore']['max_pct'], 1)}% "
+              + f"; dal Golfo Persico solo {il(num(it['quota_greggio_golfo_persico']['valore']['min_pct'], 1))}–{num(it['quota_greggio_golfo_persico']['valore']['max_pct'], 1)}% "
               f"(UN Comtrade {it['fornitori_greggio']['anno']}). Mancano i dati per minerali e componenti: "
               + ("i file commercio.json e minerali.json non esistono ancora." if v["mancanti"] else "vedi commercio.json e minerali.json.")))
     B.append(("val", "I colli di bottiglia di fine 2026 non sono tutti in mare. Le terre rare (decisione cinese attesa il 10 "
@@ -1231,14 +1301,14 @@ def costruisci_blocchi(v, oggi, edizione):
               f"Bab el-Mandeb sono {len(v['cavi_it_asia'])} ({', '.join(v['cavi_it_asia'])}). Nel Mar Rosso passano {rc['cavi_per_passaggio'].get('Mar Rosso')} cavi, "
               f"nel Baltico {rc['cavi_per_passaggio'].get('Mar Baltico')} ({link('TeleGeography', 'https://www.submarinecablemap.com/')}, CC BY-NC-SA, {data_it(v['cavi_data'])}). "
               f"L'osservatorio registra {len(inc)} incidenti dal {min(e['data_evento'] for e in inc)[:4]}, {n26} nel {oggi.year}; l'ultimo: "
-              + (lambda e: f"{e['nome']} ({data_it(e['data_evento'])}, {link(e['fonte'].split(';')[0], e['link'])}).")(max(inc, key=lambda e: e['data_evento']))))
+              + (lambda e: f"{e['nome']} ({data_it(e['data_evento'])}, {link(fonte_breve(e['fonte']), e['link'])}).")(max(inc, key=lambda e: e['data_evento']))))
     ib = v["ibrido"]
     fr = [e for e in ib if e["categoria"] == "attacco-informatico" and "frigorifer" in e["nome"].lower()]
     gn = [e for e in ib if e["categoria"] == "disturbo-gnss"]
     sab = [e for e in ib if e["categoria"] == "sabotaggio" and "starlink" in e["nome"].lower()]
     t = "**Sabotaggi e attacchi informatici alla logistica.** "
     if fr:
-        t += "La catena del freddo è il bersaglio nuovo: " + "; ".join(f"{e['nome']} ({data_it(e['data_evento'])}, {link(e['fonte'].split(' (')[0], e['link'])})" for e in fr) + ". "
+        t += "La catena del freddo è il bersaglio nuovo: " + "; ".join(f"{e['nome']} ({data_it(e['data_evento'])}, {link(fonte_breve(e['fonte']), e['link'])})" for e in fr) + ". "
     if sab:
         t += f"Tre attacchi a stazioni Starlink in Europa centro-orientale tra settembre e ottobre ({', '.join(e['paese'] for e in sab)}), attribuiti alla Russia dai governi. "
     noname = next((e for e in ib if e["id"] == "IB-20261107-12"), None)
@@ -1249,7 +1319,7 @@ def costruisci_blocchi(v, oggi, edizione):
     t = "**GNSS jamming.** "
     if gn:
         e = gn[0]
-        t += f"{e['nome']} ({data_it(e['data_evento'])}, {link(e['fonte'].split(' (')[0], e['link'])}, affidabilità {e['affidabilita']}). "
+        t += f"{e['nome']} ({data_it(e['data_evento'])}, {link(fonte_breve(e['fonte']), e['link'])}, affidabilità {e['affidabilita']}). "
     t += f"Nel Golfo: {FATTI_ESTERNI['gnss_golfo']['testo']} ({fonte_est('gnss_golfo')}). "
     if v["navi_spoof"]:
         t += (f"Nei dati AIS dell'osservatorio {len(v['navi_spoof'])} navi risultano con posizioni impossibili (oltre 40 nodi o nell'entroterra), "
@@ -1283,7 +1353,7 @@ def costruisci_blocchi(v, oggi, edizione):
     riga("Suez, % di fine 2023", num(v["suez_ratio"], 0) + "%", data_it(suez["ultima_data"]), "suez_ratio", v["suez_ratio"],
          "attenzione sotto 80%, critico sotto 50%", "PortWatch")
     riga("Bab el-Mandeb, % di fine 2023", num(v["bab_ratio"], 0) + "%", data_it(bab["ultima_data"]), "bab_ratio", v["bab_ratio"],
-         "attenzione sotto 70%, critico sotto 35%", "PortWatch")
+         "attenzione sotto 60%, critico sotto 25%", "PortWatch")
     if fbx:
         riga("FBX globale, $/FEU", num(fbx["valore"], 0), data_it(fbx["data"]), "fbx", fbx["valore"], "attenzione sopra 2.500, critico sopra 4.000", "Freightos")
     if wci and "Shanghai-Genoa" in wci["rotte"]:
@@ -1303,7 +1373,7 @@ def costruisci_blocchi(v, oggi, edizione):
     B.append(("p", "**Eventi da seguire** (dal calendario dell'osservatorio e dalle schede degli stretti):"))
     ag = []
     for data_s, titolo, fonte, url in v["agenda"]:
-        ag.append(f"{data_it(data_s)}: {titolo} ({link(fonte.split(';')[0].split(',')[0], url) if url else fonte})")
+        ag.append(f"{data_it(data_s)}: {titolo} ({link(fonte_breve(fonte), url) if url else fonte})")
     B.append(("ul", ag))
     B.append(("val", "Tre segnali cambierebbero il quadro prima della prossima edizione: (1) la Cina non proroga la sospensione "
               "sulle terre rare; (2) un attacco riuscito a una petroliera a Bab el-Mandeb, che si vedrebbe nei transiti del Capo in "

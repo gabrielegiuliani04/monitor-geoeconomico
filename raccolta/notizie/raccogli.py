@@ -37,6 +37,8 @@ FONTI = os.path.join(QUI, "fonti.json")
 LABELS = os.path.join(RADICE, "docs", "data", "labels.json")
 PAESI = os.path.join(RADICE, "docs", "data", "paesi.json")
 OUT = os.path.join(RADICE, "docs", "data", "notizie.json")
+# eventi gia' in mappa: letti (mai modificati) per segnalare i possibili doppioni
+EVENTI_IN_MAPPA = [os.path.join(RADICE, "docs", "data", f) for f in ("eventi.json", "ibrido.json")]
 
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
                     "Chrome/124 Safari/537.36 monitor-geoeconomico-OSINT",
@@ -675,6 +677,57 @@ def classifica(el, sommario, luoghi, rx_luoghi, rx_temi):
     })
 
 
+def carica_eventi():
+    out = []
+    for p in EVENTI_IN_MAPPA:
+        try:
+            for e in json.load(open(p, encoding="utf-8")).get("punti", []):
+                if e.get("data_evento"):
+                    testo = " ".join(str(e.get(k, "")) for k in ("nome", "regione", "note", "breve")).lower()
+                    out.append((e.get("id", ""), e["data_evento"][:10], e.get("lat"), e.get("lon"), testo))
+        except Exception:
+            pass
+    return out
+
+
+def distanza_km(a, b, c, d):
+    import math
+    r = math.pi / 180
+    x = (d - b) * r * math.cos((a + c) / 2 * r)
+    y = (c - a) * r
+    return 6371 * math.hypot(x, y)
+
+
+NOMI_COMUNI = set("""the and for with from after over near says said iran israel russia ukraine russian ukrainian
+iranian israeli saudi houthi houthis strait hormuz gulf tanker tankers ship ships drone drones missile missiles
+attack attacks strike strikes oblast region city general staff report reports news update""".split())
+
+
+def eventi_vicini(el, eventi):
+    """Eventi gia' in mappa che potrebbero essere la stessa notizia (stessi 2 giorni e stesso posto o nome)."""
+    if not el["possibile_evento"]:
+        return []
+    try:
+        g = datetime.strptime(el["data_fonte"], "%Y-%m-%d")
+    except ValueError:
+        return []
+    nomi = {w.lower() for w in re.findall(r"\b[A-Z][\w'’-]{4,}", el["titolo"]) if w.lower() not in NOMI_COMUNI}
+    out = []
+    for eid, de, lat, lon, testo in eventi:
+        try:
+            if abs((datetime.strptime(de, "%Y-%m-%d") - g).days) > 2:
+                continue
+        except ValueError:
+            continue
+        vicino = (el["lat"] is not None and lat is not None and el["precisione_km"] is not None
+                  and el["precisione_km"] <= 100
+                  and distanza_km(el["lat"], el["lon"], lat, lon) <= el["precisione_km"] + 30)
+        stesso_nome = any(n in testo for n in nomi)
+        if vicino or stesso_nome:
+            out.append(eid)
+    return out[:8]
+
+
 STOP = set("""a an the of to in on for and or at by with from as is are was were be been after before over into
 amid says say said new news its it this that than more about up out not no but will has have had his her their
 il lo la i gli le di da del della dei delle in con su per tra fra e o un una che non al alla""".split())
@@ -701,6 +754,7 @@ def main():
             editori[d] = livello
     luoghi, rx_luoghi, avvisi_luoghi = carica_luoghi()
     rx_temi = compila_temi()
+    eventi = carica_eventi()
     errori = list(avvisi_luoghi)
 
     # 1. scarico: fonti dirette in parallelo, Google News una alla volta (limita le richieste: 503)
@@ -864,6 +918,8 @@ def main():
         p += 1 if e["lat"] is not None and e["precisione_km"] and e["precisione_km"] <= 100 else 0
         e["punteggio"] = round(p, 1)
 
+    for e in tutte:
+        e["forse_gia_in_mappa"] = eventi_vicini(e, eventi)
     tutte.sort(key=lambda e: e["data_utc"], reverse=True)
 
     # 6. in evidenza: le storie piu' rilevanti delle ultime 48 ore, una per gruppo
@@ -884,7 +940,8 @@ def main():
             "per_famiglia": {}, "oggi_per_famiglia": {}, "ultime_24h_per_famiglia": {}, "per_tema": {},
             "possibili_eventi": sum(1 for e in tutte if e["possibile_evento"]),
             "senza_data_della_fonte": sum(1 for e in tutte if e.get("data_stimata")),
-            "con_coordinate": sum(1 for e in tutte if e["lat"] is not None)}
+            "con_coordinate": sum(1 for e in tutte if e["lat"] is not None),
+            "possibili_eventi_forse_gia_in_mappa": sum(1 for e in tutte if e.get("forse_gia_in_mappa"))}
     lim24 = fmt(ORA - timedelta(hours=24))
     for e in tutte:
         riep["per_famiglia"][e["famiglia"]] = riep["per_famiglia"].get(e["famiglia"], 0) + 1
