@@ -274,11 +274,11 @@ def flusso_rischio(v, uid):
 
 
 def livello_txt(v, uid):
-    """«alto, 19,0 su 25» dal cruscotto del rischio."""
+    """«a livello alto (19,0 su 25)» dal cruscotto del rischio."""
     u = unita_rischio(v, uid)
     if not u:
         return "n.d."
-    return f"{u['livello']}, {num(u['punteggio'], 1)} su 25"
+    return f"a livello {u['livello']} ({num(u['punteggio'], 1)} su 25)"
 
 
 # =====================================================================================
@@ -1082,7 +1082,7 @@ def costruisci_blocchi(v, oggi, edizione):
                 f"({fpw}); Lloyd's List Intelligence, che ricostruisce anche i transiti con il transponder spento, conta "
                 f"{FATTI_ESTERNI['lli_hormuz']['testo']} ({fonte_est('lli_hormuz')}). "
                 f"Nel cruscotto del rischio dell'osservatorio Hormuz è {livello_txt(v, 'hormuz')}, Bab el-Mandeb {livello_txt(v, 'bab-el-mandeb')}, "
-                f"Suez {livello_txt(v, 'suez')} (docs/data/rischio.json, {data_it(v['rischio_data'])}; metodo in report/metodo-rischio.md).")
+                f"Suez {livello_txt(v, 'suez')} (rischio.json, {data_it(v['rischio_data'])}).")
     if wci:
         voci.append(f"**I noli container sono più del doppio di un anno fa.** Il Drewry WCI è a {num(wci['valore'], 0)} dollari per FEU "
                     f"({data_it(wci['data'])}), {pct(v['wci_yoy'])} sul {data_it(est_wci['data'])}; Shanghai–Genova "
@@ -1601,7 +1601,7 @@ def blocchi_nord(v, pw_link):
               f"{pct(sdn['var7_anno_pct']['n_total'])} sulla stessa settimana di un anno prima ({link('IMF PortWatch', pw_link)}, settimana al {data_it(sdn['ultima_data'])}). ")
     if unita_rischio(v, "stretti-danesi") and unita_rischio(v, "baltico"):
         t += (f"Nel cruscotto del rischio gli Stretti danesi sono {livello_txt(v, 'stretti-danesi')} e il Baltico (cavi, condotte, elettrodotti) "
-              f"{livello_txt(v, 'baltico')}: flussi in giallo, scorte di gas in rosso (rischio.json). ")
+              f"{livello_txt(v, 'baltico')}; per il Baltico i flussi sono in giallo e gli stoccaggi di gas tedeschi e olandesi in rosso (rischio.json). ")
     rc = v["cavi_riep"]
     inc_b = [e for e in v["incidenti_cavi"] if "altic" in json.dumps(e, ensure_ascii=False)]
     if inc_b:
