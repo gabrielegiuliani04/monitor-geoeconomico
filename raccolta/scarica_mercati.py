@@ -144,7 +144,7 @@ def main(out_path):
                 "id": id_, "nome": nome, "gruppo": gruppo, "simbolo": sym,
                 "valuta": meta.get("currency"), "unita": UNITA.get(id_, meta.get("currency")),
                 "borsa": meta.get("fullExchangeName"), "ultimo": s[-1][1], "data": s[-1][0],
-                "var": variazioni(s), "serie": s,
+                "var": variazioni(s), "serie": s[-66:],  # pubblichiamo solo ~3 mesi: le variazioni si calcolano sull'anno intero
                 "fonte": "Yahoo Finance", "link": f"https://finance.yahoo.com/quote/{urllib.request.quote(sym)}",
                 **({"provvisorio": True} if meta["_provvisorio"] else {}),
                 **({"nota": "Contratto future con scadenza più vicina"} if sym.endswith("=F") else {}),

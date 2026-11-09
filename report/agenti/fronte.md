@@ -44,7 +44,7 @@ Rapporto del 9 novembre 2026. Script: `raccolta/fronte/raccogli.py`, che richied
 | Anno | Inizio → fine (km²) | Netto | km²/giorno | km²/mese |
 |---|---|---|---|---|
 | 2022 (dal 23/2) | 43.309 → 108.460 | +65.151 | +208,8 | +6.356 |
-| 2022 (dal 3/4, solo DeepState) | 106.498 → 108.460 | +1.962 | — | picco a settembre, poi −18.300 tra settembre e dicembre |
+| 2022 (dal 3/4, solo DeepState) | 106.498 → 108.460 | +1.962 | — | massimo il 1/9, poi −16.565 tra il 1/9 e il 1/12 |
 | 2023 | 108.460 → 108.269 | **−191** | −0,5 | −16 |
 | 2024 | 108.269 → 111.581 | **+3.312** | +9,0 | +275 |
 | 2025 | 111.581 → 115.906 | **+4.325** | +11,8 | +361 |
@@ -90,7 +90,7 @@ DeepState dà alla Russia sempre **1.800–4.500 km² in più** di ISW, l'1,6–
 
 - **Livello `fronte.json`** (aree dell'autore di oggi): `fronte-storico.json` è il suo passato, ma da un'altra fonte. Con il cursore conviene mostrare una sola fonte per volta e indicare la fonte nella legenda.
 - **`ucraina-storico.json`** (lanci e attacchi): i mesi del 2026 con avanzata quasi nulla, da maggio a ottobre, sono anche i mesi record dei lanci russi (10.098 a maggio 2026). La guerra si sposta dal terreno al cielo. Gli attacchi ucraini alle raffinerie possono essere messi a confronto con la serie mensile dei km².
-- **Energia:** la centrale nucleare di Zaporizhzhia e Kachovka restano dentro l'area russa per tutta la serie dal 2022. Il Donbas di Pokrovsk, il principale bacino di carbone da coke dell'Ucraina, passa russo tra novembre 2025 e gennaio 2026.
+- **Energia:** la centrale nucleare di Zaporizhzhia (Enerhodar) è dentro l'area russa in tutte le istantanee da aprile 2022: l'ho verificato punto per punto. Dal dicembre 2022 la diga di Kachovka sta sulla linea del fronte, lungo il Dnipro, e non più dentro l'area russa.
 
 ## Proposta di visualizzazione
 
@@ -108,5 +108,5 @@ Sotto, un piccolo grafico a barre di `serie_var_km2`, verde per le perdite russe
 - **Istantanea del 1° del mese:** un'istantanea al mese non vede ciò che succede dentro il mese. Per esempio, la massima estensione di marzo 2022 sta tra due istantanee. DeepState a volte corregge mappe vecchie: il file salva l'aggiornamento come era quel giorno.
 - **Kursk e le zone russe di confine** sono fuori dal calcolo: il file misura solo il territorio ucraino.
 - **Classificazione 2022-2023:** dedotta dai nomi ucraini e dai colori, perché mancano le etichette. L'ho verificata: non ci sono sovrapposizioni tra aree occupate, liberate e grigie, e ogni mappa ha Crimea e ORDLO. Se DeepState cambia nomi o colori, lo script potrebbe perdere categorie: il controllo veloce è che `km2` non scenda di colpo di 15–25.000 km².
-- **Semplificazione:** le geometrie del file perdono i dettagli sotto 1,5 km. I km² sono calcolati prima della semplificazione.
+- **Semplificazione:** le geometrie del file perdono i dettagli sotto 1,5 km. I km² sono calcolati prima della semplificazione. Con l'arrotondamento a 3 decimali, 4 anelli su tutto il file si autointersecano: un disegno su canvas o SVG non ne risente, ma chi rifà i calcoli con shapely deve applicare prima `buffer(0)`.
 - Lo script dipende da shapely, non solo dalla libreria standard. È un'eccezione alle regole di AGENTI.md, concessa per questo compito.

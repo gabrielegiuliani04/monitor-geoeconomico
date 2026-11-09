@@ -348,7 +348,7 @@ def raccogli_noli(errori):
     elementi = []
     for nome, f in [("Drewry WCI", noli_drewry), ("Freightos FBX", noli_fbx),
                     ("SCFI", lambda: noli_sse("scfi")), ("CCFI", lambda: noli_sse("ccfi")),
-                    ("Baltic Dry", noli_bdi)]:
+                    ]:  # Baltic Dry tolto: i termini di Trading Economics vietano la raccolta automatica
         try:
             e = f()
         except Exception as ex:

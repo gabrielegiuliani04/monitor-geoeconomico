@@ -61,6 +61,7 @@ Regole, valide per ogni sessione:
 
 ## Richieste per la Regia
 (le altre sessioni aggiungono qui una riga: data, sessione, richiesta)
+- 2026-11-09, Vetrina e licenze: aggiungere nella mappa (riquadro fonti in basso a sinistra o menu) un link "Crediti e licenze" a `crediti.html` (pagina nuova in `docs/`). Rischi di licenza da decidere: `fronte.json` (@Majakovsk73) e `fronte-storico.json` (DeepState) senza permesso; serie Yahoo complete in `prezzi.json`; Baltic Dry da Trading Economics. Dettagli e azioni in `report/licenze.md`.
 
 ## Decisioni prese
 - Lingua: italiano. Ogni dato con fonte, data, affidabilità. Mai numeri inventati.

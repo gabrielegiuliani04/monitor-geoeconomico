@@ -1,0 +1,1013 @@
+{
+ "versione": "2026-11-09",
+ "nota": "Voci curate a mano dall'agente CYBER-ENERGIA (taglio difensivo). lat/lon sono SEMPRE stimati: indicano la zona o la sede della vittima, non un impianto preciso; precisione_km dice quanto il punto puo' essere lontano dal reale. affidabilita si riferisce al fatto (evento avvenuto, data, effetto), non all'attribuzione, che sta in attore e attribuzione_stato. Nessun dettaglio tecnico sfruttabile: niente vulnerabilita' specifiche, indirizzi, credenziali o procedure. Le concentrazioni offshore sono solo 'dove sta la capacita'', non segnalano debolezze dei singoli impianti.",
+ "categorie": {
+  "sabotaggio-rete": "attacco distruttivo a sistemi di controllo della rete elettrica (OT)",
+  "wiper-rinnovabili": "malware distruttivo o sabotaggio di impianti eolici/solari",
+  "perdita-comunicazioni": "perdita del controllo/monitoraggio remoto per attacco a un fornitore di comunicazioni",
+  "ransomware-produttore": "ransomware o intrusione nei sistemi IT di produttori o manutentori",
+  "intrusione-ot-hacktivista": "accesso a pannelli di controllo esposti (HMI, controller) da parte di gruppi hacktivisti",
+  "dispositivi-catena-fornitura": "dispositivi o funzioni non documentate, o spegnimento remoto da parte del produttore",
+  "refrigerazione-iot": "attacchi ai controller connessi della refrigerazione (il caso dei 'frigoriferi')"
+ },
+ "incidenti": [
+  {
+   "id": "CE-2015-UA",
+   "nome": "Ucraina occidentale: primo blackout causato da un attacco informatico",
+   "data_evento": "2015-12-23",
+   "paese": "UA",
+   "lat": 48.92,
+   "lon": 24.71,
+   "precisione_km": 150,
+   "categoria": "sabotaggio-rete",
+   "settore": "distribuzione elettrica",
+   "vittima": "Prykarpattyaoblenergo e altre due societa' di distribuzione",
+   "effetto": "circa 225.000 clienti senza corrente per alcune ore; interruttori aperti da remoto tramite i sistemi di controllo degli operatori",
+   "attore": "Sandworm (GRU), secondo governi USA/UK",
+   "attribuzione_stato": "attribuzione governativa",
+   "fonte": "CISA, ICS Alert IR-ALERT-H-16-056-01",
+   "link": "https://www.cisa.gov/news-events/ics-alerts/ir-alert-h-16-056-01",
+   "data_fonte": "2016-02-25",
+   "affidabilita": "alta",
+   "lezione": "l'accesso remoto agli strumenti di controllo legittimi basta a causare un blackout, senza 'rompere' nulla"
+  },
+  {
+   "id": "CE-2016-UA",
+   "nome": "Kyiv: sottostazione Pivnichna spenta con il malware Industroyer",
+   "data_evento": "2016-12-17",
+   "paese": "UA",
+   "lat": 50.55,
+   "lon": 30.45,
+   "precisione_km": 30,
+   "categoria": "sabotaggio-rete",
+   "settore": "trasmissione elettrica",
+   "vittima": "Ukrenergo (sottostazione di trasmissione a nord di Kyiv)",
+   "effetto": "circa un'ora di blackout in parte di Kyiv; primo malware progettato per parlare direttamente i protocolli industriali della rete",
+   "attore": "Sandworm (GRU)",
+   "attribuzione_stato": "attribuzione governativa e di ricercatori",
+   "fonte": "ESET, Industroyer: Biggest threat to industrial control systems since Stuxnet",
+   "link": "https://www.welivesecurity.com/2017/06/12/industroyer-biggest-threat-industrial-control-systems-since-stuxnet/",
+   "data_fonte": "2017-06-12",
+   "affidabilita": "alta",
+   "lezione": "il malware OT puo' essere riutilizzabile contro apparati standard usati anche in Europa"
+  },
+  {
+   "id": "CE-2022-UA-IND2",
+   "nome": "Ucraina: Industroyer2 contro sottostazioni ad alta tensione (sventato)",
+   "data_evento": "2022-04-08",
+   "paese": "UA",
+   "lat": 49.0,
+   "lon": 31.4,
+   "precisione_km": 600,
+   "categoria": "sabotaggio-rete",
+   "settore": "trasmissione elettrica",
+   "vittima": "operatore energetico ucraino (non nominato), sottostazioni ad alta tensione",
+   "effetto": "attacco programmato per l'8 aprile 2022, scoperto e bloccato prima dell'esecuzione con CERT-UA",
+   "attore": "Sandworm (GRU)",
+   "attribuzione_stato": "attribuzione di CERT-UA ed ESET",
+   "fonte": "ESET, Industroyer2: Industroyer reloaded",
+   "link": "https://www.welivesecurity.com/2022/04/12/industroyer2-industroyer-reloaded/",
+   "data_fonte": "2022-04-12",
+   "affidabilita": "alta",
+   "lezione": "la difesa funziona quando c'e' monitoraggio delle reti OT e scambio rapido di informazioni"
+  },
+  {
+   "id": "CE-2022-UA-OT",
+   "nome": "Ucraina: blackout da attacco OT in coincidenza con attacchi missilistici",
+   "data_evento": "2022-10-10",
+   "paese": "UA",
+   "lat": 49.0,
+   "lon": 31.4,
+   "precisione_km": 600,
+   "categoria": "sabotaggio-rete",
+   "settore": "distribuzione elettrica",
+   "vittima": "operatore elettrico ucraino (non nominato)",
+   "effetto": "interruzione di corrente causata via sistemi di controllo di una sottostazione, in parallelo a missili sulle infrastrutture",
+   "attore": "Sandworm (GRU)",
+   "attribuzione_stato": "attribuzione di Mandiant (Google)",
+   "fonte": "Mandiant, Sandworm Disrupts Power in Ukraine Using a Novel Attack Against Operational Technology",
+   "link": "https://cloud.google.com/blog/topics/threat-intelligence/sandworm-disrupts-power-ukraine-operational-technology",
+   "data_fonte": "2023-11-09",
+   "affidabilita": "alta",
+   "lezione": "attacchi cyber e fisici combinati: modello di 'guerra ibrida' sulla rete"
+  },
+  {
+   "id": "CE-2022-KASAT",
+   "nome": "Attacco al satellite KA-SAT di Viasat: perso il controllo remoto di circa 5.800 turbine Enercon",
+   "data_evento": "2022-02-24",
+   "paese": "DE",
+   "lat": 53.47,
+   "lon": 7.48,
+   "precisione_km": 400,
+   "categoria": "perdita-comunicazioni",
+   "settore": "eolico onshore",
+   "vittima": "Viasat (rete KA-SAT); effetto collaterale su Enercon (punto sulla sede di Aurich, turbine in Germania ed Europa centrale)",
+   "effetto": "modem satellitari resi inutilizzabili da un wiper; circa 5.800 turbine Enercon (oltre 10-11 GW) senza monitoraggio e controllo remoto; le turbine hanno continuato a produrre; oltre il 95% ricollegato entro il 19 aprile 2022",
+   "attore": "Russia (GRU), secondo UE, USA e Regno Unito (10 maggio 2022)",
+   "attribuzione_stato": "attribuzione governativa",
+   "fonte": "Reuters, Satellite outage knocks out thousands of Enercon's wind turbines; SentinelOne, AcidRain",
+   "link": "https://www.sentinelone.com/labs/acidrain-a-modem-wiper-rains-down-on-europe/",
+   "data_fonte": "2022-03-31",
+   "affidabilita": "alta",
+   "lezione": "il 'frigorifero' dell'eolico e' il canale di comunicazione: un attacco a un fornitore terzo puo' accecare migliaia di turbine contemporaneamente"
+  },
+  {
+   "id": "CE-2021-VESTAS",
+   "nome": "Vestas: incidente informatico che blocca parte dei sistemi IT",
+   "data_evento": "2021-11-19",
+   "paese": "DK",
+   "lat": 56.15,
+   "lon": 10.2,
+   "precisione_km": 20,
+   "categoria": "ransomware-produttore",
+   "settore": "eolico (produttore)",
+   "vittima": "Vestas Wind Systems (sede di Aarhus)",
+   "effetto": "spenti sistemi IT in piu' aree e unita'; dati interni compromessi; secondo l'azienda nessun impatto su turbine e catena di fornitura",
+   "attore": "non dichiarato; alcune fonti citano LockBit",
+   "attribuzione_stato": "non confermata",
+   "fonte": "Vestas, comunicato del 20 e 22 novembre 2021 (riportato da ITPro)",
+   "link": "https://www.itpro.com/security/cyber-attacks/367498/russian-affiliates-believed-to-be-behind-cyber-attacks-on-wind",
+   "data_fonte": "2021-11-22",
+   "affidabilita": "alta",
+   "lezione": "il produttore e' anche il fornitore di assistenza remota: un'intrusione nel suo IT e' un rischio per tutta la flotta"
+  },
+  {
+   "id": "CE-2022-NORDEX",
+   "nome": "Nordex: attacco ransomware rivendicato da Conti",
+   "data_evento": "2022-03-31",
+   "paese": "DE",
+   "lat": 53.55,
+   "lon": 10.0,
+   "precisione_km": 20,
+   "categoria": "ransomware-produttore",
+   "settore": "eolico (produttore)",
+   "vittima": "Nordex SE (Amburgo)",
+   "effetto": "spento l'accesso remoto alle turbine per precauzione e sistemi IT interni chiusi; secondo l'azienda l'incidente e' rimasto nell'IT interno",
+   "attore": "Conti (rivendicazione)",
+   "attribuzione_stato": "rivendicato dal gruppo",
+   "fonte": "SecurityWeek, Conti Ransomware Gang Claims Cyberattack on Wind Turbine Giant Nordex",
+   "link": "https://www.securityweek.com/conti-ransomware-gang-claims-cyberattack-wind-turbine-giant-nordex",
+   "data_fonte": "2022-04-14",
+   "affidabilita": "alta",
+   "lezione": "per contenere l'attacco il produttore stacca il telecontrollo: la difesa stessa riduce la visibilita' sulla flotta"
+  },
+  {
+   "id": "CE-2022-DWT",
+   "nome": "Deutsche Windtechnik: attacco ai sistemi IT del manutentore",
+   "data_evento": "2022-04-11",
+   "paese": "DE",
+   "lat": 53.08,
+   "lon": 8.8,
+   "precisione_km": 20,
+   "categoria": "ransomware-produttore",
+   "settore": "eolico (manutenzione)",
+   "vittima": "Deutsche Windtechnik (Brema)",
+   "effetto": "telecontrollo di circa 2.000 turbine spento per circa un giorno per precauzione; turbine in funzione",
+   "attore": "non confermato; segnalata una rivendicazione di Black Basta",
+   "attribuzione_stato": "non confermata",
+   "fonte": "The Record, German wind farm operator confirms cybersecurity incident",
+   "link": "https://therecord.media/german-wind-farm-operator-confirms-cybersecurity-incident-after-ransomware-group",
+   "data_fonte": "2022-05-12",
+   "affidabilita": "alta",
+   "lezione": "i manutentori indipendenti hanno accesso remoto a molte flotte di marche diverse: sono un punto di concentrazione del rischio"
+  },
+  {
+   "id": "CE-2023-DK",
+   "nome": "Danimarca: 22 aziende energetiche violate tramite firewall non aggiornati",
+   "data_evento": "2023-05-11",
+   "paese": "DK",
+   "lat": 56.0,
+   "lon": 9.5,
+   "precisione_km": 200,
+   "categoria": "intrusione-ot-hacktivista",
+   "settore": "energia (distribuzione e infrastrutture)",
+   "vittima": "22 aziende del settore energetico danese",
+   "effetto": "accessi a firewall perimetrali; alcune aziende hanno isolato le reti ('island mode'); nessun impatto sui clienti",
+   "attore": "non determinato; alcune tracce indicate verso Sandworm, poi messe in dubbio",
+   "attribuzione_stato": "contestata",
+   "fonte": "SektorCERT, The attack against Danish critical infrastructure (novembre 2023)",
+   "link": "https://www.securityweek.com/22-energy-firms-hacked-in-largest-coordinated-attack-on-denmarks-critical-infrastructure/",
+   "data_fonte": "2023-11-13",
+   "affidabilita": "alta",
+   "lezione": "l'apparato di confine (firewall) e' spesso il punto debole; aggiornamenti tempestivi e monitoraggio settoriale fanno la differenza"
+  },
+  {
+   "id": "CE-2024-DEYE",
+   "nome": "Inverter Deye disattivati da remoto in alcuni mercati",
+   "data_evento": "2024-11-15",
+   "paese": "GB",
+   "lat": 52.5,
+   "lon": -1.5,
+   "precisione_km": 400,
+   "categoria": "dispositivi-catena-fornitura",
+   "settore": "solare (inverter)",
+   "vittima": "proprietari di inverter Deye collegati al cloud (segnalazioni da USA, Regno Unito, Pakistan)",
+   "effetto": "inverter bloccati con messaggio di errore; il produttore nega un'azione malevola e parla di controllo di autorizzazione; offerto un componente correttivo",
+   "attore": "nessun attacco: funzione del produttore (contesto: disputa con un distributore USA)",
+   "attribuzione_stato": "non applicabile",
+   "fonte": "Born's Tech and Windows World, Deye deactivates solar inverters in USA, UK and Pakistan",
+   "link": "https://borncity.com/win/2024/11/28/deye-deactivates-solar-inverters-in-usa-uk-and-pakistan/",
+   "data_fonte": "2024-11-28",
+   "affidabilita": "media",
+   "lezione": "anche senza hacker, chi controlla il cloud del produttore puo' spegnere dispositivi a distanza: e' la stessa dipendenza che preoccupa l'UE"
+  },
+  {
+   "id": "CE-2024-DK-ACQUA",
+   "nome": "Danimarca: acquedotto di Tureby Alkestrup sabotato via sistema di controllo",
+   "data_evento": "2024-12-15",
+   "paese": "DK",
+   "lat": 55.43,
+   "lon": 12.05,
+   "precisione_km": 15,
+   "categoria": "intrusione-ot-hacktivista",
+   "settore": "acqua (non energia; stesso tipo di attore dei 'frigoriferi')",
+   "vittima": "acquedotto di Tureby Alkestrup (vicino a Koge)",
+   "effetto": "pressione alterata, tubature rotte, case senza acqua",
+   "attore": "Z-Pentest, gruppo filorusso con legami con lo Stato russo secondo l'intelligence militare danese",
+   "attribuzione_stato": "attribuzione governativa (18 dicembre 2025)",
+   "fonte": "Forsvarets Efterretningstjeneste (FE-DDIS), Russia responsible for cyber attacks",
+   "link": "https://www.fe-ddis.dk/globalassets/fe/dokumenter/2025/-russia-responsible-for-cyber-attacks-.pdf",
+   "data_fonte": "2025-12-18",
+   "affidabilita": "alta",
+   "nota_data": "mese (dicembre 2024) da fonte ufficiale; giorno indicativo",
+   "lezione": "lo stesso gruppo citato per i frigoriferi colpisce impianti 'piccoli' ma reali in Danimarca"
+  },
+  {
+   "id": "CE-2024-RO",
+   "nome": "Romania: ransomware sul gruppo di distribuzione Electrica",
+   "data_evento": "2024-12-09",
+   "paese": "RO",
+   "lat": 44.43,
+   "lon": 26.1,
+   "precisione_km": 20,
+   "categoria": "ransomware-produttore",
+   "settore": "distribuzione elettrica (IT aziendale)",
+   "vittima": "Electrica Group",
+   "effetto": "attacco ai sistemi IT; secondo la societa' e le autorita' i sistemi critici di distribuzione non sono stati colpiti",
+   "attore": "Lynx (secondo l'agenzia rumena DNSC)",
+   "attribuzione_stato": "indicazione dell'autorita' nazionale",
+   "fonte": "BleepingComputer, Romanian energy supplier Electrica hit by ransomware attack",
+   "link": "https://www.bleepingcomputer.com/news/security/romanian-energy-supplier-electrica-hit-by-ransomware-attack/",
+   "data_fonte": "2024-12-10",
+   "affidabilita": "alta",
+   "lezione": "il ransomware sull'IT di un operatore e' la minaccia piu' frequente; la separazione IT/OT limita il danno"
+  },
+  {
+   "id": "CE-2025-NO",
+   "nome": "Norvegia: diga di Bremanger, valvola aperta da remoto per quattro ore",
+   "data_evento": "2025-04-07",
+   "paese": "NO",
+   "lat": 61.8,
+   "lon": 5.1,
+   "precisione_km": 30,
+   "categoria": "intrusione-ot-hacktivista",
+   "settore": "acqua/idroelettrico minore",
+   "vittima": "diga sul lago Risevatnet (comune di Bremanger)",
+   "effetto": "circa 500 litri al secondo rilasciati per quattro ore prima della scoperta; nessun ferito",
+   "attore": "hacker filorussi secondo il servizio di sicurezza norvegese PST (agosto 2025)",
+   "attribuzione_stato": "attribuzione governativa",
+   "fonte": "Security Affairs, Norway confirms dam intrusion by Pro-Russian hackers",
+   "link": "https://securityaffairs.com/181143/hacktivism/norway-confirms-dam-intrusion-by-pro-russian-hackers.html",
+   "data_fonte": "2025-08-14",
+   "affidabilita": "alta",
+   "lezione": "pannelli di controllo raggiungibili da Internet con protezioni deboli: stesso schema dei frigoriferi"
+  },
+  {
+   "id": "CE-2025-INVERTER",
+   "nome": "Reuters: dispositivi di comunicazione non documentati in inverter e batterie cinesi",
+   "data_evento": "2025-05-14",
+   "paese": "US",
+   "lat": 38.9,
+   "lon": -77.04,
+   "precisione_km": 2000,
+   "categoria": "dispositivi-catena-fornitura",
+   "settore": "solare e batterie",
+   "vittima": "non applicabile (scoperta da esperti USA che smontano apparati collegati alla rete)",
+   "effetto": "radio cellulari e altri componenti non dichiarati trovati in alcuni inverter e batterie di piu' fornitori cinesi; potenziale canale che aggira i firewall; produttori non nominati, governo USA non ha confermato",
+   "attore": "non applicabile",
+   "attribuzione_stato": "notizia da due fonti anonime",
+   "fonte": "Reuters (Sarah McFarlane), Ghost in the machine? Rogue communication devices found in Chinese inverters",
+   "link": "https://www.insurancejournal.com/news/international/2025/05/16/824006.htm",
+   "data_fonte": "2025-05-14",
+   "affidabilita": "media",
+   "lezione": "ha accelerato le misure europee: Lituania, finanziamenti UE, proposta di revisione del Cybersecurity Act"
+  },
+  {
+   "id": "CE-2025-PL",
+   "nome": "Polonia: attacco distruttivo coordinato a oltre 30 parchi eolici e solari e a una centrale di cogenerazione",
+   "data_evento": "2025-12-29",
+   "paese": "PL",
+   "lat": 52.0,
+   "lon": 19.0,
+   "precisione_km": 350,
+   "categoria": "wiper-rinnovabili",
+   "settore": "eolico e solare (sottostazioni di connessione)",
+   "vittima": "oltre 30 impianti eolici e fotovoltaici, un produttore industriale e un impianto di cogenerazione",
+   "effetto": "persa la comunicazione con i gestori di distribuzione e il controllo remoto; malware distruttivo eseguito su postazioni di controllo; produzione elettrica non interrotta; accesso iniziale tramite apparati di accesso remoto esposti e infiltrazione di lungo periodo",
+   "attore": "CERT Polska indica l'infrastruttura di Static Tundra; altri ricercatori (ESET, Dragos) ipotizzano Sandworm",
+   "attribuzione_stato": "contestata tra ricercatori; Polonia attribuisce alla Russia",
+   "fonte": "CERT Polska, Energy Sector Incident Report 2025",
+   "link": "https://cert.pl/en/posts/2026/01/incident-report-energy-sector-2025/",
+   "data_fonte": "2026-01-30",
+   "affidabilita": "alta",
+   "lezione": "e' il precedente piu' vicino alla domanda: attacco reale e coordinato a impianti rinnovabili in un Paese UE del Baltico"
+  },
+  {
+   "id": "CE-2026-FR-FRIGO",
+   "nome": "Francia: controller della refrigerazione di centinaia di supermercati manomessi da remoto",
+   "data_evento": "2026-10-11",
+   "paese": "FR",
+   "lat": 46.6,
+   "lon": 2.4,
+   "precisione_km": 450,
+   "categoria": "refrigerazione-iot",
+   "settore": "commercio alimentare (catena del freddo)",
+   "vittima": "supermercati di Intermarche', Netto, Cooperative U, Carrefour, E.Leclerc, Monoprix (stime iniziali da oltre 500 a circa 700 punti vendita; Al Jazeera il 9-11-2026 parla di oltre 1.000 negozi)",
+   "effetto": "nella notte tra 11 e 12 ottobre 2026 frigoriferi e congelatori portati fino a 50 gradi o in sbrinamento prolungato; merce distrutta, alcuni principi d'incendio; coinvolti controller Danfoss, Copeland e Dixell, in buona parte modelli vecchi non piu' aggiornati",
+   "attore": "Guardie della Rivoluzione iraniane (IRGC), unita' cyber collegata, secondo il governo francese (ministro degli Esteri Jean-Noel Barrot, 9-11-2026), che chiede sanzioni UE; in precedenza gruppi filorussi avevano rivendicato ondate successive",
+   "attribuzione_stato": "attribuzione governativa francese del 9-11-2026 (prove tecniche non pubblicate nelle fonti lette)",
+   "fonte": "Al Jazeera / Reuters, Hundreds of supermarkets in France hit by 'unprecedented' cyberattack",
+   "link": "https://aljazeera.com/news/2026/10/13/unprecedented-cyberattack-hits-french-supermarkets-causing-food-losses",
+   "data_fonte": "2026-10-13",
+   "affidabilita": "alta",
+   "lezione": "e' il caso dei 'frigoriferi': non una botnet di elettrodomestici di casa, ma controller industriali connessi e mal protetti; l'attribuzione a uno Stato (Iran) lo trasforma in un atto di guerra ibrida contro un Paese UE",
+   "fonte_attribuzione": "Reuters (R. Satter, G. Stargardter) via Al-Monitor; AP; BBC; Al Jazeera, 9-11-2026",
+   "link_attribuzione": "https://www.al-monitor.com/originals/2026/11/french-officials-blame-iran-refrigerator-hacks-vow-retaliation"
+  },
+  {
+   "id": "CE-2026-NL-FRIGO",
+   "nome": "Paesi Bassi: seconda ondata sui controller della refrigerazione (macellerie e piccoli alimentari)",
+   "data_evento": "2026-11-02",
+   "paese": "NL",
+   "lat": 52.2,
+   "lon": 5.3,
+   "precisione_km": 150,
+   "categoria": "refrigerazione-iot",
+   "settore": "commercio alimentare",
+   "vittima": "almeno 17 attivita' secondo Danfoss alla NOS; grandi catene olandesi non colpite",
+   "effetto": "temperature alterate nella notte tra 1 e 2 novembre 2026; dispositivi Danfoss e Copeland",
+   "attore": "non attribuito",
+   "attribuzione_stato": "aperta: l'attribuzione francese all'IRGC del 9-11-2026 riguarda l'attacco di ottobre in Francia; il legame con l'ondata di novembre non e' confermato nelle fonti lette",
+   "fonte": "SecurityWeek, Over 100 European stores hit as supermarket fridge attacks resume (con dati NOS)",
+   "link": "https://securityweek.com/over-100-european-stores-hit-as-supermarket-fridge-attacks-resume",
+   "data_fonte": "2026-11-03",
+   "affidabilita": "alta",
+   "lezione": "l'ondata ha toccato i Paesi Bassi: il tema e' gia' sul tavolo degli operatori olandesi"
+  },
+  {
+   "id": "CE-2026-BE-FRIGO",
+   "nome": "Belgio, Lussemburgo, Svezia, Irlanda, Estonia: oltre 115 negozi con frigoriferi manomessi",
+   "data_evento": "2026-11-02",
+   "paese": "BE",
+   "lat": 50.8,
+   "lon": 4.4,
+   "precisione_km": 1500,
+   "categoria": "refrigerazione-iot",
+   "settore": "commercio alimentare",
+   "vittima": "piu' di 115 punti vendita in sei Paesi (punto simbolico sul Belgio)",
+   "effetto": "attivate da remoto le funzioni di sbrinamento; in Estonia colpiti modelli Danfoss vecchi secondo un fornitore locale",
+   "attore": "non attribuito; SentinelOne considera i gruppi allineati alla Russia sospetti credibili",
+   "attribuzione_stato": "aperta: l'attribuzione francese all'IRGC del 9-11-2026 riguarda l'attacco di ottobre in Francia; il legame con l'ondata di novembre non e' confermato nelle fonti lette",
+   "fonte": "SentinelOne, Defrost and Disrupt: an assessment of Europe's refrigeration attacks",
+   "link": "https://www.sentinelone.com/labs/defrost-and-disrupt-an-assessment-of-europe-s-refrigeration-attacks/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "alta",
+   "nota_data": "data_fonte indicativa (pubblicazione nei giorni successivi all'ondata)",
+   "lezione": "campagna ripetuta in piu' Paesi a tre settimane di distanza: capacita' di colpire in serie dispositivi dello stesso tipo"
+  },
+  {
+   "id": "CE-2026-IT-FRIGO",
+   "nome": "Sicilia: guasti alla refrigerazione in supermercati Coop e Deco', ipotesi attacco",
+   "data_evento": "2026-11-02",
+   "paese": "IT",
+   "lat": 37.5,
+   "lon": 15.08,
+   "precisione_km": 150,
+   "categoria": "refrigerazione-iot",
+   "settore": "commercio alimentare",
+   "vittima": "punti vendita a Catania, Palermo e Ragusa (da 4 a circa 20 secondo le testate)",
+   "effetto": "merce dei banchi frigo distrutta; causa non confermata pubblicamente da ACN o Polizia postale; ACN ha richiamato le misure indicate il 13 ottobre",
+   "attore": "non attribuito",
+   "attribuzione_stato": "causa da accertare",
+   "fonte": "Open, Supermercati, frigoriferi e hacker: il caso Sicilia",
+   "link": "https://www.open.online/2026/11/02/supermercati-frigoriferi-hacker-italia-sicilia/",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "media",
+   "lezione": "probabile notizia letta da Gabriele: in Italia se ne e' parlato come 'attacco hacker ai frigoriferi'"
+  },
+  {
+   "id": "CE-2023-IRGC-PLC",
+   "nome": "USA e altri Paesi: CyberAv3ngers (IRGC) manomette controller industriali esposti in impianti idrici",
+   "data_evento": "2023-11-25",
+   "paese": "US",
+   "lat": 40.62,
+   "lon": -80.25,
+   "precisione_km": 20,
+   "categoria": "intrusione-ot-hacktivista",
+   "settore": "acqua (controller industriali usati anche in energia)",
+   "vittima": "Municipal Water Authority of Aliquippa (Pennsylvania) e altri impianti con lo stesso tipo di controller",
+   "effetto": "schermate dei controller sostituite con messaggi anti-Israele; impianti passati a gestione manuale; nessun danno all'acqua potabile",
+   "attore": "CyberAv3ngers, legati al Comando cyber-elettronico dell'IRGC",
+   "attribuzione_stato": "attribuzione governativa USA",
+   "fonte": "CISA, FBI, NSA, EPA e INCD, Advisory AA23-335A",
+   "link": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-335a",
+   "data_fonte": "2023-12-01",
+   "affidabilita": "alta",
+   "lezione": "precedente diretto dello stesso attore indicato dalla Francia: l'IRGC colpisce dispositivi OT esposti scelti per marca, non per vittima"
+  }
+ ],
+ "candidati_frigoriferi": [
+  {
+   "caso": "Attacco ai controller della refrigerazione di centinaia di supermercati francesi (11-12 ottobre 2026), che la Francia ha attribuito oggi, 9 novembre 2026, alle Guardie della Rivoluzione iraniane (IRGC); seconda ondata in Belgio, Paesi Bassi, Lussemburgo, Svezia, Irlanda, Estonia (1-2 novembre 2026) e casi sospetti in Sicilia",
+   "data": "2026-10-11 (attacco) / 2026-11-09 (attribuzione all'IRGC)",
+   "fonte": "Reuters via Al-Monitor, AP, BBC, Al Jazeera 09-11-2026; Al Jazeera/Reuters 13-10-2026; SecurityWeek 03-11-2026",
+   "link": "https://www.al-monitor.com/originals/2026/11/french-officials-blame-iran-refrigerator-hacks-vow-retaliation",
+   "probabilita": "molto alta: e' la notizia del giorno (9-11-2026), molto ripresa ('la Francia accusa l'Iran per l'attacco hacker ai frigoriferi')"
+  },
+  {
+   "caso": "Botnet IoT Aisuru/Kimwolf: router, telecamere, DVR (non frigoriferi) usati per attacchi DDoS record (29,7 Tbps a ottobre 2025, 31,4 Tbps a dicembre 2025); smantellate con un'operazione USA e partner a marzo 2026",
+   "data": "2025-10 / 2026-03",
+   "fonte": "BleepingComputer; Help Net Security 20-03-2026",
+   "link": "https://www.helpnetsecurity.com/2026/03/20/us-disrupts-iot-botnets-ddos-attacks-aisuru-kimwolf/",
+   "probabilita": "bassa: e' una botnet IoT ma non riguarda frigoriferi"
+  },
+  {
+   "caso": "'Frigorifero che manda spam' (Proofpoint, gennaio 2014): botnet con dispositivi domestici connessi, poi contestata da Symantec",
+   "data": "2014-01-16",
+   "fonte": "TechRadar; Computerworld",
+   "link": "https://www.computerworld.com/article/1491026/blame-infected-windows-pcs-not-smart-fridge-for-spam-spewing-botnet-attack.html",
+   "probabilita": "bassa: storia vecchia che riemerge negli articoli"
+  }
+ ],
+ "allarmi_agenzie": [
+  {
+   "ente": "CISA, FBI, NSA, DOE, EPA, DC3 e partner internazionali",
+   "data": "2025-12-09",
+   "titolo": "Pro-Russia Hacktivists Conduct Opportunistic Attacks Against U.S. and Global Critical Infrastructure",
+   "sintesi": "gruppi come NoName057(16), Z-Pentest, Sector16 e CARR cercano pannelli di controllo esposti in acqua, energia, alimentare; raccomandazione principale: togliere l'OT da Internet",
+   "link": "https://www.ncsc.govt.nz/alerts/pro-russia-hacktivists-conduct-attacks-against-critical-infrastructure",
+   "affidabilita": "alta"
+  },
+  {
+   "ente": "CERT Polska",
+   "data": "2026-01-30",
+   "titolo": "Energy Sector Incident Report 2025",
+   "sintesi": "attacco del 29 dicembre 2025 a oltre 30 impianti rinnovabili; accesso remoto esposto e infiltrazione lunga",
+   "link": "https://cert.pl/en/posts/2026/01/incident-report-energy-sector-2025/",
+   "affidabilita": "alta"
+  },
+  {
+   "ente": "Centro per la cybersicurezza danese (CFCS, oggi nell'Agenzia per la sicurezza civile)",
+   "data": "2024-06-04",
+   "titolo": "Minaccia di attacchi distruttivi alzata da BASSA a MEDIA",
+   "sintesi": "motivo: maggiore disponibilita' russa a usare tattiche ibride contro i membri europei della NATO; valutazione settoriale 2023: criminalita' informatica contro l'energia 'molto alta'",
+   "link": "https://cfcs.dk/en/cybertruslen/threat-assessments/cfcs-raises-threat-level-for-destructive-cyber-attacks",
+   "affidabilita": "alta"
+  },
+  {
+   "ente": "Governo danese / Energistyrelsen",
+   "data": "2025-09",
+   "titolo": "Livello di preparazione del settore energetico alzato ad arancione",
+   "sintesi": "secondo livello piu' alto; non legato a una minaccia specifica (DK Havenergi)",
+   "link": "https://www.doi.dk/en/ptx/artikel/regeringen-haever-energisektorens-beredskabsniveau",
+   "affidabilita": "media"
+  },
+  {
+   "ente": "Rijksinspectie Digitale Infrastructuur (RDI, Paesi Bassi)",
+   "data": "2023-05-30",
+   "titolo": "Test su nove inverter solari",
+   "sintesi": "nessuno dei nove rispettava tutti i requisiti di sicurezza; requisiti obbligatori dal 1 agosto 2024 (direttiva radio); a luglio 2025 la ministra Hermans annuncia maggiore vigilanza sugli inverter",
+   "link": "https://www.pv-magazine.com/2025/07/09/netherlands-increasing-vigilance-on-solar-inverter-related-cybersecurity-risks",
+   "affidabilita": "media"
+  },
+  {
+   "ente": "BSI (Germania)",
+   "data": "2025",
+   "titolo": "Posizione sulla telegestione degli inverter tramite i produttori",
+   "sintesi": "la presidente Plattner indica oltre il 70% di inverter cinesi nel mercato tedesco; il BSI preferisce il comando locale tramite smart meter gateway invece del cloud del produttore",
+   "link": "https://www.zfk.de/digitalisierung/smart-city-energy/bsi-sicherheitsbedenken-gegen-pv-wechselrichter-das-sagt-die-branche",
+   "affidabilita": "media",
+   "nota": "data esatta della dichiarazione non verificata"
+  },
+  {
+   "ente": "ENISA",
+   "data": "2025-10",
+   "titolo": "ENISA Threat Landscape 2025",
+   "sintesi": "4.875 incidenti analizzati (luglio 2024 - giugno 2025); hacktivismo in maggioranza DDoS, ma quota significativa di attacchi a sistemi OT",
+   "link": "https://www.enisa.europa.eu/news/etl-2025-eu-consistently-targeted-by-diverse-yet-convergent-threat-groups",
+   "affidabilita": "alta"
+  },
+  {
+   "ente": "Forescout Vedere Labs",
+   "data": "2025-03-27",
+   "titolo": "SUN:DOWN",
+   "sintesi": "46 nuove vulnerabilita' in prodotti e portali cloud di tre grandi produttori di inverter (Sungrow, Growatt, SMA), poi corrette; rischio sistemico dal controllo via cloud di molti impianti piccoli",
+   "link": "https://www.forescout.com/blog/grid-security-new-vulnerabilities-in-solar-power-systems-exposed/",
+   "affidabilita": "alta"
+  },
+  {
+   "ente": "Forescout",
+   "data": "2026-10",
+   "titolo": "Cold chain, open control: exposed refrigeration systems reveal global risk",
+   "sintesi": "oltre 20 attacchi rivendicati contro sistemi di refrigerazione da gennaio 2026; quasi 13.000 sistemi di refrigerazione vulnerabili in 99 Paesi (dato aggregato)",
+   "link": "https://www.forescout.com/blog/cold-chain-open-control-exposed-refrigeration-systems-reveal-global-risk/",
+   "affidabilita": "alta"
+  },
+  {
+   "ente": "ACN (Italia)",
+   "data": "2026-10-13",
+   "titolo": "Indicazioni a grande distribuzione e manutentori della refrigerazione",
+   "sintesi": "richiamate dopo il caso francese e di nuovo dopo il caso siciliano (novembre 2026)",
+   "link": "https://www.quotidiano.net/cronaca/hacker-supermercati-sicilia-italia-frigoriferi-thhy8cps",
+   "affidabilita": "media"
+  }
+ ],
+ "esposizione": {
+  "paesi": [
+   {
+    "paese": "DK",
+    "nome": "Danimarca",
+    "eolico_mw": 7508,
+    "eolico_offshore_mw": 2652,
+    "quota_eolico_mix": 0.5,
+    "solare_mw": 6300,
+    "solare_fonte": "pv magazine 16-02-2026 (Dansk Solcelleforening, circa 6,3 GW; IEA-PVPS circa 6,5 GWp)",
+    "quota_inverter_cinesi": null,
+    "nota": "massima quota di eolico in Europa (50%); sede di Vestas, Orsted e Danfoss (produttore dei controller dei frigoriferi colpiti)"
+   },
+   {
+    "paese": "NL",
+    "nome": "Paesi Bassi",
+    "eolico_mw": 11792,
+    "eolico_offshore_mw": 4738,
+    "quota_eolico_mix": 0.29,
+    "solare_mw": 29400,
+    "solare_fonte": "RVO, Monitor zon-PV 2026 (circa 29,4 GWp)",
+    "quota_inverter_cinesi": null,
+    "nota": "molto solare sui tetti: il rischio 'inverter + cloud del produttore' riguarda milioni di piccoli impianti; Cbw (NIS2) in vigore dal 15 agosto 2026"
+   },
+   {
+    "paese": "DE",
+    "nome": "Germania",
+    "eolico_mw": 77691,
+    "eolico_offshore_mw": 9624,
+    "quota_eolico_mix": 0.28,
+    "solare_mw": 117000,
+    "solare_fonte": "Bundesnetzagentur, dato provvisorio fine 2025 (circa 117 GW)",
+    "quota_inverter_cinesi": 0.7,
+    "quota_inverter_fonte": "BSI (presidente Plattner): oltre il 70% del mercato tedesco; una perizia parla di circa 80% sui tetti privati",
+    "nota": "precedente Enercon/KA-SAT; sede di Nordex, Enercon, Deutsche Windtechnik"
+   },
+   {
+    "paese": "BE",
+    "nome": "Belgio",
+    "eolico_mw": 5860,
+    "eolico_offshore_mw": 2261,
+    "quota_eolico_mix": 0.15,
+    "solare_mw": null,
+    "solare_fonte": "manca",
+    "quota_inverter_cinesi": null,
+    "nota": "colpito dall'ondata frigoriferi di novembre 2026"
+   },
+   {
+    "paese": "GB",
+    "nome": "Regno Unito",
+    "eolico_mw": 32894,
+    "eolico_offshore_mw": 16982,
+    "quota_eolico_mix": 0.31,
+    "solare_mw": null,
+    "solare_fonte": "manca",
+    "quota_inverter_cinesi": null,
+    "nota": "piu' grande capacita' offshore d'Europa (Hornsea, Dogger Bank)"
+   },
+   {
+    "paese": "PL",
+    "nome": "Polonia",
+    "eolico_mw": 11200,
+    "eolico_offshore_mw": 0,
+    "quota_eolico_mix": 0.14,
+    "solare_mw": 24800,
+    "solare_fonte": "ARE tramite pv magazine 24-02-2026 (PSE indica 25,5 GW)",
+    "quota_inverter_cinesi": null,
+    "nota": "attacco a oltre 30 impianti rinnovabili il 29-12-2025; primo offshore (Baltic Power) in arrivo"
+   },
+   {
+    "paese": "LT",
+    "nome": "Lituania",
+    "eolico_mw": 2535,
+    "eolico_offshore_mw": 0,
+    "quota_eolico_mix": 0.33,
+    "solare_mw": 3040,
+    "solare_fonte": "IEA-PVPS tramite pv magazine 30-03-2026 (dato in parziale conflitto: altra lettura 2,4 GW)",
+    "quota_inverter_cinesi": null,
+    "nota": "dal novembre 2024 vieta l'accesso remoto da Paesi a rischio a impianti solari, eolici e batterie sopra 100 kW (oltre 1.000 impianti interessati)"
+   },
+   {
+    "paese": "LV",
+    "nome": "Lettonia",
+    "eolico_mw": 137,
+    "eolico_offshore_mw": 0,
+    "quota_eolico_mix": 0.03,
+    "solare_mw": null,
+    "solare_fonte": "manca",
+    "quota_inverter_cinesi": null,
+    "nota": ""
+   },
+   {
+    "paese": "EE",
+    "nome": "Estonia",
+    "eolico_mw": 711,
+    "eolico_offshore_mw": 0,
+    "quota_eolico_mix": 0.16,
+    "solare_mw": null,
+    "solare_fonte": "manca",
+    "quota_inverter_cinesi": null,
+    "nota": "colpita dall'ondata frigoriferi; restrizioni annunciate anche per piccoli impianti solari (Reuters, maggio 2025)"
+   },
+   {
+    "paese": "FI",
+    "nome": "Finlandia",
+    "eolico_mw": 9504,
+    "eolico_offshore_mw": 71,
+    "quota_eolico_mix": 0.25,
+    "solare_mw": null,
+    "solare_fonte": "manca",
+    "quota_inverter_cinesi": null,
+    "nota": ""
+   },
+   {
+    "paese": "SE",
+    "nome": "Svezia",
+    "eolico_mw": 18515,
+    "eolico_offshore_mw": 192,
+    "quota_eolico_mix": 0.3,
+    "solare_mw": null,
+    "solare_fonte": "manca",
+    "quota_inverter_cinesi": null,
+    "nota": "colpita dall'ondata frigoriferi"
+   },
+   {
+    "paese": "NO",
+    "nome": "Norvegia",
+    "eolico_mw": 5183,
+    "eolico_offshore_mw": 101,
+    "quota_eolico_mix": 0.1,
+    "solare_mw": null,
+    "solare_fonte": "manca",
+    "quota_inverter_cinesi": null,
+    "nota": "diga di Bremanger (aprile 2025)"
+   }
+  ],
+  "fonte_eolico": {
+   "nome": "WindEurope, Wind energy in Europe - 2025 Statistics and the outlook for 2026-2030, tabella 1",
+   "link": "https://windeurope.org/news/europe-invested-45bn-in-new-wind-energy-in-2025-market-tampering-would-put-future-investments-at-acute-risk/",
+   "copia_pdf": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+   "data_dato": "2025-12-31",
+   "totali": {
+    "europa_mw": 304009,
+    "europa_offshore_mw": 38617,
+    "ue27_mw": 246059,
+    "ue27_offshore_mw": 21534
+   }
+  },
+  "produttori": [
+   {
+    "segmento": "turbine eoliche (Europa)",
+    "dato": "fornitori europei circa 94,5% delle nuove installazioni in Europa nel 2025; Nordex primo in Europa; primi cinque nell'UE: Vestas, Nordex, Siemens Gamesa, Enercon, GE Vernova; produttori cinesi circa 446 MW in Europa (278 MW nell'UE)",
+    "fonte": "GWEC, classifica produttori 2025 (maggio 2026)",
+    "link": "https://www.gwec.net/news/gwec-records-sharp-rise-in-wind-turbine-installations-as-five-oems-exceed-100-gw",
+    "data_dato": "2025",
+    "affidabilita": "alta"
+   },
+   {
+    "segmento": "turbine eoliche offshore (Europa)",
+    "dato": "mercato concentrato su Siemens Gamesa e Vestas; turbine cinesi (Mingyang) presenti solo in progetti piccoli, es. Beleolico a Taranto",
+    "fonte": "valutazione dell'agente su dati di settore; nessuna quota numerica verificata",
+    "link": "",
+    "data_dato": "2025",
+    "affidabilita": "media"
+   },
+   {
+    "segmento": "inverter solari (mondo)",
+    "dato": "Huawei e Sungrow primi due produttori; insieme circa 55% del mercato mondiale nel 2024",
+    "fonte": "Wood Mackenzie, classifica inverter H1 2025 (via pv magazine)",
+    "link": "https://www.woodmac.com/press-releases/solar-inverter-ranking-h1-2025/",
+    "data_dato": "2024-2025",
+    "affidabilita": "alta"
+   },
+   {
+    "segmento": "inverter solari (Europa)",
+    "dato": "aziende con sede nell'UE circa 21% del mercato europeo nel 2023 (il resto in gran parte cinese); Huawei primo negli inverter di stringa nel 2025 secondo dati di distribuzione; stime correnti 70-80% di origine cinese (stime di parte, non verificate)",
+    "fonte": "SolarPower Europe, Inverters 2.0 (2023); PV Tech; PV Europe",
+    "link": "https://www.pv-tech.org/lawmakers-call-for-eu-wide-chinese-inverter-restrictions/",
+    "data_dato": "2023-2025",
+    "affidabilita": "media"
+   },
+   {
+    "segmento": "controller refrigerazione (caso frigoriferi)",
+    "dato": "colpiti controller Danfoss (DK), Copeland (USA) e Dixell (gruppo Copeland), soprattutto modelli vecchi non piu' aggiornati",
+    "fonte": "ANSSI/CERT-FR via Reuters e SentinelOne",
+    "link": "https://www.thestar.com.my/tech/tech-news/2026/10/14/copeland-dixell-refrigeration-systems-also-hacked-french-cybersecurity-agency-says",
+    "data_dato": "2026-10",
+    "affidabilita": "alta"
+   }
+  ],
+  "tecnologie": [
+   {
+    "tecnologia": "turbine eoliche onshore",
+    "esposizione": "media",
+    "perche": "ogni turbina e' telecontrollata dal produttore o dal manutentore (SCADA di flotta); molte usano collegamenti 4G o satellitari; il controllore di sicurezza locale tiene la turbina in sicurezza anche senza rete",
+    "precedenti": [
+     "CE-2022-KASAT",
+     "CE-2022-NORDEX",
+     "CE-2022-DWT",
+     "CE-2025-PL"
+    ],
+    "effetto_tipico": "perdita di visibilita' e di telecontrollo, raramente perdita di produzione"
+   },
+   {
+    "tecnologia": "turbine eoliche offshore",
+    "esposizione": "media",
+    "perche": "parchi grandi (GW) con pochi punti di controllo; accesso fisico difficile, quindi forte dipendenza da accesso remoto e collegamenti in fibra/radio verso terra; meno operatori, piu' maturi e sotto NIS2",
+    "precedenti": [],
+    "effetto_tipico": "nessun attacco cyber riuscito a un parco offshore europeo noto al 9-11-2026"
+   },
+   {
+    "tecnologia": "sottostazioni offshore e convertitori HVDC",
+    "esposizione": "alta per impatto, bassa per probabilita'",
+    "perche": "concentrano la potenza di uno o piu' parchi; un'interruzione toglie centinaia di MW o GW insieme; protezioni elettriche locali indipendenti limitano l'effetto",
+    "precedenti": [
+     "CE-2016-UA",
+     "CE-2022-UA-IND2"
+    ],
+    "effetto_tipico": "perdita improvvisa di grande capacita' (evento di sistema)"
+   },
+   {
+    "tecnologia": "inverter solari e batterie domestiche",
+    "esposizione": "alta",
+    "perche": "milioni di dispositivi piccoli, spesso collegati al cloud del produttore che puo' cambiarne parametri o spegnerli; quota cinese elevata; stessa logica dei 'frigoriferi'",
+    "precedenti": [
+     "CE-2024-DEYE",
+     "CE-2025-INVERTER"
+    ],
+    "effetto_tipico": "spegnimento o variazione simultanea di molta potenza distribuita"
+   },
+   {
+    "tecnologia": "SCADA e accesso remoto dei produttori e manutentori",
+    "esposizione": "alta",
+    "perche": "un solo fornitore vede migliaia di macchine di clienti diversi: attaccare lui equivale ad attaccare molti impianti",
+    "precedenti": [
+     "CE-2021-VESTAS",
+     "CE-2022-NORDEX",
+     "CE-2022-DWT"
+    ],
+    "effetto_tipico": "telecontrollo staccato per precauzione"
+   },
+   {
+    "tecnologia": "collegamenti satellitari e 4G/5G",
+    "esposizione": "media",
+    "perche": "servizi di terzi condivisi con utenti civili; un attacco al fornitore colpisce tutti insieme",
+    "precedenti": [
+     "CE-2022-KASAT"
+    ],
+    "effetto_tipico": "cecita' operativa temporanea"
+   },
+   {
+    "tecnologia": "cloud dei fornitori",
+    "esposizione": "alta",
+    "perche": "punto unico di comando per dispositivi in molti Paesi; dipende da politica, aggiornamenti e sicurezza del fornitore",
+    "precedenti": [
+     "CE-2024-DEYE",
+     "CE-2026-FR-FRIGO"
+    ],
+    "effetto_tipico": "comando sbagliato replicato su grande scala"
+   },
+   {
+    "tecnologia": "aggregatori di flessibilita' (impianti virtuali)",
+    "esposizione": "media-alta",
+    "perche": "comandano insieme batterie, pompe di calore, colonnine e inverter per vendere flessibilita' alla rete; l'RDI olandese avverte che un aggiornamento difettoso o un attacco alle piattaforme puo' spostare abbastanza potenza da toccare il sistema",
+    "precedenti": [],
+    "effetto_tipico": "salto di carico o di produzione coordinato"
+   },
+   {
+    "tecnologia": "contatori e dispositivi domestici che spostano la domanda (load altering attacks)",
+    "esposizione": "media (scenario studiato, nessun caso reale)",
+    "perche": "con migliaia di dispositivi ad alta potenza accesi/spenti insieme si altera la frequenza; le simulazioni mostrano rischi, studi successivi indicano che le protezioni reali assorbono molti casi",
+    "precedenti": [],
+    "effetto_tipico": "oscillazioni di frequenza, distacchi di carico, prezzi alterati"
+   },
+   {
+    "tecnologia": "controller della refrigerazione e impianti tecnici di porti e magazzini",
+    "esposizione": "alta (dimostrata)",
+    "perche": "pannelli raggiungibili da Internet, modelli vecchi senza aggiornamenti, manutenzione da remoto",
+    "precedenti": [
+     "CE-2026-FR-FRIGO",
+     "CE-2026-NL-FRIGO",
+     "CE-2026-BE-FRIGO"
+    ],
+    "effetto_tipico": "danni fisici alla merce, perdite economiche"
+   }
+  ],
+  "studi_load_altering": [
+   {
+    "titolo": "Distributed Internet-Based Load Altering Attacks Against Smart Power Grids",
+    "autori": "A.-H. Mohsenian-Rad, A. Leon-Garcia",
+    "sede": "IEEE Transactions on Smart Grid",
+    "anno": 2011,
+    "sintesi": "prima formalizzazione degli attacchi che alterano il carico tramite dispositivi controllabili via Internet"
+   },
+   {
+    "titolo": "Grid Shock: Coordinated Load-Changing Attacks on Power Grids",
+    "autori": "A. Dabrowski, J. Ullrich, E. Weippl",
+    "sede": "ACSAC 2017",
+    "anno": 2017,
+    "sintesi": "una botnet di computer e dispositivi comuni puo' variare il carico in modo sincronizzato; valuta l'effetto sulla frequenza della rete europea"
+   },
+   {
+    "titolo": "Dynamic Load Altering Attacks Against Power System Stability: Attack Models and Protection Schemes",
+    "autori": "S. Amini, F. Pasqualetti, H. Mohsenian-Rad",
+    "sede": "IEEE Transactions on Smart Grid",
+    "anno": 2018,
+    "sintesi": "attacchi dinamici che seguono la frequenza della rete e possibili schemi di protezione"
+   },
+   {
+    "titolo": "BlackIoT: IoT Botnet of High Wattage Devices Can Disrupt the Power Grid",
+    "autori": "S. Soltan, P. Mittal, H. V. Poor",
+    "sede": "USENIX Security 2018",
+    "anno": 2018,
+    "link": "https://www.usenix.org/conference/usenixsecurity18/presentation/soltan",
+    "sintesi": "attacchi MadIoT: in simulazione condizionatori e scaldabagno controllati da una botnet possono causare blackout locali o estesi"
+   },
+   {
+    "titolo": "Not Everything is Dark and Gloomy: Power Grid Protections Against IoT Demand Attacks",
+    "autori": "B. Huang, A. A. Cardenas, R. Baldick",
+    "sede": "USENIX Security 2019",
+    "anno": 2019,
+    "sintesi": "con le protezioni reali della rete gli effetti sono molto piu' contenuti; il rischio resta, ma e' minore di quanto stimato"
+   }
+  ],
+  "concentrazioni_offshore": [
+   {
+    "nome": "Hornsea 1 e 2",
+    "paese": "GB",
+    "lat": 53.9,
+    "lon": 1.75,
+    "mw": 2604,
+    "stato": "in esercizio",
+    "nota": "1.218 + 1.386 MW"
+   },
+   {
+    "nome": "Dogger Bank A, B, C",
+    "paese": "GB",
+    "lat": 54.75,
+    "lon": 1.9,
+    "mw": 3600,
+    "stato": "in costruzione / esercizio parziale",
+    "nota": "capacita' a regime"
+   },
+   {
+    "nome": "Borssele 1-5",
+    "paese": "NL",
+    "lat": 51.7,
+    "lon": 3.0,
+    "mw": 1500,
+    "stato": "in esercizio",
+    "nota": "valore arrotondato"
+   },
+   {
+    "nome": "Hollandse Kust Zuid",
+    "paese": "NL",
+    "lat": 52.3,
+    "lon": 4.15,
+    "mw": 1500,
+    "stato": "in esercizio",
+    "nota": ""
+   },
+   {
+    "nome": "Hollandse Kust Noord",
+    "paese": "NL",
+    "lat": 52.7,
+    "lon": 4.25,
+    "mw": 759,
+    "stato": "in esercizio",
+    "nota": ""
+   },
+   {
+    "nome": "Gemini",
+    "paese": "NL",
+    "lat": 54.04,
+    "lon": 5.96,
+    "mw": 600,
+    "stato": "in esercizio",
+    "nota": ""
+   },
+   {
+    "nome": "Horns Rev 1, 2, 3",
+    "paese": "DK",
+    "lat": 55.55,
+    "lon": 7.75,
+    "mw": 776,
+    "stato": "in esercizio",
+    "nota": "160 + 209 + 407 MW"
+   },
+   {
+    "nome": "Kriegers Flak (DK)",
+    "paese": "DK",
+    "lat": 55.0,
+    "lon": 12.95,
+    "mw": 604,
+    "stato": "in esercizio",
+    "nota": "collegato anche alla rete tedesca"
+   },
+   {
+    "nome": "Arcadis Ost 1",
+    "paese": "DE",
+    "lat": 54.83,
+    "lon": 13.6,
+    "mw": 257,
+    "stato": "in esercizio",
+    "nota": ""
+   },
+   {
+    "nome": "Baltic Power",
+    "paese": "PL",
+    "lat": 54.9,
+    "lon": 17.75,
+    "mw": 1140,
+    "stato": "in costruzione / prima energia",
+    "nota": "primo grande parco offshore polacco"
+   }
+  ],
+  "nota_concentrazioni": "Capacita' arrotondate e coordinate indicative del centro del parco (affidabilita media). Servono solo a mostrare dove si concentra la capacita'. Se esiste docs/data/offshore-nord.json, raccogli.py ne riassume i totali per paese e quel file prevale."
+ },
+ "regole": [
+  {
+   "nome": "Direttiva NIS2 (UE) 2022/2555",
+   "stato": "recepimento dovuto entro il 17-10-2024; Paesi Bassi: Cyberbeveiligingswet in vigore dal 15-08-2026 (circa 8.000 organizzazioni); Danimarca: legge NIS2 in vigore dal 1-07-2025",
+   "cosa_fa": "obblighi di gestione del rischio, notifica incidenti entro 24/72 ore, responsabilita' dei vertici, sicurezza della catena di fornitura; copre energia (incluse rinnovabili oltre soglia) e porti",
+   "link": "https://www.rijksoverheid.nl/actueel/nieuws/2026/08/15/cyberbeveiligingswet-en-wet-weerbaarheid-kritieke-entiteiten-vanaf-vandaag-van-kracht",
+   "affidabilita": "alta",
+   "nota": "data danese da verificare sulla Gazzetta danese"
+  },
+  {
+   "nome": "Direttiva CER (UE) 2022/2557 sulla resilienza delle entita' critiche",
+   "stato": "Paesi Bassi: Wet weerbaarheid kritieke entiteiten in vigore dal 15-08-2026",
+   "cosa_fa": "resilienza fisica e organizzativa (incluso il sabotaggio) degli operatori critici",
+   "link": "https://www.rijksoverheid.nl/actueel/nieuws/2026/08/15/cyberbeveiligingswet-en-wet-weerbaarheid-kritieke-entiteiten-vanaf-vandaag-van-kracht",
+   "affidabilita": "alta"
+  },
+  {
+   "nome": "Cyber Resilience Act, Regolamento (UE) 2024/2847",
+   "stato": "in vigore dal 10-12-2024; obblighi di segnalazione delle vulnerabilita' sfruttate dall'11-09-2026; piena applicazione dall'11-12-2027",
+   "cosa_fa": "requisiti di sicurezza per prodotti con elementi digitali (inverter, controller, dispositivi IoT): niente password predefinite deboli, aggiornamenti di sicurezza per il periodo di supporto, gestione delle vulnerabilita'",
+   "link": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj",
+   "affidabilita": "alta"
+  },
+  {
+   "nome": "Network Code on Cybersecurity per l'elettricita', Regolamento delegato (UE) 2024/1366",
+   "stato": "adottato l'11-03-2024, in vigore dal 13-06-2024; attuazione a fasi con ENTSO-E, EU DSO Entity e ACER",
+   "cosa_fa": "valutazioni del rischio cyber per i flussi transfrontalieri di elettricita', individuazione delle entita' ad alto impatto e critico, controlli minimi e verifiche dei fornitori",
+   "link": "https://eur-lex.europa.eu/eli/reg_del/2024/1366/oj",
+   "affidabilita": "alta"
+  },
+  {
+   "nome": "Direttiva apparecchiature radio, atto delegato (UE) 2022/30",
+   "stato": "obbligatorio dal 1-08-2025",
+   "cosa_fa": "requisiti di sicurezza per dispositivi radio connessi (molti inverter, gateway, dispositivi IoT)",
+   "link": "https://eur-lex.europa.eu/eli/reg_del/2022/30/oj",
+   "affidabilita": "alta"
+  },
+  {
+   "nome": "Lituania: divieto di accesso remoto da Paesi a rischio",
+   "stato": "approvato il 12-11-2024; dal 2026 audit e possibilita' per i gestori di rete di disconnettere gli impianti non conformi",
+   "cosa_fa": "impedisce a societa' di Paesi che minacciano la sicurezza nazionale (in pratica la Cina) il controllo remoto di solare, eolico e batterie sopra 100 kW",
+   "link": "https://www.lrt.lt/en/news-in-english/19/2411602/lithuania-passes-law-to-block-chinese-access-to-solar-and-wind-farm-systems",
+   "affidabilita": "alta"
+  },
+  {
+   "nome": "Commissione UE: niente fondi UE per progetti con inverter di fornitori ad alto rischio",
+   "stato": "orientamenti di aprile 2026 (Cina, Russia, Iran, Corea del Nord come Paesi ad alto rischio); proposta di revisione del Cybersecurity Act di gennaio 2026 per escludere fornitori ad alto rischio dal mercato",
+   "cosa_fa": "primo passo verso esclusioni di mercato; Huawei parla di discriminazione per origine",
+   "link": "https://www.pv-magazine.com/2026/01/20/eu-to-ban-chinese-inverters-commission-proposal-in-cybersecurity-mulls-high-risk-vendors-list",
+   "affidabilita": "media",
+   "nota": "date di applicazione diverse tra le fonti: verificare il testo ufficiale"
+  },
+  {
+   "nome": "Settore marittimo: IMO MSC.428(98) e regole IACS UR E26/E27",
+   "stato": "gestione del rischio cyber nei sistemi di sicurezza delle navi dal 2021; nuove navi con requisiti IACS dal luglio 2024",
+   "cosa_fa": "rilevante per navi di installazione e manutenzione (SOV, CTV) che si collegano ai parchi offshore",
+   "link": "https://www.imo.org/en/OurWork/Security/Pages/Cyber-security.aspx",
+   "affidabilita": "alta"
+  }
+ ],
+ "buone_pratiche": [
+  "Togliere da Internet i pannelli di controllo (HMI, controller): e' la lezione comune di frigoriferi, dighe e Polonia.",
+  "Accesso remoto di produttori e manutentori solo tramite punti controllati, con autenticazione forte, a tempo e registrato.",
+  "Segmentazione tra rete aziendale (IT), rete di controllo (OT) e reti dei fornitori; zone e condotti secondo IEC 62443.",
+  "Monitoraggio passivo delle reti OT per notare comandi anomali (es. molti dispositivi cambiati insieme di notte).",
+  "Inventario degli apparati, inclusi modelli vecchi non piu' aggiornati dal produttore, e piano di sostituzione.",
+  "Clausole contrattuali con i fornitori: notifica incidenti, aggiornamenti, dove stanno i dati e da dove si accede.",
+  "Prove di funzionamento manuale e 'island mode': saper produrre e mettere in sicurezza senza telecontrollo.",
+  "Scambio di informazioni con CERT nazionali e settoriali (SektorCERT in Danimarca, Z-CERT/NCSC nei Paesi Bassi, CERT Polska)."
+ ]
+}

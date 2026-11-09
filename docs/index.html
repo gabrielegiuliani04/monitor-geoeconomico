@@ -1883,7 +1883,7 @@ function wire() {
 /* ---------- Strati aggiunti: infrastrutture, flussi, navi, terminale (prezzi, agenda, stretti) ---------- */
 const XF = { ferrovie: 'data/ferrovie.json', cavi: 'data/cavi.json', caviInc: 'data/cavi-incidenti.json', gnl: 'data/terminali-gnl.json', gasit: 'data/gas-italia.json',
   navi: 'data/navi.json', pw: 'data/portwatch.json', sd: 'data/stretti-dettaglio.json', prezzi: 'data/prezzi.json', cal: 'data/calendario.json',
-  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json' };
+  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json' };
 const X = { lines: {}, pts: {}, data: {} };
 const XLAYERS = {   // layer -> colour token, label
   xrail: ['rail', 'Ferrovie'], xcable: ['cable', 'Cavi sottomarini'], xpower: ['power', 'Rete elettrica'], xlng: ['lng', 'Terminali GNL'],
@@ -2168,6 +2168,13 @@ function renderTerminal() {
     const U = X.data.ua, R = U.riepilogo || {}; $('trm-note').textContent = 'Missili e droni lanciati dalla Russia e abbattuti, dai comunicati dell’Aeronautica ucraina (dataset di P. Ivaniuk, CC BY-NC-SA). Dal ' + R.primo_giorno + ' al ' + R.ultimo_giorno + '.';
     const p1 = el('p', 'trm-evd'); p1.append(el('b', null, itNum(R.lanciati_totali) + ' lanciati, ' + itNum(R.abbattuti_totali) + ' abbattuti (' + itNum(R.tasso_abbattimento_pct) + '%)'), '. Il tasso di abbattimento non è confrontabile prima e dopo agosto 2025: è cambiato il modo di contare i droni persi per guerra elettronica.'); body.appendChild(p1);
     body.appendChild(el('h3', 'mkt-grp', 'Lanciati al mese')); body.appendChild(xBars((U.mensile && U.mensile.totale) || []));
+    const FS = X.data.fs; if (FS && FS.serie_km2) { const last = FS.serie_km2[FS.serie_km2.length - 1], ist = FS.istantanee[FS.istantanee.length - 1];
+      body.appendChild(el('h3', 'mkt-grp', 'Territorio ucraino controllato dalla Russia, km²'));
+      const p2 = el('p', 'trm-evd'); p2.append(el('b', null, itNum(last[1]) + ' km² al ' + last[0]), (ist && ist.pct_ucraina ? ' (' + itNum(ist.pct_ucraina) + '% dell’Ucraina)' : '') + '. Prima dell’invasione: ' + itNum(FS.serie_km2[0][1]) + ' km². Fonti: ISW/CTP per febbraio–marzo 2022, poi DeepStateMap (aree unite e semplificate).'); body.appendChild(p2);
+      body.appendChild(xWeekly(FS.serie_km2, 1, 'Territorio controllato dalla Russia'));
+      if (Array.isArray(FS.per_anno)) { const t = FS.per_anno.map(v => v.anno + ': ' + (v.netto_km2 > 0 ? '+' : '') + itNum(v.netto_km2) + ' km²').join(' · '); body.appendChild(el('p', 'trm-evd', 'Saldo per anno: ' + t)); }
+      body.appendChild(el('h3', 'mkt-grp', 'Momenti chiave'));
+      for (const m of (FS.momenti_chiave || []).slice().reverse()) { const r = el('div', 'trm-ev'); const t = el('p', 'trm-evt'); t.append(el('span', 'mono', m.data), ' ', m.titolo); r.appendChild(t); if (m.descrizione) r.appendChild(el('p', 'trm-evd', m.descrizione)); if (m.link) { const a = el('a', 'trm-src', m.fonte || 'fonte'); a.href = m.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); } body.appendChild(r); } }
     if (U.ondate_rete_ucraina) { body.appendChild(el('h3', 'mkt-grp', 'Ondate contro la rete elettrica ucraina'));
       for (const o of U.ondate_rete_ucraina.slice().reverse()) { const r = el('div', 'trm-ev hi'); const t = el('p', 'trm-evt'); t.append(el('span', 'mono', o.data), ' ', o.nome); r.appendChild(t); if (o.danni_dichiarati) r.appendChild(el('p', 'trm-evd', o.danni_dichiarati)); if (o.link) { const a = el('a', 'trm-src', o.fonte || 'fonte'); a.href = o.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); } body.appendChild(r); } }
     const b2 = el('button', 'chip', L.xua ? 'Attacchi in Russia già sulla mappa' : 'Mostra sulla mappa gli attacchi ucraini in Russia (' + (X.pts.xua || []).length + ')'); b2.type = 'button'; b2.addEventListener('click', () => { L.xua = true; $('lyr-xua').checked = true; refilter(); fitView([22, 42, 60, 62], true); }); body.appendChild(b2);

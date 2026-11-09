@@ -516,7 +516,8 @@ def main():
                  "(proiezione equivalente di Lambert); le geometrie salvate sono semplificate "
                  f"({TOL_RU} km le aree russe, {TOL_GRIGIA} km la zona grigia; parti sotto {MIN_PARTE} km² "
                  "tolte) con coordinate a 3 decimali. g = parti esterne [[lon,lat],...], buchi = anelli interni "
-                 "(riempimento pari-dispari). km2_var = differenza con l'istantanea precedente; dove "
+                 "(riempimento pari-dispari; dopo l'arrotondamento qualche anello può autointersecarsi). km2_var = differenza con "
+                 "l'istantanea precedente (l'istantanea del 1° del mese chiude il mese prima); dove "
                  "cambio_fonte=true la differenza mescola due mappe diverse. pct_ucraina su 603.628 km². "
                  "Mappe OSINT: valutazioni, non dati ufficiali."),
         "istantanee": ist,
