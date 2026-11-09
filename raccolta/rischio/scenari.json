@@ -1,0 +1,319 @@
+{
+ "aggiornato": "2026-11-09",
+ "orizzonte": "3 mesi: 9 novembre 2026 – 9 febbraio 2027",
+ "tipo": "valutazione",
+ "nota": "Scenari dell'osservatorio: sono VALUTAZIONI, non previsioni con probabilità calcolate. Servono a sapere che cosa guardare. Ogni scenario ha un innesco, gli effetti attesi lungo la catena (passaggio → flussi → noli → prezzi → chi è esposto) e i segnali misurabili che dicono se si sta avverando. I segnali sono letti ogni giorno da raccolta/rischio/calcola.py (campo 'scenari' di docs/data/rischio.json): la quota di segnali veri NON è una probabilità. I numeri citati hanno la loro fonte in 'fonti_numeri'. Gli scenari di Hormuz riprendono quelli del report di novembre (report/hormuz-mar-rosso-2026-11.md, §7).",
+ "metriche": {
+  "transiti.<passaggio>.media7": "navi al giorno, media 7 giorni, IMF PortWatch (portwatch.json); passaggi: hormuz, bab, suez, capo, danesi",
+  "transiti.<passaggio>.var_anno": "variazione % della media 7 giorni sugli stessi 7 giorni di un anno prima",
+  "prezzo.brent / prezzo.ttf": "ultima chiusura (prezzi.json, Yahoo Finance)",
+  "noli.wci / noli.wci.genova / noli.premio_genova_pct": "Drewry WCI composito e Shanghai–Genova in USD/FEU; premio % di Genova su Rotterdam (noli.json)",
+  "gas.mazara.media7": "flusso TransMed a Mazara del Vallo, GWh/giorno, media 7 giorni (gas-italia.json, ENTSOG)",
+  "scorte.<id>.scarto5": "scarto % degli stoccaggi dalla media 5 anni dello stesso giorno (scorte.json, GIE AGSI+)",
+  "eventi.<area>.*": "numero di eventi (affidabilità alta o media) negli ultimi 30 giorni entro 150 km dall'area (eventi.json, ibrido.json, ucraina-storico.json)",
+  "cavi.<area>.12m / .30g": "incidenti a cavi e condotte entro 300 km negli ultimi 12 mesi o 30 giorni (cavi-incidenti.json)",
+  "navi.flotta_ombra_baltico": "petroliere sanzionate o probabile flotta ombra nella fotografia AIS del giorno (navi.json)"
+ },
+ "unita": [
+  {
+   "unita": "hormuz",
+   "nome": "Stretto di Hormuz",
+   "punto_di_partenza": "Chiuso di fatto dal 2 marzo 2026: 4,4 navi al giorno nella settimana al 1° novembre contro 85,5 di media nel 2025 (PortWatch); forza maggiore a Ras Laffan almeno fino a fine dicembre; il 9 novembre il premier del Qatar porta a Washington un piano iraniano di riapertura.",
+   "scenari": [
+    {
+     "id": "hormuz-base",
+     "tipo": "base",
+     "nome": "Stallo armato",
+     "innesco": "Nessun accordo: continuano attacchi sporadici alle petroliere e il blocco USA dei porti iraniani. Passa solo chi accetta il rischio e naviga con l'AIS spento.",
+     "effetti": {
+      "passaggio": "PortWatch sotto 10 navi al giorno; Lloyd's List 100–130 transiti a settimana contando le navi al buio.",
+      "flussi": "Export del Golfo al 60–80% del normale grazie agli oleodotti verso Yanbu e Fujairah; GNL qatarino fermo.",
+      "noli": "War risk ancora fino al 3% del valore della nave; noli container stabili intorno a 4.400 $/FEU.",
+      "prezzi": "Brent 90–115 $/barile; TTF 75–105 €/MWh con picchi nelle ondate di freddo.",
+      "esposti": "Asia sul petrolio; Europa sul prezzo del gas con stoccaggi bassi (Germania e Paesi Bassi); Italia coperta sui volumi ma non sul prezzo."
+     },
+     "segnali": [
+      {"descrizione": "Hormuz sotto 10 navi al giorno (PortWatch, media 7 gg)", "metrica": "transiti.hormuz.media7", "operatore": "<", "soglia": 10},
+      {"descrizione": "Brent tra 90 e 115 $", "metrica": "prezzo.brent", "operatore": "tra", "soglia": [90, 115]},
+      {"descrizione": "TTF tra 75 e 105 €/MWh", "metrica": "prezzo.ttf", "operatore": "tra", "soglia": [75, 105]},
+      {"descrizione": "Attacchi o incidenti entro 150 km da Hormuz negli ultimi 30 giorni (almeno 1)", "metrica": "eventi.hormuz.30g", "operatore": ">=", "soglia": 1}
+     ],
+     "valutazione": "È il punto di partenza: descrive gli ultimi quattro mesi."
+    },
+    {
+     "id": "hormuz-peggiorativo",
+     "tipo": "peggiorativo",
+     "nome": "Escalation e chiusura anche del Mar Rosso",
+     "innesco": "Un attacco riuscito a una petroliera saudita a Bab el-Mandeb o a Yanbu, o un nuovo stop dell'oleodotto Est-Ovest (come l'11–13 settembre 2026).",
+     "effetti": {
+      "passaggio": "Hormuz sotto 5 navi al giorno; Bab el-Mandeb sotto 20; Suez sotto 35.",
+      "flussi": "Il greggio del Golfo perde l'unica uscita di massa rimasta (5,5–7 mb/g di aggiramento).",
+      "noli": "Nuovo rialzo dei noli container, Shanghai–Genova sopra 5.000 $/FEU; ritorno al Capo.",
+      "prezzi": "Brent sopra 118,35 $ (massima chiusura 2026) e TTF sopra 103,94 €/MWh (massimo 2026).",
+      "esposti": "Italia su gasolio e container; Mazara e TAP decisivi per il gas; nuovo rialzo BCE e BoE nel 1° trimestre 2027 più probabile."
+     },
+     "segnali": [
+      {"descrizione": "Hormuz sotto 5 navi al giorno", "metrica": "transiti.hormuz.media7", "operatore": "<", "soglia": 5},
+      {"descrizione": "Bab el-Mandeb sotto 20 navi al giorno", "metrica": "transiti.bab.media7", "operatore": "<", "soglia": 20},
+      {"descrizione": "Suez sotto 35 navi al giorno", "metrica": "transiti.suez.media7", "operatore": "<", "soglia": 35},
+      {"descrizione": "Brent sopra 118,35 $", "metrica": "prezzo.brent", "operatore": ">", "soglia": 118.35},
+      {"descrizione": "TTF sopra 103,94 €/MWh", "metrica": "prezzo.ttf", "operatore": ">", "soglia": 103.94},
+      {"descrizione": "Shanghai–Genova sopra 5.000 $/FEU", "metrica": "noli.wci.genova", "operatore": ">", "soglia": 5000}
+     ],
+     "valutazione": "Il meno probabile ma il più costoso: toglierebbe l'ultima uscita di massa al greggio del Golfo."
+    },
+    {
+     "id": "hormuz-migliorativo",
+     "tipo": "migliorativo",
+     "nome": "Riapertura negoziata",
+     "innesco": "Il piano mediato dal Qatar porta a una riapertura graduale e alla sospensione del blocco USA, come a giugno 2026.",
+     "effetti": {
+      "passaggio": "PortWatch sopra 20 navi al giorno per due settimane di fila (il 24 giugno si arrivò a 51 in un giorno).",
+      "flussi": "Ripresa dell'export di greggio; il GNL qatarino resta limitato dai due treni danneggiati di Ras Laffan (12,8 Mt/a).",
+      "noli": "WCI sotto 4.000 $/FEU; premi war risk in calo.",
+      "prezzi": "Brent sotto 85 $ (a giugno toccò 71,99); TTF sotto 70 €/MWh ma frenato dalle scorte basse.",
+      "esposti": "Bollette italiane in calo con ritardo; meno pressione sugli stoccaggi europei."
+     },
+     "segnali": [
+      {"descrizione": "Hormuz sopra 20 navi al giorno", "metrica": "transiti.hormuz.media7", "operatore": ">", "soglia": 20},
+      {"descrizione": "Brent sotto 85 $", "metrica": "prezzo.brent", "operatore": "<", "soglia": 85},
+      {"descrizione": "TTF sotto 70 €/MWh", "metrica": "prezzo.ttf", "operatore": "<", "soglia": 70},
+      {"descrizione": "WCI composito sotto 4.000 $/FEU", "metrica": "noli.wci", "operatore": "<", "soglia": 4000}
+     ],
+     "valutazione": "Ha ora una strada concreta, ma la tregua di aprile e il memorandum di giugno sono falliti: un annuncio non basta, conta PortWatch per due settimane."
+    }
+   ],
+   "fonti_numeri": [
+    {"numero": "4,4 navi/g, 85,5 nel 2025, 51 il 24 giugno", "fonte": "IMF PortWatch", "file": "docs/data/portwatch.json"},
+    {"numero": "Brent 118,35 (30/3) e 71,99 (25/6); TTF 103,94 (29/10)", "fonte": "Yahoo Finance", "file": "docs/data/prezzi.json"},
+    {"numero": "WCI 4.389 $/FEU, Shanghai–Genova 4.166 (5/11)", "fonte": "Drewry", "file": "docs/data/noli.json"},
+    {"numero": "export del Golfo al 60–80%", "fonte": "Reuters, ripreso nel calendario", "file": "docs/data/calendario.json"},
+    {"numero": "war risk fino al 3%; aggiramento 5,5–7 mb/g; Ras Laffan 12,8 Mt/a danneggiati", "fonte": "Howden Re; IEA; Global LNG Hub", "file": "report/hormuz-mar-rosso-2026-11.md"},
+    {"numero": "Lloyd's List 100–130 transiti a settimana", "fonte": "Lloyd's List Intelligence, brief del 5 novembre 2026", "link": "https://www.lloydslistintelligence.com/resources/blog/strait-of-hormuz-brief-5-november-2026"}
+   ]
+  },
+  {
+   "unita": "mar-rosso-container",
+   "nome": "Mar Rosso: rotta container Asia–Europa",
+   "punto_di_partenza": "Nessun attacco UKMTO nel Mar Rosso dal 24 agosto 2026; le portacontainer tornano: Alphaliner stima il 63% della capacità Estremo Oriente–Europa di nuovo sul Mar Rosso; Suez a 43 navi al giorno contro 76 nel 2023; gli Houthi dichiarano chiuso lo stretto alle sole navi legate all'Arabia Saudita.",
+   "scenari": [
+    {
+     "id": "mar-rosso-base",
+     "tipo": "base",
+     "nome": "Ritorno graduale sotto minaccia",
+     "innesco": "Nessun nuovo attacco a navi commerciali; la minaccia houthi resta mirata alle navi saudite e le compagnie continuano a tornare a Suez per gradi.",
+     "effetti": {
+      "passaggio": "Suez tra 40 e 50 navi al giorno; Bab el-Mandeb 25–35.",
+      "flussi": "Container Asia–Europa in maggioranza di nuovo dal Mar Rosso; petroliere saudite ridotte (21 transiti legati all'Arabia Saudita a ottobre).",
+      "noli": "Noli in lenta discesa per i viaggi più corti; premio di Genova su Rotterdam tra 5 e 20%.",
+      "prezzi": "Effetto modesto su Brent; pressione al ribasso sui noli nel 2027.",
+      "esposti": "Porti italiani (Gioia Tauro, Genova, Trieste) recuperano traffico diretto."
+     },
+     "segnali": [
+      {"descrizione": "Suez tra 40 e 50 navi al giorno", "metrica": "transiti.suez.media7", "operatore": "tra", "soglia": [40, 50]},
+      {"descrizione": "Bab el-Mandeb tra 25 e 35 navi al giorno", "metrica": "transiti.bab.media7", "operatore": "tra", "soglia": [25, 35]},
+      {"descrizione": "Nessun attacco a navi nel Mar Rosso e Golfo di Aden negli ultimi 30 giorni", "metrica": "eventi.mar_rosso.attacchi_navi_30g", "operatore": "<", "soglia": 1},
+      {"descrizione": "Premio Genova su Rotterdam tra 5 e 20%", "metrica": "noli.premio_genova_pct", "operatore": "tra", "soglia": [5, 20]}
+     ],
+     "valutazione": "Coerente con i dati di ottobre e novembre 2026."
+    },
+    {
+     "id": "mar-rosso-peggiorativo",
+     "tipo": "peggiorativo",
+     "nome": "Ripresa degli attacchi houthi alle navi",
+     "innesco": "Primo avviso UKMTO di attacco nel Mar Rosso dal 24 agosto 2026, anche contro navi non saudite; oppure un'escalation saudita–houthi dopo gli attacchi rivendicati ad Abqaiq e Riyadh dell'8 novembre.",
+     "effetti": {
+      "passaggio": "Bab el-Mandeb sotto 20 navi al giorno, Suez sotto 35; il Capo torna a crescere.",
+      "flussi": "Le compagnie tornano al Capo: 14–24 giorni in più tra Asia ed Europa; rischio di nuovi danni ai cavi (come la Rubymar nel 2024).",
+      "noli": "Shanghai–Genova sopra 5.000 $/FEU; premio mediterraneo oltre il 20%.",
+      "prezzi": "Rialzo dei noli e dei tempi di consegna; effetto sul Brent tramite il greggio saudita da Yanbu.",
+      "esposti": "Italia più del Nord Europa: le navi dal Capo entrano da Gibilterra e scaricano prima a Tanger Med, Algeciras e Rotterdam."
+     },
+     "segnali": [
+      {"descrizione": "Almeno un attacco a navi nel Mar Rosso o Golfo di Aden negli ultimi 30 giorni", "metrica": "eventi.mar_rosso.attacchi_navi_30g", "operatore": ">=", "soglia": 1},
+      {"descrizione": "Bab el-Mandeb sotto 20 navi al giorno", "metrica": "transiti.bab.media7", "operatore": "<", "soglia": 20},
+      {"descrizione": "Suez sotto 35 navi al giorno", "metrica": "transiti.suez.media7", "operatore": "<", "soglia": 35},
+      {"descrizione": "Shanghai–Genova sopra 5.000 $/FEU", "metrica": "noli.wci.genova", "operatore": ">", "soglia": 5000},
+      {"descrizione": "Premio Genova su Rotterdam oltre il 20%", "metrica": "noli.premio_genova_pct", "operatore": ">", "soglia": 20}
+     ],
+     "valutazione": "Possibile: la minaccia è dichiarata e il conflitto saudita–houthi si è riacceso l'8 novembre."
+    },
+    {
+     "id": "mar-rosso-migliorativo",
+     "tipo": "migliorativo",
+     "nome": "Ritorno completo entro il 1° trimestre 2027",
+     "innesco": "Nessun attacco per altri tre mesi e de-escalation regionale: le grandi alleanze riportano tutti i servizi Asia–Europa a Suez (previsione Linerlytica).",
+     "effetti": {
+      "passaggio": "Suez oltre 50 navi al giorno, Bab el-Mandeb oltre 35.",
+      "flussi": "Fine della rotta del Capo per i container; più capacità disponibile.",
+      "noli": "WCI sotto 4.000 $/FEU; premio di Genova su Rotterdam sotto il 5%.",
+      "prezzi": "Pressione al ribasso sui noli; meno costi per gli importatori europei.",
+      "esposti": "Recupero dei porti di transhipment italiani e dei ricavi del Canale di Suez."
+     },
+     "segnali": [
+      {"descrizione": "Suez sopra 50 navi al giorno", "metrica": "transiti.suez.media7", "operatore": ">", "soglia": 50},
+      {"descrizione": "Bab el-Mandeb sopra 35 navi al giorno", "metrica": "transiti.bab.media7", "operatore": ">", "soglia": 35},
+      {"descrizione": "WCI composito sotto 4.000 $/FEU", "metrica": "noli.wci", "operatore": "<", "soglia": 4000},
+      {"descrizione": "Premio Genova su Rotterdam sotto il 5%", "metrica": "noli.premio_genova_pct", "operatore": "<", "soglia": 5}
+     ],
+     "valutazione": "Plausibile se l'assenza di attacchi dura: è la tendenza delle ultime settimane."
+    }
+   ],
+   "fonti_numeri": [
+    {"numero": "Suez 43 navi/g (76 nel 2023); Bab el-Mandeb 27,3 (79,6 nel 2023)", "fonte": "IMF PortWatch", "file": "docs/data/portwatch.json"},
+    {"numero": "63% della capacità sul Mar Rosso; ritorno completo nel 1° trimestre 2027", "fonte": "Alphaliner e Linerlytica via Seatrade Maritime", "link": "https://www.seatrade-maritime.com/containers/full-suez-return-for-container-carriers-expected-by-q1-2027"},
+    {"numero": "nessun attacco dal 24 agosto; 21 transiti legati all'Arabia Saudita a ottobre", "fonte": "Lloyd's List Intelligence (29/10); S&P Global", "file": "report/hormuz-mar-rosso-2026-11.md"},
+    {"numero": "Shanghai–Genova 4.166 e Rotterdam 3.615 $/FEU (5/11)", "fonte": "Drewry WCI", "file": "docs/data/noli.json"},
+    {"numero": "Capo: circa 7.000 km e 14–24 giorni in più", "fonte": "stretti-dettaglio.json (alternative)", "file": "docs/data/stretti-dettaglio.json"},
+    {"numero": "cavi AAE-1, Seacom, EIG tagliati nel 2024 (ancora della Rubymar)", "fonte": "Kentik; DCD", "file": "docs/data/cavi-incidenti.json"}
+   ]
+  },
+  {
+   "unita": "baltico",
+   "nome": "Baltico: cavi, condotte ed elettrodotti",
+   "punto_di_partenza": "Ultimo danno a cavi il 31 dicembre 2025 (Elisa e Arelion, Helsinki–Tallinn); il 5 novembre 2026 il tribunale di Helsinki ha condannato il comandante della Fitburg, prima condanna del genere nel Baltico; la Danimarca rafforza le ispezioni sulle petroliere della flotta ombra; nella fotografia AIS del 9 novembre ci sono 45 petroliere sanzionate o della flotta ombra nel Baltico.",
+   "scenari": [
+    {
+     "id": "baltico-base",
+     "tipo": "base",
+     "nome": "Pressione ibrida senza danni gravi",
+     "innesco": "Continuano controlli sulla flotta ombra, sorvoli di droni e atti di sabotaggio a terra, ma nessun nuovo danno a infrastrutture sottomarine.",
+     "effetti": {
+      "passaggio": "Stretti danesi con traffico tra −30% e −10% su un anno per i controlli e le sanzioni.",
+      "flussi": "Elettricità e gas regolari; Estlink, Balticconnector e Baltic Pipe in esercizio.",
+      "noli": "Premi assicurativi più alti per le petroliere senza copertura occidentale.",
+      "prezzi": "Nessun effetto proprio sul TTF, che segue Hormuz e gli stoccaggi.",
+      "esposti": "Finlandia, Estonia, Danimarca: costi di sorveglianza; Germania e Paesi Bassi esposti al prezzo per gli stoccaggi bassi."
+     },
+     "segnali": [
+      {"descrizione": "Nessun incidente a cavi o condotte negli ultimi 30 giorni", "metrica": "cavi.baltico.30g", "operatore": "<", "soglia": 1},
+      {"descrizione": "Flotta ombra visibile tra 20 e 60 petroliere", "metrica": "navi.flotta_ombra_baltico", "operatore": "tra", "soglia": [20, 60]},
+      {"descrizione": "Stretti danesi tra −30% e −10% su un anno", "metrica": "transiti.danesi.var_anno", "operatore": "tra", "soglia": [-30, -10]}
+     ],
+     "valutazione": "È la situazione dell'ultimo anno."
+    },
+    {
+     "id": "baltico-peggiorativo",
+     "tipo": "peggiorativo",
+     "nome": "Nuovo taglio di cavi o condotte, o scontro sulla flotta ombra",
+     "innesco": "Un'ancora trascinata danneggia un elettrodotto o un gasdotto (come Balticconnector nel 2023 o Estlink 2 nel 2024); oppure il fermo di una petroliera ombra negli stretti danesi con risposta navale russa.",
+     "effetti": {
+      "passaggio": "Possibili restrizioni e scorte navali negli stretti danesi; traffico sotto −30%.",
+      "flussi": "Un collegamento fermo per mesi: Estlink 2 restò fuori circa 6 mesi, con almeno 60 milioni di euro di riparazioni.",
+      "noli": "Rialzo dei premi assicurativi nel Baltico.",
+      "prezzi": "Rialzo locale dell'elettricità (Finlandia, Baltici) e del gas regionale; TTF sensibile se tocca Baltic Pipe o Norvegia.",
+      "esposti": "Finlandia ed Estonia (elettricità), Polonia e Danimarca (Baltic Pipe), Paesi Bassi e Germania (stoccaggi bassi)."
+     },
+     "segnali": [
+      {"descrizione": "Almeno un incidente a cavi o condotte negli ultimi 30 giorni", "metrica": "cavi.baltico.30g", "operatore": ">=", "soglia": 1},
+      {"descrizione": "Almeno 3 eventi ibridi o attacchi nell'area negli ultimi 30 giorni", "metrica": "eventi.baltico.30g", "operatore": ">=", "soglia": 3},
+      {"descrizione": "Flotta ombra visibile oltre 60 petroliere", "metrica": "navi.flotta_ombra_baltico", "operatore": ">", "soglia": 60},
+      {"descrizione": "Stretti danesi sotto −30% su un anno", "metrica": "transiti.danesi.var_anno", "operatore": "<", "soglia": -30}
+     ],
+     "valutazione": "Gli incidenti si sono concentrati tra novembre e gennaio (2023, 2024, 2025): l'inverno è la stagione a rischio."
+    },
+    {
+     "id": "baltico-migliorativo",
+     "tipo": "migliorativo",
+     "nome": "Deterrenza efficace",
+     "innesco": "Condanne (Fitburg), pattugliamenti NATO e controlli danesi riducono la flotta ombra e gli incidenti.",
+     "effetti": {
+      "passaggio": "Stretti danesi vicini ai livelli di un anno prima.",
+      "flussi": "Nessun danno; meno petroliere senza assicurazione.",
+      "noli": "Premi stabili.",
+      "prezzi": "Nessun effetto.",
+      "esposti": "Rischio ambientale in calo per Danimarca e Svezia."
+     },
+     "segnali": [
+      {"descrizione": "Flotta ombra visibile sotto 20 petroliere", "metrica": "navi.flotta_ombra_baltico", "operatore": "<", "soglia": 20},
+      {"descrizione": "Nessun incidente a cavi o condotte negli ultimi 12 mesi", "metrica": "cavi.baltico.12m", "operatore": "<", "soglia": 1},
+      {"descrizione": "Stretti danesi sopra −10% su un anno", "metrica": "transiti.danesi.var_anno", "operatore": ">", "soglia": -10}
+     ],
+     "valutazione": "Poco probabile in tre mesi: la flotta ombra dipende dall'export russo, non dalla deterrenza."
+    }
+   ],
+   "fonti_numeri": [
+    {"numero": "incidenti 2023–2025 (Balticconnector, C-Lion1, BCS, Estlink 2, Elisa/Arelion)", "fonte": "cavi-incidenti.json (agente CAVI)", "file": "docs/data/cavi-incidenti.json"},
+    {"numero": "Estlink 2 fermo circa 6 mesi, almeno 60 milioni di euro", "fonte": "agente CAVI ed ELETTRICITÀ", "file": "report/agenti/cavi.md"},
+    {"numero": "condanna Fitburg, 5 novembre 2026", "fonte": "Euronews, Meduza (via agente CAVI)", "file": "report/agenti/cavi.md"},
+    {"numero": "45 petroliere sanzionate o flotta ombra nella fotografia AIS", "fonte": "Digitraffic, aisstream.io", "file": "docs/data/navi.json"},
+    {"numero": "Stretti danesi −20,5% su un anno (settimana al 1/11)", "fonte": "IMF PortWatch", "file": "docs/data/portwatch.json"},
+    {"numero": "4,9 mb/g; un terzo dell'export russo via mare", "fonte": "Anadolu/IEA-EIA; gCaptain", "file": "docs/data/stretti-dettaglio.json"},
+    {"numero": "stoccaggi Germania 58,9% e Paesi Bassi 63,5% l'8/11", "fonte": "GIE AGSI+", "file": "docs/data/scorte.json"}
+   ]
+  },
+  {
+   "unita": "transmed",
+   "nome": "TransMed Algeria–Tunisia–Italia",
+   "punto_di_partenza": "Il TransMed porta il 34,0% del gas entrato in Italia negli ultimi 12 mesi (220,5 TWh); l'8 novembre 630 GWh, media 30 giorni 652 GWh/g; a settembre 2026 il flusso è sceso a 11,3 TWh nel mese (circa −37% sulla media) senza causa documentata. Stoccaggi italiani all'88,9% l'8 novembre (−5,7% sulla media 5 anni).",
+   "scenari": [
+    {
+     "id": "transmed-base",
+     "tipo": "base",
+     "nome": "Flussi regolari, inverno caro",
+     "innesco": "Nessun guasto né decisione politica algerina: il TransMed lavora intorno alla media annua mentre gli stoccaggi scendono con l'inverno.",
+     "effetti": {
+      "passaggio": "Nessuna anomalia nel Canale di Sicilia.",
+      "flussi": "Mazara tra 550 e 700 GWh al giorno; erogazione dagli stoccaggi Stogit.",
+      "noli": "Non pertinente.",
+      "prezzi": "TTF 75–105 €/MWh, guidato da Hormuz e dagli stoccaggi europei, non dal TransMed.",
+      "esposti": "Italia coperta sui volumi; famiglie e industria pagano il prezzo europeo (PSV)."
+     },
+     "segnali": [
+      {"descrizione": "Mazara tra 550 e 700 GWh/g (media 7 gg)", "metrica": "gas.mazara.media7", "operatore": "tra", "soglia": [550, 700]},
+      {"descrizione": "Stoccaggi Italia entro −10% dalla media 5 anni", "metrica": "scorte.gas_stoccaggio_pct_it.scarto5", "operatore": ">=", "soglia": -10},
+      {"descrizione": "TTF tra 75 e 105 €/MWh", "metrica": "prezzo.ttf", "operatore": "tra", "soglia": [75, 105]}
+     ],
+     "valutazione": "È lo scenario più probabile: il flusso è stabile da ottobre."
+    },
+    {
+     "id": "transmed-peggiorativo",
+     "tipo": "peggiorativo",
+     "nome": "Interruzione nel Canale di Sicilia o taglio algerino",
+     "innesco": "Guasto tecnico, danno sottomarino (ancora, sabotaggio come nel Baltico) o riduzione decisa da Sonatrach; un precedente di calo è settembre 2026.",
+     "effetti": {
+      "passaggio": "Canale di Sicilia: un solo tubo senza alternativa per quel gas.",
+      "flussi": "Mazara sotto 420 GWh/g (−30% sulla media annua); più GNL (cinque rigassificatori, 21,8 Mt/a) e più erogazione dagli stoccaggi.",
+      "noli": "Rialzo dei noli delle metaniere spot verso il Mediterraneo (dato non disponibile nell'osservatorio).",
+      "prezzi": "PSV e TTF in rialzo, oltre 103,94 €/MWh se coincide con il freddo e Hormuz chiuso.",
+      "esposti": "Italia: termoelettrico, ceramica, carta, vetro, chimica; Stato su eventuali misure di emergenza."
+     },
+     "segnali": [
+      {"descrizione": "Mazara sotto 420 GWh/g (media 7 gg)", "metrica": "gas.mazara.media7", "operatore": "<", "soglia": 420},
+      {"descrizione": "Stoccaggi Italia oltre −15% sotto la media 5 anni", "metrica": "scorte.gas_stoccaggio_pct_it.scarto5", "operatore": "<", "soglia": -15},
+      {"descrizione": "TTF sopra 103,94 €/MWh", "metrica": "prezzo.ttf", "operatore": ">", "soglia": 103.94},
+      {"descrizione": "Eventi nel Canale di Sicilia o lungo il tracciato negli ultimi 30 giorni", "metrica": "eventi.sicilia.30g", "operatore": ">=", "soglia": 1},
+      {"descrizione": "Incidenti a cavi o condotte nel Canale di Sicilia negli ultimi 12 mesi", "metrica": "cavi.sicilia.12m", "operatore": ">=", "soglia": 1}
+     ],
+     "valutazione": "Poco probabile, ma è il peggior scenario di approvvigionamento per l'Italia: impatto più alto di Hormuz sui volumi."
+    },
+    {
+     "id": "transmed-migliorativo",
+     "tipo": "migliorativo",
+     "nome": "Più gas algerino e GNL abbondante",
+     "innesco": "Sonatrach aumenta le consegne e la fine della crisi di Hormuz libera GNL sul mercato.",
+     "effetti": {
+      "passaggio": "Nessuna anomalia.",
+      "flussi": "Mazara sopra 650 GWh/g; stoccaggi meno sotto pressione.",
+      "noli": "Non pertinente.",
+      "prezzi": "TTF sotto 70 €/MWh.",
+      "esposti": "Bollette italiane in calo con ritardo."
+     },
+     "segnali": [
+      {"descrizione": "Mazara sopra 650 GWh/g (media 7 gg)", "metrica": "gas.mazara.media7", "operatore": ">", "soglia": 650},
+      {"descrizione": "Stoccaggi Italia entro −5% dalla media 5 anni", "metrica": "scorte.gas_stoccaggio_pct_it.scarto5", "operatore": ">=", "soglia": -5},
+      {"descrizione": "TTF sotto 70 €/MWh", "metrica": "prezzo.ttf", "operatore": "<", "soglia": 70}
+     ],
+     "valutazione": "Dipende più da Hormuz che dall'Algeria."
+    }
+   ],
+   "fonti_numeri": [
+    {"numero": "34,0% degli ingressi, 220,5 TWh; 630 GWh l'8/11; media 30 gg 651,6; media annua 602,7 GWh/g", "fonte": "ENTSOG (dati Snam)", "file": "docs/data/gas-italia.json"},
+    {"numero": "settembre 2026: 11,3 TWh nel mese", "fonte": "agente ENERGIA su dati ENTSOG", "file": "report/agenti/energia.md"},
+    {"numero": "rigassificazione italiana 21,8 Mt/a", "fonte": "Global Energy Monitor", "file": "report/agenti/energia.md"},
+    {"numero": "stoccaggi Italia 88,9%, −5,7% sulla media 5 anni (8/11)", "fonte": "GIE AGSI+", "file": "docs/data/scorte.json"},
+    {"numero": "TTF 82,33 (9/11), massimo 2026 103,94 (29/10)", "fonte": "Yahoo Finance", "file": "docs/data/prezzi.json"}
+   ]
+  }
+ ]
+}

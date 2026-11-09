@@ -235,9 +235,9 @@ button, input, select { font: inherit; color: inherit; }
 
 
 <style>
-:root { --rail: #6E5A44; --cable: #0B7F8C; --power: #C27C0E; --lng: #7A55B5; --gasit: #2F6FB0; --sanz: #C0262D; --uastrike: #D9822B; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; } }
-:root[data-theme="dark"] { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; }
+:root { --rail: #6E5A44; --cable: #0B7F8C; --power: #C27C0E; --lng: #7A55B5; --gasit: #2F6FB0; --sanz: #C0262D; --uastrike: #D9822B; --ai: #0A7A72; --inv: #B07A00; --cy: #6B3FA0; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; } }
+:root[data-theme="dark"] { --rail: #C9B08F; --cable: #4FD0DD; --power: #F2B24D; --lng: #B9A0F0; --gasit: #7FB2EA; --sanz: #FF6B6B; --uastrike: #F2A65A; --ai: #4FCFC3; --inv: #E8B84A; --cy: #B48CF0; }
 #trm-tabs { display: flex; gap: 6px; margin: 8px 0 4px; flex-wrap: wrap; }
 .trm-row { display: grid; grid-template-columns: minmax(0, 1.5fr) 64px minmax(64px, auto) 56px 56px 62px; gap: 6px; align-items: center; padding: 3px 0; font-size: 12.5px; color: inherit; text-decoration: none; border-bottom: 1px solid var(--line); }
 .trm-row:hover { background: var(--control-hover); }
@@ -252,6 +252,10 @@ button, input, select { font: inherit; color: inherit; }
 .trm-evt { margin: 0; font-size: 13px; } .trm-evt .mono { font-family: var(--f-mono); font-size: 11px; color: var(--ink-soft); }
 .trm-evd { margin: 2px 0 0; font-size: 12px; color: var(--ink-soft); } .trm-src { font-size: 11.5px; color: var(--water-ink); }
 .mkt-grp.old { color: var(--ink-faint); }
+.nav { display: flex; gap: 6px; } .nav-a { text-decoration: none; font-weight: 500; color: var(--accent); }
+.vsel { padding: 5px 8px; }
+.intro { position: absolute; z-index: 6; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(520px, calc(100% - 32px)); max-height: calc(100% - 32px); overflow: auto; padding: 18px 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,.18); }
+.intro h2 { margin: 0 0 6px; font-family: var(--f-cond); font-size: 20px; } .intro p, .intro li { font-size: 13.5px; line-height: 1.5; } .intro ol { padding-left: 18px; } .intro-n { color: var(--ink-soft); font-size: 12px !important; }
 .facts dd.wide { grid-column: 1 / -1; }
 .trm-sel { margin: 6px 0 8px; padding: 4px 8px; background: var(--control); border: 1px solid var(--line); border-radius: 4px; font-size: 13px; }
 .facts { grid-template-columns: fit-content(42%) minmax(0, 1fr); } .facts dt { overflow-wrap: anywhere; }
@@ -270,7 +274,7 @@ button, input, select { font: inherit; color: inherit; }
       <div class="views" id="views" role="group" aria-label="Vai a una vista"></div>
       <button class="chip news-btn" id="news-btn" type="button" aria-expanded="false" aria-controls="news" hidden>News<span id="news-btn-date"></span></button>
       <button class="chip news-btn" id="mkt-btn" type="button" aria-expanded="false" aria-controls="mkt" hidden>Mercati<span id="mkt-btn-date"></span></button>
-      <a class="chip news-btn" href="report/" style="text-decoration:none">Report</a>
+      <nav class="nav" aria-label="Sezioni"><a class="chip nav-a" href="report/">Report</a><a class="chip nav-a" href="notizie.html" id="nav-news" hidden>Notizie</a><a class="chip nav-a" href="simulatore.html" id="nav-sim" hidden>Simulatore “e se…”</a></nav>
       <button class="chip news-btn" id="trm-btn" type="button" aria-expanded="false" aria-controls="trm" hidden>Terminale</button>
       <button class="chip news-btn" id="dos-btn" type="button" aria-expanded="false" aria-controls="dos" hidden>Dossier<span id="dos-btn-n"></span></button>
       <form class="goto" id="goto" novalidate>
@@ -287,6 +291,15 @@ button, input, select { font: inherit; color: inherit; }
     <canvas id="map" tabindex="0" role="img" aria-label="Mappa del mondo con basi, porti, oleodotti, navi, aerei, eventi e fronte ucraino da fonti aperte. Trascina per spostarti, rotella o pizzico per lo zoom, frecce e tasti più e meno da tastiera. L'elenco dei punti è nel pannello Livelli."></canvas>
     <p class="status" id="status">Carico la mappa…</p>
 
+    <div class="intro" id="intro" hidden role="dialog" aria-labelledby="intro-h">
+      <h2 id="intro-h">Monitor geoeconomico</h2>
+      <p>Un osservatorio da fonti aperte su come un evento geopolitico diventa un costo: <b>evento → passaggio strategico o infrastruttura → flussi di navi ed energia → noli → prezzi → chi è esposto</b>.</p>
+      <ol><li><b>Guarda la mappa</b>: eventi, stretti (i rombi viola), energia, cavi, porti. I livelli si accendono nel pannello a sinistra.</li>
+      <li><b>Tocca uno stretto</b>: navi al giorno misurate (IMF PortWatch), cosa ci passa, chi è esposto, prezzi collegati.</li>
+      <li><b>Apri il Terminale</b> per prezzi, agenda, noli, scorte, paesi e notizie, e i <b>Report</b> per le analisi.</li></ol>
+      <p class="intro-n">Ogni dato ha fonte, data e affidabilità. Aggiornato ogni giorno in automatico. Progetto personale di Gabriele Giuliani, realizzato con l’aiuto di un assistente AI.</p>
+      <button class="chip" id="intro-ok" type="button">Ho capito</button>
+    </div>
     <div class="hud">
       <section class="panel" id="panel" aria-label="Livelli della mappa">
         <button class="panel-head" id="panel-head" type="button" aria-expanded="true" aria-controls="panel-body">Livelli</button>
@@ -366,6 +379,12 @@ button, input, select { font: inherit; color: inherit; }
               <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--gasit)" stroke-width="2.4"/></svg></span>Gas in Italia<span class="cnt" id="n-xgas"></span></label><p class="hint">Punti di ingresso con i flussi giornalieri ENTSOG</p></li>
             <li id="li-xua" hidden><label><input type="checkbox" id="lyr-xua" data-layer="xua">
               <span class="sw"><svg width="22" height="8" aria-hidden="true"><circle cx="11" cy="4" r="3.5" fill="var(--uastrike)"/></svg></span>Attacchi ucraini in Russia<span class="cnt" id="n-xua"></span></label><p class="hint">Raffinerie, depositi, porti e basi colpiti dal 2022</p></li>
+            <li id="li-xai" hidden><label><input type="checkbox" id="lyr-xai" data-layer="xai">
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" fill="var(--ai)"/></svg></span>AI nel mondo<span class="cnt" id="n-xai"></span></label><p class="hint">Data center, fabbriche di chip (triangoli), supercalcolatori. Vuoto: annunciato</p></li>
+            <li id="li-xinv" hidden><label><input type="checkbox" id="lyr-xinv" data-layer="xinv">
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 7Q11 -2 21 7" fill="none" stroke="var(--inv)" stroke-width="2"/></svg></span>Investimenti AI e chip<span class="cnt" id="n-xinv"></span></label><p class="hint">Archi da chi investe a dove; spessore = importo. Annunci, non spese effettive</p></li>
+            <li id="li-xcy" hidden><label><input type="checkbox" id="lyr-xcy" data-layer="xcy">
+              <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M1 1L9 9M9 1L1 9" stroke="var(--cy)" stroke-width="2.2"/></svg></span>Incidenti cyber all'energia<span class="cnt" id="n-xcy"></span></label><p class="hint">Eolico, solare, reti, refrigerazione: precedenti dal 2015</p></li>
             <li id="li-xnavi" hidden><label><input type="checkbox" id="lyr-xnavi" data-layer="xnavi" checked>
               <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--sanz)" stroke-width="2.4"/></svg></span>Navi (AIS)<span class="cnt" id="n-xnavi"></span></label><p class="hint">Rosso: sanzionata. Oggi copre il Golfo di Finlandia</p></li>
           </ul>
@@ -463,6 +482,7 @@ button, input, select { font: inherit; color: inherit; }
           <div class="scale-row"><span class="scale-bar" id="sc-nm"></span><span id="sc-nm-t"></span></div>
         </div>
         <p class="credit" id="credit">Natural Earth</p>
+        <p class="credit"><a href="crediti.html" style="color:var(--water-ink)">Crediti e licenze</a> · <a href="https://github.com/gabrielegiuliani04/monitor-geoeconomico" style="color:var(--water-ink)">GitHub</a> · <a href="#" id="intro-open" style="color:var(--water-ink)">Come si usa</a></p>
         <p class="credit" id="credit-front" hidden></p>
         <p class="credit" id="credit-gem" hidden></p>
         <p class="credit" id="credit-routes" hidden></p>
@@ -513,7 +533,7 @@ let VB = [], VP = [], LN = null, SB = null, RT = null, ST = null;   // SB: subma
 let FRONT = null, areasOn = false;                // Ukraine: areas of control; whether they are in view in this frame
 let evRange = 7, REPORTS = [], CTX = null, liveKey = '', MK = null, DOS = null;
 let setPanel = () => {};
-const L = { xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
+const L = { xai: false, xinv: false, xcy: false, xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
 const TH = {};                                    // theater switches, filled from the data
 const C = {}, FF = {};
 const TODAY = new Date(); TODAY.setHours(12, 0, 0, 0);
@@ -524,7 +544,7 @@ function readTheme() {
   Object.assign(C, { sea: g('sea'), land: g('land'), coast: g('coast'), border: g('border'), river: g('river'), ink: g('ink'), inkSoft: g('ink-soft'),
     inkFaint: g('ink-faint'), waterInk: g('water-ink'), accent: g('accent'), grat: g('grat'), haloLand: g('halo-land'), haloSea: g('halo-sea'),
     paper: g('control'), ally: g('ally'), partner: g('partner'), adv: g('adv'), rus: g('rus'), oth: g('oth'), contesa: g('contesa'), oil: g('oil'), gas: g('gas'), port: g('port'), route: g('route'), onSide: g('on-side'), ev: [g('ev0'), g('ev1'), g('ev2'), g('ev-old')] });
-  Object.assign(C, { uastrike: g('uastrike'), rail: g('rail'), cable: g('cable'), power: g('power'), lng: g('lng'), gasit: g('gasit'), sanz: g('sanz') });
+  Object.assign(C, { ai: g('ai'), inv: g('inv'), cy: g('cy'), uastrike: g('uastrike'), rail: g('rail'), cable: g('cable'), power: g('power'), lng: g('lng'), gasit: g('gasit'), sanz: g('sanz') });
   C.evText = C.ev.map(c => lum(c) > .22 ? '#16100F' : '#FFFFFF');   // the count written on a bubble of that colour
   Object.assign(FF, { sans: g('f-sans'), cond: g('f-cond'), serif: g('f-serif'), mono: g('f-mono') });
 }
@@ -1861,7 +1881,7 @@ function wire() {
     const id = cb.dataset.layer;
     if (id in L) cb.checked = !!L[id];
     if (saved && typeof saved[id] === 'boolean' && id !== 'front' && id !== 'routes' && id !== 'subsea' && id !== 'ai') { L[id] = saved[id]; cb.checked = saved[id]; }   // the front and the routes always start switched off
-    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua'].includes(id)) refilter(); else schedule(); });
+    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua', 'xai', 'xinv', 'xcy'].includes(id)) refilter(); else schedule(); });
   });
 
   const input = $('goto-input'), msg = $('goto-msg');
@@ -1883,13 +1903,13 @@ function wire() {
 /* ---------- Strati aggiunti: infrastrutture, flussi, navi, terminale (prezzi, agenda, stretti) ---------- */
 const XF = { ferrovie: 'data/ferrovie.json', cavi: 'data/cavi.json', caviInc: 'data/cavi-incidenti.json', gnl: 'data/terminali-gnl.json', gasit: 'data/gas-italia.json',
   navi: 'data/navi.json', pw: 'data/portwatch.json', sd: 'data/stretti-dettaglio.json', prezzi: 'data/prezzi.json', cal: 'data/calendario.json',
-  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json' };
+  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', an: 'data/analisti.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json', aim: 'data/ai-mondo.json', inv: 'data/investimenti.json', cy: 'data/cyber-energia.json' };
 const X = { lines: {}, pts: {}, data: {} };
 const XLAYERS = {   // layer -> colour token, label
   xrail: ['rail', 'Ferrovie'], xcable: ['cable', 'Cavi sottomarini'], xpower: ['power', 'Rete elettrica'], xlng: ['lng', 'Terminali GNL'],
-  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'], xua: ['uastrike', 'Attacchi ucraini in Russia'] };
+  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'], xua: ['uastrike', 'Attacchi ucraini in Russia'], xai: ['ai', 'AI nel mondo'], xinv: ['inv', 'Investimenti AI'], xcy: ['cy', 'Incidenti cyber'] };
 const num = v => (v == null || v === '' ? null : +v);
-const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare', xua: 'Attacco ucraino in profondità' };
+const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare', xua: 'Attacco ucraino in profondità', xai: 'Infrastruttura AI', xinv: 'Investimento', xcy: 'Incidente cyber' };
 
 function xBuildLines(layer, items, styleOf) {           // items with g = parts of [lon, lat]
   const groups = {}; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; const list = [];
@@ -1937,10 +1957,20 @@ async function xLoad(opt) {
   if (D2.gnl) xAddPoints('xlng', D2.gnl.elementi, { skip: e => e.stato !== 'operativo' && e.stato !== 'in-costruzione', style: e => ({ shape: e.categoria === 'gnl-liquefazione' ? 'up' : 'down', hollow: e.stato !== 'operativo', r: Math.min(7, 2.6 + Math.sqrt(num(e.capacita_operativa_mtpa) || 1) * .6) }) });
   if (D2.gasit) xAddPoints('xgas', D2.gasit.elementi, { style: () => ({ shape: 'dot', r: 5.5 }) });
   if (D2.ua && D2.ua.elementi) xAddPoints('xua', D2.ua.elementi, { style: e => ({ shape: 'dot', r: e.categoria === 'raffineria' ? 4.5 : 3.6 }) });
+  if (D2.aim && D2.aim.elementi) xAddPoints('xai', D2.aim.elementi, { style: e => ({ shape: e.categoria === 'fab-chip' ? 'up' : 'sq', r: e.categoria === 'data-center-ai' ? Math.min(7, 3 + Math.sqrt(+e.mw || 50) / 6) : 4, hollow: e.stato && !/operativ|in esercizio/.test(e.stato) }) });
+  if (D2.cy && D2.cy.elementi) xAddPoints('xcy', D2.cy.elementi, { style: () => ({ shape: 'x' }) });
+  if (D2.inv && D2.inv.elementi) { const arcs = D2.inv.elementi.filter(e => e.da_lat != null && e.a_lat != null && !e.quadro).map(e => { const a = [+e.da_lon, +e.da_lat], b = [+e.a_lon, +e.a_lat], n = 24, mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], k = .18;
+      const c = [mx - dy * k, my + dx * k], g = []; for (let i = 0; i <= n; i++) { const t = i / n, u = 1 - t; g.push([u * u * a[0] + 2 * u * t * c[0] + t * t * b[0], u * u * a[1] + 2 * u * t * c[1] + t * t * b[1]]); } return Object.assign({}, e, { g: [g], nome: e.attore + ' → ' + (e.a_luogo || e.a_paese) }); });
+    xBuildLines('xinv', arcs, e => { const v = +e.importo_usd_mld || 0; const key = v >= 50 ? 'L' : v >= 10 ? 'M' : 'S'; return { key, w: key === 'L' ? 2.4 : key === 'M' ? 1.5 : .9, dash: null, a: .8 }; }); }
   if (D2.navi) xAddPoints('xnavi', D2.navi.elementi, { skip: e => !!e.avviso_posizione, style: e => ({ shape: 'ship', sanz: /^s[iì]/i.test(String(e.sanzionata || '')), hdg: num(e.rotta_gradi) }) });
   for (const l in XLAYERS) { const li = $('li-' + l); if (li) li.hidden = !(X.lines[l] || X.pts[l]); const n = $('n-' + l); if (n) n.textContent = ((X.lines[l] ? X.lines[l].list.length : 0) + (X.pts[l] || []).length) || ''; }
   $('x-h').hidden = $('x-ul').hidden = !Object.keys(XLAYERS).some(l => X.lines[l] || X.pts[l]);
   xInitTerminal();
+  for (const [id, url] of [['nav-news', 'notizie.html'], ['nav-sim', 'simulatore.html']]) fetch(url, { method: 'HEAD' }).then(r => { if (r.ok) $(id).hidden = false; }).catch(() => {});
+  const intro = $('intro'), seen = (() => { try { return localStorage.getItem('monitor-geo.intro'); } catch (e) { return '1'; } })();
+  if (!seen) intro.hidden = false;
+  $('intro-ok').onclick = () => { intro.hidden = true; try { localStorage.setItem('monitor-geo.intro', '1'); } catch (e) {} };
+  $('intro-open').onclick = ev => { ev.preventDefault(); intro.hidden = false; };
   if (picked && picked.kind === 'stretto') renderCard();
   schedule();
 }
@@ -1948,7 +1978,7 @@ async function xLoad(opt) {
 function xDrawLines(k, z, vx0, vy0, vx1, vy1) {        // in base units, under the pipelines
   ctx.lineCap = 'round'; ctx.lineJoin = 'round';
   const f = z < 4 ? 1 : z < 6 ? 1.3 : 1.6;
-  for (const l of ['xpower', 'xrail', 'xcable']) {
+  for (const l of ['xpower', 'xrail', 'xcable', 'xinv']) {
     const S = X.lines[l]; if (!S || !L[l] || S.x1 < vx0 || S.x0 > vx1 || S.y1 < vy0 || S.y0 > vy1) continue;
     ctx.strokeStyle = C[XLAYERS[l][0]];
     for (const g of S.groups) { ctx.globalAlpha = g.st.a; ctx.lineWidth = g.st.w * f / k; ctx.setLineDash(g.st.dash ? g.st.dash.map(v => v / k) : []); ctx.stroke(g.path); }
@@ -1957,7 +1987,7 @@ function xDrawLines(k, z, vx0, vy0, vx1, vy1) {        // in base units, under t
   if (picked && picked.kind === 'extra' && picked.path) { ctx.strokeStyle = C.haloLand; ctx.lineWidth = 6 / k; ctx.stroke(picked.path); ctx.strokeStyle = C[XLAYERS[picked.layer][0]]; ctx.lineWidth = 2.6 / k; ctx.stroke(picked.path); }
 }
 function xDrawPoints(z) {                                 // in screen units, after the labels; they add themselves to the taps
-  for (const l of ['xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
+  for (const l of ['xai', 'xcy', 'xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
     const P = X.pts[l]; if (!P || !L[l]) continue;
     if (l === 'xlng' && z < 3.2) continue;
     const col = C[XLAYERS[l][0]];
@@ -1979,7 +2009,7 @@ function xDrawPoints(z) {                                 // in screen units, af
 }
 function xLineAt(x, y) {
   const px = (x - T.x) / T.k, py = (y - T.y) / T.k, tol = 6 / T.k; let best = null, bd = tol;
-  for (const l of ['xcable', 'xrail', 'xpower']) {
+  for (const l of ['xinv', 'xcable', 'xrail', 'xpower']) {
     const S = X.lines[l]; if (!S || !L[l]) continue;
     for (const it of S.list) {
       if (px < it.bb[0] - tol || px > it.bb[2] + tol || py < it.bb[1] - tol || py > it.bb[3] + tol) continue;
@@ -2017,6 +2047,12 @@ function renderExtra(card, p) {
   } else if (lay === 'xcable') {
     fact('Stato', d.stato); fact('Anno', d.anno || d.data_evento); fact('Lunghezza', d.km ? itNum(+d.km) + ' km' : null); fact('Proprietari', d.proprietari);
     fact('Passaggi strategici', d.s); fact('Approdi in Italia', d.approdi_it); fact('Cavi coinvolti', d.cavi); fact('Causa', d.causa); fact('Esito', d.esito);
+  } else if (lay === 'xai') {
+    fact('Tipo', cap(String(d.categoria).replace(/-/g, ' '))); fact('Luogo', d.luogo); fact('Potenza', d.mw ? d.mw + ' MW' + (d.mw_tipo ? ' (' + d.mw_tipo + ')' : '') : null); fact('Proprietario', d.proprietario); fact('Stato', d.stato); fact('Anno', d.anno); fact('Investimento', d.importo_usd_mld ? itNum(+d.importo_usd_mld) + ' mld USD' : null); fact('Nodo', d.nodo); fact('Prestazioni', d.rmax_pflops ? d.rmax_pflops + ' PFlop/s' : null);
+  } else if (lay === 'xinv') {
+    fact('Chi investe', d.attore); fact('Da', [d.da_luogo, d.da_paese].filter(Boolean).join(', ')); fact('Verso', [d.a_luogo, d.a_paese].filter(Boolean).join(', ')); fact('Importo', d.importo_usd_mld ? itNum(+d.importo_usd_mld) + ' mld USD' + (d.importo_originale ? ' (' + d.importo_originale + ')' : '') : null); fact('Settore', d.settore); fact('Stato', d.stato); fact('Anno', d.anno); fact('Periodo', d.periodo);
+  } else if (lay === 'xcy') {
+    fact('Data', d.data_evento); fact('Settore', d.settore); fact('Vittima', d.vittima); fact('Effetto', d.effetto); fact('Attore', d.attore); fact('Attribuzione', d.attribuzione_stato); fact('Lezione', d.lezione);
   } else if (lay === 'xua') {
     fact('Data', d.data_evento); fact('Bersaglio', d.categoria && cap(String(d.categoria).replace(/-/g, ' '))); fact('Luogo', d.regione || d.luogo); fact('Mezzo', d.mezzo); fact('Esito', d.esito); fact('Rivendicato da', d.attore);
   } else if (lay === 'xrail') {
@@ -2254,10 +2290,11 @@ async function start(snap) {
   const views = $('views'), def = manifest.tiles.find(t => t.id === manifest.defaultView) || manifest.tiles[0];
   const worldView = [-168, -52, 178, 76];
   homeView = manifest.home || (def ? def.view : worldView);
-  for (const v of (manifest.views || [...manifest.tiles.map(t => ({ name: t.name, view: t.view })), { name: 'Mondo', view: worldView }])) {
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = v.name;
-    b.addEventListener('click', () => fitView(v.view, true)); views.appendChild(b);
-  }
+  const vlist = manifest.views || [...manifest.tiles.map(t => ({ name: t.name, view: t.view })), { name: 'Mondo', view: worldView }];
+  const vsel = document.createElement('select'); vsel.className = 'chip vsel'; vsel.setAttribute('aria-label', 'Vai a una vista');
+  const o0 = document.createElement('option'); o0.textContent = 'Vista…'; o0.value = ''; vsel.appendChild(o0);
+  vlist.forEach((v, i) => { const o = document.createElement('option'); o.value = i; o.textContent = v.name; vsel.appendChild(o); });
+  vsel.addEventListener('change', () => { if (vsel.value !== '') fitView(vlist[+vsel.value].view, true); vsel.value = ''; }); views.appendChild(vsel);
   if (manifest.updated) $('credit').textContent = 'Natural Earth · ' + dateLong(new Date(manifest.updated + 'T12:00:00'));
 
   ready = true; statusEl.hidden = true;

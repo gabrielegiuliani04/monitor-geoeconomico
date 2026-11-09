@@ -8,15 +8,15 @@
    "file": "docs/data/stretti-dettaglio.json"
   },
   {
-   "nome": "Prezzi di chiusura Brent e TTF 2025–2026 (Yahoo Finance)",
+   "nome": "Prezzi di oggi di Brent e TTF (Yahoo Finance)",
    "file": "docs/data/prezzi.json"
   },
   {
-   "nome": "Chiusure Brent (BZ=F) e TTF (TTF=F) dicembre 2023 – marzo 2024",
+   "nome": "Chiusure dei future Brent (BZ=F) e TTF (TTF=F), dicembre 2023 – marzo 2024 e febbraio – giugno 2026",
    "link": "https://finance.yahoo.com/quote/BZ%3DF/history/",
-   "licenza": "Yahoo Finance, uso informativo, non ufficiale",
+   "licenza": "Yahoo Finance, uso informativo, non ufficiale: nel file si pubblicano solo medie e massimi, non le serie",
    "data_dato": "2026-11-09",
-   "nota": "Scaricate con l'API chart di Yahoo Finance il 9/11/2026 e copiate in episodi.mar_rosso_2023.serie: prezzi.json parte da ottobre 2025."
+   "nota": "Scaricate da raccolta/simulatore/controlla.py --scarica (API chart di Yahoo Finance, come raccolta/scarica_mercati.py)."
   },
   {
    "nome": "IMF PortWatch",
@@ -107,25 +107,140 @@
   "hormuz_2026": {
    "nome": "Chiusura di Hormuz, marzo 2026",
    "inizio": "2026-03-02",
+   "simboli": {
+    "brent": "BZ=F",
+    "ttf": "TTF=F"
+   },
    "base": {
     "da": "2026-02-23",
     "a": "2026-02-27",
     "spiegazione": "media delle chiusure dell'ultima settimana prima della guerra"
    },
-   "fonte_prezzi": "docs/data/prezzi.json (serie 'brent' e 'ttf', chiusure Yahoo Finance)",
+   "fonte_prezzi": "chiusure Yahoo Finance dei future BZ=F e TTF=F (le stesse di prezzi.json, che però pubblica solo gli ultimi 3 mesi), scaricate da controlla.py --scarica; nel file restano solo le statistiche",
    "spiegazione": "Il 2 marzo 2026 i transiti a Hormuz crollano (PortWatch). È l'unico episodio nei dati con una vera perdita di offerta di petrolio e GNL. I prezzi includono anche altri fattori (Ras Laffan colpita, attacchi, tregue): il modello attribuisce tutto allo stretto.",
    "riferimento": "hormuz",
-   "calcolato": {}
+   "calcolato": {
+    "brent": {
+     "base": 71.27,
+     "n_base": 5,
+     "finestre": {
+      "14": {
+       "fino_a": "2026-03-15",
+       "n": 10,
+       "media": 90.1,
+       "media_pct": 26.4,
+       "max": 103.14,
+       "data_max": "2026-03-13",
+       "max_pct": 44.7,
+       "completa": true
+      },
+      "30": {
+       "fino_a": "2026-03-31",
+       "n": 22,
+       "media": 99.6,
+       "media_pct": 39.8,
+       "max": 118.35,
+       "data_max": "2026-03-31",
+       "max_pct": 66.1,
+       "completa": true
+      },
+      "91": {
+       "fino_a": "2026-05-31",
+       "n": 63,
+       "media": 101.98,
+       "media_pct": 43.1,
+       "max": 118.35,
+       "data_max": "2026-03-31",
+       "max_pct": 66.1,
+       "completa": true
+      }
+     }
+    },
+    "ttf": {
+     "base": 31.59,
+     "n_base": 5,
+     "finestre": {
+      "14": {
+       "fino_a": "2026-03-15",
+       "n": 10,
+       "media": 50.65,
+       "media_pct": 60.3,
+       "max": 56.45,
+       "data_max": "2026-03-09",
+       "max_pct": 78.7,
+       "completa": true
+      },
+      "30": {
+       "fino_a": "2026-03-31",
+       "n": 22,
+       "media": 52.87,
+       "media_pct": 67.4,
+       "max": 61.85,
+       "data_max": "2026-03-19",
+       "max_pct": 95.8,
+       "completa": true
+      },
+      "91": {
+       "fino_a": "2026-05-31",
+       "n": 63,
+       "media": 48.48,
+       "media_pct": 53.5,
+       "max": 61.85,
+       "data_max": "2026-03-19",
+       "max_pct": 95.8,
+       "completa": true
+      }
+     }
+    },
+    "scoperto_petrolio_mbg": {
+     "min": 14.17,
+     "max": 16.87,
+     "centrale": 15.52
+    },
+    "gnl_fermo_bcm": 112,
+    "coeff_brent_per_mbg": {
+     "14": {
+      "min": 1.701,
+      "max": 2.88
+     },
+     "30": {
+      "min": 2.564,
+      "max": 4.259
+     },
+     "91": {
+      "min": 2.777,
+      "max": 4.259
+     }
+    },
+    "coeff_ttf_per_bcm": {
+     "14": {
+      "min": 0.5384,
+      "max": 0.7027
+     },
+     "30": {
+      "min": 0.6018,
+      "max": 0.8554
+     },
+     "91": {
+      "min": 0.4777,
+      "max": 0.8554
+     }
+    }
+   }
   },
   "mar_rosso_2023": {
    "nome": "Crisi del Mar Rosso, dicembre 2023 – marzo 2024",
    "inizio": "2023-12-18",
+   "simboli": {
+    "brent": "BZ=F",
+    "ttf": "TTF=F"
+   },
    "base": {
     "da": "2023-12-11",
     "a": "2023-12-15",
     "spiegazione": "media della settimana prima che le grandi compagnie sospendessero i transiti (metà dicembre 2023)"
    },
-   "fonte_prezzi": "chiusure Yahoo Finance BZ=F e TTF=F copiate qui sotto in 'serie' (scaricate il 9/11/2026)",
+   "fonte_prezzi": "chiusure Yahoo Finance dei future BZ=F e TTF=F, scaricate da controlla.py --scarica; nel file restano solo le statistiche",
    "spiegazione": "Le navi girano dal Capo: nessuna perdita di offerta, ma viaggi più lunghi. Il WCI di Drewry passa da 1.521 a 3.777 $/FEU in cinque settimane. Il Brent sale poco; il TTF scende (inverno mite e stoccaggi pieni): l'episodio non mostra un effetto del Mar Rosso sul gas europeo.",
    "wci": {
     "da": 1521,
@@ -150,175 +265,83 @@
      "cerca": "160 dollari"
     }
    },
-   "serie": {
-    "brent": [
-     ["2023-12-01", 78.88],
-     ["2023-12-04", 78.03],
-     ["2023-12-05", 77.2],
-     ["2023-12-06", 74.3],
-     ["2023-12-07", 74.05],
-     ["2023-12-08", 75.84],
-     ["2023-12-11", 76.03],
-     ["2023-12-12", 73.24],
-     ["2023-12-13", 74.26],
-     ["2023-12-14", 76.61],
-     ["2023-12-15", 76.55],
-     ["2023-12-18", 77.95],
-     ["2023-12-19", 79.23],
-     ["2023-12-20", 79.7],
-     ["2023-12-21", 79.39],
-     ["2023-12-22", 79.07],
-     ["2023-12-26", 81.07],
-     ["2023-12-27", 79.65],
-     ["2023-12-28", 78.39],
-     ["2023-12-29", 77.04],
-     ["2024-01-02", 75.89],
-     ["2024-01-03", 78.25],
-     ["2024-01-04", 77.59],
-     ["2024-01-05", 78.76],
-     ["2024-01-08", 76.12],
-     ["2024-01-09", 77.59],
-     ["2024-01-10", 76.8],
-     ["2024-01-11", 77.41],
-     ["2024-01-12", 78.29],
-     ["2024-01-16", 78.29],
-     ["2024-01-17", 77.88],
-     ["2024-01-18", 79.1],
-     ["2024-01-19", 78.56],
-     ["2024-01-22", 80.06],
-     ["2024-01-23", 79.55],
-     ["2024-01-24", 80.04],
-     ["2024-01-25", 82.43],
-     ["2024-01-26", 83.55],
-     ["2024-01-29", 82.4],
-     ["2024-01-30", 82.87],
-     ["2024-01-31", 81.71],
-     ["2024-02-01", 78.7],
-     ["2024-02-02", 77.33],
-     ["2024-02-05", 77.99],
-     ["2024-02-06", 78.59],
-     ["2024-02-07", 79.21],
-     ["2024-02-08", 81.63],
-     ["2024-02-09", 82.19],
-     ["2024-02-12", 82.0],
-     ["2024-02-13", 82.77],
-     ["2024-02-14", 81.6],
-     ["2024-02-15", 82.86],
-     ["2024-02-16", 83.47],
-     ["2024-02-20", 82.34],
-     ["2024-02-21", 83.03],
-     ["2024-02-22", 83.67],
-     ["2024-02-23", 81.62],
-     ["2024-02-26", 82.53],
-     ["2024-02-27", 83.65],
-     ["2024-02-28", 83.68],
-     ["2024-02-29", 83.62],
-     ["2024-03-01", 83.55],
-     ["2024-03-04", 82.8],
-     ["2024-03-05", 82.04],
-     ["2024-03-06", 82.96],
-     ["2024-03-07", 82.96],
-     ["2024-03-08", 82.08],
-     ["2024-03-11", 82.21],
-     ["2024-03-12", 81.92],
-     ["2024-03-13", 84.03],
-     ["2024-03-14", 85.42],
-     ["2024-03-15", 85.34],
-     ["2024-03-18", 86.89],
-     ["2024-03-19", 87.38],
-     ["2024-03-20", 85.95],
-     ["2024-03-21", 85.78],
-     ["2024-03-22", 85.43],
-     ["2024-03-25", 86.75],
-     ["2024-03-26", 86.25],
-     ["2024-03-27", 86.09],
-     ["2024-03-28", 87.48]
-    ],
-    "ttf": [
-     ["2023-12-01", 43.5],
-     ["2023-12-04", 40.1],
-     ["2023-12-05", 38.13],
-     ["2023-12-06", 39.31],
-     ["2023-12-07", 39.97],
-     ["2023-12-08", 38.6],
-     ["2023-12-11", 36.12],
-     ["2023-12-12", 34.7],
-     ["2023-12-13", 35.81],
-     ["2023-12-14", 34.85],
-     ["2023-12-15", 33.19],
-     ["2023-12-18", 35.52],
-     ["2023-12-19", 32.57],
-     ["2023-12-20", 33.52],
-     ["2023-12-21", 34.2],
-     ["2023-12-22", 34.17],
-     ["2023-12-26", 34.17],
-     ["2023-12-27", 35.51],
-     ["2023-12-28", 33.1],
-     ["2023-12-29", 32.35],
-     ["2024-01-02", 30.57],
-     ["2024-01-03", 32.79],
-     ["2024-01-04", 33.41],
-     ["2024-01-05", 34.55],
-     ["2024-01-08", 31.58],
-     ["2024-01-09", 30.64],
-     ["2024-01-10", 30.94],
-     ["2024-01-11", 30.82],
-     ["2024-01-12", 31.99],
-     ["2024-01-16", 29.66],
-     ["2024-01-17", 27.71],
-     ["2024-01-18", 27.89],
-     ["2024-01-19", 28.43],
-     ["2024-01-22", 27.26],
-     ["2024-01-23", 27.23],
-     ["2024-01-24", 28.93],
-     ["2024-01-25", 27.78],
-     ["2024-01-26", 28.08],
-     ["2024-01-29", 28.17],
-     ["2024-01-30", 29.39],
-     ["2024-01-31", 30.24],
-     ["2024-02-01", 28.99],
-     ["2024-02-02", 29.3],
-     ["2024-02-05", 28.34],
-     ["2024-02-06", 28.61],
-     ["2024-02-07", 28.19],
-     ["2024-02-08", 27.81],
-     ["2024-02-09", 27.12],
-     ["2024-02-12", 25.73],
-     ["2024-02-13", 25.44],
-     ["2024-02-14", 24.86],
-     ["2024-02-15", 24.97],
-     ["2024-02-16", 24.82],
-     ["2024-02-20", 24.17],
-     ["2024-02-21", 23.98],
-     ["2024-02-22", 23.19],
-     ["2024-02-23", 22.93],
-     ["2024-02-26", 24.01],
-     ["2024-02-27", 24.39],
-     ["2024-02-28", 25.62],
-     ["2024-02-29", 24.86],
-     ["2024-03-01", 25.81],
-     ["2024-03-04", 26.89],
-     ["2024-03-05", 27.47],
-     ["2024-03-06", 26.57],
-     ["2024-03-07", 25.99],
-     ["2024-03-08", 26.39],
-     ["2024-03-11", 24.93],
-     ["2024-03-12", 24.77],
-     ["2024-03-13", 24.9],
-     ["2024-03-14", 26.05],
-     ["2024-03-15", 27.03],
-     ["2024-03-18", 28.82],
-     ["2024-03-19", 28.87],
-     ["2024-03-20", 27.74],
-     ["2024-03-21", 26.4],
-     ["2024-03-22", 27.78],
-     ["2024-03-25", 28.49],
-     ["2024-03-26", 27.13],
-     ["2024-03-27", 27.69],
-     ["2024-03-28", 27.34]
-    ]
-   },
-   "calcolato": {}
+   "calcolato": {
+    "brent": {
+     "base": 75.34,
+     "n_base": 5,
+     "finestre": {
+      "14": {
+       "fino_a": "2023-12-31",
+       "n": 9,
+       "media": 79.05,
+       "media_pct": 4.9,
+       "max": 81.07,
+       "data_max": "2023-12-26",
+       "max_pct": 7.6,
+       "completa": true
+      },
+      "30": {
+       "fino_a": "2024-01-16",
+       "n": 19,
+       "media": 78.24,
+       "media_pct": 3.8,
+       "max": 81.07,
+       "data_max": "2023-12-26",
+       "max_pct": 7.6,
+       "completa": true
+      },
+      "91": {
+       "fino_a": "2024-03-17",
+       "n": 61,
+       "media": 80.7,
+       "media_pct": 7.1,
+       "max": 85.42,
+       "data_max": "2024-03-14",
+       "max_pct": 13.4,
+       "completa": true
+      }
+     }
+    },
+    "ttf": {
+     "base": 34.93,
+     "n_base": 5,
+     "finestre": {
+      "14": {
+       "fino_a": "2023-12-31",
+       "n": 9,
+       "media": 33.9,
+       "media_pct": -2.9,
+       "max": 35.52,
+       "data_max": "2023-12-18",
+       "max_pct": 1.7,
+       "completa": true
+      },
+      "30": {
+       "fino_a": "2024-01-16",
+       "n": 19,
+       "media": 32.74,
+       "media_pct": -6.3,
+       "max": 35.52,
+       "data_max": "2023-12-18",
+       "max_pct": 1.7,
+       "completa": true
+      },
+      "91": {
+       "fino_a": "2024-03-17",
+       "n": 61,
+       "media": 28.48,
+       "media_pct": -18.5,
+       "max": 35.52,
+       "data_max": "2023-12-18",
+       "max_pct": 1.7,
+       "completa": true
+      }
+     }
+    },
+    "wci_salto_usd_feu": 2256,
+    "wci_salto_pct": 148.3,
+    "wci_giorni": 35
+   }
   }
  },
  "regole": {
@@ -1837,5 +1860,12 @@
     "cerca": "industria energivora"
    }
   }
- ]
+ ],
+ "calcolato": {
+  "gnl_italia": {
+   "capacita_bcm": 27.98,
+   "uso_12m_bcm": 20.08,
+   "libera_bcm": 7.9
+  }
+ }
 }
