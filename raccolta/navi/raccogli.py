@@ -157,7 +157,8 @@ def carica_sanzioni(errori):
         da = v.get("sanzionata_da") or v.get("programmi") or v.get("liste") or v.get("autorita") or v.get("fonte") or ""
         if isinstance(da, list):
             da = ", ".join(str(x) for x in da)
-        info = {"nome": v.get("nome") or v.get("name") or "", "da": str(da)}
+        info = {"nome": v.get("nome") or v.get("name") or "", "da": str(da),
+                "ombra": bool(v.get("flotta_ombra_probabile"))}
         imo = re.sub(r"\D", "", str(v.get("imo") or v.get("IMO") or ""))
         mmsi = re.sub(r"\D", "", str(v.get("mmsi") or v.get("MMSI") or ""))
         if len(imo) == 7:
@@ -185,6 +186,13 @@ def nave(mmsi, imo, nome, tipo, lat, lon, sog, cog, t, area, fonte, sanz, **extr
         "velocita_nodi": sog, "rotta_gradi": cog, "ora_utc": t, "area": area,
         "sanzionata": verifica_sanzione(imo, mmsi, sanz), "fonte": fonte,
     }
+    info = sanz[0].get(imo) or sanz[1].get(str(mmsi))
+    if info:
+        r["flotta_ombra_probabile"] = info.get("ombra", False)
+    # controllo di plausibilità: una nave mercantile non supera ~30 nodi
+    if sog is not None and sog > 40 and sog < 102.2:
+        r["avviso_posizione"] = ("velocità impossibile (%.0f nodi): posizione probabilmente falsata "
+                                 "(spoofing o disturbo GNSS)" % sog)
     r.update(extra)
     return r
 
@@ -506,6 +514,10 @@ def main():
     errori, fonti = [], []
     sanz = carica_sanzioni(errori)
     navi = []
+    if sanz[0] or sanz[1]:
+        fonti.append({"nome": "Elenco navi sanzionate del progetto (docs/data/sanzioni-navi.json)",
+                      "link": "data/sanzioni-navi.json", "licenza": "vedi le fonti di quel file",
+                      "data_dato": json.load(open(SANZIONI, encoding="utf-8")).get("aggiornato", "")})
 
     dg, agg = fonte_digitraffic(sanz, errori)
     navi += dg

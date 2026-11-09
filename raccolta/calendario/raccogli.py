@@ -21,6 +21,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -50,17 +51,30 @@ MESI_EN["sept"] = 9
 
 
 # ---------------------------------------------------------------- utilita'
-def scarica(url, timeout=40, binario=False):
+def scarica(url, timeout=40, binario=False, tentativi=3):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        dati = r.read()
+    for k in range(tentativi):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                dati = r.read()
+            break
+        except urllib.error.HTTPError as e:
+            if e.code in (500, 502, 503, 504) and k < tentativi - 1:
+                time.sleep(5 * (k + 1))
+                continue
+            raise
+        except (urllib.error.URLError, TimeoutError):
+            if k < tentativi - 1:
+                time.sleep(5 * (k + 1))
+                continue
+            raise
     return dati if binario else dati.decode("utf-8", errors="replace")
 
 
 def testo(h):
     h = re.sub(r"<script.*?</script>|<style.*?</style>", " ", h, flags=re.S | re.I)
-    h = re.sub(r"<[^>]+>", " ", h)
-    return html.unescape(re.sub(r"\s+", " ", h)).strip()
+    h = html.unescape(re.sub(r"<[^>]+>", " ", h))
+    return re.sub(r"\s+", " ", h).strip()
 
 
 def errore(fonte, e):
@@ -135,6 +149,18 @@ def leggi_ics(t):
 
 
 # ---------------------------------------------------------------- Fed
+MESI_IT = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto",
+           "settembre", "ottobre", "novembre", "dicembre"]
+
+
+def mese_it(s):
+    """'SEPTEMBER 2026' o 'August: ...' -> nomi dei mesi in italiano."""
+    def sost(m):
+        n = MESI_EN.get(m.group(0).lower())
+        return MESI_IT[n - 1] if n else m.group(0)
+    return re.sub(r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\b", sost, s, flags=re.I)
+
+
 def frazione(s):
     s = s.strip()
     m = re.match(r"(\d+)(?:-(\d)/(\d))?$", s)
@@ -259,9 +285,11 @@ def bce():
                      valore_precedente=None if passato else stato_tassi, valore_uscito=uscito,
                      note="Comunicato alle 14:15 ora di Francoforte, conferenza alle 14:45.")
             n += 1
-        if ultima and not nella_finestra(ultima["data"]):
-            aggiungi(ultima["data"], "banca-centrale", "EU", "BCE: ultima decisione", "alta", "BCE", ultima["link"],
-                     valore_uscito="%s; %s" % (ultima["azione"], stato_tassi))
+        if ultima and ultima["data"] not in visti:
+            d_utc, ora = utc_da_locale(ultima["data"], 14, 15, "CET")
+            aggiungi(d_utc, "banca-centrale", "EU", "BCE: decisione di politica monetaria (ultima)", "alta",
+                     "BCE, comunicato", ultima["link"], ora_utc=ora,
+                     valore_uscito="%s; %s" % (ultima["azione"], stato_tassi or "livelli dei tassi non letti"))
         fonte("BCE - calendario riunioni e comunicati", url, "Riuso libero con citazione della fonte (BCE)")
         print("BCE:", n, "riunioni")
     except Exception as e:
@@ -334,7 +362,9 @@ def boe():
                 passato = giorno <= OGGI
                 uscito = None
                 if ultima and ultima[0] == giorno:
-                    uscito = ultima[1] + (" (Bank Rate %s)" % tasso if tasso else "")
+                    uscito = re.sub(r"Bank Rate (raised|cut|reduced|maintained|held) (?:to|at) ([\d.]+)%",
+                                    lambda x: "Bank Rate %s al %s%%" % ({"raised": "alzato", "cut": "tagliato", "reduced": "tagliato"}.get(x.group(1), "invariato"), x.group(2).replace(".", ",")),
+                                    ultima[1])
                 aggiungi(d_utc, "banca-centrale", "GB", "Bank of England: decisione MPC sul Bank Rate", "alta",
                          "Bank of England, date MPC", url, ora_utc=ora,
                          valore_precedente=None if passato else ("Bank Rate " + tasso if tasso else None),
@@ -374,7 +404,8 @@ def bls_ultimi():
             if c:
                 val += "; core %s%s%% m/m" % ("-" if c.group(1) in ("fell", "decreased") else "+", (c.group(2) or " 0").strip().split()[0])
             prec = "%s: %s%s%% m/m" % (m.group(5), "-" if m.group(3) in ("falling", "decreasing") else "+", (m.group(4) or " 0").strip().split()[0])
-            out["cpi"] = (dt.datetime.strptime(d.group(1), "%B %d, %Y").date(), p.group(1) if p else "", val, prec)
+            out["cpi"] = (dt.datetime.strptime(d.group(1), "%B %d, %Y").date(), mese_it(p.group(1)) if p else "",
+                          val.replace(".", ","), mese_it(prec).replace(".", ","))
     except Exception as e:
         errore("BLS comunicato CPI", e)
     try:
@@ -388,7 +419,7 @@ def bls_ultimi():
             val = "Occupati non agricoli %s%s" % (segno, (m.group(2) or "n.d.").replace(",", "."))
             if u:
                 val += "; disoccupazione %s%%" % u.group(1).replace(".", ",")
-            out["empsit"] = (dt.datetime.strptime(d.group(1), "%B %d, %Y").date(), p.group(1) if p else "", val, None)
+            out["empsit"] = (dt.datetime.strptime(d.group(1), "%B %d, %Y").date(), mese_it(p.group(1)) if p else "", val, None)
     except Exception as e:
         errore("BLS comunicato occupazione", e)
     return out
@@ -698,7 +729,7 @@ def elezioni():
         n = 0
         for tr in re.findall(r"<tr.*?</tr>", h, re.S):
             celle = [testo(c) for c in re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)]
-            lk = re.search(r'href="(/elections/id/\d+/)"', tr)
+            lk = re.search(r'(/elections/id/\d+/)', tr)
             if len(celle) < 5 or not lk:
                 continue
             piene = [c for c in celle if c]
@@ -828,8 +859,13 @@ def main():
             f()
         except Exception as e:  # rete di sicurezza: nessuna fonte deve fermare lo script
             errore(f.__name__, e)
+    # una voce manuale (non di riserva) prevale sulla voce automatica dello stesso giorno, paese e categoria
+    manuali_chiavi = {(e["data"], e["paese"], e["categoria"]) for e in ELEMENTI if e.get("origine") == "manuale"}
     visti, finali = set(), []
     for e in ELEMENTI:
+        if e.get("origine") == "auto" and (e["data"], e["paese"], e["categoria"]) in manuali_chiavi \
+                and e["categoria"] == "banca-centrale":
+            continue
         chiave = (e["data"], e["titolo"].lower())
         if chiave in visti:
             continue

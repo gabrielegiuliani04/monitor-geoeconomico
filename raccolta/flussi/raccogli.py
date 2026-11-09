@@ -551,6 +551,9 @@ PAESI = {  # bandiera (testo) -> ISO 2 lettere, solo i casi frequenti
     "false flag": None, "syria": "SY", "st vincent and the grenadines": "VC", "saint vincent and the grenadines": "VC",
     "kiribati": "KI", "madagascar": "MG", "nauru": "NR", "seychelles": "SC", "dominica": "DM", "fiji": "FJ",
     "bahamas": "BS", "singapore": "SG", "norway": "NO", "sri lanka": "LK", "eritrea": "ER", "burkina faso": "BF",
+    "democratic people's republic of korea": "KP", "san marino": "SM", "ecuador": "EC", "st. kitts and nevis": "KN",
+    "republic of palau": "PW", "antigua & barbuda": "AG", "cambodia": "KH", "cayman islands": "KY", "indonesia": "ID",
+    "the gambia": "GM", "sao tome & principe": "ST", "guinea": "GN", "russian federation": "RU",
     "haiti": "HT", "belarus": "BY", "kazakhstan": "KZ", "libya": "LY", "iraq": "IQ", "egypt": "EG", "ukraine": "UA",
 }
 

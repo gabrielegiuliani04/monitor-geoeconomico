@@ -8,7 +8,7 @@ Osservatorio OSINT di rischio geoeconomico: mappa interattiva (eventi militari, 
 
 ## Dove sta cosa
 - Repository: https://github.com/gabrielegiuliani04/monitor-geoeconomico (pubblico)
-- Sito: https://gabrielegiuliani04.github.io/monitor-geoeconomico/ (**GitHub Pages da attivare a mano**: Settings → Pages → main, /docs)
+- Sito: https://gabrielegiuliani04.github.io/monitor-geoeconomico/ (GitHub Pages attivo dal 2026-11-09, si aggiorna a ogni push su main)
 - Vecchia pagina su claude.ai: https://claude.ai/artifact/V7PncTJkuaCaEtjJtX8XmV (aggiornata da un'altra chat; copiata nel repository il 2026-11-09, versione 1794248917-373a). Da ora il repository è l'unica fonte.
 - `docs/` sito e dati · `raccolta/` script e regole degli agenti (`raccolta/AGENTI.md`) · `report/agenti/` rapporti degli agenti · `METODO.md` metodo e fonti
 
