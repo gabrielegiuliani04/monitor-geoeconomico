@@ -700,7 +700,10 @@ def distanza_km(a, b, c, d):
 
 NOMI_COMUNI = set("""the and for with from after over near says said iran israel russia ukraine russian ukrainian
 iranian israeli saudi houthi houthis strait hormuz gulf tanker tankers ship ships drone drones missile missiles
-attack attacks strike strikes oblast region city general staff report reports news update""".split())
+attack attacks strike strikes oblast region city general staff report reports news update
+says' last more over into than army navy force forces military state media sources witnesses
+crew fire fires near west east north south western eastern northern southern after amid with
+from this that what when they their there iran's russia's ukraine's""".split())
 
 
 def eventi_vicini(el, eventi):
@@ -711,7 +714,7 @@ def eventi_vicini(el, eventi):
         g = datetime.strptime(el["data_fonte"], "%Y-%m-%d")
     except ValueError:
         return []
-    nomi = {w.lower() for w in re.findall(r"\b[A-Z][\w'’-]{4,}", el["titolo"]) if w.lower() not in NOMI_COMUNI}
+    nomi = {w.lower() for w in re.findall(r"\b[A-Z][\w'’-]{3,}", el["titolo"]) if w.lower() not in NOMI_COMUNI}
     out = []
     for eid, de, lat, lon, testo in eventi:
         try:
