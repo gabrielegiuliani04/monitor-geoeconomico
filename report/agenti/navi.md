@@ -1,7 +1,7 @@
 # Tracciamento navi — rapporto dell'agente (9 novembre 2026)
 
 Script: `raccolta/navi/raccogli.py` (libreria standard; solo aisstream.io usa il pacchetto `websockets`, in `raccolta/navi/requirements.txt`, ed è facoltativo).
-Dato: `docs/data/navi.json` (eseguito davvero il 9/11/2026 alle 19:01 UTC). Tempo di esecuzione senza chiavi: circa 5 secondi; con la DMA attiva serve scaricare un file da centinaia di MB (da GitHub Actions va bene).
+Dato: `docs/data/navi.json` (eseguito davvero il 9/11/2026, ultima esecuzione alle 19:03 UTC). Tempo di esecuzione senza chiavi: circa 5 secondi; con la DMA attiva serve scaricare un file da centinaia di MB (da GitHub Actions va bene).
 
 ## Fonti provate
 
@@ -23,7 +23,9 @@ Dato: `docs/data/navi.json` (eseguito davvero il 9/11/2026 alle 19:01 UTC). Temp
 - `militari_usni`: 35 navi USA dal tracker del 2/11, con l'area dichiarata e come coordinata il **centro dell'area** (`origine_coord`, `precisione_km` da 250 a 2.000 km).
 - `avvisi_ais`: eventi GFW (vuoto finché manca la chiave).
 - `bandiera`: è quella dichiarata dalle prime 3 cifre dell'MMSI (tabella parziale nello script), non quella del registro.
-- `sanzionata`: oggi vale sempre **"non verificato"**, perché `docs/data/sanzioni-navi.json` non esisteva ancora quando lo script è girato. Appena l'altro agente lo produce, lo script incrocia IMO e MMSI senza bisogno di modifiche (lo schema viene letto in modo tollerante: `elementi`/`navi`, `imo`, `mmsi`, `sanzionata_da`/`programmi`/`liste`).
+- `sanzionata`: "sì: <chi>" / "no" dall'incrocio dell'IMO (o MMSI) con `docs/data/sanzioni-navi.json` (2.022 navi, prodotto dall'altro agente); "non verificato" se quel file manca. Per le sanzionate c'è anche `flotta_ombra_probabile` (ripreso da quel file).
+- `avviso_ais`: nave sanzionata senza nuove posizioni da più di 6 ore (indizio debole di AIS spento o di uscita dalla copertura).
+- `avviso_posizione`: velocità oltre 40 nodi, quindi posizione quasi certamente falsata (spoofing o disturbo GNSS).
 - Nessun dato personale: solo identificativi della nave.
 
 ## Fatti dal dato di oggi
@@ -33,12 +35,16 @@ Fatti (Digitraffic, istantanea del 9/11/2026, 19:00 UTC, salvo dove indicato):
 2. **50 delle 90** sono a est di 27,8°E, cioè nelle acque dei porti russi (Primorsk, Ust-Luga, San Pietroburgo). Le destinazioni dichiarate più frequenti: Ust-Luga (varie grafie, almeno 16), "RU LED"/San Pietroburgo, Primorsk, e "BALTIC/GOF FOR ORDERS" (carico senza destinazione dichiarata).
 3. 16 di queste 50 dichiarano un **pescaggio di almeno 11 m**, cioè sono cariche o in carico.
 4. Bandiere da MMSI delle 90: Russia 23, Isole Marshall 9, Liberia 9, **Sierra Leone 9**, Barbados 5, Panama 4, **Guinea Equatoriale 4**, Estonia 4, Malta 4, Camerun 3, Oman 2, Gambia 1, Palau 1 e altre.
-5. Nel Golfo di Finlandia sono visibili anche **7 unità militari con AIS acceso** (tipo 35): marina finlandese (FNS Louhi, FNS Pori), estone e unità che trasmettono il nome generico "NATO WARSHIP".
-6. USNI, tracker del **2 novembre 2026**: due portaerei nel Mar Arabico, **George Washington (CVN-73)** e **George H. W. Bush (CVN-77)**, con 12 tra cacciatorpediniere e incrociatori nella stessa sezione; due cacciatorpediniere nel Mar Rosso (Jason Dunham, Gonzalez); il gruppo anfibio **Boxer** (LHD-4, con Comstock e Portland) nell'Oceano Indiano; Theodore Roosevelt (CVN-71) nel Mar Cinese Meridionale; Eisenhower (CVN-69) e Nimitz (CVN-68) nell'Atlantico occidentale; Ronald Reagan (CVN-76) nel Pacifico orientale.
-7. Hormuz, Bab el-Mandeb, Suez e Bosforo: **oggi nessun dato di posizione**, perché le uniche fonti gratuite per quelle aree (aisstream.io e GFW) richiedono una chiave.
+5. **Incrocio con le sanzioni: 37 delle 90 petroliere nel Golfo di Finlandia sono sanzionate** (25 da Regno Unito e UE, 7 da Regno Unito, USA e UE, 4 solo dall'UE, 1 solo dal Regno Unito); 28 sono nella zona dei porti russi e 9 di queste dichiarano un pescaggio di almeno 11 m. Bandiere da MMSI delle 37: Russia 19, Sierra Leone 9, Guinea Equatoriale 4, Camerun 3, Oman 2. Fra queste, per esempio, CINDY, DEMANTOID, DERZHAVA (destinazione dichiarata Port Said), KARNEOL (destinazione dichiarata Singapore), YODAN, SEA OWL I (fonte: Digitraffic più `sanzioni-navi.json`).
+6. In tutta la copertura di Digitraffic risultano **51 navi sanzionate con AIS acceso**; 44 sono segnate come "flotta ombra probabile" nel file delle sanzioni. Per 6 (BONIFACY, KHRIZOPRAZ, MIKHAIL LOMONOSOV, ABRAU, NAVIK, TEWEST) l'ultima posizione ha più di 6 ore.
+7. **Posizioni falsate**: 4 petroliere sanzionate (C VIKING, KHRIZOPRAZ, STORMBRINGER, VEZUVIAN) compaiono tutte nello stesso punto nell'entroterra russo (57,67°N 32,53°E), a 46–81 nodi: è un dato AIS sicuramente sbagliato (spoofing o disturbo GNSS), segnalato con `avviso_posizione` e da non disegnare come posizione vera.
+8. Nel Golfo di Finlandia sono visibili anche **7 unità militari con AIS acceso** (tipo 35): marina finlandese (FNS Louhi, FNS Pori), estone e unità che trasmettono il nome generico "NATO WARSHIP".
+9. USNI, tracker del **2 novembre 2026**: due portaerei nel Mar Arabico, **George Washington (CVN-73)** e **George H. W. Bush (CVN-77)**, con 12 tra cacciatorpediniere e incrociatori nella stessa sezione; due cacciatorpediniere nel Mar Rosso (Jason Dunham, Gonzalez); il gruppo anfibio **Boxer** (LHD-4, con Comstock e Portland) nell'Oceano Indiano; Theodore Roosevelt (CVN-71) nel Mar Cinese Meridionale; Eisenhower (CVN-69) e Nimitz (CVN-68) nell'Atlantico occidentale; Ronald Reagan (CVN-76) nel Pacifico orientale.
+10. Hormuz, Bab el-Mandeb, Suez e Bosforo: **oggi nessun dato di posizione**, perché le uniche fonti gratuite per quelle aree (aisstream.io e GFW) richiedono una chiave.
 
 Valutazioni (non fatti):
-- Bandiere come Sierra Leone, Guinea Equatoriale, Camerun, Barbados, Gambia e Palau, insieme a "for orders" come destinazione, sono tipiche della flotta ombra russa. **Ma senza l'incrocio con le liste di sanzioni non si può dire quante delle 90 siano sanzionate**: è il primo controllo da fare appena c'è `sanzioni-navi.json`.
+- Circa 4 petroliere su 10 che stasera stanno caricando o aspettano davanti a Primorsk e Ust-Luga sono sanzionate: le sanzioni sulle singole navi non hanno fermato il traffico, lo hanno spostato su navi sotto bandiere di comodo (Sierra Leone, Guinea Equatoriale, Camerun) o russe.
+- Molte di queste navi passeranno nei prossimi giorni dagli Stretti danesi: incrociare gli IMO con il file DMA del giorno lo mostrerebbe.
 - Le navi che spengono l'AIS non compaiono: il conteggio è un minimo.
 
 **Flotta ombra negli Stretti danesi in un giorno: oggi non è ricavabile**, perché il file DMA non è scaricabile da questo ambiente. Lo script lo calcola già (`riepilogo_aree["Stretti danesi"]`): petroliere viste nel giorno, quante sanzionate, e "transiti stimati", cioè navi viste nello stesso giorno sia a sud di 55,7°N sia a nord di 56,5°N. Va eseguito su GitHub Actions o in locale.
@@ -54,7 +60,7 @@ Variabili utili: `NAVI_DMA=0` salta la DMA (download pesante); `NAVI_DMA_GIORNO=
 ## Collegamenti con gli altri livelli della mappa
 
 - **Stretti** (`stretti.json`, `portwatch.json`): le petroliere viste qui sono il dettaglio nave per nave dietro i transiti aggregati di PortWatch, che va usato per i volumi.
-- **Sanzioni** (`sanzioni-navi.json`): fornisce il campo `sanzionata`.
+- **Sanzioni** (`sanzioni-navi.json`): fornisce il campo `sanzionata` e `flotta_ombra_probabile`.
 - **Oleodotti, terminali e cavi**: Primorsk e Ust-Luga sono i terminali del greggio russo nel Baltico. Le petroliere ferme sopra i cavi del Golfo di Finlandia sono un segnale da incrociare con `cavi-incidenti.json` (precedente: Eagle S, dicembre 2024).
 - **Mezzi militari** (`mobili.json`, non modificato): `militari_usni` è una fonte di conferma settimanale delle aree, da affiancare ai punti stimati già in mappa.
 
@@ -62,6 +68,7 @@ Variabili utili: `NAVI_DMA=0` salta la DMA (download pesante); `NAVI_DMA_GIORNO=
 
 - **Petroliere**: piccoli triangoli orientati secondo la rotta. Grigi se `sanzionata` è "no" o "non verificato"; **rossi con alone** se è "sì", con la lista sanzionatrice nel popup.
 - **Scia**: polilinea sottile delle ultime 12 posizioni (`scia`), visibile solo per le navi sanzionate o al passaggio del mouse.
+- **Posizione falsata** (`avviso_posizione`): non disegnarla, solo un elenco nel pannello laterale.
 - **AIS spento**: icona con punto esclamativo sull'ultima posizione nota quando c'è `avviso_ais` (nave sanzionata ferma da più di 6 ore) o un evento GFW "AIS spento". Quando la nave ricompare, un tratteggio tra l'ultimo punto prima del buio e il primo dopo.
 - **Incontri in mare** (GFW): due cerchi sovrapposti, a indicare un possibile trasbordo.
 - **Riquadro degli stretti**: un'etichetta "N petroliere, M sanzionate (fonte, ora)" e la scritta "nessuna fonte" se l'area non è coperta.

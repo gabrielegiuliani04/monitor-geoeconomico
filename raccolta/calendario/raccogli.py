@@ -187,9 +187,9 @@ def fed():
                     contro = re.search(r"Voting against the monetary policy action were (.*?)\.", st)
                     dm = re.search(r"monetary(\d{8})", link)
                     if m and dm:
-                        azione = {"maintain": "invariato", "raise": "rialzo", "lower": "taglio"}[m.group(1)]
+                        azione = {"maintain": "invariati", "raise": "in rialzo", "lower": "in calo"}[m.group(1)]
                         ultima = {"data": dt.datetime.strptime(dm.group(1), "%Y%m%d").date(),
-                                  "testo": "Tassi fed funds %s: %s-%s%%%s%s" % (
+                                  "testo": "Fed funds %s: %s-%s%%%s%s" % (
                                       azione, frazione(m.group(2)), frazione(m.group(3)),
                                       " (voto %s-%s)" % v.groups() if v else "",
                                       "; contrari: " + contro.group(1) if contro else ""),
@@ -205,6 +205,7 @@ def fed():
                 continue
             fine_sez = t.find("FOMC Meetings", anno_m.end())
             sez = t[anno_m.end(): fine_sez if fine_sez > 0 else len(t)]
+            sez = re.split(r"\* Meeting associated|Note:", sez)[0]
             for m in re.finditer(r"\b(January|February|March|April|May|June|July|August|September|October|November|December)(?:/(\w+))? (\d{1,2})-(\d{1,2})(\*?)", sez):
                 mese = MESI_EN[(m.group(2) or m.group(1)).lower()]
                 giorno = dt.date(anno, mese, int(m.group(4)))
@@ -212,7 +213,7 @@ def fed():
                     continue
                 d_utc, ora = utc_da_locale(giorno, 14, 0, "ET")
                 sep = " con proiezioni economiche (SEP)" if m.group(5) else ""
-                tit = "Fed: decisione FOMC (riunione %s %s-%s)%s" % (m.group(1), m.group(3), m.group(4), sep)
+                tit = "Fed: decisione FOMC (riunione %s-%s %s)%s" % (m.group(3), m.group(4), MESI_IT[mese - 1], sep)
                 passato = giorno <= OGGI
                 aggiungi(d_utc, "banca-centrale", "US", tit, "alta", "Federal Reserve, calendario FOMC", url,
                          ora_utc=ora,
@@ -268,8 +269,8 @@ def bce():
         t = testo(scarica(url))
         n = 0
         visti = set()
-        for m in re.finditer(r"(\d{2})/(\d{2})/(\d{4}) Governing Council of the ECB: monetary policy meeting[^0-9]*?(\(Day 2\), followed by press conference|followed by press conference|\(Day 1\))?", t):
-            if m.group(4) and "Day 1" in m.group(4):
+        for m in re.finditer(r"(\d{2})/(\d{2})/(\d{4}) Governing Council of the ECB: monetary policy meeting([^/]*?)(?=\d{2}/\d{2}/\d{4}|$)", t):
+            if "Day 1" in m.group(4) or "press conference" not in m.group(4):
                 continue
             giorno = dt.date(int(m.group(3)), int(m.group(2)), int(m.group(1)))
             if giorno in visti or not nella_finestra(giorno):
@@ -405,7 +406,7 @@ def bls_ultimi():
                 val += "; core %s%s%% m/m" % ("-" if c.group(1) in ("fell", "decreased") else "+", (c.group(2) or " 0").strip().split()[0])
             prec = "%s: %s%s%% m/m" % (m.group(5), "-" if m.group(3) in ("falling", "decreasing") else "+", (m.group(4) or " 0").strip().split()[0])
             out["cpi"] = (dt.datetime.strptime(d.group(1), "%B %d, %Y").date(), mese_it(p.group(1)) if p else "",
-                          val.replace(".", ","), mese_it(prec).replace(".", ","))
+                          re.sub(r"(\d)\.(\d)", r"\1,\2", val), re.sub(r"(\d)\.(\d)", r"\1,\2", mese_it(prec)))
     except Exception as e:
         errore("BLS comunicato CPI", e)
     try:
@@ -498,8 +499,8 @@ def bea_ultimi():
             neg = "decreased at an annual rate" in (g.group(1) if g else "")
             out["gdp"] = (dt.datetime.strptime(m.group(1), "%B %d, %Y").date(),
                           "PIL reale %s%s%% annualizzato (%s, stima %s)" % ("-" if neg else "+", q.group(1).replace(".", ","),
-                                                                           ("%s trimestre %s" % (g.group(2), g.group(3))) if g else "",
-                                                                           s.group(1).lower() if s else ""))
+                                                                           ("%s trimestre %s" % ({"first": "primo", "second": "secondo", "third": "terzo", "fourth": "quarto"}.get(g.group(2), g.group(2)), g.group(3))) if g else "",
+                                                                           {"Advance": "preliminare", "Second": "seconda", "Third": "terza"}.get(s.group(1), s.group(1)) if s else ""))
     except Exception as e:
         errore("BEA PIL", e)
     try:
@@ -702,7 +703,7 @@ def eia():
 
 # ---------------------------------------------------------------- elezioni
 PAESI = {
-    "Cabo Verde": "CV", "Switzerland": "CH", "Spain": "ES", "Gambia, The": "GM", "Northern Cyprus": "CY",
+    "Cabo Verde": "CV", "Switzerland": "CH", "Spain": "ES", "Gambia, The": "GM",
     "Fiji": "FJ", "South Sudan": "SS", "Somalia": "SO", "Nigeria": "NG", "Kyrgyzstan": "KG", "El Salvador": "SV",
     "Micronesia, Federated States of": "FM", "Estonia": "EE", "France": "FR", "Finland": "FI", "Haiti": "HT",
     "United States of America": "US", "Germany": "DE", "Italy": "IT", "Japan": "JP", "United Kingdom": "GB",
