@@ -1,0 +1,27 @@
+name: Aggiorna mercati
+
+on:
+  schedule:
+    - cron: "30 21 * * 1-5"   # 21:30 UTC, dopo la chiusura di Wall Street
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scarica i prezzi
+        run: python3 raccolta/scarica_mercati.py docs/data/prezzi.json
+      - name: Salva se cambiati
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/prezzi.json
+          git diff --cached --quiet || git commit -m "Mercati: aggiornamento del $(date -u +%F)"
+          git push

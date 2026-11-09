@@ -1,0 +1,391 @@
+{
+ "aggiornato": "2026-11-07",
+ "schema": "regole/02_schema-dati.md v3 + extra di mappa (utenti, breve, fonti, sim, riv, dettaglio)",
+ "punti": [
+  {
+   "id": "MP-20261107-401",
+   "classe": "fisso",
+   "categoria": "difesa-aerea",
+   "nome": "Radar di preallarme AN/FPS-132 di Umm Dahal",
+   "identificativo": "",
+   "appartenenza": "QA",
+   "stato": "danneggiato",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 25.7067,
+   "lon": 51.2544,
+   "origine_coord": "fonte",
+   "precisione_km": 1,
+   "teatro": "MO",
+   "paese": "QA",
+   "regione": "Umm Dahal, a nord di Doha",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "ABC News: almeno 10 siti radar USA e alleati colpiti",
+   "link": "https://www.goodmorningamerica.com/news/story/us-allied-radar-sites-middle-east-struck-10-131164670",
+   "data_fonte": "2026-03-18",
+   "affidabilita": "alta",
+   "note": "Radar di preallarme contro i missili balistici, comprato dal Qatar dagli Stati Uniti: è di proprietà qatariota. Colpito dall'Iran all'inizio di marzo 2026: immagini satellitari del 3 marzo mostrano detriti sulla faccia nord-est e acqua dei pompieri (ABC News, analisi del Center for Nonproliferation Studies). Le foto di Al Jazeera mostrano componenti bruciati, secondo The Aviationist. Nessuna dichiarazione ufficiale sui danni e sullo stato di funzionamento. Coordinate da un post del 2025 citato da The Aviationist.",
+   "fonti": [
+    {
+     "fonte": "ABC News: almeno 10 siti radar USA e alleati colpiti",
+     "link": "https://www.goodmorningamerica.com/news/story/us-allied-radar-sites-middle-east-struck-10-131164670",
+     "data_fonte": "2026-03-18"
+    },
+    {
+     "fonte": "The Aviationist: danni al radar di preallarme del Qatar",
+     "link": "https://theaviationist.com/2026/04/11/early-warning-radar-al-udeid-damage/",
+     "data_fonte": "2026-04-11"
+    }
+   ],
+   "breve": "Radar di Umm Dahal",
+   "utenti": [
+    "QA",
+    "US"
+   ],
+   "dettaglio": "AN/FPS-132"
+  },
+  {
+   "id": "MP-20261107-402",
+   "classe": "fisso",
+   "categoria": "difesa-aerea",
+   "nome": "Radar del THAAD AN/TPY-2 di Muwaffaq Salti",
+   "identificativo": "",
+   "appartenenza": "US",
+   "stato": "danneggiato",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 31.8256,
+   "lon": 36.782,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "JO",
+   "regione": "Al-Azraq",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "CNN, ripresa da Yahoo News: basi radar del THAAD colpite in Giordania, Arabia Saudita ed Emirati (articolo senza data, la data è quella delle immagini)",
+   "link": "https://www.yahoo.com/news/articles/radar-bases-housing-key-us-201757584.html",
+   "data_fonte": "2026-03-02",
+   "affidabilita": "alta",
+   "note": "Radar della batteria antimissile THAAD statunitense nella base giordana. Colpito il 1 o il 2 marzo 2026: per la CNN il radar e i suoi cinque rimorchi sembrano distrutti, con crateri vicini. Per ABC News una fonte giordana conferma che il radar è stato danneggiato. Il Pentagono non commenta. La posizione è quella della base. Il simbolo è spostato di pochi chilometri per non coprire quello della base.",
+   "fonti": [
+    {
+     "fonte": "CNN, ripresa da Yahoo News: basi radar del THAAD colpite in Giordania, Arabia Saudita ed Emirati (articolo senza data, la data è quella delle immagini)",
+     "link": "https://www.yahoo.com/news/articles/radar-bases-housing-key-us-201757584.html",
+     "data_fonte": "2026-03-02"
+    },
+    {
+     "fonte": "ABC News: almeno 10 siti radar USA e alleati colpiti",
+     "link": "https://www.goodmorningamerica.com/news/story/us-allied-radar-sites-middle-east-struck-10-131164670",
+     "data_fonte": "2026-03-18"
+    },
+    {
+     "fonte": "OurAirports (pubblico dominio): coordinate della base che ospita il sito",
+     "link": "https://ourairports.com/data/",
+     "data_fonte": "2026-11-07"
+    }
+   ],
+   "breve": "THAAD di Muwaffaq Salti",
+   "utenti": [
+    "US"
+   ],
+   "sim": [
+    31.86,
+    36.83
+   ],
+   "dettaglio": "AN/TPY-2"
+  },
+  {
+   "id": "MP-20261107-403",
+   "classe": "fisso",
+   "categoria": "difesa-aerea",
+   "nome": "Radar del THAAD di Prince Sultan",
+   "identificativo": "",
+   "appartenenza": "US",
+   "stato": "danneggiato",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 24.0627,
+   "lon": 47.5805,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "SA",
+   "regione": "Al-Kharj",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "CNN, ripresa da Yahoo News: basi radar del THAAD colpite in Giordania, Arabia Saudita ed Emirati (articolo senza data, la data è quella delle immagini)",
+   "link": "https://www.yahoo.com/news/articles/radar-bases-housing-key-us-201757584.html",
+   "data_fonte": "2026-03-02",
+   "affidabilita": "media",
+   "note": "Il 1 marzo 2026 la tenda che riparava il radar di una batteria THAAD vicino alla base è risultata bruciata, con detriti attorno (CNN). ABC News vede fumo da un edificio che a gennaio ospitava un radar AN/TPY-2, ma non sa se il radar ci fosse al momento dell'attacco. Di chi sia il sistema, americano o saudita, non è chiaro. La posizione è quella della base. Il simbolo è spostato di pochi chilometri per non coprire quello della base.",
+   "fonti": [
+    {
+     "fonte": "CNN, ripresa da Yahoo News: basi radar del THAAD colpite in Giordania, Arabia Saudita ed Emirati (articolo senza data, la data è quella delle immagini)",
+     "link": "https://www.yahoo.com/news/articles/radar-bases-housing-key-us-201757584.html",
+     "data_fonte": "2026-03-02"
+    },
+    {
+     "fonte": "ABC News: almeno 10 siti radar USA e alleati colpiti",
+     "link": "https://www.goodmorningamerica.com/news/story/us-allied-radar-sites-middle-east-struck-10-131164670",
+     "data_fonte": "2026-03-18"
+    },
+    {
+     "fonte": "OurAirports (pubblico dominio): coordinate della base che ospita il sito",
+     "link": "https://ourairports.com/data/",
+     "data_fonte": "2026-11-07"
+    }
+   ],
+   "breve": "THAAD di Prince Sultan",
+   "utenti": [
+    "US",
+    "SA"
+   ],
+   "sim": [
+    24.1,
+    47.63
+   ],
+   "dettaglio": "AN/TPY-2"
+  },
+  {
+   "id": "MP-20261107-404",
+   "classe": "fisso",
+   "categoria": "difesa-aerea",
+   "nome": "Siti del THAAD di Ruwais e Sader",
+   "identificativo": "",
+   "appartenenza": "AE",
+   "stato": "danneggiato",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 24.1169,
+   "lon": 52.733,
+   "origine_coord": "stimata",
+   "precisione_km": 15,
+   "teatro": "MO",
+   "paese": "AE",
+   "regione": "Ruwais, Abu Dhabi occidentale",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "CNN, ripresa da Yahoo News: basi radar del THAAD colpite in Giordania, Arabia Saudita ed Emirati (articolo senza data, la data è quella delle immagini)",
+   "link": "https://www.yahoo.com/news/articles/radar-bases-housing-key-us-201757584.html",
+   "data_fonte": "2026-03-02",
+   "affidabilita": "media",
+   "note": "Tra il 28 febbraio e il 1 marzo 2026 le immagini satellitari mostrano danni a tre edifici a Ruwais e quattro a Sader, compresi i ricoveri dei radar del THAAD. Non è chiaro se i radar siano stati colpiti (CNN). Per ABC News due radar costosi sono stati danneggiati negli Emirati il primo giorno di guerra. Posizione stimata sul centro di Ruwais: le fonti non danno le coordinate e Sader, vicino ad Abu Dhabi, non ha un punto suo.",
+   "fonti": [
+    {
+     "fonte": "CNN, ripresa da Yahoo News: basi radar del THAAD colpite in Giordania, Arabia Saudita ed Emirati (articolo senza data, la data è quella delle immagini)",
+     "link": "https://www.yahoo.com/news/articles/radar-bases-housing-key-us-201757584.html",
+     "data_fonte": "2026-03-02"
+    },
+    {
+     "fonte": "ABC News: almeno 10 siti radar USA e alleati colpiti",
+     "link": "https://www.goodmorningamerica.com/news/story/us-allied-radar-sites-middle-east-struck-10-131164670",
+     "data_fonte": "2026-03-18"
+    },
+    {
+     "fonte": "Wikidata (CC0): coordinate del luogo",
+     "link": "https://www.wikidata.org",
+     "data_fonte": "2026-11-07"
+    }
+   ],
+   "breve": "THAAD negli Emirati",
+   "utenti": [
+    "AE"
+   ]
+  },
+  {
+   "id": "MP-20261107-405",
+   "classe": "fisso",
+   "categoria": "difesa-aerea",
+   "nome": "Radar AR-327 di Jabal ad Dukhan",
+   "identificativo": "",
+   "appartenenza": "BH",
+   "stato": "",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 26.0389,
+   "lon": 50.5431,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "BH",
+   "regione": "Jabal ad Dukhan, il punto più alto del Bahrein",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Defence Security Asia: radar AR-327 di Jabal ad Dukhan",
+   "link": "https://defencesecurityasia.com/en/iran-ballistic-missile-strike-us-radar-bahrain-jabal-ad-dukhan-gulf-crisis/",
+   "data_fonte": "2026-06-11",
+   "affidabilita": "media",
+   "note": "Radar di preallarme tridimensionale a lungo raggio, descritto come legato agli Stati Uniti. L'11 giugno 2026 immagini open source mostrano fumo dal sito, forse un colpo diretto durante la rappresaglia iraniana. Né il CENTCOM né il governo del Bahrein confermano, e non si sa se ci siano danni: per questo lo stato resta vuoto. Posizione stimata sulla cima del monte (Wikidata).",
+   "fonti": [
+    {
+     "fonte": "Defence Security Asia: radar AR-327 di Jabal ad Dukhan",
+     "link": "https://defencesecurityasia.com/en/iran-ballistic-missile-strike-us-radar-bahrain-jabal-ad-dukhan-gulf-crisis/",
+     "data_fonte": "2026-06-11"
+    },
+    {
+     "fonte": "Wikidata (CC0): coordinate del luogo",
+     "link": "https://www.wikidata.org",
+     "data_fonte": "2026-11-07"
+    }
+   ],
+   "breve": "Radar di Jabal ad Dukhan",
+   "utenti": [
+    "BH",
+    "US"
+   ],
+   "dettaglio": "AR-327"
+  },
+  {
+   "id": "MP-20261107-406",
+   "classe": "fisso",
+   "categoria": "difesa-aerea",
+   "nome": "Batterie Arrow di Palmachim",
+   "identificativo": "",
+   "appartenenza": "IL",
+   "stato": "operativo",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 31.8979,
+   "lon": 34.6908,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "IL",
+   "regione": "Costa a sud di Rishon LeZion",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Jerusalem Post, ripreso da Libnanews: test di un missile Arrow",
+   "link": "https://live.libnanews.com/event/ev-1786257502241-0f7a",
+   "data_fonte": "2026-08-09",
+   "affidabilita": "media",
+   "note": "Batteria Arrow 2 a sud-est della base dal 2000 e Arrow 3 dal 2017, con il comando della difesa aerea israeliana e l'unità di prova dei missili (Wikipedia). Ad agosto 2026 un test di Arrow lanciato dalla base è stato tenuto riservato (Jerusalem Post, ripreso da Libnanews). La posizione è quella della base. Il simbolo è spostato di pochi chilometri per non coprire quello della base.",
+   "fonti": [
+    {
+     "fonte": "Jerusalem Post, ripreso da Libnanews: test di un missile Arrow",
+     "link": "https://live.libnanews.com/event/ev-1786257502241-0f7a",
+     "data_fonte": "2026-08-09"
+    },
+    {
+     "fonte": "Wikipedia, Palmachim Airbase (letta il 7 nov)",
+     "link": "https://en.wikipedia.org/wiki/Palmachim_Airbase",
+     "data_fonte": "2026-11-07"
+    },
+    {
+     "fonte": "OurAirports (pubblico dominio): coordinate della base che ospita il sito",
+     "link": "https://ourairports.com/data/",
+     "data_fonte": "2026-11-07"
+    }
+   ],
+   "breve": "Arrow di Palmachim",
+   "utenti": [
+    "IL"
+   ],
+   "sim": [
+    31.87,
+    34.74
+   ],
+   "dettaglio": "Arrow 2 e Arrow 3"
+  },
+  {
+   "id": "MP-20261107-407",
+   "classe": "fisso",
+   "categoria": "difesa-aerea",
+   "nome": "Radar dell’isola di Kish",
+   "identificativo": "",
+   "appartenenza": "IR",
+   "stato": "danneggiato",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 26.535,
+   "lon": 53.975,
+   "origine_coord": "stimata",
+   "precisione_km": 10,
+   "teatro": "MO",
+   "paese": "IR",
+   "regione": "Isola di Kish",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Alma Research and Education Center: basi iraniane colpite lungo il Golfo",
+   "link": "https://israel-alma.org/iranian-bases-targeted-along-the-gulf-by-us-idf-strikes/",
+   "data_fonte": "2026-03-02",
+   "affidabilita": "media",
+   "note": "Secondo Alma, il 2 marzo 2026, le installazioni radar di Kish sono tra i bersagli colpiti per primi da Stati Uniti e Israele, nelle prime 48 ore. Alma non dà coordinate né il tipo di radar. Rivendicazione di una parte in guerra, senza riscontro indipendente. Posizione stimata sul centro dell'isola.",
+   "fonti": [
+    {
+     "fonte": "Alma Research and Education Center: basi iraniane colpite lungo il Golfo",
+     "link": "https://israel-alma.org/iranian-bases-targeted-along-the-gulf-by-us-idf-strikes/",
+     "data_fonte": "2026-03-02"
+    },
+    {
+     "fonte": "Wikidata (CC0): coordinate del luogo",
+     "link": "https://www.wikidata.org",
+     "data_fonte": "2026-11-07"
+    }
+   ],
+   "breve": "Radar di Kish",
+   "utenti": [
+    "IR"
+   ],
+   "riv": 1
+  },
+  {
+   "id": "MP-20261107-408",
+   "classe": "fisso",
+   "categoria": "difesa-aerea",
+   "nome": "Radar di Jask",
+   "identificativo": "",
+   "appartenenza": "IR",
+   "stato": "",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 25.6453,
+   "lon": 57.7756,
+   "origine_coord": "stimata",
+   "precisione_km": 10,
+   "teatro": "MO",
+   "paese": "IR",
+   "regione": "Jask, Golfo di Oman",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Alma Research and Education Center: basi iraniane colpite lungo il Golfo",
+   "link": "https://israel-alma.org/iranian-bases-targeted-along-the-gulf-by-us-idf-strikes/",
+   "data_fonte": "2026-03-02",
+   "affidabilita": "media",
+   "note": "Secondo Alma, il 2 marzo 2026, le installazioni radar di Jask, a est di Chabahar, non erano ancora state neutralizzate. Nessuna notizia successiva letta. Posizione stimata sulla città (Wikidata).",
+   "fonti": [
+    {
+     "fonte": "Alma Research and Education Center: basi iraniane colpite lungo il Golfo",
+     "link": "https://israel-alma.org/iranian-bases-targeted-along-the-gulf-by-us-idf-strikes/",
+     "data_fonte": "2026-03-02"
+    },
+    {
+     "fonte": "Wikidata (CC0): coordinate del luogo",
+     "link": "https://www.wikidata.org",
+     "data_fonte": "2026-11-07"
+    }
+   ],
+   "breve": "Radar di Jask",
+   "utenti": [
+    "IR"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,2706 @@
+{
+ "aggiornato": "2026-11-09",
+ "schema": "regole/02_schema-dati.md v2.1 + extra di mappa",
+ "punti": [
+  {
+   "id": "MP-20261105-01",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS George H.W. Bush",
+   "identificativo": "CVN-77",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 24.5,
+   "lon": 58.8,
+   "origine_coord": "stimata",
+   "precisione_km": 250,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Golfo di Oman, area indicativa",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@Indowatchosint su X",
+   "link": "https://x.com/Indowatchosint/status/2118931237410861517",
+   "data_fonte": "2026-11-07",
+   "affidabilita": "media",
+   "note": "Il 7 novembre @Indowatchosint segnala un elicottero MH-60S della Bush (matricola 168552) in volo vicino al Golfo di Oman: la posizione della nave è dedotta dall'elicottero e il cerchio è quello del Golfo di Oman. Impegnata nel blocco dei porti iraniani, in vigore dal 14 luglio secondo il CENTCOM. Il 3 novembre una didascalia ufficiale della US Navy la collocava nell'area della Quinta Flotta e il 2 novembre USNI nel Mar Arabico, con il Carrier Air Wing 7. Naviga con il transponder AIS spento. Il Fleet and Marine Tracker di USNI del 2 novembre la metteva nel Mar Arabico, senza coordinate: è un dato più vecchio dell'elicottero del 7, per questo il punto resta nel Golfo di Oman. Il tracker del 9 novembre alle 16:45 non era ancora uscito.",
+   "fonti": [
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2118931237410861517",
+     "data_fonte": "2026-11-07"
+    },
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "Didascalia di una foto US Navy, rilanciata da @AmerHeroesRadio su X",
+     "link": "https://x.com/AmerHeroesRadio/status/2118132301020418451",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Bush",
+   "dettaglio": "classe Nimitz",
+   "ids": [
+    "X-20261105-02",
+    "GI-20261105-25",
+    "X-20261107-22"
+   ],
+   "gruppo": "bush",
+   "capo": 1,
+   "storico": [
+    {
+     "data_evento": "2026-11-03",
+     "lat": 16,
+     "lon": 62,
+     "origine_coord": "stimata",
+     "precisione_km": 800,
+     "affidabilita": "alta",
+     "nota": "Mar Arabico, area della Quinta Flotta (US Navy e USNI)"
+    }
+   ]
+  },
+  {
+   "id": "MP-20261105-02",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS Donald Cook",
+   "identificativo": "DDG-75",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 16,
+   "lon": 62,
+   "origine_coord": "stimata",
+   "precisione_km": 800,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Mar Arabico",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Fleet and Marine Tracker",
+   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "media",
+   "note": "Scorta della Bush secondo il Fleet Tracker di USNI. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Donald Cook",
+   "dettaglio": "classe Arleigh Burke",
+   "gruppo": "bush",
+   "sim": [
+    21.75,
+    62.45
+   ]
+  },
+  {
+   "id": "MP-20261105-03",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS George Washington",
+   "identificativo": "CVN-73",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-04",
+   "ora_utc": "",
+   "lat": 16,
+   "lon": 62,
+   "origine_coord": "stimata",
+   "precisione_km": 800,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Mar Arabico",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@ConflictRadarME su X (aggregatore senza immagini)",
+   "link": "https://x.com/ConflictRadarME/status/2118082521258775020",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "alta",
+   "note": "Impegnata nel blocco dei porti iraniani insieme alla Bush. Ha base a Yokosuka ed è in Medio Oriente da agosto. USNI la dà nel Mar Arabico il 2 novembre con il Carrier Air Wing 5; un aggregatore su X la segnala ancora lì il 4, senza immagini. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "fonti": [
+    {
+     "fonte": "@ConflictRadarME su X (aggregatore senza immagini)",
+     "link": "https://x.com/ConflictRadarME/status/2118082521258775020",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "@citadelnewsar su X",
+     "link": "https://x.com/citadelnewsar/status/2118282184838508758",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Washington",
+   "dettaglio": "classe Nimitz",
+   "ids": [
+    "X-20261105-03",
+    "GI-20261105-24"
+   ],
+   "gruppo": "gw",
+   "capo": 1,
+   "sim": [
+    18.5,
+    65
+   ]
+  },
+  {
+   "id": "MP-20261105-04",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS Shoup",
+   "identificativo": "DDG-86",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-04",
+   "ora_utc": "",
+   "lat": 16,
+   "lon": 62,
+   "origine_coord": "stimata",
+   "precisione_km": 800,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Mar Arabico",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@ConflictRadarME su X (aggregatore senza immagini)",
+   "link": "https://x.com/ConflictRadarME/status/2118082521258775020",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Scorta della George Washington secondo USNI. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "@ConflictRadarME su X (aggregatore senza immagini)",
+     "link": "https://x.com/ConflictRadarME/status/2118082521258775020",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Shoup",
+   "dettaglio": "classe Arleigh Burke",
+   "ids": [
+    "X-20261105-04"
+   ],
+   "gruppo": "gw",
+   "sim": [
+    18.75,
+    65.45
+   ]
+  },
+  {
+   "id": "MP-20261105-05",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS John Paul Jones",
+   "identificativo": "DDG-53",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-10-31",
+   "ora_utc": "",
+   "lat": 16,
+   "lon": 62,
+   "origine_coord": "stimata",
+   "precisione_km": 800,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Mar Arabico",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Il 31 ottobre ha soccorso con la USS Ross un dhow in avaria nel Mar Arabico (comunicato NAVCENT, letto tramite un riepilogo). Il 2 novembre USNI la elenca tra le unità «nella regione». La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "John Paul Jones",
+   "dettaglio": "classe Arleigh Burke",
+   "sim": [
+    19.3,
+    60.2
+   ]
+  },
+  {
+   "id": "MP-20261105-06",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS Ross",
+   "identificativo": "DDG-71",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-04",
+   "ora_utc": "",
+   "lat": 16,
+   "lon": 62,
+   "origine_coord": "stimata",
+   "precisione_km": 800,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Mar Arabico",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@CENTCOM su X, foto ufficiale",
+   "link": "https://x.com/CENTCOM/status/2118029381876568198",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "alta",
+   "note": "Foto ufficiale CENTCOM con la didascalia «nel Mar Arabico»: la data è quella del post, non dello scatto. USNI la dà con il gruppo della George Washington. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "@CENTCOM su X, foto ufficiale",
+     "link": "https://x.com/CENTCOM/status/2118029381876568198",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Ross",
+   "dettaglio": "classe Arleigh Burke",
+   "ids": [
+    "X-20261105-05"
+   ],
+   "gruppo": "gw",
+   "sim": [
+    18.25,
+    64.5
+   ]
+  },
+  {
+   "id": "MP-20261105-07",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS Carl M. Levin",
+   "identificativo": "DDG-120",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 16,
+   "lon": 62,
+   "origine_coord": "stimata",
+   "precisione_km": 1000,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Medio Oriente, mare non precisato",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Fleet and Marine Tracker",
+   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "alta",
+   "note": "Fa parte della scorta della Roosevelt ma opera già nell'area CENTCOM, distaccata dal gruppo. USNI la elenca il 2 novembre tra le unità «nella regione», senza dire il mare.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Carl M. Levin",
+   "dettaglio": "classe Arleigh Burke",
+   "sim": [
+    15.5,
+    63.5
+   ]
+  },
+  {
+   "id": "MP-20261105-08",
+   "classe": "mobile",
+   "categoria": "nave-anfibia",
+   "nome": "USS Boxer",
+   "identificativo": "LHD-4",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 8,
+   "lon": 65,
+   "origine_coord": "stimata",
+   "precisione_km": 1500,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Oceano Indiano",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Fleet and Marine Tracker",
+   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "alta",
+   "note": "Ammiraglia del gruppo anfibio Boxer con l'11ª Marine Expeditionary Unit, in zona da luglio. Il 26 ottobre era segnalata nel Mar Arabico, il 2 novembre nell'Oceano Indiano, dove c'è anche il cacciatorpediniere USS Mustin. La raccolta giornali ha lasciato le coordinate vuote perché l'area è troppo ampia: il punto è solo indicativo.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "Stars and Stripes",
+     "link": "https://www.stripes.com/branches/navy/2026-10-02/makin-island-middle-east-iran-strikes-november-23032862.html",
+     "data_fonte": "2026-10-02"
+    }
+   ],
+   "sagoma": "anfibia",
+   "breve": "Boxer",
+   "dettaglio": "classe Wasp",
+   "ids": [
+    "GI-20261105-26"
+   ],
+   "gruppo": "boxer",
+   "capo": 1
+  },
+  {
+   "id": "MP-20261105-09",
+   "classe": "mobile",
+   "categoria": "nave-anfibia",
+   "nome": "USS Comstock",
+   "identificativo": "LSD-45",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 8,
+   "lon": 65,
+   "origine_coord": "stimata",
+   "precisione_km": 1500,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Oceano Indiano",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Fleet and Marine Tracker",
+   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "media",
+   "note": "Nave da sbarco del gruppo anfibio Boxer. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "Stars and Stripes",
+     "link": "https://www.stripes.com/branches/navy/2026-10-02/makin-island-middle-east-iran-strikes-november-23032862.html",
+     "data_fonte": "2026-10-02"
+    }
+   ],
+   "sagoma": "lpd",
+   "breve": "Comstock",
+   "dettaglio": "classe Whidbey Island",
+   "gruppo": "boxer",
+   "sim": [
+    8.25,
+    65.45
+   ]
+  },
+  {
+   "id": "MP-20261105-10",
+   "classe": "mobile",
+   "categoria": "nave-anfibia",
+   "nome": "USS Portland",
+   "identificativo": "LPD-27",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 8,
+   "lon": 65,
+   "origine_coord": "stimata",
+   "precisione_km": 1500,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Oceano Indiano",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Fleet and Marine Tracker",
+   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "media",
+   "note": "Nave da trasporto anfibio del gruppo Boxer. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "Stars and Stripes",
+     "link": "https://www.stripes.com/branches/navy/2026-10-02/makin-island-middle-east-iran-strikes-november-23032862.html",
+     "data_fonte": "2026-10-02"
+    }
+   ],
+   "sagoma": "lpd",
+   "breve": "Portland",
+   "dettaglio": "classe San Antonio",
+   "gruppo": "boxer",
+   "sim": [
+    8.25,
+    64.55
+   ]
+  },
+  {
+   "id": "GI-20261105-27",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS Jason Dunham",
+   "identificativo": "DDG-109",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 20.5,
+   "lon": 38.5,
+   "origine_coord": "stimata",
+   "precisione_km": 800,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Mar Rosso",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Fleet and Marine Tracker",
+   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "media",
+   "note": "Nel Mar Rosso secondo il Fleet Tracker di USNI. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Jason Dunham",
+   "dettaglio": "classe Arleigh Burke",
+   "sim": [
+    21,
+    38
+   ]
+  },
+  {
+   "id": "GI-20261105-28",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS Gonzalez",
+   "identificativo": "DDG-66",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 20.5,
+   "lon": 38.5,
+   "origine_coord": "stimata",
+   "precisione_km": 800,
+   "teatro": "MO",
+   "paese": "",
+   "regione": "Mar Rosso",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Fleet and Marine Tracker",
+   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "media",
+   "note": "Nel Mar Rosso secondo il Fleet Tracker di USNI. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Gonzalez",
+   "dettaglio": "classe Arleigh Burke",
+   "sim": [
+    18.2,
+    39.9
+   ]
+  },
+  {
+   "id": "MP-20261105-11",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS Theodore Roosevelt",
+   "identificativo": "CVN-71",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-08",
+   "ora_utc": "21:50",
+   "lat": 2.5,
+   "lon": 101.3,
+   "origine_coord": "stimata",
+   "precisione_km": 60,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Stretto di Malacca",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@Indowatchosint su X",
+   "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "media",
+   "note": "Ultima posizione AIS ricevuta da terra: a metà dello Stretto di Malacca, circa cinque ore prima del post di Indowatch delle 02:50 UTC del 9 novembre (ora stimata). Indowatch dice che l'AIS resterà spento per mesi. Punto stimato al centro dello stretto. Con Chosin, Decatur e Paul Hamilton. La timeline di Indowatch, che si dichiara una stima: Canale dei Sei Gradi il 9, area CENTCOM il 14-15, Mar Arabico il 15-16 novembre. In mare, verso il Mar Arabico.",
+   "fonti": [
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+     "data_fonte": "2026-11-09"
+    },
+    {
+     "fonte": "@Indowatchosint su X, timeline che cita TWZ e Axios",
+     "link": "https://x.com/Indowatchosint/status/2119326771443372542",
+     "data_fonte": "2026-11-08"
+    },
+    {
+     "fonte": "Al Jazeera English (YouTube), ospite in studio",
+     "link": "https://www.youtube.com/watch?v=EKUfCiGiV2A&t=306s",
+     "data_fonte": "2026-11-07"
+    },
+    {
+     "fonte": "@MoloWarMonitor su X, immagine Sentinel-2 del 4 nov",
+     "link": "https://x.com/MoloWarMonitor/status/2118413061757284608",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "@Indowatchosint su X, schermata AIS",
+     "link": "https://x.com/Indowatchosint/status/2118403705502609561",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "@naval_post su X, immagini satellitari del 4 nov",
+     "link": "https://x.com/naval_post/status/2118227639945039947",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "Misbar, verifica su immagine Sentinel-2",
+     "link": "https://www.misbar.com/en/editorial/2026/11/05/satellite-images-show-uss-roosevelt-transiting-southeast-asia-middle-east",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Roosevelt",
+   "dettaglio": "classe Nimitz",
+   "ids": [
+    "X-20261105-01",
+    "X-20261105-28",
+    "X-20261105-29",
+    "X-20261108-09",
+    "YT-20261108-02",
+    "X-20261109-15"
+   ],
+   "gruppo": "tr",
+   "capo": 1,
+   "storico": [
+    {
+     "data_evento": "2026-11-08",
+     "lat": 1.2,
+     "lon": 103.5,
+     "origine_coord": "stimata",
+     "precisione_km": 100,
+     "affidabilita": "media",
+     "nota": "Stretto di Singapore, verso Malacca"
+    },
+    {
+     "data_evento": "2026-11-05",
+     "lat": 2.33,
+     "lon": 104.88,
+     "origine_coord": "stimata",
+     "precisione_km": 20,
+     "affidabilita": "media",
+     "nota": "Mar Cinese Meridionale, circa 205 km a nord-est di Singapore"
+    },
+    {
+     "data_evento": "2026-11-04",
+     "lat": 6.02717,
+     "lon": 108.47513,
+     "origine_coord": "fonte",
+     "precisione_km": 1,
+     "affidabilita": "alta",
+     "nota": "immagine Sentinel-2, OSINT Digest e Misbar"
+    }
+   ]
+  },
+  {
+   "id": "MP-20261105-12",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS Chosin",
+   "identificativo": "CG-65",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-08",
+   "ora_utc": "21:50",
+   "lat": 2.5,
+   "lon": 101.3,
+   "origine_coord": "stimata",
+   "precisione_km": 60,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Con il gruppo della Roosevelt, Stretto di Malacca",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@Indowatchosint su X",
+   "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "media",
+   "note": "Con la Roosevelt nello Stretto di Malacca la sera dell'8 novembre, secondo Indowatch. In mare. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+     "data_fonte": "2026-11-09"
+    },
+    {
+     "fonte": "@Indowatchosint su X, timeline che cita TWZ e Axios",
+     "link": "https://x.com/Indowatchosint/status/2119326771443372542",
+     "data_fonte": "2026-11-08"
+    },
+    {
+     "fonte": "OSINT Digest (@Indowatchosint) su X, immagine del 4 nov",
+     "link": "https://x.com/Indowatchosint",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "Misbar, verifica su immagine Sentinel-2",
+     "link": "https://www.misbar.com/en/editorial/2026/11/05/satellite-images-show-uss-roosevelt-transiting-southeast-asia-middle-east",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "incrociatore",
+   "breve": "Chosin",
+   "dettaglio": "classe Ticonderoga",
+   "gruppo": "tr",
+   "sim": [
+    2.41,
+    101.27
+   ],
+   "storico": [
+    {
+     "data_evento": "2026-11-08",
+     "lat": 1.2,
+     "lon": 103.5,
+     "origine_coord": "stimata",
+     "precisione_km": 100,
+     "affidabilita": "media",
+     "nota": "Con il gruppo della Roosevelt, verso Malacca"
+    },
+    {
+     "data_evento": "2026-11-04",
+     "lat": 2.33,
+     "lon": 104.88,
+     "origine_coord": "stimata",
+     "precisione_km": 30,
+     "affidabilita": "media",
+     "nota": "Con il gruppo della Roosevelt"
+    }
+   ],
+   "ids": [
+    "X-20261108-10",
+    "X-20261109-15"
+   ]
+  },
+  {
+   "id": "MP-20261105-13",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS Decatur",
+   "identificativo": "DDG-73",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-08",
+   "ora_utc": "21:50",
+   "lat": 2.5,
+   "lon": 101.3,
+   "origine_coord": "stimata",
+   "precisione_km": 60,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Con il gruppo della Roosevelt, Stretto di Malacca",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@Indowatchosint su X",
+   "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "media",
+   "note": "Con la Roosevelt nello Stretto di Malacca la sera dell'8 novembre, secondo Indowatch. In mare. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+     "data_fonte": "2026-11-09"
+    },
+    {
+     "fonte": "@Indowatchosint su X, timeline che cita TWZ e Axios",
+     "link": "https://x.com/Indowatchosint/status/2119326771443372542",
+     "data_fonte": "2026-11-08"
+    },
+    {
+     "fonte": "OSINT Digest (@Indowatchosint) su X, immagine del 4 nov",
+     "link": "https://x.com/Indowatchosint",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Decatur",
+   "dettaglio": "classe Arleigh Burke",
+   "gruppo": "tr",
+   "sim": [
+    2.59,
+    101.23
+   ],
+   "storico": [
+    {
+     "data_evento": "2026-11-08",
+     "lat": 1.2,
+     "lon": 103.5,
+     "origine_coord": "stimata",
+     "precisione_km": 100,
+     "affidabilita": "media",
+     "nota": "Con il gruppo della Roosevelt, verso Malacca"
+    },
+    {
+     "data_evento": "2026-11-04",
+     "lat": 2.33,
+     "lon": 104.88,
+     "origine_coord": "stimata",
+     "precisione_km": 30,
+     "affidabilita": "media",
+     "nota": "Con il gruppo della Roosevelt"
+    }
+   ],
+   "ids": [
+    "X-20261108-11",
+    "X-20261109-15"
+   ]
+  },
+  {
+   "id": "MP-20261105-14",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "USS Paul Hamilton",
+   "identificativo": "DDG-60",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-08",
+   "ora_utc": "21:50",
+   "lat": 2.5,
+   "lon": 101.3,
+   "origine_coord": "stimata",
+   "precisione_km": 60,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Con il gruppo della Roosevelt, Stretto di Malacca",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@Indowatchosint su X",
+   "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "media",
+   "note": "Con la Roosevelt nello Stretto di Malacca la sera dell'8 novembre, secondo Indowatch. In mare. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+     "data_fonte": "2026-11-09"
+    },
+    {
+     "fonte": "@Indowatchosint su X, timeline che cita TWZ e Axios",
+     "link": "https://x.com/Indowatchosint/status/2119326771443372542",
+     "data_fonte": "2026-11-08"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "OSINT Digest (@Indowatchosint) su X, immagine del 4 nov",
+     "link": "https://x.com/Indowatchosint",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Paul Hamilton",
+   "dettaglio": "classe Arleigh Burke",
+   "gruppo": "tr",
+   "sim": [
+    2.59,
+    101.37
+   ],
+   "storico": [
+    {
+     "data_evento": "2026-11-08",
+     "lat": 1.2,
+     "lon": 103.5,
+     "origine_coord": "stimata",
+     "precisione_km": 100,
+     "affidabilita": "media",
+     "nota": "Con il gruppo della Roosevelt, verso Malacca"
+    },
+    {
+     "data_evento": "2026-11-04",
+     "lat": 2.33,
+     "lon": 104.88,
+     "origine_coord": "stimata",
+     "precisione_km": 50,
+     "affidabilita": "media",
+     "nota": "Con il gruppo della Roosevelt"
+    }
+   ],
+   "ids": [
+    "X-20261108-12",
+    "X-20261109-15"
+   ]
+  },
+  {
+   "id": "MP-20261105-15",
+   "classe": "mobile",
+   "categoria": "nave-ausiliaria",
+   "nome": "USNS Tippecanoe",
+   "identificativo": "T-AO-199",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-04",
+   "ora_utc": "",
+   "lat": 2.33,
+   "lon": 104.88,
+   "origine_coord": "stimata",
+   "precisione_km": 50,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Con il gruppo della Roosevelt",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Ha rifornito la Roosevelt il 30 ottobre (foto US Navy citata da USNI). OSINT Digest la dà come probabile il 4 novembre. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "OSINT Digest (@Indowatchosint) su X, immagine del 4 nov",
+     "link": "https://x.com/Indowatchosint",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "rifornitore",
+   "breve": "Tippecanoe",
+   "dettaglio": "classe Henry J. Kaiser",
+   "gruppo": "tr",
+   "sim": [
+    2.253,
+    104.935
+   ]
+  },
+  {
+   "id": "MP-20261105-16",
+   "classe": "mobile",
+   "categoria": "nave-ausiliaria",
+   "nome": "USNS Rappahannock",
+   "identificativo": "T-AO-204",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-04",
+   "ora_utc": "",
+   "lat": 2.33,
+   "lon": 104.88,
+   "origine_coord": "stimata",
+   "precisione_km": 50,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Con il gruppo della Roosevelt",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "OSINT Digest (@Indowatchosint) su X, immagine del 4 nov",
+   "link": "https://x.com/Indowatchosint",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "bassa",
+   "note": "Indicata come probabile da un solo account, non identificata nell'immagine.",
+   "fonti": [
+    {
+     "fonte": "OSINT Digest (@Indowatchosint) su X, immagine del 4 nov",
+     "link": "https://x.com/Indowatchosint",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "rifornitore",
+   "breve": "Rappahannock",
+   "dettaglio": "classe Henry J. Kaiser",
+   "gruppo": "tr"
+  },
+  {
+   "id": "MP-20261105-17",
+   "classe": "mobile",
+   "categoria": "nave-anfibia",
+   "nome": "USS Makin Island",
+   "identificativo": "LHD-8",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 35.293,
+   "lon": 139.667,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "ALTRO",
+   "paese": "JP",
+   "regione": "Partita da Yokosuka verso l'area CENTCOM",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@Indowatchosint su X",
+   "link": "https://x.com/Indowatchosint/status/2118945274425208979",
+   "data_fonte": "2026-11-07",
+   "affidabilita": "alta",
+   "note": "Partita da Yokosuka il 7 novembre secondo @Indowatchosint: il punto è il porto di partenza, la posizione in mare non è nota. In porto a Yokosuka con la 13ª Marine Expeditionary Unit. Il 6 novembre @Indowatchosint, che cita il centro del traffico marittimo della baia di Tokyo, ne annuncia la partenza per il 7, probabilmente per l'esercitazione Malabar, che dura fino al 12 novembre. Partita da San Diego il 28 settembre. Secondo funzionari USA citati dalla stampa è diretta in Medio Oriente. L'8 novembre Indowatch scrive che è partita per l'area CENTCOM e che non trasmette l'AIS in continuo: posizione e data di partenza non date. Il punto resta l'ultima posizione nota, Yokosuka, con il «?». Verso l'area CENTCOM.",
+   "fonti": [
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2118945274425208979",
+     "data_fonte": "2026-11-07"
+    },
+    {
+     "fonte": "@Indowatchosint su X (cita il centro del traffico marittimo della baia di Tokyo)",
+     "link": "https://x.com/Indowatchosint/status/2118621569098621314",
+     "data_fonte": "2026-11-06"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "Stars and Stripes",
+     "link": "https://www.stripes.com/branches/navy/2026-10-02/makin-island-middle-east-iran-strikes-november-23032862.html",
+     "data_fonte": "2026-10-02"
+    },
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2119490050706874593",
+     "data_fonte": "2026-11-08"
+    }
+   ],
+   "sagoma": "anfibia",
+   "breve": "Makin Island",
+   "dettaglio": "classe Wasp",
+   "dubbia": 1,
+   "ids": [
+    "X-20261107-23",
+    "X-20261106-04",
+    "X-20261109-16"
+   ],
+   "gruppo": "makin",
+   "capo": 1
+  },
+  {
+   "id": "MP-20261105-18",
+   "classe": "mobile",
+   "categoria": "nave-anfibia",
+   "nome": "USS Anchorage",
+   "identificativo": "LPD-23",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 35.293,
+   "lon": 139.667,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "ALTRO",
+   "paese": "JP",
+   "regione": "A sud di Tokyo, esercitazione Malabar",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@Indowatchosint su X",
+   "link": "https://x.com/Indowatchosint/status/2118943273003999472",
+   "data_fonte": "2026-11-07",
+   "affidabilita": "media",
+   "note": "Partita da Yokosuka il 7 novembre secondo @Indowatchosint: il punto è il porto di partenza, la posizione in mare non è nota. Nave da trasporto anfibio del gruppo Makin Island. Il 6 novembre @naval_post la dà a Yokosuka per l'esercitazione Malabar 2026, che secondo la fonte si apre lì. Partenza attesa il 7 novembre secondo @Indowatchosint. Punto stimato dal porto. Secondo lo stesso post di Indowatch dell'8 novembre è a sud di Tokyo per l'esercitazione Malabar, quindi non con la Makin Island: posizione non data, il punto resta Yokosuka.",
+   "fonti": [
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2118943273003999472",
+     "data_fonte": "2026-11-07"
+    },
+    {
+     "fonte": "@naval_post su X",
+     "link": "https://x.com/naval_post/status/2118590549011693697",
+     "data_fonte": "2026-11-06"
+    },
+    {
+     "fonte": "@Indowatchosint su X (cita il centro del traffico marittimo della baia di Tokyo)",
+     "link": "https://x.com/Indowatchosint/status/2118621569098621314",
+     "data_fonte": "2026-11-06"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "Stars and Stripes",
+     "link": "https://www.stripes.com/branches/navy/2026-10-02/makin-island-middle-east-iran-strikes-november-23032862.html",
+     "data_fonte": "2026-10-02"
+    },
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2119490050706874593",
+     "data_fonte": "2026-11-08"
+    }
+   ],
+   "sagoma": "lpd",
+   "breve": "Anchorage",
+   "dettaglio": "classe San Antonio",
+   "dubbia": 1,
+   "ids": [
+    "X-20261107-24",
+    "X-20261106-05",
+    "X-20261109-16"
+   ],
+   "gruppo": "makin",
+   "sim": [
+    35.27,
+    139.72
+   ]
+  },
+  {
+   "id": "MP-20261105-19",
+   "classe": "mobile",
+   "categoria": "nave-anfibia",
+   "nome": "USS John P. Murtha",
+   "identificativo": "LPD-26",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-07",
+   "ora_utc": "",
+   "lat": 35.293,
+   "lon": 139.667,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "ALTRO",
+   "paese": "JP",
+   "regione": "A sud di Tokyo, esercitazione Malabar",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@Indowatchosint su X",
+   "link": "https://x.com/Indowatchosint/status/2118943273003999472",
+   "data_fonte": "2026-11-07",
+   "affidabilita": "media",
+   "note": "Partita da Yokosuka il 7 novembre secondo @Indowatchosint: il punto è il porto di partenza, la posizione in mare non è nota. Nave da trasporto anfibio del gruppo Makin Island. Il 6 novembre @naval_post la dà a Yokosuka per l'esercitazione Malabar 2026. Partenza attesa il 7 novembre secondo @Indowatchosint. Punto stimato dal porto. Secondo lo stesso post di Indowatch dell'8 novembre è a sud di Tokyo per l'esercitazione Malabar, quindi non con la Makin Island: posizione non data, il punto resta Yokosuka.",
+   "fonti": [
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2118943273003999472",
+     "data_fonte": "2026-11-07"
+    },
+    {
+     "fonte": "@naval_post su X",
+     "link": "https://x.com/naval_post/status/2118590549011693697",
+     "data_fonte": "2026-11-06"
+    },
+    {
+     "fonte": "@Indowatchosint su X (cita il centro del traffico marittimo della baia di Tokyo)",
+     "link": "https://x.com/Indowatchosint/status/2118621569098621314",
+     "data_fonte": "2026-11-06"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "Stars and Stripes",
+     "link": "https://www.stripes.com/branches/navy/2026-10-02/makin-island-middle-east-iran-strikes-november-23032862.html",
+     "data_fonte": "2026-10-02"
+    },
+    {
+     "fonte": "@Indowatchosint su X",
+     "link": "https://x.com/Indowatchosint/status/2119490050706874593",
+     "data_fonte": "2026-11-08"
+    }
+   ],
+   "sagoma": "lpd",
+   "breve": "John P. Murtha",
+   "dettaglio": "classe San Antonio",
+   "dubbia": 1,
+   "ids": [
+    "X-20261107-25",
+    "X-20261106-06",
+    "X-20261109-16"
+   ],
+   "gruppo": "makin",
+   "sim": [
+    35.33,
+    139.74
+   ]
+  },
+  {
+   "id": "MP-20261105-20",
+   "classe": "mobile",
+   "categoria": "nave-anfibia",
+   "nome": "USS Tripoli",
+   "identificativo": "LHA-7",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 33.16,
+   "lon": 129.713,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "ALTRO",
+   "paese": "JP",
+   "regione": "Sasebo",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "In porto a Sasebo, la sua base avanzata in Giappone.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    }
+   ],
+   "sagoma": "anfibia",
+   "breve": "Tripoli",
+   "dettaglio": "classe America"
+  },
+  {
+   "id": "MP-20261105-21",
+   "classe": "mobile",
+   "categoria": "sottomarino",
+   "nome": "USS Colorado",
+   "identificativo": "SSN-788",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-10-27",
+   "ora_utc": "",
+   "lat": -32.24,
+   "lon": 115.69,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "ALTRO",
+   "paese": "AU",
+   "regione": "HMAS Stirling, Australia Occidentale",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Sottomarino d'attacco a propulsione nucleare, segnalato alla base HMAS Stirling.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "sottomarino",
+   "breve": "Colorado",
+   "dettaglio": "classe Virginia"
+  },
+  {
+   "id": "MP-20261105-22",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "Liaoning",
+   "identificativo": "16",
+   "appartenenza": "CN",
+   "stato": "operativo",
+   "data_evento": "2026-10-28",
+   "ora_utc": "",
+   "lat": 17,
+   "lon": 126.5,
+   "origine_coord": "stimata",
+   "precisione_km": 300,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Mar delle Filippine, a est di Luzon",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "alta",
+   "note": "Segnalata a est di Luzon dalla mappa del ministero della Difesa di Taiwan e da USNI, con gli incrociatori Anshan e Wuxi e il cacciatorpediniere Huainan. Il 22 e 23 ottobre il gruppo è stato seguito dalla guardia costiera filippina. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Liaoning",
+   "dettaglio": "Type 001",
+   "gruppo": "liaoning",
+   "capo": 1
+  },
+  {
+   "id": "MP-20261105-23",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "Anshan",
+   "identificativo": "103",
+   "appartenenza": "CN",
+   "stato": "operativo",
+   "data_evento": "2026-10-28",
+   "ora_utc": "",
+   "lat": 17,
+   "lon": 126.5,
+   "origine_coord": "stimata",
+   "precisione_km": 300,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Mar delle Filippine, a est di Luzon",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Scorta della Liaoning. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "incrociatore",
+   "breve": "Anshan",
+   "dettaglio": "Type 055",
+   "gruppo": "liaoning",
+   "sim": [
+    17.25,
+    126.95
+   ]
+  },
+  {
+   "id": "MP-20261105-24",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "Wuxi",
+   "identificativo": "104",
+   "appartenenza": "CN",
+   "stato": "operativo",
+   "data_evento": "2026-10-28",
+   "ora_utc": "",
+   "lat": 17,
+   "lon": 126.5,
+   "origine_coord": "stimata",
+   "precisione_km": 300,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Mar delle Filippine, a est di Luzon",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Scorta della Liaoning. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "incrociatore",
+   "breve": "Wuxi",
+   "dettaglio": "Type 055",
+   "gruppo": "liaoning",
+   "sim": [
+    17.25,
+    126.05
+   ]
+  },
+  {
+   "id": "MP-20261105-25",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "Huainan",
+   "identificativo": "123",
+   "appartenenza": "CN",
+   "stato": "operativo",
+   "data_evento": "2026-10-28",
+   "ora_utc": "",
+   "lat": 17,
+   "lon": 126.5,
+   "origine_coord": "stimata",
+   "precisione_km": 300,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Mar delle Filippine, a est di Luzon",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Scorta della Liaoning. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Huainan",
+   "dettaglio": "Type 052D",
+   "gruppo": "liaoning",
+   "sim": [
+    16.5,
+    126.5
+   ]
+  },
+  {
+   "id": "MP-20261105-26",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "HMS Prince of Wales",
+   "identificativo": "R09",
+   "appartenenza": "GB",
+   "stato": "operativo",
+   "data_evento": "2026-11-05",
+   "ora_utc": "",
+   "lat": 66,
+   "lon": 6,
+   "origine_coord": "stimata",
+   "precisione_km": 500,
+   "teatro": "NATO",
+   "paese": "",
+   "regione": "Mar di Norvegia, Alto Nord",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@UKDefJournal su X",
+   "link": "https://x.com/UKDefJournal/status/2118312837353197717",
+   "data_fonte": "2026-11-05",
+   "affidabilita": "alta",
+   "note": "Ha guidato un gruppo navale britannico, francese e norvegese nell'esercitazione NATO Neptune Strike 26-4, chiusa il 5 novembre, con il cacciatorpediniere HMS Dauntless e la fregata norvegese Fridtjof Nansen. Il 3 novembre si è unita la fregata HMS St Albans. Dal 18 ottobre è nella seconda fase dell'operazione Firecrest. Il 26 ottobre era a Hammernesodden, in Norvegia, per caricare munizioni. È attesa a Oslo per l'Atlantic Future Forum dell'11 e 12 novembre. La raccolta giornali del 6 novembre corregge la riga YouTube YT-20261105-18, che la dava in Nord Europa al 23 ottobre: per USNI il 4 novembre era nell'Alto Nord, vicino alla Norvegia. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "fonti": [
+    {
+     "fonte": "@UKDefJournal su X",
+     "link": "https://x.com/UKDefJournal/status/2118312837353197717",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "USNI News, Royal Navy Carriers Operate in the High North, Mediterranean",
+     "link": "https://news.usni.org/2026/11/04/royal-navy-carriers-operate-in-the-high-north-mediterranean",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "Gens Italia (YouTube), minuto 1:48",
+     "link": "https://www.youtube.com/watch?v=FejyQGSGUdA&t=108s",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Prince of Wales",
+   "dettaglio": "classe Queen Elizabeth",
+   "ids": [
+    "X-20261105-06",
+    "YT-20261105-18",
+    "GI-20261106-07"
+   ],
+   "gruppo": "pow",
+   "capo": 1
+  },
+  {
+   "id": "MP-20261105-27",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "HMS Dauntless",
+   "identificativo": "D33",
+   "appartenenza": "GB",
+   "stato": "operativo",
+   "data_evento": "2026-11-04",
+   "ora_utc": "",
+   "lat": 66,
+   "lon": 6,
+   "origine_coord": "stimata",
+   "precisione_km": 500,
+   "teatro": "NATO",
+   "paese": "",
+   "regione": "Mar di Norvegia, Alto Nord",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Royal Navy Carriers Operate in the High North, Mediterranean",
+   "link": "https://news.usni.org/2026/11/04/royal-navy-carriers-operate-in-the-high-north-mediterranean",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Scorta della Prince of Wales. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Royal Navy Carriers Operate in the High North, Mediterranean",
+     "link": "https://news.usni.org/2026/11/04/royal-navy-carriers-operate-in-the-high-north-mediterranean",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "caccia",
+   "breve": "Dauntless",
+   "dettaglio": "Type 45",
+   "gruppo": "pow",
+   "sim": [
+    66.2,
+    6.9
+   ]
+  },
+  {
+   "id": "MP-20261105-28",
+   "classe": "mobile",
+   "categoria": "nave-scorta",
+   "nome": "KNM Fridtjof Nansen",
+   "identificativo": "F310",
+   "appartenenza": "NO",
+   "stato": "operativo",
+   "data_evento": "2026-11-04",
+   "ora_utc": "",
+   "lat": 66,
+   "lon": 6,
+   "origine_coord": "stimata",
+   "precisione_km": 500,
+   "teatro": "NATO",
+   "paese": "",
+   "regione": "Mar di Norvegia, Alto Nord",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Royal Navy Carriers Operate in the High North, Mediterranean",
+   "link": "https://news.usni.org/2026/11/04/royal-navy-carriers-operate-in-the-high-north-mediterranean",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Fregata norvegese con il gruppo della Prince of Wales. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Royal Navy Carriers Operate in the High North, Mediterranean",
+     "link": "https://news.usni.org/2026/11/04/royal-navy-carriers-operate-in-the-high-north-mediterranean",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "fregata",
+   "breve": "Fridtjof Nansen",
+   "dettaglio": "classe Fridtjof Nansen",
+   "gruppo": "pow",
+   "sim": [
+    66.2,
+    5.1
+   ]
+  },
+  {
+   "id": "MP-20261105-29",
+   "classe": "mobile",
+   "categoria": "nave-ausiliaria",
+   "nome": "RFA Tideforce",
+   "identificativo": "A139",
+   "appartenenza": "GB",
+   "stato": "operativo",
+   "data_evento": "2026-11-03",
+   "ora_utc": "",
+   "lat": 66,
+   "lon": 6,
+   "origine_coord": "stimata",
+   "precisione_km": 500,
+   "teatro": "NATO",
+   "paese": "",
+   "regione": "Mar di Norvegia, Alto Nord",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Rifornitore di squadra al seguito della Prince of Wales. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "rifornitore",
+   "breve": "Tideforce",
+   "dettaglio": "classe Tide",
+   "gruppo": "pow",
+   "sim": [
+    65.7,
+    6
+   ]
+  },
+  {
+   "id": "MP-20261105-30",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "HMS Queen Elizabeth",
+   "identificativo": "R08",
+   "appartenenza": "GB",
+   "stato": "operativo",
+   "data_evento": "2026-11-05",
+   "ora_utc": "",
+   "lat": 50.8,
+   "lon": -1.11,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "NATO",
+   "paese": "GB",
+   "regione": "Portsmouth, Victory Jetty",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@naval_post su X",
+   "link": "https://x.com/naval_post/status/2118589898416345540",
+   "data_fonte": "2026-11-06",
+   "affidabilita": "media",
+   "note": "Ormeggiata a Portsmouth dal 5 novembre secondo @naval_post: una sola fonte, punto stimato dal porto. Il 4 novembre USNI la dava in addestramento nel Mediterraneo, con gli elicotteri Chinook della RAF al largo di Gibilterra, e un'anteprima di Forbes dello stesso giorno diceva che aveva finito l'addestramento e doveva rientrare a Portsmouth. Il 26 ottobre era a Gibilterra, a fine esercitazione Hathi Pol. La linea tratteggiata parte dalla posizione del 4 novembre.",
+   "fonti": [
+    {
+     "fonte": "@naval_post su X",
+     "link": "https://x.com/naval_post/status/2118589898416345540",
+     "data_fonte": "2026-11-06"
+    },
+    {
+     "fonte": "USNI News, Royal Navy Carriers Operate in the High North, Mediterranean",
+     "link": "https://news.usni.org/2026/11/04/royal-navy-carriers-operate-in-the-high-north-mediterranean",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "Forces News, HMS Queen Elizabeth arrives in Gibraltar",
+     "link": "https://www.forcesnews.com/services/navy/hms-queen-elizabeth-arrives-gibraltar-she-continues-her-12-week-deployment",
+     "data_fonte": "2026-10-26"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Queen Elizabeth",
+   "dettaglio": "classe Queen Elizabeth",
+   "ids": [
+    "X-20261106-03",
+    "GI-20261106-08"
+   ],
+   "storico": [
+    {
+     "data_evento": "2026-11-04",
+     "lat": 36.1,
+     "lon": -5.4,
+     "origine_coord": "stimata",
+     "precisione_km": 100,
+     "affidabilita": "media",
+     "nota": "USNI News: addestramento al largo di Gibilterra (raccolta giornali del 6 nov)"
+    }
+   ]
+  },
+  {
+   "id": "MP-20261105-31",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "Charles de Gaulle",
+   "identificativo": "R91",
+   "appartenenza": "FR",
+   "stato": "in-manutenzione",
+   "data_evento": "2026-10-05",
+   "ora_utc": "",
+   "lat": 43.105,
+   "lon": 5.925,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "NATO",
+   "paese": "FR",
+   "regione": "Tolone",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Orange Actu / 6Medias, incendio a bordo della Charles de Gaulle a Tolone",
+   "link": "https://actu.orange.fr/societe/fait-divers/un-incendie-s-est-declenche-a-bord-du-porte-avions-charles-de-gaulle-amarre-a-toulon-magic-CNT000002skGQS.html",
+   "data_fonte": "2026-10-05",
+   "affidabilita": "alta",
+   "note": "Ferma a Tolone da fine agosto per una sosta tecnica programmata fino a inizio dicembre. Il 5 ottobre un incendio in un locale tecnico è stato spento senza vittime e senza conseguenze per gli impianti nucleari.",
+   "fonti": [
+    {
+     "fonte": "Orange Actu / 6Medias, incendio a bordo della Charles de Gaulle a Tolone",
+     "link": "https://actu.orange.fr/societe/fait-divers/un-incendie-s-est-declenche-a-bord-du-porte-avions-charles-de-gaulle-amarre-a-toulon-magic-CNT000002skGQS.html",
+     "data_fonte": "2026-10-05"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Charles de Gaulle",
+   "dettaglio": "classe Charles de Gaulle"
+  },
+  {
+   "id": "MP-20261105-32",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS Nimitz",
+   "identificativo": "CVN-68",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-10-27",
+   "ora_utc": "",
+   "lat": 35.2,
+   "lon": -72.5,
+   "origine_coord": "stimata",
+   "precisione_km": 800,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Partita da Norfolk, posizione non nota",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "USNI News, Fleet and Marine Tracker",
+   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "media",
+   "note": "Partita da Norfolk martedì 27 ottobre secondo gli osservatori di navi citati da USNI: destinazione e posizione attuale non sono note. Ha 51 anni e il ritiro è previsto nella primavera 2027. Il simbolo è appoggiato nell'Atlantico occidentale solo come riferimento.",
+   "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Nimitz",
+   "dettaglio": "classe Nimitz",
+   "ids": [
+    "GI-20261105-29"
+   ],
+   "dubbia": 1
+  },
+  {
+   "id": "MP-20261105-33",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS Dwight D. Eisenhower",
+   "identificativo": "CVN-69",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 36.946,
+   "lon": -76.33,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "ALTRO",
+   "paese": "US",
+   "regione": "Norfolk, Virginia",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "In porto a Norfolk. A fine ottobre era uscita per l'addestramento che precede una missione.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Eisenhower",
+   "dettaglio": "classe Nimitz"
+  },
+  {
+   "id": "MP-20261105-34",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS Gerald R. Ford",
+   "identificativo": "CVN-78",
+   "appartenenza": "US",
+   "stato": "in-manutenzione",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 36.82,
+   "lon": -76.296,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "ALTRO",
+   "paese": "US",
+   "regione": "Norfolk Naval Shipyard, Portsmouth, Virginia",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Peter's World, posizioni delle portaerei USA",
+   "link": "https://petersworld.org/us-aircraft-carriers-locations-schedule/",
+   "data_fonte": "2026-11-02",
+   "affidabilita": "media",
+   "note": "In cantiere dal 7 luglio per circa sei mesi di lavori, dopo il lungo schieramento chiuso a maggio.",
+   "fonti": [
+    {
+     "fonte": "Peter's World, posizioni delle portaerei USA",
+     "link": "https://petersworld.org/us-aircraft-carriers-locations-schedule/",
+     "data_fonte": "2026-11-02"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Ford",
+   "dettaglio": "classe Gerald R. Ford"
+  },
+  {
+   "id": "MP-20261105-35",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS John C. Stennis",
+   "identificativo": "CVN-74",
+   "appartenenza": "US",
+   "stato": "in-manutenzione",
+   "data_evento": "2026-10-27",
+   "ora_utc": "",
+   "lat": 36.989,
+   "lon": -76.437,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "ALTRO",
+   "paese": "US",
+   "regione": "Newport News, Virginia",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "TWZ, Where Are The Aircraft Carriers?",
+   "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+   "data_fonte": "2026-10-27",
+   "affidabilita": "media",
+   "note": "Ferma dal 2021 per il rifornimento del reattore e la revisione di mezza vita. La riconsegna era prevista per ottobre 2026 ma i tempi sono incerti.",
+   "fonti": [
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "Peter's World, posizioni delle portaerei USA",
+     "link": "https://petersworld.org/us-aircraft-carriers-locations-schedule/",
+     "data_fonte": "2026-11-02"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Stennis",
+   "dettaglio": "classe Nimitz"
+  },
+  {
+   "id": "MP-20261105-36",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS Harry S. Truman",
+   "identificativo": "CVN-75",
+   "appartenenza": "US",
+   "stato": "in-manutenzione",
+   "data_evento": "2026-10-27",
+   "ora_utc": "",
+   "lat": 36.985,
+   "lon": -76.43,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "ALTRO",
+   "paese": "US",
+   "regione": "Newport News, Virginia",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "TWZ, Where Are The Aircraft Carriers?",
+   "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+   "data_fonte": "2026-10-27",
+   "affidabilita": "media",
+   "note": "Ha iniziato il 30 settembre il rifornimento del reattore e la revisione di mezza vita; la fine dei lavori è indicata a novembre 2031.",
+   "fonti": [
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "Peter's World, posizioni delle portaerei USA",
+     "link": "https://petersworld.org/us-aircraft-carriers-locations-schedule/",
+     "data_fonte": "2026-11-02"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Truman",
+   "dettaglio": "classe Nimitz"
+  },
+  {
+   "id": "MP-20261105-37",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS Ronald Reagan",
+   "identificativo": "CVN-76",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-02",
+   "ora_utc": "",
+   "lat": 31.6,
+   "lon": -119.8,
+   "origine_coord": "stimata",
+   "precisione_km": 400,
+   "teatro": "ALTRO",
+   "paese": "",
+   "regione": "Pacifico orientale",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "The Boston Report, tracker degli schieramenti",
+   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+   "data_fonte": "2026-11-04",
+   "affidabilita": "media",
+   "note": "Segnalata in mare nel Pacifico orientale. Il 27 ottobre era ormeggiata a San Diego dopo le qualifiche dei piloti. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "fonti": [
+    {
+     "fonte": "The Boston Report, tracker degli schieramenti",
+     "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker",
+     "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
+     "data_fonte": "2026-11-02"
+    },
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Reagan",
+   "dettaglio": "classe Nimitz"
+  },
+  {
+   "id": "MP-20261105-38",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS Carl Vinson",
+   "identificativo": "CVN-70",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-10-27",
+   "ora_utc": "",
+   "lat": 32.705,
+   "lon": -117.19,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "ALTRO",
+   "paese": "US",
+   "regione": "San Diego, California",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "TWZ, Where Are The Aircraft Carriers?",
+   "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+   "data_fonte": "2026-10-27",
+   "affidabilita": "media",
+   "note": "In porto a San Diego dopo un periodo di addestramento chiuso a settembre.",
+   "fonti": [
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "Peter's World, posizioni delle portaerei USA",
+     "link": "https://petersworld.org/us-aircraft-carriers-locations-schedule/",
+     "data_fonte": "2026-11-02"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Vinson",
+   "dettaglio": "classe Nimitz"
+  },
+  {
+   "id": "MP-20261105-39",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "USS Abraham Lincoln",
+   "identificativo": "CVN-72",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-10-27",
+   "ora_utc": "",
+   "lat": 32.7,
+   "lon": -117.17,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "ALTRO",
+   "paese": "US",
+   "regione": "San Diego, California",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "TWZ, Where Are The Aircraft Carriers?",
+   "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+   "data_fonte": "2026-10-27",
+   "affidabilita": "alta",
+   "note": "In porto a San Diego. Rientrata l'8 ottobre dopo 321 giorni in mare; cambierà base e andrà a Bremerton per un ciclo di lavori.",
+   "fonti": [
+    {
+     "fonte": "TWZ, Where Are The Aircraft Carriers?",
+     "link": "https://www.twz.com/sea/where-are-the-aircraft-carriers-october-27-2026",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "Peter's World, posizioni delle portaerei USA",
+     "link": "https://petersworld.org/us-aircraft-carriers-locations-schedule/",
+     "data_fonte": "2026-11-02"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Lincoln",
+   "dettaglio": "classe Nimitz"
+  },
+  {
+   "id": "MP-20261105-40",
+   "classe": "mobile",
+   "categoria": "nave-portaerei",
+   "nome": "Cavour",
+   "identificativo": "C 550",
+   "appartenenza": "IT",
+   "stato": "operativo",
+   "data_evento": "2026-10-27",
+   "ora_utc": "",
+   "lat": 37,
+   "lon": 15,
+   "origine_coord": "stimata",
+   "precisione_km": 1000,
+   "teatro": "IT",
+   "paese": "",
+   "regione": "Mar Mediterraneo",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Forzearmate.org, Neptune Strike 26-4: Cavour guida esercitazione NATO",
+   "link": "https://forzearmate.org/neptune-strike-26-4-cavour-guida-lesercitazione-nato-nel-mediterraneo/",
+   "data_fonte": "2026-10-27",
+   "affidabilita": "alta",
+   "note": "Guida il gruppo italiano nell'esercitazione NATO Neptune Strike 26-4 (16 ottobre - 5 novembre) nel Mediterraneo, con il cacciatorpediniere Andrea Doria e la fregata Virginio Fasan; a bordo F-35B, AV-8B ed elicotteri. In parallelo c'è la fase autunnale di Mare Aperto 2026, partita da Taranto. Il 19 ottobre era al largo di Valona, in Albania. L'esercitazione finisce il 5 novembre: da quel giorno la nave potrebbe essere rientrata a Taranto. Il simbolo è nello Ionio solo come riferimento.",
+   "fonti": [
+    {
+     "fonte": "Forzearmate.org, Neptune Strike 26-4: Cavour guida esercitazione NATO",
+     "link": "https://forzearmate.org/neptune-strike-26-4-cavour-guida-lesercitazione-nato-nel-mediterraneo/",
+     "data_fonte": "2026-10-27"
+    },
+    {
+     "fonte": "Gens Italia (YouTube), minuto 2:17",
+     "link": "https://www.youtube.com/watch?v=FejyQGSGUdA&t=137s",
+     "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "Forzearmate.org, Mare Aperto 2026",
+     "link": "https://forzearmate.org/mare-aperto-2026-la-marina-militare-salpa-da-taranto-in-esercitazione-la-portaerei-cavour-e-le-forze-anfibie/",
+     "data_fonte": "2026-10-16"
+    }
+   ],
+   "sagoma": "portaerei",
+   "breve": "Cavour",
+   "dettaglio": "classe Cavour, con F-35B",
+   "ids": [
+    "YT-20261105-17"
+   ],
+   "dubbia": 1,
+   "sim": [
+    37.8,
+    17.5
+   ]
+  },
+  {
+   "id": "MP-20261105-41",
+   "classe": "mobile",
+   "categoria": "nave-anfibia",
+   "nome": "Trieste",
+   "identificativo": "L 9890",
+   "appartenenza": "IT",
+   "stato": "in-manutenzione",
+   "data_evento": "2026-09-14",
+   "ora_utc": "",
+   "lat": 45.633,
+   "lon": 13.762,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "IT",
+   "paese": "IT",
+   "regione": "Trieste, cantiere San Marco di Fincantieri",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Il Piccolo, il ritorno nel golfo di Nave Trieste",
+   "link": "https://www.ilpiccolo.it/cronaca/nave-trieste-marina-militare-oggi-golfo-m7gyt8a5",
+   "data_fonte": "2026-09-13",
+   "affidabilita": "media",
+   "note": "Dal 14 settembre è nel cantiere San Marco per i lavori di fine garanzia. La partenza era indicata intorno a metà novembre.",
+   "fonti": [
+    {
+     "fonte": "Il Piccolo, il ritorno nel golfo di Nave Trieste",
+     "link": "https://www.ilpiccolo.it/cronaca/nave-trieste-marina-militare-oggi-golfo-m7gyt8a5",
+     "data_fonte": "2026-09-13"
+    }
+   ],
+   "sagoma": "anfibia",
+   "breve": "Trieste",
+   "dettaglio": "nave d'assalto anfibio multiruolo (LHD), ammiraglia della Marina",
+   "sempre": 1
+  },
+  {
+   "id": "X-20261105-07",
+   "classe": "mobile",
+   "categoria": "aereo-ricognizione",
+   "nome": "RC-135U Combat Sent",
+   "identificativo": "",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-05",
+   "ora_utc": "",
+   "lat": 52.36,
+   "lon": 0.49,
+   "origine_coord": "stimata",
+   "precisione_km": 1,
+   "teatro": "NATO",
+   "paese": "GB",
+   "regione": "RAF Mildenhall",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@NewsTongueX su X",
+   "link": "https://x.com/NewsTongueX/status/2118322046920704286",
+   "data_fonte": "2026-11-05",
+   "affidabilita": "media",
+   "note": "Arrivo a Mildenhall riportato tra il 4 e il 5 novembre. Destinazione discussa: verso l'area CENTCOM per studiare la difesa aerea iraniana secondo un account, raccolta su obiettivi russi secondo un altro. Nessuna sigla o codice ICAO nei post.",
+   "fonti": [
+    {
+     "fonte": "@NewsTongueX su X",
+     "link": "https://x.com/NewsTongueX/status/2118322046920704286",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "@IRObservatory su X",
+     "link": "https://x.com/IRObservatory/status/2118287236533797150",
+     "data_fonte": "2026-11-05"
+    },
+    {
+     "fonte": "@mako_management su X",
+     "link": "https://x.com/mako_management/status/2118301984813990028",
+     "data_fonte": "2026-11-05"
+    }
+   ],
+   "breve": "RC-135U Combat Sent",
+   "dettaglio": "aereo da ricognizione elettronica, ne esistono solo due"
+  },
+  {
+   "id": "X-20261106-08",
+   "classe": "mobile",
+   "categoria": "aereo-bombardiere",
+   "nome": "Due Tu-22M3",
+   "identificativo": "",
+   "appartenenza": "RU",
+   "stato": "operativo",
+   "data_evento": "2026-11-06",
+   "ora_utc": "",
+   "lat": 68.15,
+   "lon": 33.46,
+   "origine_coord": "stimata",
+   "precisione_km": 2,
+   "teatro": "RU-UA",
+   "paese": "RU",
+   "regione": "Olenya, regione di Murmansk",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "AMK Mapping (@AMK_Mapping_) su X",
+   "link": "https://x.com/AMK_Mapping_/status/2118679329672478834",
+   "data_fonte": "2026-11-06",
+   "affidabilita": "media",
+   "note": "Secondo AMK Mapping si stanno trasferendo dalla base di Belaya, nella regione di Irkutsk, a Olenya: il punto è la destinazione, non la posizione attuale. Ipotesi della fonte: poi a Dyagilevo, nella regione di Ryazan, per caricare missili Kh-22 o Kh-32. Una sola fonte.",
+   "fonti": [
+    {
+     "fonte": "AMK Mapping (@AMK_Mapping_) su X",
+     "link": "https://x.com/AMK_Mapping_/status/2118679329672478834",
+     "data_fonte": "2026-11-06"
+    }
+   ],
+   "breve": "Tu-22M3 verso Olenya",
+   "dettaglio": "bombardieri a lungo raggio",
+   "dubbia": 1
+  },
+  {
+   "id": "X-20261106-09",
+   "classe": "mobile",
+   "categoria": "aereo-bombardiere",
+   "nome": "Tu-95MS (più esemplari)",
+   "identificativo": "",
+   "appartenenza": "RU",
+   "stato": "operativo",
+   "data_evento": "2026-11-08",
+   "ora_utc": "",
+   "lat": 51.17,
+   "lon": 128.45,
+   "origine_coord": "stimata",
+   "precisione_km": 5,
+   "teatro": "RU-UA",
+   "paese": "RU",
+   "regione": "Ukrainka, Estremo Oriente russo",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@AMK_Mapping_ su X",
+   "link": "https://x.com/AMK_Mapping_/status/2119348234309214428",
+   "data_fonte": "2026-11-08",
+   "affidabilita": "media",
+   "note": "Secondo AMK Mapping almeno due Tu-95MS si addestrano da Ukrainka l'8 novembre: sono tra gli aerei dell'ultimo grande attacco missilistico all'Ucraina. Il 6 novembre AMK li dava in rientro alla base per riarmarli con missili Kh-101. Coordinate della base stimate. Una sola fonte.",
+   "fonti": [
+    {
+     "fonte": "@AMK_Mapping_ su X",
+     "link": "https://x.com/AMK_Mapping_/status/2119348234309214428",
+     "data_fonte": "2026-11-08"
+    },
+    {
+     "fonte": "AMK Mapping (@AMK_Mapping_) su X",
+     "link": "https://x.com/AMK_Mapping_/status/2118619028076027980",
+     "data_fonte": "2026-11-06"
+    }
+   ],
+   "breve": "Tu-95MS a Ukrainka",
+   "dettaglio": "bombardieri strategici",
+   "storico": [
+    {
+     "data_evento": "2026-11-06",
+     "lat": 51.17,
+     "lon": 128.45,
+     "origine_coord": "stimata",
+     "precisione_km": 2,
+     "affidabilita": "media",
+     "nota": "Ukrainka, Estremo Oriente russo"
+    }
+   ],
+   "ids": [
+    "X-20261108-13"
+   ]
+  },
+  {
+   "id": "X-20261106-26",
+   "classe": "mobile",
+   "categoria": "difesa-aerea-mobile",
+   "nome": "Batteria Patriot vicino al circuito di Lusail",
+   "identificativo": "",
+   "appartenenza": "",
+   "stato": "operativo",
+   "data_evento": "2026-11-06",
+   "ora_utc": "",
+   "lat": 25.49,
+   "lon": 51.45,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "QA",
+   "regione": "Lusail",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@MoloWarMonitor su X",
+   "link": "https://x.com/MoloWarMonitor/status/2118707405177463125",
+   "data_fonte": "2026-11-06",
+   "affidabilita": "media",
+   "note": "Il post risponde a un utente che chiedeva se ci sono misure di sicurezza al circuito internazionale di Lusail, dove questo fine settimana è in programma il MotoGP: dice solo che una batteria Patriot è stata messa lì vicino. Chi la gestisce non è indicato. Dal 7 novembre è disegnata nel livello «Difesa aerea» (fase 1d).",
+   "fonti": [
+    {
+     "fonte": "@MoloWarMonitor su X",
+     "link": "https://x.com/MoloWarMonitor/status/2118707405177463125",
+     "data_fonte": "2026-11-06"
+    }
+   ],
+   "breve": "Patriot a Lusail",
+   "dettaglio": "sistema di difesa aerea"
+  },
+  {
+   "id": "YT-20261107-02",
+   "classe": "mobile",
+   "categoria": "aereo-trasporto",
+   "nome": "C-17 e C-5 USA a Incirlik",
+   "identificativo": "",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-03",
+   "ora_utc": "",
+   "lat": 37,
+   "lon": 35.43,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "TR",
+   "regione": "Incirlik, Adana",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 0:00",
+   "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=0s",
+   "data_fonte": "2026-11-06",
+   "affidabilita": "media",
+   "note": "Destinazione dei voli del ponte aereo USA nelle due settimane prima della diretta, secondo Davide Montingelli, che cita mappatori non nominati: circa 92 voli di C-17 e C-5 tra il 29 settembre e il 29 ottobre, dagli Stati Uniti all'Europa e poi verso Turchia, Israele e Golfo. Il punto è la destinazione, non un aereo visto. Diretta registrata intorno al 3 novembre.",
+   "fonti": [
+    {
+     "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 0:00",
+     "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=0s",
+     "data_fonte": "2026-11-06"
+    },
+    {
+     "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 11:32",
+     "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=692s",
+     "data_fonte": "2026-11-06"
+    }
+   ],
+   "breve": "C-17 e C-5 a Incirlik",
+   "dettaglio": "aerei da trasporto strategico",
+   "dubbia": 1,
+   "ids": [
+    "YT-20261107-01"
+   ]
+  },
+  {
+   "id": "YT-20261107-03",
+   "classe": "mobile",
+   "categoria": "aereo-trasporto",
+   "nome": "C-17 e C-5 USA a Nevatim",
+   "identificativo": "",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-03",
+   "ora_utc": "",
+   "lat": 31.21,
+   "lon": 35.01,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "IL",
+   "regione": "Nevatim, Negev",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 0:34",
+   "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=34s",
+   "data_fonte": "2026-11-06",
+   "affidabilita": "media",
+   "note": "Nevatim è indicata da Davide Montingelli come destinazione di una parte dei voli del ponte aereo USA, senza fonte. Il punto è la destinazione, non un aereo visto. Diretta registrata intorno al 3 novembre.",
+   "fonti": [
+    {
+     "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 0:34",
+     "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=34s",
+     "data_fonte": "2026-11-06"
+    }
+   ],
+   "breve": "C-17 e C-5 a Nevatim",
+   "dettaglio": "aerei da trasporto strategico",
+   "dubbia": 1
+  },
+  {
+   "id": "YT-20261107-04",
+   "classe": "mobile",
+   "categoria": "aereo-trasporto",
+   "nome": "Voli USA verso Ovda",
+   "identificativo": "",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-03",
+   "ora_utc": "",
+   "lat": 29.94,
+   "lon": 34.94,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "IL",
+   "regione": "Ovda, Negev",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 0:34",
+   "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=34s",
+   "data_fonte": "2026-11-06",
+   "affidabilita": "media",
+   "note": "Davide Montingelli la chiama una base nuova e dice che gli USA la useranno come loro base nel sud di Israele: nessuna fonte nel video e nessun riscontro ufficiale. Il punto è la destinazione dei voli. Diretta registrata intorno al 3 novembre.",
+   "fonti": [
+    {
+     "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 0:34",
+     "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=34s",
+     "data_fonte": "2026-11-06"
+    }
+   ],
+   "breve": "Voli USA verso Ovda",
+   "dettaglio": "aerei da trasporto strategico",
+   "dubbia": 1
+  },
+  {
+   "id": "YT-20261107-05",
+   "classe": "mobile",
+   "categoria": "aereo-trasporto",
+   "nome": "C-17 USA ad Al Udeid",
+   "identificativo": "",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-03",
+   "ora_utc": "",
+   "lat": 25.12,
+   "lon": 51.31,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "QA",
+   "regione": "Al Udeid",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 9:55",
+   "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=595s",
+   "data_fonte": "2026-11-06",
+   "affidabilita": "media",
+   "note": "Per Davide Montingelli i C-17 di Al Udeid sono il «termometro» della situazione: se lasciano la base, gli USA si preparano ad attaccare. Al momento della diretta, registrata intorno al 3 novembre, c'erano, allineati. Una sola fonte, senza immagini.",
+   "fonti": [
+    {
+     "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 9:55",
+     "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=595s",
+     "data_fonte": "2026-11-06"
+    }
+   ],
+   "breve": "C-17 ad Al Udeid",
+   "dettaglio": "aerei da trasporto strategico"
+  },
+  {
+   "id": "YT-20261107-06",
+   "classe": "mobile",
+   "categoria": "aereo-ricognizione",
+   "nome": "Aereo da ricognizione USA a Creta (probabile Souda Bay)",
+   "identificativo": "",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-03",
+   "ora_utc": "",
+   "lat": 35.53,
+   "lon": 24.15,
+   "origine_coord": "stimata",
+   "precisione_km": 10,
+   "teatro": "NATO",
+   "paese": "GR",
+   "regione": "Creta, La Canea",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 9:55",
+   "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=595s",
+   "data_fonte": "2026-11-06",
+   "affidabilita": "media",
+   "note": "Davide Montingelli dice che a La Canea è arrivato da poco un ricognitore partito da RAF Mildenhall. Nessuna sigla: non si sa se sia l'RC-135U segnalato a Mildenhall. L'identificazione con Souda Bay è della raccolta YouTube. Diretta registrata intorno al 3 novembre.",
+   "fonti": [
+    {
+     "fonte": "Davide Montingelli (YouTube), «Dietro le linee», minuto 9:55",
+     "link": "https://www.youtube.com/watch?v=ZDSk-FTrcGI&t=595s",
+     "data_fonte": "2026-11-06"
+    }
+   ],
+   "breve": "Ricognitore a Creta",
+   "dettaglio": "aereo da ricognizione"
+  },
+  {
+   "id": "X-20261109-14",
+   "classe": "mobile",
+   "categoria": "aereo-cisterna",
+   "nome": "Aerocisterne USAF ad Al Udeid",
+   "identificativo": "",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-09",
+   "ora_utc": "",
+   "lat": 25.12,
+   "lon": 51.31,
+   "origine_coord": "stimata",
+   "precisione_km": 3,
+   "teatro": "MO",
+   "paese": "QA",
+   "regione": "Base aerea di Al Udeid",
+   "attore": "",
+   "bersaglio": "",
+   "mezzo": "",
+   "esito": "",
+   "fonte": "@MoloWarMonitor su X, immagine Sentinel-2",
+   "link": "https://x.com/MoloWarMonitor/status/2119777552457695494",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "media",
+   "note": "Su un'immagine Sentinel-2 del 9 novembre MoloWarMonitor vede la base «piena» di aerocisterne USAF, senza dare un numero. Da oltre due settimane l'aeronautica del Qatar ha evacuato tutti i suoi aerei dalla base. Coordinate della base stimate. Una sola fonte.",
+   "fonti": [
+    {
+     "fonte": "@MoloWarMonitor su X, immagine Sentinel-2",
+     "link": "https://x.com/MoloWarMonitor/status/2119777552457695494",
+     "data_fonte": "2026-11-09"
+    }
+   ],
+   "breve": "Aerocisterne ad Al Udeid",
+   "dettaglio": "aerocisterne, numero non dato",
+   "sim": [
+    25.15,
+    51.36
+   ]
+  }
+ ]
+}

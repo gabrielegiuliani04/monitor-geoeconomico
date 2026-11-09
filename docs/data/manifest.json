@@ -1,0 +1,105 @@
+{
+ "updated": "2026-11-05",
+ "source": "Natural Earth (naturalearthdata.com), pubblico dominio. Mondo 1:50m, teatri 1:10m.",
+ "world": {
+  "file": "data/world.json",
+  "bbox": [
+   -180,
+   -60,
+   180,
+   84
+  ]
+ },
+ "tiles": [
+  {
+   "id": "medio-oriente",
+   "name": "Medio Oriente",
+   "file": "data/medio-oriente.json",
+   "bbox": [
+    6,
+    -10,
+    82,
+    48.5
+   ],
+   "view": [
+    22,
+    8,
+    68,
+    44
+   ]
+  }
+ ],
+ "labels": "data/labels.json",
+ "defaultView": "medio-oriente",
+ "notes": {
+  "format": "TopoJSON, quantization 1e5. Oggetti: land, lakes, rivers (solo teatri), borders (proprieta c: 0 internazionale, 1 conteso/indefinito/linea di controllo, 2 rivendicazione o territorio separatista).",
+  "build": "mapshaper: clip al bbox, dissolve. Laghi teatro: scalerank<=6 e area>120 km2 (escluso bacino di Kachovka, prosciugato nel 2023). Fiumi teatro: scalerank<=5. Confini: esclusi lease/overlay limit, linee NK 2020 e Donbass 2014.",
+  "addTheater": "Per un nuovo teatro: generare un file 1:10m con lo stesso schema e aggiungere una voce in tiles (id, name, file, bbox, view).",
+  "layers": "Dati operativi nello schema comune di regole/02_schema-dati.md v1.1 (stessi nomi delle 25 colonne) piu' extra di mappa: ids[] (righe di raccolta unite nel punto), fonti[], sim [lat, lon] (dove si appoggia il simbolo se la fonte indica solo una zona: lat/lon restano il centro del cerchio), storico[] (posizioni precedenti), gruppo, capo, sagoma, breve, dettaglio, rotta, dubbia, sempre. mobili.json = navi e aerei; eventi.json = eventi strategici; fronte.json = Ucraina: aree copiate dalla mappa dell'autore (t: ru, contesa, cleared, avanzata con data d), colpi tattici e un segnaposto per ogni avanzata del giorno; report.json = report giornalieri in markdown, il piu' recente per primo. fissi.json = livelli fissi del Medio Oriente: basi USA e NATO (verificate con fonti datate) e porti del World Port Index, con gli extra utenti, ex, rango, petrolio. linee.json = oleodotti e gasdotti di Global Energy Monitor: per ogni linea nome, stato, paesi, capacita', tracciato (accuratezza) e g = parti -> [lon, lat]. rotte.json = rotte marittime di Benden (2022), una linea per tratto: t (M principale, m media, n secondaria), km, s = passaggi strategici in mappa entro 120 km, g = [lon, lat]. stretti.json = quote mondiali di cio' che passa dai passaggi strategici, chiave = nome del passaggio in labels.json: voci (voce, valore, quota, anno, fonte, link, data_fonte, nota) e oggi (testo, fonte, link). italia.json = basi in Italia (italiane, USA, NATO), stesso schema di fissi.json, teatro IT. difesa.json = difesa aerea fissa del Medio Oriente (fase 1d), stesso schema di fissi.json con categoria difesa-aerea; le batterie mobili restano in mobili.json (difesa-aerea-mobile). condotte.json = condotte sottomarine del mondo, stesso formato di linee.json più sottomarino, mare_km (km in mare misurati dalla chat Mappa) e anche_mo (la condotta è anche in linee.json)."
+ },
+ "layers": {
+  "mobili": "data/mobili.json",
+  "eventi": "data/eventi.json",
+  "report": "data/report.json",
+  "fronte": "data/fronte.json",
+  "fissi": "data/fissi.json",
+  "linee": "data/linee.json",
+  "iran": "data/iran.json",
+  "ibrido": "data/ibrido.json",
+  "rotte": "data/rotte.json",
+  "stretti": "data/stretti.json",
+  "italia": "data/italia.json",
+  "difesa": "data/difesa.json",
+  "condotte": "data/condotte.json",
+  "mercati": "data/mercati.json",
+  "dossier": "data/dossier.json",
+  "ai": "data/ai.json"
+ },
+ "views": [
+  {
+   "name": "Medio Oriente",
+   "view": [
+    22,
+    8,
+    68,
+    44
+   ]
+  },
+  {
+   "name": "Russia-Ucraina",
+   "view": [
+    23,
+    43.8,
+    51.5,
+    58
+   ]
+  },
+  {
+   "name": "Europa",
+   "view": [
+    -11,
+    35,
+    33,
+    63
+   ]
+  },
+  {
+   "name": "Italia",
+   "view": [
+    6.5,
+    36.4,
+    18.8,
+    47.1
+   ]
+  },
+  {
+   "name": "Mondo",
+   "view": [
+    -168,
+    -52,
+    178,
+    76
+   ]
+  }
+ ]
+}

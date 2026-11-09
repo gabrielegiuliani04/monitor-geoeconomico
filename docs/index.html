@@ -1,0 +1,1875 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Monitor OSINT militare</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@1,400&display=swap">
+<style>
+/* Layout: a chart table. Slim instrument bar on top, the chart fills the rest,
+   small instruments (layers, scale, position, zoom) sit at its corners; cards and news open on the right.
+   Palette follows electronic nautical charts: day colours in light, night colours in dark;
+   magenta is the chart-annotation colour (strategic passages, pins), nations have their own hues.
+   Events are red and the shade only tells their age: the freshest is the strongest in both themes, the archive is grey. */
+:root {
+  --sea: #D9E6EC; --land: #F4EBD3; --coast: #73838E; --border: #8F8571; --river: #A9C6D6;
+  --ink: #1D272D; --ink-soft: #52606A; --ink-faint: #86929A; --water-ink: #356786;
+  --accent: #A61E6B; --grat: rgba(29, 39, 45, .11);
+  --halo-land: rgba(244, 235, 211, .9); --halo-sea: rgba(217, 230, 236, .9);
+  --bar: #F6F5F0; --panel: rgba(250, 249, 244, .95); --line: #C4CBCD;
+  --control: #FFFFFF; --control-hover: #ECEEEC; --error: #A3341F;
+  --ally: #1F4FA3; --partner: #0A7A72; --adv: #8A4B14; --rus: #8A4B14; --oth: #5F6A72; --up: #1C7A3E; --down: #B42D24;
+  --ev0: #7A0C12; --ev1: #B92C22; --ev2: #D8695C; --ev-old: #8E9396; --contesa: #A87E0C;
+  --oil: #4B3B2B; --gas: #7A55B5; --port: #586A76; --route: #3F6680; --on-side: #FFFFFF;
+  --f-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-cond: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --sea: #0C171E; --land: #27281F; --coast: #56646D; --border: #7B725E; --river: #23475B;
+    --ink: #DAE0E2; --ink-soft: #A0ABB1; --ink-faint: #6C787F; --water-ink: #6C9CBA;
+    --accent: #F27DB9; --grat: rgba(218, 224, 226, .09);
+    --halo-land: rgba(39, 40, 31, .9); --halo-sea: rgba(12, 23, 30, .9);
+    --bar: #10181D; --panel: rgba(17, 24, 29, .95); --line: #2B373E;
+    --control: #18222A; --control-hover: #22303A; --error: #FF9C85;
+    --ally: #8AB6FF; --partner: #4FCFC3; --adv: #F2A65A; --rus: #F2A65A; --oth: #AEB7BC; --up: #6FD08C; --down: #FF8A7E;
+  --ev0: #FF5C52; --ev1: #D0564E; --ev2: #A45F5A; --ev-old: #6F7A80; --contesa: #E0C04E;
+  --oil: #C8B08E; --gas: #B9A0F0; --port: #93A4AE; --route: #86A9C2; --on-side: #10151A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --sea: #0C171E; --land: #27281F; --coast: #56646D; --border: #7B725E; --river: #23475B;
+  --ink: #DAE0E2; --ink-soft: #A0ABB1; --ink-faint: #6C787F; --water-ink: #6C9CBA;
+  --accent: #F27DB9; --grat: rgba(218, 224, 226, .09);
+  --halo-land: rgba(39, 40, 31, .9); --halo-sea: rgba(12, 23, 30, .9);
+  --bar: #10181D; --panel: rgba(17, 24, 29, .95); --line: #2B373E;
+  --control: #18222A; --control-hover: #22303A; --error: #FF9C85;
+  --ally: #8AB6FF; --partner: #4FCFC3; --adv: #F2A65A; --rus: #F2A65A; --oth: #AEB7BC; --up: #6FD08C; --down: #FF8A7E;
+  --ev0: #FF5C52; --ev1: #D0564E; --ev2: #A45F5A; --ev-old: #6F7A80; --contesa: #E0C04E;
+  --oil: #C8B08E; --gas: #B9A0F0; --port: #93A4AE; --route: #86A9C2; --on-side: #10151A;
+  color-scheme: dark;
+}
+
+html { height: 100%; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+body { height: 100%; background: var(--bar); color: var(--ink); font-family: var(--f-sans); font-size: 14px; line-height: 1.4; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.app { height: 100%; min-height: 420px; display: grid; grid-template-rows: auto minmax(0, 1fr); }
+
+/* ---- instrument bar ---- */
+.bar { background: var(--bar); border-bottom: 1px solid var(--line); position: relative; z-index: 3; }
+.bar-in {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+  padding-block: 8px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.brand { display: flex; align-items: center; gap: 9px; margin: 0; font-family: var(--f-cond); font-weight: 600; font-size: 16px; letter-spacing: .09em; text-transform: uppercase; white-space: nowrap; }
+.brand::before { content: ""; width: 9px; height: 9px; background: var(--accent); transform: rotate(45deg); flex: none; }
+.views { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { background: var(--control); border: 1px solid var(--line); border-radius: 4px; padding: 5px 10px; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.chip:hover { background: var(--control-hover); }
+.chip[aria-pressed="true"], .chip[aria-expanded="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.news-btn { font-weight: 500; }
+.news-btn span { font-family: var(--f-mono); font-size: 11px; font-weight: 400; color: var(--ink-soft); margin-left: 4px; }
+.goto { display: flex; align-items: center; gap: 6px; margin-left: auto; flex: 0 1 390px; min-width: 0; position: relative; }
+.goto label { font-size: 12px; color: var(--ink-soft); white-space: nowrap; }
+.goto input { flex: 1 1 auto; min-width: 0; width: 100%; background: var(--control); border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px; font-family: var(--f-mono); font-size: 12.5px; }
+.goto input::placeholder { color: var(--ink-faint); }
+.goto input[aria-invalid="true"] { border-color: var(--error); }
+.goto-msg { position: absolute; right: 0; top: calc(100% + 6px); z-index: 5; margin: 0; padding: 6px 9px; max-width: min(330px, 86vw); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; font-size: 12px; color: var(--error); }
+
+/* ---- chart ---- */
+.stage { position: relative; min-height: 0; background: var(--sea); overflow: hidden; }
+#map { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; }
+#map:active { cursor: grabbing; }
+#map:focus-visible { outline-offset: -3px; }
+.status { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; padding: 24px; text-align: center; color: var(--ink-soft); pointer-events: none; }
+
+.hud {
+  position: absolute; inset: 0; pointer-events: none;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: minmax(0, 1fr) auto; gap: 10px;
+  padding-block: 12px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.hud > * { pointer-events: auto; }
+
+/* ---- layers panel ---- */
+.panel { grid-column: 1; grid-row: 1; align-self: start; justify-self: start; max-height: 100%; display: flex; flex-direction: column; width: 268px; max-width: 100%; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.panel-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; padding: 8px 12px; background: none; border: 0; cursor: pointer; font-family: var(--f-cond); font-weight: 600; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; text-align: left; border-radius: 6px; }
+.panel-head::after, .sec > summary::after { content: ""; width: 7px; height: 7px; border-right: 1.5px solid var(--ink-soft); border-bottom: 1.5px solid var(--ink-soft); transform: translateY(-2px) rotate(45deg); transition: transform .15s; flex: none; }
+.panel-head[aria-expanded="false"]::after, .sec:not([open]) > summary::after { transform: translateY(1px) rotate(-45deg); }
+.panel.closed { width: auto; }
+.panel-body { min-height: 0; overflow-y: auto; padding: 0 12px 12px; border-top: 1px solid var(--line); }
+.sub, .sec > summary { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0; padding: 10px 0 6px; font-family: var(--f-cond); font-weight: 600; font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.sec { border-top: 1px solid var(--line); margin-top: 8px; }
+.sec > summary { cursor: pointer; list-style: none; padding: 10px 0; }
+.sec > summary::-webkit-details-marker { display: none; }
+.sec[open] > summary { padding-bottom: 4px; }
+.cnt { font-family: var(--f-mono); font-weight: 400; font-size: 11px; letter-spacing: 0; text-transform: none; color: var(--ink-soft); margin-left: auto; }
+.layers { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+.layers label { display: grid; grid-template-columns: auto 24px minmax(0, 1fr) auto; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; font-size: 13.5px; }
+.layers.plain label { grid-template-columns: auto minmax(0, 1fr) auto; }
+.layers input { margin: 0; width: 15px; height: 15px; accent-color: var(--accent); }
+.sw { height: 14px; display: grid; place-items: center; }
+.sw svg { display: block; overflow: visible; }
+.hint { margin: 0 0 2px 47px; font-size: 11.5px; color: var(--ink-soft); }
+.range { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 4px; }
+.range-lbl { margin: 9px 0 4px; font-size: 11.5px; color: var(--ink-soft); }
+.range .chip { padding: 2px 8px; font-size: 12px; }
+.note { margin: 10px 0 0; padding-top: 9px; border-top: 1px solid var(--line); font-size: 12px; color: var(--ink-soft); }
+
+.legend { display: grid; gap: 6px; margin: 0 0 4px; font-size: 12px; color: var(--ink-soft); }
+.legend-row { display: grid; grid-template-columns: 30px minmax(0, 1fr); align-items: center; gap: 8px; }
+.legend-row > :first-child { justify-self: center; }
+.legend-cap { margin-top: 7px; font-family: var(--f-cond); font-weight: 600; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.legend-cap:first-child { margin-top: 0; }
+.legend-note { font-size: 11.5px; }
+.sides { display: flex; flex-wrap: wrap; gap: 3px 12px; margin-top: 3px; }
+.side { display: inline-flex; align-items: center; gap: 5px; }
+.side i { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+.plus { font-family: var(--f-cond); font-weight: 600; font-size: 11.5px; color: var(--ink); }
+.theater { margin: 10px 0 3px; font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+.theater:first-child { margin-top: 2px; }
+.pt-list { list-style: none; margin: 0; padding: 0; }
+.pt-row { display: grid; grid-template-columns: 34px minmax(0, 1fr) auto; align-items: center; gap: 7px; width: calc(100% + 8px); margin: 0 -4px; padding: 4px; background: none; border: 0; border-radius: 4px; text-align: left; cursor: pointer; font-size: 13px; }
+.pt-row:hover, .pt-row[aria-current="true"] { background: var(--control-hover); }
+.pt-row > :first-child { justify-self: center; }
+.pt-row .nm { min-width: 0; overflow-wrap: anywhere; }
+.pt-row .dt { font-family: var(--f-mono); font-size: 10.5px; color: var(--ink-soft); white-space: nowrap; }
+.pt-row.old > :first-child { opacity: .5; }
+.off-list { margin: 2px 0 0; padding-left: 16px; font-size: 12px; color: var(--ink-soft); display: grid; gap: 4px; }
+.empty { margin: 4px 0; font-size: 12.5px; color: var(--ink-soft); }
+
+/* ---- bottom instruments ---- */
+.bl { grid-column: 1; grid-row: 2; align-self: end; justify-self: start; display: grid; gap: 6px; padding: 7px 9px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.scale { display: grid; gap: 3px; font-family: var(--f-mono); font-size: 11px; font-variant-numeric: tabular-nums; color: var(--ink); }
+.scale-row { display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+.scale-bar { height: 5px; border: 1px solid var(--ink); border-top: 0; flex: none; }
+.credit { margin: 0; font-size: 11px; color: var(--ink-soft); }
+.br { grid-column: 2; grid-row: 2; align-self: end; justify-self: end; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.zoom { display: grid; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.zoom button { width: 38px; height: 38px; display: grid; place-items: center; background: none; border: 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+.zoom button:last-child { border-bottom: 0; }
+.zoom button:hover { background: var(--control-hover); }
+.zoom svg { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 1.6; stroke-linecap: round; }
+.readout { margin: 0; padding: 6px 9px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; font-family: var(--f-mono); font-size: 11.5px; line-height: 1.5; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.readout .k { font-family: var(--f-sans); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); display: block; }
+.readout .dec { color: var(--ink-soft); display: block; }
+.live { display: block; margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--line); font-family: var(--f-sans); font-size: 11.5px; color: var(--ink-soft); }
+.live a { color: var(--water-ink); text-decoration: underline; text-underline-offset: 2px; }
+
+/* ---- right slot: point card and news ---- */
+.card { grid-column: 2; grid-row: 1; align-self: start; justify-self: end; width: 340px; max-width: 100%; max-height: 100%; overflow-y: auto; padding: 12px 14px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.card-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: start; }
+.card-kind { margin: 0 0 3px; font-size: 12px; color: var(--ink-soft); }
+.card h2 { margin: 0; font-family: var(--f-cond); font-weight: 600; font-size: 20px; line-height: 1.2; text-wrap: balance; }
+.x { width: 30px; height: 30px; display: grid; place-items: center; padding: 0; background: var(--control); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; font-size: 18px; line-height: 1; }
+.x:hover { background: var(--control-hover); }
+.card-sil { margin: 10px 0 0; height: 28px; display: flex; align-items: flex-end; }
+.facts { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 5px 12px; margin: 10px 0 0; font-size: 13px; }
+.facts dt { color: var(--ink-soft); }
+.facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.facts dd.warn { color: var(--error); }
+.facts dd .muted { color: var(--ink-soft); font-size: 12.5px; }
+.facts .mono { font-family: var(--f-mono); font-size: 12px; }
+.rel { display: inline-block; width: 10px; height: 10px; margin-right: 6px; border: 1.5px solid var(--ink); border-radius: 50%; vertical-align: -1px; }
+.rel.full { background: var(--ink); }
+.card-info { margin: 11px 0 0; font-size: 13px; line-height: 1.45; }
+.card h3 { margin: 13px 0 5px; font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+.mates { display: flex; flex-wrap: wrap; gap: 5px; }
+.mates .chip { padding: 3px 8px; font-size: 12.5px; }
+.srcs { margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; font-size: 12.5px; }
+.srcs a, .news-body a { color: var(--water-ink); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.srcs small { color: var(--ink-soft); font-family: var(--f-mono); font-size: 10.5px; margin-left: 4px; }
+.news-when { display: flex; align-items: center; gap: 8px; margin: 2px 0 0; font-family: var(--f-mono); font-size: 12px; color: var(--ink-soft); }
+.news-when select { background: var(--control); border: 1px solid var(--line); border-radius: 4px; padding: 2px 6px; font-size: 12px; }
+.news-body { font-size: 13.5px; line-height: 1.5; max-width: 62ch; }
+.news-body h3 { margin: 16px 0 5px; font-family: var(--f-cond); font-size: 12.5px; font-weight: 600; letter-spacing: .1em; color: var(--ink); }
+.news-body p { margin: 0 0 8px; }
+.news-body ul { margin: 0 0 8px; padding-left: 18px; display: grid; gap: 5px; }
+.news-ctx { margin: 10px 0 6px; padding: 2px 12px 8px; border-left: 3px solid var(--accent); background: var(--control-hover); border-radius: 0 6px 6px 0; font-size: 13px; line-height: 1.45; max-width: 62ch; }
+.news-ctx h3 { margin: 8px 0 5px; font-family: var(--f-cond); font-size: 12.5px; font-weight: 600; letter-spacing: .1em; color: var(--ink); }
+.news-ctx ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; }
+.news-ctx a { color: var(--water-ink); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.news-ctx .ctx-when { margin: 6px 0 0; font-family: var(--f-mono); font-size: 11px; color: var(--ink-soft); }
+
+.card.wide { width: 420px; }
+.mkt-note { margin: 6px 0 0; font-size: 12px; color: var(--ink-soft); line-height: 1.45; }
+.mkt-grp { margin: 14px 0 3px; font-family: var(--f-cond); font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.mkt-row { display: grid; grid-template-columns: minmax(0, 1fr) 58px auto 76px; align-items: center; gap: 8px; width: calc(100% + 8px); margin: 0 -4px; padding: 4px; background: none; border: 0; border-radius: 4px; text-align: left; cursor: pointer; font-size: 13px; }
+.mkt-row:hover, .mkt-row[aria-expanded="true"] { background: var(--control-hover); }
+.mkt-row .nm { min-width: 0; overflow-wrap: anywhere; }
+.mkt-v { font-family: var(--f-mono); font-size: 12.5px; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mkt-v small { color: var(--ink-soft); font-size: 10.5px; margin-left: 3px; }
+.mkt-d { font-family: var(--f-mono); font-size: 12px; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.mkt-d.up { color: var(--up); } .mkt-d.down { color: var(--down); } .mkt-d.flat { color: var(--ink-soft); }
+.mkt-sp svg { display: block; }
+.mkt-more { margin: 2px 0 8px; padding: 0 4px; font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); }
+.mkt-more p { margin: 0 0 5px; }
+.mkt-more a { color: var(--water-ink); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.mkt-per { margin: 6px 0 0; font-size: 12px; color: var(--ink-soft); }
+.mkt-per summary { cursor: pointer; }
+.mkt-per p { margin: 4px 0 0; line-height: 1.45; }
+.dos-act { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 2px; }
+.news-body h4 { margin: 12px 0 4px; font-size: 13px; font-weight: 600; }
+.md-tbl-wrap { overflow-x: auto; margin: 4px 0 10px; }
+.md-tbl { border-collapse: collapse; font-size: 12px; min-width: 100%; }
+.md-tbl th, .md-tbl td { border-bottom: 1px solid var(--line); padding: 4px 6px; text-align: left; vertical-align: top; }
+.md-tbl th { font-weight: 600; color: var(--ink-soft); }
+
+@media (max-width: 640px) {
+  .brand { font-size: 15px; }
+  .goto { flex: 1 1 100%; margin-left: 0; }
+  .goto-msg { left: 0; right: auto; }
+  .goto input { font-size: 16px; padding-block: 4px; }
+  .zoom button { width: 42px; height: 42px; }
+  .card { grid-column: 1 / -1; align-self: end; justify-self: stretch; width: auto; max-height: 66%; }
+  .panel { position: relative; z-index: 2; }
+}
+@media (prefers-reduced-motion: reduce) { .panel-head::after, .sec > summary::after { transition: none; } }
+</style>
+
+<div class="app">
+  <header class="bar">
+    <div class="bar-in">
+      <h1 class="brand">Monitor OSINT militare</h1>
+      <div class="views" id="views" role="group" aria-label="Vai a una vista"></div>
+      <button class="chip news-btn" id="news-btn" type="button" aria-expanded="false" aria-controls="news" hidden>News<span id="news-btn-date"></span></button>
+      <button class="chip news-btn" id="mkt-btn" type="button" aria-expanded="false" aria-controls="mkt" hidden>Mercati<span id="mkt-btn-date"></span></button>
+      <button class="chip news-btn" id="dos-btn" type="button" aria-expanded="false" aria-controls="dos" hidden>Dossier<span id="dos-btn-n"></span></button>
+      <form class="goto" id="goto" novalidate>
+        <label for="goto-input">Vai a coordinate</label>
+        <input id="goto-input" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="26.57 N, 56.25 E" aria-describedby="goto-msg">
+        <button class="chip" id="goto-btn" type="submit">Vai</button>
+        <button class="chip" id="goto-clear" type="button" hidden aria-label="Togli il segnaposto">Togli</button>
+        <p class="goto-msg" id="goto-msg" role="status" hidden></p>
+      </form>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <canvas id="map" tabindex="0" role="img" aria-label="Mappa del mondo con basi, porti, oleodotti, navi, aerei, eventi e fronte ucraino da fonti aperte. Trascina per spostarti, rotella o pizzico per lo zoom, frecce e tasti più e meno da tastiera. L'elenco dei punti è nel pannello Livelli."></canvas>
+    <p class="status" id="status">Carico la mappa…</p>
+
+    <div class="hud">
+      <section class="panel" id="panel" aria-label="Livelli della mappa">
+        <button class="panel-head" id="panel-head" type="button" aria-expanded="true" aria-controls="panel-body">Livelli</button>
+        <div class="panel-body" id="panel-body">
+          <h2 class="sub">Teatri</h2>
+          <ul class="layers plain" id="theaters"></ul>
+
+          <h2 class="sub">Categorie</h2>
+          <ul class="layers">
+            <li><label><input type="checkbox" id="lyr-ships" data-layer="ships" checked>
+              <span class="sw" id="sw-ships"></span>Navi<span class="cnt" id="n-ships"></span></label></li>
+            <li id="li-air" hidden><label><input type="checkbox" id="lyr-air" data-layer="air" checked>
+              <span class="sw" id="sw-air"></span>Aerei<span class="cnt" id="n-air"></span></label></li>
+            <li><label><input type="checkbox" id="lyr-events" data-layer="events" checked>
+              <span class="sw" id="sw-events"></span>Eventi<span class="cnt" id="n-events"></span></label></li>
+            <li id="li-adv" hidden><label><input type="checkbox" id="lyr-adv" data-layer="adv" checked>
+              <span class="sw" id="sw-adv"></span>Avanzata in Ucraina<span class="cnt" id="n-adv"></span></label>
+              <p class="hint">Aree controllate e contese, avanzata del giorno</p></li>
+            <li id="li-front" hidden><label><input type="checkbox" id="lyr-front" data-layer="front">
+              <span class="sw" id="sw-front"></span>Fronte ucraino<span class="cnt" id="n-front"></span></label>
+              <p class="hint">Colpi geolocalizzati lungo il fronte</p></li>
+            <li id="li-hyb" hidden><label><input type="checkbox" id="lyr-hybrid" data-layer="hybrid" checked>
+              <span class="sw" id="sw-hyb"></span>Europa, attacchi ibridi<span class="cnt" id="n-hyb"></span></label>
+              <p class="hint">Sabotaggi, falsi allarmi, droni, GNSS, attacchi informatici, spionaggio. Restano 30 giorni</p></li>
+          </ul>
+          <p class="range-lbl" id="range-lbl">Periodo di eventi e fronte</p>
+          <div class="range" id="range" role="group" aria-labelledby="range-lbl">
+            <button class="chip" type="button" data-days="1" aria-pressed="false">24 ore</button>
+            <button class="chip" type="button" data-days="7" aria-pressed="true">7 giorni</button>
+            <button class="chip" type="button" data-days="30" aria-pressed="false">30 giorni</button>
+            <button class="chip" type="button" data-days="90" aria-pressed="false">90 giorni</button>
+            <button class="chip" type="button" data-days="99999" aria-pressed="false">Tutto</button>
+          </div>
+
+          <h2 class="sub" id="fixed-h" hidden>Livelli fissi</h2>
+          <ul class="layers" id="fixed-ul" hidden>
+            <li id="li-bases"><label><input type="checkbox" id="lyr-bases" data-layer="bases" checked>
+              <span class="sw" id="sw-bases"></span>Basi USA, NATO e Israele<span class="cnt" id="n-bases"></span></label></li>
+            <li id="li-iran" hidden><label><input type="checkbox" id="lyr-iran" data-layer="iran" checked>
+              <span class="sw" id="sw-iran"></span>Siti militari iraniani<span class="cnt" id="n-iran"></span></label></li>
+            <li id="li-ad" hidden><label><input type="checkbox" id="lyr-ad" data-layer="ad" checked>
+              <span class="sw" id="sw-ad"></span>Difesa aerea<span class="cnt" id="n-ad"></span></label>
+              <p class="hint">Radar e batterie, fissi e mobili, compresi i siti colpiti nel 2026</p></li>
+            <li id="li-ita" hidden><label><input type="checkbox" id="lyr-ita" data-layer="ita" checked>
+              <span class="sw" id="sw-ita"></span>Basi in Italia<span class="cnt" id="n-ita"></span></label>
+              <p class="hint">Italiane, USA e NATO. Posizioni da archivi aperti, stato non ancora verificato</p></li>
+            <li id="li-ai" hidden><label><input type="checkbox" id="lyr-ai" data-layer="ai">
+              <span class="sw" id="sw-ai"></span>Infrastruttura AI<span class="cnt" id="n-ai"></span></label>
+              <p class="hint">Data center, fabbriche di chip e supercomputer, dai dossier. Spenta all’apertura</p></li>
+            <li id="li-ports"><label><input type="checkbox" id="lyr-ports" data-layer="ports" checked>
+              <span class="sw" id="sw-ports"></span>Porti<span class="cnt" id="n-ports"></span></label></li>
+            <li id="li-oil"><label><input type="checkbox" id="lyr-oil" data-layer="oil" checked>
+              <span class="sw" id="sw-oil"></span>Oleodotti<span class="cnt" id="n-oil"></span></label></li>
+            <li id="li-gas"><label><input type="checkbox" id="lyr-gas" data-layer="gas" checked>
+              <span class="sw" id="sw-gas"></span>Gasdotti<span class="cnt" id="n-gas"></span></label></li>
+            <li id="li-subsea" hidden><label><input type="checkbox" id="lyr-subsea" data-layer="subsea">
+              <span class="sw" id="sw-subsea"></span>Condotte sottomarine<span class="cnt" id="n-subsea"></span></label>
+              <p class="hint">Oleodotti e gasdotti in mare, in tutto il mondo. Spente all’apertura</p></li>
+            <li id="li-routes" hidden><label><input type="checkbox" id="lyr-routes" data-layer="routes">
+              <span class="sw" id="sw-routes"></span>Rotte marittime<span class="cnt" id="n-routes"></span></label>
+              <p class="hint">Le grandi rotte commerciali del mondo, da una carta della CIA. Spente all’apertura</p></li>
+          </ul>
+
+          <details class="sec" id="sec-legend">
+            <summary>Legenda</summary>
+            <div class="legend" id="legend"></div>
+          </details>
+
+          <details class="sec" id="sec-geo">
+            <summary>Geografia</summary>
+            <ul class="layers">
+              <li><label><input type="checkbox" id="lyr-borders" data-layer="borders" checked>
+                <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M0 2h22" stroke="var(--border)" stroke-width="1.4"/><path d="M0 6.5h22" stroke="var(--border)" stroke-width="1.4" stroke-dasharray="5 3.5"/></svg></span>Confini</label>
+                <p class="hint">Tratteggio: conteso o linea di controllo</p></li>
+              <li><label><input type="checkbox" id="lyr-countries" data-layer="countries" checked>
+                <span class="sw" style="font:600 9px var(--f-cond);letter-spacing:.1em;color:var(--ink-soft)">AB</span>Nomi dei paesi</label></li>
+              <li><label><input type="checkbox" id="lyr-cities" data-layer="cities" checked>
+                <span class="sw"><svg width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="2.6" fill="var(--ink)"/></svg></span>Città</label></li>
+              <li><label><input type="checkbox" id="lyr-seas" data-layer="seas" checked>
+                <span class="sw" style="font:italic 400 12px var(--f-serif);color:var(--water-ink)">Ab</span>Mari</label></li>
+              <li><label><input type="checkbox" id="lyr-straits" data-layer="straits" checked>
+                <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M5 0.5 9.5 5 5 9.5 0.5 5Z" fill="var(--accent)"/></svg></span>Passaggi strategici</label>
+                <p class="hint">Tocca un rombo: quanto petrolio, gas e merci vi passano</p></li>
+              <li><label><input type="checkbox" id="lyr-regions" data-layer="regions" checked>
+                <span class="sw" style="font:italic 400 11px var(--f-sans);color:var(--ink-soft)">Ab</span>Regioni e isole</label></li>
+              <li><label><input type="checkbox" id="lyr-water" data-layer="water" checked>
+                <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M0 5c4-5 7 3 11 0s7-4 11 0" fill="none" stroke="var(--water-ink)" stroke-width="1.3"/></svg></span>Fiumi e laghi</label></li>
+              <li><label><input type="checkbox" id="lyr-grat" data-layer="grat" checked>
+                <span class="sw"><svg width="12" height="12" aria-hidden="true"><path d="M0 4h12M0 8h12M4 0v12M8 0v12" stroke="var(--ink-faint)" stroke-width="1"/></svg></span>Reticolo</label></li>
+            </ul>
+          </details>
+
+          <details class="sec" id="sec-list" open>
+            <summary>Elenco<span class="cnt" id="list-n"></span></summary>
+            <div id="lists"></div>
+          </details>
+          <p class="note" id="note">Dati da fonti aperte, aggiornati una volta al giorno.</p>
+        </div>
+      </section>
+
+      <aside class="card" id="card" hidden aria-label="Scheda del punto">
+        <div class="card-head">
+          <div><p class="card-kind" id="cd-kind"></p><h2 id="cd-name"></h2></div>
+          <button class="x" id="cd-close" type="button" aria-label="Chiudi la scheda">×</button>
+        </div>
+        <div class="card-sil" id="cd-sil"></div>
+        <dl class="facts" id="cd-facts"></dl>
+        <p class="card-info" id="cd-info"></p>
+        <div id="cd-mates"></div>
+        <h3>Fonti</h3>
+        <ul class="srcs" id="cd-src"></ul>
+      </aside>
+
+      <aside class="card" id="news" hidden aria-label="News: report del giorno">
+        <div class="card-head">
+          <div><h2>News</h2><p class="news-when"><span id="news-date"></span><select id="news-pick" aria-label="Scegli il giorno del report" hidden></select></p></div>
+          <button class="x" id="news-close" type="button" aria-label="Chiudi le news">×</button>
+        </div>
+        <div class="news-ctx" id="news-ctx" hidden></div>
+        <div class="news-body" id="news-body"></div>
+      </aside>
+
+      <aside class="card wide" id="mkt" hidden aria-label="Mercati: indicatori del giorno">
+        <div class="card-head">
+          <div><h2>Mercati</h2><p class="news-when"><span id="mkt-date"></span><select id="mkt-pick" aria-label="Scegli il giorno" hidden></select></p></div>
+          <button class="x" id="mkt-close" type="button" aria-label="Chiudi i mercati">×</button>
+        </div>
+        <p class="mkt-note" id="mkt-note"></p>
+        <div id="mkt-body"></div>
+      </aside>
+
+      <aside class="card wide" id="dos" hidden aria-label="Dossier AI">
+        <div class="card-head">
+          <div><h2>Dossier AI</h2><p class="news-when"><span id="dos-date"></span><select id="dos-pick" aria-label="Scegli il dossier" hidden></select></p></div>
+          <button class="x" id="dos-close" type="button" aria-label="Chiudi il dossier">×</button>
+        </div>
+        <div class="dos-act"><button class="chip" id="dos-map" type="button">Mostra i punti sulla mappa</button></div>
+        <div class="news-body" id="dos-body"></div>
+      </aside>
+
+      <div class="bl">
+        <div class="scale" aria-label="Scala">
+          <div class="scale-row"><span class="scale-bar" id="sc-km"></span><span id="sc-km-t"></span></div>
+          <div class="scale-row"><span class="scale-bar" id="sc-nm"></span><span id="sc-nm-t"></span></div>
+        </div>
+        <p class="credit" id="credit">Natural Earth</p>
+        <p class="credit" id="credit-front" hidden></p>
+        <p class="credit" id="credit-gem" hidden></p>
+        <p class="credit" id="credit-routes" hidden></p>
+      </div>
+
+      <div class="br">
+        <div class="zoom" role="group" aria-label="Zoom">
+          <button type="button" id="z-in" aria-label="Ingrandisci"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v11M2.5 8h11"/></svg></button>
+          <button type="button" id="z-out" aria-label="Riduci"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11"/></svg></button>
+          <button type="button" id="z-home" aria-label="Torna alla vista iniziale"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4"/><path d="M8 1v3M8 12v3M1 8h3M12 8h3"/></svg></button>
+        </div>
+        <p class="readout" id="readout" aria-live="off"><span class="k" id="ro-k">Centro</span><span id="ro-dm">—</span><span class="dec" id="ro-dec"></span>
+          <span class="live">Dal vivo qui: <a id="lv-ships" href="https://www.marinetraffic.com/" target="_blank" rel="noopener noreferrer">navi</a> · <a id="lv-air" href="https://globe.adsbexchange.com/" target="_blank" rel="noopener noreferrer">aerei</a></span></p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+(() => {
+'use strict';
+
+/* ---------- projection: Web-Mercator-like, world = W0 x H0 base units ---------- */
+const W0 = 1024, LAT_MAX = 84, LAT_MIN = -60, R_EARTH = 6371008.8, Z_MAX = 9.8;
+const merc = lat => Math.log(Math.tan(Math.PI / 4 + lat * Math.PI / 360));
+const MY0 = merc(LAT_MAX);
+const H0 = (MY0 - merc(LAT_MIN)) / (2 * Math.PI) * W0;
+const bx = lon => (lon + 180) / 360 * W0;
+const by = lat => (MY0 - merc(Math.max(LAT_MIN, Math.min(LAT_MAX, lat)))) / (2 * Math.PI) * W0;
+const lonOf = x => x / W0 * 360 - 180;
+const latOf = y => (2 * Math.atan(Math.exp(MY0 - y / W0 * 2 * Math.PI)) - Math.PI / 2) * 180 / Math.PI;
+const zoomOf = k => 2 + Math.log2(k);          // web-map zoom level (256 px world at z0)
+const kOf = z => Math.pow(2, z - 2);
+
+const $ = id => document.getElementById(id);
+const canvas = $('map'), ctx = canvas.getContext('2d'), stage = $('stage'), statusEl = $('status');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const coarse = matchMedia('(pointer: coarse)').matches;
+
+/* ---------- state ---------- */
+let w = 0, h = 0, dpr = 1, T = null, zoom = null, sel = null, ready = false, raf = 0;
+let world = null, tiles = [], D = null, manifest = null, homeView = null;
+let pin = null, pointer = null;                   // pointer: {x,y} when a mouse hovers the chart
+let PT = [], VS = [], VA = [], VE = [], VF = [], VV = [], VIS = new Set(), picked = null;   // all operational points; visible ships, aircraft, events, tactical hits, advances; all visible; open card
+let VB = [], VP = [], LN = null, SB = null, RT = null, ST = null;   // SB: submarine pipelines of the world;   // RT: shipping routes; ST: world shares through the passages                    // visible bases and ports; pipelines
+let FRONT = null, areasOn = false;                // Ukraine: areas of control; whether they are in view in this frame
+let evRange = 7, REPORTS = [], CTX = null, liveKey = '', MK = null, DOS = null;
+let setPanel = () => {};
+const L = { ships: true, air: true, events: true, hybrid: true, adv: true, front: false, bases: true, iran: true, ita: true, ad: true, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
+const TH = {};                                    // theater switches, filled from the data
+const C = {}, FF = {};
+const TODAY = new Date(); TODAY.setHours(12, 0, 0, 0);
+
+const lum = hex => { const v = [1, 3, 5].map(i => { const c = parseInt(hex.slice(i, i + 2), 16) / 255; return c <= .03928 ? c / 12.92 : Math.pow((c + .055) / 1.055, 2.4); }); return .2126 * v[0] + .7152 * v[1] + .0722 * v[2]; };
+function readTheme() {
+  const cs = getComputedStyle(document.documentElement), g = n => cs.getPropertyValue('--' + n).trim();
+  Object.assign(C, { sea: g('sea'), land: g('land'), coast: g('coast'), border: g('border'), river: g('river'), ink: g('ink'), inkSoft: g('ink-soft'),
+    inkFaint: g('ink-faint'), waterInk: g('water-ink'), accent: g('accent'), grat: g('grat'), haloLand: g('halo-land'), haloSea: g('halo-sea'),
+    paper: g('control'), ally: g('ally'), partner: g('partner'), adv: g('adv'), rus: g('rus'), oth: g('oth'), contesa: g('contesa'), oil: g('oil'), gas: g('gas'), port: g('port'), route: g('route'), onSide: g('on-side'), ev: [g('ev0'), g('ev1'), g('ev2'), g('ev-old')] });
+  C.evText = C.ev.map(c => lum(c) > .22 ? '#16100F' : '#FFFFFF');   // the count written on a bubble of that colour
+  Object.assign(FF, { sans: g('f-sans'), cond: g('f-cond'), serif: g('f-serif'), mono: g('f-mono') });
+}
+
+/* ---------- vocabulary of the project's common data schema (regole/02_schema-dati.md) ---------- */
+const TEATRI = [['MO', 'Medio Oriente'], ['RU-UA', 'Russia-Ucraina'], ['IT', 'Italia'], ['NATO', 'NATO ed Europa'], ['ALTRO', 'Altri teatri']];
+const TNAME = Object.fromEntries(TEATRI);
+const PAESI = { US: 'Stati Uniti', GB: 'Regno Unito', FR: 'Francia', NO: 'Norvegia', CN: 'Cina', RU: 'Russia', UA: 'Ucraina', IR: 'Iran', IL: 'Israele', IT: 'Italia', JP: 'Giappone', AU: 'Australia', DE: 'Germania', CA: 'Canada', TR: 'Turchia', IN: 'India', QA: 'Qatar', BH: 'Bahrein', KW: 'Kuwait', AE: 'Emirati Arabi Uniti', SA: 'Arabia Saudita', JO: 'Giordania', IQ: 'Iraq', SY: 'Siria', OM: 'Oman', DJ: 'Gibuti', CY: 'Cipro', EG: 'Egitto', YE: 'Yemen', LB: 'Libano', SD: 'Sudan', ER: 'Eritrea', IO: "Territorio britannico dell'Oceano Indiano", BY: 'Bielorussia', KP: 'Corea del Nord', KR: 'Corea del Sud', TW: 'Taiwan', JE: 'Jersey', 'YE-H': 'Houthi (Ansarallah)', 'LB-H': 'Hezbollah', 'IQ-M': 'Milizie irachene', 'PS-H': 'Hamas', NATO: 'NATO' };
+// four groups of countries (regole/03 v4): allies, partners, adversaries, others in grey
+const PARTNER = new Set(['QA', 'BH', 'AE', 'SA', 'KW', 'OM', 'JO', 'EG']), ADV = new Set(['IR', 'RU', 'BY', 'KP']);
+const sideOf = a => ALLY.has(a) ? 'ally' : PARTNER.has(a) ? 'partner' : ADV.has(a) ? 'adv' : 'oth';
+const ALLY = new Set(['US', 'GB', 'FR', 'NO', 'IT', 'DE', 'CA', 'ES', 'NL', 'BE', 'DK', 'PL', 'GR', 'TR', 'PT', 'RO', 'BG', 'SE', 'FI', 'EE', 'LV', 'LT', 'CZ', 'SK', 'HU', 'HR', 'SI', 'AL', 'ME', 'MK', 'IS', 'LU', 'JP', 'AU', 'KR', 'IL', 'NATO']);
+const SIDE_IT = { ally: 'Alleati: NATO, Israele, Australia, Giappone, Corea del Sud', partner: 'Partner: paesi del Golfo, Giordania, Egitto', adv: 'Avversari: Iran, Russia, Bielorussia, Corea del Nord', oth: 'Altri' };
+const CAT_IT = { 'nave-portaerei': 'Portaerei', 'nave-anfibia': 'Nave anfibia', 'nave-scorta': 'Nave di scorta', 'sottomarino': 'Sottomarino', 'nave-ausiliaria': 'Nave ausiliaria', 'nave-petroliera': 'Petroliera', 'nave-gasiera': 'Gasiera', 'nave-mercantile': 'Mercantile',
+  'aereo-bombardiere': 'Bombardiere', 'aereo-cisterna': 'Aerocisterna', 'aereo-ricognizione': 'Aereo da ricognizione', 'aereo-trasporto': 'Aereo da trasporto', 'aereo-caccia': 'Caccia', 'attacco-tattico': 'Colpo lungo il fronte', avanzamento: 'Avanzata',
+  'base-aerea': 'Base aerea', 'base-navale': 'Base navale', 'base-terrestre': 'Base terrestre', comando: 'Comando', 'difesa-aerea': 'Radar e difesa aerea', 'difesa-aerea-mobile': 'Batteria di difesa aerea mobile', 'sito-missilistico': 'Sito missilistico', 'sito-nucleare': 'Sito nucleare', 'industria-militare': 'Industria militare', porto: 'Porto', aeroporto: 'Aeroporto',
+  sabotaggio: 'Sabotaggio', 'falso-allarme': 'Falso allarme', 'droni-non-identificati': 'Droni non identificati', 'disturbo-gnss': 'Disturbo GNSS', 'attacco-informatico': 'Attacco informatico', spionaggio: 'Spionaggio',
+  attacco: 'Attacco', lancio: 'Lancio', intercettazione: 'Intercettazione', allerta: 'Allerta', incidente: 'Incidente', sequestro: 'Sequestro', blackout: 'Blackout', 'chiusura-spazio-aereo': 'Chiusura dello spazio aereo', 'avviso-marittimo': 'Avviso ai naviganti', esercitazione: 'Esercitazione', rischieramento: 'Rischieramento', dichiarazione: 'Dichiarazione',
+  combattimento: 'Combattimento', 'chiusura-passaggio': 'Chiusura di un passaggio', poligono: 'Poligono', comunicazioni: 'Stazione di comunicazioni', 'energia-giacimento': 'Giacimento di petrolio o gas', 'data-center': 'Data center', 'fab-chip': 'Fabbrica di chip', supercomputer: 'Supercomputer' };
+const BERS_IT = { 'energia-centrale': 'centrale elettrica', 'energia-raffineria': 'raffineria', 'energia-rete': 'rete elettrica', 'energia-oleodotto': 'oleodotto', 'energia-gasdotto': 'gasdotto', 'energia-terminale': 'terminale energetico', porto: 'porto', infrastruttura: 'infrastruttura', 'base-aerea': 'base aerea', 'base-navale': 'base navale', 'base-terrestre': 'base terrestre', aeroporto: 'aeroporto', 'cavo-sottomarino': 'cavo sottomarino', 'nave-petroliera': 'petroliera', 'nave-mercantile': 'mercantile', 'unita-terrestre': 'mezzo o reparto a terra', 'difesa-aerea': 'difesa aerea', 'difesa-aerea-mobile': 'difesa aerea mobile', 'sito-missilistico': 'sito missilistico', 'sito-nucleare': 'sito nucleare', 'industria-militare': 'industria militare', 'passaggio-strategico': 'passaggio strategico', 'aereo-ricognizione': 'aereo da ricognizione', 'aereo-caccia': 'caccia', 'aereo-bombardiere': 'bombardiere', 'nave-portaerei': 'portaerei', 'aereo-trasporto': 'aereo da trasporto o di linea', 'rotta-marittima': 'rotta marittima', 'energia-giacimento': 'giacimento di petrolio o gas', 'data-center': 'data center', poligono: 'poligono', comunicazioni: 'stazione di comunicazioni' };
+const STATO_IT = { operativo: 'Operativo', 'in-costruzione': 'In costruzione', 'in-manutenzione': 'In manutenzione', danneggiato: 'Danneggiato', 'in-riparazione': 'In riparazione', 'fuori-servizio': 'Fuori servizio', lasciata: 'Lasciata' };
+const AFF_IT = { alta: 'Alta: confermato', media: 'Media: segnalato, non ancora confermato', bassa: 'Bassa: non verificato' };
+
+/* ---------- symbols ---------- */
+// ships: side-view silhouettes, bow to the right, keel at y = 0, sizes in 'units' (carrier = 100)
+const SIL = {
+  portaerei:    { it: 'Portaerei', len: 100, h: 26, d: 'M3 0L1 -5L0 -9L30 -9L30 -14L32 -14L32 -19L34 -19L34 -26L35 -26L35 -19L38 -19L38 -14L40 -14L40 -9L100 -9L96 -5L91 0Z' },
+  anfibia:      { it: "Nave d'assalto anfibio", len: 78, h: 27, d: 'M2 0L0 -10L28 -10L28 -15L31 -15L31 -21L33 -21L33 -27L34 -27L34 -21L40 -21L40 -24L41 -24L41 -21L44 -21L44 -15L47 -15L47 -10L78 -10L75 -5L71 0Z' },
+  lpd:          { it: 'Nave da trasporto anfibio', len: 62, h: 22, d: 'M2 0L0 -7L22 -7L22 -13L26 -13L27 -22L29 -22L30 -13L38 -13L39 -22L41 -22L42 -13L48 -13L48 -9L56 -9L62 -8L57 0Z' },
+  incrociatore: { it: 'Incrociatore', len: 55, h: 23, d: 'M2 0L0 -6L9 -6L9 -10L15 -10L15 -14L17 -14L17 -20L18 -20L18 -14L21 -14L21 -10L28 -10L28 -15L31 -15L31 -23L32 -23L32 -15L36 -15L36 -11L41 -11L41 -7L47 -7L55 -8L50 0Z' },
+  caccia:       { it: 'Cacciatorpediniere', len: 50, h: 22, d: 'M2 0L0 -6L12 -6L12 -9L17 -9L17 -12L20 -12L20 -9L23 -9L23 -13L26 -13L26 -9L29 -9L29 -14L31 -14L32 -22L33 -22L33 -14L36 -14L36 -10L39 -10L39 -7L44 -7L50 -8L46 0Z' },
+  fregata:      { it: 'Fregata', len: 42, h: 19, d: 'M2 0L0 -5L10 -5L10 -9L16 -9L16 -12L19 -12L19 -9L22 -9L22 -12L24 -12L25 -19L26 -19L26 -12L29 -12L29 -8L33 -8L33 -6L38 -6L42 -7L39 0Z' },
+  rifornitore:  { it: 'Rifornitore di squadra', len: 66, h: 19, d: 'M2 0L0 -6L5 -6L5 -15L8 -15L8 -19L9 -19L9 -15L13 -15L13 -8L24 -8L24 -14L25 -14L25 -8L36 -8L36 -14L37 -14L37 -8L48 -8L48 -14L49 -14L49 -8L60 -8L66 -9L62 0Z' },
+  sottomarino:  { it: 'Sottomarino', len: 46, h: 13, d: 'M0 -2Q2 -5 8 -5L18 -5L18 -11L19 -11L19 -13L20 -13L20 -11L24 -11L24 -5L40 -5Q45 -4 46 -2Q45 0 40 0L6 0Q1 0 0 -2Z' },
+};
+for (const k in SIL) SIL[k].p = new Path2D(SIL[k].d);
+const SIL_RANK = { portaerei: 0, anfibia: 1, sottomarino: 2, incrociatore: 3, caccia: 4, fregata: 5, lpd: 6, rifornitore: 7 };
+function silFor(p) {                                   // silhouette from the hull number, else from the category
+  const id = (p.identificativo || '').toUpperCase();
+  if (/^(CVN|CV-|R\d)/.test(id)) return 'portaerei'; if (/^(LHD|LHA)/.test(id)) return 'anfibia'; if (/^(LPD|LSD)/.test(id)) return 'lpd';
+  if (/^CG/.test(id)) return 'incrociatore'; if (/^(DDG|DD-|D\d)/.test(id)) return 'caccia'; if (/^(FFG|FF-|F\d)/.test(id)) return 'fregata';
+  if (/^(SSN|SSBN|SSGN|SSK|S\d)/.test(id)) return 'sottomarino'; if (/^(T-?AO|T-?AKE|A\d)/.test(id)) return 'rifornitore';
+  return { 'nave-portaerei': 'portaerei', 'nave-anfibia': 'anfibia', 'nave-scorta': 'caccia', sottomarino: 'sottomarino', 'nave-ausiliaria': 'rifornitore', 'nave-petroliera': 'rifornitore', 'nave-gasiera': 'rifornitore', 'nave-mercantile': 'rifornitore' }[p.categoria] || null;
+}
+// events, aircraft and front markers: small glyphs centred on the point
+const star = (n, R, r) => { let d = ''; for (let i = 0; i < n * 2; i++) { const a = Math.PI * i / n - Math.PI / 2, q = i % 2 ? r : R; d += (i ? 'L' : 'M') + (q * Math.cos(a)).toFixed(2) + ' ' + (q * Math.sin(a)).toFixed(2); } return d + 'Z'; };
+// the radiation trefoil: a centre dot and three blades (outer radius R, inner r, dot c)
+const trefoil = (R, r, c) => {
+  const pt = (q, a) => (q * Math.cos(a * Math.PI / 180)).toFixed(2) + ' ' + (q * Math.sin(a * Math.PI / 180)).toFixed(2);
+  let d = `M${c} 0A${c} ${c} 0 1 1 ${-c} 0A${c} ${c} 0 1 1 ${c} 0Z`;
+  for (const a of [60, 180, 300]) d += `M${pt(r, a)}L${pt(R, a)}A${R} ${R} 0 0 1 ${pt(R, a + 60)}L${pt(r, a + 60)}A${r} ${r} 0 0 0 ${pt(r, a)}Z`;
+  return d;
+};
+const GLYPH = {
+  attacco: { it: 'Attacco', d: star(8, 8.5, 4) }, blackout: { it: 'Blackout', d: 'M2 -9L-5.5 1.2L-1 1.2L-2.4 9L5.5 -1.6L1 -1.6Z' }, altro: { it: 'Altro evento', d: 'M0 -7.5L7.5 6L-7.5 6Z' },
+  aereo: { it: 'Aereo', d: 'M0 -10L1.7 -7L1.7 -2.6L10 3.2L10 5.2L1.7 2.6L1.3 7L4 9.2L4 10.4L0 9.5L-4 10.4L-4 9.2L-1.3 7L-1.7 2.6L-10 5.2L-10 3.2L-1.7 -2.6L-1.7 -7Z' },
+  caccia: { it: 'Caccia', d: 'M0 -10L1.4 -5.6L1.6 -1.6L9.4 5.4L9.4 7.4L1.6 5.4L1.6 6.8L4.4 9.2L4.4 10.4L0 9.6L-4.4 10.4L-4.4 9.2L-1.6 6.8L-1.6 5.4L-9.4 7.4L-9.4 5.4L-1.6 -1.6L-1.4 -5.6Z' },
+  bombardiere: { it: 'Bombardiere', d: 'M0 -6.6L10 3.4L8.6 5L6 3.8L4.4 5.8L2 4.4L0 6.2L-2 4.4L-4.4 5.8L-6 3.8L-8.6 5L-10 3.4Z' },
+  trasporto: { it: 'Aereo da trasporto', d: 'M0 -9.6C1.6 -9.6 2.3 -8.2 2.3 -6.4L2.3 -2.6L10 0.6L10 2.6L2.3 1.2L2 6.4L5.6 8.4L5.6 9.8L0 9.2L-5.6 9.8L-5.6 8.4L-2 6.4L-2.3 1.2L-10 2.6L-10 0.6L-2.3 -2.6L-2.3 -6.4C-2.3 -8.2 -1.6 -9.6 0 -9.6Z' },
+  cisterna: { it: 'Aerocisterna', d: 'M0 -10L1.7 -7L1.7 -2.6L10 3.2L10 5.2L1.7 2.6L1.3 7L4 9.2L4 10.4L0 9.5L-4 10.4L-4 9.2L-1.3 7L-1.7 2.6L-10 5.2L-10 3.2L-1.7 -2.6L-1.7 -7ZM-0.8 9.4L0.8 9.4L0.6 14.4L-0.6 14.4Z' },
+  ricognizione: { it: 'Ricognizione e sorveglianza', d: 'M0 -10L1.7 -7L1.7 -2.6L10 3.2L10 5.2L1.7 2.6L1.3 7L4 9.2L4 10.4L0 9.5L-4 10.4L-4 9.2L-1.3 7L-1.7 2.6L-10 5.2L-10 3.2L-1.7 -2.6L-1.7 -7ZM3.6 4A3.6 3.6 0 1 1 -3.6 4A3.6 3.6 0 1 1 3.6 4Z' },
+  bandiera: { it: 'Avanzata', d: 'M-5 9L-5 -9L7 -5.2L-3.2 -1.2L-3.2 9Z' }, colpo: { it: 'Colpo lungo il fronte', d: star(4, 6.5, 2.4) },
+  stella: { it: 'Base terrestre o comando', d: star(5, 6, 2.5) }, scudo: { it: 'Batteria di difesa aerea mobile', d: 'M0 -6.6L5.6 -4.4V0.4C5.6 3.8 3.2 6 0 7.2C-3.2 6 -5.6 3.8 -5.6 0.4V-4.4Z' }, cupola: { it: 'Radar', d: 'M-5.4 2.2A5.4 5.4 0 0 1 5.4 2.2ZM-5.4 3.8H5.4V5.4H-5.4Z' },
+  ancora: { it: 'Porto o base navale', stroke: true, d: 'M0 -3.6V6M-3 -1.4H3M-5 2Q-4.6 6 0 6Q4.6 6 5 2M1.6 -5.2A1.6 1.6 0 1 1 -1.6 -5.2A1.6 1.6 0 1 1 1.6 -5.2' },
+  razzo: { it: 'Sito missilistico', d: 'M0 -7.6C2.3 -5.2 2.7 -2.2 2.7 1.4L4.8 5.6H2.3L1.7 4.1H-1.7L-2.3 5.6H-4.8L-2.7 1.4C-2.7 -2.2 -2.3 -5.2 0 -7.6Z' },
+  atomo: { it: 'Sito nucleare', d: trefoil(6.7, 2.2, 1.3) },
+  fiamma: { it: 'Sabotaggio', d: 'M0 -7.2C2.6 -4.2 4.6 -1.6 4.6 1.8C4.6 4.9 2.6 7 0 7C-2.6 7 -4.6 4.9 -4.6 1.8C-4.6 -0.7 -3.1 -2.3 -1.8 -3.8C-1.6 -1.7 -0.8 -0.4 0.4 0.2C0.9 -2.5 0.4 -4.7 0 -7.2Z' },
+  allarme: { it: 'Falso allarme bomba', d: 'M0 -6.6C2.9 -6.6 4.6 -4.4 4.6 -1.6V2L6.3 4.3H-6.3L-4.6 2V-1.6C-4.6 -4.4 -2.9 -6.6 0 -6.6ZM-1.9 5.3H1.9C1.9 6.4 1 7.1 0 7.1C-1 7.1 -1.9 6.4 -1.9 5.3Z' },
+  drone: { it: 'Droni non identificati', d: 'M-6.8 -4.3A2.5 2.5 0 1 1 -1.8 -4.3A2.5 2.5 0 1 1 -6.8 -4.3ZM1.8 -4.3A2.5 2.5 0 1 1 6.8 -4.3A2.5 2.5 0 1 1 1.8 -4.3ZM-6.8 4.3A2.5 2.5 0 1 1 -1.8 4.3A2.5 2.5 0 1 1 -6.8 4.3ZM1.8 4.3A2.5 2.5 0 1 1 6.8 4.3A2.5 2.5 0 1 1 1.8 4.3ZM-1.9 -1.9H1.9V1.9H-1.9ZM-3.5 -2.6L-2.6 -3.5L3.5 2.6L2.6 3.5ZM2.6 -3.5L3.5 -2.6L-2.6 3.5L-3.5 2.6Z' },
+  gnss: { it: 'Disturbo GNSS', d: 'M-2 -2H2V2H-2ZM-7 -1.4H-2.8V1.4H-7ZM2.8 -1.4H7V1.4H2.8ZM-0.6 2.6H0.6V4.9H-0.6ZM-3 5.2H3V6.6H-3ZM-5.6 -6.4L-4.6 -7.2L5.6 5.2L4.6 6Z' },
+  cyber: { it: 'Attacco informatico', d: 'M-4.2 -4.2H4.2V4.2H-4.2ZM-2.7 -7H-1.3V-4.6H-2.7ZM1.3 -7H2.7V-4.6H1.3ZM-2.7 4.6H-1.3V7H-2.7ZM1.3 4.6H2.7V7H1.3ZM-7 -2.7H-4.6V-1.3H-7ZM-7 1.3H-4.6V2.7H-7ZM4.6 -2.7H7V-1.3H4.6ZM4.6 1.3H7V2.7H4.6Z' },
+  spia: { it: 'Spionaggio, arresti', d: 'M-7.2 0C-5 -3.9 -2.5 -5.2 0 -5.2C2.5 -5.2 5 -3.9 7.2 0C5 3.9 2.5 5.2 0 5.2C-2.5 5.2 -5 3.9 -7.2 0ZM2.5 0A2.5 2.5 0 1 0 -2.5 0A2.5 2.5 0 1 0 2.5 0ZM1.1 0A1.1 1.1 0 1 1 -1.1 0A1.1 1.1 0 1 1 1.1 0Z' },
+  mirino: { it: 'Poligono', d: 'M-0.8 -7.2H0.8V-2.4H-0.8ZM-0.8 2.4H0.8V7.2H-0.8ZM-7.2 -0.8H-2.4V0.8H-7.2ZM2.4 -0.8H7.2V0.8H2.4ZM1.5 0A1.5 1.5 0 1 1 -1.5 0A1.5 1.5 0 1 1 1.5 0Z' },
+  antenna: { it: 'Stazione di comunicazioni', d: 'M-6.4 -1.6A7.4 7.4 0 0 0 1.6 6.4ZM-1.9 1.3L3.1 -3.7L4.3 -2.5L-0.7 2.5ZM5.6 -4.6A1.7 1.7 0 1 1 2.2 -4.6A1.7 1.7 0 1 1 5.6 -4.6Z' },
+  pozzo: { it: 'Giacimento di petrolio o gas', d: 'M-1.1 -7.2H1.1L4.8 6.6H2.6L1.7 3H-1.7L-2.6 6.6H-4.8ZM-1.2 0.9H1.2L0.6 -1.6H-0.6Z' },
+  server: { it: 'Data center', d: 'M-6 -6.4H6V-2.6H-6ZM-6 -1.9H6V1.9H-6ZM-6 2.6H6V6.4H-6Z' },
+  fabbrica: { it: 'Fabbrica di chip', d: 'M-6.8 6.4V-0.6L-3.2 -3.2V-0.6L0.4 -3.2V-0.6L4 -3.2V-7H6.8V6.4Z' },
+  supercalc: { it: 'Supercomputer', d: 'M-6.6 -6.4H-2.7V6.4H-6.6ZM-1.95 -6.4H1.95V6.4H-1.95ZM2.7 -6.4H6.6V6.4H2.7Z' },
+};
+const AIR_GLYPH = { 'aereo-caccia': 'caccia', 'aereo-bombardiere': 'bombardiere', 'aereo-trasporto': 'trasporto', 'aereo-cisterna': 'cisterna', 'aereo-ricognizione': 'ricognizione' };   // phase 1c: one symbol per aircraft category
+const PLATE = { 'base-aerea': 'aereo', 'base-navale': 'ancora', 'base-terrestre': 'stella', comando: 'stella', 'difesa-aerea': 'cupola', 'sito-missilistico': 'razzo', 'sito-nucleare': 'atomo', poligono: 'mirino', comunicazioni: 'antenna', 'energia-giacimento': 'pozzo', 'data-center': 'server', 'fab-chip': 'fabbrica', supercomputer: 'supercalc' };   // pictogram on a base's plate
+const PSCALE = { scudo: .95, aereo: .62, ancora: .86, stella: 1, cupola: .95, razzo: .9, atomo: .93, mirino: .95, antenna: .9, pozzo: .9, server: .88, fabbrica: .88, supercalc: .88 };
+const AI_CAT = { 'data-center': 1, 'fab-chip': 1, supercomputer: 1 };   // the layer «Infrastruttura AI» (rules v4)
+for (const k in GLYPH) GLYPH[k].p = new Path2D(GLYPH[k].d);
+const EV_GLYPHS = ['attacco', 'blackout', 'altro'];
+const IB_GLYPH = { sabotaggio: 'fiamma', 'falso-allarme': 'allarme', 'droni-non-identificati': 'drone', 'disturbo-gnss': 'gnss', 'attacco-informatico': 'cyber', spionaggio: 'spia' };
+const glyphFor = p => p.ib ? IB_GLYPH[p.categoria] : p.kind === 'fronte' ? 'colpo' : p.kind === 'avanzata' ? 'bandiera' : p.categoria === 'attacco' || p.categoria === 'intercettazione' ? 'attacco' : p.categoria === 'blackout' ? 'blackout' : 'altro';
+// an event's colour only tells its age: fresh (0-1 days), recent (2-4), about to expire (5-7), archived (8 or more)
+const ageK = age => age <= 1 ? 0 : age <= 4 ? 1 : age <= 7 ? 2 : 3;
+const ageKib = age => age <= 3 ? 0 : age <= 14 ? 1 : age <= 30 ? 2 : 3;     // hybrid events: wider scale, 30 days on the map (regole/02 v3)
+const akOf = p => p.ib ? ageKib(p.age) : ageK(p.age);
+const ibRange = () => evRange >= 99999 ? 99999 : Math.max(30, evRange);
+const EV_VAR = ['var(--ev0)', 'var(--ev1)', 'var(--ev2)', 'var(--ev-old)'];
+const kindName = p => p.kind === 'nave' ? SIL[p.sil].it : CAT_IT[p.categoria] || p.categoria;
+
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+function svgPath(d, vb, wpx, hpx, color, hollow, sw, dashed) {       // the map symbols again as small inline SVGs, for legend, lists and cards
+  const sv = document.createElementNS(NS, 'svg'), p = document.createElementNS(NS, 'path');
+  sv.setAttribute('width', wpx); sv.setAttribute('height', hpx); sv.setAttribute('viewBox', vb); sv.setAttribute('aria-hidden', 'true');
+  p.setAttribute('d', d); p.setAttribute('fill', hollow ? 'var(--control)' : color);
+  if (hollow) { p.setAttribute('stroke', color); p.setAttribute('stroke-width', sw); p.setAttribute('stroke-linejoin', 'round'); if (dashed) p.setAttribute('stroke-dasharray', dashed); }
+  sv.appendChild(p); return sv;
+}
+function svgSil(type, color, hollow, wpx, dashed) { const s = SIL[type], k = wpx / s.len; return svgPath(s.d, `-2 ${-s.h - 2} ${s.len + 4} ${s.h + 4}`, wpx, Math.ceil(s.h * k) + 2, color, hollow, (1.3 / k).toFixed(2), dashed ? `${(3 / k).toFixed(1)} ${(2.5 / k).toFixed(1)}` : null); }
+function svgGlyph(kind, color, hollow, px) { return svgPath(GLYPH[kind].d, '-11 -11 22 22', px, px, color, hollow, 1.6); }
+function svgEl(tag, attrs) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; }
+function svgBox(color, op) { const sv = svgEl('svg', { width: 20, height: 12, 'aria-hidden': 'true' }); sv.appendChild(svgEl('rect', { x: .75, y: .75, width: 18.5, height: 10.5, rx: 2, fill: color, 'fill-opacity': op, stroke: color, 'stroke-width': 1.2 })); return sv; }
+function svgDot(color, px, text) {                                    // a bubble of tactical hits, with its count
+  const sv = svgEl('svg', { width: px, height: px, viewBox: '0 0 20 20', 'aria-hidden': 'true' }), t = svgEl('text', { x: 10, y: 14, 'text-anchor': 'middle', 'font-size': 11, 'font-weight': 600, fill: '#fff' });
+  sv.appendChild(svgEl('circle', { cx: 10, cy: 10, r: 9, fill: color })); t.textContent = text; sv.appendChild(t); return sv;
+}
+function svgPlate(glyph, color, hollow, px, opt) {                     // a fixed installation: pictogram on a plate
+  const sv = svgEl('svg', { width: px, height: px, viewBox: '-11 -11 22 22', 'aria-hidden': 'true' }), g = GLYPH[glyph], sc = PSCALE[glyph] || 1, ink = hollow ? color : 'var(--on-side)';
+  sv.appendChild(svgEl('rect', { x: -8, y: -8, width: 16, height: 16, rx: 3.5, fill: hollow ? 'var(--control)' : color, stroke: color, 'stroke-width': 1.5 }));
+  if (opt && opt.ex) sv.appendChild(svgEl('path', { d: 'M-8 8L8 -8', stroke: color, 'stroke-width': 1.4 }));
+  sv.appendChild(svgEl('path', Object.assign({ d: g.d, transform: `scale(${sc})`, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, g.stroke ? { fill: 'none', stroke: ink, 'stroke-width': (1.6 / sc).toFixed(2) } : { fill: ink })));
+  if (opt && opt.dan) sv.appendChild(svgEl('circle', { cx: 7.5, cy: -7.5, r: 3.3, fill: 'var(--ev0)', stroke: 'var(--control)', 'stroke-width': 1.2 }));
+  return sv;
+}
+function svgAnchor(color, px) { const sv = svgEl('svg', { width: px, height: px, viewBox: '-8 -8.5 16 16.5', 'aria-hidden': 'true' }); sv.appendChild(svgEl('path', { d: GLYPH.ancora.d, fill: 'none', stroke: color, 'stroke-width': 1.7, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' })); return sv; }
+function svgLine(color, dash, wpx) { const w = wpx || 22, sv = svgEl('svg', { width: w, height: 8, 'aria-hidden': 'true' }); sv.appendChild(svgEl('path', Object.assign({ d: 'M1 4H' + (w - 1), stroke: color, 'stroke-width': 2, fill: 'none' }, dash ? { 'stroke-dasharray': dash } : {}))); return sv; }
+function iconOf(p, wscale) {
+  const hollow = p.affidabilita !== 'alta', big = wscale > 1;
+  if (p.kind === 'base') return svgPlate(p.glyph, p.ex ? 'var(--ink-faint)' : `var(--${p.side})`, hollow || !!p.ex, big ? 30 : 17, { ex: p.ex, dan: p.hit });
+  if (p.kind === 'porto') return svgAnchor('var(--port)', big ? 26 : 15);
+  if (p.kind === 'linea') return svgLine(p.cat === 'o' ? 'var(--oil)' : 'var(--gas)', p.stato === 'in-costruzione' ? '6 4' : p.stato === 'fuori-servizio' ? '1.5 4' : null, big ? 64 : 22);
+  if (p.kind === 'nave') return svgSil(p.sil, `var(--${p.side})`, hollow || p.stato === 'in-costruzione', Math.max(14, Math.round(SIL[p.sil].len * wscale)), p.stato === 'in-costruzione');
+  if (p.kind === 'aereo') return svgGlyph(p.glyph || 'aereo', `var(--${p.side})`, hollow, big ? 30 : 17);
+  return svgGlyph(p.glyph, EV_VAR[akOf(p)], hollow, big ? 26 : 16);
+}
+const ageText = d => d === 0 ? 'oggi' : d === 1 ? 'ieri' : d + ' giorni fa';
+const fmtLL = (lat, lon, n) => Math.abs(lat).toFixed(n) + '°' + (lat >= 0 ? 'N' : 'S') + ' ' + Math.abs(lon).toFixed(n) + '°' + (lon >= 0 ? 'E' : 'O');
+const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+const dateLong = d => d.toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' });
+
+/* ---------- operational points ---------- */
+function addPoints(list) {
+  const dl = d => d.toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
+  for (const p of list || []) {
+    p.d = new Date(p.data_evento + 'T12:00:00'); p.age = Math.max(0, Math.round((TODAY - p.d) / 864e5));
+    p.dlabel = dl(p.d);
+    p.hasPos = typeof p.lat === 'number' && typeof p.lon === 'number';
+    if (p.hasPos) {                                     // sim: where the symbol sits when the source only names an area; lat/lon stay the centre of its circle
+      const s = Array.isArray(p.sim) ? p.sim : [p.lat, p.lon];
+      p.slat = s[0]; p.slon = s[1]; p.bx = bx(p.slon); p.by = by(p.slat); p.cbx = bx(p.lon); p.cby = by(p.lat);
+    }
+    for (const q of p.storico || []) { q.bx = bx(q.lon); q.by = by(q.lat); q.dlabel = dl(new Date(q.data_evento + 'T12:00:00')); }
+    p.label = p.breve || p.nome;
+    if (p.classe === 'fisso') {                         // fixed installations never expire
+      p.kind = p.categoria === 'porto' ? 'porto' : 'base'; p.fase = 0;
+      p.side = sideOf(p.appartenenza);
+      p.glyph = p.kind === 'porto' ? 'ancora' : PLATE[p.categoria] || 'stella';
+      p.ir = p.appartenenza === 'IR';                    // Iranian sites: same plates, their own switch
+      p.ita = p.teatro === 'IT';                         // bases in Italy: the same, with the switch «Basi in Italia»
+      p.ad = p.categoria === 'difesa-aerea';             // radars and batteries: their own switch, phase 1d
+      p.ai = p.categoria in AI_CAT;                      // AI infrastructure, from the dossiers (rules v4)
+      if (p.stato === 'lasciata') p.ex = 1;              // state lasciata (rules v2): drawn grey
+      p.hit = p.stato === 'danneggiato' || p.stato === 'in-riparazione' || (p.stato === 'fuori-servizio' && !p.ex);   // a base that was left is not a base that was hit
+      p.dlabel = p.stato === 'danneggiato' ? 'danni' : p.stato === 'in-riparazione' ? 'in riparazione' : p.ex ? 'lasciata' : p.stato === 'fuori-servizio' ? 'fuori uso' : p.stato === 'in-costruzione' ? 'cantiere' : '';
+    } else if (p.classe === 'mobile' && p.categoria === 'difesa-aerea-mobile') {   // a mobile battery: a plate with a shield, in the air-defence layer, 14/60 days like the other mobile assets
+      p.kind = 'base'; p.ad = 1; p.mob = 1; p.glyph = 'scudo'; p.fase = p.age <= 14 ? 0 : p.age <= 60 ? 1 : 2;
+      p.side = sideOf(p.appartenenza);
+    } else if (p.classe === 'mobile') {                 // expiry, as in the schema: ships 7/30 days, other mobile assets 14/60
+      const ship = /^(nave|sottomarino)/.test(p.categoria);
+      p.kind = ship ? 'nave' : /^aereo/.test(p.categoria) ? 'aereo' : 'altro';
+      const lim = ship ? [7, 30] : [14, 60];
+      p.fase = p.stato === 'in-costruzione' || p.age <= lim[0] ? 0 : p.age <= lim[1] ? 1 : 2;
+      // carriers, and ships flagged "sempre", are never dropped: past the limit they stay on the chart, faded, with a "?"
+      const keep = p.categoria === 'nave-portaerei' || p.sempre;
+      p.dub = !!p.dubbia || (!!keep && p.fase === 2);
+      if (keep && p.fase === 2) p.fase = 1;
+      p.side = sideOf(p.appartenenza);
+      if (ship) { p.sil = p.sagoma && SIL[p.sagoma] ? p.sagoma : silFor(p); p.flip = p.rotta > 180 && p.rotta < 360; } else p.glyph = AIR_GLYPH[p.categoria] || 'aereo';
+    } else {                                            // events: strategic ones, tactical hits along the front, markers of an advance
+      p.kind = p.categoria === 'attacco-tattico' ? 'fronte' : p.categoria === 'avanzamento' ? 'avanzata' : 'evento';
+      p.ib = p.categoria in IB_GLYPH;                    // hybrid attack: its own switch, window and age scale
+      p.fase = 0; p.glyph = glyphFor(p);
+    }
+    p.why = !p.hasPos ? 'senza posizione' : p.affidabilita === 'bassa' ? 'affidabilità bassa' : (p.classe === 'evento' && p.precisione_km > 100) ? 'raggio oltre 100 km: solo nel report' : p.fase === 2 ? 'dato scaduto, vecchio di ' + p.age + ' giorni' : (p.kind === 'altro' || (p.kind === 'nave' && !p.sil)) ? 'categoria non ancora disegnata' : '';
+    PT.push(p);
+  }
+}
+function finishPoints() {
+  const rank = p => p.kind === 'nave' ? (SIL_RANK[p.sil] == null ? 9 : SIL_RANK[p.sil]) : p.kind === 'aereo' ? 12 : p.kind === 'base' ? (p.ir ? 16 + ({ 'sito-nucleare': 0, 'sito-missilistico': .2, 'base-navale': .4, 'base-aerea': .6 }[p.categoria] ?? .8) + (p.hit ? 0 : .1) : p.ex ? 15 : 14) : p.kind === 'evento' ? 20 : p.kind === 'avanzata' ? 30 : 40;
+  PT.sort((a, b) => (rank(a) - rank(b)) || ((b.capo || 0) - (a.capo || 0)) || (b.d - a.d) || a.label.localeCompare(b.label, 'it'));
+  const close = (a, b, deg) => Math.abs(a.slat - b.slat) < deg && Math.abs(a.slon - b.slon) < deg;
+  for (const p of PT) {
+    p.mates = []; p.near = []; p.lead = null;
+    if (!p.hasPos) continue;
+    const others = (kind, deg) => PT.filter(o => o !== p && o.kind === kind && !o.why && close(p, o, deg));
+    if (p.kind === 'nave') {
+      p.mates = p.gruppo ? PT.filter(o => o !== p && o.gruppo === p.gruppo && !o.why) : [];
+      p.lead = p.gruppo && !p.capo ? PT.find(o => o.gruppo === p.gruppo && o.capo) || null : null;
+      p.near = others('nave', .2).filter(o => !(p.gruppo && o.gruppo === p.gruppo));
+    } else if (p.kind === 'evento') p.near = others('evento', .25);
+    else if (p.kind === 'fronte') p.near = others('fronte', .025);
+    else if (p.kind === 'base') p.near = others('base', .25);
+  }
+  for (const [code] of TEATRI) if (PT.some(p => p.teatro === code)) TH[code] = true;
+}
+function refilter() {
+  const ok = p => !p.why && TH[p.teatro] !== false, inRange = p => p.classe !== 'evento' || p.age <= (p.ib ? ibRange() : evRange);
+  const lay = { nave: L.ships, aereo: L.air, evento: L.events, fronte: L.front, avanzata: L.adv, base: L.bases, porto: L.ports };
+  const all = kind => PT.filter(p => p.kind === kind && ok(p) && inRange(p)), take = kind => lay[kind] ? all(kind) : [], baseOn = p => p.ai ? L.ai : p.ad ? L.ad : p.ir ? L.iran : p.ita ? L.ita : L.bases;
+  VS = take('nave'); VA = take('aereo'); VF = take('fronte'); VV = take('avanzata'); VB = all('base').filter(baseOn); VP = take('porto');
+  VE = all('evento').filter(p => p.ib ? L.hybrid : L.events).sort((a, b) => (a.affidabilita === 'alta' ? 0 : 1) - (b.affidabilita === 'alta' ? 0 : 1) || a.age - b.age);   // drawing priority: confirmed first, then the freshest
+  VIS = new Set([...VS, ...VA, ...VE, ...VF, ...VV, ...VB, ...VP]);
+  if (picked && (picked.kind === 'linea' ? !(picked.sea ? L.subsea : L[picked.cat === 'o' ? 'oil' : 'gas'] && TH.MO !== false) : picked.kind === 'rotta' ? !L.routes : picked.kind === 'stretto' ? false : !VIS.has(picked))) { picked = null; renderCard(); }
+  for (const [id, kind] of [['n-ships', 'nave'], ['n-air', 'aereo'], ['n-front', 'fronte'], ['n-adv', 'avanzata'], ['n-ports', 'porto']]) $(id).textContent = all(kind).length;
+  $('n-events').textContent = all('evento').filter(p => !p.ib).length; $('n-hyb').textContent = all('evento').filter(p => p.ib).length;
+  $('n-bases').textContent = all('base').filter(p => !p.ir && !p.ita && !p.ad && !p.ai).length; $('n-ai').textContent = all('base').filter(p => p.ai).length; $('n-ita').textContent = all('base').filter(p => p.ita && !p.ad).length; $('n-ad').textContent = all('base').filter(p => p.ad).length; if (RT) $('n-routes').textContent = RT.items.length; if (SB) $('n-subsea').textContent = SB.items.length; $('n-iran').textContent = all('base').filter(p => p.ir && !p.ad).length;
+  if (LN) { $('n-oil').textContent = LN.n.o; $('n-gas').textContent = LN.n.g; }
+  for (const [code] of TEATRI) { const n = $('n-th-' + code); if (n) n.textContent = PT.filter(p => p.teatro === code && !p.why && (p.kind === 'base' ? baseOn(p) : p.ib ? L.hybrid : lay[p.kind]) && p.kind !== 'porto' && inRange(p)).length; }   // ports are too many to count as points of interest
+  buildLists(); schedule();
+}
+
+function buildPanel() {
+  const ul = $('theaters');
+  for (const [code, name] of TEATRI) {
+    if (!(code in TH)) continue;
+    const li = el('li'), lb = el('label'), cb = el('input'); cb.type = 'checkbox'; cb.id = 'th-' + code; cb.checked = true;
+    cb.addEventListener('change', () => { TH[code] = cb.checked; refilter(); });
+    const n = el('span', 'cnt'); n.id = 'n-th-' + code; lb.append(cb, name, n); li.appendChild(lb); ul.appendChild(li);
+  }
+  const has = kind => PT.some(p => p.kind === kind && !p.why);
+  $('li-air').hidden = !has('aereo'); $('li-front').hidden = !has('fronte'); $('li-adv').hidden = !FRONT && !has('avanzata');
+  $('sw-ships').appendChild(svgSil('caccia', 'var(--ally)', false, 24));
+  $('sw-air').appendChild(svgGlyph('aereo', 'var(--ally)', false, 15));
+  $('sw-events').appendChild(svgGlyph('attacco', 'var(--ev0)', false, 14));
+  $('sw-adv').appendChild(svgBox('var(--rus)', .3));
+  $('sw-front').appendChild(svgDot('var(--ev1)', 14, '5'));
+  $('li-hyb').hidden = !PT.some(p => p.ib); $('sw-hyb').appendChild(svgGlyph('fiamma', 'var(--ev0)', false, 15));
+  $('fixed-h').hidden = $('fixed-ul').hidden = !(has('base') || has('porto') || LN || RT || SB);
+  const hasIr = PT.some(p => p.ir && !p.ad && !p.why);
+  $('li-bases').hidden = !PT.some(p => p.kind === 'base' && !p.ir && !p.ita && !p.ad && !p.ai && !p.why); $('li-ai').hidden = !PT.some(p => p.ai && !p.why); $('sw-ai').appendChild(svgPlate('server', 'var(--ally)', false, 17)); $('li-ad').hidden = !PT.some(p => p.ad && !p.why); $('li-ita').hidden = !PT.some(p => p.ita && !p.why); $('li-routes').hidden = !RT; $('li-subsea').hidden = !SB; $('li-iran').hidden = !hasIr; $('li-ports').hidden = !has('porto'); $('li-oil').hidden = $('li-gas').hidden = !LN;
+  $('sw-bases').appendChild(svgPlate('aereo', 'var(--ally)', false, 17)); $('sw-iran').appendChild(svgPlate('razzo', 'var(--adv)', false, 17)); $('sw-ad').appendChild(svgPlate('cupola', 'var(--ally)', false, 17)); $('sw-ports').appendChild(svgAnchor('var(--port)', 14));
+  $('sw-oil').appendChild(svgLine('var(--oil)')); $('sw-gas').appendChild(svgLine('var(--gas)'));
+  $('sw-ita').appendChild(svgPlate('ancora', 'var(--ally)', true, 17)); if (RT) $('sw-routes').appendChild(svgLine('var(--route)')); if (SB) $('sw-subsea').appendChild(svgLine('var(--gas)'));
+
+  const lg = $('legend'), row = (icon, text) => { const r = el('div', 'legend-row'); r.append(icon, el('span', null, text)); lg.appendChild(r); };
+  const cap = t => lg.appendChild(el('div', 'legend-cap', t));
+  const chips = list => { const box = el('div', 'sides'); for (const [color, text] of list) { const sp = el('span', 'side'), i = el('i'); i.style.background = color; sp.append(i, text); box.appendChild(sp); } lg.appendChild(box); };
+  cap('Navi e aerei');
+  row(svgSil('caccia', 'var(--ink)', false, 26), 'Pieno: confermato da più fonti indipendenti, da una fonte ufficiale o da immagini geolocalizzate');
+  row(svgSil('caccia', 'var(--ink)', true, 26), 'Vuoto: segnalato, non ancora confermato');
+  const faded = svgSil('caccia', 'var(--ink)', false, 26); faded.style.opacity = .5; row(faded, 'Sbiadito: ultima posizione nota, nave vista da più di 7 giorni. Dopo 30 giorni sparisce');
+  row(svgSil('caccia', 'var(--ink)', true, 26, true), 'Tratteggiato: in costruzione');
+  const ring = svgEl('svg', { width: 18, height: 18, 'aria-hidden': 'true' }); ring.appendChild(svgEl('circle', { cx: 9, cy: 9, r: 7.5, fill: 'none', stroke: 'var(--ink)', 'stroke-dasharray': '3 3' }));
+  row(ring, 'Cerchio: margine di incertezza in scala. Se la fonte indica solo una zona, il simbolo è appoggiato dentro il cerchio');
+  row(el('span', 'plus', '?'), 'Punto interrogativo: potrebbe non essere più lì, perché il dato è vecchio o la posizione non è precisata. Le portaerei restano sempre in mappa');
+  row(el('span', 'plus', '+2'), 'Altri punti sotto lo stesso simbolo: ingrandisci per separarli');
+  const trk = svgEl('svg', { width: 26, height: 8, 'aria-hidden': 'true' }); trk.appendChild(svgEl('path', { d: 'M1 4h24', stroke: 'var(--ink)', 'stroke-width': 1.3, 'stroke-dasharray': '5 4' }));
+  row(trk, 'Linea tratteggiata: da dove arriva la nave, con la data della posizione precedente');
+  if (has('aereo')) {
+    for (const g of ['caccia', 'bombardiere', 'cisterna', 'trasporto', 'ricognizione']) row(svgGlyph(g, 'var(--ink)', false, 17), GLYPH[g].it);
+    lg.appendChild(el('div', 'legend-note', 'Aerei rischierati: valgono 14 giorni, poi sbiadiscono. Con il «?» il punto è la destinazione di un volo, non una posizione vista.'));
+  }
+  chips(Object.keys(SIDE_IT).filter(k => PT.some(p => p.side === k)).map(k => [`var(--${k})`, SIDE_IT[k]]));
+  cap('Eventi');
+  for (const k of EV_GLYPHS) row(svgGlyph(k, 'var(--ev0)', false, 16), GLYPH[k].it);
+  lg.appendChild(el('div', 'legend-note', 'Il colore dice solo quanto è recente. Un evento resta 7 giorni, poi va in archivio:'));
+  chips([[EV_VAR[0], 'oggi e ieri'], [EV_VAR[1], 'da 2 a 4 giorni'], [EV_VAR[2], 'da 5 a 7 giorni'], [EV_VAR[3], 'archivio']]);
+  if (PT.some(p => p.ib)) {
+    cap('Europa, attacchi ibridi');
+    for (const k of ['fiamma', 'allarme', 'drone', 'gnss', 'cyber', 'spia']) row(svgGlyph(k, 'var(--ev0)', false, 16), GLYPH[k].it);
+    lg.appendChild(el('div', 'legend-note', 'Sono pochi e contano come serie: restano 30 giorni, con una scala più lunga. Con «90 giorni» si vede la serie intera:'));
+    chips([[EV_VAR[0], 'da 0 a 3 giorni'], [EV_VAR[1], 'da 4 a 14 giorni'], [EV_VAR[2], 'da 15 a 30 giorni'], [EV_VAR[3], 'oltre']]);
+  }
+  if (FRONT || has('fronte')) {
+    cap('Ucraina');
+    row(svgBox('var(--rus)', .3), 'Area sotto controllo russo');
+    row(svgBox('var(--contesa)', .45), 'Area contesa o zona grigia');
+    row(svgBox('var(--ev1)', .7), 'Avanzata russa di un giorno, con il colore della sua età. Da lontano la segna una bandierina');
+    row(svgDot('var(--ev1)', 17, '5'), 'Fronte: colpi geolocalizzati. Il numero dice quanti ce ne sono lì: ingrandisci o tocca il cerchio per separarli');
+    if (FRONT) lg.appendChild(el('div', 'legend-note', FRONT.credit));
+  }
+  if (has('base') || has('porto') || LN || RT || SB) {
+    cap('Basi e infrastrutture');
+    row(svgPlate('aereo', 'var(--ally)', false, 18), 'Base aerea. Con l\u2019ancora: base navale. Con la stella: base terrestre o comando. Con la cupola: radar. Il colore dice di chi è');
+    if (hasIr) { row(svgPlate('razzo', 'var(--adv)', false, 18), 'Sito missilistico'); row(svgPlate('atomo', 'var(--adv)', false, 18), 'Sito nucleare'); }
+    if (PT.some(p => p.ad)) { row(svgPlate('cupola', 'var(--ally)', false, 18), 'Difesa aerea fissa: radar o batteria. Il punto rosso: colpita nel 2026'); row(svgPlate('scudo', 'var(--ally)', true, 18), 'Batteria mobile, dalle raccolte: vale 14 giorni, poi sbiadisce'); }
+    row(svgPlate('stella', 'var(--ally)', true, 18), 'Riquadro vuoto: presenza o danni segnalati da una sola fonte');
+    row(svgPlate('aereo', 'var(--ally)', false, 18, { dan: 1 }), 'Punto rosso: danneggiata o messa fuori uso dagli attacchi del 2025 e del 2026');
+    row(svgPlate('aereo', 'var(--ink-faint)', true, 18, { ex: 1 }), 'Grigio barrato: base lasciata dagli Stati Uniti');
+    if (has('porto')) row(svgAnchor('var(--port)', 15), 'Porto del World Port Index. I minori compaiono ingrandendo');
+    if (LN) {
+      row(svgLine('var(--oil)'), 'Oleodotto'); row(svgLine('var(--gas)'), 'Gasdotto');
+      row(svgLine('var(--ink-soft)', '6 4'), 'Tratteggiato: in costruzione. Puntinato: fermo');
+      lg.appendChild(el('div', 'legend-note', LN.credit + ' Tocca una linea per la sua scheda.'));
+    }
+    if (PT.some(p => p.ita)) row(svgPlate('aereo', 'var(--ally)', true, 18), 'Basi in Italia: italiane, USA e NATO, tutte nel colore degli alleati. Riquadro vuoto perché lo stato attuale non è ancora verificato');
+    if (SB) lg.appendChild(el('div', 'legend-note', 'Condotte sottomarine: stessi colori e tratti degli oleodotti e gasdotti. Una condotta è sottomarina quando almeno 20 km del suo percorso sono in mare, misurati dalla mappa. ' + SB.credit));
+    if (RT) {
+      const rw = svgEl('svg', { width: 26, height: 12, 'aria-hidden': 'true' });
+      for (const [y, wd] of [[2, 2.2], [6, 1.4], [10, .9]]) rw.appendChild(svgEl('path', { d: 'M1 ' + y + 'h24', stroke: 'var(--route)', 'stroke-width': wd }));
+      row(rw, 'Rotte marittime: principale, media, secondaria. Tracciato schematico');
+      const dm = svgEl('svg', { width: 12, height: 12, 'aria-hidden': 'true' }); dm.appendChild(svgEl('path', { d: 'M6 1 11 6 6 11 1 6Z', fill: 'var(--accent)' }));
+      row(dm, 'Passaggio strategico: tocca il rombo per le quote mondiali di petrolio, gas, fertilizzanti, grano e merci, con l’anno del dato');
+      lg.appendChild(el('div', 'legend-note', RT.credit));
+    }
+  }
+
+  if (PT.some(p => p.categoria === 'poligono' || p.categoria === 'comunicazioni')) { row(svgPlate('mirino', 'var(--ally)', true, 18), 'Poligono di tiro e addestramento'); row(svgPlate('antenna', 'var(--ally)', true, 18), 'Stazione di comunicazioni, non di difesa aerea'); }
+  if (PT.some(p => p.ai)) {
+    cap('Infrastruttura AI');
+    row(svgPlate('server', 'var(--ally)', true, 18), 'Data center: campus da 100 MW in su o di un grande operatore cloud');
+    row(svgPlate('fabbrica', 'var(--ally)', true, 18), 'Fabbrica di chip');
+    row(svgPlate('supercalc', 'var(--ally)', true, 18), 'Supercomputer della Top500');
+    lg.appendChild(el('div', 'legend-note', 'Dai dossier AI, un paese alla volta: la scheda dice capacità, proprietario, anno e chip quando la fonte li dà. Spento all’apertura: si accende qui o dalla sezione Dossier.'));
+  }
+  $('range').querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    evRange = +b.dataset.days; $('range').querySelectorAll('button').forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+    try { localStorage.setItem('monitor-osint.range', String(evRange)); } catch (e) {} refilter();
+  }));
+}
+function buildLists() {
+  const box = $('lists'); box.textContent = ''; let n = 0;
+  const evs = VE.slice().sort((a, b) => a.age - b.age || a.label.localeCompare(b.label, 'it'));
+  for (const [code, name] of TEATRI) {
+    const rows = VS.concat(VA, VB, evs, VV).filter(p => p.teatro === code), nf = VF.filter(p => p.teatro === code).length, np = VP.filter(p => p.teatro === code).length;
+    if (!rows.length && !nf && !np) continue;
+    box.appendChild(el('h3', 'theater', name));
+    const ul = el('ul', 'pt-list');
+    for (const p of rows) {
+      const li = el('li'), b = el('button', 'pt-row' + (p.fase === 1 ? ' old' : '')); b.type = 'button'; b.dataset.id = p.id;
+      b.setAttribute('aria-current', String(p === picked));
+      b.title = kindName(p) + (p.regione ? ', ' + p.regione : '') + (p.fase === 1 ? ' (ultima posizione nota, ' + p.age + ' giorni fa)' : '');
+      b.append(iconOf(p, .32), el('span', 'nm', p.label + (p.dub ? ' ?' : '')), el('span', 'dt', p.dlabel));
+      b.addEventListener('click', () => { if (window.innerWidth <= 640) setPanel(false); pick(p, p.kind === 'nave' ? 5.6 : p.kind === 'avanzata' ? 8.8 : p.kind === 'base' ? 7 : 6.4); });
+      li.appendChild(b); ul.appendChild(li); n++;
+    }
+    if (rows.length) box.appendChild(ul);
+    if (np) box.appendChild(el('p', 'empty', 'Porti: ' + np + ' nel registro. Sono sulla mappa: i principali da lontano, gli altri ingrandendo.'));
+    if (nf) box.appendChild(el('p', 'empty', 'Fronte: ' + nf + ' colpi geolocalizzati. Sono solo sulla mappa, raggruppati in cerchi con il loro numero.'));
+  }
+  if (!n) box.appendChild(el('p', 'empty', 'Nessun punto con questi filtri.'));
+  if (D && D.straits.length) {                            // the passages, always reachable from here: on a crowded chart their diamond can be hidden
+    box.appendChild(el('h3', 'theater', 'Passaggi strategici')); const ul = el('ul', 'pt-list');
+    for (const o of D.straits.slice().sort((a, b) => a.n.localeCompare(b.n, 'it'))) {
+      const li = el('li'), b = el('button', 'pt-row'); b.type = 'button'; b.dataset.id = 'stretto-' + o.n; b.title = 'Passaggio strategico: quanto vi passa, in quota mondiale';
+      const dm = svgEl('svg', { width: 11, height: 11, 'aria-hidden': 'true' }); dm.appendChild(svgEl('path', { d: 'M5.5 1 10 5.5 5.5 10 1 5.5Z', fill: 'var(--accent)' }));
+      const d = ST && ST.stretti && ST.stretti[o.n];
+      b.append(dm, el('span', 'nm', o.n), el('span', 'dt', d && d.voci.length ? [...new Set(d.voci.map(x => x.voce.split(' ')[0].toLowerCase()))].slice(0, 2).join(', ') : ''));
+      b.addEventListener('click', () => { if (window.innerWidth <= 640) setPanel(false); pick(o, Math.max(5, o.z + .4)); });
+      li.appendChild(b); ul.appendChild(li);
+    }
+    box.appendChild(ul);
+  }
+  const off = PT.filter(p => p.why);
+  if (off.length) {
+    box.appendChild(el('h3', 'theater', 'Fuori mappa'));
+    const ul = el('ul', 'off-list'); for (const p of off) ul.appendChild(el('li', null, p.nome + ': ' + p.why)); box.appendChild(ul);
+  }
+  $('list-n').textContent = n;
+}
+
+function pick(p, zMin) {                                 // open a point's card; zMin != null also flies to it
+  picked = p || null; renderCard();
+  document.querySelectorAll('.pt-row').forEach(r => r.setAttribute('aria-current', String(!!picked && r.dataset.id === picked.id)));
+  if (picked && ready && picked.kind !== 'linea' && picked.kind !== 'rotta') {      // on a phone the card covers the lower chart: aim for the part left free
+    const narrow = window.innerWidth <= 640, top = narrow ? $('card').getBoundingClientRect().top - stage.getBoundingClientRect().top : h;
+    const cy = narrow ? Math.max(50, top / 2) : h / 2;
+    if (zMin != null) flyTo(picked.slon, picked.slat, zMin, true, w / 2, cy);
+    else if (narrow && T.applyY(picked.by) > top - 24) flyTo(picked.slon, picked.slat, 0, true, w / 2, cy);
+  }
+  schedule();
+}
+function openCluster(c) {                                // a bubble of tactical hits: zoom in until it splits; if it never will, open the first hit, whose card lists the others
+  const n = c.m.length, mx = c.m.reduce((s, f) => s + f.bx, 0) / n, my = c.m.reduce((s, f) => s + f.by, 0) / n;
+  const spread = Math.max(...c.m.map(f => Math.max(Math.abs(f.bx - mx), Math.abs(f.by - my)))) * kOf(Z_MAX);
+  if (spread < 16 || zoomOf(T.k) > Z_MAX - .3) pick(c.m[0], Z_MAX - 1);
+  else { if (picked) pick(null, null); flyTo(lonOf(mx), latOf(my), Math.min(Z_MAX, zoomOf(T.k) + 1.7), true); }
+}
+function renderCard() {
+  const card = $('card'); if (!picked) { card.hidden = true; return; }
+  closeSides();
+  if (picked.kind === 'linea') { renderLine(card, picked); return; }
+  if (picked.kind === 'rotta') { renderRoute(card, picked); return; }
+  if (picked.kind === 'stretto') { renderStrait(card, picked); return; }
+  const p = picked, ev = p.classe === 'evento';
+  $('cd-kind').textContent = (ev ? ['Evento', CAT_IT[p.categoria] || p.categoria, TNAME[p.teatro]] : [kindName(p), p.dettaglio, PAESI[p.appartenenza] || p.appartenenza]).filter(Boolean).join(' · ');
+  $('cd-name').textContent = p.nome + (p.identificativo ? ' (' + p.identificativo + ')' : '');
+  const cs = $('cd-sil'); cs.textContent = ''; cs.appendChild(iconOf(p, 1.05));
+  const facts = $('cd-facts'); facts.textContent = '';
+  const fact = (k, v, cls) => { const dd = el('dd', cls); dd.append(...[].concat(v)); facts.append(el('dt', null, k), dd); };
+  const where = [p.regione, PAESI[p.paese] || p.paese].filter(Boolean).join(', ');
+  if (ev) {
+    if (p.incerta) fact('Quando', 'Evento precedente al ' + dateLong(p.d) + ': la fonte non dà il giorno', 'warn');
+    else fact('Quando', dateLong(p.d) + (p.ora_utc ? ', ' + p.ora_utc + ' UTC' : '') + ', ' + ageText(p.age) + (p.age > 7 ? '. In archivio' : ''));
+    if (where) fact('Dove', where);
+    if (p.attore || p.bersaglio) fact('Chi e cosa', (p.attore === 'contestato' ? 'Contestato: le parti si accusano a vicenda' : PAESI[p.attore] || p.attore || 'Attore non indicato') + (p.bersaglio ? ' → ' + (BERS_IT[p.bersaglio] || p.bersaglio) : ''));
+    if (p.attribuito) fact('Attribuito a', p.attribuito + ' (accusa, non una sentenza)');
+    if (p.mezzo) fact('Mezzo', cap(p.mezzo));
+    if (p.esito) fact('Esito', cap(p.esito));
+    if (p.area_km2) fact('Area', 'circa ' + itNum(p.area_km2) + ' km²');
+  } else if (p.classe === 'fisso') {
+    fact('Stato', p.ex ? 'Lasciata: non è più una base degli Stati Uniti' : p.ir ? ({ danneggiato: 'Danneggiato dagli attacchi', 'in-riparazione': 'In riparazione dopo gli attacchi', 'fuori-servizio': 'Fuori servizio dopo gli attacchi', 'in-costruzione': 'In costruzione', operativo: 'Operativo' }[p.stato] || 'Non noto: nessuna fonte datata parla di danni') : p.stato === 'danneggiato' ? 'Danneggiata nel 2026' : STATO_IT[p.stato] || 'Non verificato', p.hit ? 'warn' : null);
+    if (p.forza) fact('Forza', p.forza);
+    if (where) fact('Dove', where);
+    if (p.utenti && p.utenti.length) fact(p.ex ? 'Presenze fino al ritiro' : 'Presenze', p.utenti.map(u => PAESI[u] || u).join(', '));
+    fact('Controllo del', dateLong(p.d));
+  } else {
+    fact('Stato', STATO_IT[p.stato] || 'Non noto');
+    if (where) fact('Zona', where);
+    fact('Ultimo dato', dateLong(p.d) + (p.ora_utc ? ', ' + p.ora_utc + ' UTC' : '') + ', ' + ageText(p.age) + (p.dub ? '. Potrebbe non essere più qui' : p.fase === 1 ? '. Ultima posizione nota' : ''), p.dub || p.fase === 1 ? 'warn' : null);
+    for (const q of p.storico || []) fact('Prima', [q.dlabel + ': ', el('span', 'mono', fmtLL(q.lat, q.lon, 4)), q.nota ? ', ' + q.nota : '']);
+  }
+  fact('Posizione', [el('span', 'mono', fmtLL(p.lat, p.lon, p.precisione_km <= 3 ? 4 : 2)), p.origine_coord === 'fonte' ? ', data dalla fonte' : p.sim && p.precisione_km > 10 ? ", centro dell'area indicata dalla fonte" : ', stimata']);
+  fact('Precisione', p.precisione_km <= 1 ? 'entro 1 km' : 'entro circa ' + itNum(p.precisione_km) + ' km');
+  fact('Affidabilità', [el('span', 'rel' + (p.affidabilita === 'alta' ? ' full' : '')), AFF_IT[p.affidabilita] || p.affidabilita]);
+  if (p.riv) fact('Natura', 'Rivendicazione di una parte in guerra, senza riscontro indipendente', 'warn');
+  if (p.why) fact('Sulla mappa', 'Non disegnato: ' + p.why);
+  $('cd-info').textContent = p.note || '';
+  const mt = $('cd-mates'); mt.textContent = '';
+  const sn = D.straits.filter(o => ((p.regione || '') + ' ' + p.nome).includes(o.n));   // an event in a passage: a way to its card, which the crowd of symbols may hide
+  if (p.ai && DOS) { const d = DOS.dossier.find(x => x.slug === p.dossier); if (d) { mt.appendChild(el('h3', null, 'Dossier')); const sb = el('div', 'mates'), b = el('button', 'chip', 'Leggi il dossier: ' + d.paese); b.type = 'button'; b.addEventListener('click', () => openDossier(d.slug)); sb.appendChild(b); mt.appendChild(sb); } }
+  if (sn.length) { mt.appendChild(el('h3', null, 'Passaggio strategico')); const sb = el('div', 'mates'); for (const o of sn) { const b = el('button', 'chip', o.n + ': quote mondiali'); b.type = 'button'; b.addEventListener('click', () => pick(o, null)); sb.appendChild(b); } mt.appendChild(sb); }
+  for (const [title, arr] of [['Stesso gruppo', p.mates], [p.kind === 'nave' ? 'Nello stesso punto' : p.kind === 'fronte' ? 'Altri colpi nello stesso punto' : p.kind === 'base' ? (p.ir || p.ai ? 'Siti vicini' : 'Basi vicine') : 'Eventi vicini', p.near]]) {
+    const on = arr.filter(o => VIS.has(o)); if (!on.length) continue; mt.appendChild(el('h3', null, title));
+    const box = el('div', 'mates');
+    for (const o of on) { const b = el('button', 'chip', o.label + (o.kind === 'nave' || o.kind === 'base' ? '' : ' · ' + o.dlabel)); b.type = 'button'; b.addEventListener('click', () => pick(o, 0)); box.appendChild(b); }
+    mt.appendChild(box);
+  }
+  const src = $('cd-src'); src.textContent = '';
+  for (const r of (p.fonti && p.fonti.length ? p.fonti : [{ fonte: p.fonte, link: p.link, data_fonte: p.data_fonte }])) {
+    const li = el('li'); if (r.link) { const a = el('a', null, r.fonte); a.href = r.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.appendChild(a); } else li.textContent = r.fonte;
+    if (r.data_fonte) li.appendChild(el('small', null, new Date(r.data_fonte + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short' })));
+    src.appendChild(li);
+  }
+  card.hidden = false; card.scrollTop = 0;
+}
+
+/* ---------- news: the daily report, written in a small subset of Markdown ---------- */
+function inline(parent, text) {
+  for (const part of text.split(/(\[[^\]]+\]\([^)\s]+\)|\*\*[^*]+\*\*|\*[^*\s][^*]*\*)/)) {
+    let m;
+    if ((m = /^\[([^\]]+)\]\(([^)\s]+)\)$/.exec(part)) && /^https?:\/\//.test(m[2])) { const a = el('a', null, m[1]); a.href = m[2]; a.target = '_blank'; a.rel = 'noopener noreferrer'; parent.appendChild(a); }
+    else if ((m = /^\*\*([^*]+)\*\*$/.exec(part))) parent.appendChild(el('strong', null, m[1]));
+    else if ((m = /^\*([^*]+)\*$/.exec(part))) parent.appendChild(el('em', null, m[1]));
+    else if (part) parent.appendChild(document.createTextNode(part.replace(/`/g, '')));
+  }
+}
+function renderNews(i) {
+  const r = REPORTS[i], body = $('news-body'); body.textContent = ''; if (!r) return;
+  const sec = /\n## Contesto in corso\n([\s\S]*?)(?=\n## |$)/.exec(r.md);
+  if (sec) { const box = $('news-ctx'); box.textContent = ''; box.appendChild(el('h3', null, 'CONTESTO IN CORSO')); const ul = el('ul');
+    for (const t of sec[1].split('\n').map(x => x.trim()).filter(Boolean)) { const li = el('li'); inline(li, t.replace(/^- /, '')); ul.appendChild(li); }
+    box.appendChild(ul); box.hidden = false; }
+  else renderCtx(i === 0 ? CTX : null);
+  $('news-date').textContent = 'Report del ' + dateLong(new Date(r.data + 'T12:00:00'));
+  let ul = null, skip = false;
+  for (const line of r.md.split('\n')) {
+    const t = line.trim();
+    if (!t || /^# /.test(t)) { ul = null; continue; }
+    if (/^## /.test(t)) { ul = null; skip = /^## Contesto in corso/.test(t); if (!skip) body.appendChild(el('h3', null, t.slice(3).toLocaleUpperCase('it-IT'))); }
+    else if (skip) continue;
+    else if (/^- /.test(t)) { if (!ul) { ul = el('ul'); body.appendChild(ul); } const li = el('li'); inline(li, t.slice(2)); ul.appendChild(li); }
+    else { ul = null; const p = el('p'); inline(p, t); body.appendChild(p); }
+  }
+}
+const SIDES = ['news', 'mkt', 'dos'];                 // the cards on the right besides a point's: one at a time
+function showSide(id, open) {
+  if (open && picked) { picked = null; renderCard(); schedule(); }
+  if (open) for (const o of SIDES) if (o !== id) { $(o).hidden = true; $(o + '-btn').setAttribute('aria-expanded', 'false'); }
+  const n = $(id); n.hidden = !open; $(id + '-btn').setAttribute('aria-expanded', String(open)); if (open) n.scrollTop = 0;
+}
+function closeSides() { for (const o of SIDES) { $(o).hidden = true; $(o + '-btn').setAttribute('aria-expanded', 'false'); } }
+function showNews(open) { if (open && !REPORTS.length) return; showSide('news', open); }
+function renderCtx(ctx) {
+  const box = $('news-ctx'); box.textContent = '';
+  if (!ctx || !ctx.voci || !ctx.voci.length) { box.hidden = true; return; }
+  box.appendChild(el('h3', null, 'CONTESTO'));
+  const ul = el('ul');
+  for (const v of ctx.voci) { const li = el('li'); inline(li, v.t + (v.link ? ' ([' + v.fonte + '](' + v.link + '))' : v.fonte ? ' (' + v.fonte + ')' : '')); ul.appendChild(li); }
+  box.appendChild(ul);
+  if (ctx.aggiornato) box.appendChild(el('p', 'ctx-when', 'Situazioni in corso, aggiornate al ' + dateLong(new Date(ctx.aggiornato + 'T12:00:00'))));
+  box.hidden = false;
+}
+function initNews(data) {
+  REPORTS = (data && data.reports) || []; if (!REPORTS.length) return;
+  CTX = data.contesto || null;
+  const btn = $('news-btn'), pickEl = $('news-pick');
+  $('news-btn-date').textContent = new Date(REPORTS[0].data + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
+  btn.hidden = false; btn.addEventListener('click', () => showNews($('news').hidden));
+  $('news-close').addEventListener('click', () => showNews(false));
+  if (REPORTS.length > 1) {
+    REPORTS.forEach((r, i) => { const o = el('option', null, dateLong(new Date(r.data + 'T12:00:00'))); o.value = i; pickEl.appendChild(o); });
+    pickEl.hidden = false; pickEl.addEventListener('change', () => renderNews(+pickEl.value));
+  }
+  renderNews(0);
+}
+
+/* ---------- Markdown of a dossier: headings, lists, tables, paragraphs; code blocks are skipped ---------- */
+function mdRender(body, md) {
+  body.textContent = ''; let ul = null, tbl = null, code = false;
+  for (const line of md.split('\n')) {
+    const t = line.trim();
+    if (/^```/.test(t)) { code = !code; ul = tbl = null; continue; }
+    if (code) continue;
+    if (/^\|/.test(t)) {
+      if (/^\|[\s:|-]+\|$/.test(t)) continue;
+      const cells = t.replace(/^\||\|$/g, '').split('|').map(c => c.trim());
+      if (!tbl) { const wrap = el('div', 'md-tbl-wrap'); tbl = el('table', 'md-tbl'); wrap.appendChild(tbl); body.appendChild(wrap); const tr = el('tr'); for (const c of cells) { const th = el('th'); inline(th, c); tr.appendChild(th); } tbl.appendChild(tr); }
+      else { const tr = el('tr'); for (const c of cells) { const td = el('td'); inline(td, c); tr.appendChild(td); } tbl.appendChild(tr); }
+      continue;
+    }
+    tbl = null;
+    if (!t || /^# /.test(t)) { ul = null; continue; }
+    if (/^### /.test(t)) { ul = null; body.appendChild(el('h4', null, t.slice(4))); }
+    else if (/^## /.test(t)) { ul = null; body.appendChild(el('h3', null, t.slice(3).toLocaleUpperCase('it-IT'))); }
+    else if (/^- /.test(t)) { if (!ul) { ul = el('ul'); body.appendChild(ul); } const li = el('li'); inline(li, t.slice(2)); ul.appendChild(li); }
+    else { ul = null; const p = el('p'); inline(p, t); body.appendChild(p); }
+  }
+}
+
+/* ---------- Mercati: the indicators of the market collections, accumulated day by day (regole/02 v4) ---------- */
+const GR_IT = { energia: 'Energia', 'trasporto-marittimo': 'Trasporto marittimo', borse: 'Borse', difesa: 'Difesa', 'tecnologia-ai': 'Tecnologia e AI', valute: 'Valute', tassi: 'Tassi', 'materie-prime': 'Materie prime', assicurazioni: 'Assicurazioni' };
+const itNumber = v => v.toLocaleString('it-IT', { maximumFractionDigits: Math.abs(v) >= 100000 ? 0 : Math.abs(v) < 10 ? 3 : 2 });
+function mkVar(r) {                                      // the day's change: % for prices, basis points for yields and spreads
+  if (r.var_giorno == null) return { t: '—', c: 'flat' };
+  const pb = r.gruppo === 'tassi', v = r.var_giorno, a = Math.abs(v).toLocaleString('it-IT', { minimumFractionDigits: pb ? 1 : 2, maximumFractionDigits: 2 });
+  return v > 0 ? { t: '▲ +' + a + (pb ? ' pb' : '%'), c: 'up' } : v < 0 ? { t: '▼ −' + a + (pb ? ' pb' : '%'), c: 'down' } : { t: '0' + (pb ? ' pb' : '%'), c: 'flat' };
+}
+function spark(name, upto) {                              // the last 30 days, once there are at least five
+  const pts = MK.giorni.filter(g => g.data <= upto).slice(-30).map(g => (g.righe.find(r => r.indicatore === name) || {}).valore).filter(v => typeof v === 'number');
+  if (pts.length < 5) return null;
+  const lo = Math.min(...pts), hi = Math.max(...pts), sv = svgEl('svg', { width: 56, height: 16, viewBox: '0 0 56 16', 'aria-hidden': 'true' });
+  const d = pts.map((v, i) => (i ? 'L' : 'M') + (i * 54 / (pts.length - 1) + 1).toFixed(1) + ' ' + (hi === lo ? 8 : 14 - (v - lo) / (hi - lo) * 12).toFixed(1)).join('');
+  sv.appendChild(svgEl('path', { d, fill: 'none', stroke: 'var(--ink-soft)', 'stroke-width': 1.3, 'stroke-linejoin': 'round' })); return sv;
+}
+function renderMkt(i) {
+  const g = MK.giorni[i], body = $('mkt-body'); body.textContent = ''; if (!g) return;
+  const hrs = g.righe.map(r => r.ora_utc).filter(Boolean).sort();
+  $('mkt-date').textContent = 'Dati del ' + dateLong(new Date(g.data + 'T12:00:00')) + (hrs.length ? ', ore ' + hrs[0] + '–' + hrs[hrs.length - 1] + ' UTC' : '');
+  $('mkt-note').textContent = MK.nota || 'Dati di mercato a fini informativi.';
+  if (g.periodo) { const dt = el('details', 'mkt-per'); dt.append(el('summary', null, 'Periodo coperto e avvertenze'), el('p', null, g.periodo)); body.appendChild(dt); }
+  for (const gr of MK.gruppi || Object.keys(GR_IT)) {
+    const rows = g.righe.filter(r => r.gruppo === gr); if (!rows.length) continue;
+    body.appendChild(el('h3', 'mkt-grp', GR_IT[gr] || gr));
+    for (const r of rows) {
+      const b = el('button', 'mkt-row'), vr = mkVar(r), sp = el('span', 'mkt-sp'), sv = spark(r.indicatore, g.data); b.type = 'button'; b.setAttribute('aria-expanded', 'false');
+      if (sv) sp.appendChild(sv);
+      const val = el('span', 'mkt-v', r.valore == null ? '—' : itNumber(r.valore)); if (r.unita && r.valore != null) val.appendChild(el('small', null, r.unita));
+      b.append(el('span', 'nm', r.indicatore), sp, val, el('span', 'mkt-d ' + vr.c, vr.t));
+      const more = el('div', 'mkt-more'); more.hidden = true;
+      const head = el('p'); head.append((r.ora_utc ? r.ora_utc + ' UTC del ' : '') + dateLong(new Date((r.data || g.data) + 'T12:00:00')) + ' · ');
+      if (r.link) { const a = el('a', null, r.fonte || 'fonte'); a.href = r.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; head.appendChild(a); } else head.append(r.fonte || '');
+      if (r.var_settimana != null) head.append(' · settimana ' + (r.var_settimana > 0 ? '+' : '') + r.var_settimana.toLocaleString('it-IT') + (r.gruppo === 'tassi' ? ' pb' : '%'));
+      more.appendChild(head); if (r.note) more.appendChild(el('p', null, r.note));
+      const ev = r.evento && PT.find(p => p.id === r.evento || (p.ids || []).includes(r.evento));
+      if (ev) { const eb = el('button', 'chip', 'Sulla mappa: ' + ev.label); eb.type = 'button'; eb.addEventListener('click', () => { if (window.innerWidth <= 640) setPanel(false); pick(ev, 6.4); }); more.appendChild(eb); }
+      b.addEventListener('click', () => { more.hidden = !more.hidden; b.setAttribute('aria-expanded', String(!more.hidden)); });
+      body.append(b, more);
+    }
+  }
+}
+function initMkt(data) {
+  MK = data && data.giorni && data.giorni.length ? data : null; if (!MK) return;
+  const last = MK.giorni.length - 1, btn = $('mkt-btn'), pk = $('mkt-pick');
+  $('mkt-btn-date').textContent = new Date(MK.giorni[last].data + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
+  btn.hidden = false; btn.addEventListener('click', () => showSide('mkt', $('mkt').hidden)); $('mkt-close').addEventListener('click', () => showSide('mkt', false));
+  if (MK.giorni.length > 1) { for (let i = last; i >= 0; i--) { const o = el('option', null, dateLong(new Date(MK.giorni[i].data + 'T12:00:00'))); o.value = i; pk.appendChild(o); } pk.hidden = false; pk.addEventListener('change', () => renderMkt(+pk.value)); }
+  renderMkt(last);
+}
+
+/* ---------- Dossier: the AI dossiers, readable here, and their points ---------- */
+let dosCur = 0;
+function renderDos(i) {
+  const d = DOS.dossier[i]; if (!d) return; dosCur = i;
+  $('dos-date').textContent = d.paese + ', ' + dateLong(new Date(d.data + 'T12:00:00'));
+  const nOn = PT.filter(p => p.ai && p.dossier === d.slug && !p.why).length;
+  $('dos-map').textContent = nOn === 1 ? 'Mostra il punto sulla mappa' : 'Mostra i ' + nOn + ' punti sulla mappa'; $('dos-map').hidden = !nOn;
+  mdRender($('dos-body'), d.md);
+}
+function openDossier(slug) { const i = DOS.dossier.findIndex(d => d.slug === slug); if (i < 0) return; $('dos-pick').value = i; renderDos(i); showSide('dos', true); }
+function initDos(data) {
+  DOS = data && data.dossier && data.dossier.length ? data : null; if (!DOS) return;
+  const btn = $('dos-btn'), pk = $('dos-pick');
+  $('dos-btn-n').textContent = DOS.dossier.length; btn.hidden = false;
+  btn.addEventListener('click', () => showSide('dos', $('dos').hidden)); $('dos-close').addEventListener('click', () => showSide('dos', false));
+  if (DOS.dossier.length > 1) { DOS.dossier.forEach((d, i) => { const o = el('option', null, d.paese + ' · ' + dateLong(new Date(d.data + 'T12:00:00'))); o.value = i; pk.appendChild(o); }); pk.hidden = false; pk.addEventListener('change', () => renderDos(+pk.value)); }
+  $('dos-map').addEventListener('click', () => {               // switch the layer on and frame this dossier's points
+    const d = DOS.dossier[dosCur], pts = PT.filter(p => p.ai && p.dossier === d.slug && !p.why); if (!pts.length) return;
+    if (!L.ai) { L.ai = true; $('lyr-ai').checked = true; refilter(); }
+    const lo = pts.map(p => p.lon), la = pts.map(p => p.lat);
+    closeSides();
+    fitView([Math.min(...lo) - 2, Math.min(...la) - 1.5, Math.max(...lo) + 2, Math.max(...la) + 1.5], true);
+  });
+  renderDos(0);
+}
+
+/* ---------- geometry -> Path2D in base units ---------- */
+function addGeom(g, path) {
+  const ring = (r, close) => { for (let i = 0; i < r.length; i++) { const x = bx(r[i][0]), y = by(r[i][1]); if (i) path.lineTo(x, y); else path.moveTo(x, y); } if (close) path.closePath(); };
+  const walk = o => { if (!o) return; switch (o.type) {
+    case 'Polygon': o.coordinates.forEach(r => ring(r, true)); break;
+    case 'MultiPolygon': o.coordinates.forEach(p => p.forEach(r => ring(r, true))); break;
+    case 'LineString': ring(o.coordinates, false); break;
+    case 'MultiLineString': o.coordinates.forEach(r => ring(r, false)); break;
+    case 'GeometryCollection': o.geometries.forEach(walk); break;
+    case 'Feature': walk(o.geometry); break;
+    case 'FeatureCollection': o.features.forEach(walk); break; } };
+  walk(g); return path;
+}
+function buildSet(topo, bbox) {
+  const f = n => topo.objects[n] ? topojson.feature(topo, topo.objects[n]) : null;
+  const set = { land: addGeom(f('land'), new Path2D()), lakes: addGeom(f('lakes'), new Path2D()), rivers: addGeom(f('rivers'), new Path2D()), borders: [new Path2D(), new Path2D(), new Path2D()] };
+  const b = f('borders');
+  if (b) (b.features || [b]).forEach(ft => addGeom(ft, set.borders[(ft.properties && ft.properties.c) || 0]));
+  set.x0 = bx(bbox[0]); set.x1 = bx(bbox[2]); set.y0 = by(bbox[3]); set.y1 = by(bbox[1]);
+  return set;
+}
+
+function buildFront(fr) {                                // Ukraine: the mapper's own polygons, turned into paths as they are
+  let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  const add = (polys, path) => { for (const poly of polys) for (const r of poly) { for (let i = 0; i < r.length; i++) { const x = bx(r[i][0]), y = by(r[i][1]); if (i) path.lineTo(x, y); else path.moveTo(x, y); if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; } path.closePath(); } return path; };
+  const of = t => { const path = new Path2D(); for (const a of fr.aree) if (a.t === t) add(a.p, path); return path; };
+  FRONT = { ru: of('ru'), contesa: of('contesa'), cleared: of('cleared'),
+    adv: fr.aree.filter(a => a.t === 'avanzata' && a.d).map(a => ({ path: add(a.p, new Path2D()), age: Math.max(0, Math.round((TODAY - new Date(a.d + 'T12:00:00')) / 864e5)) })),
+    credit: 'Fronte e aree: ' + (fr.fonte || fr.autore || 'fonte non indicata') + ', dati del ' + dateLong(new Date(fr.data + 'T12:00:00')) + '. Il tipo di area è dedotto dai colori usati dall\u2019autore.' };
+  Object.assign(FRONT, { x0, y0, x1, y1 });
+}
+
+/* ---------- pipelines: fixed lines from an open archive ---------- */
+function buildLines(ln, sea) {                     // sea: the submarine pipelines of the world, in SB; otherwise the Middle East, in LN
+  const mk = () => ({ op: new Path2D(), co: new Path2D(), off: new Path2D() }), paths = { o: mk(), g: mk() }, n = { o: 0, g: 0 };
+  let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  const items = ln.linee.map(l => {
+    const cat = l.categoria === 'energia-gasdotto' ? 'g' : 'o', grp = paths[cat][l.stato === 'operativo' ? 'op' : l.stato === 'in-costruzione' ? 'co' : 'off'], path = new Path2D(), bb = [1e9, 1e9, -1e9, -1e9];
+    const parts = l.g.map(part => {
+      const a = new Float64Array(part.length * 2);
+      part.forEach(([lon, lat], i) => { const x = bx(lon), y = by(lat); a[2 * i] = x; a[2 * i + 1] = y; if (i) { path.lineTo(x, y); grp.lineTo(x, y); } else { path.moveTo(x, y); grp.moveTo(x, y); }
+        if (x < bb[0]) bb[0] = x; if (y < bb[1]) bb[1] = y; if (x > bb[2]) bb[2] = x; if (y > bb[3]) bb[3] = y; });
+      return a;
+    });
+    n[cat]++; if (bb[0] < x0) x0 = bb[0]; if (bb[1] < y0) y0 = bb[1]; if (bb[2] > x1) x1 = bb[2]; if (bb[3] > y1) y1 = bb[3];
+    return Object.assign(l, { kind: 'linea', cat, parts, bb, path, label: l.nome, g: null, sea: sea ? 1 : 0 });
+  });
+  const o = { items, paths, n, x0, y0, x1, y1, credit: (sea ? 'Condotte sottomarine: ' : 'Oleodotti e gasdotti: ') + ln.fonte + '. Sono i ' + ln.versione + '.' };
+  if (sea) SB = o; else LN = o;
+}
+function drawLines(k, z, LS = LN) {                    // in base units, like the borders: solid when operating, dashed under construction, dotted when idle
+  const wd = (z < 5 ? 1.1 : z < 7 ? 1.5 : 1.9) / k; ctx.lineCap = 'butt'; ctx.lineJoin = 'round'; const sea = LS === SB;
+  for (const [key, on, col] of [['g', sea ? L.subsea : L.gas, C.gas], ['o', sea ? L.subsea : L.oil, C.oil]]) {
+    if (!on) continue; const P = LS.paths[key]; ctx.strokeStyle = col; ctx.lineWidth = wd;
+    ctx.globalAlpha = .6; ctx.setLineDash([1.5 / k, 4 / k]); ctx.stroke(P.off);
+    ctx.globalAlpha = .9; ctx.setLineDash([6 / k, 4 / k]); ctx.stroke(P.co);
+    ctx.setLineDash([]); ctx.stroke(P.op);
+  }
+  ctx.globalAlpha = 1; ctx.setLineDash([]);
+  if (picked && picked.kind === 'linea' && !!picked.sea === sea) {
+    ctx.lineCap = 'round'; ctx.strokeStyle = C.haloLand; ctx.lineWidth = 6.5 / k; ctx.stroke(picked.path);
+    ctx.strokeStyle = picked.cat === 'o' ? C.oil : C.gas; ctx.lineWidth = 3.2 / k; ctx.stroke(picked.path);
+  }
+}
+function lineAt(x, y) {                                  // the pipeline under a tap, within 7 px: Middle East and submarine ones
+  const px = (x - T.x) / T.k, py = (y - T.y) / T.k, tol = 7 / T.k; let best = null, bd = tol;
+  const list = [...(LN && TH.MO !== false ? LN.items : []), ...(SB && L.subsea ? SB.items : [])];
+  for (const l of list) {
+    if ((!l.sea && !L[l.cat === 'o' ? 'oil' : 'gas']) || px < l.bb[0] - tol || px > l.bb[2] + tol || py < l.bb[1] - tol || py > l.bb[3] + tol) continue;
+    for (const a of l.parts) for (let i = 2; i < a.length; i += 2) {
+      const x1 = a[i - 2], y1 = a[i - 1], dx = a[i] - x1, dy = a[i + 1] - y1, L2 = dx * dx + dy * dy;
+      let t = L2 ? ((px - x1) * dx + (py - y1) * dy) / L2 : 0; t = t < 0 ? 0 : t > 1 ? 1 : t;
+      const d = Math.hypot(px - x1 - t * dx, py - y1 - t * dy); if (d < bd) { bd = d; best = l; }
+    }
+  }
+  return best;
+}
+function renderLine(card, p) {
+  $('cd-kind').textContent = [p.cat === 'o' ? 'Oleodotto' : 'Gasdotto', STATO_IT[p.stato] || p.stato, p.sea ? 'Sottomarino' : 'Medio Oriente'].join(' · ');
+  $('cd-name').textContent = p.nome + (p.segmento ? ' · ' + p.segmento : '');
+  const cs = $('cd-sil'); cs.textContent = ''; cs.appendChild(iconOf(p, 1.05));
+  const facts = $('cd-facts'); facts.textContent = '';
+  const fact = (k, v) => { if (v == null || v === '') return; facts.append(el('dt', null, k), el('dd', null, String(v))); };
+  fact('Trasporta', cap(p.combustibile));
+  fact('Stato', (STATO_IT[p.stato] || p.stato) + (p.stato === 'fuori-servizio' ? ': fermo o in conservazione' : ''));
+  fact('Paesi', p.paesi.join(', '));
+  if (p.da && p.a) fact('Percorso', 'Da ' + p.da + ' a ' + p.a);
+  if (p.km) fact('Lunghezza', itNum(p.km) + ' km');
+  if (p.mare_km) fact('In mare', 'circa ' + itNum(p.mare_km) + ' km, misurati dalla mappa sulla costa di Natural Earth' + (p.anche_mo ? '. È anche nel livello oleodotti e gasdotti del Medio Oriente' : ''));
+  fact('Capacità', p.capacita); fact('In servizio dal', p.anno); fact('Proprietario', p.proprietario);
+  fact('Tracciato', 'Accuratezza ' + p.tracciato + (p.tracciato === 'schematica' ? ': linea indicativa, non il percorso reale' : ''));
+  $('cd-info').textContent = 'Dati di Global Energy Monitor, una sola fonte. Lo stato è quello del suo registro: danni o fermi recenti possono mancare.';
+  $('cd-mates').textContent = '';
+  const src = $('cd-src'); src.textContent = '';
+  const li = el('li'), a = el('a', null, 'Global Energy Monitor, scheda di questa linea'); a.href = p.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.appendChild(a);
+  if (p.data_fonte) li.appendChild(el('small', null, 'agg. ' + new Date(p.data_fonte + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' })));
+  src.appendChild(li);
+  card.hidden = false; card.scrollTop = 0;
+}
+
+/* ---------- shipping routes: fixed lines from an open archive, the whole world ---------- */
+function buildRoutes(rt) {
+  const paths = { M: new Path2D(), m: new Path2D(), n: new Path2D() };
+  let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+  const items = rt.rotte.map((r, i) => {
+    const a = new Float64Array(r.g.length * 2), path = new Path2D(), bb = [1e9, 1e9, -1e9, -1e9], P = paths[r.t];
+    r.g.forEach(([lon, lat], j) => { const x = bx(lon), y = by(lat); a[2 * j] = x; a[2 * j + 1] = y; if (j) { path.lineTo(x, y); P.lineTo(x, y); } else { path.moveTo(x, y); P.moveTo(x, y); }
+      if (x < bb[0]) bb[0] = x; if (y < bb[1]) bb[1] = y; if (x > bb[2]) bb[2] = x; if (y > bb[3]) bb[3] = y; });
+    if (bb[0] < x0) x0 = bb[0]; if (bb[1] < y0) y0 = bb[1]; if (bb[2] > x1) x1 = bb[2]; if (bb[3] > y1) y1 = bb[3];
+    return { kind: 'rotta', id: 'rotta-' + i, t: r.t, km: r.km, s: r.s, parts: [a], bb, path, label: 'Rotta ' + rt.tipi[r.t] };
+  });
+  RT = { items, paths, tipi: rt.tipi, fonte: rt.fonte, link: rt.link, origine: rt.origine, licenza: rt.licenza, x0, y0, x1, y1,
+    credit: 'Rotte marittime: ' + rt.fonte + '. ' + rt.origine + '.' };
+}
+function drawRoutes(k, z) {                              // under the pipelines, thin: they are context, not news
+  const f = z < 4 ? 1 : z < 6 ? 1.25 : 1.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.setLineDash([]); ctx.strokeStyle = C.route;
+  for (const [key, a, wd] of [['n', .5, .6], ['m', .65, .9], ['M', .85, 1.4]]) { ctx.globalAlpha = a; ctx.lineWidth = wd * f / k; ctx.stroke(RT.paths[key]); }
+  ctx.globalAlpha = 1;
+  if (picked && picked.kind === 'rotta') { ctx.strokeStyle = C.haloSea; ctx.lineWidth = 6 / k; ctx.stroke(picked.path); ctx.strokeStyle = C.route; ctx.lineWidth = 2.8 / k; ctx.stroke(picked.path); }
+}
+function routeAt(x, y) {                                 // the route under a tap, within 7 px
+  if (!RT || !L.routes) return null;
+  const px = (x - T.x) / T.k, py = (y - T.y) / T.k, tol = 7 / T.k; let best = null, bd = tol;
+  for (const l of RT.items) {
+    if (px < l.bb[0] - tol || px > l.bb[2] + tol || py < l.bb[1] - tol || py > l.bb[3] + tol) continue;
+    for (const a of l.parts) for (let i = 2; i < a.length; i += 2) {
+      const x1 = a[i - 2], y1 = a[i - 1], dx = a[i] - x1, dy = a[i + 1] - y1, L2 = dx * dx + dy * dy;
+      let t = L2 ? ((px - x1) * dx + (py - y1) * dy) / L2 : 0; t = t < 0 ? 0 : t > 1 ? 1 : t;
+      const d = Math.hypot(px - x1 - t * dx, py - y1 - t * dy); if (d < bd) { bd = d; best = l; }
+    }
+  }
+  return best;
+}
+const srcItem = (text, link, date) => { const li = el('li'), a = el('a', null, text); if (link) { a.href = link; a.target = '_blank'; a.rel = 'noopener noreferrer'; } li.appendChild(a);
+  if (date) li.appendChild(el('small', null, new Date(date + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' }))); return li; };
+function straitChips(names, title) {
+  const mt = $('cd-mates'); mt.textContent = ''; const on = names.map(n => D.straits.find(s => s.n === n)).filter(Boolean); if (!on.length) return;
+  mt.appendChild(el('h3', null, title)); const box = el('div', 'mates');
+  for (const o of on) { const b = el('button', 'chip', o.n); b.type = 'button'; b.addEventListener('click', () => pick(o, Math.max(4.2, o.z))); box.appendChild(b); }
+  mt.appendChild(box);
+}
+function renderRoute(card, p) {
+  $('cd-kind').textContent = ['Rotta marittima', RT.tipi[p.t], 'Mondo'].join(' · ');
+  $('cd-name').textContent = 'Rotta ' + RT.tipi[p.t] + (p.s.length ? ': ' + p.s.slice(0, 3).join(', ') + (p.s.length > 3 ? '…' : '') : '');
+  const cs = $('cd-sil'); cs.textContent = ''; cs.appendChild(svgLine('var(--route)', null, 64));
+  const facts = $('cd-facts'); facts.textContent = '';
+  const fact = (k, v) => facts.append(el('dt', null, k), el('dd', null, v));
+  fact('Importanza', { M: 'Principale: una delle grandi rotte del commercio mondiale', m: 'Media', n: 'Secondaria' }[p.t]);
+  fact('Passaggi strategici', p.s.length ? p.s.join(', ') : 'Nessuno di quelli in mappa lungo questo tratto');
+  fact('Questo tratto', 'circa ' + itNum(p.km) + ' km');
+  fact('Tracciato', 'Schematico: corsie disegnate su una carta, non il percorso delle singole navi');
+  $('cd-info').textContent = RT.origine + '. ' + RT.licenza + '.';
+  straitChips(p.s, 'Passaggi lungo questo tratto');
+  const src = $('cd-src'); src.textContent = ''; src.appendChild(srcItem('Benden, Global Shipping Lanes, v1.3.1 (2022)', RT.link, null));
+  card.hidden = false; card.scrollTop = 0;
+}
+function renderStrait(card, s) {
+  const d = ST && ST.stretti && ST.stretti[s.n];
+  $('cd-kind').textContent = ['Passaggio strategico', d && d.gruppo].filter(Boolean).join(' · ');
+  $('cd-name').textContent = s.n;
+  const cs = $('cd-sil'); cs.textContent = ''; const dm = svgEl('svg', { width: 26, height: 26, 'aria-hidden': 'true' }); dm.appendChild(svgEl('path', { d: 'M13 2 24 13 13 24 2 13Z', fill: 'var(--accent)' })); cs.appendChild(dm);
+  const facts = $('cd-facts'); facts.textContent = '';
+  const fact = (k, v, cls) => { const dd = el('dd', cls); dd.append(...[].concat(v)); facts.append(el('dt', null, k), dd); };
+  if (!d) fact('Quote mondiali', 'Dati non caricati.');
+  else if (!d.voci.length) fact('Quote mondiali', d.vuoto || 'Nessun dato.');
+  else for (const x of d.voci) fact(x.voce, [el('b', null, x.quota), '. ' + cap(x.valore) + '. ', el('span', 'muted', 'Dato: ' + x.anno + (x.nota ? '. ' + x.nota : ''))]);
+  for (const o of (d && d.oggi) || []) fact('Più recente', o.testo);
+  fact('Posizione', [el('span', 'mono', fmtLL(s.y, s.x, 2)), ', indicativa: il centro del passaggio']);
+  $('cd-info').textContent = ST ? ST.nota : '';
+  const mt = $('cd-mates'); mt.textContent = '';
+  if (RT && !L.routes) { const b = el('button', 'chip', 'Mostra le rotte marittime'); b.type = 'button'; b.addEventListener('click', () => { L.routes = true; $('lyr-routes').checked = true; refilter(); b.remove(); }); const box = el('div', 'mates'); box.appendChild(b); mt.appendChild(box); }
+  const src = $('cd-src'); src.textContent = ''; const seen = new Set();
+  for (const x of [...((d && d.voci) || []), ...((d && d.oggi) || [])]) { if (seen.has(x.link)) continue; seen.add(x.link); src.appendChild(srcItem(x.fonte, x.link, x.data_fonte)); }
+  card.hidden = false; card.scrollTop = 0;
+}
+
+/* ---------- drawing ---------- */
+function schedule() { if (!raf) raf = requestAnimationFrame(() => { raf = 0; draw(); }); }
+
+function drawAreas(s, k) {                               // Ukraine: areas of control as the mapper drew them, clipped to the land so a rough polygon never tints the sea
+  ctx.save(); ctx.clip(s.land, 'evenodd');
+  ctx.globalAlpha = .25; ctx.fillStyle = C.rus; ctx.fill(FRONT.ru);     // no outline: it would draw the seams between the author's polygons
+  ctx.globalAlpha = .36; ctx.fillStyle = C.contesa; ctx.fill(FRONT.contesa);
+  ctx.globalAlpha = .3; ctx.fillStyle = C.ally; ctx.fill(FRONT.cleared);
+  for (const a of FRONT.adv) {                           // one day's advance, in the colour of its age
+    if (a.age > evRange) continue; const col = C.ev[ageK(a.age)];
+    ctx.globalAlpha = .62; ctx.fillStyle = col; ctx.fill(a.path); ctx.globalAlpha = 1; ctx.strokeStyle = col; ctx.lineWidth = 1.2 / k; ctx.stroke(a.path);
+  }
+  ctx.restore();
+}
+function drawSet(s, k) {
+  ctx.fillStyle = C.land; ctx.fill(s.land, 'evenodd');
+  if (areasOn) drawAreas(s, k);
+  if (L.water) {
+    ctx.strokeStyle = C.river; ctx.lineWidth = 1 / k; ctx.stroke(s.rivers);
+    ctx.fillStyle = C.sea; ctx.fill(s.lakes, 'evenodd');
+  }
+  ctx.strokeStyle = C.coast; ctx.lineWidth = 0.8 / k; ctx.stroke(s.land);
+  if (L.water) ctx.stroke(s.lakes);
+  if (L.borders) {
+    ctx.strokeStyle = C.border; ctx.lineWidth = 1 / k; ctx.setLineDash([]); ctx.stroke(s.borders[0]);
+    ctx.setLineDash([5 / k, 3.5 / k]); ctx.stroke(s.borders[1]);
+    ctx.setLineDash([1.6 / k, 2.8 / k]); ctx.stroke(s.borders[2]);
+    ctx.setLineDash([]);
+  }
+}
+
+function draw() {
+  if (!ready || !w || !h) return;
+  const k = T.k, z = zoomOf(k), e = 1 / k;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = C.sea; ctx.fillRect(0, 0, w, h);
+  const vx0 = -T.x / k, vy0 = -T.y / k, vx1 = (w - T.x) / k, vy1 = (h - T.y) / k;
+  const act = z >= 3.4 ? tiles.filter(t => t.x1 > vx0 && t.x0 < vx1 && t.y1 > vy0 && t.y0 < vy1) : [];
+  const inside = act.some(t => vx0 >= t.x0 + 3 * e && vx1 <= t.x1 - 3 * e && vy0 >= t.y0 + 3 * e && vy1 <= t.y1 - 3 * e);
+  areasOn = !!FRONT && L.adv && TH['RU-UA'] !== false && FRONT.x1 > vx0 && FRONT.x0 < vx1 && FRONT.y1 > vy0 && FRONT.y0 < vy1;
+
+  ctx.save();
+  ctx.setTransform(dpr * k, 0, 0, dpr * k, dpr * T.x, dpr * T.y);
+  ctx.lineJoin = 'round'; ctx.lineCap = 'butt';
+  if (!inside) {                      // world layer, cut out where a detailed tile takes over
+    ctx.save(); ctx.beginPath(); ctx.rect(e, e, W0 - 2 * e, H0 - 2 * e);
+    for (const t of act) ctx.rect(t.x0 + 3 * e, t.y0 + 3 * e, t.x1 - t.x0 - 6 * e, t.y1 - t.y0 - 6 * e);
+    ctx.clip('evenodd'); drawSet(world, k); ctx.restore();
+  }
+  for (const t of act) {
+    ctx.save(); ctx.beginPath(); ctx.rect(t.x0 + e, t.y0 + e, t.x1 - t.x0 - 2 * e, t.y1 - t.y0 - 2 * e); ctx.clip();
+    ctx.fillStyle = C.sea; ctx.fillRect(t.x0, t.y0, t.x1 - t.x0, t.y1 - t.y0);
+    drawSet(t, k); ctx.restore();
+  }
+  if (SB && L.subsea && SB.x1 > vx0 && SB.x0 < vx1 && SB.y1 > vy0 && SB.y0 < vy1) drawLines(k, z, SB);
+  if (RT && L.routes && RT.x1 > vx0 && RT.x0 < vx1 && RT.y1 > vy0 && RT.y0 < vy1) drawRoutes(k, z);
+  if (LN && TH.MO !== false && (L.oil || L.gas) && LN.x1 > vx0 && LN.x0 < vx1 && LN.y1 > vy0 && LN.y0 < vy1) drawLines(k, z);
+  ctx.restore();
+
+  if (L.grat) drawGraticule(z, vx0, vy0, vx1, vy1);
+  drawLabels(z);
+  if (!pointer && coarse) {           // touch: mark the centre the read-out refers to
+    const cx = Math.round(w / 2) + .5, cy = Math.round(h / 2) + .5;
+    ctx.strokeStyle = C.ink; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(cx - 7, cy); ctx.lineTo(cx + 7, cy); ctx.moveTo(cx, cy - 7); ctx.lineTo(cx, cy + 7); ctx.stroke();
+  }
+  updateHud(z);
+}
+
+function fmtDeg(v, pos, neg) {
+  const a = Math.abs(v), d = Math.floor(a + 1e-9), m = Math.round((a - d) * 60);
+  return d + '°' + (m ? String(m).padStart(2, '0') + '′' : '') + (a < 1e-9 ? '' : v > 0 ? pos : neg);
+}
+function drawGraticule(z, vx0, vy0, vx1, vy1) {
+  const step = z < 3 ? 30 : z < 4.5 ? 10 : z < 6 ? 5 : z < 7.4 ? 2 : z < 8.8 ? 1 : 0.5;
+  const lon0 = lonOf(vx0), lon1 = lonOf(vx1), lat1 = latOf(vy0), lat0 = latOf(vy1);
+  ctx.strokeStyle = C.grat; ctx.lineWidth = 1; ctx.beginPath();
+  const xs = [], ys = [];
+  for (let i = Math.ceil(lon0 / step); i <= Math.floor(lon1 / step); i++) { const x = Math.round(T.applyX(bx(i * step))) + .5; ctx.moveTo(x, 0); ctx.lineTo(x, h); xs.push([x, i * step]); }
+  for (let i = Math.ceil(lat0 / step); i <= Math.floor(lat1 / step); i++) { const y = Math.round(T.applyY(by(i * step))) + .5; ctx.moveTo(0, y); ctx.lineTo(w, y); ys.push([y, i * step]); }
+  ctx.stroke();
+  ctx.font = `400 10px ${FF.mono}`; ctx.fillStyle = C.inkFaint; ctx.textBaseline = 'top'; ctx.textAlign = 'left';
+  if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+  for (const [x, v] of xs) ctx.fillText(fmtDeg(v, 'E', 'O'), x + 3, 3);
+  ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
+  for (const [y, v] of ys) if (y > 16) ctx.fillText(fmtDeg(v, 'N', 'S'), w - 4, y - 2);
+}
+
+/* points and labels: greedy placement in priority order, each one reserves a screen box */
+const boxes = [], hits = [];                           // hits: what was drawn in the last frame, for taps. Each is a point (p) or a bubble of tactical hits (cl)
+const isFree = b => { for (const o of boxes) if (b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]) return false; return true; };
+function hitAt(x, y) { let best = null, bd = 1e9; for (const o of hits) { const d = Math.hypot(o.x - x, o.y - y); if (d <= o.r + 4 && d < bd) { bd = d; best = o; } } return best; }
+function drawLabels(z) {
+  boxes.length = 0; hits.length = 0;
+  const M = 60, hasLS = 'letterSpacing' in ctx;
+  const ls = px => { if (hasLS) ctx.letterSpacing = px.toFixed(2) + 'px'; };
+  const at = l => { const x = T.applyX(l.bx), y = T.applyY(l.by); return x > -M && x < w + M && y > -M && y < h + M ? [x, y] : null; };
+  const haloText = (s, x, y, fill, halo) => { ctx.strokeStyle = halo; ctx.lineWidth = 3; ctx.strokeText(s, x, y); ctx.fillStyle = fill; ctx.fillText(s, x, y); };
+  const sideLabel = (s, p, off, px) => {      // try right of the point, then left
+    const tw = ctx.measureText(s).width;
+    for (const dir of [1, -1]) {
+      const x0 = dir > 0 ? p[0] + off : p[0] - off - tw, b = [x0 - 2, p[1] - px * .62, x0 + tw + 2, p[1] + px * .62];
+      if (isFree(b)) return { x: x0, b };
+    }
+    return null;
+  };
+  // uncertainty circle, to scale: radius in km at the point's latitude. Skipped when smaller than a dot or larger than the screen.
+  const circle = (x, y, p, col, strong) => {
+    const r = p.precisione_km * 1000 * W0 * T.k / (2 * Math.PI * R_EARTH * Math.cos(p.lat * Math.PI / 180));
+    if (r < 6 || r > 1.4 * Math.max(w, h)) return;
+    ctx.save(); ctx.setLineDash([4, 4]); ctx.globalAlpha = strong ? .95 : .5; ctx.strokeStyle = col; ctx.lineWidth = strong ? 1.5 : 1; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.stroke(); ctx.restore();
+  };
+  ctx.lineJoin = 'round'; ctx.textBaseline = 'middle';
+
+  // the pin's label is reserved first and drawn last
+  let pinAt = null;
+  if (pin) {
+    pinAt = [T.applyX(bx(pin.lon)), T.applyY(by(pin.lat))];
+    ctx.font = `500 11.5px ${FF.mono}`; ls(0);
+    pin.tw = ctx.measureText(pin.label).width;
+    boxes.push([pinAt[0] - 12, pinAt[1] - 12, pinAt[0] + 12, pinAt[1] + 12], [pinAt[0] + 13, pinAt[1] - 10, pinAt[0] + 19 + pin.tw, pinAt[1] + 10]);
+  }
+
+  const f1 = `600 11.5px ${FF.cond}`, f2 = `400 10px ${FF.mono}`, fe = `600 11px ${FF.cond}`;
+  const ringAt = (x, y, r) => { ctx.strokeStyle = C.ink; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.stroke(); };
+  const mark = (g, x, y, col, hollow, alpha) => {        // a glyph centred on its point: full when confirmed, hollow when only reported
+    ctx.save(); ctx.globalAlpha = alpha || 1; ctx.translate(x, y); ctx.lineJoin = 'round';
+    ctx.strokeStyle = C.haloLand; ctx.lineWidth = 3; ctx.stroke(g.p);
+    if (!hollow) { ctx.fillStyle = col; ctx.fill(g.p); } else { ctx.fillStyle = C.paper; ctx.fill(g.p); ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.stroke(g.p); }
+    ctx.restore();
+  };
+
+  // tactical hits along the front: dozens a day, so from afar they are counted in bubbles that split as the chart zooms in.
+  // They are drawn first, under everything else.
+  if (VF.length) {
+    const cell = 40, cl = new Map();
+    for (const f of VF) {
+      const x = T.applyX(f.bx), y = T.applyY(f.by); if (x < -M || x > w + M || y < -M || y > h + M) continue;
+      const key = Math.floor(f.bx * T.k / cell) + ',' + Math.floor(f.by * T.k / cell);
+      let c = cl.get(key); if (!c) cl.set(key, c = { m: [], x: 0, y: 0, age: 1e9 });
+      c.m.push(f); c.x += x; c.y += y; c.age = Math.min(c.age, f.age);
+    }
+    ctx.textAlign = 'center';
+    for (const c of cl.values()) {
+      const n = c.m.length, x = c.x / n, y = c.y / n, a = ageK(c.age); let r = 8;
+      if (n === 1) { mark(GLYPH.colpo, x, y, C.ev[a], c.m[0].affidabilita !== 'alta'); hits.push({ p: c.m[0], x, y, r: 9 }); }
+      else {
+        r = Math.min(19, 7.5 + 1.9 * Math.sqrt(n));
+        ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.globalAlpha = .9; ctx.fillStyle = C.ev[a]; ctx.fill(); ctx.globalAlpha = 1; ctx.strokeStyle = C.haloLand; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.font = fe; ls(0); ctx.fillStyle = C.evText[a]; ctx.fillText(String(n), x, y + .5);
+        hits.push({ cl: c, x, y, r });
+      }
+      if (picked && c.m.includes(picked)) ringAt(x, y, r + 4);
+      boxes.push([x - r, y - r, x + r, y + r]);
+    }
+  }
+
+  // fixed installations, under the ships and the events. Bases sit on a plate in the colour of who uses them;
+  // one that would cover a more important one is folded into it and counted as "+N". Ports are small and quiet:
+  // only the main ones from afar, the others as the chart zooms in.
+  const plate = (s, x, y) => {
+    const col = s.ex ? C.inkFaint : (C[s.side] || C.oth), hollow = s.affidabilita !== 'alta' || !!s.ex, g = GLYPH[s.glyph], sc = PSCALE[s.glyph] || 1, ink = hollow ? col : C.onSide;
+    ctx.save(); ctx.translate(x, y); ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(-8, -8, 16, 16, 3.5); else ctx.rect(-8, -8, 16, 16);
+    ctx.strokeStyle = C.haloLand; ctx.lineWidth = 3; ctx.stroke();
+    ctx.fillStyle = hollow ? C.paper : col; ctx.fill(); if (hollow) { ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.stroke(); }
+    if (s.ex) { ctx.beginPath(); ctx.moveTo(-8, 8); ctx.lineTo(8, -8); ctx.strokeStyle = col; ctx.lineWidth = 1.4; ctx.stroke(); }
+    ctx.scale(sc, sc);
+    if (g.stroke) { ctx.strokeStyle = ink; ctx.lineWidth = 1.6 / sc; ctx.stroke(g.p); } else { ctx.fillStyle = ink; ctx.fill(g.p); }
+    ctx.restore();
+    if (s.hit) { ctx.beginPath(); ctx.arc(x + 7.5, y - 7.5, 3.3, 0, 6.2832); ctx.fillStyle = C.ev[0]; ctx.fill(); ctx.strokeStyle = C.haloLand; ctx.lineWidth = 1.3; ctx.stroke(); }
+  };
+  const plates = [];
+  for (const s of (picked && VB.includes(picked) ? [picked].concat(VB.filter(o => o !== picked)) : VB)) {
+    const p = at(s); if (!p) continue;
+    const on = plates.find(o => Math.abs(o.p[0] - p[0]) < 15 && Math.abs(o.p[1] - p[1]) < 15);
+    if (on) { on.n++; continue; }
+    plates.push({ s, p, n: 0 });
+  }
+  if (plates.length) {
+    for (const o of plates) if (o.s.precisione_km > 3) circle(T.applyX(o.s.cbx), T.applyY(o.s.cby), o.s, o.s.ex ? C.inkFaint : (C[o.s.side] || C.oth), o.s === picked);
+    for (let i = plates.length - 1; i >= 0; i--) {         // the most important is drawn last, so it stays on top
+      const { s, p } = plates[i]; ctx.globalAlpha = s.fase === 1 ? .5 : 1; plate(s, p[0], p[1]); ctx.globalAlpha = 1;
+      if (s === picked) ringAt(p[0], p[1], 14);
+      boxes.push([p[0] - 9, p[1] - 9, p[0] + 9, p[1] + 9]); hits.push({ p: s, x: p[0], y: p[1], r: 11 });
+    }
+    ctx.font = f1; ls(.3); ctx.textAlign = 'left';
+    for (const { s, p, n } of plates) {
+      const more = n ? '+' + n : '', name = z >= 4.4 ? s.label + (n ? ' ' + more : '') : more; if (!name) continue;
+      const col = s.ex ? C.inkSoft : (C[s.side] || C.oth), pl = sideLabel(name, p, 12, 11.5);
+      if (pl) { boxes.push(pl.b); haloText(name, pl.x, p[1], col, C.haloLand); } else if (more) haloText(more, p[0] + 10, p[1] - 10, col, C.haloLand);
+    }
+  }
+  if (VP.length) {
+    ctx.font = fe; ls(.3); ctx.textAlign = 'left'; const placed = [];
+    for (const s of (picked && VP.includes(picked) ? [picked].concat(VP.filter(o => o !== picked)) : VP)) {
+      if (s !== picked && z < (s.rango === 1 ? 4.3 : s.rango === 2 ? 6 : 7)) continue;
+      const p = at(s); if (!p) continue;
+      if (s !== picked && (plates.some(o => Math.abs(o.p[0] - p[0]) < 13 && Math.abs(o.p[1] - p[1]) < 13) || placed.some(q => Math.abs(q[0] - p[0]) < 11 && Math.abs(q[1] - p[1]) < 11))) continue;
+      placed.push(p);
+      ctx.save(); ctx.translate(p[0], p[1]); ctx.scale(.8, .8); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.strokeStyle = C.haloSea; ctx.lineWidth = 4.6; ctx.stroke(GLYPH.ancora.p); ctx.strokeStyle = C.port; ctx.lineWidth = 1.8; ctx.stroke(GLYPH.ancora.p); ctx.restore();
+      if (s === picked) ringAt(p[0], p[1], 11);
+      boxes.push([p[0] - 6, p[1] - 6, p[0] + 6, p[1] + 6]); hits.push({ p: s, x: p[0], y: p[1], r: 8 });
+      if (z >= 6.4 || s === picked) { const pl = sideLabel(s.label, p, 9, 11); if (pl) { boxes.push(pl.b); haloText(s.label, pl.x, p[1], C.port, C.haloSea); } }
+    }
+  }
+
+  // ships are placed before any name: they keep their spot and the geography makes room.
+  // A ship that would sit on top of a more important one is folded into it and counted as "+N".
+  if (VS.length) {
+    const u = Math.max(.3, Math.min(.56, .32 + .045 * (z - 4))), shown = [];
+    for (const s of VS) s.cov = 0;
+    for (const s of (picked && VS.includes(picked) ? [picked].concat(VS.filter(o => o !== picked)) : VS)) {
+      const x = T.applyX(s.bx), y = T.applyY(s.by); if (x < -M || x > w + M || y < -M || y > h + M) continue;
+      const sil = SIL[s.sil], len = sil.len * u, hh = sil.h * u, b = [x - len / 2 - 2, y - hh - 2, x + len / 2 + 2, y + 3];
+      const on = shown.find(o => b[0] < o.b[2] && b[2] > o.b[0] && b[1] < o.b[3] && b[3] > o.b[1]);
+      if (on) { on.s.cov++; continue; }
+      shown.push({ s, x, y, len, b, sil, cy: y - hh / 2, r: len / 2 + 4, col: C[s.side] || C.oth });
+    }
+    const rings = new Map();                             // one circle per area, under every silhouette: ships that share a centre share it, an escort shares its flagship's
+    for (const o of shown) {
+      const s = o.s; if (!(s.precisione_km > 3) || s.dub) continue;   // a doubtful position gets a "?" instead of a circle
+      if (s.lead && shown.some(q => q.s === s.lead)) continue;
+      const key = s.lat + '|' + s.lon + '|' + s.precisione_km, strong = s === picked || !!(picked && picked.lead === s), r = rings.get(key);
+      if (r) r.strong = r.strong || strong; else rings.set(key, { s, col: o.col, strong });
+    }
+    for (const r of rings.values()) circle(T.applyX(r.s.cbx), T.applyY(r.s.cby), r.s, r.col, r.strong);
+    for (const o of shown) {                             // where a ship comes from: its earlier fixes, joined by a dashed line
+      const s = o.s; if (!s.storico || !s.storico.length) continue;
+      ctx.save(); ctx.strokeStyle = o.col; ctx.lineWidth = 1.3; ctx.globalAlpha = .85; ctx.setLineDash([5, 4]);
+      ctx.beginPath(); ctx.moveTo(o.x, o.y); for (const q of s.storico) ctx.lineTo(T.applyX(q.bx), T.applyY(q.by)); ctx.stroke();
+      ctx.setLineDash([]); ctx.globalAlpha = 1; ctx.font = f2; ls(0); ctx.textAlign = 'left';
+      for (const q of s.storico) {
+        const qx = T.applyX(q.bx), qy = T.applyY(q.by);
+        ctx.beginPath(); ctx.arc(qx, qy, 3.2, 0, 6.2832); ctx.fillStyle = C.paper; ctx.fill(); ctx.strokeStyle = o.col; ctx.lineWidth = 1.3; ctx.stroke();
+        haloText(q.dlabel, qx + 7, qy, C.inkSoft, C.haloSea);
+        boxes.push([qx - 5, qy - 7, qx + 9 + ctx.measureText(q.dlabel).width, qy + 7]);
+      }
+      ctx.restore();
+    }
+    for (const o of shown) {
+      const { s, x, y, sil, cy, r, col } = o, hollow = s.affidabilita !== 'alta' || s.stato === 'in-costruzione';
+      ctx.save(); ctx.globalAlpha = s.fase === 1 ? (s.dub ? .8 : .5) : 1; ctx.lineJoin = 'round';   // a ship kept on purpose stays readable: its "?" already says the position is in doubt
+      ctx.translate(x, y); ctx.scale(s.flip ? -u : u, u); ctx.translate(-sil.len / 2, 0);
+      ctx.strokeStyle = C.haloSea; ctx.lineWidth = 3 / u; ctx.stroke(sil.p);
+      if (!hollow) { ctx.fillStyle = col; ctx.fill(sil.p); }
+      else { ctx.fillStyle = C.paper; ctx.fill(sil.p); if (s.stato === 'in-costruzione') ctx.setLineDash([3 / u, 2.5 / u]); ctx.strokeStyle = col; ctx.lineWidth = 1.3 / u; ctx.stroke(sil.p); }
+      ctx.restore();
+      if (s === picked) ringAt(x, cy, r + 3);
+      if (s.dub) {                                       // "?" above the bow: it may no longer be there
+        const qx = x + (s.flip ? -1 : 1) * (sil.len * u / 2 + 2), qy = y - sil.h * u - 5;
+        ctx.font = `600 16px ${FF.cond}`; ls(0); ctx.textAlign = 'center'; haloText('?', qx, qy, col, C.haloSea);
+        boxes.push([qx - 6, qy - 9, qx + 6, qy + 8]);
+      }
+      boxes.push(o.b); hits.push({ p: s, x, y: cy, r: Math.max(r, 13) });
+    }
+    ctx.textAlign = 'left';
+    for (const o of shown) {
+      const { s, x, cy, r, col, len } = o, off = len / 2 + 5, name = s.label + (s.cov ? ' +' + s.cov : '');
+      ctx.font = f1; ls(.3); const t1 = ctx.measureText(name).width;
+      ctx.font = f2; ls(0); const tw = t1 + 5 + ctx.measureText(s.dlabel).width;
+      for (const [x0, y0] of [[x + off, cy], [x - off - tw, cy], [x - tw / 2, cy + r + 7], [x - tw / 2, cy - r - 7]]) {
+        const b = [x0 - 2, y0 - 7, x0 + tw + 2, y0 + 7]; if (!isFree(b)) continue; boxes.push(b);
+        ctx.font = f1; ls(.3); haloText(name, x0, y0, col, C.haloSea);
+        ctx.font = f2; ls(0); haloText(s.dlabel, x0 + t1 + 5, y0, C.inkSoft, C.haloSea); break;
+      }
+    }
+  }
+
+  // aircraft redeployed to a base: one glyph each, in the colour of their side
+  if (VA.length) {
+    ctx.textAlign = 'left';
+    for (const a of VA) {
+      const p = at(a); if (!p) continue; const col = C[a.side] || C.oth;
+      if (a.precisione_km > 3) circle(T.applyX(a.cbx), T.applyY(a.cby), a, col, a === picked);
+      mark(GLYPH[a.glyph] || GLYPH.aereo, p[0], p[1], col, a.affidabilita !== 'alta', a.fase === 1 ? .5 : 1);
+      if (a === picked) ringAt(p[0], p[1], 15);
+      if (a.dub) {                                       // "?" at the tail: the point is a destination or an old sighting
+        ctx.font = `600 16px ${FF.cond}`; ls(0); ctx.textAlign = 'center'; haloText('?', p[0] + 12, p[1] - 13, col, C.haloLand); ctx.textAlign = 'left';
+        boxes.push([p[0] + 6, p[1] - 22, p[0] + 18, p[1] - 5]);
+      }
+      boxes.push([p[0] - 11, p[1] - 11, p[0] + 11, p[1] + 11]); hits.push({ p: a, x: p[0], y: p[1], r: 13 });
+      ctx.font = f1; ls(.3); const t1 = ctx.measureText(a.label).width;
+      ctx.font = f2; ls(0); const tw = t1 + 5 + ctx.measureText(a.dlabel).width;
+      for (const x0 of [p[0] + 14, p[0] - 14 - tw]) {
+        const b = [x0 - 2, p[1] - 7, x0 + tw + 2, p[1] + 7]; if (!isFree(b)) continue; boxes.push(b);
+        ctx.font = f1; ls(.3); haloText(a.label, x0, p[1], col, C.haloLand);
+        ctx.font = f2; ls(0); haloText(a.dlabel, x0 + t1 + 5, p[1], C.inkSoft, C.haloLand); break;
+      }
+    }
+  }
+
+  // a day's advance: the area itself is drawn with the land; while it is too small to see, a flag stands in for it
+  if (VV.length) {
+    ctx.font = fe; ls(.3); ctx.textAlign = 'left';
+    for (const a of VV) {
+      const p = at(a); if (!p) continue;
+      const ext = (a.estensione_km || 0) * 1000 * W0 * T.k / (2 * Math.PI * R_EARTH * Math.cos(a.lat * Math.PI / 180)), small = ext < 30, r = small ? 11 : Math.min(44, ext / 2 + 3);
+      if (small) { mark(GLYPH.bandiera, p[0], p[1], C.ev[ageK(a.age)], a.affidabilita !== 'alta'); boxes.push([p[0] - 8, p[1] - 10, p[0] + 9, p[1] + 10]); }
+      if (a === picked) ringAt(p[0], p[1], r + 3);
+      hits.push({ p: a, x: p[0], y: p[1], r });
+      if (z >= 6.4) { const pl = sideLabel(a.label, p, small ? 12 : r + 3, 11); if (pl) { boxes.push(pl.b); haloText(a.label, pl.x, p[1], a.age > 7 ? C.inkSoft : C.ev[0], C.haloLand); } }
+    }
+  }
+
+  // events: one glyph each, coloured by age. One that would sit on top of a more important one is folded into it and counted as "+N"; names from zoom 5.4 up
+  if (VE.length) {
+    const shown = [];
+    for (const e of (picked && VE.includes(picked) ? [picked].concat(VE.filter(o => o !== picked)) : VE)) {
+      const p = at(e); if (!p) continue;
+      const on = shown.find(o => Math.abs(o.p[0] - p[0]) < 12 && Math.abs(o.p[1] - p[1]) < 12);
+      if (on) { on.n++; continue; }
+      shown.push({ e, p, n: 0, col: C.ev[akOf(e)] });
+    }
+    const rings = new Map();
+    for (const o of shown) if (o.e.precisione_km > 3) { const key = o.e.lat + '|' + o.e.lon + '|' + o.e.precisione_km; if (!rings.has(key) || o.e === picked) rings.set(key, o); }
+    for (const o of rings.values()) circle(T.applyX(o.e.cbx), T.applyY(o.e.cby), o.e, o.col, o.e === picked);
+    for (let i = shown.length - 1; i >= 0; i--) {         // the most important is drawn last, so it stays on top
+      const { e, p, col } = shown[i];
+      mark(GLYPH[e.glyph], p[0], p[1], col, e.affidabilita !== 'alta');
+      if (e === picked) ringAt(p[0], p[1], 13);
+      boxes.push([p[0] - 9, p[1] - 9, p[0] + 9, p[1] + 9]); hits.push({ p: e, x: p[0], y: p[1], r: 11 });
+    }
+    ctx.font = fe; ls(.3); ctx.textAlign = 'left';
+    for (const { e, p, n } of shown) {
+      const more = n ? '+' + n : '', name = z >= 5.4 ? e.label + (n ? ' ' + more : '') : more; if (!name) continue;
+      const ink = e.age > 7 ? C.inkSoft : C.ev[0], pl = sideLabel(name, p, 12, 11);
+      if (pl) { boxes.push(pl.b); haloText(name, pl.x, p[1], ink, C.haloLand); }
+      else if (more) haloText(more, p[0] + 10, p[1] - 9, ink, C.haloLand);
+    }
+  }
+
+  // 1. strategic-passage markers  2. main country names  3. passage names  (seas and minor countries follow)
+  const straitLabels = [];
+  if (L.straits) for (const s of D.straits) {
+    if (z < s.z - .8) continue; const p = at(s); if (!p) continue;
+    const mb = [p[0] - 6, p[1] - 6, p[0] + 6, p[1] + 6]; if (!isFree(mb)) continue; boxes.push(mb);
+    ctx.fillStyle = C.accent; ctx.beginPath(); ctx.moveTo(p[0], p[1] - 4.5); ctx.lineTo(p[0] + 4.5, p[1]); ctx.lineTo(p[0], p[1] + 4.5); ctx.lineTo(p[0] - 4.5, p[1]); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = C.haloSea; ctx.lineWidth = 1; ctx.stroke();
+    if (picked === s) { ctx.strokeStyle = C.accent; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.arc(p[0], p[1], 8.5, 0, 2 * Math.PI); ctx.stroke(); }
+    hits.push({ p: s, x: p[0], y: p[1], r: 8 });
+    if (z >= s.z) straitLabels.push([s, p]);
+  }
+  const countryPass = first => {
+    if (!L.countries) return;
+    ctx.textAlign = 'center';
+    for (const c of D.countries) {
+      if (!!c.p !== first || c.z > z + .6 || z > c.z + 6.5) continue; const p = at(c); if (!p) continue;
+      const px = c.px + Math.min(5, Math.max(0, z - c.z) * 1.1);
+      ctx.font = `600 ${px.toFixed(1)}px ${FF.cond}`; ls(px * .14);
+      const tw = ctx.measureText(c.N).width, b = [p[0] - tw / 2 - 3, p[1] - px * .7, p[0] + tw / 2 + 3, p[1] + px * .7];
+      if (!isFree(b)) continue; boxes.push(b);
+      haloText(c.N, p[0], p[1], C.inkSoft, C.haloLand);
+    }
+  };
+  countryPass(true);
+  if (straitLabels.length) {
+    ctx.font = `600 10.5px ${FF.cond}`; ls(.7); ctx.textAlign = 'left';
+    for (const [s, p] of straitLabels) {
+      const tw = ctx.measureText(s.N).width;
+      for (const [x0, y0] of [[p[0] + 9, p[1]], [p[0] - 9 - tw, p[1]], [p[0] - tw / 2, p[1] + 13], [p[0] - tw / 2, p[1] - 13]]) {
+        const b = [x0 - 2, y0 - 7, x0 + tw + 2, y0 + 7];
+        if (isFree(b)) { boxes.push(b); haloText(s.N, x0, y0, C.accent, C.haloSea); break; }
+      }
+    }
+  }
+
+  if (L.seas) {
+    ctx.textAlign = 'center'; ctx.fillStyle = C.waterInk;
+    for (const s of D.seas) {
+      if (s.z > z + .4 || z > s.z + 7) continue; const p = at(s); if (!p) continue;
+      const px = (s.s === 0 ? 15 : s.s === 1 ? 13 : 11.5) + Math.min(6, Math.max(0, z - s.z) * 1.3);
+      ctx.font = `italic 400 ${px.toFixed(1)}px ${FF.serif}`; ls(px * (s.s === 0 ? .22 : .08));
+      const tw = ctx.measureText(s.n).width, a = (s.a || 0) * Math.PI / 180, ca = Math.cos(a), sa = Math.sin(a);
+      const n = Math.max(1, Math.ceil(tw / (px * 2))), seg = tw / n, hw = seg / 2 + 2, hh = px * .7, bs = [];
+      for (let i = 0; i < n; i++) { const d = -tw / 2 + (i + .5) * seg, cx = p[0] + d * ca, cy = p[1] + d * sa, rx = Math.abs(hw * ca) + Math.abs(hh * sa), ry = Math.abs(hw * sa) + Math.abs(hh * ca); bs.push([cx - rx, cy - ry, cx + rx, cy + ry]); }
+      if (!bs.every(isFree)) continue; boxes.push(...bs);
+      ctx.save(); ctx.translate(p[0], p[1]); ctx.rotate(a); ctx.fillStyle = C.waterInk; ctx.fillText(s.n, 0, 0); ctx.restore();
+    }
+  }
+
+  countryPass(false);
+
+  if (L.cities) {
+    ctx.textAlign = 'left'; ls(0);
+    for (const c of D.cities) {
+      if (c.z > z + .5) break; const p = at(c); if (!p) continue;
+      const major = c.z <= 4, px = major ? 12 : 11, r = major ? 2.7 : 2.1;
+      const db = [p[0] - r - 1, p[1] - r - 1, p[0] + r + 1, p[1] + r + 1]; if (!isFree(db)) continue;
+      ctx.font = `${major ? 500 : 400} ${px}px ${FF.sans}`;
+      const pl = sideLabel(c.n, p, r + 4, px); if (!pl) continue; boxes.push(db, pl.b);
+      ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, 6.2832); ctx.fillStyle = C.ink; ctx.fill(); ctx.strokeStyle = C.haloLand; ctx.lineWidth = 1.2; ctx.stroke();
+      haloText(c.n, pl.x, p[1], C.ink, C.haloLand);
+    }
+  }
+
+  if (L.regions) {
+    ctx.font = `italic 400 11px ${FF.sans}`; ls(.2);
+    for (const r of D.regions) {
+      if (r.z > z + .3) continue; const p = at(r); if (!p) continue;
+      if (r.pt) {
+        ctx.textAlign = 'left'; const pl = sideLabel(r.n, p, 6, 11); if (!pl) continue; boxes.push(pl.b);
+        ctx.beginPath(); ctx.arc(p[0], p[1], 1.8, 0, 6.2832); ctx.fillStyle = C.inkSoft; ctx.fill();
+        haloText(r.n, pl.x, p[1], C.inkSoft, C.haloSea);
+      } else {
+        ctx.textAlign = 'center'; const tw = ctx.measureText(r.n).width, b = [p[0] - tw / 2 - 2, p[1] - 8, p[0] + tw / 2 + 2, p[1] + 8];
+        if (!isFree(b)) continue; boxes.push(b);
+        haloText(r.n, p[0], p[1], C.inkSoft, C.haloLand);
+      }
+    }
+  }
+
+  if (pinAt) {
+    const [x, y] = pinAt;
+    ctx.strokeStyle = C.haloSea; ctx.lineWidth = 4.5; ctx.beginPath(); ctx.arc(x, y, 7, 0, 6.2832); ctx.stroke();
+    ctx.strokeStyle = C.accent; ctx.lineWidth = 1.8; ctx.beginPath(); ctx.arc(x, y, 7, 0, 6.2832);
+    ctx.moveTo(x - 12, y); ctx.lineTo(x - 3, y); ctx.moveTo(x + 3, y); ctx.lineTo(x + 12, y); ctx.moveTo(x, y - 12); ctx.lineTo(x, y - 3); ctx.moveTo(x, y + 3); ctx.lineTo(x, y + 12); ctx.stroke();
+    ctx.font = `500 11.5px ${FF.mono}`; ls(0); ctx.textAlign = 'left';
+    haloText(pin.label, x + 16, y, C.accent, C.haloSea);
+  }
+  ls(0);
+}
+
+/* ---------- instruments: scale bar, position read-out, live-tracker links ---------- */
+const nice = max => { const p = Math.pow(10, Math.floor(Math.log10(max))), m = max / p; return (m >= 5 ? 5 : m >= 2 ? 2 : 1) * p; };
+const itNum = v => v.toLocaleString('it-IT', { maximumFractionDigits: 2 });
+function fmtDM(v, pos, neg, pad, prec) {
+  const a = Math.abs(v); let d = Math.floor(a), m = +((a - d) * 60).toFixed(prec);
+  if (m >= 60) { m = 0; d++; }
+  return String(d).padStart(pad, '0') + '°' + m.toFixed(prec).padStart(prec ? prec + 3 : 2, '0') + '′' + (v >= 0 ? pos : neg);
+}
+function updateHud(z) {
+  const cLat = latOf((h / 2 - T.y) / T.k), cLon = lonOf((w / 2 - T.x) / T.k);
+  const mpp = 2 * Math.PI * R_EARTH * Math.cos(cLat * Math.PI / 180) / (W0 * T.k);     // metres per CSS pixel at the centre latitude
+  const km = nice(110 * mpp / 1000), nm = nice(110 * mpp / 1852);
+  $('sc-km').style.width = (km * 1000 / mpp).toFixed(1) + 'px'; $('sc-km-t').textContent = itNum(km) + ' km';
+  $('sc-nm').style.width = (nm * 1852 / mpp).toFixed(1) + 'px'; $('sc-nm-t').textContent = itNum(nm) + ' NM';
+  const px = pointer ? pointer.x : w / 2, py = pointer ? pointer.y : h / 2;
+  const lon = lonOf((px - T.x) / T.k), lat = latOf((py - T.y) / T.k);
+  const prec = z >= 7 ? 1 : 0, dec = z >= 8 ? 4 : z >= 6 ? 3 : 2;
+  $('ro-k').textContent = pointer ? 'Cursore' : 'Centro';
+  $('ro-dm').textContent = fmtDM(lat, 'N', 'S', 2, prec) + ' ' + fmtDM(lon, 'E', 'O', 3, prec);
+  $('ro-dec').textContent = lat.toFixed(dec) + ', ' + lon.toFixed(dec);
+  const zz = Math.max(2, Math.min(14, Math.round(z))), key = cLat.toFixed(2) + ',' + cLon.toFixed(2) + ',' + zz;
+  if (key !== liveKey) {              // the public real-time trackers, opened on the area in view: the map links to them instead of copying their data
+    liveKey = key;
+    $('lv-ships').href = `https://www.marinetraffic.com/en/ais/home/centerx:${cLon.toFixed(2)}/centery:${cLat.toFixed(2)}/zoom:${zz}`;
+    $('lv-air').href = `https://globe.adsbexchange.com/?lat=${cLat.toFixed(3)}&lon=${cLon.toFixed(3)}&zoom=${zz}`;
+  }
+}
+
+/* ---------- view control ---------- */
+const kMin = () => Math.max(w / W0, h / H0);
+function clampT(x, y, k) {
+  k = Math.max(kMin(), Math.min(kOf(Z_MAX), k));
+  const ww = W0 * k, hh = H0 * k;
+  x = ww <= w ? (w - ww) / 2 : Math.min(0, Math.max(w - ww, x));
+  y = hh <= h ? (h - hh) / 2 : Math.min(0, Math.max(h - hh, y));
+  return d3.zoomIdentity.translate(x, y).scale(k);
+}
+function applyT(t, animate) {
+  if (animate && !reduceMotion) sel.transition().duration(700).call(zoom.transform, t);
+  else sel.call(zoom.transform, t);
+}
+function fitView(b, animate) {
+  const wide = w > 720 && !$('panel').classList.contains('closed');
+  const pl = wide ? 296 : 14, pr = 14, pt = 22, pb = 30;
+  const x0 = bx(b[0]), x1 = bx(b[2]), y0 = by(b[3]), y1 = by(b[1]);
+  const k = Math.min((w - pl - pr) / (x1 - x0), (h - pt - pb) / (y1 - y0));
+  const kk = Math.max(kMin(), Math.min(kOf(Z_MAX), k));
+  applyT(clampT(pl + (w - pl - pr) / 2 - (x0 + x1) / 2 * kk, pt + (h - pt - pb) / 2 - (y0 + y1) / 2 * kk, kk), animate);
+}
+function flyTo(lon, lat, zMin, animate, cx = w / 2, cy = h / 2) {
+  const k = Math.max(T.k, kOf(zMin));
+  applyT(clampT(cx - bx(lon) * k, cy - by(lat) * k, k), animate);
+}
+function resize() {
+  const r = stage.getBoundingClientRect(), nw = Math.round(r.width), nh = Math.round(r.height);
+  if (!nw || !nh) return;
+  const first = !w, cx = first ? 0 : (w / 2 - T.x) / T.k, cy = first ? 0 : (h / 2 - T.y) / T.k, k = first ? 1 : T.k;
+  w = nw; h = nh; dpr = Math.min(3, window.devicePixelRatio || 1);
+  canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+  zoom.scaleExtent([kMin(), kOf(Z_MAX)]).extent([[0, 0], [w, h]]);
+  if (first) return;
+  applyT(clampT(w / 2 - cx * k, h / 2 - cy * k, k), false);
+  schedule();
+}
+
+/* ---------- coordinates input ---------- */
+function parseCoords(raw) {
+  let s = raw.trim().toUpperCase().replace(/[º˚]/g, '°').replace(/[’′`´]/g, "'").replace(/[”″]/g, '"').replace(/OVEST|WEST/g, 'W').replace(/NORD|NORTH/g, 'N').replace(/SUD|SOUTH/g, 'S').replace(/\bEST\b|EAST/g, 'E');
+  if (!/\./.test(s) && /^-?\d+,\d+\s*°?\s*[NS]?[\s;]+-?\d+,\d+\s*°?\s*[EWO]?$/.test(s)) s = s.replace(/,/g, '.');   // decimal commas
+  const prefix = /^[NSEWO]/.test(s);
+  const num = "(-?\\d+(?:\\.\\d+)?)\\s*°?\\s*(?:(\\d+(?:\\.\\d+)?)\\s*'\\s*)?(?:(\\d+(?:\\.\\d+)?)\\s*\"\\s*)?";
+  const re = new RegExp(prefix ? '([NSEWO])\\s*' + num : num + '([NSEWO])?', 'g');
+  const parts = []; let m;
+  while ((m = re.exec(s)) && parts.length < 3) {
+    const hemi = prefix ? m[1] : m[4], g = prefix ? [m[2], m[3], m[4]] : [m[1], m[2], m[3]];
+    let v = Math.abs(+g[0]) + (+g[1] || 0) / 60 + (+g[2] || 0) / 3600;
+    if (+g[0] < 0 || /^-/.test(g[0]) || hemi === 'S' || hemi === 'W' || hemi === 'O') v = -v;
+    parts.push({ v, hemi });
+  }
+  if (parts.length !== 2) return null;
+  let [a, b] = parts;
+  if (a.hemi && /[EWO]/.test(a.hemi) && (!b.hemi || /[NS]/.test(b.hemi))) [a, b] = [b, a];
+  if (!(Math.abs(a.v) <= 90 && Math.abs(b.v) <= 180)) return null;
+  return { lat: a.v, lon: b.v };
+}
+function setPin(p, animate) {
+  pin = p ? { lat: p.lat, lon: p.lon, label: fmtLL(p.lat, p.lon, 4) } : null;
+  $('goto-clear').hidden = !pin;
+  if (pin && animate !== null) flyTo(pin.lon, pin.lat, 6, animate);
+  schedule();
+}
+
+/* ---------- wiring ---------- */
+function wire() {
+  sel = d3.select(canvas);
+  zoom = d3.zoom().on('zoom', ev => { T = ev.transform; schedule(); });
+  zoom.translateExtent([[0, 0], [W0, H0]]);
+  sel.call(zoom);
+  T = d3.zoomIdentity;
+
+  new ResizeObserver(resize).observe(stage);
+
+  canvas.addEventListener('pointermove', ev => { if (ev.pointerType !== 'mouse') return; const had = !!pointer; pointer = { x: ev.offsetX, y: ev.offsetY }; canvas.style.cursor = hitAt(ev.offsetX, ev.offsetY) ? 'pointer' : ''; if (ready) { if (had) updateHud(zoomOf(T.k)); else schedule(); } });
+  canvas.addEventListener('pointerleave', () => { if (pointer) { pointer = null; schedule(); } });
+  let down = null;                    // a short press that does not move is a tap: it opens or closes a point's card
+  canvas.addEventListener('pointerdown', ev => { down = { x: ev.clientX, y: ev.clientY, t: ev.timeStamp }; });
+  canvas.addEventListener('pointerup', ev => {
+    const d = down; down = null;
+    if (!d || !ready || Math.hypot(ev.clientX - d.x, ev.clientY - d.y) > 6 || ev.timeStamp - d.t > 600) return;
+    const r = canvas.getBoundingClientRect(), o = hitAt(ev.clientX - r.left, ev.clientY - r.top);
+    if (o && o.cl) { openCluster(o.cl); return; }
+    const ln = o ? null : lineAt(ev.clientX - r.left, ev.clientY - r.top) || routeAt(ev.clientX - r.left, ev.clientY - r.top);   // nothing under the finger: maybe a pipeline, then a route
+    if (o || ln || picked) pick(o ? o.p : ln, null);
+  });
+  $('cd-close').addEventListener('click', () => pick(null, null));
+  canvas.addEventListener('keydown', ev => {
+    const step = 70, k = ev.key;
+    if (k === 'ArrowLeft') sel.call(zoom.translateBy, step / T.k, 0); else if (k === 'ArrowRight') sel.call(zoom.translateBy, -step / T.k, 0);
+    else if (k === 'ArrowUp') sel.call(zoom.translateBy, 0, step / T.k); else if (k === 'ArrowDown') sel.call(zoom.translateBy, 0, -step / T.k);
+    else if (k === '+' || k === '=') sel.call(zoom.scaleBy, 1.5); else if (k === '-' || k === '_') sel.call(zoom.scaleBy, 1 / 1.5);
+    else if (k === '0') fitView(homeView, true); else if (k === 'Escape' && picked) pick(null, null); else if (k === 'Escape' && SIDES.some(o => !$(o).hidden)) closeSides(); else if (k === 'Escape' && pin) setPin(null); else return;
+    ev.preventDefault();
+  });
+
+  const zoomBtn = f => () => { if (reduceMotion) sel.call(zoom.scaleBy, f); else sel.transition().duration(250).call(zoom.scaleBy, f); };
+  $('z-in').addEventListener('click', zoomBtn(1.7));
+  $('z-out').addEventListener('click', zoomBtn(1 / 1.7));
+  $('z-home').addEventListener('click', () => fitView(homeView, true));
+
+  const panel = $('panel'), head = $('panel-head'), body = $('panel-body');
+  setPanel = open => { panel.classList.toggle('closed', !open); body.hidden = !open; head.setAttribute('aria-expanded', String(open)); };
+  head.addEventListener('click', () => setPanel(body.hidden));
+  if (window.innerWidth <= 640) setPanel(false);
+
+  let saved = null; try { saved = JSON.parse(localStorage.getItem('monitor-osint.layers') || 'null'); const r = +localStorage.getItem('monitor-osint.range'); if (r) evRange = r; } catch (e) {}
+  $('range').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.days === evRange)));
+  document.querySelectorAll('input[data-layer]').forEach(cb => {
+    const id = cb.dataset.layer;
+    if (saved && typeof saved[id] === 'boolean' && id !== 'front' && id !== 'routes' && id !== 'subsea' && id !== 'ai') { L[id] = saved[id]; cb.checked = saved[id]; }   // the front and the routes always start switched off
+    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai'].includes(id)) refilter(); else schedule(); });
+  });
+
+  const input = $('goto-input'), msg = $('goto-msg');
+  const say = t => { msg.textContent = t || ''; msg.hidden = !t; input.setAttribute('aria-invalid', t ? 'true' : 'false'); };
+  $('goto').addEventListener('submit', ev => {
+    ev.preventDefault(); if (!ready) return;
+    if (!input.value.trim()) { say(''); return; }
+    const p = parseCoords(input.value);
+    if (!p) { say('Non riconosco queste coordinate. Scrivi latitudine e longitudine, per esempio 26.57 N, 56.25 E oppure 26°34′N 56°15′E.'); return; }
+    say(''); setPin(p, true); canvas.focus({ preventScroll: true });
+  });
+  input.addEventListener('input', () => say(''));
+  $('goto-clear').addEventListener('click', () => { setPin(null); input.value = ''; say(''); });
+
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { readTheme(); schedule(); });
+  new MutationObserver(() => { readTheme(); schedule(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class', 'style'] });
+}
+
+async function start(snap) {
+  if (!window.d3 || !window.topojson) { statusEl.textContent = 'Non riesco a caricare le librerie della mappa. Ricarica la pagina.'; return; }
+  readTheme(); wire();
+  const get = async u => { const r = await fetch(u); if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); };
+  try {
+    manifest = await get('data/manifest.json');
+    const [wt, lab, ...tt] = await Promise.all([get(manifest.world.file), get(manifest.labels), ...manifest.tiles.map(t => get(t.file))]);
+    world = buildSet(wt, manifest.world.bbox);
+    tiles = manifest.tiles.map((t, i) => Object.assign(buildSet(tt[i], t.bbox), { id: t.id }));
+    D = lab;
+    for (const k of ['countries', 'cities', 'seas', 'straits', 'regions']) for (const l of D[k]) { l.bx = bx(l.x); l.by = by(l.y); }
+    for (const c of D.countries) { c.N = c.n.toLocaleUpperCase('it-IT'); c.px = c.r <= 2 ? 13 : c.r === 3 ? 12 : c.r === 4 ? 11 : 10.5; }
+    for (const s of D.straits) Object.assign(s, { N: s.n.toLocaleUpperCase('it-IT'), kind: 'stretto', label: s.n, nome: s.n, slon: s.x, slat: s.y });
+  } catch (err) {
+    statusEl.textContent = 'Non riesco a caricare i dati della mappa. Ricarica la pagina.'; console.error(err); return;
+  }
+  // operational layers: one that fails to load must not take the chart down with it
+  const lay = manifest.layers || {}, opt = async u => { if (!u) return null; try { return await get(u); } catch (err) { console.error(err); return null; } };
+  const [mob, evt, rep, fr, fx, ln, ir, ib, rt, st, ita, dif, cdt, mk, dos, aip] = await Promise.all([opt(lay.mobili), opt(lay.eventi), opt(lay.report), opt(lay.fronte), opt(lay.fissi), opt(lay.linee), opt(lay.iran), opt(lay.ibrido), opt(lay.rotte), opt(lay.stretti), opt(lay.italia), opt(lay.difesa), opt(lay.condotte), opt(lay.mercati), opt(lay.dossier), opt(lay.ai)]);
+  if (rt && rt.rotte) { buildRoutes(rt); const cr = $('credit-routes'); cr.textContent = 'Rotte marittime: Benden 2022, da una carta CIA del 2012'; cr.hidden = false; }
+  ST = st;
+  if (cdt && cdt.linee) { buildLines(cdt, true); }
+  if (ln && ln.linee) { buildLines(ln); const cg = $('credit-gem'); cg.textContent = 'Oleodotti e gasdotti: Global Energy Monitor'; cg.hidden = false; }
+  if (fr && fr.aree) { buildFront(fr); const cf = $('credit-front'); cf.textContent = 'Fronte: ' + fr.autore; cf.hidden = false; }
+  addPoints(mob && mob.punti); addPoints(evt && evt.punti); addPoints(fr && fr.punti); addPoints(fx && fx.punti); addPoints(ir && ir.punti); addPoints(ib && ib.punti); addPoints(ita && ita.punti); addPoints(dif && dif.punti); addPoints(aip && aip.punti); finishPoints(); buildPanel(); initNews(rep); initMkt(mk); initDos(dos);
+  const upd = [mob, evt].map(o => o && o.aggiornato).filter(Boolean).sort().pop();
+  $('note').textContent = 'Dati da fonti aperte' + (upd ? ', aggiornati al ' + dateLong(new Date(upd + 'T12:00:00')) : '') + '. Non è un radar in tempo reale: ogni punto ha data, fonte e margine di incertezza nella sua scheda.';
+
+  const views = $('views'), def = manifest.tiles.find(t => t.id === manifest.defaultView) || manifest.tiles[0];
+  const worldView = [-168, -52, 178, 76];
+  homeView = def ? def.view : worldView;
+  for (const v of (manifest.views || [...manifest.tiles.map(t => ({ name: t.name, view: t.view })), { name: 'Mondo', view: worldView }])) {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = v.name;
+    b.addEventListener('click', () => fitView(v.view, true)); views.appendChild(b);
+  }
+  if (manifest.updated) $('credit').textContent = 'Natural Earth · ' + dateLong(new Date(manifest.updated + 'T12:00:00'));
+
+  ready = true; statusEl.hidden = true;
+  resize();
+  if (!w) { w = 1; h = 1; }
+  if (snap && snap.view) applyT(clampT(w / 2 - bx(snap.view[0]) * snap.view[2], h / 2 - by(snap.view[1]) * snap.view[2], snap.view[2]), false);
+  else fitView(homeView, false);
+  refilter();
+  if (snap && snap.pin) setPin(snap.pin, null);
+  if (snap && snap.point) { const p = PT.find(o => o.id === snap.point); if (p && (VS.includes(p) || VE.includes(p))) pick(p, null); }
+  if (snap && snap.news) showNews(true);
+  schedule();
+
+  if (document.fonts) {
+    const faces = ['600 12px "IBM Plex Sans Condensed"', '400 12px "IBM Plex Sans"', '500 12px "IBM Plex Sans"', 'italic 400 12px "IBM Plex Sans"', 'italic 400 12px "IBM Plex Serif"', '400 12px "IBM Plex Mono"', '500 12px "IBM Plex Mono"'];
+    Promise.all(faces.map(f => document.fonts.load(f).catch(() => null))).then(schedule);
+    document.fonts.ready.then(schedule);
+  }
+}
+
+const hot = window.claude && window.claude.hot;
+if (hot && hot.snapshot) hot.snapshot(() => ready && w > 1 ? { view: [lonOf((w / 2 - T.x) / T.k), latOf((h / 2 - T.y) / T.k), T.k], pin: pin ? { lat: pin.lat, lon: pin.lon } : null, point: picked ? picked.id : null, news: !$('news').hidden } : {});
+if (hot && hot.ready) hot.ready(start); else start((hot && hot.data) || {});
+})();
+</script>
+
+</body></html>
