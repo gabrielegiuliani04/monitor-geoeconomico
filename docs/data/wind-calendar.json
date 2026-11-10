@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-10T06:19Z",
+ "aggiornato": "2026-11-10T06:21Z",
  "riferimento": "2026-11-10",
  "fonti": [
   {
@@ -141,6 +141,12 @@
    "data_dato": "2026-01-26"
   },
   {
+   "nome": "Marine Insight",
+   "link": "https://www.marineinsight.com/uks-11-2-billion-hornsea-3-offshore-wind-farm-connects-first-subsea-export-cables-to-power-3-3-million-homes/",
+   "licenza": "(c) publisher: facts quoted with link",
+   "data_dato": "2026-03"
+  },
+  {
    "nome": "Orsted",
    "link": "https://orsted.com/en/media/news/2026/05/orsted-and-pge-kick-off-offshore-installation-of-b-14922371",
    "licenza": "(c) publisher: facts quoted with link",
@@ -237,8 +243,8 @@
    "data_dato": "2026-02"
   },
   {
-   "nome": "Trade press summary of Orsted Q1 2026 earnings call",
-   "link": "https://www.vozpopuli.com/indux/en/britain-is-betting-on-a-north-sea-wind-giant-but-hornsea-3s-2-9-gw-promise-depends-on-a-cable-that-cannot-afford-to-fail/5177/",
+   "nome": "Orsted, Q1 2026 earnings call transcript",
+   "link": "https://cdn.orsted.com/-/media/q12026/q1-2026---earnings-call-transcript.pdf",
    "licenza": "(c) publisher: facts quoted with link",
    "data_dato": "2026-05"
   },
@@ -262,7 +268,7 @@
   },
   {
    "nome": "Latvian Investment and Development Agency",
-   "link": "https://business.gov.lv/en/news/elwind-offshore-wind-project-receives-eur-187-million-funding-eu",
+   "link": "https://www.liaa.gov.lv/en/article/elwind-offshore-wind-project-receives-eur-187-million-funding-eu",
    "licenza": "(c) publisher: facts quoted with link",
    "data_dato": "2025"
   },
@@ -281,18 +287,18 @@
  ],
  "nota": "Offshore wind milestone calendar for the North Sea and the Baltic (GB, NL, BE, DE, DK, NO, SE, FI, PL, LT, LV, EE, FR, EU), 2023-2027 with later anchors. Curated items with source, link and source date; null = not found, never estimated. 'status' is curated (done/scheduled/at risk); 'status_effective' adds 'unconfirmed' when a scheduled date has passed without confirmation. Reliability high/medium/low = alta/media/bassa. 'precision' tells how exact the date is. 'candidati_rss' are suggestions from the offshoreWIND.biz feed, NOT verified items.",
  "riepilogo": {
-  "items": 113,
+  "items": 114,
   "by_status_effective": {
    "at risk": 8,
    "done": 84,
-   "scheduled": 17,
+   "scheduled": 18,
    "unconfirmed": 4
   },
   "by_type": {
    "FID": 4,
    "auction": 36,
    "cancellation": 6,
-   "commissioning": 8,
+   "commissioning": 9,
    "construction": 9,
    "delay": 11,
    "first power": 7,
@@ -307,7 +313,7 @@
    "EU": 2,
    "FI": 1,
    "FR": 4,
-   "GB": 23,
+   "GB": 24,
    "LT": 5,
    "LV": 1,
    "NL": 12,
@@ -319,46 +325,6 @@
    "from": "2026-11-10",
    "to": "2027-02-08",
    "items": [
-    {
-     "id": "WC-GB-DBB-COD",
-     "date": "2026",
-     "date_end": null,
-     "country": "GB",
-     "type": "commissioning",
-     "project": "Dogger Bank B",
-     "capacity_mw": 1235,
-     "status_effective": "at risk"
-    },
-    {
-     "id": "WC-PL-BP-COD",
-     "date": "2026",
-     "date_end": null,
-     "country": "PL",
-     "type": "commissioning",
-     "project": "Baltic Power: commercial operation",
-     "capacity_mw": 1140,
-     "status_effective": "scheduled"
-    },
-    {
-     "id": "WC-GB-EA3-COD",
-     "date": "2026-H2",
-     "date_end": null,
-     "country": "GB",
-     "type": "commissioning",
-     "project": "East Anglia Three",
-     "capacity_mw": 1400,
-     "status_effective": "at risk"
-    },
-    {
-     "id": "WC-GB-SOFIA-COD",
-     "date": "2026-H2",
-     "date_end": null,
-     "country": "GB",
-     "type": "commissioning",
-     "project": "Sofia (RWE)",
-     "capacity_mw": 1400,
-     "status_effective": "scheduled"
-    },
     {
      "id": "WC-PL-GDANSK-T5",
      "date": "2026-Q4",
@@ -420,16 +386,6 @@
      "status_effective": "at risk"
     },
     {
-     "id": "WC-DE-N10-RETENDER",
-     "date": "2027",
-     "date_end": null,
-     "country": "DE",
-     "type": "auction",
-     "project": "N-10.1 and N-10.2 retender",
-     "capacity_mw": 2500,
-     "status_effective": "scheduled"
-    },
-    {
      "id": "WC-DE-WINDSEEG-2027",
      "date": "2027-01-01",
      "date_end": null,
@@ -440,16 +396,6 @@
      "status_effective": "scheduled"
     },
     {
-     "id": "WC-FR-DUNKERQUE",
-     "date": "2027",
-     "date_end": null,
-     "country": "FR",
-     "type": "delay",
-     "project": "Dunkerque (EDF Renewables, Enbridge, RWE; awarded 2019 at about EUR 44/MWh)",
-     "capacity_mw": 600,
-     "status_effective": "at risk"
-    },
-    {
      "id": "WC-GB-HORNSEA3-FP",
      "date": "2027-Q1",
      "date_end": null,
@@ -458,43 +404,9 @@
      "project": "Hornsea 3 (Orsted)",
      "capacity_mw": 2900,
      "status_effective": "at risk"
-    },
-    {
-     "id": "WC-PL-AUCTION-2027",
-     "date": "2027",
-     "date_end": null,
-     "country": "PL",
-     "type": "auction",
-     "project": "Second Polish competitive CfD auction",
-     "capacity_mw": null,
-     "status_effective": "scheduled"
-    },
-    {
-     "id": "WC-PL-BALTICA2-FP",
-     "date": "2027-H1",
-     "date_end": null,
-     "country": "PL",
-     "type": "first power",
-     "project": "Baltica 2",
-     "capacity_mw": 1500,
-     "status_effective": "scheduled"
-    },
-    {
-     "id": "WC-SE-NKT-KARLSKRONA",
-     "date": "2027",
-     "date_end": null,
-     "country": "SE",
-     "type": "policy",
-     "project": "NKT Karlskrona HVDC cable factory expansion",
-     "capacity_mw": null,
-     "status_effective": "scheduled"
     }
-   ]
-  },
-  "last_90_days": {
-   "from": "2026-08-12",
-   "to": "2026-11-10",
-   "items": [
+   ],
+   "broad_dates": [
     {
      "id": "WC-GB-DBB-COD",
      "date": "2026",
@@ -535,6 +447,62 @@
      "capacity_mw": 1400,
      "status_effective": "scheduled"
     },
+    {
+     "id": "WC-DE-N10-RETENDER",
+     "date": "2027",
+     "date_end": null,
+     "country": "DE",
+     "type": "auction",
+     "project": "N-10.1 and N-10.2 retender",
+     "capacity_mw": 2500,
+     "status_effective": "scheduled"
+    },
+    {
+     "id": "WC-FR-DUNKERQUE",
+     "date": "2027",
+     "date_end": null,
+     "country": "FR",
+     "type": "delay",
+     "project": "Dunkerque (EDF Renewables, Enbridge, RWE; awarded 2019 at about EUR 44/MWh)",
+     "capacity_mw": 600,
+     "status_effective": "at risk"
+    },
+    {
+     "id": "WC-PL-AUCTION-2027",
+     "date": "2027",
+     "date_end": null,
+     "country": "PL",
+     "type": "auction",
+     "project": "Second Polish competitive CfD auction",
+     "capacity_mw": null,
+     "status_effective": "scheduled"
+    },
+    {
+     "id": "WC-PL-BALTICA2-FP",
+     "date": "2027-H1",
+     "date_end": null,
+     "country": "PL",
+     "type": "first power",
+     "project": "Baltica 2",
+     "capacity_mw": 1500,
+     "status_effective": "scheduled"
+    },
+    {
+     "id": "WC-SE-NKT-KARLSKRONA",
+     "date": "2027",
+     "date_end": null,
+     "country": "SE",
+     "type": "policy",
+     "project": "NKT Karlskrona HVDC cable factory expansion",
+     "capacity_mw": null,
+     "status_effective": "scheduled"
+    }
+   ]
+  },
+  "last_90_days": {
+   "from": "2026-08-12",
+   "to": "2026-11-10",
+   "items": [
     {
      "id": "WC-NO-SN2-DELAY",
      "date": "2026-08-24",
@@ -774,6 +742,48 @@
      "project": "Berwick Bank (SSE)",
      "capacity_mw": 4100,
      "status_effective": "done"
+    }
+   ],
+   "broad_dates": [
+    {
+     "id": "WC-GB-DBB-COD",
+     "date": "2026",
+     "date_end": null,
+     "country": "GB",
+     "type": "commissioning",
+     "project": "Dogger Bank B",
+     "capacity_mw": 1235,
+     "status_effective": "at risk"
+    },
+    {
+     "id": "WC-PL-BP-COD",
+     "date": "2026",
+     "date_end": null,
+     "country": "PL",
+     "type": "commissioning",
+     "project": "Baltic Power: commercial operation",
+     "capacity_mw": 1140,
+     "status_effective": "scheduled"
+    },
+    {
+     "id": "WC-GB-EA3-COD",
+     "date": "2026-H2",
+     "date_end": null,
+     "country": "GB",
+     "type": "commissioning",
+     "project": "East Anglia Three",
+     "capacity_mw": 1400,
+     "status_effective": "at risk"
+    },
+    {
+     "id": "WC-GB-SOFIA-COD",
+     "date": "2026-H2",
+     "date_end": null,
+     "country": "GB",
+     "type": "commissioning",
+     "project": "Sofia (RWE)",
+     "capacity_mw": 1400,
+     "status_effective": "scheduled"
     }
    ]
   },
@@ -1427,7 +1437,6 @@
    "type": "cancellation",
    "project": "Sorvest F tender",
    "capacity_mw": 1500,
-   "awarded_mw": 0,
    "status": "done",
    "summary": "Planned 1.5 GW CfD tender cancelled.",
    "source": "WindEurope 2025 Statistics",
@@ -1492,7 +1501,6 @@
    "type": "cancellation",
    "project": "Estonian offshore wind CfD reverse auction (up to EUR 2.6 bn)",
    "capacity_mw": null,
-   "awarded_mw": 0,
    "status": "done",
    "summary": "Government drops the EU-approved 20-year two-sided CfD auction; in August 2025 the energy minister confirmed no auction in 2026.",
    "source": "ERR News",
@@ -2112,9 +2120,9 @@
    "project": "Hornsea 3 (Orsted)",
    "capacity_mw": 2900,
    "status": "done",
-   "summary": "First HVDC export cable pulled ashore at the Norfolk coast; first monopiles arrived from Spain in February 2026.",
-   "source": "Marine Insight; offshoreWIND.biz",
-   "link": "https://www.offshorewind.biz/2026/02/11/first-hornsea-3-monopiles-arrive-in-uk-from-spain/",
+   "summary": "Export cable pulled onshore, turbine foundation installation started and first of two offshore converter stations installed; project about 25% complete (from 10% at Q4 2025).",
+   "source": "Marine Insight; Orsted Q1 2026 earnings call",
+   "link": "https://www.marineinsight.com/uks-11-2-billion-hornsea-3-offshore-wind-farm-connects-first-subsea-export-cables-to-power-3-3-million-homes/",
    "source_date": "2026-03",
    "reliability": "medium",
    "precision": "day",
@@ -2543,7 +2551,7 @@
    "project": "Borkum Riffgrund 3",
    "capacity_mw": 913,
    "status": "done",
-   "summary": "Commercial operation (83 x 11 MW); planned for Q1 2026, slipped about five months. Orsted's German fleet now about 2.5 GW.",
+   "summary": "Commercial operation (83 x 11 MW); planned for Q1 2026, slipped about five months. Orsted's German fleet now about 2.5 GW. In May 2026 Orsted had cited weather and unplanned TSO grid outages and moved full commissioning to Q3 2026.",
    "source": "Orsted company announcement (MFN)",
    "link": "https://mfn.se/nir/a/orsted/borkum-riffgrund-3-enters-commercial-operation-strengthening-germanys-energy-security-with-home-grown-renewable-power-fc542b8a",
    "source_date": "2026-08-31",
@@ -3212,12 +3220,11 @@
    "project": "Hornsea 3 (Orsted)",
    "capacity_mw": 2900,
    "status": "at risk",
-   "summary": "First power slipped from 2026 to Q1 2027 after National Grid flagged delays at the Norwich Main substation (Orsted Q1 2026 call, about 25% complete). Grid, not turbines, is the constraint.",
-   "source": "Trade press summary of Orsted Q1 2026 earnings call",
-   "link": "https://www.vozpopuli.com/indux/en/britain-is-betting-on-a-north-sea-wind-giant-but-hornsea-3s-2-9-gw-promise-depends-on-a-cable-that-cannot-afford-to-fail/5177/",
+   "summary": "National Grid's enabling and reinforcement works at Norwich Main substation delay the grid connection by up to two months on the critical path: Orsted now expects first power in Q1 2027 (aim in Nov 2024: commissioning end-2026/H1 2027). Grid, not turbines, is the constraint.",
+   "source": "Orsted, Q1 2026 earnings call transcript",
+   "link": "https://cdn.orsted.com/-/media/q12026/q1-2026---earnings-call-transcript.pdf",
    "source_date": "2026-05",
-   "reliability": "medium",
-   "note": "Secondary source; confirm against Orsted interim reports.",
+   "reliability": "high",
    "precision": "quarter",
    "period_start": "2027-01-01",
    "period_end": "2027-03-31",
@@ -3336,6 +3343,28 @@
    "timing": "future"
   },
   {
+   "id": "WC-GB-HORNSEA3-COD",
+   "date": "2027-10",
+   "date_end": "2028-03",
+   "country": "GB",
+   "sea": "North Sea",
+   "type": "commissioning",
+   "project": "Hornsea 3 (Orsted)",
+   "capacity_mw": 2900,
+   "status": "scheduled",
+   "summary": "Full commissioning expected in the six months between Q4 2027 and Q1 2028; world's largest single offshore wind farm when complete.",
+   "source": "Orsted, Q1 2026 earnings call transcript",
+   "link": "https://cdn.orsted.com/-/media/q12026/q1-2026---earnings-call-transcript.pdf",
+   "source_date": "2026-05",
+   "reliability": "high",
+   "precision": "window",
+   "period_start": "2027-10-01",
+   "period_end": "2028-03-31",
+   "status_effective": "scheduled",
+   "flags": [],
+   "timing": "future"
+  },
+  {
    "id": "WC-DK-NSS",
    "date": "2028-H2",
    "country": "DK",
@@ -3370,7 +3399,7 @@
    "status": "scheduled",
    "summary": "Pre-development to 2029, then an auction for the site rights; operation expected 2035. No CfD auction before then.",
    "source": "Latvian Investment and Development Agency",
-   "link": "https://business.gov.lv/en/news/elwind-offshore-wind-project-receives-eur-187-million-funding-eu",
+   "link": "https://www.liaa.gov.lv/en/article/elwind-offshore-wind-project-receives-eur-187-million-funding-eu",
    "source_date": "2025",
    "reliability": "medium",
    "precision": "year",
@@ -3476,6 +3505,7 @@
     "title": "Government of the Netherlands at OEEC 2026: Sharing Knowledge and Expertise",
     "date": "2026-11-05",
     "link": "https://www.offshorewind.biz/2026/11/05/government-of-the-netherlands-at-oeec-2026-sharing-knowledge-and-expertise",
+    "possible_duplicate_of": [],
     "suggested_type": "policy",
     "matched_types": [
      "policy"
@@ -3491,6 +3521,7 @@
     "title": "Fugro Wins East Anglia Two Post-Installation Survey Contract",
     "date": "2026-11-04",
     "link": "https://www.offshorewind.biz/2026/11/04/fugro-wins-east-anglia-two-post-installation-survey-contract",
+    "possible_duplicate_of": [],
     "suggested_type": "construction",
     "matched_types": [
      "construction"
@@ -3506,6 +3537,7 @@
     "title": "Norway Funds Floating Offshore Wind Projects Featuring 18.5 MW Turbines",
     "date": "2026-10-30",
     "link": "https://www.offshorewind.biz/2026/10/30/norway-funds-floating-offshore-wind-projects-featuring-185-mw-turbines",
+    "possible_duplicate_of": [],
     "suggested_type": "policy",
     "matched_types": [
      "policy"
@@ -3522,6 +3554,7 @@
     "title": "PGE and Ørsted Add BGB Group to Baltica 2 Offshore Wind Team",
     "date": "2026-10-27",
     "link": "https://www.offshorewind.biz/2026/10/27/pge-and-orsted-add-bgb-group-to-baltica-2-offshore-wind-team",
+    "possible_duplicate_of": [],
     "suggested_type": "construction",
     "matched_types": [
      "construction"
@@ -3540,6 +3573,7 @@
     "title": "Balfour Beatty Wins Contract for Substation to Connect Three Dogger Bank Wind Farms",
     "date": "2026-10-23",
     "link": "https://www.offshorewind.biz/2026/10/23/balfour-beatty-wins-contract-for-substation-to-connect-three-dogger-bank-wind-farms",
+    "possible_duplicate_of": [],
     "suggested_type": "grid",
     "matched_types": [
      "grid"
@@ -3555,6 +3589,7 @@
     "title": "SSE Taps Seaway7 for Berwick Bank B Foundations, Inter-Array Cables",
     "date": "2026-10-20",
     "link": "https://www.offshorewind.biz/2026/10/20/sse-taps-seaway7-for-berwick-bank-b-foundations-inter-array-cables",
+    "possible_duplicate_of": [],
     "suggested_type": "construction",
     "matched_types": [
      "construction"
@@ -3572,6 +3607,9 @@
     "title": "Nexans Starts Manufacturing 525 kV Subsea Cables for LanWin2 Offshore Wind Grid Connection",
     "date": "2026-10-16",
     "link": "https://www.offshorewind.biz/2026/10/16/nexans-starts-manufacturing-525-kv-subsea-cables-for-lanwin2-offshore-wind-grid-connection",
+    "possible_duplicate_of": [
+     "WC-DE-LANWIN2"
+    ],
     "suggested_type": "grid",
     "matched_types": [
      "grid"
@@ -3587,30 +3625,5 @@
    }
   ]
  },
- "errori": [
-  {
-   "fonte": "item WC-NO-SORVESTF",
-   "errore": "awarded_mw only allowed on auction items"
-  },
-  {
-   "fonte": "item WC-EE-CFD-DROP",
-   "errore": "awarded_mw only allowed on auction items"
-  },
-  {
-   "fonte": "https://business.gov.lv/en/news/elwind-offshore-wind-project-receives-eur-187-million-funding-eu",
-   "errore": "HTTP 404"
-  },
-  {
-   "fonte": "https://windeurope.org/news/offshore-wind-delivers-first-electricity-to-polish-grid/",
-   "errore": "HTTP 503"
-  },
-  {
-   "fonte": "https://www.gov.pl/web/climate/electricity-is-now-flowing-from-polish-wind-farms-on-the-baltic-sea",
-   "errore": "unreachable: <urlopen error [Errno 104] Connection reset by peer>"
-  },
-  {
-   "fonte": "https://www.vozpopuli.com/indux/en/britain-is-betting-on-a-north-sea-wind-giant-but-hornsea-3s-2-9-gw-promise-depends-on-a-cable-that-cannot-afford-to-fail/5177/",
-   "errore": "HTTP 404"
-  }
- ]
+ "errori": []
 }

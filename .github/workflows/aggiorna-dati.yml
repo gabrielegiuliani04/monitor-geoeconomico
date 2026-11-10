@@ -65,6 +65,9 @@ jobs:
       - name: Stretti (controllo e parti automatiche, per ultimo)
         continue-on-error: true
         run: python3 raccolta/stretti/raccogli.py
+      - name: Transit times to European ports
+        continue-on-error: true
+        run: python3 raccolta/rotte/tempi.py
       - name: Cruscotto del rischio (legge i JSON appena scritti, per ultimo)
         continue-on-error: true
         run: python3 raccolta/rischio/calcola.py

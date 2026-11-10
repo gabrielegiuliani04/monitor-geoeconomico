@@ -5,9 +5,10 @@ Produces: docs/data/transit-times.json
 
 Method (standard library only, no network needed):
   1. Builds a graph from the Benden shipping lanes in docs/data/rotte.json (vertices shared between
-     lanes are junctions; dangling lane ends are snapped to the nearest vertex within 250 km).
-     Each port is joined to the network through a short approach (hand-set sea waypoint + the
-     nearest lane vertices). Edge weight = great-circle length in km.
+     lanes are junctions; dangling lane ends are snapped to the nearest point of another lane
+     within 250 km), plus declared open-ocean connectors (EXTRA_LANES) the CIA map lacks.
+     Each port is joined to the network through hand-set approach waypoints + the nearest lane
+     vertices; port connectors are dead ends. Edge weight = great-circle length in km.
   2. Dijkstra shortest path in three scenarios: "all open" (2023 baseline, via Suez/Bab el-Mandeb,
      Hormuz open), "no Red Sea" (edges passing near Suez or Bab el-Mandeb removed: Cape of Good
      Hope) and, for Gulf origins, "no Hormuz".
@@ -413,7 +414,7 @@ def simplify(coords, tol_km=8.0):
         best, idx = -1, 0
         for i in range(1, len(pts) - 1):
             p = pts[i]
-            d = min(hav(p, a), hav(p, b)) if hav(a, b) < 1 else cross_track(p, a, b)
+            d = planar_dist(p, a, b)
             if d > best:
                 best, idx = d, i
         if best > tol_km:
@@ -434,18 +435,16 @@ def simplify(coords, tol_km=8.0):
     return [[[round(x, 3), round(y, 3)] for x, y in dp(part)] for part in parts if len(part) >= 2]
 
 
-def cross_track(p, a, b):
-    d13 = hav(a, p) / R_KM
-    t13 = bearing(a, p)
-    t12 = bearing(a, b)
-    return abs(math.asin(max(-1, min(1, math.sin(d13) * math.sin(t13 - t12))))) * R_KM
+def planar_dist(p, a, b):
+    """Distance in km from p to segment a-b as drawn on a lon/lat map (equirectangular)."""
+    k = math.cos(math.radians((a[1] + b[1] + p[1]) / 3)) * 111.32
+    ax, ay, bx, by, px, py = a[0] * k, a[1] * 110.57, b[0] * k, b[1] * 110.57, p[0] * k, p[1] * 110.57
+    dx, dy = bx - ax, by - ay
+    L2 = dx * dx + dy * dy
+    t = 0.0 if L2 == 0 else max(0.0, min(1.0, ((px - ax) * dx + (py - ay) * dy) / L2))
+    return math.hypot(px - ax - t * dx, py - ay - t * dy)
 
 
-def bearing(a, b):
-    lo1, la1, lo2, la2 = map(math.radians, (a[0], a[1], b[0], b[1]))
-    y = math.sin(lo2 - lo1) * math.cos(la2)
-    x = math.cos(la1) * math.sin(la2) - math.sin(la1) * math.cos(la2) * math.cos(lo2 - lo1)
-    return math.atan2(y, x)
 
 
 # ---------------------------------------------------------------- inputs

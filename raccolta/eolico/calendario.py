@@ -307,7 +307,14 @@ def candidati_rss(elementi):
         if not tipi:
             continue
         legati = sorted(p for p in progetti if len(p) > 4 and p in testo)
-        out.append({"title": titolo, "date": data, "link": link,
+        # same project already in the calendar within 3 days: probably the same news
+        doppi = []
+        if data:
+            g = dt.date.fromisoformat(data)
+            doppi = [e["id"] for e in elementi
+                     if e["project"].split("(")[0].strip().lower() in legati
+                     and abs((dt.date.fromisoformat(e["period_start"]) - g).days) <= 3]
+        out.append({"title": titolo, "date": data, "link": link, "possible_duplicate_of": doppi,
                     "suggested_type": tipi[0], "matched_types": tipi,
                     "scope_terms": scope[:6], "related_calendar_projects": legati[:5],
                     "excerpt": re.sub(r"\s+", " ", desc).strip()[:240],
@@ -343,9 +350,16 @@ def main():
     controlla_link(elementi)
 
     da, a = OGGI - dt.timedelta(days=WINDOW_DAYS), OGGI + dt.timedelta(days=WINDOW_DAYS)
-    prossimi = [breve(e) for e in elementi if e["timing"] != "past" and nella_finestra(e, OGGI, a)]
-    passati = [breve(e) for e in elementi if nella_finestra(e, da, OGGI)
-               and dt.date.fromisoformat(e["period_start"]) <= OGGI]
+    # Items dated only by half-year or year overlap almost any 90-day window:
+    # they are listed apart ('broad_dates') so the windows stay readable.
+    fine_ok = lambda e: e["precision"] in ("day", "month", "quarter", "window")
+    fut = [e for e in elementi if e["timing"] != "past" and nella_finestra(e, OGGI, a)]
+    pas = [e for e in elementi if nella_finestra(e, da, OGGI)
+           and dt.date.fromisoformat(e["period_start"]) <= OGGI]
+    prossimi = [breve(e) for e in fut if fine_ok(e)]
+    prossimi_larghi = [breve(e) for e in fut if not fine_ok(e)]
+    passati = [breve(e) for e in pas if fine_ok(e)]
+    passati_larghi = [breve(e) for e in pas if not fine_ok(e)]
     stale = [dict(breve(e), days_overdue=e.get("days_overdue")) for e in elementi if "stale" in e["flags"]]
     recheck = [e["id"] for e in elementi if "needs_recheck" in e["flags"]]
     conta = lambda campo: {k: sum(1 for e in elementi if e[campo] == k)
@@ -380,8 +394,10 @@ def main():
             "by_status_effective": conta("status_effective"),
             "by_type": conta("type"),
             "by_country": conta("country"),
-            "next_90_days": {"from": OGGI.isoformat(), "to": a.isoformat(), "items": prossimi},
-            "last_90_days": {"from": da.isoformat(), "to": OGGI.isoformat(), "items": passati},
+            "next_90_days": {"from": OGGI.isoformat(), "to": a.isoformat(), "items": prossimi,
+                             "broad_dates": prossimi_larghi},
+            "last_90_days": {"from": da.isoformat(), "to": OGGI.isoformat(), "items": passati,
+                             "broad_dates": passati_larghi},
             "unconfirmed_stale": stale,
             "needs_recheck": recheck,
             "awarded_vs_targets": {

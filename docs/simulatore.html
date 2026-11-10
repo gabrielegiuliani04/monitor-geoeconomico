@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="it">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Simulatore «E se…»</title>
-<meta name="description" content="Che cosa succede se uno stretto rallenta o si chiude: flussi, bypass, rotte, noli, prezzi e paesi esposti, con ogni numero legato alla sua fonte.">
+<title>“What If” Simulator</title>
+<meta name="description" content="What happens if a chokepoint slows down or closes: flows, bypasses, routes, freight, prices and exposed countries, with every number tied to its source.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:wght@600&display=swap" rel="stylesheet">
@@ -175,37 +175,37 @@ footer{margin-top:36px;border-top:1px solid var(--rule);padding-top:14px;font-si
 </head>
 <body>
 <main class="pagina">
-  <a class="torna" href="index.html">← Torna alla mappa</a>
-  <p class="occhiello">Simulatore «E se…» · Monitor geoeconomico</p>
-  <h1>Che cosa succede se uno stretto rallenta o si chiude?</h1>
-  <p class="sottotitolo">Scegli un passaggio, quanto traffico si perde e per quanto tempo. Il simulatore segue la catena: flussi, alternative, rotte, noli, prezzi, paesi e porti esposti. È una stima semplice e dichiarata: ogni numero dice da dove viene.</p>
+  <a class="torna" href="index.html">← Back to the map</a>
+  <p class="occhiello">“What if…” simulator · Geo-economic Risk Monitor</p>
+  <h1>What happens if a chokepoint slows down or closes?</h1>
+  <p class="sottotitolo">Choose a chokepoint, how much traffic is lost and for how long. The simulator follows the chain: flows, alternatives, routes, freight rates, prices, and the countries and ports exposed. It is a simple, transparent estimate: every number says where it comes from. Some source descriptions are in Italian.</p>
 
   <form class="comandi" id="comandi" aria-label="Scenario" onsubmit="return false">
-    <fieldset><legend>Passaggio</legend><div class="chips" id="sc-passaggio"></div></fieldset>
+    <fieldset><legend>Chokepoint</legend><div class="chips" id="sc-passaggio"></div></fieldset>
     <div class="riga-comandi">
-      <fieldset><legend>Intensità</legend><div class="chips" id="sc-intensita"></div></fieldset>
-      <fieldset><legend>Durata</legend><div class="chips" id="sc-durata"></div></fieldset>
+      <fieldset><legend>Intensity</legend><div class="chips" id="sc-intensita"></div></fieldset>
+      <fieldset><legend>Duration</legend><div class="chips" id="sc-durata"></div></fieldset>
     </div>
   </form>
 
-  <div id="risultato"><p class="carica">Carico i dati dell'osservatorio…</p></div>
+  <div id="risultato"><p class="carica">Loading the observatory data…</p></div>
 
   <section class="limiti riquadro" id="limiti" aria-labelledby="t-limiti">
-    <h2 id="t-limiti">Limiti: cosa il modello non considera</h2>
+    <h2 id="t-limiti">Limits: what the model leaves out</h2>
     <ul id="lista-limiti"></ul>
   </section>
 
   <section class="riquadro" style="margin-top:14px" aria-labelledby="t-fonti">
-    <h2 id="t-fonti">Fonti e file usati</h2>
+    <h2 id="t-fonti">Sources and files used</h2>
     <ul class="fonti" id="lista-fonti"></ul>
-    <p class="piccolo" style="margin-top:8px">Il modello (opzioni, episodi, regole, parametri per passaggio) è in <a href="data/simulatore.json"><code>data/simulatore.json</code></a> e si può modificare; lo script <code>raccolta/simulatore/controlla.py</code> verifica che ogni numero corrisponda ai file di dati.</p>
+    <p class="piccolo" style="margin-top:8px">The model (options, episodes, rules, parameters per chokepoint) lives in <a href="data/simulatore.json"><code>data/simulatore.json</code></a> and can be edited; the script <code>raccolta/simulatore/controlla.py</code> checks that every number matches the data files.</p>
   </section>
 
   <footer>
-    <p class="firma">Gabriele Giuliani · Monitor geoeconomico</p>
-    <p id="agg">Novembre 2026.</p>
-    <p>Nota sull'uso dell'AI: il simulatore è stato preparato con l'aiuto di un assistente AI (Claude, Anthropic) a partire dai dati dell'osservatorio e dalle fonti citate. È uno strumento di ragionamento, non una previsione.</p>
-    <p><a href="index.html">← Torna alla mappa</a></p>
+    <p class="firma">Gabriele Giuliani · Geo-economic Risk Monitor</p>
+    <p id="agg">November 2026.</p>
+    <p>Note on the use of AI: the simulator was prepared with the help of an AI assistant (Claude, Anthropic) from the observatory's data and the sources cited. It is a reasoning tool, not a forecast.</p>
+    <p><a href="index.html">← Back to the map</a></p>
   </footer>
 </main>
 
@@ -213,20 +213,203 @@ footer{margin-top:36px;border-top:1px solid var(--rule);padding-top:14px;font-si
 "use strict";
 const FILE = ["simulatore", "stretti-dettaglio", "portwatch", "noli", "prezzi", "paesi", "gas-italia", "terminali-gnl", "scorte", "rotte", "cavi"];
 const D = {};
-const NF = (d) => new Intl.NumberFormat("it-IT", { minimumFractionDigits: d, maximumFractionDigits: d });
-const MESI = ["gennaio","febbraio","marzo","aprile","maggio","giugno","luglio","agosto","settembre","ottobre","novembre","dicembre"];
+const NF = (d) => new Intl.NumberFormat("en-GB", { minimumFractionDigits: d, maximumFractionDigits: d });
+const MESI = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const NOMI_EN = { "Stati Uniti": "United States", Cina: "China", Ucraina: "Ukraine", Israele: "Israel", "Arabia Saudita": "Saudi Arabia", "Emirati Arabi Uniti": "United Arab Emirates", Egitto: "Egypt", Turchia: "Türkiye", Giappone: "Japan", "Corea del Sud": "South Korea", Germania: "Germany", Francia: "France", Italia: "Italy", "Regno Unito": "United Kingdom", Spagna: "Spain", "Paesi Bassi": "Netherlands", Polonia: "Poland", Norvegia: "Norway", Azerbaigian: "Azerbaijan", Kazakistan: "Kazakhstan", Libia: "Libya", Brasile: "Brazil", Danimarca: "Denmark" };
+const STATI_EN = { "chiuso di fatto": "closed in practice", aperto: "open", aperti: "open", "aperto con minaccia houthi alle navi legate all'Arabia Saudita": "open, with a Houthi threat to Saudi-linked ships", "aperto, traffico in ripresa": "open, traffic recovering", "aperto, nessuna restrizione d'acqua": "open, no water restrictions", "aperto, traffico petrolifero ridotto": "open, reduced oil traffic", "aperto; porti del Mar Nero sotto attacco": "open; Black Sea ports under attack", "aperto, controlli sulla flotta ombra": "open, shadow-fleet inspections", "aperto, pressione della guardia costiera cinese": "open, pressure from the Chinese coast guard", "aperto, traffico record": "open, record traffic", "riaperto alle navi del grano con permessi russi": "reopened to grain ships with Russian permits" };
+const AFF_EN = { alta: "high", media: "medium", bassa: "low" };
+const TIPI_EN = { gnl: "LNG", fertilizzanti: "fertilisers", grano: "grain", container: "containers", petrolio: "oil", altro: "other" };
+const UNITA_EN = { "mb/g": "mb/d", "bcm/anno": "bcm/yr" };
+/* English for the texts of data/simulatore.json; the file stays in Italian, the page swaps the strings when it loads */
+const EN_SIM = {
+"Schede degli stretti dell'osservatorio": "The observatory's chokepoint profiles",
+"Prezzi di oggi di Brent e TTF (Yahoo Finance)": "Today's Brent and TTF prices (Yahoo Finance)",
+"Chiusure dei future Brent (BZ=F) e TTF (TTF=F), dicembre 2023 – marzo 2024 e febbraio – giugno 2026": "Brent (BZ=F) and TTF (TTF=F) futures closes, December 2023 – March 2024 and February – June 2026",
+"Noli container (Drewry WCI)": "Container freight rates (Drewry WCI)",
+"Schede paese (UN Comtrade, Eurostat)": "Country profiles (UN Comtrade, Eurostat)",
+"Scorte di gas e petrolio (GIE AGSI+, Eurostat)": "Gas and oil stocks (GIE AGSI+, Eurostat)",
+"Flussi di gas in Italia (ENTSOG)": "Gas flows into Italy (ENTSOG)",
+"Terminali GNL (Global Energy Monitor)": "LNG terminals (Global Energy Monitor)",
+"Rotte marittime (Benden 2022) e cavi sottomarini (TeleGeography)": "Shipping lanes (Benden 2022) and subsea cables (TeleGeography)",
+"Rallentamento 25%": "25% slowdown", "un quarto del traffico non passa": "a quarter of traffic does not get through",
+"Rallentamento 50%": "50% slowdown", "metà del traffico non passa": "half of traffic does not get through",
+"Chiusura totale": "Full closure", "non passa nulla": "nothing gets through",
+"2 settimane": "2 weeks", "1 mese": "1 month", "3 mesi": "3 months",
+"Chiusura di Hormuz, marzo 2026": "Closure of Hormuz, March 2026",
+"media delle chiusure dell'ultima settimana prima della guerra": "average of the closes in the last week before the war",
+"chiusure Yahoo Finance dei future BZ=F e TTF=F (le stesse di prezzi.json, che però pubblica solo gli ultimi 3 mesi), scaricate da controlla.py --scarica; nel file restano solo le statistiche": "Yahoo Finance closes of the BZ=F and TTF=F futures (the same as prezzi.json, which only publishes the last 3 months), downloaded by controlla.py --scarica; only the statistics are kept in the file",
+"Il 2 marzo 2026 i transiti a Hormuz crollano (PortWatch). È l'unico episodio nei dati con una vera perdita di offerta di petrolio e GNL. I prezzi includono anche altri fattori (Ras Laffan colpita, attacchi, tregue): il modello attribuisce tutto allo stretto.": "On 2 March 2026 transits through Hormuz collapse (PortWatch). It is the only episode in the data with a genuine loss of oil and LNG supply. Prices also reflect other factors (the strike on Ras Laffan, attacks, truces): the model attributes everything to the strait.",
+"Crisi del Mar Rosso, dicembre 2023 – marzo 2024": "Red Sea crisis, December 2023 – March 2024",
+"media della settimana prima che le grandi compagnie sospendessero i transiti (metà dicembre 2023)": "average of the week before the major carriers suspended transits (mid-December 2023)",
+"chiusure Yahoo Finance dei future BZ=F e TTF=F, scaricate da controlla.py --scarica; nel file restano solo le statistiche": "Yahoo Finance closes of the BZ=F and TTF=F futures, downloaded by controlla.py --scarica; only the statistics are kept in the file",
+"Le navi girano dal Capo: nessuna perdita di offerta, ma viaggi più lunghi. Il WCI di Drewry passa da 1.521 a 3.777 $/FEU in cinque settimane. Il Brent sale poco; il TTF scende (inverno mite e stoccaggi pieni): l'episodio non mostra un effetto del Mar Rosso sul gas europeo.": "Ships divert round the Cape: no loss of supply, but longer voyages. Drewry's WCI rises from 1,521 to 3,777 $/FEU in five weeks. Brent rises a little; TTF falls (mild winter and full storage): the episode shows no Red Sea effect on European gas.",
+"Volume colpito = flusso × intensità. Volume scoperto = volume colpito − capacità libera di bypass (mai sotto zero). Il minimo usa il bypass massimo, il massimo usa il bypass minimo.": "Volume hit = flow × intensity. Uncovered volume = volume hit − spare bypass capacity (never below zero). The minimum uses the maximum bypass, the maximum uses the minimum bypass.",
+"Se il petrolio non ha una via alternativa (meccanismo 'perdita'), la variazione del Brent = mb/g scoperti × coefficiente. Il coefficiente viene dall'episodio di Hormuz 2026: variazione del Brent nella finestra della durata scelta diviso per i mb/g scoperti a Hormuz chiuso (valore centrale). Minimo = variazione media nella finestra, massimo = picco nella finestra. Se i bypass assorbono tutto (volume scoperto zero) e c'è una rotta alternativa, si usa la regola delle deviazioni.": "If oil has no alternative route (the 'loss' mechanism), the change in Brent = uncovered mb/d × coefficient. The coefficient comes from the Hormuz 2026 episode: the change in Brent over a window of the chosen length divided by the mb/d left uncovered with Hormuz closed (central value). Minimum = average change in the window, maximum = peak in the window. If the bypasses absorb everything (zero uncovered volume) and there is an alternative route, the diversion rule applies.",
+"bassa per shock piccoli (estrapolazione lineare da un solo episodio grande)": "low for small shocks (linear extrapolation from a single large episode)",
+"Se il gas non ha una via alternativa, la variazione del TTF = bcm/anno scoperti × coefficiente. Il coefficiente viene dall'episodio di Hormuz 2026: variazione del TTF nella finestra diviso 112 bcm/anno di GNL fermo.": "If gas has no alternative route, the change in TTF = uncovered bcm/yr × coefficient. The coefficient comes from the Hormuz 2026 episode: the change in TTF over the window divided by the 112 bcm/yr of LNG halted.",
+"bassa: il GNL del Golfo andava per il 90% in Asia, il TransMed invece arriva direttamente in Europa": "low: 90% of Gulf LNG went to Asia, whereas TransMed delivers straight into Europe",
+"Se le navi possono girare (meccanismo 'deviazione'), non si perde offerta: la variazione del Brent = intensità × scala dei giorni × variazione del Brent nella crisi del Mar Rosso (stessa finestra). Scala dei giorni = 1 per la rotta del Capo; per le altre rotte = giorni in più della rotta / giorni in più del Capo (14–24).": "If ships can divert (the 'diversion' mechanism), no supply is lost: the change in Brent = intensity × day scale × the change in Brent during the Red Sea crisis (same window). Day scale = 1 for the Cape route; for other routes = the route's extra days / the Cape's extra days (14–24).",
+"bassa": "low", "media": "medium",
+"Per le deviazioni il modello assume zero effetto sul TTF: nella crisi del Mar Rosso il TTF è sceso. Mostra comunque la variazione osservata.": "For diversions the model assumes zero effect on TTF: during the Red Sea crisis TTF fell. It still shows the observed change.",
+"Aumento del nolo container in dollari per FEU, sommato ai valori di oggi del WCI (Shanghai–Genova e Shanghai–Rotterdam). Minimo = solo il costo in più del viaggio via Capo (+160 $/FEU). Massimo = salto del WCI nella crisi del Mar Rosso (+2.256 $/FEU in 35 giorni). Entrambi × intensità × scala dei giorni; il massimo cresce in modo lineare nei primi 35 giorni e poi resta fermo. Si usa un aumento in dollari e non in percentuale perché oggi il nolo parte già da un livello alto.": "Increase in the container rate in dollars per FEU, added to today's WCI values (Shanghai–Genoa and Shanghai–Rotterdam). Minimum = only the extra cost of the voyage via the Cape (+160 $/FEU). Maximum = the WCI jump in the Red Sea crisis (+2,256 $/FEU in 35 days). Both × intensity × day scale; the maximum ramps up linearly over the first 35 days and then stays flat. A dollar increase is used rather than a percentage because the rate already starts from a high level today.",
+"media per Suez e Bab el-Mandeb, bassa per le altre rotte": "medium for Suez and Bab el-Mandeb, low for other routes",
+"Per Hormuz non c'è una rotta alternativa: il modello non calcola un nolo ma mostra quello che è successo nel 2026 (TD3C quasi triplicato, war risk da 0,25% a 3% del valore della nave, sovrapprezzo container 1.500 $/TEU), scalato con l'intensità solo in modo indicativo.": "There is no alternative route for Hormuz: the model does not compute a freight rate but shows what happened in 2026 (TD3C almost tripled, war-risk premium from 0.25% to 3% of hull value, container surcharge of 1,500 $/TEU), scaled by intensity only as an indication.",
+"Barili mancanti nel periodo = mb/g scoperti × giorni. Si confrontano con il rilascio record di 400 milioni di barili delle riserve IEA (marzo 2026) e con i giorni di scorte di emergenza dei paesi UE (Eurostat).": "Barrels missing over the period = uncovered mb/d × days. They are compared with the record release of 400 million barrels from IEA reserves (March 2026) and with the days of emergency stocks held by EU countries (Eurostat).",
+"Per ogni passaggio il modello legge da paesi.json una o due quote (in valore, UN Comtrade 2025) che approssimano l'esposizione: quota di greggio o GNL dal Golfo, quota di un fornitore che usa il passaggio, quota della Cina nelle importazioni di merci. Se il fornitore non è tra i primi 5 del paese, la quota è inferiore a quella del quinto: il simulatore la mostra come «meno di x%». Per le merci dalla Cina il confronto è limitato ai paesi europei delle schede, perché per gli altri la rotta non passa da Suez o dal Mar Rosso.": "For each chokepoint the model reads one or two shares from paesi.json (by value, UN Comtrade 2025) that approximate exposure: the share of crude or LNG from the Gulf, the share of a supplier that uses the passage, China's share of goods imports. If the supplier is not among the country's top 5, its share is below that of the fifth: the simulator shows it as “less than x%”. For goods from China the comparison is limited to the European countries in the profiles, because for the others the route does not pass through Suez or the Red Sea.",
+"media: è un'approssimazione, non una misura dei transiti": "medium: an approximation, not a measurement of transits",
+"Lo scenario parte da condizioni normali di traffico, con i flussi di riferimento della scheda di ogni passaggio (anno indicato accanto al numero).": "The scenario starts from normal traffic conditions, with the reference flows from each chokepoint's profile (year shown next to each number).",
+"Il traffico perso è proporzionale all'intensità: un rallentamento del 25% toglie il 25% di ogni flusso.": "Lost traffic is proportional to intensity: a 25% slowdown removes 25% of every flow.",
+"La capacità libera dei bypass è disponibile da subito e per tutta la durata.": "Spare bypass capacity is available immediately and for the whole duration.",
+"L'effetto sui prezzi è lineare nel volume scoperto e calibrato su un solo episodio per tipo (Hormuz 2026 per la perdita di offerta, Mar Rosso 2023–24 per le deviazioni).": "The price effect is linear in the uncovered volume and calibrated on a single episode per type (Hormuz 2026 for supply loss, the Red Sea 2023–24 for diversions).",
+"Le finestre di prezzo partono dal primo giorno dello shock e durano 14, 30 o 91 giorni; la base è la media della settimana precedente.": "Price windows start on the first day of the shock and last 14, 30 or 91 days; the baseline is the average of the previous week.",
+"Tutta la variazione dei prezzi nell'episodio è attribuita allo stretto, anche se nello stesso periodo hanno pesato altri fattori (attacchi a Ras Laffan, tagli OPEC+, meteo).": "The whole price change in the episode is attributed to the strait, even though other factors weighed in the same period (attacks on Ras Laffan, OPEC+ cuts, weather).",
+"Gli effetti dei passaggi non si sommano: il simulatore guarda un passaggio alla volta.": "Effects across chokepoints are not added up: the simulator looks at one chokepoint at a time.",
+"Le riserve strategiche, le scorte e la risposta della domanda non sono sottratte dal volume scoperto: sono mostrate solo come confronto.": "Strategic reserves, stocks and the demand response are not subtracted from the uncovered volume: they are shown only for comparison.",
+"Non considera la domanda: prezzi alti riducono i consumi e accorciano lo shock.": "It ignores demand: high prices reduce consumption and shorten the shock.",
+"Non considera le politiche: rilascio di riserve, scorte militari, deroghe, razionamenti, sussidi.": "It ignores policy: reserve releases, military stocks, waivers, rationing, subsidies.",
+"Non considera le aspettative di mercato: uno stretto minacciato muove i prezzi anche senza perdita di volumi, e una tregua li fa scendere prima della riapertura.": "It ignores market expectations: a threatened strait moves prices even without lost volumes, and a truce brings them down before reopening.",
+"Non considera gli effetti di secondo giro: inflazione, tassi delle banche centrali, crescita, cambio euro/dollaro.": "It ignores second-round effects: inflation, central-bank rates, growth, the euro/dollar exchange rate.",
+"Non somma più passaggi chiusi insieme (per esempio Hormuz e Bab el-Mandeb nello stesso momento).": "It does not combine several closures at once (for example Hormuz and Bab el-Mandeb at the same time).",
+"Non stima i prezzi di grano, fertilizzanti, chip e premi assicurativi: mostra solo i numeri documentati degli episodi.": "It does not estimate the prices of grain, fertilisers, chips or insurance premiums: it shows only the documented figures from the episodes.",
+"Panama e Taiwan hanno pochi numeri verificati (giorni in più, petrolio): molte stime restano «non disponibili».": "Panama and Taiwan have few verified figures (extra days, oil): many estimates remain “not available”.",
+"La Danimarca non è nelle schede paese (paesi.json) né nelle scorte (scorte.json): la sua esposizione è descritta a parole, senza quote.": "Denmark is not in the country profiles (paesi.json) or the stocks file (scorte.json): its exposure is described in words, without shares.",
+"PortWatch conta solo le navi con l'AIS acceso e arriva con circa una settimana di ritardo.": "PortWatch counts only ships with AIS switched on and is published about a week late.",
+"Le quote paese sono in valore (dollari), non in volume, e si basano sulle dichiarazioni dell'importatore.": "Country shares are by value (dollars), not volume, and are based on importer declarations.",
+"Stretto di Hormuz": "Strait of Hormuz",
+"Hormuz è chiuso di fatto dal 2 marzo 2026: è proprio l'episodio su cui il modello è calibrato. Per questo passaggio il risultato descrive ciò che è già successo, non un rialzo nuovo a partire dai prezzi di oggi, che incorporano già lo shock.": "Hormuz has been closed in practice since 2 March 2026: it is the very episode the model is calibrated on. For this chokepoint the result describes what has already happened, not a fresh rise from today's prices, which already price in the shock.",
+"Petrolio (greggio e prodotti)": "Oil (crude and products)", "GNL (Qatar ed Emirati)": "LNG (Qatar and UAE)", "Urea": "Urea",
+"da un quarto (tutto l'export) al 43% (solo via mare) dell'urea mondiale": "from a quarter (all exports) to 43% (seaborne only) of world urea",
+"Container": "Containers", "nessun volume in TEU nei file; si vedono le navi al giorno di PortWatch qui sopra": "no TEU volume in the files; see the PortWatch ships per day above",
+"Cibo verso il Golfo": "Food into the Gulf", "flusso in entrata: il 70% delle importazioni caloriche del Golfo interrotto a metà marzo 2026": "inbound flow: 70% of the Gulf's calorie imports interrupted in mid-March 2026",
+"Oleodotto Est-Ovest (Abqaiq–Yanbu), capacità libera": "East–West pipeline (Abqaiq–Yanbu), spare capacity",
+"ADCOP (Habshan–Fujairah), capacità libera": "ADCOP (Habshan–Fujairah), spare capacity", "Goreh–Jask (Iran): fermo": "Goreh–Jask (Iran): idle",
+"Il porto di Yanbu limita l'export di greggio a circa 5 mb/g: per questo il massimo del bypass saudita è 5 e non 7.": "The port of Yanbu caps crude exports at about 5 mb/d: that is why the Saudi bypass maximum is 5, not 7.",
+"Nessuna via alternativa per il GNL (Dolphin ha poca capacità libera)": "No alternative route for LNG (Dolphin has little spare capacity)",
+"Greggio importato dal Golfo Persico": "Crude imported from the Persian Gulf", "GNL importato dal Golfo Persico": "LNG imported from the Persian Gulf",
+"Esposizione diretta bassa sui volumi (nessun dato nei file); la Danimarca è esposta attraverso i prezzi europei di gas e petrolio.": "Low direct exposure by volume (no data in the files); Denmark is exposed through European gas and oil prices.",
+"Adriatic LNG (Rovigo)": "Adriatic LNG (Rovigo)",
+"il terminale che riceveva il GNL del Qatar: 14,1% degli ingressi di gas in Italia negli ultimi 12 mesi": "the terminal that received Qatari LNG: 14.1% of gas entering Italy in the last 12 months",
+"porto di energia e rinfuse: chiamate in calo su un anno": "energy and bulk port: calls down year on year",
+"porto del greggio per l'oleodotto TAL verso Austria e Germania": "crude port for the TAL pipeline to Austria and Germany",
+"Gate LNG (Rotterdam)": "Gate LNG (Rotterdam)",
+"il più grande rigassificatore olandese: con il GNL del Golfo fermo, l'Europa compete con l'Asia per i carichi atlantici (valutazione)": "the largest Dutch regasification terminal: with Gulf LNG halted, Europe competes with Asia for Atlantic cargoes (assessment)",
+"Fujairah e Yanbu": "Fujairah and Yanbu",
+"porti di uscita dei bypass: più traffico, ma Fujairah è stata colpita più volte (valutazione)": "outlet ports for the bypasses: more traffic, but Fujairah has been hit several times (assessment)",
+"Chi ne beneficia": "Beneficiaries",
+"Il flusso di riferimento è quello del 2026 (8,1 mb/g), gonfiato dal greggio saudita deviato a Yanbu perché Hormuz è chiuso: oggi Bab el-Mandeb è il «secondo Hormuz».": "The reference flow is the 2026 one (8.1 mb/d), inflated by Saudi crude diverted to Yanbu because Hormuz is closed: today Bab el-Mandeb is the “second Hormuz”.",
+"Petrolio (2° trimestre 2026)": "Oil (Q2 2026)", "GNL (Mar Rosso con Suez e SUMED)": "LNG (Red Sea with Suez and SUMED)",
+"circa l'8% del GNL mondiale nel 2023; nel 2026 il GNL del Golfo è già fermo a Hormuz": "about 8% of world LNG in 2023; in 2026 Gulf LNG is already halted at Hormuz",
+"Container e auto": "Containers and cars", "rotta Asia–Europa; 144 viaggi di car carrier nel 3° trimestre 2026": "Asia–Europe route; 144 car-carrier voyages in Q3 2026",
+"Cereali": "Cereals", "circa l'8% del commercio mondiale di cereali passa dal Mar Rosso": "about 8% of world cereal trade passes through the Red Sea",
+"SUMED (Ain Sukhna–Sidi Kerir) verso il Mediterraneo": "SUMED (Ain Sukhna–Sidi Kerir) to the Mediterranean",
+"Il resto del greggio saudita diretto in Asia non ha alternative se non un giro di settimane (valutazione dell'osservatorio): il modello lo tratta come offerta persa nel periodo.": "The rest of the Saudi crude bound for Asia has no alternative except a detour of weeks (observatory assessment): the model treats it as supply lost over the period.",
+"Capo di Buona Speranza": "Cape of Good Hope",
+"Greggio importato dall'Arabia Saudita": "Crude imported from Saudi Arabia", "Merci importate dalla Cina (rotta Asia–Europa)": "Goods imported from China (Asia–Europe route)",
+"Nessun dato paese nei file. Il gruppo Maersk (Danimarca) è tra le compagnie container che deviano dal Capo quando il Mar Rosso è insicuro (valutazione, nessun dato nei file).": "No country data in the files. The Maersk group (Denmark) is among the container lines that divert round the Cape when the Red Sea is unsafe (assessment, no data in the files).",
+"Gioia Tauro, Genova, Trieste, La Spezia": "Gioia Tauro, Genoa, Trieste, La Spezia",
+"con il giro dal Capo l'Italia perde il vantaggio di primo approdo": "with the Cape detour Italy loses its first-call advantage",
+"Tanger Med, Algeciras, Valencia": "Tanger Med, Algeciras, Valencia",
+"le navi entrano da Gibilterra e scaricano prima qui": "ships enter through Gibraltar and unload here first",
+"Rotterdam, Anversa, Amburgo": "Rotterdam, Antwerp, Hamburg",
+"i porti del nord Europa guadagnano quota sulla rotta del Capo (valutazione)": "Northern European ports gain share on the Cape route (assessment)",
+"terminale saudita sul Mar Rosso: senza Bab el-Mandeb il greggio per l'Asia resta bloccato": "Saudi terminal on the Red Sea: without Bab el-Mandeb crude for Asia is stuck",
+"Ne soffrirebbero": "Would suffer", "Canale di Suez": "Suez Canal",
+"753.000 TEU a settimana a inizio ottobre 2026, contro 1.457.000 nel 2023": "753,000 TEU a week in early October 2026, against 1,457,000 in 2023",
+"GNL": "LNG", "140 metaniere nel 2025 (509 nel 2021)": "140 LNG carriers in 2025 (509 in 2021)",
+"Commercio mondiale": "World trade", "dal 12 al 15% del commercio mondiale (2023)": "12 to 15% of world trade (2023)",
+"SUMED (solo greggio, tra Mar Rosso e Mediterraneo)": "SUMED (crude only, between the Red Sea and the Mediterranean)",
+"Il petrolio che non passa dal SUMED gira dal Capo: arriva più tardi ma non è perso.": "Oil that cannot use SUMED goes round the Cape: it arrives later but is not lost.",
+"Nessun dato paese nei file. Per i porti danesi conta soprattutto l'effetto sui noli Asia–Nord Europa (valutazione).": "No country data in the files. For Danish ports the main effect is on Asia–Northern Europe freight rates (assessment).",
+"primo approdo europeo della rotta di Suez": "first European port of call on the Suez route",
+"Genova": "Genoa", "porto container": "container port", "porto container e del greggio TAL": "container port and TAL crude port",
+"favoriti dalla rotta del Capo": "favoured by the Cape route", "Ne beneficiano": "Beneficiaries",
+"Stretto di Malacca": "Strait of Malacca",
+"il 17% delle traversate delle metaniere del mondo": "17% of the world's LNG carrier transits",
+"Container e commercio": "Containers and trade", "con lo Stretto di Taiwan, quasi metà del commercio mondiale via mare": "together with the Taiwan Strait, almost half of world seaborne trade",
+"Soia": "Soybeans", "oltre un quarto dell'export mondiale di soia (studio del 2017)": "over a quarter of world soybean exports (2017 study)",
+"Stretti di Lombok e della Sonda (rotta, non oleodotto)": "Lombok and Sunda Straits (a route, not a pipeline)",
+"Lombok e Sonda assorbono tutto il traffico con qualche giorno in più (valutazione dell'osservatorio): il volume scoperto è zero, il costo è nel tempo di viaggio.": "Lombok and Sunda absorb all the traffic at the cost of a few extra days (observatory assessment): uncovered volume is zero, the cost is in voyage time.",
+"Stretti di Lombok o della Sonda": "Lombok or Sunda Straits", "per tratta": "per leg",
+"Greggio dal Golfo (per l'Asia orientale passa da Malacca; non per l'India)": "Crude from the Gulf (passes Malacca for East Asia, not for India)",
+"Nessun dato paese nei file. Effetto indiretto via noli e tempi di consegna Asia–Europa (valutazione).": "No country data in the files. Indirect effect through Asia–Europe freight rates and delivery times (assessment).",
+"bunker e trasbordo: il porto più colpito da una chiusura": "bunkering and transhipment: the port hardest hit by a closure",
+"Porti container europei (Rotterdam, Genova, Gioia Tauro)": "European container ports (Rotterdam, Genoa, Gioia Tauro)",
+"le navi Asia–Europa partono da Cina e Corea e passano da Malacca: ritardi di qualche giorno (valutazione)": "Asia–Europe ships sail from China and Korea through Malacca: delays of a few days (assessment)",
+"Stretto di Taiwan": "Taiwan Strait",
+"Il modello tratta solo la rotta marittima (aggirare l'isola a est). Un blocco militare di Taiwan colpirebbe soprattutto i semiconduttori, che il modello non quantifica: Bloomberg Economics stima −5% del PIL mondiale per un anno di blocco.": "The model covers only the sea route (going round the east of the island). A military blockade of Taiwan would hit semiconductors above all, which the model does not quantify: Bloomberg Economics estimates −5% of world GDP for a year-long blockade.",
+"Portacontainer": "Container ships", "il 48% delle 5.400 portacontainer del mondo è passato dallo stretto (gennaio–luglio 2022)": "48% of the world's 5,400 container ships passed through the strait (January–July 2022)",
+"Commercio marittimo": "Seaborne trade", "oltre un quinto del commercio marittimo mondiale": "over a fifth of world seaborne trade",
+"Semiconduttori": "Semiconductors", "fino a 1.600 miliardi di dollari di ricavi l'anno a rischio in un blocco": "up to 1.6 trillion dollars a year of revenue at risk in a blockade",
+"Nei file non c'è un volume di petrolio per lo Stretto di Taiwan: il modello non calcola mb/g scoperti.": "The files contain no oil volume for the Taiwan Strait: the model does not compute uncovered mb/d.",
+"Rotta a est di Taiwan": "Route east of Taiwan", "di ritardo": "of delay",
+"Merci importate dalla Cina": "Goods imported from China", "GNL dal Golfo (proxy della dipendenza dal GNL spot via mare)": "LNG from the Gulf (proxy for dependence on seaborne spot LNG)",
+"Nessun dato paese nei file. Esposizione indiretta ma grande via chip per industria e macchinari (valutazione).": "No country data in the files. Indirect but large exposure through chips for industry and machinery (assessment).",
+"Porti container europei": "European container ports",
+"ritardi di qualche giorno sulle partenze dalla Cina orientale, dalla Corea e dal Giappone (valutazione)": "delays of a few days on sailings from eastern China, Korea and Japan (assessment)",
+"Industria europea dei chip e dell'auto": "European chip and car industry",
+"esposizione indiretta ma grande: chip per auto, macchinari ed elettronica": "indirect but large exposure: chips for cars, machinery and electronics",
+"Bosforo (stretti turchi)": "Bosphorus (Turkish Straits)", "Bosforo": "Bosphorus",
+"Il traffico del Bosforo è già −55% su un anno (PortWatch) per la guerra sui porti del Mar Nero.": "Bosphorus traffic is already −55% year on year (PortWatch) because of the war on Black Sea ports.",
+"Greggio kazako CPC": "Kazakh CPC crude", "il terminale CPC di Novorossiysk tratta l'80% dell'export di greggio del Kazakistan": "the CPC terminal at Novorossiysk handles 80% of Kazakhstan's crude exports",
+"Grano": "Wheat", "Russia e Ucraina valgono il 27,3% dell'export mondiale di grano; circa un quinto passa dagli stretti": "Russia and Ukraine account for 27.3% of world wheat exports; about a fifth passes through the straits",
+"Nessuna alternativa vera per il greggio CPC e l'Urals del Mar Nero": "No real alternative for CPC crude and Black Sea Urals",
+"Greggio importato dal Kazakistan (CPC)": "Crude imported from Kazakhstan (CPC)", "Greggio importato dalla Russia": "Crude imported from Russia",
+"Nessun dato paese nei file; nessun flusso diretto noto.": "No country data in the files; no known direct flow.",
+"Raffinerie italiane (Augusta, Trieste per il TAL)": "Italian refineries (Augusta, Trieste for the TAL)",
+"lo stop del greggio CPC tocca direttamente le raffinerie italiane (valutazione)": "a halt to CPC crude directly hits Italian refineries (assessment)",
+"Novorossiysk, Odesa": "Novorossiysk, Odesa", "porti di carico del Mar Nero, già sotto attacco nel 2026": "Black Sea loading ports, already under attack in 2026",
+"Ne soffrono": "Suffer", "Stretti danesi": "Danish Straits",
+"PortWatch misura solo l'Øresund, non il Grande Belt dove passano le petroliere più grandi.": "PortWatch measures only the Øresund, not the Great Belt used by the largest tankers.",
+"Quota russa": "Russian share", "circa un terzo dell'export di petrolio russo via mare": "about a third of Russia's seaborne oil exports",
+"nessun volume in TEU nei file; l'accesso container al Baltico passa da qui (valutazione)": "no TEU volume in the files; container access to the Baltic runs through here (assessment)",
+"Nessuna alternativa marittima per il petrolio russo del Baltico": "No sea alternative for Russian Baltic oil",
+"Se il blocco toccasse solo le petroliere russe, l'osservatorio stima circa 2 mb/g tolti al mercato invece di 4,7.": "If the blockade hit only Russian tankers, the observatory estimates about 2 mb/d removed from the market instead of 4.7.",
+"La Danimarca è lo Stato costiero: il rischio è più ambientale (petroliere vecchie senza assicurazione) e di sicurezza (cavi e gasdotti del Baltico) che di approvvigionamento.": "Denmark is the coastal state: the risk is more environmental (old, uninsured tankers) and security-related (Baltic cables and pipelines) than one of supply.",
+"Primorsk e Ust-Luga": "Primorsk and Ust-Luga", "terminali russi del Baltico: senza gli stretti il petrolio non esce": "Russian Baltic terminals: without the straits the oil cannot get out",
+"Porti del Baltico (Danzica, Klaipėda, porti finlandesi)": "Baltic ports (Gdańsk, Klaipėda, Finnish ports)",
+"tutto il traffico oceanico verso il Baltico passa dagli stretti danesi; il Canale di Kiel serve solo navi più piccole (valutazione, nessun dato nei file)": "all ocean-going traffic to the Baltic passes through the Danish Straits; the Kiel Canal only takes smaller ships (assessment, no data in the files)",
+"Rotterdam e Amburgo": "Rotterdam and Hamburg",
+"possibili porti di trasbordo verso il Baltico via feeder e Canale di Kiel (valutazione, nessun dato nei file)": "possible transhipment ports for the Baltic via feeders and the Kiel Canal (assessment, no data in the files)",
+"Ne beneficerebbero": "Would benefit", "Canale di Panama": "Panama Canal",
+"il 40% del traffico container degli Stati Uniti": "40% of US container traffic",
+"Soia e mais": "Soybeans and maize", "il 29% della soia e il 18% del mais esportati dagli USA": "29% of US soybean and 18% of US maize exports",
+"32 metaniere nel 2025 (251 nel 2021)": "32 LNG carriers in 2025 (251 in 2021)",
+"Le alternative (Suez, Capo, Capo Horn, ponte terrestre USA) sono più lunghe di molti giorni, ma nei file non c'è un numero di giorni verificato.": "The alternatives (Suez, the Cape, Cape Horn, the US land bridge) are many days longer, but the files contain no verified number of days.",
+"Suez, Capo di Buona Speranza o Capo Horn": "Suez, the Cape of Good Hope or Cape Horn",
+"GNL importato dagli Stati Uniti": "LNG imported from the United States", "Greggio importato dagli Stati Uniti": "Crude imported from the United States",
+"Nessun dato paese nei file. Esposizione diretta bassa, come per il resto d'Europa (valutazione).": "No country data in the files. Low direct exposure, as for the rest of Europe (assessment).",
+"Porti della costa est USA": "US East Coast ports", "ricevono i container asiatici via Panama": "receive Asian containers via Panama",
+"Porti europei": "European ports", "esposizione diretta bassa: Panama conta per i noli mondiali e i prezzi agricoli USA": "low direct exposure: Panama matters for world freight rates and US farm prices",
+"Canale di Sicilia (TransMed)": "Strait of Sicily (TransMed)", "Sicilia/TransMed": "Sicily/TransMed",
+"Lo scenario riguarda il gasdotto TransMed (Algeria–Tunisia–Mazara del Vallo), non il traffico navale: PortWatch non misura il Canale di Sicilia.": "The scenario concerns the TransMed gas pipeline (Algeria–Tunisia–Mazara del Vallo), not shipping: PortWatch does not measure the Strait of Sicily.",
+"Gas, TransMed": "Gas, TransMed", "220,5 TWh negli ultimi 12 mesi, il 34% degli ingressi di gas in Italia": "220.5 TWh in the last 12 months, 34% of gas entering Italy",
+"Gas, Greenstream (Libia–Gela)": "Gas, Greenstream (Libya–Gela)", "5,1 TWh negli ultimi 12 mesi (0,8% degli ingressi); il modello non lo include": "5.1 TWh in the last 12 months (0.8% of entries); the model does not include it",
+"Bypass = capacità libera dei rigassificatori italiani (capacità GEM meno uso degli ultimi 12 mesi da ENTSOG). Minimo zero: nel 2026 il GNL è scarso e i carichi non sono garantiti (ipotesi).": "Bypass = spare capacity of Italian regasification terminals (GEM capacity minus use over the last 12 months from ENTSOG). Minimum zero: in 2026 LNG is scarce and cargoes are not guaranteed (assumption).",
+"Nessun flusso diretto: il TransMed finisce in Italia.": "No direct flow: TransMed ends in Italy.",
+"punto di ingresso del TransMed nella rete Snam": "TransMed entry point into the Snam network",
+"Rigassificatori (Rovigo, Piombino, Livorno, Ravenna, Panigaglia)": "Regasification terminals (Rovigo, Piombino, Livorno, Ravenna, Panigaglia)",
+"dovrebbero lavorare al massimo per sostituire il gas algerino": "would have to run flat out to replace Algerian gas",
+"Cavi sottomarini (Mazara del Vallo)": "Subsea cables (Mazara del Vallo)",
+"Mazara è anche il primo approdo di cavi d'Italia (8 cavi): un danno fisico nel Canale potrebbe toccare anche le telecomunicazioni (valutazione)": "Mazara is also Italy's leading cable landing (8 cables): physical damage in the Strait could also affect telecommunications (assessment)",
+};
+const SIM_KEYS = new Set(["cerca", "id", "s", "sez", "rif", "rif2", "portwatch", "gnl", "gas_italia", "stretto", "rotte", "cavi", "partner", "ind", "tipo", "meccanismo", "segno", "link", "file", "altri", "bypass_calcolato", "esposizione_gas_italia", "cavi_approdo", "unita"]);
+function enSim(o, k) {                                    // swap the Italian texts of the model for English, except the search keys
+  if (Array.isArray(o)) return o.map(x => enSim(x, k));
+  if (o && typeof o === "object") { for (const kk in o) if (!SIM_KEYS.has(kk)) o[kk] = enSim(o[kk], kk); return o; }
+  return typeof o === "string" && Object.prototype.hasOwnProperty.call(EN_SIM, o) ? EN_SIM[o] : o;
+}
+
 
 function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
 function n(x, d = 1) {
-  if (x == null || isNaN(x)) return "n.d.";
-  const t = NF(d).format(x);
-  return t.replace(/^(-?)(\d{4})(?=,|$)/, (m, s, g) => s + g.slice(0, 1) + "." + g.slice(1));
+  if (x == null || isNaN(x)) return "n/a";
+  return NF(d).format(x);
 }
-function sgn(x, d = 0) { if (x == null || isNaN(x)) return "n.d."; const r = Number(x.toFixed(d)); return (r > 0 ? "+" : r < 0 ? "−" : "") + n(Math.abs(r), d); }
-function rng(a, b, d = 1, f = n) { if (a == null || b == null) return "n.d."; return Math.abs(a - b) < Math.pow(10, -d) / 2 ? f(a, d) : f(a, d) + "–" + f(b, d).replace(/^\+/, "+"); }
-function rngS(a, b, d = 0) { if (a == null || b == null) return "n.d."; if (Math.abs(a - b) < Math.pow(10, -d) / 2) return sgn(a, d) + "%"; return sgn(a, d) + "% … " + sgn(b, d) + "%"; }
+function sgn(x, d = 0) { if (x == null || isNaN(x)) return "n/a"; const r = Number(x.toFixed(d)); return (r > 0 ? "+" : r < 0 ? "−" : "") + n(Math.abs(r), d); }
+function rng(a, b, d = 1, f = n) { if (a == null || b == null) return "n/a"; return Math.abs(a - b) < Math.pow(10, -d) / 2 ? f(a, d) : f(a, d) + "–" + f(b, d).replace(/^\+/, "+"); }
+function rngS(a, b, d = 0) { if (a == null || b == null) return "n/a"; if (Math.abs(a - b) < Math.pow(10, -d) / 2) return sgn(a, d) + "%"; return sgn(a, d) + "% … " + sgn(b, d) + "%"; }
 function dataIt(s) { if (!s) return ""; const [y, m, g] = s.slice(0, 10).split("-").map(Number); return g ? `${g} ${MESI[m - 1]} ${y}` : `${MESI[m - 1]} ${y}`; }
-function dataBreve(s) { if (!s) return ""; const [y, m, g] = s.slice(0, 10).split("-"); return `${+g}/${+m}/${y}`; }
+function dataBreve(s) { if (!s) return ""; const [y, m, g] = s.slice(0, 10).split("-"); return `${+g} ${MESI[+m - 1].slice(0, 3)} ${y}`; }
 
 /* --- fonti --- */
 function voce(r) { if (!r) return null; const s = D.schede[r.s]; return s && s[r.sez] ? s[r.sez][r.i] : null; }
@@ -234,13 +417,13 @@ function fonteBreve(f) { return String(f || "").split(/[,«:(]/)[0].replace(/\s+
 function srcRif(r, extra) {
   const v = voce(r); if (!v) return "";
   const tip = esc(`${v.fonte} — ${v.anno}${v.tipo ? " (" + v.tipo + ")" : ""}${/^https?:/.test(v.link) ? "" : " — " + (v.link || "")}`);
-  const testo = `${esc(v.tipo === "valutazione" ? "Valutazione dell'osservatorio" : fonteBreve(v.fonte))} · ${esc(v.anno)}${extra ? " · " + esc(extra) : ""}`;
+  const testo = `${esc(v.tipo === "valutazione" ? "Observatory assessment" : fonteBreve(v.fonte))} · ${esc(v.anno)}${extra ? " · " + esc(extra) : ""}`;
   if (/^https?:/.test(v.link)) return `<a class="src" href="${esc(v.link)}" target="_blank" rel="noopener" title="${tip}">${testo}</a>`;
   return `<span class="src" title="${tip}">${testo}</span>`;
 }
 function srcFile(nome, quando, link) {
   const href = link || ("data/" + nome);
-  return `<a class="src" href="${esc(href)}" target="_blank" rel="noopener" title="File dell'osservatorio: ${esc(nome)}">${esc(nome)}${quando ? " · " + esc(quando) : ""}</a>`;
+  return `<a class="src" href="${esc(href)}" target="_blank" rel="noopener" title="Observatory file: ${esc(nome)}">${esc(nome)}${quando ? " · " + esc(quando) : ""}</a>`;
 }
 function srcTesto(t, link) { return link ? `<a class="src" href="${esc(link)}" target="_blank" rel="noopener">${esc(t)}</a>` : `<span class="src">${esc(t)}</span>`; }
 function tipoVoce(r) { const v = voce(r); return v ? v.tipo : ""; }
@@ -249,10 +432,10 @@ function tipoVoce(r) { const v = voce(r); return v ? v.tipo : ""; }
 async function carica() {
   const res = await Promise.all(FILE.map(f => fetch("data/" + f + ".json").then(r => { if (!r.ok) throw new Error(f + ".json: " + r.status); return r.json(); })));
   FILE.forEach((f, i) => D[f] = res[i]);
-  D.M = D["simulatore"];
+  D.M = enSim(D["simulatore"]);
   D.schede = Object.fromEntries(D["stretti-dettaglio"].elementi.map(e => [e.id, e]));
   D.pw = Object.fromEntries(D.portwatch.elementi.map(e => [e.nome, e]));
-  D.paesi = Object.fromEntries(D.paesi.elementi.map(p => [p.paese, p]));
+  D.paesi = Object.fromEntries(D.paesi.elementi.map(p => [p.paese, Object.assign(p, { nome: NOMI_EN[p.nome] || p.nome })]));
   D.prezzi = Object.fromEntries(D.prezzi.serie.map(s => [s.id, s]));
   D.noli = Object.fromEntries(D.noli.elementi.map(e => [e.id, e]));
   D.scorte = Object.fromEntries(D.scorte.elementi.map(e => [e.id, e]));
@@ -290,7 +473,7 @@ function scalaGiorni(rotta) {
   const capo = [14, 24];
   return [rotta.giorni[0] / capo[1], rotta.giorni[1] / capo[0]];
 }
-function bypassGnlItalia() { const c = D.M.calcolato.gnl_italia; return [{ nome: "Capacità libera dei rigassificatori italiani", min: 0, max: c.libera_bcm, calcolato: true }]; }
+function bypassGnlItalia() { const c = D.M.calcolato.gnl_italia; return [{ nome: "Spare capacity of Italian regasification terminals", min: 0, max: c.libera_bcm, calcolato: true }]; }
 function calcola(p, q, giorni, w) {
   const M = D.M, H = M.episodi.hormuz_2026.calcolato, RS = M.episodi.mar_rosso_2023.calcolato;
   const r = { q, giorni, w };
@@ -363,8 +546,8 @@ function barStyle(q) {
 }
 const EUROPA = ["IT", "DE", "FR", "GB", "ES", "NL", "PL", "NO", "UA", "TR"];
 function fmtQuota(x) {
-  if (!x) return "n.d.";
-  if (x.sotto) return "meno di " + n(x.max, 1) + "%";
+  if (!x) return "n/a";
+  if (x.sotto) return "less than " + n(x.max, 1) + "%";
   return (Math.abs(x.min - x.max) < 0.05 ? n(x.max, 1) : n(x.min, 1) + "–" + n(x.max, 1)) + "%";
 }
 
@@ -376,7 +559,7 @@ function barraIntervallo(lo, hi, ep, max) {
   const off = neg < 0 ? 0 : 0;
   return `<div class="intervallo" aria-hidden="true"><div class="asse"></div><div class="zero" style="left:${off}%"></div>
     <div class="rng" style="left:${L(Math.max(0, lo))}%;width:${Math.max(1, L(hi) - L(Math.max(0, lo)))}%"></div>
-    ${ep != null ? `<div class="ep" style="left:${L(ep)}%" title="episodio di riferimento"></div>` : ""}</div>
+    ${ep != null ? `<div class="ep" style="left:${L(ep)}%" title="reference episode"></div>` : ""}</div>
     <div class="scala-et"><span>0%</span><span>+${n(m / 2, 0)}%</span><span>+${n(m, 0)}%</span></div>`;
 }
 function disegna() {
@@ -390,70 +573,70 @@ function disegna() {
   const pw = p.portwatch ? D.pw[p.portwatch] : null;
   const H = M.episodi.hormuz_2026, RS = M.episodi.mar_rosso_2023;
   const brent = D.prezzi.brent, ttf = D.prezzi.ttf, wci = D.noli.wci;
-  const titolo = `${p.nome}: ${io.etichetta.toLowerCase()} per ${du.etichetta}`;
+  const titolo = `${p.nome}: ${io.etichetta.toLowerCase()} for ${du.etichetta}`;
   let h = "";
 
   // stato oggi
-  h += `<div class="stato" aria-label="Stato oggi"><span>Stato oggi: <b>${esc(sch.stato)}</b> ${srcFile("stretti-dettaglio.json", dataBreve(D["stretti-dettaglio"].aggiornato))}</span>`;
-  if (pw) h += `<span>Navi al giorno (media 7 gg al ${dataBreve(pw.ultima_data)}): <b>${n(pw.media7.n_total, 1)}</b>, ${sgn(pw.var7_anno_pct.n_total, 0)}% su un anno ${srcTesto("IMF PortWatch · " + dataBreve(pw.data_fonte), pw.link)}</span>`;
+  h += `<div class="stato" aria-label="Status today"><span>Status today: <b>${esc(STATI_EN[sch.stato] || sch.stato)}</b> ${srcFile("stretti-dettaglio.json", dataBreve(D["stretti-dettaglio"].aggiornato))}</span>`;
+  if (pw) h += `<span>Ships per day (7-day average to ${dataBreve(pw.ultima_data)}): <b>${n(pw.media7.n_total, 1)}</b>, ${sgn(pw.var7_anno_pct.n_total, 0)}% year on year ${srcTesto("IMF PortWatch · " + dataBreve(pw.data_fonte), pw.link)}</span>`;
   h += `</div>`;
   if (p.avviso) h += `<div class="avviso">${esc(p.avviso)} ${p.avviso_rif ? srcRif(p.avviso_rif) : ""}</div>`;
 
   // sintesi
-  const kOil = r.oil ? `${rng(r.oil.scop[0], r.oil.scop[1], 1)} mb/g` : "n.d.";
-  const kOilSub = r.oil ? `su ${n(r.oil.flusso, 1)} mb/g che passano; ${r.oil.mecc === "deviazione" ? `${n(r.oil.colpito, 1)} mb/g girano su un'altra rotta, nessuna perdita di offerta` : r.oil.scop[1] === 0 ? "tutto preso dai bypass" : r.oil.bmax === 0 ? "nessuna via alternativa" : "il resto senza via di uscita"}` : (p.gnl && r.gas ? `gas: ${rng(r.gas.scop[0], r.gas.scop[1], 1)} bcm/anno scoperti` : "nessun volume di petrolio nei file");
-  const pct = (x, cls = true) => x ? `<span class="${cls ? (x[1] > 0.5 ? "su" : x[1] < -0.5 ? "giu" : "") : ""}">${rngS(x[0], x[1], 0)}</span>` : `<span class="nd">n.d.</span>`;
+  const kOil = r.oil ? `${rng(r.oil.scop[0], r.oil.scop[1], 1)} mb/d` : "n/a";
+  const kOilSub = r.oil ? `of ${n(r.oil.flusso, 1)} mb/d passing through; ${r.oil.mecc === "deviazione" ? `${n(r.oil.colpito, 1)} mb/d diverted to another route, no loss of supply` : r.oil.scop[1] === 0 ? "all taken up by the bypasses" : r.oil.bmax === 0 ? "no alternative route" : "the rest has no way out"}` : (p.gnl && r.gas ? `gas: ${rng(r.gas.scop[0], r.gas.scop[1], 1)} bcm/yr uncovered` : "no oil volume in the files");
+  const pct = (x, cls = true) => x ? `<span class="${cls ? (x[1] > 0.5 ? "su" : x[1] < -0.5 ? "giu" : "") : ""}">${rngS(x[0], x[1], 0)}</span>` : `<span class="nd">n/a</span>`;
   const rotRot = wci.rotte && wci.rotte["Shanghai-Rotterdam"];
   h += `<h2 style="margin-top:4px">${esc(titolo)}</h2>`;
   h += `<div class="sintesi" role="list">
-    <div class="kpi" role="listitem"><p class="et">Petrolio scoperto</p><p class="val">${kOil}</p><p class="sub">${esc(kOilSub)}</p></div>
-    <div class="kpi" role="listitem"><p class="et">Brent</p><p class="val">${pct(r.brent.pct)}</p><p class="sub">${r.brent.pct ? `oggi ${n(brent.ultimo, 2)} $ → ${rng(brent.ultimo * (1 + r.brent.pct[0] / 100), brent.ultimo * (1 + r.brent.pct[1] / 100), 0)} $` : "non stimato"}</p></div>
-    <div class="kpi" role="listitem"><p class="et">Gas TTF</p><p class="val">${pct(r.ttf.pct)}</p><p class="sub">${r.ttf.pct ? `oggi ${n(ttf.ultimo, 2)} € → ${rng(ttf.ultimo * (1 + r.ttf.pct[0] / 100), ttf.ultimo * (1 + r.ttf.pct[1] / 100), 0)} €/MWh` : "nessun flusso di gas rilevante nei file"}</p></div>
-    <div class="kpi" role="listitem"><p class="et">Nolo Shanghai–Rotterdam</p><p class="val">${r.noli && r.noli.inc ? "+" + rng(r.noli.inc[0], r.noli.inc[1], 0) + " $" : r.noli && r.noli.sovrapprezzo ? "+1.500 $/TEU" : '<span class="nd">n.d.</span>'}</p><p class="sub">${r.noli && r.noli.inc ? `per FEU, da ${n(rotRot, 0)} $ oggi (WCI)` : r.noli && r.noli.sovrapprezzo ? "sovrapprezzo di guerra applicato nel 2026" : "nessun episodio documentato per stimarlo"}</p></div>
+    <div class="kpi" role="listitem"><p class="et">Oil uncovered</p><p class="val">${kOil}</p><p class="sub">${esc(kOilSub)}</p></div>
+    <div class="kpi" role="listitem"><p class="et">Brent</p><p class="val">${pct(r.brent.pct)}</p><p class="sub">${r.brent.pct ? `today $${n(brent.ultimo, 2)} → $${rng(brent.ultimo * (1 + r.brent.pct[0] / 100), brent.ultimo * (1 + r.brent.pct[1] / 100), 0)}` : "not estimated"}</p></div>
+    <div class="kpi" role="listitem"><p class="et">TTF gas</p><p class="val">${pct(r.ttf.pct)}</p><p class="sub">${r.ttf.pct ? `today €${n(ttf.ultimo, 2)} → €${rng(ttf.ultimo * (1 + r.ttf.pct[0] / 100), ttf.ultimo * (1 + r.ttf.pct[1] / 100), 0)}/MWh` : "no significant gas flow in the files"}</p></div>
+    <div class="kpi" role="listitem"><p class="et">Shanghai–Rotterdam freight</p><p class="val">${r.noli && r.noli.inc ? "+" + rng(r.noli.inc[0], r.noli.inc[1], 0) + " $" : r.noli && r.noli.sovrapprezzo ? "+1,500 $/TEU" : '<span class="nd">n/a</span>'}</p><p class="sub">${r.noli && r.noli.inc ? `per FEU, from $${n(rotRot, 0)} today (WCI)` : r.noli && r.noli.sovrapprezzo ? "war surcharge applied in 2026" : "no documented episode to estimate it"}</p></div>
   </div>`;
 
   h += `<div class="colonne"><div><ol class="catena">`;
 
   // 1. flussi
-  h += `<li class="passo"><div class="scheda"><h2>Flussi coinvolti</h2><p class="domanda">Che cosa passa da ${esc(p.nome)} in condizioni normali (anno accanto a ogni numero) e quanto ne viene colpito.</p><ul class="voci">`;
+  h += `<li class="passo"><div class="scheda"><h2>Flows involved</h2><p class="domanda">What passes through ${esc(p.nome)} in normal conditions (year next to each number) and how much of it is hit.</p><ul class="voci">`;
   for (const f of p.flussi) {
-    const col = f.valore != null ? ` <span class="piccolo">→ colpiti ${n(f.valore * io.quota, f.valore * io.quota < 10 ? 2 : 1)} ${esc(f.unita)}</span>` : "";
+    const col = f.valore != null ? ` <span class="piccolo">→ hit ${n(f.valore * io.quota, f.valore * io.quota < 10 ? 2 : 1)} ${esc(f.unita)}</span>` : "";
     let fonte = f.rif ? srcRif(f.rif) + (f.rif2 ? srcRif(f.rif2) : "") : "";
     if (f.gas_italia) fonte = srcRif(f.rif) + srcFile("gas-italia.json", "ENTSOG, 12 mesi");
-    h += `<li><span class="nome"><span class="tipo ${f.tipo}">${esc(f.tipo)}</span>${esc(f.etichetta)}</span>
-      <span class="num">${f.valore != null ? n(f.valore, f.valore % 1 ? 2 : 0) + " " + esc(f.unita) : ""}</span>
-      <span class="desc">${f.testo ? esc(f.testo) + " " : ""}${col}${fonte}${!f.rif && !f.gas_italia ? '<span class="src">nessuna fonte nei file</span>' : ""}</span></li>`;
+    h += `<li><span class="nome"><span class="tipo ${f.tipo}">${esc(TIPI_EN[f.tipo] || f.tipo)}</span>${esc(f.etichetta)}</span>
+      <span class="num">${f.valore != null ? n(f.valore, f.valore % 1 ? 2 : 0) + " " + esc(UNITA_EN[f.unita] || f.unita) : ""}</span>
+      <span class="desc">${f.testo ? esc(f.testo) + " " : ""}${col}${fonte}${!f.rif && !f.gas_italia ? '<span class="src">no source in the files</span>' : ""}</span></li>`;
   }
   if (pw) {
     const a = pw.media7_anno_prima || {}, b = pw.media7;
-    h += `<li><span class="nome"><span class="tipo container">navi</span>Navi al giorno per tipo, un anno fa → oggi</span><span class="num"></span>
-      <span class="desc">petroliere ${n(a.n_tanker, 1)} → ${n(b.n_tanker, 1)}; portacontainer ${n(a.n_container, 1)} → ${n(b.n_container, 1)}; rinfuse ${n(a.n_dry_bulk, 1)} → ${n(b.n_dry_bulk, 1)} ${srcTesto("IMF PortWatch · " + dataBreve(pw.data_fonte), pw.link)}</span></li>`;
+    h += `<li><span class="nome"><span class="tipo container">ships</span>Ships per day by type, a year ago → today</span><span class="num"></span>
+      <span class="desc">tankers ${n(a.n_tanker, 1)} → ${n(b.n_tanker, 1)}; container ships ${n(a.n_container, 1)} → ${n(b.n_container, 1)}; dry bulk ${n(a.n_dry_bulk, 1)} → ${n(b.n_dry_bulk, 1)} ${srcTesto("IMF PortWatch · " + dataBreve(pw.data_fonte), pw.link)}</span></li>`;
   }
   h += `</ul></div></li>`;
 
   // 2. bypass
-  h += `<li class="passo"><div class="scheda"><h2>Alternative e volume scoperto</h2><p class="domanda">Quanto del flusso colpito può prendere un'altra strada (oleodotti, altri stretti, altri terminali) e quanto resta senza uscita.</p>`;
+  h += `<li class="passo"><div class="scheda"><h2>Alternatives and uncovered volume</h2><p class="domanda">How much of the affected flow can take another route (pipelines, other straits, other terminals) and how much is left with no way out.</p>`;
   if (r.oil) {
     const o = r.oil, tot = o.flusso;
     const pc = v => (v / tot * 100).toFixed(2);
-    h += `<h3>Petrolio</h3><ul class="voci">`;
-    for (const b of p.petrolio.bypass) h += `<li><span class="nome">${esc(b.nome)}</span><span class="num">${b.min === b.max ? n(b.max, 1) : n(b.min, 1) + "–" + n(b.max, 1)} mb/g</span><span class="desc">${srcRif(b.rif)}</span></li>`;
-    if (!p.petrolio.bypass.length) h += `<li><span class="nome">Nessun bypass con capacità nota nei file</span><span class="num">—</span></li>`;
+    h += `<h3>Oil</h3><ul class="voci">`;
+    for (const b of p.petrolio.bypass) h += `<li><span class="nome">${esc(b.nome)}</span><span class="num">${b.min === b.max ? n(b.max, 1) : n(b.min, 1) + "–" + n(b.max, 1)} mb/d</span><span class="desc">${srcRif(b.rif)}</span></li>`;
+    if (!p.petrolio.bypass.length) h += `<li><span class="nome">No bypass with known capacity in the files</span><span class="num">—</span></li>`;
     h += `</ul>`;
     if (o.mecc === "deviazione") {
-      h += `<div class="calcolo">${n(tot, 2)} mb/g × ${n(io.quota * 100, 0)}% = <b>${n(o.colpito, 2)} mb/g</b> devono cambiare strada. Le navi girano: il petrolio arriva più tardi ma non si perde → scoperto <b>0 mb/g</b>.</div>`;
+      h += `<div class="calcolo">${n(tot, 2)} mb/d × ${n(io.quota * 100, 0)}% = <b>${n(o.colpito, 2)} mb/d</b> must change route. Ships divert: the oil arrives later but is not lost → uncovered <b>0 mb/d</b>.</div>`;
     } else {
-      h += `<div class="calcolo">${n(tot, 2)} mb/g × ${n(io.quota * 100, 0)}% = ${n(o.colpito, 2)} mb/g colpiti − bypass ${rng(o.bmin, o.bmax, 1)} mb/g = <b>${rng(o.scop[0], o.scop[1], 1)} mb/g scoperti</b><br>× ${du.giorni} giorni = <b>${rng(o.cum[0], o.cum[1], 0)} milioni di barili</b> mancanti nel periodo (riserve IEA rilasciate nel 2026: 400 milioni ${srcRif(M.regole.volume_cumulato.rif)})</div>`;
-      h += `<div class="barra" role="img" aria-label="Flusso: non colpito, assorbito dai bypass, scoperto">
+      h += `<div class="calcolo">${n(tot, 2)} mb/d × ${n(io.quota * 100, 0)}% = ${n(o.colpito, 2)} mb/d hit − bypass ${rng(o.bmin, o.bmax, 1)} mb/d = <b>${rng(o.scop[0], o.scop[1], 1)} mb/d uncovered</b><br>× ${du.giorni} days = <b>${rng(o.cum[0], o.cum[1], 0)} million barrels</b> missing over the period (IEA reserves released in 2026: 400 million ${srcRif(M.regole.volume_cumulato.rif)})</div>`;
+      h += `<div class="barra" role="img" aria-label="Flow: not hit, absorbed by the bypasses, uncovered">
         <span style="width:${pc(tot - o.colpito)}%;background:var(--bar-a)"></span>
         <span style="width:${pc(o.ass[0])}%;background:var(--bar-b)"></span>
         <span style="width:${pc(o.ass[1] - o.ass[0])}%;background:repeating-linear-gradient(45deg,var(--bar-b) 0 4px,var(--accent) 4px 8px)"></span>
         <span style="width:${pc(o.scop[0])}%;background:var(--accent)"></span></div>
-        <div class="legenda"><span><i style="background:var(--bar-a)"></i>non colpito</span><span><i style="background:var(--bar-b)"></i>preso dai bypass</span><span><i style="background:repeating-linear-gradient(45deg,var(--bar-b) 0 3px,var(--accent) 3px 6px)"></i>incerto</span><span><i style="background:var(--accent)"></i>scoperto</span></div>`;
+        <div class="legenda"><span><i style="background:var(--bar-a)"></i>not hit</span><span><i style="background:var(--bar-b)"></i>taken by the bypasses</span><span><i style="background:repeating-linear-gradient(45deg,var(--bar-b) 0 3px,var(--accent) 3px 6px)"></i>uncertain</span><span><i style="background:var(--accent)"></i>uncovered</span></div>`;
     }
     if (p.petrolio.nota) h += `<p class="piccolo" style="margin-top:8px">${esc(p.petrolio.nota)} ${p.petrolio.nota_rif ? srcRif(p.petrolio.nota_rif) : ""}</p>`;
   } else if (p.petrolio && p.petrolio.nota) {
-    h += `<h3>Petrolio</h3><p class="piccolo">${esc(p.petrolio.nota)}</p>`;
+    h += `<h3>Oil</h3><p class="piccolo">${esc(p.petrolio.nota)}</p>`;
   }
   if (r.gas) {
     const g = r.gas;
@@ -461,56 +644,56 @@ function disegna() {
     for (const b of g.by) {
       if (b.calcolato) {
         const c = M.calcolato.gnl_italia;
-        h += `<li><span class="nome">${esc(b.nome)}</span><span class="num">0–${n(b.max, 1)} bcm/anno</span><span class="desc">capacità ${n(c.capacita_bcm, 1)} bcm/anno ${srcFile("terminali-gnl.json", "GEM 2026")} meno uso degli ultimi 12 mesi ${n(c.uso_12m_bcm, 1)} ${srcFile("gas-italia.json", "ENTSOG")}</span></li>`;
-      } else h += `<li><span class="nome">${esc(b.nome)}</span><span class="num">${n(b.max, 1)} bcm/anno</span><span class="desc">${srcRif(b.rif)}</span></li>`;
+        h += `<li><span class="nome">${esc(b.nome)}</span><span class="num">0–${n(b.max, 1)} bcm/yr</span><span class="desc">capacity ${n(c.capacita_bcm, 1)} bcm/yr ${srcFile("terminali-gnl.json", "GEM 2026")} minus use over the last 12 months ${n(c.uso_12m_bcm, 1)} ${srcFile("gas-italia.json", "ENTSOG")}</span></li>`;
+      } else h += `<li><span class="nome">${esc(b.nome)}</span><span class="num">${n(b.max, 1)} bcm/yr</span><span class="desc">${srcRif(b.rif)}</span></li>`;
     }
-    h += `</ul><div class="calcolo">${n(g.flusso, g.flusso % 1 ? 2 : 0)} bcm/anno × ${n(io.quota * 100, 0)}% = ${n(g.colpito, 1)} colpiti − alternative ${rng(g.bmin, g.bmax, 1)} = <b>${rng(g.scop[0], g.scop[1], 1)} bcm/anno scoperti</b>`;
+    h += `</ul><div class="calcolo">${n(g.flusso, g.flusso % 1 ? 2 : 0)} bcm/yr × ${n(io.quota * 100, 0)}% = ${n(g.colpito, 1)} hit − alternatives ${rng(g.bmin, g.bmax, 1)} = <b>${rng(g.scop[0], g.scop[1], 1)} bcm/yr uncovered</b>`;
     if (p.id === "canale-di-sicilia") {
       const st = D.scorte.gas_stoccaggio_twh_it;
-      h += `<br>= ${rng(g.gwhGiorno[0], g.gwhGiorno[1], 0)} GWh al giorno; in ${du.giorni} giorni <b>${rng(g.twhPeriodo[0], g.twhPeriodo[1], 1)} TWh</b>, cioè ${rng(g.twhPeriodo[0] / st.ultimo.valore * 100, g.twhPeriodo[1] / st.ultimo.valore * 100, 0)}% del gas negli stoccaggi italiani (${n(st.ultimo.valore, 1)} TWh al ${dataBreve(st.ultimo.data)} ${srcTesto("GIE AGSI+", st.link)})`;
+      h += `<br>= ${rng(g.gwhGiorno[0], g.gwhGiorno[1], 0)} GWh a day; over ${du.giorni} days <b>${rng(g.twhPeriodo[0], g.twhPeriodo[1], 1)} TWh</b>, i.e. ${rng(g.twhPeriodo[0] / st.ultimo.valore * 100, g.twhPeriodo[1] / st.ultimo.valore * 100, 0)}% of the gas in Italian storage (${n(st.ultimo.valore, 1)} TWh on ${dataBreve(st.ultimo.data)} ${srcTesto("GIE AGSI+", st.link)})`;
     }
     h += `</div>`;
     if (p.gnl.nota) h += `<p class="piccolo">${esc(p.gnl.nota)} ${p.gnl.nota_rif ? srcRif(p.gnl.nota_rif) : ""}</p>`;
   } else if (p.gnl && p.gnl.meccanismo === "deviazione") {
-    h += `<h3>Gas</h3><p class="piccolo">Le metaniere possono girare: il modello non conta GNL perso.</p>`;
+    h += `<h3>Gas</h3><p class="piccolo">LNG carriers can divert: the model counts no LNG as lost.</p>`;
   }
   h += `</div></li>`;
 
   // 3. rotte
-  h += `<li class="passo"><div class="scheda"><h2>Rotte alternative: giorni e km in più</h2><p class="domanda">Dove vanno le navi che non passano e quanto si allunga il viaggio.</p>`;
+  h += `<li class="passo"><div class="scheda"><h2>Alternative routes: extra days and km</h2><p class="domanda">Where the ships that cannot pass go, and how much longer the voyage gets.</p>`;
   if (p.rotta) {
     const ro = p.rotta;
-    h += `<ul class="voci"><li><span class="nome"><span class="tipo rotta">rotta</span>${esc(ro.nome)}</span><span class="num">${ro.giorni ? "+" + rng(ro.giorni[0], ro.giorni[1], 0) + " giorni" : "giorni n.d."}</span>
-      <span class="desc">${ro.km ? "+" + n(ro.km[0], 0) + " km" : "km non indicati nelle fonti dei file"}${ro.per ? " · " + esc(ro.per) : ""} ${srcRif(ro.rif)}${ro.rif2 ? srcRif(ro.rif2) : ""}</span></li>`;
-    if (ro.nome.includes("Capo")) {
+    h += `<ul class="voci"><li><span class="nome"><span class="tipo rotta">route</span>${esc(ro.nome)}</span><span class="num">${ro.giorni ? "+" + rng(ro.giorni[0], ro.giorni[1], 0) + " days" : "days n/a"}</span>
+      <span class="desc">${ro.km ? "+" + n(ro.km[0], 0) + " km" : "km not given in the sources of the files"}${ro.per ? " · " + esc(ro.per) : ""} ${srcRif(ro.rif)}${ro.rif2 ? srcRif(ro.rif2) : ""}</span></li>`;
+    if (ro.nome.includes("Cape")) {
       const capo = D.pw["Capo di Buona Speranza"];
-      if (capo) h += `<li><span class="nome">Oggi al Capo di Buona Speranza</span><span class="num">${n(capo.media7.n_total, 1)} navi/g</span><span class="desc">${sgn(capo.var7_anno_pct.n_total, 0)}% su un anno, ${sgn(capo.var7_tre_anni_pct.n_total, 0)}% sul 2023 ${srcTesto("IMF PortWatch · " + dataBreve(capo.data_fonte), capo.link)}</span></li>`;
+      if (capo) h += `<li><span class="nome">Today at the Cape of Good Hope</span><span class="num">${n(capo.media7.n_total, 1)} ships/day</span><span class="desc">${sgn(capo.var7_anno_pct.n_total, 0)}% year on year, ${sgn(capo.var7_tre_anni_pct.n_total, 0)}% against 2023 ${srcTesto("IMF PortWatch · " + dataBreve(capo.data_fonte), capo.link)}</span></li>`;
     }
     h += `</ul>`;
-    if (r.scala) h += `<div class="calcolo">Scala dei giorni usata per noli e prezzi: <b>${r.scala[0] === r.scala[1] ? n(r.scala[0], 2) : n(r.scala[0], 2) + "–" + n(r.scala[1], 2)}</b> ${p.rotta.episodio ? "(stessa rotta della crisi del Mar Rosso)" : `(= ${rng(ro.giorni[0], ro.giorni[1], 0)} giorni / 14–24 giorni del Capo)`}</div>`;
-    else h += `<p class="piccolo">Senza un numero di giorni da fonte verificata il modello non stima noli e prezzi della deviazione.</p>`;
+    if (r.scala) h += `<div class="calcolo">Day scale used for freight and prices: <b>${r.scala[0] === r.scala[1] ? n(r.scala[0], 2) : n(r.scala[0], 2) + "–" + n(r.scala[1], 2)}</b> ${p.rotta.episodio ? "(same route as in the Red Sea crisis)" : `(= ${rng(ro.giorni[0], ro.giorni[1], 0)} days / the Cape's 14–24 days)`}</div>`;
+    else h += `<p class="piccolo">Without a number of days from a verified source the model does not estimate freight rates or prices for the diversion.</p>`;
   } else {
-    h += `<p>Nessuna rotta marittima alternativa: ${p.petrolio || p.gnl ? "le uniche alternative sono quelle del passo 2." : "il traffico si ferma o aspetta."}</p>`;
+    h += `<p>No alternative sea route: ${p.petrolio || p.gnl ? "the only alternatives are those in step 2." : "traffic stops or waits."}</p>`;
   }
   const corsie = D.rotte.rotte.filter(x => x.s.includes(p.rotte));
-  if (p.rotte) h += `<p class="piccolo">Corsie di navigazione che attraversano il passaggio nella mappa: ${corsie.length} (${n(corsie.reduce((a, x) => a + x.km, 0), 0)} km in tutto) ${srcTesto("rotte.json · Benden 2022", "data/rotte.json")}${p.cavi ? ` · cavi sottomarini: ${D.cavi.riepilogo.cavi_per_passaggio[p.cavi]} ${srcTesto("cavi.json · TeleGeography", "data/cavi.json")}` : ""}</p>`;
+  if (p.rotte) h += `<p class="piccolo">Shipping lanes crossing the chokepoint on the map: ${corsie.length} (${n(corsie.reduce((a, x) => a + x.km, 0), 0)} km in total) ${srcTesto("rotte.json · Benden 2022", "data/rotte.json")}${p.cavi ? ` · subsea cables: ${D.cavi.riepilogo.cavi_per_passaggio[p.cavi]} ${srcTesto("cavi.json · TeleGeography", "data/cavi.json")}` : ""}</p>`;
   h += `</div></li>`;
 
   // 4. noli
-  h += `<li class="passo"><div class="scheda"><h2>Noli</h2><p class="domanda">Quanto costa in più spedire, con un intervallo preso dagli episodi documentati.</p>`;
+  h += `<li class="passo"><div class="scheda"><h2>Freight rates</h2><p class="domanda">How much more it costs to ship, with a range taken from documented episodes.</p>`;
   if (r.noli && r.noli.inc) {
     const gen = wci.rotte["Shanghai-Genoa"], rot = wci.rotte["Shanghai-Rotterdam"];
-    h += `<div class="calcolo">minimo: +${n(M.episodi.mar_rosso_2023.costo_capo_feu.valore, 0)} $/FEU (costo puro del giro) ${srcRif(M.episodi.mar_rosso_2023.costo_capo_feu.rif)}<br>massimo: +${n(RS.calcolato.wci_salto_usd_feu, 0)} $/FEU (WCI da ${n(RS.wci.da, 0)} a ${n(RS.wci.a, 0)} in ${M.episodi.mar_rosso_2023.calcolato.wci_giorni} giorni) ${srcRif(RS.wci.rif)}<br>× intensità ${n(io.quota, 2)} × scala ${r.scala[0] === r.scala[1] ? n(r.scala[0], 2) : n(r.scala[0], 2) + "–" + n(r.scala[1], 2)} × rampa ${n(r.noli.rampa, 2)} (${du.giorni} su ${M.regole.noli_container_deviazione.rampa_giorni} giorni) = <b>+${rng(r.noli.inc[0], r.noli.inc[1], 0)} $/FEU</b></div>`;
+    h += `<div class="calcolo">minimum: +${n(M.episodi.mar_rosso_2023.costo_capo_feu.valore, 0)} $/FEU (pure cost of the detour) ${srcRif(M.episodi.mar_rosso_2023.costo_capo_feu.rif)}<br>maximum: +${n(RS.calcolato.wci_salto_usd_feu, 0)} $/FEU (WCI from ${n(RS.wci.da, 0)} to ${n(RS.wci.a, 0)} in ${M.episodi.mar_rosso_2023.calcolato.wci_giorni} days) ${srcRif(RS.wci.rif)}<br>× intensity ${n(io.quota, 2)} × scale ${r.scala[0] === r.scala[1] ? n(r.scala[0], 2) : n(r.scala[0], 2) + "–" + n(r.scala[1], 2)} × ramp ${n(r.noli.rampa, 2)} (${du.giorni} of ${M.regole.noli_container_deviazione.rampa_giorni} days) = <b>+${rng(r.noli.inc[0], r.noli.inc[1], 0)} $/FEU</b></div>`;
     h += `<ul class="voci">
-      <li><span class="nome">Shanghai–Rotterdam</span><span class="num">${n(rot, 0)} → ${rng(rot + r.noli.inc[0], rot + r.noli.inc[1], 0)} $</span><span class="desc">per container da 40 piedi; valore di oggi ${srcTesto("Drewry WCI · " + dataBreve(wci.data), wci.link)}</span></li>
-      <li><span class="nome">Shanghai–Genova</span><span class="num">${n(gen, 0)} → ${rng(gen + r.noli.inc[0], gen + r.noli.inc[1], 0)} $</span><span class="desc">${srcTesto("Drewry WCI · " + dataBreve(wci.data), wci.link)}</span></li></ul>`;
+      <li><span class="nome">Shanghai–Rotterdam</span><span class="num">$${n(rot, 0)} → $${rng(rot + r.noli.inc[0], rot + r.noli.inc[1], 0)}</span><span class="desc">per 40-foot container; today's value ${srcTesto("Drewry WCI · " + dataBreve(wci.data), wci.link)}</span></li>
+      <li><span class="nome">Shanghai–Genoa</span><span class="num">$${n(gen, 0)} → $${rng(gen + r.noli.inc[0], gen + r.noli.inc[1], 0)}</span><span class="desc">${srcTesto("Drewry WCI · " + dataBreve(wci.data), wci.link)}</span></li></ul>`;
   } else if (r.noli && r.noli.sovrapprezzo) {
-    h += `<p>Per Hormuz non c'è una rotta alternativa da misurare: il modello mostra quello che è successo nel 2026, in proporzione all'intensità scelta (${n(io.quota * 100, 0)}%) solo come ordine di grandezza.</p>`;
+    h += `<p>For Hormuz there is no alternative route to measure: the model shows what happened in 2026, scaled to the chosen intensity (${n(io.quota * 100, 0)}%) only as an order of magnitude.</p>`;
   } else {
-    h += `<p class="piccolo">Nessun episodio documentato nei file per stimare i noli di questo passaggio: il modello non inventa un numero.</p>`;
+    h += `<p class="piccolo">No documented episode in the files to estimate freight rates for this chokepoint: the model does not invent a number.</p>`;
   }
   if (p.noli_episodi.length) {
-    h += `<h3>Episodi documentati</h3><ul class="voci">`;
+    h += `<h3>Documented episodes</h3><ul class="voci">`;
     for (const e of p.noli_episodi) { const v = voce(e); if (v) h += `<li><span class="nome">${esc(v.voce)}</span><span class="num"></span><span class="desc">${esc(v.valore)} ${srcRif(e)}</span></li>`; }
     h += `</ul>`;
   }
@@ -520,52 +703,52 @@ function disegna() {
   const f30 = H.calcolato.brent.finestre[w], g30 = H.calcolato.ttf.finestre[w];
   const fr = RS.calcolato.brent.finestre[w], gr = RS.calcolato.ttf.finestre[w];
   const maxScala = Math.max(100, Math.ceil(Math.max(r.brent.pct ? r.brent.pct[1] : 0, r.ttf.pct ? r.ttf.pct[1] : 0) / 25) * 25);
-  h += `<li class="passo"><div class="scheda"><h2>Prezzi: Brent e TTF</h2><p class="domanda">Effetto indicativo, come intervallo, con una regola dichiarata e calibrata sugli episodi storici (finestra di ${du.giorni} giorni).</p>`;
+  h += `<li class="passo"><div class="scheda"><h2>Prices: Brent and TTF</h2><p class="domanda">Indicative effect, as a range, from a stated rule calibrated on historical episodes (${du.giorni}-day window).</p>`;
   h += `<h3>Brent</h3>`;
   if (r.brent.regola === "brent_perdita") {
-    h += `<div class="calcolo">${rng(r.oil.scop[0], r.oil.scop[1], 1)} mb/g scoperti × ${n(r.brent.c.min, 2)}–${n(r.brent.c.max, 2)}% per mb/g = <b>${rngS(r.brent.pct[0], r.brent.pct[1], 0)}</b></div>`;
+    h += `<div class="calcolo">${rng(r.oil.scop[0], r.oil.scop[1], 1)} mb/d uncovered × ${n(r.brent.c.min, 2)}–${n(r.brent.c.max, 2)}% per mb/d = <b>${rngS(r.brent.pct[0], r.brent.pct[1], 0)}</b></div>`;
     h += barraIntervallo(r.brent.pct[0], r.brent.pct[1], null, maxScala);
-    h += `<p class="piccolo">Coefficiente da Hormuz 2026: Brent da ${n(H.calcolato.brent.base, 2)} $ (media 23–27 febbraio) a una media di ${n(f30.media, 2)} $ (${sgn(f30.media_pct, 1)}%) e un picco di ${n(f30.max, 2)} $ il ${dataBreve(f30.data_max)} (${sgn(f30.max_pct, 1)}%) nei primi ${du.giorni} giorni, con ${n(H.calcolato.scoperto_petrolio_mbg.centrale, 1)} mb/g scoperti. ${srcTesto("Yahoo Finance BZ=F", M.fonti[2].link)}</p>`;
+    h += `<p class="piccolo">Coefficient from Hormuz 2026: Brent from $${n(H.calcolato.brent.base, 2)} (average of 23–27 February) to an average of $${n(f30.media, 2)} (${sgn(f30.media_pct, 1)}%) and a peak of $${n(f30.max, 2)} on ${dataBreve(f30.data_max)} (${sgn(f30.max_pct, 1)}%) in the first ${du.giorni} days, with ${n(H.calcolato.scoperto_petrolio_mbg.centrale, 1)} mb/d uncovered. ${srcTesto("Yahoo Finance BZ=F", M.fonti[2].link)}</p>`;
   } else if (r.brent.regola === "brent_deviazione") {
-    h += `<div class="calcolo">intensità ${n(io.quota, 2)} × scala ${r.scala[0] === r.scala[1] ? n(r.scala[0], 2) : n(r.scala[0], 2) + "–" + n(r.scala[1], 2)} × (${sgn(fr.media_pct, 1)}% … ${sgn(fr.max_pct, 1)}%) = <b>${rngS(r.brent.pct[0], r.brent.pct[1], 1)}</b></div>`;
+    h += `<div class="calcolo">intensity ${n(io.quota, 2)} × scale ${r.scala[0] === r.scala[1] ? n(r.scala[0], 2) : n(r.scala[0], 2) + "–" + n(r.scala[1], 2)} × (${sgn(fr.media_pct, 1)}% … ${sgn(fr.max_pct, 1)}%) = <b>${rngS(r.brent.pct[0], r.brent.pct[1], 1)}</b></div>`;
     h += barraIntervallo(r.brent.pct[0], r.brent.pct[1], null, Math.max(25, Math.ceil(r.brent.pct[1] / 5) * 5));
-    h += `<p class="piccolo">Regola delle deviazioni, dalla crisi del Mar Rosso: Brent da ${n(RS.calcolato.brent.base, 2)} $ (11–15 dicembre 2023) a una media di ${n(fr.media, 2)} $ e un picco di ${n(fr.max, 2)} $ nei primi ${du.giorni} giorni dal 18 dicembre. ${srcTesto("Yahoo Finance BZ=F", M.fonti[2].link)}</p>`;
-  } else h += `<p class="piccolo">Non stimato: ${p.rotta && !p.rotta.giorni ? "manca un numero di giorni in più da fonte verificata." : "nessun volume di petrolio rilevante nei file."}</p>`;
-  h += `<h3>Gas TTF</h3>`;
+    h += `<p class="piccolo">Diversion rule, from the Red Sea crisis: Brent from $${n(RS.calcolato.brent.base, 2)} (11–15 December 2023) to an average of $${n(fr.media, 2)} and a peak of $${n(fr.max, 2)} in the first ${du.giorni} days from 18 December. ${srcTesto("Yahoo Finance BZ=F", M.fonti[2].link)}</p>`;
+  } else h += `<p class="piccolo">Not estimated: ${p.rotta && !p.rotta.giorni ? "there is no number of extra days from a verified source." : "no significant oil volume in the files."}</p>`;
+  h += `<h3>TTF gas</h3>`;
   if (r.ttf.regola === "ttf_perdita") {
-    h += `<div class="calcolo">${rng(r.gas.scop[0], r.gas.scop[1], 1)} bcm/anno scoperti × ${n(r.ttf.c.min, 2)}–${n(r.ttf.c.max, 2)}% per bcm = <b>${rngS(r.ttf.pct[0], r.ttf.pct[1], 0)}</b></div>`;
+    h += `<div class="calcolo">${rng(r.gas.scop[0], r.gas.scop[1], 1)} bcm/yr uncovered × ${n(r.ttf.c.min, 2)}–${n(r.ttf.c.max, 2)}% per bcm = <b>${rngS(r.ttf.pct[0], r.ttf.pct[1], 0)}</b></div>`;
     h += barraIntervallo(r.ttf.pct[0], r.ttf.pct[1], null, maxScala);
-    h += `<p class="piccolo">Coefficiente da Hormuz 2026: TTF da ${n(H.calcolato.ttf.base, 2)} € a una media di ${n(g30.media, 2)} € (${sgn(g30.media_pct, 1)}%) e un picco di ${n(g30.max, 2)} € (${sgn(g30.max_pct, 1)}%) nei primi ${du.giorni} giorni, con ${n(H.calcolato.gnl_fermo_bcm, 0)} bcm/anno di GNL fermi. ${srcTesto("Yahoo Finance TTF=F", M.fonti[2].link)}${p.id === "canale-di-sicilia" ? " Affidabilità bassa: il TransMed arriva direttamente in Europa, mentre il GNL del Golfo andava soprattutto in Asia; il PSV italiano salirebbe sopra il TTF " + srcRif(p.prezzi_episodi[0]) : ""}</p>`;
+    h += `<p class="piccolo">Coefficient from Hormuz 2026: TTF from €${n(H.calcolato.ttf.base, 2)} to an average of €${n(g30.media, 2)} (${sgn(g30.media_pct, 1)}%) and a peak of €${n(g30.max, 2)} (${sgn(g30.max_pct, 1)}%) in the first ${du.giorni} days, with ${n(H.calcolato.gnl_fermo_bcm, 0)} bcm/yr of LNG halted. ${srcTesto("Yahoo Finance TTF=F", M.fonti[2].link)}${p.id === "canale-di-sicilia" ? " Low reliability: TransMed delivers straight into Europe, whereas Gulf LNG went mostly to Asia; the Italian PSV would rise above TTF " + srcRif(p.prezzi_episodi[0]) : ""}</p>`;
   } else if (r.ttf.regola === "ttf_deviazione") {
-    h += `<div class="calcolo">deviazione → effetto assunto <b>0%</b>. Nella crisi del Mar Rosso il TTF ha fatto ${sgn(gr.media_pct, 1)}% in media nei primi ${du.giorni} giorni (picco ${sgn(gr.max_pct, 1)}%): inverno mite e stoccaggi pieni hanno pesato più delle rotte.</div>`;
-  } else h += `<p class="piccolo">Nessun flusso di gas rilevante per questo passaggio nei file.</p>`;
-  if (p.avviso && p.id === "hormuz") h += `<p class="piccolo"><b>Attenzione:</b> i prezzi «da oggi» nei riquadri in alto applicano la variazione al Brent (${n(brent.ultimo, 2)} $) e al TTF (${n(ttf.ultimo, 2)} €) del ${dataBreve(brent.data)}, che incorporano già la chiusura di Hormuz ${srcFile("prezzi.json", dataBreve(brent.data))}.</p>`;
+    h += `<div class="calcolo">diversion → assumed effect <b>0%</b>. In the Red Sea crisis TTF moved ${sgn(gr.media_pct, 1)}% on average in the first ${du.giorni} days (peak ${sgn(gr.max_pct, 1)}%): a mild winter and full storage mattered more than the routes.</div>`;
+  } else h += `<p class="piccolo">No significant gas flow for this chokepoint in the files.</p>`;
+  if (p.avviso && p.id === "hormuz") h += `<p class="piccolo"><b>Caution:</b> the “from today” prices in the boxes above apply the change to Brent ($${n(brent.ultimo, 2)}) and TTF (€${n(ttf.ultimo, 2)}) of ${dataBreve(brent.data)}, which already price in the closure of Hormuz ${srcFile("prezzi.json", dataBreve(brent.data))}.</p>`;
   if (p.prezzi_episodi.length) {
-    h += `<h3>Altri fatti documentati</h3><ul class="voci">`;
+    h += `<h3>Other documented facts</h3><ul class="voci">`;
     for (const e of p.prezzi_episodi) { const v = voce(e); if (v) h += `<li><span class="nome">${esc(v.voce)}</span><span class="num"></span><span class="desc">${esc(v.valore)} ${srcRif(e)}</span></li>`; }
     h += `</ul>`;
   }
   h += `</div></li>`;
 
   // 6. paesi
-  h += `<li class="passo"><div class="scheda"><h2>Chi è esposto</h2><p class="domanda">Quote di importazione (in valore) che passano dal passaggio, da UN Comtrade 2025 via paesi.json; in evidenza Italia, Paesi Bassi, Germania e Danimarca.</p>`;
+  h += `<li class="passo"><div class="scheda"><h2>Who is exposed</h2><p class="domanda">Import shares (by value) that pass through the chokepoint, from UN Comtrade 2025 via paesi.json; highlighted: Italy, the Netherlands, Germany and Denmark.</p>`;
   h += disegnaPaesi(p, r, du);
   h += `</div></li>`;
 
   // 7. porti e settori
-  h += `<li class="passo"><div class="scheda"><h2>Porti e settori più toccati</h2><p class="domanda">− perde, + guadagna, ? effetto incerto. I dati di traffico sono di PortWatch (media 30 giorni).</p>`;
+  h += `<li class="passo"><div class="scheda"><h2>Ports and sectors most affected</h2><p class="domanda">− loses, + gains, ? uncertain effect. Traffic data are from PortWatch (30-day average).</p>`;
   for (const po of p.porti) {
     const cls = po.segno === "-" ? "m" : po.segno === "+" ? "p" : "q";
     let extra = "";
-    if (po.portwatch && D.pw[po.portwatch]) { const x = D.pw[po.portwatch]; extra = ` Oggi ${n(x.media30.portcalls, 1)} navi al giorno, ${sgn(typeof x.var30_anno_pct === "number" ? x.var30_anno_pct : x.var30_anno_pct.portcalls, 0)}% su un anno ${srcTesto("PortWatch · " + dataBreve(x.data_fonte), x.link)}`; }
-    if (po.gnl) { const t = D.gnl.find(e => e.nome === po.gnl); if (t) extra = ` Capacità ${n(t.capacita_operativa_mtpa, 1)} Mt/anno ${srcTesto("GEM · " + dataBreve(t.data_fonte), t.link)}`; }
-    if (po.gas_italia) { const q = D.gas.quote_12_mesi.find(e => e.id === po.gas_italia); if (q) extra = ` ${n(q.twh_12m, 1)} TWh negli ultimi 12 mesi, ${n(q.quota_ingressi_pct, 1)}% degli ingressi ${srcFile("gas-italia.json", "ENTSOG")}`; }
+    if (po.portwatch && D.pw[po.portwatch]) { const x = D.pw[po.portwatch]; extra = ` Today ${n(x.media30.portcalls, 1)} ship calls a day, ${sgn(typeof x.var30_anno_pct === "number" ? x.var30_anno_pct : x.var30_anno_pct.portcalls, 0)}% year on year ${srcTesto("PortWatch · " + dataBreve(x.data_fonte), x.link)}`; }
+    if (po.gnl) { const t = D.gnl.find(e => e.nome === po.gnl); if (t) extra = ` Capacity ${n(t.capacita_operativa_mtpa, 1)} Mt/yr ${srcTesto("GEM · " + dataBreve(t.data_fonte), t.link)}`; }
+    if (po.gas_italia) { const q = D.gas.quote_12_mesi.find(e => e.id === po.gas_italia); if (q) extra = ` ${n(q.twh_12m, 1)} TWh in the last 12 months, ${n(q.quota_ingressi_pct, 1)}% of entries ${srcFile("gas-italia.json", "ENTSOG")}`; }
     if (po.cavi_approdo) extra = ` ${srcFile("cavi.json", "TeleGeography")}`;
     const fonte = po.rif ? srcRif(po.rif) : "";
-    h += `<div class="porto"><span class="segno ${cls}" aria-label="${cls === "m" ? "perde" : cls === "p" ? "guadagna" : "incerto"}">${po.segno === "-" ? "−" : po.segno}</span><div><div class="pn">${esc(po.nome)}${po.paese ? ` <span class="piccolo">${esc(po.paese)}</span>` : ""}</div><div class="pd">${esc(po.testo)}.${extra} ${fonte}</div></div></div>`;
+    h += `<div class="porto"><span class="segno ${cls}" aria-label="${cls === "m" ? "loses" : cls === "p" ? "gains" : "uncertain"}">${po.segno === "-" ? "−" : po.segno}</span><div><div class="pn">${esc(po.nome)}${po.paese ? ` <span class="piccolo">${esc(NOMI_EN[po.paese] || po.paese)}</span>` : ""}</div><div class="pd">${esc(po.testo)}.${extra} ${fonte}</div></div></div>`;
   }
   const vs = voce(p.settori_rif);
-  if (vs) h += `<div class="valutazione"><span class="etichetta">${vs.tipo === "valutazione" ? "Valutazione dell'osservatorio" : "Fatto"} · settori</span>${esc(vs.valore)} ${srcRif(p.settori_rif)}</div>`;
+  if (vs) h += `<div class="valutazione"><span class="etichetta">${vs.tipo === "valutazione" ? "Observatory assessment" : "Fact"} · sectors</span>${esc(vs.valore)} ${srcRif(p.settori_rif)}</div>`;
   h += `</div></li>`;
   h += `</ol></div>`;
 
@@ -579,13 +762,13 @@ function disegnaPaesi(p, r, du) {
   let h = "";
   const regole = p.esposizione || [];
   const focus = M.focus_paesi;
-  const nomi = { IT: "Italia", NL: "Paesi Bassi", DE: "Germania", DK: "Danimarca" };
+  const nomi = { IT: "Italy", NL: "Netherlands", DE: "Germany", DK: "Denmark" };
   h += `<div class="paesi">`;
   for (const c of focus) {
     const P = D.paesi[c];
     h += `<div class="paese"><h4><span>${esc(P ? P.nome : nomi[c] || c)}</span><small>${c}</small></h4>`;
     if (!P) {
-      h += `<div class="nota">La Danimarca non è nelle schede paese (paesi.json) né nelle scorte (scorte.json): nessuna quota calcolata. ${esc(p.nota_dk || "")} ${p.nota_dk_rif ? srcRif(p.nota_dk_rif) : ""}</div></div>`;
+      h += `<div class="nota">Denmark is not in the country profiles (paesi.json) or the stocks file (scorte.json): no share computed. ${esc(p.nota_dk || "")} ${p.nota_dk_rif ? srcRif(p.nota_dk_rif) : ""}</div></div>`;
       continue;
     }
     for (const reg of regole) {
@@ -595,15 +778,15 @@ function disegnaPaesi(p, r, du) {
     }
     if (p.esposizione_gas_italia && c === "IT") {
       const q = D.gas.quote_12_mesi.find(e => e.id === p.esposizione_gas_italia);
-      h += `<div class="riga"><span>Gas entrato in Italia dal TransMed (12 mesi)</span><b>${n(q.quota_ingressi_pct, 1)}%</b></div><div class="mini"><span style="left:0;width:${q.quota_ingressi_pct}%"></span></div>`;
+      h += `<div class="riga"><span>Gas entering Italy through TransMed (12 months)</span><b>${n(q.quota_ingressi_pct, 1)}%</b></div><div class="mini"><span style="left:0;width:${q.quota_ingressi_pct}%"></span></div>`;
     } else if (p.esposizione_gas_italia) {
-      h += `<div class="nota">Nessun flusso diretto: il TransMed finisce in Italia.</div>`;
+      h += `<div class="nota">No direct flow: TransMed ends in Italy.</div>`;
     }
     const gs = D.scorte["gas_stoccaggio_pct_" + c.toLowerCase()], og = D.scorte["petrolio_emergenza_giorni_" + c.toLowerCase()];
     const cuscini = [];
-    if (gs) cuscini.push(`stoccaggi gas ${n(gs.ultimo.valore, 0)}% al ${dataBreve(gs.ultimo.data)}`);
-    if (og) cuscini.push(`scorte di petrolio di emergenza ${n(og.ultimo.valore, 0)} giorni (${MESI[+og.ultimo.data.slice(5, 7) - 1]} ${og.ultimo.data.slice(0, 4)})`);
-    if (cuscini.length) h += `<div class="nota">Cuscinetti: ${cuscini.join("; ")} ${srcFile("scorte.json", "AGSI+, Eurostat")}</div>`;
+    if (gs) cuscini.push(`gas storage ${n(gs.ultimo.valore, 0)}% full on ${dataBreve(gs.ultimo.data)}`);
+    if (og) cuscini.push(`emergency oil stocks ${n(og.ultimo.valore, 0)} days (${MESI[+og.ultimo.data.slice(5, 7) - 1]} ${og.ultimo.data.slice(0, 4)})`);
+    if (cuscini.length) h += `<div class="nota">Buffers: ${cuscini.join("; ")} ${srcFile("scorte.json", "AGSI+, Eurostat")}</div>`;
     h += `</div>`;
   }
   h += `</div>`;
@@ -614,16 +797,16 @@ function disegnaPaesi(p, r, du) {
         .map(c => ({ c, q: quotaPaese(c, reg) })).filter(x => x.q && !x.q.sotto && x.q.max > 0)
         .sort((a, b) => b.q.max - a.q.max).slice(0, 6);
       if (!altri.length) continue;
-      h += `<h3>${esc(reg.etichetta)}: ${reg.altri === "europa" ? "gli altri paesi europei" : "i paesi più esposti"}</h3><div class="altri">`;
+      h += `<h3>${esc(reg.etichetta)}: ${reg.altri === "europa" ? "the other European countries" : "the most exposed countries"}</h3><div class="altri">`;
       for (const a of altri) {
         h += `<span>${esc(D.paesi[a.c].nome)}</span><div class="bar"><span style="${barStyle(a.q)}"></span></div><span class="n">${fmtQuota(a.q)}</span>`;
       }
       h += `</div>`;
     }
-    h += `<p class="piccolo" style="margin-top:8px">Quote in valore dichiarate dall'importatore; un intervallo (per il Golfo) va dai soli fornitori senza uscita alternativa (Iraq, Kuwait, Qatar, Bahrein, Iran) fino ad Arabia Saudita ed Emirati inclusi. «Meno di x%»: il fornitore non è tra i primi 5. ${fonteR}</p>`;
+    h += `<p class="piccolo" style="margin-top:8px">Shares by value as declared by the importer; a range (for the Gulf) runs from the suppliers with no alternative outlet only (Iraq, Kuwait, Qatar, Bahrain, Iran) up to including Saudi Arabia and the UAE. “Less than x%”: the supplier is not in the top 5. ${fonteR}</p>`;
   }
   if (r.oil && r.oil.mecc === "perdita" && r.oil.scop[1] > 0) {
-    h += `<p class="piccolo">Volume mancante nel periodo: ${rng(r.oil.cum[0], r.oil.cum[1], 0)} milioni di barili, ${rng(r.oil.cum[0] / 4, r.oil.cum[1] / 4, 0)}% del rilascio record IEA di 400 milioni del marzo 2026 ${srcRif(D.M.regole.volume_cumulato.rif)}</p>`;
+    h += `<p class="piccolo">Volume missing over the period: ${rng(r.oil.cum[0], r.oil.cum[1], 0)} million barrels, ${rng(r.oil.cum[0] / 4, r.oil.cum[1] / 4, 0)}% of the record IEA release of 400 million in March 2026 ${srcRif(D.M.regole.volume_cumulato.rif)}</p>`;
   }
   return h;
 }
@@ -637,28 +820,28 @@ function disegnaIpotesi(p, r, du, io) {
   if (r.noli && r.noli.inc) usate.push(["noli_container_deviazione", R.noli_container_deviazione]);
   if (r.noli && r.noli.sovrapprezzo) usate.push(["noli_hormuz", R.noli_hormuz]);
   usate.push(["esposizione_paesi", R.esposizione_paesi]);
-  let h = `<section class="riquadro ipotesi" aria-labelledby="t-ipotesi"><h2 id="t-ipotesi">Ipotesi del modello</h2>`;
-  h += `<p class="piccolo">Scenario: ${esc(io.etichetta.toLowerCase())} (${esc(io.spiegazione)}) per ${esc(du.etichetta)} (${du.giorni} giorni).</p>`;
-  h += `<h3 style="margin-top:6px">Regole usate qui</h3>`;
-  for (const [k, reg] of usate) h += `<p class="regola"><b>${esc(nomeRegola(k))}.</b> ${esc(reg.testo)} <span class="piccolo">Affidabilità: ${esc(reg.affidabilita || "n.d.")}.</span></p>`;
-  h += `<h3>Ipotesi generali</h3><ol>${M.ipotesi.map(x => `<li>${esc(x)}</li>`).join("")}</ol>`;
-  h += `<details><summary>Episodi di riferimento</summary>${Object.values(M.episodi).map(e => `<p class="regola" style="margin-top:8px"><b>${esc(e.nome)}.</b> ${esc(e.spiegazione)} Inizio: ${dataBreve(e.inizio)}; base: media ${dataBreve(e.base.da)}–${dataBreve(e.base.a)}. <span class="piccolo">${esc(e.fonte_prezzi)}.</span></p>`).join("")}</details>`;
-  h += `<p class="piccolo" style="margin-top:10px">Modello versione ${esc(M.versione)}, ${dataBreve(M.aggiornato)} · <a href="data/simulatore.json">simulatore.json</a></p></section>`;
+  let h = `<section class="riquadro ipotesi" aria-labelledby="t-ipotesi"><h2 id="t-ipotesi">Model assumptions</h2>`;
+  h += `<p class="piccolo">Scenario: ${esc(io.etichetta.toLowerCase())} (${esc(io.spiegazione)}) for ${esc(du.etichetta)} (${du.giorni} days).</p>`;
+  h += `<h3 style="margin-top:6px">Rules used here</h3>`;
+  for (const [k, reg] of usate) h += `<p class="regola"><b>${esc(nomeRegola(k))}.</b> ${esc(reg.testo)} <span class="piccolo">Reliability: ${esc(AFF_EN[reg.affidabilita] || reg.affidabilita || "n/a")}.</span></p>`;
+  h += `<h3>General assumptions</h3><ol>${M.ipotesi.map(x => `<li>${esc(x)}</li>`).join("")}</ol>`;
+  h += `<details><summary>Reference episodes</summary>${Object.values(M.episodi).map(e => `<p class="regola" style="margin-top:8px"><b>${esc(e.nome)}.</b> ${esc(e.spiegazione)} Start: ${dataBreve(e.inizio)}; baseline: average ${dataBreve(e.base.da)}–${dataBreve(e.base.a)}. <span class="piccolo">${esc(e.fonte_prezzi)}.</span></p>`).join("")}</details>`;
+  h += `<p class="piccolo" style="margin-top:10px">Model version ${esc(M.versione)}, ${dataBreve(M.aggiornato)} · <a href="data/simulatore.json">simulatore.json</a></p></section>`;
   return h;
 }
 function nomeRegola(k) {
-  return ({ volume_scoperto: "Volume scoperto", brent_perdita: "Brent, perdita di offerta", brent_deviazione: "Brent, deviazione", ttf_perdita: "TTF, perdita di offerta", ttf_deviazione: "TTF, deviazione", noli_container_deviazione: "Noli container", noli_hormuz: "Noli a Hormuz", esposizione_paesi: "Paesi esposti" })[k] || k;
+  return ({ volume_scoperto: "Uncovered volume", brent_perdita: "Brent, supply loss", brent_deviazione: "Brent, diversion", ttf_perdita: "TTF, supply loss", ttf_deviazione: "TTF, diversion", noli_container_deviazione: "Container freight", noli_hormuz: "Freight at Hormuz", esposizione_paesi: "Exposed countries" })[k] || k;
 }
 
 function disegnaFisso() {
   const M = D.M;
   document.getElementById("lista-limiti").innerHTML = M.limiti.map(x => `<li>${esc(x)}</li>`).join("");
   document.getElementById("lista-fonti").innerHTML = M.fonti.map(f => `<li>${esc(f.nome)}${f.file ? ` — <code>${esc(f.file)}</code>` : ""}${f.link ? ` — <a href="${esc(f.link)}" target="_blank" rel="noopener">link</a>` : ""}${f.licenza ? ` <span class="piccolo">(${esc(f.licenza)})</span>` : ""}</li>`).join("");
-  document.getElementById("agg").textContent = `Dati dell'osservatorio aggiornati al ${dataIt(D["stretti-dettaglio"].aggiornato)} (schede), ${dataIt(D.prezzi.brent.data)} (prezzi), ${dataIt(D.noli.wci.data)} (noli), ${dataIt(D.portwatch.elementi[0].ultima_data)} (PortWatch).`;
+  document.getElementById("agg").textContent = `Observatory data updated ${dataIt(D["stretti-dettaglio"].aggiornato)} (profiles), ${dataIt(D.prezzi.brent.data)} (prices), ${dataIt(D.noli.wci.data)} (freight), ${dataIt(D.portwatch.elementi[0].ultima_data)} (PortWatch).`;
 }
 
 carica().then(() => { costruisciComandi(); disegnaFisso(); disegna(); })
-  .catch(e => { document.getElementById("risultato").innerHTML = `<p class="errore">Non riesco a caricare i dati: ${esc(e.message)}. Apri la pagina da un server (per esempio <code>python3 -m http.server</code> nella cartella docs).</p>`; console.error(e); });
+  .catch(e => { document.getElementById("risultato").innerHTML = `<p class="errore">Could not load the data: ${esc(e.message)}. Open the page from a server (for example <code>python3 -m http.server</code> in the docs folder).</p>`; console.error(e); });
 </script>
 </body>
 </html>

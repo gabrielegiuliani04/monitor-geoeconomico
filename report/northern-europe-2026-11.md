@@ -12,11 +12,11 @@ Every number has a source and a date. Paragraphs marked *Assessment* are the mon
 
 ## 1. Key points
 
-- **Port traffic is flat on the year, not falling.** From 1 January to 30 October 2026, Rotterdam averaged 82.7 ship calls a day, −0.5% on the same days of 2025; Antwerp-Bruges −6.4%. The −10.8% in Rotterdam's latest week is noise. The clear fall is at Russia's Primorsk, −52% (IMF PortWatch).
+- **Rotterdam's traffic is flat on the year; the weekly drop is noise.** From 1 January to 30 October 2026, Rotterdam averaged 82.7 ship calls a day, −0.5% on the same days of 2025; Antwerp-Bruges −6.4%. The −10.8% in Rotterdam's latest week is noise. The clear fall is at Russia's oil port of Primorsk, −52% (IMF PortWatch).
 - **German and Dutch gas storage is far below normal before winter.** On 8 November 2026 Germany was 58.9% full and the Netherlands 63.5%, against an EU goal of 90%. Germany is 15.9 points below a year ago (GIE AGSI+). The TTF gas price is 82.33 €/MWh, +164% on a year.
-- **Offshore wind will reach under half of the North Sea goal for 2030.** Europe connected only 2.0 GW in 2025. For Denmark, Germany, the Netherlands and Belgium WindEurope expects 31.1 GW in 2030, 48% of the 65 GW promised at Esbjerg.
+- **Offshore wind will reach under half of the North Sea goal for 2030.** Europe connected only 1.96 GW in 2025. For Denmark, Germany, the Netherlands and Belgium WindEurope expects 31.1 GW in 2030, 48% of the 65 GW promised at Esbjerg.
 - **Carbon rules now add a fifth to a half of fuel costs.** At the EU auction price of 86.91 €/t (9 November 2026), the EU ETS costs 275 € per tonne of fuel burnt on voyages between EU ports and 138 € on voyages to or from outside the EU (bunker-emissioni.json).
-- **The Gulf of Finland is where sabotage risk concentrates.** In the AIS snapshot of 9 November 2026, 44 of the 109 ships seen there were on Western sanction lists. Since November 2024 5 Baltic cable incidents have been recorded; GPS interference covered 214–246 map cells a day in the week to 8 November 2026.
+- **The Gulf of Finland is where sabotage risk concentrates.** In the AIS snapshot of 9 November 2026, 44 of the 109 ships seen there were on Western sanction lists. Since November 2024 six Baltic cable incidents have been recorded. GPS jamming hit 214–246 areas a day in the week to 8 November 2026 (GPSJam).
 
 <a id="ports"></a>
 
@@ -28,7 +28,7 @@ The ten ports are the largest by tonnes handled in 2025 among the 30 in [porti-n
 |---|---|---|---|---|---|---|---|---|
 | Rotterdam | Netherlands | [428.4](https://www.portofrotterdam.com/en/node/5524) (−1.7%) | 81.4 | +2.3% | −0.5% | +2% | +4% | −19% |
 | Antwerp-Bruges | Belgium | [266.5](https://newsroom.portofantwerpbruges.com/hubfs/260122_Factsheet_Jaarcijfers_2025_DUI.pdf) (−4.1%) | 65.5 | +3.5% | −6.4% | +7% | +23% | −39% |
-| Ust-Luga | Russia | [130.5](https://www.themoscowtimes.com/2026/03/05/russian-ports-warn-of-cargo-slowdown-due-to-tighter-inspections-and-ice-conditions) (−3.4%) | 6.0 | −15.5% | −12.8% | −30% | n/a | +0% |
+| Ust-Luga | Russia | [130.5](https://www.themoscowtimes.com/2026/03/05/russian-ports-warn-of-cargo-slowdown-due-to-tighter-inspections-and-ice-conditions) (−3.4%) | 6.0 | −15.5% | −12.8% | −30% | n/a | 0% |
 | Hamburg | Germany | [114.6](https://www.verkehrsrundschau.de/nachrichten/transport-logistik/containerumschlag-treibt-hafen-hamburg-ins-plus-3770706) (+2.6%) | 16.2 | −1.8% | −2.8% | +19% | −3% | −17% |
 | Gdańsk | Poland | [80.4](https://dailymare.com/news/port-of-gdansk-posts-strong-2025-performance-as-liquid-fuels-dominate-and-container-volumes-hit-record-high,2192) (+4.0%) | 9.5 | −5.0% | +0.5% | −4% | −17% | n/a |
 | Bremen/Bremerhaven | Germany | [65.3](https://www.bremenports.de/fileadmin/bremenports/Haefen/Monatsberichte/2025_12_Monatsbericht.pdf) (+5.4%) | 14.3 | −7.7% | −0.7% | +13% | −14% | n/a |
@@ -49,7 +49,7 @@ The ten ports are the largest by tonnes handled in 2025 among the 30 in [porti-n
 
 **Russia's Baltic oil ports.** Primorsk averaged 1.3 calls a day this year against 2.7 in 2025 (−52%); Ust-Luga −12.8%. Ukrainian drones hit both ports on 23 and 29 March and again in July 2026 (baltico-sicurezza.json). PortWatch does not see ships with AIS switched off, so Russian ports are undercounted.
 
-*Assessment.* Three forces drive the pattern. First, the return of some Asia–Europe services to Suez (transits +10.3% on a year, portwatch.json) adds calls in the Mediterranean before the North Sea, which flattens Rotterdam and Antwerp. Second, the Baltic is redistributing: Polish ports gain, ports that lived on Russian transit (HaminaKotka −17%, Riga −5% year to date) lose. Third, energy: tanker calls follow the oil and LNG trade, and Rotterdam lost bunker sales (−23.9% in the first nine months, Port of Rotterdam via bunker-emissioni.json). These are links we draw; the data do not prove causation.
+*Assessment.* Three forces drive the pattern. First, the return of some Asia–Europe services to Suez (transits +10.3% on a year, portwatch.json) adds calls in the Mediterranean before the North Sea, which flattens Rotterdam and Antwerp. Second, the Baltic is redistributing: Polish ports hold or gain, ports that lived on Russian transit (HaminaKotka −17%, Riga −5% year to date) lose. Third, energy: tanker calls follow the oil and LNG trade, and Rotterdam lost bunker sales (−23.2% tonnes in the first nine months of 2026, Port of Rotterdam via bunker-emissioni.json). These are links we draw; the data do not prove causation.
 
 <a id="energy"></a>
 
@@ -78,14 +78,14 @@ Denmark and Poland look better. At the end of September 2026 Danish stocks were 
 
 | Country | US share of LNG | Period | Operating import capacity (terminals) | Source |
 |---|---|---|---|---|
-| Germany | 89% | Q1 2026 (highest in Europe) | 23.1 bcm/y (4) | [IEEFA European LNG Tracker, maggio 2026](https://ieefa.org/european-lng-tracker) |
-| Netherlands | 77% | Q1 2026 | 24.0 bcm/y (2) | [IEEFA European LNG Tracker, maggio 2026](https://ieefa.org/european-lng-tracker) |
-| Poland | 75% (Qatar 21%) | Q1 2026 | 8.3 bcm/y (1) | [IEEFA European LNG Tracker, maggio 2026](https://ieefa.org/european-lng-tracker) |
-| Lithuania | 71% | year 2025 (30 cargoes, 23,9 TWh regasified) | 3.9 bcm/y (1) | [Klaipėda LNG / KN](https://lngprime.com/europe/lithuanias-kn-says-majority-of-klaipeda-fsru-capacity-booked-in-2027/192262/) |
+| Germany | 89% | Q1 2026 (highest in Europe) | 23.1 bcm/y (4) | [IEEFA European LNG Tracker, May 2026](https://ieefa.org/european-lng-tracker) |
+| Netherlands | 77% | Q1 2026 | 24.0 bcm/y (2) | [IEEFA European LNG Tracker, May 2026](https://ieefa.org/european-lng-tracker) |
+| Poland | 75% (Qatar 21%) | Q1 2026 | 8.3 bcm/y (1) | [IEEFA European LNG Tracker, May 2026](https://ieefa.org/european-lng-tracker) |
+| Lithuania | 71% | year 2025 (30 cargoes, 23.9 TWh regasified) | 3.9 bcm/y (1) | [Klaipėda LNG / KN](https://lngprime.com/europe/lithuanias-kn-says-majority-of-klaipeda-fsru-capacity-booked-in-2027/192262/) |
 
 *bcm = billion cubic metres. Capacity: Global Energy Monitor via [terminali-gnl.json](../docs/data/terminali-gnl.json) and [esposizione-nord.json](../docs/data/esposizione-nord.json). Germany's figure still counts the Mukran floating terminal, which IEEFA reports has left for Egypt: the real German capacity is lower.*
 
-Europe-wide, the United States supplied 58% of Europe's LNG imports in 2025 and 63% in the first quarter of 2026 ([IEEFA](https://ieefa.org/european-lng-tracker), May 2026; not verified against the source in review). Norway remains the largest pipeline supplier: 30.9% of EU gas imports in 2025, 89.3 bcm ([esposizione-nord.json](../docs/data/esposizione-nord.json), Council of the EU). The Netherlands closed the Groningen field by law on 1 October 2024.
+Europe-wide, the United States supplied 58% of Europe's LNG imports in 2025 and 63% in the first quarter of 2026 ([IEEFA](https://ieefa.org/european-lng-tracker), May 2026; not verified against the source in review). Norway remains the EU's largest gas supplier: 30.9% of EU gas imports in 2025, 89.3 bcm ([esposizione-nord.json](../docs/data/esposizione-nord.json), Council of the EU). The Netherlands closed the Groningen field by law on 1 October 2024.
 
 ### TTF price
 
@@ -93,9 +93,9 @@ The **TTF**, the Dutch hub price that sets gas prices for most of Europe, closed
 
 ### Power links
 
-North Sea countries trade power through subsea direct-current (HVDC) cables: NorNed (700 MW) and COBRAcable (700 MW) from the Netherlands, Viking Link (1.4 GW, Denmark–UK) and NordLink (1.4 GW, Norway–Germany) ([esposizione-nord.json](../docs/data/esposizione-nord.json)). OpenStreetMap shows these HVDC export and interconnector cables under construction: Bornholm-Deutschland, Eastern Green Link 1, Eastern Green Link 2, IJmuiden Ver Alpha, IJmuiden Ver Beta, IJmuiden Ver Gamma, Nederwiek 1, NeuConnect ([rete-elettrica.json](../docs/data/rete-elettrica.json)). In the Baltic, Estlink 2 (650 MW, Estonia–Finland) was cut by the anchor of the Eagle S on 25 December 2024 and restored in June 2025 ([interconnessioni.json](../docs/data/interconnessioni.json)).
+North Sea countries trade power through subsea direct-current (HVDC) cables: NorNed (700 MW) and COBRAcable (700 MW) from the Netherlands, Viking Link (1.4 GW, Denmark–UK) and NordLink (1.4 GW, Norway–Germany) ([esposizione-nord.json](../docs/data/esposizione-nord.json)). OpenStreetMap shows these HVDC export and interconnector cables under construction: Bornholm–Germany, Eastern Green Link 1, Eastern Green Link 2, IJmuiden Ver Alpha, IJmuiden Ver Beta, IJmuiden Ver Gamma, Nederwiek 1, NeuConnect ([rete-elettrica.json](../docs/data/rete-elettrica.json)). In the Baltic, Estlink 2 (650 MW, Estonia–Finland) was cut by the anchor of the Eagle S on 25 December 2024 and restored in June 2025 ([interconnessioni.json](../docs/data/interconnessioni.json)).
 
-*Assessment.* The winter risk for North-West Europe is storage, not supply routes. With German storage 30 points below its five-year average and most LNG coming from the US, the TTF depends on two things a port or energy company cannot control: winter temperatures and the Qatar outage linked to the Strait of Hormuz (rated «critico» on the monitor's [rischio.json](../docs/data/rischio.json)).
+*Assessment.* The winter risk for North-West Europe is storage, not supply routes. With German storage 30 points below its five-year average and most LNG coming from the US, the TTF depends on two things a port or energy company cannot control: winter temperatures and the Qatar outage linked to the Strait of Hormuz (rated «critical» on the monitor's [rischio.json](../docs/data/rischio.json)).
 
 <a id="wind"></a>
 
@@ -119,44 +119,65 @@ For the Baltic as a whole the EMODnet map gives 2.7 GW operating and 3.8 GW unde
 
 ### Auctions
 
-| Date | Country | Round | GW | Mechanism (as in source) | Outcome |
+| Date | Country | Round | GW | Mechanism | Outcome |
 |---|---|---|---|---|---|
-| 2024-12 | Denmark | 3 siti nel Mare del Nord (3 GW) | 3.0 | offerta negativa / senza sussidi | [nessuna offerta](https://www.offshorewind.biz/2026/11/06/vattenfall-signs-final-agreements-for-new-danish-offshore-wind-farms) |
-| 2025 | Denmark | Kattegat II, Kriegers Flak II, Hesselo' (senza sussidi) | — | senza sussidi | [annullate per mancanza di interesse](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf) |
-| 2025 | Germany | N-9.4 (1 GW, sito non pre-studiato) | 1.0 | offerta negativa | [aggiudicata](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf) |
-| 2025 | Lithuania | Seconda asta offshore (riproposta, 0,7 GW) | 0.7 | CfD | [invalidata: meno delle due offerte minime](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf) |
-| 2025 | Norway | Sorvest F (1,5 GW) | 1.5 | CfD | [annullata](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf) |
-| 2025-08 | Germany | N-10.1 e N-10.2 (2,5 GW) | 2.5 | offerta negativa senza tetto | [nessuna offerta (prima volta in Germania); gare 2026 rinviate al 2027](https://www.offshorewind.biz/2026/08/12/german-govt-proposes-changes-to-offshore-wind-act-industry-says-cfd-mechanism-should-not-be-fallback-option) |
-| 2025-10-30 | Netherlands | Nederwiek I-A (1 GW) | 1.0 | senza sussidi | [nessuna offerta](https://www.offshorewind.biz/2025/10/31/zero-bids-in-1-gw-dutch-offshore-wind-tender/) |
-| 2025-12-17 | Poland | Prima asta CfD offshore | 3.4 | CfD a due vie, 25 anni | [Baltica 9 (PGE, 975 MW), Baltic East (ORLEN, 900 MW), Baltyk I (Polenergia/Equinor, 1.560 MW); prossime aste 2…](https://notesfrompoland.com/2025/12/19/poland-completes-first-offshore-wind-power-auction-allocating-3-4-gw-of-capacity/) |
-| 2026 | Netherlands | IJmuiden Ver Gamma-A (1 GW) e Gamma-B (1 GW) | 2.0 | sussidio temporaneo TOWOZ | [in corso: Gamma-A con budget di sussidio 3,98 miliardi EUR (meccanismo temporaneo TOWOZ); Gamma-B aggiunto ad …](https://www.offshorewind.biz/2026/01/19/dutch-govt-plans-single-site-tender-in-september-temporary-subsidy-mechanism-to-support-1-gw-of-offshore-wind) |
-| 2026-01-14 | United Kingdom | CfD Allocation Round 7 | 8.4 | CfD | [record: 8,2 GW fondazioni fisse, 192,5 MW galleggiante; RWE circa 6,9 GW](https://www.gov.uk/government/publications/contracts-for-difference-cfd-allocation-round-7-results/contracts-for-difference-allocation-round-7-results-accessible-webpage) |
-| 2026-08-04 | Denmark | North Sea I Mid / Holmsland (1 GW) e Hesselo' (0,8 GW) | 1.8 | CfD a due vie, 20 anni | [aggiudicate a Vattenfall; accordi firmati il 06/11/2026; esercizio obiettivo 2032](https://www.en.kefm.dk/news/news-archive/2026/aug/vattenfall-vindkraft-as-to-build-off-shore-wind-farms-in-the-north-sea-and-kattegat) |
-| 2026-08-10 | Germany | Riforma WindSeeG (bozza) | — | due fasi (offerta + CfD di riserva) | [in iter: gare annuali 2-4,8 GW dal 2027; CfD bilaterali solo come seconda fase se la prima non aggiudica; vita…](https://www.offshorewind.biz/2026/08/12/german-govt-proposes-changes-to-offshore-wind-act-industry-says-cfd-mechanism-should-not-be-fallback-option) |
+| 2024-12 | Denmark | three North Sea sites (3 GW) | 3.0 | negative bidding / no subsidy | [no bids](https://www.offshorewind.biz/2026/11/06/vattenfall-signs-final-agreements-for-new-danish-offshore-wind-farms) |
+| 2025 | Denmark | Kattegat II, Kriegers Flak II, Hesselø (no subsidy) | — | no subsidy | [cancelled](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf) |
+| 2025 | Germany | N-9.4 (1 GW, site not pre-investigated) | 1.0 | negative bidding | [awarded](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf) |
+| 2025 | Lithuania | second offshore round (re-run, 0.7 GW) | 0.7 | CfD | [invalidated (fewer than two bids)](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf) |
+| 2025 | Norway | Sørvest F (1.5 GW) | 1.5 | CfD | [cancelled](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf) |
+| 2025-08 | Germany | N-10.1 and N-10.2 (2.5 GW) | 2.5 | uncapped negative bidding | [no bids](https://www.offshorewind.biz/2026/08/12/german-govt-proposes-changes-to-offshore-wind-act-industry-says-cfd-mechanism-should-not-be-fallback-option) |
+| 2025-10-30 | Netherlands | Nederwiek I-A (1 GW) | 1.0 | no subsidy | [no bids](https://www.offshorewind.biz/2025/10/31/zero-bids-in-1-gw-dutch-offshore-wind-tender/) |
+| 2025-12-17 | Poland | first offshore CfD round | 3.4 | two-sided CfD, 25 years | [awarded: Baltica 9, Baltic East, Bałtyk I](https://notesfrompoland.com/2025/12/19/poland-completes-first-offshore-wind-power-auction-allocating-3-4-gw-of-capacity/) |
+| 2026 | Netherlands | IJmuiden Ver Gamma-A (1 GW) and Gamma-B (1 GW) | 2.0 | temporary subsidy (TOWOZ) | [open: applications 26 Nov–10 Dec 2026](https://www.offshorewind.biz/2026/01/19/dutch-govt-plans-single-site-tender-in-september-temporary-subsidy-mechanism-to-support-1-gw-of-offshore-wind) |
+| 2026-01-14 | United Kingdom | CfD Allocation Round 7 | 8.4 | CfD | [awarded (record)](https://www.gov.uk/government/publications/contracts-for-difference-cfd-allocation-round-7-results/contracts-for-difference-allocation-round-7-results-accessible-webpage) |
+| 2026-08-04 | Denmark | North Sea I Mid / Holmsland (1 GW) and Hesselø (0,8 GW) | 1.8 | two-sided CfD, 20 years | [awarded](https://www.en.kefm.dk/news/news-archive/2026/aug/vattenfall-vindkraft-as-to-build-off-shore-wind-farms-in-the-north-sea-and-kattegat) |
+| 2026-08-10 | Germany | WindSeeG reform (draft) | — | two stages (bid + fallback CfD) | [in parliament; rounds of 2–4.8 GW a year from 2027](https://www.offshorewind.biz/2026/08/12/german-govt-proposes-changes-to-offshore-wind-act-industry-says-cfd-mechanism-should-not-be-fallback-option) |
 
-*From [eolico-filiera.json](../docs/data/eolico-filiera.json); original wording of the curated file (Italian) is kept in the last two columns where no translation is given in the text. «Offerta negativa» = developer pays the state; «CfD a due vie» = two-sided contract for difference.*
+*From [eolico-filiera.json](../docs/data/eolico-filiera.json) (curated, one source per round). Negative bidding: the developer pays the state for the site. Two-sided CfD: the state guarantees a strike price and pays or collects the difference with the market price.*
 
 The pattern is clear in the data: rounds where the developer pays the state for the site failed in Denmark (3 GW, December 2024), Germany (2.5 GW, August 2025) and the Netherlands (1 GW, October 2025), with no bids. Rounds with a **two-sided contract for difference (CfD)**, where the state guarantees a fixed price and pays or collects the difference with the market, worked: the UK awarded 8.4 GW in January 2026, Poland 3.4 GW in December 2025 and Denmark 1.8 GW in August 2026, signed on 6 November 2026. Next: the Dutch IJmuiden Ver Gamma-A and Gamma-B rounds (2 GW) take applications from 26 November to 10 December 2026 (RVO, secondary source).
 
 ### Bottlenecks
 
-- **Auctions and cost of capital** — strain: high. Indicator: Capacita' offshore in aste fallite con offerta negativa (2024-2025) = 6.5 GW ([WindEurope, 2025 Statistics](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf), 2026-02).
-- **HVDC cables** — strain: high. Indicator: Prysmian: portafoglio ordini Transmission = 16.5 miliardi EUR ([Prysmian, comunicato Q3 2026](https://www.prysmian.com/sites/www.prysmian.com/files/media/documents/PR_Q326_ENGLISH.pdf), 2026-10-29).
-- **HVDC converter platforms** — strain: high. Indicator: BalWin1 (Amprion, 2 GW): nuova data di esercizio = 2031-09-15 data ([HVDC World](https://hvdcworld.com/news/amprion-delays-balwin1-hvdc-connection-to-2031), 2026-07-08).
-- **Turbines** — strain: medium. Indicator: Siemens Gamesa: perdita prima delle voci speciali, Q2 esercizio 2026 = -44 milioni EUR ([Renewables Now](https://renewablesnow.com/news/siemens-gamesa-narrows-loss-in-q2-parent-lifts-2026-outlook-1293658/), 2026-05).
-- **Vessels** — strain: medium. Indicator: WTIV >=15 MW (esclusa Cina) = 25 navi (oltre) entro il 2028 ([Intelatus via Offshore Engineer](https://www.oedigital.com/news/538691-vessel-sector-deep-dive-wtivs), 2026-05-01).
-- **Ports** — strain: medium. Indicator: Investimenti annunciati dal 2022 in manifattura, porti e navi = 15.4 miliardi EUR ([WindEurope, 2025 Statistics](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf), 2026-02).
-- **Foundations** — strain: overcapacity. Indicator: Capacita' europea monopile XXL+ = 2.7 milioni di tonnellate/anno dal 2027 ([Rystad Energy](https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze), 2026-09-18).
+- **Auctions and cost of capital** — strain: high. offshore capacity in failed negative-bidding rounds, 2024–2025: 6.5 GW ([WindEurope, 2025 Statistics](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf), February 2026).
+- **HVDC cables** — strain: high. Prysmian transmission order backlog: 16.5 billion € ([Prysmian, comunicato Q3 2026](https://www.prysmian.com/sites/www.prysmian.com/files/media/documents/PR_Q326_ENGLISH.pdf), 29 October 2026).
+- **HVDC converter platforms** — strain: high. new in-service date of Amprion's BalWin1 (2 GW) grid link: 15 September 2031 ([HVDC World](https://hvdcworld.com/news/amprion-delays-balwin1-hvdc-connection-to-2031), 8 July 2026).
+- **Turbines** — strain: medium. Siemens Gamesa loss before special items, Q2 of financial year 2026: -44 million € ([Renewables Now](https://renewablesnow.com/news/siemens-gamesa-narrows-loss-in-q2-parent-lifts-2026-outlook-1293658/), May 2026).
+- **Vessels** — strain: medium. Western installation vessels (WTIV) for turbines of 15 MW or more by 2028, more than: 25 ([Intelatus via Offshore Engineer](https://www.oedigital.com/news/538691-vessel-sector-deep-dive-wtivs), 1 May 2026).
+- **Ports** — strain: medium. investment announced since 2022 in factories, ports and vessels: 15.4 billion € ([WindEurope, 2025 Statistics](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf), February 2026).
+- **Foundations** — strain: overcapacity. European XXL monopile capacity from 2027: 2.7 million tonnes a year ([Rystad Energy](https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze), 18 September 2026).
 
-Indicator names are quoted as written in eolico-filiera.json (Italian). In plain terms: Prysmian holds about 16.5 billion € of transmission orders (29 October 2026) and NKT 13.0 billion (30 June 2026), so new HVDC cable capacity is booked for years; Amprion's BalWin1 2 GW grid link slipped from September 2030 to 15 September 2031 because of extra work on the offshore converter platform; European monopile factories, by contrast, will run at about 32% in 2026 and 19% in 2028 (Rystad).
+In plain terms: Prysmian holds about 16.5 billion € of transmission orders (29 October 2026) and NKT 13.0 billion (30 June 2026), so new HVDC cable capacity is booked for years; Amprion's BalWin1 2 GW grid link slipped from September 2030 to 15 September 2031 because of extra work on the offshore converter platform; European monopile factories, by contrast, will run at about 32% in 2026 and 19% in 2028 (Rystad).
 
 ### Ports and vessels
 
 Esbjerg has shipped over 27.5 GW of offshore wind in total ([Port Esbjerg](https://portesbjerg.dk/en/news/record-number-of-wind-vessels-calling-at-port-esbjerg-in-2025)). Rotterdam plans a 45-hectare wind terminal for mid-2029 and Cuxhaven a 1,250-metre heavy-load quay for about 2028, while the Bremerhaven terminal was never built ([eolico-filiera.json](../docs/data/eolico-filiera.json)). Vessels are no longer the main constraint: the fleet of Western installation ships able to handle 15 MW turbines goes from zero in 2020 to more than 25 by 2028 (Intelatus), and Cadeler, the market leader, used its fleet at 66% in the first half of 2026 with a 2.5 billion € order book.
 
-**Missing:** a dated calendar of offshore wind milestones (wind-calendar.json, being prepared by another agent; this report includes it automatically when it appears).
+### Offshore wind calendar: the next 90 days
 
-*Assessment.* For a port the binding constraint is now the auction pipeline and the grid, not ships or steel. Work is secured until 2027–2028; after that, demand depends on whether the Dutch December round attracts bids and on the German reform of offshore auctions, now planned for 2027.
+| Date | Country | Type | Milestone | MW | Status | Source |
+|---|---|---|---|---|---|---|
+| 2026-Q4 | Poland | policy | Gdansk T5 installation terminal (EUR 253 m, 21 ha) | — | scheduled | [offshoreWIND.biz (T5 terminal); lease dates from eolico-filiera.json](https://www.offshorewind.biz/2024/07/16/poles-getting-ready-to-build-eur-253-million-offshore-wind-terminal-at-port-of-gdansk) |
+| 2026-11-26 | Netherlands | auction | IJmuiden Ver Gamma-A and Gamma-B | 2,000 | scheduled | [RVO (Dutch page, Gamma-B); Renewable Energy Industry](https://www.rvo.nl/onderwerpen/windenergie-op-zee/ijmuiden-ver-gamma-b) |
+| 2026-11-27 | United Kingdom | auction | CfD Allocation Round 8 (AR8): results | — | scheduled | [Foot Anstey / law-firm summaries of the AR8 framework](https://www.footanstey.com/our-insights/articles-news/contracts-for-difference-allocation-round-8-the-changes-to-be-aware-of/) |
+| 2026-12 | Germany | policy | WindSeeG reform: Bundestag adoption | — | at risk | [Bundestag Drucksache 21/8238; Riviera; balticwind.eu](https://dserver.bundestag.de/btd/21/082/2108238.pdf) |
+| 2026-12 | France | auction | AO10 first winners | 10,000 | scheduled | [Enerdata](https://www.enerdata.net/publications/daily-energy-news/france-launches-10-gw-offshore-wind-tenders-under-ppe-3.html) |
+| 2026-12 | Lithuania | FID | Curonian Nord: decision on further implementation | 700 | at risk | [Windtech International](https://www.windtech-international.com/projects-and-contracts/ignitis-proposes-postponing-curonian-nord-offshore-wind-project) |
+| 2027-01-01 | Germany | policy | WindSeeG reform: entry into force | — | scheduled | [offshoreWIND.biz](https://offshorewind.biz/2026/09/02/german-cabinet-approves-offshore-wind-act-amendment-industry-calls-for-further-changes) |
+| 2027-Q1 | United Kingdom | delay | Hornsea 3 (Orsted) | 2,900 | at risk | [Orsted, Q1 2026 earnings call transcript](https://cdn.orsted.com/-/media/q12026/q1-2026---earnings-call-transcript.pdf) |
+
+*Source: [wind-calendar.json](../docs/data/wind-calendar.json) (curated, 114 milestones, reference date 10 November 2026; «unconfirmed» = a scheduled date has passed without confirmation). Across the calendar: 84 done, 18 scheduled, 8 at risk, 4 unconfirmed.*
+
+**Also flagged at risk or unconfirmed in the calendar:**
+
+- Dogger Bank B (United Kingdom, 2026): SSE project page gives commercial operation in 2026, but turbine installation was still running in November 2026 (vessel Seaway Ventus on site), so slippage into 2027 is likely.
+- Swedish state-led tender and support system (Sweden, 2026-07-01): Government commission proposed state-identified sites and support (offshore wind 'not commercially viable' otherwise), with the system taking effect from 1 Jul 2026.
+- He Dreiht: full 960 MW (Germany, 2026-10): EnBW expected the full 960 MW for the first time in October 2026.
+- Bornholm offshore wind farms: joint DK-DE tender launch (Denmark, 2026-H1): In January 2026 the two governments said the joint tender for the wind farms would launch 'in the coming months'. No launch found by November 2026.
+- East Anglia Three (United Kingdom, 2026-H2): Developer aim: full operation by end-2026.
+
+*Assessment.* For a port the binding constraint is now the auction pipeline and the grid, not ships or steel. Work is secured until 2027–2028; after that, demand depends on whether the Dutch December round attracts bids and on the German auction reform, meant to take effect on 1 January 2027 if the Bundestag adopts it in time.
 
 <a id="costs"></a>
 
@@ -186,11 +207,11 @@ In the Asia–Rotterdam example fuel is 3.04 million €, the ETS 0.55 million, 
 
 **Freight.** Drewry's index puts a 40-foot container from Shanghai at 3,615 $ to Rotterdam and 4,166 $ to Genoa (5 November 2026). The Freightos China–North Europe index (FBX11) is 3,422 $ (−4.8% on the week to 6 November 2026) and the Shanghai CCFI Europe index 1,860.07 points (+1.53%) ([noli.json](../docs/data/noli.json)).
 
-**Transit times to Rotterdam.** Ships rerouted around the Cape of Good Hope need roughly 7,000 km and 14–24 days more between Asia and Europe than via Suez (UNCTAD 2024, in [stretti-dettaglio.json](../docs/data/stretti-dettaglio.json)). In the week to 1 November 2026 the Suez Canal saw 43.0 transits a day (+10.3% on a year) and the Cape 92.0 (+5.0%) ([portwatch.json](../docs/data/portwatch.json)). BIMCO counts 753,000 TEU a week of container capacity through Suez in early October 2026 against 1,457,000 in 2023: just over half of the pre-crisis level.
-
 ### Transit times to Rotterdam
 
-The monitor's routing model (transit-times.json, updated 10 November 2026) puts a ~15,000 TEU container ship from Shanghai (Yangshan) to Rotterdam at 29.6 days at sea via Suez today (10,674 nautical miles at 15 knots), and 40.1 days via the Cape, 10.5 days more. Sea time only: no canal waiting, port time or bunkering stops. Distances are checked against published ones (error under 5%).
+Ships rerouted around the Cape of Good Hope need roughly 7,000 km and 14–24 days more between Asia and Europe than via Suez (UNCTAD 2024, in [stretti-dettaglio.json](../docs/data/stretti-dettaglio.json)). In the week to 1 November 2026 the Suez Canal saw 43.0 transits a day (+10.3% on a year) and the Cape 92.0 (+5.0%) ([portwatch.json](../docs/data/portwatch.json)). BIMCO counts 753,000 TEU a week of container capacity through Suez in early October 2026 against 1,457,000 in 2023: just over half of the pre-crisis level.
+
+The monitor's routing model (transit-times.json, updated 10 November 2026) puts a ~15,000 TEU container ship from Shanghai (Yangshan) to Rotterdam at 29.6 days at sea via Suez today (10,674 nautical miles at 15 knots), and 40.1 days via the Cape, 10.5 days more. Sea time only: no canal waiting, port time or bunkering stops; distances are within 5% of published ones. The model's extra days via the Cape are fewer than UNCTAD's 14–24 because they are sea days at one fixed speed from one origin; UNCTAD's range covers several origins and speeds.
 
 | Origin | Cargo | Status today | Nautical miles today | Days today (speed range) | Days, pre-crisis route | Days via Cape | Extra days via Cape |
 |---|---|---|---|---|---|---|---|
@@ -216,18 +237,19 @@ The monitor's routing model (transit-times.json, updated 10 November 2026) puts 
 
 ### Cables and pipelines
 
-| Date | Incident (as recorded) | Suspected cause (as recorded) | Link |
+| Date | Cable or pipeline | Suspected cause | Link |
 |---|---|---|---|
-| 8 Oct 2023 | Balticconnector e cavi Finlandia-Estonia danneggiati dall'ancora della NewNew Polar Bear | ancora della portacontainer NewNew Polar Bear (bandiera di Hong Kong) trascinata sul fondale secondo la polizia finlande… | [source](https://www.aljazeera.com/news/2023/10/25/finland-pipeline-damage-cause) |
-| 17 Nov 2024 | Baltico: BCS East-West Interlink (Lituania-Gotland) danneggiato | sospettata la nave portarinfuse cinese Yi Peng 3 (comandante russo), passata sopra entrambi i cavi; intenzionalità non a… | [source](https://lieber.westpoint.edu/baltic-sea-cable-cuts-ship-interdiction-c-lion1-incident/) |
-| 18 Nov 2024 | Baltico: C-Lion1 (Helsinki-Rostock) tagliato | sospettata la Yi Peng 3 (vedi BCS); Pechino nega responsabilità | [source](https://www.datacenterdynamics.com/en/news/chinese-bulk-carrier-suspected-of-being-behind-baltic-sea-cable-cuts/) |
-| 25 Dec 2024 | Estlink 2 e quattro cavi dati danneggiati dall'ancora della Eagle S | ancora da 11 t trascinata per circa 90 km dalla petroliera Eagle S (Isole Cook, flotta ombra russa) secondo l'accusa | [source](https://therecord.media/finland-appeals-court-revives-case-against-eagle-s) |
-| 26 Jan 2025 | Baltico: cavo Ventspils-Gotland (LVRTC) danneggiato | sequestrata la portarinfuse Vezhen (bandiera Malta, partita da Ust-Luga); indagine svedese per sabotaggio aggravato | [source](https://therecord.media/sweden-seizes-ship-suspected-cable-sabotage) |
-| 31 Dec 2025 | Golfo di Finlandia: cavi Elisa e Arelion Helsinki-Tallinn danneggiati (Fitburg) | ancora e catena del cargo Fitburg (da San Pietroburgo verso Israele) trascinate per circa 130 km | [source](https://www.euronews.com/2026/11/05/finnish-court-jails-russian-captain-over-baltic-sea-cable-sabotage) |
+| 8 Oct 2023 | Balticconnector gas pipeline and Finland–Estonia cables | anchor of the NewNew Polar Bear (suspected) | [source](https://www.aljazeera.com/news/2023/10/25/finland-pipeline-damage-cause) |
+| 17 Nov 2024 | BCS East-West Interlink (Lithuania–Gotland) | anchor of the Yi Peng 3 (suspected) | [source](https://lieber.westpoint.edu/baltic-sea-cable-cuts-ship-interdiction-c-lion1-incident/) |
+| 18 Nov 2024 | C-Lion1 (Helsinki–Rostock) | anchor of the Yi Peng 3 (suspected) | [source](https://www.datacenterdynamics.com/en/news/chinese-bulk-carrier-suspected-of-being-behind-baltic-sea-cable-cuts/) |
+| 25 Dec 2024 | Estlink 2 power cable and four data cables | anchor of the Eagle S (suspected) | [source](https://therecord.media/finland-appeals-court-revives-case-against-eagle-s) |
+| 26 Jan 2025 | Ventspils–Gotland data cable (LVRTC) | anchor of the Vezhen (suspected) | [source](https://therecord.media/sweden-seizes-ship-suspected-cable-sabotage) |
+| 31 Dec 2025 | Elisa and Arelion Helsinki–Tallinn cables | anchor of the Fitburg (suspected) | [source](https://www.euronews.com/2026/11/05/finnish-court-jails-russian-captain-over-baltic-sea-cable-sabotage) |
+| 2 Jan 2026 | Šventoji (LT) – Liepāja (LV) data cable | under investigation | [source](https://gcaptain.com/latvia-police-board-vessel-after-baltic-sea-telecom-cable-breach) |
 
-*Baltic incidents in [cavi-incidenti.json](../docs/data/cavi-incidenti.json) (curated, wording in Italian). Causes are hypotheses unless a court has ruled. Not yet in this file: the Šventoji–Liepāja data cable damaged on 2 January 2026 (baltico-sicurezza.json).*
+*Baltic incidents in [cavi-incidenti.json](../docs/data/cavi-incidenti.json), plus the Šventoji–Liepāja cable recorded so far only in [baltico-sicurezza.json](../docs/data/baltico-sicurezza.json). Causes are hypotheses of investigators or the press unless a court has ruled; intent is not proven in most cases.*
 
-On 5 November 2026 a Helsinki court sentenced the captain of the Fitburg to 42 months for the damage to the Helsinki–Tallinn cables (first instance, not final; [baltico-sicurezza.json](../docs/data/baltico-sicurezza.json), Euronews). The monitor's risk dashboard rates the Baltic cable corridor «medio» (9.0 out of 25) ([rischio.json](../docs/data/rischio.json)).
+On 5 November 2026 a Helsinki court sentenced the captain of the Fitburg to 42 months for the damage to the Helsinki–Tallinn cables (first instance, not final; [baltico-sicurezza.json](../docs/data/baltico-sicurezza.json), Euronews). The monitor's risk dashboard rates the Baltic cable corridor «medium» (9.0 out of 25) ([rischio.json](../docs/data/rischio.json)).
 
 ### Drones
 
@@ -235,7 +257,7 @@ On 5 November 2026 a Helsinki court sentenced the captain of the Fitburg to 42 m
 
 ### GPS jamming (GNSS interference)
 
-GNSS satellite navigation signals are jammed or spoofed daily in the eastern Baltic. GPSJam, which reads the navigation quality reported by aircraft, showed 214 to 246 map cells a day at a high level (over 10% of aircraft affected) between 2 November and 8 November 2026. 1 high-level cells were west of 17°E. Aircraft data show where interference reaches, not where the jammers are, and say nothing directly about ships ([baltico-sicurezza.json](../docs/data/baltico-sicurezza.json)).
+GNSS satellite navigation signals are jammed or spoofed daily in the eastern Baltic. GPSJam, which reads the navigation quality reported by aircraft, showed 214 to 246 map cells a day at a high level (over 10% of aircraft affected) between 2 November and 8 November 2026. Almost all were east of 17°E (Kaliningrad, Lithuania, the Gulf of Finland, eastern Poland); one lay just west of it, at 55.8°N 16.96°E (10.7% of 681 aircraft). Aircraft data show where interference reaches, not where the jammers are, and say nothing directly about ships ([baltico-sicurezza.json](../docs/data/baltico-sicurezza.json)).
 
 ### Shadow fleet in the Danish straits and the Gulf of Finland
 
@@ -243,7 +265,7 @@ The Danish Maritime Authority counted 292 passages of EU-sanctioned tankers thro
 
 In the AIS snapshot of 9 November 2026 the monitor saw 109 ships in the Gulf of Finland: 44 on US, UK or EU sanction lists and 38 probable shadow fleet. Counting tankers only, 38 of 96 were sanctioned there and 7 more in the rest of the Baltic ([navi.json](../docs/data/navi.json), [baltico-sicurezza.json](../docs/data/baltico-sicurezza.json)). The Danish straits snapshot showed 27 ships and 1 sanctioned, but coverage there is thinner. Ships with AIS off are not counted.
 
-Coastal states have become more active: [baltico-sicurezza.json](../docs/data/baltico-sicurezza.json) lists 6 detentions, boardings or refusals of entry in 2026, including Swedish detentions of tankers off Gotland and Trelleborg and Germany's refusal of the tanker Tavian. Russia detained a Greek-owned tanker leaving an Estonian port on 26 July 2026. The Danish straits are rated «medio» on the risk dashboard (8.3 out of 25, from 5.8 a week earlier).
+Coastal states have become more active: [baltico-sicurezza.json](../docs/data/baltico-sicurezza.json) lists 6 detentions, boardings or refusals of entry in 2026, one of them by Russia. They include Swedish detentions of tankers off Gotland and Trelleborg and Germany's refusal of the tanker Tavian. Russia detained a Greek-owned tanker leaving an Estonian port on 26 July 2026. The Danish straits are rated «medium» on the risk dashboard (8.3 out of 25, from 5.8 a week earlier).
 
 Cyber: on 29 December 2025 a destructive attack hit more than 30 wind and solar farms in Poland; the plants lost remote control and communication, but power output did not stop ([cyber-energia.json](../docs/data/cyber-energia.json)).
 
@@ -276,32 +298,32 @@ Europe had 571 MW of electrolysers in operation in July 2025 (Hydrogen Europe, [
 
 | Project | Port | Type | Status | MW | Year |
 |---|---|---|---|---|---|
-| GET H2 Nukleus, elettrolizzatore RWE di Lingen | (entroterra, Ems) | electrolyser | operating | 300 | 2026 |
-| Pilota di bunkeraggio ammoniaca nave-nave (Rotterdam) | Rotterdam | bunkering | operating | — | 2025 |
-| Kasso, impianto di e-metanolo (European Energy) | (Jutland meridionale) | e-fuel | operating | — | 2025 |
+| GET H2 Nukleus, RWE electrolyser, Lingen | (inland, Ems) | electrolyser | operating | 300 | 2026 |
+| Ship-to-ship ammonia bunkering pilot (Rotterdam) | Rotterdam | bunkering | operating | — | 2025 |
+| Kassø, e-methanol plant (European Energy) | (southern Jutland) | e-fuel | operating | — | 2025 |
 | Holland Hydrogen 1 (Shell) | Rotterdam | electrolyser | under construction | 200 | 2026 |
 | ELYgator (Air Liquide) | Rotterdam | electrolyser | under construction | 200 | 2027 |
-| Hamburg Green Hydrogen Hub (Moorburg) | Amburgo | electrolyser | under construction | 100 | 2027 |
-| Hyoffwind (Zeebrugge) | Zeebrugge (Anversa-Bruges) | electrolyser | under construction | 25 | 2026 |
-| HH-WIN, rete industriale dell'idrogeno di Amburgo | Amburgo | local H2 grid | under construction | — | 2027 |
-| Terminale di import ammoniaca Wilhelmshaven (Uniper) | Wilhelmshaven | import terminal | development | 1,000 | 2028 |
-| H2Maasvlakte (Uniper), fase 1 | Rotterdam | electrolyser | development | 200 | 2030 |
-| Elettrolizzatore OranjeWind (RWE) presso centrale Magnum | Eemshaven | electrolyser | development | 100 | — |
-| Green H2, elettrolizzatore raffineria di Danzica (Orlen) | Danzica | electrolyser | development | 100 | 2027 |
+| Hamburg Green Hydrogen Hub (Moorburg) | Hamburg | electrolyser | under construction | 100 | 2027 |
+| Hyoffwind (Zeebrugge) | Zeebrugge (Antwerp-Bruges) | electrolyser | under construction | 25 | 2026 |
+| HH-WIN, Hamburg industrial hydrogen grid | Hamburg | local H2 grid | under construction | — | 2027 |
+| Ammonia import terminal Wilhelmshaven (Uniper) | Wilhelmshaven | import terminal | development | 1,000 | 2028 |
+| H2Maasvlakte (Uniper), phase 1 | Rotterdam | electrolyser | development | 200 | 2030 |
+| OranjeWind electrolyser (RWE) at Magnum power plant | Eemshaven | electrolyser | development | 100 | — |
+| Green H2, electrolyser at Gdańsk refinery (Orlen) | Gdańsk | electrolyser | development | 100 | 2027 |
 | Eemshydrogen (RWE) | Eemshaven | electrolyser | development | 50 | 2027 |
-| Terminale ammoniaca + cracker VTTI (Rotterdam) | Rotterdam | import terminal | development | — | — |
+| Ammonia terminal + cracker VTTI (Rotterdam) | Rotterdam | import terminal | development | — | — |
 | ACE Terminal (Gasunie, HES, Vopak) | Rotterdam | import terminal | development | — | — |
-| NH3 Antwerp Terminal (Fluxys, Advario) | Anversa | import terminal | development | — | 2028 |
-| Cluster PtX di Esbjerg (HOST, Njordkraft, Vidar, Frigg, Albatros, Heimdal) | Esbjerg | electrolyser | development | — | 2030 |
+| NH3 Antwerp Terminal (Fluxys, Advario) | Antwerp | import terminal | development | — | 2028 |
+| Esbjerg PtX cluster (HOST, Njordkraft, Vidar, Frigg, Albatros, Heimdal) | Esbjerg | electrolyser | development | — | 2030 |
 | H2-Fifty (BP) | Rotterdam | electrolyser | suspended | 250 | — |
 | H2-Hub Lubmin (Deutsche ReGas) | Lubmin | electrolyser | suspended | 210 | — |
 | Immingham Green Energy Terminal (Air Products) | Immingham | import terminal | cancelled | 300 | 2025 |
-| H2M Eemshaven, idrogeno blu con CCS (Equinor) | Eemshaven | blue hydrogen | cancelled | — | 2026 |
-| Acciaieria ArcelorMittal Brema: piano DRI a idrogeno | Brema | industrial demand | cancelled | — | 2025 |
-| FlagshipONE, e-metanolo (Oernskoeldsvik) | Oernskoeldsvik | e-fuel | cancelled | — | 2024 |
-| H2Teesside, idrogeno blu (BP) | Teesside | blue hydrogen | cancelled | — | 2025 |
-| Cracker di ammoniaca BP (Wilhelmshaven) | Wilhelmshaven | import terminal | announced | — | 2028 |
-| Terminale ammoniaca RWE (Brunsbuettel) | Brunsbuettel | import terminal | announced | — | — |
+| H2M Eemshaven, blue hydrogen with CCS (Equinor) | Eemshaven | blue hydrogen | cancelled | — | 2026 |
+| ArcelorMittal Bremen steelworks: hydrogen DRI plan | Bremen | industrial demand | cancelled | — | 2025 |
+| FlagshipONE, e-methanol (Örnsköldsvik) | Örnsköldsvik | e-fuel | cancelled | — | 2024 |
+| H2Teesside, blue hydrogen (BP) | Teesside | blue hydrogen | cancelled | — | 2025 |
+| Ammonia cracker BP (Wilhelmshaven) | Wilhelmshaven | import terminal | announced | — | 2028 |
+| Ammonia terminal RWE (Brunsbüttel) | Brunsbüttel | import terminal | announced | — | — |
 
 *Source: [idrogeno.json](../docs/data/idrogeno.json), one source per project (dates 2022–2026).*
 
@@ -328,14 +350,16 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 | Rotterdam calls, 30 days y/y | +2.3% | below −10% | porti-nord.json | weekly |
 | Øresund transits, 7 days y/y | −20.5% | below −30% (dashboard red) | porti-nord.json | weekly |
 | Sanctioned ships in the Gulf of Finland (AIS snapshot) | 44 | above 50 | baltico-sicurezza.json | daily |
-| High GPS-interference cells west of 17°E | 1 | 1 or more (jamming reaching Bornholm, Øresund, German ports) | baltico-sicurezza.json | daily |
-| New Baltic cable or pipeline incident | last: 31 Dec 2025 | any | cavi-incidenti.json | on event |
+| High GPS-interference cells west of 17°E (week) | 1 | 3 or more, or any west of 15°E (Bornholm, Øresund, German ports) | baltico-sicurezza.json | daily |
+| New Baltic cable or pipeline incident | last: 2 Jan 2026 | any | cavi-incidenti.json | on event |
 | IJmuiden Ver Gamma bids | window 26 Nov–10 Dec | no bids or Gamma-B withdrawn | eolico-filiera.json | 10 Dec |
 | Danish hydrogen backbone bookings | deadline 1 Dec | under 0.5 GW booked (project not built) | idrogeno.json | 1 Dec |
 | Maersk ETS surcharge Q1 2027, Far East → N. Europe | 170 $/FEU (Q4) | above 170 $/FEU | bunker-emissioni.json | about 1 Dec |
 | Red Sea war-risk quote | 0.2–0.3% (24 Sep 2026) | above 0.5% of hull value | assicurazioni.json | on quote |
+| CfD Allocation Round 8 (AR8): results | scheduled (2026-11-27) | results slip into 2027 | wind-calendar.json | on event |
+| WindSeeG reform: Bundestag adoption | at risk (2026-12) | no adoption in December | wind-calendar.json | on event |
 
-*Also on the calendar: the IMO vote on the global Net-Zero Framework, planned to resume on 4 December 2026 ([bunker-emissioni.json](../docs/data/bunker-emissioni.json)). Risk dashboard levels for reference: Danish straits «medio», Baltic cables «medio», Red Sea container route «alto», Qatar LNG «critico» ([rischio.json](../docs/data/rischio.json)).*
+*Also on the calendar: the IMO vote on the global Net-Zero Framework, planned to resume on 4 December 2026 ([bunker-emissioni.json](../docs/data/bunker-emissioni.json)). Risk dashboard levels for reference: Danish straits «medium», Baltic cables «medium», Red Sea container route «high», Qatar LNG «critical» ([rischio.json](../docs/data/rischio.json)).*
 
 <a id="method"></a>
 
@@ -343,25 +367,25 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 
 | File | Updated | Main sources |
 |---|---|---|
-| [porti-nord.json](../docs/data/porti-nord.json) | 2026-11-09T20:05Z | IMF PortWatch (FMI e Università di Oxford), Daily Ports Data; Autorità portuali e statistiche nazionali (traffico annuo, v |
-| [scorte.json](../docs/data/scorte.json) | 2026-11-09T19:19Z | GIE AGSI+ (Aggregated Gas Storage Inventory); Eurostat – Gas products stock levels, monthly (nrg_stk_gasm) |
-| [prezzi.json](../docs/data/prezzi.json) | 2026-11-10T03:40Z | — |
-| [eolico-filiera.json](../docs/data/eolico-filiera.json) | 2026-11-09T20:13Z | WindEurope, Wind energy in Europe - 2025 Statistics and the ; Port Esbjerg, 'Port Esbjerg expands by 570,000 square metres |
-| [offshore-nord.json](../docs/data/offshore-nord.json) | 2026-11-09T20:05Z | EMODnet Human Activities: wind farms (poligoni e punti), pla; Wikipedia, List of offshore wind farms (proprietari e stato  |
-| [bunker-emissioni.json](../docs/data/bunker-emissioni.json) | 2026-11-09T20:06Z | Ship & Bunker, prezzi bunker per porto (serie della pagina p; MPA Singapore via data.gov.sg |
-| [assicurazioni.json](../docs/data/assicurazioni.json) | 2026-11-09T20:12Z | Joint War Committee (LMA/IUA), circolari JWLA e pagina pubbl; IUA, Joint War Committee Risk List (elenco delle circolari c |
+| [porti-nord.json](../docs/data/porti-nord.json) | 2026-11-09T20:05Z | IMF PortWatch; Autorità portuali e statistiche nazionali |
+| [scorte.json](../docs/data/scorte.json) | 2026-11-09T19:19Z | GIE AGSI+; Eurostat – Gas products stock levels, monthly |
+| [prezzi.json](../docs/data/prezzi.json) | 2026-11-10T03:40Z | Yahoo Finance, US Treasury |
+| [eolico-filiera.json](../docs/data/eolico-filiera.json) | 2026-11-09T20:13Z | WindEurope, Wind energy in Europe - 2025 Statistics and the outlook fo; Port Esbjerg, 'Port Esbjerg expands by 570,000 square metres' |
+| [offshore-nord.json](../docs/data/offshore-nord.json) | 2026-11-09T20:05Z | EMODnet Human Activities: wind farms; Wikipedia, List of offshore wind farms |
+| [bunker-emissioni.json](../docs/data/bunker-emissioni.json) | 2026-11-09T20:06Z | Ship & Bunker, prezzi bunker per porto; MPA Singapore via data.gov.sg |
+| [assicurazioni.json](../docs/data/assicurazioni.json) | 2026-11-09T20:12Z | Joint War Committee; IUA, Joint War Committee Risk List |
 | [noli.json](../docs/data/noli.json) | 2026-11-09T19:16Z | Drewry; Freightos / Baltic Exchange |
-| [portwatch.json](../docs/data/portwatch.json) | 2026-11-09T19:16Z | IMF PortWatch (FMI e Università di Oxford), dati AIS elabora |
-| [baltico-sicurezza.json](../docs/data/baltico-sicurezza.json) | 2026-11-09T20:05Z | Eventi curati con fonte per voce (raccolta/nord/sicurezza.js; docs/data/cavi-incidenti.json e ibrido.json (richiami per id |
-| [navi.json](../docs/data/navi.json) | 2026-11-09T19:29Z | Elenco navi sanzionate del progetto (docs/data/sanzioni-navi; Digitraffic, AIS marittimo (Fintraffic) |
-| [cavi-incidenti.json](../docs/data/cavi-incidenti.json) | 2026-11-09T18:57Z | Curato a mano dall'agente CAVI da notizie e analisti (una fo |
-| [idrogeno.json](../docs/data/idrogeno.json) | 2026-11-09T20:09Z | Voci curate (comunicati, porti, stampa specializzata): fonte; IEA, Northwest European Hydrogen Monitor 2025 |
-| [esposizione-nord.json](../docs/data/esposizione-nord.json) | 2026-11-09T20:05Z | Eurostat, Energy imports dependency (nrg_ind_id); IEEFA European LNG Tracker, maggio 2026 (quote del GNL per o |
-| [rete-elettrica.json](../docs/data/rete-elettrica.json) | 2026-11-09T19:17Z | OpenStreetMap via tessere vettoriali OpenInfraMap (zoom 5) |
-| [rischio.json](../docs/data/rischio.json) | 2026-11-09T20:03Z | ;  |
+| [portwatch.json](../docs/data/portwatch.json) | 2026-11-09T19:16Z | IMF PortWatch |
+| [baltico-sicurezza.json](../docs/data/baltico-sicurezza.json) | 2026-11-09T20:05Z | Eventi curati con fonte per voce; docs/data/cavi-incidenti.json e ibrido.json |
+| [navi.json](../docs/data/navi.json) | 2026-11-09T19:29Z | Elenco navi sanzionate del progetto; Digitraffic, AIS marittimo |
+| [cavi-incidenti.json](../docs/data/cavi-incidenti.json) | 2026-11-09T18:57Z | Curato a mano dall'agente CAVI da notizie e analisti |
+| [idrogeno.json](../docs/data/idrogeno.json) | 2026-11-09T20:09Z | Voci curate; IEA, Northwest European Hydrogen Monitor 2025 |
+| [esposizione-nord.json](../docs/data/esposizione-nord.json) | 2026-11-09T20:05Z | Eurostat, Energy imports dependency; IEEFA European LNG Tracker, maggio 2026 |
+| [rete-elettrica.json](../docs/data/rete-elettrica.json) | 2026-11-09T19:17Z | OpenStreetMap via tessere vettoriali OpenInfraMap |
+| [rischio.json](../docs/data/rischio.json) | 2026-11-09T20:03Z | Yahoo Finance, US Treasury |
 | [port-risk.json](../docs/data/port-risk.json) | 2026-11-10T06:17Z | port risk scores (PORT-RISK agent) |
-| [transit-times.json](../docs/data/transit-times.json) | 2026-11-10T06:20Z | transit times to Rotterdam (TRANSIT agent) |
-| wind-calendar.json | not available at build time | offshore wind calendar (WIND-CALENDAR agent) |
+| [transit-times.json](../docs/data/transit-times.json) | 2026-11-10T06:23Z | transit times to Rotterdam (TRANSIT agent) |
+| [wind-calendar.json](../docs/data/wind-calendar.json) | 2026-11-10T06:21Z | offshore wind calendar (WIND-CALENDAR agent) |
 | report/dati/eurostat-gas-nord.json | 2026-11-10T06:19Z | Eurostat nrg_stk_gasm (DK, PL) |
 
 *Each file lists its sources, licences and the date of each datum; the text cites the date of the datum, not of the reading.*
@@ -371,8 +395,9 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 - **Conflicting counts.** baltico-sicurezza.json counts all sanctioned ships in the Gulf of Finland (44 of 109); navi.json counts tankers (38 of 96 sanctioned) and the risk dashboard counts sanctioned tankers in the whole Baltic (45). They are different perimeters of the same snapshot.
 - **Offshore wind** totals differ between WindEurope (national, end-2025) and EMODnet (map polygons, status sometimes late, duplicates removed).
 - **Brent** in prezzi.json is a provisional front-month close updated overnight; other files of the monitor quote an earlier reading. This report does not use Brent.
-- **Missing:** AGSI+ daily fill for Denmark and Poland; monthly LNG import volumes by country and origin; any public war-risk premium for Baltic calls; wind-calendar.json at build time.
-- **Hand-written items:** the external fact on the EU-wide US LNG share and the thresholds of section 8. All other numbers are computed by report/build_northern_europe.py from the files above.
+- **Missing:** AGSI+ daily fill for Denmark and Poland; monthly LNG import volumes by country and origin; any public war-risk premium for Baltic calls.
+- **Hand-written items:** the external fact on the EU-wide US LNG share and the thresholds of section 8. Figures quoted from curated text fields of the files (for example the 292 tanker passages or the Fitburg sentence) are typed in the script and checked against the source text at every run; all other numbers are computed by report/build_northern_europe.py from the files above.
+- **Different assumptions between files.** The cost stack uses a 221.7 million $ hull (assicurazioni.json); transit-times.json uses 150 million $ for the same ship type, so its Red Sea premium is lower. Port-risk.json computes its own 7-day port-call changes, which can differ by a few tenths from porti-nord.json.
 
 **Glossary.** AIS: transponder by which ships broadcast identity and position. TEU/FEU: 20-/40-foot container. TTF: Dutch gas hub price. LNG: liquefied natural gas. HVDC: high-voltage direct current. CfD: contract for difference. EUA: EU emission allowance (1 t CO₂e). FuelEU Maritime: EU rule on the greenhouse intensity of ship fuel. War risk: separate insurance for war, mines and seizure. Shadow fleet: old tankers with opaque ownership used to move sanctioned oil. GNSS: satellite navigation (GPS, Galileo).
 

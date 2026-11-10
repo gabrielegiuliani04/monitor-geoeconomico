@@ -46,6 +46,7 @@ OUT_SVG = os.path.join(ROOT, "report", "grafici")
 CACHE = os.path.join(ROOT, "report", "dati")
 OUT_HTML = os.path.join(ROOT, "docs", "report", "en")
 
+WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}
 MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August",
           "September", "October", "November", "December"]
 MON = [m[:3] for m in MONTHS]
@@ -79,7 +80,7 @@ THRESHOLDS = {
     "rotterdam_30d": -10.0,       # % y/y, PortWatch 30-day average of calls
     "oresund_7d": -30.0,          # % y/y; red on the risk dashboard
     "gof_sanctioned": 50,         # sanctioned vessels in one AIS snapshot, Gulf of Finland
-    "gnss_west": 1,               # high-interference cells west of 17°E
+    "gnss_west": 3,               # high-interference cells west of 17°E in a week (one borderline cell seen in Nov 2026)
     "maersk_ets": 170,            # USD/FEU, Far East -> North Europe (Q4 2026 level)
     "redsea_war": 0.5,            # % of hull value
 }
@@ -127,6 +128,8 @@ def num(v, dec=1):
 def pct(v, dec=1, sign=True):
     if v is None:
         return "n/a"
+    if round(v, dec) == 0:
+        return "0%"
     s = f"{v:+,.{dec}f}" if sign else f"{v:,.{dec}f}"
     return s.replace("-", "−") + "%"
 
@@ -179,6 +182,70 @@ def mean(v):
     v = [x for x in v if x is not None]
     return sum(v) / len(v) if v else None
 
+
+LEVEL = {"basso": "low", "medio": "medium", "alto": "high", "critico": "critical"}
+
+# Small glossary to render Italian curated labels in English (names and places, not numbers).
+IT2EN = [
+    ("Terminale di import ammoniaca", "Ammonia import terminal"), ("Terminale ammoniaca + cracker", "Ammonia terminal + cracker"),
+    ("Terminale ammoniaca", "Ammonia terminal"), ("Cracker di ammoniaca", "Ammonia cracker"),
+    ("Pilota di bunkeraggio ammoniaca nave-nave", "Ship-to-ship ammonia bunkering pilot"),
+    ("impianto di e-metanolo", "e-methanol plant"), ("e-metanolo", "e-methanol"), ("elettrolizzatore RWE di Lingen", "RWE electrolyser, Lingen"),
+    ("Elettrolizzatore OranjeWind (RWE) presso centrale Magnum", "OranjeWind electrolyser (RWE) at Magnum power plant"),
+    ("elettrolizzatore raffineria di Danzica", "electrolyser at Gdańsk refinery"), ("rete industriale dell'idrogeno di Amburgo", "Hamburg industrial hydrogen grid"),
+    ("idrogeno blu con CCS", "blue hydrogen with CCS"), ("idrogeno blu", "blue hydrogen"), ("Acciaieria ArcelorMittal Brema: piano DRI a idrogeno", "ArcelorMittal Bremen steelworks: hydrogen DRI plan"),
+    ("Cluster PtX di Esbjerg", "Esbjerg PtX cluster"), ("fase 1", "phase 1"), ("Kasso", "Kassø"),
+    ("(entroterra, Ems)", "(inland, Ems)"), ("(Jutland meridionale)", "(southern Jutland)"), ("Amburgo", "Hamburg"),
+    ("Zeebrugge (Anversa-Bruges)", "Zeebrugge (Antwerp-Bruges)"), ("Anversa", "Antwerp"), ("Danzica", "Gdańsk"), ("Brema", "Bremen"),
+    ("Oernskoeldsvik", "Örnsköldsvik"), ("Brunsbuettel", "Brunsbüttel"),
+    ("3 siti nel Mare del Nord (3 GW)", "three North Sea sites (3 GW)"), ("(senza sussidi)", "(no subsidy)"), ("Hesselo'", "Hesselø"),
+    ("sito non pre-studiato", "site not pre-investigated"), ("Seconda asta offshore (riproposta, 0,7 GW)", "second offshore round (re-run, 0.7 GW)"),
+    ("Sorvest F (1,5 GW)", "Sørvest F (1.5 GW)"), ("N-10.1 e N-10.2 (2,5 GW)", "N-10.1 and N-10.2 (2.5 GW)"),
+    ("Prima asta CfD offshore", "first offshore CfD round"), (") e Gamma-B", ") and Gamma-B"), (") e Hesselø", ") and Hesselø"),
+    ("Riforma WindSeeG (bozza)", "WindSeeG reform (draft)"), (" e ", " and "),
+]
+
+
+def it2en(t):
+    for a, b in IT2EN:
+        t = t.replace(a, b)
+    return t
+
+
+MECH = {"offerta negativa / senza sussidi": "negative bidding / no subsidy", "senza sussidi": "no subsidy", "offerta negativa": "negative bidding",
+        "CfD": "CfD", "offerta negativa senza tetto": "uncapped negative bidding", "CfD a due vie, 25 anni": "two-sided CfD, 25 years",
+        "sussidio temporaneo TOWOZ": "temporary subsidy (TOWOZ)", "CfD a due vie, 20 anni": "two-sided CfD, 20 years",
+        "due fasi (offerta + CfD di riserva)": "two stages (bid + fallback CfD)"}
+OUTCOME = [("nessuna offerta", "no bids"), ("annullat", "cancelled"), ("invalidat", "invalidated (fewer than two bids)"),
+           ("aggiudicat", "awarded"), ("record", "awarded (record)"), ("Baltica 9", "awarded: Baltica 9, Baltic East, Bałtyk I"),
+           ("in corso", "open: applications 26 Nov–10 Dec 2026"), ("in iter", "in parliament; rounds of 2–4.8 GW a year from 2027")]
+
+
+def outcome_en(t):
+    for k, v in OUTCOME:
+        if t.startswith(k) or (k == "Baltica 9" and k in t):
+            return v
+    return t
+
+
+BOTTLE_EN = {  # first indicator of each bottleneck card: English label and unit (value read from the file)
+    "aste-ricavi": ("offshore capacity in failed negative-bidding rounds, 2024–2025", " GW"),
+    "cavi-hvdc": ("Prysmian transmission order backlog", " billion €"),
+    "convertitori-hvdc": ("new in-service date of Amprion's BalWin1 (2 GW) grid link", ""),
+    "turbine": ("Siemens Gamesa loss before special items, Q2 of financial year 2026", " million €"),
+    "navi": ("Western installation vessels (WTIV) for turbines of 15 MW or more by 2028, more than", ""),
+    "porti": ("investment announced since 2022 in factories, ports and vessels", " billion €"),
+    "fondazioni": ("European XXL monopile capacity from 2027", " million tonnes a year"),
+}
+
+CABLE_EN = {  # id -> (English label, vessel named in the source; checked with need())
+    "CI-2023-02": ("Balticconnector gas pipeline and Finland–Estonia cables", "NewNew Polar Bear"),
+    "CI-2024-02": ("BCS East-West Interlink (Lithuania–Gotland)", "Yi Peng 3"),
+    "CI-2024-03": ("C-Lion1 (Helsinki–Rostock)", "Yi Peng 3"),
+    "CI-2024-04": ("Estlink 2 power cable and four data cables", "Eagle S"),
+    "CI-2025-02": ("Ventspils–Gotland data cable (LVRTC)", "Vezhen"),
+    "CI-2025-05": ("Elisa and Arelion Helsinki–Tallinn cables", "Fitburg"),
+}
 
 PAESE = {"NL": "Netherlands", "BE": "Belgium", "DE": "Germany", "DK": "Denmark", "SE": "Sweden",
          "PL": "Poland", "LT": "Lithuania", "LV": "Latvia", "EE": "Estonia", "FI": "Finland",
@@ -408,6 +475,12 @@ def compute(today, offline):
         warn(f"fuel cost in bunker example does not recompute: {chk:.0f} vs {a['costo_carburante_eur']}")
     V["maersk"] = be["sovrapprezzo_vettori"]
     V["rtm_vol"] = be["volumi"]["rotterdam"]
+    q = {x["periodo"]: x for x in V["rtm_vol"]["trimestri"]}
+    yy = max(int(k[:4]) for k in q)
+    tot = lambda y_: sum((q.get(f"{y_}-T{i}") or {}).get("fossili_t", 0) + (q.get(f"{y_}-T{i}") or {}).get("bio_t", 0)
+                         + 0.45 * (q.get(f"{y_}-T{i}") or {}).get("gnl_m3", 0) for i in (1, 2, 3))
+    V["rtm_bunker_9m"] = var(tot(yy), tot(yy - 1))
+    V["rtm_bunker_year"] = yy
     ops = {e["id"]: e for e in be["elementi"] if e.get("tipo") == "porto_ops"}
     V["ops_rtm"] = ops.get("ops-rotterdam")
     # insurance: Red Sea war-risk premium for a large container ship (assicurazioni.json example)
@@ -457,6 +530,8 @@ def compute(today, offline):
     ci = [e for e in F["cavi-incidenti.json"]["elementi"]
           if any(w in e["nome"] for w in ["Baltico", "Golfo di Finlandia", "Estlink", "Balticconnector"])]
     V["cables"] = sorted(ci, key=lambda e: e["data_evento"])
+    V["cables_extra"] = [e for e in bs["eventi"] if e["categoria"] == "danno-cavo" and not e.get("rif")]
+    V["last_cable"] = max([c["data_evento"] for c in V["cables"]] + [e["data"] for e in V["cables_extra"]])
     V["sanc_count"] = F["sanzioni-navi.json"]["conteggi"]
     rk = {u["id"]: u for u in F["rischio.json"]["unita"]}
     V["risk"] = rk
@@ -724,26 +799,27 @@ def blocks(V, edition):
     fuel_share_ext = (a["ets_per_t_carburante_bruciato_eur"] + a["fueleu_per_t_carburante_bruciato_eur"]) / fuel_eur_t_ext * 100
     V["shares"] = (fuel_share_intra, fuel_share_ext)
 
+    n_cab = len([c for c in V["cables"] if c["data_evento"] >= "2024-11"]) + len(V["cables_extra"])
     # ------------------------------------------------------------------ 1
     B.append(("h2", "key-points", "1. Key points"))
     B.append(("ul", [
-        f"**Port traffic is flat on the year, not falling.** From 1 January to {date_en(rtm['last'])}, Rotterdam averaged "
+        f"**Rotterdam's traffic is flat on the year; the weekly drop is noise.** From 1 January to {date_en(rtm['last'])}, Rotterdam averaged "
         f"{num(rtm['ytd_now'])} ship calls a day, {pct(rtm['ytd'])} on the same days of 2025; Antwerp-Bruges {pct(anr['ytd'])}. "
-        f"The {pct(rtm['var7'])} in Rotterdam's latest week is noise. The clear fall is at Russia's Primorsk, {pct(prim['ytd'], 0)} (IMF PortWatch).",
+        f"The {pct(rtm['var7'])} in Rotterdam's latest week is noise. The clear fall is at Russia's oil port of Primorsk, {pct(prim['ytd'], 0)} (IMF PortWatch).",
         f"**German and Dutch gas storage is far below normal before winter.** On {date_en(st['de']['date'])} Germany was "
         f"{num(st['de']['pct'])}% full and the Netherlands {num(st['nl']['pct'])}%, against an EU goal of 90%. Germany is "
         f"{num(abs(st['de']['yoy_pp']))} points below a year ago (GIE AGSI+). The TTF gas price is {num(ttf['ultimo'], 2)} €/MWh, "
         f"{pct(ttf['var']['1a'], 0)} on a year.",
         f"**Offshore wind will reach under half of the North Sea goal for 2030.** Europe connected only "
-        f"{num(eu['aggiunto_2025_mw'] / 1000)} GW in 2025. For Denmark, Germany, the Netherlands and Belgium WindEurope expects "
+        f"{num(eu['aggiunto_2025_mw'] / 1000, 2)} GW in 2025. For Denmark, Germany, the Netherlands and Belgium WindEurope expects "
         f"{num(esb['previsione_2030_gw_paesi'])} GW in 2030, {num(esb['quota_obiettivo_2030_previsto_pct'], 0)}% of the 65 GW promised at Esbjerg.",
         f"**Carbon rules now add a fifth to a half of fuel costs.** At the EU auction price of {num(eua['prezzo_eur'], 2)} €/t "
         f"({date_en(eua['data'])}), the EU ETS costs {num(b['ets_per_t_carburante_bruciato_eur'], 0)} € per tonne of fuel burnt "
         f"on voyages between EU ports and {num(a['ets_per_t_carburante_bruciato_eur'], 0)} € on voyages to or from outside the EU (bunker-emissioni.json).",
         f"**The Gulf of Finland is where sabotage risk concentrates.** In the AIS snapshot of {date_en(V['navi_date'])}, "
         f"{gof['sanzionate']} of the {gof['navi']} ships seen there were on Western sanction lists. Since November 2024 "
-        f"{len([c for c in V['cables'] if c['data_evento'] >= '2024-11'])} Baltic cable incidents have been recorded; "
-        f"GPS interference covered {gmin}–{gmax} map cells a day in the week to {date_en(V['gnss']['periodo'][1])}.",
+        f"{WORDS.get(n_cab, n_cab)} Baltic cable incidents have been recorded. GPS jamming hit {gmin}–{gmax} areas a day "
+        f"in the week to {date_en(V['gnss']['periodo'][1])} (GPSJam).",
     ]))
 
     # ------------------------------------------------------------------ 2 ports
@@ -789,10 +865,10 @@ def blocks(V, edition):
     need(V["rtm_hub"]["note"], "-23.9%", where="bunker Rotterdam note")
     B.append(("val", f"*Assessment.* Three forces drive the pattern. First, the return of some Asia–Europe services to Suez "
                      f"(transits {pct(V['suez']['var7_anno_pct']['n_total'])} on a year, portwatch.json) adds calls in the Mediterranean before "
-                     f"the North Sea, which flattens Rotterdam and Antwerp. Second, the Baltic is redistributing: Polish ports gain, ports that "
+                     f"the North Sea, which flattens Rotterdam and Antwerp. Second, the Baltic is redistributing: Polish ports hold or gain, ports that "
                      f"lived on Russian transit (HaminaKotka {pct(pm['hamina-kotka']['ytd'], 0)}, Riga {pct(pm['riga']['ytd'], 0)} year to date) lose. "
                      f"Third, energy: tanker calls follow the oil and LNG trade, and Rotterdam lost bunker sales "
-                     f"(−23.9% in the first nine months, Port of Rotterdam via bunker-emissioni.json). These are links we draw; the data do not prove causation."))
+                     f"({pct(V['rtm_bunker_9m'])} tonnes in the first nine months of {V['rtm_bunker_year']}, Port of Rotterdam via bunker-emissioni.json). These are links we draw; the data do not prove causation."))
 
     # ------------------------------------------------------------------ 3 energy
     B.append(("h2", "energy", "3. Energy: gas storage, LNG, TTF and power links"))
@@ -834,14 +910,14 @@ def blocks(V, edition):
         g = ex[c]["gnl"]
         rg = ex[c]["gnl_rigassificazione_operativa"] or {}
         rows.append([PAESE[c], f"{g['quota_usa_pct']}%" + (f" (Qatar {g['quota_qatar_pct']}%)" if g.get("quota_qatar_pct") else ""),
-                     g["periodo"].replace("1° trimestre", "Q1").replace("anno", "year").replace("carichi", "cargoes").replace("rigassificati", "regasified").replace("la più alta in Europa", "highest in Europe"),
-                     f"{num(rg.get('mld_m3_anno'), 1)} bcm/y ({rg.get('terminali')})", link(g["fonte"].split(" (")[0], g.get("link"))])
+                     re.sub(r"(\d),(\d)", r"\1.\2", g["periodo"]).replace("1° trimestre", "Q1").replace("anno", "year").replace("carichi", "cargoes").replace("rigassificati", "regasified").replace("la più alta in Europa", "highest in Europe"),
+                     f"{num(rg.get('mld_m3_anno'), 1)} bcm/y ({rg.get('terminali')})", link(re.sub(r",? maggio 2026", ", May 2026", g["fonte"].split(" (")[0]), g.get("link"))])
     B.append(("tab", ["Country", "US share of LNG", "Period", "Operating import capacity (terminals)", "Source"], rows,
               f"bcm = billion cubic metres. Capacity: Global Energy Monitor via {data_link('terminali-gnl.json')} and {data_link('esposizione-nord.json')}. "
               f"Germany's figure still counts the Mukran floating terminal, which IEEFA reports has left for Egypt: the real German capacity is lower."))
     E = EXTERNAL["ieefa_eu_us_share"]
     B.append(("p", f"Europe-wide, {E['text']} ({link('IEEFA', E['link'])}, {date_en(E['date'])}; not verified against the source in review). "
-                   f"Norway remains the largest pipeline supplier: 30.9% of EU gas imports in 2025, 89.3 bcm ({data_link('esposizione-nord.json')}, Council of the EU). "
+                   f"Norway remains the EU's largest gas supplier: 30.9% of EU gas imports in 2025, 89.3 bcm ({data_link('esposizione-nord.json')}, Council of the EU). "
                    f"The Netherlands closed the Groningen field by law on 1 October 2024."))
     B.append(("h3", "TTF price"))
     B.append(("p", f"The **TTF**, the Dutch hub price that sets gas prices for most of Europe, closed at {num(ttf['ultimo'], 2)} €/MWh on "
@@ -852,16 +928,19 @@ def blocks(V, edition):
     B.append(("h3", "Power links"))
     uc = V["hvdc_uc"]
     e2 = V["estlink2"]
-    need(e2.get("note", ""), "25 dicembre 2024", where="interconnessioni Estlink 2")
+    need(e2.get("note", ""), "25 dicembre 2024", "giugno 2025", where="interconnessioni Estlink 2")
+    need(ex["NL"]["cavi_interconnessioni"], "NorNed (700 MW", "COBRAcable (700 MW", where="esposizione NL")
+    need(ex["DK"]["cavi_interconnessioni"], "Viking Link (1,4 GW", where="esposizione DK")
+    need(ex["DE"]["cavi_interconnessioni"], "NordLink (1,4 GW", where="esposizione DE")
     B.append(("p", f"North Sea countries trade power through subsea direct-current (HVDC) cables: NorNed (700 MW) and COBRAcable (700 MW) from the "
                    f"Netherlands, Viking Link (1.4 GW, Denmark–UK) and NordLink (1.4 GW, Norway–Germany) ({data_link('esposizione-nord.json')}). "
                    f"OpenStreetMap shows these HVDC export and interconnector cables under construction: "
-                   + ", ".join(sorted(uc)) + f" ({data_link('rete-elettrica.json')}). In the Baltic, Estlink 2 (650 MW, Estonia–Finland) was cut by "
+                   + ", ".join(sorted(k.replace("Bornholm-Deutschland", "Bornholm–Germany") for k in uc)) + f" ({data_link('rete-elettrica.json')}). In the Baltic, Estlink 2 (650 MW, Estonia–Finland) was cut by "
                    f"the anchor of the Eagle S on 25 December 2024 and restored in June 2025 ({data_link('interconnessioni.json')})."))
     B.append(("val", f"*Assessment.* The winter risk for North-West Europe is storage, not supply routes. With German storage "
                      f"{num(abs(de['vs5']), 0)} points below its five-year average and most LNG coming from the US, the TTF depends on two "
                      f"things a port or energy company cannot control: winter temperatures and the Qatar outage linked to the Strait of Hormuz "
-                     f"(rated «{V['risk']['gnl-qatar']['livello']}» on the monitor's {data_link('rischio.json')})."))
+                     f"(rated «{LEVEL.get(V['risk']['gnl-qatar']['livello'])}» on the monitor's {data_link('rischio.json')})."))
 
     # ------------------------------------------------------------------ 4 wind
     B.append(("h2", "wind", "4. Offshore wind: installed, auctions, bottlenecks"))
@@ -889,11 +968,11 @@ def blocks(V, edition):
     B.append(("h3", "Auctions"))
     rows = []
     for x in V["auctions"]:
-        rows.append([x["data"], PAESE.get(x["paese"], x["paese"]), x["nome"], num(x["gw"], 1) if x.get("gw") else "—",
-                     x["meccanismo"], link(x["esito"][:110] + ("…" if len(x["esito"]) > 110 else ""), x["link"])])
-    B.append(("tab", ["Date", "Country", "Round", "GW", "Mechanism (as in source)", "Outcome"], rows,
-              f"From {data_link('eolico-filiera.json')}; original wording of the curated file (Italian) is kept in the last two columns where no "
-              "translation is given in the text. «Offerta negativa» = developer pays the state; «CfD a due vie» = two-sided contract for difference."))
+        rows.append([x["data"], PAESE.get(x["paese"], x["paese"]), it2en(x["nome"]), num(x["gw"], 1) if x.get("gw") else "—",
+                     MECH.get(x["meccanismo"], x["meccanismo"]), link(outcome_en(x["esito"]), x["link"])])
+    B.append(("tab", ["Date", "Country", "Round", "GW", "Mechanism", "Outcome"], rows,
+              f"From {data_link('eolico-filiera.json')} (curated, one source per round). Negative bidding: the developer pays the state for the site. "
+              "Two-sided CfD: the state guarantees a strike price and pays or collects the difference with the market price."))
     B.append(("p", f"The pattern is clear in the data: rounds where the developer pays the state for the site failed in Denmark (3 GW, December 2024), "
                    f"Germany (2.5 GW, August 2025) and the Netherlands (1 GW, October 2025), with no bids. Rounds with a **two-sided contract for "
                    f"difference (CfD)**, where the state guarantees a fixed price and pays or collects the difference with the market, worked: the UK "
@@ -909,10 +988,12 @@ def blocks(V, edition):
         ind = c["indicatori"][0]
         tens = {"alta": "high", "media": "medium", "eccesso di capacita'": "overcapacity"}.get(c["tensione"], c["tensione"])
         val = ind["valore"]
-        items.append(f"**{label}** — strain: {tens}. Indicator: {ind['nome']} = {val} {ind.get('unita') or ''} "
-                     f"({link(ind['fonte'], ind.get('link'))}, {ind['data']}).")
+        lab, unit = BOTTLE_EN[k]
+        if k == "convertitori-hvdc":
+            val = date_en(val)
+        items.append(f"**{label}** — strain: {tens}. {lab}: {val}{unit} ({link(ind['fonte'], ind.get('link'))}, {date_en(ind['data'])}).")
     B.append(("ul", items))
-    B.append(("p", "Indicator names are quoted as written in eolico-filiera.json (Italian). In plain terms: Prysmian holds about 16.5 billion € of "
+    B.append(("p", "In plain terms: Prysmian holds about 16.5 billion € of "
                    "transmission orders (29 October 2026) and NKT 13.0 billion (30 June 2026), so new HVDC cable capacity is booked for years; "
                    "Amprion's BalWin1 2 GW grid link slipped from September 2030 to 15 September 2031 because of extra work on the offshore converter "
                    "platform; European monopile factories, by contrast, will run at about 32% in 2026 and 19% in 2028 (Rystad)."))
@@ -934,12 +1015,12 @@ def blocks(V, edition):
                    f"the market leader, used its fleet at 66% in the first half of 2026 with a 2.5 billion € order book."))
     wc = F.get("wind-calendar.json")
     if wc:
-        B += optional_section(wc, "wind-calendar.json", "Offshore wind calendar")
+        B += wind_calendar_section(wc)
     else:
         B.append(("p", "**Missing:** a dated calendar of offshore wind milestones (wind-calendar.json, being prepared by another agent; this report includes it automatically when it appears)."))
     B.append(("val", "*Assessment.* For a port the binding constraint is now the auction pipeline and the grid, not ships or steel. "
                      "Work is secured until 2027–2028; after that, demand depends on whether the Dutch December round attracts bids and on the "
-                     "German reform of offshore auctions, now planned for 2027."))
+                     "German auction reform, meant to take effect on 1 January 2027 if the Bundestag adopts it in time."))
 
     # ------------------------------------------------------------------ 5 costs
     B.append(("h2", "costs", "5. Shipping costs: fuel, carbon, insurance, freight, time"))
@@ -988,7 +1069,8 @@ def blocks(V, edition):
                    f"Shanghai CCFI Europe index {num(ccfi['rotte']['EUROPE']['valore'], 2)} points ({pct(ccfi['rotte']['EUROPE']['var_pct'], 2)}) ({data_link('noli.json')})."))
     sz, cp = V["suez"], V["cape"]
     tt = F.get("transit-times.json")
-    B.append(("p", f"**Transit times to Rotterdam.** Ships rerouted around the Cape of Good Hope need roughly 7,000 km and 14–24 days more between Asia "
+    B.append(("h3", "Transit times to Rotterdam"))
+    B.append(("p", f"Ships rerouted around the Cape of Good Hope need roughly 7,000 km and 14–24 days more between Asia "
                    f"and Europe than via Suez (UNCTAD 2024, in {data_link('stretti-dettaglio.json')}). In the week to {date_en(sz['ultima_data'])} the Suez Canal "
                    f"saw {num(sz['media7']['n_total'])} transits a day ({pct(sz['var7_anno_pct']['n_total'])} on a year) and the Cape {num(cp['media7']['n_total'])} "
                    f"({pct(cp['var7_anno_pct']['n_total'])}) ({data_link('portwatch.json')}). BIMCO counts 753,000 TEU a week of container capacity through Suez in early "
@@ -997,8 +1079,9 @@ def blocks(V, edition):
         B += transit_section(tt)
     else:
         B.append(("p", "**Missing:** measured door-to-door or port-to-port transit times to Rotterdam (transit-times.json, being prepared by another agent; included automatically when it appears)."))
+    fr = dict(V["h2_real"]["marittimo"]["fueleu"]["riduzione_intensita_ghg"])
     B.append(("val", f"*Assessment.* Fuel still dominates the voyage bill, but carbon is the cost that rises by rule: FuelEU's target tightens from "
-                     f"−2% today to −6% in 2030 and −14.5% in 2035. For North Sea ports the competitive question is less the bunker price than "
+                     f"{pct(fr['2025'], 0)} today to {pct(fr['2030'], 0)} in 2030 and {pct(fr['2035'], 1)} in 2035. For North Sea ports the competitive question is less the bunker price than "
                      f"where carriers place their last non-EU call before Europe."))
 
     # ------------------------------------------------------------------ 6 security
@@ -1006,17 +1089,21 @@ def blocks(V, edition):
     B.append(("h3", "Cables and pipelines"))
     rows = []
     for c in V["cables"]:
-        rows.append([date_short(c["data_evento"]), c["nome"], c["causa"][:120] + ("…" if len(c["causa"]) > 120 else ""), link("source", c["link"])])
-    B.append(("tab", ["Date", "Incident (as recorded)", "Suspected cause (as recorded)", "Link"], rows,
-              f"Baltic incidents in {data_link('cavi-incidenti.json')} (curated, wording in Italian). Causes are hypotheses unless a court has ruled. "
-              "Not yet in this file: the Šventoji–Liepāja data cable damaged on 2 January 2026 (baltico-sicurezza.json)."))
+        lab, ship = CABLE_EN.get(c["id"], (c["nome"], ""))
+        need(c["causa"] + c["nome"], ship, where=f"cavi-incidenti {c['id']}")
+        rows.append([date_short(c["data_evento"]), lab, f"anchor of the {ship} (suspected)" if ship else c["causa"][:80], link("source", c["link"])])
+    for e in V["cables_extra"]:
+        rows.append([date_short(e["data"]), "Šventoji (LT) – Liepāja (LV) data cable" if "Šventoji" in e["nome"] else e["nome"], "under investigation", link("source", e["link"])])
+    B.append(("tab", ["Date", "Cable or pipeline", "Suspected cause", "Link"], rows,
+              f"Baltic incidents in {data_link('cavi-incidenti.json')}, plus the Šventoji–Liepāja cable recorded so far only in {data_link('baltico-sicurezza.json')}. "
+              "Causes are hypotheses of investigators or the press unless a court has ruled; intent is not proven in most cases."))
     fi = V["exp"]["FI"]["rischi"]
     need(json.dumps(fi, ensure_ascii=False), "42 mesi", "5 novembre 2026", where="esposizione FI")
     B.append(("p", f"On 5 November 2026 a Helsinki court sentenced the captain of the Fitburg to 42 months for the damage to the Helsinki–Tallinn cables "
                    f"(first instance, not final; {data_link('baltico-sicurezza.json')}, Euronews). The monitor's risk dashboard rates the Baltic cable "
-                   f"corridor «{V['risk']['baltico']['livello']}» ({num(V['risk']['baltico']['punteggio'], 1)} out of 25) ({data_link('rischio.json')})."))
+                   f"corridor «{LEVEL.get(V['risk']['baltico']['livello'])}» ({num(V['risk']['baltico']['punteggio'], 1)} out of 25) ({data_link('rischio.json')})."))
     B.append(("h3", "Drones"))
-    dr = [e for e in V["ev"] if e["categoria"].startswith("droni")]
+    dr = [e for e in V["ev"] if e["categoria"].startswith("droni") and e["data"] >= "2025-09"]
     B.append(("p", f"{data_link('baltico-sicurezza.json')} records {len(dr)} drone events around North Sea and Baltic airports, bases, ports and energy sites "
                    f"since September 2025. Copenhagen airport closed for nearly four hours on 22 September 2025; drones flew over the Antwerp port area on "
                    f"6 November 2025 and over the Doel nuclear plant on 9 November 2025; on 4 August 2026 a drone carrying explosives hit an Antonov An-124 "
@@ -1031,7 +1118,9 @@ def blocks(V, edition):
                    f"reported by aircraft, showed {gmin} to {gmax} map cells a day at a high level (over 10% of aircraft affected) between "
                    f"{date_en(V['gnss']['periodo'][0], False)} and {date_en(V['gnss']['periodo'][1])}. "
                    + (f"All were east of 17°E (Kaliningrad, Lithuania, the Gulf of Finland, eastern Poland). " if not gw else
-                      f"{len(gw)} high-level cells were west of 17°E. ")
+                      f"Almost all were east of 17°E (Kaliningrad, Lithuania, the Gulf of Finland, eastern Poland); "
+                      + ("one" if len(gw) == 1 else WORDS.get(len(gw), str(len(gw))))
+                      + f" lay just west of it, at {', '.join(f'{c['lat']:.1f}°N {c['lon']:.2f}°E ({num(c['pct_aerei_disturbati'], 1)}% of {c['aerei']} aircraft)' for c in gw)}. ")
                    + f"Aircraft data show where interference reaches, not where the jammers are, and say nothing directly about ships ({data_link('baltico-sicurezza.json')})."))
     B.append(("h3", "Shadow fleet in the Danish straits and the Gulf of Finland"))
     sh = next(e for e in V["ev"] if e["categoria"] == "flotta-ombra-transiti" and e["data"].startswith("2025"))
@@ -1047,8 +1136,8 @@ def blocks(V, edition):
                    f"sanctioned, but coverage there is thinner. Ships with AIS off are not counted."))
     det = [e for e in V["ev"] if e["categoria"] in ("fermo-petroliera", "respingimento-petroliera", "fermo-nave") and e["data"] >= "2026"]
     B.append(("p", f"Coastal states have become more active: {data_link('baltico-sicurezza.json')} lists {len(det)} detentions, boardings or refusals of entry "
-                   f"in 2026, including Swedish detentions of tankers off Gotland and Trelleborg and Germany's refusal of the tanker Tavian. Russia detained a "
-                   f"Greek-owned tanker leaving an Estonian port on 26 July 2026. The Danish straits are rated «{V['risk']['stretti-danesi']['livello']}» on "
+                   f"in 2026, one of them by Russia. They include Swedish detentions of tankers off Gotland and Trelleborg and Germany's refusal of the tanker Tavian. Russia detained a "
+                   f"Greek-owned tanker leaving an Estonian port on 26 July 2026. The Danish straits are rated «{LEVEL.get(V['risk']['stretti-danesi']['livello'])}» on "
                    f"the risk dashboard ({num(V['risk']['stretti-danesi']['punteggio'], 1)} out of 25, from {num(V['risk']['stretti-danesi']['punteggio_7g_fa'], 1)} a week earlier)."))
     cp_ = V["cyber_pl"]
     if cp_:
@@ -1078,13 +1167,15 @@ def blocks(V, edition):
     cat = {"elettrolizzatore": "electrolyser", "terminale-import": "import terminal", "bunkeraggio": "bunkering", "e-fuel": "e-fuel",
            "idrogeno-blu": "blue hydrogen", "rete-h2-locale": "local H2 grid", "domanda-industriale": "industrial demand"}
     for e in sorted(V["h2_north"], key=lambda e: (list(sten).index(e["stato"]), -(e.get("mw") or 0))):
-        rows.append([e["nome"], e.get("porto") or "", cat.get(e["categoria"], e["categoria"]), sten.get(e["stato"], e["stato"]),
+        rows.append([it2en(e["nome"]), it2en(e.get("porto") or ""), cat.get(e["categoria"], e["categoria"]), sten.get(e["stato"], e["stato"]),
                      num(e["mw"], 0) if e.get("mw") else "—", str(e.get("anno") or "—")])
     B.append(("tab", ["Project", "Port", "Type", "Status", "MW", "Year"], rows, f"Source: {data_link('idrogeno.json')}, one source per project (dates 2022–2026)."))
     g = V["h2_gas"]
     dhb = V["h2_pipes"]["dk-dhb1"]
     drc = V["h2_pipes"]["nl-delta-rhine-corridor"]
     need(dhb["note"], "0,5 GW", "1/12/2026", where="DHB1")
+    need(drc["note"], "2031-2032", where="Delta Rhine Corridor")
+    need(json.dumps(V["h2_north"], ensure_ascii=False), "42.000 t/anno", "800 m3", where="idrogeno elementi")
     B.append(("p", f"**Costs.** The IEA put hydrogen from offshore wind at 5.3–7 €/kg in 2024. Grey hydrogen made from gas would cost about "
                    f"{num(g['h2_grigio_stima_eur_kg'], 1)} €/kg at today's TTF ({num(g['ttf_ultimo_eur_mwh'], 2)} €/MWh), an interpolation by the monitor that ignores "
                    f"the carbon price. Expensive gas narrows the gap but does not close it."))
@@ -1113,18 +1204,25 @@ def blocks(V, edition):
         ["Rotterdam calls, 30 days y/y", pct(rtm["var30"]), f"below {pct(THRESHOLDS['rotterdam_30d'], 0)}", "porti-nord.json", "weekly"],
         ["Øresund transits, 7 days y/y", pct(ores["var7_anno_pct"]["n_total"]), f"below {pct(THRESHOLDS['oresund_7d'], 0)} (dashboard red)", "porti-nord.json", "weekly"],
         ["Sanctioned ships in the Gulf of Finland (AIS snapshot)", f"{gof['sanzionate']}", f"above {THRESHOLDS['gof_sanctioned']}", "baltico-sicurezza.json", "daily"],
-        ["High GPS-interference cells west of 17°E", f"{len(V['gnss_west'])}", f"{THRESHOLDS['gnss_west']} or more (jamming reaching Bornholm, Øresund, German ports)", "baltico-sicurezza.json", "daily"],
-        ["New Baltic cable or pipeline incident", f"last: {date_short(V['cables'][-1]['data_evento'])}", "any", "cavi-incidenti.json", "on event"],
+        ["High GPS-interference cells west of 17°E (week)", f"{len(V['gnss_west'])}", f"{THRESHOLDS['gnss_west']} or more, or any west of 15°E (Bornholm, Øresund, German ports)", "baltico-sicurezza.json", "daily"],
+        ["New Baltic cable or pipeline incident", f"last: {date_short(V['last_cable'])}", "any", "cavi-incidenti.json", "on event"],
         ["IJmuiden Ver Gamma bids", "window 26 Nov–10 Dec", "no bids or Gamma-B withdrawn", "eolico-filiera.json", "10 Dec"],
         ["Danish hydrogen backbone bookings", "deadline 1 Dec", "under 0.5 GW booked (project not built)", "idrogeno.json", "1 Dec"],
         ["Maersk ETS surcharge Q1 2027, Far East → N. Europe", f"{THRESHOLDS['maersk_ets']} $/FEU (Q4)", f"above {THRESHOLDS['maersk_ets']} $/FEU", "bunker-emissioni.json", "about 1 Dec"],
         ["Red Sea war-risk quote", f"{num(V['war_last']['mar-rosso']['min'], 1)}–{num(V['war_last']['mar-rosso']['max'], 1)}% ({date_short(V['war_last']['mar-rosso']['data'])})",
          f"above {num(THRESHOLDS['redsea_war'], 1)}% of hull value", "assicurazioni.json", "on quote"],
     ]
+    if wc:
+        E = {e["id"]: e for e in wc.get("elementi", [])}
+        for i in wc.get("riepilogo", {}).get("next_90_days", {}).get("items") or []:
+            e = E.get(i["id"])
+            if e and e["country"] in ("GB", "DE") and e["type"] in ("auction", "policy") and e["date"] <= "2026-12-31":
+                rows.append([e["project"], e["status_effective"] + f" ({e['date']})",
+                             "no adoption in December" if e["country"] == "DE" else "results slip into 2027", "wind-calendar.json", "on event"])
     B.append(("tab", ["Indicator", "Now", "Threshold (assessment)", "File", "Frequency"], rows,
               f"Also on the calendar: the IMO vote on the global Net-Zero Framework, planned to resume on 4 December 2026 ({data_link('bunker-emissioni.json')}). "
-              f"Risk dashboard levels for reference: Danish straits «{rk['stretti-danesi']['livello']}», Baltic cables «{rk['baltico']['livello']}», "
-              f"Red Sea container route «{rk['mar-rosso-container']['livello']}», Qatar LNG «{rk['gnl-qatar']['livello']}» ({data_link('rischio.json')})."))
+              f"Risk dashboard levels for reference: Danish straits «{LEVEL[rk['stretti-danesi']['livello']]}», Baltic cables «{LEVEL[rk['baltico']['livello']]}», "
+              f"Red Sea container route «{LEVEL[rk['mar-rosso-container']['livello']]}», Qatar LNG «{LEVEL[rk['gnl-qatar']['livello']]}» ({data_link('rischio.json')})."))
 
     # ------------------------------------------------------------------ 9 method
     B.append(("h2", "method", "9. Method, sources and limits"))
@@ -1132,7 +1230,8 @@ def blocks(V, edition):
     for n in ["porti-nord.json", "scorte.json", "prezzi.json", "eolico-filiera.json", "offshore-nord.json", "bunker-emissioni.json",
               "assicurazioni.json", "noli.json", "portwatch.json", "baltico-sicurezza.json", "navi.json", "cavi-incidenti.json",
               "idrogeno.json", "esposizione-nord.json", "rete-elettrica.json", "rischio.json"]:
-        rows.append([data_link(n), F[n].get("aggiornato", ""), "; ".join((f.get("nome") or "")[:60] for f in (F[n].get("fonti") or [])[:2]) or "—"])
+        fs = [(f.get("nome") or f.get("name") or f.get("fonte") or "") if isinstance(f, dict) else str(f) for f in (F[n].get("fonti") or [])[:2]]
+        rows.append([data_link(n), F[n].get("aggiornato", ""), "; ".join(x.split(" (")[0][:70] for x in fs if x) or "Yahoo Finance, US Treasury"])
     for n, what in OPTIONAL.items():
         rows.append([data_link(n) if F[n] else n, (F[n].get("aggiornato") or F[n].get("updated") or "present") if F[n] else "not available at build time", what])
     if V["eurostat"]:
@@ -1146,7 +1245,11 @@ def blocks(V, edition):
         "**Brent** in prezzi.json is a provisional front-month close updated overnight; other files of the monitor quote an earlier reading. This report does not use Brent.",
         "**Missing:** AGSI+ daily fill for Denmark and Poland; monthly LNG import volumes by country and origin; any public war-risk premium for Baltic calls"
         + "".join(f"; {n} at build time" for n in OPTIONAL if not F[n]) + ".",
-        "**Hand-written items:** the external fact on the EU-wide US LNG share and the thresholds of section 8. All other numbers are computed by report/build_northern_europe.py from the files above.",
+        "**Hand-written items:** the external fact on the EU-wide US LNG share and the thresholds of section 8. Figures quoted from curated text fields "
+        "of the files (for example the 292 tanker passages or the Fitburg sentence) are typed in the script and checked against the source text at every "
+        "run; all other numbers are computed by report/build_northern_europe.py from the files above.",
+        "**Different assumptions between files.** The cost stack uses a 221.7 million $ hull (assicurazioni.json); transit-times.json uses 150 million $ "
+        "for the same ship type, so its Red Sea premium is lower. Port-risk.json computes its own 7-day port-call changes, which can differ by a few tenths from porti-nord.json.",
     ]))
     B.append(("p", "**Glossary.** AIS: transponder by which ships broadcast identity and position. TEU/FEU: 20-/40-foot container. TTF: Dutch gas hub price. "
                    "LNG: liquefied natural gas. HVDC: high-voltage direct current. CfD: contract for difference. EUA: EU emission allowance (1 t CO₂e). "
@@ -1154,6 +1257,26 @@ def blocks(V, edition):
                    "Shadow fleet: old tankers with opaque ownership used to move sanctioned oil. GNSS: satellite navigation (GPS, Galileo)."))
     B.append(("review",))
     return B
+
+
+def wind_calendar_section(wc):
+    """wind-calendar.json (WIND-CALENDAR agent): milestones in the next 90 days and items at risk."""
+    E = {e["id"]: e for e in wc.get("elementi", [])}
+    nxt = [E[i["id"]] for i in (wc.get("riepilogo", {}).get("next_90_days", {}).get("items") or []) if i["id"] in E]
+    risk = [e for e in E.values() if e.get("status_effective") in ("at risk", "unconfirmed") and e not in nxt and e.get("country") != "FR"]
+    rows = [[e["date"], PAESE.get(e["country"], e["country"]), e["type"], e["project"], num(e["capacity_mw"], 0) if e.get("capacity_mw") else "—",
+             e["status_effective"], link(e["source"], e.get("link"))] for e in nxt]
+    rs = wc.get("riepilogo", {}).get("by_status_effective", {})
+    out = [("h3", "Offshore wind calendar: the next 90 days"),
+           ("tab", ["Date", "Country", "Type", "Milestone", "MW", "Status", "Source"], rows,
+            f"Source: {data_link('wind-calendar.json')} (curated, {wc['riepilogo']['items']} milestones, reference date {date_en(wc['riferimento'])}; "
+            f"«unconfirmed» = a scheduled date has passed without confirmation). Across the calendar: {rs.get('done', 0)} done, {rs.get('scheduled', 0)} scheduled, "
+            f"{rs.get('at risk', 0)} at risk, {rs.get('unconfirmed', 0)} unconfirmed.")]
+    if risk:
+        out.append(("p", "**Also flagged at risk or unconfirmed in the calendar:**"))
+        out.append(("ul", [f"{e['project']} ({PAESE.get(e['country'], e['country'])}, {e['date']}): {re.split(r'(?<=[a-z0-9)])[.] ', e['summary'])[0].rstrip('.')}."
+                           for e in sorted(risk, key=lambda e: e["date"])[:5]]))
+    return out
 
 
 def transit_section(tt):
@@ -1172,11 +1295,11 @@ def transit_section(tt):
                      f"{num(cape.get('extra_days_vs_base'))}" if cape else "—"])
     sh = next((r for r in R if r["from"] == "shanghai"), R[0])
     v = (tt.get("method") or {}).get("vessels", {}).get("container", {})
-    out = [("h3", "Transit times to Rotterdam"),
-           ("p", f"The monitor's routing model (transit-times.json, updated {date_en(tt['updated'][:10])}) puts a ~15,000 TEU container ship from "
+    out = [("p", f"The monitor's routing model (transit-times.json, updated {date_en(tt['updated'][:10])}) puts a ~15,000 TEU container ship from "
                  f"{sh['from_name']} to Rotterdam at {num(sh['days_today'])} days at sea via Suez today ({num(sh['nm_today'], 0)} nautical miles at "
                  f"{num(v.get('speed_kn'), 0)} knots), and {num(sh['cape']['days'])} days via the Cape, {num(sh['cape']['extra_days_vs_base'])} days more. "
-                 f"Sea time only: no canal waiting, port time or bunkering stops. Distances are checked against published ones (error under 5%)."),
+                 f"Sea time only: no canal waiting, port time or bunkering stops; distances are within 5% of published ones. The model's extra days via the Cape "
+                 f"are fewer than UNCTAD's 14–24 because they are sea days at one fixed speed from one origin; UNCTAD's range covers several origins and speeds."),
            ("tab", ["Origin", "Cargo", "Status today", "Nautical miles today", "Days today (speed range)", "Days, pre-crisis route", "Days via Cape", "Extra days via Cape"],
             rows, f"Source: {data_link('transit-times.json')} (Benden shipping lanes, Dijkstra routing; speeds from Alphaliner/UNCTAD; "
                   "statuses from stretti-dettaglio.json). «Blocked»/«re-routed» refer to the Strait of Hormuz being de facto closed.")]
