@@ -334,6 +334,7 @@ def data_piu_recente(d, chiavi):
 
 def freschezza(R, dati):
     n_ok = n_stale = n_missing = 0
+    n_sd = []          # files without an 'aggiornato'/'updated' field
     for nome in sorted(set(CADENZA) | set(dati)):
         if nome == "health.json":
             continue
@@ -362,7 +363,7 @@ def freschezza(R, dati):
             n_ok += 1
             continue
         if agg is None:
-            stato = "missing"
+            stato = "undated"
             motivi.append("no 'aggiornato'/'updated' field")
         else:
             eta = (OGGI - agg).days
@@ -398,7 +399,7 @@ def freschezza(R, dati):
             if stato == "stale":
                 n_stale += 1
             else:
-                n_missing += 1
+                n_sd.append(nome)
             R.stale.append(voce)
             curato = etichetta == M
             R.problema("medium" if curato else "high", "freshness", f"docs/data/{nome}",
@@ -423,7 +424,7 @@ def freschezza(R, dati):
         f = x.split(":")[0]
         R.problema("medium", "freshness", f"docs/data/{f}", f"series lagging behind its frequency: {x.split(':', 1)[1]}", "stale-series")
     assenti = sum(1 for x in R.stale if x.get("status") == "missing" and x["file"] not in dati)
-    stato = "red" if assenti or n_stale > 5 else ("amber" if n_stale or n_missing or indietro else "green")
+    stato = "red" if assenti or n_stale > 5 else ("amber" if n_stale or n_missing or n_sd or indietro else "green")
     # market series must not fall on weekends (date convention of the price collector)
     for s_ in (dati.get("prezzi.json") or {}).get("serie", []):
         if s_.get("gruppo") in ("Cripto", "Crypto") or s_.get("id") in ("btc", "eth"):
@@ -433,7 +434,8 @@ def freschezza(R, dati):
             R.problema("medium", "freshness", "docs/data/prezzi.json", f"series {s_.get('id')}: {len(fs)} values dated on a weekend "
                        f"(e.g. {', '.join(fs[:3])}): session dates are shifted", "Check the time-zone conversion in raccolta/scarica_mercati.py.")
     R.check("freshness", "files against cadence", stato,
-            f"{n_ok} ok, {n_stale} stale, {n_missing} missing; {len(indietro)} lagging series inside files")
+            f"{n_ok} ok, {n_stale} stale, {n_missing} missing, {len(n_sd)} undated ({', '.join(n_sd) or 'none'}); "
+            f"{len(indietro)} lagging series inside files")
 
 
 # ----------------------------------------------------------------------------- b) schema

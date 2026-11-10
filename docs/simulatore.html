@@ -251,7 +251,7 @@ dl.it-glossario dd{margin:0 0 2px;color:var(--soft)}
 
 <script>
 "use strict";
-const FILE = ["simulatore", "stretti-dettaglio", "portwatch", "noli", "prezzi", "paesi", "gas-italia", "terminali-gnl", "scorte", "rotte", "cavi"];
+const FILE = ["simulatore", "stretti-dettaglio", "portwatch", "noli", "prezzi", "paesi", "gas-italia", "terminali-gnl", "scorte", "rotte", "cavi", "italia-impatti"];
 const D = {};
 const NF = (d) => new Intl.NumberFormat("en-GB", { minimumFractionDigits: d, maximumFractionDigits: d });
 const MESI = ["January","February","March","April","May","June","July","August","September","October","November","December"];
@@ -481,6 +481,7 @@ async function carica() {
   D.scorte = Object.fromEntries(D.scorte.elementi.map(e => [e.id, e]));
   D.gas = D["gas-italia"];
   D.gnl = D["terminali-gnl"].elementi;
+  D.it = D["italia-impatti"];
 }
 
 /* --- comandi --- */
@@ -790,6 +791,9 @@ function disegna() {
   const vs = voce(p.settori_rif);
   if (vs) h += `<div class="valutazione"><span class="etichetta">${vs.tipo === "valutazione" ? "Observatory assessment" : "Fact"} · sectors</span>${esc(vs.valore)} ${srcRif(p.settori_rif)}</div>`;
   h += `</div></li>`;
+
+  // 8. Italia
+  h += disegnaItalia(p, r, du, io);
   h += `</ol></div>`;
 
   // colonna laterale
@@ -871,6 +875,329 @@ function disegnaIpotesi(p, r, du, io) {
 }
 function nomeRegola(k) {
   return ({ volume_scoperto: "Uncovered volume", brent_perdita: "Brent, supply loss", brent_deviazione: "Brent, diversion", ttf_perdita: "TTF, supply loss", ttf_deviazione: "TTF, diversion", noli_container_deviazione: "Container freight", noli_hormuz: "Freight at Hormuz", esposizione_paesi: "Exposed countries" })[k] || k;
+}
+
+/* --- Italia: "What happens in Italy" ---
+   Every value read from data/italia-impatti.json is listed in IT_PERCORSI (one JSON path per line).
+   raccolta/simulatore/controlla.py reads this list and checks that each path exists in the file,
+   so keep it a plain JSON array between the two markers. */
+const IT_PERCORSI = /*IT_PERCORSI*/[
+  "aggiornato",
+  "regole_trasmissione.per_il_simulatore.testo",
+  "regole_trasmissione.per_il_simulatore.base_oggi.data_carburanti",
+  "regole_trasmissione.per_il_simulatore.base_oggi.gasolio",
+  "regole_trasmissione.per_il_simulatore.base_oggi.benzina",
+  "regole_trasmissione.per_il_simulatore.base_oggi.brent",
+  "regole_trasmissione.per_il_simulatore.base_oggi.eurusd",
+  "regole_trasmissione.per_il_simulatore.base_oggi.ttf",
+  "regole_trasmissione.per_il_simulatore.base_oggi.pun",
+  "regole_trasmissione.per_il_simulatore.base_oggi.mese_pun",
+  "regole_trasmissione.per_il_simulatore.base_oggi.gas_rif_eur_smc",
+  "regole_trasmissione.per_il_simulatore.base_condizioni_normali.data_carburanti",
+  "regole_trasmissione.per_il_simulatore.base_condizioni_normali.gasolio",
+  "regole_trasmissione.per_il_simulatore.base_condizioni_normali.benzina",
+  "regole_trasmissione.per_il_simulatore.base_condizioni_normali.brent",
+  "regole_trasmissione.per_il_simulatore.base_condizioni_normali.eurusd",
+  "regole_trasmissione.per_il_simulatore.base_condizioni_normali.ttf",
+  "regole_trasmissione.per_il_simulatore.base_condizioni_normali.pun",
+  "regole_trasmissione.per_il_simulatore.base_condizioni_normali.mese_pun",
+  "regole_trasmissione.per_il_simulatore.base_condizioni_normali.gas_rif_eur_smc",
+  "regole_trasmissione.per_il_simulatore.pesi_hicp_millesimi_2026.FUEL",
+  "regole_trasmissione.per_il_simulatore.pesi_hicp_millesimi_2026.CP0451",
+  "regole_trasmissione.per_il_simulatore.pesi_hicp_millesimi_2026.CP0452",
+  "regole_trasmissione.stimate.periodo",
+  "regole_trasmissione.stimate.n_settimane",
+  "regole_trasmissione.stimate.gasolio.diff_4_sett.b",
+  "regole_trasmissione.stimate.gasolio.diff_8_sett.b",
+  "regole_trasmissione.stimate.gasolio.diff_13_sett.b",
+  "regole_trasmissione.stimate.gasolio.livello.b",
+  "regole_trasmissione.stimate.gasolio.diff_4_sett.r2",
+  "regole_trasmissione.stimate.gasolio.diff_8_sett.r2",
+  "regole_trasmissione.stimate.gasolio.diff_13_sett.r2",
+  "regole_trasmissione.stimate.gasolio.livello.r2",
+  "regole_trasmissione.stimate.benzina.diff_4_sett.b",
+  "regole_trasmissione.stimate.benzina.diff_8_sett.b",
+  "regole_trasmissione.stimate.benzina.diff_13_sett.b",
+  "regole_trasmissione.stimate.benzina.livello.b",
+  "regole_trasmissione.stimate.pun_ttf.a",
+  "regole_trasmissione.stimate.pun_ttf.b",
+  "regole_trasmissione.stimate.pun_ttf.r2",
+  "regole_trasmissione.stimate.pun_ttf.n",
+  "scenari[id=hormuz_1m].coefficienti_usati.rapporto_elettricita_dettaglio_pun",
+  "soglie_fermo.soglie_eur_l",
+  "soglie_fermo.soglie_aumento_pct",
+  "oggi.gasolio_settimanale.data",
+  "oggi.gasolio_settimanale.eur_l",
+  "oggi.gasolio_settimanale.stima_dopo_fine_taglio_accise",
+  "oggi.arera_cmem_ultimo.prezzo_riferimento_cliente_tipo_cent_smc",
+  "oggi.arera_cmem_ultimo.mese",
+  "oggi.arera_cmem_ultimo.link",
+  "oggi.nic_generale",
+  "oggi.nic_energetici",
+  "accise.cambi[data_rilevazione=2022-03-28,prodotto=gasolio].variazione_cent_con_iva",
+  "accise.cambi[data_rilevazione=2026-03-23,prodotto=gasolio].variazione_cent_con_iva",
+  "accise.cambi[data_rilevazione=2026-11-02,prodotto=gasolio].variazione_cent_con_iva",
+  "letteratura[id=accise-applicazione-2026].link",
+  "autotrasporto.meccanismo_rimborso_accise.link",
+  "autotrasporto.regole_scioperi[id=legge-146-1990].link",
+  "autotrasporto.regole_scioperi[id=preavviso-25-giorni].link",
+  "scioperi_proclamati.data_fonte",
+  "scioperi_proclamati.link",
+  "precedenti[id=blocchi-tir-marzo-2022].gasolio_alla_data.eur_l",
+  "precedenti[id=blocchi-tir-marzo-2022].link",
+  "precedenti[id=fermo-trasportounito-aprile-2026].gasolio_alla_data.eur_l",
+  "precedenti[id=fermo-trasportounito-aprile-2026].link",
+  "precedenti[id=fermo-unatras-maggio-2026].gasolio_alla_data.eur_l",
+  "precedenti[id=fermo-unatras-maggio-2026].link",
+  "precedenti[id=fermi-regionali-ottobre-2026].gasolio_alla_data.eur_l",
+  "precedenti[id=fermi-regionali-ottobre-2026].link",
+  "precedenti[id=blocchi-tir-gennaio-2012].gasolio_alla_data.eur_l",
+  "precedenti[id=fermo-tir-2007].gasolio_alla_data.eur_l",
+  "misure_governo[id=accise-2022].link",
+  "misure_governo[id=accise-marzo-2026].link",
+  "misure_governo[id=credito-autotrasporto-2026].link",
+  "misure_governo[id=autotrasporto-2022].link",
+  "misure_governo[id=tetto-eni-ip-2026].link",
+  "misure_governo[id=decreto-bollette-2026].link",
+  "misure_governo[id=bonus-sociali-2022].link",
+  "misure_governo[id=oneri-iva-gas-2022].link",
+  "misure_governo[id=crediti-energivori-2022].link",
+  "misure_governo[id=bonus-200-2022].link",
+  "scenari[id=hormuz_1m].da_condizioni_normali.gasolio_eur_l",
+  "scenari[id=hormuz_1m].da_condizioni_normali.pun_eur_mwh",
+  "scenari[id=hormuz_1m].osservato.gasolio.base.data",
+  "scenari[id=hormuz_1m].osservato.gasolio.fino_a",
+  "scenari[id=hormuz_1m].osservato.gasolio.media_eur_l",
+  "scenari[id=hormuz_1m].osservato.gasolio.max_eur_l",
+  "scenari[id=hormuz_1m].osservato.gasolio.data_max",
+  "scenari[id=hormuz_1m].osservato.gasolio.media_senza_tagli_accise",
+  "scenari[id=hormuz_1m].osservato.gasolio.max_senza_tagli_accise",
+  "scenari[id=hormuz_1m].osservato.pun_mensile",
+  "scenari[id=hormuz_3m].da_condizioni_normali.gasolio_eur_l",
+  "scenari[id=hormuz_3m].osservato.gasolio.fino_a",
+  "scenari[id=hormuz_3m].osservato.gasolio.media_senza_tagli_accise",
+  "scenari[id=hormuz_3m].osservato.gasolio.max_senza_tagli_accise",
+  "fonti[id=mase].link",
+  "fonti[id=gme].link",
+  "fonti[id=istat].link",
+  "fonti[id=eurostat].link",
+  "fonti[id=mase-consumi].link"
+]/*FINE_IT_PERCORSI*/;
+/* constants written in regole_trasmissione.per_il_simulatore.testo (1,22 and 158,987) and in the ARERA rule (VAT 10% on gas);
+   controlla.py checks they are still there */
+const IT_K = { iva_carburanti: 0.22, litri_barile: 158.987, iva_gas: 0.10 };
+const IT_FONTI_ID = { mase: "MASE, DGSAIE: prezzi medi settimanali", gme: "GME, esiti", istat: "Istat, prezzi al consumo", eurostat: "Eurostat, HICP", "mase-consumi": "MASE, DGSAIE, Consumi" };
+function itPath(o, path) {
+  for (const tok of path.split(".")) {
+    const m = tok.match(/^([^[]+)(?:\[(.+)\])?$/);
+    if (o == null || !m) return undefined;
+    o = o[m[1]];
+    if (m[2]) {
+      if (!Array.isArray(o)) return undefined;
+      const cond = m[2].split(",").map(c => c.split("="));
+      o = o.find(e => cond.every(([k, v]) => (k === "id" && e.id === undefined && m[1] === "fonti" ? IT_FONTI_ID[v] && String(e.nome).startsWith(IT_FONTI_ID[v]) : String(e[k]) === v)));
+    }
+  }
+  return o;
+}
+const IT_MANCANTI = [];
+function itv(path) {
+  if (!IT_PERCORSI.includes(path)) { console.error("path not declared in IT_PERCORSI:", path); IT_MANCANTI.push(path + " (not declared)"); return null; }
+  const v = itPath(D.it, path);
+  if (v === undefined) { if (!IT_MANCANTI.includes(path)) IT_MANCANTI.push(path); return null; }
+  return v;
+}
+const ITP = "regole_trasmissione.per_il_simulatore.", ITS = "regole_trasmissione.stimate.";
+function itBase(nome) {
+  const b = {};
+  for (const k of ["data_carburanti", "gasolio", "benzina", "brent", "eurusd", "ttf", "pun", "mese_pun", "gas_rif_eur_smc"]) b[k] = itv(ITP + nome + "." + k);
+  return b;
+}
+function itRischio(prezzo, aumento, s) {
+  const [s1, s2] = s.eur, [a1, a2] = s.pct;
+  if (prezzo >= s2) return { liv: "alto", perche: `diesel reaches €${n(prezzo, 2)}/l, at or above the €${n(s2, 2)} threshold` };
+  if (aumento > a2) return { liv: "alto", perche: `diesel rises ${n(aumento, 0)}%, more than the ${a2}% threshold` };
+  if (prezzo >= s1) return { liv: "medio", perche: `diesel reaches €${n(prezzo, 2)}/l, between €${n(s1, 2)} and €${n(s2, 2)}` };
+  if (aumento >= a1) return { liv: "medio", perche: `diesel rises ${n(aumento, 0)}%, between ${a1}% and ${a2}%` };
+  return { liv: "basso", perche: `diesel stays below €${n(s1, 2)}/l (top of range €${n(prezzo, 2)}) and rises less than ${a1}% (${n(aumento, 0)}%)` };
+}
+/* The rule of italia-impatti.json applied to the Brent and TTF changes computed above (same formulas as raccolta/italia/raccogli.py) */
+function calcolaItalia(r, du) {
+  const lungo = du.giorni > 45;     // 2 weeks and 1 month: 4- and 8-week coefficients; 3 months: 8 weeks and long run
+  const c = (prod) => lungo
+    ? [itv(ITS + prod + ".diff_8_sett.b"), Math.max(itv(ITS + prod + ".diff_13_sett.b"), itv(ITS + prod + ".livello.b"))]
+    : [itv(ITS + prod + ".diff_4_sett.b"), itv(ITS + prod + ".diff_8_sett.b")];
+  const kg = c("gasolio"), kb = c("benzina");
+  const kLab = lungo ? ["8 weeks", "long run"] : ["4 weeks", "8 weeks"];
+  const bPun = itv(ITS + "pun_ttf.b"), rapp = itv("scenari[id=hormuz_1m].coefficienti_usati.rapporto_elettricita_dettaglio_pun");
+  const w = { fuel: itv(ITP + "pesi_hicp_millesimi_2026.FUEL"), el: itv(ITP + "pesi_hicp_millesimi_2026.CP0451"), gas: itv(ITP + "pesi_hicp_millesimi_2026.CP0452") };
+  const soglie = { eur: itv("soglie_fermo.soglie_eur_l"), pct: itv("soglie_fermo.soglie_aumento_pct") };
+  const kwh = D.M.costanti.kwh_per_smc.valore;
+  const brent = r.brent.pct, ttf = r.ttf.pct || [0, 0];
+  const IVA = 1 + IT_K.iva_carburanti, L = IT_K.litri_barile;
+  const applica = (b) => {
+    const o = { b };
+    if (brent) {
+      o.dBl = brent.map(x => b.brent * x / 100 / b.eurusd / L);           // € per litre of crude
+      o.dG = [o.dBl[0] * kg[0] * IVA, o.dBl[1] * kg[1] * IVA];
+      o.dB = [o.dBl[0] * kb[0] * IVA, o.dBl[1] * kb[1] * IVA];
+      o.g = o.dG.map(x => b.gasolio + x);
+      o.bz = o.dB.map(x => b.benzina + x);
+    }
+    o.dT = ttf.map(x => b.ttf * x / 100);
+    o.dP = o.dT.map(x => x * bPun);
+    o.pun = o.dP.map(x => b.pun + x);
+    o.dSmc = o.dT.map(x => x * kwh / 1000 * (1 + IT_K.iva_gas));
+    o.gasPct = b.gas_rif_eur_smc ? o.dSmc.map(x => x / b.gas_rif_eur_smc * 100) : null;
+    o.pctFuel = o.dG ? [0, 1].map(i => (o.dG[i] / b.gasolio + o.dB[i] / b.benzina) / 2 * 100) : [0, 0];
+    o.pctEl = o.dP.map(x => x / b.pun * 100 * rapp);
+    o.pp = [0, 1].map(i => (w.fuel * o.pctFuel[i] + w.gas * (o.gasPct ? o.gasPct[i] : 0) + w.el * o.pctEl[i]) / 1000);
+    o.aumento = o.dG ? o.dG[1] / b.gasolio * 100 : 0;
+    o.rischio = itRischio(o.g ? o.g[1] : b.gasolio, o.aumento, soglie);
+    return o;
+  };
+  return { kg, kb, kLab, bPun, rapp, w, soglie, kwh, brent, ttf, lungo,
+    normale: applica(itBase("base_condizioni_normali")), oggi: applica(itBase("base_oggi")) };
+}
+const RISCHIO_EN = { basso: "low", medio: "medium", alto: "high" };
+function srcIt(testo, link) { return srcTesto(testo, link || "data/italia-impatti.json"); }
+function itMeseBreve(m) { return m ? MESI[+m.slice(5, 7) - 1].slice(0, 3) + " " + m.slice(0, 4) : ""; }
+function disegnaItalia(p, r, du, io) {
+  const I = calcolaItalia(r, du);
+  if (IT_MANCANTI.length) return `<p class="errore">italia-impatti.json lacks: ${esc(IT_MANCANTI.join(", "))}</p>`;
+  const N = I.normale, O = I.oggi, bN = N.b, bO = O.b;
+  const agg = dataBreve(itv("aggiornato"));
+  const fMase = itv("fonti[id=mase].link"), fGme = itv("fonti[id=gme].link"), fIstat = itv("fonti[id=istat].link"), fEuro = itv("fonti[id=eurostat].link");
+  const tagFile = srcFile("italia-impatti.json", agg);
+  const eur = (a, d = 2) => a ? "€" + rng(a[0], a[1], d) : "n/a";
+  const cent = (a) => a ? rng(a[0] * 100, a[1] * 100, 1, (x, d) => sgn(x, d)) + " c€/l" : "";
+  const ppTxt = (a) => rng(a[0], a[1], 2, (x, d) => sgn(x, d)) + " pp";
+  let h = `<li class="passo"><div class="scheda" id="italia"><h2>What happens in Italy</h2>`;
+  h += `<p class="domanda">Pump prices, truck-stoppage risk, inflation, electricity and gas bills, likely government measures and what to watch. The Brent and TTF changes of step 5 go through the observatory's Italian transmission rules.</p>`;
+  h += `<span class="it-etichetta">Observatory assessment · not a forecast</span>`;
+  h += `<p class="it-ingresso">Input from step 5: Brent <b>${r.brent.pct ? rngS(r.brent.pct[0], r.brent.pct[1], 1) : "not estimated"}</b>, TTF <b>${r.ttf.pct ? rngS(r.ttf.pct[0], r.ttf.pct[1], 1) : "0% (no gas flow in the files)"}</b> over ${du.giorni} days. Excise duties unchanged, no government measures. Two starting points: <b>normal conditions</b> (the last week before the 2026 war: ${dataBreve(bN.data_carburanti)}, Brent $${n(bN.brent, 2)}, TTF €${n(bN.ttf, 2)}) and <b>today's prices</b> (Brent $${n(bO.brent, 2)}, TTF €${n(bO.ttf, 2)}, EUR/USD ${n(bO.eurusd, 4)}). ${tagFile}</p>`;
+  if (p.id === "hormuz") h += `<div class="avviso">Hormuz has been closed since 2 March 2026, so today's prices already include this shock: read the <b>normal conditions</b> column as the effect of the closure, and the “today” column as a second shock of the same size on top of it.</div>`;
+
+  // table
+  const riga = (lab, sub, vN, sN, vO, sO) => `<div class="lab">${lab}${sub ? `<small>${sub}</small>` : ""}</div><div class="v"><span class="mob">Normal</span>${vN}${sN ? `<small>${sN}</small>` : ""}</div><div class="v"><span class="mob">Today</span>${vO}${sO ? `<small>${sO}</small>` : ""}</div>`;
+  h += `<div class="it-tab" role="table" aria-label="Italy: effects from normal conditions and from today's prices">`;
+  h += `<div class="th vuoto"></div><div class="th">From normal conditions<small>prices of ${dataBreve(bN.data_carburanti)}, PUN ${itMeseBreve(bN.mese_pun)}</small></div><div class="th">From today's prices<small>fuel ${dataBreve(bO.data_carburanti)}, PUN ${itMeseBreve(bO.mese_pun)}</small></div>`;
+  h += riga("Diesel at the pump", `excise unchanged ${srcIt("MASE weekly · " + dataBreve(bO.data_carburanti), fMase)}`,
+    eur(N.g), N.g ? `from €${n(bN.gasolio, 3)} · ${cent(N.dG)}` : "Brent not estimated",
+    eur(O.g), O.g ? `from €${n(bO.gasolio, 3)} · ${cent(O.dG)}` : "Brent not estimated");
+  h += riga("Petrol at the pump", `excise unchanged ${srcIt("MASE weekly", fMase)}`,
+    eur(N.bz), N.bz ? `from €${n(bN.benzina, 3)} · ${cent(N.dB)}` : "", eur(O.bz), O.bz ? `from €${n(bO.benzina, 3)} · ${cent(O.dB)}` : "");
+  const badge = (o) => `<span class="rischio ${o.rischio.liv}">${RISCHIO_EN[o.rischio.liv]}</span>`;
+  h += riga("Truck-stoppage risk", `thresholds from the 2022 and 2026 precedents ${srcIt("observatory assessment")}`, badge(N), N.rischio.perche, badge(O), O.rischio.perche);
+  h += riga("Inflation, direct energy effect", `on the annual rate, 1–3 months ${srcIt("Eurostat HICP weights 2026", fEuro)}`,
+    ppTxt(N.pp), N.gasPct ? "" : "fuel and electricity only: no regulated-gas reference price for Feb 2026 in the file",
+    ppTxt(O.pp), `NIC inflation today ${n(itv("oggi.nic_generale")[1], 1)}% (${itMeseBreve(itv("oggi.nic_generale")[0])}) ${srcIt("Istat", fIstat)}`);
+  h += riga("PUN, wholesale electricity", `monthly average, €/MWh ${srcIt("GME", fGme)}`,
+    "€" + rng(N.pun[0], N.pun[1], 0), `from €${n(bN.pun, 2)} (${itMeseBreve(bN.mese_pun)})`, "€" + rng(O.pun[0], O.pun[1], 0), `from €${n(bO.pun, 2)} (${itMeseBreve(bO.mese_pun)})`);
+  h += riga("Regulated gas (vulnerable customers)", `ARERA price, the month after ${srcIt("ARERA · " + itMeseBreve(itv("oggi.arera_cmem_ultimo.mese")), itv("oggi.arera_cmem_ultimo.link"))}`,
+    rng(N.dSmc[0] * 100, N.dSmc[1] * 100, 1, (x, d) => sgn(x, d)) + " c€/Smc", "share of the bill not available for Feb 2026",
+    rng(O.dSmc[0] * 100, O.dSmc[1] * 100, 1, (x, d) => sgn(x, d)) + " c€/Smc", O.gasPct ? `${rngS(O.gasPct[0], O.gasPct[1], 0)} on the reference price of ${n(bO.gas_rif_eur_smc * 100, 1)} c€/Smc` : "");
+  h += `</div>`;
+  h += `<p class="piccolo">Range: the low end uses the average Brent/TTF change in the window and the shorter-lag coefficient, the high end the peak change and the longer-lag coefficient. ${tagFile}</p>`;
+
+  // excise cut
+  const t22 = itv("accise.cambi[data_rilevazione=2022-03-28,prodotto=gasolio].variazione_cent_con_iva") / 100;
+  const t26 = itv("accise.cambi[data_rilevazione=2026-03-23,prodotto=gasolio].variazione_cent_con_iva") / 100;
+  const tFine = itv("accise.cambi[data_rilevazione=2026-11-02,prodotto=gasolio].variazione_cent_con_iva");
+  h += `<h3>With an excise cut</h3>`;
+  if (N.g) {
+    h += `<div class="calcolo">2022-type cut (${n(t22 * 100, 1)} c€/l incl. VAT ${srcIt("MASE series", fMase)}): diesel normal <b>€${rng(N.g[0] + t22, N.g[1] + t22, 2)}</b> · today <b>€${rng(O.g[0] + t22, O.g[1] + t22, 2)}</b><br>2026-type cut (${n(t26 * 100, 1)} c€/l incl. VAT): diesel normal <b>€${rng(N.g[0] + t26, N.g[1] + t26, 2)}</b> · today <b>€${rng(O.g[0] + t26, O.g[1] + t26, 2)}</b>; petrol the same amount lower.</div>`;
+  }
+  h += `<p class="piccolo">A cut reaches the pump in days, but not everywhere: between 23 and 25 March 2026 only 60% of filling stations had applied it ${srcIt("Mimit observatory via Today.it", itv("letteratura[id=accise-applicazione-2026].link"))}. Hauliers get back part of the diesel excise, so a general cut is worth less to them: it was the main grievance behind the May 2026 stoppage call ${srcIt("Shipping Italy", itv("autotrasporto.meccanismo_rimborso_accise.link"))}. Today's diesel base (€${n(bO.gasolio, 3)}) is the MASE price of ${dataBreve(itv("oggi.gasolio_settimanale.data"))} (€${n(itv("oggi.gasolio_settimanale.eur_l"), 3)}) plus the ${n(-tFine, 1)} c€/l cut that expired on 8 November 2026.</p>`;
+
+  // formulas
+  const dBrentTxt = (o) => o.dBl ? `$${n(o.b.brent, 2)} × (${rng(I.brent[0], I.brent[1], 1)}%) ÷ ${n(o.b.eurusd, 4)} ÷ ${n(IT_K.litri_barile, 3)} l = €${rng(o.dBl[0], o.dBl[1], 3)}/l of crude` : "Brent not estimated";
+  h += `<details><summary>How each number is computed</summary>`;
+  h += `<div class="calcolo"><b>Diesel and petrol</b> = base + ΔBrent in €/l × coefficient × ${n(1 + IT_K.iva_carburanti, 2)} (VAT)<br>`;
+  h += `ΔBrent normal: ${dBrentTxt(N)}<br>ΔBrent today: ${dBrentTxt(O)}<br>`;
+  h += `coefficients (net pump price per €1 of crude, ${I.kLab[0]} / ${I.kLab[1]}): diesel ${n(I.kg[0], 3)} / ${n(I.kg[1], 3)}, petrol ${n(I.kb[0], 3)} / ${n(I.kb[1], 3)} — regressions on ${n(itv(ITS + "n_settimane"), 0)} weeks of MASE prices, ${dataBreve(itv(ITS + "periodo")[0])} – ${dataBreve(itv(ITS + "periodo")[1])} (R² diesel ${n(itv(ITS + "gasolio.diff_4_sett.r2"), 2)} at 4 weeks, ${n(itv(ITS + "gasolio.diff_8_sett.r2"), 2)} at 8). Diesel amplifies crude because the diesel refining margin also rises in crises.</div>`;
+  h += `<div class="calcolo"><b>PUN</b> = PUN of the month + ${n(I.bPun, 2)} × ΔTTF (fit PUN ≈ ${n(itv(ITS + "pun_ttf.a"), 1)} + ${n(I.bPun, 2)} × TTF on ${itv(ITS + "pun_ttf.n")} GME months and years, R² ${n(itv(ITS + "pun_ttf.r2"), 2)})<br>ΔTTF normal: €${n(bN.ttf, 2)} × (${rng(I.ttf[0], I.ttf[1], 1)}%) = €${rng(N.dT[0], N.dT[1], 1)}/MWh → PUN €${n(bN.pun, 2)} + €${rng(N.dP[0], N.dP[1], 1)}<br>ΔTTF today: €${n(bO.ttf, 2)} × (${rng(I.ttf[0], I.ttf[1], 1)}%) = €${rng(O.dT[0], O.dT[1], 1)}/MWh → PUN €${n(bO.pun, 2)} + €${rng(O.dP[0], O.dP[1], 1)}</div>`;
+  h += `<div class="calcolo"><b>Regulated gas</b> = ΔTTF × ${n(I.kwh, 5)} kWh/Smc ÷ 1000 × ${n(1 + IT_K.iva_gas, 2)} (VAT 10%): the ARERA raw-material price is the monthly average of the Italian wholesale price (PSV) and passes through in full the following month.</div>`;
+  h += `<div class="calcolo"><b>Inflation (direct effect)</b> = [fuel weight ${n(I.w.fuel, 2)} × average % change of diesel and petrol + electricity weight ${n(I.w.el, 2)} × (ΔPUN % × ${n(I.rapp, 2)}) + gas weight ${n(I.w.gas, 2)} × regulated gas %] ÷ 1000 (HICP weights in per mille, 2026). The ${n(I.rapp, 2)} ratio between retail electricity and PUN comes from 2022 only (low reliability). Indirect effects (transport, food) come later and are not estimated.<br>normal: fuel ${rng(N.pctFuel[0], N.pctFuel[1], 1)}%, electricity ${rng(N.pctEl[0], N.pctEl[1], 1)}%, gas n/a → <b>${ppTxt(N.pp)}</b><br>today: fuel ${rng(O.pctFuel[0], O.pctFuel[1], 1)}%, electricity ${rng(O.pctEl[0], O.pctEl[1], 1)}%, gas ${O.gasPct ? rng(O.gasPct[0], O.gasPct[1], 1) : "n/a"}% → <b>${ppTxt(O.pp)}</b></div>`;
+  h += `<div class="calcolo"><b>Truck-stoppage risk</b>: high if diesel ≥ €${n(I.soglie.eur[1], 2)}/l or the rise exceeds ${I.soglie.pct[1]}%; medium if diesel ≥ €${n(I.soglie.eur[0], 2)} or the rise is ≥ ${I.soglie.pct[0]}%; otherwise low. Uses the top of the diesel range and its % rise over the base (the thresholds speak of a rise within 8 weeks).</div>`;
+  h += `</details>`;
+
+  // risk and precedents
+  const pr = (id) => ({ eur: itv(`precedenti[id=${id}].gasolio_alla_data.eur_l`), link: itv(`precedenti[id=${id}].link`) });
+  const p22 = pr("blocchi-tir-marzo-2022"), p26a = pr("fermo-trasportounito-aprile-2026"), p26m = pr("fermo-unatras-maggio-2026"), p26o = pr("fermi-regionali-ottobre-2026");
+  h += `<h3>Truck stoppage: thresholds and precedents</h3><ul class="it-misure">`;
+  h += `<li><b>High</b> (diesel from €${n(I.soglie.eur[1], 2)}/l or +${I.soglie.pct[1]}%): the March 2022 protests started with diesel at €${n(p22.eur, 2)} ${srcIt("La Sicilia/ANSA", p22.link)}, the Trasportounito stoppage of 20 April 2026 at €${n(p26a.eur, 2)} ${srcIt("LaPresse", p26a.link)}, the regional stoppages in Sicily and Calabria (16–20 October 2026) at €${n(p26o.eur, 2)} ${srcIt("Logisticamente", p26o.link)}.</li>`;
+  h += `<li><b>Medium</b> (€${n(I.soglie.eur[0], 2)}–${n(I.soglie.eur[1], 2)} or +${I.soglie.pct[0]}–${I.soglie.pct[1]}%): Unatras, the umbrella body of the main hauliers' associations, called a national stoppage for 25–29 May 2026 with diesel at €${n(p26m.eur, 2)}; it was suspended after a meeting at Palazzo Chigi ${srcIt("Shipping Italy", p26m.link)}.</li>`;
+  h += `<li><b>Low</b>: no blockade in 2022–2026 started below €${n(I.soglie.eur[0], 2)}. Older ones started at the record high of the time (December 2007 at €${n(itv("precedenti[id=fermo-tir-2007].gasolio_alla_data.eur_l"), 2)}, January 2012 at €${n(itv("precedenti[id=blocchi-tir-gennaio-2012].gasolio_alla_data.eur_l"), 2)}): what matters is a new high reached quickly.</li></ul>`;
+  const preav = new Date(Date.parse(itv("scioperi_proclamati.data_fonte")) + 1 * 864e5);
+  h += `<p class="piccolo">Timing: under the 1990 law on strikes in essential public services (law 146/1990) ${srcIt("Normattiva", itv("autotrasporto.regole_scioperi[id=legge-146-1990].link"))}, the road-haulage self-regulation code requires <b>25 days' notice</b> to the Commissione di garanzia, the strike-watchdog authority, which in March 2022 and April 2026 asked for stoppages called at shorter notice to be withdrawn ${srcIt("LaPresse", itv("autotrasporto.regole_scioperi[id=preavviso-25-giorni].link"))}. No national stoppage had been called as of ${dataBreve(itv("scioperi_proclamati.data_fonte"))} ${srcIt("Rai News", itv("scioperi_proclamati.link"))}: one called today could not start before ${dataBreve(new Date(Date.parse("2026-11-10") + 25 * 864e5).toISOString())}.</p>`;
+
+  // measures
+  const mis = [];
+  const m = (id, testo) => mis.push(`<li>${testo} ${srcIt("decree / press", itv(`misure_governo[id=${id}].link`))}</li>`);
+  const dG = O.dG ? O.dG[1] : 0, dPun = O.dP[1], dGas = O.dSmc[1], ppMax = Math.max(N.pp[1], O.pp[1]);
+  if (dG >= 0.10) {
+    m("accise-2022", `<b>Excise cut on fuel</b>: 2022, −25 c€/l (−30.5 incl. VAT) from 22 March, extended several times until the end of the year.`);
+    m("accise-marzo-2026", `<b>Excise cut on fuel</b>: 2026, −20 c€/l (−24.4 incl. VAT) from 19 March, then smaller and shorter cuts, mostly on diesel, until 7 November.`);
+    m("tetto-eni-ip-2026", `<b>Voluntary price caps</b> under government pressure: Eni/Enilive and IP at €1.99 petrol and €2.19 diesel on about 4,100 of 20,000 stations (September 2026).`);
+  }
+  if (dG >= 0.10 || N.rischio.liv !== "basso") {
+    m("credito-autotrasporto-2026", `<b>Support for hauliers</b> to avert a stoppage: May 2026, €300 million of tax credits on diesel, quarterly excise rebate in 30 days instead of 60, a permanent round table.`);
+    m("autotrasporto-2022", `March 2022: €80 million for road haulage, judged insufficient by Unatras.`);
+  }
+  if (dPun >= 20 || dGas >= 0.05) {
+    m("decreto-bollette-2026", `<b>Bills decree</b>: approved on 9 November 2026, about −15 €/MWh from January 2027.`);
+    m("bonus-sociali-2022", `<b>Stronger social bonuses</b> on electricity and gas, with the ISEE (means-test) threshold raised to €12,000 (2022).`);
+  }
+  if (dPun >= 50 || dGas >= 0.15) {
+    m("oneri-iva-gas-2022", `<b>System charges zeroed</b> on bills and VAT on gas cut to 5% (October 2021 – March 2023).`);
+    m("crediti-energivori-2022", `<b>Tax credits for energy- and gas-intensive firms</b> (2022 decrees).`);
+  }
+  if (ppMax >= 1) m("bonus-200-2022", `<b>One-off payments</b> to lower-income workers and pensioners: €200 (July 2022) and €150 (November 2022).`);
+  h += `<h3>Likely government measures</h3><p class="piccolo">Assessment from the precedents: a measure is listed when the shock (from today's prices) is at least as large as the one that triggered it — diesel +10 c€/l or medium/high stoppage risk for fuel and haulage measures; PUN +20 €/MWh or gas +5 c€/Smc for bills; inflation +1 pp for transfers.</p>`;
+  h += mis.length ? `<ul class="it-misure">${mis.join("")}</ul>` : `<p class="piccolo">None: in the precedents no measure followed changes this small.</p>`;
+
+  // indicators
+  const ind = [];
+  if (O.dG && O.dG[1] > 0.005) {
+    ind.push(`<b>Pump prices</b>: the Mimit daily average of self-service prices (Mimit, the Ministry of Enterprises and Made in Italy, collects the prices every station must report) and the MASE weekly national average every Monday (MASE, the Ministry of the Environment and Energy Security) ${srcIt("MASE", fMase)}.`);
+    ind.push(`<b>The diesel–petrol gap</b>: diesel already costs more than petrol; a widening gap means refining margins are rising.`);
+    ind.push(`<b>Off-network diesel sales</b> (fleets and haulage), monthly from MASE: in 2026 they fell up to −14.3% ${srcIt("MASE consumption", itv("fonti[id=mase-consumi].link"))}.`);
+  }
+  ind.push(`<b>Stoppage notices</b> on the strike calendar of the Ministry of Infrastructure and Transport and of the Commissione di garanzia: with 25 days' notice they give almost a month's warning ${srcIt("Rai News", itv("scioperi_proclamati.link"))}.`);
+  if (O.dP[1] > 0.5) {
+    ind.push(`<b>Daily PUN and MGP-GAS price</b> from GME, the operator of the Italian power and gas exchanges (PUN is the single national wholesale electricity price) ${srcIt("GME", fGme)}.`);
+    ind.push(`<b>ARERA's regulated gas price</b> for vulnerable customers, published early each month (ARERA is the energy regulator).`);
+    ind.push(`<b>Gas storage</b> in Italy ${srcFile("scorte.json", "GIE AGSI+")}${p.id === "canale-di-sicilia" ? ` and entry flows at Mazara del Vallo ${srcFile("gas-italia.json", "ENTSOG")}` : ""}.`);
+  }
+  ind.push(`<b>Istat's flash estimate of NIC inflation</b> at the end of each month (Istat is the national statistics office; NIC is the consumer price index for the whole nation): energy was ${sgn(itv("oggi.nic_energetici")[1], 1)}% year on year in ${itMeseBreve(itv("oggi.nic_energetici")[0])} ${srcIt("Istat", fIstat)}.`);
+  h += `<h3>What to watch</h3><ul class="it-guarda">${ind.map(x => `<li>${x}</li>`).join("")}</ul>`;
+
+  // backtest
+  const BT = "scenari[id=hormuz_1m].";
+  const prev = itv(BT + "da_condizioni_normali.gasolio_eur_l"), pv = itv(BT + "da_condizioni_normali.pun_eur_mwh"), punOss = itv(BT + "osservato.pun_mensile");
+  h += `<h3>Backtest: Hormuz, February–March 2026</h3>`;
+  h += `<p class="piccolo">The same rule applied to the prices of ${dataBreve(itv(BT + "osservato.gasolio.base.data"))} with Hormuz closed for a month, against what MASE then recorded up to ${dataBreve(itv(BT + "osservato.gasolio.fino_a"))} ${srcIt("MASE weekly", fMase)} ${tagFile}</p>`;
+  h += `<div class="it-back">
+    <div><p class="et">Predicted diesel</p><p class="val">€${rng(prev[0], prev[1], 2)}</p><p class="sub">rule, normal conditions, excise unchanged</p></div>
+    <div><p class="et">Actual, without the cuts</p><p class="val">€${n(itv(BT + "osservato.gasolio.media_senza_tagli_accise"), 2)} avg · €${n(itv(BT + "osservato.gasolio.max_senza_tagli_accise"), 2)} max</p><p class="sub">net price observed + February excise, with VAT</p></div>
+    <div><p class="et">Actual at the pump</p><p class="val">€${n(itv(BT + "osservato.gasolio.media_eur_l"), 2)} avg · €${n(itv(BT + "osservato.gasolio.max_eur_l"), 2)} max</p><p class="sub">with the March 2026 excise cut; peak ${dataBreve(itv(BT + "osservato.gasolio.data_max"))}</p></div>
+  </div>`;
+  const p3 = itv("scenari[id=hormuz_3m].da_condizioni_normali.gasolio_eur_l");
+  h += `<p class="piccolo">At one month the actual diesel price without the cuts falls inside the predicted range. At three months the rule gives €${rng(p3[0], p3[1], 2)}, against €${n(itv("scenari[id=hormuz_3m].osservato.gasolio.media_senza_tagli_accise"), 2)} on average and €${n(itv("scenari[id=hormuz_3m].osservato.gasolio.max_senza_tagli_accise"), 2)} at the peak without the cuts (to ${dataBreve(itv("scenari[id=hormuz_3m].osservato.gasolio.fino_a"))}): it underestimates the peak a little. The PUN is overestimated: rule €${rng(pv[0], pv[1], 0)}, actual €${n(punOss[0][1], 1)} in ${itMeseBreve(punOss[0][0])} ${srcIt("GME", fGme)} — in spring renewables weigh more.</p>`;
+
+  // glossary
+  h += `<details><summary>Italian institutions and terms used here</summary><dl class="it-glossario">
+    <dt>MASE</dt><dd>Ministry of the Environment and Energy Security: publishes weekly national fuel prices with excise and VAT, and monthly fuel sales.</dd>
+    <dt>Mimit</dt><dd>Ministry of Enterprises and Made in Italy: collects the prices each filling station must report and runs the price observatory.</dd>
+    <dt>ARERA</dt><dd>The regulator for energy, networks and environment: sets the gas price for vulnerable customers from the monthly wholesale (PSV) average.</dd>
+    <dt>GME</dt><dd>Gestore dei Mercati Energetici, the operator of the power and gas exchanges: publishes the PUN, the single national wholesale electricity price.</dd>
+    <dt>Istat</dt><dd>The national statistics institute: publishes NIC inflation (index for the whole nation) with a flash estimate at the end of the month.</dd>
+    <dt>Unatras</dt><dd>The coordination of the main road-haulage associations, which calls national truck stoppages (“fermo”).</dd>
+    <dt>25-day notice</dt><dd>Law 146/1990 regulates strikes in essential public services; the haulage sector's code requires 25 days' notice (more than the law's 10-day minimum) and minimum services. The Commissione di garanzia checks the calls and can ask for them to be withdrawn or for a government order (“precettazione”).</dd>
+  </dl></details>`;
+  h += `</div></li>`;
+  return h;
 }
 
 function disegnaFisso() {
