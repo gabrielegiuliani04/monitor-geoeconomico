@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-09T20:13Z",
+ "aggiornato": "2026-11-10T06:25Z",
  "fonti": [
   {
    "nome": "WindEurope, Wind energy in Europe - 2025 Statistics and the outlook for 2026-2030 (tabelle 1 e 4)",
@@ -2066,7 +2066,7 @@
    "data": "2025-08",
    "nome": "N-10.1 e N-10.2 (2,5 GW)",
    "gw": 2.5,
-   "esito": "nessuna offerta (prima volta in Germania); gare 2026 rinviate al 2027",
+   "esito": "nessuna offerta (prima volta in Germania); rigara dei siti N-10.1 e N-10.2 rinviata al 2027 (la fonte non parla di tutte le gare 2026)",
    "meccanismo": "offerta negativa senza tetto",
    "prezzo": null,
    "perche": "Rischio prezzo interamente sullo sviluppatore, costi e tassi alti, pagamenti anticipati allo Stato.",
@@ -2384,7 +2384,7 @@
     "obiettivo_lungo": "70 GW al 2045",
     "fonte_obiettivo": "WindSeeG, confermato nella bozza di riforma 10/08/2026",
     "link_obiettivo": "https://www.offshorewind.biz/2026/08/12/german-govt-proposes-changes-to-offshore-wind-act-industry-says-cfd-mechanism-should-not-be-fallback-option",
-    "note": "Mare del Nord e Baltico. Nel 2025 installati 503 MW. Asta 2025 senza offerte, gare 2026 rinviate al 2027; rete in ritardo (BalWin1 al 2031).",
+    "note": "Mare del Nord e Baltico. Nel 2025 installati 503 MW. Asta 2025 senza offerte, rigara dei siti N-10.1 e N-10.2 rinviata al 2027 (la fonte non parla di tutte le gare 2026); rete in ritardo (BalWin1 al 2031).",
     "quota_obiettivo_oggi_pct": 32.1,
     "quota_obiettivo_2030_previsto_pct": 55.1,
     "scarto_2030_previsto_gw": 13.48,
@@ -2568,42 +2568,42 @@
    {
     "id": "us2y",
     "nome": "Titolo di Stato USA 2 anni",
-    "ultimo": 4.51,
+    "ultimo": 4.56,
     "unita": "% rendimento",
-    "data": "2026-11-06",
+    "data": "2026-11-09",
     "var": {
      "1g": 5,
-     "1m": -26,
-     "ytd": 104,
-     "1a": 94
+     "1m": -24,
+     "ytd": 109,
+     "1a": 101
     },
     "perche_conta": "Tasso a breve: aspettative di politica monetaria, condizioni del debito di costruzione."
    },
    {
     "id": "us10y",
     "nome": "Titolo di Stato USA 10 anni",
-    "ultimo": 4.86,
+    "ultimo": 4.88,
     "unita": "% rendimento",
-    "data": "2026-11-06",
+    "data": "2026-11-09",
     "var": {
      "1g": 2,
-     "1m": -42,
-     "ytd": 68,
-     "1a": 75
+     "1m": -36,
+     "ytd": 70,
+     "1a": 77
     },
     "perche_conta": "Tasso a lungo termine (proxy del costo del capitale globale): un parco offshore e' quasi tutto capex, ogni punto di tasso pesa sul prezzo necessario."
    },
    {
     "id": "brent",
     "nome": "Petrolio Brent",
-    "ultimo": 92.62,
+    "ultimo": 91.7,
     "unita": "USD/barile",
     "data": "2026-11-09",
     "var": {
-     "1g": -5.8,
-     "1m": -11.55,
-     "ytd": 52.21,
-     "1a": 45.56
+     "1g": -6.73,
+     "1m": -12.43,
+     "ytd": 50.7,
+     "1a": 44.11
     },
     "perche_conta": "Petrolio: concorrenza per navi e cantieri con l'offshore oil & gas."
    },
@@ -2624,14 +2624,14 @@
    {
     "id": "eurusd",
     "nome": "EUR/USD",
-    "ultimo": 1.1222,
+    "ultimo": 1.1225,
     "unita": "USD per 1 EUR",
-    "data": "2026-11-09",
+    "data": "2026-11-10",
     "var": {
-     "1g": -0.05,
-     "1m": 0.08,
-     "ytd": -4.47,
-     "1a": -2.83
+     "1g": 0.7,
+     "1m": 0.11,
+     "ytd": -4.44,
+     "1a": -2.76
     },
     "perche_conta": "Navi e componenti si pagano spesso in USD; ricavi in EUR/GBP/DKK."
    }
@@ -2650,7 +2650,7 @@
     "nota": "serie non presente in prezzi.json: da aggiungere allo script dei mercati"
    }
   ],
-  "aggiornato_prezzi": "2026-11-09T19:47Z"
+  "aggiornato_prezzi": "2026-11-10T03:40Z"
  },
  "collegamenti": {
   "file_nord": {

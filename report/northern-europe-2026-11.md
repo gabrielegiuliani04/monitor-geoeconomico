@@ -385,7 +385,7 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 | [rischio.json](../docs/data/rischio.json) | 2026-11-09T20:03Z | Yahoo Finance, US Treasury |
 | [port-risk.json](../docs/data/port-risk.json) | 2026-11-10T06:17Z | port risk scores (PORT-RISK agent) |
 | [transit-times.json](../docs/data/transit-times.json) | 2026-11-10T06:23Z | transit times to Rotterdam (TRANSIT agent) |
-| [wind-calendar.json](../docs/data/wind-calendar.json) | 2026-11-10T06:21Z | offshore wind calendar (WIND-CALENDAR agent) |
+| [wind-calendar.json](../docs/data/wind-calendar.json) | 2026-11-10T06:24Z | offshore wind calendar (WIND-CALENDAR agent) |
 | report/dati/eurostat-gas-nord.json | 2026-11-10T06:19Z | Eurostat nrg_stk_gasm (DK, PL) |
 
 *Each file lists its sources, licences and the date of each datum; the text cites the date of the datum, not of the reading.*

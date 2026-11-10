@@ -571,10 +571,11 @@ SVG_STYLE = """<style>
 .ne-s1{fill:#A61E6B}.ne-s2{fill:#2a78d6}.ne-s3{fill:#eda100}.ne-s4{fill:#1baf7a}
 .ne-k1{stroke:#A61E6B}.ne-k2{stroke:#2a78d6}.ne-k3{stroke:#eda100}
 .ne-bg{fill:#ffffff}
+.ne-h{paint-order:stroke;stroke:#ffffff;stroke-width:4px;stroke-linejoin:round}
 @media (prefers-color-scheme:dark){
 .ne-t{fill:#DAE0E2}.ne-l{fill:#c3cacd}.ne-m{fill:#99a5ab}.ne-g{stroke:#2f3b42}.ne-z{stroke:#99a5ab}
 .ne-s1{fill:#d14f9a}.ne-s2{fill:#3987e5}.ne-s3{fill:#c98500}.ne-s4{fill:#199e70}
-.ne-k1{stroke:#d14f9a}.ne-k2{stroke:#3987e5}.ne-k3{stroke:#c98500}.ne-bg{fill:#172127}}
+.ne-k1{stroke:#d14f9a}.ne-k2{stroke:#3987e5}.ne-k3{stroke:#c98500}.ne-bg{fill:#172127}.ne-h{stroke:#172127}}
 </style>"""
 
 
@@ -616,8 +617,8 @@ def chart_ports(V, wide=True):
     top = 66
     h = top + rowh * len(P) + 34
     vals = [p["var30"] for p in P] + [p["ytd"] for p in P if p["ytd"] is not None]
-    lo, hi = min(-10, min(vals) - 2), max(10, max(vals) + 2)
-    step = 10 if hi - lo <= 60 else 20
+    lo, hi = min(-10, min(vals) - (6 if wide else 12)), max(10, max(vals) + (4 if wide else 8))
+    step = 10 if hi - lo <= 80 else 20
     lo, hi = step * (lo // step), step * (-(-hi // step))
     X = lambda v: left + (v - lo) / (hi - lo) * (w - left - right)
     o = [svg_open(w, h, "Port calls, change on a year earlier",
@@ -628,7 +629,8 @@ def chart_ports(V, wide=True):
     for t in ticks(lo, hi, step):
         x = X(t)
         o.append(f'<line class="{"ne-z" if t == 0 else "ne-g"}" x1="{x:.1f}" x2="{x:.1f}" y1="{top - 8}" y2="{h - 26}"/>')
-        o.append(f'<text class="ne-m" x="{x:.1f}" y="{h - 10}" text-anchor="middle">{int(t):+d}</text>'.replace("+0", "0").replace("-", "−"))
+        lab = "0" if t == 0 else f"{int(t):+d}".replace("-", "−")
+        o.append(f'<text class="ne-m" x="{x:.1f}" y="{h - 10}" text-anchor="middle">{lab}</text>')
     for i, p in enumerate(P):
         y = top + i * rowh
         nm = p["name"] if wide or len(p["name"]) < 14 else p["name"].replace("Szczecin-", "Szcz.-").replace("Bremen/", "")
@@ -681,7 +683,7 @@ def chart_storage(V, wide=True):
         lx, lv = st[c]["date"], st[c]["pct"]
         xx, yy = X(d(lx).timetuple().tm_yday), Y(lv)
         o.append(f'<circle cx="{xx:.1f}" cy="{yy:.1f}" r="4" class="ne-s1"><title>{name}, {date_en(lx)}: {num(lv, 2)}%</title></circle>')
-        o.append(f'<text class="ne-m" x="{xx - 6:.1f}" y="{yy + 16:.1f}" text-anchor="end">{num(lv, 1)}%</text>')
+        o.append(f'<text class="ne-m ne-h" x="{xx - 8:.1f}" y="{yy - 12:.1f}" text-anchor="end">{num(lv, 1)}%</text>')
     o.append("</svg>")
     return "".join(o)
 
@@ -714,7 +716,10 @@ def chart_wind(V, wide=True):
         o.append(f'<text class="ne-l" x="{left - 8}" y="{y + 19}" text-anchor="end">{names[c["paese"]]}</text>')
         o.append(f'<path class="ne-s2" d="{bar_path(X(0), X(inst), y + 4, 12)}"><title>{names[c["paese"]]}: {num(inst, 1)} GW installed (end-2025)</title></path>')
         o.append(f'<path class="ne-s3" d="{bar_path(X(0), X(fc), y + 18, 12)}"><title>{names[c["paese"]]}: {num(fc, 1)} GW forecast for 2030</title></path>')
-        o.append(f'<text class="ne-m" x="{X(fc) + 4:.1f}" y="{y + 27.5}">{num(fc, 1)}</text>')
+        lx_ = X(fc) + 4
+        if tg and 0 <= X(tg) - X(fc) <= 28:
+            lx_ = X(tg) + 5
+        o.append(f'<text class="ne-m" x="{lx_:.1f}" y="{y + 28}">{num(fc, 1)}</text>')
         if tg:
             o.append(f'<line class="ne-k1" x1="{X(tg):.1f}" x2="{X(tg):.1f}" y1="{y + 1}" y2="{y + 33}" stroke-width="3"><title>{names[c["paese"]]}: target {num(tg, 1)} GW in 2030</title></line>')
             o.append(f'<text class="ne-m" x="{X(tg) + 5:.1f}" y="{y + 13}">{num(tg, 1) if tg % 1 else int(tg)}</text>')
