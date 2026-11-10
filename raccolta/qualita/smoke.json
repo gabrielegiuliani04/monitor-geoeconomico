@@ -1,28 +1,9 @@
 {
- "updated": "2026-11-10T06:42Z",
- "overall": "red",
- "seconds": 50,
- "passed": 39,
- "failed": [
-  {
-   "page": "index.html",
-   "test": "main points > 0",
-   "ok": false,
-   "detail": "PT has null points"
-  },
-  {
-   "page": "index.html",
-   "test": "extra layers built",
-   "ok": false,
-   "detail": "X.pts and X.lines are empty: the data files were not loaded"
-  },
-  {
-   "page": "index.html",
-   "test": "no failed requests (scripts, pages)",
-   "ok": false,
-   "detail": "http://127.0.0.1:46315/notizie.html (net::ERR_ABORTED) | http://127.0.0.1:46315/simulatore.html (net::ERR_ABORTED)"
-  }
- ],
+ "updated": "2026-11-10T06:44Z",
+ "overall": "green",
+ "seconds": 55,
+ "passed": 46,
+ "failed": [],
  "results": [
   {
    "page": "index.html",
@@ -32,21 +13,9 @@
   },
   {
    "page": "index.html",
-   "test": "main points > 0",
-   "ok": false,
-   "detail": "PT has null points"
-  },
-  {
-   "page": "index.html",
-   "test": "extra layers built",
-   "ok": false,
-   "detail": "X.pts and X.lines are empty: the data files were not loaded"
-  },
-  {
-   "page": "index.html",
-   "test": "data files loaded",
+   "test": "every layer count > 0",
    "ok": true,
-   "detail": ""
+   "detail": "42 layers"
   },
   {
    "page": "index.html",
@@ -58,79 +27,91 @@
    "page": "index.html",
    "test": "Terminal tab Risk",
    "ok": true,
-   "detail": "9978 characters"
+   "detail": "10012 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Ports",
+   "ok": true,
+   "detail": "14527 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Transit times",
+   "ok": true,
+   "detail": "819 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Wind calendar",
+   "ok": true,
+   "detail": "13838 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Northern Europe",
    "ok": true,
-   "detail": "8402 characters"
+   "detail": "8436 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Prices and rates",
    "ok": true,
-   "detail": "1908 characters"
+   "detail": "1942 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Calendar",
    "ok": true,
-   "detail": "5156 characters"
+   "detail": "5190 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Chokepoints",
    "ok": true,
-   "detail": "4416 characters"
+   "detail": "4450 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Freight and risk",
    "ok": true,
-   "detail": "823 characters"
+   "detail": "857 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Stocks",
    "ok": true,
-   "detail": "2041 characters"
+   "detail": "2075 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Countries",
    "ok": true,
-   "detail": "2040 characters"
+   "detail": "2074 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Critical minerals",
    "ok": true,
-   "detail": "3730 characters"
+   "detail": "3764 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab News",
    "ok": true,
-   "detail": "9890 characters"
+   "detail": "9924 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Ukraine",
    "ok": true,
-   "detail": "9853 characters"
+   "detail": "9887 characters"
   },
   {
    "page": "index.html",
    "test": "no failed data requests",
    "ok": true,
    "detail": ""
-  },
-  {
-   "page": "index.html",
-   "test": "no failed requests (scripts, pages)",
-   "ok": false,
-   "detail": "http://127.0.0.1:46315/notizie.html (net::ERR_ABORTED) | http://127.0.0.1:46315/simulatore.html (net::ERR_ABORTED)"
   },
   {
    "page": "index.html",
@@ -241,6 +222,18 @@
    "detail": ""
   },
   {
+   "page": "report/en/asia-europe-logistics-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "31809 characters"
+  },
+  {
+   "page": "report/en/asia-europe-logistics-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
    "page": "report/en/hormuz-red-sea-2026-11.html",
    "test": "content rendered",
    "ok": true,
@@ -248,6 +241,18 @@
   },
   {
    "page": "report/en/hormuz-red-sea-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/en/italy-gulf-shock-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "42731 characters"
+  },
+  {
+   "page": "report/en/italy-gulf-shock-2026-11.html",
    "test": "no JS errors",
    "ok": true,
    "detail": ""
@@ -278,7 +283,48 @@
   }
  ],
  "layer_counts": {
-  "main_points": null
+  "n-ships": 42,
+  "n-air": 9,
+  "n-events": 100,
+  "n-adv": 3,
+  "n-front": "hidden",
+  "n-hyb": 25,
+  "n-bases": 32,
+  "n-iran": 53,
+  "n-ad": 10,
+  "n-ita": 57,
+  "n-ai": 20,
+  "n-ports": 159,
+  "n-oil": 241,
+  "n-gas": 347,
+  "n-subsea": 454,
+  "n-routes": 239,
+  "n-xrail": 45,
+  "n-xcable": 727,
+  "n-xpower": 2376,
+  "n-xnuke": 167,
+  "n-xlng": 323,
+  "n-xgas": 11,
+  "n-xua": 258,
+  "n-xai": 82,
+  "n-xinv": 59,
+  "n-xcy": 30,
+  "n-xrisk": 18,
+  "n-xpn": 30,
+  "n-xwind": 362,
+  "n-xbs": 48,
+  "n-xh2": 48,
+  "n-xbk": 24,
+  "n-xbm": 181,
+  "n-xcam": 45,
+  "n-xsca": 104,
+  "n-xjwc": 31,
+  "n-xeof": 19,
+  "n-xruo": 25,
+  "n-xpr": 39,
+  "n-xtt": 99,
+  "n-xru": 192,
+  "n-xnavi": 141
  },
  "pages": [
   "simulatore.html",
@@ -289,7 +335,9 @@
   "report/supply-chain-2026-11.html",
   "report/supply-chain-ai-2026-11.html",
   "report/en/ai-supply-chain-2026-11.html",
+  "report/en/asia-europe-logistics-2026-11.html",
   "report/en/hormuz-red-sea-2026-11.html",
+  "report/en/italy-gulf-shock-2026-11.html",
   "report/en/northern-europe-2026-11.html",
   "report/en/supply-chain-2026-11.html"
  ]

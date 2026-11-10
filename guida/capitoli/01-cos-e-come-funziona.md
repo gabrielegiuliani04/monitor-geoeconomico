@@ -51,7 +51,7 @@ Il traffico non è sparito: si è spostato. Attenzione però a un limite importa
 
 **Anello 4 — Noli e costi.**
 
-- **Assicurazione di guerra.** A Hormuz il premio *war risk* per le petroliere è tra il 6% e il 10% del valore della nave per viaggio (Financial Times, ripreso da Insurance Business il 14 ottobre 2026; dato riferito al 7 ottobre; `assicurazioni.json`). Il 27 febbraio 2026, prima della guerra, la serie del file segna 0,2%. Per una superpetroliera da 100 milioni di dollari vuol dire 6–10 milioni per un transito: circa 40 volte il premio prebellico e 3–5 dollari per barile trasportato (calcolo passo per passo in `assicurazioni.json`, `esempi_costo`).
+- **Assicurazione di guerra.** A Hormuz il premio *war risk* per le petroliere è tra il 6% e il 10% del valore della nave per viaggio (Financial Times, ripreso da Insurance Business il 14 ottobre 2026; dato riferito al 7 ottobre; `assicurazioni.json`). Il 27 febbraio 2026, prima della guerra, la serie del file segna 0,2%. Per una superpetroliera da 100 milioni di dollari vuol dire 6–10 milioni per un transito: fino a 40 volte il premio prebellico usato nell'esempio (0,25%, cioè 0,25 milioni) e 3–5 dollari per barile trasportato (calcolo passo per passo in `assicurazioni.json`, `esempi_costo`).
 - **Carburante delle navi.** Il VLSFO (il carburante navale più usato) a Rotterdam costa 739,5 $/t il 6 novembre 2026, +51,1% dal 27 febbraio (489,5 $/t). A Singapore 854 $/t, +63,8% (`bunker-emissioni.json`, Ship & Bunker).
 - **Noli container.** Il Drewry World Container Index è a 4.389 $ per container da 40 piedi (FEU) il 5 novembre 2026. Shanghai–Genova costa 4.166 $, Shanghai–Rotterdam 3.615 $ (`noli.json`).
 

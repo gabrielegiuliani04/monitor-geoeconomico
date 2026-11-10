@@ -100,7 +100,7 @@ One voyage Shanghai → Rotterdam with a container ship of about 15,000 TEU (twe
 | Freightos FBX13 China–Mediterranean | 4,324 $/FEU | 6 November 2026 | −1.17% on the week |
 | Freightos FBX global | 3,451.8 $/FEU | 6 November 2026 | −6.5% since 14 August 2026 (3,689.8), the high of the series kept since then |
 | CCFI Europe | 1,860.07 points | 6 November 2026 | +1.53% on the week |
-| Maersk emissions surcharge, Far East → North Europe | 170 $/FEU | Q4 2026 | based on an average EUA of 78.97 € (16 May–15 August 2026 (ICE EUA Daily Futures)) |
+| Maersk emissions surcharge, Far East → North Europe | 170 $/FEU | Q4 2026 | based on an average EUA of 78.97 € over 16 May–15 August 2026 (ICE EUA Daily Futures) |
 
 <small>Freight indices from [noli.json](../docs/data/noli.json) (Drewry, Freightos/Baltic Exchange, Shanghai Shipping Exchange; © the publishers, values cited). WCI and FBX measure spot rates with different methods and dates, so they differ by 193 $ on the same lane. Surcharge from [bunker-emissioni.json](../docs/data/bunker-emissioni.json) ([Maersk](https://www.maersk.com/news/articles/2026/09/01/emissions-surcharge-ems-ess), 1 September 2026).</small>
 

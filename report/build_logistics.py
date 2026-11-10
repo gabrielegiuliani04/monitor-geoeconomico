@@ -870,7 +870,7 @@ def blocks(V, edition):
         ["Freightos FBX13 China–Mediterranean", f"{num(V['fbx13']['valore'])} $/FEU", date_en(V["fbx"]["data"]), f"{V['fbx13']['var'].replace('-', '−')} on the week"],
         ["Freightos FBX global", f"{num(V['fbx']['valore'], 1)} $/FEU", date_en(V["fbx"]["data"]), f"{pct(var(V['fbx']['valore'], fbmax[1]))} since {date_en(fbmax[0])} ({num(fbmax[1], 1)}), the high of the series kept since then"],
         ["CCFI Europe", f"{num(ccfi['EUROPE']['valore'], 2)} points", date_en(V["ccfi"]["data"]), f"{pct(ccfi['EUROPE']['var_pct'], 2)} on the week"],
-        ["Maersk emissions surcharge, Far East → North Europe", f"{num(ems)} $/FEU", "Q4 2026", f"based on an average EUA of {num(maersk['eua_medio_usato_eur'], 2)} € ({it_period(maersk['periodo_eua'])})"],
+        ["Maersk emissions surcharge, Far East → North Europe", f"{num(ems)} $/FEU", "Q4 2026", f"based on an average EUA of {num(maersk['eua_medio_usato_eur'], 2)} € over {it_period(maersk['periodo_eua'])}"],
     ], f"Freight indices from {dl('noli.json')} (Drewry, Freightos/Baltic Exchange, Shanghai Shipping Exchange; © the publishers, values cited). WCI and FBX "
        f"measure spot rates with different methods and dates, so they differ by {num(abs(V['wci_rtm'] - V['fbx11']['valore']))} $ on the same lane. "
        f"Surcharge from {dl('bunker-emissioni.json')} ([Maersk]({maersk['link']}), {date_en(maersk['data_fonte'])})."))
