@@ -127,10 +127,10 @@ REVIEW = {
     "status": "done",
     "date": "10 November 2026",
     "log": "report/revisioni/italy-gulf-shock-2026-11.md",
-    "claims": 214,
-    "ok": 168,
-    "corrected": 33,
-    "unverified": 13,
+    "claims": 120,
+    "ok": 88,
+    "corrected": 25,
+    "unverified": 7,
 }
 
 PORT_EN = {"Genova": "Genoa", "Venezia (Lido)": "Venice (Lido)", "Venezia (Malamocco)": "Venice (Malamocco)"}

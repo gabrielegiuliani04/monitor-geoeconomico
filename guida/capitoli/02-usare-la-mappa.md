@@ -8,7 +8,6 @@ Questo capitolo spiega la mappa pezzo per pezzo: cosa vedi al primo accesso, che
 
 Alla prima visita si apre un riquadro **Geo-economic Risk Monitor**: riassume la catena (*event → chokepoint or infrastructure → flows of ships and energy → freight rates → prices → who is exposed*) e dà tre consigli: leggere la mappa, toccare uno stretto, aprire **Terminal** e **Reports**. Si chiude con **Got it**. Il browser ricorda la scelta; per riaprirlo davanti a un selezionatore usa il link **How to use it** in basso a sinistra, accanto a *Credits and licences* e *GitHub*.
 
-![Il riquadro introduttivo alla prima visita](../img/cap2-intro.jpg)
 
 ### La barra in alto
 
@@ -148,7 +147,6 @@ Prima del colloquio: apri il sito in **incognito**, controlla i numeri del giorn
 2. Tocca il **rombo di Hormuz**: *Ships per day* **4,4** contro **90,3** un anno prima (−95%), grafico dal 2023, *Status today: closed in practice*. «Non è un'opinione: sono transiti misurati da IMF PortWatch, con la data.»
 3. Scorri la scheda: flussi (circa 20 mb/g), esposizione dell'Italia (Adriatic LNG, 14,1% degli ingressi di gas), alternative (oleodotto East–West), *Market: Brent* (picco di 119 $ il 19 marzo 2026 secondo la scheda) e prezzi di oggi.
 
-   ![Seconda parte della scheda: alternative, effetti sul mercato, prezzi collegati](../img/cap2-scheda-hormuz-2.jpg)
 
 4. Tocca il **cerchio del Risk** sopra lo stretto: **22,5 su 25**, probabilità 5 × impatto 4,5, con il perché e gli indicatori a semaforo.
 5. Accendi **War-risk areas (insurance)**: il Golfo è area JWC; il premio è passato da 0,25% a 6–10% del valore dello scafo.
@@ -181,7 +179,6 @@ Prima del colloquio: apri il sito in **incognito**, controlla i numeri del giorn
 
 3. Tocca la **croce** sull'Estlink 2: cavo elettrico e quattro cavi dati danneggiati dall'ancora della Eagle S il 25 dicembre 2024.
 
-   ![Scheda dell'incidente all'Estlink 2](../img/cap2-baltico-sicurezza.jpg)
 
 4. Nel **Period for historical events** premi **2024**, **2025**, **2026**: «Gli incidenti ai cavi arrivano a ondate, quasi sempre d'inverno; nel 2025–2026 si aggiungono i fermi di petroliere.»
 5. (Facoltativo) Tocca **Ust-Luga**: in testa al Port risk index (9,3), per il disturbo GNSS e le petroliere sanzionate vicine.
@@ -194,7 +191,6 @@ Prima del colloquio: apri il sito in **incognito**, controlla i numeri del giorn
 
 1. **View… → Italy**: i pallini blu sono gli 11 ingressi di **Gas into Italy**.
 
-   ![Vista Italia con i punti di ingresso del gas](../img/cap2-italia.jpg)
 
 2. Tocca **Mazara del Vallo**: 34,0% degli ingressi in 12 mesi. Poi TAP (16,5%) e Adriatic LNG a Rovigo (14,1%), che riceveva il GNL del Qatar.
 3. Tocca il rombo del **Canale di Sicilia**: gas, 29 cavi, container.

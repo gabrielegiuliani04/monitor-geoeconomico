@@ -349,7 +349,7 @@ Measures are drawn from what governments did in 2022 and 2026 ([`italia-impatti.
 
 ### Review · 10 November 2026
 
-**Reviewed on 10 November 2026** by an independent fact-check and edit (carried out with an AI assistant). 214 claims checked against the data files and the cited sources: 168 confirmed, 33 corrected, 13 not verifiable from here. Full table in `report/revisioni/italy-gulf-shock-2026-11.md`.
+**Reviewed on 10 November 2026** by an independent fact-check and edit (carried out with an AI assistant). 120 claims checked against the data files and the cited sources: 88 confirmed, 25 corrected, 7 not verifiable from here. Full table in `report/revisioni/italy-gulf-shock-2026-11.md`.
 
 **Main corrections.** Brent: the 91.70 dollars in prezzi.json is an overnight price of 10 November; the 9 November close was 92.57. The key point on diesel claimed a return to about €2.29 after the excise cut ended; daily self-service prices rose less than a cent. The Unatras figure of 434 million is an allocation, not unpaid credit. The diesel prices and year-on-year changes at past protests were recomputed on the same MASE week. Unem, the Qatar trains and the bill decree were re-attributed to what the sources say. The haulage-cost estimate now shows the case with the excise refund (about +9% on total cost). La Spezia's risk is explained by the rule that drives it.
 

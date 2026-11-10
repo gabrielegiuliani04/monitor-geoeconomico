@@ -76,7 +76,7 @@ REVIEW = {
     "date": "10 November 2026",
     "log": "report/revisioni/offshore-wind-2026-11.md",
     "text": ("Independent review (fact-check and edit, done with an AI assistant) on 10 November 2026 under report/STANDARD.md. "
-             "172 claims checked against the data files and the cited sources (26 links opened): 129 confirmed, 31 corrected, 12 not verifiable from here. "
+             "123 claims checked against the data files and the cited sources (26 links opened): 88 confirmed, 25 corrected, 10 not verifiable from here. "
              "Main corrections: Siemens Gamesa and GE Vernova now report quarterly wind profits (Q2 losses were out of date); "
              "the IJmuiden Ver Gamma farms are due in Q2 2032, not Q2 2031; the Dutch 21 GW goal for end-2032 is not backed by dated sites in RVO's roadmap; "
              "supply-chain investment is at least 15 billion €, not 15.4; the 442,800 jobs base is 2024, not 2025; Cadeler's 66% utilisation is level with a year earlier, "

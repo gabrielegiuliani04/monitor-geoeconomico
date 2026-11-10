@@ -106,13 +106,19 @@ def yahoo(sym):
             continue
         d = (datetime.fromtimestamp(t, tz=tzb) if tzb else datetime.fromtimestamp(t + off, tz=timezone.utc)).date().isoformat()
         if d in seen:
-            serie[-1] = [d, c]
-        else:
-            seen.add(d); serie.append([d, c])
-    # se la seduta di oggi non e' ancora chiusa, l'ultimo valore e' provvisorio
+            continue  # keep the daily bar; a later point on the same date is live trading of the next session
+        seen.add(d); serie.append([d, c])
+    # a session still running (futures trade overnight): its live price is dated by the session's END
+    # date in the exchange time zone and marked provisional, never written over the previous close
     fine = (meta.get("currentTradingPeriod") or {}).get("regular", {}).get("end")
-    meta["_provvisorio"] = bool(fine and time.time() < fine and serie and
-                                serie[-1][0] == datetime.fromtimestamp(fine + off, tz=timezone.utc).date().isoformat())
+    meta["_provvisorio"] = False
+    if fine and time.time() < fine and serie:
+        sess = (datetime.fromtimestamp(fine, tz=tzb) if tzb else datetime.fromtimestamp(fine + off, tz=timezone.utc)).date().isoformat()
+        live = meta.get("regularMarketPrice")
+        if serie[-1][0] == sess:
+            meta["_provvisorio"] = True
+        elif live is not None and sess > serie[-1][0]:
+            serie.append([sess, live]); meta["_provvisorio"] = True
     return meta, serie
 
 
