@@ -282,7 +282,8 @@ def controlla_italia(modello):
                     or foglia.endswith("_eur_l") or foglia.endswith("senza_tagli_accise"))
         if numerico and not (isinstance(v, (int, float)) or (isinstance(v, list) and v and all(isinstance(x, (int, float)) for x in v))):
             errori.append("Italia: %s non è un numero (%r)" % (pc, v))
-        elif v is None and not pc.endswith("base_condizioni_normali.gas_rif_eur_smc"):
+        elif v is None and not pc.endswith("base_condizioni_normali.gas_rif_eur_smc") \
+                and not it_percorso(it, pc + "_nota")[0]:      # null with a stated reason ("_nota") is allowed
             errori.append("Italia: %s è vuoto" % pc)
     S = "regole_trasmissione.stimate."
     # coefficienti: positivi; carburanti tra 0,3 e 3 volte il Brent

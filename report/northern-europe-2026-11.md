@@ -59,7 +59,7 @@ The ten ports are the largest by tonnes handled in 2025 among the 30 in [porti-n
 
 | Country | Fill | Gas in storage | vs a year ago | vs 5-year average | vs 90% target | Source |
 |---|---|---|---|---|---|---|
-| Germany | 58.94% (8 Nov 2026) | 145.8 TWh | −15.9 pp | −29.7 pp | −31.1 pp | GIE AGSI+ (daily) |
+| Germany | 58.95% (8 Nov 2026) | 145.8 TWh | −15.9 pp | −29.7 pp | −31.1 pp | GIE AGSI+ (daily) |
 | Netherlands | 63.51% (8 Nov 2026) | 91.5 TWh | −9.3 pp | −18.9 pp | −26.5 pp | GIE AGSI+ (daily) |
 | Denmark | n/a (no fill % without capacity) | 6.89 TWh (end September 2026) | +26.7% in TWh | n/a | n/a | Eurostat (monthly) |
 | Poland | n/a (no fill % without capacity) | 39.36 TWh (end September 2026) | −1.6% in TWh | n/a | n/a | Eurostat (monthly) |

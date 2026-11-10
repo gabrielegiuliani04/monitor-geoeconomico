@@ -249,9 +249,11 @@ def compute(today):
     # post-expiry estimate recomputed: net unchanged + ordinary excise, with 22% VAT
     ordinary = ii["accise"]["ordinaria_gasolio_eur_l"]
     est = round((g["netto"] + ordinary) * 1.22, 3)
-    if abs(est - g["stima_dopo_fine_taglio_accise"]) > 0.002:
-        warn(f"post-expiry diesel estimate {est} differs from file {g['stima_dopo_fine_taglio_accise']}")
-    V["dsl_post"] = g["stima_dopo_fine_taglio_accise"]
+    # null (with a _nota) once the MASE week already carries the ordinary excise: the observed price is the post-expiry one
+    post = g["stima_dopo_fine_taglio_accise"] if g.get("stima_dopo_fine_taglio_accise") is not None else g["eur_l"]
+    if abs(est - post) > 0.002:
+        warn(f"post-expiry diesel estimate {est} differs from file {post}")
+    V["dsl_post"] = post
     V["cut_cents_vat"] = round((ordinary - g["accisa"]) * 1.22 * 100, 1)
     V["ordinary"] = ordinary
     base = ii["regole_trasmissione"]["per_il_simulatore"]["base_condizioni_normali"]

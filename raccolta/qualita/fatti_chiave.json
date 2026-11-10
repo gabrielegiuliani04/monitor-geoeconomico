@@ -1,5 +1,5 @@
 {
- "nota": "Curated key figures quoted in the reports (report/*.md), each with the data value it must match. Used by raccolta/qualita/controlla_tutto.py (check 'consistency / report figures'). Fields: id; testo = what the figure is; report = Markdown file; regex = pattern with ONE capture group for the number (searched in the Markdown, first match); lingua = it (comma decimal, dot thousands) or en; dato = where the reference value lives: file in docs/data, path (dot path; key[field=value] picks an item of a list, key[0] an index), optional data (YYYY-MM-DD) to read the value of a [date, value] series at that date; scala = factor applied to the data value before comparing (e.g. 100 for a share); tolleranza = {abs} or {pct}; rounding of the report figure is always allowed. Add a figure here when a new report quotes a number that a data file holds.",
+ "nota": "Curated key figures quoted in the reports (report/*.md), each with the data value it must match. Used by raccolta/qualita/controlla_tutto.py (check 'consistency / report figures'). Fields: id; testo = what the figure is; report = Markdown file; regex = pattern with ONE capture group for the number (searched in the Markdown, first match); lingua = it (comma decimal, dot thousands) or en; dato = where the reference value lives: file in docs/data, path (dot path; key[field=value] picks an item of a list, key[0] an index), optional data (YYYY-MM-DD) to read the value of a [date, value] series at that date, plus optional media_giorni = n to take the mean of the n daily values ending on that date (dated weekly figures, e.g. PortWatch 7-day means), optional istantanea = YYYY-MM-DD for a file that holds only the latest snapshot (checked only while its 'aggiornato' is that day); scala = factor applied to the data value before comparing (e.g. 100 for a share); tolleranza = {abs} or {pct}; rounding of the report figure is always allowed. Add a figure here when a new report quotes a number that a data file holds.",
  "fatti": [
   {
    "id": "hormuz-media7",
@@ -9,7 +9,9 @@
    "regex": "sono ([0-9.,]+) al giorno nella settimana al 1° novembre",
    "dato": {
     "file": "portwatch.json",
-    "path": "elementi[id=chokepoint6].media7.n_total"
+    "path": "elementi[id=chokepoint6].serie.n_total",
+    "data": "2026-11-01",
+    "media_giorni": 7
    },
    "tolleranza": {
     "abs": 0.05
@@ -23,7 +25,9 @@
    "regex": "contro ([0-9.,]+) un anno prima \\(−95%",
    "dato": {
     "file": "portwatch.json",
-    "path": "elementi[id=chokepoint6].media7_anno_prima.n_total"
+    "path": "elementi[id=chokepoint6].serie.n_total",
+    "data": "2025-11-02",
+    "media_giorni": 7
    },
    "tolleranza": {
     "abs": 0.05
@@ -51,7 +55,9 @@
    "regex": "PortWatch: ([0-9.,]+) navi al giorno nella settimana al 1° novembre, −22%",
    "dato": {
     "file": "portwatch.json",
-    "path": "elementi[id=chokepoint4].media7.n_total"
+    "path": "elementi[id=chokepoint4].serie.n_total",
+    "data": "2026-11-01",
+    "media_giorni": 7
    },
    "tolleranza": {
     "abs": 0.05
@@ -65,7 +71,9 @@
    "regex": "PortWatch: ([0-9.,]+) navi al giorno, \\+10% su un anno",
    "dato": {
     "file": "portwatch.json",
-    "path": "elementi[id=chokepoint1].media7.n_total"
+    "path": "elementi[id=chokepoint1].serie.n_total",
+    "data": "2026-11-01",
+    "media_giorni": 7
    },
    "tolleranza": {
     "abs": 0.05
@@ -272,7 +280,8 @@
    "regex": "In the AIS snapshot of 9 November 2026, ([0-9]+) of the [0-9]+ ships",
    "dato": {
     "file": "baltico-sicurezza.json",
-    "path": "flotta_per_area.Golfo di Finlandia.sanzionate"
+    "path": "flotta_per_area.Golfo di Finlandia.sanzionate",
+    "istantanea": "2026-11-09"
    },
    "tolleranza": {
     "abs": 0
@@ -286,7 +295,8 @@
    "regex": "In the AIS snapshot of 9 November 2026, [0-9]+ of the ([0-9]+) ships",
    "dato": {
     "file": "baltico-sicurezza.json",
-    "path": "flotta_per_area.Golfo di Finlandia.navi"
+    "path": "flotta_per_area.Golfo di Finlandia.navi",
+    "istantanea": "2026-11-09"
    },
    "tolleranza": {
     "abs": 0
@@ -309,27 +319,31 @@
   },
   {
    "id": "ael-hormuz-media7",
-   "testo": "Hormuz AIS transits, 7-day mean (Asia-Europe logistics report)",
+   "testo": "Hormuz AIS transits, week to 1 Nov 2026 (Asia-Europe logistics report)",
    "report": "report/asia-europe-logistics-2026-11.md",
    "lingua": "en",
    "regex": "Hormuz is de facto closed: ([0-9.]+) transits a day",
    "dato": {
     "file": "portwatch.json",
-    "path": "elementi[id=chokepoint6].media7.n_total"
+    "path": "elementi[id=chokepoint6].serie.n_total",
+    "data": "2026-11-01",
+    "media_giorni": 7
    },
    "tolleranza": {
     "abs": 0.05
    }
   },
   {
-   "id": "ael-hormuz-3y",
-   "testo": "Hormuz AIS transits three years earlier (Asia-Europe logistics report)",
+   "id": "ael-hormuz-1y",
+   "testo": "Hormuz AIS transits, same week a year earlier (Asia-Europe logistics report)",
    "report": "report/asia-europe-logistics-2026-11.md",
    "lingua": "en",
-   "regex": "transits a day against ([0-9.]+) three years ago",
+   "regex": "transits a day against ([0-9.]+) a year earlier",
    "dato": {
     "file": "portwatch.json",
-    "path": "elementi[id=chokepoint6].media7_tre_anni_prima.n_total"
+    "path": "elementi[id=chokepoint6].serie.n_total",
+    "data": "2025-11-02",
+    "media_giorni": 7
    },
    "tolleranza": {
     "abs": 0.05
@@ -343,7 +357,9 @@
    "regex": "In the week to 1 November 2026: Suez ([0-9.]+) a day",
    "dato": {
     "file": "portwatch.json",
-    "path": "elementi[id=chokepoint1].media7.n_total"
+    "path": "elementi[id=chokepoint1].serie.n_total",
+    "data": "2026-11-01",
+    "media_giorni": 7
    },
    "tolleranza": {
     "abs": 0.05
@@ -357,7 +373,9 @@
    "regex": "Bab el-Mandeb ([0-9.]+) \\(−",
    "dato": {
     "file": "portwatch.json",
-    "path": "elementi[id=chokepoint4].media7.n_total"
+    "path": "elementi[id=chokepoint4].serie.n_total",
+    "data": "2026-11-01",
+    "media_giorni": 7
    },
    "tolleranza": {
     "abs": 0.05

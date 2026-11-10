@@ -491,6 +491,16 @@ def main():
     terra = Terra(MONDO)
     navi_tutte = navi + nuovi_nu + curate
     distribuisci(navi_tutte, terra)
+    # a position older than 14 days is dated: flag it 'dubbia' (drawn with a "?"), as the schema and
+    # raccolta/originali/controlla.py require. Only adds the flag, never removes one set by hand.
+    oggi = dt.date.today()
+    for p in navi_tutte + altri:
+        try:
+            eta = (oggi - dt.date.fromisoformat(str(p.get("data_evento", ""))[:10])).days
+        except ValueError:
+            continue
+        if p.get("classe") == "mobile" and eta > 14 and not p.get("dubbia"):
+            p["dubbia"] = 1
     punti = [ordina(p) for p in navi_tutte] + altri
     avvisi = valida(punti, terra, errori)
 

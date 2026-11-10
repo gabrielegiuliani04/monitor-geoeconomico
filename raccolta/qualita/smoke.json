@@ -1,22 +1,9 @@
 {
- "updated": "2026-11-10T13:44Z",
- "overall": "amber",
- "seconds": 57,
- "passed": 48,
- "failed": [
-  {
-   "page": "simulatore.html",
-   "test": "no JS errors",
-   "ok": false,
-   "detail": "console: TypeError: Cannot read properties of undefined (reading 'ultima_data')\n    at disegnaFisso (http://127.0.0.1:40063/simulatore.html:1210:243)\n    at http://127.0.0.1:40063/simulatore.html:1213:44"
-  },
-  {
-   "page": "notizie.html",
-   "test": "no JS errors",
-   "ok": false,
-   "detail": "console: Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin"
-  }
- ],
+ "updated": "2026-11-10T14:05Z",
+ "overall": "green",
+ "seconds": 58,
+ "passed": 50,
+ "failed": [],
  "results": [
   {
    "page": "index.html",
@@ -40,13 +27,13 @@
    "page": "index.html",
    "test": "Terminal tab Risk",
    "ok": true,
-   "detail": "10731 characters"
+   "detail": "10533 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Ports",
    "ok": true,
-   "detail": "11973 characters"
+   "detail": "14685 characters"
   },
   {
    "page": "index.html",
@@ -82,13 +69,13 @@
    "page": "index.html",
    "test": "Terminal tab Chokepoints",
    "ok": true,
-   "detail": "4203 characters"
+   "detail": "4381 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Freight and risk",
    "ok": true,
-   "detail": "638 characters"
+   "detail": "865 characters"
   },
   {
    "page": "index.html",
@@ -136,13 +123,13 @@
    "page": "simulatore.html",
    "test": "content rendered",
    "ok": true,
-   "detail": "3604 characters"
+   "detail": "22729 characters"
   },
   {
    "page": "simulatore.html",
    "test": "no JS errors",
-   "ok": false,
-   "detail": "console: TypeError: Cannot read properties of undefined (reading 'ultima_data')\n    at disegnaFisso (http://127.0.0.1:40063/simulatore.html:1210:243)\n    at http://127.0.0.1:40063/simulatore.html:1213:44"
+   "ok": true,
+   "detail": ""
   },
   {
    "page": "notizie.html",
@@ -159,8 +146,8 @@
   {
    "page": "notizie.html",
    "test": "no JS errors",
-   "ok": false,
-   "detail": "console: Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin"
+   "ok": true,
+   "detail": ""
   },
   {
    "page": "crediti.html",
@@ -359,7 +346,7 @@
   "n-xeof": 19,
   "n-xruo": 25,
   "n-xan": 4093,
-  "n-xpr": 30,
+  "n-xpr": 39,
   "n-xtt": 99,
   "n-xru": 192,
   "n-xnavi": 143

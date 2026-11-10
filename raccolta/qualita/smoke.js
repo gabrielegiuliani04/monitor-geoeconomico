@@ -61,7 +61,14 @@ const KNOWN_EMPTY = new Set(['n-front']);
 
 function watch(page, bag) {
   page.on('pageerror', e => bag.errors.push('pageerror: ' + (e && e.message || e)));
-  page.on('console', m => { if (m.type() === 'error') { const t = m.text(); if (!IGNORE.some(r => r.test(t))) bag.errors.push('console: ' + t); } });
+  page.on('console', m => {
+    if (m.type() !== 'error') return;
+    const t = m.text(), loc = (m.location() || {}).url || '';
+    // a third-party server refusing cross-origin embedding (CORP) of its own file, e.g. a news thumbnail on notizie.html,
+    // which the page drops with onerror: not a site error
+    if (/ERR_BLOCKED_BY_RESPONSE/.test(t) && loc && !loc.startsWith('http://127.0.0.1')) return;
+    if (!IGNORE.some(r => r.test(t))) bag.errors.push('console: ' + t + (loc && /Failed to load resource/.test(t) ? ' [' + loc + ']' : ''));
+  });
   page.on('requestfailed', r => { const u = r.url(), why = (r.failure() || {}).errorText || '?'; if (!IGNORE.some(x => x.test(u) || x.test(why))) bag.failedReq.push(u + ' (' + why + ')'); });
   page.on('response', r => { if (r.status() >= 400 && !IGNORE.some(x => x.test(r.url()))) bag.failedReq.push(r.url() + ' (HTTP ' + r.status() + ')'); });
 }

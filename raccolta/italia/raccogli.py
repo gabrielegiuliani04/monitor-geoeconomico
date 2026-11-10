@@ -773,6 +773,11 @@ def principale():
         "brent": brent_oggi, "ttf": ttf_oggi, "eurusd": eur_oggi,
     }
 
+    if oggi["gasolio_settimanale"]["stima_dopo_fine_taglio_accise"] is None:
+        # no estimate needed: the latest MASE week already carries the ordinary excise
+        oggi["gasolio_settimanale"]["stima_dopo_fine_taglio_accise_nota"] = (
+            "Non applicabile: la rilevazione MASE del %s ha già l'accisa ordinaria sul gasolio (%s €/l), "
+            "quindi il prezzo osservato è già quello senza taglio." % (ultima, ("%.4f" % (acc_ord / 1000)).replace(".", ",")))
     kg, kb = coeff["gasolio"], coeff["benzina"]
     k10 = 10 / (eur_oggi or 1.12) / LITRI_BARILE
     regole = {
@@ -843,7 +848,9 @@ def principale():
         "accise": {"oggi_gasolio_eur_l": r(gb["accisa"] / 1000, 4), "ordinaria_gasolio_eur_l": r(acc_ord / 1000, 4),
                    "oggi_benzina_eur_l": r(bb["accisa"] / 1000, 4), "cambi": cambi_accise(W, date),
                    "fonte": "MASE, serie settimanale (campo ACCISA)",
-                   "nota": "Il taglio del gasolio di 4 centesimi (4,9 con IVA) è scaduto l'8 novembre 2026 (Rai News, 8/11/2026): la rilevazione MASE del 2/11 lo include ancora."},
+                   "nota": "Il taglio del gasolio di 4 centesimi (4,9 con IVA) è scaduto l'8 novembre 2026 (Rai News, 8/11/2026): " + (
+                       "la rilevazione MASE del %s lo include ancora." % ultima if gb["accisa"] < acc_ord else
+                       "nella rilevazione MASE del %s l'accisa sul gasolio è di nuovo quella ordinaria." % ultima)},
         "regole_trasmissione": regole,
         "autotrasporto": curati.get("autotrasporto", {}),
         "precedenti": prec,

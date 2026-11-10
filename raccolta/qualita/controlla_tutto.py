@@ -111,7 +111,10 @@ CADENZA = {
     "port-risk.json":         ("daily (port risk index)", 2, 14, None),
     "mercati.json":           ("manual market collections, about weekly", 8, 8, ["data"]),
     "health.json":            ("daily (this check)", 2, None, None),
+    "aerei.json":             ("daily (ADS-B snapshot + curated deployments)", 2, None, None),
 }
+# Files retired on purpose: not reported as "gone" in the counts against yesterday.
+RITIRATI = {"analisti.json": "2026-11-10, analysts section removed (commit 1294649)"}
 # Weekly workflow (aggiorna-settimanale.yml, Sundays 03:40 UTC): 7 days + 2 of slack.
 SETTIMANALE = ["cavi.json", "cavi-incidenti.json", "paesi.json", "rete-elettrica.json", "interconnessioni.json",
                "nucleare.json", "ferrovie.json", "ai-mondo.json", "investimenti.json", "supply-chain-ai.json",
@@ -592,7 +595,7 @@ def confronta_conteggi(R):
             if p and p >= 5 and n < p * 0.8:
                 cali.append((f, p, n))
                 R.problema("high", "schema", f"docs/data/{f}", f"element count fell {p} -> {n} ({(n - p) / p * 100:+.0f}%) vs {origine}", "drop")
-        spariti = [f for f in prima if f not in R.counts and f != "health.json"]
+        spariti = [f for f in prima if f not in R.counts and f != "health.json" and f not in RITIRATI]
         for f in spariti:
             R.problema("medium", "schema", f"docs/data/{f}", f"file present in {origine} is gone (if retired on purpose, also remove "
                        "it from DATA_LICENSES.md, manifest.json and the pages that load it)", "missing")
@@ -1020,8 +1023,16 @@ def report_figures(R, dati):
             grezzo = m.group(1)
             val = numero(grezzo, f.get("lingua", "it"))
             dd = leggi(os.path.join(DATI, f["dato"]["file"])) if f["dato"]["file"] not in dati else dati[f["dato"]["file"]]
+            ist = f["dato"].get("istantanea")
+            if ist and str(campo_aggiornato(dd)[1] or "")[:10] != ist:
+                continue   # a rolling snapshot quoted on a given day: comparable only while the file holds that snapshot
             rif = prendi(dd, f["dato"]["path"]) if dd is not None else None
-            if f["dato"].get("data"):
+            if f["dato"].get("data") and f["dato"].get("media_giorni"):
+                # mean of a daily series over the n days ending on 'data' (a dated weekly figure in a report)
+                fine = dt.date.fromisoformat(f["dato"]["data"])
+                vv = [valore_in_serie(rif, (fine - dt.timedelta(days=i)).isoformat()) for i in range(f["dato"]["media_giorni"])]
+                rif = round(sum(vv) / len(vv), 1) if all(isinstance(v, (int, float)) for v in vv) else None
+            elif f["dato"].get("data"):
                 rif = valore_in_serie(rif, f["dato"]["data"])
             if not isinstance(rif, (int, float)):
                 nf += 1
