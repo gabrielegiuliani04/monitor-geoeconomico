@@ -561,7 +561,8 @@ def chart_lanes(V, wide=True):
     top0 = 34
     leg = []
     leg_y_end = legend(leg, [("via Suez (2023 and today's Suez services)", "dot", "ael-s2"),
-                             (f"capacity-weighted today ({round(V['share'] * 100)}% via Suez to N. Europe, {round(V['share_med'] * 100)}% to the Med)", "tick", "ael-k1"),
+                             ((f"capacity-weighted today ({round(V['share'] * 100)}% via Suez to N. Europe, {round(V['share_med'] * 100)}% to the Med)" if wide else
+                              f"weighted today ({round(V['share'] * 100)}% / {round(V['share_med'] * 100)}% Suez)"), "tick", "ael-k1"),
                              ("via the Cape", "dia", "ael-s3")], 12, top0, w, wide)
     top = leg_y_end + 34
     h = top + rowh * len(L) + 30

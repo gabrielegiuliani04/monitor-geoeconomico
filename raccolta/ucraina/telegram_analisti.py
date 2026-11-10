@@ -480,16 +480,21 @@ CATEGORIE = [
     ("ferrovia", r"railway|railroad|\btrain\b|\btrains\b|locomotive|rail\b|rail |ferroviaire|gare\b|"
                  r"train station|ukrzaliznytsia"),
     ("aeroporto", r"airfield|air base|airbase|airport|aérodrome|aéroport|base aérienne"),
-    ("militare", r"\bammunition|ammo depot|arsenal|munitions|\bbase\b|command post|headquarters|\bhq\b|"
-                 r"radar|air defen[cs]e|s-400|s-300|pantsir|buk\b|tor-m|barracks|military|militaire|"
-                 r"positions?\b|brigade|regiment|logistic|tank\b|tanks\b|armou?red|launcher|lanceur"),
     ("industria", r"plant\b|factory|usine|industrial|industriel|enterprise|chemical|chimique|"
                   r"metallurg|steel|aciérie|azot|fertili[sz]er|defen[cs]e industry|electronics|"
                   r"shipyard|chantier naval|warehouse|entrepôt|data cent(?:re|er)|logistics (?:centre|terminal)|nova poshta"),
-    ("civile", r"civilian|civil|residential|apartment|building|immeuble|hospital|hôpital|school|école|"
-               r"\bkilled\b|\binjured\b|\btués?\b|\bblessés?\b|\bmorts?\b|house|maison|market|shopping|district|"
-               r"petrol station|gas station|station-service|\bbus\b|trolleybus|church|église|university"),
+    ("civile", r"residential|apartment|immeuble|hospital|hôpital|school|école|kindergarten|college|"
+               r"house|maison|market|shopping|petrol station|gas station|station-service|\bbus\b|trolleybus|church|"
+               r"église|university|civilians? (?:were |)(?:killed|injured)"),
+    ("militare", r"\bammunition|ammo depot|arsenal|munitions depot|\bair ?base\b|military base|command post|"
+                 r"headquarters|\bhq\b|radar|air defen[cs]e (?:system|position|battery|unit)|s-400 (?:system|launcher|battery)|"
+                 r"pantsir|\bbuk\b|tor-m|barracks|military (?:target|facility|unit|equipment|object)|militaire|"
+                 r"deployment point|brigade|regiment|\btanks?\b|armou?red|launcher|lanceur|helicopter|aircraft|"
+                 r"\bbase\b|soldiers"),
+    ("civile", r"civilian|\bkilled\b|\binjured\b|\btués?\b|\bblessés?\b|\bmorts?\b|building|district|neighbou?rhood"),
 ]
+
+
 ATTACCO = re.compile(
     r"\bstrikes?\b|\bstruck\b|\bhit\b|\bhits\b|\battack(?:s|ed)?\b|\bdrones?\b|\bmissiles?\b|shahed|geran|"
     r"iskander|kh-?101|kalibr|\bkabs?\b|refiner|oil depot|substation|explosion|\bfires?\b|\bblaze\b|burning|"
@@ -648,20 +653,11 @@ def trova_luoghi(testo, idx, obl):
 
 
 def classifica(testo):
+    """Prima categoria (nell'ordine di CATEGORIE) il cui schema compare nel testo."""
     tl = testo.lower()
-    cats = []
     for nome, rx in CATEGORIE:
-        m = re.search(rx, tl)
-        if m:
-            cats.append((m.start(), nome))
-    # priorità: bersagli specifici prima di "civile"
-    ordine = [n for n, _ in CATEGORIE]
-    if not cats:
-        return "altro"
-    nomi = {c for _, c in cats}
-    for c in ordine:
-        if c in nomi:
-            return c
+        if re.search(rx, tl):
+            return nome
     return "altro"
 
 
@@ -1121,7 +1117,7 @@ def estrai_tutto(senza_firms=False):
     for e in elementi:
         y = e["data"][:4]
         rie["per_anno"][y] = rie["per_anno"].get(y, 0) + 1
-        rie["per_direzione"][a_dir[e["direzione"]]] = rie["per_direzione"].get(e["direzione"], 0) + 1
+        rie["per_direzione"][a_dir[e["direzione"]]] = rie["per_direzione"].get(a_dir[e["direzione"]], 0) + 1
         rie["per_categoria"][e["categoria"]] = rie["per_categoria"].get(e["categoria"], 0) + 1
         rie["per_canale"][e["fonte"]] = rie["per_canale"].get(e["fonte"], 0) + 1
         x = rie["per_anno_direzione_categoria"].setdefault(y, {}).setdefault(a_dir[e["direzione"]], {})

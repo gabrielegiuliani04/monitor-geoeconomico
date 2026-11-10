@@ -188,13 +188,13 @@ Outcomes: **ok** = matches; **corrected** = wrong or imprecise, corrected at the
 
 ## 3. Clarity for a logistics or port reader in NL, DK and the Baltic
 
-- Key points rewritten to stay under about 60 words each (59, 52, 41, 48, 50); each has a figure, a date and a source. The second point now lists the three drivers (fuel price, carbon rules, detour) instead of only two.
+- Key points rewritten to stay under about 60 words each (59, 59, 41, 48, 47); each has a figure, a date and a source. The second point now lists the three drivers (fuel price, carbon rules, detour) instead of only two.
 - A **glossary** (section 9) was added: TEU/FEU, VLSFO, EU ETS/EUA, FuelEU, war risk and listed areas, hull value, break-even premium, WCI/FBX/CCFI, AIS/PortWatch, blank sailing, shadow fleet, OFAC.
 - Section 2's heading no longer carries a single share; the North/Med split is explained once, with the period and the source.
 
 ## 4. Pages checked
 
-Playwright, Chromium, at 1440 × 900 and 390 × 844 px, light theme: no horizontal page scroll at 390 px (tables scroll inside their frame), narrow charts shown at 390 px and wide charts at 1440 px, Review box rendered. Screenshots in the session scratchpad (`rev-logi/`).
+Playwright, Chromium, at 1440 × 900 and 390 × 844 px, light and dark themes: no horizontal page scroll at either width (tables scroll inside their frame), wide charts shown at 1440 px and narrow ones at 390 px, Review box rendered. At 390 px the new legend of the lane chart ran past the frame; the narrow legend was shortened in the script and the check repeated with no overflow. Screenshots: `/tmp/claude-0/-home-user-monitor-geoeconomico/f58f0587-e0c2-5682-b8ba-39bc1c573ea8/scratchpad/rev-logi/` (session scratchpad, not in the repository).
 
 ## 5. Still unverifiable
 
