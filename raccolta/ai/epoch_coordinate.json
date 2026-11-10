@@ -1,24 +1,677 @@
 {
-  "nota": "Coordinate per i data center fuori dagli USA del tracker 'AI data centers' di Epoch AI (che dà indirizzi, non coordinate). Chiave = campo Name di Epoch. Stimate da me con geocodifica OSM Nominatim dell'indirizzo o del comune (2026-11-09). Se Epoch aggiunge un sito nuovo non presente qui, lo script lo segnala in 'errori' e non lo mette in mappa finché non si aggiunge la riga. Campo 'note' = contesto aggiunto a mano.",
-  "siti": {
-    "DayOne Nusajaya": {"lat": 1.4308, "lon": 103.5951, "precisione_km": 5, "origine": "geocodifica OSM di Nusajaya Tech Park (Epoch non dà l'indirizzo)", "note": "Gestore DayOne, ex GDS International, gruppo di origine cinese. Polo di Johor, al confine con Singapore."},
-    "DayOne Kempas": {"lat": 1.5642, "lon": 103.7193, "precisione_km": 1, "origine": "decodifica del Plus Code HP79+MP indicato da Epoch", "note": "Gestore DayOne (ex GDS International)."},
-    "Bridge Data Centres MY06": {"lat": 1.7127, "lon": 103.5257, "precisione_km": 4, "origine": "geocodifica OSM di Sedenak (Sedenak Tech Park)", "note": "Secondo Epoch utilizzatore probabile ByteDance."},
-    "YTL Johor": {"lat": 1.6667, "lon": 103.6, "precisione_km": 15, "origine": "geocodifica OSM del distretto di Kulai", "note": "YTL Green Data Center Park."},
-    "Google Waltham Cross": {"lat": 51.7021, "lon": -0.0336, "precisione_km": 3, "origine": "geocodifica OSM di Cheshunt (indirizzo Epoch: Maxwell's Farm West)", "note": "Parte dei 5 mld GBP di Google nel Regno Unito (2025-09)."},
-    "VNET Bayin Ulanqab": {"lat": 40.9903, "lon": 113.1316, "precisione_km": 20, "origine": "geocodifica OSM della città di Ulanqab", "note": "Mongolia Interna, polo del programma cinese 'dati da Est, calcolo a Ovest'. Utilizzatore ByteDance secondo Epoch (speculativo)."},
-    "Oracle Batam": {"lat": 1.1031, "lon": 104.0384, "precisione_km": 15, "origine": "geocodifica OSM di Batam", "note": "Isola indonesiana di fronte a Singapore."},
-    "Huawei Horinger": {"lat": 40.2952, "lon": 111.9045, "precisione_km": 20, "origine": "geocodifica OSM della contea di Horinger", "note": "Mongolia Interna (Hohhot)."},
-    "Huawei Wuhu": {"lat": 31.1801, "lon": 118.2142, "precisione_km": 30, "origine": "geocodifica OSM dell'area di Wuhu", "note": "Anhui."},
-    "CoreWeave Norway": {"lat": 58.2576, "lon": 7.8921, "precisione_km": 1, "origine": "geocodifica OSM dell'indirizzo Stølevegen 39, Øvrebø", "note": ""},
-    "Nebius Mantsala": {"lat": 60.6353, "lon": 25.3159, "precisione_km": 5, "origine": "geocodifica OSM di Mäntsälä", "note": "Secondo Epoch utilizzatore Microsoft (speculativo)."},
-    "Envision Galaxy Ulanqab": {"lat": 40.9903, "lon": 113.1316, "precisione_km": 30, "origine": "geocodifica OSM della città di Ulanqab", "note": ""},
-    "Southgate Melbourne": {"lat": -37.8136, "lon": 144.9631, "precisione_km": 20, "origine": "centro di Melbourne (Epoch non dà l'indirizzo)", "note": ""},
-    "Alibaba Zhangbei": {"lat": 41.2878, "lon": 114.7693, "precisione_km": 20, "origine": "geocodifica OSM della contea di Zhangbei", "note": "Hebei, a nord-ovest di Pechino."},
-    "Start Campus Sines Data Campus": {"lat": 37.9565, "lon": -8.869, "precisione_km": 5, "origine": "geocodifica OSM di Sines", "note": "Qui Microsoft investe circa 10 mld USD con Nscale e Nvidia (annuncio 2025-11-11). Sines è anche approdo di cavi sottomarini verso Africa e Americhe."},
-    "Nscale Keflavik": {"lat": 63.9754, "lon": -22.578, "precisione_km": 2, "origine": "geocodifica OSM di Valhallarbraut, Reykjanesbær", "note": ""},
-    "EcoDataCenter 2": {"lat": 60.5378, "lon": 15.4127, "precisione_km": 3, "origine": "geocodifica OSM di Kvarnsvedsvägen, Borlänge", "note": "Utilizzatore Mistral AI."},
-    "Microsoft Narvik Norway": {"lat": 68.4384, "lon": 17.4272, "precisione_km": 15, "origine": "geocodifica OSM di Narvik (il sito è a Kvandal, fuori città)", "note": "È il sito annunciato come 'Stargate Norway' (Nscale-Aker-OpenAI, 230 MW iniziali, luglio 2025). Marzo 2026: la JV confluisce in Nscale. Aprile 2026: Microsoft prende la capacità (oltre 30.000 GPU Rubin) dopo che le trattative OpenAI-Nscale si chiudono senza accordo (ITPro); impegno Microsoft precedente 6,2 mld USD."},
-    "OpenAI Stargate UAE": {"lat": 24.1873, "lon": 54.4924, "precisione_km": 25, "origine": "geocodifica OSM di Al Bihouth (ufficio di progetto indicato da Epoch)", "note": "1 GW dentro il campus AI Emirati-USA da 5 GW. Sviluppatore Khazna (G42); gestori OpenAI e Oracle; partner Nvidia, Cisco, SoftBank. Prima fase 200 MW attesa nel 3° trimestre 2026 (The National, 2025-12-05)."}
+ "nota": "Coordinates of the sites in Epoch AI's 'AI data centers' tracker (Epoch gives addresses, not coordinates). Key = Epoch 'Name'. Estimated with OSM Nominatim geocoding of the Epoch address or town (non-US 2026-11-09, US 2026-11-10); precisione_km from the geocoding match type (building ~1 km, street ~2 km, town 5-8 km, city 15 km, county 40 km). If Epoch adds a site not listed here, the script reports it in 'errori' and leaves it off the map until a row is added. 'note' = context added by hand.",
+ "siti": {
+  "DayOne Nusajaya": {
+   "lat": 1.4308,
+   "lon": 103.5951,
+   "precisione_km": 5,
+   "origine": "OSM geocoding of Nusajaya Tech Park (Epoch gives no address)",
+   "note": "Operator DayOne, formerly GDS International, a group of Chinese origin. Johor hub, on the border with Singapore."
+  },
+  "DayOne Kempas": {
+   "lat": 1.5642,
+   "lon": 103.7193,
+   "precisione_km": 1,
+   "origine": "decoding of the Plus Code HP79+MP given by Epoch",
+   "note": "Operator DayOne (formerly GDS International)."
+  },
+  "Bridge Data Centres MY06": {
+   "lat": 1.7127,
+   "lon": 103.5257,
+   "precisione_km": 4,
+   "origine": "OSM geocoding of Sedenak (Sedenak Tech Park)",
+   "note": "Likely user ByteDance according to Epoch."
+  },
+  "YTL Johor": {
+   "lat": 1.6667,
+   "lon": 103.6,
+   "precisione_km": 15,
+   "origine": "OSM geocoding of Kulai district",
+   "note": "YTL Green Data Center Park."
+  },
+  "Google Waltham Cross": {
+   "lat": 51.7021,
+   "lon": -0.0336,
+   "precisione_km": 3,
+   "origine": "OSM geocoding of Cheshunt (Epoch address: Maxwell's Farm West)",
+   "note": "Part of Google's 5 bn GBP in the UK (2025-09)."
+  },
+  "VNET Bayin Ulanqab": {
+   "lat": 40.9903,
+   "lon": 113.1316,
+   "precisione_km": 20,
+   "origine": "OSM geocoding of Ulanqab city",
+   "note": "Inner Mongolia, hub of China's 'East Data, West Computing' programme. User ByteDance according to Epoch (speculative)."
+  },
+  "Oracle Batam": {
+   "lat": 1.1031,
+   "lon": 104.0384,
+   "precisione_km": 15,
+   "origine": "OSM geocoding of Batam",
+   "note": "Indonesian island facing Singapore."
+  },
+  "Huawei Horinger": {
+   "lat": 40.2952,
+   "lon": 111.9045,
+   "precisione_km": 20,
+   "origine": "OSM geocoding of Horinger county",
+   "note": "Inner Mongolia (Hohhot)."
+  },
+  "Huawei Wuhu": {
+   "lat": 31.1801,
+   "lon": 118.2142,
+   "precisione_km": 30,
+   "origine": "OSM geocoding of the Wuhu area",
+   "note": "Anhui."
+  },
+  "CoreWeave Norway": {
+   "lat": 58.2576,
+   "lon": 7.8921,
+   "precisione_km": 1,
+   "origine": "OSM geocoding of the address Stølevegen 39, Øvrebø",
+   "note": ""
+  },
+  "Nebius Mantsala": {
+   "lat": 60.6353,
+   "lon": 25.3159,
+   "precisione_km": 5,
+   "origine": "OSM geocoding of Mäntsälä",
+   "note": "User Microsoft according to Epoch (speculative). Nebius is tripling the site from 25 to 75 MW (press, 2026)."
+  },
+  "Envision Galaxy Ulanqab": {
+   "lat": 40.9903,
+   "lon": 113.1316,
+   "precisione_km": 30,
+   "origine": "OSM geocoding of Ulanqab city",
+   "note": ""
+  },
+  "Southgate Melbourne": {
+   "lat": -37.8136,
+   "lon": 144.9631,
+   "precisione_km": 20,
+   "origine": "centre of Melbourne (Epoch gives no address)",
+   "note": ""
+  },
+  "Alibaba Zhangbei": {
+   "lat": 41.2878,
+   "lon": 114.7693,
+   "precisione_km": 20,
+   "origine": "OSM geocoding of Zhangbei county",
+   "note": "Hebei, north-west of Beijing."
+  },
+  "Start Campus Sines Data Campus": {
+   "lat": 37.9565,
+   "lon": -8.869,
+   "precisione_km": 5,
+   "origine": "OSM geocoding of Sines",
+   "note": "Microsoft invests about 10 bn USD here with Nscale and Nvidia (announced 2025-11-11). Sines is also a subsea-cable landing towards Africa and the Americas."
+  },
+  "Nscale Keflavik": {
+   "lat": 63.9754,
+   "lon": -22.578,
+   "precisione_km": 2,
+   "origine": "OSM geocoding of Valhallarbraut, Reykjanesbær",
+   "note": ""
+  },
+  "EcoDataCenter 2": {
+   "lat": 60.5378,
+   "lon": 15.4127,
+   "precisione_km": 3,
+   "origine": "OSM geocoding of Kvarnsvedsvägen, Borlänge",
+   "note": "User Mistral AI."
+  },
+  "Microsoft Narvik Norway": {
+   "lat": 68.4384,
+   "lon": 17.4272,
+   "precisione_km": 15,
+   "origine": "OSM geocoding of Narvik (the site is at Kvandal, outside the town)",
+   "note": "This is the site announced as 'Stargate Norway' (Nscale-Aker-OpenAI, 230 MW initial, July 2025). March 2026: the JV was folded into Nscale. April 2026: Microsoft takes the capacity (over 30,000 Rubin GPUs) after OpenAI-Nscale talks ended without a deal (ITPro); earlier Microsoft commitment 6.2 bn USD."
+  },
+  "OpenAI Stargate UAE": {
+   "lat": 24.1873,
+   "lon": 54.4924,
+   "precisione_km": 25,
+   "origine": "OSM geocoding of Al Bihouth (project office named by Epoch)",
+   "note": "1 GW inside the 5 GW UAE-US AI campus. Developer Khazna (G42); operators OpenAI and Oracle; partners Nvidia, Cisco, SoftBank. First 200 MW phase expected in Q3 2026 (The National, 2025-12-05); no commissioning announcement found by 2026-11-10."
+  },
+  "Colossus 2": {
+   "lat": 34.998,
+   "lon": -90.0349,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '5420 Tulane Rd, Memphis, TN 38109'",
+   "note": ""
+  },
+  "OpenAI Stargate Abilene": {
+   "lat": 32.4942,
+   "lon": -99.8009,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '5502 Spinks Rd, Abilene, TX 79601'",
+   "note": ""
+  },
+  "Anthropic-Amazon New Carlisle": {
+   "lat": 41.7057,
+   "lon": -86.5098,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'New Carlisle, IN 46552, United States'",
+   "note": "Project Rainier. Anthropic is a user (the author of this layer, Claude, is an Anthropic model)."
+  },
+  "Microsoft Fairwater Atlanta": {
+   "lat": 33.4454,
+   "lon": -84.5255,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '1435 Hwy 54 W, Fayetteville, GA 30214'",
+   "note": "Epoch address in Fayetteville, south of Atlanta."
+  },
+  "Google Pryor (North)": {
+   "lat": 36.2412,
+   "lon": -95.33,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '4581 Webb St, Pryor, OK 74361'",
+   "note": ""
+  },
+  "Meta Prometheus": {
+   "lat": 40.0812,
+   "lon": -82.8088,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'New Albany, OH 43054, United States'",
+   "note": ""
+  },
+  "Microsoft Fairwater Wisconsin": {
+   "lat": 42.6749,
+   "lon": -87.8949,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '4800 90th St, Mount Pleasant, WI 53403'",
+   "note": ""
+  },
+  "Google Columbus": {
+   "lat": 39.8615,
+   "lon": -83.004,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '5076 S High St, Columbus, OH 43207'",
+   "note": ""
+  },
+  "Google New Albany": {
+   "lat": 40.0701,
+   "lon": -82.754,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '1101 Beech Rd SW, New Albany, OH 43054'",
+   "note": ""
+  },
+  "Anthropic Lake Mariner": {
+   "lat": 43.3587,
+   "lon": -78.6041,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '7725 Lake Rd, Barker, NY 14012'",
+   "note": "Anthropic listed as user by Epoch (the author of this layer is an Anthropic model)."
+  },
+  "Google Mesa": {
+   "lat": 33.4151,
+   "lon": -111.8315,
+   "precisione_km": 15,
+   "origine": "OSM Nominatim geocoding of 'Mesa, Arizona, United States'",
+   "note": "No address in Epoch: point on Mesa city."
+  },
+  "Colossus 1": {
+   "lat": 35.0802,
+   "lon": -90.079,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '3231 Riverport Rd, Memphis, TN 38109'",
+   "note": ""
+  },
+  "Google Council Bluffs (East)": {
+   "lat": 41.1666,
+   "lon": -95.7977,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '10410 Bunge Ave, Council Bluffs, IA 51503'",
+   "note": ""
+  },
+  "CoreWeave Denton TX": {
+   "lat": 33.2193,
+   "lon": -97.1747,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '8171 Jim Christal Rd, Denton, TX 76207'",
+   "note": ""
+  },
+  "QTS Richmond 1": {
+   "lat": 37.4888,
+   "lon": -77.2475,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '6000 Technology Blvd, Sandston, VA 23150'",
+   "note": ""
+  },
+  "Google Bristow": {
+   "lat": 38.7312,
+   "lon": -77.548,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Bristow, VA 20136, United States'",
+   "note": ""
+  },
+  "Microsoft Goodyear": {
+   "lat": 33.409,
+   "lon": -112.3648,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '14250 W Broadway Rd, Goodyear, AZ 85338'",
+   "note": ""
+  },
+  "Meta Jeffersonville": {
+   "lat": 38.2791,
+   "lon": -85.739,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '500 8th St, Jeffersonville, IN 47130, USA'",
+   "note": ""
+  },
+  "Google Kansas City East": {
+   "lat": 39.1001,
+   "lon": -94.5781,
+   "precisione_km": 15,
+   "origine": "OSM Nominatim geocoding of 'Kansas City, Missouri, United States'",
+   "note": "No address in Epoch: point on Kansas City, Missouri."
+  },
+  "Meta Temple": {
+   "lat": 31.126,
+   "lon": -97.3598,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '2310 Eberhardt Rd, Temple, TX 76504'",
+   "note": ""
+  },
+  "AWS New Albany": {
+   "lat": 40.1537,
+   "lon": -82.6852,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Johnstown, Ohio'",
+   "note": ""
+  },
+  "Google Omaha": {
+   "lat": 41.3357,
+   "lon": -96.0524,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '11110 State St, Omaha, NE 68142'",
+   "note": ""
+  },
+  "Google Lincoln": {
+   "lat": 40.9075,
+   "lon": -96.6458,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '5475 Cloud Ct, Lincoln, NE 68514'",
+   "note": ""
+  },
+  "QTS Richmond 2": {
+   "lat": 37.5235,
+   "lon": -77.3158,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Sandston, VA 23150, United States'",
+   "note": ""
+  },
+  "Google The Dalles": {
+   "lat": 45.6254,
+   "lon": -121.2024,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '3500 River Rd, The Dalles, OR'",
+   "note": ""
+  },
+  "QTS Richmond 3": {
+   "lat": 37.5235,
+   "lon": -77.3158,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Sandston, VA 23150, United States'",
+   "note": ""
+  },
+  "Meta Kuna": {
+   "lat": 43.4592,
+   "lon": -116.4211,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '601 Kuna Mora Rd, Kuna ID 83634'",
+   "note": ""
+  },
+  "Meta Cheyenne": {
+   "lat": 41.14,
+   "lon": -104.8202,
+   "precisione_km": 15,
+   "origine": "OSM Nominatim geocoding of 'Cheyenne, WY 82007, USA'",
+   "note": ""
+  },
+  "Amazon Ridgeland": {
+   "lat": 32.4,
+   "lon": -90.1972,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '1626 County Line Road Ridgeland, Mississippi'",
+   "note": ""
+  },
+  "Meta Huntsville": {
+   "lat": 34.8981,
+   "lon": -86.7336,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Toney, AL, United States'",
+   "note": ""
+  },
+  "Coreweave Helios": {
+   "lat": 33.7629,
+   "lon": -100.8168,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Afton, TX 79220, United States'",
+   "note": ""
+  },
+  "Microsoft Project Osmium": {
+   "lat": 41.4833,
+   "lon": -93.7624,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Cumming, IA 50061, United States'",
+   "note": ""
+  },
+  "Meta Eagle Mountain": {
+   "lat": 40.3093,
+   "lon": -112.012,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Eagle Mountain, UT 84005, United States'",
+   "note": ""
+  },
+  "Google Midlothian": {
+   "lat": 32.4389,
+   "lon": -97.0508,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '3250 Railport Parkway, Midlothian, TX 76065'",
+   "note": ""
+  },
+  "Google Storey County": {
+   "lat": 39.556,
+   "lon": -119.4903,
+   "precisione_km": 4,
+   "origine": "OSM Nominatim geocoding of 'Tahoe Reno Industrial Center, Storey County, Nevada'",
+   "note": "No address in Epoch: Tahoe Reno Industrial Center."
+  },
+  "Meta Los Lunas": {
+   "lat": 34.8302,
+   "lon": -106.7838,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '4250 Messenger Lp, Los Lunas, NM 87031'",
+   "note": ""
+  },
+  "Google Lancaster": {
+   "lat": 39.727,
+   "lon": -82.6831,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '105 Whiley Rd, Lancaster, OH 43130'",
+   "note": ""
+  },
+  "Meta-QTS Hillsboro 2": {
+   "lat": 45.5589,
+   "lon": -122.9296,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '4755 NE Huffman St, Hillsboro, OR 97124'",
+   "note": ""
+  },
+  "Google Arcola": {
+   "lat": 39.0017,
+   "lon": -77.4033,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Sterling, VA 20166, United States'",
+   "note": ""
+  },
+  "Google Red Oak": {
+   "lat": 32.5376,
+   "lon": -96.7967,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '330 Austin Blvd, Red Oak, TX 75154'",
+   "note": ""
+  },
+  "Meta Gallatin": {
+   "lat": 36.3883,
+   "lon": -86.4476,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Gallatin, TN 37066, United States'",
+   "note": ""
+  },
+  "CoreWeave Ellendale ND": {
+   "lat": 46.0103,
+   "lon": -98.5687,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '9685 87th Ave SE, Ellendale, ND 58436'",
+   "note": ""
+  },
+  "CoreWeave Chester VA": {
+   "lat": 37.3489,
+   "lon": -77.4384,
+   "precisione_km": 8,
+   "origine": "OSM Nominatim geocoding of 'Chester, VA, United States'",
+   "note": ""
+  },
+  "AWS Berwick": {
+   "lat": 41.0838,
+   "lon": -76.1435,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '1125 Electron Ave, Berwick, PA 18603'",
+   "note": "Susquehanna campus next to Talen's Susquehanna nuclear plant (Talen contract up to 1,920 MW to 2042)."
+  },
+  "CoreWeave Marble NC": {
+   "lat": 35.185,
+   "lon": -83.9141,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '155 Palmer Ln, Marble, NC 28905'",
+   "note": ""
+  },
+  "Core42 Lake Mariner": {
+   "lat": 43.3587,
+   "lon": -78.6041,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '7725 Lake Rd, Barker, NY 14012'",
+   "note": ""
+  },
+  "STACK Infrastructure NVA02": {
+   "lat": 38.7458,
+   "lon": -77.5377,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '9590 Hornbaker Rd, Manassas, VA 20109'",
+   "note": ""
+  },
+  "Microsoft-Nebius New Jersey": {
+   "lat": 39.4282,
+   "lon": -75.0184,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '3963 S Lincoln Ave, Vineland, New Jersey'",
+   "note": ""
+  },
+  "Stream Phoenix": {
+   "lat": 33.4195,
+   "lon": -112.36,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '2950 S. Litchfield Road'",
+   "note": ""
+  },
+  "Microsoft SAT14": {
+   "lat": 29.4768,
+   "lon": -98.6947,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '3545 Wiseman Boulevard, San Antonio, TX 78251'",
+   "note": ""
+  },
+  "Vantage TX1": {
+   "lat": 29.4169,
+   "lon": -98.7902,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '14720 Omicron Dr, San Antonio, TX 78245'",
+   "note": ""
+  },
+  "CoreWeave Dalton 1 & 2": {
+   "lat": 34.7134,
+   "lon": -84.9522,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '2205 Industrial South Rd, Dalton, GA, 30721'",
+   "note": ""
+  },
+  "xAI QTS Atlanta": {
+   "lat": 33.7772,
+   "lon": -84.4195,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '1025 Jefferson Street NW, Atlanta, GA 30318'",
+   "note": ""
+  },
+  "Anthropic Barber Lake": {
+   "lat": 32.393,
+   "lon": -100.8635,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Colorado City, Texas, United States'",
+   "note": "Owner Cipher Mining; Anthropic listed as user by Epoch. No address in Epoch: point on Colorado City, Texas."
+  },
+  "CoreWeave Lancaster Greenfield site": {
+   "lat": 40.0472,
+   "lon": -76.2555,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '216 Greenfield Rd, Lancaster, PA'",
+   "note": ""
+  },
+  "CoreWeave Muskogee OK": {
+   "lat": 35.6969,
+   "lon": -95.3839,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '1525 W 43rd St S, Muskogee, OK 74401, USA'",
+   "note": ""
+  },
+  "Crusoe Abilene Expansion": {
+   "lat": 32.4942,
+   "lon": -99.8009,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '5502 Spinks Rd, Abilene, TX 79601'",
+   "note": ""
+  },
+  "Goodnight": {
+   "lat": 35.1081,
+   "lon": -101.3627,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Claude, TX 79019, United States'",
+   "note": ""
+  },
+  "Google Cedar Rapids": {
+   "lat": 41.9223,
+   "lon": -91.7157,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '5800 EDGEWOOD RD SW CEDAR RAPIDS, IA 52404'",
+   "note": ""
+  },
+  "Google Fort Wayne": {
+   "lat": 41.0309,
+   "lon": -85.0536,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '6015 Adams Center Road, Fort Wayne, IN 46806'",
+   "note": ""
+  },
+  "Meta Bowling Green": {
+   "lat": 41.3748,
+   "lon": -83.6513,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Bowling Green, OH 43402, United States'",
+   "note": ""
+  },
+  "Meta Hyperion": {
+   "lat": 32.4676,
+   "lon": -91.6268,
+   "precisione_km": 5,
+   "origine": "OSM Nominatim geocoding of 'Holly Ridge, LA 71269'",
+   "note": "Richland Parish, Louisiana. Zuckerberg: up to 5 GW over time."
+  },
+  "OpenAI Stargate Lordstown": {
+   "lat": 41.2368,
+   "lon": -80.819,
+   "precisione_km": 15,
+   "origine": "OSM Nominatim geocoding of 'Warren, OH 44481, United States'",
+   "note": ""
+  },
+  "OpenAI Stargate Michigan": {
+   "lat": 42.1245,
+   "lon": -83.8386,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Saline Township, Washtenaw County, Michigan'",
+   "note": "No address in Epoch: point on Saline Township."
+  },
+  "OpenAI Stargate Milam": {
+   "lat": 30.7627,
+   "lon": -96.9982,
+   "precisione_km": 40,
+   "origine": "OSM Nominatim geocoding of 'Milam County, Texas'",
+   "note": "No address in Epoch: point on Milam County centroid."
+  },
+  "OpenAI Stargate New Mexico": {
+   "lat": 31.87,
+   "lon": -106.6866,
+   "precisione_km": 8,
+   "origine": "OSM Nominatim geocoding of 'Santa Teresa, New Mexico'",
+   "note": "Doña Ana County; no address in Epoch: point on Santa Teresa."
+  },
+  "OpenAI Stargate Shackelford": {
+   "lat": 32.5966,
+   "lon": -99.5021,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'TX 79601, Shackelford County, United States'",
+   "note": ""
+  },
+  "OpenAI Stargate Wisconsin": {
+   "lat": 43.3886,
+   "lon": -87.8693,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Port Washington, Wisconsin'",
+   "note": "No address in Epoch: point on Port Washington."
+  },
+  "QTS Cedar Rapids": {
+   "lat": 41.9056,
+   "lon": -91.7511,
+   "precisione_km": 1,
+   "origine": "OSM Nominatim geocoding of '6200 76th Ave SW, Fairfax, IA 52228'",
+   "note": ""
+  },
+  "QTS Eagle Mountain": {
+   "lat": 40.2689,
+   "lon": -112.0343,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '652 E Hyperscale Way, Eagle Mountain, UT 84013'",
+   "note": ""
+  },
+  "Meta Rosemount": {
+   "lat": 44.7392,
+   "lon": -93.1243,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of '145th Street West, Rosemount, Minnesota'",
+   "note": ""
+  },
+  "Meta Montgomery": {
+   "lat": 32.3777,
+   "lon": -86.3091,
+   "precisione_km": 15,
+   "origine": "OSM Nominatim geocoding of 'Montgomery, Alabama 36105'",
+   "note": ""
+  },
+  "Amazon Madison Mega Site": {
+   "lat": 32.5817,
+   "lon": -90.051,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of 'Nissan Parkway, Canton, Mississippi'",
+   "note": ""
+  },
+  "Meta Aiken": {
+   "lat": 33.7417,
+   "lon": -81.8423,
+   "precisione_km": 6,
+   "origine": "OSM Nominatim geocoding of 'Trenton, South Carolina'",
+   "note": ""
+  },
+  "Google Papillion": {
+   "lat": 41.1387,
+   "lon": -96.0369,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of 'Gold Coast Road, Papillion, Nebraska'",
+   "note": ""
+  },
+  "Meta Sarpy": {
+   "lat": 41.1035,
+   "lon": -96.1483,
+   "precisione_km": 2,
+   "origine": "OSM Nominatim geocoding of 'Fairview Road, Springfield, Nebraska'",
+   "note": ""
+  },
+  "Microsoft SAT40": {
+   "lat": 29.4246,
+   "lon": -98.4951,
+   "precisione_km": 15,
+   "origine": "OSM Nominatim geocoding of 'San Antonio, Texas'",
+   "note": ""
   }
+ }
 }

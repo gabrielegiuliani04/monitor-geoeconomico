@@ -1,43 +1,320 @@
 {
-  "nota": "Posizione dei siti della TOP500 (chiave = id del sito nell'URL top500.org/site/<id>). Stimate da me (geocodifica OSM del centro di ricerca, o coordinate del dataset GPU clusters di Epoch AI dove indicato). Quando il sito non è pubblico uso il centroide del paese e lo dichiaro (origine 'centroide-paese'). Siti nuovi non in elenco: lo script usa il centroide del paese e lo segnala in 'errori'.",
-  "siti": {
-    "50287": {"luogo": "National Supercomputing Centre, Shenzhen", "lat": 22.587, "lon": 113.975, "precisione_km": 5, "origine": "stimata: area di Xili, Nanshan (Shenzhen)"},
-    "49763": {"luogo": "Lawrence Livermore National Laboratory, California", "lat": 37.687, "lon": -121.706, "precisione_km": 2, "origine": "stimata: sede del laboratorio"},
-    "48553": {"luogo": "Oak Ridge National Laboratory, Tennessee", "lat": 35.931, "lon": -84.31, "precisione_km": 2, "origine": "stimata: sede del laboratorio"},
-    "47347": {"luogo": "Argonne National Laboratory, Illinois", "lat": 41.715, "lon": -87.982, "precisione_km": 2, "origine": "stimata: sede del laboratorio"},
-    "51016": {"luogo": "Forschungszentrum Jülich", "lat": 50.9217, "lon": 6.3583, "precisione_km": 3, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
-    "50489": {"luogo": "Eni Green Data Center, Ferrera Erbognone", "lat": 45.101, "lon": 8.8596, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
-    "50981": {"luogo": "Microsoft Azure (sito non pubblicato)", "lat": 39.83, "lon": -98.58, "precisione_km": 2000, "origine": "centroide-paese: posizione del sistema non pubblicata"},
-    "50831": {"luogo": "RIKEN Center for Computational Science, Kobe", "lat": 34.653, "lon": 135.22, "precisione_km": 2, "origine": "stimata: isola di Port Island, Kobe"},
-    "50422": {"luogo": "CSCS, Lugano", "lat": 46.0244, "lon": 8.9601, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
-    "50908": {"luogo": "CSC, Kajaani (LUMI)", "lat": 64.2337, "lon": 27.7033, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
-    "50944": {"luogo": "CINECA, Tecnopolo di Bologna", "lat": 44.5221, "lon": 11.3384, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
-    "49136": {"luogo": "Bristol and Bath Science Park (Isambard-AI)", "lat": 51.501, "lon": -2.4777, "precisione_km": 2, "origine": "stimata: geocodifica OSM del parco scientifico"},
-    "50986": {"luogo": "Nebius (sito non indicato; la TOP500 dà i Paesi Bassi, Epoch dà l'Islanda)", "lat": 52.13, "lon": 5.29, "precisione_km": 2000, "origine": "centroide-paese: posizione in disaccordo tra fonti"},
-    "50979": {"luogo": "Barcelona Supercomputing Center", "lat": 41.3898, "lon": 2.1155, "precisione_km": 2, "origine": "coordinate del dataset GPU clusters di Epoch AI"},
-    "50949": {"luogo": "ExxonMobil (sito non pubblicato)", "lat": 39.83, "lon": -98.58, "precisione_km": 2000, "origine": "centroide-paese: posizione del sistema non pubblicata"},
-    "51131": {"luogo": "Core42, Stati Uniti (sito non pubblicato)", "lat": 39.83, "lon": -98.58, "precisione_km": 2000, "origine": "centroide-paese: posizione del sistema non pubblicata"},
-    "50762": {"luogo": "AIST, Kashiwa (ABCI)", "lat": 35.8955, "lon": 139.9475, "precisione_km": 3, "origine": "stimata: geocodifica OSM dell'area di Kashiwa-no-ha"},
-    "51133": {"luogo": "NHN Cloud, centro dati AI nazionale di Gwangju", "lat": 35.2162, "lon": 126.8357, "precisione_km": 10, "origine": "stimata: distretto di Cheomdan, Gwangju (sito presunto, da verificare)"},
-    "51045": {"luogo": "SoftBank Corp. (sito non pubblicato)", "lat": 36.2, "lon": 138.25, "precisione_km": 1000, "origine": "centroide-paese: posizione del sistema non pubblicata"},
-    "50205": {"luogo": "KAUST, Thuwal", "lat": 22.31, "lon": 39.105, "precisione_km": 3, "origine": "stimata: campus KAUST"},
-    "48448": {"luogo": "NVIDIA (sito non pubblicato)", "lat": 39.83, "lon": -98.58, "precisione_km": 2000, "origine": "centroide-paese: posizione del sistema non pubblicata"}
+ "nota": "Location of TOP500 sites (key = site id in the URL top500.org/site/<id>). Estimated by hand (OSM geocoding of the research centre, or coordinates from the Epoch AI GPU clusters dataset where stated). When the site is not public, 'posizione_sconosciuta': true: the system is NOT drawn on the map and is listed in 'senza_posizione' of ai-mondo.json. New sites not listed here are also left off the map and reported in 'errori'.",
+ "siti": {
+  "50287": {
+   "luogo": "National Supercomputing Centre, Shenzhen",
+   "lat": 22.587,
+   "lon": 113.975,
+   "precisione_km": 5,
+   "origine": "estimated: Xili area, Nanshan (Shenzhen)"
   },
-  "centroidi_paese": {
-    "United States": [39.83, -98.58], "China": [35.86, 104.2], "Germany": [51.17, 10.45], "Italy": [42.5, 12.5], "Japan": [36.2, 138.25],
-    "Switzerland": [46.82, 8.23], "Finland": [64.0, 26.0], "United Kingdom": [54.0, -2.0], "Netherlands": [52.13, 5.29], "Spain": [40.0, -4.0],
-    "South Korea": [36.5, 127.8], "Saudi Arabia": [23.9, 45.1], "France": [46.6, 2.2], "Taiwan": [23.7, 121.0], "India": [21.0, 78.0],
-    "Russia": [61.5, 105.3], "Australia": [-25.3, 133.8], "Canada": [56.1, -106.3], "Brazil": [-14.2, -51.9], "Norway": [60.5, 8.5],
-    "Sweden": [60.1, 18.6], "Poland": [52.0, 19.1], "Singapore": [1.35, 103.82], "United Arab Emirates": [23.4, 53.8], "Denmark": [56.0, 10.0],
-    "Czechia": [49.8, 15.5], "Austria": [47.5, 14.6], "Belgium": [50.5, 4.5], "Luxembourg": [49.8, 6.1], "Slovenia": [46.15, 14.99], "Portugal": [39.4, -8.2],
-    "Israel": [31.0, 34.85], "Iceland": [64.96, -19.02], "Thailand": [15.87, 100.99], "Malaysia": [4.21, 101.98], "Morocco": [31.8, -7.1], "Hungary": [47.16, 19.5]
+  "49763": {
+   "luogo": "Lawrence Livermore National Laboratory, California",
+   "lat": 37.687,
+   "lon": -121.706,
+   "precisione_km": 2,
+   "origine": "estimated: laboratory site"
   },
-  "iso": {
-    "United States": "US", "China": "CN", "Germany": "DE", "Italy": "IT", "Japan": "JP", "Switzerland": "CH", "Finland": "FI", "United Kingdom": "GB",
-    "Netherlands": "NL", "Spain": "ES", "South Korea": "KR", "Korea, South": "KR", "Saudi Arabia": "SA", "France": "FR", "Taiwan": "TW", "India": "IN", "Russia": "RU",
-    "Australia": "AU", "Canada": "CA", "Brazil": "BR", "Norway": "NO", "Sweden": "SE", "Poland": "PL", "Singapore": "SG", "United Arab Emirates": "AE",
-    "Denmark": "DK", "Czechia": "CZ", "Czech Republic": "CZ", "Austria": "AT", "Belgium": "BE", "Luxembourg": "LU", "Slovenia": "SI", "Portugal": "PT",
-    "Israel": "IL", "Iceland": "IS", "Thailand": "TH", "Malaysia": "MY", "Morocco": "MA", "Hungary": "HU", "Indonesia": "ID", "Ireland": "IE", "Mexico": "MX",
-    "Chile": "CL", "Argentina": "AR", "Kenya": "KE", "Qatar": "QA", "Hong Kong": "HK", "Vietnam": "VN", "Philippines": "PH"
+  "48553": {
+   "luogo": "Oak Ridge National Laboratory, Tennessee",
+   "lat": 35.931,
+   "lon": -84.31,
+   "precisione_km": 2,
+   "origine": "estimated: laboratory site"
+  },
+  "47347": {
+   "luogo": "Argonne National Laboratory, Illinois",
+   "lat": 41.715,
+   "lon": -87.982,
+   "precisione_km": 2,
+   "origine": "estimated: laboratory site"
+  },
+  "51016": {
+   "luogo": "Forschungszentrum Jülich",
+   "lat": 50.9217,
+   "lon": 6.3583,
+   "precisione_km": 3,
+   "origine": "coordinates from the Epoch AI GPU clusters dataset"
+  },
+  "50489": {
+   "luogo": "Eni Green Data Center, Ferrera Erbognone",
+   "lat": 45.101,
+   "lon": 8.8596,
+   "precisione_km": 2,
+   "origine": "coordinates from the Epoch AI GPU clusters dataset"
+  },
+  "50981": {
+   "luogo": "Microsoft Azure (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "50831": {
+   "luogo": "RIKEN Center for Computational Science, Kobe",
+   "lat": 34.653,
+   "lon": 135.22,
+   "precisione_km": 2,
+   "origine": "estimated: Port Island, Kobe"
+  },
+  "50422": {
+   "luogo": "CSCS, Lugano",
+   "lat": 46.0244,
+   "lon": 8.9601,
+   "precisione_km": 2,
+   "origine": "coordinates from the Epoch AI GPU clusters dataset"
+  },
+  "50908": {
+   "luogo": "CSC, Kajaani (LUMI)",
+   "lat": 64.2337,
+   "lon": 27.7033,
+   "precisione_km": 2,
+   "origine": "coordinates from the Epoch AI GPU clusters dataset"
+  },
+  "50944": {
+   "luogo": "CINECA, Bologna Tecnopolo",
+   "lat": 44.5221,
+   "lon": 11.3384,
+   "precisione_km": 2,
+   "origine": "coordinates from the Epoch AI GPU clusters dataset"
+  },
+  "49136": {
+   "luogo": "Bristol and Bath Science Park (Isambard-AI)",
+   "lat": 51.501,
+   "lon": -2.4777,
+   "precisione_km": 2,
+   "origine": "estimated: OSM geocoding of the science park"
+  },
+  "50986": {
+   "luogo": "Nebius (site not given; TOP500 says Netherlands, Epoch says Iceland)",
+   "posizione_sconosciuta": true
+  },
+  "50979": {
+   "luogo": "Barcelona Supercomputing Center",
+   "lat": 41.3898,
+   "lon": 2.1155,
+   "precisione_km": 2,
+   "origine": "coordinates from the Epoch AI GPU clusters dataset"
+  },
+  "50949": {
+   "luogo": "ExxonMobil (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "51131": {
+   "luogo": "Core42, United States (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "50762": {
+   "luogo": "AIST, Kashiwa (ABCI)",
+   "lat": 35.8955,
+   "lon": 139.9475,
+   "precisione_km": 3,
+   "origine": "estimated: OSM geocoding of the Kashiwa-no-ha area"
+  },
+  "51133": {
+   "luogo": "NHN Cloud, national AI data center in Gwangju",
+   "lat": 35.2162,
+   "lon": 126.8357,
+   "precisione_km": 10,
+   "origine": "estimated: Cheomdan district, Gwangju (assumed site, to be verified)"
+  },
+  "51045": {
+   "luogo": "SoftBank Corp. (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "50205": {
+   "luogo": "KAUST, Thuwal",
+   "lat": 22.31,
+   "lon": 39.105,
+   "precisione_km": 3,
+   "origine": "estimated: KAUST campus"
+  },
+  "48448": {
+   "luogo": "NVIDIA (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "50157": {
+   "luogo": "Los Alamos National Laboratory, New Mexico",
+   "lat": 35.819,
+   "lon": -106.2656,
+   "precisione_km": 2,
+   "origine": "estimated: OSM Nominatim geocoding of 'Los Alamos National Laboratory'"
+  },
+  "50623": {
+   "luogo": "National Supercomputing Center in Wuxi, Jiangsu",
+   "lat": 31.53,
+   "lon": 120.2791,
+   "precisione_km": 15,
+   "origine": "estimated: OSM Nominatim geocoding of 'Binhu District, Wuxi, Jiangsu'"
+  },
+  "47593": {
+   "luogo": "CEA DAM Île-de-France / TGCC, Bruyères-le-Châtel",
+   "lat": 48.5923,
+   "lon": 2.1909,
+   "precisione_km": 3,
+   "origine": "estimated: OSM Nominatim geocoding of 'Bruyères-le-Châtel, Essonne, France'"
+  },
+  "48468": {
+   "luogo": "National Center for High-performance Computing, Hsinchu Science Park",
+   "lat": 24.7847,
+   "lon": 121.002,
+   "precisione_km": 3,
+   "origine": "estimated: OSM Nominatim geocoding of 'Hsinchu Science Park, Taiwan'"
+  },
+  "48429": {
+   "luogo": "NERSC, Lawrence Berkeley National Laboratory, California",
+   "lat": 37.877,
+   "lon": -122.2456,
+   "precisione_km": 2,
+   "origine": "estimated: OSM Nominatim geocoding of 'Lawrence Berkeley National Laboratory'"
+  },
+  "49587": {
+   "luogo": "Petrobras, Rio de Janeiro (exact data centre not stated)",
+   "lat": -22.911,
+   "lon": -43.2094,
+   "precisione_km": 20,
+   "origine": "estimated: OSM Nominatim geocoding of 'Rio de Janeiro, Brazil'"
+  },
+  "51079": {
+   "luogo": "AIST, Tsukuba (ABCI-Q host site assumed; AIST also has the Kashiwa ABCI site)",
+   "lat": 36.0833,
+   "lon": 140.0773,
+   "precisione_km": 40,
+   "origine": "estimated: OSM Nominatim geocoding of 'Tsukuba, Ibaraki, Japan'"
+  },
+  "48748": {
+   "luogo": "Sandia National Laboratories, Albuquerque",
+   "lat": 35.0355,
+   "lon": -106.5429,
+   "precisione_km": 3,
+   "origine": "estimated: OSM Nominatim geocoding of 'Sandia National Laboratories, Albuquerque'"
+  },
+  "51123": {
+   "luogo": "NSC, Linköping University (NAISS)",
+   "lat": 58.3978,
+   "lon": 15.5755,
+   "precisione_km": 3,
+   "origine": "estimated: OSM Nominatim geocoding of 'Linköping University, Linköping'"
+  },
+  "51051": {
+   "luogo": "Danish Centre for AI Innovation, Copenhagen area (host data centre not stated)",
+   "lat": 55.6867,
+   "lon": 12.5701,
+   "precisione_km": 25,
+   "origine": "estimated: OSM Nominatim geocoding of 'Copenhagen, Denmark'"
+  },
+  "50631": {
+   "luogo": "National Supercomputing Centre Singapore",
+   "lat": 1.3571,
+   "lon": 103.8195,
+   "precisione_km": 15,
+   "origine": "estimated: OSM Nominatim geocoding of 'Singapore'"
+  },
+  "50403": {
+   "luogo": "IDRIS (CNRS), Orsay",
+   "lat": 48.6992,
+   "lon": 2.1875,
+   "precisione_km": 3,
+   "origine": "estimated: OSM Nominatim geocoding of 'Orsay, Essonne, France'"
+  },
+  "51148": {
+   "luogo": "GRNET / EuroHPC, Lavrio (Daedalus host site)",
+   "lat": 37.7143,
+   "lon": 24.0548,
+   "precisione_km": 10,
+   "origine": "estimated: OSM Nominatim geocoding of 'Lavrio, Greece'"
+  },
+  "51134": {
+   "luogo": "Africa Data Centres CPT1, Cape Town",
+   "lat": -33.9288,
+   "lon": 18.4172,
+   "precisione_km": 25,
+   "origine": "estimated: OSM Nominatim geocoding of 'Cape Town, South Africa'"
+  },
+  "50870": {
+   "luogo": "Microsoft Azure West US 3 region (Phoenix area, Arizona); system name 'WUS3'",
+   "lat": 33.45,
+   "lon": -112.07,
+   "precisione_km": 50,
+   "origine": "estimated: Phoenix metro (region named in the system name, data centre not stated)"
+  },
+  "51109": {
+   "luogo": "Maximus (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "50903": {
+   "luogo": "Samsung Electronics (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "51076": {
+   "luogo": "Northern Data Group, UK (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "51127": {
+   "luogo": "Kakao (NIPA programme; site not published)",
+   "posizione_sconosciuta": true
+  },
+  "51056": {
+   "luogo": "Core42, UAE (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "51065": {
+   "luogo": "FPT AI Factory Japan (site not published)",
+   "posizione_sconosciuta": true
+  },
+  "51112": {
+   "luogo": "Yotta Data Services, Shakti Cloud (site not stated: Yotta runs Navi Mumbai and Greater Noida campuses)",
+   "posizione_sconosciuta": true
   }
+ },
+ "iso": {
+  "United States": "US",
+  "China": "CN",
+  "Germany": "DE",
+  "Italy": "IT",
+  "Japan": "JP",
+  "Switzerland": "CH",
+  "Finland": "FI",
+  "United Kingdom": "GB",
+  "Netherlands": "NL",
+  "Spain": "ES",
+  "South Korea": "KR",
+  "Korea, South": "KR",
+  "Saudi Arabia": "SA",
+  "France": "FR",
+  "Taiwan": "TW",
+  "India": "IN",
+  "Russia": "RU",
+  "Australia": "AU",
+  "Canada": "CA",
+  "Brazil": "BR",
+  "Norway": "NO",
+  "Sweden": "SE",
+  "Poland": "PL",
+  "Singapore": "SG",
+  "United Arab Emirates": "AE",
+  "Denmark": "DK",
+  "Czechia": "CZ",
+  "Czech Republic": "CZ",
+  "Austria": "AT",
+  "Belgium": "BE",
+  "Luxembourg": "LU",
+  "Slovenia": "SI",
+  "Portugal": "PT",
+  "Israel": "IL",
+  "Iceland": "IS",
+  "Thailand": "TH",
+  "Malaysia": "MY",
+  "Morocco": "MA",
+  "Hungary": "HU",
+  "Indonesia": "ID",
+  "Ireland": "IE",
+  "Mexico": "MX",
+  "Chile": "CL",
+  "Argentina": "AR",
+  "Kenya": "KE",
+  "Qatar": "QA",
+  "Hong Kong": "HK",
+  "Vietnam": "VN",
+  "Philippines": "PH",
+  "Greece": "GR",
+  "South Africa": "ZA"
+ }
 }

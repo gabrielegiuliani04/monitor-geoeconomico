@@ -1,11 +1,11 @@
 {
- "aggiornato": "2026-11-09T19:56Z",
+ "aggiornato": "2026-11-10T12:02Z",
  "fonti": [
   {
    "nome": "Voci curate a mano da comunicati societari e governativi, Reuters/AFP, DCD, TrendForce e altri (fonte e link per riga)",
    "link": "raccolta/ai/flussi.json",
    "licenza": "fatti con citazione",
-   "data_dato": "2026-11-09"
+   "data_dato": "2026-11-10"
   }
  ],
  "nota": "Flussi di capitale per AI e infrastruttura strategica 2024-2026, curati a mano (2026-11-09). importo = cifra dichiarata dalla fonte, in MILIARDI della valuta; importo_usd_mld = equivalente in USD dato dalla fonte (se c'è), altrimenti lo calcola lo script con cambi fissi indicativi. Un annuncio NON è una spesa: stato dice se è annunciato, in corso, completato, sospeso o cancellato. quadro=true = impegno-ombrello di governo (multi-settore, pluriennale): sommato a parte per non contare due volte i progetti che contiene. da_luogo/a_luogo = chiavi della tabella luoghi (sede della società o capitale); a_rif = id di un punto della mappa (ai-mondo.json o ai.json) da cui prendere le coordinate del sito.",
@@ -279,7 +279,7 @@
    "da_lon": -122.332,
    "a_lat": 24.6389,
    "a_lon": 46.716,
-   "a_luogo": "Humain, data center di Riad",
+   "a_luogo": "Humain data center, Riyadh",
    "importo_usd_mld": 5.0,
    "metodo_usd": "USD dalla fonte",
    "importo_originale": "5 mld USD"
@@ -395,7 +395,7 @@
    "da_lon": 54.377,
    "a_lat": -0.886,
    "a_lon": 36.2696,
-   "a_luogo": "Microsoft-G42, data center geotermico di Olkaria",
+   "a_luogo": "Microsoft-G42 geothermal data center, Olkaria",
    "importo_usd_mld": 1.0,
    "metodo_usd": "USD dalla fonte",
    "importo_originale": "1 mld USD"
@@ -478,7 +478,7 @@
    "da_lon": -74.006,
    "a_lat": 55.1453,
    "a_lon": -1.5309,
-   "a_luogo": "Blackstone-QTS, campus di Cambois (Blyth)",
+   "a_luogo": "Blackstone-QTS campus, Cambois (Blyth)",
    "importo_usd_mld": 13.0,
    "metodo_usd": "convertito con cambio fisso indicativo GBP=1.3 USD",
    "importo_originale": "10 mld GBP"
@@ -506,7 +506,7 @@
    "da_lon": -122.121,
    "a_lat": 45.4642,
    "a_lon": 9.19,
-   "a_luogo": "Microsoft, regione cloud Italy North (area di Milano)",
+   "a_luogo": "Microsoft Italy North cloud region (Milan area)",
    "importo_usd_mld": 4.73,
    "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
    "importo_originale": "4.3 mld EUR"
@@ -589,7 +589,7 @@
    "da_lon": -122.332,
    "a_lat": 41.786,
    "a_lon": -0.8565,
-   "a_luogo": "AWS, data center di Aragona",
+   "a_luogo": "AWS Aragon data centers",
    "metodo_usd": "equivalente dato dalla fonte",
    "importo_originale": "15.7 mld EUR"
   },
@@ -680,7 +680,7 @@
    "da_lon": -79.383,
    "a_lat": 50.1758,
    "a_lon": 3.2346,
-   "a_luogo": "Brookfield-Data4, campus E-Valley di Cambrai",
+   "a_luogo": "Brookfield-Data4 E-Valley campus, Cambrai",
    "metodo_usd": "equivalente dato dalla fonte",
    "importo_originale": "20 mld EUR"
   },
@@ -708,7 +708,7 @@
    "da_lon": -79.383,
    "a_lat": 59.3763,
    "a_lon": 17.0268,
-   "a_luogo": "Brookfield, campus AI di Strängnäs",
+   "a_luogo": "Brookfield AI campus, Strängnäs",
    "metodo_usd": "equivalente dato dalla fonte",
    "importo_originale": "95 mld SEK"
   },
@@ -735,7 +735,7 @@
    "da_lon": 7.098,
    "a_lat": 48.1527,
    "a_lon": 11.5991,
-   "a_luogo": "Deutsche Telekom-Nvidia Industrial AI Cloud, Monaco",
+   "a_luogo": "Deutsche Telekom-Nvidia Industrial AI Cloud, Munich",
    "importo_usd_mld": 1.1,
    "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
    "importo_originale": "1 mld EUR"
@@ -907,7 +907,7 @@
    "da_lon": 72.878,
    "a_lat": 22.4732,
    "a_lon": 70.0552,
-   "a_luogo": "Reliance Intelligence, campus AI di Jamnagar",
+   "a_luogo": "Reliance Intelligence AI campus, Jamnagar",
    "metodo_usd": "equivalente dato dalla fonte",
    "importo_originale": "10000 mld INR"
   },
@@ -1096,7 +1096,7 @@
    "da_lon": -122.332,
    "a_lat": 35.467,
    "a_lon": 129.3564,
-   "a_luogo": "SK-AWS, data center AI di Ulsan",
+   "a_luogo": "SK-AWS AI data center, Ulsan",
    "importo_usd_mld": null,
    "metodo_usd": "importo non dichiarato",
    "importo_originale": null
@@ -1159,7 +1159,7 @@
    "da_lon": 116.407,
    "a_lat": -3.5496,
    "a_lon": -38.8111,
-   "a_luogo": "ByteDance/TikTok, data center del porto di Pecém (Ceará)",
+   "a_luogo": "ByteDance/TikTok data center, Pecém port (Ceará)",
    "metodo_usd": "equivalente dato dalla fonte",
    "importo_originale": "200 mld BRL"
   },
@@ -1349,7 +1349,7 @@
    "da_lon": -122.332,
    "a_lat": 20.5923,
    "a_lon": -100.3917,
-   "a_luogo": "AWS, regione Mexico (Central), Querétaro",
+   "a_luogo": "AWS Mexico (Central) region, Querétaro",
    "importo_usd_mld": 5.0,
    "metodo_usd": "USD dalla fonte",
    "importo_originale": "5 mld USD"
@@ -1377,7 +1377,7 @@
    "da_lon": -122.332,
    "a_lat": -33.449,
    "a_lon": -70.669,
-   "a_luogo": "AWS, nuova regione cloud del Cile",
+   "a_luogo": "AWS new Chile cloud region",
    "importo_usd_mld": 4.0,
    "metodo_usd": "USD dalla fonte",
    "importo_originale": "4 mld USD"
@@ -1408,41 +1408,6 @@
    "importo_usd_mld": 25.0,
    "metodo_usd": "USD dalla fonte",
    "importo_originale": "25 mld USD"
-  },
-  {
-   "id": "INV-50",
-   "attore": "TSMC",
-   "da_paese": "TW",
-   "da_luogo": "Hsinchu",
-   "a_paese": "US",
-   "a_rif": "AI-20261109-17",
-   "importo": 265,
-   "valuta": "USD",
-   "anno": 2026,
-   "periodo": "2020-2030 circa",
-   "settore": "chip",
-   "stato": "in corso",
-   "quadro": false,
-   "fonte": "Città di Phoenix",
-   "link": "https://www.phoenix.gov/newsroom/ced-news/tsmc-announces-additional--100-billion-investment-in-arizona.html",
-   "data_fonte": "2026-07",
-   "fonti": [
-    {
-     "fonte": "Yahoo Finance",
-     "link": "https://finance.yahoo.com/technology/articles/tsmc-makes-additional-100b-us-100000058.html",
-     "data_fonte": "2026-07"
-    }
-   ],
-   "affidabilita": "alta",
-   "note": "Piano totale: 65 mld (originari) + 100 (marzo 2025) + 100 (luglio 2026). 12 impianti tra fabbriche e impacchettamento; date delle ultime quattro fabbriche non annunciate. Segue l'accordo commerciale USA-Taiwan di gennaio 2026.",
-   "da_lat": 24.804,
-   "da_lon": 120.968,
-   "a_lat": 33.78,
-   "a_lon": -112.14,
-   "a_luogo": "TSMC Arizona Fab 21",
-   "importo_usd_mld": 265.0,
-   "metodo_usd": "USD dalla fonte",
-   "importo_originale": "265 mld USD"
   },
   {
    "id": "INV-51",
@@ -1499,34 +1464,6 @@
    "importo_usd_mld": 11.0,
    "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
    "importo_originale": "10 mld EUR"
-  },
-  {
-   "id": "INV-53",
-   "attore": "Governo USA (CHIPS Act) per Samsung",
-   "da_paese": "US",
-   "da_luogo": "Washington",
-   "a_paese": "US",
-   "a_rif": "AI-20261109-20",
-   "importo": 4.745,
-   "valuta": "USD",
-   "anno": 2024,
-   "periodo": "per tappe",
-   "settore": "chip",
-   "stato": "in corso",
-   "quadro": false,
-   "fonte": "eeNews Europe",
-   "link": "https://www.eenewseurope.com/en/samsung-texas-fab-could-start-on-2nm-in-2026",
-   "data_fonte": "2025",
-   "affidabilita": "media",
-   "note": "Contributo ridotto da 6,4 a 4,745 mld USD (dicembre 2024) con il ridimensionamento del progetto. L'investimento proprio di Samsung a Taylor ha cifre incoerenti nelle fonti (24 mld nel 2024 e altre): non inserito. Taylor: prova a fine 2026, volume nel 2027; contratto Tesla da 16,5 mld USD (acquisto di chip, non investimento).",
-   "da_lat": 38.895,
-   "da_lon": -77.037,
-   "a_lat": 30.57,
-   "a_lon": -97.42,
-   "a_luogo": "Samsung Taylor",
-   "importo_usd_mld": 4.75,
-   "metodo_usd": "USD dalla fonte",
-   "importo_originale": "4.745 mld USD"
   },
   {
    "id": "INV-54",
@@ -1614,7 +1551,7 @@
    "da_lon": 127.435,
    "a_lat": 37.1684,
    "a_lon": 127.3122,
-   "a_luogo": "SK Hynix, polo di Yongin (prima fabbrica)",
+   "a_luogo": "SK Hynix Yongin cluster (first fab)",
    "metodo_usd": "equivalente dato dalla fonte",
    "importo_originale": "21600 mld KRW"
   },
@@ -1753,7 +1690,7 @@
    "da_lon": -121.955,
    "a_lat": 52.1315,
    "a_lon": 11.6401,
-   "a_luogo": "Intel Fab 29, Magdeburgo (cancellata)",
+   "a_luogo": "Intel Fab 29, Magdeburg (cancelled)",
    "importo_usd_mld": 33.0,
    "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
    "importo_originale": "30 mld EUR"
@@ -1851,18 +1788,13 @@
  "riepilogo": {
   "avvertenza": "Annunci e spese effettive non coincidono. Le somme mettono insieme impegni di natura diversa (piani pluriennali, acquisizioni chiuse, contributi pubblici, lettere d'intenti) e cambi fissi indicativi: servono a vedere la direzione e l'ordine di grandezza dei flussi, non quanto è stato speso. Gli impegni-quadro dei governi (quadro=true) sono sommati a parte perché in parte contengono gli stessi progetti. I progetti cancellati sono esclusi. Le voci senza importo sono contate ma non sommate. Il campione è curato a mano: mancano molti flussi minori, quindi i totali sono parziali.",
   "progetti": {
-   "totale_usd_mld": 1038.3,
-   "voci": 58,
+   "totale_usd_mld": 768.5,
+   "voci": 56,
    "voci_senza_importo": 5,
    "per_paese_origine": {
-    "TW": {
-     "usd_mld": 293.0,
-     "voci": 3,
-     "voci_senza_importo": 0
-    },
     "US": {
-     "usd_mld": 270.45,
-     "voci": 30,
+     "usd_mld": 265.7,
+     "voci": 29,
      "voci_senza_importo": 1
     },
     "IN": {
@@ -1900,6 +1832,11 @@
      "voci": 2,
      "voci_senza_importo": 0
     },
+    "TW": {
+     "usd_mld": 28.0,
+     "voci": 2,
+     "voci_senza_importo": 0
+    },
     "AR": {
      "usd_mld": 25.0,
      "voci": 1,
@@ -1932,13 +1869,13 @@
     }
    },
    "per_paese_destinazione": {
-    "US": {
-     "usd_mld": 345.02,
-     "voci": 6,
-     "voci_senza_importo": 0
-    },
     "IN": {
      "usd_mld": 177.5,
+     "voci": 4,
+     "voci_senza_importo": 0
+    },
+    "US": {
+     "usd_mld": 75.27,
      "voci": 4,
      "voci_senza_importo": 0
     },
@@ -2075,8 +2012,8 @@
      "voci_senza_importo": 5
     },
     "chip": {
-     "usd_mld": 399.22,
-     "voci": 12,
+     "usd_mld": 129.47,
+     "voci": 10,
      "voci_senza_importo": 0
     },
     "fondo": {
@@ -2087,8 +2024,8 @@
    },
    "per_stato": {
     "in corso": {
-     "usd_mld": 663.97,
-     "voci": 36,
+     "usd_mld": 394.22,
+     "voci": 34,
      "voci_senza_importo": 1
     },
     "annunciato": {
@@ -2107,7 +2044,7 @@
      "voci_senza_importo": 0
     }
    },
-   "solo_internazionali_usd_mld": 758.1,
+   "solo_internazionali_usd_mld": 493.1,
    "verso_italia": [
     {
      "id": "INV-06",
@@ -2234,5 +2171,10 @@
    }
   ]
  },
- "errori": []
+ "errori": [
+  "flusso INV-50: punto di arrivo 'AI-20261109-17' non trovato",
+  "flusso INV-53: punto di arrivo 'AI-20261109-20' non trovato",
+  "flusso INV-50: missing a_lat; missing a_lon; a_lat invalid; a_lon invalid -> excluded",
+  "flusso INV-53: missing a_lat; missing a_lon; a_lat invalid; a_lon invalid -> excluded"
+ ]
 }

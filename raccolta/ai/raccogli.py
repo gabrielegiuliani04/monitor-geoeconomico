@@ -1,38 +1,41 @@
 #!/usr/bin/env python3
-"""Infrastrutture AI nel mondo e direzione degli investimenti.
+"""AI infrastructure worldwide and the direction of AI investment.
 
-Produce:
-  docs/data/ai-mondo.json       punti: data-center-ai, fab-chip, supercalcolo
-                                + quote di calcolo AI per paese (Epoch AI)
-  docs/data/investimenti.json   flussi di capitale "da -> a" + riepilogo + capex 2026
+Produces:
+  docs/data/ai-mondo.json      points worldwide (US included): data-center-ai, hub-data-center, fab-chip,
+                               packaging, attrezzature, supercalcolo + AI compute shares by country (Epoch AI)
+  docs/data/ai.json            curated subset (~60 key sites) for the fixed layer 'AI infrastructure',
+                               in the fixed-installation schema (classe 'fisso'), built from ai_selezione.json
+  docs/data/investimenti.json  capital flows "from -> to" + summary + 2026 capex (logic unchanged)
 
-Fonti automatiche (scaricate a ogni esecuzione):
-  - Epoch AI, "AI data centers" (CC BY 4.0): data_centers.zip
+Automatic sources (downloaded on every run):
+  - Epoch AI, "AI data centers" (CC BY 4.0): data_centers.zip, all countries
       https://epoch.ai/data/data_centers/data_centers.zip
-    -> data center fuori dagli USA (gli USA sono già in docs/data/ai.json)
-  - Epoch AI, "AI chip imports" (CC BY 4.0): ai_chip_trade.zip
-      https://epoch.ai/data/ai_chip_trade/ai_chip_trade.zip
-    -> quote di calcolo AI (equivalenti H100) per paese
-  - TOP500 (lista più recente, pagina pubblica): primi 20 sistemi
-      https://www.top500.org/lists/top500/list/AAAA/MM/
+  - Epoch AI, "GPU clusters" (CC BY 4.0): gpu_clusters.csv (archive frozen in 2025, with coordinates)
+      https://epoch.ai/data/gpu_clusters.csv
+  - Epoch AI, "AI chip imports" (CC BY 4.0): ai_chip_trade.zip -> AI compute shares by country
+  - TOP500 (latest list, public page): top 50 systems
 
-Voci curate a mano (stessa cartella):
-  - punti_curati.json     data center fuori dal tracker Epoch e fabbriche di chip
-  - epoch_coordinate.json coordinate dei siti Epoch (Epoch dà indirizzi, non coordinate)
-  - top500_siti.json      coordinate dei siti TOP500, centroidi e codici ISO
-  - flussi.json           flussi di investimento e capex 2026
+Hand-curated files (same folder):
+  - punti_curati.json     data centres beyond the Epoch tracker, data-centre hubs, fabs, packaging, equipment
+  - epoch_coordinate.json coordinates of Epoch tracker sites (Epoch gives addresses, not coordinates)
+  - top500_siti.json      coordinates of TOP500 sites ('posizione_sconosciuta' = not drawn)
+  - ai_selezione.json     which points go into ai.json, with the legacy ids kept
+  - flussi.json           investment flows and 2026 capex
 
-Se una fonte automatica non risponde, lo script riusa le voci dell'esecuzione
-precedente (lette dal file di uscita) e lo scrive in "errori", senza fallire.
+If an automatic source fails, the script reuses the entries of the previous run (read from the output
+file) and records it in "errori", without failing.
 
-Uso (dalla radice del repository):
-  python3 raccolta/ai/raccogli.py             scarica, unisce, valida, scrive
-  python3 raccolta/ai/raccogli.py --valida    valida solo i due file già scritti
-Solo libreria standard di Python 3.
+Usage (from the repository root):
+  python3 raccolta/ai/raccogli.py             download, merge, validate, write
+  python3 raccolta/ai/raccogli.py --valida    only validate the files already written
+Python 3 standard library only.
 """
 import csv
+import html as H
 import io
 import json
+import math
 import os
 import re
 import sys
@@ -45,33 +48,43 @@ RADICE = os.path.abspath(os.path.join(QUI, "..", ".."))
 DATI = os.path.join(RADICE, "docs", "data")
 OUT_MONDO = os.path.join(DATI, "ai-mondo.json")
 OUT_INV = os.path.join(DATI, "investimenti.json")
-AI_USA = os.path.join(DATI, "ai.json")  # sola lettura: punti USA del dossier
+OUT_AI = os.path.join(DATI, "ai.json")
 
 URL_EPOCH_DC = "https://epoch.ai/data/data_centers/data_centers.zip"
+URL_EPOCH_GPU = "https://epoch.ai/data/gpu_clusters.csv"
 URL_EPOCH_TRADE = "https://epoch.ai/data/ai_chip_trade/ai_chip_trade.zip"
 URL_TOP500 = "https://www.top500.org/lists/top500/list/{a}/{m:02d}/"
 PAGINA_EPOCH_DC = "https://epoch.ai/data/ai-data-centers"
+PAGINA_EPOCH_GPU = "https://epoch.ai/data/gpu-clusters"
 PAGINA_EPOCH_TRADE = "https://epoch.ai/data/ai-chip-imports"
-UA = {"User-Agent": "Mozilla/5.0 (monitor-geoeconomico OSINT, uso personale non commerciale)"}
+UA = {"User-Agent": "osint-data-fetcher/1.0 (personal, non-commercial)"}
+QUANTI_TOP500 = 50
+SOGLIA_GPU_H100E = 1000      # GPU clusters below this size are not drawn
+RAGGIO_DOPPIONE_KM = 3.0     # a GPU cluster this close to another drawn point is treated as the same site
 
-# Cambi fissi indicativi (USD per 1 unità), usati solo se la fonte non dà l'equivalente in USD.
-# Valori arrotondati sulla media 2025: NON sono il cambio del giorno dell'annuncio.
+# Fixed indicative exchange rates (USD per unit), used only when the source gives no USD equivalent.
 CAMBI = {"USD": 1.0, "EUR": 1.10, "GBP": 1.30, "JPY": 1 / 150, "KRW": 1 / 1400, "INR": 1 / 88,
          "BRL": 0.18, "SEK": 0.10, "CNY": 0.14}
 
-CATEGORIE = {"data-center-ai", "fab-chip", "supercalcolo"}
+CATEGORIE = {"data-center-ai", "hub-data-center", "fab-chip", "packaging", "attrezzature", "supercalcolo"}
 STATI_PUNTI = {"operativo", "operativo-parziale", "in-costruzione", "annunciato", "sospeso", "cancellato"}
 STATI_FLUSSI = {"annunciato", "in corso", "completato", "sospeso", "cancellato"}
 SETTORI = {"data center", "chip", "energia per AI", "fondo"}
 AFFIDABILITA = {"alta", "media", "bassa"}
 RE_DATA = re.compile(r"^\d{4}(-\d{2}(-\d{2})?)?$")
 RE_PAESE = re.compile(r"^[A-Z]{2}(\+[A-Z]{2})*$")
+# ai.json (fixed layer): categories understood by docs/index.html (AI_CAT) and theatre of each country
+CAT_AI_JSON = {"data-center-ai": "data-center", "hub-data-center": "data-center", "fab-chip": "fab-chip",
+               "packaging": "fab-chip", "attrezzature": "fab-chip", "supercalcolo": "supercomputer"}
+TEATRO_MO = {"SA", "AE", "QA", "BH", "KW", "OM", "IL", "JO", "EG", "IR", "IQ"}
+TEATRO_NATO = {"US", "CA", "GB", "FR", "DE", "NL", "BE", "LU", "DK", "NO", "SE", "FI", "IS", "IE", "ES", "PT", "PL",
+               "EE", "LV", "LT", "CZ", "SK", "HU", "AT", "CH", "GR", "TR", "RO", "BG", "SI", "HR"}
 
 ADESSO = datetime.now(timezone.utc)
 OGGI = ADESSO.strftime("%Y-%m-%d")
 
 
-# ----------------------------------------------------------------- utilità
+# ----------------------------------------------------------------- utilities
 def leggi_json(percorso, predefinito=None):
     try:
         with open(percorso, encoding="utf-8") as f:
@@ -109,8 +122,14 @@ def tondo(v, n=1):
     return None if v is None else round(v, n)
 
 
+def km(a, b):
+    la1, lo1, la2, lo2 = map(math.radians, (a["lat"], a["lon"], b["lat"], b["lon"]))
+    h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+    return 6371 * 2 * math.asin(math.sqrt(h))
+
+
 def pulisci_tag(testo):
-    """Epoch aggiunge '#confident', '#likely', '#speculative' ai nomi: li sposto in una nota."""
+    """Epoch appends '#confident', '#likely', '#speculative' to names: move them to a note."""
     if not testo:
         return "", ""
     nomi, tag = [], []
@@ -126,7 +145,7 @@ def pulisci_tag(testo):
 
 
 def in_usd(importo, valuta, usd_fonte=None):
-    """Restituisce (usd_mld, metodo)."""
+    """Returns (usd_bn, method). Method strings stay in Italian for investimenti.json compatibility."""
     if usd_fonte is not None:
         return round(float(usd_fonte), 2), "equivalente dato dalla fonte"
     if importo is None or valuta is None:
@@ -138,32 +157,30 @@ def in_usd(importo, valuta, usd_fonte=None):
     return round(float(importo) * CAMBI[valuta], 2), f"convertito con cambio fisso indicativo {valuta}={CAMBI[valuta]:.5g} USD"
 
 
-# ----------------------------------------------------------------- Epoch: data center
+# ----------------------------------------------------------------- Epoch: data centres (all countries)
 def epoch_data_center(coord, iso, errori):
-    """Data center fuori dagli USA dal tracker Epoch. Restituisce (punti, data_dato) o (None, None)."""
+    """All sites of the Epoch AI data-centre tracker. Returns (points, info) or (None, None)."""
     try:
         z = zipfile.ZipFile(io.BytesIO(scarica(URL_EPOCH_DC)))
         dc = list(csv.DictReader(io.TextIOWrapper(z.open("data_centers.csv"), encoding="utf-8")))
         tl = list(csv.DictReader(io.TextIOWrapper(z.open("data_center_timelines.csv"), encoding="utf-8")))
-    except Exception as e:  # rete, zip, csv
-        errori.append(f"Epoch AI data center: download non riuscito ({e}); riuso le voci precedenti")
+    except Exception as e:  # network, zip, csv
+        errori.append(f"Epoch AI data centres: download failed ({e}); reusing previous entries")
         return None, None
     tempi = {}
     for r in tl:
         tempi.setdefault(r.get("Data center", ""), []).append(r)
-    punti, usa = [], 0
+    punti, per_paese = [], {}
     for r in dc:
         nome = (r.get("Name") or "").strip()
         paese_nome = (r.get("Country") or "").strip()
         if not nome:
             continue
-        if paese_nome == "United States":
-            usa += 1
-            continue
+        per_paese[paese_nome] = per_paese.get(paese_nome, 0) + 1
         c = coord.get(nome)
         if not c:
-            errori.append(f"Epoch AI: sito nuovo senza coordinate, non in mappa: '{nome}' ({paese_nome}). "
-                          "Aggiungerlo a raccolta/ai/epoch_coordinate.json")
+            errori.append(f"Epoch AI: new site without coordinates, not mapped: '{nome}' ({paese_nome}). "
+                          "Add it to raccolta/ai/epoch_coordinate.json")
             continue
         righe = sorted(tempi.get(nome, []), key=lambda t: t.get("Date", ""))
         passate = [t for t in righe if t.get("Date", "") <= OGGI]
@@ -185,31 +202,34 @@ def epoch_data_center(coord, iso, errori):
         utenti, tag_u = pulisci_tag(r.get("Users", ""))
         progetto, _ = pulisci_tag(r.get("Project", ""))
         investitori, _ = pulisci_tag(r.get("Investors", ""))
+        energia, _ = pulisci_tag(r.get("Energy companies", ""))
         costo = num(r.get("Current total capital cost (2025 USD billions)"))
         h100 = num(r.get("Current H100 equivalents"))
         stato_testo = re.sub(r"\s+", " ", (ultimo.get("Construction status") or "")).strip()
-        stato_testo = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", stato_testo)  # toglie i link markdown
+        stato_testo = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", stato_testo)  # strip markdown links
         if len(stato_testo) > 320:
             stato_testo = stato_testo[:317].rstrip() + "..."
         note = []
         if c.get("note"):
             note.append(c["note"])
+        if data_max:
+            note.append(f"Epoch projects {mw_max:.0f} MW IT by {data_max}.")
         if stato_testo:
-            note.append(f"Ultima osservazione Epoch ({ultimo.get('Date', '?')}, in inglese): {stato_testo}")
+            note.append(f"Latest Epoch observation ({ultimo.get('Date', '?')}): {stato_testo}")
         if tag_p or tag_u:
-            note.append("Certezza Epoch su proprietario/utilizzatori: " + "; ".join(x for x in (tag_p, tag_u) if x))
+            note.append("Epoch certainty on owner/users: " + "; ".join(x for x in (tag_p, tag_u) if x))
         anno = int(primo[:4]) if primo else (int(data_max[:4]) if data_max else None)
         punti.append({
             "id": "EP-" + slug(nome),
             "categoria": "data-center-ai",
             "nome": nome,
             "paese": iso.get(paese_nome, ""),
-            "luogo": (r.get("Address") or "").strip() or None,
+            "luogo": re.sub(r"\s+", " ", (r.get("Address") or "")).strip() or None,
             "lat": c["lat"], "lon": c["lon"],
-            "origine_coord": "stimata: " + c.get("origine", ""),
+            "origine_coord": "estimated: " + c.get("origine", ""),
             "precisione_km": c.get("precisione_km"),
             "mw": tondo(mw_att, 0),
-            "mw_tipo": "potenza IT attuale (stima Epoch)",
+            "mw_tipo": "current IT power (Epoch estimate)",
             "mw_previsto": tondo(mw_max, 0) if data_max else None,
             "data_mw_previsto": data_max,
             "h100e": int(h100) if h100 else None,
@@ -217,6 +237,7 @@ def epoch_data_center(coord, iso, errori):
             "utilizzatori": utenti or None,
             "progetto": progetto or None,
             "investitori": investitori or None,
+            "energia": energia or None,
             "stato": stato,
             "anno": anno,
             "importo": None, "valuta": None,
@@ -228,26 +249,109 @@ def epoch_data_center(coord, iso, errori):
             "note": " ".join(note),
             "origine_dato": "epoch",
         })
-    data_dato = OGGI
-    return punti, {"siti_usa_esclusi": usa, "data_dato": data_dato}
+    return punti, {"siti_per_paese": dict(sorted(per_paese.items(), key=lambda kv: -kv[1])), "data_dato": OGGI}
 
 
-# ----------------------------------------------------------------- Epoch: quote per paese
+# ----------------------------------------------------------------- Epoch: GPU clusters (2025 archive)
+def epoch_gpu_cluster(iso, gia, errori):
+    """Clusters from Epoch's GPU clusters archive that have real coordinates and are not already drawn."""
+    try:
+        righe = list(csv.DictReader(io.StringIO(scarica(URL_EPOCH_GPU).decode("utf-8"))))
+    except Exception as e:
+        errori.append(f"Epoch AI GPU clusters: download failed ({e}); reusing previous entries")
+        return None, None
+    conta_coord = {}
+    for r in righe:
+        la, lo = num(r.get("latitude")), num(r.get("longitude"))
+        if la is not None and lo is not None:
+            k = (round(la, 3), round(lo, 3))
+            conta_coord[k] = conta_coord.get(k, 0) + 1
+    cand, scartati = [], {"senza_coordinate": 0, "centroide_paese": 0, "sotto_soglia": 0, "superati_o_dismessi": 0}
+    for r in righe:
+        if (r.get("Superseded by") or "").strip() or (r.get("Decommissioned Date (if applicable)") or "").strip() \
+                or (r.get("Exclude") or "").strip():
+            scartati["superati_o_dismessi"] += 1
+            continue
+        la, lo = num(r.get("latitude")), num(r.get("longitude"))
+        luogo = re.sub(r"\s+", " ", (r.get("Location") or "")).strip()
+        paese_nome = (r.get("Country") or "").strip()
+        if la is None or lo is None:
+            scartati["senza_coordinate"] += 1
+            continue
+        if not luogo or luogo.lower() == paese_nome.lower() or conta_coord.get((round(la, 3), round(lo, 3)), 0) >= 10:
+            scartati["centroide_paese"] += 1   # Epoch puts unknown sites on the country centroid: not a position
+            continue
+        h = num(r.get("H100 equivalents")) or 0
+        if h < SOGLIA_GPU_H100E:
+            scartati["sotto_soglia"] += 1
+            continue
+        cand.append((h, r, la, lo, luogo, paese_nome))
+    cand.sort(key=lambda x: -x[0])
+    punti, doppioni = [], 0
+    for h, r, la, lo, luogo, paese_nome in cand:
+        p = {"lat": round(la, 4), "lon": round(lo, 4)}
+        if any(km(p, q) <= RAGGIO_DOPPIONE_KM for q in gia + punti):
+            doppioni += 1
+            continue
+        nome = (r.get("Name") or "").strip()
+        mw = num(r.get("Power Capacity (MW)"))
+        data = (r.get("First Operational Date") or "")[:10]
+        prop, _ = pulisci_tag(r.get("Owner", ""))
+        utenti, _ = pulisci_tag(r.get("Users", ""))
+        chip = (r.get("Chip type (primary)") or "").strip()
+        nchip = num(r.get("Chip quantity (primary)"))
+        fonte1 = (r.get("Source 1") or "").strip()
+        p.update({
+            "id": "GPU-" + slug(nome)[:60],
+            "categoria": "data-center-ai",
+            "tipo": "GPU cluster (Epoch archive, 2025)",
+            "nome": nome,
+            "paese": iso.get(paese_nome, iso.get(paese_nome.replace("United States of America", "United States"), "")),
+            "luogo": luogo[:160],
+            "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
+            "precisione_km": 3,
+            "mw": tondo(mw, 0) if mw else None,
+            "mw_tipo": "cluster power capacity (Epoch estimate)" if mw else None,
+            "h100e": int(h),
+            "proprietario": prop or None,
+            "utilizzatori": utenti or None,
+            "stato": "operativo",
+            "anno": int(data[:4]) if data[:4].isdigit() else None,
+            "importo": None, "valuta": None,
+            "fonte": "Epoch AI, GPU clusters (archive)",
+            "link": fonte1 if fonte1.startswith("https://") else PAGINA_EPOCH_GPU,
+            "data_fonte": data if RE_DATA.match(data) and data <= OGGI else "2025",
+            "affidabilita": "media" if (r.get("Certainty") or "") == "Likely" else "alta",
+            "note": (f"{int(nchip):,} x {chip}. " if nchip and chip else "")
+                    + f"First operational {data or 'n/a'}. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
+            "origine_dato": "epoch-gpu",
+        })
+        if p["link"] != PAGINA_EPOCH_GPU:
+            p["fonti"] = [{"fonte": "Epoch AI, GPU clusters", "link": PAGINA_EPOCH_GPU, "data_fonte": "2025"}]
+        punti.append(p)
+    scartati["doppioni_di_siti_gia_in_mappa"] = doppioni
+    return punti, {"cluster_letti": len(righe), "cluster_in_mappa": len(punti), "scartati": scartati,
+                   "soglia_h100e": SOGLIA_GPU_H100E}
+
+
+# ----------------------------------------------------------------- Epoch: shares by country
 def epoch_quote(errori):
     try:
         z = zipfile.ZipFile(io.BytesIO(scarica(URL_EPOCH_TRADE)))
         righe = list(csv.DictReader(io.TextIOWrapper(z.open("by_country.csv"), encoding="utf-8")))
     except Exception as e:
-        errori.append(f"Epoch AI quote per paese: download non riuscito ({e}); riuso il dato precedente")
+        errori.append(f"Epoch AI shares by country: download failed ({e}); reusing previous data")
         return None
+
     def chiave(q):
         a, t = q.split()
         return int(a), int(t[1])
     trimestri = sorted({r["Quarter"] for r in righe if r.get("Quarter")}, key=chiave)
     definitivi = [q for q in trimestri if any(r["Quarter"] == q and r.get("Provisional") == "No" for r in righe)]
     if not definitivi:
-        errori.append("Epoch AI quote: nessun trimestre definitivo")
+        errori.append("Epoch AI shares: no final quarter")
         return None
+
     def quote(q):
         rr = [r for r in righe if r["Quarter"] == q]
         tot_c = sum(num(r.get("Cumulative compute capacity (H100e)")) or 0 for r in rr)
@@ -264,11 +368,9 @@ def epoch_quote(errori):
         return out, tot_c, tot_q
     q = definitivi[-1]
     paesi, tot_c, tot_q = quote(q)
-    principali = paesi[:20]
-    altri_c = sum(p["h100e_cumulati"] for p in paesi[20:])
     serie = {}
     for qq in trimestri[-12:]:
-        pp, tc, _ = quote(qq)
+        pp, _, _ = quote(qq)
         serie[qq] = {p["iso"] or p["paese"]: p["quota_cumulata_pct"] for p in pp[:6]}
     return {
         "trimestre": q,
@@ -276,24 +378,23 @@ def epoch_quote(errori):
         "ultimo_trimestre_disponibile": trimestri[-1],
         "totale_h100e_cumulati": int(tot_c),
         "totale_h100e_trimestre": int(tot_q),
-        "paesi": principali,
-        "altri_paesi_h100e_cumulati": int(altri_c),
+        "paesi": paesi[:20],
+        "altri_paesi_h100e_cumulati": int(sum(p["h100e_cumulati"] for p in paesi[20:])),
         "serie_quote_cumulate_pct": serie,
         "fonte": "Epoch AI, Data on AI chip imports (CC BY 4.0)",
         "link": PAGINA_EPOCH_TRADE,
-        "nota": "Quote del calcolo AI (equivalenti H100) arrivato in ciascun paese dal 2022, stimate da Epoch "
-                "dalle statistiche doganali. L'Unione europea è un unico aggregato. Taiwan non compare come destinazione "
-                "perché esporta. È un'indicazione, non un censimento: Epoch stima di coprire una parte del totale.",
+        "nota": "Shares of AI compute (H100 equivalents) delivered to each country since 2022, estimated by Epoch from "
+                "customs statistics. The European Union is a single aggregate. Taiwan does not appear as a destination "
+                "because it exports. An indication, not a census: Epoch estimates it covers part of the total.",
     }
 
 
 # ----------------------------------------------------------------- TOP500
-def top500(siti, errori, quanti=20):
+def top500(siti, errori, quanti=QUANTI_TOP500):
+    """Returns (points, list, systems without a public position) or (None, None, None)."""
     anno = ADESSO.year
-    tentativi = []
-    for a, m in ((anno, 11), (anno, 6), (anno - 1, 11), (anno - 1, 6)):
-        if (a, m) <= (ADESSO.year, ADESSO.month):
-            tentativi.append((a, m))
+    tentativi = [(a, m) for a, m in ((anno, 11), (anno, 6), (anno - 1, 11), (anno - 1, 6))
+                 if (a, m) <= (ADESSO.year, ADESSO.month)]
     html_txt, lista = None, None
     for a, m in tentativi:
         try:
@@ -304,13 +405,10 @@ def top500(siti, errori, quanti=20):
             html_txt, lista = t, (a, m)
             break
     if not html_txt:
-        errori.append("TOP500: nessuna lista scaricabile; riuso le voci precedenti")
-        return None, None
-    import html as H
-    usa_ai = {p.get("nome", "").split(" (")[0].lower() for p in (leggi_json(AI_USA, {}) or {}).get("punti", [])
-              if p.get("categoria") == "supercomputer"}
-    centroidi, iso = siti.get("centroidi_paese", {}), siti.get("iso", {})
-    punti = []
+        errori.append("TOP500: no list could be downloaded; reusing previous entries")
+        return None, None, None
+    iso = siti.get("iso", {})
+    punti, senza = [], []
     for riga in re.findall(r"<tr>(.*?)</tr>", html_txt, re.S)[1:]:
         td = re.findall(r"<td[^>]*>(.*?)</td>", riga, re.S)
         if len(td) < 6:
@@ -321,93 +419,93 @@ def top500(siti, errori, quanti=20):
             continue
         if rango > quanti:
             break
-        m_sys = re.search(r'href="(/system/\d+)">\s*<b>(.*?)</b>\s*-\s*(.*?)</a>\s*(.*?)<br', td[1], re.S)
+        m_sys = re.search(r'href="(/system/\d+)">\s*(?:<b>(.*?)</b>\s*-\s*)?(.*?)</a>\s*(.*?)<br', td[1], re.S)
         m_site = re.search(r'href="/site/(\d+)">(.*?)</a>\s*<br>\s*(.*?)\s*$', td[1].strip(), re.S)
         if not m_sys or not m_site:
-            errori.append(f"TOP500: riga {rango} non interpretabile")
+            errori.append(f"TOP500: row {rango} could not be parsed")
             continue
-        nome = H.unescape(m_sys.group(2)).strip()
         sistema = re.sub(r"\s+", " ", H.unescape(m_sys.group(3))).strip().rstrip(",")
-        costruttore = re.sub(r"\s+", " ", H.unescape(m_sys.group(4))).strip()
         sito_id, sito_nome = m_site.group(1), H.unescape(m_site.group(2)).strip()
+        nome = H.unescape(m_sys.group(2) or "").strip() or f"Unnamed system ({sito_nome})"
+        costruttore = re.sub(r"\s+", " ", H.unescape(m_sys.group(4))).strip()
         paese_nome = H.unescape(re.sub(r"<[^>]+>", "", m_site.group(3))).strip()
         valori = [re.sub(r"[^\d.]", "", re.sub(r"<[^>]+>", "", v)) for v in td[2:6]]
         core, rmax, rpeak, kw = (num(v) for v in valori)
         s = siti.get("siti", {}).get(sito_id)
-        if s:
-            lat, lon, prec, orig, luogo = s["lat"], s["lon"], s["precisione_km"], s["origine"], s["luogo"]
-        else:
-            cc = centroidi.get(paese_nome)
-            if not cc:
-                errori.append(f"TOP500: sito {sito_id} ({sito_nome}, {paese_nome}) senza coordinate né centroide; escluso")
-                continue
-            lat, lon, prec, orig, luogo = cc[0], cc[1], 1000, "centroide-paese: sito nuovo non ancora localizzato", sito_nome
-            errori.append(f"TOP500: sito nuovo {sito_id} ({sito_nome}) messo sul centroide del paese; "
-                          "aggiungerlo a raccolta/ai/top500_siti.json")
+        base = {"rango_top500": rango, "nome": nome, "proprietario": sito_nome, "paese": iso.get(paese_nome, ""),
+                "rmax_pflops": rmax, "link": "https://www.top500.org" + m_sys.group(1)}
+        if not s:
+            errori.append(f"TOP500: new site {sito_id} ({sito_nome}, {paese_nome}) without coordinates: not mapped. "
+                          "Add it to raccolta/ai/top500_siti.json")
+            senza.append(dict(base, motivo="site not yet in top500_siti.json"))
+            continue
+        if s.get("posizione_sconosciuta"):
+            senza.append(dict(base, motivo=s.get("luogo", "site not public")))
+            continue
         punti.append({
             "id": f"T500-{lista[0]}{lista[1]:02d}-{rango:02d}",
             "categoria": "supercalcolo",
             "nome": nome,
             "paese": iso.get(paese_nome, ""),
-            "luogo": luogo,
-            "lat": lat, "lon": lon,
-            "origine_coord": orig if orig.startswith(("stimata", "centroide", "coordinate")) else "stimata: " + orig,
-            "precisione_km": prec,
+            "luogo": s["luogo"],
+            "lat": s["lat"], "lon": s["lon"],
+            "origine_coord": s["origine"],
+            "precisione_km": s["precisione_km"],
             "rango_top500": rango,
             "rmax_pflops": rmax, "rpeak_pflops": rpeak,
             "potenza_kw": kw, "core": int(core) if core else None,
             "mw": round(kw / 1000, 1) if kw else None,
-            "mw_tipo": "potenza misurata durante il test Linpack (TOP500)" if kw else "non dichiarata alla TOP500",
+            "mw_tipo": "power measured during the Linpack run (TOP500)" if kw else "not reported to TOP500",
             "sistema": sistema,
             "proprietario": sito_nome,
             "costruttore": costruttore or None,
             "stato": "operativo",
             "anno": None,
             "importo": None, "valuta": None,
-            "fonte": f"TOP500, lista {lista[0]}-{lista[1]:02d}",
+            "fonte": f"TOP500, list {lista[0]}-{lista[1]:02d}",
             "link": "https://www.top500.org" + m_sys.group(1),
             "data_fonte": f"{lista[0]}-{lista[1]:02d}",
             "affidabilita": "alta",
-            "duplicato_ai_json": nome.lower() in usa_ai,
-            "note": (f"{rmax / 1000:.3f} exaflop (Rmax)" if rmax else "")
-                    + (". Già in ai.json (dossier USA): non disegnarlo due volte" if nome.lower() in usa_ai else ""),
+            "note": f"Rank {rango} in the TOP500 of {lista[0]}-{lista[1]:02d}." + (f" {rmax / 1000:.3f} exaflop/s (Rmax)." if rmax else ""),
             "origine_dato": "top500",
         })
-    return punti, f"{lista[0]}-{lista[1]:02d}"
+    return punti, f"{lista[0]}-{lista[1]:02d}", senza
 
 
-# ----------------------------------------------------------------- validazione
+# ----------------------------------------------------------------- validation
 def valida_punto(p):
     e = []
     for k in ("id", "nome", "paese", "categoria", "lat", "lon", "stato", "fonte", "link", "data_fonte", "affidabilita"):
         if p.get(k) in (None, ""):
-            e.append(f"manca {k}")
+            e.append(f"missing {k}")
     lat, lon = p.get("lat"), p.get("lon")
     if not isinstance(lat, (int, float)) or not -90 <= lat <= 90:
-        e.append("lat non valida")
+        e.append("lat invalid")
     if not isinstance(lon, (int, float)) or not -180 <= lon <= 180:
-        e.append("lon non valida")
+        e.append("lon invalid")
     if p.get("categoria") not in CATEGORIE:
-        e.append(f"categoria '{p.get('categoria')}' non ammessa")
+        e.append(f"category '{p.get('categoria')}' not allowed")
     if p.get("stato") not in STATI_PUNTI:
-        e.append(f"stato '{p.get('stato')}' non ammesso")
+        e.append(f"status '{p.get('stato')}' not allowed")
     if p.get("affidabilita") not in AFFIDABILITA:
-        e.append("affidabilita non ammessa")
+        e.append("affidabilita not allowed")
     if p.get("paese") and not RE_PAESE.match(p["paese"]):
-        e.append("paese non ISO a 2 lettere")
+        e.append("paese not a 2-letter ISO code")
     d = p.get("data_fonte")
     if d and (not RE_DATA.match(str(d)) or str(d) > OGGI):
-        e.append(f"data_fonte '{d}' non valida o futura")
+        e.append(f"data_fonte '{d}' invalid or in the future")
     a = p.get("anno")
     if a is not None and not (isinstance(a, int) and 2000 <= a <= 2040):
-        e.append("anno non valido")
+        e.append("anno invalid")
     if p.get("link") and not str(p["link"]).startswith("https://"):
-        e.append("link non https")
+        e.append("link not https")
     if p.get("precisione_km") is None:
-        e.append("manca precisione_km")
+        e.append("missing precisione_km")
+    if not p.get("origine_coord"):
+        e.append("missing origine_coord")
     for f in p.get("fonti") or []:
         if f.get("data_fonte") and (not RE_DATA.match(str(f["data_fonte"])) or str(f["data_fonte"]) > OGGI):
-            e.append(f"data di una fonte secondaria non valida: {f.get('data_fonte')}")
+            e.append(f"date of a secondary source invalid: {f.get('data_fonte')}")
     return e
 
 
@@ -416,33 +514,46 @@ def valida_flusso(f):
     for k in ("id", "attore", "da_paese", "a_paese", "da_lat", "da_lon", "a_lat", "a_lon", "anno", "settore",
               "stato", "fonte", "link", "data_fonte", "affidabilita"):
         if f.get(k) in (None, ""):
-            e.append(f"manca {k}")
+            e.append(f"missing {k}")
     for k in ("da_lat", "a_lat"):
         if not isinstance(f.get(k), (int, float)) or not -90 <= f[k] <= 90:
-            e.append(f"{k} non valida")
+            e.append(f"{k} invalid")
     for k in ("da_lon", "a_lon"):
         if not isinstance(f.get(k), (int, float)) or not -180 <= f[k] <= 180:
-            e.append(f"{k} non valida")
+            e.append(f"{k} invalid")
     for k in ("da_paese", "a_paese"):
         if f.get(k) and not RE_PAESE.match(f[k]) and f[k] != "EU":
-            e.append(f"{k} '{f[k]}' non ISO")
+            e.append(f"{k} '{f[k]}' not ISO")
     if f.get("settore") not in SETTORI:
-        e.append(f"settore '{f.get('settore')}' non ammesso")
+        e.append(f"settore '{f.get('settore')}' not allowed")
     if f.get("stato") not in STATI_FLUSSI:
-        e.append(f"stato '{f.get('stato')}' non ammesso")
+        e.append(f"stato '{f.get('stato')}' not allowed")
     if f.get("affidabilita") not in AFFIDABILITA:
-        e.append("affidabilita non ammessa")
+        e.append("affidabilita not allowed")
     d = f.get("data_fonte")
     if d and (not RE_DATA.match(str(d)) or str(d) > OGGI):
-        e.append(f"data_fonte '{d}' non valida o futura")
+        e.append(f"data_fonte '{d}' invalid or in the future")
     if not isinstance(f.get("anno"), int) or not 2015 <= f["anno"] <= 2030:
-        e.append("anno non valido")
+        e.append("anno invalid")
     if f.get("importo") is not None and (not isinstance(f["importo"], (int, float)) or f["importo"] <= 0):
-        e.append("importo non positivo")
+        e.append("importo not positive")
     if f.get("importo") is not None and f.get("valuta") not in CAMBI:
-        e.append(f"valuta '{f.get('valuta')}' senza cambio")
+        e.append(f"valuta '{f.get('valuta')}' without exchange rate")
     if f.get("link") and not str(f["link"]).startswith("https://"):
-        e.append("link non https")
+        e.append("link not https")
+    return e
+
+
+def valida_ai(p):
+    e = []
+    for k in ("id", "classe", "categoria", "nome", "appartenenza", "stato", "lat", "lon", "teatro", "paese",
+              "fonte", "link", "data_fonte", "affidabilita", "precisione_km", "origine_coord"):
+        if p.get(k) in (None, ""):
+            e.append(f"missing {k}")
+    if p.get("categoria") not in set(CAT_AI_JSON.values()):
+        e.append("category not understood by the map (AI_CAT)")
+    if not isinstance(p.get("lat"), (int, float)) or not isinstance(p.get("lon"), (int, float)):
+        e.append("coordinates invalid")
     return e
 
 
@@ -451,15 +562,84 @@ def filtra(voci, funzione, errori, etichetta):
     for v in voci:
         e = funzione(v)
         if e:
-            gravi = [x for x in e if x.startswith(("manca lat", "manca lon", "lat ", "lon ", "da_l", "a_l", "manca da_l", "manca a_l"))]
-            errori.append(f"{etichetta} {v.get('id', '?')}: " + "; ".join(e) + (" -> escluso" if gravi else ""))
+            gravi = [x for x in e if x.startswith(("missing lat", "missing lon", "lat ", "lon ", "da_l", "a_l",
+                                                   "missing da_l", "missing a_l", "coordinates"))]
+            errori.append(f"{etichetta} {v.get('id', '?')}: " + "; ".join(e) + (" -> excluded" if gravi else ""))
             if gravi:
                 continue
         buone.append(v)
     return buone
 
 
-# ----------------------------------------------------------------- investimenti
+# ----------------------------------------------------------------- ai.json (curated subset)
+def teatro(paese):
+    if paese == "IT":
+        return "IT"
+    if paese in TEATRO_MO:
+        return "MO"
+    if paese in TEATRO_NATO:
+        return "NATO"
+    return "ALTRO"
+
+
+def costruisci_ai_json(elementi, selezione, errori):
+    indice = {p["id"]: p for p in elementi}
+    punti = []
+    for s in selezione.get("voci", []):
+        p = indice.get(s["rif"])
+        if not p:
+            errori.append(f"ai.json: point '{s['rif']}' not found in ai-mondo.json; entry {s['id']} skipped")
+            continue
+        stato = p["stato"]
+        note = s.get("note") or p.get("note") or ""
+        if stato == "operativo-parziale":
+            stato, note = "operativo", "Partly operational. " + note
+        mw = p.get("mw")
+        testa = []
+        if mw:
+            testa.append(f"{mw:g} MW ({p.get('mw_tipo') or 'power'})")
+        if p.get("mw_previsto"):
+            testa.append(f"{p['mw_previsto']:g} MW planned by {p.get('data_mw_previsto')}")
+        if p.get("h100e"):
+            testa.append(f"{p['h100e']:,} H100-equivalents")
+        if p.get("rmax_pflops"):
+            testa.append(f"{p['rmax_pflops']:g} PFlop/s Rmax, TOP500 rank {p.get('rango_top500')}")
+        if p.get("nodo"):
+            testa.append(p["nodo"])
+        if p.get("proprietario"):
+            testa.append("Owner: " + p["proprietario"])
+        fonti = [{"fonte": p["fonte"], "link": p["link"], "data_fonte": p["data_fonte"]}] + list(p.get("fonti") or [])
+        q = {
+            "id": s["id"],
+            "classe": "fisso",
+            "categoria": CAT_AI_JSON[p["categoria"]],
+            "nome": s.get("nome") or p.get("nome_en") or p["nome"],
+            "appartenenza": p["paese"],
+            "stato": stato,
+            "data_evento": OGGI,
+            "lat": p["lat"], "lon": p["lon"],
+            "origine_coord": p.get("origine_coord"),
+            "precisione_km": p.get("precisione_km"),
+            "teatro": teatro(p["paese"]),
+            "paese": p["paese"],
+            "regione": p.get("luogo"),
+            "fonte": p["fonte"],
+            "link": p["link"],
+            "data_fonte": p["data_fonte"],
+            "affidabilita": p["affidabilita"],
+            "note": (". ".join(testa) + ". " if testa else "") + note,
+            "fonti": fonti,
+            "rif_ai_mondo": p["id"],
+            "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+        }
+        if p["paese"] == "US":
+            q["dossier"] = "stati-uniti"
+        punti.append(q)
+        p["duplicato_ai_json"] = True
+    return punti
+
+
+# ----------------------------------------------------------------- investment flows (logic unchanged)
 def costruisci_flussi(fl, indice_punti, errori):
     luoghi = fl.get("luoghi", {})
     out = []
@@ -535,30 +715,41 @@ def riepilogo(flussi):
     }
 
 
-# ----------------------------------------------------------------- principale
+# ----------------------------------------------------------------- main
+def conteggi(elementi):
+    cat, paese, orig, stato = {}, {}, {}, {}
+    for p in elementi:
+        cat[p["categoria"]] = cat.get(p["categoria"], 0) + 1
+        paese[p["paese"]] = paese.get(p["paese"], 0) + 1
+        orig[p["origine_dato"]] = orig.get(p["origine_dato"], 0) + 1
+        stato[p["stato"]] = stato.get(p["stato"], 0) + 1
+    ordina = lambda d: dict(sorted(d.items(), key=lambda kv: -kv[1]))
+    return {"totale": len(elementi), "per_categoria": ordina(cat), "per_paese": ordina(paese),
+            "per_origine": ordina(orig), "per_stato": ordina(stato)}
+
+
 def principale():
     errori_m, errori_i = [], []
     curati = leggi_json(os.path.join(QUI, "punti_curati.json"), {})
     coord = (leggi_json(os.path.join(QUI, "epoch_coordinate.json"), {}) or {}).get("siti", {})
     siti = leggi_json(os.path.join(QUI, "top500_siti.json"), {}) or {}
+    selezione = leggi_json(os.path.join(QUI, "ai_selezione.json"), {}) or {}
     fl = leggi_json(os.path.join(QUI, "flussi.json"), {}) or {}
     precedente = leggi_json(OUT_MONDO, {}) or {}
     prec_el = precedente.get("elementi", [])
+    meta_prec = precedente.get("meta", {}) or {}
+    iso = siti.get("iso", {})
 
-    # Epoch data center
-    ep, info_ep = epoch_data_center(coord, siti.get("iso", {}), errori_m)
+    ep, info_ep = epoch_data_center(coord, iso, errori_m)
     if ep is None:
         ep = [p for p in prec_el if p.get("origine_dato") == "epoch"]
-        info_ep = (precedente.get("meta", {}) or {}).get("epoch", {})
-    # TOP500
-    t5, lista = top500(siti, errori_m)
+        info_ep = meta_prec.get("epoch", {})
+    t5, lista, senza = top500(siti, errori_m)
     if t5 is None:
         t5 = [p for p in prec_el if p.get("origine_dato") == "top500"]
-        lista = (precedente.get("meta", {}) or {}).get("top500_lista")
-    # Quote Epoch
+        lista, senza = meta_prec.get("top500_lista"), precedente.get("senza_posizione", [])
     quote = epoch_quote(errori_m) or precedente.get("quote_paesi")
 
-    # Voci curate
     cur = []
     for p in curati.get("punti", []):
         q = dict(p)
@@ -566,41 +757,64 @@ def principale():
         q["origine_dato"] = "curato"
         cur.append(q)
 
-    elementi = filtra(cur + ep + t5, valida_punto, errori_m, "punto")
-    ids = [p["id"] for p in elementi]
-    for d in {i for i in ids if ids.count(i) > 1}:
-        errori_m.append(f"id duplicato: {d}")
+    gia = [{"lat": p["lat"], "lon": p["lon"]} for p in cur + ep + t5
+           if p.get("categoria") in ("data-center-ai", "supercalcolo") and isinstance(p.get("lat"), (int, float))]
+    gpu, info_gpu = epoch_gpu_cluster(iso, gia, errori_m)
+    if gpu is None:
+        gpu = [p for p in prec_el if p.get("origine_dato") == "epoch-gpu"]
+        info_gpu = meta_prec.get("epoch_gpu", {})
 
-    conta = {}
+    elementi = filtra(cur + ep + gpu + t5, valida_punto, errori_m, "point")
+    ids = [p["id"] for p in elementi]
+    for d in sorted({i for i in ids if ids.count(i) > 1}):
+        errori_m.append(f"duplicate id: {d}")
+
+    # ai.json first: it marks the points it uses (duplicato_ai_json)
+    ai_punti = filtra(costruisci_ai_json(elementi, selezione, errori_m), valida_ai, errori_m, "ai.json")
+    ai_doc = {
+        "aggiornato": OGGI,
+        "nota": ("Curated selection of the most important AI sites worldwide for the fixed layer 'AI infrastructure' "
+                 "(fixed-installation schema). Every entry is a copy of a point in ai-mondo.json (field rif_ai_mondo), "
+                 "chosen in raccolta/ai/ai_selezione.json; ids of the November 2026 US dossier are kept. "
+                 "Categories mapped to the map's AI_CAT: data-center, fab-chip (fabs, packaging, equipment), supercomputer."),
+        "punti": ai_punti,
+    }
+    scrivi_json(OUT_AI, ai_doc)
+
     for p in elementi:
-        conta[p["categoria"]] = conta.get(p["categoria"], 0) + 1
+        p.setdefault("duplicato_ai_json", False)
     mondo = {
         "aggiornato": ADESSO.strftime("%Y-%m-%dT%H:%MZ"),
         "fonti": [
             {"nome": "Epoch AI, AI data centers", "link": PAGINA_EPOCH_DC, "licenza": "CC BY 4.0", "data_dato": (info_ep or {}).get("data_dato", OGGI)},
+            {"nome": "Epoch AI, GPU clusters (archive frozen in 2025)", "link": PAGINA_EPOCH_GPU, "licenza": "CC BY 4.0", "data_dato": "2025"},
             {"nome": "Epoch AI, Data on AI chip imports", "link": PAGINA_EPOCH_TRADE, "licenza": "CC BY 4.0", "data_dato": (quote or {}).get("trimestre")},
-            {"nome": "TOP500", "link": "https://www.top500.org/lists/top500/", "licenza": "uso con citazione (pagina pubblica, nessuna licenza aperta dichiarata)", "data_dato": lista},
-            {"nome": "Voci curate a mano (comunicati societari, DCD, TrendForce, Reuters e altri: fonte e link per riga)", "link": "raccolta/ai/punti_curati.json", "licenza": "fatti con citazione", "data_dato": OGGI},
-            {"nome": "Coordinate: geocodifica OpenStreetMap Nominatim", "link": "https://nominatim.openstreetmap.org/", "licenza": "ODbL 1.0 (© OpenStreetMap contributors)", "data_dato": "2026-11-09"},
+            {"nome": "TOP500", "link": "https://www.top500.org/lists/top500/", "licenza": "use with citation (public page, no open licence stated)", "data_dato": lista},
+            {"nome": "Hand-curated points (company releases, DCD, TrendForce, Reuters and others: source and link per row)", "link": "raccolta/ai/punti_curati.json", "licenza": "facts with citation", "data_dato": OGGI},
+            {"nome": "Wikipedia, List of semiconductor fabrication plants (baseline for some fabs)", "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants", "licenza": "CC BY-SA 4.0", "data_dato": "2026-11-10"},
+            {"nome": "Coordinates: OpenStreetMap Nominatim geocoding", "link": "https://nominatim.openstreetmap.org/", "licenza": "ODbL 1.0 (© OpenStreetMap contributors)", "data_dato": "2026-11-10"},
         ],
-        "nota": ("Infrastrutture AI fuori dagli USA (gli USA sono in ai.json): data center AI (Epoch AI in automatico + voci curate), "
-                 "fabbriche di chip e impacchettamento (curate) e i primi 20 supercalcolatori della TOP500 (automatico; quelli già "
-                 "in ai.json hanno duplicato_ai_json=true). Coordinate tutte stimate: vedi origine_coord e precisione_km "
-                 "(i 'centroide-paese' non sono posizioni reali). mw = potenza come la dà la fonte: per Epoch è potenza IT stimata, "
-                 "per la TOP500 il consumo durante il test, per le voci curate vedi mw_tipo. importo = investimento dichiarato, "
-                 "in miliardi della valuta; importo_usd_mld convertito con cambi fissi indicativi. Lo stato dei progetti esteri "
-                 "è spesso dedotto da annunci: controllare data_fonte."),
-        "conteggi": conta,
-        "meta": {"epoch": info_ep, "top500_lista": lista},
+        "nota": ("AI infrastructure worldwide, US included: AI data centres (Epoch AI tracker, automatic, all countries; Epoch GPU-cluster "
+                 "archive, automatic, only clusters with real coordinates and at least 1,000 H100e not already mapped; hand-curated campuses), "
+                 "data-centre hubs (metro clusters, not single sites), chip fabs and memory fabs, advanced packaging, equipment and "
+                 "material chokepoints (curated) and the top 50 TOP500 supercomputers (automatic). All coordinates are estimates: see "
+                 "origine_coord and precisione_km; systems or sites without a public position are not drawn and are listed in "
+                 "senza_posizione. mw = power as given by the source: Epoch = estimated IT power; TOP500 = consumption during the "
+                 "benchmark; hubs = metro market capacity; curated = see mw_tipo. importo = declared investment in billions of the "
+                 "currency; importo_usd_mld converted at fixed indicative rates. duplicato_ai_json = the point is also in ai.json "
+                 "(do not draw twice when both layers are on). Status of projects is often inferred from announcements: check data_fonte."),
+        "conteggi": conteggi(elementi),
+        "meta": {"epoch": info_ep, "epoch_gpu": info_gpu, "top500_lista": lista, "categorie": sorted(CATEGORIE)},
         "quote_paesi": quote,
+        "senza_posizione": senza,
         "elementi": elementi,
         "errori": errori_m,
     }
     scrivi_json(OUT_MONDO, mondo)
 
-    # Investimenti
+    # Investment flows: destination points looked up in ai-mondo and ai.json
     indice = {p["id"]: p for p in elementi}
-    for p in (leggi_json(AI_USA, {}) or {}).get("punti", []):
+    for p in ai_punti:
         indice.setdefault(p["id"], p)
     flussi = filtra(costruisci_flussi(fl, indice, errori_i), valida_flusso, errori_i, "flusso")
     inv = {
@@ -614,24 +828,36 @@ def principale():
         "errori": errori_i,
     }
     scrivi_json(OUT_INV, inv)
-    print(f"ai-mondo.json: {len(elementi)} punti {conta}; quote Epoch {(quote or {}).get('trimestre')}; TOP500 {lista}")
-    print(f"investimenti.json: {len(flussi)} flussi; totale progetti {inv['riepilogo']['progetti']['totale_usd_mld']} mld USD; "
-          f"impegni-quadro {inv['riepilogo']['impegni_quadro']['totale_usd_mld']} mld USD")
+    c = mondo["conteggi"]
+    print(f"ai-mondo.json: {c['totale']} points {c['per_categoria']}; origin {c['per_origine']}; "
+          f"Epoch shares {(quote or {}).get('trimestre')}; TOP500 {lista}; without position {len(senza or [])}")
+    print(f"ai.json: {len(ai_punti)} points")
+    print(f"investimenti.json: {len(flussi)} flows; projects total {inv['riepilogo']['progetti']['totale_usd_mld']} bn USD; "
+          f"framework commitments {inv['riepilogo']['impegni_quadro']['totale_usd_mld']} bn USD")
     for e in errori_m + errori_i:
-        print("AVVISO:", e)
+        print("WARNING:", e)
 
 
 def solo_valida():
     errori = []
     m = leggi_json(OUT_MONDO, {}) or {}
     i = leggi_json(OUT_INV, {}) or {}
+    a = leggi_json(OUT_AI, {}) or {}
     for p in m.get("elementi", []):
-        errori += [f"punto {p.get('id')}: {x}" for x in valida_punto(p)]
+        errori += [f"point {p.get('id')}: {x}" for x in valida_punto(p)]
+    ids = [p.get("id") for p in m.get("elementi", [])]
+    errori += [f"duplicate id {d}" for d in sorted({x for x in ids if ids.count(x) > 1})]
+    for p in a.get("punti", []):
+        errori += [f"ai.json {p.get('id')}: {x}" for x in valida_ai(p)]
     for f in i.get("elementi", []):
         errori += [f"flusso {f.get('id')}: {x}" for x in valida_flusso(f)]
+    for nome, perc in (("ai-mondo.json", OUT_MONDO), ("ai.json", OUT_AI), ("investimenti.json", OUT_INV)):
+        if os.path.exists(perc) and os.path.getsize(perc) > 1_500_000:
+            errori.append(f"{nome} larger than 1.5 MB")
     for e in errori:
-        print("ERRORE:", e)
-    print(f"Validati {len(m.get('elementi', []))} punti e {len(i.get('elementi', []))} flussi: {len(errori)} problemi")
+        print("ERROR:", e)
+    print(f"Validated {len(m.get('elementi', []))} points, {len(a.get('punti', []))} ai.json points and "
+          f"{len(i.get('elementi', []))} flows: {len(errori)} problems")
     return 1 if errori else 0
 
 
