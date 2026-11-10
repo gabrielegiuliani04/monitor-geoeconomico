@@ -81,6 +81,11 @@ REVIEW = {
 }
 
 
+def word(n, cap=False):
+    w = WORDS.get(n, str(n))
+    return w[0].upper() + w[1:] if cap else w
+
+
 def warn(msg):
     WARN.append(msg)
     print("WARNING:", msg, file=sys.stderr)
@@ -176,7 +181,7 @@ def crf(r, n):
 # =====================================================================================
 # Market data (ECB Data Portal, Yahoo Finance), cached
 # =====================================================================================
-def http_get(url, timeout=30):
+def http_get(url, timeout=90):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (monitor report builder)"})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read().decode("utf-8")
@@ -1012,7 +1017,7 @@ def blocks(V):
         f"**The next test starts on {date_en(rvo['apertura'], False)}.** The Dutch IJmuiden Ver Gamma round (2 GW) takes applications until {date_en(rvo['chiusura'])}, "
         f"with price caps of {V['gamma_caps'][0]} and {V['gamma_caps'][1]} €/MWh (RVO). UK AR8 results are due between {date_en(ar8['date'], False)} and {date_en(ar8['date_end'])}; "
         f"Germany's auction reform still needs a Bundestag vote in December.",
-        f"**The grid, not ships or steel, now sets the pace.** {WORDS.get(grid_n, grid_n).capitalize()} of the {delay_n} delays in the monitor's wind calendar cite grid links or platforms; "
+        f"**The grid, not ships or steel, now sets the pace.** {word(grid_n, True)} of the {delay_n} delays in the monitor's wind calendar cite grid links or platforms; "
         f"Amprion's 2 GW BalWin1 slipped a year, to {date_en(bal['valore'])}. Monopile factories, by contrast, will run at about {num(pu['valore'], 0)}% of capacity in 2028 (Rystad).",
         f"**Baltic ports are adding capacity; German North Sea quays come late.** Gdańsk's 253 million € T5 terminal serves Baltica 2 from the fourth quarter of 2026 and Klaipėda's "
         f"201 million € upgrade ends in 2027. Cuxhaven's 1,250 m heavy quay arrives around 2028; Bremerhaven's terminal was never built.",
@@ -1245,12 +1250,12 @@ def blocks(V):
                    f"*Assessment:* expensive gas raises power prices, so a two-sided CfD costs the state little or pays it back; if gas falls, the same contracts cost more."))
     B.append(("h3", "Security: cables, drones, jamming, defence"))
     cab = V["cables"]
-    B.append(("p", f"**Cables.** {WORDS[len(cab)].capitalize()} Baltic cable incidents have been recorded since November 2024, the latest on {date_en(cab[-1]['data'])} "
+    B.append(("p", f"**Cables.** {word(len(cab), True)} Baltic cable incidents have been recorded since November 2024, the latest on {date_en(cab[-1]['data'])} "
                    f"({cab[-1]['nome'].replace('Cavo dati', 'data cable').replace('danneggiato', 'damaged')}). Estlink 2, the "
                    f"{num(V['estlink2']['mw'], 0)} MW Estonia–Finland HVDC link, was cut by a ship's anchor on 25 December 2024 ({DL('baltico-sicurezza.json')}; "
                    f"{DL('interconnessioni.json')}). Offshore wind export cables and the new 2 GW links are the same kind of asset, on the same seabed."))
     de_ = V["drone_esb"]
-    B.append(("p", f"**Drones.** {WORDS.get(len(V['drones']), len(V['drones'])).capitalize()} drone events over airports, bases, ports and energy sites have been logged around the "
+    B.append(("p", f"**Drones.** {word(len(V['drones']), True)} drone events over airports, bases, ports and energy sites have been logged around the "
                    f"North Sea and Baltic since September 2025, including sightings reported at Esbjerg on 24 September 2025 and formations over Kiel's shipyard and power plant "
                    f"the next day ({DL('baltico-sicurezza.json')}). None is recorded over an offshore wind farm."))
     gs = V["gnss_series"]

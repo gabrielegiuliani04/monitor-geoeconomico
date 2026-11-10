@@ -15,8 +15,8 @@ Every number has a source and a date. Paragraphs marked *Assessment* are the mon
 - **Diesel is back near €2.29 a litre after the last excise cut expired on 8 November.** The weekly average of the energy ministry (MASE) was €2.238 for diesel and €2.001 for petrol on 2 November 2026; without the 4.9-cent cut, diesel works out at €2.287. That is +37% on a year earlier.
 - **Gas and power bills now drive inflation more than fuel.** Consumer prices (Istat NIC, preliminary) rose 5.4% in October 2026, from 1.5% in February. Energy items rose 31.4%, electricity 35.8%, gas 35.6%. The wholesale power price (PUN) averaged 230.8 €/MWh in October.
 - **Italy has the gas; the problem is its price.** Storage was 88.9% full on 8 November (Germany 58.9%). Algeria's TransMed pipeline brought 34% of gas entering Italy in 12 months; Qatar, in force majeure, supplied 32.6% of LNG imports in 2025. Gas (TTF) is +164% on a year.
-- **Hauliers: no national stoppage had been called by 9 November.** A stoppage needs 25 days' notice, so one called on 10 November could not start before 5 December. Diesel has stayed above the monitor's €2.10 alert level since 27 July. *Assessment:* risk of a call is high; a lawful stoppage in November is ruled out.
-- **A second Hormuz shock would push diesel to €2.64–2.98 within a month** (*assessment*, rule-based). Tested on 2026: from February prices the rule gave €1.96–2.21; diesel actually averaged €2.11 before excise cuts. A TransMed outage hits bills, not pumps.
+- **Hauliers: no national stoppage had been called by 9 November.** A stoppage needs 25 days' notice, so one called on 10 November could not start before 5 December. Diesel has stayed above the monitor's €2.10 alert level since 24 August. *Assessment:* risk of a call is high; a lawful stoppage in November is ruled out.
+- **A second Hormuz shock would push diesel to €2.64–2.98 within a month** (*assessment*, rule-based). Tested on 2026: from February prices the rule gave €1.96–2.21; diesel actually averaged €2.11 once the excise cuts are added back. A TransMed outage hits bills, not pumps.
 
 > **Words used in this report.** *MASE*: Ministry of the Environment and Energy Security; publishes the weekly national average of fuel prices, with tax and excise broken out. *Mimit*: Ministry of Enterprises and Made in Italy; runs the daily fuel-price observatory fed by every filling station. *ARERA*: the energy regulator; sets the gas price for 'vulnerable' households still on regulated terms. *GME*: the operator of Italy's power and gas exchanges. *PUN*: the national wholesale electricity price, set daily on the GME exchange, in €/MWh. *PSV / TTF*: the Italian and Dutch wholesale gas prices; the Italian one tracks the Dutch one closely. *Istat, NIC, HICP*: the national statistics institute; NIC is its consumer price index for the whole population, HICP the EU-harmonised version. *Excise (accisa)*: a fixed tax per litre on fuel; VAT at 22% is charged on top of it. *Fermo*: a stoppage of road hauliers: firms keep their trucks off the road; it is treated like a strike. *Unatras*: the joint committee of the main road-haulage associations. *Law 146/1990*: the law on strikes in essential public services; an independent Strike Guarantee Commission (Commissione di garanzia) enforces notice and minimum services. *LNG, FSRU*: liquefied natural gas; a floating storage and regasification unit is a ship-based import terminal. *FEU, AIS*: a 40-foot container; the transponder ships use to broadcast position, the basis of PortWatch counts.
 
@@ -58,7 +58,7 @@ Between 5.6% and 10.2% of Italy's crude came from the Gulf in 2025 (the lower fi
 
 Italy's emergency oil stocks covered **77.2 days** in August 2026, against 90.5 a year earlier and a five-year average of 89.3 (Eurostat, [`scorte.json`](../docs/data/scorte.json)). EU law (directive 2009/119/EC) requires the larger of 90 days of net imports or 61 days of consumption. The series fell from 90.2 days in March to 76.7 in April 2026. Germany held 97.1, France 96.5 and the Netherlands 95.5 days. The June figure (89.7) breaks the pattern and is treated as an anomaly.
 
-Gas storage was **88.93%** full on 8 November 2026 (180.9 TWh of about 203.4), −4.7 points on a year earlier and −5.4 on the five-year average; it fell 0.23 points on the last day as winter withdrawals began. Germany was at 58.9%, the Netherlands 63.5%, Austria 64.3% and France 80.8% (GIE AGSI+, [`scorte.json`](../docs/data/scorte.json)). For the IEA, EU storage enters the winter at its lowest level since 2013 ([IEA, 3 November 2026](https://www.iea.org/reports/global-gas-security-review-2026/executive-summary)).
+Gas storage was **88.9%** full on 8 November 2026 (180.9 TWh of about 203.4), −4.7 points on a year earlier and −5.4 on the five-year average; it fell 0.23 points on the last day as winter withdrawals began. Germany was at 58.9%, the Netherlands 63.5%, Austria 64.3% and France 80.8% (GIE AGSI+, [`scorte.json`](../docs/data/scorte.json)). For the IEA, EU storage enters the winter at its lowest level since 2013 ([IEA, 3 November 2026](https://www.iea.org/reports/global-gas-security-review-2026/executive-summary)).
 
 *Assessment.* Italy's physical position is better than northern Europe's: full storage, two large pipelines from the south and five LNG terminals. Its weak points are the price, which follows the Dutch TTF, and the oil stocks, which were drawn down in spring and have not been rebuilt. A cold winter would test Germany and Austria first; Italy would feel it through the price.
 
@@ -76,11 +76,11 @@ That survey still included the last diesel excise cut, 4.9 cents a litre with VA
 
 *Weekly national average pump prices, €/litre, January 2022 to 2 November 2026. Dashed lines: the monitor's diesel alert levels (€1.90 and €2.10; an assessment). Events: 1 = excise cut of 25 cents (30.5 with VAT), 22 March 2022; 2 = cut fully withdrawn, 1 January 2023; 3 = war on Iran begins, 28 February 2026; 4 = excise cut of 20 cents (24.4 with VAT), MASE survey of 23 March 2026; 5 = Eni/IP price caps, 28 September 2026. Source: MASE, DGSAIE weekly prices, [`italia-impatti.json`](../docs/data/italia-impatti.json), data to 2 November 2026.*
 
-In the last week before the war (23 February 2026) diesel cost €1.702 and petrol €1.655. Diesel peaked at **€2.351** in the week of 28 September 2026, the highest weekly average in the file's series (which starts in January 2022). Since February the net price of diesel has risen +66%, while Brent crude in euro rose +35% (from 71.27 to 91.7 dollars a barrel; calculation on [`italia-impatti.json`](../docs/data/italia-impatti.json)).
+In the last week before the war (23 February 2026) diesel cost €1.702 and petrol €1.655. Diesel peaked at **€2.351** in the week of 28 September 2026, the highest weekly average in the file's series (which starts in January 2022). Since February the net price of diesel has risen 66%, while Brent crude in euro rose 35% (from 71.27 to 91.7 dollars a barrel; calculation on [`italia-impatti.json`](../docs/data/italia-impatti.json)).
 
 Since January 2026 diesel and petrol carry the same ordinary excise (€0.6729). Diesel now costs 23.7 cents more than petrol, against 4.7 cents before the war. With equal excise, the gap is in the pre-tax price.
 
-*Assessment.* diesel has risen about twice as fast as crude because the refining margin on diesel widened: Europe imports diesel, and part of it came from Gulf refineries. That is why haulage, which runs on diesel, is under more pressure than private motoring.
+*Assessment.* Diesel has risen about twice as fast as crude because the refining margin on diesel widened: Europe imports diesel, and part of it came from Gulf refineries. That is why haulage, which runs on diesel, is under more pressure than private motoring.
 
 ![Diesel price per litre split into net price, excise and VAT, for the last pre-war week, the April and Septembe](grafici/it-2026-11-breakdown.svg)
 
@@ -133,17 +133,17 @@ Istat's preliminary estimate puts consumer price inflation (NIC) at **5.4%** in 
 
 Energy weighs 10.9% of the 2026 HICP basket (fuels 4.7%, electricity 2.8%, gas 3.1%) and food 20.9% (Eurostat). A 10% rise in consumer energy prices therefore adds about 1.1 points of inflation directly. Weight times annual rate gives energy about 3.4 of the 5.6 points of HICP inflation in October (approximation, calculation).
 
-*Assessment.* more than half of Italian inflation is the direct effect of energy. Indirect effects (transport, food) come later; food inflation has started to rise (1.0% in August, 2.7% in October) and freight transport services in the HICP rose 3.2% in September 2026.
+*Assessment.* More than half of Italian inflation is the direct effect of energy. Indirect effects (transport, food) come later; food inflation has started to rise (1.0% in August, 2.7% in October) and freight transport services in the HICP rose 3.2% in September 2026.
 
 Consumer confidence (Istat, 2021 = 100) was **90.3** in October 2026, against 97.4 in February; the judgement on the economy fell to 82.9, close to April's 82.7. The low of 2022 was 80.9 (October 2022). The file holds the series not adjusted for season; Istat's press release uses the adjusted one, which can differ.
 
-**Fuel sales.** Road diesel sales fell −7.5% in September 2026 on a year earlier and diesel sold off the retail network (to fleets and hauliers) −9.4%; in May the falls were −10.8% and −14.3%. Petrol sales rose +4.9% (MASE, [`italia-impatti.json`](../docs/data/italia-impatti.json)). Diesel was already falling and petrol rising in January and February, before the war.
+**Fuel sales.** Road diesel sales fell 7.5% in September 2026 on a year earlier and diesel sold off the retail network (to fleets and hauliers) 9.4%; in May the falls were 10.8% and 14.3%. Petrol sales rose 4.9% (MASE, [`italia-impatti.json`](../docs/data/italia-impatti.json)). Diesel was already falling and petrol rising in January and February, before the war.
 
 ![Fuel sales by month, % on the same month a year earlier, January–September 2026: road diesel, off-network dies](grafici/it-2026-11-sales.svg)
 
 *Fuel sales by month, % on the same month a year earlier, January–September 2026: road diesel, off-network diesel (fleets, hauliers) and petrol. Event 1 = first full month of the war (March 2026). Source: MASE, DGSAIE, petroleum consumption (provisional), [`italia-impatti.json`](../docs/data/italia-impatti.json).*
 
-*Assessment.* three things are mixed in the diesel figures: a long shift of the car fleet from diesel to petrol and hybrids (visible before the war), weaker economic activity, and genuine saving. The literature puts the short-run price elasticity of petrol demand at −0.09 ([Havranek, Irsova and Janda, 2012](https://econpapers.repec.org/RePEc:eee:eneeco:v:34:y:2012:i:1:p:201-207)): a 10% price rise cuts consumption by about 1%. Off-network diesel, the hauliers' fuel, falling faster than road diesel points to less freight moved.
+*Assessment.* Three things are mixed in the diesel figures: a long shift of the car fleet from diesel to petrol and hybrids (visible before the war), weaker economic activity, and genuine saving. The literature puts the short-run price elasticity of petrol demand at −0.09 ([Havranek, Irsova and Janda, 2012](https://econpapers.repec.org/RePEc:eee:eneeco:v:34:y:2012:i:1:p:201-207)): a 10% price rise cuts consumption by about 1%. Off-network diesel, the hauliers' fuel, falling faster than road diesel points to less freight moved.
 
 The IMF expects Italian growth of 0.8% and average inflation of 3.3% in 2026 (World Economic Outlook, October 2026, [`paesi.json`](../docs/data/paesi.json)). For the ECB, a geopolitical supply shock that raises the real oil price by 10% lowers euro-area growth by about 0.2–0.3 points in each of the first three years ([ECB Economic Bulletin 4/2026](https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202604_04~9b6a4036fc.en.html)).
 
@@ -163,9 +163,9 @@ The associations' own figures: about €100 a day and €2,000 a month more for 
 
 Hauliers with heavy trucks get back part of the excise on diesel: 26.5 cents a litre, according to Federtrasporti. When the government cuts the excise for everybody, the refundable part shrinks by the same amount. In May Unatras called the general cut 'a wrong decision that shifted the 20-cent reduction onto haulage firms' ([Shipping Italy, 23 May 2026](https://www.shippingitaly.it/2026/05/23/sospeso-il-fermo-dellautotrasporto-in-programma-dal-25-maggio/)), and this was the main reason for the stoppage it called for 25–29 May.
 
-The government suspended that stoppage on 22 May with a package: a tax credit on diesel of 300 million euros (200 of them new), the quarterly excise refund paid in 30 days instead of 60, and a standing table with the sector. By November 242.2 million of the 480 million allocated had been granted, to be used by 31 December 2026 (Ministry of Transport via [TrasportoEuropa](https://www.shippingitaly.it/2026/05/23/sospeso-il-fermo-dellautotrasporto-in-programma-dal-25-maggio/), 9 November). In October Unatras said 434 million of credits had not yet reached firms ([Logisticamente.it](https://www.logisticamente.it/articoli/60800/caro-gasolio-autotrasporto-in-agitazione-rischio-fermo-nazionale/)); the two sources use different totals.
+The government suspended that stoppage on 22 May with a package: a tax credit on diesel of 300 million euros (200 of them new), the quarterly excise refund paid in 30 days instead of 60, and a standing table with the sector. By November 242.2 million of the 480 million allocated had been granted, to be used by 31 December 2026 (Ministry of Transport via [TrasportoEuropa](https://www.trasportoeuropa.it/notizie/autotrasporto/semaforo-rosso-del-garante-al-fermo-dellautotrasporto/), 9 November). In October Unatras said 434 million of credits had not yet reached firms ([Logisticamente.it](https://www.logisticamente.it/articoli/60800/caro-gasolio-autotrasporto-in-agitazione-rischio-fermo-nazionale/)); the two sources use different totals.
 
-*Assessment.* for a truck that qualifies for the refund, a general excise cut is worth little: the price at the pump falls, the refund falls with it. The expiry of the cut on 8 November therefore raises the cost for motorists, and the cash hauliers must advance until the quarterly refund, more than their final cost. The grievance that moves hauliers is the credit that must be used by 31 December and the pressure from clients on rates, not the expiry itself.
+*Assessment.* For a truck that qualifies for the refund, a general excise cut is worth little: the price at the pump falls, the refund falls with it. The expiry of the cut on 8 November therefore raises motorists' costs; for hauliers it mainly raises the cash they must advance until the quarterly refund, rather than their final cost. The grievance that moves hauliers is the credit that must be used by 31 December and the pressure from clients on rates, not the expiry itself.
 
 ### The rules on stoppages
 
@@ -175,14 +175,14 @@ Law 146 of 1990, amended in 2000, governs strikes in essential public services: 
 
 | When | What | Diesel that week | On a year | In 8 weeks | Source |
 |---|---|---|---|---|---|
-| 10 December–14 December 2007 | National truck stoppage | €1.290 | +15.8% | — | [VareseNews](https://www.varesenews.it/2007/12/camion-ancora-fermi-ma-garantiti-latte-benzina-e-medicinali/225029/) |
-| 16 January–20 January 2012 | Forconi blockades, Sicily | €1.682 | +27.6% | — | [Balarm](https://www.balarm.it/news/magazine/protesta-dei-forconi-esaurite-scorte-e-benzina-8548) |
-| 23 January–27 January 2012 | Truck blockades across Italy | €1.687 | +25.9% | — | [Il Post](https://www.ilpost.it/2012/01/23/sciopero-tir-autotrasportatori/) |
+| 10–14 December 2007 | National truck stoppage | €1.290 | +15.8% | — | [VareseNews](https://www.varesenews.it/2007/12/camion-ancora-fermi-ma-garantiti-latte-benzina-e-medicinali/225029/) |
+| 16–20 January 2012 | Forconi blockades, Sicily | €1.682 | +27.6% | — | [Balarm](https://www.balarm.it/news/magazine/protesta-dei-forconi-esaurite-scorte-e-benzina-8548) |
+| 23–27 January 2012 | Truck blockades across Italy | €1.687 | +25.9% | — | [Il Post](https://www.ilpost.it/2012/01/23/sciopero-tir-autotrasportatori/) |
 | 12 March 2022 | Truckers' protest | €2.155 | +51.6% | +33.0% | [La Sicilia (ANSA)](https://www.lasicilia.it/news/economia/1208929/il-garante-ferma-lo-sciopero-degli-autotrasportatori-ma-e-solo-una-tregua.html) |
-| 22 January–17 February 2024 | Tractor protests (farm income tax, EU farm policy) | €1.786 | −6.6% | +1.8% | [Il Post](https://www.ilpost.it/2024/02/09/irpef-agricola-agricoltori-meloni-lollobrigida/) |
+| 22 January – 17 February 2024 | Tractor protests (farm income tax, EU farm policy) | €1.786 | −6.6% | +1.8% | [Il Post](https://www.ilpost.it/2024/02/09/irpef-agricola-agricoltori-meloni-lollobrigida/) |
 | 20 April 2026 | Trasportounito stoppage (suspended on day one) | €2.115 | +29.5% | +24.3% | [TrasportoEuropa; LaPresse](https://www.lapresse.it/cronaca/2026/04/20/sciopero-autotrasportatori-trasportounito-camionista-muore-investito-sospeso-il-fermo/) |
-| 25 May–29 May 2026 | Unatras national stoppage (suspended) | €1.983 | +25.6% | −2.0% | [Shipping Italy](https://www.shippingitaly.it/2026/05/23/sospeso-il-fermo-dellautotrasporto-in-programma-dal-25-maggio/) |
-| 16 October–20 October 2026 | Regional stoppages, Sicily and Calabria | €2.241 | +37.0% | +7.8% | [Logisticamente.it](https://www.logisticamente.it/articoli/60800/caro-gasolio-autotrasporto-in-agitazione-rischio-fermo-nazionale/) |
+| 25–29 May 2026 | Unatras national stoppage (suspended) | €1.983 | +25.6% | −2.0% | [Shipping Italy](https://www.shippingitaly.it/2026/05/23/sospeso-il-fermo-dellautotrasporto-in-programma-dal-25-maggio/) |
+| 16–20 October 2026 | Regional stoppages, Sicily and Calabria | €2.241 | +37.0% | +7.8% | [Logisticamente.it](https://www.logisticamente.it/articoli/60800/caro-gasolio-autotrasporto-in-agitazione-rischio-fermo-nazionale/) |
 
 *Diesel: MASE weekly national average in the week the protest began ([`italia-impatti.json`](../docs/data/italia-impatti.json)); the 8-week change is computed only where the weekly series in the file covers it (from January 2022). Sources are news reports (reliability medium, LaPresse and Shipping Italy high).*
 
@@ -190,17 +190,17 @@ Law 146 of 1990, amended in 2000, governs strikes in essential public services: 
 
 *Diesel price in the week each protest began, €/litre, with the change on a year earlier in brackets; 'today' is the MASE survey of 2 November 2026. Dashed lines: the monitor's alert levels €1.90 and €2.10. The 2024 tractor protest was about farm income tax and EU farm policy, not fuel. Source: MASE weekly prices, curated precedents in [`italia-impatti.json`](../docs/data/italia-impatti.json).*
 
-What happened: in December 2007 the stoppage lasted three days, with milk, medicines and petrol guaranteed from 12 December; in January 2012 the Forconi blockades left most of Sicily's filling stations dry by the fourth day, and about 60 pickets then blocked motorway toll gates across Italy; in March 2022 a stoppage was stopped by the Commission for lack of notice, and the excise cut followed on 22 March; in April 2026 Trasportounito's stoppage was suspended on its first day after a truck driver was killed on the A1 motorway; in May Unatras's was suspended after the government package; in October regional stoppages ran in Sicily and Calabria after wildcat blockades that started in Puglia.
+What happened: in December 2007 the stoppage lasted three days, with milk, medicines and petrol guaranteed from 12 December; in January 2012 the Forconi blockades left most of Sicily's filling stations dry by the fourth day, and about 60 pickets then blocked motorway toll gates across Italy; in March 2022 a stoppage was blocked by the Commission for lack of notice, and the excise cut followed on 22 March; in April 2026 Trasportounito's stoppage was suspended on its first day after a truck driver was killed on the A1 motorway; in May Unatras's was suspended after the government package; in October regional stoppages ran in Sicily and Calabria after wildcat blockades that started in Puglia.
 
-*Assessment.* the monitor's thresholds, built on these precedents, rate the risk **low** with diesel below €1.90 and an 8-week rise below 8%, **medium** between €1.90 and €2.10 or a rise of 8–15%, and **high** from €2.10 or a rise above 15%. Protests started at or near a new price peak and, in every haulage case, with diesel 16–52% above a year earlier. The November supply-chain report uses €1.90 and €2.20; the upper level here is lower because March 2022 and April 2026 started below €2.20.
+*Assessment.* The monitor's thresholds, built on these precedents, rate the risk **low** with diesel below €1.90 and an 8-week rise below 8%, **medium** between €1.90 and €2.10 or a rise of 8–15%, and **high** from €2.10 or a rise above 15%. Protests started at or near a new price peak and, in every haulage case, with diesel 16–52% above a year earlier. The November supply-chain report uses €1.90 and €2.20; the upper level here is lower because March 2022 and April 2026 started below €2.20.
 
 ### Where things stand
 
-**No national haulage stoppage had been called** in the sources consulted on 9 November (Rai News list of 8 November; the Ministry of Transport's strike calendar was not reachable from this environment). Unatras raised the possibility in October and met the ministry on 27 October; the outcome of that meeting was not found. Other national actions this month: a general strike by the CGIL union on 20 November and rail strikes, including freight, from 21:00 on 20 November to 20:00 on 21 November ([Rai News, 8 November 2026](https://www.rainews.it/articoli/2026/11/scioperi-novembre-di-mobilitazioni-trasporti-scuola-e-settore-pubblico-le-proteste-88aa7da4-ad6b-4ec7-a964-d9829015bf04.html)). With 25 days' notice, a stoppage called on 10 November could not start before **5 December 2026**.
+**No national haulage stoppage had been called** in the sources consulted on 9 November (Rai News list of 8 November; the Ministry of Transport's strike calendar was not reachable from this environment). Unatras raised the possibility in October, and a meeting at the ministry was set for 27 October; its outcome was not found. Other national actions this month: a general strike by the CGIL union on 20 November and rail strikes, including freight, from 21:00 on 20 November to 20:00 on 21 November ([Rai News, 8 November 2026](https://www.rainews.it/articoli/2026/11/scioperi-novembre-di-mobilitazioni-trasporti-scuola-e-settore-pubblico-le-proteste-88aa7da4-ad6b-4ec7-a964-d9829015bf04.html)). With 25 days' notice, a stoppage called on 10 November could not start before **5 December 2026**.
 
-Against the thresholds: diesel at €2.238 (about €2.29 after the expiry) is in the high band, where it has been since the week of 27 July 2026; the 8-week change is +4.5% (from €2.142 on 7 September), in the low band; the change on a year is +37.1%, inside the range of past protests.
+Against the thresholds: diesel at €2.238 (about €2.29 after the expiry) is in the high band, where it has been since the week of 24 August 2026; the 8-week change is +4.5% (from €2.142 on 7 September), in the low band; the change on a year is +37.1%, inside the range of past protests.
 
-*Assessment.* the level of diesel alone has not been enough: it has been above €2.10 for more than two months without a national call. The 2026 calls came from a policy grievance on top of the price (the refund cut in May, unpaid credits in October). The risk that a national stoppage is **called** before the end of the year is rated **high**; a lawful stoppage before 5 December is ruled out by the notice rule. Wildcat blockades, like Sicily in 2012 or Puglia in October 2026, need no notice and remain possible at any time. Signals that would raise the risk: a filing with the Commission; credits not usable by 31 December; a new general excise cut without compensation for hauliers; diesel up more than 8% in 8 weeks. Signals that would lower it: the credit extended into 2027, or an automatic fuel surcharge on haulage rates, which Federtrasporti has proposed.
+*Assessment.* The level of diesel alone has not been enough: it has been above €2.10 for more than two months without a national call. The 2026 calls came from a policy grievance on top of the price (the refund cut in May, unpaid credits in October). The risk that a national stoppage is **called** before the end of the year is rated **high**; a lawful stoppage before 5 December is ruled out by the notice rule. Wildcat blockades, like Sicily in 2012 or Puglia in October 2026, need no notice and remain possible at any time. Signals that would raise the risk: a filing with the Commission; credits not usable by 31 December; a new general excise cut without compensation for hauliers; diesel up more than 8% in 8 weeks. Signals that would lower it: the credit extended into 2027, or an automatic fuel surcharge on haulage rates, which Federtrasporti has proposed.
 
 <a id="ports"></a>
 
@@ -230,13 +230,13 @@ For energy cargoes the routes have changed more. LNG from Ras Laffan is **blocke
 
 In the monitor's Port Risk Index La Spezia scores **7.2 out of 25 (medium)**, rank 7 of 39 ports and the highest in Italy (next is Livorno at 5.4) ([`port-risk.json`](../docs/data/port-risk.json), 10 November 2026). The score comes from impact (3.6 of 5), not from traffic: the index counts three strategic roles (the Panigaglia LNG terminal, a container gateway, the naval base) and assigns the port a primary dependency on Qatari LNG and on the Red Sea container route. Traffic is rising: 2.2 calls/day vs 1.8 a year earlier: +26.0% over 28 days.
 
-*Assessment.* the index describes a structural exposure rather than a current disruption. Panigaglia is a small terminal: it delivered 9.8 TWh in 12 months, 1.5% of gas entering Italy (ENTSOG). The data in the repository do not show where its cargoes come from, so the dependency on Qatar is the index's rule, not an observed flow. What would change La Spezia's risk is a fall in its container calls, which the index triggers below half of last year's level.
+*Assessment.* The index describes a structural exposure rather than a current disruption. Panigaglia is a small terminal: it delivered 9.8 TWh in 12 months, 1.5% of gas entering Italy (ENTSOG). The data in the repository do not show where its cargoes come from, so the dependency on Qatar is the index's rule, not an observed flow. What would change La Spezia's risk is a fall in its container calls, which the index triggers below half of last year's level.
 
 <a id="scenarios"></a>
 
 ## 7. Scenarios: what a new shock would do
 
-*Assessment.* this whole section is the monitor's assessment. The scenarios have no probabilities. They show what the transmission rules give when a shock of a known shape hits Italian prices, with no new government measures and excise unchanged.
+*Assessment.* Everything in this section is the monitor's reasoning. The scenarios have no probabilities. They show what the transmission rules give when a shock of a known shape hits Italian prices, with no new government measures and excise unchanged.
 
 **Method.** The changes in Brent and TTF come from the monitor's simulator: for Hormuz, the average and the peak change in the 2026 episode over 30 or 91 days; for the Red Sea, the 2023–24 episode; for TransMed, the loss of 20.86 billion cubic metres a year net of spare LNG terminal capacity. Italian prices then follow the rules of section 3 ([`italia-impatti.json`](../docs/data/italia-impatti.json), field `scenari`). There are two starting points: **pre-war prices** (week of 23 February 2026: Brent 71.27 dollars, TTF 31.59 €/MWh, diesel €1.702) and **today's prices** (Brent 91.7, TTF 82.33, diesel €2.287 after the expiry). Because Hormuz is already closed in practice, the 'today' version is a *second* shock on top of the first.
 
@@ -246,8 +246,8 @@ In the monitor's Port Risk Index La Spezia scores **7.2 out of 25 (medium)**, ra
 |  | today | 2.64–2.98 | 2.26–2.48 | 340–385 | +36% to +52% of the bill | +2.8 to +4.3 | high |
 | Hormuz closed, 3 months | pre-war | 2.03–2.28 | 1.89–2.08 | 148–174 | +20 to +35 c/m³ | +1.4 to +2.5 | high |
 |  | today | 2.74–3.07 | 2.31–2.58 | 317–385 | +29% to +52% of the bill | +2.5 to +4.5 | high |
-| Red Sea: ships via the Cape, 1 month | pre-war | 1.73–1.76 | 1.67–1.70 | 114 | unchanged | +0.1 to +0.1 | low |
-|  | today | 2.32–2.37 | 2.03–2.06 | 231 | unchanged | +0.1 to +0.1 | high |
+| Red Sea: ships via the Cape, 1 month | pre-war | 1.73–1.76 | 1.67–1.70 | 114 | unchanged | +0.1 | low |
+|  | today | 2.32–2.37 | 2.03–2.06 | 231 | unchanged | +0.1 | high |
 | TransMed shut, 1 month | pre-war | 1.70 | 1.66 | 119–125 | +3 to +7 c/m³ | +0.1 to +0.2 | low |
 |  | today | 2.29 | 2.00 | 243–260 | +4% to +10% of the bill | +0.2 to +0.6 | high |
 
@@ -265,7 +265,7 @@ Inflation rose from 1.5% in February to 2.7% in April and 3.0% in June: +1.2 and
 
 For the Red Sea, the 2023–24 episode: diesel was €1.754 in the week of 11 December 2023 and averaged €1.728 in the next 4 weeks; the small rise the rule implies did not happen.
 
-*Assessment.* the rule is good enough for orders of magnitude on fuel at one to three months, underestimates the peak at three months and overestimates power in spring, when solar and hydro cut the hours in which gas sets the price. Excise cuts matter as much as the shock: in 2026 they took 12–24 cents off the average.
+*Assessment.* The rule is good enough for orders of magnitude on fuel at one to three months, underestimates the peak at three months and overestimates power in spring, when solar and hydro cut the hours in which gas sets the price. Excise cuts weigh heavily on the outcome: in 2026 they took 12–19 cents off the average diesel price.
 
 ### Likely government measures
 
@@ -289,37 +289,25 @@ Measures are drawn from what governments did in 2022 and 2026 ([`italia-impatti.
 | NIC inflation | 5.4% (October, prelim.) | food above 3% | Istat |
 | Gas storage Italy | 88.9% (8 November) | falling faster than last winter | GIE AGSI+ |
 | Mazara del Vallo flow | 621 GWh/day (7 days) | below 70% of the annual average | ENTSOG |
-| Hormuz tanker and LNG transits | −97.0% on 2025 | above −30% for two weeks = disruption over | IMF PortWatch, rischio.json |
+| Hormuz tanker and LNG transits, 7 days | −97.0% on the 2025 average | above −30% for two weeks = disruption over | IMF PortWatch, rischio.json |
 
 *Thresholds are the monitor's assessment; the last two follow report/metodo-rischio.md.*
 
 | Date | What | Source |
 |---|---|---|
-| 10 November 2026 | EIA: Short-Term Energy Outlook (STEO) | [`calendario.json`](../docs/data/calendario.json) |
-| 12 November 2026 | EIA: rapporto settimanale sul petrolio (WPSR), scorte USA | [`calendario.json`](../docs/data/calendario.json) |
 | 13 November 2026 | IEA Oil Market Report - November 2026 | [`calendario.json`](../docs/data/calendario.json) |
 | 18 November 2026 | Euro area: HICP inflation, final | [`calendario.json`](../docs/data/calendario.json) |
-| 18 November 2026 | EIA: rapporto settimanale sul petrolio (WPSR), scorte USA | [`calendario.json`](../docs/data/calendario.json) |
-| 18 November 2026 | Fed: verbali (minutes) della riunione FOMC del 27-28 ottobre (data stimata) | [`calendario.json`](../docs/data/calendario.json) |
 | 20 November 2026 | CGIL general strike; rail strikes incl. freight (21:00 on 20 Nov to 20:00 on 21 Nov) | Rai News |
-| 25 November 2026 | EIA: rapporto settimanale sul petrolio (WPSR), scorte USA | [`calendario.json`](../docs/data/calendario.json) |
 | 29 November 2026 | OPEC+ ministerial meeting: 2027 quotas | [`calendario.json`](../docs/data/calendario.json) |
 | 1 December 2026 | Euro area: HICP inflation, flash estimate | [`calendario.json`](../docs/data/calendario.json) |
 | 1 December 2026 | end of the window for the EU 90% storage target | [`scorte.json`](../docs/data/scorte.json) |
-| 2 December 2026 | EIA: rapporto settimanale sul petrolio (WPSR), scorte USA | [`calendario.json`](../docs/data/calendario.json) |
 | 5 December 2026 | earliest start of a haulage stoppage called today | calculation (25 days' notice) |
-| 8 December 2026 | EIA: Short-Term Energy Outlook (STEO) | [`calendario.json`](../docs/data/calendario.json) |
-| 9 December 2026 | EIA: rapporto settimanale sul petrolio (WPSR), scorte USA | [`calendario.json`](../docs/data/calendario.json) |
-| 9 December 2026 | Fed: decisione FOMC (riunione 8-9 dicembre) con proiezioni economiche (SEP) | [`calendario.json`](../docs/data/calendario.json) |
-| 16 December 2026 | EIA: rapporto settimanale sul petrolio (WPSR), scorte USA | [`calendario.json`](../docs/data/calendario.json) |
 | 17 December 2026 | Euro area: HICP inflation, final | [`calendario.json`](../docs/data/calendario.json) |
-| 17 December 2026 | Bank of England: decisione MPC sul Bank Rate | [`calendario.json`](../docs/data/calendario.json) |
 | 17 December 2026 | ECB monetary policy decision | [`calendario.json`](../docs/data/calendario.json) |
-| 18 December 2026 | Bank of Japan: decisione di politica monetaria | [`calendario.json`](../docs/data/calendario.json) |
 | 31 December 2026 | deadline to use the haulage tax credit; end of Qatar's force-majeure extension for Edison | TrasportoEuropa; gasworld |
 | January 2027 | bill decree takes effect | ANSA |
 
-***Missing:** Istat's release dates for the November inflation estimate and ARERA's November gas value are not in the calendar file.*
+*Missing: Istat's release dates for the November inflation estimate and ARERA's November gas value are not in the calendar file.*
 
 <a id="method"></a>
 

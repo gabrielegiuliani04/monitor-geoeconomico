@@ -347,7 +347,7 @@ Gli script leggono la chiave con `os.environ.get(...)`. Se manca, saltano quella
 
 ### Il controllo automatico in più
 
-Il nuovo controllo di qualità (§4.6) cerca in `docs/` tutto ciò che somiglia a una chiave o a un token. Se lo trova, lo stato generale diventa rosso e lo script esce con codice 2. Il primo giro di stamattina lo ha dimostrato bene: ha segnalato 15 "possibili segreti" in `ai-mondo.json`, che erano solo indirizzi di articoli del tipo `sk-hynix-…`, simili alle chiavi `sk-…`. Il giro successivo li ha riconosciuti come falsi allarmi ed è tornato verde. Un controllo che preferisce un falso allarme a una chiave persa è la scelta giusta.
+Il nuovo controllo di qualità (§4.6) cerca in `docs/` tutto ciò che somiglia a una chiave o a un token. Se lo trova, lo stato generale diventa rosso e lo script esce con codice 2. Il primo giro di stamattina lo ha dimostrato bene: ha segnalato 15 "possibili segreti" in `ai-mondo.json`, che erano solo indirizzi di articoli del tipo `sk-hynix-…`, simili alle chiavi `sk-…`. Nella versione successiva dello script il controllo è stato corretto per non scambiarli per chiavi, e la voce è tornata verde. Un controllo che preferisce un falso allarme a una chiave persa è la scelta giusta.
 
 ### Cosa fare se succede di nuovo
 

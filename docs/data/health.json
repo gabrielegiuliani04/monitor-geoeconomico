@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-10T06:40Z",
+ "updated": "2026-11-10T06:44Z",
  "date": "2026-11-10",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 6.4,
+ "seconds": 34.8,
  "summary": {
   "critical": 0,
   "high": 1,
-  "medium": 43,
-  "low": 8,
+  "medium": 35,
+  "low": 9,
   "info": 4
  },
  "checks": [
@@ -21,8 +21,8 @@
   {
    "area": "freshness",
    "name": "files against cadence",
-   "status": "red",
-   "detail": "65 ok, 0 stale, 1 missing; 8 lagging series inside files"
+   "status": "amber",
+   "detail": "65 ok, 0 stale, 1 missing; 0 lagging series inside files"
   },
   {
    "area": "schema",
@@ -73,22 +73,22 @@
    "detail": "42 of 67 files listed; missing: ai-mondo.json, assicurazioni.json, attacchi-analisti.json, baltico-sicurezza.json, basi-mondo.json, bunker-emissioni.json, commercio.json, cyber-energia.json, eolico-filiera.json, esposizione-nord.json, health.json, idrogeno.json, investimenti.json, italia-impatti.json, minerali.json, notizie-testate.json, offshore-nord.json, port-risk.json, porti-nord.json, rischio.json, simulatore.json, supply-chain-ai.json, transit-times.json, webcam.json, wind-calendar.json; rows without a file: analisti.json"
   },
   {
-   "area": "links",
-   "name": "source links",
-   "status": "amber",
-   "detail": "9384 distinct links found; not checked (offline run)"
-  },
-  {
    "area": "validators",
    "name": "repository validators",
    "status": "green",
    "detail": "10 run, 0 with a non-zero exit: originali 0; simulatore 0; eolico 0; stretti 0; basi 0; assicurazioni 0; ai 0; italia 0; supply-chain-ai 0; ucraina 0"
   },
   {
+   "area": "links",
+   "name": "source links (rotating sample)",
+   "status": "amber",
+   "detail": "150 of 9384 distinct links checked today: 6 blocked, 1 broken, 5 error, 138 ok; 0 confirmed broken, 1 failed once (rolling record)"
+  },
+  {
    "area": "smoke",
    "name": "browser smoke test",
-   "status": "amber",
-   "detail": "raccolta/qualita/smoke.json not found: run node raccolta/qualita/smoke.js"
+   "status": "green",
+   "detail": "run 2026-11-10T06:44Z: 46 passed, 0 failed"
   }
  ],
  "problems": [
@@ -161,62 +161,6 @@
    "file": "docs/data/report.json",
    "problem": "missing: no 'aggiornato'/'updated' field (cadence: monthly (curated))",
    "fix": "Curated layer: schedule the monthly review of this file (agent or by hand) and refresh dates and sources."
-  },
-  {
-   "severity": "medium",
-   "area": "freshness",
-   "file": "docs/data/scorte.json",
-   "problem": "series lagging behind its frequency: gas_stock_mensile_twh_de (mensile, last 2026-08-01)",
-   "fix": "The collector ran but this series did not move: check the source endpoint and the API key for this series."
-  },
-  {
-   "severity": "medium",
-   "area": "freshness",
-   "file": "docs/data/scorte.json",
-   "problem": "series lagging behind its frequency: gas_stock_mensile_twh_eu (mensile, last 2026-08-01)",
-   "fix": "The collector ran but this series did not move: check the source endpoint and the API key for this series."
-  },
-  {
-   "severity": "medium",
-   "area": "freshness",
-   "file": "docs/data/scorte.json",
-   "problem": "series lagging behind its frequency: petrolio_emergenza_giorni_it (mensile, last 2026-08-01)",
-   "fix": "The collector ran but this series did not move: check the source endpoint and the API key for this series."
-  },
-  {
-   "severity": "medium",
-   "area": "freshness",
-   "file": "docs/data/scorte.json",
-   "problem": "series lagging behind its frequency: petrolio_emergenza_giorni_de (mensile, last 2026-08-01)",
-   "fix": "The collector ran but this series did not move: check the source endpoint and the API key for this series."
-  },
-  {
-   "severity": "medium",
-   "area": "freshness",
-   "file": "docs/data/scorte.json",
-   "problem": "series lagging behind its frequency: petrolio_emergenza_giorni_fr (mensile, last 2026-08-01)",
-   "fix": "The collector ran but this series did not move: check the source endpoint and the API key for this series."
-  },
-  {
-   "severity": "medium",
-   "area": "freshness",
-   "file": "docs/data/scorte.json",
-   "problem": "series lagging behind its frequency: petrolio_emergenza_giorni_nl (mensile, last 2026-08-01)",
-   "fix": "The collector ran but this series did not move: check the source endpoint and the API key for this series."
-  },
-  {
-   "severity": "medium",
-   "area": "freshness",
-   "file": "docs/data/scorte.json",
-   "problem": "series lagging behind its frequency: oro_riserve_us (mensile, last 2026-07-01)",
-   "fix": "The collector ran but this series did not move: check the source endpoint and the API key for this series."
-  },
-  {
-   "severity": "medium",
-   "area": "freshness",
-   "file": "docs/data/scorte.json",
-   "problem": "series lagging behind its frequency: oro_riserve_tr (mensile, last 2026-08-01)",
-   "fix": "The collector ran but this series did not move: check the source endpoint and the API key for this series."
   },
   {
    "severity": "medium",
@@ -444,6 +388,13 @@
   },
   {
    "severity": "low",
+   "area": "links",
+   "file": "docs/data/notizie.json",
+   "problem": "failed once (re-checked tomorrow): http://www.iaea.org/newscenter/pressreleases/update-373-iaea-director-general-statement-on-situation-in-ukraine (DNS: [Errno -2] Name or service not known)",
+   "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
+  },
+  {
+   "severity": "low",
    "area": "schema",
    "file": "docs/data/esposizione-nord.json",
    "problem": "source fields on 'elementi': fonte missing in 10/10, link missing in 10/10, data_fonte missing in 10/10, affidabilita missing in 10/10",
@@ -495,7 +446,19 @@
    "why": "no 'aggiornato'/'updated' field"
   }
  ],
- "broken_links": [],
+ "broken_links": [
+  {
+   "url": "http://www.iaea.org/newscenter/pressreleases/update-373-iaea-director-general-statement-on-situation-in-ukraine",
+   "files": [
+    "notizie.json"
+   ],
+   "code": null,
+   "detail": "DNS: [Errno -2] Name or service not known",
+   "fails_in_a_row": 1,
+   "first_failed": "2026-11-10T06:44Z",
+   "confirmed": false
+  }
+ ],
  "mismatches": [
   {
    "fact": "BRENT on 2026-11-09",
@@ -591,7 +554,7 @@
    "validator": "simulatore",
    "script": "raccolta/simulatore/controlla.py",
    "exit": 0,
-   "seconds": 0.1,
+   "seconds": 0.2,
    "tail": "GNL Italia: capacità 28.0 bcm/anno, uso 12 mesi 20.1, libera 7.9 | AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | Esito: 0 errori, 1 avvisi"
   },
   {
@@ -612,7 +575,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.5,
+   "seconds": 0.6,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
