@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-10T06:50Z",
+ "updated": "2026-11-10T06:52Z",
  "date": "2026-11-10",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 33.6,
+ "seconds": 34.5,
  "summary": {
   "critical": 0,
   "high": 1,
-  "medium": 35,
-  "low": 7,
+  "medium": 39,
+  "low": 3,
   "info": 4
  },
  "checks": [
@@ -82,7 +82,7 @@
    "area": "links",
    "name": "source links (rotating sample)",
    "status": "green",
-   "detail": "150 of 9384 distinct links checked today: 6 blocked, 4 error, 139 ok, 1 proxy; 0 confirmed broken, 0 failed once (rolling record)"
+   "detail": "150 of 9384 distinct links checked today: 6 blocked, 5 error, 138 ok, 1 proxy; 0 confirmed broken, 0 failed once (rolling record)"
   },
   {
    "area": "smoke",
@@ -130,6 +130,13 @@
   {
    "severity": "medium",
    "area": "errors",
+   "file": "docs/data/idrogeno.json",
+   "problem": "collector error: IEA Hydrogen Production and Infrastructure Projects Database non usato: la pagina IEA risponde 403 ai client automatici e il download passa dal sito. Per includerlo: salvare l'xlsx in raccolta/idrogeno/iea/ oppure impostare IEA_H2_DB_URL.",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
    "file": "docs/data/italia-impatti.json",
    "problem": "collector error: Mimit giornaliero non scaricato (resta la serie settimanale MASE): https://www.mimit.gov.it/images/exportCSV/prezzo_alle_8.csv: <urlopen error [Errno 104] Connection reset by peer>",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
@@ -153,6 +160,27 @@
    "area": "errors",
    "file": "docs/data/scorte.json",
    "problem": "collector error: AGSI+ EU: API key: [nascosta]",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/webcam.json",
+   "problem": "collector error: istanbul-ibb: non_raggiungibile (URLError: <urlopen error [Errno 104] Connection reset by peer>)",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/webcam.json",
+   "problem": "collector error: panama-pacifico: non_raggiungibile (URLError: <urlopen error [Errno 104] Connection reset by peer>)",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/webcam.json",
+   "problem": "collector error: panama-atlantico: non_raggiungibile (URLError: <urlopen error [Errno 104] Connection reset by peer>)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -346,34 +374,6 @@
   },
   {
    "severity": "low",
-   "area": "errors",
-   "file": "docs/data/idrogeno.json",
-   "problem": "collector error: IEA Hydrogen Production and Infrastructure Projects Database non usato: la pagina IEA risponde 403 ai client automatici e il download passa dal sito. Per includerlo: salvare l'xlsx in raccolta/idrogeno/iea/ oppure impostare IEA_H2_DB_URL.",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "low",
-   "area": "errors",
-   "file": "docs/data/webcam.json",
-   "problem": "collector error: istanbul-ibb: non_raggiungibile (URLError: <urlopen error [Errno 104] Connection reset by peer>)",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "low",
-   "area": "errors",
-   "file": "docs/data/webcam.json",
-   "problem": "collector error: panama-pacifico: non_raggiungibile (URLError: <urlopen error [Errno 104] Connection reset by peer>)",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "low",
-   "area": "errors",
-   "file": "docs/data/webcam.json",
-   "problem": "collector error: panama-atlantico: non_raggiungibile (URLError: <urlopen error [Errno 104] Connection reset by peer>)",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "low",
    "area": "licences",
    "file": "docs/data/health.json",
    "problem": "no row in DATA_LICENSES.md",
@@ -529,7 +529,7 @@
    "script": "raccolta/simulatore/controlla.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "GNL Italia: capacità 28.0 bcm/anno, uso 12 mesi 20.1, libera 7.9 | AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | Esito: 0 errori, 1 avvisi"
+   "tail": "Italia (simulatore.html): 101 valori di italia-impatti.json controllati | AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | Esito: 0 errori, 1 avvisi"
   },
   {
    "validator": "wind calendar --rigoroso (output redirected)",
@@ -549,7 +549,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.6,
+   "seconds": 0.5,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -577,7 +577,7 @@
    "validator": "supply-chain-ai --valida",
    "script": "raccolta/supply-chain-ai/raccogli.py",
    "exit": 0,
-   "seconds": 0.1,
+   "seconds": 0.2,
    "tail": "AVVISO: materia germanio: nessuna quota per paese (dato mancante dichiarato) | AVVISO: collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare | AVVISO: collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
   },
   {

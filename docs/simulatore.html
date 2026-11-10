@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>“What If” Simulator</title>
-<meta name="description" content="What happens if a chokepoint slows down or closes: flows, bypasses, routes, freight, prices and exposed countries, with every number tied to its source.">
+<meta name="description" content="What happens if a chokepoint slows down or closes: flows, bypasses, routes, freight, prices, exposed countries and what it means for Italy, with every number tied to its source.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:wght@600&display=swap" rel="stylesheet">
@@ -218,7 +218,7 @@ dl.it-glossario dd{margin:0 0 2px;color:var(--soft)}
   <a class="torna" href="index.html">← Back to the map</a>
   <p class="occhiello">“What if…” simulator · Geo-economic Risk Monitor</p>
   <h1>What happens if a chokepoint slows down or closes?</h1>
-  <p class="sottotitolo">Choose a chokepoint, how much traffic is lost and for how long. The simulator follows the chain: flows, alternatives, routes, freight rates, prices, and the countries and ports exposed. It is a simple, transparent estimate: every number says where it comes from. Some source descriptions are in Italian.</p>
+  <p class="sottotitolo">Choose a chokepoint, how much traffic is lost and for how long. The simulator follows the chain: flows, alternatives, routes, freight rates, prices, the countries and ports exposed, and what happens in Italy (pump prices, bills, inflation, truck stoppages). It is a simple, transparent estimate: every number says where it comes from. Some source descriptions are in Italian.</p>
 
   <form class="comandi" id="comandi" aria-label="Scenario" onsubmit="return false">
     <fieldset><legend>Chokepoint</legend><div class="chips" id="sc-passaggio"></div></fieldset>
@@ -238,7 +238,7 @@ dl.it-glossario dd{margin:0 0 2px;color:var(--soft)}
   <section class="riquadro" style="margin-top:14px" aria-labelledby="t-fonti">
     <h2 id="t-fonti">Sources and files used</h2>
     <ul class="fonti" id="lista-fonti"></ul>
-    <p class="piccolo" style="margin-top:8px">The model (options, episodes, rules, parameters per chokepoint) lives in <a href="data/simulatore.json"><code>data/simulatore.json</code></a> and can be edited; the script <code>raccolta/simulatore/controlla.py</code> checks that every number matches the data files.</p>
+    <p class="piccolo" style="margin-top:8px">The model (options, episodes, rules, parameters per chokepoint) lives in <a href="data/simulatore.json"><code>data/simulatore.json</code></a> and can be edited; the script <code>raccolta/simulatore/controlla.py</code> checks that every number matches the data files, including the Italian coefficients and thresholds the “What happens in Italy” step reads from <a href="data/italia-impatti.json"><code>data/italia-impatti.json</code></a> (built by <code>raccolta/italia/raccogli.py</code>).</p>
   </section>
 
   <footer>
@@ -1073,7 +1073,7 @@ function disegnaItalia(p, r, du, io) {
   const tagFile = srcFile("italia-impatti.json", agg);
   const eur = (a, d = 2) => a ? "€" + rng(a[0], a[1], d) : "n/a";
   const pm = (a, b, d) => Math.abs(a - b) < Math.pow(10, -d) / 2 ? sgn(a, d) : sgn(a, d) + "–" + (b < 0 ? "−" : "") + n(Math.abs(b), d);
-  const cent = (a) => a ? pm(a[0] * 100, a[1] * 100, 1) + " c€/l" : "";
+  const cent = (a) => a ? (Math.abs(a[1]) < 0.0005 ? "unchanged" : pm(a[0] * 100, a[1] * 100, 1) + " c€/l") : "";
   const ppTxt = (a) => pm(a[0], a[1], 2) + " pp";
   let h = `<li class="passo"><div class="scheda" id="italia"><h2>What happens in Italy</h2>`;
   h += `<p class="domanda">Pump prices, truck-stoppage risk, inflation, electricity and gas bills, likely government measures and what to watch. The Brent and TTF changes of step 5 go through the observatory's Italian transmission rules.</p>`;
@@ -1091,7 +1091,7 @@ function disegnaItalia(p, r, du, io) {
   h += riga("Petrol at the pump", `excise unchanged ${srcIt("MASE weekly", fMase)}`,
     eur(N.bz), N.bz ? `from €${n(bN.benzina, 3)} · ${cent(N.dB)}` : "", eur(O.bz), O.bz ? `from €${n(bO.benzina, 3)} · ${cent(O.dB)}` : "");
   const badge = (o) => `<span class="rischio ${o.rischio.liv}">${RISCHIO_EN[o.rischio.liv]}</span>`;
-  h += riga("Truck-stoppage risk", `thresholds from the 2022 and 2026 precedents ${srcIt("observatory assessment")}`, badge(N), N.rischio.perche, badge(O), O.rischio.perche);
+  h += riga("Truck-stoppage risk", `thresholds from the 2022 and 2026 precedents ${srcIt("observatory assessment")}`, badge(N), N.rischio.perche, badge(O), O.rischio.perche + (bO.gasolio >= I.soglie.eur[1] ? ", already the case before any shock" : ""));
   h += riga("Inflation, direct energy effect", `on the annual rate, 1–3 months ${srcIt("Eurostat HICP weights 2026", fEuro)}`,
     ppTxt(N.pp), N.gasPct ? "" : "fuel and electricity only: no regulated-gas reference price for Feb 2026 in the file",
     ppTxt(O.pp), `NIC inflation today ${n(itv("oggi.nic_generale")[1], 1)}% (${itMeseBreve(itv("oggi.nic_generale")[0])}) ${srcIt("Istat", fIstat)}`);
@@ -1205,7 +1205,8 @@ function disegnaItalia(p, r, du, io) {
 function disegnaFisso() {
   const M = D.M;
   document.getElementById("lista-limiti").innerHTML = M.limiti.map(x => `<li>${esc(x)}</li>`).join("");
-  document.getElementById("lista-fonti").innerHTML = M.fonti.map(f => `<li>${esc(f.nome)}${f.file ? ` — <code>${esc(f.file)}</code>` : ""}${f.link ? ` — <a href="${esc(f.link)}" target="_blank" rel="noopener">link</a>` : ""}${f.licenza ? ` <span class="piccolo">(${esc(f.licenza)})</span>` : ""}</li>`).join("");
+  document.getElementById("lista-fonti").innerHTML = M.fonti.map(f => `<li>${esc(f.nome)}${f.file ? ` — <code>${esc(f.file)}</code>` : ""}${f.link ? ` — <a href="${esc(f.link)}" target="_blank" rel="noopener">link</a>` : ""}${f.licenza ? ` <span class="piccolo">(${esc(f.licenza)})</span>` : ""}</li>`).join("")
+    + `<li>Italy: pump prices (MASE), PUN (GME), inflation (Istat, Eurostat), ARERA, precedents, government measures, transmission rules — <code>italia-impatti.json</code> — <a href="data/italia-impatti.json" target="_blank" rel="noopener">link</a> <span class="piccolo">(source descriptions in Italian)</span></li>`;
   document.getElementById("agg").textContent = `Observatory data updated ${dataIt(D["stretti-dettaglio"].aggiornato)} (profiles), ${dataIt(D.prezzi.brent.data)} (prices), ${dataIt(D.noli.wci.data)} (freight), ${dataIt(D.portwatch.elementi[0].ultima_data)} (PortWatch).`;
 }
 

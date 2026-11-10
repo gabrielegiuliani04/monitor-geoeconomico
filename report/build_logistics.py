@@ -58,18 +58,28 @@ def warn(msg):
 EXTERNAL = {
     "vlsfo_sg_2023": {
         "value": 668.5, "unit": "$/t", "date": "2023-10",
-        "text": "Singapore VLSFO, October 2023 monthly average",
-        "source": "Ship & Bunker monthly price review, as quoted by PortNews",
+        "text": "Singapore VLSFO, October 2023 monthly average (+0.8% on September 2023)",
+        "source": "Ship & Bunker monthly price review, as quoted by PortNews (16 November 2023)",
         "link": "https://en.portnews.ru/news/356287", "reliability": "medium",
-        "read": "search-result excerpt; the page itself was not reachable from the session",
+        "read": "value confirmed in a search-result excerpt on 10 November 2026; the page itself could not be opened from the review session",
     },
     "wci_sh_rtm_2023": {
         "value": 1048.0, "unit": "$/FEU", "date": "2023-11-02",
-        "text": "Drewry WCI Shanghai–Rotterdam, 2 November 2023 (range in November 2023: 1,048–1,272 $/FEU)",
-        "range": [1048.0, 1272.0],
-        "source": "Drewry World Container Index, as reprinted by Air Freight News and Hellenic Shipping News",
-        "link": "https://www.hellenicshippingnews.com/drewry-world-container-index-up-7-this-week/", "reliability": "medium",
-        "read": "search-result excerpts; Drewry's archive and the reprints were not opened from the session",
+        "text": "Drewry WCI Shanghai–Rotterdam, 2 November 2023 (+4% on the week; composite 1,406 $/FEU, 1% below its 2019 average; 1,272 $/FEU a week later, 9 November 2023)",
+        "source": "Drewry World Container Index of 2 November 2023, as reprinted by Air Freight News and Hellenic Shipping News",
+        "link": "https://airfreight.news/articles/full/world-container-index-02-nov", "reliability": "medium",
+        "read": "value confirmed in two search-result excerpts on 10 November 2026; Drewry's archive and the reprints could not be opened from the review session",
+    },
+    # Alphaliner splits the 63% of transit-times.json by trade: North Europe services are below the average.
+    "alphaliner_split": {
+        "overall": 63, "north_europe": 58, "med": 70, "teu_red_sea": 5.50, "teu_total": 8.70,
+        "period": "15 September–15 October 2026", "date": "2026-10-21",
+        "text": "Alphaliner: 5.50 of 8.70 million TEU deployed on Far East–Europe services used the Red Sea between 15 September and 15 October 2026 (63%); 58% on Far East–North Europe, 70% on Far East–Mediterranean; some services use the Red Sea westbound only and the Cape on the return leg",
+        "source": "Alphaliner, as reported by Ship & Bunker (21 October 2026) and The Loadstar",
+        "link": "https://shipandbunker.com/news/emea/932812-container-lines-shift-63-of-far-east-europe-capacity-back-to-suez-canal-alphaliner",
+        "reliability": "medium",
+        "read": "search-result excerpts read on 10 November 2026; the article could not be opened from the review session",
+        "other_measures": "Sea-Intelligence: 27% of Asia–Europe capacity via Suez in September 2026 on its normalised measure; Maritime Strategies International: about 35% of Asia–Europe sailings",
     },
 }
 
@@ -224,8 +234,13 @@ def compute(today):
     V["R"] = R
     V["tt"] = tt
     m = tt["method"]
-    share = m["container_red_sea_share"]["value_pct"] / 100
-    V["share"] = share
+    share_all = m["container_red_sea_share"]["value_pct"] / 100
+    A = EXTERNAL["alphaliner_split"]
+    if abs(A["overall"] - share_all * 100) > 0.5 or abs(A["teu_red_sea"] / A["teu_total"] * 100 - A["overall"]) > 0.5:
+        warn("Alphaliner split does not match the share in transit-times.json")
+    share = A["north_europe"] / 100          # North Europe services: the share used for the cost stack and northern lanes
+    share_med = A["med"] / 100
+    V["share"], V["share_all"], V["share_med"] = share, share_all, share_med
     V["share_src"] = m["container_red_sea_share"]
     veh = m["vessels"]["container"]
     V["veh"] = veh
@@ -239,10 +254,11 @@ def compute(today):
     for k in lanes:
         r = R[k]
         cape = r["cape"]
+        sk = share_med if k[1] in ("genoa", "piraeus", "trieste") else share
         L.append({"key": k, "from": r["from_name"].split(" (")[0].replace("Mumbai / Nhava Sheva", "Nhava Sheva"),
                   "to": r["to_name"], "nm_base": r["nm_base"], "nm_today": r["nm_today"], "nm_cape": cape["nm"],
                   "d_base": r["days_base"], "d_today": r["days_today"], "d_cape": cape["days"],
-                  "d_w": share * r["days_today"] + (1 - share) * cape["days"],
+                  "d_w": sk * r["days_today"] + (1 - sk) * cape["days"], "share": sk,
                   "status": r["status"], "loads": r["loads_today_at"]})
     V["lanes"] = L
     sh = R[("shanghai", "rotterdam")]
@@ -512,7 +528,7 @@ def chart_lanes(V, wide=True):
     top0 = 34
     leg = []
     leg_y_end = legend(leg, [("via Suez (2023 and today's Suez services)", "dot", "ael-s2"),
-                             (f"capacity-weighted today ({round(V['share'] * 100)}% Suez)", "tick", "ael-k1"),
+                             (f"capacity-weighted today ({round(V['share'] * 100)}% via Suez to N. Europe, {round(V['share_med'] * 100)}% to the Med)", "tick", "ael-k1"),
                              ("via the Cape", "dia", "ael-s3")], 12, top0, w, wide)
     top = leg_y_end + 34
     h = top + rowh * len(L) + 30
@@ -701,6 +717,8 @@ def blocks(V, edition):
     sh, sg = R[("shanghai", "rotterdam")], R[("singapore", "rotterdam")]
     share = V["share"]
     S, Cp = round(share * 100), round((1 - share) * 100)
+    S63, SM = round(V["share_all"] * 100), round(V["share_med"] * 100)
+    A = EXTERNAL["alphaliner_split"]
     pw = V["pw"]
     hz, bab, sz, cape = pw["Strait of Hormuz"], pw["Bab el-Mandeb"], pw["Suez Canal"], pw["Cape of Good Hope"]
     L = {l["key"]: l for l in V["lanes"]}
@@ -735,30 +753,29 @@ def blocks(V, edition):
     # ---------------------------------------------------------------- 1. key points
     B.append(("h2", "key-points", "1. Key points"))
     B.append(("ul", [
-        f"**Suez is back for {S}% of Asia–Europe container capacity; the rest still sails round the Cape.** A Shanghai–Rotterdam voyage takes "
-        f"{num(lr['d_today'], 1)} days at sea via Suez and {num(lr['d_cape'], 1)} via the Cape, so today's mix averages {num(lr['d_w'], 1)} days "
-        f"(Alphaliner via {dl('transit-times.json')}, October 2026; model at 15 knots). Hormuz is de facto closed: "
-        f"{num(hz['transits_7d_avg'], 1)} transits a day against {num(hz['transits_7d_avg_3y_ago'], 1)} three years ago (IMF PortWatch, week to {date_en(hz['date'])}).",
-        f"**The cost of moving one box from Shanghai to Rotterdam has risen by about {num(up, 0)}% since late 2023.** Fuel, EU ETS, FuelEU and war risk "
-        f"come to about {num(tw['feu']['total'])} $ per 40-foot container (FEU) today against {num(t23['feu']['total'])} $ in 2023. "
-        f"The largest single increase is the fuel price (+{num(V['W'][1][1])} $/FEU), not the detour (+{num(V['W'][2][1])} $/FEU) "
-        f"(calculation in section 3; fuel price of {date_en(ci['p_date'])}, carbon price of {date_en(ci['eua_date'])}).",
-        f"**Freight rates have risen far more than these costs.** The Drewry WCI Shanghai–Rotterdam is {num(V['wci_rtm'])} $/FEU ({date_en(V['wci_date'])}), "
-        f"against {num(V['wci_2023'])} $ on {date_en(E2['date'])}: +{num(rate_up)} $, of which the cost items explain about {num(cost_up)} $ "
-        f"({num(cost_up / rate_up * 100)}%). Capacity and demand, not fuel or carbon, set the rate.",
-        f"**No North Sea or Baltic port is at high risk; Rotterdam and Antwerp-Bruges carry the most impact.** Both score {num(rtm['score'], 1)} of 25 "
-        f"(medium) on the monitor's Port Risk Index: impact {num(rtm['impact'], 1)} of 5, probability {num(rtm['probability'], 1)} ({dl('port-risk.json')}, "
-        f"{date_en(pr['reference_date'])}). The highest scores are the Russian Gulf of Finland ports, at {num(V['ports_ru'][0]['score'], 1)}.",
-        f"**For Q1 2027 the signal to watch is the Red Sea war-risk premium, not Suez traffic.** In this model the Cape becomes cheaper than Suez "
-        f"when the premium passes about {num(be_['pct_toll'][0], 2)}–{num(be_['pct'], 2)}% of hull value, depending on the canal toll. "
+        f"**Suez is back for {S}% of Far East–North Europe container capacity; the rest still sails round the Cape.** Shanghai–Rotterdam takes "
+        f"{num(lr['d_today'], 1)} days at sea via Suez and {num(lr['d_cape'], 1)} via the Cape, {num(lr['d_w'], 1)} on average today "
+        f"(Alphaliner, 15 September–15 October 2026; model at 15 knots, {dl('transit-times.json')}). Hormuz is de facto closed: "
+        f"{num(hz['transits_7d_avg'], 1)} transits a day against {num(hz['transits_7d_avg_1y_ago'], 1)} a year earlier (IMF PortWatch, week to {date_en(hz['date'])}).",
+        f"**Fuel, carbon and war risk per box are up {num(up, 0)}% since late 2023.** On Shanghai–Rotterdam they come to about {num(tw['feu']['total'])} $ "
+        f"per 40-foot container (FEU) today against {num(t23['feu']['total'])} $ in 2023. The fuel price adds {num(V['W'][1][1])} $, EU carbon rules "
+        f"{num(V['W'][3][1] + V['W'][4][1])} $, the Cape detour {num(V['W'][2][1])} $ (section 3; prices of {date_en(ci['p_date'])} and {date_en(ci['eua_date'])}).",
+        f"**Freight rates have risen far more than these costs.** The Drewry WCI Shanghai–Rotterdam is {num(V['wci_rtm'])} $/FEU ({date_en(V['wci_date'])}) "
+        f"against {num(V['wci_2023'])} $ on {date_en(E2['date'])}: +{num(rate_up)} $. Fuel, carbon and war risk explain about {num(cost_up)} $ of that "
+        f"({num(cost_up / rate_up * 100)}%).",
+        f"**No North Sea or Baltic port is at high risk.** Rotterdam and Antwerp-Bruges score {num(rtm['score'], 1)} of 25 (medium) on the monitor's "
+        f"Port Risk Index: top impact ({num(rtm['impact'], 1)} of 5), low probability ({num(rtm['probability'], 1)}) ({dl('port-risk.json')}, "
+        f"{date_en(pr['reference_date'])}). The highest scores are the Russian Gulf of Finland ports, {num(V['ports_ru'][0]['score'], 1)}.",
+        f"**Watch the Red Sea war-risk premium (assessment).** On fuel and carbon alone, the Cape beats Suez when the premium passes about "
+        f"{num(be_['pct_toll'][0], 2)}–{num(be_['pct'], 2)}% of hull value, depending on the canal toll; charter costs would raise that line. "
         f"The last public quote is {num(V['prem_last']['mar-rosso']['min'], 1)}–{num(V['prem_last']['mar-rosso']['max'], 1)}% "
         f"({date_en(V['prem_last']['mar-rosso']['data'])}, {dl('assicurazioni.json')}).",
     ]))
     B.append(("val", "*Assessment.* For Dutch, Danish and Baltic logistics the corridor is now a cost problem more than a capacity problem. "
-                     "Ships are getting through, but each box carries a higher fuel bill and a new carbon bill. The schedule mix "
-                     f"({S}/{Cp}) still adds about {num(lr['d_w'] - lr['d_today'], 1)} days on average, and it could flip back within weeks if the "
-                     "Red Sea relapses. The full return to Suez expected by Q1 2027 would lower costs, but it would also bring back the bunching "
-                     "of arrivals at North Sea hubs seen when routings change."))
+                     "Ships are getting through, but each box carries a higher fuel bill and a new carbon bill. The risk dashboard still rates the Red Sea "
+                     f"container route high ({num(rs_c['punteggio'], 1)} of 25, {dl('rischio.json')}). The routing mix ({S}/{Cp} on North Europe services) still adds "
+                     f"about {num(lr['d_w'] - lr['d_today'], 1)} days on average, and it could flip back within weeks if the Red Sea relapses. The full return to Suez "
+                     "expected by Q1 2027 would lower costs, but it would also bring back the bunching of arrivals at North Sea hubs seen when routings change."))
 
     # ---------------------------------------------------------------- 2. route map
     B.append(("h2", "routes", f"2. The route map today: Suez back for {S}% of capacity, Cape for the rest, Hormuz closed"))

@@ -1,0 +1,624 @@
+{
+ "aggiornato": "2026-11-10",
+ "nota": "Wind fleet by commissioning period (pre2010 = before 2010; 2010-2017; 2018+), onshore and offshore. Aggregates only: raw registers are kept in raccolta/cyber/cache/ (git-ignored). MW = gross rated power of units in operation at the register date. Sources use different thresholds: compare countries with care.",
+ "periodi": [
+  "pre2010",
+  "2010-2017",
+  "2018+"
+ ],
+ "fonti": [
+  {
+   "id": "ens",
+   "nome": "Energistyrelsen (Danish Energy Agency), Stamdataregister for vindkraftanlæg, file \"Vinddata 2026-09.xlsx\" (data to end-September 2026)",
+   "link": "https://ens.dk/analyser-og-statistik/data-oversigt-over-energisektoren",
+   "licenza": "public data of the Danish authority, reuse with attribution",
+   "data_dato": "2026-09",
+   "scaricato": "2026-11-10"
+  },
+  {
+   "id": "mastr",
+   "nome": "Bundesnetzagentur, Marktstammdatenregister, Gesamtdatenexport 10-11-2026 (EinheitenWind.xml, Katalogwerte.xml) + public unit list (PersonenArt)",
+   "link": "https://www.marktstammdatenregister.de/MaStR/Datendownload",
+   "licenza": "Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de/by-2-0)",
+   "data_dato": "2026-11-10",
+   "scaricato": "2026-11-10"
+  },
+  {
+   "id": "repd",
+   "nome": "DESNZ, Renewable Energy Planning Database (REPD), Q2 2026",
+   "link": "https://www.gov.uk/government/publications/renewable-energy-planning-database-monthly-extract",
+   "licenza": "Open Government Licence v3.0",
+   "data_dato": "2026-06",
+   "scaricato": "2026-11-10"
+  },
+  {
+   "id": "gem",
+   "nome": "Global Energy Monitor, Global Wind Power Tracker (February 2026 version, public map file)",
+   "link": "https://globalenergymonitor.org/projects/global-wind-power-tracker/",
+   "licenza": "CC BY 4.0",
+   "data_dato": "2026-02",
+   "scaricato": "2026-11-10"
+  },
+  {
+   "id": "emodnet",
+   "nome": "EMODnet Human Activities, wind farms (via docs/data/offshore-nord.json)",
+   "link": "https://emodnet.ec.europa.eu/en/human-activities",
+   "licenza": "CC BY 4.0",
+   "data_dato": "2025-2026",
+   "scaricato": "2026-11-09"
+  },
+  {
+   "id": "windeurope",
+   "nome": "WindEurope, Wind energy in Europe – 2025 Statistics and the outlook for 2026-2030 (table 1)",
+   "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+   "licenza": "(c) WindEurope, citation",
+   "data_dato": "2026-02"
+  }
+ ],
+ "totali_windeurope_fine2025_mw": {
+  "DK": {
+   "onshore": 4856,
+   "offshore": 2652
+  },
+  "NL": {
+   "onshore": 7054,
+   "offshore": 4738
+  },
+  "DE": {
+   "onshore": 68067,
+   "offshore": 9624
+  },
+  "PL": {
+   "onshore": 11200,
+   "offshore": 0
+  },
+  "LT": {
+   "onshore": 2535,
+   "offshore": 0
+  },
+  "LV": {
+   "onshore": 137,
+   "offshore": 0
+  },
+  "EE": {
+   "onshore": 711,
+   "offshore": 0
+  },
+  "SE": {
+   "onshore": 18323,
+   "offshore": 192
+  },
+  "FI": {
+   "onshore": 9433,
+   "offshore": 71
+  },
+  "GB": {
+   "onshore": 15912,
+   "offshore": 16982
+  },
+  "IT": {
+   "onshore": 13451,
+   "offshore": 30
+  },
+  "EUROPA": {
+   "onshore": 265392,
+   "offshore": 38617
+  }
+ },
+ "registri": {
+  "DK": {
+   "fonte": "ens",
+   "soglia": "all turbines, including household micro turbines",
+   "unita_attive": 7018,
+   "onshore": {
+    "pre2010": {
+     "turbine": 3335,
+     "mw": 2325.6
+    },
+    "2010-2017": {
+     "turbine": 562,
+     "mw": 1682.5
+    },
+    "2018+": {
+     "turbine": 226,
+     "mw": 784.9
+    }
+   },
+   "offshore": {
+    "pre2010": {
+     "turbine": 294,
+     "mw": 635.7
+    },
+    "2010-2017": {
+     "turbine": 202,
+     "mw": 614.6
+    },
+    "2018+": {
+     "turbine": 239,
+     "mw": 2444.7
+    }
+   },
+   "micro_senza_tipo_posizione": {
+    "pre2010": {
+     "turbine": 106,
+     "mw": 1.4
+    },
+    "2010-2017": {
+     "turbine": 1937,
+     "mw": 18.8
+    },
+    "2018+": {
+     "turbine": 116,
+     "mw": 1.4
+    }
+   },
+   "oltre_20_anni_mw": {
+    "onshore": 2140,
+    "offshore": 398
+   },
+   "per_taglia_onshore_mw": {
+    "500-999kW": 1568.2,
+    "2-3.99MW": 2294.6,
+    "<500kW": 137.8,
+    "1-1.99MW": 391.3,
+    ">=4MW": 401.1
+   },
+   "per_taglia_onshore_turbine": {
+    "500-999kW": 2301,
+    "2-3.99MW": 773,
+    "<500kW": 652,
+    "1-1.99MW": 316,
+    ">=4MW": 81
+   },
+   "nota": "\"HAV\" (sea) includes Thor (1,058 MW, 2026). Rows without location type = 2,160 micro turbines (<25 kW, 21.7 MW). The register has no owner type."
+  },
+  "DE": {
+   "fonte": "mastr",
+   "soglia": "all units in operation (status 35)",
+   "unita_attive": 32286,
+   "onshore": {
+    "pre2010": {
+     "turbine": 13590,
+     "mw": 18930.5
+    },
+    "2010-2017": {
+     "turbine": 10722,
+     "mw": 26984.0
+    },
+    "2018+": {
+     "turbine": 6153,
+     "mw": 25845.4
+    }
+   },
+   "offshore": {
+    "pre2010": {
+     "turbine": 7,
+     "mw": 35.0
+    },
+    "2010-2017": {
+     "turbine": 1160,
+     "mw": 5487.9
+    },
+    "2018+": {
+     "turbine": 654,
+     "mw": 6165.8
+    }
+   },
+   "oltre_20_anni_mw": {
+    "onshore": 11908,
+    "offshore": 0
+   },
+   "fino_al_2000_mw": {
+    "onshore": 2503
+   },
+   "persona_fisica_onshore_mw": {
+    "pre2010": 719.5,
+    "2010-2017": 259.9,
+    "2018+": 52.1
+   },
+   "marchi_non_piu_attivi_mw": {
+    "onshore": {
+     "pre2010": 3771,
+     "2010-2017": 3375,
+     "2018+": 340
+    },
+    "offshore": {
+     "2010-2017": 2144,
+     "2018+": 203
+    },
+    "marchi": "NEG Micon, REpower/Senvion, Tacke, Fuhrländer, DeWind, BARD, Adwen, Südwind, AN, Enron (only brands with >50 MW per period counted)"
+   },
+   "telecontrollo_direktvermarkter_quota_mw": 0.963,
+   "oem_cinesi": {
+    "Vensys (Goldwind-controlled)": {
+     "turbine": 155,
+     "mw": 393
+    }
+   },
+   "operatori_registrati": 10695,
+   "nota": "PersonenArt from the public MaStR unit list: \"natural person\" excludes citizen wind farms set up as GmbH & Co. KG, so it heavily understates citizen ownership. Telecontrol share = capacity flagged as remotely controllable by the direct marketer (FernsteuerbarkeitDv=1)."
+  },
+  "GB": {
+   "fonte": "repd",
+   "soglia": "sites >= 150 kW (REPD), MW per site",
+   "dati": {
+    "onshore": {
+     "pre2010": {
+      "siti": 217,
+      "mw": 3390
+     },
+     "2010-2017": {
+      "siti": 481,
+      "mw": 8718
+     },
+     "2018+": {
+      "siti": 84,
+      "mw": 3374
+     },
+     "n/d": {
+      "siti": 3,
+      "mw": 26
+     }
+    },
+    "offshore": {
+     "pre2010": {
+      "siti": 12,
+      "mw": 947
+     },
+     "2010-2017": {
+      "siti": 23,
+      "mw": 5568
+     },
+     "2018+": {
+      "siti": 14,
+      "mw": 9496
+     }
+    }
+   }
+  }
+ },
+ "gem_progetti_10mw": {
+  "fonte": "gem",
+  "soglia": "project phases >= 10 MW (small turbines missing: understates old fleets)",
+  "paesi": {
+   "EUROPE": {
+    "onshore": {
+     "pre2010": 49326,
+     "2010-2017": 72836,
+     "2018+": 74307,
+     "n/d": 18316
+    },
+    "offshore": {
+     "pre2010": 2421,
+     "2010-2017": 13613,
+     "2018+": 23169,
+     "n/d": 0
+    }
+   },
+   "Denmark": {
+    "onshore": {
+     "pre2010": 263,
+     "2010-2017": 1274,
+     "2018+": 688,
+     "n/d": 126
+    },
+    "offshore": {
+     "pre2010": 634,
+     "2010-2017": 618,
+     "2018+": 1401,
+     "n/d": 0
+    }
+   },
+   "Netherlands": {
+    "onshore": {
+     "pre2010": 408,
+     "2010-2017": 984,
+     "2018+": 2649,
+     "n/d": 1145
+    },
+    "offshore": {
+     "pre2010": 595,
+     "2010-2017": 1197,
+     "2018+": 5044,
+     "n/d": 0
+    }
+   },
+   "Germany": {
+    "onshore": {
+     "pre2010": 11469,
+     "2010-2017": 16210,
+     "2018+": 12269,
+     "n/d": 1620
+    },
+    "offshore": {
+     "pre2010": 30,
+     "2010-2017": 5207,
+     "2018+": 3789,
+     "n/d": 0
+    }
+   },
+   "Poland": {
+    "onshore": {
+     "pre2010": 706,
+     "2010-2017": 3878,
+     "2018+": 3661,
+     "n/d": 718
+    },
+    "offshore": {
+     "pre2010": 0,
+     "2010-2017": 0,
+     "2018+": 0,
+     "n/d": 0
+    }
+   },
+   "Lithuania": {
+    "onshore": {
+     "pre2010": 80,
+     "2010-2017": 333,
+     "2018+": 845,
+     "n/d": 50
+    },
+    "offshore": {
+     "pre2010": 0,
+     "2010-2017": 0,
+     "2018+": 0,
+     "n/d": 0
+    }
+   },
+   "Latvia": {
+    "onshore": {
+     "pre2010": 20,
+     "2010-2017": 21,
+     "2018+": 59,
+     "n/d": 0
+    },
+    "offshore": {
+     "pre2010": 0,
+     "2010-2017": 0,
+     "2018+": 0,
+     "n/d": 0
+    }
+   },
+   "Estonia": {
+    "onshore": {
+     "pre2010": 78,
+     "2010-2017": 181,
+     "2018+": 429,
+     "n/d": 0
+    },
+    "offshore": {
+     "pre2010": 0,
+     "2010-2017": 0,
+     "2018+": 0,
+     "n/d": 0
+    }
+   },
+   "Sweden": {
+    "onshore": {
+     "pre2010": 431,
+     "2010-2017": 4295,
+     "2018+": 11573,
+     "n/d": 97
+    },
+    "offshore": {
+     "pre2010": 140,
+     "2010-2017": 48,
+     "2018+": 0,
+     "n/d": 0
+    }
+   },
+   "Finland": {
+    "onshore": {
+     "pre2010": 12,
+     "2010-2017": 1741,
+     "2018+": 6764,
+     "n/d": 0
+    },
+    "offshore": {
+     "pre2010": 0,
+     "2010-2017": 42,
+     "2018+": 0,
+     "n/d": 0
+    }
+   },
+   "United Kingdom": {
+    "onshore": {
+     "pre2010": 3376,
+     "2010-2017": 8757,
+     "2018+": 2661,
+     "n/d": 2
+    },
+    "offshore": {
+     "pre2010": 947,
+     "2010-2017": 5630,
+     "2018+": 9393,
+     "n/d": 0
+    }
+   },
+   "Italy": {
+    "onshore": {
+     "pre2010": 3091,
+     "2010-2017": 3303,
+     "2018+": 1822,
+     "n/d": 2195
+    },
+    "offshore": {
+     "pre2010": 0,
+     "2010-2017": 0,
+     "2018+": 30,
+     "n/d": 0
+    }
+   }
+  }
+ },
+ "offshore_emodnet": {
+  "fonte": "emodnet",
+  "copertura": "North Sea (GB east coast only) and Baltic; farms with status \"operational\"; EMODnet lags (e.g. DE 7.7 GW vs 11.7 GW in MaStR)",
+  "correzioni": "year added for 8 farms without year (Middelgrunden 2000, Bard Offshore 1 2013, Butendiek 2015, Gode Wind 1-2 2017, Hornsea 2 2022, Vesterhav Syd 2023, Hollandse Kust Zuid 2023); Hornsea 2 counted once (EMODnet triplicates it as three 1,386 MW phases)",
+  "per_paese": {
+   "DK": {
+    "pre2010": {
+     "parchi": 8,
+     "mw": 641,
+     "turbine": 298
+    },
+    "2010-2017": {
+     "parchi": 3,
+     "mw": 617,
+     "turbine": 204
+    },
+    "2018+": {
+     "parchi": 4,
+     "mw": 1191,
+     "turbine": 144
+    }
+   },
+   "TOT": {
+    "pre2010": {
+     "parchi": 20,
+     "mw": 1649,
+     "turbine": 544
+    },
+    "2010-2017": {
+     "parchi": 45,
+     "mw": 10055,
+     "turbine": 2394
+    },
+    "2018+": {
+     "parchi": 45,
+     "mw": 19845,
+     "turbine": 2402
+    },
+    "n/d": {
+     "parchi": 1,
+     "mw": 0,
+     "turbine": 1
+    }
+   },
+   "NL": {
+    "2018+": {
+     "parchi": 12,
+     "mw": 5479,
+     "turbine": 495
+    },
+    "2010-2017": {
+     "parchi": 6,
+     "mw": 1146,
+     "turbine": 241
+    },
+    "pre2010": {
+     "parchi": 4,
+     "mw": 595,
+     "turbine": 96
+    }
+   },
+   "BE": {
+    "2010-2017": {
+     "parchi": 2,
+     "mw": 195,
+     "turbine": 61
+    },
+    "2018+": {
+     "parchi": 5,
+     "mw": 1385,
+     "turbine": 167
+    }
+   },
+   "DE": {
+    "2010-2017": {
+     "parchi": 18,
+     "mw": 4997,
+     "turbine": 1079
+    },
+    "2018+": {
+     "parchi": 9,
+     "mw": 2681,
+     "turbine": 371
+    },
+    "pre2010": {
+     "parchi": 3,
+     "mw": 37,
+     "turbine": 8
+    }
+   },
+   "GB": {
+    "2018+": {
+     "parchi": 15,
+     "mw": 9109,
+     "turbine": 1225
+    },
+    "2010-2017": {
+     "parchi": 11,
+     "mw": 2938,
+     "turbine": 774
+    },
+    "pre2010": {
+     "parchi": 3,
+     "mw": 265,
+     "turbine": 87
+    },
+    "n/d": {
+     "parchi": 1,
+     "mw": 0,
+     "turbine": 1
+    }
+   },
+   "SE": {
+    "2010-2017": {
+     "parchi": 1,
+     "mw": 48,
+     "turbine": 16
+    },
+    "pre2010": {
+     "parchi": 2,
+     "mw": 110,
+     "turbine": 55
+    }
+   },
+   "FI": {
+    "2010-2017": {
+     "parchi": 4,
+     "mw": 113,
+     "turbine": 19
+    }
+   }
+  }
+ },
+ "sistema": {
+  "DK_2025": {
+   "fonte": "Energi Data Service, ProductionConsumptionSettlement (Energinet)",
+   "link": "https://www.energidataservice.dk/tso-electricity/ProductionConsumptionSettlement",
+   "vento_twh": 19.09,
+   "consumo_lordo_twh": 40.51,
+   "quota": 0.471,
+   "ora_max_vento_mw": 6485,
+   "ora_max_rapporto_vento_consumo": 1.49,
+   "ore_vento_sopra_consumo": 588,
+   "max_vento_DK1_mw": 4946,
+   "max_vento_DK2_mw": 1567
+  },
+  "DE_2025": {
+   "fonte": "Fraunhofer ISE Energy-Charts API public_power (15 min)",
+   "link": "https://api.energy-charts.info/",
+   "vento_twh": 131.2,
+   "carico_twh": 465.8,
+   "quota": 0.282,
+   "max_vento_gw": 51.5,
+   "carico_in_quel_momento_gw": 57.4,
+   "max_offshore_gw": 8.3,
+   "quarti_d_ora_vento_sopra_carico": 12
+  },
+  "NL_2025": {
+   "fonte": "Energy-Charts (wind series probably incomplete: 19% share vs 29% WindEurope)",
+   "vento_twh": 22.7,
+   "carico_twh": 116.9,
+   "max_vento_gw": 6.9
+  },
+  "riserve": {
+   "CE_incidente_riferimento_mw": 3000,
+   "nordico_incidente_dimensionante_mw": 1450,
+   "nordico_fcr_d_su_mw": 1450,
+   "GB_perdita_infrequente_max_mw": 1800
+  }
+ }
+}

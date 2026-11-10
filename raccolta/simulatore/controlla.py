@@ -20,7 +20,12 @@ Cosa verifica:
      che i coefficienti delle regole siano coerenti con le variazioni e con il volume scoperto
      di Hormuz calcolato dai flussi e dai bypass; se prezzi.json copre una finestra la ricalcola;
      con --verifica-online o --scarica ricalcola tutto dalle chiusure di Yahoo Finance;
-  5. coerenza interna: intensità tra 0 e 1, bypass min <= max, ipotesi e limiti presenti.
+  5. coerenza interna: intensità tra 0 e 1, bypass min <= max, ipotesi e limiti presenti;
+  6. sezione «Cosa succede in Italia» di docs/simulatore.html: ogni percorso dell'elenco IT_PERCORSI
+     esiste in italia-impatti.json (coefficienti, soglie, basi, pesi numerici), le soglie sono ordinate,
+     le costanti IT_K compaiono nella regola scritta, i coefficienti degli scenari sono quelli stimati,
+     la formula della pagina rifà gli scenari già calcolati e i numeri dei testi delle misure compaiono
+     nella voce citata.
 
 Solo libreria standard. Esce con codice 1 se trova errori.
 """
@@ -36,6 +41,7 @@ from datetime import date, datetime, timedelta, timezone
 RADICE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 DATI = os.path.join(RADICE, "docs", "data")
 MODELLO = os.path.join(DATI, "simulatore.json")
+PAGINA = os.path.join(RADICE, "docs", "simulatore.html")
 TOLL = 0.05  # tolleranza in punti percentuali o unità sui valori calcolati
 
 errori, avvisi = [], []
@@ -221,6 +227,158 @@ def tutti_i_rif(oggetto, percorso=""):
         for i, v in enumerate(oggetto):
             yield from tutti_i_rif(v, "%s[%d]" % (percorso, i))
 
+# ------------------------------------------------------------------ Italia (docs/simulatore.html)
+def it_percorso(o, percorso):
+    """Stessa sintassi di itPath() nella pagina: a.b[k=v,k2=v2].c, [k~=testo] per 'contiene'."""
+    for tok in percorso.split("."):
+        m = re.match(r"^([^\[]+)(?:\[(.+)\])?$", tok)
+        if o is None or not m:
+            return None, False
+        if isinstance(o, dict):
+            if m.group(1) not in o:
+                return None, False
+            o = o[m.group(1)]
+        else:
+            return None, False
+        if m.group(2):
+            if not isinstance(o, list):
+                return None, False
+            cond = [re.match(r"^([^~=]+)(~?=)(.*)$", c).groups() for c in m.group(2).split(",")]
+            def ok(e):
+                return all((v in str(e.get(k) or "")) if op == "~=" else (str(e.get(k)) == v) for k, op, v in cond)
+            o = next((e for e in o if isinstance(e, dict) and ok(e)), None)
+            if o is None:
+                return None, False
+    return o, True
+
+
+def controlla_italia(modello):
+    """Controlla che i coefficienti, le soglie e i valori usati dalla pagina esistano in italia-impatti.json."""
+    try:
+        html = open(PAGINA, encoding="utf-8").read()
+    except OSError as e:
+        errori.append("Italia: %s non leggibile (%s)" % (PAGINA, e))
+        return 0
+    m = re.search(r"/\*IT_PERCORSI\*/(\[.*?\])/\*FINE_IT_PERCORSI\*/", html, re.S)
+    if not m:
+        errori.append("Italia: elenco IT_PERCORSI non trovato in simulatore.html")
+        return 0
+    percorsi = json.loads(m.group(1))
+    it = carica("italia-impatti.json")
+    # percorsi usati nel codice ma non dichiarati
+    for usato in set(re.findall(r'itv\("([^"]+)"\)', html)):
+        if usato not in percorsi:
+            errori.append("Italia: itv(\"%s\") usato nella pagina ma assente da IT_PERCORSI" % usato)
+    valori = {}
+    for pc in percorsi:
+        v, trovato = it_percorso(it, pc)
+        if not trovato:
+            errori.append("Italia: %s assente in italia-impatti.json" % pc)
+            continue
+        valori[pc] = v
+        foglia = pc.split(".")[-1]
+        numerico = (foglia in ("b", "a", "r2", "n", "gasolio", "benzina", "brent", "eurusd", "ttf", "pun", "FUEL", "CP0451", "CP0452",
+                              "eur_l", "variazione_cent_con_iva", "rapporto_elettricita_dettaglio_pun", "n_settimane")
+                    or foglia.endswith("_eur_l") or foglia.endswith("senza_tagli_accise"))
+        if numerico and not (isinstance(v, (int, float)) or (isinstance(v, list) and v and all(isinstance(x, (int, float)) for x in v))):
+            errori.append("Italia: %s non è un numero (%r)" % (pc, v))
+        elif v is None and not pc.endswith("base_condizioni_normali.gas_rif_eur_smc"):
+            errori.append("Italia: %s è vuoto" % pc)
+    S = "regole_trasmissione.stimate."
+    # coefficienti: positivi; carburanti tra 0,3 e 3 volte il Brent
+    for prod in ("gasolio", "benzina"):
+        for k in ("diff_4_sett", "diff_8_sett", "diff_13_sett", "livello"):
+            v = valori.get("%s%s.%s.b" % (S, prod, k))
+            if isinstance(v, (int, float)) and not 0.3 <= v <= 3:
+                errori.append("Italia: coefficiente %s %s = %s fuori da 0,3–3" % (prod, k, v))
+    # soglie: due numeri crescenti, e coerenti con i testi
+    sf = it.get("soglie_fermo") or {}
+    for k in ("soglie_eur_l", "soglie_aumento_pct"):
+        v = sf.get(k)
+        if not (isinstance(v, list) and len(v) == 2 and all(isinstance(x, (int, float)) for x in v) and v[0] < v[1]):
+            errori.append("Italia: soglie_fermo.%s deve essere [basso, alto] crescente, trovato %r" % (k, v))
+    if isinstance(sf.get("soglie_eur_l"), list) and len(sf["soglie_eur_l"]) == 2:
+        for liv, x in (("medio", sf["soglie_eur_l"][0]), ("alto", sf["soglie_eur_l"][1])):
+            if num_it(x) not in (sf.get(liv) or "") and ("%.2f" % x).replace(".", ",") not in (sf.get(liv) or ""):
+                avvisi.append("Italia: la soglia %s €/l non compare nel testo soglie_fermo.%s" % (num_it(x), liv))
+    # costanti IT_K della pagina presenti nelle regole scritte
+    mk = re.search(r"const IT_K = \{ iva_carburanti: ([\d.]+), litri_barile: ([\d.]+), iva_gas: ([\d.]+) \}", html)
+    testo = (it.get("regole_trasmissione") or {}).get("per_il_simulatore", {}).get("testo", "")
+    if not mk:
+        errori.append("Italia: costanti IT_K non trovate nella pagina")
+        iva = litri = iva_gas = None
+    else:
+        iva, litri, iva_gas = (float(x) for x in mk.groups())
+        if ("%.2f" % (1 + iva)).replace(".", ",") not in testo:
+            errori.append("Italia: IVA carburanti %s non compare in per_il_simulatore.testo" % iva)
+        if ("%.3f" % litri).replace(".", ",") not in testo:
+            errori.append("Italia: litri per barile %s non compaiono in per_il_simulatore.testo" % litri)
+        reg_gas = next((r for r in it["regole_trasmissione"].get("regole", []) if r.get("id") == "ttf_gas_vulnerabili"), {})
+        if "IVA %d%%" % round(iva_gas * 100) not in reg_gas.get("fonte", ""):
+            errori.append("Italia: IVA gas %s non compare nella regola ttf_gas_vulnerabili" % iva_gas)
+    kwh = modello["costanti"]["kwh_per_smc"]["valore"]
+    # gli scenari già calcolati usano gli stessi coefficienti stimati che legge la pagina
+    st = it["regole_trasmissione"]["stimate"]
+    for sc in it.get("scenari", []):
+        lungo = sc["durata_giorni"] > 45
+        attesi = {}
+        for prod in ("gasolio", "benzina"):
+            c = st[prod]
+            attesi[prod] = ([c["diff_8_sett"]["b"], max(c["diff_13_sett"]["b"], c["livello"]["b"])] if lungo
+                            else [c["diff_4_sett"]["b"], c["diff_8_sett"]["b"]])
+            if sc["coefficienti_usati"][prod] != attesi[prod]:
+                errori.append("Italia: scenario %s usa coefficienti %s %s, la pagina %s" % (sc["id"], prod, sc["coefficienti_usati"][prod], attesi[prod]))
+        if sc["coefficienti_usati"].get("pun_per_ttf") != st["pun_ttf"]["b"]:
+            errori.append("Italia: scenario %s, pun_per_ttf diverso da stimate.pun_ttf.b" % sc["id"])
+        if iva is None:
+            continue
+        # la formula della pagina (calcolaItalia) applicata agli ingressi dello scenario
+        pesi = it["regole_trasmissione"]["per_il_simulatore"]["pesi_hicp_millesimi_2026"]
+        rapp = sc["coefficienti_usati"]["rapporto_elettricita_dettaglio_pun"]
+        for chiave in ("da_oggi", "da_condizioni_normali"):
+            ref = sc.get(chiave)
+            if not ref:
+                continue
+            b = it["regole_trasmissione"]["per_il_simulatore"]["base_oggi" if chiave == "da_oggi" else "base_condizioni_normali"]
+            br, tt = sc["ingresso"]["brent_pct"], sc["ingresso"]["ttf_pct"]
+            dbl = [b["brent"] * x / 100 / b["eurusd"] / litri for x in br]
+            dg = [dbl[i] * attesi["gasolio"][i] * (1 + iva) for i in (0, 1)]
+            db = [dbl[i] * attesi["benzina"][i] * (1 + iva) for i in (0, 1)]
+            dt = [b["ttf"] * x / 100 for x in tt]
+            dp = [x * st["pun_ttf"]["b"] for x in dt]
+            dsmc = [x * kwh / 1000 * (1 + iva_gas) for x in dt]
+            gp = [x / b["gas_rif_eur_smc"] * 100 for x in dsmc] if b.get("gas_rif_eur_smc") else [0, 0]
+            pf = [(dg[i] / b["gasolio"] + db[i] / b["benzina"]) / 2 * 100 for i in (0, 1)]
+            pe = [dp[i] / b["pun"] * 100 * rapp for i in (0, 1)]
+            pp = [(pesi["FUEL"] * pf[i] + pesi["CP0452"] * gp[i] + pesi["CP0451"] * pe[i]) / 1000 for i in (0, 1)]
+            confronti = (("gasolio_eur_l", [b["gasolio"] + x for x in dg], 0.006), ("benzina_eur_l", [b["benzina"] + x for x in db], 0.006),
+                         ("pun_eur_mwh", [b["pun"] + x for x in dp], 0.6), ("gas_vulnerabili_aumento_cent_smc", [x * 100 for x in dsmc], 0.1),
+                         ("inflazione_effetto_diretto_punti", pp, 0.01))
+            for campo, calc, tol in confronti:
+                for i in (0, 1):
+                    if ref.get(campo) and abs(calc[i] - ref[campo][i]) > tol:
+                        errori.append("Italia: scenario %s %s %s[%d]: pagina %.3f, file %s" % (sc["id"], chiave, campo, i, calc[i], ref[campo][i]))
+    # numeri nei testi inglesi delle misure: devono comparire nella voce citata (anni esclusi)
+    misure = {e["id"]: e for e in it.get("misure_governo", [])}
+    testi_misure = re.findall(r'm\("([\w-]+)", `(.*?)`\);', html)
+    if not testi_misure:
+        errori.append("Italia: nessun testo di misura trovato nella pagina (forma m(\"id\", `testo`))")
+    for mid, testo_en in testi_misure:
+        voce = misure.get(mid)
+        if not voce:
+            errori.append("Italia: misura '%s' assente in misure_governo" % mid)
+            continue
+        txt = voce.get("testo", "").replace("−", "-")
+        for num in re.findall(r"\d[\d,.]*", re.sub(r"<[^>]+>", "", testo_en)):
+            num = num.rstrip(".,")
+            if re.fullmatch(r"(19|20)\d\d", num):
+                continue
+            it_num = num.replace(",", "§").replace(".", ",").replace("§", ".")
+            mila = re.sub(r"\.000$", " mila", it_num)
+            if not any(x in txt for x in (num, it_num, mila)):
+                errori.append("Italia: misura %s, il numero %s del testo inglese non compare nella voce («%s»)" % (mid, num, txt[:70]))
+    return len(percorsi)
+
 
 def main():
     scrivi = "--scrivi" in sys.argv
@@ -385,6 +543,9 @@ def main():
     if agg and (date.today() - giorno(agg)).days > 7:
         avvisi.append("prezzi.json aggiornato il %s: più di 7 giorni fa" % agg)
 
+    # 6. Italia
+    n_it = controlla_italia(modello)
+
     if scrivi:
         with open(MODELLO, "w", encoding="utf-8") as f:
             txt = json.dumps(modello, ensure_ascii=False, indent=1)
@@ -408,6 +569,7 @@ def main():
         m["brent"]["finestre"]["30"]["media_pct"], m["brent"]["finestre"]["30"]["max_pct"],
         m["ttf"]["finestre"]["30"]["media_pct"], der_m["wci_salto_usd_feu"], der_m["wci_giorni"]))
     print("GNL Italia: capacità %.1f bcm/anno, uso 12 mesi %.1f, libera %.1f" % (cap, uso, libera))
+    print("Italia (simulatore.html): %d valori di italia-impatti.json controllati" % n_it)
     for a in avvisi:
         print("AVVISO:", a)
     for e in errori:
