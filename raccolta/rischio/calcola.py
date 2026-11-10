@@ -47,7 +47,9 @@ NOMI_GPR = {"GPRC_SAU": "Arabia Saudita", "GPRC_EGY": "Egitto", "GPRC_TUR": "Tur
             "GPRC_RUS": "Russia", "GPRC_TWN": "Taiwan", "GPRC_CHN": "Cina", "GPRC_ISR": "Israele", "GPRC_ITA": "Italia",
             "GPRC_USA": "Stati Uniti"}
 ESITI_GIUDIZIARI = ("condann", "arrest", "processo", "sentenza")
-CATEGORIE_EVENTO_ESCLUSE = {"esercitazione", "rischieramento", "avanzamento", "falso-allarme", "spionaggio"}
+CATEGORIE_EVENTO_ESCLUSE = {"esercitazione", "rischieramento", "avanzamento", "falso-allarme", "spionaggio",
+                            # natural hazards and labour action are not threats to a chokepoint
+                            "terremoto", "tempesta", "vulcano", "alluvione", "incendio-boschivo", "sciopero", "avviso-marittimo"}
 CATEGORIE_INTERRUZIONE = {"blackout", "chiusura-passaggio"}
 
 # ---------------------------------------------------------------- utilità
