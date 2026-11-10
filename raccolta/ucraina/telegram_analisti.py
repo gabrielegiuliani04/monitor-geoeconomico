@@ -225,6 +225,11 @@ def scarica_canale(canale):
 GEONAMES = "https://download.geonames.org/export/dump/"
 
 
+# piccoli centri russi sede di impianti spesso colpiti (porti, raffinerie, stazioni di pompaggio)
+RU_PICCOLI = {"Ust'-Luga", "Andreapol'", "Taman'", "Vysotsk", "Novoshakhtinsk", "Nikolo-Berezovka",
+              "Zelenyy Gorod", "Kavkaz", "Peresyp'", "Chaltyr'", "Tinguta", "Krasnyy Bor"}
+
+
 def costruisci_gazetteer():
     """GeoNames (CC BY 4.0): città UA (>=1.000 abitanti dal file UA.zip) e RU (>=15.000),
     oblast (ADM1) con le loro coordinate, più le città di docs/data/labels.json."""
@@ -261,7 +266,9 @@ def costruisci_gazetteer():
                                  "lon": round(float(c[5]), 4), "paese": paese, "tipo": "oblast",
                                  "oblast": adm1.get(paese + "." + c[10], c[2]), "pop": pop,
                                  "geonameid": int(c[0])})
-                elif fclass == "P" and pop >= soglia[paese] and fcode not in ("PPLH", "PPLQ", "PPLW"):
+                elif fclass == "P" and fcode not in ("PPLH", "PPLQ", "PPLW") and (
+                        pop >= soglia[paese] or (paese == "RU" and pop >= 3000 and float(c[5]) < 61)
+                        or (paese == "RU" and c[2] in RU_PICCOLI)):
                     voci.append({"n": c[2], "alt": sorted(set(alt))[:30], "lat": round(float(c[4]), 4),
                                  "lon": round(float(c[5]), 4), "paese": paese, "tipo": "citta",
                                  "oblast": adm1.get(paese + "." + c[10], ""), "pop": pop,
@@ -281,43 +288,43 @@ def costruisci_gazetteer():
         json.dump({"fonte": "GeoNames (https://www.geonames.org/, CC BY 4.0): UA.zip, RU.zip, "
                    "admin1CodesASCII.txt; più docs/data/labels.json",
                    "creato": ADESSO.strftime("%Y-%m-%d"),
-                   "nota": "UA: luoghi abitati >=1.000 abitanti; RU: >=15.000; ADM1 = oblast/regioni "
+                   "nota": "UA: luoghi abitati >=1.000 abitanti; RU: >=15.000 (>=3.000 a ovest degli Urali, lon<61); ADM1 = oblast/regioni "
                    "(coordinate del punto GeoNames della regione)",
                    "voci": voci}, h, ensure_ascii=False, separators=(",", ":"))
     print("  gazetteer: %d voci" % len(voci))
 
 
-# Nomi alternativi/inglesi/francesi delle regioni come li scrivono gli analisti -> nome GeoNames ADM1
+def norm_obl(n):
+    n = n.lower().replace("'", "").replace("’", "")
+    n = re.sub(r"\b(oblast|oblasti|krai|kray|republic|respublika|city|autonomous|okrug|region|province)\b", "", n)
+    n = re.sub(r"\(.*?\)", "", n)
+    return re.sub(r"\s+", " ", n).strip(" -")
+
+
+# Come gli analisti scrivono le regioni (base del nome, senza "Oblast"/"Krai") -> chiave norm_obl GeoNames
 OBLAST_ALIAS = {
-    # Ucraina
-    "kyiv oblast": "Kyiv", "kiev oblast": "Kyiv", "kharkiv oblast": "Kharkiv", "odesa oblast": "Odessa",
-    "odessa oblast": "Odessa", "dnipropetrovsk": "Dnipropetrovsk", "dnipro oblast": "Dnipropetrovsk",
-    "zaporizhzhia oblast": "Zaporizhia", "zaporijia": "Zaporizhia", "zaporizhia oblast": "Zaporizhia",
-    "kherson oblast": "Kherson", "mykolaiv oblast": "Mykolaiv", "sumy oblast": "Sumy",
-    "chernihiv oblast": "Chernihiv", "poltava oblast": "Poltava", "donetsk oblast": "Donetsk",
-    "luhansk oblast": "Luhansk", "lviv oblast": "Lviv", "volyn": "Volyn", "rivne oblast": "Rivne",
-    "khmelnytskyi oblast": "Khmelnytskyi", "vinnytsia oblast": "Vinnyts'ka", "zhytomyr oblast": "Zhytomyr",
-    "cherkasy oblast": "Cherkasy", "kirovohrad": "Kirovohrad", "ivano-frankivsk oblast": "Ivano-Frankivsk",
-    "ternopil oblast": "Ternopil", "chernivtsi oblast": "Chernivtsi", "zakarpattia": "Zakarpattia",
-    "crimea": "Crimea", "crimée": "Crimea",
-    # Russia
-    "belgorod oblast": "Belgorod", "kursk oblast": "Kursk", "bryansk oblast": "Bryansk",
-    "voronezh oblast": "Voronezh", "rostov oblast": "Rostov", "krasnodar krai": "Krasnodar",
-    "krasnodar": "Krasnodar", "kuban": "Krasnodar", "oryol oblast": "Orel", "orel oblast": "Orel",
-    "tula oblast": "Tula", "ryazan oblast": "Ryazan", "moscow oblast": "Moscow Oblast",
-    "leningrad oblast": "Leningrad", "samara oblast": "Samara", "saratov oblast": "Saratov",
-    "volgograd oblast": "Volgograd", "tambov oblast": "Tambov", "lipetsk oblast": "Lipetsk",
-    "kaluga oblast": "Kaluga", "smolensk oblast": "Smolensk", "tver oblast": "Tver",
-    "yaroslavl oblast": "Jaroslavl", "nizhny novgorod oblast": "Nizhny Novgorod",
-    "bashkortostan": "Bashkortostan", "tatarstan": "Tatarstan", "chuvashia": "Chuvashia",
-    "penza oblast": "Penza", "astrakhan oblast": "Astrakhan", "stavropol krai": "Stavropol Kray",
-    "dagestan": "Dagestan", "chechnya": "Chechnya", "novgorod oblast": "Novgorod",
-    "pskov oblast": "Pskov", "kaliningrad oblast": "Kaliningrad", "mordovia": "Mordoviya",
-    "ulyanovsk oblast": "Ulyanovsk", "orenburg oblast": "Orenburg", "perm krai": "Perm",
-    "udmurtia": "Udmurtiya", "vladimir oblast": "Vladimir", "ivanovo oblast": "Ivanovo",
-    "kostroma oblast": "Kostroma", "vologda oblast": "Vologda", "murmansk oblast": "Murmansk",
-    "adygea": "Adygeya", "kalmykia": "Kalmykiya",
+    "kiev": "kyiv", "odessa": "odesa", "zaporizhia": "zaporizhzhia", "zaporozhye": "zaporizhzhia",
+    "zaporijia": "zaporizhzhia", "dnipro": "dnipropetrovsk", "dnepropetrovsk": "dnipropetrovsk",
+    "vinnytsya": "vinnytsia", "vinnitsa": "vinnytsia", "kirovograd": "kirovohrad", "mykolayiv": "mykolaiv",
+    "nikolaev": "mykolaiv", "volhynia": "volyn", "volyn": "volyn", "transcarpathia": "zakarpattia",
+    "zakarpattia": "zakarpattia", "khmelnytskyi": "khmelnytskyi", "khmelnytsky": "khmelnytskyi",
+    "lugansk": "luhansk", "crimée": "crimea", "crimea": "crimea", "kharkov": "kharkiv",
+    "chernigov": "chernihiv", "cherkassy": "cherkasy",
+    "orel": "oryol", "leningrad": "leningradskaya", "saint petersburg": "st. petersburg",
+    "udmurtia": "udmurtiya", "chuvashia": "chuvash", "mordovia": "mordoviya", "adygea": "adygeya",
+    "kalmykia": "kalmykiya", "tatarstan": "tatarstan", "bashkortostan": "bashkortostan",
+    "bashkiria": "bashkortostan", "ingushetia": "ingushetiya", "kabardino-balkaria": "kabardino-balkariya",
+    "karachay-cherkessia": "karachayevo-cherkesiya", "north ossetia": "north ossetia-alania",
+    "krasnodar": "krasnodar", "kuban": "krasnodar", "stavropol": "stavropol", "perm": "perm",
+    "arkhangelsk": "arkhangelskaya", "nizhny novgorod": "nizhny novgorod", "nizhniy novgorod": "nizhny novgorod",
+    "khanty-mansi": "khanty-mansia", "yamalo-nenets": "yamalo-nenets", "mari el": "mariy-el",
+    "kemerovo": "kuzbass", "dagestan": "dagestan", "chechnya": "chechnya",
 }
+# regioni che gli analisti nominano anche senza "Oblast" (nomi non ambigui con città)
+OBLAST_NUDE = {"crimea", "crimée", "tatarstan", "bashkortostan", "bashkiria", "dagestan", "chechnya",
+               "udmurtia", "chuvashia", "mordovia", "kuban", "adygea", "kalmykia", "zakarpattia",
+               "transcarpathia", "volhynia", "ingushetia", "karelia", "krasnodar krai", "stavropol krai",
+               "perm krai", "kuzbass"}
 
 # Nomi d'uso degli analisti (traslitterazioni inglesi/francesi) -> nome nel gazetteer
 CITTA_ALIAS = {
@@ -347,7 +354,7 @@ CITTA_ALIAS = {
     "novorossiysk": "Novorossiysk", "novorossiisk": "Novorossiysk", "tuapse": "Tuapse",
     "krasnodar": "Krasnodar", "sochi": "Sochi", "ryazan": "Ryazan", "riazan": "Ryazan",
     "yaroslavl": "Yaroslavl", "iaroslavl": "Yaroslavl", "kstovo": "Kstovo", "kirishi": "Kirishi",
-    "ust-luga": "Ust-Luga", "primorsk": "Primorsk", "volgograd": "Volgograd", "saratov": "Saratov",
+    "ust-luga": "RU:Ust'-Luga", "primorsk": "RU:Primorsk", "prymorsk": "UA:Prymorsk", "volgograd": "Volgograd", "saratov": "Saratov",
     "engels": "Engels", "samara": "Samara", "syzran": "Syzran", "novokuibyshevsk": "Novokuybyshevsk",
     "novokuybyshevsk": "Novokuybyshevsk", "ufa": "Ufa", "salavat": "Salavat", "orsk": "Orsk",
     "kazan": "Kazan", "nizhnekamsk": "Nizhnekamsk", "almetyevsk": "Al'met'yevsk",
@@ -381,37 +388,49 @@ STOP_LUOGHI = {
 }
 
 
+ALIAS_MANCANTI = []
+
+
 def carica_gazetteer():
     with open(GAZ, encoding="utf-8") as h:
         g = json.load(h)
-    idx = {}  # nome minuscolo -> voce (la più popolosa)
-    obl = {}  # nome oblast -> voce ADM1
+    idx = {}  # nome minuscolo -> voce (nome principale prima dei nomi alternativi, poi la più popolosa)
+    rango = {}
+    obl = {}  # nome della regione normalizzato -> voce ADM1
     for v in g["voci"]:
         if v["tipo"] == "oblast":
-            obl[v["oblast"].lower()] = v
-            obl[v["n"].lower()] = v
-        nomi = [v["n"]] + v.get("alt", [])
-        for n in nomi:
+            obl[norm_obl(v["oblast"])] = v
+            obl.setdefault(norm_obl(v["n"]), v)
+            continue
+        da_labels = bool(v.get("fonte"))
+        for j, n in enumerate([v["n"]] + v.get("alt", [])):
             k = n.lower().strip()
             if len(k) < 4 or k in STOP_LUOGHI:
                 continue
-            if v["tipo"] == "oblast" and n not in (v["n"],):
-                continue
-            prec = idx.get(k)
-            if prec is None or (v["tipo"] == "citta" and (prec["tipo"] == "oblast" or v["pop"] > prec["pop"])):
+            r = (0 if da_labels else 1, 1 if j == 0 else 0, v["pop"])
+            if k not in idx or r > rango[k]:
                 idx[k] = v
+                rango[k] = r
     # città dichiarate negli alias
     perno = {}
     for v in g["voci"]:
-        if v["tipo"] == "citta":
-            k = v["n"].lower()
-            if k not in perno or v["pop"] > perno[k]["pop"]:
-                perno[k] = v
+        if v["tipo"] == "citta" and not v.get("fonte"):
+            for k in (v["n"].lower(), v["paese"] + ":" + v["n"].lower()):
+                if k not in perno or v["pop"] > perno[k]["pop"]:
+                    perno[k] = v
+    ALIAS_MANCANTI.clear()
     for a, n in CITTA_ALIAS.items():
-        if n and n.lower() in perno:
-            idx[a] = perno[n.lower()]
-        elif n is None:
+        if n is None:
             idx.pop(a, None)
+        elif n.lower() in perno:
+            idx[a] = perno[n.lower()]
+        elif n.lower() in idx and idx[n.lower()]["tipo"] == "citta":
+            idx[a] = idx[n.lower()]
+        elif a not in idx:
+            ALIAS_MANCANTI.append(a)
+    for a, k in OBLAST_ALIAS.items():
+        if k in obl:
+            obl.setdefault(a, obl[k])
     return idx, obl
 
 
@@ -489,34 +508,41 @@ def trova_luoghi(testo, idx, obl):
     t = testo
     tl = t.lower()
     trovati = []
-    # oblast esplicite ("X Oblast", "X oblast", "oblast de X", "X Krai", "region of X")
-    for alias, nome in OBLAST_ALIAS.items():
-        for m in re.finditer(r"(?<![a-zà-ÿ])" + re.escape(alias) + r"(?![a-zà-ÿ])", tl):
-            v = obl.get(nome.lower())
+    # oblast esplicite ("X Oblast", "X Krai", "X region", "oblast de X", "region of X") e regioni nominate da sole
+    for m in re.finditer(r"([A-ZÀ-Ý][A-Za-zÀ-ÿ'’\-]+(?:[ \-][A-ZÀ-Ý][A-Za-zÀ-ÿ'’\-]+)?)[ \-](?:oblast|Oblast|region|Region|Krai|krai|Kray|Republic|republic)\b", t):
+        nome = m.group(1)
+        v = obl.get(norm_obl(nome)) or obl.get(nome.lower())
+        if not v and " " in nome:  # "Northern Kharkiv" -> "Kharkiv"
+            v = obl.get(norm_obl(nome.split(" ")[-1]))
+        if v:
+            trovati.append((v, "oblast", m.start()))
+    for m in re.finditer(r"(?:[Oo]blast|[Rr]égion|[Rr]egion|[Kk]raï) (?:de |d'|du |of )(?:la |l')?([A-ZÀ-Ý][A-Za-zÀ-ÿ'\-]+)", t):
+        v = obl.get(norm_obl(m.group(1))) or obl.get(m.group(1).lower())
+        if v:
+            trovati.append((v, "oblast", m.start()))
+    for nome in OBLAST_NUDE:
+        for m in re.finditer(r"(?<![A-Za-zà-ÿ])" + re.escape(nome) + r"(?![a-zà-ÿ])", tl):
+            v = obl.get(norm_obl(nome)) or obl.get(nome)
             if v:
                 trovati.append((v, "oblast", m.start()))
-    for m in re.finditer(r"\b([A-Z][a-zà-ÿ'\-]+(?:[ \-][A-Z][a-zà-ÿ'\-]+)?) (?:oblast|Oblast|region|Region|Krai|krai)\b", t):
-        v = obl.get(m.group(1).lower())
-        if v:
-            trovati.append((v, "oblast", m.start()))
-    for m in re.finditer(r"(?:oblast|région|region) (?:de |d'|of )([A-Z][a-zà-ÿ'\-]+)", t):
-        v = obl.get(m.group(1).lower())
-        if v:
-            trovati.append((v, "oblast", m.start()))
     # città: parole con iniziale maiuscola (1–3 parole), lunghezza >= 4
     for m in re.finditer(r"\b[A-ZÀ-Ý][A-Za-zÀ-ÿ'\-]+(?:[ \-](?:na|on|de|nad|Don|[A-ZÀ-Ý][A-Za-zÀ-ÿ'\-]+)){0,2}", t):
         frase = m.group(0)
         parti = frase.split(" ")
         # prova la sequenza più lunga poi le più corte
         for n in range(len(parti), 0, -1):
-            k = " ".join(parti[:n]).lower().strip("'-")
+            sotto = " ".join(parti[:n])
+            k = sotto.lower().strip("'-")
             if k.endswith("'s"):
                 k = k[:-2]
             v = idx.get(k)
             if v and v["tipo"] == "citta":
-                seg = tl[m.end(): m.end() + 8]
-                if " oblast" in seg or " region" in seg or " krai" in seg:
-                    break  # è l'oblast, già presa sopra
+                fine = m.start() + len(sotto)
+                seg = tl[fine: fine + 9]
+                if re.match(r"[ \-](?:oblast|region|krai|kray|republic)", seg):
+                    break  # è la regione, già presa sopra
+                if re.search(r"(?:oblast|région|region) (?:de |d'|of )$", tl[max(0, m.start() - 12): m.start()]):
+                    break
                 trovati.append((v, "citta", m.start()))
                 break
     return trovati
@@ -530,7 +556,7 @@ def classifica(testo):
         if m:
             cats.append((m.start(), nome))
     # priorità: bersagli specifici prima di "civile"
-    ordine = [c for _, c in CATEGORIE]
+    ordine = [n for n, _ in CATEGORIE]
     if not cats:
         return "altro"
     nomi = {c for _, c in cats}

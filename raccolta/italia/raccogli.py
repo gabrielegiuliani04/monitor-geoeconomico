@@ -733,6 +733,13 @@ def principale():
     except Exception as e:
         avvisi.append("base 'condizioni normali' non calcolata: %s" % e)
     scen = scenari_italia(curati, sim, coeff, base, base_normale, pesi, rapp_el, W, date, osservati)
+    # verifica: la regola applicata alla base di febbraio 2026 contro quello che è successo davvero
+    for s in scen:
+        o, n = s.get("osservato", {}).get("gasolio"), s.get("da_condizioni_normali")
+        if o and n:
+            s["verifica"] = ("Regola su base febbraio 2026: gasolio %.2f–%.2f €/l. Osservato (MASE): media %.2f, massimo %.2f €/l con i tagli di accise; "
+                             "%.2f e %.2f senza i tagli." % (n["gasolio_eur_l"][0], n["gasolio_eur_l"][1], o["media_eur_l"], o["max_eur_l"],
+                                                              o["media_senza_tagli_accise"], o["max_senza_tagli_accise"]))
 
     # precedenti: prezzo del gasolio alla data e variazione su un anno
     prec = []

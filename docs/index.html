@@ -1,5 +1,5 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Monitor geoeconomico</title>
+<!doctype html><html lang="en-GB"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Geo-economic Risk Monitor</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Serif:ital,wght@1,400&display=swap">
 <style>
@@ -272,252 +272,252 @@ button, input, select { font: inherit; color: inherit; }
 <div class="app">
   <header class="bar">
     <div class="bar-in">
-      <h1 class="brand">Monitor geoeconomico</h1>
-      <div class="views" id="views" role="group" aria-label="Vai a una vista"></div>
+      <h1 class="brand">Geo-economic Risk Monitor</h1>
+      <div class="views" id="views" role="group" aria-label="Go to a view"></div>
       <button class="chip news-btn" id="news-btn" type="button" aria-expanded="false" aria-controls="news" hidden>News<span id="news-btn-date"></span></button>
-      <button class="chip news-btn" id="mkt-btn" type="button" aria-expanded="false" aria-controls="mkt" hidden>Mercati<span id="mkt-btn-date"></span></button>
-      <nav class="nav" aria-label="Sezioni"><a class="chip nav-a" href="report/">Report</a><a class="chip nav-a" href="notizie.html" id="nav-news" hidden>Notizie</a><a class="chip nav-a" href="simulatore.html" id="nav-sim" hidden>Simulatore “e se…”</a></nav>
-      <button class="chip news-btn" id="trm-btn" type="button" aria-expanded="false" aria-controls="trm" hidden>Terminale</button>
+      <button class="chip news-btn" id="mkt-btn" type="button" aria-expanded="false" aria-controls="mkt" hidden>Markets<span id="mkt-btn-date"></span></button>
+      <nav class="nav" aria-label="Sections"><a class="chip nav-a" href="report/">Reports</a><a class="chip nav-a" href="notizie.html" id="nav-news" hidden>News feed</a><a class="chip nav-a" href="simulatore.html" id="nav-sim" hidden>“What if…” simulator</a></nav>
+      <button class="chip news-btn" id="trm-btn" type="button" aria-expanded="false" aria-controls="trm" hidden>Terminal</button>
       <button class="chip news-btn" id="dos-btn" type="button" aria-expanded="false" aria-controls="dos" hidden>Dossier<span id="dos-btn-n"></span></button>
       <form class="goto" id="goto" novalidate>
-        <label for="goto-input">Vai a coordinate</label>
+        <label for="goto-input">Go to coordinates</label>
         <input id="goto-input" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="26.57 N, 56.25 E" aria-describedby="goto-msg">
-        <button class="chip" id="goto-btn" type="submit">Vai</button>
-        <button class="chip" id="goto-clear" type="button" hidden aria-label="Togli il segnaposto">Togli</button>
+        <button class="chip" id="goto-btn" type="submit">Go</button>
+        <button class="chip" id="goto-clear" type="button" hidden aria-label="Remove the pin">Clear</button>
         <p class="goto-msg" id="goto-msg" role="status" hidden></p>
       </form>
     </div>
   </header>
 
   <main class="stage" id="stage">
-    <canvas id="map" tabindex="0" role="img" aria-label="Mappa del mondo con basi, porti, oleodotti, navi, aerei, eventi e fronte ucraino da fonti aperte. Trascina per spostarti, rotella o pizzico per lo zoom, frecce e tasti più e meno da tastiera. L'elenco dei punti è nel pannello Livelli."></canvas>
-    <p class="status" id="status">Carico la mappa…</p>
+    <canvas id="map" tabindex="0" role="img" aria-label="World map of bases, ports, pipelines, ships, aircraft, events and the Ukrainian front from open sources. Drag to pan, scroll or pinch to zoom, or use the arrow and plus/minus keys. The list of points is in the Layers panel."></canvas>
+    <p class="status" id="status">Loading the map…</p>
 
     <div class="intro" id="intro" hidden role="dialog" aria-labelledby="intro-h">
-      <h2 id="intro-h">Monitor geoeconomico</h2>
-      <p>Un osservatorio da fonti aperte su come un evento geopolitico diventa un costo: <b>evento → passaggio strategico o infrastruttura → flussi di navi ed energia → noli → prezzi → chi è esposto</b>.</p>
-      <ol><li><b>Guarda la mappa</b>: eventi, stretti (i rombi viola), energia, cavi, porti. I livelli si accendono nel pannello a sinistra.</li>
-      <li><b>Tocca uno stretto</b>: navi al giorno misurate (IMF PortWatch), cosa ci passa, chi è esposto, prezzi collegati.</li>
-      <li><b>Apri il Terminale</b> per prezzi, agenda, noli, scorte, paesi e notizie, e i <b>Report</b> per le analisi.</li></ol>
-      <p class="intro-n">Ogni dato ha fonte, data e affidabilità. Aggiornato ogni giorno in automatico. Progetto personale di Gabriele Giuliani, realizzato con l’aiuto di un assistente AI.</p>
-      <button class="chip" id="intro-ok" type="button">Ho capito</button>
+      <h2 id="intro-h">Geo-economic Risk Monitor</h2>
+      <p>An open-source observatory of how a geopolitical event turns into a cost: <b>event → chokepoint or infrastructure → flows of ships and energy → freight rates → prices → who is exposed</b>.</p>
+      <ol><li><b>Read the map</b>: events, chokepoints (the magenta diamonds), energy, cables, ports. Switch layers on and off in the panel on the left.</li>
+      <li><b>Tap a chokepoint</b>: measured ship transits per day (IMF PortWatch), what passes through, who is exposed and the linked prices.</li>
+      <li><b>Open the Terminal</b> for prices, the calendar, freight, stocks, countries and news, and the <b>Reports</b> for the analysis.</li></ol>
+      <p class="intro-n">Every data point carries its source, date and reliability. Updated automatically every day. Some source descriptions are in Italian. A personal project by Gabriele Giuliani, built with the help of an AI assistant.</p>
+      <button class="chip" id="intro-ok" type="button">Got it</button>
     </div>
     <div class="hud">
-      <section class="panel" id="panel" aria-label="Livelli della mappa">
-        <button class="panel-head" id="panel-head" type="button" aria-expanded="true" aria-controls="panel-body">Livelli</button>
+      <section class="panel" id="panel" aria-label="Map layers">
+        <button class="panel-head" id="panel-head" type="button" aria-expanded="true" aria-controls="panel-body">Layers</button>
         <div class="panel-body" id="panel-body">
-          <h2 class="sub">Teatri</h2>
+          <h2 class="sub">Theatres</h2>
           <ul class="layers plain" id="theaters"></ul>
 
-          <h2 class="sub">Categorie</h2>
+          <h2 class="sub">Categories</h2>
           <ul class="layers">
             <li><label><input type="checkbox" id="lyr-ships" data-layer="ships" checked>
-              <span class="sw" id="sw-ships"></span>Navi<span class="cnt" id="n-ships"></span></label></li>
+              <span class="sw" id="sw-ships"></span>Ships<span class="cnt" id="n-ships"></span></label></li>
             <li id="li-air" hidden><label><input type="checkbox" id="lyr-air" data-layer="air" checked>
-              <span class="sw" id="sw-air"></span>Aerei<span class="cnt" id="n-air"></span></label></li>
+              <span class="sw" id="sw-air"></span>Aircraft<span class="cnt" id="n-air"></span></label></li>
             <li><label><input type="checkbox" id="lyr-events" data-layer="events" checked>
-              <span class="sw" id="sw-events"></span>Eventi<span class="cnt" id="n-events"></span></label></li>
+              <span class="sw" id="sw-events"></span>Events<span class="cnt" id="n-events"></span></label></li>
             <li id="li-adv" hidden><label><input type="checkbox" id="lyr-adv" data-layer="adv" checked>
-              <span class="sw" id="sw-adv"></span>Avanzata in Ucraina<span class="cnt" id="n-adv"></span></label>
-              <p class="hint">Aree controllate e contese, avanzata del giorno</p></li>
+              <span class="sw" id="sw-adv"></span>Advance in Ukraine<span class="cnt" id="n-adv"></span></label>
+              <p class="hint">Controlled and contested areas, the day’s advance</p></li>
             <li id="li-front" hidden><label><input type="checkbox" id="lyr-front" data-layer="front">
-              <span class="sw" id="sw-front"></span>Fronte ucraino<span class="cnt" id="n-front"></span></label>
-              <p class="hint">Colpi geolocalizzati lungo il fronte</p></li>
+              <span class="sw" id="sw-front"></span>Ukrainian front<span class="cnt" id="n-front"></span></label>
+              <p class="hint">Geolocated strikes along the front line</p></li>
             <li id="li-hyb" hidden><label><input type="checkbox" id="lyr-hybrid" data-layer="hybrid" checked>
-              <span class="sw" id="sw-hyb"></span>Europa, attacchi ibridi<span class="cnt" id="n-hyb"></span></label>
-              <p class="hint">Sabotaggi, falsi allarmi, droni, GNSS, attacchi informatici, spionaggio. Restano 30 giorni</p></li>
+              <span class="sw" id="sw-hyb"></span>Europe, hybrid attacks<span class="cnt" id="n-hyb"></span></label>
+              <p class="hint">Sabotage, hoax alerts, drones, GNSS interference, cyber attacks, espionage. Kept for 30 days</p></li>
           </ul>
-          <p class="range-lbl" id="range-lbl">Periodo di eventi e fronte</p>
+          <p class="range-lbl" id="range-lbl">Time window for events and the front</p>
           <div class="range" id="range" role="group" aria-labelledby="range-lbl">
-            <button class="chip" type="button" data-days="1" aria-pressed="false">24 ore</button>
-            <button class="chip" type="button" data-days="7" aria-pressed="true">7 giorni</button>
-            <button class="chip" type="button" data-days="30" aria-pressed="false">30 giorni</button>
-            <button class="chip" type="button" data-days="90" aria-pressed="false">90 giorni</button>
-            <button class="chip" type="button" data-days="99999" aria-pressed="false">Tutto</button>
+            <button class="chip" type="button" data-days="1" aria-pressed="false">24 hours</button>
+            <button class="chip" type="button" data-days="7" aria-pressed="true">7 days</button>
+            <button class="chip" type="button" data-days="30" aria-pressed="false">30 days</button>
+            <button class="chip" type="button" data-days="90" aria-pressed="false">90 days</button>
+            <button class="chip" type="button" data-days="99999" aria-pressed="false">All</button>
           </div>
 
-          <h2 class="sub" id="fixed-h" hidden>Livelli fissi</h2>
+          <h2 class="sub" id="fixed-h" hidden>Fixed layers</h2>
           <ul class="layers" id="fixed-ul" hidden>
             <li id="li-bases"><label><input type="checkbox" id="lyr-bases" data-layer="bases" checked>
-              <span class="sw" id="sw-bases"></span>Basi USA, NATO e Israele<span class="cnt" id="n-bases"></span></label></li>
+              <span class="sw" id="sw-bases"></span>US, NATO and Israeli bases<span class="cnt" id="n-bases"></span></label></li>
             <li id="li-iran" hidden><label><input type="checkbox" id="lyr-iran" data-layer="iran" checked>
-              <span class="sw" id="sw-iran"></span>Siti militari iraniani<span class="cnt" id="n-iran"></span></label></li>
+              <span class="sw" id="sw-iran"></span>Iranian military sites<span class="cnt" id="n-iran"></span></label></li>
             <li id="li-ad" hidden><label><input type="checkbox" id="lyr-ad" data-layer="ad" checked>
-              <span class="sw" id="sw-ad"></span>Difesa aerea<span class="cnt" id="n-ad"></span></label>
-              <p class="hint">Radar e batterie, fissi e mobili, compresi i siti colpiti nel 2026</p></li>
+              <span class="sw" id="sw-ad"></span>Air defence<span class="cnt" id="n-ad"></span></label>
+              <p class="hint">Radars and batteries, fixed and mobile, including sites hit in 2026</p></li>
             <li id="li-ita" hidden><label><input type="checkbox" id="lyr-ita" data-layer="ita" checked>
-              <span class="sw" id="sw-ita"></span>Basi in Italia<span class="cnt" id="n-ita"></span></label>
-              <p class="hint">Italiane, USA e NATO. Posizioni da archivi aperti, stato non ancora verificato</p></li>
+              <span class="sw" id="sw-ita"></span>Bases in Italy<span class="cnt" id="n-ita"></span></label>
+              <p class="hint">Italian, US and NATO bases. Positions from open archives, status verified November 2026</p></li>
             <li id="li-ai" hidden><label><input type="checkbox" id="lyr-ai" data-layer="ai">
-              <span class="sw" id="sw-ai"></span>Infrastruttura AI<span class="cnt" id="n-ai"></span></label>
-              <p class="hint">Data center, fabbriche di chip e supercomputer, dai dossier. Spenta all’apertura</p></li>
+              <span class="sw" id="sw-ai"></span>AI infrastructure<span class="cnt" id="n-ai"></span></label>
+              <p class="hint">Data centres, chip fabs and supercomputers, from the dossiers. Off at start</p></li>
             <li id="li-ports"><label><input type="checkbox" id="lyr-ports" data-layer="ports" checked>
-              <span class="sw" id="sw-ports"></span>Porti<span class="cnt" id="n-ports"></span></label></li>
+              <span class="sw" id="sw-ports"></span>Ports<span class="cnt" id="n-ports"></span></label></li>
             <li id="li-oil"><label><input type="checkbox" id="lyr-oil" data-layer="oil" checked>
-              <span class="sw" id="sw-oil"></span>Oleodotti<span class="cnt" id="n-oil"></span></label></li>
+              <span class="sw" id="sw-oil"></span>Oil pipelines<span class="cnt" id="n-oil"></span></label></li>
             <li id="li-gas"><label><input type="checkbox" id="lyr-gas" data-layer="gas" checked>
-              <span class="sw" id="sw-gas"></span>Gasdotti<span class="cnt" id="n-gas"></span></label></li>
+              <span class="sw" id="sw-gas"></span>Gas pipelines<span class="cnt" id="n-gas"></span></label></li>
             <li id="li-subsea" hidden><label><input type="checkbox" id="lyr-subsea" data-layer="subsea">
-              <span class="sw" id="sw-subsea"></span>Condotte sottomarine<span class="cnt" id="n-subsea"></span></label>
-              <p class="hint">Oleodotti e gasdotti in mare, in tutto il mondo. Spente all’apertura</p></li>
+              <span class="sw" id="sw-subsea"></span>Subsea pipelines<span class="cnt" id="n-subsea"></span></label>
+              <p class="hint">Offshore oil and gas pipelines worldwide. Off at start</p></li>
             <li id="li-routes" hidden><label><input type="checkbox" id="lyr-routes" data-layer="routes">
-              <span class="sw" id="sw-routes"></span>Rotte marittime<span class="cnt" id="n-routes"></span></label>
-              <p class="hint">Le grandi rotte commerciali del mondo, da una carta della CIA. Spente all’apertura</p></li>
+              <span class="sw" id="sw-routes"></span>Shipping lanes<span class="cnt" id="n-routes"></span></label>
+              <p class="hint">The world’s main trade lanes, from a CIA chart. Off at start</p></li>
           </ul>
 
-          <h2 class="sub" id="x-h" hidden>Infrastrutture e flussi</h2>
+          <h2 class="sub" id="x-h" hidden>Infrastructure and flows</h2>
           <ul class="layers" id="x-ul" hidden>
             <li id="li-xrail" hidden><label><input type="checkbox" id="lyr-xrail" data-layer="xrail">
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--rail)" stroke-width="2.4"/></svg></span>Ferrovie<span class="cnt" id="n-xrail"></span></label><p class="hint">Linee principali; tratteggio spesso: corridoi strategici; croci: sabotaggi e attacchi</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--rail)" stroke-width="2.4"/></svg></span>Railways<span class="cnt" id="n-xrail"></span></label><p class="hint">Main lines; thick dashes: strategic corridors; crosses: sabotage and attacks</p></li>
             <li id="li-xcable" hidden><label><input type="checkbox" id="lyr-xcable" data-layer="xcable">
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--cable)" stroke-width="2.4"/></svg></span>Cavi sottomarini<span class="cnt" id="n-xcable"></span></label><p class="hint">713 cavi (TeleGeography); croci: incidenti 2023–2026</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--cable)" stroke-width="2.4"/></svg></span>Subsea cables<span class="cnt" id="n-xcable"></span></label><p class="hint">713 cables (TeleGeography); crosses: incidents 2023–2026</p></li>
             <li id="li-xpower" hidden><label><input type="checkbox" id="lyr-xpower" data-layer="xpower">
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--power)" stroke-width="2.4"/></svg></span>Rete elettrica<span class="cnt" id="n-xpower"></span></label><p class="hint">Altissima tensione; tratteggio: HVDC</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--power)" stroke-width="2.4"/></svg></span>Power grid<span class="cnt" id="n-xpower"></span></label><p class="hint">Extra-high voltage; dashed: HVDC</p></li>
             <li id="li-xnuke" hidden><label><input type="checkbox" id="lyr-xnuke" data-layer="xnuke">
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--power)" stroke-width="2.4"/></svg></span>Centrali nucleari<span class="cnt" id="n-xnuke"></span></label></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--power)" stroke-width="2.4"/></svg></span>Nuclear power plants<span class="cnt" id="n-xnuke"></span></label></li>
             <li id="li-xlng" hidden><label><input type="checkbox" id="lyr-xlng" data-layer="xlng">
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--lng)" stroke-width="2.4"/></svg></span>Terminali GNL<span class="cnt" id="n-xlng"></span></label><p class="hint">Triangolo in su: export; in giù: import; vuoto: in costruzione</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--lng)" stroke-width="2.4"/></svg></span>LNG terminals<span class="cnt" id="n-xlng"></span></label><p class="hint">Triangle up: export; down: import; hollow: under construction</p></li>
             <li id="li-xgas" hidden><label><input type="checkbox" id="lyr-xgas" data-layer="xgas" checked>
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--gasit)" stroke-width="2.4"/></svg></span>Gas in Italia<span class="cnt" id="n-xgas"></span></label><p class="hint">Punti di ingresso con i flussi giornalieri ENTSOG</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--gasit)" stroke-width="2.4"/></svg></span>Gas into Italy<span class="cnt" id="n-xgas"></span></label><p class="hint">Entry points with daily ENTSOG flows</p></li>
             <li id="li-xua" hidden><label><input type="checkbox" id="lyr-xua" data-layer="xua">
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><circle cx="11" cy="4" r="3.5" fill="var(--uastrike)"/></svg></span>Attacchi ucraini in Russia<span class="cnt" id="n-xua"></span></label><p class="hint">Raffinerie, depositi, porti e basi colpiti dal 2022</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><circle cx="11" cy="4" r="3.5" fill="var(--uastrike)"/></svg></span>Ukrainian strikes in Russia<span class="cnt" id="n-xua"></span></label><p class="hint">Refineries, depots, ports and bases hit since 2022</p></li>
             <li id="li-xai" hidden><label><input type="checkbox" id="lyr-xai" data-layer="xai">
-              <span class="sw"><svg width="12" height="12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" fill="var(--ai)"/></svg></span>AI nel mondo<span class="cnt" id="n-xai"></span></label><p class="hint">Data center, fabbriche di chip (triangoli), supercalcolatori. Vuoto: annunciato</p></li>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" fill="var(--ai)"/></svg></span>AI worldwide<span class="cnt" id="n-xai"></span></label><p class="hint">Data centres, chip fabs (triangles), supercomputers. Hollow: announced</p></li>
             <li id="li-xinv" hidden><label><input type="checkbox" id="lyr-xinv" data-layer="xinv">
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 7Q11 -2 21 7" fill="none" stroke="var(--inv)" stroke-width="2"/></svg></span>Investimenti AI e chip<span class="cnt" id="n-xinv"></span></label><p class="hint">Archi da chi investe a dove; spessore = importo. Annunci, non spese effettive</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 7Q11 -2 21 7" fill="none" stroke="var(--inv)" stroke-width="2"/></svg></span>AI and chip investment<span class="cnt" id="n-xinv"></span></label><p class="hint">Arcs from investor to destination; thickness = amount. Announcements, not actual spending</p></li>
             <li id="li-xcy" hidden><label><input type="checkbox" id="lyr-xcy" data-layer="xcy">
-              <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M1 1L9 9M9 1L1 9" stroke="var(--cy)" stroke-width="2.2"/></svg></span>Incidenti cyber all'energia<span class="cnt" id="n-xcy"></span></label><p class="hint">Eolico, solare, reti, refrigerazione: precedenti dal 2015</p></li>
+              <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M1 1L9 9M9 1L1 9" stroke="var(--cy)" stroke-width="2.2"/></svg></span>Cyber incidents in energy<span class="cnt" id="n-xcy"></span></label><p class="hint">Wind, solar, grids, cold chain: precedents since 2015</p></li>
             <li id="li-xrisk" hidden><label><input type="checkbox" id="lyr-xrisk" data-layer="xrisk" checked>
-              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--rk3)" fill-opacity=".6"/></svg></span>Rischio (cruscotto)<span class="cnt" id="n-xrisk"></span></label><p class="hint">Cerchi su stretti e corridoi: colore = livello, grandezza = punteggio. Tocca per gli indicatori</p></li>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--rk3)" fill-opacity=".6"/></svg></span>Risk (dashboard)<span class="cnt" id="n-xrisk"></span></label><p class="hint">Circles on chokepoints and corridors: colour = level, size = score. Tap for the indicators</p></li>
             <li id="li-xpn" hidden><label><input type="checkbox" id="lyr-xpn" data-layer="xpn" checked>
-              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--pn)"/></svg></span>Porti del Mare del Nord e Baltico<span class="cnt" id="n-xpn"></span></label><p class="hint">Traffico annuo e navi al giorno (PortWatch) con l'anno prima</p></li>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--pn)"/></svg></span>North Sea and Baltic ports<span class="cnt" id="n-xpn"></span></label><p class="hint">Annual throughput and ship calls per day (PortWatch) against the previous year</p></li>
             <li id="li-xwind" hidden><label><input type="checkbox" id="lyr-xwind" data-layer="xwind" checked>
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--wind)" stroke-width="2.4"/></svg></span>Eolico offshore e hub energetici<span class="cnt" id="n-xwind"></span></label><p class="hint">Parchi (EMODnet), isole energetiche, giacimenti, collegamenti strategici. Tratteggio: in costruzione o pianificato</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--wind)" stroke-width="2.4"/></svg></span>Offshore wind and energy hubs<span class="cnt" id="n-xwind"></span></label><p class="hint">Wind farms (EMODnet), energy islands, oil and gas fields, strategic links. Dashed: under construction or planned</p></li>
             <li id="li-xbs" hidden><label><input type="checkbox" id="lyr-xbs" data-layer="xbs" checked>
-              <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M1 1L9 9M9 1L1 9" stroke="var(--bs)" stroke-width="2.2"/></svg></span>Sicurezza nel Baltico e Mare del Nord<span class="cnt" id="n-xbs"></span></label><p class="hint">Cavi, droni, fermi di petroliere, GNSS, esercitazioni</p></li>
+              <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M1 1L9 9M9 1L1 9" stroke="var(--bs)" stroke-width="2.2"/></svg></span>Baltic and North Sea security<span class="cnt" id="n-xbs"></span></label><p class="hint">Cables, drones, tanker detentions, GNSS, exercises</p></li>
             <li id="li-xh2" hidden><label><input type="checkbox" id="lyr-xh2" data-layer="xh2">
-              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--h2)"/></svg></span>Idrogeno e ammoniaca nei porti<span class="cnt" id="n-xh2"></span></label><p class="hint">Elettrolizzatori, terminali, reti H2. Vuoto/tratteggio: non ancora operativo</p></li>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--h2)"/></svg></span>Hydrogen and ammonia in ports<span class="cnt" id="n-xh2"></span></label><p class="hint">Electrolysers, terminals, H2 networks. Hollow/dashed: not yet operational</p></li>
             <li id="li-xbk" hidden><label><input type="checkbox" id="lyr-xbk" data-layer="xbk">
-              <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="var(--bk)"/></svg></span>Hub del bunker<span class="cnt" id="n-xbk"></span></label><p class="hint">Prezzi di VLSFO, HSFO, MGO e GNL per porto</p></li>
+              <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="var(--bk)"/></svg></span>Bunkering hubs<span class="cnt" id="n-xbk"></span></label><p class="hint">VLSFO, HSFO, MGO and LNG prices by port</p></li>
             <li id="li-xbm" hidden><label><input type="checkbox" id="lyr-xbm" data-layer="xbm">
-              <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="var(--rus)"/></svg></span>Basi nel mondo<span class="cnt" id="n-xbm"></span></label><p class="hint">USA, Russia, Cina, NATO e alleati all'estero. Colore = chi la usa; vuoto = lasciata o ridotta</p></li>
+              <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="var(--rus)"/></svg></span>Bases worldwide<span class="cnt" id="n-xbm"></span></label><p class="hint">US, Russian, Chinese, NATO and allied bases abroad. Colour = user; hollow = vacated or scaled down</p></li>
             <li id="li-xcam" hidden><label><input type="checkbox" id="lyr-xcam" data-layer="xcam">
-              <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="none" stroke="var(--cam)" stroke-width="1.6"/></svg></span>Webcam pubbliche<span class="cnt" id="n-xcam"></span></label><p class="hint">Porti, stretti e canali dal vivo, solo webcam pubblicate dai proprietari</p></li>
+              <span class="sw"><svg width="10" height="10" aria-hidden="true"><rect x="1" y="1" width="8" height="8" fill="none" stroke="var(--cam)" stroke-width="1.6"/></svg></span>Public webcams<span class="cnt" id="n-xcam"></span></label><p class="hint">Live ports, straits and canals; only webcams published by their owners</p></li>
             <li id="li-xsca" hidden><label><input type="checkbox" id="lyr-xsca" data-layer="xsca">
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 7Q11 -2 21 7" fill="none" stroke="var(--sca)" stroke-width="2"/></svg></span>Catena del valore dell'AI<span class="cnt" id="n-xsca"></span></label><p class="hint">Dalla miniera al data center: materie, macchine (ASML a Veldhoven), fabbriche, HBM, server, logistica</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 7Q11 -2 21 7" fill="none" stroke="var(--sca)" stroke-width="2"/></svg></span>AI value chain<span class="cnt" id="n-xsca"></span></label><p class="hint">From mine to data centre: materials, tools (ASML in Veldhoven), fabs, HBM, servers, logistics</p></li>
             <li id="li-xjwc" hidden><label><input type="checkbox" id="lyr-xjwc" data-layer="xjwc">
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--jwc)" stroke-width="2" stroke-dasharray="5 3"/></svg></span>Aree a rischio guerra (assicurazioni)<span class="cnt" id="n-xjwc"></span></label><p class="hint">Listed Areas del Joint War Committee: lì serve un premio extra. Circolare JWLA-035</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--jwc)" stroke-width="2" stroke-dasharray="5 3"/></svg></span>War-risk areas (insurance)<span class="cnt" id="n-xjwc"></span></label><p class="hint">Joint War Committee Listed Areas: an additional premium applies there. Circular JWLA-035</p></li>
             <li id="li-xeof" hidden><label><input type="checkbox" id="lyr-xeof" data-layer="xeof" checked>
-              <span class="sw"><svg width="12" height="12" aria-hidden="true"><path d="M6 1L11 10H1Z" fill="var(--wind)"/></svg></span>Porti base dell'eolico offshore<span class="cnt" id="n-xeof"></span></label><p class="hint">Installazione e manutenzione: aree, banchine, progetti, colli di bottiglia</p></li>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><path d="M6 1L11 10H1Z" fill="var(--wind)"/></svg></span>Offshore wind base ports<span class="cnt" id="n-xeof"></span></label><p class="hint">Installation and O&amp;M: land, quays, projects, bottlenecks</p></li>
             <li id="li-xruo" hidden><label><input type="checkbox" id="lyr-xruo" data-layer="xruo">
-              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--ev0)" fill-opacity=".5"/></svg></span>Attacchi russi per regione<span class="cnt" id="n-xruo"></span></label><p class="hint">Cerchi proporzionali ai giorni in cui la regione è bersaglio, nel periodo scelto sotto</p></li>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--ev0)" fill-opacity=".5"/></svg></span>Russian attacks by region<span class="cnt" id="n-xruo"></span></label><p class="hint">Circles scaled to the number of days the region was targeted, in the period chosen below</p></li>
             <li id="li-xru" hidden><label><input type="checkbox" id="lyr-xru" data-layer="xru">
-              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="var(--ev1)"/></svg></span>Attacchi russi in Ucraina<span class="cnt" id="n-xru"></span></label><p class="hint">Grandi attacchi documentati dal 2022: energia, porti, ferrovie, città</p></li>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="var(--ev1)"/></svg></span>Russian strikes in Ukraine<span class="cnt" id="n-xru"></span></label><p class="hint">Major documented strikes since 2022: energy, ports, railways, cities</p></li>
             <li id="li-xnavi" hidden><label><input type="checkbox" id="lyr-xnavi" data-layer="xnavi" checked>
-              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--sanz)" stroke-width="2.4"/></svg></span>Navi (AIS)<span class="cnt" id="n-xnavi"></span></label><p class="hint">Rosso: sanzionata. Oggi copre il Golfo di Finlandia</p></li>
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--sanz)" stroke-width="2.4"/></svg></span>Ships (AIS)<span class="cnt" id="n-xnavi"></span></label><p class="hint">Red: sanctioned. Currently covers the Gulf of Finland</p></li>
           </ul>
 
           <div class="xper" id="xper">
-            <p class="range-lbl">Periodo degli eventi storici (attacchi, cyber, Baltico)</p>
-            <div class="xper-row"><input type="date" id="xper-da" value="2022-02-24" min="2014-01-01" aria-label="Dal"><span>→</span><input type="date" id="xper-a" aria-label="Al"></div>
-            <div class="range" id="xper-pre"><button class="chip" type="button" data-p="2022">2022</button><button class="chip" type="button" data-p="2023">2023</button><button class="chip" type="button" data-p="2024">2024</button><button class="chip" type="button" data-p="2025">2025</button><button class="chip" type="button" data-p="2026">2026</button><button class="chip" type="button" data-p="30">30 giorni</button><button class="chip" type="button" data-p="all" aria-pressed="true">Tutto</button></div>
+            <p class="range-lbl">Period for historical events (strikes, cyber, Baltic)</p>
+            <div class="xper-row"><input type="date" id="xper-da" value="2022-02-24" min="2014-01-01" aria-label="From"><span>→</span><input type="date" id="xper-a" aria-label="To"></div>
+            <div class="range" id="xper-pre"><button class="chip" type="button" data-p="2022">2022</button><button class="chip" type="button" data-p="2023">2023</button><button class="chip" type="button" data-p="2024">2024</button><button class="chip" type="button" data-p="2025">2025</button><button class="chip" type="button" data-p="2026">2026</button><button class="chip" type="button" data-p="30">30 days</button><button class="chip" type="button" data-p="all" aria-pressed="true">All</button></div>
             <p class="hint" id="xper-n" style="margin-left:0"></p>
           </div>
 
           <details class="sec" id="sec-legend">
-            <summary>Legenda</summary>
+            <summary>Legend</summary>
             <div class="legend" id="legend"></div>
           </details>
 
           <details class="sec" id="sec-geo">
-            <summary>Geografia</summary>
+            <summary>Geography</summary>
             <ul class="layers">
               <li><label><input type="checkbox" id="lyr-borders" data-layer="borders" checked>
-                <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M0 2h22" stroke="var(--border)" stroke-width="1.4"/><path d="M0 6.5h22" stroke="var(--border)" stroke-width="1.4" stroke-dasharray="5 3.5"/></svg></span>Confini</label>
-                <p class="hint">Tratteggio: conteso o linea di controllo</p></li>
+                <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M0 2h22" stroke="var(--border)" stroke-width="1.4"/><path d="M0 6.5h22" stroke="var(--border)" stroke-width="1.4" stroke-dasharray="5 3.5"/></svg></span>Borders</label>
+                <p class="hint">Dashed: disputed or line of control</p></li>
               <li><label><input type="checkbox" id="lyr-countries" data-layer="countries" checked>
-                <span class="sw" style="font:600 9px var(--f-cond);letter-spacing:.1em;color:var(--ink-soft)">AB</span>Nomi dei paesi</label></li>
+                <span class="sw" style="font:600 9px var(--f-cond);letter-spacing:.1em;color:var(--ink-soft)">AB</span>Country names</label></li>
               <li><label><input type="checkbox" id="lyr-cities" data-layer="cities" checked>
-                <span class="sw"><svg width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="2.6" fill="var(--ink)"/></svg></span>Città</label></li>
+                <span class="sw"><svg width="8" height="8" aria-hidden="true"><circle cx="4" cy="4" r="2.6" fill="var(--ink)"/></svg></span>Cities</label></li>
               <li><label><input type="checkbox" id="lyr-seas" data-layer="seas" checked>
-                <span class="sw" style="font:italic 400 12px var(--f-serif);color:var(--water-ink)">Ab</span>Mari</label></li>
+                <span class="sw" style="font:italic 400 12px var(--f-serif);color:var(--water-ink)">Ab</span>Seas</label></li>
               <li><label><input type="checkbox" id="lyr-straits" data-layer="straits" checked>
-                <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M5 0.5 9.5 5 5 9.5 0.5 5Z" fill="var(--accent)"/></svg></span>Passaggi strategici</label>
-                <p class="hint">Tocca un rombo: quanto petrolio, gas e merci vi passano</p></li>
+                <span class="sw"><svg width="10" height="10" aria-hidden="true"><path d="M5 0.5 9.5 5 5 9.5 0.5 5Z" fill="var(--accent)"/></svg></span>Chokepoints</label>
+                <p class="hint">Tap a diamond: how much oil, gas and cargo passes through</p></li>
               <li><label><input type="checkbox" id="lyr-regions" data-layer="regions" checked>
-                <span class="sw" style="font:italic 400 11px var(--f-sans);color:var(--ink-soft)">Ab</span>Regioni e isole</label></li>
+                <span class="sw" style="font:italic 400 11px var(--f-sans);color:var(--ink-soft)">Ab</span>Regions and islands</label></li>
               <li><label><input type="checkbox" id="lyr-water" data-layer="water" checked>
-                <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M0 5c4-5 7 3 11 0s7-4 11 0" fill="none" stroke="var(--water-ink)" stroke-width="1.3"/></svg></span>Fiumi e laghi</label></li>
+                <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M0 5c4-5 7 3 11 0s7-4 11 0" fill="none" stroke="var(--water-ink)" stroke-width="1.3"/></svg></span>Rivers and lakes</label></li>
               <li><label><input type="checkbox" id="lyr-grat" data-layer="grat" checked>
-                <span class="sw"><svg width="12" height="12" aria-hidden="true"><path d="M0 4h12M0 8h12M4 0v12M8 0v12" stroke="var(--ink-faint)" stroke-width="1"/></svg></span>Reticolo</label></li>
+                <span class="sw"><svg width="12" height="12" aria-hidden="true"><path d="M0 4h12M0 8h12M4 0v12M8 0v12" stroke="var(--ink-faint)" stroke-width="1"/></svg></span>Graticule</label></li>
             </ul>
           </details>
 
           <details class="sec" id="sec-list" open>
-            <summary>Elenco<span class="cnt" id="list-n"></span></summary>
+            <summary>List<span class="cnt" id="list-n"></span></summary>
             <div id="lists"></div>
           </details>
-          <p class="note" id="note">Dati da fonti aperte, aggiornati una volta al giorno.</p>
+          <p class="note" id="note">Open-source data, updated once a day.</p>
         </div>
       </section>
 
-      <aside class="card" id="card" hidden aria-label="Scheda del punto">
+      <aside class="card" id="card" hidden aria-label="Point card">
         <div class="card-head">
           <div><p class="card-kind" id="cd-kind"></p><h2 id="cd-name"></h2></div>
-          <button class="x" id="cd-close" type="button" aria-label="Chiudi la scheda">×</button>
+          <button class="x" id="cd-close" type="button" aria-label="Close the card">×</button>
         </div>
         <div class="card-sil" id="cd-sil"></div>
         <dl class="facts" id="cd-facts"></dl>
         <p class="card-info" id="cd-info"></p>
         <div id="cd-mates"></div>
-        <h3>Fonti</h3>
+        <h3>Sources</h3>
         <ul class="srcs" id="cd-src"></ul>
       </aside>
 
-      <aside class="card" id="news" hidden aria-label="News: report del giorno">
+      <aside class="card" id="news" hidden aria-label="News: daily report">
         <div class="card-head">
-          <div><h2>News</h2><p class="news-when"><span id="news-date"></span><select id="news-pick" aria-label="Scegli il giorno del report" hidden></select></p></div>
-          <button class="x" id="news-close" type="button" aria-label="Chiudi le news">×</button>
+          <div><h2>News</h2><p class="news-when"><span id="news-date"></span><select id="news-pick" aria-label="Choose the report date" hidden></select></p></div>
+          <button class="x" id="news-close" type="button" aria-label="Close the news">×</button>
         </div>
         <div class="news-ctx" id="news-ctx" hidden></div>
         <div class="news-body" id="news-body"></div>
       </aside>
 
-      <aside class="card wide" id="mkt" hidden aria-label="Mercati: indicatori del giorno">
+      <aside class="card wide" id="mkt" hidden aria-label="Markets: daily indicators">
         <div class="card-head">
-          <div><h2>Mercati</h2><p class="news-when"><span id="mkt-date"></span><select id="mkt-pick" aria-label="Scegli il giorno" hidden></select></p></div>
-          <button class="x" id="mkt-close" type="button" aria-label="Chiudi i mercati">×</button>
+          <div><h2>Markets</h2><p class="news-when"><span id="mkt-date"></span><select id="mkt-pick" aria-label="Choose the date" hidden></select></p></div>
+          <button class="x" id="mkt-close" type="button" aria-label="Close the markets">×</button>
         </div>
         <p class="mkt-note" id="mkt-note"></p>
         <div id="mkt-body"></div>
       </aside>
 
-      <aside class="card wide" id="trm" hidden aria-label="Terminale: prezzi, agenda, stretti">
+      <aside class="card wide" id="trm" hidden aria-label="Terminal: prices, calendar, chokepoints">
         <div class="card-head">
-          <div><h2>Terminale</h2></div>
-          <button class="x" id="trm-close" type="button" aria-label="Chiudi il terminale">×</button>
+          <div><h2>Terminal</h2></div>
+          <button class="x" id="trm-close" type="button" aria-label="Close the terminal">×</button>
         </div>
-        <div id="trm-tabs" role="group" aria-label="Sezione"><button class="chip" type="button" data-tab="rischio">Rischio</button><button class="chip" type="button" data-tab="nord">Nord Europa</button><button class="chip" type="button" data-tab="prezzi">Prezzi e tassi</button><button class="chip" type="button" data-tab="agenda">Agenda</button><button class="chip" type="button" data-tab="stretti">Stretti</button><button class="chip" type="button" data-tab="logistica">Noli e rischio</button><button class="chip" type="button" data-tab="scorte">Scorte</button><button class="chip" type="button" data-tab="paesi">Paesi</button><button class="chip" type="button" data-tab="minerali">Minerali critici</button><button class="chip" type="button" data-tab="notizie">Notizie</button><button class="chip" type="button" data-tab="ucraina">Ucraina</button></div>
+        <div id="trm-tabs" role="group" aria-label="Section"><button class="chip" type="button" data-tab="rischio">Risk</button><button class="chip" type="button" data-tab="nord">Northern Europe</button><button class="chip" type="button" data-tab="prezzi">Prices and rates</button><button class="chip" type="button" data-tab="agenda">Calendar</button><button class="chip" type="button" data-tab="stretti">Chokepoints</button><button class="chip" type="button" data-tab="logistica">Freight and risk</button><button class="chip" type="button" data-tab="scorte">Stocks</button><button class="chip" type="button" data-tab="paesi">Countries</button><button class="chip" type="button" data-tab="minerali">Critical minerals</button><button class="chip" type="button" data-tab="notizie">News</button><button class="chip" type="button" data-tab="ucraina">Ukraine</button></div>
         <p class="mkt-note" id="trm-note"></p>
         <div id="trm-body"></div>
       </aside>
 
-      <aside class="card wide" id="dos" hidden aria-label="Dossier AI">
+      <aside class="card wide" id="dos" hidden aria-label="AI dossiers">
         <div class="card-head">
-          <div><h2>Dossier AI</h2><p class="news-when"><span id="dos-date"></span><select id="dos-pick" aria-label="Scegli il dossier" hidden></select></p></div>
-          <button class="x" id="dos-close" type="button" aria-label="Chiudi il dossier">×</button>
+          <div><h2>AI dossiers</h2><p class="news-when"><span id="dos-date"></span><select id="dos-pick" aria-label="Choose the dossier" hidden></select></p></div>
+          <button class="x" id="dos-close" type="button" aria-label="Close the dossier">×</button>
         </div>
-        <div class="dos-act"><button class="chip" id="dos-map" type="button">Mostra i punti sulla mappa</button></div>
+        <div class="dos-act"><button class="chip" id="dos-map" type="button">Show the points on the map</button></div>
         <div class="news-body" id="dos-body"></div>
       </aside>
 
       <div class="bl">
-        <div class="scale" aria-label="Scala">
+        <div class="scale" aria-label="Scale">
           <div class="scale-row"><span class="scale-bar" id="sc-km"></span><span id="sc-km-t"></span></div>
           <div class="scale-row"><span class="scale-bar" id="sc-nm"></span><span id="sc-nm-t"></span></div>
         </div>
         <p class="credit" id="credit">Natural Earth</p>
-        <p class="credit"><a href="crediti.html" style="color:var(--water-ink)">Crediti e licenze</a> · <a href="https://github.com/gabrielegiuliani04/monitor-geoeconomico" style="color:var(--water-ink)">GitHub</a> · <a href="#" id="intro-open" style="color:var(--water-ink)">Come si usa</a></p>
+        <p class="credit"><a href="crediti.html" style="color:var(--water-ink)">Credits and licences</a> · <a href="https://github.com/gabrielegiuliani04/monitor-geoeconomico" style="color:var(--water-ink)">GitHub</a> · <a href="#" id="intro-open" style="color:var(--water-ink)">How to use it</a></p>
         <p class="credit" id="credit-front" hidden></p>
         <p class="credit" id="credit-gem" hidden></p>
         <p class="credit" id="credit-routes" hidden></p>
@@ -525,12 +525,12 @@ button, input, select { font: inherit; color: inherit; }
 
       <div class="br">
         <div class="zoom" role="group" aria-label="Zoom">
-          <button type="button" id="z-in" aria-label="Ingrandisci"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v11M2.5 8h11"/></svg></button>
-          <button type="button" id="z-out" aria-label="Riduci"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11"/></svg></button>
-          <button type="button" id="z-home" aria-label="Torna alla vista iniziale"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4"/><path d="M8 1v3M8 12v3M1 8h3M12 8h3"/></svg></button>
+          <button type="button" id="z-in" aria-label="Zoom in"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v11M2.5 8h11"/></svg></button>
+          <button type="button" id="z-out" aria-label="Zoom out"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11"/></svg></button>
+          <button type="button" id="z-home" aria-label="Back to the initial view"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4"/><path d="M8 1v3M8 12v3M1 8h3M12 8h3"/></svg></button>
         </div>
-        <p class="readout" id="readout" aria-live="off"><span class="k" id="ro-k">Centro</span><span id="ro-dm">—</span><span class="dec" id="ro-dec"></span>
-          <span class="live">Dal vivo qui: <a id="lv-ships" href="https://www.marinetraffic.com/" target="_blank" rel="noopener noreferrer">navi</a> · <a id="lv-air" href="https://globe.adsbexchange.com/" target="_blank" rel="noopener noreferrer">aerei</a></span></p>
+        <p class="readout" id="readout" aria-live="off"><span class="k" id="ro-k">Centre</span><span id="ro-dm">—</span><span class="dec" id="ro-dec"></span>
+          <span class="live">Live here: <a id="lv-ships" href="https://www.marinetraffic.com/" target="_blank" rel="noopener noreferrer">ships</a> · <a id="lv-air" href="https://globe.adsbexchange.com/" target="_blank" rel="noopener noreferrer">aircraft</a></span></p>
       </div>
     </div>
   </main>

@@ -382,11 +382,11 @@ REVISIONE = {
     "data": "10 novembre 2026",
     "file": "report/revisioni/supply-chain-ai-2026-11.md",
     "voci": [
-        "Revisione indipendente del 9–10 novembre 2026 (fact-checking ed editing, svolta con un assistente AI): __N__ affermazioni verificate contro i file di dati e le fonti, __OK__ confermate, __COR__ corrette, __NV__ non verificabili da qui.",
+        "Revisione indipendente del 9–10 novembre 2026 (fact-checking ed editing, svolta con un assistente AI): 110 affermazioni verificate contro i file di dati e le fonti, 62 confermate, 32 corrette, 16 non verificabili da qui.",
         "Correzioni principali: stato della scadenza cinese del 10 novembre (proroga annunciata il 9 novembre, non ancora nel testo ufficiale); quote di AMD (5–7%, non 10%) e di Broadcom nel CoWoS (circa 15%, non «oltre 240.000 wafer»); Foxconn «oltre il 44% dei rack» (non «40% dei server»); costo di Bloomberg Economics riferito a una guerra, non a un blocco; «metà delle portacontainer» ricondotto al 48% del 2022 con la sua fonte; Colossus 2 non è il campus più grande nei dati Epoch; capacità CoWoS riattribuita a Tom's Hardware (la nota KGI dà solo il dato 2027).",
         "Corretti anche nello script: gli stati degli indicatori apparivano come codice («{stato:critico}») nel Markdown; la data delle scadenze indicava il giorno del calcolo invece della fonte; il neon mostrava gli USA come «primo produttore» pur essendo l'unico paese pubblicato da USGS; le tabelle dei titoli non segnalavano le sedute di data diversa.",
-        "Non verificabili da qui: pagine bloccate o a pagamento (Counterpoint, TechRepublic, TipRanks, DIGITIMES, USITC, Focus Taiwan, IEA), le scorte di GNL di Taiwan (12–14 giorni), la quota del quarzo di Spruce Pine (stime Everstream e BloombergNEF), la carenza di chip EML (blog di analisi, affidabilità bassa).",
-        "Aggiunti: dipendenze di UE e Italia (commercio.json), altre materie sotto licenza cinese (minerali.json), spese in conto capitale 2026 dei grandi cloud (investimenti.json), divieto cinese di export di elio (annuncio MOFCOM n. 29 del 2026). Resoconto completo in [`%s`](https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/revisioni/supply-chain-ai-2026-11.md).",
+        "Non verificabili da qui: pagine bloccate o a pagamento (Counterpoint, TechRepublic, TipRanks, DIGITIMES, USITC, Focus Taiwan), le scorte di GNL di Taiwan (12–14 giorni), la quota del quarzo di Spruce Pine (stime Everstream e BloombergNEF), la carenza di chip EML (blog di analisi, affidabilità bassa).",
+        "Aggiunti: dipendenze di UE e Italia (commercio.json), altre materie sotto licenza cinese (minerali.json), spese in conto capitale 2026 dei grandi cloud (investimenti.json), divieto cinese di export di elio (annuncio MOFCOM n. 29 del 2026). Resoconto completo in [%s](https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/revisioni/supply-chain-ai-2026-11.md).",
     ],
 }
 
@@ -462,8 +462,8 @@ def costruisci(d, mese):
 
     # --- In breve (STANDARD §5: massimo 5 punti, ognuno con cifra e fonte)
     if ree.get("verifica"):
-        p1 = ("**Pechino annuncia la proroga sulle terre rare, senza testo ufficiale.** Il 9 novembre la Cina ha prorogato al %s la sospensione delle misure di ottobre 2025 (Reuters), ma l'annuncio non è ancora nell'elenco del MOFCOM. "
-              "Il divieto di export di gallio e germanio verso gli USA è sospeso fino al %s. La Cina fa il %s%% del gallio primario e il %s%% delle terre rare estratte ([USGS](%s), dati 2025)." % (
+        p1 = ("**Pechino annuncia la proroga sulle terre rare, senza testo ufficiale.** Il 9 novembre la Cina ha prorogato al %s la sospensione delle misure di ottobre 2025 (Reuters); il testo non è ancora sul sito del MOFCOM. "
+              "Il divieto di gallio e germanio verso gli USA è sospeso fino al %s. La Cina fa il %s%% del gallio primario e il %s%% delle terre rare ([USGS](%s), 2025)." % (
                   data_it(ree["scadenza"]), data_it(gage["scadenza"]),
                   num(mat["gallio"]["primo_produttore"]["quota_pct"], 0), num(mat["terre-rare"]["primo_produttore"]["quota_pct"]), mat["terre-rare"]["link"]))
     else:
@@ -612,7 +612,7 @@ def costruisci(d, mese):
     it_si = dd.get(("IT", "280461")) or {}
     voci = []
     if ue_mag and it_mag:
-        voci.append("**Magneti di terre rare: la dipendenza più netta.** Nel 2025 l'%s ha comprato dalla Cina l'%s%% dei magneti permanenti (NdFeB) importati da fuori l'Unione, %s milioni di dollari su %s; l'Italia l'%s%% dei suoi (%s milioni di dollari). Sono i magneti di motori, ventole, pompe e dischi rigidi dei data center ([commercio.json](../data/commercio.json), UN Comtrade)." % (
+        voci.append("**Magneti di terre rare: la dipendenza più netta.** Nel 2025 l'%s ha comprato dalla Cina l'%s%% dei magneti permanenti (NdFeB) importati da fuori l'Unione, %s milioni di dollari su %s; l'Italia l'%s%% dei suoi (%s milioni di dollari). Sono i magneti di motori, ventole, pompe e dischi rigidi dei data center (commercio.json, UN Comtrade)." % (
             "UE", num(ue_mag["quota_cina"]), mln_usd(ue_mag["fornitori"][0]["valore_usd"]), mln_usd(ue_mag["import_totale_usd"]), num(it_mag["quota_cina"]), mln_usd(it_mag["import_totale_usd"])))
     if ue_tr:
         voci.append("**Terre rare a monte dei magneti.** La Cina pesa il %s%% dei metalli delle terre rare importati dall'UE nel 2025; per gli ossidi e composti separati il %s%%, seguita da Norvegia e Malesia. Gli acquisti italiani sono piccoli e passano da altri paesi UE (Francia, Austria, Paesi Bassi, Estonia), che il dato doganale registra come paesi di spedizione, non di origine." % (
@@ -637,7 +637,7 @@ def costruisci(d, mese):
                        "; ".join("%s %s%%" % (PAESI.get(f.get("iso2"), f.get("partner")), num(f.get("quota"))) for f in x["fornitori"]),
                        "—" if x["quota_cina"] is None else num(x["quota_cina"]) + "%"])
         doc.tab(["Voce", "Uso nella catena", "Importatore", "Import, milioni di USD", "Primi fornitori (quota)", "Cina"], rr,
-                "Fonte: [commercio.json](../data/commercio.json) (UN Comtrade, anno 2025). " + (conf.get("nota") or "").split("; ")[-1])
+                "Fonte: commercio.json (UN Comtrade, anno 2025). Per l'Italia gli acquisti dentro l'UE sono attribuiti al paese di spedizione, non di origine; «trascurabile» = valore molto piccolo, segnalato così nel file.")
         doc.chiudi()
 
     # --- Scenari

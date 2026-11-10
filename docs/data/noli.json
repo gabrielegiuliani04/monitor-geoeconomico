@@ -5,31 +5,37 @@
    "nome": "Drewry",
    "link": "https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry",
    "licenza": "© Drewry; pagina pubblica, si riporta il valore con la fonte",
-   "data_dato": "2026-11-05"
+   "data_dato": "2026-11-05",
+   "attiva": true
   },
   {
    "nome": "Freightos / Baltic Exchange",
    "link": "https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/",
    "licenza": "© Freightos; pagina pubblica, uso con citazione",
-   "data_dato": "2026-11-06"
+   "data_dato": "2026-11-06",
+   "attiva": true
   },
   {
    "nome": "Shanghai Shipping Exchange",
    "link": "https://en.sse.net.cn/indices/scfinew.jsp",
    "licenza": "© Shanghai Shipping Exchange; il dettaglio per rotta dello SCFI richiede registrazione",
-   "data_dato": "2026-11-06"
+   "data_dato": "2026-11-06",
+   "attiva": true
   },
   {
    "nome": "Shanghai Shipping Exchange",
    "link": "https://en.sse.net.cn/indices/ccfinew.jsp",
    "licenza": "© Shanghai Shipping Exchange; il dettaglio per rotta dello SCFI richiede registrazione",
-   "data_dato": "2026-11-06"
+   "data_dato": "2026-11-06",
+   "attiva": true
   },
   {
-   "nome": "Trading Economics (riprende l'indice del Baltic Exchange tramite un CFD)",
+   "nome": "Trading Economics (riprende l'indice del Baltic Exchange tramite un CFD) — NON PIÙ USATA IN AUTOMATICO",
    "link": "https://tradingeconomics.com/commodity/baltic",
    "licenza": "© Baltic Exchange / Trading Economics: solo l'ultimo valore, citato; niente serie storica",
-   "data_dato": "2026-11-09"
+   "data_dato": "2026-11-09",
+   "attiva": false,
+   "nota": "Fonte storica: dal 9 novembre 2026 il Baltic Dry non è più raccolto in automatico (termini d'uso di Trading Economics) e nessun elemento di questo file la usa. Va citato a mano, con fonte e data, dai comunicati del Baltic Exchange o dalla stampa."
   }
  ],
  "nota": "Indici dei noli marittimi. Container: WCI e FBX in USD per 40 piedi, SCFI e CCFI in punti. Rinfuse secche: Baltic Dry. Nessuno di questi editori offre la serie storica gratis: lo storico si costruisce a ogni esecuzione dello script (per FBX la pagina dà circa 3 mesi settimanali). Il Baltic Dry non è più raccolto in automatico (termini d'uso di Trading Economics): va citato a mano dai comunicati del Baltic Exchange o dalla stampa.",

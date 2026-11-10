@@ -25,7 +25,7 @@ Gabriele Giuliani · Monitor geoeconomico · dati al 10 novembre 2026. Ogni nume
 
 ## 1. In breve
 
-- **Pechino annuncia la proroga sulle terre rare, senza testo ufficiale.** Il 9 novembre la Cina ha prorogato al 10 gennaio 2027 la sospensione delle misure di ottobre 2025 (Reuters), ma l'annuncio non è ancora nell'elenco del MOFCOM. Il divieto di export di gallio e germanio verso gli USA è sospeso fino al 27 novembre 2026. La Cina fa il 99% del gallio primario e il 69,2% delle terre rare estratte ([USGS](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf), dati 2025).
+- **Pechino annuncia la proroga sulle terre rare, senza testo ufficiale.** Il 9 novembre la Cina ha prorogato al 10 gennaio 2027 la sospensione delle misure di ottobre 2025 (Reuters); il testo non è ancora sul sito del MOFCOM. Il divieto di gallio e germanio verso gli USA è sospeso fino al 27 novembre 2026. La Cina fa il 99% del gallio primario e il 69,2% delle terre rare ([USGS](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf), 2025).
 - **Tre punti unici di rottura reggono la catena.** Gli scanner EUV escono solo da Veldhoven (Paesi Bassi); TSMC ha il 72,5% dei ricavi mondiali di fonderia (2° trimestre 2026, [TrendForce](https://www.trendforce.com/presscenter/news/20260909-13225.html)) e fa il 2 nm solo a Taiwan; il packaging CoWoS delle GPU è quasi tutto a Tainan e Chiayi. Arizona, Kumamoto e Dresda non cambiano il quadro prima del 2028.
 - **Hormuz è quasi chiuso, lo Stretto di Taiwan no.** A Hormuz sono passate 4,4 navi al giorno nella settimana al 1 novembre 2026, −95% sulla stessa settimana del 2025 ([IMF PortWatch](https://portwatch.imf.org/)); il Qatar, 33,2% dell'elio mondiale, ha fermato la produzione il 2 marzo (AP). Nello Stretto di Taiwan 247 navi al giorno, +7,1% sulla stessa settimana del 2025.
 - **La memoria è il collo di bottiglia che stringe.** L'HBM è divisa tra SK Hynix 50%, Samsung 33% e Micron 18% (Counterpoint, 2° trimestre 2026); TrendForce prevede prezzi contrattuali DRAM +20% sul trimestre nel 4° trimestre ([TrendForce](https://www.trendforce.com/news/2026/10/20/news-dram-prices-seen-rising-20-qoq-in-4q26-despite-slower-gains-ai-demand)). Per la Cina l'HBM è il limite della produzione Huawei.
@@ -90,7 +90,7 @@ L'elio è il caso di scuola di un rischio logistico che diventa industriale. Il 
 
 <small>Quota del primo paese produttore, in % della produzione mondiale 2025 (stime), materie con primo produttore almeno al 30%. Fonte: [USGS Mineral Commodity Summaries 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf), 5 febbraio 2026; quote calcolate in docs/data/supply-chain-ai.json e uguali a quelle di minerali.json.</small>
 
-Altre materie sotto licenza cinese toccano la catena: magnesio metallico, Cina 86,4% della produzione mondiale; tungsteno, Cina 78,7% della produzione mondiale; grafite naturale, Cina 77,8% della produzione mondiale; antimonio, Cina 36,1% della produzione mondiale ([minerali.json](https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release), USGS, dati 2025).
+Altre materie sotto licenza cinese toccano la catena. Quota della Cina nella produzione mondiale 2025: magnesio metallico 86,4%, tungsteno 78,7%, grafite naturale 77,8%, antimonio 36,1% ([minerali.json](https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release), USGS).
 
 <details><summary>Produttori e quote per materia (USGS, dati 2025)</summary>
 
@@ -617,7 +617,7 @@ Non ancora seguiti in prezzi.json: Freeport-McMoRan (FCX), rame.
 
 ## 11. Europa e Italia: dove tocca la catena
 
-- **Magneti di terre rare: la dipendenza più netta.** Nel 2025 l'UE ha comprato dalla Cina l'88,3% dei magneti permanenti (NdFeB) importati da fuori l'Unione, 1.061 milioni di dollari su 1.201; l'Italia l'80,1% dei suoi (91,9 milioni di dollari). Sono i magneti di motori, ventole, pompe e dischi rigidi dei data center ([commercio.json](../data/commercio.json), UN Comtrade).
+- **Magneti di terre rare: la dipendenza più netta.** Nel 2025 l'UE ha comprato dalla Cina l'88,3% dei magneti permanenti (NdFeB) importati da fuori l'Unione, 1.061 milioni di dollari su 1.201; l'Italia l'80,1% dei suoi (91,9 milioni di dollari). Sono i magneti di motori, ventole, pompe e dischi rigidi dei data center (commercio.json, UN Comtrade).
 - **Terre rare a monte dei magneti.** La Cina pesa il 78,4% dei metalli delle terre rare importati dall'UE nel 2025; per gli ossidi e composti separati il 39,2%, seguita da Norvegia e Malesia. Gli acquisti italiani sono piccoli e passano da altri paesi UE (Francia, Austria, Paesi Bassi, Estonia), che il dato doganale registra come paesi di spedizione, non di origine.
 - **Silicio ad altissima purezza: dipendenza americana, non cinese.** L'UE importa il 73,3% del silicio sopra il 99,99% dagli USA; l'Italia lo compra per il 58,3% dalla Danimarca (paese di spedizione).
 - **Veldhoven (ASML)** è il nodo più critico della catena che si trovi in Europa: unico produttore di EUV, a 10,8 km da una linea da 380 kV (rete-elettrica.json). Le macchine partono smontate verso Taiwan, Corea, Giappone e USA; per via aerea l'uscita naturale è Schiphol (valutazione: ASML non pubblica gli aeroporti).
@@ -645,7 +645,7 @@ Non ancora seguiti in prezzi.json: Freeport-McMoRan (FCX), rame.
 | Magneti permanenti metallici (NdFeB) (HS 850511) | magneti NdFeB per motori, ventole, pompe e dischi rigidi | UE-27, da fuori UE | 1.201 | Cina 88,3%; Stati Uniti 2,8%; Svizzera 2,7% | 88,3% |
 | Magneti permanenti metallici (NdFeB) (HS 850511) | magneti NdFeB per motori, ventole, pompe e dischi rigidi | Italia | 91,9 | Cina 80,1%; Germania 7,2%; Francia 6,1% | 80,1% |
 
-<small>Fonte: [commercio.json](../data/commercio.json) (UN Comtrade, anno 2025). per l'Italia gli acquisti intra-UE sono attribuiti al paese di spedizione, non di origine.</small>
+<small>Fonte: commercio.json (UN Comtrade, anno 2025). Per l'Italia gli acquisti dentro l'UE sono attribuiti al paese di spedizione, non di origine; «trascurabile» = valore molto piccolo, segnalato così nel file.</small>
 
 </details>
 
@@ -762,11 +762,11 @@ Ogni riga è un arco «da → a» del file di dati. Le righe di tipo *valutazion
 
 > **Revisione del 10 novembre 2026**
 >
-> - Revisione indipendente del 9–10 novembre 2026 (fact-checking ed editing, svolta con un assistente AI): __N__ affermazioni verificate contro i file di dati e le fonti, __OK__ confermate, __COR__ corrette, __NV__ non verificabili da qui.
+> - Revisione indipendente del 9–10 novembre 2026 (fact-checking ed editing, svolta con un assistente AI): 110 affermazioni verificate contro i file di dati e le fonti, 62 confermate, 32 corrette, 16 non verificabili da qui.
 > - Correzioni principali: stato della scadenza cinese del 10 novembre (proroga annunciata il 9 novembre, non ancora nel testo ufficiale); quote di AMD (5–7%, non 10%) e di Broadcom nel CoWoS (circa 15%, non «oltre 240.000 wafer»); Foxconn «oltre il 44% dei rack» (non «40% dei server»); costo di Bloomberg Economics riferito a una guerra, non a un blocco; «metà delle portacontainer» ricondotto al 48% del 2022 con la sua fonte; Colossus 2 non è il campus più grande nei dati Epoch; capacità CoWoS riattribuita a Tom's Hardware (la nota KGI dà solo il dato 2027).
 > - Corretti anche nello script: gli stati degli indicatori apparivano come codice («{stato:critico}») nel Markdown; la data delle scadenze indicava il giorno del calcolo invece della fonte; il neon mostrava gli USA come «primo produttore» pur essendo l'unico paese pubblicato da USGS; le tabelle dei titoli non segnalavano le sedute di data diversa.
-> - Non verificabili da qui: pagine bloccate o a pagamento (Counterpoint, TechRepublic, TipRanks, DIGITIMES, USITC, Focus Taiwan, IEA), le scorte di GNL di Taiwan (12–14 giorni), la quota del quarzo di Spruce Pine (stime Everstream e BloombergNEF), la carenza di chip EML (blog di analisi, affidabilità bassa).
-> - Aggiunti: dipendenze di UE e Italia (commercio.json), altre materie sotto licenza cinese (minerali.json), spese in conto capitale 2026 dei grandi cloud (investimenti.json), divieto cinese di export di elio (annuncio MOFCOM n. 29 del 2026). Resoconto completo in [`report/revisioni/supply-chain-ai-2026-11.md`](https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/revisioni/supply-chain-ai-2026-11.md).
+> - Non verificabili da qui: pagine bloccate o a pagamento (Counterpoint, TechRepublic, TipRanks, DIGITIMES, USITC, Focus Taiwan), le scorte di GNL di Taiwan (12–14 giorni), la quota del quarzo di Spruce Pine (stime Everstream e BloombergNEF), la carenza di chip EML (blog di analisi, affidabilità bassa).
+> - Aggiunti: dipendenze di UE e Italia (commercio.json), altre materie sotto licenza cinese (minerali.json), spese in conto capitale 2026 dei grandi cloud (investimenti.json), divieto cinese di export di elio (annuncio MOFCOM n. 29 del 2026). Resoconto completo in [report/revisioni/supply-chain-ai-2026-11.md](https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/revisioni/supply-chain-ai-2026-11.md).
 
 ---
 
