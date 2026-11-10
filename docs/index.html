@@ -382,7 +382,7 @@ button, input, select { font: inherit; color: inherit; }
             <li id="li-xua" hidden><label><input type="checkbox" id="lyr-xua" data-layer="xua">
               <span class="sw"><svg width="22" height="8" aria-hidden="true"><circle cx="11" cy="4" r="3.5" fill="var(--uastrike)"/></svg></span>Ukrainian strikes in Russia<span class="cnt" id="n-xua"></span></label><p class="hint">Refineries, depots, ports and bases hit since 2022</p></li>
             <li id="li-xai" hidden><label><input type="checkbox" id="lyr-xai" data-layer="xai">
-              <span class="sw"><svg width="12" height="12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" fill="var(--ai)"/></svg></span>AI worldwide<span class="cnt" id="n-xai"></span></label><p class="hint">Data centres, chip fabs (triangles), supercomputers. Hollow: announced</p></li>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" fill="var(--ai)"/></svg></span>AI worldwide<span class="cnt" id="n-xai"></span></label><p class="hint">Data centres (size = MW), metro hubs (large hollow squares), chip fabs and packaging (triangles), equipment makers (inverted triangles), supercomputers. Hollow: announced or under construction</p></li>
             <li id="li-xinv" hidden><label><input type="checkbox" id="lyr-xinv" data-layer="xinv">
               <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 7Q11 -2 21 7" fill="none" stroke="var(--inv)" stroke-width="2"/></svg></span>AI and chip investment<span class="cnt" id="n-xinv"></span></label><p class="hint">Arcs from investor to destination; thickness = amount. Announcements, not actual spending</p></li>
             <li id="li-xcy" hidden><label><input type="checkbox" id="lyr-xcy" data-layer="xcy">
@@ -2048,7 +2048,7 @@ async function xLoad(opt) {
   if (D2.gnl) xAddPoints('xlng', D2.gnl.elementi, { skip: e => e.stato !== 'operativo' && e.stato !== 'in-costruzione', style: e => ({ shape: e.categoria === 'gnl-liquefazione' ? 'up' : 'down', hollow: e.stato !== 'operativo', r: Math.min(7, 2.6 + Math.sqrt(num(e.capacita_operativa_mtpa) || 1) * .6) }) });
   if (D2.gasit) xAddPoints('xgas', D2.gasit.elementi, { style: () => ({ shape: 'dot', r: 5.5 }) });
   if (D2.ua && D2.ua.elementi) xAddPoints('xua', D2.ua.elementi, { style: e => ({ shape: 'dot', r: e.categoria === 'raffineria' ? 4.5 : 3.6 }) });
-  if (D2.aim && D2.aim.elementi) xAddPoints('xai', D2.aim.elementi, { style: e => ({ shape: e.categoria === 'fab-chip' ? 'up' : 'sq', r: e.categoria === 'data-center-ai' ? Math.min(7, 3 + Math.sqrt(+e.mw || 50) / 6) : 4, hollow: e.stato && !/operativ|in esercizio/.test(e.stato) }) });
+  if (D2.aim && D2.aim.elementi) xAddPoints('xai', D2.aim.elementi, { style: e => ({ shape: /fab-chip|packaging/.test(e.categoria) ? 'up' : e.categoria === 'attrezzature' ? 'down' : 'sq', r: e.categoria === 'data-center-ai' ? Math.min(7, 3 + Math.sqrt(+e.mw || 50) / 6) : e.categoria === 'hub-data-center' ? 7 : e.categoria === 'packaging' || e.categoria === 'attrezzature' ? 3.5 : 4, hollow: (e.stato && !/operativ|in esercizio|operational/i.test(e.stato)) || e.categoria === 'hub-data-center' }) });
   if (D2.pn && D2.pn.elementi) xAddPoints('xpn', D2.pn.elementi, { style: e => { const t = e.traffico_annuo && e.traffico_annuo[0] && e.traffico_annuo[0].unita && /t$|di t/.test(e.traffico_annuo[0].unita) ? +e.traffico_annuo[0].valore : 20; return { shape: 'dot', r: Math.min(9, 3 + Math.sqrt(t || 10) / 3) }; } });
   if (D2.on && D2.on.parchi) { const polys = D2.on.parchi.filter(e => e.poligono).map(e => Object.assign({}, e, { g: e.poligono }));
     const links = (D2.on.collegamenti || []).filter(e => e.g);
@@ -2114,6 +2114,7 @@ function xDrawPoints(z) {                                 // in screen units, af
     const dated = XDATED.has(l);
     for (const p of P) {
       if (dated) { const dd = p.d.data_evento || p.d.data || ''; if (dd && (dd < XR.da || dd > XR.a)) continue; }
+      if (l === 'xai' && L.ai && p.d.duplicato_ai_json) continue;
       if (l === 'xan' && ((p.d.categoria === 'altro' && !L.xanAll) || (p.d.direzione === 'UA>RU' ? !L.xanUA : !L.xanRU))) continue;
       const x = T.applyX(p.bx), y = T.applyY(p.by); if (x < -10 || y < -10 || x > w + 10 || y > h + 10) continue;
       if (l === 'xruo') { let n = 0; for (const [m, v] of (p.d.giorni_citati || [])) if (m.slice(0, 7) >= XR.da.slice(0, 7) && m.slice(0, 7) <= XR.a.slice(0, 7)) n += v; p.n = n; if (!n) continue; p.st.r = Math.min(26, 3 + Math.sqrt(n) * 1.6); }

@@ -1,5 +1,2156 @@
 {
  "aggiornato": "2026-11-10",
  "nota": "Curated selection of the most important AI sites worldwide for the fixed layer 'AI infrastructure' (fixed-installation schema). Every entry is a copy of a point in ai-mondo.json (field rif_ai_mondo), chosen in raccolta/ai/ai_selezione.json; ids of the November 2026 US dossier are kept. Categories mapped to the map's AI_CAT: data-center, fab-chip (fabs, packaging, equipment), supercomputer.",
- "punti": []
+ "punti": [
+  {
+   "id": "AI-20261109-01",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Stargate Abilene (Crusoe-Oracle-OpenAI)",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 32.4942,
+   "lon": -99.8009,
+   "origine_coord": "estimated: OSM Nominatim geocoding of '5502 Spinks Rd, Abilene, TX 79601'",
+   "precisione_km": 2,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "5502 Spinks Rd, Abilene, TX 79601",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-11-01",
+   "affidabilita": "alta",
+   "note": "824 MW (current IT power (Epoch estimate)). 1,018,696 H100-equivalents. Owner: Oracle. Latest Epoch observation (2026-11-01): Buildings 7-8 are estimated to be operational. On March 24, Building 8 roughly looked like where Building 3 was in September. Building 3 is estimated to be operational in April, 7 months later. This naively suggests Building 8 will be operational by early November, 7 months after March 24. Oracle gave no date for th... Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-11-01"
+    }
+   ],
+   "rif_ai_mondo": "EP-OPENAI-STARGATE-ABILENE",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-02",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "xAI Colossus 1",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 35.0802,
+   "lon": -90.079,
+   "origine_coord": "estimated: OSM Nominatim geocoding of '3231 Riverport Rd, Memphis, TN 38109'",
+   "precisione_km": 2,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "3231 Riverport Rd, Memphis, TN 38109",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-06-15",
+   "affidabilita": "alta",
+   "note": "340 MW (current IT power (Epoch estimate)). 275,795 H100-equivalents. Owner: SpaceXAI. Latest Epoch observation (2026-06-15): No major changes to the data center since February. Solar panels have been placed next to the facility. Epoch certainty on owner/users: SpaceXAI: confident; Anthropic: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-06-15"
+    }
+   ],
+   "rif_ai_mondo": "EP-COLOSSUS-1",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-03",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "xAI Colossus 2",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 34.998,
+   "lon": -90.0349,
+   "origine_coord": "estimated: OSM Nominatim geocoding of '5420 Tulane Rd, Memphis, TN 38109'",
+   "precisione_km": 1,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "5420 Tulane Rd, Memphis, TN 38109",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-06-15",
+   "affidabilita": "alta",
+   "note": "946 MW (current IT power (Epoch estimate)). 1531 MW planned by 2027-02-25. 1,111,672 H100-equivalents. Owner: SpaceXAI. Partly operational. Epoch projects 1531 MW IT by 2027-02-25. Latest Epoch observation (2026-06-15): The site is estimated to have at least ~830 MW of GPU server power, with at least \"at least 220,000 additional GB300 processors and over 400 additional megawatts of compute power\", corresponding to the \"next phase of expansion\" found in the following company S-1 filing, page 76. This estimate is backed up by our coo... Epoch certainty on owner/users: SpaceXAI: confident; Anthropic: confident; Cursor: confident; SpaceXAI: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-06-15"
+    }
+   ],
+   "rif_ai_mondo": "EP-COLOSSUS-2",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-04",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Microsoft Fairwater Wisconsin",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 42.6749,
+   "lon": -87.8949,
+   "origine_coord": "estimated: OSM Nominatim geocoding of '4800 90th St, Mount Pleasant, WI 53403'",
+   "precisione_km": 1,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "4800 90th St, Mount Pleasant, WI 53403",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-05-15",
+   "affidabilita": "alta",
+   "note": "369 MW (current IT power (Epoch estimate)). 2263 MW planned by 2028-05-13. 445,679 H100-equivalents. Owner: Microsoft. Partly operational. Epoch projects 2263 MW IT by 2028-05-13. Latest Epoch observation (2026-05-15): The main shell of Building 2 looks almost completed. In Area 2 (northwest of Buildings 1-2), the grading for the original design has been replaced with grading for the new 9-building design, making way for Buildings 3-11. Work continues on the northern substation in Area 2. Epoch certainty on owner/users: Microsoft: confident; OpenAI: likely; Microsoft: likely",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-05-15"
+    }
+   ],
+   "rif_ai_mondo": "EP-MICROSOFT-FAIRWATER-WISCONSIN",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-05",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Microsoft Fairwater Atlanta",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 33.4454,
+   "lon": -84.5255,
+   "origine_coord": "estimated: OSM Nominatim geocoding of '1435 Hwy 54 W, Fayetteville, GA 30214'",
+   "precisione_km": 1,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "1435 Hwy 54 W, Fayetteville, GA 30214",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-06-14",
+   "affidabilita": "alta",
+   "note": "636 MW (current IT power (Epoch estimate)). 768,768 H100-equivalents. Owner: Microsoft. Epoch address in Fayetteville, south of Atlanta. Latest Epoch observation (2026-06-14): Building 3 and 4 are operational. Epoch certainty on owner/users: Microsoft: confident; OpenAI: likely; Microsoft: likely",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-06-14"
+    }
+   ],
+   "rif_ai_mondo": "EP-MICROSOFT-FAIRWATER-ATLANTA",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-06",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Amazon-Anthropic New Carlisle (Project Rainier)",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 41.7057,
+   "lon": -86.5098,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'New Carlisle, IN 46552, United States'",
+   "precisione_km": 6,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "55001 Larrison Blvd, New Carlisle, IN 46552",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-10-19",
+   "affidabilita": "alta",
+   "note": "1037 MW (current IT power (Epoch estimate)). 1925 MW planned by 2028-03-17. 818,428 H100-equivalents. Owner: Amazon. Partly operational. Project Rainier. Anthropic is a user (the author of this layer, Claude, is an Anthropic model). Epoch projects 1925 MW IT by 2028-03-17. Latest Epoch observation (2026-10-19): Buildings 17-18 are operational. This is an estimate based on a rule of thumb of \"operational 5 months after roof is complete\", assuming the roofs took one more month after 2025-12-23. Also added four more months to account for commissioning and adjacent cooling units not being complete yet. Epoch certainty on owner/users: Amazon: confident; Anthropic: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-10-19"
+    }
+   ],
+   "rif_ai_mondo": "EP-ANTHROPIC-AMAZON-NEW-CARLISLE",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-07",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Meta Prometheus",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 40.0812,
+   "lon": -82.8088,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'New Albany, OH 43054, United States'",
+   "precisione_km": 6,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "1 Community Cir, New Albany, OH 43054",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-08-31",
+   "affidabilita": "alta",
+   "note": "471 MW (current IT power (Epoch estimate)). 1022 MW planned by 2028-07-01. 536,343 H100-equivalents. Owner: Meta. Partly operational. Epoch projects 1022 MW IT by 2028-07-01. Latest Epoch observation (2026-08-31): Buildings 7-10 (tents) are operational, based on infrared drone video from RAAD (raad.com) captured on this date. The video suggests that 138.8 MW of nameplate turbine capacity is operating at the Socrates South power plant (about 69% of the 200 MW nameplate capacity), and Buildings 7-10 roof vents are bright on inf... Epoch certainty on owner/users: Meta: confident; Meta: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-08-31"
+    }
+   ],
+   "rif_ai_mondo": "EP-META-PROMETHEUS",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-08",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Meta Hyperion",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 32.4676,
+   "lon": -91.6268,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Holly Ridge, LA 71269'",
+   "precisione_km": 5,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "Holly Ridge, LA 71269",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-04-19",
+   "affidabilita": "media",
+   "note": "1632 MW planned by 2028-01-01. Owner: Meta. Richland Parish, Louisiana. Zuckerberg: up to 5 GW over time. Epoch projects 1632 MW IT by 2028-01-01. Latest Epoch observation (2026-04-19): Building 1 and 2 roof is finished and cooling is at an advanced stage of installation. Building 3 and 6 roof and cooling in progress. Epoch certainty on owner/users: Meta: confident; Meta: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-04-19"
+    }
+   ],
+   "rif_ai_mondo": "EP-META-HYPERION",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-09",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Stargate Shackelford County",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 32.5966,
+   "lon": -99.5021,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'TX 79601, Shackelford County, United States'",
+   "precisione_km": 6,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "175 Private Road 1604, Abilene, TX 79601, Shackelford County",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-09-04",
+   "affidabilita": "media",
+   "note": "1400 MW planned by 2028-11-11. Owner: Oracle. Epoch projects 1400 MW IT by 2028-11-11. Latest Epoch observation (2026-09-04): Buildings 1-5 shells complete and fully roofed. Buildings 1-3 appear to be actively installing cooling and backup generators nearby. The pads for Buildings 6-10 to the north have also been visibly cleared, with foundations for Buildings 6 and 7 underway. Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-09-04"
+    }
+   ],
+   "rif_ai_mondo": "EP-OPENAI-STARGATE-SHACKELFORD",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-10",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Stargate Dona Ana County",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 31.87,
+   "lon": -106.6866,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Santa Teresa, New Mexico'",
+   "precisione_km": 8,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": null,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-06-22",
+   "affidabilita": "media",
+   "note": "1750 MW planned by 2028-12-31. Owner: Oracle. Doña Ana County; no address in Epoch: point on Santa Teresa. Epoch projects 1750 MW IT by 2028-12-31. Latest Epoch observation (2026-06-22): Construction has advanced significantly since February 2026. We observe extensive earthworks and multiple graded building pads across the campus, with structural work underway on the main data center buildings. A large solar array and water storage basins are visible on site, and two cleared areas on the western sid... Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-06-22"
+    }
+   ],
+   "rif_ai_mondo": "EP-OPENAI-STARGATE-NEW-MEXICO",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-11",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Stargate Milam County",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 30.7627,
+   "lon": -96.9982,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Milam County, Texas'",
+   "precisione_km": 40,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": null,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-03-23",
+   "affidabilita": "media",
+   "note": "857 MW planned by 2028-12-31. Owner: Softbank. No address in Epoch: point on Milam County centroid. Epoch projects 857 MW IT by 2028-12-31. Latest Epoch observation (2026-03-23): Steel framing and roofing is underway for Building 1. Epoch certainty on owner/users: Softbank: confident; OpenAI: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-03-23"
+    }
+   ],
+   "rif_ai_mondo": "EP-OPENAI-STARGATE-MILAM",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-12",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Stargate Port Washington",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 43.3886,
+   "lon": -87.8693,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Port Washington, Wisconsin'",
+   "precisione_km": 6,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": null,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-07-24",
+   "affidabilita": "media",
+   "note": "902 MW planned by 2028-12-31. Owner: Oracle. No address in Epoch: point on Port Washington. Epoch projects 902 MW IT by 2028-12-31. Latest Epoch observation (2026-07-24): Construction continues, Buildings 1 and 2 appear roughly halfway roofed, and building 3 foundation is halfway done. Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-07-24"
+    }
+   ],
+   "rif_ai_mondo": "EP-OPENAI-STARGATE-WISCONSIN",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-13",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Stargate Saline Township",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 42.1245,
+   "lon": -83.8386,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Saline Township, Washtenaw County, Michigan'",
+   "precisione_km": 6,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": null,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-03-12",
+   "affidabilita": "media",
+   "note": "988 MW planned by 2028-12-31. Owner: Oracle. No address in Epoch: point on Saline Township. Epoch projects 988 MW IT by 2028-12-31. Latest Epoch observation (2026-03-12): Groundwork is visible for Building 1, at the left end of the site. Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-03-12"
+    }
+   ],
+   "rif_ai_mondo": "EP-OPENAI-STARGATE-MICHIGAN",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-14",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Stargate Lordstown (SoftBank)",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 41.2368,
+   "lon": -80.819,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Warren, OH 44481, United States'",
+   "precisione_km": 15,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "2300 Hallock Young Rd, Warren, OH 44481",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-07-30",
+   "affidabilita": "media",
+   "note": "214 MW planned by 2027-03-01. Owner: Softbank. Epoch projects 214 MW IT by 2027-03-01. Latest Epoch observation (2026-07-30): Active construction visible on and around the datacenter, with the roofing mostly in place. This is based on satellite imagery. No buildings operational yet. Epoch certainty on owner/users: Softbank: confident; OpenAI: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-07-30"
+    }
+   ],
+   "rif_ai_mondo": "EP-OPENAI-STARGATE-LORDSTOWN",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-15",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "AWS campus Susquehanna (Talen)",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 41.0838,
+   "lon": -76.1435,
+   "origine_coord": "estimated: OSM Nominatim geocoding of '1125 Electron Ave, Berwick, PA 18603'",
+   "precisione_km": 1,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "1125 Electron Ave, Berwick, PA 18603",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-08-01",
+   "affidabilita": "alta",
+   "note": "108 MW (current IT power (Epoch estimate)). 169 MW planned by 2027-08-01. 81,354 H100-equivalents. Owner: Amazon. Partly operational. Susquehanna campus next to Talen's Susquehanna nuclear plant (Talen contract up to 1,920 MW to 2042). Epoch projects 169 MW IT by 2027-08-01. Latest Epoch observation (2026-08-01): Building 3 expected to come online sometime around August 2026, since in the May satellite image it appeared structurally complete with minimal construction surrounding it. Basing MW estimate using Building 2 as a reference. Epoch certainty on owner/users: Amazon: confident; Anthropic: speculative",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-08-01"
+    }
+   ],
+   "rif_ai_mondo": "EP-AWS-BERWICK",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-16",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Northern Virginia data-centre hub (Ashburn)",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 39.0298,
+   "lon": -77.4744,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Ashburn, Virginia'",
+   "precisione_km": 20,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "Loudoun and Prince William counties, Virginia",
+   "fonte": "Introl (citing PJM)",
+   "link": "https://introl.com/blog/pjm-grid-crisis-2027-data-center-capacity-shortfall",
+   "data_fonte": "2026",
+   "affidabilita": "bassa",
+   "note": "12100 MW (state-level data-centre demand (secondary source)). Owner: many operators. World's largest data-centre market. Virginia data-centre demand about 12.1 GW in 2025 according to a secondary source citing PJM. Individual Epoch-tracked campuses in the area are mapped separately.",
+   "fonti": [
+    {
+     "fonte": "Introl (citing PJM)",
+     "link": "https://introl.com/blog/pjm-grid-crisis-2027-data-center-capacity-shortfall",
+     "data_fonte": "2026"
+    }
+   ],
+   "rif_ai_mondo": "HUB-US-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-17",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "TSMC Arizona Fab 21",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 33.78,
+   "lon": -112.14,
+   "origine_coord": "estimated: TSMC Arizona site north of Phoenix (Loop 303 / I-17), from the US AI dossier",
+   "precisione_km": 3,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "North Phoenix, Arizona",
+   "fonte": "Betanews (citing TSMC)",
+   "link": "https://betanews.com/article/tsmc-100-billion-arizona-chip-expansion/",
+   "data_fonte": "2026-07-16",
+   "affidabilita": "alta",
+   "note": "N4 in volume; N3 from 2027; N2/A16 later. Owner: TSMC. Partly operational. Phase 1 in volume production on N4 since Q4 2024. Phase 2 built, tools from Q3 2026, N3 volume expected 2027. Phase 3 under construction since April 2025 (N2/A16). In January 2026 TSMC bought 902 more acres for 197 m USD (over 2,000 acres in Phoenix, plans for six fabs, two packaging plants, an R&D centre). Total US plan 165 bn USD (TSMC) or 265 bn USD (later reporting).",
+   "fonti": [
+    {
+     "fonte": "Betanews (citing TSMC)",
+     "link": "https://betanews.com/article/tsmc-100-billion-arizona-chip-expansion/",
+     "data_fonte": "2026-07-16"
+    },
+    {
+     "fonte": "CoStar",
+     "link": "https://www.costar.com/article/1054795933/chipmaker-tsmc-wins-land-auction-to-nearly-double-phoenix-real-estate-footprint",
+     "data_fonte": "2026-01"
+    }
+   ],
+   "rif_ai_mondo": "FAB-US-02",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-18",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "Intel Fab 52 (Ocotillo)",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 33.2437,
+   "lon": -111.8584,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Ocotillo, Chandler, Arizona'",
+   "precisione_km": 3,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "Chandler, Arizona",
+   "fonte": "Intel newsroom",
+   "link": "https://newsroom.intel.com/client-computing/intel-unveils-panther-lake-architecture-first-ai-pc-platform-built-on-18a",
+   "data_fonte": "2025-10-09",
+   "affidabilita": "alta",
+   "note": "Intel 18A. Owner: Intel. Fifth high-volume fab at Ocotillo, dedicated to Intel 18A; Panther Lake entered high-volume production there (Intel, October 2025). Yields still ramping according to later press. Fab 62 planned.",
+   "fonti": [
+    {
+     "fonte": "Intel newsroom",
+     "link": "https://newsroom.intel.com/client-computing/intel-unveils-panther-lake-architecture-first-ai-pc-platform-built-on-18a",
+     "data_fonte": "2025-10-09"
+    }
+   ],
+   "rif_ai_mondo": "FAB-US-03",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-19",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "Intel Ohio One",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 40.0848,
+   "lon": -82.7154,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Jersey Township, Licking County, Ohio'",
+   "precisione_km": 5,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "New Albany (Licking County), Ohio",
+   "fonte": "Jared Watkins (research note)",
+   "link": "https://www.jaredwatkins.com/research/semiconductors/us-fab-expansion/",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "bassa",
+   "note": "planned Intel 18A/14A. Owner: Intel. Start delayed to 2030-2031 according to a secondary source; to verify with Intel.",
+   "fonti": [
+    {
+     "fonte": "Jared Watkins (research note)",
+     "link": "https://www.jaredwatkins.com/research/semiconductors/us-fab-expansion/",
+     "data_fonte": "2026-11-10"
+    }
+   ],
+   "rif_ai_mondo": "FAB-US-04",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-20",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "Samsung Taylor",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 30.57,
+   "lon": -97.42,
+   "origine_coord": "estimated: Samsung Taylor site, from the US AI dossier",
+   "precisione_km": 5,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "Taylor, Texas",
+   "fonte": "Electrek",
+   "link": "https://electrek.co/2026/07/13/samsung-taylor-fab-tesla-ai5-chip-2nm/",
+   "data_fonte": "2026-07-13",
+   "affidabilita": "media",
+   "note": "2 nm (SF2). Owner: Samsung Electronics. Converted to 2 nm. Tesla's AI5 chip has taped out for Taylor; trial production targeted end-2026 and volume in the second half of 2027 (Samsung), under a 16.5 bn USD Tesla deal. Yield is the main risk.",
+   "fonti": [
+    {
+     "fonte": "Electrek",
+     "link": "https://electrek.co/2026/07/13/samsung-taylor-fab-tesla-ai5-chip-2nm/",
+     "data_fonte": "2026-07-13"
+    },
+    {
+     "fonte": "Tom's Hardware",
+     "link": "https://tomshardware.com/tech-industry/samsungs-fab-roadmap-examined",
+     "data_fonte": "2026"
+    }
+   ],
+   "rif_ai_mondo": "FAB-US-05",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-21",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "Micron Boise (memory)",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 43.6166,
+   "lon": -116.2009,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Boise, Idaho'",
+   "precisione_km": 5,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "Boise, Idaho",
+   "fonte": "Jared Watkins (research note)",
+   "link": "https://www.jaredwatkins.com/research/semiconductors/us-fab-expansion/",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "bassa",
+   "note": "DRAM. Owner: Micron Technology. New DRAM fab next to Micron headquarters, schedule accelerated (secondary source).",
+   "fonti": [
+    {
+     "fonte": "Jared Watkins (research note)",
+     "link": "https://www.jaredwatkins.com/research/semiconductors/us-fab-expansion/",
+     "data_fonte": "2026-11-10"
+    }
+   ],
+   "rif_ai_mondo": "FAB-US-06",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-22",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "Micron Clay (memory)",
+   "appartenenza": "US",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 43.1866,
+   "lon": -76.2065,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Clay, New York'",
+   "precisione_km": 5,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "Clay, New York",
+   "fonte": "Jared Watkins (research note)",
+   "link": "https://www.jaredwatkins.com/research/semiconductors/us-fab-expansion/",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "bassa",
+   "note": "DRAM. Owner: Micron Technology. First fab expected around 2030; site work late 2026 (secondary source).",
+   "fonti": [
+    {
+     "fonte": "Jared Watkins (research note)",
+     "link": "https://www.jaredwatkins.com/research/semiconductors/us-fab-expansion/",
+     "data_fonte": "2026-11-10"
+    }
+   ],
+   "rif_ai_mondo": "FAB-US-07",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-23",
+   "classe": "fisso",
+   "categoria": "supercomputer",
+   "nome": "El Capitan (LLNL)",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 37.687,
+   "lon": -121.706,
+   "origine_coord": "estimated: laboratory site",
+   "precisione_km": 2,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "Lawrence Livermore National Laboratory, California",
+   "fonte": "TOP500, list 2026-06",
+   "link": "https://www.top500.org/system/180307",
+   "data_fonte": "2026-06",
+   "affidabilita": "alta",
+   "note": "29.7 MW (power measured during the Linpack run (TOP500)). 1809 PFlop/s Rmax, TOP500 rank 2. Owner: DOE/NNSA/LLNL. Rank 2 in the TOP500 of 2026-06. 1.809 exaflop/s (Rmax).",
+   "fonti": [
+    {
+     "fonte": "TOP500, list 2026-06",
+     "link": "https://www.top500.org/system/180307",
+     "data_fonte": "2026-06"
+    }
+   ],
+   "rif_ai_mondo": "T500-202606-02",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-24",
+   "classe": "fisso",
+   "categoria": "supercomputer",
+   "nome": "Frontier (ORNL)",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 35.931,
+   "lon": -84.31,
+   "origine_coord": "estimated: laboratory site",
+   "precisione_km": 2,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "Oak Ridge National Laboratory, Tennessee",
+   "fonte": "TOP500, list 2026-06",
+   "link": "https://www.top500.org/system/180047",
+   "data_fonte": "2026-06",
+   "affidabilita": "alta",
+   "note": "24.6 MW (power measured during the Linpack run (TOP500)). 1353 PFlop/s Rmax, TOP500 rank 3. Owner: DOE/SC/Oak Ridge National Laboratory. Rank 3 in the TOP500 of 2026-06. 1.353 exaflop/s (Rmax).",
+   "fonti": [
+    {
+     "fonte": "TOP500, list 2026-06",
+     "link": "https://www.top500.org/system/180047",
+     "data_fonte": "2026-06"
+    }
+   ],
+   "rif_ai_mondo": "T500-202606-03",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261109-25",
+   "classe": "fisso",
+   "categoria": "supercomputer",
+   "nome": "Aurora (Argonne)",
+   "appartenenza": "US",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 41.715,
+   "lon": -87.982,
+   "origine_coord": "estimated: laboratory site",
+   "precisione_km": 2,
+   "teatro": "NATO",
+   "paese": "US",
+   "regione": "Argonne National Laboratory, Illinois",
+   "fonte": "TOP500, list 2026-06",
+   "link": "https://www.top500.org/system/180183",
+   "data_fonte": "2026-06",
+   "affidabilita": "alta",
+   "note": "38.7 MW (power measured during the Linpack run (TOP500)). 1012 PFlop/s Rmax, TOP500 rank 4. Owner: DOE/SC/Argonne National Laboratory. Rank 4 in the TOP500 of 2026-06. 1.012 exaflop/s (Rmax).",
+   "fonti": [
+    {
+     "fonte": "TOP500, list 2026-06",
+     "link": "https://www.top500.org/system/180183",
+     "data_fonte": "2026-06"
+    }
+   ],
+   "rif_ai_mondo": "T500-202606-04",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)",
+   "dossier": "stati-uniti"
+  },
+  {
+   "id": "AI-20261110-01",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Stargate UAE (Abu Dhabi)",
+   "appartenenza": "AE",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 24.1873,
+   "lon": 54.4924,
+   "origine_coord": "estimated: OSM geocoding of Al Bihouth (project office named by Epoch)",
+   "precisione_km": 25,
+   "teatro": "MO",
+   "paese": "AE",
+   "regione": "Nexus L&T Project Office, Al Bihouth, Al Dhafrah, Abu Dhabi, United Arab Emirates",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2025-11-16",
+   "affidabilita": "media",
+   "note": "1000 MW planned by 2028-01-01. Owner: G42. 1 GW inside the 5 GW UAE-US AI campus. Developer Khazna (G42); operators OpenAI and Oracle; partners Nvidia, Cisco, SoftBank. First 200 MW phase expected in Q3 2026 (The National, 2025-12-05); no commissioning announcement found by 2026-11-10. Epoch projects 1000 MW IT by 2028-01-01. Latest Epoch observation (2025-11-16): Building 1 and 2 are partly constructed. No clear evidence of more buildings starting construction. Epoch certainty on owner/users: G42: likely; OpenAI: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2025-11-16"
+    }
+   ],
+   "rif_ai_mondo": "EP-OPENAI-STARGATE-UAE",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-02",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Humain data center, Riyadh",
+   "appartenenza": "SA",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 24.6389,
+   "lon": 46.716,
+   "origine_coord": "estimated: centre of Riyadh (site not published)",
+   "precisione_km": 30,
+   "teatro": "MO",
+   "paese": "SA",
+   "regione": "Riyadh",
+   "fonte": "Bloomberg",
+   "link": "https://www.bloomberg.com/news/articles/2025-08-25/saudi-s-humain-to-open-data-centers-with-us-chips-in-early-2026",
+   "data_fonte": "2025-08-25",
+   "affidabilita": "media",
+   "note": "100 MW (initial target per site). Owner: Humain (PIF sovereign fund). Start planned in Q2 2026 with up to 100 MW per site (Riyadh and Dammam); in March 2026 still under construction, start not confirmed. Riyadh also hosts the 'AI Zone' with AWS (up to 150,000 accelerators). Humain's stated goal: 6 GW in a decade. Separately, xAI and Humain announced a 500 MW data center in November 2025 (site not public, not mapped).",
+   "fonti": [
+    {
+     "fonte": "Bloomberg",
+     "link": "https://www.bloomberg.com/news/articles/2025-08-25/saudi-s-humain-to-open-data-centers-with-us-chips-in-early-2026",
+     "data_fonte": "2025-08-25"
+    },
+    {
+     "fonte": "MEA Tech Watch",
+     "link": "https://meatechwatch.com/2026/03/13/humain-secures-211-land-plots-in-saudi-arabia-for-gigawatt-scale-ai-expansion/",
+     "data_fonte": "2026-03-13"
+    },
+    {
+     "fonte": "DatacenterDynamics (AI Zone AWS)",
+     "link": "https://www.datacenterdynamics.com/en/news/saudi-arabias-new-ai-venture-humain-teams-up-with-aws-for-5bn-ai-zone/",
+     "data_fonte": "2025-05-13"
+    }
+   ],
+   "rif_ai_mondo": "DC-SA-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-03",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "DataVolt-Humain AI campus, Oxagon (NEOM)",
+   "appartenenza": "SA",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 27.5679,
+   "lon": 35.546,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Oxagon, Saudi Arabia'",
+   "precisione_km": 30,
+   "teatro": "MO",
+   "paese": "SA",
+   "regione": "Oxagon, NEOM, Tabuk province",
+   "fonte": "AGBI",
+   "link": "https://www.agbi.com/ai/2026/08/neom-to-start-constructing-oxagon-ai-data-centre-in-months/",
+   "data_fonte": "2026-08",
+   "affidabilita": "media",
+   "note": "100 MW (under construction (first slice of 360 MW phase 1; campus target 1.5 GW)). Owner: DataVolt with Humain (PIF). 1.5 GW campus agreed with NEOM in February 2025 (5 bn USD first investment). Construction launched August 2026 on 100 MW of a 360 MW first phase; in October 2026 Nebius signed a preliminary framework for up to 50 MW. Exact site not public: point near Oxagon/Duba.",
+   "fonti": [
+    {
+     "fonte": "AGBI",
+     "link": "https://www.agbi.com/ai/2026/08/neom-to-start-constructing-oxagon-ai-data-centre-in-months/",
+     "data_fonte": "2026-08"
+    },
+    {
+     "fonte": "NEOM newsroom",
+     "link": "https://www.neom.com/en-us/newsroom/HUMAIN-and-DataVolt-to-develop-AI-data-center-in-NEOM",
+     "data_fonte": "2026-08"
+    },
+    {
+     "fonte": "Baxtel",
+     "link": "https://baxtel.com/news/nebius-signs-preliminary-framework-for-50mw-at-neom-s-oxagon-campus",
+     "data_fonte": "2026-10"
+    }
+   ],
+   "rif_ai_mondo": "DC-SA-03",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-04",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Narvik AI campus (ex-Stargate Norway; Nscale for Microsoft)",
+   "appartenenza": "NO",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 68.4384,
+   "lon": 17.4272,
+   "origine_coord": "estimated: OSM geocoding of Narvik (the site is at Kvandal, outside the town)",
+   "precisione_km": 15,
+   "teatro": "NATO",
+   "paese": "NO",
+   "regione": null,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-07-05",
+   "affidabilita": "media",
+   "note": "92 MW planned by 2026-12-31. Owner: Nscale. This is the site announced as 'Stargate Norway' (Nscale-Aker-OpenAI, 230 MW initial, July 2025). March 2026: the JV was folded into Nscale. April 2026: Microsoft takes the capacity (over 30,000 Rubin GPUs) after OpenAI-Nscale talks ended without a deal (ITPro); earlier Microsoft commitment 6.2 bn USD. Epoch projects 92 MW IT by 2026-12-31. Latest Epoch observation (2026-07-05): Building 1 cooling looks complete. Backup generator install continues adjacent to B1. Building 2 cooling install continues. Backup generator concrete pads are there, but no equipment install visible. Cooling install appears to continue on Building 3. Construction equipment present all around site. We believe no buil... Epoch certainty on owner/users: Nscale: likely; Microsoft: likely",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-07-05"
+    }
+   ],
+   "rif_ai_mondo": "EP-MICROSOFT-NARVIK-NORWAY",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-05",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Meta Odense data center",
+   "appartenenza": "DK",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 55.3648,
+   "lon": 10.4947,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Tietgenbyen, Odense, Denmark'",
+   "precisione_km": 3,
+   "teatro": "NATO",
+   "paese": "DK",
+   "regione": "Odense (Tietgenbyen), Funen",
+   "fonte": "ITPro",
+   "link": "https://www.itpro.com/server-storage/data-centres/369737/meta-terminates-denmark-300-million-data-centre-expansion",
+   "data_fonte": "2022-12",
+   "affidabilita": "media",
+   "note": "Owner: Meta. Three buildings in operation. In December 2022 Meta cancelled the planned expansion beyond three buildings (about 2 bn USD programme). No official IT power figure; the campus is backed by 294 MW of wind PPAs (renewable supply, not load) and feeds Odense district heating.",
+   "fonti": [
+    {
+     "fonte": "ITPro",
+     "link": "https://www.itpro.com/server-storage/data-centres/369737/meta-terminates-denmark-300-million-data-centre-expansion",
+     "data_fonte": "2022-12"
+    },
+    {
+     "fonte": "DatacenterDynamics",
+     "link": "https://datacenterdynamics.com/en/news/metafacebook-to-expand-odense-data-center-campus-in-denmark",
+     "data_fonte": "2021-12"
+    }
+   ],
+   "rif_ai_mondo": "DC-DK-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-06",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Microsoft Denmark East region, Høje-Taastrup",
+   "appartenenza": "DK",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 55.6566,
+   "lon": 12.2417,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Høje-Taastrup, Denmark'",
+   "precisione_km": 5,
+   "teatro": "NATO",
+   "paese": "DK",
+   "regione": "Høje-Taastrup, Zealand",
+   "fonte": "Microsoft Source EMEA",
+   "link": "https://news.microsoft.com/source/emea/features/microsoft-announces-the-opening-of-its-new-datacenter-region-in-denmark-strengthening-digital-resilience-innovation-and-economic-growth/",
+   "data_fonte": "2026-03-27",
+   "affidabilita": "alta",
+   "note": "Owner: Microsoft. Partly operational. Denmark East cloud region opened in March 2026 with campuses in Høje-Taastrup, Køge and Roskilde. Høje-Taastrup is Microsoft's first at-scale waste-heat recovery project in Denmark (about 6,000 homes). 130 MW of renewable PPAs reported (supply, not IT load). Directories still list parts of the site as under construction.",
+   "fonti": [
+    {
+     "fonte": "Microsoft Source EMEA",
+     "link": "https://news.microsoft.com/source/emea/features/microsoft-announces-the-opening-of-its-new-datacenter-region-in-denmark-strengthening-digital-resilience-innovation-and-economic-growth/",
+     "data_fonte": "2026-03-27"
+    }
+   ],
+   "rif_ai_mondo": "DC-DK-02",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-07",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Google Hamina data center",
+   "appartenenza": "FI",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 60.5683,
+   "lon": 27.1926,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Hamina, Finland'",
+   "precisione_km": 4,
+   "teatro": "NATO",
+   "paese": "FI",
+   "regione": "Hamina (former Summa paper mill)",
+   "fonte": "Google blog",
+   "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/google-deepens-its-commitment-to-finland-with-a-13-billion-investment-in-ai-infrastructure/",
+   "data_fonte": "2026-09-09",
+   "affidabilita": "alta",
+   "note": "Owner: Google. Operating since 2011; Google says it has invested 4.5 bn EUR in Hamina in 15 years. On 2026-09-09 Google announced at least 13 bn EUR in Finland in 2027-2028 (its largest single investment in Europe): expansion of Hamina plus new sites in Kajaani, Vaala and Muhos, a 22-year PPA with Fortum tied to the Loviisa nuclear plant and 629 MW of onshore wind PPAs. The 13 bn EUR covers all four sites and is not attributed to Hamina here.",
+   "fonti": [
+    {
+     "fonte": "Google blog",
+     "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/google-deepens-its-commitment-to-finland-with-a-13-billion-investment-in-ai-infrastructure/",
+     "data_fonte": "2026-09-09"
+    },
+    {
+     "fonte": "Google Data Centers (location page)",
+     "link": "https://datacenters.google/locations/hamina-finland/",
+     "data_fonte": "2026-11-10"
+    }
+   ],
+   "rif_ai_mondo": "DC-FI-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-08",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Nebius Mäntsälä",
+   "appartenenza": "FI",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 60.6353,
+   "lon": 25.3159,
+   "origine_coord": "estimated: OSM geocoding of Mäntsälä",
+   "precisione_km": 5,
+   "teatro": "NATO",
+   "paese": "FI",
+   "regione": null,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-06-29",
+   "affidabilita": "alta",
+   "note": "75 MW (current IT power (Epoch estimate)). 145 MW planned by 2027-12-31. 48,527 H100-equivalents. Owner: Nebius. Partly operational. User Microsoft according to Epoch (speculative). Nebius is tripling the site from 25 to 75 MW (press, 2026). Epoch projects 145 MW IT by 2027-12-31. Latest Epoch observation (2026-06-29): All three buildings in the first phase are operational. Epoch certainty on owner/users: Nebius: confident; Microsoft: speculative",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-06-29"
+    }
+   ],
+   "rif_ai_mondo": "EP-NEBIUS-MANTSALA",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-09",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Google Eemshaven data center",
+   "appartenenza": "NL",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 53.4484,
+   "lon": 6.8465,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Eemshaven, Netherlands'",
+   "precisione_km": 4,
+   "teatro": "NATO",
+   "paese": "NL",
+   "regione": "Eemshaven, Groningen",
+   "fonte": "Groningen Seaports",
+   "link": "https://www.groningen-seaports.com/en/?p=4927",
+   "data_fonte": "2018-03",
+   "affidabilita": "alta",
+   "note": "Owner: Google. Main site of Google's europe-west4 cloud region. A 500 m EUR expansion (2018) brought Google's total to nearly 1.5 bn EUR. A further building (7A) is listed as planned in 2026 by a directory; no MW published.",
+   "fonti": [
+    {
+     "fonte": "Groningen Seaports",
+     "link": "https://www.groningen-seaports.com/en/?p=4927",
+     "data_fonte": "2018-03"
+    }
+   ],
+   "rif_ai_mondo": "DC-NL-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-10",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Amsterdam data-centre hub (AMS-IX)",
+   "appartenenza": "NL",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 52.3731,
+   "lon": 4.8925,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Amsterdam, Netherlands'",
+   "precisione_km": 25,
+   "teatro": "NATO",
+   "paese": "NL",
+   "regione": "Amsterdam metro (Schiphol, Amsterdam Southeast, Almere)",
+   "fonte": "DatacenterDynamics (JLL EMEA mid-2026)",
+   "link": "https://www.datacenterdynamics.com/en/news/jll-flapd-on-track-for-record-data-center-growth-year-while-middle-east-pipeline-is-paused/",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "Owner: many operators. One of the FLAP-D markets (Frankfurt, London, Amsterdam, Paris, Dublin), which together reached 3.8 GW of live capacity by mid-2026 with 453 MW more due by year-end (JLL). Amsterdam and Haarlemmermeer have restricted new hyperscale sites, pushing them to Eemshaven and Middenmeer. Market MW for Amsterdam alone: no consistent figure found.",
+   "fonti": [
+    {
+     "fonte": "DatacenterDynamics (JLL EMEA mid-2026)",
+     "link": "https://www.datacenterdynamics.com/en/news/jll-flapd-on-track-for-record-data-center-growth-year-while-middle-east-pipeline-is-paused/",
+     "data_fonte": "2026"
+    }
+   ],
+   "rif_ai_mondo": "HUB-NL-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-11",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Frankfurt data-centre hub (DE-CIX)",
+   "appartenenza": "DE",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 50.1106,
+   "lon": 8.6821,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Frankfurt am Main, Germany'",
+   "precisione_km": 25,
+   "teatro": "NATO",
+   "paese": "DE",
+   "regione": "Frankfurt am Main / Rhine-Main",
+   "fonte": "JLL Germany",
+   "link": "https://www.jll.com/de-de/newsroom/ki-boom-veraendert-europaeische-rechenzentrumslandschaft",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "997 MW (operational IT capacity of the metro market (JLL)). Owner: many operators (Equinix, Digital Realty/Interxion, NTT, Vantage, others). Largest European hub. JLL counts 997 MW of operational IT capacity; CBRE gives 1.2 GW of inventory in Q1 2026 (+23% y/y) with 5% vacancy; other estimates 745 MW live. Grid connections for large sites in Rhine-Main take up to 13 years (JLL); CBRE sees no central-area grid upgrades before the 2030s. Seat of DE-CIX, one of the largest internet exchanges.",
+   "fonti": [
+    {
+     "fonte": "JLL Germany",
+     "link": "https://www.jll.com/de-de/newsroom/ki-boom-veraendert-europaeische-rechenzentrumslandschaft",
+     "data_fonte": "2026"
+    },
+    {
+     "fonte": "W.Media (CBRE Q1 2026)",
+     "link": "https://w.media/special-feature-flap-d-markets-plagued-by-grid-constraints-and-moratoriums-cbre/",
+     "data_fonte": "2026"
+    }
+   ],
+   "rif_ai_mondo": "HUB-DE-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-12",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Dublin data-centre hub",
+   "appartenenza": "IE",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 53.3494,
+   "lon": -6.2606,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Dublin, Ireland'",
+   "precisione_km": 25,
+   "teatro": "NATO",
+   "paese": "IE",
+   "regione": "Dublin region",
+   "fonte": "Central Statistics Office (Ireland)",
+   "link": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2024/",
+   "data_fonte": "2025",
+   "affidabilita": "alta",
+   "note": "Owner: many operators (AWS, Microsoft, Google, Meta in Clonee, colocation). Data centres used 22% of Ireland's metered electricity in 2024 (CSO). EirGrid restricts new connections in the Dublin area. MW not published by the CSO.",
+   "fonti": [
+    {
+     "fonte": "Central Statistics Office (Ireland)",
+     "link": "https://www.cso.ie/en/releasesandpublications/ep/p-dcmec/datacentresmeteredelectricityconsumption2024/",
+     "data_fonte": "2025"
+    }
+   ],
+   "rif_ai_mondo": "HUB-IE-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-13",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Fouju AI campus (MGX, Bpifrance, Mistral AI, Nvidia)",
+   "appartenenza": "FR",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 48.5864,
+   "lon": 2.7785,
+   "origine_coord": "estimated: OSM geocoding of the municipality",
+   "precisione_km": 3,
+   "teatro": "NATO",
+   "paese": "FR",
+   "regione": "Fouju, Seine-et-Marne",
+   "fonte": "Eiffage, press release",
+   "link": "https://www.privacy.eiffage.com/files/live/sites/metal/files/publications/PR_Eiffage_Campus%2520AI%2520enters%2520the%2520implementation%2520phase_20260602.pdf",
+   "data_fonte": "2026-06-02",
+   "affidabilita": "media",
+   "note": "1400 MW (final grid connection (700 MW in the first step)). Owner: JV MGX (UAE), Bpifrance, Mistral AI, Nvidia. Largest AI campus announced in Europe. June 2026: Eiffage main contractor for the 400/33 kV substation (over 120 m EUR). Commissioning planned in 2028. Amount: UAE-France framework of 30-50 bn EUR (minimum used). A second site to reach 3 GW is under discussion.",
+   "fonti": [
+    {
+     "fonte": "Eiffage, press release",
+     "link": "https://www.privacy.eiffage.com/files/live/sites/metal/files/publications/PR_Eiffage_Campus%2520AI%2520enters%2520the%2520implementation%2520phase_20260602.pdf",
+     "data_fonte": "2026-06-02"
+    },
+    {
+     "fonte": "WAM",
+     "link": "https://www.wam.ae/en/article/bjr4hhb-mgx-bpifrance-mistral-ai-nvidia-launch-joint",
+     "data_fonte": "2025-05-19"
+    },
+    {
+     "fonte": "The Register",
+     "link": "https://www.theregister.com/2025/02/08/uae_france_dc_ai/",
+     "data_fonte": "2025-02-08"
+    }
+   ],
+   "rif_ai_mondo": "DC-FR-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-14",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Schwarz Digits AI data center, Lübbenau",
+   "appartenenza": "DE",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 51.868,
+   "lon": 13.9689,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Lübbenau, Germany'",
+   "precisione_km": 5,
+   "teatro": "NATO",
+   "paese": "DE",
+   "regione": "Lübbenau, Brandenburg (former coal power plant site)",
+   "fonte": "Euronews",
+   "link": "https://fr.euronews.com/my-europe/2026/08/24/un-des-plus-grands-centres-de-donnees-ia-deurope-a-11-milliards-deuros-ouvre-dans-le-brand",
+   "data_fonte": "2026-08-24",
+   "affidabilita": "media",
+   "note": "200 MW (grid connection, first phase). Owner: Schwarz Digits (Lidl/Kaufland group). About 200 MW of connection capacity in the first phase, due by end-2027, on a 13 ha former coal plant site; reported cost 11 bn EUR; up to 100,000 GPUs in future. Mainly for the group's own use, also offered to external customers. A separate Schwarz 240 MW project in Mecklenburg-Vorpommern (5.6 bn EUR) is not mapped (town not stated).",
+   "fonti": [
+    {
+     "fonte": "Euronews",
+     "link": "https://fr.euronews.com/my-europe/2026/08/24/un-des-plus-grands-centres-de-donnees-ia-deurope-a-11-milliards-deuros-ouvre-dans-le-brand",
+     "data_fonte": "2026-08-24"
+    }
+   ],
+   "rif_ai_mondo": "DC-DE-02",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-15",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Eni-Khazna AI campus, Ferrera Erbognone (Pavia)",
+   "appartenenza": "IT",
+   "stato": "annunciato",
+   "data_evento": "2026-11-10",
+   "lat": 45.101,
+   "lon": 8.8596,
+   "origine_coord": "estimated: coordinates of the Eni Green Data Center from the Epoch AI GPU clusters dataset",
+   "precisione_km": 2,
+   "teatro": "IT",
+   "paese": "IT",
+   "regione": "Ferrera Erbognone, Lombardy",
+   "fonte": "DatacenterDynamics",
+   "link": "https://www.datacenterdynamics.com/es/noticias/las-empresas-italianas-eni-y-khazna-se-asocian-para-construir-un-centro-de-datos-de-500-mw-en-las-afueras-de-mil%C3%A1n/",
+   "data_fonte": "2025-07",
+   "affidabilita": "media",
+   "note": "500 MW (IT, first phase). Owner: JV Eni - Khazna Data Centers (G42 group, UAE); initial Eni-MGX-G42 agreement. First phase (500 MW IT, in two steps) of a programme of up to 1 GW in Italy. Power from Eni gas plants with CO2 capture. Linked to the UAE's 40 bn USD commitment to Italy (2025-02), which assigns no figure to this project. No 2026 update found: status to be checked. The Eni HPC6 and HPC7 supercomputers (TOP500) are on the same site.",
+   "fonti": [
+    {
+     "fonte": "DatacenterDynamics",
+     "link": "https://www.datacenterdynamics.com/es/noticias/las-empresas-italianas-eni-y-khazna-se-asocian-para-construir-un-centro-de-datos-de-500-mw-en-las-afueras-de-mil%C3%A1n/",
+     "data_fonte": "2025-07"
+    },
+    {
+     "fonte": "Eni, press release",
+     "link": "https://www.eni.com/content/dam/enicom/documents/press-release/migrated/2025-it/07/cs-khazna-data-centers-eni-comunita-insieme-sviluppo-ai-data-center-campus.pdf",
+     "data_fonte": "2025-07"
+    },
+    {
+     "fonte": "Eni, press release on the MGX-G42 letter of intent",
+     "link": "https://www.eni.com/it-IT/media/comunicati-stampa/2025/02/cs-eni-amplia-collaborazione-con-eau-ambiti-data-center.html",
+     "data_fonte": "2025-02"
+    }
+   ],
+   "rif_ai_mondo": "DC-IT-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-16",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Start Campus Sines (Nscale for Microsoft)",
+   "appartenenza": "PT",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 37.9565,
+   "lon": -8.869,
+   "origine_coord": "estimated: OSM geocoding of Sines",
+   "precisione_km": 5,
+   "teatro": "NATO",
+   "paese": "PT",
+   "regione": "Start Campus - Sustainable Data Center Services, Sines, Portugal",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-08-16",
+   "affidabilita": "alta",
+   "note": "33 MW (current IT power (Epoch estimate)). 233 MW planned by 2027-09-30. 31,834 H100-equivalents. Owner: Nscale. Partly operational. Microsoft invests about 10 bn USD here with Nscale and Nvidia (announced 2025-11-11). Sines is also a subsea-cable landing towards Africa and the Americas. Epoch projects 233 MW IT by 2027-09-30. Latest Epoch observation (2026-08-16): Satellite imagery shows two black outlines, suggesting two buildings going up on a second adjacent site. There is an outline of another building as well. Further to the east, there is land clearing. Epoch certainty on owner/users: Nscale: confident; Microsoft: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-08-16"
+    }
+   ],
+   "rif_ai_mondo": "EP-START-CAMPUS-SINES-DATA-CAMPUS",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-17",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "DayOne Nusajaya (Johor)",
+   "appartenenza": "MY",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 1.4308,
+   "lon": 103.5951,
+   "origine_coord": "estimated: OSM geocoding of Nusajaya Tech Park (Epoch gives no address)",
+   "precisione_km": 5,
+   "teatro": "ALTRO",
+   "paese": "MY",
+   "regione": null,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-10-02",
+   "affidabilita": "alta",
+   "note": "473 MW (current IT power (Epoch estimate)). 583,836 H100-equivalents. Operator DayOne, formerly GDS International, a group of Chinese origin. Johor hub, on the border with Singapore. Latest Epoch observation (2026-10-02): Buildings 7-10 are operational. Judging by their state in April 2026, we expect 3 months to finish construction and another 3 months to ramp to full capacity.",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-10-02"
+    }
+   ],
+   "rif_ai_mondo": "EP-DAYONE-NUSAJAYA",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-18",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Singapore data-centre hub",
+   "appartenenza": "SG",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 1.3571,
+   "lon": 103.8195,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Singapore'",
+   "precisione_km": 20,
+   "teatro": "ALTRO",
+   "paese": "SG",
+   "regione": "Singapore",
+   "fonte": "Real Estate Asia (CBRE)",
+   "link": "https://realestateasia.com/industrial/news/singapore-data-centre-occupancy-exceeds-95-supply-remains-tight",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "821 MW (total capacity of the market, Q1 2026 (CBRE)). Owner: many operators. 821 MW of total capacity in Q1 2026 with 247.5 MW upcoming (CBRE); occupancy above 95% expected through 2026. New capacity is rationed: a 200 MW green allocation (DC-CFA2), 80 MW of it in 2026-2028. Overflow goes to Johor and Batam.",
+   "fonti": [
+    {
+     "fonte": "Real Estate Asia (CBRE)",
+     "link": "https://realestateasia.com/industrial/news/singapore-data-centre-occupancy-exceeds-95-supply-remains-tight",
+     "data_fonte": "2026"
+    }
+   ],
+   "rif_ai_mondo": "HUB-SG-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-19",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "VNET Bayin, Ulanqab",
+   "appartenenza": "CN",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 40.9903,
+   "lon": 113.1316,
+   "origine_coord": "estimated: OSM geocoding of Ulanqab city",
+   "precisione_km": 20,
+   "teatro": "ALTRO",
+   "paese": "CN",
+   "regione": "Bayin, Ulanqab, China",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-05-06",
+   "affidabilita": "alta",
+   "note": "221 MW (current IT power (Epoch estimate)). 700 MW planned by 2027-09-01. 122,789 H100-equivalents. Owner: ByteDance. Partly operational. Inner Mongolia, hub of China's 'East Data, West Computing' programme. User ByteDance according to Epoch (speculative). Epoch projects 700 MW IT by 2027-09-01. Latest Epoch observation (2026-05-06): Satellite imagery shows building 9 has completed all its chillers, with only its roof remaining. Previous building completion timelines would imply this building will be operational by the end of 2026. Epoch certainty on owner/users: ByteDance: speculative; ByteDance: speculative",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-05-06"
+    }
+   ],
+   "rif_ai_mondo": "EP-VNET-BAYIN-ULANQAB",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-20",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Huawei Horinger (Inner Mongolia)",
+   "appartenenza": "CN",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 40.2952,
+   "lon": 111.9045,
+   "origine_coord": "estimated: OSM geocoding of Horinger county",
+   "precisione_km": 20,
+   "teatro": "ALTRO",
+   "paese": "CN",
+   "regione": "Huawei, Horinger, China",
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-08-18",
+   "affidabilita": "alta",
+   "note": "170 MW (current IT power (Epoch estimate)). 351 MW planned by 2028-02-17. 81,043 H100-equivalents. Owner: Huawei. Partly operational. Inner Mongolia (Hohhot). Epoch projects 351 MW IT by 2028-02-17. Latest Epoch observation (2026-08-18): In the South Zone, Building 5 is operational, based on its structural completion, and the colored motion artifacts on the some of the cooling tower fans. Building 6 (South Zone) is under construction. In the West Zone, Building 3 has not begun construction. Epoch certainty on owner/users: Huawei: confident",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, AI data centers",
+     "link": "https://epoch.ai/data/ai-data-centers",
+     "data_fonte": "2026-08-18"
+    }
+   ],
+   "rif_ai_mondo": "EP-HUAWEI-HORINGER",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-21",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Google India AI Hub, Visakhapatnam",
+   "appartenenza": "IN",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 17.6936,
+   "lon": 83.2921,
+   "origine_coord": "estimated: OSM geocoding of the city",
+   "precisione_km": 20,
+   "teatro": "ALTRO",
+   "paese": "IN",
+   "regione": "Visakhapatnam, Andhra Pradesh",
+   "fonte": "Google Cloud, press release",
+   "link": "https://www.googlecloudpresscorner.com/2026-04-28-Google-Breaks-Ground-on-India-AI-Hub,-Launching-a-National-Industrial-Ecosystem-Alongside-Indias-Digital-Infrastructure-Milestone",
+   "data_fonte": "2026-04-28",
+   "affidabilita": "alta",
+   "note": "1000 MW (gigawatt scale declared, three campuses). Owner: Google (built by AdaniConneX and Nxtra/Airtel). Foundation stone on 2026-04-28. Google's largest investment outside the US: 15 bn USD in 2026-2030, with a new subsea cable landing. First phase expected in July 2028 (one source).",
+   "fonti": [
+    {
+     "fonte": "Google Cloud, press release",
+     "link": "https://www.googlecloudpresscorner.com/2026-04-28-Google-Breaks-Ground-on-India-AI-Hub,-Launching-a-National-Industrial-Ecosystem-Alongside-Indias-Digital-Infrastructure-Milestone",
+     "data_fonte": "2026-04-28"
+    },
+    {
+     "fonte": "Free Press Journal",
+     "link": "https://www.freepressjournal.in/business/google-breaks-ground-on-15-billion-india-ai-hub-launching-gigawatt-scale-ecosystem-in-vizag",
+     "data_fonte": "2026-04-28"
+    }
+   ],
+   "rif_ai_mondo": "DC-IN-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-22",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "Reliance Intelligence AI campus, Jamnagar",
+   "appartenenza": "IN",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 22.4732,
+   "lon": 70.0552,
+   "origine_coord": "estimated: OSM geocoding of the city",
+   "precisione_km": 25,
+   "teatro": "ALTRO",
+   "paese": "IN",
+   "regione": "Jamnagar, Gujarat",
+   "fonte": "Built In",
+   "link": "https://builtin.com/articles/reliance-industries-to-invest-110b-in-data-centers-across-india-20260219",
+   "data_fonte": "2026-02-19",
+   "affidabilita": "media",
+   "note": "120 MW (first capacity expected in H2 2026; multi-GW plans). Owner: Reliance Industries / Jio. On 2026-06-10 Meta and Reliance announced 168 MW at Jamnagar (Meta's first data center in India, leased). Sources differ on the final size (1, 3 or more GW). Reliance's Indian investment is in the flows layer.",
+   "fonti": [
+    {
+     "fonte": "Built In",
+     "link": "https://builtin.com/articles/reliance-industries-to-invest-110b-in-data-centers-across-india-20260219",
+     "data_fonte": "2026-02-19"
+    },
+    {
+     "fonte": "Free Press Journal (Meta)",
+     "link": "https://www.freepressjournal.in/business/metareliance-partner-to-build-ai-data-centre-in-gujarats-jamnagar",
+     "data_fonte": "2026-06-10"
+    }
+   ],
+   "rif_ai_mondo": "DC-IN-02",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-23",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "SoftBank Hokkaido Tomakomai AI data center",
+   "appartenenza": "JP",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 42.6341,
+   "lon": 141.6055,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Tomakomai, Hokkaido, Japan'",
+   "precisione_km": 8,
+   "teatro": "ALTRO",
+   "paese": "JP",
+   "regione": "Tomakomai, Hokkaido",
+   "fonte": "SoftBank News",
+   "link": "https://www.softbank.jp/en/sbnews/entry/20260225_01",
+   "data_fonte": "2026-02-25",
+   "affidabilita": "alta",
+   "note": "300 MW (planned power capacity (first phase 50 MW)). Owner: SoftBank Corp.. About 700,000 m2 site, power capacity expected to exceed 300 MW; first phase of 50 MW due in fiscal 2026 (to March 2027); groundbreaking April 2025; renewable power from Hokkaido. Core of SoftBank's 'Brain DataCenter' plan.",
+   "fonti": [
+    {
+     "fonte": "SoftBank News",
+     "link": "https://www.softbank.jp/en/sbnews/entry/20260225_01",
+     "data_fonte": "2026-02-25"
+    }
+   ],
+   "rif_ai_mondo": "DC-JP-03",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-24",
+   "classe": "fisso",
+   "categoria": "data-center",
+   "nome": "National AI Computing Center, Haenam (Solaseado)",
+   "appartenenza": "KR",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 34.6553,
+   "lon": 126.4373,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Sani-myeon, Haenam, South Korea'",
+   "precisione_km": 10,
+   "teatro": "ALTRO",
+   "paese": "KR",
+   "regione": "Sani-myeon, Haenam County, South Jeolla",
+   "fonte": "Asia Economy",
+   "link": "https://view.asiae.co.kr/en/article/2026080315565102630",
+   "data_fonte": "2026-08-03",
+   "affidabilita": "media",
+   "note": "Owner: Samsung SDS consortium (KT, Naver Cloud, Kakao) with the Korean government. Ground broken on 2026-08-03 in the Solaseado enterprise city; completion planned 2028. Investment about 2.4 trillion KRW (1.7 bn USD; earlier reports 2.5 trillion). Selected after two failed public offerings.",
+   "fonti": [
+    {
+     "fonte": "Asia Economy",
+     "link": "https://view.asiae.co.kr/en/article/2026080315565102630",
+     "data_fonte": "2026-08-03"
+    },
+    {
+     "fonte": "Seoul Economic Daily",
+     "link": "https://en.sedaily.com/technology/2026/05/11/samsung-sds-confirmed-to-build-koreas-national-ai-computing",
+     "data_fonte": "2026-05-11"
+    }
+   ],
+   "rif_ai_mondo": "DC-KR-02",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-25",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "TSMC Fab 20, Baoshan (Hsinchu)",
+   "appartenenza": "TW",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 24.7602,
+   "lon": 120.9909,
+   "origine_coord": "estimated: OSM geocoding of Baoshan",
+   "precisione_km": 3,
+   "teatro": "ALTRO",
+   "paese": "TW",
+   "regione": "Baoshan, Hsinchu County",
+   "fonte": "TrendForce",
+   "link": "https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/",
+   "data_fonte": "2026-02-23",
+   "affidabilita": "alta",
+   "note": "N2 (2 nm), then A16. Owner: TSMC. 2 nm mass production since Q4 2025 (TSMC). Estimates of 20,000-25,000 wafers per month. Later phases for A16 and A14.",
+   "fonti": [
+    {
+     "fonte": "TrendForce",
+     "link": "https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/",
+     "data_fonte": "2026-02-23"
+    },
+    {
+     "fonte": "TrendForce",
+     "link": "https://www.trendforce.com/news/2026/01/02/news-earnings-call-preview-tsmc-2nm-mass-production-in-focus-capacity-sales-contribution-and-more/",
+     "data_fonte": "2026-01-02"
+    }
+   ],
+   "rif_ai_mondo": "FAB-TW-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-26",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "TSMC Fab 18, Tainan (N5/N3)",
+   "appartenenza": "TW",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 23.1065,
+   "lon": 120.2736,
+   "origine_coord": "estimated: OSM geocoding of the Southern Taiwan Science Park (Tainan)",
+   "precisione_km": 5,
+   "teatro": "ALTRO",
+   "paese": "TW",
+   "regione": "Southern Taiwan Science Park, Tainan",
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "5 nm and 3 nm. Owner: TSMC. Main site for TSMC's 5 nm and 3 nm nodes, where most current AI accelerators (Nvidia, AMD, custom ASICs) are made. Wikipedia lists about 120,000 wafers/month for each of P1-P3 and P4-P6 (dated). Point is approximate within the science park.",
+   "fonti": [
+    {
+     "fonte": "Wikipedia, List of semiconductor fabrication plants",
+     "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+     "data_fonte": "2026-11-10"
+    }
+   ],
+   "rif_ai_mondo": "FAB-TW-08",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-27",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "TSMC AP8 advanced packaging, Tainan (ex-Innolux)",
+   "appartenenza": "TW",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 23.1065,
+   "lon": 120.2736,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Southern Taiwan Science Park, Tainan'",
+   "precisione_km": 8,
+   "teatro": "ALTRO",
+   "paese": "TW",
+   "regione": "Southern Taiwan Science Park, Tainan",
+   "fonte": "TrendForce",
+   "link": "https://www.trendforce.com/news/2025/03/26/news-tsmc-reportedly-speeds-up-ap7-and-ap8-build-outs-targets-doubling-soic-capacity/",
+   "data_fonte": "2025-03-26",
+   "affidabilita": "media",
+   "note": "CoWoS / SoIC / InFO. Owner: TSMC. Former Innolux panel fab converted to CoWoS, with a second plant (P2) added in 2026; the core of the CoWoS bottleneck for Nvidia GPUs. TSMC CoWoS capacity estimated at 120,000-140,000 wafers/month by end-2026, with Nvidia holding about 60% of 2026 capacity (Morgan Stanley estimate).",
+   "fonti": [
+    {
+     "fonte": "TrendForce",
+     "link": "https://www.trendforce.com/news/2025/03/26/news-tsmc-reportedly-speeds-up-ap7-and-ap8-build-outs-targets-doubling-soic-capacity/",
+     "data_fonte": "2025-03-26"
+    }
+   ],
+   "rif_ai_mondo": "PKG-TW-04",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-28",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "Samsung Pyeongtaek campus (P4, P5)",
+   "appartenenza": "KR",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 37.0481,
+   "lon": 127.0364,
+   "origine_coord": "estimated: OSM geocoding of the district",
+   "precisione_km": 3,
+   "teatro": "ALTRO",
+   "paese": "KR",
+   "regione": "Pyeongtaek, Godeok-dong",
+   "fonte": "Daum (Korea Economic Daily)",
+   "link": "https://v.daum.net/v/UVoAWRXSTG",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "DRAM 1c and HBM4 base die; 2 nm foundry. Owner: Samsung Electronics. Partly operational. P4 full operation brought forward to 2026 (50,000 bn KRW = 50 trillion). P5 at foundation stage (August 2026). Sources disagree on the use of P4 (memory or foundry). In September 2026 start of a 6 trillion KRW HBM plant in Onyang.",
+   "fonti": [
+    {
+     "fonte": "Daum (Korea Economic Daily)",
+     "link": "https://v.daum.net/v/UVoAWRXSTG",
+     "data_fonte": "2026"
+    },
+    {
+     "fonte": "TrendForce",
+     "link": "https://trendforce.com/news/2026/08/20/news-samsung-to-break-ground-on-krw-6t-onyang-hbm-fab-in-sept-p5-eyes-triple-fab-shift-as-expansion-accelerates",
+     "data_fonte": "2026-08-20"
+    },
+    {
+     "fonte": "Tom's Hardware",
+     "link": "https://tomshardware.com/tech-industry/samsungs-fab-roadmap-examined",
+     "data_fonte": "2026"
+    }
+   ],
+   "rif_ai_mondo": "FAB-KR-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-29",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "SK Hynix Icheon campus (M14, M16)",
+   "appartenenza": "KR",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 37.2834,
+   "lon": 127.4873,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Bubal-eup, Icheon, South Korea'",
+   "precisione_km": 5,
+   "teatro": "ALTRO",
+   "paese": "KR",
+   "regione": "Icheon, Gyeonggi",
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "DRAM (10 nm class, EUV), HBM. Owner: SK Hynix. SK Hynix headquarters campus; M16 (EUV DRAM) completed in 2021. Main source of the DRAM dies used in HBM, the memory stacked next to Nvidia GPUs. SK Hynix held 58% of the HBM market in Q1 2026 (Counterpoint, see the Cheongju entry).",
+   "fonti": [
+    {
+     "fonte": "Wikipedia, List of semiconductor fabrication plants",
+     "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+     "data_fonte": "2026-11-10"
+    }
+   ],
+   "rif_ai_mondo": "FAB-KR-05",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-30",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "SK Hynix Yongin cluster (first fab)",
+   "appartenenza": "KR",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 37.1684,
+   "lon": 127.3122,
+   "origine_coord": "estimated: OSM geocoding of the municipality",
+   "precisione_km": 4,
+   "teatro": "ALTRO",
+   "paese": "KR",
+   "regione": "Wonsam-myeon, Yongin",
+   "fonte": "Evertiq",
+   "link": "https://evertiq.com/design/2026-02-25-sk-hynix-to-invest-15-billion-in-yongin-semiconductor-cluster",
+   "data_fonte": "2026-02-25",
+   "affidabilita": "alta",
+   "note": "next-generation DRAM and HBM. Owner: SK Hynix. Works since February 2025; first cleanroom brought forward to February 2027 (cleanroom fit-out under way). Amount = February 2026 addition (21.6 trillion KRW, 15 bn USD); first fab total about 31 trillion KRW. In August 2026 the board approved 35.2 trillion KRW for the Y2 fab; all four Yongin fabs by 2033.",
+   "fonti": [
+    {
+     "fonte": "Evertiq",
+     "link": "https://evertiq.com/design/2026-02-25-sk-hynix-to-invest-15-billion-in-yongin-semiconductor-cluster",
+     "data_fonte": "2026-02-25"
+    },
+    {
+     "fonte": "Korea JoongAng Daily",
+     "link": "https://www.koreajoongangdaily.com/business/sk-hynix-invests-151b-to-build-first-fab-plant-at-yongin-semiconductor-cluster/11961960",
+     "data_fonte": "2026-02"
+    },
+    {
+     "fonte": "Tom's Hardware",
+     "link": "https://www.tomshardware.com/tech-industry/semiconductors/sk-hynix-to-spend-dollar90-billion-to-build-worlds-largest-mega-fab-complex-first-fab-operational-in-2027",
+     "data_fonte": "2024"
+    }
+   ],
+   "rif_ai_mondo": "FAB-KR-03",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-31",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "Micron Taichung (Fab 16, HBM)",
+   "appartenenza": "TW",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 24.3049,
+   "lon": 120.7107,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Houli, Taichung, Taiwan'",
+   "precisione_km": 10,
+   "teatro": "ALTRO",
+   "paese": "TW",
+   "regione": "Taichung (Houli / Central Taiwan Science Park)",
+   "fonte": "Focus Taiwan",
+   "link": "https://focustaiwan.tw/business/202610010013",
+   "data_fonte": "2026-10-01",
+   "affidabilita": "alta",
+   "note": "DRAM (1-gamma) and HBM. Owner: Micron Technology. Micron's largest Taiwan base (DRAM front-end and HBM back-end). A second advanced packaging facility starts HBM production in mid-October 2026. Micron says it has invested over NT$1.6 trillion (about 50 bn USD) in Taiwan. Most 2027 HBM output is already under contract.",
+   "fonti": [
+    {
+     "fonte": "Focus Taiwan",
+     "link": "https://focustaiwan.tw/business/202610010013",
+     "data_fonte": "2026-10-01"
+    }
+   ],
+   "rif_ai_mondo": "FAB-TW-09",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-32",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "SMIC advanced lines, Shanghai",
+   "appartenenza": "CN",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 31.2073,
+   "lon": 121.6102,
+   "origine_coord": "estimated: OSM geocoding of Zhangjiang (SMIC headquarters); the 7/5 nm lines have no public location",
+   "precisione_km": 25,
+   "teatro": "ALTRO",
+   "paese": "CN",
+   "regione": "Shanghai, Pudong",
+   "fonte": "SemiAnalysis",
+   "link": "https://newsletter.semianalysis.com/p/huawei-ascend-production-ramp?open=false",
+   "data_fonte": "2025",
+   "affidabilita": "bassa",
+   "note": "7 nm (N+2), 5 nm in trial; no EUV. Owner: SMIC. Partly operational. SemiAnalysis estimate: 7 nm-and-below capacity under 45,000 wafers per month at end-2025, 60,000 in 2026. Makes the Huawei Ascend chips; the stated constraint is HBM memory, not the foundry. China reportedly aims to quintuple 7/5 nm output (TrendForce). Analyst numbers, not official.",
+   "fonti": [
+    {
+     "fonte": "SemiAnalysis",
+     "link": "https://newsletter.semianalysis.com/p/huawei-ascend-production-ramp?open=false",
+     "data_fonte": "2025"
+    },
+    {
+     "fonte": "TrendForce",
+     "link": "https://www.trendforce.com/news/2026/02/25/news-china-reportedly-aims-to-boost-7nm-5nm-output-fivefold",
+     "data_fonte": "2026-02-25"
+    },
+    {
+     "fonte": "Tom's Hardware",
+     "link": "https://www.tomshardware.com/tech-industry/artificial-intelligence/chinas-chip-champions-ramp-up-production-of-ai-accelerators-at-domestic-fabs-but-hbm-and-fab-production-capacity-are-towering-bottlenecks",
+     "data_fonte": "2025"
+    }
+   ],
+   "rif_ai_mondo": "FAB-CN-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-33",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "CXMT Hefei (DRAM)",
+   "appartenenza": "CN",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 31.8666,
+   "lon": 117.2814,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Hefei, Anhui, China'",
+   "precisione_km": 20,
+   "teatro": "ALTRO",
+   "paese": "CN",
+   "regione": "Hefei, Anhui",
+   "fonte": "Tom's Hardware",
+   "link": "https://www.tomshardware.com/pc-components/dram/chinas-cxmt-and-ymtc-to-expand-memory-output",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "DRAM (DDR5, LPDDR5), early HBM. Owner: ChangXin Memory Technologies (CXMT). China's main DRAM maker. Reports put CXMT at about 320,000 wafers/month, rising to 420,000 by 2027 (Nikkei via Tom's Hardware); HBM capacity only about 5,000 wafers/month (SemiAnalysis). Hefei and Beijing plants reported at full capacity.",
+   "fonti": [
+    {
+     "fonte": "Tom's Hardware",
+     "link": "https://www.tomshardware.com/pc-components/dram/chinas-cxmt-and-ymtc-to-expand-memory-output",
+     "data_fonte": "2026"
+    }
+   ],
+   "rif_ai_mondo": "FAB-CN-02",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-34",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "TSMC-JASM, Kumamoto (fabs 1 and 2)",
+   "appartenenza": "JP",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 32.8626,
+   "lon": 130.8284,
+   "origine_coord": "estimated: OSM geocoding of the municipality",
+   "precisione_km": 3,
+   "teatro": "ALTRO",
+   "paese": "JP",
+   "regione": "Kikuyo, Kumamoto",
+   "fonte": "Remio",
+   "link": "https://www.remio.ai/post/tsmc-kumamoto-3nm-fab-approved-but-japan-is-trading-volume-for-advanced-chips",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "Fab 1: 12-28 nm; Fab 2: 3 nm (planned). Owner: JASM (TSMC with Sony, Denso, Toyota). Partly operational. Fab 1 in production. Fab 2: in February 2026 TSMC announced the switch to 3 nm (Taiwan approved on 2026-03-31), target 2028; signs of a slower construction site. Amount = press estimate for Fab 2 only, not confirmed by TSMC.",
+   "fonti": [
+    {
+     "fonte": "Remio",
+     "link": "https://www.remio.ai/post/tsmc-kumamoto-3nm-fab-approved-but-japan-is-trading-volume-for-advanced-chips",
+     "data_fonte": "2026"
+    },
+    {
+     "fonte": "Igor'sLAB",
+     "link": "https://www.igorslab.de/en/tsmc-is-upgrading-japans-second-plant-to-3-nanometers-kumamoto-is-transitioning-from-a-backup-site-to-a-true-high-end-manufacturing-facility/",
+     "data_fonte": "2026"
+    },
+    {
+     "fonte": "Culpium",
+     "link": "https://www.culpium.com/p/how-to-view-tsmcs-latest-japan-technology",
+     "data_fonte": "2026-02"
+    }
+   ],
+   "rif_ai_mondo": "FAB-JP-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-35",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "Rapidus IIM-1, Chitose (Hokkaido)",
+   "appartenenza": "JP",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 42.8209,
+   "lon": 141.651,
+   "origine_coord": "estimated: OSM geocoding of the city",
+   "precisione_km": 8,
+   "teatro": "ALTRO",
+   "paese": "JP",
+   "regione": "Chitose, Hokkaido",
+   "fonte": "Tom's Hardware",
+   "link": "https://www.tomshardware.com/tech-industry/semiconductors/rapidus-fab-roadmap-examined",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "2 nm GAA. Owner: Rapidus (backed by the Japanese state). 2 nm prototypes since July 2025; mass production in H2 of fiscal 2027, still without a large customer. Amount = public R&D support approved (2,354 bn JPY, April 2026); another source cites about 2,900 bn JPY planned. Single site, no backup.",
+   "fonti": [
+    {
+     "fonte": "Tom's Hardware",
+     "link": "https://www.tomshardware.com/tech-industry/semiconductors/rapidus-fab-roadmap-examined",
+     "data_fonte": "2026"
+    },
+    {
+     "fonte": "Pulse.bot",
+     "link": "https://www.pulse.bot/hardware/deals/japanese-government-grants-rapidus-an-additional-396-bn-for-its-2nm-roadmap-133089e0-7475-4da3-8721-db8ac3c02a09/",
+     "data_fonte": "2026-04-11"
+    }
+   ],
+   "rif_ai_mondo": "FAB-JP-03",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-36",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "ESMC (TSMC with Bosch, Infineon, NXP), Dresden",
+   "appartenenza": "DE",
+   "stato": "in-costruzione",
+   "data_evento": "2026-11-10",
+   "lat": 51.1202,
+   "lon": 13.7202,
+   "origine_coord": "estimated: OSM geocoding of the district",
+   "precisione_km": 3,
+   "teatro": "NATO",
+   "paese": "DE",
+   "regione": "Dresden, Wilschdorf",
+   "fonte": "Focus Taiwan",
+   "link": "https://focustaiwan.tw/business/202609150007",
+   "data_fonte": "2026-09-15",
+   "affidabilita": "alta",
+   "note": "28/22 nm and 16/12 nm FinFET. Owner: ESMC (TSMC 70%). Topping-out in September 2026. Tool move-in shifted to H2 2027 (dpa-AFX correction of 2026-09-14): realistic production in 2028. 40,000 wafers per month. German state aid approved by the EU. Chips for cars and industry, not for GPUs.",
+   "fonti": [
+    {
+     "fonte": "Focus Taiwan",
+     "link": "https://focustaiwan.tw/business/202609150007",
+     "data_fonte": "2026-09-15"
+    },
+    {
+     "fonte": "TrendForce",
+     "link": "https://www.trendforce.com/news/2025/11/20/news-tsmc-dresden-fab-reportedly-wraps-structural-build-eyes-equipment-move-in-in-2h26/",
+     "data_fonte": "2025-11-20"
+    }
+   ],
+   "rif_ai_mondo": "FAB-DE-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-37",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "ASML, Veldhoven (EUV lithography systems)",
+   "appartenenza": "NL",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 51.4077,
+   "lon": 5.3927,
+   "origine_coord": "estimated: OSM geocoding of the municipality",
+   "precisione_km": 3,
+   "teatro": "NATO",
+   "paese": "NL",
+   "regione": "Veldhoven",
+   "fonte": "Statementdog (ASML Q2 2026 call transcript)",
+   "link": "https://statementdog.com/analysis/ASML/earnings_calls/316926",
+   "data_fonte": "2026-07",
+   "affidabilita": "media",
+   "note": "sole supplier worldwide of EUV scanners (Low-NA and High-NA). Owner: ASML. Not a chip fab but the upstream bottleneck: about 65 Low-NA EUV systems expected in 2026 (+45%). China about 20% of 2026 sales according to management. EUV optics come from Zeiss (Oberkochen) and the drive lasers from TRUMPF (Ditzingen).",
+   "fonti": [
+    {
+     "fonte": "Statementdog (ASML Q2 2026 call transcript)",
+     "link": "https://statementdog.com/analysis/ASML/earnings_calls/316926",
+     "data_fonte": "2026-07"
+    },
+    {
+     "fonte": "TrendForce",
+     "link": "https://www.trendforce.com/news/?p=60881",
+     "data_fonte": "2026"
+    },
+    {
+     "fonte": "SCMP",
+     "link": "https://www.scmp.com/tech/article/3350243/asml-boosts-2026-sales-forecast-despite-shrinking-china-sales",
+     "data_fonte": "2026"
+    }
+   ],
+   "rif_ai_mondo": "FAB-NL-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-38",
+   "classe": "fisso",
+   "categoria": "fab-chip",
+   "nome": "Carl Zeiss SMT, Oberkochen (EUV optics)",
+   "appartenenza": "DE",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 48.781,
+   "lon": 10.1013,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Oberkochen, Germany'",
+   "precisione_km": 3,
+   "teatro": "NATO",
+   "paese": "DE",
+   "regione": "Oberkochen, Baden-Württemberg",
+   "fonte": "ZEISS Semiconductor Manufacturing Technology",
+   "link": "https://www.zeiss.com/semiconductor-manufacturing-technology/home.html",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "alta",
+   "note": "Owner: Carl Zeiss SMT. Sole supplier of the mirror optics used in every ASML EUV scanner (Low-NA and High-NA). No alternative supplier exists.",
+   "fonti": [
+    {
+     "fonte": "ZEISS Semiconductor Manufacturing Technology",
+     "link": "https://www.zeiss.com/semiconductor-manufacturing-technology/home.html",
+     "data_fonte": "2026-11-10"
+    }
+   ],
+   "rif_ai_mondo": "EQ-DE-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-39",
+   "classe": "fisso",
+   "categoria": "supercomputer",
+   "nome": "LineShine (Shenzhen)",
+   "appartenenza": "CN",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 22.587,
+   "lon": 113.975,
+   "origine_coord": "estimated: Xili area, Nanshan (Shenzhen)",
+   "precisione_km": 5,
+   "teatro": "ALTRO",
+   "paese": "CN",
+   "regione": "National Supercomputing Centre, Shenzhen",
+   "fonte": "TOP500, list 2026-06",
+   "link": "https://www.top500.org/system/180490",
+   "data_fonte": "2026-06",
+   "affidabilita": "alta",
+   "note": "42.2 MW (power measured during the Linpack run (TOP500)). 2198.4 PFlop/s Rmax, TOP500 rank 1. Owner: National Supercomputing Centre in Shenzhen (NSCS). Rank 1 in the TOP500 of 2026-06. 2.198 exaflop/s (Rmax).",
+   "fonti": [
+    {
+     "fonte": "TOP500, list 2026-06",
+     "link": "https://www.top500.org/system/180490",
+     "data_fonte": "2026-06"
+    }
+   ],
+   "rif_ai_mondo": "T500-202606-01",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-40",
+   "classe": "fisso",
+   "categoria": "supercomputer",
+   "nome": "JUPITER (Jülich)",
+   "appartenenza": "DE",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 50.9217,
+   "lon": 6.3583,
+   "origine_coord": "coordinates from the Epoch AI GPU clusters dataset",
+   "precisione_km": 3,
+   "teatro": "NATO",
+   "paese": "DE",
+   "regione": "Forschungszentrum Jülich",
+   "fonte": "TOP500, list 2026-06",
+   "link": "https://www.top500.org/system/180357",
+   "data_fonte": "2026-06",
+   "affidabilita": "alta",
+   "note": "15.8 MW (power measured during the Linpack run (TOP500)). 1000 PFlop/s Rmax, TOP500 rank 5. Owner: EuroHPC/FZJ. Rank 5 in the TOP500 of 2026-06. 1.000 exaflop/s (Rmax).",
+   "fonti": [
+    {
+     "fonte": "TOP500, list 2026-06",
+     "link": "https://www.top500.org/system/180357",
+     "data_fonte": "2026-06"
+    }
+   ],
+   "rif_ai_mondo": "T500-202606-05",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  },
+  {
+   "id": "AI-20261110-41",
+   "classe": "fisso",
+   "categoria": "supercomputer",
+   "nome": "Eni HPC7 (Ferrera Erbognone)",
+   "appartenenza": "IT",
+   "stato": "operativo",
+   "data_evento": "2026-11-10",
+   "lat": 45.101,
+   "lon": 8.8596,
+   "origine_coord": "coordinates from the Epoch AI GPU clusters dataset",
+   "precisione_km": 2,
+   "teatro": "IT",
+   "paese": "IT",
+   "regione": "Eni Green Data Center, Ferrera Erbognone",
+   "fonte": "TOP500, list 2026-06",
+   "link": "https://www.top500.org/system/180451",
+   "data_fonte": "2026-06",
+   "affidabilita": "alta",
+   "note": "8.7 MW (power measured during the Linpack run (TOP500)). 571.5 PFlop/s Rmax, TOP500 rank 6. Owner: Eni S.p.A.. Rank 6 in the TOP500 of 2026-06. 0.572 exaflop/s (Rmax).",
+   "fonti": [
+    {
+     "fonte": "TOP500, list 2026-06",
+     "link": "https://www.top500.org/system/180451",
+     "data_fonte": "2026-06"
+    }
+   ],
+   "rif_ai_mondo": "T500-202606-06",
+   "dettaglio": "AI infrastructure, curated selection (from ai-mondo.json)"
+  }
+ ]
 }

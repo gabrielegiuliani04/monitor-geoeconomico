@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-10T12:02Z",
+ "aggiornato": "2026-11-10T12:09Z",
  "fonti": [
   {
    "nome": "Voci curate a mano da comunicati societari e governativi, Reuters/AFP, DCD, TrendForce e altri (fonte e link per riga)",
@@ -1410,6 +1410,41 @@
    "importo_originale": "25 mld USD"
   },
   {
+   "id": "INV-50",
+   "attore": "TSMC",
+   "da_paese": "TW",
+   "da_luogo": "Hsinchu",
+   "a_paese": "US",
+   "a_rif": "AI-20261109-17",
+   "importo": 265,
+   "valuta": "USD",
+   "anno": 2026,
+   "periodo": "2020-2030 circa",
+   "settore": "chip",
+   "stato": "in corso",
+   "quadro": false,
+   "fonte": "Città di Phoenix",
+   "link": "https://www.phoenix.gov/newsroom/ced-news/tsmc-announces-additional--100-billion-investment-in-arizona.html",
+   "data_fonte": "2026-07",
+   "fonti": [
+    {
+     "fonte": "Yahoo Finance",
+     "link": "https://finance.yahoo.com/technology/articles/tsmc-makes-additional-100b-us-100000058.html",
+     "data_fonte": "2026-07"
+    }
+   ],
+   "affidabilita": "alta",
+   "note": "Piano totale: 65 mld (originari) + 100 (marzo 2025) + 100 (luglio 2026). 12 impianti tra fabbriche e impacchettamento; date delle ultime quattro fabbriche non annunciate. Segue l'accordo commerciale USA-Taiwan di gennaio 2026.",
+   "da_lat": 24.804,
+   "da_lon": 120.968,
+   "a_lat": 33.78,
+   "a_lon": -112.14,
+   "a_luogo": "TSMC Arizona Fab 21",
+   "importo_usd_mld": 265.0,
+   "metodo_usd": "USD dalla fonte",
+   "importo_originale": "265 mld USD"
+  },
+  {
    "id": "INV-51",
    "attore": "TSMC (JASM, con Sony, Denso, Toyota)",
    "da_paese": "TW",
@@ -1464,6 +1499,34 @@
    "importo_usd_mld": 11.0,
    "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
    "importo_originale": "10 mld EUR"
+  },
+  {
+   "id": "INV-53",
+   "attore": "Governo USA (CHIPS Act) per Samsung",
+   "da_paese": "US",
+   "da_luogo": "Washington",
+   "a_paese": "US",
+   "a_rif": "AI-20261109-20",
+   "importo": 4.745,
+   "valuta": "USD",
+   "anno": 2024,
+   "periodo": "per tappe",
+   "settore": "chip",
+   "stato": "in corso",
+   "quadro": false,
+   "fonte": "eeNews Europe",
+   "link": "https://www.eenewseurope.com/en/samsung-texas-fab-could-start-on-2nm-in-2026",
+   "data_fonte": "2025",
+   "affidabilita": "media",
+   "note": "Contributo ridotto da 6,4 a 4,745 mld USD (dicembre 2024) con il ridimensionamento del progetto. L'investimento proprio di Samsung a Taylor ha cifre incoerenti nelle fonti (24 mld nel 2024 e altre): non inserito. Taylor: prova a fine 2026, volume nel 2027; contratto Tesla da 16,5 mld USD (acquisto di chip, non investimento).",
+   "da_lat": 38.895,
+   "da_lon": -77.037,
+   "a_lat": 30.57,
+   "a_lon": -97.42,
+   "a_luogo": "Samsung Taylor",
+   "importo_usd_mld": 4.75,
+   "metodo_usd": "USD dalla fonte",
+   "importo_originale": "4.745 mld USD"
   },
   {
    "id": "INV-54",
@@ -1788,13 +1851,18 @@
  "riepilogo": {
   "avvertenza": "Annunci e spese effettive non coincidono. Le somme mettono insieme impegni di natura diversa (piani pluriennali, acquisizioni chiuse, contributi pubblici, lettere d'intenti) e cambi fissi indicativi: servono a vedere la direzione e l'ordine di grandezza dei flussi, non quanto è stato speso. Gli impegni-quadro dei governi (quadro=true) sono sommati a parte perché in parte contengono gli stessi progetti. I progetti cancellati sono esclusi. Le voci senza importo sono contate ma non sommate. Il campione è curato a mano: mancano molti flussi minori, quindi i totali sono parziali.",
   "progetti": {
-   "totale_usd_mld": 768.5,
-   "voci": 56,
+   "totale_usd_mld": 1038.3,
+   "voci": 58,
    "voci_senza_importo": 5,
    "per_paese_origine": {
+    "TW": {
+     "usd_mld": 293.0,
+     "voci": 3,
+     "voci_senza_importo": 0
+    },
     "US": {
-     "usd_mld": 265.7,
-     "voci": 29,
+     "usd_mld": 270.45,
+     "voci": 30,
      "voci_senza_importo": 1
     },
     "IN": {
@@ -1832,11 +1900,6 @@
      "voci": 2,
      "voci_senza_importo": 0
     },
-    "TW": {
-     "usd_mld": 28.0,
-     "voci": 2,
-     "voci_senza_importo": 0
-    },
     "AR": {
      "usd_mld": 25.0,
      "voci": 1,
@@ -1869,13 +1932,13 @@
     }
    },
    "per_paese_destinazione": {
-    "IN": {
-     "usd_mld": 177.5,
-     "voci": 4,
+    "US": {
+     "usd_mld": 345.02,
+     "voci": 6,
      "voci_senza_importo": 0
     },
-    "US": {
-     "usd_mld": 75.27,
+    "IN": {
+     "usd_mld": 177.5,
      "voci": 4,
      "voci_senza_importo": 0
     },
@@ -2012,8 +2075,8 @@
      "voci_senza_importo": 5
     },
     "chip": {
-     "usd_mld": 129.47,
-     "voci": 10,
+     "usd_mld": 399.22,
+     "voci": 12,
      "voci_senza_importo": 0
     },
     "fondo": {
@@ -2024,8 +2087,8 @@
    },
    "per_stato": {
     "in corso": {
-     "usd_mld": 394.22,
-     "voci": 34,
+     "usd_mld": 663.97,
+     "voci": 36,
      "voci_senza_importo": 1
     },
     "annunciato": {
@@ -2044,7 +2107,7 @@
      "voci_senza_importo": 0
     }
    },
-   "solo_internazionali_usd_mld": 493.1,
+   "solo_internazionali_usd_mld": 758.1,
    "verso_italia": [
     {
      "id": "INV-06",
@@ -2171,10 +2234,5 @@
    }
   ]
  },
- "errori": [
-  "flusso INV-50: punto di arrivo 'AI-20261109-17' non trovato",
-  "flusso INV-53: punto di arrivo 'AI-20261109-20' non trovato",
-  "flusso INV-50: missing a_lat; missing a_lon; a_lat invalid; a_lon invalid -> excluded",
-  "flusso INV-53: missing a_lat; missing a_lon; a_lat invalid; a_lon invalid -> excluded"
- ]
+ "errori": []
 }

@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-10T12:02Z",
+ "aggiornato": "2026-11-10T12:09Z",
  "fonti": [
   {
    "nome": "Epoch AI, AI data centers",
@@ -44,67 +44,71 @@
    "data_dato": "2026-11-10"
   }
  ],
- "nota": "AI infrastructure worldwide, US included: AI data centres (Epoch AI tracker, automatic, all countries; Epoch GPU-cluster archive, automatic, only clusters with real coordinates and at least 1,000 H100e not already mapped; hand-curated campuses), data-centre hubs (metro clusters, not single sites), chip fabs and memory fabs, advanced packaging, equipment and material chokepoints (curated) and the top 50 TOP500 supercomputers (automatic). All coordinates are estimates: see origine_coord and precisione_km; systems or sites without a public position are not drawn and are listed in senza_posizione. mw = power as given by the source: Epoch = estimated IT power; TOP500 = consumption during the benchmark; hubs = metro market capacity; curated = see mw_tipo. importo = declared investment in billions of the currency; importo_usd_mld converted at fixed indicative rates. duplicato_ai_json = the point is also in ai.json (do not draw twice when both layers are on). Status of projects is often inferred from announcements: check data_fonte.",
+ "nota": "AI infrastructure worldwide, US included: AI data centres (Epoch AI tracker, automatic, all countries; Epoch GPU-cluster archive, automatic, only clusters with real coordinates and at least 500 H100e not already mapped; hand-curated campuses), data-centre hubs (metro clusters, not single sites), chip fabs and memory fabs, advanced packaging, equipment and material chokepoints (curated) and the top 50 TOP500 supercomputers (automatic). All coordinates are estimates: see origine_coord and precisione_km; systems or sites without a public position are not drawn and are listed in senza_posizione. mw = power as given by the source: Epoch = estimated IT power; TOP500 = consumption during the benchmark; hubs = metro market capacity; curated = see mw_tipo. importo = declared investment in billions of the currency; importo_usd_mld converted at fixed indicative rates. duplicato_ai_json = the point is also in ai.json (do not draw twice when both layers are on). Status of projects is often inferred from announcements: check data_fonte.",
  "conteggi": {
-  "totale": 269,
+  "totale": 301,
   "per_categoria": {
-   "data-center-ai": 172,
-   "fab-chip": 40,
+   "data-center-ai": 187,
+   "fab-chip": 53,
    "supercalcolo": 33,
    "packaging": 13,
-   "hub-data-center": 6,
+   "hub-data-center": 10,
    "attrezzature": 5
   },
   "per_paese": {
-   "US": 114,
-   "TW": 19,
-   "JP": 15,
-   "KR": 12,
-   "CN": 12,
+   "US": 115,
+   "TW": 21,
+   "CN": 18,
+   "JP": 17,
+   "KR": 13,
    "DE": 9,
+   "IN": 8,
    "IT": 7,
+   "FR": 7,
+   "SE": 7,
    "FI": 7,
-   "FR": 6,
    "GB": 6,
-   "SE": 6,
-   "IN": 6,
+   "SG": 6,
+   "DK": 6,
+   "MY": 6,
    "NL": 5,
-   "DK": 5,
+   "ES": 4,
    "SA": 4,
    "BR": 4,
-   "MY": 4,
-   "ES": 3,
    "NO": 3,
-   "SG": 2,
    "IE": 2,
+   "IL": 2,
    "EE": 2,
+   "LT": 2,
+   "IS": 2,
+   "CA": 2,
    "KE": 1,
    "MX": 1,
    "CL": 1,
-   "IL": 1,
    "LV": 1,
-   "LT": 1,
+   "CZ": 1,
+   "PL": 1,
+   "RO": 1,
    "ID": 1,
    "AU": 1,
    "PT": 1,
-   "IS": 1,
    "AE": 1,
-   "CA": 1,
    "TH": 1,
+   "RU": 1,
    "CH": 1,
    "GR": 1,
    "ZA": 1
   },
   "per_origine": {
-   "curato": 116,
+   "curato": 147,
    "epoch": 96,
    "top500": 33,
-   "epoch-gpu": 24
+   "epoch-gpu": 25
   },
   "per_stato": {
-   "operativo": 150,
-   "in-costruzione": 54,
-   "operativo-parziale": 46,
+   "operativo": 165,
+   "in-costruzione": 67,
+   "operativo-parziale": 50,
    "annunciato": 15,
    "sospeso": 3,
    "cancellato": 1
@@ -130,15 +134,15 @@
   },
   "epoch_gpu": {
    "cluster_letti": 482,
-   "cluster_in_mappa": 24,
+   "cluster_in_mappa": 25,
    "scartati": {
     "senza_coordinate": 34,
     "centroide_paese": 270,
-    "sotto_soglia": 101,
+    "sotto_soglia": 87,
     "superati_o_dismessi": 30,
-    "doppioni_di_siti_gia_in_mappa": 23
+    "doppioni_di_siti_gia_in_mappa": 36
    },
-   "soglia_h100e": 1000
+   "soglia_h100e": 500
   },
   "top500_lista": "2026-06",
   "categorie": [
@@ -619,12 +623,12 @@
    "data_fonte": "2025-07",
    "fonti": [
     {
-     "fonte": "Eni, comunicato",
+     "fonte": "Eni, press release",
      "link": "https://www.eni.com/content/dam/enicom/documents/press-release/migrated/2025-it/07/cs-khazna-data-centers-eni-comunita-insieme-sviluppo-ai-data-center-campus.pdf",
      "data_fonte": "2025-07"
     },
     {
-     "fonte": "Eni, comunicato lettera d'intenti MGX-G42",
+     "fonte": "Eni, press release on the MGX-G42 letter of intent",
      "link": "https://www.eni.com/it-IT/media/comunicati-stampa/2025/02/cs-eni-amplia-collaborazione-con-eau-ambiti-data-center.html",
      "data_fonte": "2025-02"
     }
@@ -633,9 +637,9 @@
    "note": "First phase (500 MW IT, in two steps) of a programme of up to 1 GW in Italy. Power from Eni gas plants with CO2 capture. Linked to the UAE's 40 bn USD commitment to Italy (2025-02), which assigns no figure to this project. No 2026 update found: status to be checked. The Eni HPC6 and HPC7 supercomputers (TOP500) are on the same site.",
    "nome_en": "Eni-Khazna AI campus, Ferrera Erbognone (Pavia)",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-IT-02",
@@ -667,7 +671,7 @@
    "affidabilita": "media",
    "note": "Investment announced in October 2024 over two years (4.3 bn EUR), Microsoft's largest in Italy. In May 2025 the head of Microsoft Italy said works were on schedule, with a focus on Lombardy. Power and sites not published: point on the city.",
    "importo_usd_mld": 4.73,
-   "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
+   "metodo_usd": "converted at fixed indicative rate EUR=1.1 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -706,7 +710,7 @@
    "affidabilita": "media",
    "note": "First building expected in 2027 (15 MW IT). A Baxtel listing gives a construction start in March 2026, unclear for which building. Data4 also runs the MIL01 campus in Cornaredo (about 300 MW in Italy at full build according to the press).",
    "importo_usd_mld": 0.55,
-   "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
+   "metodo_usd": "converted at fixed indicative rate EUR=1.1 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -740,7 +744,7 @@
    "affidabilita": "media",
    "note": "Aruba's largest campus (Rating 4 ANSI/TIA-942). Since April 2026 it hosts the AI inference infrastructure of the Italian start-up Xference. Strategic for Italy rather than for its size: power not found.",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -761,7 +765,7 @@
    "anno": 2028,
    "importo": 30,
    "valuta": "EUR",
-   "fonte": "Eiffage, comunicato",
+   "fonte": "Eiffage, press release",
    "link": "https://www.privacy.eiffage.com/files/live/sites/metal/files/publications/PR_Eiffage_Campus%2520AI%2520enters%2520the%2520implementation%2520phase_20260602.pdf",
    "data_fonte": "2026-06-02",
    "fonti": [
@@ -780,9 +784,9 @@
    "note": "Largest AI campus announced in Europe. June 2026: Eiffage main contractor for the 400/33 kV substation (over 120 m EUR). Commissioning planned in 2028. Amount: UAE-France framework of 30-50 bn EUR (minimum used). A second site to reach 3 GW is under discussion.",
    "nome_en": "Fouju AI campus (MGX, Bpifrance, Mistral AI, Nvidia)",
    "importo_usd_mld": 33.0,
-   "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
+   "metodo_usd": "converted at fixed indicative rate EUR=1.1 USD",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-FR-02",
@@ -814,7 +818,7 @@
    "affidabilita": "media",
    "note": "15 of the 20 bn EUR announced by Brookfield in France in February 2025. In June 2026 Brookfield raised its French plan to 30 bn EUR (single source).",
    "importo_usd_mld": 16.5,
-   "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
+   "metodo_usd": "converted at fixed indicative rate EUR=1.1 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -848,7 +852,7 @@
    "affidabilita": "media",
    "note": "Opened to customers in February 2026. The companies claim +50% AI compute in Germany (not verified). Strategic for sovereignty, not for size.",
    "importo_usd_mld": 1.1,
-   "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
+   "metodo_usd": "converted at fixed indicative rate EUR=1.1 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -882,7 +886,7 @@
    "affidabilita": "media",
    "note": "Government-designated AI growth zone. Planned investment 10 bn GBP. In April 2026, while OpenAI paused Stargate UK, QTS confirmed the project.",
    "importo_usd_mld": 13.0,
-   "metodo_usd": "convertito con cambio fisso indicativo GBP=1.3 USD",
+   "metodo_usd": "converted at fixed indicative rate GBP=1.3 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -921,7 +925,7 @@
    "affidabilita": "media",
    "note": "Announced in September 2025, paused by OpenAI in April 2026 over energy costs and regulation. A Guardian investigation (July 2026) found no meetings with local authorities about the site.",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -955,7 +959,7 @@
    "affidabilita": "alta",
    "note": "Three data centers already active in Aragon; the 15.7 bn EUR plan (17 bn USD according to AFP) runs to 2033. Year = end of the plan.",
    "importo_usd_mld": 17.27,
-   "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
+   "metodo_usd": "converted at fixed indicative rate EUR=1.1 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -983,7 +987,7 @@
    "affidabilita": "media",
    "note": "SEK 95 bn (9.8 bn USD according to the source) over 10-15 years for AI infrastructure in Sweden, centred on Strängnäs.",
    "importo_usd_mld": 9.5,
-   "metodo_usd": "convertito con cambio fisso indicativo SEK=0.1 USD",
+   "metodo_usd": "converted at fixed indicative rate SEK=0.1 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1011,7 +1015,7 @@
    "affidabilita": "media",
    "note": "Announced in May 2024 (about 1 bn USD), meant to host the first Azure region in East Africa. In May 2026 the project was reported slowed by disagreements with the Kenyan government over power demand. Status 'sospeso' = slowed, not cancelled.",
    "importo_usd_mld": 1.0,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1050,9 +1054,9 @@
    "affidabilita": "media",
    "note": "Start planned in Q2 2026 with up to 100 MW per site (Riyadh and Dammam); in March 2026 still under construction, start not confirmed. Riyadh also hosts the 'AI Zone' with AWS (up to 150,000 accelerators). Humain's stated goal: 6 GW in a decade. Separately, xAI and Humain announced a 500 MW data center in November 2025 (site not public, not mapped).",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-SA-02",
@@ -1078,7 +1082,7 @@
    "affidabilita": "media",
    "note": "See Riyadh. Start not confirmed as of 2026-11-09.",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1099,7 +1103,7 @@
    "anno": 2028,
    "importo": 15,
    "valuta": "USD",
-   "fonte": "Google Cloud, comunicato",
+   "fonte": "Google Cloud, press release",
    "link": "https://www.googlecloudpresscorner.com/2026-04-28-Google-Breaks-Ground-on-India-AI-Hub,-Launching-a-National-Industrial-Ecosystem-Alongside-Indias-Digital-Infrastructure-Milestone",
    "data_fonte": "2026-04-28",
    "fonti": [
@@ -1112,9 +1116,9 @@
    "affidabilita": "alta",
    "note": "Foundation stone on 2026-04-28. Google's largest investment outside the US: 15 bn USD in 2026-2030, with a new subsea cable landing. First phase expected in July 2028 (one source).",
    "importo_usd_mld": 15.0,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-IN-02",
@@ -1146,9 +1150,9 @@
    "affidabilita": "media",
    "note": "On 2026-06-10 Meta and Reliance announced 168 MW at Jamnagar (Meta's first data center in India, leased). Sources differ on the final size (1, 3 or more GW). Reliance's Indian investment is in the flows layer.",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-JP-01",
@@ -1180,7 +1184,7 @@
    "affidabilita": "media",
    "note": "Amount = purchase of the site (about 100 bn JPY, 676 m USD), not the cost of the data center. Completion moved to fiscal 2027 (Baxtel, single source). A KDDI AI data center operates on the same former plant.",
    "importo_usd_mld": 0.67,
-   "metodo_usd": "convertito con cambio fisso indicativo JPY=0.0066667 USD",
+   "metodo_usd": "converted at fixed indicative rate JPY=0.0066667 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1214,7 +1218,7 @@
    "affidabilita": "media",
    "note": "Ground broken on 2025-08-29. Next to the SK Gas LNG power plant. Investment given only as 'several trillion won'. Korea's largest AI data center when complete.",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1253,7 +1257,7 @@
    "affidabilita": "media",
    "note": "Amount = first four buildings (9 bn BRL), potential up to 50 bn BRL. Declared schedule: 1.5 GW in 2027, 3.2 GW in 2032 (to be read as a target).",
    "importo_usd_mld": 1.62,
-   "metodo_usd": "convertito con cambio fisso indicativo BRL=0.18 USD",
+   "metodo_usd": "converted at fixed indicative rate BRL=0.18 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1287,7 +1291,7 @@
    "affidabilita": "bassa",
    "note": "50 bn USD is the maximum potential reported by a secondary source, not a commitment. Status: first phase; progress not verified.",
    "importo_usd_mld": 50.0,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1321,7 +1325,7 @@
    "affidabilita": "media",
    "note": "About 200 bn BRL (37.7-39 bn USD according to the sources): it would be ByteDance's largest data center outside China. TikTok has not commented.",
    "importo_usd_mld": 36.0,
-   "metodo_usd": "convertito con cambio fisso indicativo BRL=0.18 USD",
+   "metodo_usd": "converted at fixed indicative rate BRL=0.18 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1355,7 +1359,7 @@
    "affidabilita": "media",
    "note": "5 bn USD over 15 years (a German source says 10). Querétaro is Mexico's data-center hub.",
    "importo_usd_mld": 5.0,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1383,7 +1387,7 @@
    "affidabilita": "alta",
    "note": "Opening expected at end-2026; third AWS region in Latin America after Brazil and Mexico.",
    "importo_usd_mld": 4.0,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1419,9 +1423,9 @@
    "note": "2 nm mass production since Q4 2025 (TSMC). Estimates of 20,000-25,000 wafers per month. Later phases for A16 and A14.",
    "tipo": "logic foundry",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-TW-02",
@@ -1455,7 +1459,7 @@
    "note": "P1 in volume since H2 2025 (about 10,000 wafers per month), P2 in trial, P3 under construction. Estimates of total 2 nm capacity at end-2026 vary widely (100,000-140,000 wafers per month).",
    "tipo": "logic foundry",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1485,7 +1489,7 @@
    "note": "Risk production expected at end-2027, volume in H2 2028 (press).",
    "tipo": "logic foundry",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1522,7 +1526,7 @@
    "tipo": "advanced packaging",
    "nome_en": "TSMC AP7 advanced packaging, Chiayi",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1564,9 +1568,9 @@
    "tipo": "logic foundry",
    "nome_en": "TSMC-JASM, Kumamoto (fabs 1 and 2)",
    "importo_usd_mld": 17.0,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-DE-01",
@@ -1601,9 +1605,9 @@
    "tipo": "logic foundry",
    "nome_en": "ESMC (TSMC with Bosch, Infineon, NXP), Dresden",
    "importo_usd_mld": 11.0,
-   "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
+   "metodo_usd": "converted at fixed indicative rate EUR=1.1 USD",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-KR-01",
@@ -1643,9 +1647,9 @@
    "tipo": "memory and logic foundry",
    "nome_en": "Samsung Pyeongtaek campus (P4, P5)",
    "importo_usd_mld": 35.71,
-   "metodo_usd": "convertito con cambio fisso indicativo KRW=0.00071429 USD",
+   "metodo_usd": "converted at fixed indicative rate KRW=0.00071429 USD",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-KR-02",
@@ -1679,7 +1683,7 @@
    "note": "Wafers in from February 2026, mass production from the first cleanroom in H1 2026. Indicative amount (over 20 trillion KRW, sources differ). Next door, the P&T7 packaging plant (about 19 trillion KRW) from end-2027. SK Hynix held 58% of the HBM market in Q1 2026 (Counterpoint).",
    "tipo": "memory",
    "importo_usd_mld": 14.29,
-   "metodo_usd": "convertito con cambio fisso indicativo KRW=0.00071429 USD",
+   "metodo_usd": "converted at fixed indicative rate KRW=0.00071429 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1720,9 +1724,9 @@
    "note": "Works since February 2025; first cleanroom brought forward to February 2027 (cleanroom fit-out under way). Amount = February 2026 addition (21.6 trillion KRW, 15 bn USD); first fab total about 31 trillion KRW. In August 2026 the board approved 35.2 trillion KRW for the Y2 fab; all four Yongin fabs by 2033.",
    "tipo": "memory",
    "importo_usd_mld": 15.43,
-   "metodo_usd": "convertito con cambio fisso indicativo KRW=0.00071429 USD",
+   "metodo_usd": "converted at fixed indicative rate KRW=0.00071429 USD",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-US-01",
@@ -1757,7 +1761,7 @@
    "tipo": "memory packaging",
    "nome_en": "SK Hynix HBM packaging plant, West Lafayette (Indiana)",
    "importo_usd_mld": 3.87,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1798,7 +1802,7 @@
    "note": "Existing fab in production; the expansion (1,500 bn JPY according to Nikkei, 9.3 bn USD according to another source, public aid up to about 3 bn USD) starts from May 2026 with output in 2028. First EUV in mass production in Japan.",
    "tipo": "memory",
    "importo_usd_mld": 10.0,
-   "metodo_usd": "convertito con cambio fisso indicativo JPY=0.0066667 USD",
+   "metodo_usd": "converted at fixed indicative rate JPY=0.0066667 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1829,7 +1833,7 @@
    "tipo": "memory packaging",
    "nome_en": "Micron HBM packaging plant, Singapore",
    "importo_usd_mld": 7.0,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1859,7 +1863,7 @@
    "note": "Opened on 2026-02-28 (other sources March 2026). At full scale about 10% of Micron's global output.",
    "tipo": "memory assembly and test",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1895,7 +1899,7 @@
    "note": "91,000 crore INR (about 11 bn USD), 50,000 wafers per month. Commercial production moved to mid-2028 (minister Vaishnaw); Tata confirms 28-110 nm. India's first commercial fab.",
    "tipo": "logic foundry",
    "importo_usd_mld": 10.34,
-   "metodo_usd": "convertito con cambio fisso indicativo INR=0.011364 USD",
+   "metodo_usd": "converted at fixed indicative rate INR=0.011364 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1931,7 +1935,7 @@
    "note": "Intel's only EUV fab in Europe. New investment (about 5 bn EUR) to make Intel 3 for Xeon 6; Apollo's 49% stake bought back in April 2026.",
    "tipo": "logic",
    "importo_usd_mld": 5.7,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1967,7 +1971,7 @@
    "note": "Cancelled in July 2025 together with the Polish plant near Wrocław; it had about 9.9 bn EUR of promised subsidies. Kept on the map as a sign of the fragility of European plans.",
    "tipo": "logic",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -1997,7 +2001,7 @@
    "note": "Works stopped for about two years, no restart announced. Fab 28 (10 nm) operates next door.",
    "tipo": "logic",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2039,9 +2043,9 @@
    "tipo": "logic foundry",
    "nome_en": "SMIC advanced lines, Shanghai",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-JP-03",
@@ -2075,9 +2079,9 @@
    "note": "2 nm prototypes since July 2025; mass production in H2 of fiscal 2027, still without a large customer. Amount = public R&D support approved (2,354 bn JPY, April 2026); another source cites about 2,900 bn JPY planned. Single site, no backup.",
    "tipo": "logic foundry",
    "importo_usd_mld": 15.69,
-   "metodo_usd": "convertito con cambio fisso indicativo JPY=0.0066667 USD",
+   "metodo_usd": "converted at fixed indicative rate JPY=0.0066667 USD",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-NL-01",
@@ -2117,9 +2121,9 @@
    "tipo": "lithography systems",
    "nome_en": "ASML, Veldhoven (EUV lithography systems)",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-DK-01",
@@ -2151,9 +2155,9 @@
    "lon": 10.4947,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Tietgenbyen, Odense, Denmark'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-DK-02",
@@ -2178,9 +2182,9 @@
    "lon": 12.2417,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Høje-Taastrup, Denmark'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-DK-03",
@@ -2212,7 +2216,7 @@
    "lon": 12.1819,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Køge, Denmark'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2239,7 +2243,7 @@
    "lon": 9.7562,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Fredericia, Denmark'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2273,9 +2277,9 @@
    "lon": 27.1926,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Hamina, Finland'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-FI-02",
@@ -2300,7 +2304,7 @@
    "lon": 27.7339,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Kajaani, Finland'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2327,7 +2331,7 @@
    "lon": 26.8467,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Vaala, Finland'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2354,7 +2358,7 @@
    "lon": 25.9954,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Muhos, Finland'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2381,7 +2385,7 @@
    "lon": 28.1862,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Lappeenranta, Finland'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2408,7 +2412,7 @@
    "lon": 17.1467,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Gävle, Sweden'",
    "importo_usd_mld": 3.37,
-   "metodo_usd": "convertito con cambio fisso indicativo SEK=0.1 USD",
+   "metodo_usd": "converted at fixed indicative rate SEK=0.1 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2435,7 +2439,7 @@
    "lon": 16.776,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Sandviken, Sweden'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2462,7 +2466,7 @@
    "lon": 13.2,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Staffanstorp, Sweden'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2489,9 +2493,9 @@
    "lon": 6.8465,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Eemshaven, Netherlands'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-NL-02",
@@ -2516,7 +2520,7 @@
    "lon": 7.0381,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Winschoten, Netherlands'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2543,7 +2547,7 @@
    "lon": 4.9948,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Middenmeer, Netherlands'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2570,7 +2574,7 @@
    "lon": 24.058,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Risti, Estonia'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2597,7 +2601,7 @@
    "lon": 24.7573,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Tallinn, Estonia'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2624,7 +2628,7 @@
    "lon": 24.1052,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Riga, Latvia'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2651,7 +2655,7 @@
    "lon": 25.2829,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Vilnius, Lithuania'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2678,9 +2682,9 @@
    "lon": 13.9689,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Lübbenau, Germany'",
    "importo_usd_mld": 12.1,
-   "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
+   "metodo_usd": "converted at fixed indicative rate EUR=1.1 USD",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-GB-03",
@@ -2712,7 +2716,7 @@
    "lon": 0.0544,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Loughton, Essex, United Kingdom'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2739,7 +2743,7 @@
    "lon": -4.8902,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Talavera de la Reina, Spain'",
    "importo_usd_mld": 0.83,
-   "metodo_usd": "convertito con cambio fisso indicativo EUR=1.1 USD",
+   "metodo_usd": "converted at fixed indicative rate EUR=1.1 USD",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2773,9 +2777,9 @@
    "lon": 8.6821,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Frankfurt am Main, Germany'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "HUB-NL-01",
@@ -2800,9 +2804,9 @@
    "lon": 4.8925,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Amsterdam, Netherlands'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "HUB-GB-01",
@@ -2827,7 +2831,7 @@
    "lon": -0.5941,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Slough, United Kingdom'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2854,7 +2858,7 @@
    "lon": 2.3484,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Paris, France'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2881,9 +2885,9 @@
    "lon": -6.2606,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Dublin, Ireland'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-SA-03",
@@ -2920,9 +2924,9 @@
    "lon": 35.546,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Oxagon, Saudi Arabia'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-IN-03",
@@ -2954,7 +2958,7 @@
    "lon": 78.4741,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Hyderabad, Telangana, India'",
    "importo_usd_mld": 17.5,
-   "metodo_usd": "USD dalla fonte",
+   "metodo_usd": "USD from the source",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -2988,7 +2992,7 @@
    "lon": 135.4829,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Sakai, Osaka, Japan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3015,9 +3019,9 @@
    "lon": 141.6055,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Tomakomai, Hokkaido, Japan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-KR-02",
@@ -3049,9 +3053,9 @@
    "lon": 126.4373,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Sani-myeon, Haenam, South Korea'",
    "importo_usd_mld": 1.71,
-   "metodo_usd": "convertito con cambio fisso indicativo KRW=0.00071429 USD",
+   "metodo_usd": "converted at fixed indicative rate KRW=0.00071429 USD",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "DC-KR-03",
@@ -3076,7 +3080,7 @@
    "lon": 129.3429,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Pohang, South Korea'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3103,7 +3107,7 @@
    "lon": -94.4138,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Independence, Missouri'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3130,9 +3134,9 @@
    "lon": -77.4744,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Ashburn, Virginia'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-TW-05",
@@ -3159,7 +3163,7 @@
    "lon": 121.002,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Hsinchu Science Park, Taiwan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3188,7 +3192,7 @@
    "lon": 120.2736,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Southern Taiwan Science Park, Tainan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3217,7 +3221,7 @@
    "lon": 120.6167,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Central Taiwan Science Park, Taichung'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3246,9 +3250,9 @@
    "lon": 120.2736,
    "origine_coord": "estimated: OSM geocoding of the Southern Taiwan Science Park (Tainan)",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-TW-09",
@@ -3275,9 +3279,9 @@
    "lon": 120.7107,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Houli, Taichung, Taiwan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-TW-10",
@@ -3304,7 +3308,7 @@
    "lon": 121.3378,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Guishan, Taoyuan, Taiwan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3333,7 +3337,7 @@
    "lon": 120.7879,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Tongluo, Miaoli, Taiwan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3362,7 +3366,7 @@
    "lon": 127.065,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Banwol-dong, Hwaseong, South Korea'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3391,9 +3395,9 @@
    "lon": 127.4873,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Bubal-eup, Icheon, South Korea'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-US-08",
@@ -3420,7 +3424,7 @@
    "lon": -97.7474,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Austin, Texas'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3449,9 +3453,9 @@
    "lon": 117.2814,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Hefei, Anhui, China'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-CN-03",
@@ -3478,7 +3482,7 @@
    "lon": 121.47,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Shanghai, China'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3507,7 +3511,7 @@
    "lon": 114.5195,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'East Lake High-tech Development Zone, Wuhan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3536,7 +3540,7 @@
    "lon": 116.4759,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Yizhuang, Beijing, China'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3565,7 +3569,7 @@
    "lon": 136.6009,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Yamanoisshikicho, Yokkaichi, Japan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3594,7 +3598,7 @@
    "lon": 141.1135,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Kitakami, Iwate, Japan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3623,7 +3627,7 @@
    "lon": 13.7202,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Wilschdorf, Dresden, Germany'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3652,7 +3656,7 @@
    "lon": -73.7929,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Malta, New York'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3681,7 +3685,7 @@
    "lon": -122.918,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Ronler Acres, Hillsboro, Oregon'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3717,9 +3721,9 @@
    "lon": -112.14,
    "origine_coord": "estimated: TSMC Arizona site north of Phoenix (Loop 303 / I-17), from the US AI dossier",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-US-03",
@@ -3746,9 +3750,9 @@
    "lon": -111.8584,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Ocotillo, Chandler, Arizona'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-US-04",
@@ -3775,9 +3779,9 @@
    "lon": -82.7154,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Jersey Township, Licking County, Ohio'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-US-05",
@@ -3811,9 +3815,9 @@
    "lon": -97.42,
    "origine_coord": "estimated: Samsung Taylor site, from the US AI dossier",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-US-06",
@@ -3840,9 +3844,9 @@
    "lon": -116.2009,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Boise, Idaho'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "FAB-US-07",
@@ -3869,9 +3873,9 @@
    "lon": -76.2065,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Clay, New York'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "PKG-TW-01",
@@ -3898,7 +3902,7 @@
    "lon": 121.2164,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Longtan, Taoyuan, Taiwan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3927,7 +3931,7 @@
    "lon": 120.6167,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Central Taiwan Science Park, Taichung'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3956,7 +3960,7 @@
    "lon": 120.8734,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Zhunan, Miaoli, Taiwan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -3985,9 +3989,9 @@
    "lon": 120.2736,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Southern Taiwan Science Park, Tainan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "PKG-TW-05",
@@ -4014,7 +4018,7 @@
    "lon": 120.3072,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Nanzih, Kaohsiung, Taiwan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -4043,7 +4047,7 @@
    "lon": 120.7052,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Tanzi, Taichung, Taiwan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -4072,7 +4076,7 @@
    "lon": 127.0089,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Onyang, Asan, South Korea'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -4101,7 +4105,7 @@
    "lon": 127.4892,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Cheongju, South Korea'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -4130,7 +4134,7 @@
    "lon": -112.2373,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Peoria, Arizona'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -4158,9 +4162,9 @@
    "lon": 10.1013,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Oberkochen, Germany'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EQ-DE-02",
@@ -4186,7 +4190,7 @@
    "lon": 9.0259,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Ditzingen, Germany'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -4214,7 +4218,7 @@
    "lon": 138.4461,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Nirasaki, Yamanashi, Japan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -4242,7 +4246,882 @@
    "lon": 139.7038,
    "origine_coord": "estimated: OSM Nominatim geocoding of 'Kawasaki, Kanagawa, Japan'",
    "importo_usd_mld": null,
-   "metodo_usd": "importo non dichiarato",
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-DK-05",
+   "categoria": "data-center-ai",
+   "nome": "Microsoft Denmark East region, Roskilde",
+   "paese": "DK",
+   "luogo": "Roskilde, Zealand",
+   "precisione_km": 8,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "Microsoft",
+   "stato": "operativo-parziale",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Microsoft Source EMEA",
+   "link": "https://news.microsoft.com/source/emea/features/microsoft-announces-the-opening-of-its-new-datacenter-region-in-denmark-strengthening-digital-resilience-innovation-and-economic-growth/",
+   "data_fonte": "2026-03-27",
+   "affidabilita": "media",
+   "note": "Third campus of the Denmark East region opened in March 2026 (with Høje-Taastrup and Køge). How many campuses are fully live is unclear in the coverage. MW not published.",
+   "lat": 55.6433,
+   "lon": 12.0819,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Roskilde, Denmark'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-FR-03",
+   "categoria": "data-center-ai",
+   "nome": "Nebius AI data center, Béthune (ex-Bridgestone plant)",
+   "paese": "FR",
+   "luogo": "Béthune, Pas-de-Calais (near Lille)",
+   "precisione_km": 4,
+   "mw": 240,
+   "mw_tipo": "planned full capacity",
+   "proprietario": "Nebius (developed by Azur Datacenters)",
+   "stato": "in-costruzione",
+   "anno": 2028,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Yahoo Finance (Reuters)",
+   "link": "https://finance.yahoo.com/news/amsterdam-based-ai-firm-nebius-120558201.html",
+   "data_fonte": "2026-02",
+   "affidabilita": "media",
+   "note": "Announced February 2026 on the former Bridgestone tyre plant, reusing its grid connection. About 27 MW initially, 120 MW during 2026 and 240 MW by 2027-2028 (reports differ on phase timing). Cost not disclosed.",
+   "fonti": [
+    {
+     "fonte": "Baxtel",
+     "link": "https://baxtel.com/news/nebius-unveils-plans-for-a-240mw-data-center-in-bethune-france",
+     "data_fonte": "2026-02"
+    }
+   ],
+   "lat": 50.5309,
+   "lon": 2.6389,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Béthune, France'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-IS-01",
+   "categoria": "data-center-ai",
+   "nome": "Verne campus Keflavik (Nebius cluster)",
+   "paese": "IS",
+   "luogo": "Keflavik, Reykjanes",
+   "precisione_km": 5,
+   "mw": 10,
+   "mw_tipo": "Nebius initial cluster (campus 24 MW)",
+   "proprietario": "Verne (colocation); tenant Nebius",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Datacenter Forum",
+   "link": "https://datacenter-forum.com/datacenter-forum/nebius-announces-new-colocation-in-iceland",
+   "data_fonte": "2025-03",
+   "affidabilita": "media",
+   "note": "Nebius colocation at Verne's 24 MW Keflavik campus with an initial 10 MW compute cluster (2025 announcement). Iceland offers geothermal and hydro power and cool climate.",
+   "lat": 63.9716,
+   "lon": -22.5734,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Ásbrú, Reykjanesbær, Iceland'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "HUB-SG-01",
+   "categoria": "hub-data-center",
+   "nome": "Singapore data-centre hub",
+   "paese": "SG",
+   "luogo": "Singapore",
+   "precisione_km": 20,
+   "mw": 821,
+   "mw_tipo": "total capacity of the market, Q1 2026 (CBRE)",
+   "proprietario": "many operators",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Real Estate Asia (CBRE)",
+   "link": "https://realestateasia.com/industrial/news/singapore-data-centre-occupancy-exceeds-95-supply-remains-tight",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "821 MW of total capacity in Q1 2026 with 247.5 MW upcoming (CBRE); occupancy above 95% expected through 2026. New capacity is rationed: a 200 MW green allocation (DC-CFA2), 80 MW of it in 2026-2028. Overflow goes to Johor and Batam.",
+   "lat": 1.3571,
+   "lon": 103.8195,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Singapore'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": true
+  },
+  {
+   "id": "HUB-MY-01",
+   "categoria": "hub-data-center",
+   "nome": "Johor data-centre hub",
+   "paese": "MY",
+   "luogo": "Johor Bahru, Kulai, Sedenak, Iskandar Puteri",
+   "precisione_km": 30,
+   "mw": 1110,
+   "mw_tipo": "operational IT capacity of the market, H1 2026 (Cushman & Wakefield)",
+   "proprietario": "many operators (DayOne, Bridge, YTL, STT GDC, Microsoft, others)",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "EdgeProp (Cushman & Wakefield)",
+   "link": "https://edgeprop.my/content/1917257/johor-leads-apac-data-centre-boom-malaysia-tops-construction-—-cw",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "Operational IT capacity up 24% to 1,110 MW in H1 2026 (Cushman & Wakefield; Knight Frank gives the same figure), 602 MW under construction and 2,486 MW planned; colocation vacancy 0.7% (Knight Frank). The largest Epoch-tracked Johor campuses are mapped separately.",
+   "lat": 1.4582,
+   "lon": 103.7649,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Johor Bahru, Malaysia'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "HUB-JP-01",
+   "categoria": "hub-data-center",
+   "nome": "Greater Tokyo data-centre hub (Inzai)",
+   "paese": "JP",
+   "luogo": "Greater Tokyo; Inzai (Chiba) is the largest cluster",
+   "precisione_km": 30,
+   "mw": 1086,
+   "mw_tipo": "total capacity of the market, Q1 2026 (CBRE)",
+   "proprietario": "many operators",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Real Estate Asia (CBRE)",
+   "link": "https://realestateasia.com/indonesian/node/514607079",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "1,086 MW of total capacity in Q1 2026 with a 2,544 MW pipeline (CBRE). Inzai holds 32% of operating capacity and 44% of the pipeline (Cushman & Wakefield, H1 2025). Grid delivery takes 8-10 years in Tokyo versus 3-5 in Osaka (JLL). Point on Inzai.",
+   "lat": 35.8323,
+   "lon": 140.1453,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Inzai, Chiba, Japan'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "HUB-IN-01",
+   "categoria": "hub-data-center",
+   "nome": "Mumbai data-centre hub (Navi Mumbai)",
+   "paese": "IN",
+   "luogo": "Mumbai and Navi Mumbai, Maharashtra",
+   "precisione_km": 25,
+   "mw": 790,
+   "mw_tipo": "operational capacity of the market (MeitY)",
+   "proprietario": "many operators (Yotta, AdaniConneX, CtrlS, Colt DCS, others)",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "TelecomTalk (MeitY)",
+   "link": "https://telecomtalk.info/data-centre-capacity-in-india-crosses-1500mw/1005212/",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "790 MW in Mumbai and Navi Mumbai, over half of India's more than 1,500 MW (Ministry of Electronics and IT). The state utility has allocated about 6 GW of grid power to data centres in Navi Mumbai.",
+   "lat": 19.0308,
+   "lon": 73.0199,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Navi Mumbai, India'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-KR-06",
+   "categoria": "fab-chip",
+   "nome": "Samsung Giheung (S1 line)",
+   "paese": "KR",
+   "luogo": "Giheung, Yongin",
+   "precisione_km": 6,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "Samsung Electronics",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "Samsung's oldest foundry campus (S1 line, 65-7 nm, about 62,000 wafers/month per Wikipedia, dated), home of the NRD-K R&D complex.",
+   "nodo": "65-7 nm",
+   "tipo": "logic foundry",
+   "lat": 37.2801,
+   "lon": 127.1148,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Giheung-gu, Yongin, South Korea'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-CN-06",
+   "categoria": "fab-chip",
+   "nome": "SK Hynix Wuxi (HC1, HC2 DRAM)",
+   "paese": "CN",
+   "luogo": "Wuxi, Jiangsu",
+   "precisione_km": 15,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "SK Hynix",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "SK Hynix's DRAM fabs in China: HC1 about 100,000 and HC2 about 70,000 wafers/month (Wikipedia, dated). Exposed to US export controls on tools for China.",
+   "nodo": "DRAM",
+   "tipo": "memory",
+   "lat": 31.492,
+   "lon": 120.3594,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Wuxi New District, Wuxi, China'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-CN-07",
+   "categoria": "fab-chip",
+   "nome": "Samsung Xi'an (NAND)",
+   "paese": "CN",
+   "luogo": "Xi'an, Shaanxi",
+   "precisione_km": 20,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "Samsung Electronics",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "Samsung's only overseas memory fab (F1x1, about 100,000 wafers/month per Wikipedia, dated). Exposed to US export controls on tools for China.",
+   "nodo": "3D V-NAND",
+   "tipo": "memory",
+   "lat": 34.261,
+   "lon": 108.9423,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Xi'an, Shaanxi, China'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-CN-08",
+   "categoria": "fab-chip",
+   "nome": "SK Hynix/Solidigm Dalian (ex-Intel Fab 68, NAND)",
+   "paese": "CN",
+   "luogo": "Dalian, Liaoning",
+   "precisione_km": 20,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "SK Hynix (Solidigm)",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "Listed by Wikipedia as Intel Fab 68 (VNAND, 30,000-52,000 wafers/month); Intel's NAND business passed to SK Hynix (Solidigm).",
+   "nodo": "3D NAND",
+   "tipo": "memory",
+   "lat": 39.2398,
+   "lon": 121.8994,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Jinzhou District, Dalian, Liaoning'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-CN-09",
+   "categoria": "fab-chip",
+   "nome": "SMIC Shenzhen",
+   "paese": "CN",
+   "luogo": "Shenzhen, Guangdong",
+   "precisione_km": 20,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "SMIC",
+   "stato": "operativo-parziale",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "Fab 15 (200 mm, 55,000 wafers/month) plus a 300 mm 28 nm fab under construction (40,000 planned), per Wikipedia (dated).",
+   "nodo": "350-90 nm; 28 nm fab under construction",
+   "tipo": "logic foundry",
+   "lat": 22.7114,
+   "lon": 114.3462,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Pingshan, Shenzhen, China'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-CN-10",
+   "categoria": "fab-chip",
+   "nome": "SMIC Tianjin (Xiqing)",
+   "paese": "CN",
+   "luogo": "Xiqing, Tianjin",
+   "precisione_km": 15,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "SMIC",
+   "stato": "operativo-parziale",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "Fab 7 (200 mm, 60,000 wafers/month) and the Xiqing 28 nm 300 mm fab under construction (100,000 planned), per Wikipedia (dated).",
+   "nodo": "350-90 nm; 28 nm fab under construction",
+   "tipo": "logic foundry",
+   "lat": 39.1404,
+   "lon": 117.003,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Xiqing, Tianjin, China'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-CN-11",
+   "categoria": "fab-chip",
+   "nome": "SMIC Lingang (Shanghai)",
+   "paese": "CN",
+   "luogo": "Lingang, Pudong, Shanghai",
+   "precisione_km": 15,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "SMIC",
+   "stato": "in-costruzione",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "300 mm 28 nm fab under construction, 100,000 wafers/month planned (Wikipedia, dated). Mature node, important for China's self-sufficiency, not for AI accelerators.",
+   "nodo": "28 nm (under construction)",
+   "tipo": "logic foundry",
+   "lat": 30.877,
+   "lon": 121.9002,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Lingang, Shanghai, China'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-US-11",
+   "categoria": "fab-chip",
+   "nome": "Micron Manassas (Fab 6)",
+   "paese": "US",
+   "luogo": "Manassas, Virginia",
+   "precisione_km": 6,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "Micron Technology",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "Former Dominion Semiconductor fab (about 70,000 wafers/month per Wikipedia, dated); Micron's US trusted-foundry style memory site.",
+   "nodo": "DRAM, NAND, NOR",
+   "tipo": "memory",
+   "lat": 38.7509,
+   "lon": -77.4753,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Manassas, Virginia'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-SG-02",
+   "categoria": "fab-chip",
+   "nome": "Micron Singapore NAND (Fab 10)",
+   "paese": "SG",
+   "luogo": "Woodlands, Singapore",
+   "precisione_km": 8,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "Micron Technology",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "Former IM Flash fab, about 140,000 wafers/month (Wikipedia, dated). The new Micron HBM packaging plant in Singapore is mapped separately.",
+   "nodo": "3D NAND",
+   "tipo": "memory",
+   "lat": 1.4369,
+   "lon": 103.7862,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Woodlands, Singapore'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-SG-03",
+   "categoria": "fab-chip",
+   "nome": "GlobalFoundries Singapore (Fab 7)",
+   "paese": "SG",
+   "luogo": "Woodlands, Singapore",
+   "precisione_km": 8,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "GlobalFoundries",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "300 mm fab (about 50,000 wafers/month per Wikipedia, dated); GlobalFoundries' main Asian base.",
+   "nodo": "130-40 nm",
+   "tipo": "logic foundry",
+   "lat": 1.4519,
+   "lon": 103.7977,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Woodlands Industrial Park, Singapore'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-US-12",
+   "categoria": "fab-chip",
+   "nome": "GlobalFoundries Essex Junction (Fab 9)",
+   "paese": "US",
+   "luogo": "Essex Junction, Vermont",
+   "precisione_km": 4,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "GlobalFoundries",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "Former IBM fab (since 1957), 200 mm, about 50,000 wafers/month (Wikipedia, dated); RF and GaN chips for communications and defence.",
+   "nodo": "350-90 nm, SiGe, RF-SOI, GaN",
+   "tipo": "specialty foundry",
+   "lat": 44.4907,
+   "lon": -73.1114,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Essex Junction, Vermont'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-IN-04",
+   "categoria": "data-center-ai",
+   "nome": "Colt DCS-RMZ Mumbai 3, Navi Mumbai",
+   "paese": "IN",
+   "luogo": "Navi Mumbai, Maharashtra",
+   "precisione_km": 15,
+   "mw": 64,
+   "mw_tipo": "new building (campus 86 MW)",
+   "proprietario": "Colt DCS with RMZ",
+   "stato": "in-costruzione",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "CRN Asia",
+   "link": "https://www.crnasia.com/india/news/2026/colt-dcs-rmz-start-64mw-mumbai-data-centre-construction-after-signing-hyperscale-client",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "64 MW third data centre started after signing a first hyperscale client; lifts the campus to 86 MW. Exact plot not stated: point on Navi Mumbai.",
+   "lat": 19.0308,
+   "lon": 73.0199,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Navi Mumbai, India'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-IN-05",
+   "categoria": "data-center-ai",
+   "nome": "PDG Navi Mumbai campus",
+   "paese": "IN",
+   "luogo": "Navi Mumbai, Maharashtra",
+   "precisione_km": 15,
+   "mw": 120,
+   "mw_tipo": "planned campus capacity",
+   "proprietario": "Princeton Digital Group (PDG)",
+   "stato": "in-costruzione",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Baxtel",
+   "link": "https://baxtel.com/news/pdg-plans-two-new-data-center-campuses-in-india-totaling-210mw",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "120 MW campus under construction in Navi Mumbai (part of two Indian campuses totalling 210 MW). Exact plot not stated: point on Navi Mumbai.",
+   "lat": 19.0308,
+   "lon": 73.0199,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Navi Mumbai, India'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-JP-04",
+   "categoria": "data-center-ai",
+   "nome": "ESR-Colt hyperscale campus, Minoh (Osaka)",
+   "paese": "JP",
+   "luogo": "Minoh, Osaka",
+   "precisione_km": 6,
+   "mw": 130,
+   "mw_tipo": "planned campus capacity",
+   "proprietario": "ESR with Colt DCS (JV)",
+   "stato": "in-costruzione",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "JLL",
+   "link": "https://www.jll.com/en-jp/insights/japan-s-data-centre-market-expands-beyond-tokyo-and-osaka",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "130 MW hyperscale campus; JV formed in October 2025 for the first phase. Osaka grid delivery takes 3-5 years versus 8-10 in Tokyo (JLL), pulling growth to Kansai.",
+   "lat": 34.827,
+   "lon": 135.4705,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Minoh, Osaka, Japan'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-MY-01",
+   "categoria": "data-center-ai",
+   "nome": "STT GDC STT Johor 1",
+   "paese": "MY",
+   "luogo": "Johor",
+   "precisione_km": 25,
+   "mw": 16,
+   "mw_tipo": "IT load",
+   "proprietario": "ST Telemedia Global Data Centres",
+   "stato": "in-costruzione",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "MIDA",
+   "link": "https://www.mida.gov.my/mida-news/st-telemedia-global-data-centres-breaks-ground-for-high-performance-computing-data-centre-campus-in-johor",
+   "data_fonte": "2026",
+   "affidabilita": "media",
+   "note": "HPC data centre with 16 MW IT load, expected fully operational by end-2026 (MIDA). Exact site within Johor not taken from the source: point on Johor Bahru.",
+   "lat": 1.4582,
+   "lon": 103.7649,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Johor Bahru, Malaysia'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-SG-01",
+   "categoria": "data-center-ai",
+   "nome": "Keppel floating data centre, Singapore",
+   "paese": "SG",
+   "luogo": "Singapore (offshore, floating)",
+   "precisione_km": 20,
+   "mw": 25,
+   "mw_tipo": "planned",
+   "proprietario": "Keppel",
+   "stato": "in-costruzione",
+   "anno": 2028,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Real Estate Asia (CBRE)",
+   "link": "https://realestateasia.com/industrial/news/singapore-data-centre-occupancy-exceeds-95-supply-remains-tight",
+   "data_fonte": "2026",
+   "affidabilita": "bassa",
+   "note": "25 MW floating data centre under construction, online in 2028. Mooring site not stated: point indicative.",
+   "lat": 1.3718,
+   "lon": 103.9726,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Loyang, Singapore'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-IL-02",
+   "categoria": "fab-chip",
+   "nome": "Intel Fab 28, Kiryat Gat",
+   "paese": "IL",
+   "luogo": "Kiryat Gat",
+   "precisione_km": 4,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "Intel",
+   "stato": "operativo",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Wikipedia, List of semiconductor fabrication plants",
+   "link": "https://en.wikipedia.org/wiki/List_of_semiconductor_fabrication_plants",
+   "data_fonte": "2026-11-10",
+   "affidabilita": "media",
+   "note": "Operating 300 mm fab (45-10 nm per Wikipedia, dated), next to the stalled Fab 38 site.",
+   "nodo": "10 nm class",
+   "tipo": "logic",
+   "lat": 31.6079,
+   "lon": 34.7691,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Kiryat Gat, Israel'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-CZ-01",
+   "categoria": "data-center-ai",
+   "nome": "Czech AI Factory (CZAI), Ostrava",
+   "paese": "CZ",
+   "luogo": "IT4Innovations, VSB-Technical University of Ostrava",
+   "precisione_km": 12,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "IT4Innovations / VSB-TU Ostrava (EuroHPC)",
+   "stato": "in-costruzione",
+   "anno": 2026,
+   "importo": null,
+   "valuta": null,
+   "fonte": "EuroHPC Joint Undertaking",
+   "link": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-selects-six-additional-ai-factories-expand-europes-ai-capabilities-2025-10-10_en",
+   "data_fonte": "2025-10-10",
+   "affidabilita": "alta",
+   "note": "EuroHPC AI Factory selected in October 2025, linked to the new AI-optimised supercomputer KarolAIna at IT4Innovations; systems to be deployed in 2026. Part of the 19 EU AI Factories (plus 13 antennas). The separate EU AI Gigafactories call (up to 7 sites) opened on 2026-07-30 and has not selected any site yet.",
+   "tipo": "EuroHPC AI Factory",
+   "lat": 49.8354,
+   "lon": 18.293,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Ostrava, Czechia'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-LT-02",
+   "categoria": "data-center-ai",
+   "nome": "LitAI Factory, Vilnius (LRTC VDC3)",
+   "paese": "LT",
+   "luogo": "LRTC VDC3 data center, Vilnius",
+   "precisione_km": 10,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "Vilnius University with LRTC (EuroHPC)",
+   "stato": "in-costruzione",
+   "anno": 2026,
+   "importo": null,
+   "valuta": null,
+   "fonte": "EuroHPC Joint Undertaking",
+   "link": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-selects-six-additional-ai-factories-expand-europes-ai-capabilities-2025-10-10_en",
+   "data_fonte": "2025-10-10",
+   "affidabilita": "alta",
+   "note": "EuroHPC AI Factory selected in October 2025, hosted at the LRTC VDC3 data center; systems to be deployed in 2026. Exact facility not geocoded: point on Vilnius. Part of the 19 EU AI Factories (plus 13 antennas). The separate EU AI Gigafactories call (up to 7 sites) opened on 2026-07-30 and has not selected any site yet.",
+   "tipo": "EuroHPC AI Factory",
+   "lat": 54.687,
+   "lon": 25.2829,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Vilnius, Lithuania'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-PL-01",
+   "categoria": "data-center-ai",
+   "nome": "Gaia AI Factory, Kraków (Cyfronet AGH)",
+   "paese": "PL",
+   "luogo": "ACK Cyfronet AGH, Kraków",
+   "precisione_km": 5,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "Cyfronet AGH (EuroHPC)",
+   "stato": "in-costruzione",
+   "anno": 2026,
+   "importo": null,
+   "valuta": null,
+   "fonte": "EuroHPC Joint Undertaking",
+   "link": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-selects-six-additional-ai-factories-expand-europes-ai-capabilities-2025-10-10_en",
+   "data_fonte": "2025-10-10",
+   "affidabilita": "alta",
+   "note": "EuroHPC AI Factory selected in October 2025, operated by Cyfronet AGH within PLGrid; to be deployed in 2026. Works with the PIAST (Poznań) and LUMI AI Factories. Part of the 19 EU AI Factories (plus 13 antennas). The separate EU AI Gigafactories call (up to 7 sites) opened on 2026-07-30 and has not selected any site yet.",
+   "tipo": "EuroHPC AI Factory",
+   "lat": 50.0194,
+   "lon": 19.8873,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Cyfronet, Kraków'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-RO-01",
+   "categoria": "data-center-ai",
+   "nome": "RO AI Factory, Bucharest (ICI)",
+   "paese": "RO",
+   "luogo": "ICI Bucharest",
+   "precisione_km": 10,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "ICI Bucharest with University Politehnica (EuroHPC)",
+   "stato": "in-costruzione",
+   "anno": 2026,
+   "importo": null,
+   "valuta": null,
+   "fonte": "EuroHPC Joint Undertaking",
+   "link": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-selects-six-additional-ai-factories-expand-europes-ai-capabilities-2025-10-10_en",
+   "data_fonte": "2025-10-10",
+   "affidabilita": "alta",
+   "note": "EuroHPC AI Factory selected in October 2025, hosted by the National Institute for R&D in Informatics (ICI Bucharest); to be deployed in 2026. Part of the 19 EU AI Factories (plus 13 antennas). The separate EU AI Gigafactories call (up to 7 sites) opened on 2026-07-30 and has not selected any site yet.",
+   "tipo": "EuroHPC AI Factory",
+   "lat": 44.4361,
+   "lon": 26.1027,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Bucharest, Romania'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-ES-03",
+   "categoria": "data-center-ai",
+   "nome": "Spanish AI Factory with experimental platform, CESGA (Santiago de Compostela)",
+   "paese": "ES",
+   "luogo": "Galicia Supercomputing Center (CESGA)",
+   "precisione_km": 5,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "CESGA (CSIC and Xunta de Galicia) (EuroHPC)",
+   "stato": "in-costruzione",
+   "anno": 2026,
+   "importo": null,
+   "valuta": null,
+   "fonte": "EuroHPC Joint Undertaking",
+   "link": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-selects-six-additional-ai-factories-expand-europes-ai-capabilities-2025-10-10_en",
+   "data_fonte": "2025-10-10",
+   "affidabilita": "alta",
+   "note": "EuroHPC AI Factory selected in October 2025 with an experimental platform for AI in human, animal and environmental health; to be deployed in 2026. Part of the 19 EU AI Factories (plus 13 antennas). The separate EU AI Gigafactories call (up to 7 sites) opened on 2026-07-30 and has not selected any site yet.",
+   "tipo": "EuroHPC AI Factory",
+   "lat": 42.9065,
+   "lon": -8.5193,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Santiago de Compostela, Spain'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "FAB-TW-12",
+   "categoria": "fab-chip",
+   "nome": "Micron Tainan (ex-AUO panel plant)",
+   "paese": "TW",
+   "luogo": "Tainan",
+   "precisione_km": 20,
+   "mw": null,
+   "mw_tipo": null,
+   "proprietario": "Micron Technology",
+   "stato": "in-costruzione",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "TrendForce",
+   "link": "https://www.trendforce.com/news/2026-10-02/news-micron-taiwan-investment-tops-nt1-6t-as-four-site-expansion-accelerates-nanya-adds-pingtung-project",
+   "data_fonte": "2026-10-02",
+   "affidabilita": "media",
+   "note": "Former AUO display plant being converted to a semiconductor site; Micron is accelerating tool installation (one of four Taiwan sites being expanded). Exact plant not geocoded: point on Tainan.",
+   "nodo": "DRAM / HBM back-end (planned)",
+   "tipo": "memory",
+   "lat": 22.9912,
+   "lon": 120.185,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Tainan, Taiwan'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
+   "origine_dato": "curato",
+   "duplicato_ai_json": false
+  },
+  {
+   "id": "DC-US-02",
+   "categoria": "data-center-ai",
+   "nome": "Nebius Kansas City colocation (former printing plant)",
+   "paese": "US",
+   "luogo": "Kansas City, Missouri",
+   "precisione_km": 10,
+   "mw": 40,
+   "mw_tipo": "first-phase ceiling (5 MW initial)",
+   "proprietario": "Nebius (site operated by Patmos)",
+   "stato": "operativo-parziale",
+   "anno": null,
+   "importo": null,
+   "valuta": null,
+   "fonte": "BeBeez",
+   "link": "https://bebeez.eu/2026/01/12/nebius-plans-800mw-data-center-campus-in-kansas-city-missouri/",
+   "data_fonte": "2026-01-12",
+   "affidabilita": "media",
+   "note": "Leased colocation in a former newspaper printing plant run by Patmos; first phase from 5 MW initially up to 40 MW. Separate from the 800 MW campus planned outside the city.",
+   "lat": 39.1001,
+   "lon": -94.5781,
+   "origine_coord": "estimated: OSM Nominatim geocoding of 'Kansas City, Missouri'",
+   "importo_usd_mld": null,
+   "metodo_usd": "amount not declared",
    "origine_dato": "curato",
    "duplicato_ai_json": false
   },
@@ -4277,7 +5156,7 @@
    "affidabilita": "alta",
    "note": "Epoch projects 1531 MW IT by 2027-02-25. Latest Epoch observation (2026-06-15): The site is estimated to have at least ~830 MW of GPU server power, with at least \"at least 220,000 additional GB300 processors and over 400 additional megawatts of compute power\", corresponding to the \"next phase of expansion\" found in the following company S-1 filing, page 76. This estimate is backed up by our coo... Epoch certainty on owner/users: SpaceXAI: confident; Anthropic: confident; Cursor: confident; SpaceXAI: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-OPENAI-STARGATE-ABILENE",
@@ -4310,7 +5189,7 @@
    "affidabilita": "alta",
    "note": "Latest Epoch observation (2026-11-01): Buildings 7-8 are estimated to be operational. On March 24, Building 8 roughly looked like where Building 3 was in September. Building 3 is estimated to be operational in April, 7 months later. This naively suggests Building 8 will be operational by early November, 7 months after March 24. Oracle gave no date for th... Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-ANTHROPIC-AMAZON-NEW-CARLISLE",
@@ -4343,7 +5222,7 @@
    "affidabilita": "alta",
    "note": "Project Rainier. Anthropic is a user (the author of this layer, Claude, is an Anthropic model). Epoch projects 1925 MW IT by 2028-03-17. Latest Epoch observation (2026-10-19): Buildings 17-18 are operational. This is an estimate based on a rule of thumb of \"operational 5 months after roof is complete\", assuming the roofs took one more month after 2025-12-23. Also added four more months to account for commissioning and adjacent cooling units not being complete yet. Epoch certainty on owner/users: Amazon: confident; Anthropic: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-MICROSOFT-FAIRWATER-ATLANTA",
@@ -4376,7 +5255,7 @@
    "affidabilita": "alta",
    "note": "Epoch address in Fayetteville, south of Atlanta. Latest Epoch observation (2026-06-14): Building 3 and 4 are operational. Epoch certainty on owner/users: Microsoft: confident; OpenAI: likely; Microsoft: likely",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-GOOGLE-PRYOR-NORTH",
@@ -4442,7 +5321,7 @@
    "affidabilita": "alta",
    "note": "Operator DayOne, formerly GDS International, a group of Chinese origin. Johor hub, on the border with Singapore. Latest Epoch observation (2026-10-02): Buildings 7-10 are operational. Judging by their state in April 2026, we expect 3 months to finish construction and another 3 months to ramp to full capacity.",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-META-PROMETHEUS",
@@ -4475,7 +5354,7 @@
    "affidabilita": "alta",
    "note": "Epoch projects 1022 MW IT by 2028-07-01. Latest Epoch observation (2026-08-31): Buildings 7-10 (tents) are operational, based on infrared drone video from RAAD (raad.com) captured on this date. The video suggests that 138.8 MW of nameplate turbine capacity is operating at the Socrates South power plant (about 69% of the 200 MW nameplate capacity), and Buildings 7-10 roof vents are bright on inf... Epoch certainty on owner/users: Meta: confident; Meta: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-DAYONE-KEMPAS",
@@ -4541,7 +5420,7 @@
    "affidabilita": "alta",
    "note": "Epoch projects 2263 MW IT by 2028-05-13. Latest Epoch observation (2026-05-15): The main shell of Building 2 looks almost completed. In Area 2 (northwest of Buildings 1-2), the grading for the original design has been replaced with grading for the new 9-building design, making way for Buildings 3-11. Work continues on the northern substation in Area 2. Epoch certainty on owner/users: Microsoft: confident; OpenAI: likely; Microsoft: likely",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-GOOGLE-COLUMBUS",
@@ -4706,7 +5585,7 @@
    "affidabilita": "alta",
    "note": "Latest Epoch observation (2026-06-15): No major changes to the data center since February. Solar panels have been placed next to the facility. Epoch certainty on owner/users: SpaceXAI: confident; Anthropic: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-GOOGLE-COUNCIL-BLUFFS-EAST",
@@ -5828,7 +6707,7 @@
    "affidabilita": "alta",
    "note": "Inner Mongolia, hub of China's 'East Data, West Computing' programme. User ByteDance according to Epoch (speculative). Epoch projects 700 MW IT by 2027-09-01. Latest Epoch observation (2026-05-06): Satellite imagery shows building 9 has completed all its chillers, with only its roof remaining. Previous building completion timelines would imply this building will be operational by the end of 2026. Epoch certainty on owner/users: ByteDance: speculative; ByteDance: speculative",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-GOOGLE-ARCOLA",
@@ -6125,7 +7004,7 @@
    "affidabilita": "alta",
    "note": "Susquehanna campus next to Talen's Susquehanna nuclear plant (Talen contract up to 1,920 MW to 2042). Epoch projects 169 MW IT by 2027-08-01. Latest Epoch observation (2026-08-01): Building 3 expected to come online sometime around August 2026, since in the May satellite image it appeared structurally complete with minimal construction surrounding it. Basing MW estimate using Building 2 as a reference. Epoch certainty on owner/users: Amazon: confident; Anthropic: speculative",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-HUAWEI-HORINGER",
@@ -6158,7 +7037,7 @@
    "affidabilita": "alta",
    "note": "Inner Mongolia (Hohhot). Epoch projects 351 MW IT by 2028-02-17. Latest Epoch observation (2026-08-18): In the South Zone, Building 5 is operational, based on its structural completion, and the colored motion artifacts on the some of the cooling tower fans. Building 6 (South Zone) is under construction. In the West Zone, Building 3 has not begun construction. Epoch certainty on owner/users: Huawei: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-COREWEAVE-MARBLE-NC",
@@ -6422,7 +7301,7 @@
    "affidabilita": "alta",
    "note": "User Microsoft according to Epoch (speculative). Nebius is tripling the site from 25 to 75 MW (press, 2026). Epoch projects 145 MW IT by 2027-12-31. Latest Epoch observation (2026-06-29): All three buildings in the first phase are operational. Epoch certainty on owner/users: Nebius: confident; Microsoft: speculative",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-ENVISION-GALAXY-ULANQAB",
@@ -6686,7 +7565,7 @@
    "affidabilita": "alta",
    "note": "Microsoft invests about 10 bn USD here with Nscale and Nvidia (announced 2025-11-11). Sines is also a subsea-cable landing towards Africa and the Americas. Epoch projects 233 MW IT by 2027-09-30. Latest Epoch observation (2026-08-16): Satellite imagery shows two black outlines, suggesting two buildings going up on a second adjacent site. There is an outline of another building as well. Further to the east, there is land clearing. Epoch certainty on owner/users: Nscale: confident; Microsoft: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-XAI-QTS-ATLANTA",
@@ -7082,7 +7961,7 @@
    "affidabilita": "media",
    "note": "Richland Parish, Louisiana. Zuckerberg: up to 5 GW over time. Epoch projects 1632 MW IT by 2028-01-01. Latest Epoch observation (2026-04-19): Building 1 and 2 roof is finished and cooling is at an advanced stage of installation. Building 3 and 6 roof and cooling in progress. Epoch certainty on owner/users: Meta: confident; Meta: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-MICROSOFT-NARVIK-NORWAY",
@@ -7115,7 +7994,7 @@
    "affidabilita": "media",
    "note": "This is the site announced as 'Stargate Norway' (Nscale-Aker-OpenAI, 230 MW initial, July 2025). March 2026: the JV was folded into Nscale. April 2026: Microsoft takes the capacity (over 30,000 Rubin GPUs) after OpenAI-Nscale talks ended without a deal (ITPro); earlier Microsoft commitment 6.2 bn USD. Epoch projects 92 MW IT by 2026-12-31. Latest Epoch observation (2026-07-05): Building 1 cooling looks complete. Backup generator install continues adjacent to B1. Building 2 cooling install continues. Backup generator concrete pads are there, but no equipment install visible. Cooling install appears to continue on Building 3. Construction equipment present all around site. We believe no buil... Epoch certainty on owner/users: Nscale: likely; Microsoft: likely",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-OPENAI-STARGATE-LORDSTOWN",
@@ -7148,7 +8027,7 @@
    "affidabilita": "media",
    "note": "Epoch projects 214 MW IT by 2027-03-01. Latest Epoch observation (2026-07-30): Active construction visible on and around the datacenter, with the roofing mostly in place. This is based on satellite imagery. No buildings operational yet. Epoch certainty on owner/users: Softbank: confident; OpenAI: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-OPENAI-STARGATE-MICHIGAN",
@@ -7181,7 +8060,7 @@
    "affidabilita": "media",
    "note": "No address in Epoch: point on Saline Township. Epoch projects 988 MW IT by 2028-12-31. Latest Epoch observation (2026-03-12): Groundwork is visible for Building 1, at the left end of the site. Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-OPENAI-STARGATE-MILAM",
@@ -7214,7 +8093,7 @@
    "affidabilita": "media",
    "note": "No address in Epoch: point on Milam County centroid. Epoch projects 857 MW IT by 2028-12-31. Latest Epoch observation (2026-03-23): Steel framing and roofing is underway for Building 1. Epoch certainty on owner/users: Softbank: confident; OpenAI: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-OPENAI-STARGATE-NEW-MEXICO",
@@ -7247,7 +8126,7 @@
    "affidabilita": "media",
    "note": "Doña Ana County; no address in Epoch: point on Santa Teresa. Epoch projects 1750 MW IT by 2028-12-31. Latest Epoch observation (2026-06-22): Construction has advanced significantly since February 2026. We observe extensive earthworks and multiple graded building pads across the campus, with structural work underway on the main data center buildings. A large solar array and water storage basins are visible on site, and two cleared areas on the western sid... Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-OPENAI-STARGATE-SHACKELFORD",
@@ -7280,7 +8159,7 @@
    "affidabilita": "media",
    "note": "Epoch projects 1400 MW IT by 2028-11-11. Latest Epoch observation (2026-09-04): Buildings 1-5 shells complete and fully roofed. Buildings 1-3 appear to be actively installing cooling and backup generators nearby. The pads for Buildings 6-10 to the north have also been visibly cleared, with foundations for Buildings 6 and 7 underway. Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-OPENAI-STARGATE-UAE",
@@ -7313,7 +8192,7 @@
    "affidabilita": "media",
    "note": "1 GW inside the 5 GW UAE-US AI campus. Developer Khazna (G42); operators OpenAI and Oracle; partners Nvidia, Cisco, SoftBank. First 200 MW phase expected in Q3 2026 (The National, 2025-12-05); no commissioning announcement found by 2026-11-10. Epoch projects 1000 MW IT by 2028-01-01. Latest Epoch observation (2025-11-16): Building 1 and 2 are partly constructed. No clear evidence of more buildings starting construction. Epoch certainty on owner/users: G42: likely; OpenAI: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-OPENAI-STARGATE-WISCONSIN",
@@ -7346,7 +8225,7 @@
    "affidabilita": "media",
    "note": "No address in Epoch: point on Port Washington. Epoch projects 902 MW IT by 2028-12-31. Latest Epoch observation (2026-07-24): Construction continues, Buildings 1 and 2 appear roughly halfway roofed, and building 3 foundation is halfway done. Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
    "origine_dato": "epoch",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "EP-QTS-CEDAR-RAPIDS",
@@ -7415,41 +8294,6 @@
    "duplicato_ai_json": false
   },
   {
-   "lat": 35.0692,
-   "lon": -90.1185,
-   "id": "GPU-XAI-COLOSSUS-MEMPHIS-PHASE-3",
-   "categoria": "data-center-ai",
-   "tipo": "GPU cluster (Epoch archive, 2025)",
-   "nome": "xAI Colossus Memphis Phase 3",
-   "paese": "US",
-   "luogo": "3231 Riverport Rd, Memphis, TN 38109",
-   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
-   "precisione_km": 3,
-   "mw": 352.0,
-   "mw_tipo": "cluster power capacity (Epoch estimate)",
-   "h100e": 275795,
-   "proprietario": "xAI",
-   "utilizzatori": "xAI",
-   "stato": "operativo",
-   "anno": 2025,
-   "importo": null,
-   "valuta": null,
-   "fonte": "Epoch AI, GPU clusters (archive)",
-   "link": "https://archive.ph/oHQSA",
-   "data_fonte": "2025-07-22",
-   "affidabilita": "alta",
-   "note": "200,000 x NVIDIA H100 SXM5 80GB. First operational 2025-07-22. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
-   "origine_dato": "epoch-gpu",
-   "fonti": [
-    {
-     "fonte": "Epoch AI, GPU clusters",
-     "link": "https://epoch.ai/data/gpu-clusters",
-     "data_fonte": "2025"
-    }
-   ],
-   "duplicato_ai_json": false
-  },
-  {
    "lat": 33.1903,
    "lon": -111.9662,
    "id": "GPU-OPENAI-MICROSOFT-GOODYEAR-ARIZONA",
@@ -7509,41 +8353,6 @@
    "data_fonte": "2024-11-15",
    "affidabilita": "alta",
    "note": "50,000 x NVIDIA H100 SXM5 80GB. First operational 2024-11-15. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
-   "origine_dato": "epoch-gpu",
-   "fonti": [
-    {
-     "fonte": "Epoch AI, GPU clusters",
-     "link": "https://epoch.ai/data/gpu-clusters",
-     "data_fonte": "2025"
-    }
-   ],
-   "duplicato_ai_json": false
-  },
-  {
-   "lat": 37.682,
-   "lon": -121.7684,
-   "id": "GPU-LAWRENCE-LIVERMORE-NL-EL-CAPITAN-PHASE-2",
-   "categoria": "data-center-ai",
-   "tipo": "GPU cluster (Epoch archive, 2025)",
-   "nome": "Lawrence Livermore NL El Capitan Phase 2",
-   "paese": "US",
-   "luogo": "Lawrence Livermore National Laboratory 7000 East Ave, Livermore, CA 94550",
-   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
-   "precisione_km": 3,
-   "mw": 35.0,
-   "mw_tipo": "cluster power capacity (Epoch estimate)",
-   "h100e": 44143,
-   "proprietario": "US Department of Energy",
-   "utilizzatori": "US Government, Lawrence Livermore NL, Scientific Research",
-   "stato": "operativo",
-   "anno": 2024,
-   "importo": null,
-   "valuta": null,
-   "fonte": "Epoch AI, GPU clusters (archive)",
-   "link": "https://web.archive.org/web/20241122140255/https://www.tomshardware.com/pc-components/cpus/amd-powered-el-capitan-is-now-the-worlds-fastest-supercomputer-with-1-7-exaflops-of-performance-fastest-intel-machine-falls-to-third-place-on-top500-list",
-   "data_fonte": "2024-11-18",
-   "affidabilita": "alta",
-   "note": "44,544 x AMD Instinct MI300A. First operational 2024-11-18. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
    "origine_dato": "epoch-gpu",
    "fonti": [
     {
@@ -7695,111 +8504,6 @@
    "duplicato_ai_json": false
   },
   {
-   "lat": 36.0103,
-   "lon": -84.2696,
-   "id": "GPU-OAK-RIDGE-NL-FRONTIER",
-   "categoria": "data-center-ai",
-   "tipo": "GPU cluster (Epoch archive, 2025)",
-   "nome": "Oak Ridge NL Frontier",
-   "paese": "US",
-   "luogo": "Oak Ridge National Laboratory 5200, 1 Bethel Valley Rd, Oak Ridge, TN 37830",
-   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
-   "precisione_km": 3,
-   "mw": 40.0,
-   "mw_tipo": "cluster power capacity (Epoch estimate)",
-   "h100e": 7282,
-   "proprietario": "US Department of Energy",
-   "utilizzatori": "US Government, Academia, Industry",
-   "stato": "operativo",
-   "anno": 2022,
-   "importo": null,
-   "valuta": null,
-   "fonte": "Epoch AI, GPU clusters (archive)",
-   "link": "https://web.archive.org/web/20240720224959/https://docs.olcf.ornl.gov/systems/frontier_user_guide.html",
-   "data_fonte": "2022-05-30",
-   "affidabilita": "alta",
-   "note": "37,632 x AMD Radeon Instinct MI250X. First operational 2022-05-30. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
-   "origine_dato": "epoch-gpu",
-   "fonti": [
-    {
-     "fonte": "Epoch AI, GPU clusters",
-     "link": "https://epoch.ai/data/gpu-clusters",
-     "data_fonte": "2025"
-    }
-   ],
-   "duplicato_ai_json": false
-  },
-  {
-   "lat": 35.6888,
-   "lon": 139.6925,
-   "id": "GPU-AIST-ABCI-3-0",
-   "categoria": "data-center-ai",
-   "tipo": "GPU cluster (Epoch archive, 2025)",
-   "nome": "AIST ABCI 3.0",
-   "paese": "JP",
-   "luogo": "Kashiwa Campus, The University of Tokyo Japan, 〒277-0882 Chiba, Kashiwa, Kashiwanoha, 5 Chome−１−5",
-   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
-   "precisione_km": 3,
-   "mw": 9.0,
-   "mw_tipo": "cluster power capacity (Epoch estimate)",
-   "h100e": 6128,
-   "proprietario": "National Institute of Advanced Industrial Science and Technology (AIST)",
-   "utilizzatori": "industry, academia, and government in Japan",
-   "stato": "operativo",
-   "anno": 2025,
-   "importo": null,
-   "valuta": null,
-   "fonte": "Epoch AI, GPU clusters (archive)",
-   "link": "https://web.archive.org/web/20241115024655/https://arxiv.org/html/2411.09134v1",
-   "data_fonte": "2025-01-20",
-   "affidabilita": "alta",
-   "note": "6,128 x NVIDIA H200 SXM. First operational 2025-01-20. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
-   "origine_dato": "epoch-gpu",
-   "fonti": [
-    {
-     "fonte": "Epoch AI, GPU clusters",
-     "link": "https://epoch.ai/data/gpu-clusters",
-     "data_fonte": "2025"
-    }
-   ],
-   "duplicato_ai_json": false
-  },
-  {
-   "lat": 19.0301,
-   "lon": 73.0202,
-   "id": "GPU-YOTTA-SHAKTI-CLOUD-NM1-PHASE-1",
-   "categoria": "data-center-ai",
-   "tipo": "GPU cluster (Epoch archive, 2025)",
-   "nome": "Yotta Shakti Cloud NM1 Phase 1",
-   "paese": "IN",
-   "luogo": "Yotta Datacenter Park - Panvel Hiranandani Fortune City. Survey No. 30, MH SH 76, Panvel, Navi Mumbai, Maharashtra 410206, India",
-   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
-   "precisione_km": 3,
-   "mw": 6.0,
-   "mw_tipo": "cluster power capacity (Epoch estimate)",
-   "h100e": 4096,
-   "proprietario": "Yotta Data Services",
-   "utilizzatori": "Cloud",
-   "stato": "operativo",
-   "anno": 2024,
-   "importo": null,
-   "valuta": null,
-   "fonte": "Epoch AI, GPU clusters (archive)",
-   "link": "https://web.archive.org/web/20240527112515/https://shakticloud.ai/",
-   "data_fonte": "2024-05-15",
-   "affidabilita": "alta",
-   "note": "4,096 x NVIDIA H100 SXM5 80GB. First operational 2024-05-15. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
-   "origine_dato": "epoch-gpu",
-   "fonti": [
-    {
-     "fonte": "Epoch AI, GPU clusters",
-     "link": "https://epoch.ai/data/gpu-clusters",
-     "data_fonte": "2025"
-    }
-   ],
-   "duplicato_ai_json": false
-  },
-  {
    "lat": 48.8535,
    "lon": 2.3484,
    "id": "GPU-SESTERCE-SYNAPSE-PHASE-2",
@@ -7933,41 +8637,6 @@
    "duplicato_ai_json": false
   },
   {
-   "lat": 35.8815,
-   "lon": -106.3018,
-   "id": "GPU-LOS-ALAMOS-NL-VENADO",
-   "categoria": "data-center-ai",
-   "tipo": "GPU cluster (Epoch archive, 2025)",
-   "nome": "Los Alamos NL Venado",
-   "paese": "US",
-   "luogo": "Los Alamos, New Mexico, USA",
-   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
-   "precisione_km": 3,
-   "mw": 3.0,
-   "mw_tipo": "cluster power capacity (Epoch estimate)",
-   "h100e": 2560,
-   "proprietario": "US Department of Energy",
-   "utilizzatori": "Los Alamos National Laboratory",
-   "stato": "operativo",
-   "anno": 2024,
-   "importo": null,
-   "valuta": null,
-   "fonte": "Epoch AI, GPU clusters (archive)",
-   "link": "https://web.archive.org/web/20240921074409/https://www.datacenterdynamics.com/en/news/los-alamos-national-laboratory-unveils-new-venado-supercomputer-reportedly-capable-of-10-exaflops-of-peak-ai-performance/",
-   "data_fonte": "2024-04-16",
-   "affidabilita": "alta",
-   "note": "2,560 x NVIDIA GH200. First operational 2024-04-16. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
-   "origine_dato": "epoch-gpu",
-   "fonti": [
-    {
-     "fonte": "Epoch AI, GPU clusters",
-     "link": "https://epoch.ai/data/gpu-clusters",
-     "data_fonte": "2025"
-    }
-   ],
-   "duplicato_ai_json": false
-  },
-  {
    "lat": 43.1725,
    "lon": 141.3154,
    "id": "GPU-SAKURA-S-H100S-PHASE-1",
@@ -8028,41 +8697,6 @@
    "affidabilita": "media",
    "note": "2,000 x NVIDIA H100 SXM5 80GB. First operational 2025-01-14. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
    "origine_dato": "epoch-gpu",
-   "duplicato_ai_json": false
-  },
-  {
-   "lat": 35.0882,
-   "lon": -106.6509,
-   "id": "GPU-SANDIA-NL-EL-DORADO",
-   "categoria": "data-center-ai",
-   "tipo": "GPU cluster (Epoch archive, 2025)",
-   "nome": "Sandia NL El Dorado",
-   "paese": "US",
-   "luogo": "Albuquerque, New Mexico",
-   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
-   "precisione_km": 3,
-   "mw": 2.0,
-   "mw_tipo": "cluster power capacity (Epoch estimate)",
-   "h100e": 1506,
-   "proprietario": "US Department of Energy",
-   "utilizzatori": "Scientific Research, Sandia NL",
-   "stato": "operativo",
-   "anno": 2024,
-   "importo": null,
-   "valuta": null,
-   "fonte": "Epoch AI, GPU clusters (archive)",
-   "link": "https://web.archive.org/web/20241125211138/https://www.top500.org/system/180309/",
-   "data_fonte": "2024-11-18",
-   "affidabilita": "alta",
-   "note": "1,520 x AMD Instinct MI300A. First operational 2024-11-18. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
-   "origine_dato": "epoch-gpu",
-   "fonti": [
-    {
-     "fonte": "Epoch AI, GPU clusters",
-     "link": "https://epoch.ai/data/gpu-clusters",
-     "data_fonte": "2025"
-    }
-   ],
    "duplicato_ai_json": false
   },
   {
@@ -8241,6 +8875,286 @@
    "duplicato_ai_json": false
   },
   {
+   "lat": 35.5186,
+   "lon": 139.5298,
+   "id": "GPU-TSUBAME4-0",
+   "categoria": "data-center-ai",
+   "tipo": "GPU cluster (Epoch archive, 2025)",
+   "nome": "TSUBAME4.0",
+   "paese": "JP",
+   "luogo": "4259 Nagatsutacho, Midori Ward, Yokohama, Kanagawa 226-0026, Japan",
+   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
+   "precisione_km": 3,
+   "mw": 1.0,
+   "mw_tipo": "cluster power capacity (Epoch estimate)",
+   "h100e": 960,
+   "proprietario": "Tokyo Institute of Technology",
+   "utilizzatori": "Cloud",
+   "stato": "operativo",
+   "anno": 2024,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Epoch AI, GPU clusters (archive)",
+   "link": "https://web.archive.org/web/20241002114126/https://www.theregister.com/2023/05/22/hpe_gets_to_build_new/",
+   "data_fonte": "2024-04-01",
+   "affidabilita": "alta",
+   "note": "960 x NVIDIA H100 SXM5 80GB. First operational 2024-04-01. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
+   "origine_dato": "epoch-gpu",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, GPU clusters",
+     "link": "https://epoch.ai/data/gpu-clusters",
+     "data_fonte": "2025"
+    }
+   ],
+   "duplicato_ai_json": false
+  },
+  {
+   "lat": 53.9158,
+   "lon": -122.7451,
+   "id": "GPU-IRIS-ENERGY-PRINCE-GEORGE-CLUSTER",
+   "categoria": "data-center-ai",
+   "tipo": "GPU cluster (Epoch archive, 2025)",
+   "nome": "Iris Energy Prince George cluster",
+   "paese": "CA",
+   "luogo": "Prince George, Canada",
+   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
+   "precisione_km": 3,
+   "mw": 1.0,
+   "mw_tipo": "cluster power capacity (Epoch estimate)",
+   "h100e": 816,
+   "proprietario": "IREN",
+   "utilizzatori": "Cloud",
+   "stato": "operativo",
+   "anno": 2024,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Epoch AI, GPU clusters (archive)",
+   "link": "https://www.globenewswire.com/en/news-release/2023/12/21/2799869/0/en/10-EH-s-Equity-Raising-Program-Complete.html",
+   "data_fonte": "2024-04-30",
+   "affidabilita": "alta",
+   "note": "816 x NVIDIA H100 SXM5 80GB. First operational 2024-04-30. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
+   "origine_dato": "epoch-gpu",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, GPU clusters",
+     "link": "https://epoch.ai/data/gpu-clusters",
+     "data_fonte": "2025"
+    }
+   ],
+   "duplicato_ai_json": false
+  },
+  {
+   "lat": 36.6768,
+   "lon": -78.3765,
+   "id": "GPU-MICROSOFT-AZURE-VOYAGER-EUS2",
+   "categoria": "data-center-ai",
+   "tipo": "GPU cluster (Epoch archive, 2025)",
+   "nome": "Microsoft Azure Voyager-EUS2",
+   "paese": "US",
+   "luogo": "101 Herbert Dr, Boydton, VA 23917",
+   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
+   "precisione_km": 3,
+   "mw": 2.0,
+   "mw_tipo": "cluster power capacity (Epoch estimate)",
+   "h100e": 665,
+   "proprietario": "Microsoft",
+   "utilizzatori": "Cloud, Azure",
+   "stato": "operativo",
+   "anno": 2021,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Epoch AI, GPU clusters (archive)",
+   "link": "https://web.archive.org/web/20240716100550/https://www.zdnet.com/article/microsoft-now-has-one-of-the-worlds-fastest-supercomputers-and-no-it-doesnt-run-on-windows/",
+   "data_fonte": "2021-11-01",
+   "affidabilita": "alta",
+   "note": "2,112 x NVIDIA A100. First operational 2021-11-01. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
+   "origine_dato": "epoch-gpu",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, GPU clusters",
+     "link": "https://epoch.ai/data/gpu-clusters",
+     "data_fonte": "2025"
+    }
+   ],
+   "duplicato_ai_json": false
+  },
+  {
+   "lat": 47.2379,
+   "lon": -119.885,
+   "id": "GPU-AZURE-OPENAI-GPT-3-CLUSTER",
+   "categoria": "data-center-ai",
+   "tipo": "GPU cluster (Epoch archive, 2025)",
+   "nome": "Azure OpenAI GPT-3 Cluster",
+   "paese": "US",
+   "luogo": "1515 Port Industrial Way, Quincy, WA 98848",
+   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
+   "precisione_km": 3,
+   "mw": 7.0,
+   "mw_tipo": "cluster power capacity (Epoch estimate)",
+   "h100e": 631,
+   "proprietario": "Microsoft, OpenAI",
+   "utilizzatori": "OpenAI",
+   "stato": "operativo",
+   "anno": 2020,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Epoch AI, GPU clusters (archive)",
+   "link": "https://web.archive.org/web/20240902024137/https://news.microsoft.com/source/features/ai/openai-azure-supercomputer/",
+   "data_fonte": "2020-04-15",
+   "affidabilita": "media",
+   "note": "10,000 x NVIDIA V100. First operational 2020-04-15. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
+   "origine_dato": "epoch-gpu",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, GPU clusters",
+     "link": "https://epoch.ai/data/gpu-clusters",
+     "data_fonte": "2025"
+    }
+   ],
+   "duplicato_ai_json": false
+  },
+  {
+   "lat": 22.6047,
+   "lon": 120.2995,
+   "id": "GPU-NVIDIA-TAIPEI-1",
+   "categoria": "data-center-ai",
+   "tipo": "GPU cluster (Epoch archive, 2025)",
+   "nome": "NVIDIA Taipei-1",
+   "paese": "TW",
+   "luogo": "Kaohsiung Software Technology Park No. 10號, Fusing 4th Rd, Cianjhen District, Kaohsiung City, Taiwan 806",
+   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
+   "precisione_km": 3,
+   "mw": 1.0,
+   "mw_tipo": "cluster power capacity (Epoch estimate)",
+   "h100e": 558,
+   "proprietario": "Nvidia",
+   "utilizzatori": "Cloud, NVIDIA",
+   "stato": "operativo",
+   "anno": 2024,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Epoch AI, GPU clusters (archive)",
+   "link": "https://web.archive.org/web/20240423000708/https://www.hpcwire.com/2023/05/29/nvidia-announces-four-supercomputers-with-two-in-taiwan/",
+   "data_fonte": "2024-06-01",
+   "affidabilita": "alta",
+   "note": "512 x NVIDIA H100 SXM5 80GB. First operational 2024-06-01. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
+   "origine_dato": "epoch-gpu",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, GPU clusters",
+     "link": "https://epoch.ai/data/gpu-clusters",
+     "data_fonte": "2025"
+    }
+   ],
+   "duplicato_ai_json": false
+  },
+  {
+   "lat": 60.6106,
+   "lon": 15.6104,
+   "id": "GPU-DEEPL-MERCURY",
+   "categoria": "data-center-ai",
+   "tipo": "GPU cluster (Epoch archive, 2025)",
+   "nome": "DeepL Mercury",
+   "paese": "SE",
+   "luogo": "Slaggvarpsvägen 21, 791 77 Falun, Sweden",
+   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
+   "precisione_km": 3,
+   "mw": 1.0,
+   "mw_tipo": "cluster power capacity (Epoch estimate)",
+   "h100e": 544,
+   "proprietario": "DeepL",
+   "utilizzatori": "DeepL",
+   "stato": "operativo",
+   "anno": 2023,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Epoch AI, GPU clusters (archive)",
+   "link": "https://web.archive.org/web/20241120225551/https://digests.digitalisationworld.com/news/65928/deepl-deploys-largest-nvidia-dgx-h100-superpod-in-europe",
+   "data_fonte": "2023-08-02",
+   "affidabilita": "alta",
+   "note": "544 x NVIDIA H100 SXM5 80GB. First operational 2023-08-02. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
+   "origine_dato": "epoch-gpu",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, GPU clusters",
+     "link": "https://epoch.ai/data/gpu-clusters",
+     "data_fonte": "2025"
+    }
+   ],
+   "duplicato_ai_json": false
+  },
+  {
+   "lat": 40.7677,
+   "lon": -111.9026,
+   "id": "GPU-RECURSION-BIOHIVE-2",
+   "categoria": "data-center-ai",
+   "tipo": "GPU cluster (Epoch archive, 2025)",
+   "nome": "Recursion BioHive-2",
+   "paese": "US",
+   "luogo": "41 400 W, Salt Lake City, UT 84101",
+   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
+   "precisione_km": 3,
+   "mw": 1.0,
+   "mw_tipo": "cluster power capacity (Epoch estimate)",
+   "h100e": 504,
+   "proprietario": "Recursion Pharmaceuticals",
+   "utilizzatori": "Recursion Pharmaceuticals, Pharmaceutical Research",
+   "stato": "operativo",
+   "anno": 2024,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Epoch AI, GPU clusters (archive)",
+   "link": "https://web.archive.org/web/20240621074430/https://the-decoder.com/biohive-2-to-speed-up-drug-development-by-several-years/",
+   "data_fonte": "2024-05-13",
+   "affidabilita": "alta",
+   "note": "504 x NVIDIA H100 SXM5 80GB. First operational 2024-05-13. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
+   "origine_dato": "epoch-gpu",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, GPU clusters",
+     "link": "https://epoch.ai/data/gpu-clusters",
+     "data_fonte": "2025"
+    }
+   ],
+   "duplicato_ai_json": false
+  },
+  {
+   "lat": 54.3734,
+   "lon": 41.9396,
+   "id": "GPU-YANDEX-CHERVONENKIS",
+   "categoria": "data-center-ai",
+   "tipo": "GPU cluster (Epoch archive, 2025)",
+   "nome": "Yandex Chervonenkis",
+   "paese": "RU",
+   "luogo": "ул. Пушкина, 21, Sasovo, Ryazan Oblast, Russia, 391431",
+   "origine_coord": "from the Epoch AI GPU clusters dataset (latitude/longitude columns)",
+   "precisione_km": 3,
+   "mw": 1.0,
+   "mw_tipo": "cluster power capacity (Epoch estimate)",
+   "h100e": 501,
+   "proprietario": "Yandex",
+   "utilizzatori": "Yandex",
+   "stato": "operativo",
+   "anno": 2021,
+   "importo": null,
+   "valuta": null,
+   "fonte": "Epoch AI, GPU clusters (archive)",
+   "link": "https://web.archive.org/web/20231115155013/https://yandex.com/supercomputers",
+   "data_fonte": "2021-11-01",
+   "affidabilita": "alta",
+   "note": "1,592 x NVIDIA A100 SXM4 80 GB. First operational 2021-11-01. Epoch archive frozen in 2025: status 'operativo' means 'existing when recorded'.",
+   "origine_dato": "epoch-gpu",
+   "fonti": [
+    {
+     "fonte": "Epoch AI, GPU clusters",
+     "link": "https://epoch.ai/data/gpu-clusters",
+     "data_fonte": "2025"
+    }
+   ],
+   "duplicato_ai_json": false
+  },
+  {
    "id": "T500-202606-01",
    "categoria": "supercalcolo",
    "nome": "LineShine",
@@ -8270,7 +9184,7 @@
    "affidabilita": "alta",
    "note": "Rank 1 in the TOP500 of 2026-06. 2.198 exaflop/s (Rmax).",
    "origine_dato": "top500",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "T500-202606-02",
@@ -8302,7 +9216,7 @@
    "affidabilita": "alta",
    "note": "Rank 2 in the TOP500 of 2026-06. 1.809 exaflop/s (Rmax).",
    "origine_dato": "top500",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "T500-202606-03",
@@ -8334,7 +9248,7 @@
    "affidabilita": "alta",
    "note": "Rank 3 in the TOP500 of 2026-06. 1.353 exaflop/s (Rmax).",
    "origine_dato": "top500",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "T500-202606-04",
@@ -8366,7 +9280,7 @@
    "affidabilita": "alta",
    "note": "Rank 4 in the TOP500 of 2026-06. 1.012 exaflop/s (Rmax).",
    "origine_dato": "top500",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "T500-202606-05",
@@ -8398,7 +9312,7 @@
    "affidabilita": "alta",
    "note": "Rank 5 in the TOP500 of 2026-06. 1.000 exaflop/s (Rmax).",
    "origine_dato": "top500",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "T500-202606-06",
@@ -8430,7 +9344,7 @@
    "affidabilita": "alta",
    "note": "Rank 6 in the TOP500 of 2026-06. 0.572 exaflop/s (Rmax).",
    "origine_dato": "top500",
-   "duplicato_ai_json": false
+   "duplicato_ai_json": true
   },
   {
    "id": "T500-202606-08",

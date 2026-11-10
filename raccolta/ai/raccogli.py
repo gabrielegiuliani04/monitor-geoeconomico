@@ -59,13 +59,15 @@ PAGINA_EPOCH_GPU = "https://epoch.ai/data/gpu-clusters"
 PAGINA_EPOCH_TRADE = "https://epoch.ai/data/ai-chip-imports"
 UA = {"User-Agent": "osint-data-fetcher/1.0 (personal, non-commercial)"}
 QUANTI_TOP500 = 50
-SOGLIA_GPU_H100E = 1000      # GPU clusters below this size are not drawn
-RAGGIO_DOPPIONE_KM = 3.0     # a GPU cluster this close to another drawn point is treated as the same site
+SOGLIA_GPU_H100E = 500       # GPU clusters below this size (H100-equivalents) are not drawn
+RAGGIO_DOPPIONE_KM = 8.0     # a GPU cluster this close to another drawn AI site is treated as the same site
 
 # Fixed indicative exchange rates (USD per unit), used only when the source gives no USD equivalent.
 CAMBI = {"USD": 1.0, "EUR": 1.10, "GBP": 1.30, "JPY": 1 / 150, "KRW": 1 / 1400, "INR": 1 / 88,
          "BRL": 0.18, "SEK": 0.10, "CNY": 0.14}
 
+METODO_EN = {"equivalente dato dalla fonte": "USD equivalent given by the source", "importo non dichiarato": "amount not declared",
+             "USD dalla fonte": "USD from the source"}
 CATEGORIE = {"data-center-ai", "hub-data-center", "fab-chip", "packaging", "attrezzature", "supercalcolo"}
 STATI_PUNTI = {"operativo", "operativo-parziale", "in-costruzione", "annunciato", "sospeso", "cancellato"}
 STATI_FLUSSI = {"annunciato", "in corso", "completato", "sospeso", "cancellato"}
@@ -253,7 +255,7 @@ def epoch_data_center(coord, iso, errori):
 
 
 # ----------------------------------------------------------------- Epoch: GPU clusters (2025 archive)
-def epoch_gpu_cluster(iso, gia, errori):
+def epoch_gpu_cluster(iso, gia, nomi_gia, errori):
     """Clusters from Epoch's GPU clusters archive that have real coordinates and are not already drawn."""
     try:
         righe = list(csv.DictReader(io.StringIO(scarica(URL_EPOCH_GPU).decode("utf-8"))))
@@ -290,7 +292,8 @@ def epoch_gpu_cluster(iso, gia, errori):
     punti, doppioni = [], 0
     for h, r, la, lo, luogo, paese_nome in cand:
         p = {"lat": round(la, 4), "lon": round(lo, 4)}
-        if any(km(p, q) <= RAGGIO_DOPPIONE_KM for q in gia + punti):
+        nome_l = " " + re.sub(r"[^a-z0-9.]+", " ", (r.get("Name") or "").lower()) + " "
+        if any(km(p, q) <= RAGGIO_DOPPIONE_KM for q in gia + punti) or any(f" {n} " in nome_l for n in nomi_gia):
             doppioni += 1
             continue
         nome = (r.get("Name") or "").strip()
@@ -584,6 +587,9 @@ def teatro(paese):
 
 def costruisci_ai_json(elementi, selezione, errori):
     indice = {p["id"]: p for p in elementi}
+    for p in elementi:   # TOP500 ids change with the rank: also index them by name
+        if p["categoria"] == "supercalcolo":
+            indice.setdefault("top500:" + p["nome"], p)
     punti = []
     for s in selezione.get("voci", []):
         p = indice.get(s["rif"])
@@ -753,13 +759,16 @@ def principale():
     cur = []
     for p in curati.get("punti", []):
         q = dict(p)
-        q["importo_usd_mld"], q["metodo_usd"] = in_usd(p.get("importo"), p.get("valuta"), p.get("importo_usd_mld"))
+        q["importo_usd_mld"], metodo = in_usd(p.get("importo"), p.get("valuta"), p.get("importo_usd_mld"))
+        q["metodo_usd"] = METODO_EN.get(metodo, metodo.replace("convertito con cambio fisso indicativo", "converted at fixed indicative rate"))
         q["origine_dato"] = "curato"
         cur.append(q)
 
     gia = [{"lat": p["lat"], "lon": p["lon"]} for p in cur + ep + t5
            if p.get("categoria") in ("data-center-ai", "supercalcolo") and isinstance(p.get("lat"), (int, float))]
-    gpu, info_gpu = epoch_gpu_cluster(iso, gia, errori_m)
+    nomi_t5 = {re.sub(r"[^a-z0-9.]+", " ", p["nome"].lower()).strip() for p in t5}
+    nomi_t5 = {n.replace("supercomputer ", "") for n in nomi_t5 if len(n) >= 4}
+    gpu, info_gpu = epoch_gpu_cluster(iso, gia, nomi_t5, errori_m)
     if gpu is None:
         gpu = [p for p in prec_el if p.get("origine_dato") == "epoch-gpu"]
         info_gpu = meta_prec.get("epoch_gpu", {})
@@ -795,7 +804,7 @@ def principale():
             {"nome": "Coordinates: OpenStreetMap Nominatim geocoding", "link": "https://nominatim.openstreetmap.org/", "licenza": "ODbL 1.0 (© OpenStreetMap contributors)", "data_dato": "2026-11-10"},
         ],
         "nota": ("AI infrastructure worldwide, US included: AI data centres (Epoch AI tracker, automatic, all countries; Epoch GPU-cluster "
-                 "archive, automatic, only clusters with real coordinates and at least 1,000 H100e not already mapped; hand-curated campuses), "
+                 "archive, automatic, only clusters with real coordinates and at least 500 H100e not already mapped; hand-curated campuses), "
                  "data-centre hubs (metro clusters, not single sites), chip fabs and memory fabs, advanced packaging, equipment and "
                  "material chokepoints (curated) and the top 50 TOP500 supercomputers (automatic). All coordinates are estimates: see "
                  "origine_coord and precisione_km; systems or sites without a public position are not drawn and are listed in "

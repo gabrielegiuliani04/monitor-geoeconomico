@@ -1,1 +1,304 @@
-{"voci":[]}
+{
+ "nota": "Entries of docs/data/ai.json (fixed layer 'AI infrastructure'): id kept stable (AI-20261109-* from the US dossier, AI-20261110-* added worldwide), rif = id of the point in ai-mondo.json ('top500:<name>' for supercomputers, whose ids change with the rank), nome = optional name override (legacy names kept because raccolta/supply-chain-ai/nodi.json and investimenti.json refer to them). Selection criteria: largest operating or building AI campuses, sole-source chokepoints (EUV, CoWoS, HBM, leading-edge logic), and the European and Gulf sites most relevant to Italy.",
+ "voci": [
+  {
+   "id": "AI-20261109-01",
+   "rif": "EP-OPENAI-STARGATE-ABILENE",
+   "nome": "Stargate Abilene (Crusoe-Oracle-OpenAI)"
+  },
+  {
+   "id": "AI-20261109-02",
+   "rif": "EP-COLOSSUS-1",
+   "nome": "xAI Colossus 1"
+  },
+  {
+   "id": "AI-20261109-03",
+   "rif": "EP-COLOSSUS-2",
+   "nome": "xAI Colossus 2"
+  },
+  {
+   "id": "AI-20261109-04",
+   "rif": "EP-MICROSOFT-FAIRWATER-WISCONSIN",
+   "nome": "Microsoft Fairwater Wisconsin"
+  },
+  {
+   "id": "AI-20261109-05",
+   "rif": "EP-MICROSOFT-FAIRWATER-ATLANTA",
+   "nome": "Microsoft Fairwater Atlanta"
+  },
+  {
+   "id": "AI-20261109-06",
+   "rif": "EP-ANTHROPIC-AMAZON-NEW-CARLISLE",
+   "nome": "Amazon-Anthropic New Carlisle (Project Rainier)"
+  },
+  {
+   "id": "AI-20261109-07",
+   "rif": "EP-META-PROMETHEUS",
+   "nome": "Meta Prometheus"
+  },
+  {
+   "id": "AI-20261109-08",
+   "rif": "EP-META-HYPERION",
+   "nome": "Meta Hyperion"
+  },
+  {
+   "id": "AI-20261109-09",
+   "rif": "EP-OPENAI-STARGATE-SHACKELFORD",
+   "nome": "Stargate Shackelford County"
+  },
+  {
+   "id": "AI-20261109-10",
+   "rif": "EP-OPENAI-STARGATE-NEW-MEXICO",
+   "nome": "Stargate Dona Ana County"
+  },
+  {
+   "id": "AI-20261109-11",
+   "rif": "EP-OPENAI-STARGATE-MILAM",
+   "nome": "Stargate Milam County"
+  },
+  {
+   "id": "AI-20261109-12",
+   "rif": "EP-OPENAI-STARGATE-WISCONSIN",
+   "nome": "Stargate Port Washington"
+  },
+  {
+   "id": "AI-20261109-13",
+   "rif": "EP-OPENAI-STARGATE-MICHIGAN",
+   "nome": "Stargate Saline Township"
+  },
+  {
+   "id": "AI-20261109-14",
+   "rif": "EP-OPENAI-STARGATE-LORDSTOWN",
+   "nome": "Stargate Lordstown (SoftBank)"
+  },
+  {
+   "id": "AI-20261109-15",
+   "rif": "EP-AWS-BERWICK",
+   "nome": "AWS campus Susquehanna (Talen)"
+  },
+  {
+   "id": "AI-20261109-16",
+   "rif": "HUB-US-01",
+   "nome": "Northern Virginia data-centre hub (Ashburn)"
+  },
+  {
+   "id": "AI-20261109-17",
+   "rif": "FAB-US-02",
+   "nome": "TSMC Arizona Fab 21"
+  },
+  {
+   "id": "AI-20261109-18",
+   "rif": "FAB-US-03",
+   "nome": "Intel Fab 52 (Ocotillo)"
+  },
+  {
+   "id": "AI-20261109-19",
+   "rif": "FAB-US-04",
+   "nome": "Intel Ohio One"
+  },
+  {
+   "id": "AI-20261109-20",
+   "rif": "FAB-US-05",
+   "nome": "Samsung Taylor"
+  },
+  {
+   "id": "AI-20261109-21",
+   "rif": "FAB-US-06",
+   "nome": "Micron Boise (memory)"
+  },
+  {
+   "id": "AI-20261109-22",
+   "rif": "FAB-US-07",
+   "nome": "Micron Clay (memory)"
+  },
+  {
+   "id": "AI-20261109-23",
+   "rif": "top500:El Capitan",
+   "nome": "El Capitan (LLNL)"
+  },
+  {
+   "id": "AI-20261109-24",
+   "rif": "top500:Frontier",
+   "nome": "Frontier (ORNL)"
+  },
+  {
+   "id": "AI-20261109-25",
+   "rif": "top500:Aurora",
+   "nome": "Aurora (Argonne)"
+  },
+  {
+   "id": "AI-20261110-01",
+   "rif": "EP-OPENAI-STARGATE-UAE",
+   "nome": "Stargate UAE (Abu Dhabi)"
+  },
+  {
+   "id": "AI-20261110-02",
+   "rif": "DC-SA-01"
+  },
+  {
+   "id": "AI-20261110-03",
+   "rif": "DC-SA-03"
+  },
+  {
+   "id": "AI-20261110-04",
+   "rif": "EP-MICROSOFT-NARVIK-NORWAY",
+   "nome": "Narvik AI campus (ex-Stargate Norway; Nscale for Microsoft)"
+  },
+  {
+   "id": "AI-20261110-05",
+   "rif": "DC-DK-01"
+  },
+  {
+   "id": "AI-20261110-06",
+   "rif": "DC-DK-02"
+  },
+  {
+   "id": "AI-20261110-07",
+   "rif": "DC-FI-01"
+  },
+  {
+   "id": "AI-20261110-08",
+   "rif": "EP-NEBIUS-MANTSALA",
+   "nome": "Nebius Mäntsälä"
+  },
+  {
+   "id": "AI-20261110-09",
+   "rif": "DC-NL-01"
+  },
+  {
+   "id": "AI-20261110-10",
+   "rif": "HUB-NL-01"
+  },
+  {
+   "id": "AI-20261110-11",
+   "rif": "HUB-DE-01"
+  },
+  {
+   "id": "AI-20261110-12",
+   "rif": "HUB-IE-01"
+  },
+  {
+   "id": "AI-20261110-13",
+   "rif": "DC-FR-01"
+  },
+  {
+   "id": "AI-20261110-14",
+   "rif": "DC-DE-02"
+  },
+  {
+   "id": "AI-20261110-15",
+   "rif": "DC-IT-01"
+  },
+  {
+   "id": "AI-20261110-16",
+   "rif": "EP-START-CAMPUS-SINES-DATA-CAMPUS",
+   "nome": "Start Campus Sines (Nscale for Microsoft)"
+  },
+  {
+   "id": "AI-20261110-17",
+   "rif": "EP-DAYONE-NUSAJAYA",
+   "nome": "DayOne Nusajaya (Johor)"
+  },
+  {
+   "id": "AI-20261110-18",
+   "rif": "HUB-SG-01"
+  },
+  {
+   "id": "AI-20261110-19",
+   "rif": "EP-VNET-BAYIN-ULANQAB",
+   "nome": "VNET Bayin, Ulanqab"
+  },
+  {
+   "id": "AI-20261110-20",
+   "rif": "EP-HUAWEI-HORINGER",
+   "nome": "Huawei Horinger (Inner Mongolia)"
+  },
+  {
+   "id": "AI-20261110-21",
+   "rif": "DC-IN-01"
+  },
+  {
+   "id": "AI-20261110-22",
+   "rif": "DC-IN-02"
+  },
+  {
+   "id": "AI-20261110-23",
+   "rif": "DC-JP-03"
+  },
+  {
+   "id": "AI-20261110-24",
+   "rif": "DC-KR-02"
+  },
+  {
+   "id": "AI-20261110-25",
+   "rif": "FAB-TW-01"
+  },
+  {
+   "id": "AI-20261110-26",
+   "rif": "FAB-TW-08"
+  },
+  {
+   "id": "AI-20261110-27",
+   "rif": "PKG-TW-04"
+  },
+  {
+   "id": "AI-20261110-28",
+   "rif": "FAB-KR-01"
+  },
+  {
+   "id": "AI-20261110-29",
+   "rif": "FAB-KR-05"
+  },
+  {
+   "id": "AI-20261110-30",
+   "rif": "FAB-KR-03"
+  },
+  {
+   "id": "AI-20261110-31",
+   "rif": "FAB-TW-09"
+  },
+  {
+   "id": "AI-20261110-32",
+   "rif": "FAB-CN-01"
+  },
+  {
+   "id": "AI-20261110-33",
+   "rif": "FAB-CN-02"
+  },
+  {
+   "id": "AI-20261110-34",
+   "rif": "FAB-JP-01"
+  },
+  {
+   "id": "AI-20261110-35",
+   "rif": "FAB-JP-03"
+  },
+  {
+   "id": "AI-20261110-36",
+   "rif": "FAB-DE-01"
+  },
+  {
+   "id": "AI-20261110-37",
+   "rif": "FAB-NL-01"
+  },
+  {
+   "id": "AI-20261110-38",
+   "rif": "EQ-DE-01"
+  },
+  {
+   "id": "AI-20261110-39",
+   "rif": "top500:LineShine",
+   "nome": "LineShine (Shenzhen)"
+  },
+  {
+   "id": "AI-20261110-40",
+   "rif": "top500:JUPITER Booster",
+   "nome": "JUPITER (Jülich)"
+  },
+  {
+   "id": "AI-20261110-41",
+   "rif": "top500:HPC7",
+   "nome": "Eni HPC7 (Ferrera Erbognone)"
+  }
+ ]
+}

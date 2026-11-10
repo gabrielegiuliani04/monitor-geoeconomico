@@ -1,42 +1,57 @@
 # Agente INFRASTRUTTURE AI E DIREZIONE DEGLI INVESTIMENTI: rapporto
 
-Data: 2026-11-09. Script: `raccolta/ai/raccogli.py` (solo libreria standard, eseguito davvero il 2026-11-09, circa 20 secondi, 0 problemi di validazione). Voci curate a mano in `raccolta/ai/`: `punti_curati.json`, `flussi.json`, `epoch_coordinate.json`, `top500_siti.json`.
+Data: 2026-11-10 (seconda passata, espansione dei livelli). Script: `raccolta/ai/raccogli.py` (solo libreria standard, eseguito davvero il 2026-11-10, pochi secondi, `--valida`: 0 problemi). File curati in `raccolta/ai/`: `punti_curati.json` (147 voci), `epoch_coordinate.json` (96 siti), `top500_siti.json` (43 siti), `ai_selezione.json` (66 voci di `ai.json`), `flussi.json` (invariato).
 
-> **Nota di trasparenza.** Chi scrive è Claude, un modello di Anthropic. Anthropic è tra le società citate in questo livello (per esempio come cliente del campus Amazon di New Carlisle e di Colossus 2 nei dati di Epoch, e come concorrente di OpenAI, xAI, Mistral). I dati che la riguardano vengono solo da fonti pubbliche e sono trattati come quelli degli altri. Nel campione dei flussi non ho inserito investimenti in Anthropic o in altri laboratori di modelli, salvo la quota SoftBank in OpenAI, perché non sono infrastruttura geografica.
+> **Nota di trasparenza.** Chi scrive è Claude, un modello di Anthropic. Anthropic compare nei dati di Epoch come utilizzatrice di alcuni campus (New Carlisle, Lake Mariner, Barber Lake). Questi siti sono trattati come gli altri e la cosa è scritta nelle loro note.
 
-## 1. Fonti provate
+## 1. Cosa è cambiato rispetto al 2026-11-09
+
+- **`ai-mondo.json` passa da 82 a 301 punti e ora copre tutto il mondo, USA compresi** (prima gli USA erano esclusi). Testi dei punti in inglese.
+- **`ai.json` è generato dallo script** come selezione curata di **66 siti** (era 25, solo USA) nello schema dei punti fissi (`classe: fisso`, categorie `data-center` / `fab-chip` / `supercomputer` lette da `AI_CAT` della mappa). Gli id `AI-20261109-01…25` sono conservati (li usano `investimenti.json` e il dossier USA); i nuovi sono `AI-20261110-01…41`. Ogni voce ha `rif_ai_mondo` = id del punto da cui è copiata; il punto corrispondente in `ai-mondo.json` ha `duplicato_ai_json: true`.
+- **Nuove categorie in `ai-mondo.json`** (da stilizzare): `packaging` (impacchettamento avanzato e assemblaggio memoria, 13), `attrezzature` (macchine e materiali senza alternative, 5), `hub-data-center` (poli metropolitani, non siti singoli; `mw` = capacità del mercato, 10). Restano `data-center-ai`, `fab-chip`, `supercalcolo`.
+- **Nuovi campi**: `tipo` (es. "memory", "logic foundry", "GPU cluster (Epoch archive, 2025)", "EuroHPC AI Factory"), `energia` (fornitori di energia secondo Epoch), `nome_en` (nome inglese per le 10 voci il cui `nome` resta in italiano perché `raccolta/supply-chain-ai/nodi.json` le cita per nome), `senza_posizione` (lista dei sistemi TOP500 con sito non pubblico, **non disegnati**), `conteggi` per categoria/paese/origine/stato.
+- **Regola sulle coordinate più severa**: niente più punti sul centroide del paese. Ogni punto ha `origine_coord` (indirizzo o comune geocodificato con OSM Nominatim, o coordinate Epoch) e `precisione_km` (1 km per un edificio, 2 per una via, 5-8 per un comune, 12-15 per una città, 20-40 per province e mercati metropolitani).
+- `investimenti.json`: logica invariata; 64 flussi, 1.038,3 mld USD di progetti e 2.810 mld di impegni-quadro (come prima). I due flussi che puntano a `AI-20261109-17` (TSMC Arizona) e `-20` (Samsung Taylor) si risolvono ancora.
+
+## 2. Fonti provate
 
 | Fonte | Esito | Licenza |
 |---|---|---|
-| Epoch AI, *AI data centers*, `data_centers.zip` (96 siti, cronologie, chiller, torri di raffreddamento) | **funziona**, nessuna chiave, scaricato in automatico | CC BY 4.0 |
-| Epoch AI, *AI chip imports*, `ai_chip_trade.zip` (`by_country.csv`, trimestri 2022 T1 - 2026 T2) | **funziona**, in automatico | CC BY 4.0 |
-| Epoch AI, `gpu_clusters.csv` | funziona, ma è un archivio fermo al 2025 (482 cluster, tutti "esistenti"): usato solo per alcune coordinate | CC BY 4.0 |
-| TOP500, pagina della lista (`/lists/top500/list/2026/06/`) | **funziona**, letta con espressioni regolari; la lista di novembre 2026 non è ancora uscita (404): lo script la prenderà da solo quando sarà pubblicata | nessuna licenza aperta dichiarata: uso con citazione |
-| OpenStreetMap Nominatim (geocodifica una tantum di comuni e indirizzi) | funziona; usato a mano, non dallo script | ODbL 1.0 |
-| Comunicati e stampa (Eni, Microsoft, Google, Amazon, TSMC via TrendForce, DCD, Reuters/AFP, Bloomberg, The Register, Tom's Hardware, Focus Taiwan e altri) | ricerche web: funzionano. Fonte, link e data per ogni riga | fatti citati con la fonte |
-| IEA, *Energy and AI* | usata solo tramite sintesi di terzi: la pagina primaria non è uscita nelle ricerche | — |
-| The Information | non consultata (a pagamento) | — |
+| Epoch AI, *AI data centers* (`data_centers.zip`): **tutti i 96 siti** (77 USA, 5 Cina, 4 Malesia, 2 Norvegia, 1 ciascuno Regno Unito, Indonesia, Finlandia, Australia, Portogallo, Islanda, Svezia, Emirati), con MW IT attuali e previsti, H100e, proprietario, utilizzatori, costo stimato | **funziona**, automatico | CC BY 4.0 |
+| Epoch AI, *GPU clusters* (`gpu_clusters.csv`, 482 cluster, archivio fermo al 2025, con latitudine/longitudine) | **funziona**, ora automatico. Usati 25 cluster: scartati 270 sul centroide del paese (tutti i 188 cinesi), 34 senza coordinate, 30 superati o dismessi, 87 sotto 500 H100e, 36 doppioni di siti già in mappa (entro 8 km o stesso nome di un sistema TOP500) | CC BY 4.0 |
+| Epoch AI, *AI chip imports* (quote per paese) | funziona, automatico (trimestre 2026 T2) | CC BY 4.0 |
+| TOP500, lista di giugno 2026 | funziona; ora i **primi 50**. 33 disegnati, 17 senza sito pubblico (Eagle, ISEG2, Discovery 6, Maximus-02, i tre CHIE di SoftBank, Selene ed Eos di Nvidia, SSC-24 Samsung, Njoerd, i Core42, Kakao, Yotta, FPT) elencati in `senza_posizione`. Corretto il caso dei sistemi senza nome (rango 32). La lista di novembre 2026 non è ancora uscita: lo script la prenderà da sola | uso con citazione |
+| OSM Nominatim (geocodifica una tantum di 77 indirizzi Epoch USA, 14 siti TOP500, 104 voci curate) | funziona; usato a mano, non dallo script | ODbL 1.0 |
+| Wikipedia, *List of semiconductor fabrication plants* | funziona (pagina HTML); base per 20 fabbriche di lunga data (nodi e wafer/mese **datati**, affidabilità "media") | CC BY-SA 4.0 |
+| Stampa e comunicati (Microsoft, Google, SoftBank, KDDI, Meta, EuroHPC, TrendForce, Tom's Hardware, DCD, Focus Taiwan, Asia Economy, JLL, CBRE via W.Media e Real Estate Asia, Cushman & Wakefield via EdgeProp, CSO irlandese, MeitY via TelecomTalk e altri) | ricerche web: funzionano; fonte, link e data per riga | fatti con citazione |
+| API di Wikipedia | **non funziona** (limite di richieste sull'IP condiviso): usata la pagina HTML | — |
+| Pagine societarie di TSMC, Kioxia, Shin-Etsu, SUMCO, ASE, GlobalFoundries | 403/404 o irraggiungibili dal proxy: non usate. Per questo Shin-Etsu e SUMCO (wafer di silicio) **non sono in mappa**: nessuna fonte raggiungibile indica lo stabilimento | — |
 
-Nessuna fonte richiede chiavi. Epoch e TOP500 sono pagine pubbliche: se cambiano formato, lo script riusa i dati precedenti e lo scrive in `errori`.
+## 3. Cosa contengono i file
 
-## 2. Cosa contengono i file
+**`docs/data/ai-mondo.json`** (370 kB, sotto il limite di 1,5 MB): **301 punti** in 42 paesi.
 
-**`docs/data/ai-mondo.json`** (106 kB), 82 punti fuori dagli USA (gli USA restano in `ai.json`, che non ho toccato):
-- `data-center-ai` (42): 19 siti dal tracker Epoch (automatici: MW IT attuali e previsti, equivalenti H100, proprietario, utilizzatori, costo di capitale stimato da Epoch, ultima osservazione satellitare) e 23 curati a mano (Italia, Francia, Germania, Regno Unito, Spagna, Svezia, Kenya, Arabia Saudita, India, Giappone, Corea, Brasile, Messico, Cile).
-- `fab-chip` (20, curati): TSMC (Hsinchu, Kaohsiung, Taichung, Chiayi, Kumamoto, Dresda), Samsung Pyeongtaek, SK Hynix (Cheongju, Yongin, Indiana), Micron (Hiroshima, Singapore, Sanand), Intel (Leixlip, Magdeburgo cancellata, Kiryat Gat ferma), SMIC, Rapidus, Tata-PSMC, ASML. Con `nodo` e `stato`.
-- `supercalcolo` (20, automatici): i primi 20 della TOP500 di giugno 2026, con Rmax, Rpeak, potenza. I tre già in `ai.json` (El Capitan, Frontier, Aurora) hanno `duplicato_ai_json: true`.
-- `quote_paesi`: quote del calcolo AI per paese secondo Epoch (trimestre 2026 T2), con la serie degli ultimi 12 trimestri.
-- Campi dei punti: quelli comuni (`lat`, `lon`, `nome`, `paese`, `categoria`, `stato`, `fonte`, `link`, `data_fonte`, `affidabilita`, `note`) più `mw`, `mw_tipo`, `proprietario`, `anno`, `importo` (miliardi nella valuta della fonte), `valuta`, `importo_usd_mld`, `origine_coord`, `precisione_km`, `origine_dato` (epoch / top500 / curato).
-- `stato`: operativo, operativo-parziale, in-costruzione, annunciato, sospeso, cancellato.
+| Categoria | Punti | Origine |
+|---|---|---|
+| `data-center-ai` | 187 | 96 Epoch tracker, 25 Epoch GPU clusters, 66 curati |
+| `fab-chip` | 53 | curati (logica e memoria) |
+| `supercalcolo` | 33 | TOP500 (primi 50 meno 17 senza posizione) |
+| `packaging` | 13 | curati (CoWoS TSMC AP3/AP5/AP6/AP7/AP8, ASE, SPIL, Amkor Peoria, HBM SK Hynix Cheongju e Indiana, Samsung Onyang, Micron Singapore e Sanand) |
+| `hub-data-center` | 10 | curati (Frankfurt, Amsterdam, Londra/Slough, Parigi, Dublino, Northern Virginia, Singapore, Johor, Greater Tokyo/Inzai, Mumbai) |
+| `attrezzature` | 5 | curati (ASML Veldhoven, Zeiss Oberkochen, TRUMPF Ditzingen, Tokyo Electron Nirasaki, Ajinomoto ABF Kawasaki) |
 
-**`docs/data/investimenti.json`** (69 kB), 64 flussi "da → a":
-- Ogni flusso: `attore`, `da_paese`/`a_paese` (ISO; "US+AE" quando un consorzio misto non dichiara le quote), `da_lat/lon` (sede della società o capitale), `a_lat/lon` (il sito, preso dal punto della mappa con `a_rif`, oppure la capitale), `importo` e `valuta` originali, `importo_usd_mld`, `metodo_usd`, `anno`, `periodo`, `settore` (data center, chip, energia per AI, fondo), `stato` (annunciato, in corso, completato, sospeso, cancellato), `quadro`, fonte, link, data, affidabilità, note.
-- `riepilogo`: totali per paese di origine e di destinazione, per settore e per stato, con l'avvertenza che annunci e spese non coincidono. Gli impegni-quadro dei governi sono sommati a parte. I cambi sono fissi e indicativi (EUR 1,10; GBP 1,30; JPY 1/150; KRW 1/1400; INR 1/88; BRL 0,18; SEK 0,10; CNY 0,14), usati solo quando la fonte non dà l'equivalente in dollari.
-- `capex_2026`: guida di spesa 2026 di Amazon, Alphabet, Microsoft, Meta.
+Per paese (primi): USA 115, Taiwan 21, Cina 18, Giappone 17, Corea 13, Germania 9, India 8, Italia 7, Francia 7, Svezia 7, Finlandia 7, Regno Unito 6, Singapore 6, Danimarca 6, Malesia 6, Paesi Bassi 5, Spagna 4, Arabia Saudita 4, Brasile 4, Norvegia 3; poi Irlanda, Israele, Estonia, Lituania, Islanda, Canada (2 ciascuno) e altri 12 paesi con 1.
+Per stato: operativo 165, operativo-parziale 50, in-costruzione 67, annunciato 15, sospeso 3, cancellato 1.
 
-## 3. Mappa mondiale del calcolo AI per paese (Epoch)
+**Nordici, Paesi Bassi, Danimarca, Baltici** (richiesta del titolare): Meta Odense; Microsoft Denmark East (Høje-Taastrup, Køge, Roskilde); Google Fredericia; Google Hamina più i nuovi Kajaani, Vaala, Muhos (13 mld EUR, 2027-2028); Nebius Mäntsälä e Lappeenranta (310 MW); Microsoft Gävle, Sandviken, Staffanstorp; EcoDataCenter Borlänge (Mistral); Brookfield Strängnäs; Narvik (ex Stargate Norway, ora Nscale per Microsoft); CoreWeave e Hyperstack in Norvegia; Google Eemshaven e Winschoten; Microsoft Middenmeer; hub di Amsterdam; Estonia (Sunly Risti 180 MW, Greenergy/Nebius vicino a Tallinn), Lettonia (Delska Riga 10 MW), Lituania (Delska Vilnius, LitAI Factory); Verne/Nebius e Nscale in Islanda; supercalcolatori LUMI, Arrhenius, Gefion.
 
-Quota del calcolo AI arrivato dal 2022 (equivalenti H100), Epoch AI, trimestre 2026 T2:
+**Fabbriche e memoria**: TSMC Fab 12, 14, 15, 18, 20, 22, 25, Arizona, Kumamoto (JASM), Dresda (ESMC); Samsung Pyeongtaek, Hwaseong, Giheung, Austin, Taylor, Xi'an; SK Hynix Icheon, Cheongju, Yongin, Wuxi, Dalian (ex Intel), Indiana; Micron Taichung, Taoyuan, Tongluo, Tainan, Hiroshima, Boise, Clay, Manassas, Singapore; Intel Ocotillo, Hillsboro, Ohio, Leixlip, Kiryat Gat (Fab 28 e Fab 38 ferma), Magdeburgo (cancellata); GlobalFoundries Dresda, Malta, Essex Junction, Singapore; SMIC Shanghai, Lingang, Pechino, Shenzhen, Tianjin; CXMT Hefei e Shanghai; YMTC Wuhan; Kioxia Yokkaichi e Kitakami; Rapidus Chitose; Tata Dholera.
+
+**`docs/data/ai.json`** (93 kB): 66 siti = 40 data center/hub, 20 fab/packaging/attrezzature, 6 supercalcolatori; teatri NATO 41, ALTRO 20, MO 3, IT 2. Contiene i 25 siti del dossier USA (stessi id, coordinate ora dall'indirizzo Epoch) e 41 siti mondiali (Golfo, Nordici, Paesi Bassi, poli europei, Asia, catena dei chip). I nomi legati a `supply-chain-ai` e ai flussi sono conservati.
+
+**Proposta: tenere due livelli, non fonderli.** `ai.json` è il livello "di sintesi" con le targhette dei punti fissi e il legame col dossier USA; `ai-mondo.json` è l'inventario completo. Per non disegnare due volte lo stesso sito quando sono accesi entrambi, basta saltare in `xai` i punti con `duplicato_ai_json: true` (66 punti).
+
+## 4. Quote di calcolo AI per paese (Epoch, trimestre 2026 T2)
 
 | Paese | Quota cumulata | Quota del solo T2 2026 |
 |---|---|---|
@@ -49,14 +64,9 @@ Quota del calcolo AI arrivato dal 2022 (equivalenti H100), Epoch AI, trimestre 2
 | Australia | 1,4% | 1,3% |
 | Regno Unito | 1,2% | 1,0% |
 
-- La quota americana sale da 57,5% (2023 T3) a 72,2%; la cinese scende dal 16,1% al 9,6% (controlli sull'export). L'UE resta tra il 5 e l'8%.
-- L'India è il paese che cresce di più nell'ultimo trimestre (3,3% del nuovo calcolo, più della UE).
-- **Johor (Malesia) è il polo extra-USA più grande nei dati di Epoch**: DayOne Nusajaya 473 MW IT, DayOne Kempas 422 MW, Bridge MY06 243 MW (utilizzatore probabile ByteDance), YTL 113 MW che salgono a 284. È il "cortile" di calcolo di Singapore e, in parte, di aziende cinesi.
-- In Cina Epoch vede campus da 170-220 MW oggi (Huawei a Horinger e Wuhu, VNET e Envision a Ulanqab, Alibaba a Zhangbei), con piani fino a 450-700 MW nel 2027-2028.
-- Il maggiore progetto fuori dagli USA per potenza prevista è **Stargate UAE** (1.000 MW IT nel 2028 secondo Epoch, dentro un campus da 5 GW).
-- **Italia**: nessun sito AI di scala GW operativo. In mappa: il progetto Eni-Khazna di Ferrera Erbognone (500 MW, annunciato), Microsoft Italy North (Milano), Data4 Vittuone (100 MW), Aruba Ponte San Pietro, e i supercalcolatori HPC7 (6° al mondo, 571,5 PFlop/s), HPC6 (8°) di Eni e Leonardo (12°) del CINECA. **Stargate Italia non esiste**: nessun annuncio di OpenAI o del governo trovato.
+Nel tracker Epoch dei data center gli USA pesano l'83,6% della potenza IT attuale (12.640 di 15.122 MW) e l'86,3% degli H100 equivalenti (13,6 di 15,8 milioni). I progetti con più MW previsti sono tutti americani: Microsoft Fairwater Wisconsin (2.263 MW entro maggio 2028), Amazon-Anthropic New Carlisle (1.925 MW, marzo 2028), Stargate New Mexico (1.750 MW, fine 2028), Meta Hyperion (1.632 MW, 2028), xAI Colossus 2 (1.531 MW, febbraio 2027).
 
-## 4. Dove vanno i soldi e da dove arrivano
+## 5. Dove vanno i soldi e da dove arrivano
 
 **Fatti (dal riepilogo, campione curato di 64 flussi).** I 58 progetti non-quadro e non cancellati sommano circa **1.038 mld USD** (5 senza importo). Gli impegni-quadro dei governi sommano altri **2.810 mld USD**, tenuti a parte.
 
@@ -69,14 +79,14 @@ Quota del calcolo AI arrivato dal 2022 (equivalenti H100), Epoch AI, trimestre 2
 
 **Valutazione mia.** La direzione è chiara: i capitali del Golfo e dell'Asia (Taiwan, Giappone, Corea) vanno verso gli USA, mentre i gruppi americani portano data center in India, Giappone, Malesia, Europa e Golfo. La Cina investe all'estero soprattutto dove le regole americane non arrivano o arrivano meno (Thailandia, Brasile, Malesia, Golfo). Le cifre più grandi sono impegni politici legati ai negoziati sui dazi, non piani di cantiere.
 
-## 5. Colli di bottiglia
+## 6. Colli di bottiglia
 
 - **Energia.** L'IEA stimava 415 TWh di consumo dei data center nel 2024 (1,5% dell'elettricità mondiale); secondo sintesi del suo aggiornamento 2026 circa 485 TWh nel 2025 (+17%) e 950 TWh al 2030 (dato da verificare sulla pagina IEA). Due progetti in mappa sono fermi per l'energia: **Stargate UK** (sospeso ad aprile 2026 per prezzi dell'energia e regole) e **Microsoft-G42 in Kenya** (rallentato a maggio 2026 per disaccordo sulla domanda elettrica). In Malesia il 78,6% della capacità IT è a Johor (MIDA), che secondo lo Straits Times (dato riportato da una sintesi, non verificato sull'originale) ha respinto quasi il 30% delle domande di nuovi data center.
 - **Chip e impacchettamento.** Il 2 nm è in volume solo a Taiwan (Hsinchu e Kaohsiung dal 4° trimestre 2025). La capacità CoWoS di TSMC nel 2026 è stimata a 120.000-140.000 wafer al mese, con un divario tra domanda e offerta che scenderebbe dal 20% al 10% a fine 2026 (TrendForce, 2026-06-15). ASML prevede circa 65 scanner EUV nel 2026: un solo fornitore al mondo. In Europa la produzione avanzata arretra: Magdeburgo cancellata (luglio 2025), ESMC Dresda (28-12 nm, non per GPU) slitta verso il 2028.
 - **Memoria HBM.** Prezzi contrattuali della DRAM +90-98% nel 1° trimestre 2026 (analisti); offerta HBM 2026 venduta; SK Hynix (58% del mercato HBM nel 1° trimestre 2026, Counterpoint) vede carenza fino al 2030 e produrrà HBM negli USA solo dal 2029. Microsoft attribuisce 25 mld del suo capex 2026 al rincaro della memoria; Meta ha alzato la forchetta per lo stesso motivo.
 - **Acqua.** Epoch misura il consumo d'acqua solo per alcuni siti USA (per esempio circa 21 milioni di galloni al giorno a New Carlisle, campus Amazon usato da Anthropic, ottobre 2026); per i siti esteri il dato manca. Johor e il Golfo sono le aree da seguire (raffreddamento in clima caldo, desalinizzazione): **dato mancante**, non stimato.
 
-## 6. Legami con gli altri livelli della mappa
+## 7. Legami con gli altri livelli della mappa
 
 Calcolato dallo script di prova sui file `rete-elettrica.json` (linee ≥380 kV, riquadro Europa-Medio Oriente) e `nucleare.json` (GEM):
 - Quasi tutti i siti europei e del Golfo sono entro 0-15 km da una linea a 380-525 kV: la rete di trasmissione c'è, il vincolo è la capacità disponibile e i tempi di allaccio.
@@ -87,7 +97,7 @@ Calcolato dallo script di prova sui file `rete-elettrica.json` (linee ≥380 kV,
 - **Cavi**: Visakhapatnam (Google) e Sines (Microsoft, Start Campus) sono anche approdi di cavi sottomarini; Johor guarda lo Stretto di Malacca.
 - **Stretti**: Taiwan (2 nm, CoWoS) e lo Stretto di Taiwan restano il punto singolo di fallimento della filiera; Hormuz pesa sui campus del Golfo e sul GNL che alimenta il progetto italiano.
 
-## 7. Legami con i mercati (`prezzi.json`, chiusure al 2026-11-09, SK Hynix al 2026-11-06)
+## 8. Legami con i mercati (`prezzi.json`, chiusure al 2026-11-09, SK Hynix al 2026-11-06)
 
 | Titolo | Ultimo | 1 mese | Da inizio anno | 1 anno |
 |---|---|---|---|---|
@@ -103,36 +113,39 @@ Calcolato dallo script di prova sui file `rete-elettrica.json` (linee ≥380 kV,
 
 Lettura (mia): nell'ultimo mese c'è una correzione forte su tutto il comparto; da inizio anno vincono i colli di bottiglia fisici (memoria: SK Hynix, WDC; macchine: ASML; fonderia: TSMC) più dei progettisti di chip (Nvidia, Broadcom negativi). Oracle, molto esposta al debito per Stargate, ha dimezzato il valore in un anno. Alcune serie di `prezzi.json` sono marcate provvisorie.
 
-## 8. Fatti attuali (numero, data, fonte)
+## 9. Otto fatti attuali (numero, data, fonte)
 
-1. Gli USA hanno il 72,2% del calcolo AI arrivato dal 2022 e il 77,5% di quello del 2° trimestre 2026; la Cina il 9,6% (Epoch AI, dati scaricati il 2026-11-09).
-2. Il consorzio AIP-MGX-GIP ha chiuso il 2026-07-21 l'acquisto di Aligned Data Centers per circa 40 mld USD (WAM, DCD).
-3. TSMC ha portato a 265 mld USD il piano in Arizona, con 100 mld in più a luglio 2026 (Città di Phoenix).
-4. Il bando UE per fino a 7 gigafabbriche AI è aperto dal 2026-07-30, con fino a 10 mld EUR pubblici; nessun sito scelto (EuroHPC JU).
-5. OpenAI ha sospeso Stargate UK ad aprile 2026 (The Register, 2026-04-09); il sito norvegese di Narvik è passato a Microsoft (ITPro, aprile 2026).
-6. Google ha avviato il 2026-04-28 il cantiere del suo hub AI da 15 mld USD a Visakhapatnam (Google Cloud).
-7. ESMC (TSMC) a Dresda: strutture completate a settembre 2026, macchinari solo nel 2° semestre 2027 (Focus Taiwan, 2026-09-15).
-8. SK Hynix ha avviato il 2026-08-27 l'impianto HBM in Indiana, volume dal 3° trimestre 2029 (Korea Times/Reuters).
-9. Capex 2026 dei quattro grandi gruppi USA: 720-760 mld USD (guida di fine ottobre 2026, fonti secondarie).
-10. Il campus IA di Fouju (1,4 GW, MGX-Bpifrance-Mistral-Nvidia) è entrato in fase realizzativa con il contratto Eiffage per la sottostazione (2026-06-02).
+1. **Google investirà almeno 13 mld EUR in Finlandia nel 2027-2028**, il suo maggiore investimento singolo in Europa: ampliamento di Hamina e tre nuovi data center a Kajaani, Vaala e Muhos, con un contratto di 22 anni con Fortum legato alla centrale nucleare di Loviisa (Google, 2026-09-09).
+2. **Microsoft ha aperto la regione cloud Denmark East** con campus a Høje-Taastrup, Køge e Roskilde; Høje-Taastrup recupera il calore per circa 6.000 case (Microsoft, 2026-03-27).
+3. **Il polo di Frankfurt ha 997 MW di capacità IT operativa** (JLL); CBRE conta 1,2 GW nel 1° trimestre 2026 e i nuovi allacci grandi nella regione Reno-Meno richiedono fino a 13 anni (JLL, 2026).
+4. **Johor ha raggiunto 1.110 MW di capacità IT operativa** nel 1° semestre 2026 (+24% sul semestre), con 602 MW in costruzione e un tasso di sfitto dello 0,7% (Cushman & Wakefield e Knight Frank, via EdgeProp, 2026).
+5. **Nessuna gigafabbrica AI dell'UE è stata ancora scelta**: il bando EuroHPC per fino a 7 siti è aperto dal 2026-07-30 con scadenze tra novembre 2026 e febbraio 2027; le 19 "AI Factories" già selezionate sono in mappa dove il sito è noto (EuroHPC JU, 2025-10-10 e 2026-07-30).
+6. **DataVolt e Humain hanno avviato ad agosto 2026 il cantiere di 100 MW** del primo lotto da 360 MW del campus di Oxagon (NEOM), obiettivo 1,5 GW; a ottobre Nebius ha firmato un accordo preliminare per 50 MW (AGBI, 2026-08; Baxtel, 2026-10).
+7. **Micron avvia a metà ottobre 2026 la produzione HBM nel secondo impianto di impacchettamento di Taichung** e dichiara oltre NT$1.600 mld (circa 50 mld USD) investiti a Taiwan (Focus Taiwan, 2026-10-01).
+8. **Microsoft si è ritirata a ottobre 2026 dal campus Nscale di Loughton** (50 MW, 23.040 GPU GB300) per ritardi dell'allaccio elettrico, che potrebbe arrivare solo negli anni 2030 (Computing, 2026-10).
 
-## 9. Proposta per la mappa
+Altri fatti utili, sempre con fonte nel file: il Centro nazionale di calcolo AI coreano a Haenam è in costruzione dal 2026-08-03 (2,4 trilioni KRW, Asia Economy); KDDI ha avviato il data center AI di Sakai il 2026-01-22 (Adnkronos); CXMT è stimata a circa 320.000 wafer/mese di DRAM ma solo 5.000 di HBM (Tom's Hardware/SemiAnalysis); i data center hanno usato il 22% dell'elettricità misurata dell'Irlanda nel 2024 (CSO).
 
-- **Punti** (`ai-mondo.json`): cerchio per i data center con raggio proporzionale ai MW (usare `mw_previsto` come anello esterno tratteggiato); quadrato per le fab, triangolo per il supercalcolo. Colore per `stato` (pieno = operativo, vuoto = in costruzione/annunciato, grigio barrato = sospeso/cancellato). Nascondere i punti con `duplicato_ai_json` e attenuare quelli con `origine_coord` "centroide-paese" (posizione non reale).
-- **Archi** (`investimenti.json`): linee curve da `da_lat/lon` a `a_lat/lon`, spessore proporzionale a `importo_usd_mld`, colore per settore, tratteggio per "annunciato". Impegni-quadro in un livello separato, spento di default. I flussi interni (stesso paese) come cerchi sul punto d'arrivo.
-- **Pannello**: barre delle quote Epoch per paese con la serie trimestrale; tabella del riepilogo con l'avvertenza in evidenza; riquadro Italia (siti, flussi verso l'Italia, distanza dal nucleare, legame col TTF).
+## 10. Proposta per la mappa (al coordinatore)
 
-## 10. Limiti
+- **Nuove categorie da stilizzare in `xai`**: `packaging` (suggerito: triangolo vuoto o rombo, stesso colore delle fab), `attrezzature` (suggerito: stella o croce), `hub-data-center` (suggerito: cerchio grande sfumato, raggio fisso, perché `mw` è la capacità di un mercato metropolitano, non di un sito). Oggi cadono nel quadrato da 4 px.
+- In `xai` saltare i punti con `duplicato_ai_json: true` quando è acceso anche il livello `ai`, oppure sempre.
+- Per i `data-center-ai` si può usare `mw_previsto` come anello tratteggiato; per i cluster Epoch 2025 (`origine_dato: "epoch-gpu"`) un tono più chiaro, perché lo stato è "esisteva nel 2025".
+- `ai.json` usa solo categorie già note alla mappa: nessuna modifica necessaria per il livello fisso.
 
-- **Annunci contro realtà**: molti progetti esteri (Humain, Reliance, Scala, Stargate Argentina, ByteDance in Brasile) hanno solo annunci; lo stato è quello dell'ultima fonte trovata, con la data.
-- **Coordinate**: tutte stimate; i siti esteri sono spesso a livello di comune (precisione 2-40 km); quattro dei primi 20 sistemi TOP500 (Eagle, ISEG2, Discovery 6, Maximus-02) sono sul centroide del paese perché la posizione non è pubblica.
-- **Copertura**: il tracker Epoch copre bene USA, Malesia e Cina ma pochi siti europei; il campione dei flussi è curato a mano (64 voci) e parziale. Mancano, per mancanza di link verificati: impegno coreano di 350 mld USD negli USA, Oracle in Giappone, AWS cloud sovrano in Germania, CHIPS Act europeo, cifra dell'investimento proprio di Samsung a Taylor, Aruba in MW.
-- **Somme**: mescolano piani pluriennali, contributi pubblici, acquisizioni e lettere d'intenti, con cambi fissi; non indicano la spesa effettiva.
-- **Fonti deboli**: alcune pagine del tipo "tokenring/mammothtimes" e aggregatori sono state lette solo per orientarsi e non usate per i numeri. SMIC (stime SemiAnalysis), Scala AI City, Stargate Argentina e il costo di Kumamoto 2 hanno affidabilità bassa.
-- **Licenze**: Epoch CC BY 4.0 (citare "Epoch AI"); TOP500 senza licenza aperta dichiarata (citare); OSM ODbL per le coordinate geocodificate.
+## 11. Limiti
 
-## 11. Note per la regia
+- **Coordinate stimate.** Gli indirizzi Epoch USA sono geocodificati a livello di edificio o via quando possibile (precisione 1-2 km), altrimenti al comune; otto siti Epoch non hanno indirizzo (es. Stargate Milam, Google Mesa) e stanno sul comune o sulla contea (fino a 40 km). Molti siti curati in Asia e nel Golfo sono al livello di città (12-30 km). Alcuni punti coincidono (Fab 14, Fab 18 e AP8 nel parco scientifico di Tainan; tre voci di Navi Mumbai).
+- **Assunzioni da verificare** (scritte nelle note): sito di ABCI-Q (Tsukuba, 40 km), Gefion (area di Copenaghen), NHN Cloud a Gwangju, DAEDALUS a Lavrio, Cassava AI Factory a Città del Capo, Explorer-WUS3 nell'area di Phoenix.
+- **Non in mappa per mancanza di sito**: data center xAI-Humain da 500 MW in Arabia Saudita, OpenAI-Tata HyperVault in India (100 MW → 1 GW), Schwarz 240 MW nel Meclemburgo, Stargate Korea in South Jeolla, Nebius in Israele e in Pennsylvania, 17 sistemi TOP500; Shin-Etsu e SUMCO (wafer) per mancanza di fonte raggiungibile sullo stabilimento.
+- **Dati datati**: i wafer/mese e i nodi presi da Wikipedia sono storici; l'archivio GPU clusters di Epoch è fermo al 2025; molti progetti esteri sono solo annunci (stato = ultima fonte, con data).
+- **Hub**: i MW dei mercati vengono da consulenti diversi (JLL, CBRE, Cushman & Wakefield, MeitY) con definizioni diverse (IT operativa, inventario, capacità totale): non vanno sommati tra loro né con i siti singoli. Per Amsterdam e Londra non è indicato un MW coerente.
+- **Nomi in italiano**: 10 punti curati mantengono il `nome` italiano perché `supply-chain-ai/nodi.json` li cita per nome; il nome inglese è in `nome_en` (usato in `ai.json`). Quando il coordinatore aggiorna `nodi.json`, si possono sostituire.
+- **Licenze**: Epoch CC BY 4.0 (citare "Epoch AI"); TOP500 senza licenza aperta dichiarata (citare); Wikipedia CC BY-SA 4.0; OSM ODbL per le coordinate.
 
-- `docs/index.html` non è stato toccato: i due file nuovi vanno aggiunti a `manifest.json` dal coordinatore.
-- Lo script gira senza chiavi; a metà novembre 2026 (SC26) uscirà la nuova TOP500 e lo script la prenderà da solo. Se Epoch aggiunge siti fuori dagli USA, lo script li segnala in `errori` finché non si aggiunge una riga in `epoch_coordinate.json`.
-- `python3 raccolta/ai/raccogli.py --valida` controlla i due file senza rete.
+## 12. Note per la regia
+
+- `docs/index.html` e i workflow non sono stati toccati. Lo script gira senza chiavi in pochi secondi e non usa Nominatim (le coordinate sono nei file curati).
+- Se Epoch aggiunge un sito, lo script lo segnala in `errori` finché non si aggiunge una riga a `epoch_coordinate.json`; un sito TOP500 nuovo va aggiunto a `top500_siti.json` (o marcato `posizione_sconosciuta`).
+- `python3 raccolta/ai/raccogli.py --valida` controlla i tre file (`ai-mondo.json`, `ai.json`, `investimenti.json`) senza rete, compreso il limite di 1,5 MB.
+- Lo User-Agent dello script è ora generico (non contiene il nome del progetto).
