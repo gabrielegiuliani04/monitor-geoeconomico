@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-09T20:21Z",
+ "aggiornato": "2026-11-10T06:00Z",
  "data_riferimento": "2026-11-09",
  "fonti": [
   {
@@ -25,7 +25,7 @@
  "fonti_osservatorio": [
   {
    "nome": "prezzi.json",
-   "aggiornato": "2026-11-09T19:47Z"
+   "aggiornato": "2026-11-10T03:40Z"
   },
   {
    "nome": "portwatch.json",
@@ -54,6 +54,18 @@
   {
    "nome": "cavi.json",
    "aggiornato": "2026-11-09T18:57Z"
+  },
+  {
+   "nome": "minerali.json",
+   "aggiornato": "2026-11-09T20:15Z"
+  },
+  {
+   "nome": "commercio.json",
+   "aggiornato": "2026-11-09T20:15Z"
+  },
+  {
+   "nome": "investimenti.json",
+   "aggiornato": "2026-11-09T19:56Z"
   }
  ],
  "nota": "Catena del valore dell'AI dalla miniera al data center, in 8 anelli. elementi = nodi (punti con lat/lon); archi = collegamenti da → a (g = [[lon, lat], ...]); colli = colli di bottiglia con indicatori, valori e stato rispetto a soglie che sono una VALUTAZIONE dell'osservatorio; controlli = controlli all'export 2022-2026; materie = produzione per paese (USGS) con quote calcolate; titoli = titoli quotati collegati, con prezzo da prezzi.json quando seguito. Gli archi di tipo 'valutazione' sono percorsi tipici, non tracciati reali. Non è una raccomandazione di investimento.",
@@ -607,10 +619,10 @@
    "precisione_km": 3,
    "stato": "operativo",
    "quota": "fornitore unico delle ottiche EUV di ASML",
-   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...»",
+   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...» (analisi generata con un assistente AI e citata dall'autore)",
    "link": "https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials",
    "data_fonte": "2025",
-   "affidabilita": "media",
+   "affidabilita": "bassa",
    "note": "Non quotata (Fondazione Carl Zeiss).",
    "categoria": "supply-chain-ai"
   },
@@ -627,10 +639,10 @@
    "precisione_km": 3,
    "stato": "operativo",
    "quota": "fornitore unico del laser della sorgente EUV",
-   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...»",
+   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...» (analisi generata con un assistente AI e citata dall'autore)",
    "link": "https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials",
    "data_fonte": "2025",
-   "affidabilita": "media",
+   "affidabilita": "bassa",
    "note": "Società familiare non quotata.",
    "categoria": "supply-chain-ai"
   },
@@ -647,10 +659,10 @@
    "precisione_km": 15,
    "stato": "operativo",
    "quota": null,
-   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...»",
+   "fonte": "The Value Edge, «ASML's Supply Chain, Bill of Materials...» (analisi generata con un assistente AI e citata dall'autore)",
    "link": "https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials",
    "data_fonte": "2025",
-   "affidabilita": "media",
+   "affidabilita": "bassa",
    "titoli": [
     "ASML"
    ],
@@ -1111,10 +1123,10 @@
    "origine_coord": "OSM Nominatim (Parco scientifico di Tainan)",
    "precisione_km": 5,
    "stato": "operativo",
-   "quota": "capacità CoWoS di TSMC a fine 2026 stimata 125.000–130.000 wafer al mese; Nvidia circa il 60% della capacità 2026",
-   "fonte": "KGI Securities, nota su TSMC (marzo 2026) e stime di settore",
-   "link": "https://www.kgi.com.hk/en/-/media/files/kgishk/research-reports/tw-reports/tsmc_2330-tt_09032026e.pdf",
-   "data_fonte": "2026-03-09",
+   "quota": "capacità CoWoS di TSMC: obiettivo 120.000–130.000 wafer al mese nel 2026 (da 65.000–75.000 nel 2025); Nvidia circa il 60% delle assegnazioni 2026, Broadcom circa il 15%, AMD circa l'11%; KGI stima 170.000 wafer al mese a fine 2027",
+   "fonte": "Tom's Hardware, «The custom AI ASIC state of play (May 2026)»; KGI Securities, nota su TSMC (9 marzo 2026)",
+   "link": "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia",
+   "data_fonte": "2026-05",
    "affidabilita": "media",
    "titoli": [
     "TSM"
@@ -1344,7 +1356,7 @@
    "origine_coord": "OSM Nominatim (città della sede)",
    "precisione_km": 5,
    "stato": "operativo",
-   "quota": "circa 81% del mercato dei chip AI per data center nel 2026 (stima IDC riportata da terzi; altre stime 75–86%)",
+   "quota": "circa 81% dei ricavi degli acceleratori AI nel 2026 secondo IDC, 75% secondo Silicon Analysts; forchetta delle stime 70–86% a seconda che si contino i chip su misura dei cloud (riprese da commandlinux.com); circa 70% secondo Tom's Hardware",
    "fonte": "Tom's Hardware, «The custom AI ASIC state of play (May 2026)» e sintesi di stime IDC",
    "link": "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia",
    "data_fonte": "2026-05",
@@ -1367,7 +1379,7 @@
    "origine_coord": "OSM Nominatim (città della sede)",
    "precisione_km": 5,
    "stato": "operativo",
-   "quota": "circa 10% (stima IDC riportata da terzi)",
+   "quota": "5–7% dei ricavi degli acceleratori AI nel 2026 (stime Silicon Analysts e IDC riportate da terzi)",
    "fonte": "sintesi di stime IDC (commandlinux.com)",
    "link": "https://commandlinux.com/ai/ai-chip-market-share/",
    "data_fonte": "2026",
@@ -1389,7 +1401,7 @@
    "origine_coord": "OSM Nominatim (città della sede)",
    "precisione_km": 5,
    "stato": "operativo",
-   "quota": "60–80% del mercato degli ASIC su misura (stime discordi); secondo cliente CoWoS di TSMC (oltre 240.000 wafer nel 2026)",
+   "quota": "Broadcom e Marvell insieme circa il 95% della co-progettazione di ASIC per l'AI; Broadcom secondo cliente CoWoS di TSMC, circa il 15% delle assegnazioni 2026 (circa 150.000 wafer)",
    "fonte": "Tom's Hardware, «The custom AI ASIC state of play (May 2026)»",
    "link": "https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia",
    "data_fonte": "2026-05",
@@ -1455,7 +1467,7 @@
    "origine_coord": "OSM Nominatim (distretto della sede)",
    "precisione_km": 3,
    "stato": "operativo",
-   "quota": "circa 40% dei server AI mondiali, oltre 44% dei rack secondo stampa taiwanese",
+   "quota": "oltre il 44% dei rack AI spediti (circa 3.700 rack; Quanta circa 2.100, Wistron 1.300–1.400), secondo stampa taiwanese",
    "fonte": "TechNews, «AI 伺服器出貨鴻海領先廣達、緯創»",
    "link": "https://finance.technews.tw/2026/05/12/foxconn-leads-quanta-and-wistron-in-ai-server-shipments/",
    "data_fonte": "2026-05-12",
@@ -1751,7 +1763,12 @@
    "id": "stretto-taiwan",
    "anello": "logistica",
    "nome": "Stretto di Taiwan",
-   "ruolo": "passaggio di metà delle portacontainer del mondo; attraversato da ogni carico da e per le fab di Taiwan",
+   "ruolo": "passaggio obbligato di quasi ogni carico da e per le fab di Taiwan",
+   "quota": null,
+   "fonte": "Bloomberg, ripreso da SupplyChainBrain (stretti-dettaglio.json)",
+   "link": "https://www.supplychainbrain.com/articles/35419-taiwan-tensions-raise-risks-in-one-of-busiest-shipping-lanes",
+   "data_fonte": "2022-08-02",
+   "affidabilita": "media",
    "azienda": null,
    "paese": "TW",
    "rif": {
@@ -1759,14 +1776,9 @@
     "id": "taiwan"
    },
    "stato": "aperto, pressione della guardia costiera cinese",
-   "quota": null,
    "lat": 24.4,
    "lon": 119.6,
    "origine_coord": "da stretti-dettaglio.json (coordinate del livello)",
-   "fonte": "CSIS ChinaPower (ripreso da stretti.json)",
-   "link": "https://features.csis.org/chinapower/china-taiwan-strait-trade/",
-   "data_fonte": "2024-08-22",
-   "affidabilita": "alta",
    "note": "Più di un quinto del commercio marittimo mondiale e metà delle portacontainer del mondo ci passano; Taiwan produce la gran parte dei chip avanzati. Il rischio è un blocco cinese: Bloomberg Economics stima −5% del PIL mondiale nel primo anno.",
    "categoria": "supply-chain-ai"
   },
@@ -1867,7 +1879,7 @@
    "id": "dc-colossus2",
    "anello": "energia-dc",
    "nome": "xAI Colossus 2, Memphis",
-   "ruolo": "il più grande campus AI operativo (Epoch)",
+   "ruolo": "secondo campus AI per potenza nei dati Epoch (946 MW), dopo New Carlisle",
    "azienda": "xAI",
    "paese": "US",
    "rif": {
@@ -1891,7 +1903,7 @@
    "id": "dc-new-carlisle",
    "anello": "energia-dc",
    "nome": "Amazon-Anthropic New Carlisle (Indiana)",
-   "ruolo": "campus Amazon usato da Anthropic (Project Rainier)",
+   "ruolo": "campus Amazon usato da Anthropic (Project Rainier); il più grande per potenza nei dati Epoch (1.037 MW)",
    "azienda": "Amazon",
    "paese": "US",
    "rif": {
@@ -1997,7 +2009,7 @@
    "id": "dc-fouju",
    "anello": "energia-dc",
    "nome": "Campus IA di Fouju (Francia)",
-   "ruolo": "1,4 GW vicino al nucleare di Nogent",
+   "ruolo": "sottostazione da 1,4 GW di potenza finale; la centrale nucleare di Nogent-sur-Seine è a circa 55 km in linea d'aria",
    "azienda": "MGX, Bpifrance, Mistral AI, Nvidia",
    "paese": "FR",
    "rif": {
@@ -3275,13 +3287,14 @@
      "direzione": "basso-male",
      "soglia_attenzione": 60,
      "soglia_critica": 14,
-     "fonte": "Tech Times, «China Rare Earth Export Controls Pause Ends Tuesday in Law; Beijing Has Published No Extension»",
-     "link": "https://www.techtimes.com/articles/330288/20261109/china-rare-earth-export-controls-pause-ends-tuesday-law-beijing-has-published-no-extension.htm",
+     "fonte": "Reuters, ripreso da The Star, «China extends suspension of rare earth export controls until January»",
+     "link": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/11/09/china-extends-suspension-of-rare-earth-export-controls-until-january",
      "data": "2026-11-09",
      "affidabilita": "media",
-     "nota": "scadenza 2026-11-10; stato del controllo: incerto",
-     "valore": 1,
-     "stato": "critico"
+     "nota": "scadenza 2027-01-10; stato del controllo: sospeso; giorni contati al 2026-11-09; proroga annunciata, testo primario non reperito",
+     "verifica": "proroga annunciata, testo primario non reperito",
+     "valore": 62,
+     "stato": "normale"
     },
     {
      "nome": "Giorni alla fine della sospensione del divieto di export di gallio e germanio verso gli USA",
@@ -3292,9 +3305,9 @@
      "soglia_critica": 14,
      "fonte": "Fastmarkets, «China suspends export prohibition on gallium, germanium, antimony, superhard materials to US»",
      "link": "https://www.fastmarkets.com/insights/china-suspends-export-prohibition-on-superhard-materials-us/",
-     "data": "2026-11-09",
+     "data": "2025-11-09",
      "affidabilita": "alta",
-     "nota": "scadenza 2026-11-27; stato del controllo: sospeso",
+     "nota": "scadenza 2026-11-27; stato del controllo: sospeso; giorni contati al 2026-11-09",
      "valore": 18,
      "stato": "attenzione"
     },
@@ -3315,7 +3328,7 @@
     }
    ],
    "stato": "critico",
-   "stato_congiunturale": "critico"
+   "stato_congiunturale": "attenzione"
   },
   {
    "id": "C02",
@@ -3480,9 +3493,8 @@
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/ASML",
      "data": "2026-11-09",
-     "affidabilita": "media",
-     "nota": "serie marcata provvisoria in prezzi.json",
-     "valore": -14.7,
+     "affidabilita": "alta",
+     "valore": -15.0,
      "stato": "attenzione"
     }
    ],
@@ -3565,9 +3577,8 @@
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/TSM",
      "data": "2026-11-09",
-     "affidabilita": "media",
-     "nota": "serie marcata provvisoria in prezzi.json",
-     "valore": -13.8,
+     "affidabilita": "alta",
+     "valore": -14.3,
      "stato": "attenzione"
     }
    ],
@@ -3651,9 +3662,10 @@
      "soglia_critica": -25,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/000660.KS",
-     "data": "2026-11-06",
-     "affidabilita": "alta",
-     "valore": -34.3,
+     "data": "2026-11-10",
+     "affidabilita": "media",
+     "nota": "serie marcata provvisoria in prezzi.json",
+     "valore": -27.7,
      "stato": "critico"
     }
    ],
@@ -3684,9 +3696,9 @@
      "direzione": "alto-male",
      "soglia_attenzione": 10,
      "soglia_critica": 30,
-     "fonte": "cnyes (analisi di settore in cinese): divario oltre il 60%",
+     "fonte": "cnyes, blog di analisi (北風窗, in cinese): divario oltre il 60%",
      "link": "https://hao.cnyes.com/post/271963",
-     "data": "2026",
+     "data": "2026-10-12",
      "affidabilita": "bassa",
      "valore": 60,
      "stato": "critico"
@@ -3834,7 +3846,7 @@
    ],
    "indicatori": [
     {
-     "nome": "Quota di Nvidia nei chip AI per data center 2026 (stima IDC riportata da terzi; forchetta delle stime 75–86%)",
+     "nome": "Quota di Nvidia nei chip AI per data center 2026 (stima IDC riportata da terzi; forchetta delle stime 70–86%)",
      "tipo": "strutturale",
      "unita": "%",
      "direzione": "alto-male",
@@ -3857,9 +3869,8 @@
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/NVDA",
      "data": "2026-11-09",
-     "affidabilita": "media",
-     "nota": "serie marcata provvisoria in prezzi.json",
-     "valore": -22.6,
+     "affidabilita": "alta",
+     "valore": -22.1,
      "stato": "attenzione"
     }
    ],
@@ -3894,7 +3905,7 @@
    "autorita": "METI",
    "data_annuncio": "2023-05-23",
    "data_effetto": "2023-07-23",
-   "misura": "23 tipi di macchine per chip (pulizia, deposizione, trattamento termico, esposizione, incisione, ispezione, comprese parti EUV) sotto licenza fuori dai 42 paesi «amici».",
+   "misura": "Licenza obbligatoria per 23 tipi di macchine per chip avanzati (pulizia, deposizione, trattamento termico, esposizione, incisione, ispezione, comprese parti EUV) verso tutti i paesi; procedura semplificata per 42 paesi e territori «amici».",
    "materie": [],
    "anelli": [
     "attrezzature"
@@ -4084,14 +4095,36 @@
     "materie",
     "attrezzature"
    ],
-   "stato": "incerto",
-   "scadenza": "2026-11-10",
-   "fonte": "Tech Times, «China Rare Earth Export Controls Pause Ends Tuesday in Law; Beijing Has Published No Extension»",
-   "link": "https://www.techtimes.com/articles/330288/20261109/china-rare-earth-export-controls-pause-ends-tuesday-law-beijing-has-published-no-extension.htm",
+   "stato": "sospeso",
+   "scadenza": "2027-01-10",
+   "scadenza_precedente": "2026-11-10",
+   "verifica": "proroga annunciata, testo primario non reperito",
+   "fonte": "Reuters, ripreso da The Star, «China extends suspension of rare earth export controls until January»",
+   "link": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/11/09/china-extends-suspension-of-rare-earth-export-controls-until-january",
    "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Sospesi dall'annuncio n. 70 del 7 novembre 2025 fino al 10 novembre 2026. Il 28 settembre 2026 il MOFCOM ha detto che l'intesa Cina–USA vale fino al 10 gennaio 2027, ma secondo Tech Times nessun testo numerato sposta la data legale. Shanghai Metals Market riporta invece una proroga al 10 gennaio 2027 (https://news.metal.com/newscontent/CNTOCBN4QTSC2L3BEOVBYILPAZVOOIHVV6INVPY-china-extends-suspension-of-rare-earth-export-controls-until-january-2027). Fonti in disaccordo: da ricontrollare l'11 novembre.",
-   "giorni_alla_scadenza": 1
+   "fonti_discordanti": [
+    {
+     "fonte": "Shanghai Metals Market, «China Extends Suspension of Rare Earth Export Controls Until January 2027» (9 novembre 2026, 16:43 ora di Pechino): riporta il testo dell'annuncio MOFCOM-Dogane n. 58 del 2026, sospensione dall'11 novembre 2026 al 10 gennaio 2027",
+     "link": "https://news.metal.com/newscontent/CNTOCBN4QTSC2L3BEOVBYILPAZVOOIHVV6INVPY-china-extends-suspension-of-rare-earth-export-controls-until-january-2027",
+     "data_fonte": "2026-11-09",
+     "affidabilita": "media"
+    },
+    {
+     "fonte": "Tech Times, «China Rare Earth Export Controls Pause Ends Tuesday in Law; Beijing Has Published No Extension» (9 novembre 2026, basato su verifiche fino al 7 novembre): nessun testo numerato sposta la data del 10 novembre",
+     "link": "https://www.techtimes.com/articles/330288/20261109/china-rare-earth-export-controls-pause-ends-tuesday-law-beijing-has-published-no-extension.htm",
+     "data_fonte": "2026-11-09",
+     "affidabilita": "media"
+    },
+    {
+     "fonte": "MOFCOM, elenco degli annunci 2026 (consultato il 9 e il 10 novembre 2026): l'ultimo annuncio in elenco è il n. 52 del 26 ottobre; il n. 58 non compare",
+     "link": "https://www.mofcom.gov.cn/zcfb/blgg/gg/2026/index.html",
+     "data_fonte": "2026-11-10",
+     "affidabilita": "alta"
+    }
+   ],
+   "note": "Sospesi dall'annuncio n. 70 del 7 novembre 2025 fino al 10 novembre 2026. Il 9 novembre 2026 il MOFCOM ha annunciato con una breve dichiarazione la proroga di due mesi, fino al 10 gennaio 2027 (Reuters); SMM ne riporta il testo come annuncio n. 58 del 2026. Al 10 novembre il testo non compare ancora nell'elenco ufficiale sul sito del MOFCOM: proroga da considerare annunciata ma non verificata sulla fonte primaria. Tech Times, uscito prima dell'annuncio, scriveva che nessun testo spostava la data.",
+   "giorni_alla_scadenza": 62
   },
   {
    "id": "US-2026-MATCH",
@@ -4130,6 +4163,27 @@
    "data_fonte": "2026-05",
    "affidabilita": "media",
    "note": "A maggio 2026 nessun H200 risultava spedito: Pechino non aveva dato il via libera agli acquisti (Reuters ripreso dalla stampa). Stato più recente non trovato."
+  },
+  {
+   "id": "CN-2026-07-HE",
+   "paese": "CN",
+   "autorita": "MOFCOM e Dogane cinesi (annuncio n. 29 del 2026)",
+   "data_annuncio": "2026-07-10",
+   "data_effetto": "2026-07-10",
+   "misura": "Divieto temporaneo di export di elio (codice doganale 2804290010), in vigore dalla pubblicazione; modifiche «con annuncio successivo».",
+   "materie": [
+    "elio"
+   ],
+   "anelli": [
+    "materie"
+   ],
+   "stato": "in-vigore",
+   "scadenza": null,
+   "fonte": "MOFCOM, annuncio MOFCOM-Dogane n. 29 del 2026 (testo cinese)",
+   "link": "https://www.mofcom.gov.cn/zcfb/blgg/gg/2026/art/2026/art_e715aef77348447fb40cea835cdd8015.html",
+   "data_fonte": "2026-07-10",
+   "affidabilita": "alta",
+   "note": "La Cina produce poco elio (3 milioni di m³ nel 2025, circa l'1,6% del mondo secondo USGS): il divieto pesa meno di Ras Laffan, ma toglie un'alternativa ai compratori asiatici mentre l'elio del Qatar è bloccato."
   }
  ],
  "materie": [
@@ -4930,18 +4984,18 @@
    "ruolo": "litografia EUV e DUV (Veldhoven)",
    "prezzi_id": "asml",
    "prezzo": {
-    "ultimo": 1518.3,
+    "ultimo": 1513.2,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 6.56,
-     "1m": -14.72,
-     "ytd": 41.91,
-     "1a": 49.29
+     "1g": 6.2,
+     "1m": -15.0,
+     "ytd": 41.43,
+     "1a": 48.79
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/ASML",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5000,18 +5054,18 @@
    "ruolo": "fonderia avanzata e CoWoS",
    "prezzi_id": "tsm",
    "prezzo": {
-    "ultimo": 390.98,
+    "ultimo": 388.62,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 4.14,
-     "1m": -13.75,
-     "ytd": 28.66,
-     "1a": 36.47
+     "1g": 3.51,
+     "1m": -14.27,
+     "ytd": 27.88,
+     "1a": 35.64
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/TSM",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5059,18 +5113,18 @@
    "ruolo": "primo produttore di HBM",
    "prezzi_id": "hynix",
    "prezzo": {
-    "ultimo": 1132000.0,
+    "ultimo": 1215000.0,
     "valuta": "KRW",
-    "data": "2026-11-06",
+    "data": "2026-11-10",
     "var": {
-     "1g": -10.44,
-     "1m": -34.3,
-     "ytd": 73.89,
-     "1a": 90.89
+     "1g": 6.95,
+     "1m": -27.72,
+     "ytd": 86.64,
+     "1a": 100.5
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/000660.KS",
-    "provvisorio": false
+    "provvisorio": true
    },
    "in_prezzi": true
   },
@@ -5096,18 +5150,18 @@
    "ruolo": "dischi rigidi per i data center (magneti di terre rare)",
    "prezzi_id": "wdc",
    "prezzo": {
-    "ultimo": 289.95,
+    "ultimo": 289.78,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 9.92,
-     "1m": -27.02,
-     "ytd": 68.31,
-     "1a": 77.93
+     "1g": 9.86,
+     "1m": -27.06,
+     "ytd": 68.21,
+     "1a": 77.82
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/WDC",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5121,18 +5175,18 @@
    "ruolo": "GPU per data center",
    "prezzi_id": "nvda",
    "prezzo": {
-    "ultimo": 177.4,
+    "ultimo": 178.67,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": -4.95,
-     "1m": -22.63,
-     "ytd": -4.88,
-     "1a": -5.71
+     "1g": -4.27,
+     "1m": -22.07,
+     "ytd": -4.2,
+     "1a": -5.04
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/NVDA",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5146,18 +5200,18 @@
    "ruolo": "acceleratori Instinct",
    "prezzi_id": "amd",
    "prezzo": {
-    "ultimo": 509.71,
+    "ultimo": 508.58,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 13.51,
-     "1m": -16.18,
-     "ytd": 138.0,
-     "1a": 118.25
+     "1g": 13.26,
+     "1m": -16.37,
+     "ytd": 137.48,
+     "1a": 117.77
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/AMD",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5172,18 +5226,18 @@
    "ruolo": "ASIC su misura (TPU) e switch",
    "prezzi_id": "avgo",
    "prezzo": {
-    "ultimo": 320.77,
+    "ultimo": 319.48,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 9.22,
-     "1m": -11.28,
-     "ytd": -7.32,
-     "1a": -8.2
+     "1g": 8.78,
+     "1m": -11.63,
+     "ytd": -7.69,
+     "1a": -8.57
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/AVGO",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5198,18 +5252,18 @@
    "ruolo": "TPU e data center",
    "prezzi_id": "googl",
    "prezzo": {
-    "ultimo": 290.16,
+    "ultimo": 288.15,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 1.89,
-     "1m": -17.49,
-     "ytd": -7.3,
-     "1a": 4.06
+     "1g": 1.18,
+     "1m": -18.06,
+     "ytd": -7.94,
+     "1a": 3.34
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/GOOGL",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5311,18 +5365,18 @@
    "ruolo": "data center (Fairwater)",
    "prezzi_id": "msft",
    "prezzo": {
-    "ultimo": 547.67,
+    "ultimo": 545.18,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 3.22,
-     "1m": 2.35,
-     "ytd": 13.24,
-     "1a": 10.24
+     "1g": 2.75,
+     "1m": 1.89,
+     "ytd": 12.73,
+     "1a": 9.73
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/MSFT",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5336,18 +5390,18 @@
    "ruolo": "data center (New Carlisle), chip Trainium",
    "prezzi_id": "amzn",
    "prezzo": {
-    "ultimo": 268.97,
+    "ultimo": 266.93,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 3.73,
-     "1m": 2.49,
-     "ytd": 16.53,
-     "1a": 10.05
+     "1g": 2.94,
+     "1m": 1.71,
+     "ytd": 15.64,
+     "1a": 9.21
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/AMZN",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5361,18 +5415,18 @@
    "ruolo": "data center",
    "prezzi_id": "meta",
    "prezzo": {
-    "ultimo": 645.1,
+    "ultimo": 641.37,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 5.73,
-     "1m": -10.24,
-     "ytd": -2.27,
-     "1a": 3.76
+     "1g": 5.12,
+     "1m": -10.76,
+     "ytd": -2.84,
+     "1a": 3.16
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/META",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5386,18 +5440,18 @@
    "ruolo": "data center Stargate (Abilene)",
    "prezzi_id": "orcl",
    "prezzo": {
-    "ultimo": 119.3,
+    "ultimo": 119.79,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 2.76,
-     "1m": -15.63,
-     "ytd": -38.79,
-     "1a": -50.14
+     "1g": 3.18,
+     "1m": -15.28,
+     "ytd": -38.54,
+     "1a": -49.93
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/ORCL",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5414,18 +5468,18 @@
    "ruolo": "termometro dell'intera filiera dei chip",
    "prezzi_id": "sox",
    "prezzo": {
-    "ultimo": 10046.2,
+    "ultimo": 10033.9,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 6.99,
-     "1m": -20.09,
-     "ytd": 41.83,
-     "1a": 44.6
+     "1g": 6.86,
+     "1m": -20.19,
+     "ytd": 41.66,
+     "1a": 44.43
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/%5ESOX",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5464,14 +5518,14 @@
    "ruolo": "costo del gas per le centrali dei data center USA",
    "prezzi_id": "hh",
    "prezzo": {
-    "ultimo": 3.214,
+    "ultimo": 3.203,
     "valuta": "USD",
     "data": "2026-11-09",
     "var": {
-     "1g": 7.2,
-     "1m": -0.19,
-     "ytd": -12.81,
-     "1a": -25.52
+     "1g": 6.84,
+     "1m": -0.53,
+     "ytd": -13.1,
+     "1a": -25.77
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/NG%3DF",
@@ -5596,6 +5650,576 @@
   },
   "nota": "Distanza in linea d'aria dalla linea >= 380 kV più vicina in rete-elettrica.json (OpenStreetMap via openinframap, riquadro Europa-Medio Oriente); conteggio dei cavi sottomarini attivi con almeno un approdo nel paese (cavi.json, TeleGeography CC BY-NC-SA)."
  },
+ "confronti": {
+  "minerali_confronto": [
+   {
+    "materia": "gallio",
+    "paese": "CN",
+    "quota_qui": 99.0,
+    "quota_minerali_json": 99.0,
+    "coerente": true
+   },
+   {
+    "materia": "silicio",
+    "paese": "CN",
+    "quota_qui": 87.0,
+    "quota_minerali_json": 87.0,
+    "coerente": true
+   },
+   {
+    "materia": "terre-rare",
+    "paese": "CN",
+    "quota_qui": 69.2,
+    "quota_minerali_json": 69.2,
+    "coerente": true
+   },
+   {
+    "materia": "rame",
+    "paese": "CL",
+    "quota_qui": 23.0,
+    "quota_minerali_json": 23.0,
+    "coerente": true
+   }
+  ],
+  "dipendenze_ue_italia": [
+   {
+    "importatore": "Italia",
+    "iso2": "IT",
+    "hs": "280530",
+    "prodotto": "Metalli delle terre rare, scandio e ittrio",
+    "uso_ai": "metalli delle terre rare (leghe per magneti)",
+    "anno": 2025,
+    "import_totale_usd": 1349543,
+    "fornitori": [
+     {
+      "partner": "France",
+      "iso2": "FR",
+      "valore_usd": 1047072,
+      "quota": 77.6
+     },
+     {
+      "partner": "USA",
+      "iso2": "US",
+      "valore_usd": 107796,
+      "quota": 8.0
+     },
+     {
+      "partner": "China",
+      "iso2": "CN",
+      "valore_usd": 64505,
+      "quota": 4.8
+     }
+    ],
+    "quota_cina": 4.8,
+    "valore_trascurabile": true,
+    "dipendenza_oltre_50": false
+   },
+   {
+    "importatore": "Italia",
+    "iso2": "IT",
+    "hs": "284690",
+    "prodotto": "Composti delle terre rare (escluso cerio)",
+    "uso_ai": "composti delle terre rare (ossidi separati)",
+    "anno": 2025,
+    "import_totale_usd": 5491736,
+    "fornitori": [
+     {
+      "partner": "Austria",
+      "iso2": "AT",
+      "valore_usd": 1606795,
+      "quota": 29.3
+     },
+     {
+      "partner": "Netherlands",
+      "iso2": "NL",
+      "valore_usd": 1162514,
+      "quota": 21.2
+     },
+     {
+      "partner": "Estonia",
+      "iso2": "EE",
+      "valore_usd": 1000724,
+      "quota": 18.2
+     }
+    ],
+    "quota_cina": null,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": false
+   },
+   {
+    "importatore": "Italia",
+    "iso2": "IT",
+    "hs": "850511",
+    "prodotto": "Magneti permanenti metallici (NdFeB)",
+    "uso_ai": "magneti NdFeB per motori, ventole, pompe e dischi rigidi",
+    "anno": 2025,
+    "import_totale_usd": 91907292,
+    "fornitori": [
+     {
+      "partner": "China",
+      "iso2": "CN",
+      "valore_usd": 73633042,
+      "quota": 80.1
+     },
+     {
+      "partner": "Germany",
+      "iso2": "DE",
+      "valore_usd": 6617901,
+      "quota": 7.2
+     },
+     {
+      "partner": "France",
+      "iso2": "FR",
+      "valore_usd": 5598583,
+      "quota": 6.1
+     }
+    ],
+    "quota_cina": 80.1,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": true
+   },
+   {
+    "importatore": "Italia",
+    "iso2": "IT",
+    "hs": "811292",
+    "prodotto": "Gallio, germanio, indio, niobio, vanadio grezzi (voce mista)",
+    "uso_ai": "gallio e germanio (voce doganale mista con indio, niobio, vanadio)",
+    "anno": 2025,
+    "import_totale_usd": 14544157,
+    "fornitori": [
+     {
+      "partner": "Netherlands",
+      "iso2": "NL",
+      "valore_usd": 7549869,
+      "quota": 51.9
+     },
+     {
+      "partner": "Germany",
+      "iso2": "DE",
+      "valore_usd": 4317425,
+      "quota": 29.7
+     },
+     {
+      "partner": "France",
+      "iso2": "FR",
+      "valore_usd": 1343391,
+      "quota": 9.2
+     }
+    ],
+    "quota_cina": null,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": true
+   },
+   {
+    "importatore": "Italia",
+    "iso2": "IT",
+    "hs": "380110",
+    "prodotto": "Grafite artificiale",
+    "uso_ai": "grafite artificiale (elettrodi, anodi)",
+    "anno": 2025,
+    "import_totale_usd": 39418391,
+    "fornitori": [
+     {
+      "partner": "Germany",
+      "iso2": "DE",
+      "valore_usd": 9134151,
+      "quota": 23.2
+     },
+     {
+      "partner": "China",
+      "iso2": "CN",
+      "valore_usd": 6090855,
+      "quota": 15.5
+     },
+     {
+      "partner": "USA",
+      "iso2": "US",
+      "valore_usd": 5742720,
+      "quota": 14.6
+     }
+    ],
+    "quota_cina": 15.5,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": false
+   },
+   {
+    "importatore": "Italia",
+    "iso2": "IT",
+    "hs": "740311",
+    "prodotto": "Catodi di rame raffinato",
+    "uso_ai": "rame raffinato per cavi, sbarre e trasformatori",
+    "anno": 2025,
+    "import_totale_usd": 4692652427,
+    "fornitori": [
+     {
+      "partner": "Dem. Rep. of the Congo",
+      "iso2": "CD",
+      "valore_usd": 962328713,
+      "quota": 20.5
+     },
+     {
+      "partner": "Bulgaria",
+      "iso2": "BG",
+      "valore_usd": 849366180,
+      "quota": 18.1
+     },
+     {
+      "partner": "Spain",
+      "iso2": "ES",
+      "valore_usd": 574314548,
+      "quota": 12.2
+     }
+    ],
+    "quota_cina": null,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": false
+   },
+   {
+    "importatore": "Italia",
+    "iso2": "IT",
+    "hs": "280461",
+    "prodotto": "Silicio (>=99,99%)",
+    "uso_ai": "silicio ad altissima purezza per polisilicio e wafer",
+    "anno": 2025,
+    "import_totale_usd": 40316783,
+    "fornitori": [
+     {
+      "partner": "Denmark",
+      "iso2": "DK",
+      "valore_usd": 23521595,
+      "quota": 58.3
+     },
+     {
+      "partner": "Germany",
+      "iso2": "DE",
+      "valore_usd": 9067333,
+      "quota": 22.5
+     },
+     {
+      "partner": "Rep. of Korea",
+      "iso2": "KR",
+      "valore_usd": 3735025,
+      "quota": 9.3
+     }
+    ],
+    "quota_cina": null,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": true
+   },
+   {
+    "importatore": "UE-27 (import extra-UE)",
+    "iso2": "EU",
+    "hs": "280530",
+    "prodotto": "Metalli delle terre rare, scandio e ittrio",
+    "uso_ai": "metalli delle terre rare (leghe per magneti)",
+    "anno": 2025,
+    "import_totale_usd": 12712231,
+    "fornitori": [
+     {
+      "partner": "China",
+      "iso2": "CN",
+      "valore_usd": 9961489,
+      "quota": 78.4
+     },
+     {
+      "partner": "Viet Nam",
+      "iso2": "VN",
+      "valore_usd": 1049266,
+      "quota": 8.3
+     },
+     {
+      "partner": "USA",
+      "iso2": "US",
+      "valore_usd": 467537,
+      "quota": 3.7
+     }
+    ],
+    "quota_cina": 78.4,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": true
+   },
+   {
+    "importatore": "UE-27 (import extra-UE)",
+    "iso2": "EU",
+    "hs": "284690",
+    "prodotto": "Composti delle terre rare (escluso cerio)",
+    "uso_ai": "composti delle terre rare (ossidi separati)",
+    "anno": 2025,
+    "import_totale_usd": 98825269,
+    "fornitori": [
+     {
+      "partner": "China",
+      "iso2": "CN",
+      "valore_usd": 38691636,
+      "quota": 39.2
+     },
+     {
+      "partner": "Norway",
+      "iso2": "NO",
+      "valore_usd": 21369498,
+      "quota": 21.6
+     },
+     {
+      "partner": "Malaysia",
+      "iso2": "MY",
+      "valore_usd": 12266449,
+      "quota": 12.4
+     }
+    ],
+    "quota_cina": 39.2,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": false
+   },
+   {
+    "importatore": "UE-27 (import extra-UE)",
+    "iso2": "EU",
+    "hs": "850511",
+    "prodotto": "Magneti permanenti metallici (NdFeB)",
+    "uso_ai": "magneti NdFeB per motori, ventole, pompe e dischi rigidi",
+    "anno": 2025,
+    "import_totale_usd": 1200507552,
+    "fornitori": [
+     {
+      "partner": "China",
+      "iso2": "CN",
+      "valore_usd": 1060552009,
+      "quota": 88.3
+     },
+     {
+      "partner": "USA",
+      "iso2": "US",
+      "valore_usd": 34034255,
+      "quota": 2.8
+     },
+     {
+      "partner": "Switzerland",
+      "iso2": "CH",
+      "valore_usd": 31929075,
+      "quota": 2.7
+     }
+    ],
+    "quota_cina": 88.3,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": true
+   },
+   {
+    "importatore": "UE-27 (import extra-UE)",
+    "iso2": "EU",
+    "hs": "811292",
+    "prodotto": "Gallio, germanio, indio, niobio, vanadio grezzi (voce mista)",
+    "uso_ai": "gallio e germanio (voce doganale mista con indio, niobio, vanadio)",
+    "anno": 2025,
+    "import_totale_usd": 125763289,
+    "fornitori": [
+     {
+      "partner": "Brazil",
+      "iso2": "BR",
+      "valore_usd": 57251031,
+      "quota": 45.5
+     },
+     {
+      "partner": "China",
+      "iso2": "CN",
+      "valore_usd": 35894207,
+      "quota": 28.5
+     },
+     {
+      "partner": "USA",
+      "iso2": "US",
+      "valore_usd": 18746423,
+      "quota": 14.9
+     }
+    ],
+    "quota_cina": 28.5,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": false
+   },
+   {
+    "importatore": "UE-27 (import extra-UE)",
+    "iso2": "EU",
+    "hs": "380110",
+    "prodotto": "Grafite artificiale",
+    "uso_ai": "grafite artificiale (elettrodi, anodi)",
+    "anno": 2025,
+    "import_totale_usd": 425634888,
+    "fornitori": [
+     {
+      "partner": "China",
+      "iso2": "CN",
+      "valore_usd": 281529308,
+      "quota": 66.1
+     },
+     {
+      "partner": "Japan",
+      "iso2": "JP",
+      "valore_usd": 41455226,
+      "quota": 9.7
+     },
+     {
+      "partner": "USA",
+      "iso2": "US",
+      "valore_usd": 29810929,
+      "quota": 7.0
+     }
+    ],
+    "quota_cina": 66.1,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": true
+   },
+   {
+    "importatore": "UE-27 (import extra-UE)",
+    "iso2": "EU",
+    "hs": "740311",
+    "prodotto": "Catodi di rame raffinato",
+    "uso_ai": "rame raffinato per cavi, sbarre e trasformatori",
+    "anno": 2025,
+    "import_totale_usd": 8237524291,
+    "fornitori": [
+     {
+      "partner": "Dem. Rep. of the Congo",
+      "iso2": "CD",
+      "valore_usd": 3315562406,
+      "quota": 40.2
+     },
+     {
+      "partner": "Chile",
+      "iso2": "CL",
+      "valore_usd": 2074852936,
+      "quota": 25.2
+     },
+     {
+      "partner": "Peru",
+      "iso2": "PE",
+      "valore_usd": 486469508,
+      "quota": 5.9
+     }
+    ],
+    "quota_cina": null,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": false
+   },
+   {
+    "importatore": "UE-27 (import extra-UE)",
+    "iso2": "EU",
+    "hs": "280461",
+    "prodotto": "Silicio (>=99,99%)",
+    "uso_ai": "silicio ad altissima purezza per polisilicio e wafer",
+    "anno": 2025,
+    "import_totale_usd": 141493864,
+    "fornitori": [
+     {
+      "partner": "USA",
+      "iso2": "US",
+      "valore_usd": 103694187,
+      "quota": 73.3
+     },
+     {
+      "partner": "China",
+      "iso2": "CN",
+      "valore_usd": 19653991,
+      "quota": 13.9
+     },
+     {
+      "partner": "Singapore",
+      "iso2": "SG",
+      "valore_usd": 4724054,
+      "quota": 3.3
+     }
+    ],
+    "quota_cina": 13.9,
+    "valore_trascurabile": false,
+    "dipendenza_oltre_50": true
+   }
+  ],
+  "altre_materie_controllate": [
+   {
+    "materia": "antimonio",
+    "nome": "Antimonio",
+    "uso_ai": "semiconduttori e ritardanti di fiamma; nel divieto verso gli USA di dicembre 2024",
+    "anno": 2025,
+    "primo": "CN",
+    "quota_primo": 36.1,
+    "quota_cina": 36.1,
+    "fonte": "USGS Mineral Commodity Summaries 2026",
+    "link": "https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release"
+   },
+   {
+    "materia": "tungsteno",
+    "nome": "Tungsteno",
+    "uso_ai": "bersagli di deposizione e contatti nei chip",
+    "anno": 2025,
+    "primo": "CN",
+    "quota_primo": 78.7,
+    "quota_cina": 78.7,
+    "fonte": "USGS Mineral Commodity Summaries 2026",
+    "link": "https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release"
+   },
+   {
+    "materia": "grafite",
+    "nome": "Grafite naturale",
+    "uso_ai": "anodi delle batterie dei sistemi di continuità dei data center",
+    "anno": 2025,
+    "primo": "CN",
+    "quota_primo": 77.8,
+    "quota_cina": 77.8,
+    "fonte": "USGS Mineral Commodity Summaries 2026",
+    "link": "https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release"
+   },
+   {
+    "materia": "magnesio",
+    "nome": "Magnesio metallico",
+    "uso_ai": "leghe leggere per chassis e componenti",
+    "anno": 2025,
+    "primo": "CN",
+    "quota_primo": 86.4,
+    "quota_cina": 86.4,
+    "fonte": "USGS Mineral Commodity Summaries 2026",
+    "link": "https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release"
+   }
+  ],
+  "capex_2026": {
+   "nota": "Spese in conto capitale 2026 indicate dai grandi gruppi (guida aziendale, dopo i conti di fine ottobre 2026 dove disponibile). Definizioni contabili diverse (cassa, leasing, anno fiscale). Non sono flussi geografici: la maggior parte va negli USA. Fonti secondarie con cifre in parte discordanti.",
+   "voci": [
+    {
+     "gruppo": "Amazon",
+     "usd_mld_min": 220,
+     "usd_mld_max": 220,
+     "data": "2026-10-29",
+     "fonte": "FourWeekMBA",
+     "link": "https://fourweekmba.com/ai-amazon-google-microsoft-guide-to-590b-the-week-in-quotes/",
+     "note": "Capex di cassa confermato ai conti del 3° trimestre."
+    },
+    {
+     "gruppo": "Alphabet",
+     "usd_mld_min": 195,
+     "usd_mld_max": 205,
+     "data": "2026-10-28",
+     "fonte": "FourWeekMBA",
+     "link": "https://fourweekmba.com/ai-amazon-google-microsoft-guide-to-590b-the-week-in-quotes/",
+     "note": "Forchetta alzata a luglio e confermata."
+    },
+    {
+     "gruppo": "Microsoft",
+     "usd_mld_min": 170,
+     "usd_mld_max": 190,
+     "data": "2026-10",
+     "fonte": "Tom's Hardware",
+     "link": "https://www.tomshardware.com/tech-industry/big-tech/microsoft-attributed-25-billion-of-its-record-ai-budget-to-memory-chip-costs",
+     "note": "Fonti discordi (circa 170 o 190 per l'anno solare 2026); 25 mld attribuiti al rincaro della memoria; oltre 50 mld nel trimestre ottobre-dicembre."
+    },
+    {
+     "gruppo": "Meta",
+     "usd_mld_min": 135,
+     "usd_mld_max": 145,
+     "data": "2026-10-21",
+     "fonte": "NextMSC",
+     "link": "https://www.nextmsc.com/industry-deep-dive/hyperscaler-capex-comparison-2026",
+     "note": "Forchetta rivista per il prezzo dei componenti, soprattutto memoria."
+    }
+   ]
+  },
+  "nota": "minerali_confronto: quota del primo produttore qui e in minerali.json (stessa fonte USGS 2026); dipendenze_ue_italia: import 2025 di Italia e UE-27 (extra-UE) per voce doganale da commercio.json (UN Comtrade), con i primi tre fornitori; per l'Italia gli acquisti intra-UE sono attribuiti al paese di spedizione, non di origine."
+ },
  "riepilogo": {
   "nodi_per_anello": {
    "materie": 9,
@@ -5619,10 +6243,9 @@
    "attenzione": 2
   },
   "controlli_per_stato": {
-   "in-vigore": 8,
-   "sospeso": 2,
+   "in-vigore": 9,
+   "sospeso": 3,
    "interrotto": 1,
-   "incerto": 1,
    "proposto": 1
   },
   "archi_tra_anelli": {
@@ -5669,7 +6292,6 @@
  "avvisi": [
   "materia germanio: nessuna quota per paese (dato mancante dichiarato)",
   "collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare",
-  "collo C09: valore manuale «Carenza di chip EML da 200G per corsia (stima)» del 2026, da ricontrollare",
   "collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
  ],
  "errori": []

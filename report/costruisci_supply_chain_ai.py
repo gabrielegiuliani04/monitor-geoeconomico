@@ -102,6 +102,17 @@ class Doc:
     def svg(self, largo, stretto, didascalia, nome_md):
         self.b.append(("svg", largo, stretto, didascalia, nome_md))
 
+    def apri(self, sommario, aperto=False):
+        """Inizio di un blocco comprimibile (<details>): su telefono la pagina resta corta."""
+        self.b.append(("apri", sommario, aperto))
+
+    def chiudi(self):
+        self.b.append(("chiudi",))
+
+    def box(self, classe, titolo, voci):
+        """Riquadro con titolo ed elenco (stato delle scadenze, revisione)."""
+        self.b.append(("box", classe, titolo, voci))
+
     def md(self):
         out = []
         for b in self.b:
@@ -120,7 +131,7 @@ class Doc:
                 out.append("| " + " | ".join(b[1]) + " |")
                 out.append("|" + "---|" * len(b[1]))
                 for r in b[2]:
-                    out.append("| " + " | ".join(str(c).replace("|", "/") for c in r) + " |")
+                    out.append("| " + " | ".join(cella_md(c) for c in r) + " |")
                 out.append("")
                 if b[3]:
                     out += ["<small>" + b[3] + "</small>", ""]
@@ -128,6 +139,12 @@ class Doc:
                 out += ["<small>" + b[1] + "</small>", ""]
             elif k == "svg":
                 out += ["![%s](grafici/%s)" % (re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", b[3]).split(".")[0], b[4]), "", "<small>" + b[3] + "</small>", ""]
+            elif k == "apri":
+                out += ["<details%s><summary>%s</summary>" % (" open" if b[2] else "", re.sub(r"\*\*(.+?)\*\*", r"\1", b[1])), ""]
+            elif k == "chiudi":
+                out += ["</details>", ""]
+            elif k == "box":
+                out += ["> **%s**" % b[2], ">"] + ["> - " + v for v in b[3]] + [""]
         return "\n".join(out)
 
     def html(self):
@@ -159,6 +176,13 @@ class Doc:
             elif k == "svg":
                 out.append('<figure><div class="grafico"><div class="largo">%s</div><div class="stretto">%s</div></div>'
                            '<figcaption>%s</figcaption></figure>' % (b[1], b[2], inline_html(b[3])))
+            elif k == "apri":
+                out.append('<details class="dettagli"%s><summary>%s</summary>' % (" open" if b[2] else "", inline_html(b[1])))
+            elif k == "chiudi":
+                out.append("</details>")
+            elif k == "box":
+                out.append('<aside class="box %s"><p class="box-titolo">%s</p><ul>%s</ul></aside>' % (
+                    b[1], inline_html(b[2]), "".join("<li>%s</li>" % inline_html(v) for v in b[3])))
         return "\n".join(out)
 
 
@@ -169,6 +193,12 @@ def cella_html(c):
         sym, lab, cls = STATO_ETICHETTA.get(m.group(1), ("○", m.group(1), ""))
         return '<span class="stato %s">%s</span>' % (cls, html.escape(lab))
     return inline_html(c)
+
+
+def cella_md(c):
+    c = str(c).replace("|", "/")
+    m = re.match(r"^\{stato:([a-z ]+)\}$", c)
+    return stato_md(m.group(1)) if m else c
 
 
 def stato_md(s):

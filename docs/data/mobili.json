@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-09",
+ "aggiornato": "2026-11-10",
  "schema": "regole/02_schema-dati.md v2.1 + extra di mappa",
  "punti": [
   {
@@ -10,25 +10,30 @@
    "identificativo": "CVN-77",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-07",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
-   "lat": 24.5,
-   "lon": 58.8,
+   "lat": 16,
+   "lon": 62,
    "origine_coord": "stimata",
-   "precisione_km": 250,
+   "precisione_km": 800,
    "teatro": "MO",
    "paese": "",
-   "regione": "Golfo di Oman, area indicativa",
+   "regione": "Mar Arabico (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@Indowatchosint su X",
-   "link": "https://x.com/Indowatchosint/status/2118931237410861517",
-   "data_fonte": "2026-11-07",
-   "affidabilita": "media",
-   "note": "Il 7 novembre @Indowatchosint segnala un elicottero MH-60S della Bush (matricola 168552) in volo vicino al Golfo di Oman: la posizione della nave è dedotta dall'elicottero e il cerchio è quello del Golfo di Oman. Impegnata nel blocco dei porti iraniani, in vigore dal 14 luglio secondo il CENTCOM. Il 3 novembre una didascalia ufficiale della US Navy la collocava nell'area della Quinta Flotta e il 2 novembre USNI nel Mar Arabico, con il Carrier Air Wing 7. Naviga con il transponder AIS spento. Il Fleet and Marine Tracker di USNI del 2 novembre la metteva nel Mar Arabico, senza coordinate: è un dato più vecchio dell'elicottero del 7, per questo il punto resta nel Golfo di Oman. Il tracker del 9 novembre alle 16:45 non era ancora uscito.",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "alta",
+   "note": "Il 9 novembre USNI la colloca nel Mar Arabico con il Carrier Strike Group 10, a sostegno delle operazioni in Medio Oriente (posizione indicativa, senza coordinate). Il 7 novembre @Indowatchosint segnala un elicottero MH-60S della Bush (matricola 168552) in volo vicino al Golfo di Oman: la posizione della nave è dedotta dall'elicottero e il cerchio è quello del Golfo di Oman. Impegnata nel blocco dei porti iraniani, in vigore dal 14 luglio secondo il CENTCOM. Il 3 novembre una didascalia ufficiale della US Navy la collocava nell'area della Quinta Flotta e il 2 novembre USNI nel Mar Arabico, con il Carrier Air Wing 7. Naviga con il transponder AIS spento. Il Fleet and Marine Tracker di USNI del 2 novembre la metteva nel Mar Arabico, senza coordinate: è un dato più vecchio dell'elicottero del 7, per questo il punto resta nel Golfo di Oman.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@Indowatchosint su X",
      "link": "https://x.com/Indowatchosint/status/2118931237410861517",
@@ -67,6 +72,15 @@
    "capo": 1,
    "storico": [
     {
+     "data_evento": "2026-11-07",
+     "lat": 24.5,
+     "lon": 58.8,
+     "origine_coord": "stimata",
+     "precisione_km": 250,
+     "affidabilita": "media",
+     "nota": "Golfo di Oman, area indicativa"
+    },
+    {
      "data_evento": "2026-11-03",
      "lat": 16,
      "lon": 62,
@@ -85,7 +99,7 @@
    "identificativo": "DDG-75",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 16,
    "lon": 62,
@@ -93,17 +107,22 @@
    "precisione_km": 800,
    "teatro": "MO",
    "paese": "",
-   "regione": "Mar Arabico",
+   "regione": "Mar Arabico (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "USNI News, Fleet and Marine Tracker",
-   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
-   "data_fonte": "2026-11-02",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Scorta della Bush secondo il Fleet Tracker di USNI. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "note": "Il 9 novembre USNI la elenca nel Destroyer Squadron 22 con la Bush, nel Mar Arabico. Scorta della Bush secondo il Fleet Tracker di USNI. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "USNI News, Fleet and Marine Tracker",
      "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
@@ -132,7 +151,7 @@
    "identificativo": "CVN-73",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-04",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 16,
    "lon": 62,
@@ -140,17 +159,22 @@
    "precisione_km": 800,
    "teatro": "MO",
    "paese": "",
-   "regione": "Mar Arabico",
+   "regione": "Mar Arabico (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@ConflictRadarME su X (aggregatore senza immagini)",
-   "link": "https://x.com/ConflictRadarME/status/2118082521258775020",
-   "data_fonte": "2026-11-04",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "alta",
-   "note": "Impegnata nel blocco dei porti iraniani insieme alla Bush. Ha base a Yokosuka ed è in Medio Oriente da agosto. USNI la dà nel Mar Arabico il 2 novembre con il Carrier Air Wing 5; un aggregatore su X la segnala ancora lì il 4, senza immagini. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "note": "Il 9 novembre USNI la colloca nel Mar Arabico con il Carrier Air Wing 5 e la USS Shoup. Impegnata nel blocco dei porti iraniani insieme alla Bush. Ha base a Yokosuka ed è in Medio Oriente da agosto. USNI la dà nel Mar Arabico il 2 novembre con il Carrier Air Wing 5; un aggregatore su X la segnala ancora lì il 4, senza immagini. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@ConflictRadarME su X (aggregatore senza immagini)",
      "link": "https://x.com/ConflictRadarME/status/2118082521258775020",
@@ -199,7 +223,7 @@
    "identificativo": "DDG-86",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-04",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 16,
    "lon": 62,
@@ -207,17 +231,22 @@
    "precisione_km": 800,
    "teatro": "MO",
    "paese": "",
-   "regione": "Mar Arabico",
+   "regione": "Mar Arabico (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@ConflictRadarME su X (aggregatore senza immagini)",
-   "link": "https://x.com/ConflictRadarME/status/2118082521258775020",
-   "data_fonte": "2026-11-04",
-   "affidabilita": "media",
-   "note": "Scorta della George Washington secondo USNI. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "alta",
+   "note": "Il 9 novembre USNI la colloca nel Mar Arabico con la George Washington. Scorta della George Washington secondo USNI. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@ConflictRadarME su X (aggregatore senza immagini)",
      "link": "https://x.com/ConflictRadarME/status/2118082521258775020",
@@ -254,25 +283,30 @@
    "identificativo": "DDG-53",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-10-31",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 16,
    "lon": 62,
    "origine_coord": "stimata",
-   "precisione_km": 800,
+   "precisione_km": 1000,
    "teatro": "MO",
    "paese": "",
-   "regione": "Mar Arabico",
+   "regione": "Medio Oriente, mare non precisato (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "The Boston Report, tracker degli schieramenti",
-   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
-   "data_fonte": "2026-11-04",
-   "affidabilita": "media",
-   "note": "Il 31 ottobre ha soccorso con la USS Ross un dhow in avaria nel Mar Arabico (comunicato NAVCENT, letto tramite un riepilogo). Il 2 novembre USNI la elenca tra le unità «nella regione». La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "alta",
+   "note": "Il 9 novembre USNI la elenca tra le navi schierate «nella regione», senza indicare il mare. Il 31 ottobre ha soccorso con la USS Ross un dhow in avaria nel Mar Arabico (comunicato NAVCENT, letto tramite un riepilogo). Il 2 novembre USNI la elenca tra le unità «nella regione». La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "The Boston Report, tracker degli schieramenti",
      "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
@@ -300,7 +334,7 @@
    "identificativo": "DDG-71",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-04",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 16,
    "lon": 62,
@@ -308,17 +342,22 @@
    "precisione_km": 800,
    "teatro": "MO",
    "paese": "",
-   "regione": "Mar Arabico",
+   "regione": "Mar Arabico (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@CENTCOM su X, foto ufficiale",
-   "link": "https://x.com/CENTCOM/status/2118029381876568198",
-   "data_fonte": "2026-11-04",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "alta",
-   "note": "Foto ufficiale CENTCOM con la didascalia «nel Mar Arabico»: la data è quella del post, non dello scatto. USNI la dà con il gruppo della George Washington. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "note": "Il 9 novembre USNI la elenca nel Destroyer Squadron 15 imbarcato sulla George Washington, nel Mar Arabico. Foto ufficiale CENTCOM con la didascalia «nel Mar Arabico»: la data è quella del post, non dello scatto. USNI la dà con il gruppo della George Washington. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@CENTCOM su X, foto ufficiale",
      "link": "https://x.com/CENTCOM/status/2118029381876568198",
@@ -355,7 +394,7 @@
    "identificativo": "DDG-120",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 16,
    "lon": 62,
@@ -363,17 +402,22 @@
    "precisione_km": 1000,
    "teatro": "MO",
    "paese": "",
-   "regione": "Medio Oriente, mare non precisato",
+   "regione": "Medio Oriente, mare non precisato (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "USNI News, Fleet and Marine Tracker",
-   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
-   "data_fonte": "2026-11-02",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "alta",
-   "note": "Fa parte della scorta della Roosevelt ma opera già nell'area CENTCOM, distaccata dal gruppo. USNI la elenca il 2 novembre tra le unità «nella regione», senza dire il mare.",
+   "note": "Il 9 novembre USNI la elenca ancora tra le navi schierate «nella regione», senza indicare il mare. Fa parte della scorta della Roosevelt ma opera già nell'area CENTCOM, distaccata dal gruppo. USNI la elenca il 2 novembre tra le unità «nella regione», senza dire il mare.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "USNI News, Fleet and Marine Tracker",
      "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
@@ -401,25 +445,30 @@
    "identificativo": "LHD-4",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
-   "lat": 8,
-   "lon": 65,
+   "lat": 10,
+   "lon": 73.5,
    "origine_coord": "stimata",
-   "precisione_km": 1500,
+   "precisione_km": 500,
    "teatro": "MO",
    "paese": "",
-   "regione": "Oceano Indiano",
+   "regione": "Oceano Indiano, nei pressi del Mar delle Laccadive (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "USNI News, Fleet and Marine Tracker",
-   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
-   "data_fonte": "2026-11-02",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "alta",
-   "note": "Ammiraglia del gruppo anfibio Boxer con l'11ª Marine Expeditionary Unit, in zona da luglio. Il 26 ottobre era segnalata nel Mar Arabico, il 2 novembre nell'Oceano Indiano, dove c'è anche il cacciatorpediniere USS Mustin. La raccolta giornali ha lasciato le coordinate vuote perché l'area è troppo ampia: il punto è solo indicativo.",
+   "note": "Il 9 novembre USNI colloca il Boxer Amphibious Ready Group nell’Oceano Indiano, nei pressi del Mar delle Laccadive (posizione indicativa). Ammiraglia del gruppo anfibio Boxer con l'11ª Marine Expeditionary Unit, in zona da luglio. Il 26 ottobre era segnalata nel Mar Arabico, il 2 novembre nell'Oceano Indiano, dove c'è anche il cacciatorpediniere USS Mustin. La raccolta giornali ha lasciato le coordinate vuote perché l'area è troppo ampia: il punto è solo indicativo.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "USNI News, Fleet and Marine Tracker",
      "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
@@ -448,7 +497,18 @@
     "GI-20261105-26"
    ],
    "gruppo": "boxer",
-   "capo": 1
+   "capo": 1,
+   "storico": [
+    {
+     "data_evento": "2026-11-02",
+     "lat": 8,
+     "lon": 65,
+     "origine_coord": "stimata",
+     "precisione_km": 1500,
+     "affidabilita": "alta",
+     "nota": "Oceano Indiano"
+    }
+   ]
   },
   {
    "id": "MP-20261105-09",
@@ -458,25 +518,30 @@
    "identificativo": "LSD-45",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
-   "lat": 8,
-   "lon": 65,
+   "lat": 10,
+   "lon": 73.5,
    "origine_coord": "stimata",
-   "precisione_km": 1500,
+   "precisione_km": 500,
    "teatro": "MO",
    "paese": "",
-   "regione": "Oceano Indiano",
+   "regione": "Oceano Indiano, nei pressi del Mar delle Laccadive (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "USNI News, Fleet and Marine Tracker",
-   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
-   "data_fonte": "2026-11-02",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Nave da sbarco del gruppo anfibio Boxer. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "note": "Il 9 novembre USNI colloca il Boxer Amphibious Ready Group nell’Oceano Indiano, nei pressi del Mar delle Laccadive (posizione indicativa). Nave da sbarco del gruppo anfibio Boxer. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "USNI News, Fleet and Marine Tracker",
      "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
@@ -500,6 +565,17 @@
    "sim": [
     8.25,
     65.45
+   ],
+   "storico": [
+    {
+     "data_evento": "2026-11-02",
+     "lat": 8,
+     "lon": 65,
+     "origine_coord": "stimata",
+     "precisione_km": 1500,
+     "affidabilita": "media",
+     "nota": "Oceano Indiano"
+    }
    ]
   },
   {
@@ -510,25 +586,30 @@
    "identificativo": "LPD-27",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
-   "lat": 8,
-   "lon": 65,
+   "lat": 10,
+   "lon": 73.5,
    "origine_coord": "stimata",
-   "precisione_km": 1500,
+   "precisione_km": 500,
    "teatro": "MO",
    "paese": "",
-   "regione": "Oceano Indiano",
+   "regione": "Oceano Indiano, nei pressi del Mar delle Laccadive (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "USNI News, Fleet and Marine Tracker",
-   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
-   "data_fonte": "2026-11-02",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Nave da trasporto anfibio del gruppo Boxer. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "note": "Il 9 novembre USNI colloca il Boxer Amphibious Ready Group nell’Oceano Indiano, nei pressi del Mar delle Laccadive (posizione indicativa). Nave da trasporto anfibio del gruppo Boxer. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "USNI News, Fleet and Marine Tracker",
      "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
@@ -552,6 +633,17 @@
    "sim": [
     8.25,
     64.55
+   ],
+   "storico": [
+    {
+     "data_evento": "2026-11-02",
+     "lat": 8,
+     "lon": 65,
+     "origine_coord": "stimata",
+     "precisione_km": 1500,
+     "affidabilita": "media",
+     "nota": "Oceano Indiano"
+    }
    ]
   },
   {
@@ -562,7 +654,7 @@
    "identificativo": "DDG-109",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 20.5,
    "lon": 38.5,
@@ -570,17 +662,22 @@
    "precisione_km": 800,
    "teatro": "MO",
    "paese": "",
-   "regione": "Mar Rosso",
+   "regione": "Mar Rosso (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "USNI News, Fleet and Marine Tracker",
-   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
-   "data_fonte": "2026-11-02",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Nel Mar Rosso secondo il Fleet Tracker di USNI. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "note": "Il 9 novembre USNI la colloca ancora nel Mar Rosso. Nel Mar Rosso secondo il Fleet Tracker di USNI. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "USNI News, Fleet and Marine Tracker",
      "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
@@ -603,7 +700,7 @@
    "identificativo": "DDG-66",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 20.5,
    "lon": 38.5,
@@ -611,17 +708,22 @@
    "precisione_km": 800,
    "teatro": "MO",
    "paese": "",
-   "regione": "Mar Rosso",
+   "regione": "Mar Rosso (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "USNI News, Fleet and Marine Tracker",
-   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
-   "data_fonte": "2026-11-02",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Nel Mar Rosso secondo il Fleet Tracker di USNI. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "note": "Il 9 novembre USNI la colloca ancora nel Mar Rosso. Nel Mar Rosso secondo il Fleet Tracker di USNI. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "USNI News, Fleet and Marine Tracker",
      "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
@@ -644,25 +746,30 @@
    "identificativo": "CVN-71",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-08",
+   "data_evento": "2026-11-09",
    "ora_utc": "21:50",
-   "lat": 2.5,
-   "lon": 101.3,
+   "lat": 9.5,
+   "lon": 96,
    "origine_coord": "stimata",
-   "precisione_km": 60,
+   "precisione_km": 400,
    "teatro": "ALTRO",
    "paese": "",
-   "regione": "Stretto di Malacca",
+   "regione": "Mare delle Andamane (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@Indowatchosint su X",
-   "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
    "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Ultima posizione AIS ricevuta da terra: a metà dello Stretto di Malacca, circa cinque ore prima del post di Indowatch delle 02:50 UTC del 9 novembre (ora stimata). Indowatch dice che l'AIS resterà spento per mesi. Punto stimato al centro dello stretto. Con Chosin, Decatur e Paul Hamilton. La timeline di Indowatch, che si dichiara una stima: Canale dei Sei Gradi il 9, area CENTCOM il 14-15, Mar Arabico il 15-16 novembre. In mare, verso il Mar Arabico.",
+   "note": "Il 9 novembre USNI scrive che la Theodore Roosevelt, arrivata a Singapore venerdì 6, è ripartita lunedì 9 e opera nel Mare delle Andamane secondo gli osservatori navali; il gruppo è atteso in Medio Oriente per dare il cambio alla George Washington (USNI, 6 novembre). Ultima posizione AIS ricevuta da terra: a metà dello Stretto di Malacca, circa cinque ore prima del post di Indowatch delle 02:50 UTC del 9 novembre (ora stimata). Indowatch dice che l'AIS resterà spento per mesi. Punto stimato al centro dello stretto. Con Chosin, Decatur e Paul Hamilton. La timeline di Indowatch, che si dichiara una stima: Canale dei Sei Gradi il 9, area CENTCOM il 14-15, Mar Arabico il 15-16 novembre. In mare, verso il Mar Arabico.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@Indowatchosint su X",
      "link": "https://x.com/Indowatchosint/status/2119623753667924396",
@@ -725,6 +832,15 @@
    "storico": [
     {
      "data_evento": "2026-11-08",
+     "lat": 2.5,
+     "lon": 101.3,
+     "origine_coord": "stimata",
+     "precisione_km": 60,
+     "affidabilita": "media",
+     "nota": "Stretto di Malacca"
+    },
+    {
+     "data_evento": "2026-11-08",
      "lat": 1.2,
      "lon": 103.5,
      "origine_coord": "stimata",
@@ -760,25 +876,30 @@
    "identificativo": "CG-65",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-08",
+   "data_evento": "2026-11-09",
    "ora_utc": "21:50",
-   "lat": 2.5,
-   "lon": 101.3,
+   "lat": 9.5,
+   "lon": 96,
    "origine_coord": "stimata",
-   "precisione_km": 60,
+   "precisione_km": 400,
    "teatro": "ALTRO",
    "paese": "",
-   "regione": "Con il gruppo della Roosevelt, Stretto di Malacca",
+   "regione": "Mare delle Andamane (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@Indowatchosint su X",
-   "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
    "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Con la Roosevelt nello Stretto di Malacca la sera dell'8 novembre, secondo Indowatch. In mare. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "note": "Il 9 novembre USNI scrive che la Theodore Roosevelt, arrivata a Singapore venerdì 6, è ripartita lunedì 9 e opera nel Mare delle Andamane secondo gli osservatori navali; il gruppo è atteso in Medio Oriente per dare il cambio alla George Washington (USNI, 6 novembre). Con la Roosevelt nello Stretto di Malacca la sera dell'8 novembre, secondo Indowatch. In mare. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@Indowatchosint su X",
      "link": "https://x.com/Indowatchosint/status/2119623753667924396",
@@ -816,6 +937,15 @@
    "storico": [
     {
      "data_evento": "2026-11-08",
+     "lat": 2.5,
+     "lon": 101.3,
+     "origine_coord": "stimata",
+     "precisione_km": 60,
+     "affidabilita": "media",
+     "nota": "Con il gruppo della Roosevelt, Stretto di Malacca"
+    },
+    {
+     "data_evento": "2026-11-08",
      "lat": 1.2,
      "lon": 103.5,
      "origine_coord": "stimata",
@@ -846,25 +976,30 @@
    "identificativo": "DDG-73",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-08",
+   "data_evento": "2026-11-09",
    "ora_utc": "21:50",
-   "lat": 2.5,
-   "lon": 101.3,
+   "lat": 9.5,
+   "lon": 96,
    "origine_coord": "stimata",
-   "precisione_km": 60,
+   "precisione_km": 400,
    "teatro": "ALTRO",
    "paese": "",
-   "regione": "Con il gruppo della Roosevelt, Stretto di Malacca",
+   "regione": "Mare delle Andamane (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@Indowatchosint su X",
-   "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
    "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Con la Roosevelt nello Stretto di Malacca la sera dell'8 novembre, secondo Indowatch. In mare. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "note": "Il 9 novembre USNI scrive che la Theodore Roosevelt, arrivata a Singapore venerdì 6, è ripartita lunedì 9 e opera nel Mare delle Andamane secondo gli osservatori navali; il gruppo è atteso in Medio Oriente per dare il cambio alla George Washington (USNI, 6 novembre). Con la Roosevelt nello Stretto di Malacca la sera dell'8 novembre, secondo Indowatch. In mare. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@Indowatchosint su X",
      "link": "https://x.com/Indowatchosint/status/2119623753667924396",
@@ -897,6 +1032,15 @@
    "storico": [
     {
      "data_evento": "2026-11-08",
+     "lat": 2.5,
+     "lon": 101.3,
+     "origine_coord": "stimata",
+     "precisione_km": 60,
+     "affidabilita": "media",
+     "nota": "Con il gruppo della Roosevelt, Stretto di Malacca"
+    },
+    {
+     "data_evento": "2026-11-08",
      "lat": 1.2,
      "lon": 103.5,
      "origine_coord": "stimata",
@@ -927,25 +1071,30 @@
    "identificativo": "DDG-60",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-08",
+   "data_evento": "2026-11-09",
    "ora_utc": "21:50",
-   "lat": 2.5,
-   "lon": 101.3,
+   "lat": 9.5,
+   "lon": 96,
    "origine_coord": "stimata",
-   "precisione_km": 60,
+   "precisione_km": 400,
    "teatro": "ALTRO",
    "paese": "",
-   "regione": "Con il gruppo della Roosevelt, Stretto di Malacca",
+   "regione": "Mare delle Andamane (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@Indowatchosint su X",
-   "link": "https://x.com/Indowatchosint/status/2119623753667924396",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
    "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Con la Roosevelt nello Stretto di Malacca la sera dell'8 novembre, secondo Indowatch. In mare. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
+   "note": "Il 9 novembre USNI scrive che la Theodore Roosevelt, arrivata a Singapore venerdì 6, è ripartita lunedì 9 e opera nel Mare delle Andamane secondo gli osservatori navali; il gruppo è atteso in Medio Oriente per dare il cambio alla George Washington (USNI, 6 novembre). Con la Roosevelt nello Stretto di Malacca la sera dell'8 novembre, secondo Indowatch. In mare. Non ha coordinate proprie: è disegnata accanto all'ammiraglia.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@Indowatchosint su X",
      "link": "https://x.com/Indowatchosint/status/2119623753667924396",
@@ -981,6 +1130,15 @@
     101.37
    ],
    "storico": [
+    {
+     "data_evento": "2026-11-08",
+     "lat": 2.5,
+     "lon": 101.3,
+     "origine_coord": "stimata",
+     "precisione_km": 60,
+     "affidabilita": "media",
+     "nota": "Con il gruppo della Roosevelt, Stretto di Malacca"
+    },
     {
      "data_evento": "2026-11-08",
      "lat": 1.2,
@@ -1098,25 +1256,30 @@
    "identificativo": "LHD-8",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-07",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
-   "lat": 35.293,
-   "lon": 139.667,
+   "lat": 39,
+   "lon": 134,
    "origine_coord": "stimata",
-   "precisione_km": 2,
+   "precisione_km": 500,
    "teatro": "ALTRO",
    "paese": "JP",
-   "regione": "Partita da Yokosuka verso l'area CENTCOM",
+   "regione": "Mar del Giappone (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@Indowatchosint su X",
-   "link": "https://x.com/Indowatchosint/status/2118945274425208979",
-   "data_fonte": "2026-11-07",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "alta",
-   "note": "Partita da Yokosuka il 7 novembre secondo @Indowatchosint: il punto è il porto di partenza, la posizione in mare non è nota. In porto a Yokosuka con la 13ª Marine Expeditionary Unit. Il 6 novembre @Indowatchosint, che cita il centro del traffico marittimo della baia di Tokyo, ne annuncia la partenza per il 7, probabilmente per l'esercitazione Malabar, che dura fino al 12 novembre. Partita da San Diego il 28 settembre. Secondo funzionari USA citati dalla stampa è diretta in Medio Oriente. L'8 novembre Indowatch scrive che è partita per l'area CENTCOM e che non trasmette l'AIS in continuo: posizione e data di partenza non date. Il punto resta l'ultima posizione nota, Yokosuka, con il «?». Verso l'area CENTCOM.",
+   "note": "Il 9 novembre USNI scrive che la Makin Island è partita sabato 7 da Yokosuka e che il gruppo anfibio, con Anchorage, John P. Murtha e la 13ª MEU, opera nel Mar del Giappone (posizione indicativa). Partita da Yokosuka il 7 novembre secondo @Indowatchosint: il punto è il porto di partenza, la posizione in mare non è nota. In porto a Yokosuka con la 13ª Marine Expeditionary Unit. Il 6 novembre @Indowatchosint, che cita il centro del traffico marittimo della baia di Tokyo, ne annuncia la partenza per il 7, probabilmente per l'esercitazione Malabar, che dura fino al 12 novembre. Partita da San Diego il 28 settembre. Secondo funzionari USA citati dalla stampa è diretta in Medio Oriente. L'8 novembre Indowatch scrive che è partita per l'area CENTCOM e che non trasmette l'AIS in continuo: posizione e data di partenza non date. Il punto resta l'ultima posizione nota, Yokosuka, con il «?». Verso l'area CENTCOM.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@Indowatchosint su X",
      "link": "https://x.com/Indowatchosint/status/2118945274425208979",
@@ -1151,14 +1314,24 @@
    "sagoma": "anfibia",
    "breve": "Makin Island",
    "dettaglio": "classe Wasp",
-   "dubbia": 1,
    "ids": [
     "X-20261107-23",
     "X-20261106-04",
     "X-20261109-16"
    ],
    "gruppo": "makin",
-   "capo": 1
+   "capo": 1,
+   "storico": [
+    {
+     "data_evento": "2026-11-07",
+     "lat": 35.293,
+     "lon": 139.667,
+     "origine_coord": "stimata",
+     "precisione_km": 2,
+     "affidabilita": "alta",
+     "nota": "Partita da Yokosuka verso l'area CENTCOM"
+    }
+   ]
   },
   {
    "id": "MP-20261105-18",
@@ -1168,25 +1341,30 @@
    "identificativo": "LPD-23",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-07",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
-   "lat": 35.293,
-   "lon": 139.667,
+   "lat": 39,
+   "lon": 134,
    "origine_coord": "stimata",
-   "precisione_km": 3,
+   "precisione_km": 500,
    "teatro": "ALTRO",
    "paese": "JP",
-   "regione": "A sud di Tokyo, esercitazione Malabar",
+   "regione": "Mar del Giappone (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@Indowatchosint su X",
-   "link": "https://x.com/Indowatchosint/status/2118943273003999472",
-   "data_fonte": "2026-11-07",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Partita da Yokosuka il 7 novembre secondo @Indowatchosint: il punto è il porto di partenza, la posizione in mare non è nota. Nave da trasporto anfibio del gruppo Makin Island. Il 6 novembre @naval_post la dà a Yokosuka per l'esercitazione Malabar 2026, che secondo la fonte si apre lì. Partenza attesa il 7 novembre secondo @Indowatchosint. Punto stimato dal porto. Secondo lo stesso post di Indowatch dell'8 novembre è a sud di Tokyo per l'esercitazione Malabar, quindi non con la Makin Island: posizione non data, il punto resta Yokosuka.",
+   "note": "Il 9 novembre USNI scrive che la Makin Island è partita sabato 7 da Yokosuka e che il gruppo anfibio, con Anchorage, John P. Murtha e la 13ª MEU, opera nel Mar del Giappone (posizione indicativa). Partita da Yokosuka il 7 novembre secondo @Indowatchosint: il punto è il porto di partenza, la posizione in mare non è nota. Nave da trasporto anfibio del gruppo Makin Island. Il 6 novembre @naval_post la dà a Yokosuka per l'esercitazione Malabar 2026, che secondo la fonte si apre lì. Partenza attesa il 7 novembre secondo @Indowatchosint. Punto stimato dal porto. Secondo lo stesso post di Indowatch dell'8 novembre è a sud di Tokyo per l'esercitazione Malabar, quindi non con la Makin Island: posizione non data, il punto resta Yokosuka.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@Indowatchosint su X",
      "link": "https://x.com/Indowatchosint/status/2118943273003999472",
@@ -1221,7 +1399,6 @@
    "sagoma": "lpd",
    "breve": "Anchorage",
    "dettaglio": "classe San Antonio",
-   "dubbia": 1,
    "ids": [
     "X-20261107-24",
     "X-20261106-05",
@@ -1231,6 +1408,17 @@
    "sim": [
     35.27,
     139.72
+   ],
+   "storico": [
+    {
+     "data_evento": "2026-11-07",
+     "lat": 35.293,
+     "lon": 139.667,
+     "origine_coord": "stimata",
+     "precisione_km": 3,
+     "affidabilita": "media",
+     "nota": "A sud di Tokyo, esercitazione Malabar"
+    }
    ]
   },
   {
@@ -1241,25 +1429,30 @@
    "identificativo": "LPD-26",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-07",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
-   "lat": 35.293,
-   "lon": 139.667,
+   "lat": 39,
+   "lon": 134,
    "origine_coord": "stimata",
-   "precisione_km": 3,
+   "precisione_km": 500,
    "teatro": "ALTRO",
    "paese": "JP",
-   "regione": "A sud di Tokyo, esercitazione Malabar",
+   "regione": "Mar del Giappone (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "@Indowatchosint su X",
-   "link": "https://x.com/Indowatchosint/status/2118943273003999472",
-   "data_fonte": "2026-11-07",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Partita da Yokosuka il 7 novembre secondo @Indowatchosint: il punto è il porto di partenza, la posizione in mare non è nota. Nave da trasporto anfibio del gruppo Makin Island. Il 6 novembre @naval_post la dà a Yokosuka per l'esercitazione Malabar 2026. Partenza attesa il 7 novembre secondo @Indowatchosint. Punto stimato dal porto. Secondo lo stesso post di Indowatch dell'8 novembre è a sud di Tokyo per l'esercitazione Malabar, quindi non con la Makin Island: posizione non data, il punto resta Yokosuka.",
+   "note": "Il 9 novembre USNI scrive che la Makin Island è partita sabato 7 da Yokosuka e che il gruppo anfibio, con Anchorage, John P. Murtha e la 13ª MEU, opera nel Mar del Giappone (posizione indicativa). Partita da Yokosuka il 7 novembre secondo @Indowatchosint: il punto è il porto di partenza, la posizione in mare non è nota. Nave da trasporto anfibio del gruppo Makin Island. Il 6 novembre @naval_post la dà a Yokosuka per l'esercitazione Malabar 2026. Partenza attesa il 7 novembre secondo @Indowatchosint. Punto stimato dal porto. Secondo lo stesso post di Indowatch dell'8 novembre è a sud di Tokyo per l'esercitazione Malabar, quindi non con la Makin Island: posizione non data, il punto resta Yokosuka.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "@Indowatchosint su X",
      "link": "https://x.com/Indowatchosint/status/2118943273003999472",
@@ -1294,7 +1487,6 @@
    "sagoma": "lpd",
    "breve": "John P. Murtha",
    "dettaglio": "classe San Antonio",
-   "dubbia": 1,
    "ids": [
     "X-20261107-25",
     "X-20261106-06",
@@ -1304,6 +1496,17 @@
    "sim": [
     35.33,
     139.74
+   ],
+   "storico": [
+    {
+     "data_evento": "2026-11-07",
+     "lat": 35.293,
+     "lon": 139.667,
+     "origine_coord": "stimata",
+     "precisione_km": 3,
+     "affidabilita": "media",
+     "nota": "A sud di Tokyo, esercitazione Malabar"
+    }
    ]
   },
   {
@@ -1314,7 +1517,7 @@
    "identificativo": "LHA-7",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 33.16,
    "lon": 129.713,
@@ -1322,17 +1525,22 @@
    "precisione_km": 2,
    "teatro": "ALTRO",
    "paese": "JP",
-   "regione": "Sasebo",
+   "regione": "Sasebo (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "The Boston Report, tracker degli schieramenti",
-   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
-   "data_fonte": "2026-11-04",
-   "affidabilita": "media",
-   "note": "In porto a Sasebo, la sua base avanzata in Giappone.",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "alta",
+   "note": "Il 9 novembre USNI la dà ancora in porto a Sasebo. In porto a Sasebo, la sua base avanzata in Giappone.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "The Boston Report, tracker degli schieramenti",
      "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
@@ -1835,9 +2043,9 @@
    "esito": "",
    "fonte": "Orange Actu / 6Medias, incendio a bordo della Charles de Gaulle a Tolone",
    "link": "https://actu.orange.fr/societe/fait-divers/un-incendie-s-est-declenche-a-bord-du-porte-avions-charles-de-gaulle-amarre-a-toulon-magic-CNT000002skGQS.html",
-   "data_fonte": "2026-10-05",
+   "data_fonte": "2026-11-09",
    "affidabilita": "alta",
-   "note": "Ferma a Tolone da fine agosto per una sosta tecnica programmata fino a inizio dicembre. Il 5 ottobre un incendio in un locale tecnico è stato spento senza vittime e senza conseguenze per gli impianti nucleari.",
+   "note": "Dato datato: l’ultima posizione con fonte è del 2026-10-05, oltre 14 giorni fa; non è stato trovato un aggiornamento al 10 novembre 2026. Ferma a Tolone da fine agosto per una sosta tecnica programmata fino a inizio dicembre. Il 5 ottobre un incendio in un locale tecnico è stato spento senza vittime e senza conseguenze per gli impianti nucleari. Secondo Business AM la Marina mantiene il ritorno in mare per inizio dicembre 2026 (una sola fonte).",
    "fonti": [
     {
      "fonte": "Orange Actu / 6Medias, incendio a bordo della Charles de Gaulle a Tolone",
@@ -1848,11 +2056,17 @@
      "fonte": "The Boston Report, tracker degli schieramenti",
      "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
      "data_fonte": "2026-11-04"
+    },
+    {
+     "fonte": "Business AM: incendio sulla Charles de Gaulle, la Marina conferma il calendario (pagina senza data, consultata il 9 nov)",
+     "link": "https://fr.businessam.be/?p=292726",
+     "data_fonte": "2026-11-09"
     }
    ],
    "sagoma": "portaerei",
    "breve": "Charles de Gaulle",
-   "dettaglio": "classe Charles de Gaulle"
+   "dettaglio": "classe Charles de Gaulle",
+   "dubbia": 1
   },
   {
    "id": "MP-20261105-32",
@@ -1862,7 +2076,7 @@
    "identificativo": "CVN-68",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-10-27",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 35.2,
    "lon": -72.5,
@@ -1870,17 +2084,22 @@
    "precisione_km": 800,
    "teatro": "ALTRO",
    "paese": "",
-   "regione": "Partita da Norfolk, posizione non nota",
+   "regione": "Atlantico occidentale (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "USNI News, Fleet and Marine Tracker",
-   "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
-   "data_fonte": "2026-11-02",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Partita da Norfolk martedì 27 ottobre secondo gli osservatori di navi citati da USNI: destinazione e posizione attuale non sono note. Ha 51 anni e il ritiro è previsto nella primavera 2027. Il simbolo è appoggiato nell'Atlantico occidentale solo come riferimento.",
+   "note": "Il 9 novembre USNI la dà in navigazione per attività di routine nell’Atlantico occidentale (posizione indicativa). Partita da Norfolk martedì 27 ottobre secondo gli osservatori di navi citati da USNI: destinazione e posizione attuale non sono note. Ha 51 anni e il ritiro è previsto nella primavera 2027. Il simbolo è appoggiato nell'Atlantico occidentale solo come riferimento.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "USNI News, Fleet and Marine Tracker",
      "link": "https://news.usni.org/2026/11/02/usni-news-fleet-and-marine-tracker-nov-2-2026",
@@ -1902,8 +2121,7 @@
    "dettaglio": "classe Nimitz",
    "ids": [
     "GI-20261105-29"
-   ],
-   "dubbia": 1
+   ]
   },
   {
    "id": "MP-20261105-33",
@@ -1913,7 +2131,7 @@
    "identificativo": "CVN-69",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
    "lat": 36.946,
    "lon": -76.33,
@@ -1921,17 +2139,22 @@
    "precisione_km": 2,
    "teatro": "ALTRO",
    "paese": "US",
-   "regione": "Norfolk, Virginia",
+   "regione": "Norfolk, Virginia (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "The Boston Report, tracker degli schieramenti",
-   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
-   "data_fonte": "2026-11-04",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "In porto a Norfolk. A fine ottobre era uscita per l'addestramento che precede una missione.",
+   "note": "Secondo USNI (9 novembre) è uscita mercoledì 4 ed è rientrata giovedì 5 a Norfolk. In porto a Norfolk. A fine ottobre era uscita per l'addestramento che precede una missione.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "The Boston Report, tracker degli schieramenti",
      "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
@@ -2081,25 +2304,30 @@
    "identificativo": "CVN-76",
    "appartenenza": "US",
    "stato": "operativo",
-   "data_evento": "2026-11-02",
+   "data_evento": "2026-11-09",
    "ora_utc": "",
-   "lat": 31.6,
-   "lon": -119.8,
+   "lat": 47.555,
+   "lon": -122.635,
    "origine_coord": "stimata",
-   "precisione_km": 400,
+   "precisione_km": 3,
    "teatro": "ALTRO",
    "paese": "",
-   "regione": "Pacifico orientale",
+   "regione": "Bremerton, Washington (USNI, 9 novembre)",
    "attore": "",
    "bersaglio": "",
    "mezzo": "",
    "esito": "",
-   "fonte": "The Boston Report, tracker degli schieramenti",
-   "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
-   "data_fonte": "2026-11-04",
+   "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+   "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+   "data_fonte": "2026-11-09",
    "affidabilita": "media",
-   "note": "Segnalata in mare nel Pacifico orientale. Il 27 ottobre era ormeggiata a San Diego dopo le qualifiche dei piloti. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
+   "note": "Il 9 novembre USNI scrive che è arrivata martedì 3 novembre a Bremerton (Washington), secondo gli osservatori navali: posizione sul cantiere navale di Puget Sound, stimata. Segnalata in mare nel Pacifico orientale. Il 27 ottobre era ormeggiata a San Diego dopo le qualifiche dei piloti. La fonte indica solo la zona: il cerchio mostra il margine e il simbolo è appoggiato al suo interno.",
    "fonti": [
+    {
+     "fonte": "USNI News, Fleet and Marine Tracker del 9 novembre 2026",
+     "link": "https://news.usni.org/2026/11/09/usni-news-fleet-and-marine-tracker-nov-9-2026",
+     "data_fonte": "2026-11-09"
+    },
     {
      "fonte": "The Boston Report, tracker degli schieramenti",
      "link": "https://thebostonreport.com/warfare/military-deployments-tracker/",
@@ -2118,7 +2346,18 @@
    ],
    "sagoma": "portaerei",
    "breve": "Reagan",
-   "dettaglio": "classe Nimitz"
+   "dettaglio": "classe Nimitz",
+   "storico": [
+    {
+     "data_evento": "2026-11-02",
+     "lat": 31.6,
+     "lon": -119.8,
+     "origine_coord": "stimata",
+     "precisione_km": 400,
+     "affidabilita": "media",
+     "nota": "Pacifico orientale"
+    }
+   ]
   },
   {
    "id": "MP-20261105-38",
@@ -2284,7 +2523,7 @@
    "link": "https://www.ilpiccolo.it/cronaca/nave-trieste-marina-militare-oggi-golfo-m7gyt8a5",
    "data_fonte": "2026-09-13",
    "affidabilita": "media",
-   "note": "Dal 14 settembre è nel cantiere San Marco per i lavori di fine garanzia. La partenza era indicata intorno a metà novembre.",
+   "note": "Dato datato: l’ultima posizione con fonte è del 2026-09-14, oltre 14 giorni fa; non è stato trovato un aggiornamento al 10 novembre 2026. Dal 14 settembre è nel cantiere San Marco per i lavori di fine garanzia. La partenza era indicata intorno a metà novembre.",
    "fonti": [
     {
      "fonte": "Il Piccolo, il ritorno nel golfo di Nave Trieste",
@@ -2295,7 +2534,8 @@
    "sagoma": "anfibia",
    "breve": "Trieste",
    "dettaglio": "nave d'assalto anfibio multiruolo (LHD), ammiraglia della Marina",
-   "sempre": 1
+   "sempre": 1,
+   "dubbia": 1
   },
   {
    "id": "X-20261105-07",

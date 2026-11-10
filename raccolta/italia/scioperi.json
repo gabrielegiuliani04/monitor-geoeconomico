@@ -1,0 +1,24 @@
+{
+  "descrizione": "Scioperi proclamati nei trasporti nei prossimi 30 giorni, voci curate da fonti giornalistiche. raccogli.py prova prima a scaricare il calendario ufficiale del MIT (scioperi.mit.gov.it); se non ci riesce usa questo elenco e lo segnala in 'errori'. Il 9-10 novembre 2026 scioperi.mit.gov.it e cgsse.it non sono raggiungibili da questo ambiente (rete).",
+  "fonte_elenco": "Rai News, 'Scioperi, novembre di mobilitazioni: trasporti, scuola e settore pubblico. Le date', 8 novembre 2026",
+  "link_elenco": "https://www.rainews.it/articoli/2026/11/scioperi-novembre-di-mobilitazioni-trasporti-scuola-e-settore-pubblico-le-proteste-88aa7da4-ad6b-4ec7-a964-d9829015bf04.html",
+  "data_fonte": "2026-11-08",
+  "elementi": [
+    {"data_inizio": "2026-11-09", "data_fine": "2026-11-09", "settore": "trasporto pubblico locale", "ambito": "locale", "luogo": "Genova", "sindacati": "Cub Trasporti", "modalita": "11:30-15:30"},
+    {"data_inizio": "2026-11-10", "data_fine": "2026-11-10", "settore": "trasporto pubblico locale", "ambito": "locale", "luogo": "Cosenza", "sindacati": "Faisa Cisal", "modalita": "9:59-13:59"},
+    {"data_inizio": "2026-11-13", "data_fine": "2026-11-13", "settore": "trasporto pubblico locale", "ambito": "locale", "luogo": "Milano, Monza e Brianza (gruppo Atm)", "sindacati": null, "modalita": null},
+    {"data_inizio": "2026-11-13", "data_fine": "2026-11-13", "settore": "trasporto pubblico locale", "ambito": "locale", "luogo": "Venezia", "sindacati": "Sgb, Fast Mobilità", "modalita": "intera giornata"},
+    {"data_inizio": "2026-11-14", "data_fine": "2026-11-14", "settore": "trasporto pubblico locale", "ambito": "locale", "luogo": "Bari", "sindacati": "Uiltrasporti, Filt Cgil, Fit Cisl, Ugl", "modalita": "24 ore con fasce di garanzia"},
+    {"data_inizio": "2026-11-16", "data_fine": "2026-11-16", "settore": "trasporto pubblico locale", "ambito": "locale", "luogo": "Napoli (Anm)", "sindacati": "Usb, Orsa Tpl, Faisa Confail; Filt Cgil, Fit Cisl, Uiltrasporti, Ugl Fna, Faisa Cisal", "modalita": "11:00-15:00"},
+    {"data_inizio": "2026-11-20", "data_fine": "2026-11-20", "settore": "generale (pubblico e privato, inclusi tpl e ferrovie)", "ambito": "nazionale", "luogo": "Italia", "sindacati": "Cgil", "modalita": "intera giornata"},
+    {"data_inizio": "2026-11-20", "data_fine": "2026-11-21", "settore": "trasporto merci su rotaia, tpl, ferrovie", "ambito": "nazionale", "luogo": "Italia", "sindacati": "Sgb, Cub Trasporti", "modalita": "dalle 21:00 del 20 alle 20:00 del 21"},
+    {"data_inizio": "2026-11-20", "data_fine": "2026-11-21", "settore": "ferrovie (gruppo Fsi, Mercitalia Rail, Trenitalia, Trenitalia Tper)", "ambito": "nazionale", "luogo": "Italia", "sindacati": "Assemblea nazionale Pdm/Pdbi", "modalita": "dalle 21:00 del 20 alle 20:00 del 21"},
+    {"data_inizio": "2026-11-21", "data_fine": "2026-11-21", "settore": "ferrovie", "ambito": "locale", "luogo": "Verona", "sindacati": "Orsa Ferrovie", "modalita": "9:01-17:00"},
+    {"data_inizio": "2026-11-22", "data_fine": "2026-11-22", "settore": "aereo (handling)", "ambito": "locale", "luogo": "Firenze e Pisa (Consulta, GH Toscana, Toscana Aeroporti)", "sindacati": "Usb Lavoro Privato", "modalita": "00:00-23:59"},
+    {"data_inizio": "2026-11-22", "data_fine": "2026-11-22", "settore": "aereo (controllo traffico, Enav)", "ambito": "locale", "luogo": "Varese", "sindacati": "Fast Confsal Av Unica", "modalita": "00:01-24:00"}
+  ],
+  "revocati": [
+    {"data": "2026-11-09", "settore": "ferrovie (Italo)", "ambito": "nazionale", "sindacati": "Filt Cgil, Fit Cisl, Ugl Ferrovieri, Fast Confsal, Orsa Trasporti", "nota": "revocato"}
+  ],
+  "autotrasporto": "Nessun fermo nazionale dell'autotrasporto merci risulta proclamato nelle fonti consultate al 9 novembre 2026; Unatras lo ha prospettato a ottobre (vedi precedenti.json). Con 25 giorni di preavviso, un fermo proclamato oggi non potrebbe iniziare prima del 4-5 dicembre 2026."
+}

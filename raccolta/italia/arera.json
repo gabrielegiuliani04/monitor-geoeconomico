@@ -1,0 +1,15 @@
+{
+  "descrizione": "Gas per i clienti del Servizio di tutela della vulnerabilità (circa 2,3 milioni di clienti): componente materia prima CMEM,m in €/MWh, pari alla media mensile del PSV day ahead, pubblicata dall'ARERA nei primi 2 giorni lavorativi del mese dopo. Voci curate dai comunicati ARERA.",
+  "fonte": "ARERA, comunicati mensili sul Servizio di tutela della vulnerabilità gas",
+  "link": "https://www.arera.it/comunicati-stampa",
+  "licenza": "dati pubblici ARERA, riuso citando la fonte",
+  "elementi": [
+    {"mese": "2026-03", "cmem_eur_mwh": 52.12, "fonte": "ARERA, nota CMEM vulnerabili gas marzo 2026 (valore dal riassunto di ricerca del PDF)", "link": "https://arera.it/fileadmin/allegati/com_stampa/26/26.04.02_Nota_CMEM_vulnerabili_gas_Marzo_2026.pdf", "data_fonte": "2026-04-02", "affidabilita": "media"},
+    {"mese": "2026-04", "cmem_eur_mwh": 46.01, "var_spesa_utente_tipo_pct": null, "fonte": "ARERA, comunicato aprile 2026", "link": "https://arera.it/comunicati-stampa/dettaglio/gas-arera-comunica-ivalore-materia-prima-servizio-tutela-vulnerabilita-aprile-2026", "data_fonte": "2026-05-05", "affidabilita": "alta"},
+    {"mese": "2026-05", "cmem_eur_mwh": 46.89, "fonte": "Teleborsa su comunicato ARERA, 3 giugno 2026", "link": "https://www.teleborsa.it/News/2026/06/03/energia-arera-a-maggio-prezzo-materia-prima-gas-sale-a-46-89-euro-mwh-0-9percent-171.html", "data_fonte": "2026-06-03", "affidabilita": "alta"},
+    {"mese": "2026-07", "cmem_eur_mwh": 56.69, "var_spesa_utente_tipo_pct": 9.7, "fonte": "ARERA, nota CMEM vulnerabili gas luglio 2026", "link": "https://www.arera.it/fileadmin/allegati/com_stampa/26/26.08.04_Nota_CMEM_vulnerabili_gas_luglio_2026.pdf", "data_fonte": "2026-08-04", "affidabilita": "alta"},
+    {"mese": "2026-09", "cmem_eur_mwh": 78.80, "var_spesa_utente_tipo_pct": 12.7, "fonte": "ARERA, nota aggiornamento mensile vulnerabili gas settembre 2026", "link": "https://www.arera.it/fileadmin/allegati/com_stampa/26/Nota_stampa_aggiornamento_mensile_vulnerabili_gas_SETTEMBRE_2026.pdf", "data_fonte": "2026-10-02", "affidabilita": "alta"},
+    {"mese": "2026-10", "cmem_eur_mwh": 88.36, "var_spesa_utente_tipo_pct": 9.1, "prezzo_riferimento_cliente_tipo_cent_smc": 176.80, "cmem_eur_smc": 0.945436, "fonte": "ARERA, comunicato 3 novembre 2026; prezzo di riferimento 176,80 c€/Smc da Sky TG24 e Adiconsum", "link": "https://www.arera.it/comunicati-stampa/dettaglio/gas-valore-materia-prima-vulnerabilita-ottobre-2026", "link2": "https://tg24.sky.it/economia/2026/11/03/bollette-gas-prezzi-rialzo-utenti-vulnerabili-arera", "data_fonte": "2026-11-03", "affidabilita": "alta"}
+  ],
+  "mancano": ["2026-06 (il comunicato riporta solo +0,3% della spesa)", "2026-08", "i mesi prima di marzo 2026"]
+}

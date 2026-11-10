@@ -527,6 +527,61 @@ def riepilogo(anelli, nodi, archi, colli, controlli):
     return r
 
 
+# Voci di commercio.json (dipendenze di Italia e UE) che toccano la catena dell'AI, con l'anello
+HS_CATENA = {"850511": "magneti NdFeB per motori, ventole, pompe e dischi rigidi",
+             "280530": "metalli delle terre rare (leghe per magneti)",
+             "284690": "composti delle terre rare (ossidi separati)",
+             "811292": "gallio e germanio (voce doganale mista con indio, niobio, vanadio)",
+             "280461": "silicio ad altissima purezza per polisilicio e wafer",
+             "740311": "rame raffinato per cavi, sbarre e trasformatori",
+             "380110": "grafite artificiale (elettrodi, anodi)"}
+# materie sotto licenza cinese censite in minerali.json ma non nella tabella USGS di questo livello
+ALTRE_CONTROLLATE = {"antimonio": "semiconduttori e ritardanti di fiamma; nel divieto verso gli USA di dicembre 2024",
+                     "tungsteno": "bersagli di deposizione e contatti nei chip",
+                     "grafite": "anodi delle batterie dei sistemi di continuità dei data center",
+                     "magnesio": "leghe leggere per chassis e componenti"}
+
+
+def confronti(materie, oss):
+    """Coerenza con minerali.json (stesse quote USGS) e legami con commercio.json e investimenti.json."""
+    out = {"minerali_confronto": [], "dipendenze_ue_italia": [], "altre_materie_controllate": [], "capex_2026": None}
+    mi = {m.get("id"): m for m in (oss.get("minerali") or {}).get("elementi", [])}
+    for m in materie:
+        pp = m.get("primo_produttore")
+        x = mi.get(m["id"])
+        if not pp or not x or not x.get("produttori"):
+            continue
+        q = next((p for p in x["produttori"] if p.get("iso2") == pp["paese"]), None)
+        qv = q.get("quota") if q else None
+        ok = qv is not None and abs(qv - pp["quota_pct"]) <= 0.15
+        out["minerali_confronto"].append({"materia": m["id"], "paese": pp["paese"], "quota_qui": pp["quota_pct"],
+                                          "quota_minerali_json": qv, "coerente": ok})
+        if not ok:
+            avviso("materia %s: quota %s diversa da minerali.json (%s contro %s)" % (m["id"], pp["paese"], pp["quota_pct"], qv))
+    for dp in (oss.get("commercio") or {}).get("dipendenze", []):
+        if dp.get("hs") in HS_CATENA:
+            out["dipendenze_ue_italia"].append({
+                "importatore": dp.get("importatore"), "iso2": dp.get("iso2"), "hs": dp["hs"], "prodotto": dp.get("prodotto"),
+                "uso_ai": HS_CATENA[dp["hs"]], "anno": dp.get("anno"), "import_totale_usd": dp.get("import_totale_usd"),
+                "fornitori": (dp.get("fornitori") or [])[:3], "quota_cina": next((f.get("quota") for f in dp.get("fornitori", []) if f.get("iso2") == "CN"), None),
+                "valore_trascurabile": bool(dp.get("valore_trascurabile")), "dipendenza_oltre_50": bool(dp.get("dipendenza_oltre_50"))})
+    for mid, uso in ALTRE_CONTROLLATE.items():
+        x = mi.get(mid)
+        if x and x.get("produttori"):
+            p0 = x["produttori"][0]
+            cn = next((p for p in x["produttori"] if p.get("iso2") == "CN"), {})
+            out["altre_materie_controllate"].append({"materia": mid, "nome": x.get("minerale"), "uso_ai": uso, "anno": x.get("anno"),
+                                                     "primo": p0.get("iso2"), "quota_primo": p0.get("quota"), "quota_cina": cn.get("quota"),
+                                                     "fonte": x.get("fonte"), "link": x.get("link")})
+    inv = oss.get("investimenti") or {}
+    if inv.get("capex_2026"):
+        out["capex_2026"] = inv["capex_2026"]
+    out["nota"] = ("minerali_confronto: quota del primo produttore qui e in minerali.json (stessa fonte USGS 2026); "
+                   "dipendenze_ue_italia: import 2025 di Italia e UE-27 (extra-UE) per voce doganale da commercio.json (UN Comtrade), "
+                   "con i primi tre fornitori; per l'Italia gli acquisti intra-UE sono attribuiti al paese di spedizione, non di origine.")
+    return out
+
+
 def costruisci(oggi):
     cur = carica_curati()
     oss = carica_osservatorio()
@@ -552,7 +607,8 @@ def costruisci(oggi):
     fonti_osservatorio = []
     for nome, f in (("prezzi.json", "prezzi"), ("portwatch.json", "portwatch"), ("ai.json", "ai"), ("ai-mondo.json", "ai-mondo"),
                     ("stretti-dettaglio.json", "stretti-dettaglio"), ("cavi-incidenti.json", "cavi-incidenti"),
-                    ("rete-elettrica.json", "rete-elettrica"), ("cavi.json", "cavi")):
+                    ("rete-elettrica.json", "rete-elettrica"), ("cavi.json", "cavi"), ("minerali.json", "minerali"),
+                    ("commercio.json", "commercio"), ("investimenti.json", "investimenti")):
         if oss.get(f):
             fonti_osservatorio.append({"nome": nome, "aggiornato": oss[f].get("aggiornato")})
     return {
@@ -578,6 +634,7 @@ def costruisci(oggi):
         "materie": materie,
         "titoli": titoli,
         "legami": legami(nodi, oss),
+        "confronti": confronti(materie, oss),
         "riepilogo": riepilogo(anelli, nodi, archi, colli, controlli),
         "avvisi": AVVISI,
         "errori": ERRORI,

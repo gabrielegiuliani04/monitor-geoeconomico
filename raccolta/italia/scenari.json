@@ -1,0 +1,51 @@
+{
+  "descrizione": "Definizione degli scenari Italia. I numeri (prezzi alla pompa, PUN, gas, inflazione, rischio fermo) li calcola raccogli.py a partire dalle variazioni di Brent e TTF del simulatore (docs/data/simulatore.json) e dai coefficienti stimati sui dati italiani. Qui ci sono solo le scelte del modello e i testi di valutazione.",
+  "soglie_fermo": {
+    "testo": "Valutazione dell'osservatorio sui precedenti: i blocchi e i fermi sono partiti con il gasolio a un nuovo massimo storico o quasi (dicembre 2007 a 1,29 €/l, gennaio 2012 a 1,68, marzo 2022 a 2,15, aprile 2026 a 2,11, ottobre 2026 a 2,24; medie settimanali MASE) e quasi sempre con un aumento rapido. Nel 2026 ha pesato anche il taglio generale delle accise, che riduce il rimborso spettante ai camionisti.",
+    "basso": "gasolio sotto 1,90 €/l e aumento in 8 settimane sotto l'8%",
+    "medio": "gasolio tra 1,90 e 2,10 €/l, oppure aumento in 8 settimane tra l'8% e il 15%",
+    "alto": "gasolio da 2,10 €/l in su, oppure aumento in 8 settimane oltre il 15%",
+    "soglie_eur_l": [1.90, 2.10],
+    "soglie_aumento_pct": [8, 15],
+    "nota": "Il report supply chain di novembre 2026 usa 'attenzione sopra 1,90, critico sopra 2,20': qui la soglia alta è 2,10 perché marzo 2022 (2,15) e aprile 2026 (2,11) sono partiti sotto 2,20."
+  },
+  "scenari": [
+    {
+      "id": "hormuz_1m",
+      "nome": "Hormuz chiuso 1 mese",
+      "passaggio": "hormuz", "durata_giorni": 30, "episodio": "hormuz_2026", "finestra": "30",
+      "orizzonte_settimane": 4,
+      "catene": "Valutazione. Carburanti: nessuna carenza fisica nel primo mese (scorte di emergenza italiane e rilascio IEA), ma rischio di code e cartelli 'esaurito' dove il prezzo è più basso o quando cambiano accise o tetti (marzo e settembre 2026). Alimentare: rincari via gasolio e trasporto, effetti sugli scaffali solo se c'è un fermo dei TIR (2012, 2022). Farmaci: distribuzione garantita come servizio minimo anche nei fermi (2007). Agricoltura: urea e fertilizzanti del Golfo in calo, effetto sui costi della campagna successiva.",
+      "misure_probabili": ["taglio delle accise sui carburanti (2022: 30,5 c€/l con IVA; 2026: 24,4 c€/l)", "credito d'imposta e rimborso accise più veloce per l'autotrasporto (2026: 300 milioni)", "pressione per prezzi calmierati volontari (Eni/IP, settembre 2026)"],
+      "indicatori": ["gasolio self medio Mimit giornaliero", "differenza gasolio-benzina", "proclamazioni di fermo al MIT e alla Commissione di garanzia (25 giorni di preavviso)", "vendite di gasolio extrarete MASE", "scorte di emergenza (Eurostat, scorte.json)"]
+    },
+    {
+      "id": "hormuz_3m",
+      "nome": "Hormuz chiuso 3 mesi",
+      "passaggio": "hormuz", "durata_giorni": 91, "episodio": "hormuz_2026", "finestra": "91",
+      "orizzonte_settimane": 13,
+      "catene": "Valutazione. Il caro gasolio diventa strutturale: calo delle vendite di gasolio per autotrazione (nel 2026 fino a -10,8% a maggio, -14,3% l'extrarete), proteste dell'autotrasporto molto probabili, gas e PUN in salita con effetto sulle bollette dei mesi successivi e sulle imprese energivore. Alimentare: rincari via trasporto e fertilizzanti; l'inflazione degli alimentari in Italia nel 2026 è rimasta tra l'1% e il 3% fino a ottobre.",
+      "misure_probabili": ["proroghe ripetute del taglio delle accise, con importi decrescenti (2026)", "crediti d'imposta per energivori e bonus sociali rafforzati (2022)", "decreti sulle bollette (novembre 2026: -15 €/MWh da gennaio)", "aiuti all'autotrasporto per evitare il fermo (maggio 2026)"],
+      "indicatori": ["NIC energetici e alimentari (Istat, a fine mese la stima preliminare)", "PUN mensile GME", "CMEM ARERA vulnerabili", "fiducia dei consumatori Istat", "traffico nei porti energetici (Ravenna, Venezia: PortWatch)"]
+    },
+    {
+      "id": "mar_rosso_1m",
+      "nome": "Mar Rosso: navi via Capo di Buona Speranza, 1 mese",
+      "passaggio": "bab-el-mandeb", "durata_giorni": 30, "episodio": "mar_rosso_2023", "finestra": "30",
+      "orizzonte_settimane": 4,
+      "catene": "Valutazione. Effetto piccolo su carburanti e bollette (nella crisi 2023-24 il Brent è salito del 4-8% e il TTF è sceso), grande sui noli container e sui tempi di consegna: i porti di transhipment (Gioia Tauro) perdono traffico, le merci dall'Asia arrivano 1-3 settimane dopo. Nessun precedente di proteste dell'autotrasporto legato al Mar Rosso.",
+      "misure_probabili": ["nessuna misura sui carburanti nel 2023-24", "eventuale sostegno ai porti"],
+      "indicatori": ["WCI Shanghai-Genova (noli.json)", "transiti a Suez e Bab el-Mandeb (PortWatch)", "prezzi alla produzione dei beni importati"],
+      "nota": "Nel 2026 Bab el-Mandeb porta anche il greggio saudita deviato a Yanbu: una chiusura vera oggi sarebbe una perdita di offerta (vedi simulatore), non solo una deviazione. Questo scenario segue l'episodio 2023-24."
+    },
+    {
+      "id": "transmed_1m",
+      "nome": "TransMed chiuso 1 mese",
+      "passaggio": "canale-di-sicilia", "durata_giorni": 30, "episodio": "hormuz_2026", "finestra": "30",
+      "orizzonte_settimane": 4,
+      "catene": "Valutazione. Colpisce gas e elettricità, non i carburanti: il TransMed è il primo ingresso di gas in Italia (Mazara del Vallo 34% negli ultimi 12 mesi, gas-italia.json). Con stoccaggi intorno al 90% il problema è di prezzo, non di quantità, salvo inverno freddo. Imprese energivore (carta, ceramica, vetro, siderurgia) le più colpite; l'elettricità segue il gas perché il gas fa il prezzo marginale.",
+      "misure_probabili": ["massimo utilizzo dei rigassificatori", "crediti d'imposta per energivori e gasivori (2022)", "bonus sociali luce e gas rafforzati (2022)", "possibile riduzione degli oneri di sistema (2022)"],
+      "indicatori": ["flussi a Mazara del Vallo (ENTSOG, gas-italia.json)", "PSV e prezzo MGP-GAS del GME", "PUN giornaliero", "stoccaggi italiani (AGSI+, scorte.json)"]
+    }
+  ]
+}
