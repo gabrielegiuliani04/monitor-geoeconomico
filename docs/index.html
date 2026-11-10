@@ -528,6 +528,7 @@ button, input, select { font: inherit; color: inherit; }
         <p class="credit" id="credit-front" hidden></p>
         <p class="credit" id="credit-gem" hidden></p>
         <p class="credit" id="credit-routes" hidden></p>
+        <p class="credit" id="credit-adsb">Military aircraft snapshot: © adsb.lol contributors (ODbL) · <a href="https://adsb.fi" target="_blank" rel="noopener noreferrer" style="color:var(--water-ink)">adsb.fi</a></p>
       </div>
 
       <div class="br">
@@ -2507,7 +2508,7 @@ async function start(snap) {
   if (ln && ln.linee) { buildLines(ln); const cg = $('credit-gem'); cg.textContent = 'Oil and gas pipelines: Global Energy Monitor'; cg.hidden = false; }
   if (fr && fr.aree && fr.aree.length) { buildFront(fr); const cf = $('credit-front'); cf.textContent = 'Front: ' + fr.autore; cf.hidden = false; }
   else if (fr && fr.mappe_esterne) { const cf = $('credit-front'); cf.textContent = ''; cf.append('Ukrainian front: '); fr.mappe_esterne.slice(0, 3).forEach((m, i) => { const a = document.createElement('a'); a.href = m.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.style.color = 'var(--water-ink)'; a.textContent = ['ISW', 'ISW daily', 'DeepState'][i]; if (i) cf.append(' · '); cf.appendChild(a); }); cf.hidden = false; }
-  addPoints(mob && mob.punti); addPoints(evt && evt.punti); addPoints(fr && fr.punti); addPoints(fx && fx.punti); addPoints(ir && ir.punti); addPoints(ib && ib.punti); addPoints(ita && ita.punti); addPoints(dif && dif.punti); addPoints(aip && aip.punti); addPoints(aer && aer.punti); finishPoints(); buildPanel(); initNews(rep); initMkt(mk); initDos(dos); xLoad(opt);
+  addPoints(mob && mob.punti); addPoints(evt && evt.punti); addPoints(fr && fr.punti); addPoints(fx && fx.punti); addPoints(ir && ir.punti); addPoints(ib && ib.punti); addPoints(ita && ita.punti); addPoints(dif && dif.punti); addPoints(aip && aip.punti); addPoints(aer && aer.punti && aer.punti.filter(p => p.stato !== 'lasciata')); finishPoints(); buildPanel(); initNews(rep); initMkt(mk); initDos(dos); xLoad(opt);
   const upd = [mob, evt].map(o => o && o.aggiornato).filter(Boolean).sort().pop();
   $('note').textContent = 'Open-source data' + (upd ? ', updated ' + dateLong(new Date(upd + 'T12:00:00')) : '') + '. Not a real-time radar: every point has a date, source and margin of uncertainty on its card. Some source descriptions are in Italian.';
 

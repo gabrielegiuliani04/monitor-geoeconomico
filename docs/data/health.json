@@ -1,28 +1,28 @@
 {
- "updated": "2026-11-10T11:22Z",
+ "updated": "2026-11-10T11:55Z",
  "date": "2026-11-10",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 9.5,
+ "seconds": 8.5,
  "summary": {
   "critical": 0,
-  "high": 1,
+  "high": 2,
   "medium": 16,
-  "low": 3,
-  "info": 4
+  "low": 4,
+  "info": 5
  },
  "checks": [
   {
    "area": "schema",
    "name": "JSON parses",
    "status": "green",
-   "detail": "all 66 files in docs/data parse"
+   "detail": "all 67 files in docs/data parse"
   },
   {
    "area": "freshness",
    "name": "files against cadence",
    "status": "amber",
-   "detail": "65 ok, 0 stale, 0 missing, 1 undated (report.json); 0 lagging series inside files"
+   "detail": "66 ok, 0 stale, 0 missing, 1 undated (report.json); 0 lagging series inside files"
   },
   {
    "area": "schema",
@@ -58,7 +58,7 @@
    "area": "consistency",
    "name": "key report figures vs data",
    "status": "amber",
-   "detail": "26 match, 2 differ, 1 not found in the report (fatti_chiave.json)"
+   "detail": "28 match, 0 differ, 1 not found in the report (fatti_chiave.json)"
   },
   {
    "area": "secrets",
@@ -69,20 +69,20 @@
   {
    "area": "licences",
    "name": "every data file has a licence row",
-   "status": "green",
-   "detail": "67 of 67 files listed; missing: none"
+   "status": "amber",
+   "detail": "67 of 68 files listed; missing: aerei.json"
   },
   {
    "area": "links",
    "name": "source links",
    "status": "amber",
-   "detail": "12845 distinct links found; not checked (offline run)"
+   "detail": "12929 distinct links found; not checked (offline run)"
   },
   {
    "area": "validators",
    "name": "repository validators",
-   "status": "green",
-   "detail": "10 run, 0 with a non-zero exit: originali 0; simulatore 0; eolico 0; stretti 0; basi 0; assicurazioni 0; ai 0; italia 0; supply-chain-ai 0; ucraina 0"
+   "status": "amber",
+   "detail": "10 run, 1 with a non-zero exit: originali 1; simulatore 0; eolico 0; stretti 0; basi 0; assicurazioni 0; ai 0; italia 0; supply-chain-ai 0; ucraina 0"
   },
   {
    "area": "smoke",
@@ -100,18 +100,11 @@
    "fix": "raccolta/nord/raccogli.py reads GIE_API_KEY but the workflow provides AGSI_API_KEY: read AGSI_API_KEY (or reuse the values already in docs/data/scorte.json) and add the skip to errori[] so it is visible."
   },
   {
-   "severity": "medium",
-   "area": "consistency",
-   "file": "prezzi.json, report/northern-europe-2026-11.md",
-   "problem": "report figure: TTF on 9 Nov 2026 (EUR/MWh), Northern Europe key points: report/northern-europe-2026-11.md regex 'The TTF gas price is ([0-9.,]+) €/MWh' = 83; prezzi.json serie[id=ttf].serie = 82.5 (2026-11-09). difference +0.5",
-   "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
-  },
-  {
-   "severity": "medium",
-   "area": "consistency",
-   "file": "prezzi.json, report/northern-europe-2026-11.md",
-   "problem": "report figure: Brent value the Northern Europe report says prezzi.json holds (USD/bbl): report/northern-europe-2026-11.md regex 'Brent \\(([0-9.,]+) in prezzi\\.json' = 91.7; prezzi.json serie[id=brent].serie = 92.57 (2026-11-09). difference -0.87",
-   "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
+   "severity": "high",
+   "area": "validators",
+   "file": "raccolta/originali/controlla.py",
+   "problem": "validator 'originali (fissi, italia, iran, difesa, mobili, eventi, ibrido, linee, condotte)' exit 1: == fissi.json: 192 elementi, 0 errori, 159 avvisi, 169 da rivedere (data_fonte oltre 90 giorni) | == italia.json: 58 elementi, 0 errori, 3 avvisi, 19 da rivedere (data_fonte oltre 90 giorni) | == iran.json: 53 elementi, 0 errori, 0 avvisi, 41 da rivedere (data_fonte oltre 90 giorni) | == difesa.json: 8 elementi, 0 errori, 0 avvisi, 8 da rivedere (data_fonte oltre 90 giorni) | == mobili.json: 134 elementi, 14 errori, 24 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) |   [errori] NV-howard: posizione del 2026-10-24 (17 giorni) non marcata come datata (dubbia)",
+   "fix": "Run the validator by hand, read its output and fix the curated input it names."
   },
   {
    "severity": "medium",
@@ -193,9 +186,23 @@
   {
    "severity": "medium",
    "area": "freshness",
+   "file": "docs/data/mobili.json",
+   "problem": "7 positions of mobile units older than 14 days and not marked as dated ('dubbia')",
+   "fix": "Curated layer: schedule the monthly review of this file (agent or by hand) and refresh dates and sources."
+  },
+  {
+   "severity": "medium",
+   "area": "freshness",
    "file": "docs/data/report.json",
    "problem": "undated: no 'aggiornato'/'updated' field (cadence: monthly (curated))",
    "fix": "Curated layer: schedule the monthly review of this file (agent or by hand) and refresh dates and sources."
+  },
+  {
+   "severity": "medium",
+   "area": "licences",
+   "file": "docs/data/aerei.json",
+   "problem": "no row in DATA_LICENSES.md",
+   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
   },
   {
    "severity": "medium",
@@ -220,6 +227,13 @@
   },
   {
    "severity": "low",
+   "area": "freshness",
+   "file": "docs/data/aerei.json",
+   "problem": "no cadence defined in CADENZA (treated as monthly curated)",
+   "fix": "Add the file to the CADENZA table of raccolta/qualita/controlla_tutto.py."
+  },
+  {
+   "severity": "low",
    "area": "schema",
    "file": "docs/data/esposizione-nord.json",
    "problem": "source fields on 'elementi': fonte missing in 10/10, link missing in 10/10, data_fonte missing in 10/10, affidabilita missing in 10/10",
@@ -231,6 +245,13 @@
    "file": "docs/data/stretti-dettaglio.json",
    "problem": "source fields on 'elementi': fonte missing in 13/13, link missing in 13/13, data_fonte missing in 13/13",
    "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
+  },
+  {
+   "severity": "info",
+   "area": "errors",
+   "file": "docs/data/aerei.json",
+   "problem": "2 warnings ('avvisi'), first: curati AE-C-20260901-39: last report 70 days old, the map will not draw it (limit 60 days)",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "info",
@@ -335,51 +356,15 @@
     }
    ],
    "note": "esposizione-nord.json has stoccaggi_gas = null"
-  },
-  {
-   "fact": "report figure: TTF on 9 Nov 2026 (EUR/MWh), Northern Europe key points",
-   "values": [
-    {
-     "file": "report/northern-europe-2026-11.md",
-     "path": "regex 'The TTF gas price is ([0-9.,]+) €/MWh'",
-     "value": 83.0
-    },
-    {
-     "file": "prezzi.json",
-     "path": "serie[id=ttf].serie",
-     "value": 82.5,
-     "date": "2026-11-09"
-    }
-   ],
-   "severity": "medium",
-   "note": "difference +0.5"
-  },
-  {
-   "fact": "report figure: Brent value the Northern Europe report says prezzi.json holds (USD/bbl)",
-   "values": [
-    {
-     "file": "report/northern-europe-2026-11.md",
-     "path": "regex 'Brent \\(([0-9.,]+) in prezzi\\.json'",
-     "value": 91.7
-    },
-    {
-     "file": "prezzi.json",
-     "path": "serie[id=brent].serie",
-     "value": 92.57,
-     "date": "2026-11-09"
-    }
-   ],
-   "severity": "medium",
-   "note": "difference -0.87"
   }
  ],
  "validators": [
   {
    "validator": "originali (fissi, italia, iran, difesa, mobili, eventi, ibrido, linee, condotte)",
    "script": "raccolta/originali/controlla.py",
-   "exit": 0,
+   "exit": 1,
    "seconds": 0.2,
-   "tail": "== linee.json: 588 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | == condotte.json: 454 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | Totale errori: 0"
+   "tail": "== linee.json: 588 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | == condotte.json: 454 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | Totale errori: 14"
   },
   {
    "validator": "simulatore",
@@ -406,7 +391,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.7,
+   "seconds": 0.6,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -446,6 +431,7 @@
   }
  ],
  "counts": {
+  "aerei.json": 63,
   "ai-mondo.json": 82,
   "ai.json": 25,
   "assicurazioni.json": 27,
@@ -480,11 +466,11 @@
   "italia.json": 58,
   "labels.json": 192,
   "linee.json": 588,
-  "manifest.json": 30,
+  "manifest.json": 31,
   "medio-oriente.json": 1434,
   "mercati.json": 1,
   "minerali.json": 25,
-  "mobili.json": 53,
+  "mobili.json": 134,
   "navi.json": 145,
   "noli.json": 4,
   "notizie-testate.json": 1049,

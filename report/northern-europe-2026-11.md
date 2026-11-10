@@ -13,7 +13,7 @@ Every number has a source and a date. Paragraphs marked *Assessment* are the mon
 ## 1. Key points
 
 - **Rotterdam's traffic is flat on the year; the weekly drop is noise.** From 1 January to 30 October 2026, Rotterdam averaged 82.7 ship calls a day, −0.5% on the same days of 2025; Antwerp-Bruges −6.4%. The −10.8% in Rotterdam's latest week is noise. The clear fall is at Russia's oil port of Primorsk, −52% (IMF PortWatch).
-- **German and Dutch gas storage is far below normal before winter.** On 8 November 2026 Germany was 58.9% full and the Netherlands 63.5%, against an EU goal of 90%. Germany is 15.9 points below a year ago (GIE AGSI+). The TTF gas price is 83.00 €/MWh, +167% on a year.
+- **German and Dutch gas storage is far below normal before winter.** On 8 November 2026 Germany was 58.9% full and the Netherlands 63.5%, against an EU goal of 90%. Germany is 15.9 points below a year ago (GIE AGSI+). The TTF gas price is 82.50 €/MWh, +193% since the start of the year.
 - **Offshore wind will reach under half of the North Sea goal for 2030.** Europe connected only 1.96 GW in 2025. For Denmark, Germany, the Netherlands and Belgium WindEurope expects 31.1 GW in 2030, 48% of the 65 GW promised at Esbjerg.
 - **Carbon rules now add a fifth to a half of fuel costs.** At the EU auction price of 86.91 €/t (9 November 2026), the EU ETS costs 275 € per tonne of fuel burnt on voyages between EU ports and 138 € on voyages to or from outside the EU (bunker-emissioni.json).
 - **Sabotage risk sits in the Baltic, above all the Gulf of Finland.** In the AIS snapshot of 9 November 2026, 44 of the 109 ships seen there were on Western sanction lists. Since November 2024 six Baltic cable incidents have been recorded. GPS jamming hit 214–246 areas a day in the week to 8 November 2026 (GPSJam).
@@ -89,7 +89,7 @@ Europe-wide, the United States supplied 58% of Europe's LNG imports in 2025 and 
 
 ### TTF price
 
-The **TTF**, the Dutch hub price that sets gas prices for most of Europe, closed at 83.00 €/MWh on 10 November 2026 (front-month future, provisional close): +0.6% on the day, +1.9% on a month and +167% on a year. US Henry Hub was 3.240 $/MMBtu. Converted at 1.1226 $/€, TTF equals 27.3 $/MMBtu: the transatlantic gap of about 24 $/MMBtu is what pulls US cargoes to Europe (calculation by this script; [prezzi.json](../docs/data/prezzi.json), Yahoo Finance).
+The **TTF**, the Dutch hub price that sets gas prices for most of Europe, closed at 82.50 €/MWh on 9 November 2026 (front-month future, daily close; the live session of the day of reading is left out): −3.6% on the day, +1.3% on a month and +193% since the start of the year. US Henry Hub was 3.218 $/MMBtu. Converted at 1.1147 $/€, TTF equals 27.0 $/MMBtu: the transatlantic gap of about 24 $/MMBtu is what pulls US cargoes to Europe (calculation by this script; [prezzi.json](../docs/data/prezzi.json), Yahoo Finance).
 
 ### Power links
 
@@ -103,9 +103,9 @@ North Sea countries trade power through subsea direct-current (HVDC) cables: Nor
 
 Europe had 38.6 GW of offshore wind at the end of 2025 and added 1.96 GW during the year, the lowest since 2016. WindEurope expects 72.8 GW in 2030 ([WindEurope](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf), February 2026, via [eolico-filiera.json](../docs/data/eolico-filiera.json)).
 
-![Offshore wind by country, GW: installed at the end of 2025, WindEurope forecast for 2030 and the 2030 national target (p](grafici/ne-2026-11-wind.svg)
+![Offshore wind by country, GW: installed at the end of 2025, WindEurope forecast for 2030 and national target (pink tick)](grafici/ne-2026-11-wind.svg)
 
-**Offshore wind by country, GW:** installed at the end of 2025, WindEurope forecast for 2030 and the 2030 national target (pink tick: 2030; for the Netherlands 21 GW by end-2032, moved from 2030 in 2024, although the March 2026 letter to Parliament still says 'around 2030'). National totals, so Germany and Denmark include the Baltic and the UK the Irish Sea. Source: WindEurope 2025 Statistics (February 2026) and national targets, via [eolico-filiera.json](../docs/data/eolico-filiera.json).
+**Offshore wind by country, GW:** installed at the end of 2025, WindEurope forecast for 2030 and national target (pink tick). Targets are for 2030 except the Dutch 21 GW, due by end-2032 since 2024 (the March 2026 letter to Parliament still says 'around 2030'). National totals, so Germany and Denmark include the Baltic and the UK the Irish Sea. Source: WindEurope 2025 Statistics (February 2026) and national targets, via [eolico-filiera.json](../docs/data/eolico-filiera.json).
 
 | Declaration | 2030 goal | Installed end-2025 | Forecast 2030 | Forecast as % of goal |
 |---|---|---|---|---|
@@ -143,7 +143,7 @@ The pattern is clear in the data: rounds where the developer pays the state for 
 - **Auctions and cost of capital** — strain: high. offshore capacity in failed negative-bidding rounds, 2024–2025: 6.5 GW ([WindEurope, 2025 Statistics](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf), February 2026).
 - **HVDC cables** — strain: high. Prysmian transmission order backlog: 16.5 billion € ([Prysmian, comunicato Q3 2026](https://www.prysmian.com/sites/www.prysmian.com/files/media/documents/PR_Q326_ENGLISH.pdf), 29 October 2026).
 - **HVDC converter platforms** — strain: high. new in-service date of Amprion's BalWin1 (2 GW) grid link: 15 September 2031 ([HVDC World](https://hvdcworld.com/news/amprion-delays-balwin1-hvdc-connection-to-2031), 8 July 2026).
-- **Turbines** — strain: medium. Siemens Gamesa profit before special items in Q3 of financial year 2026 (April–June), its first profitable quarter since financial year 2022: +75 million € (about; figure from secondary summaries) ([Siemens Energy, Earnings Release Q3 FY 2026 (cifra da sintesi secondarie)](https://www.siemens-energy.com/global/en/home/press-releases/earnings-release-q3-fy-2026.html), 5 August 2026). GE Vernova's wind segment earned +72 million $ (EBITDA) in Q3 2026, against −61 million a year earlier, but GE now guides a 2026 wind loss of 400–500 million $ ([GE Vernova](https://www.sec.gov/Archives/edgar/data/0001996810/000199681026000162/gevpressrelease3q26.htm), 28 October 2026).
+- **Turbines** — strain: medium. Siemens Gamesa profit before special items in Q3 of financial year 2026 (April–June), its first profitable quarter since financial year 2022: +75 million € (about; figure from secondary summaries) ([Siemens Energy, Earnings Release Q3 FY 2026](https://www.siemens-energy.com/global/en/home/press-releases/earnings-release-q3-fy-2026.html), 5 August 2026). GE Vernova's wind segment earned +72 million $ (EBITDA) in Q3 2026, against −61 million a year earlier, but GE now guides a 2026 wind loss of 400–500 million $ ([GE Vernova](https://www.sec.gov/Archives/edgar/data/0001996810/000199681026000162/gevpressrelease3q26.htm), 28 October 2026).
 - **Vessels** — strain: medium. Western installation vessels (WTIV) for turbines of 15 MW or more by 2028, more than: 25 ([Intelatus via Offshore Engineer](https://www.oedigital.com/news/538691-vessel-sector-deep-dive-wtivs), 1 May 2026).
 - **Ports** — strain: medium. investment announced since 2022 in factories, ports and vessels: at least 15 billion € ([WindEurope, 2025 Statistics](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf), February 2026).
 - **Foundations** — strain: overcapacity. European XXL monopile capacity from 2027: 2.7 million tonnes a year ([Rystad Energy](https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze), 18 September 2026).
@@ -343,7 +343,7 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 
 | Indicator | Now | Threshold (assessment) | File | Frequency |
 |---|---|---|---|---|
-| TTF front-month | 83.00 €/MWh (10 Nov 2026) | above 100 €/MWh | prezzi.json | daily |
+| TTF front-month | 82.50 €/MWh (9 Nov 2026) | above 100 €/MWh | prezzi.json | daily |
 | German gas storage | 58.9% (8 Nov 2026) | below 50% on 1 Dec | scorte.json | daily |
 | Dutch gas storage | 63.5% | below 55% on 1 Dec | scorte.json | daily |
 | EUA auction price | 86.91 €/t (9 Nov 2026) | above 95 €/t | bunker-emissioni.json | daily |
@@ -370,7 +370,7 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 | [porti-nord.json](../docs/data/porti-nord.json) | 2026-11-09T20:05Z | IMF PortWatch; Autorità portuali e statistiche nazionali |
 | [scorte.json](../docs/data/scorte.json) | 2026-11-09T19:19Z | GIE AGSI+; Eurostat – Gas products stock levels, monthly |
 | [prezzi.json](../docs/data/prezzi.json) | 2026-11-10T11:19Z | Yahoo Finance, US Treasury |
-| [eolico-filiera.json](../docs/data/eolico-filiera.json) | 2026-11-10T11:19Z | WindEurope, Wind energy in Europe - 2025 Statistics and the outlook fo; Port Esbjerg, 'Port Esbjerg expands by 570,000 square metres' |
+| [eolico-filiera.json](../docs/data/eolico-filiera.json) | 2026-11-10T11:21Z | WindEurope, Wind energy in Europe - 2025 Statistics and the outlook fo; Port Esbjerg, 'Port Esbjerg expands by 570,000 square metres' |
 | [offshore-nord.json](../docs/data/offshore-nord.json) | 2026-11-09T20:05Z | EMODnet Human Activities: wind farms; Wikipedia, List of offshore wind farms |
 | [bunker-emissioni.json](../docs/data/bunker-emissioni.json) | 2026-11-09T20:06Z | Ship & Bunker, prezzi bunker per porto; MPA Singapore via data.gov.sg |
 | [assicurazioni.json](../docs/data/assicurazioni.json) | 2026-11-09T20:12Z | Joint War Committee; IUA, Joint War Committee Risk List |
@@ -386,7 +386,7 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 | [port-risk.json](../docs/data/port-risk.json) | 2026-11-10T06:17Z | port risk scores (PORT-RISK agent) |
 | [transit-times.json](../docs/data/transit-times.json) | 2026-11-10T06:23Z | transit times to Rotterdam (TRANSIT agent) |
 | [wind-calendar.json](../docs/data/wind-calendar.json) | 2026-11-10T11:19Z | offshore wind calendar (WIND-CALENDAR agent) |
-| report/dati/eurostat-gas-nord.json | 2026-11-10T11:21Z | Eurostat nrg_stk_gasm (DK, PL) |
+| report/dati/eurostat-gas-nord.json | 2026-11-10T11:55Z | Eurostat nrg_stk_gasm (DK, PL) |
 
 *Each file lists its sources, licences and the date of each datum; the text cites the date of the datum, not of the reading.*
 
@@ -394,7 +394,7 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 - **Seven days is too short.** Weekly port-call changes swing by ±10–30% on small numbers; the report leads with 30-day and year-to-date averages.
 - **Conflicting counts.** baltico-sicurezza.json counts all sanctioned ships in the Gulf of Finland (44 of 109); navi.json counts tankers (38 of 96 sanctioned) and the risk dashboard counts sanctioned tankers in the whole Baltic (45). They are different perimeters of the same snapshot.
 - **Offshore wind** totals differ between WindEurope (national, end-2025) and EMODnet (map polygons, status sometimes late, duplicates removed).
-- **Brent** in prezzi.json is a provisional front-month close updated overnight; other files of the monitor quote an earlier reading. This report does not use Brent.
+- **Brent** in prezzi.json gives 92.57 $/bbl as the 9 November close (an earlier run recorded 91.70, a price from the next session's overnight trading); bunker-emissioni.json and rischio.json still quote 92.62, an intraday reading of 9 November. This report does not use Brent.
 - **Missing:** AGSI+ daily fill for Denmark and Poland; monthly LNG import volumes by country and origin; any public war-risk premium for Baltic calls.
 - **Hand-written items:** the external fact on the EU-wide US LNG share and the thresholds of section 8. Figures quoted from curated text fields of the files (for example the 292 tanker passages or the Fitburg sentence) are typed in the script and checked against the source text at every run; all other numbers are computed by report/build_northern_europe.py from the files above.
 - **Different assumptions between files.** The cost stack uses a 221.7 million $ hull (assicurazioni.json); transit-times.json uses 150 million $ for the same ship type, so its Red Sea premium is lower. Port-risk.json computes its own 7-day port-call changes, which can differ by a few tenths from porti-nord.json.
@@ -425,7 +425,7 @@ Independent check of every number against the data files or the cited source, do
 - Italian text from curated files (auction outcomes, bottleneck indicators, cable incidents, hydrogen projects, risk levels) translated into English.
 - Charts: tick labels of the port chart were broken by a character substitution; value labels on the wind chart overlapped the target ticks. Fixed and checked at 1440 and 390 px.
 - Transit times: the model's 10.5 extra days via the Cape (transit-times.json) and UNCTAD's 14–24 days are now both shown, with the reason they differ.
-- Updated 10 Nov 2026 after the offshore wind review: the Dutch 21 GW target is shown for end-2032 (moved from 2030 in 2024; the March 2026 letter to Parliament still says 'around 2030'), not for 2030; the turbine bottleneck now quotes Siemens Gamesa's first profitable quarter since financial year 2022 (about +75 million € in April–June 2026, secondary summaries) instead of the Q2 loss of −44 million €, and GE Vernova's wind EBITDA of +72 million $ in Q3 2026 (2026 guidance: a loss of 400–500 million $); supply-chain investment since 2022 is 'at least 15 billion €' as in the WindEurope PDF, not 15.4 billion €. Corrected at the source in eolico-filiera.json.
+- Updated 10 Nov 2026 after the offshore wind review: the Dutch 21 GW target is shown for end-2032 (moved from 2030 in 2024; the March 2026 letter to Parliament still says 'around 2030'), not for 2030; the turbine bottleneck now quotes Siemens Gamesa's first profitable quarter since financial year 2022 (about +75 million € in April–June 2026, secondary summaries) instead of the Q2 loss of −44 million €, and GE Vernova's wind EBITDA of +72 million $ in Q3 2026 (2026 guidance: a loss of 400–500 million $); supply-chain investment since 2022 is 'at least 15 billion €' as in the WindEurope PDF, not 15.4 billion €. Corrected at the source in eolico-filiera.json. Brent: the note on files that disagree no longer gives 91.70 as the prezzi.json figure for 9 November; that was overnight trading of the next session, and the 9 November close is 92.57 (the report does not use Brent). Prices now skip the live session that prezzi.json marks as provisional: TTF is the 9 November close (82.50 €/MWh, not the 82.33 read overnight), with its year-to-date change, since the 1-year change cannot be recomputed exactly for that day.
 
 **Still unverifiable.**
 
@@ -433,7 +433,7 @@ Independent check of every number against the data files or the cited source, do
 - 292 shadow-fleet passages (Danish Maritime Authority via Euronews) and the Fitburg sentence of 42 months: Euronews not reachable from the session.
 - Prices from Ship & Bunker, EEX auction results, WindEurope statistics and offshoreWIND.biz articles: checked only against the data files.
 - IJmuiden Ver Gamma dates (26 November–10 December 2026): secondary source (RVO via trade press) in two files that agree.
-- Inconsistent perimeters declared, not resolved: sanctioned ships in the Gulf of Finland (44 of 109 ships; 38 of 96 tankers; 45 tankers in the whole Baltic); hull value of a large container ship (221.7 vs 150 million $); German LNG capacity still counting the Mukran terminal; Brent (91.70 in prezzi.json, 92.62 elsewhere).
+- Inconsistent perimeters declared, not resolved: sanctioned ships in the Gulf of Finland (44 of 109 ships; 38 of 96 tankers; 45 tankers in the whole Baltic); hull value of a large container ship (221.7 vs 150 million $); German LNG capacity still counting the Mukran terminal; Brent (92.57 in prezzi.json, the 9 November close; 92.62, an intraday reading, in bunker-emissioni.json and rischio.json).
 
 ---
 

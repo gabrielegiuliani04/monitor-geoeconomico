@@ -35,6 +35,12 @@ jobs:
       - name: Scorte (gas UE, petrolio USA, grano, oro)
         continue-on-error: true
         run: python3 raccolta/scorte/raccogli.py
+      - name: Naval deployments (USNI tracker + curated)
+        continue-on-error: true
+        run: python3 raccolta/mobili/raccogli.py
+      - name: Aerei militari (ADS-B snapshot + curati)
+        continue-on-error: true
+        run: python3 raccolta/aerei/raccogli.py
       - name: Navi (AIS)
         continue-on-error: true
         run: python3 raccolta/navi/raccogli.py

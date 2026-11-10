@@ -124,7 +124,7 @@ REVIEW = {
         "Prices from Ship & Bunker, EEX auction results, WindEurope statistics and offshoreWIND.biz articles: checked only against the data files.",
         "IJmuiden Ver Gamma dates (26 November–10 December 2026): secondary source (RVO via trade press) in two files that agree.",
         "Inconsistent perimeters declared, not resolved: sanctioned ships in the Gulf of Finland (44 of 109 ships; 38 of 96 tankers; 45 tankers in the whole Baltic); "
-        "hull value of a large container ship (221.7 vs 150 million $); German LNG capacity still counting the Mukran terminal; Brent (92.57, the 9 November close, in prezzi.json; 92.62, an intraday reading, in bunker-emissioni.json and rischio.json).",
+        "hull value of a large container ship (221.7 vs 150 million $); German LNG capacity still counting the Mukran terminal; Brent (92.57 in prezzi.json, the 9 November close; 92.62, an intraday reading, in bunker-emissioni.json and rischio.json).",
     ],
 }
 
