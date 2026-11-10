@@ -111,7 +111,7 @@ Come leggerla in 30 secondi, con i numeri di oggi (9 novembre 2026, `prezzi.json
 
 ### Countries (paesi)
 
-**Cosa mostra.** Un menu con 33 Paesi; per ognuno PIL, crescita e inflazione (FMI, WEO ottobre 2026), debito, partite correnti, popolazione, spesa militare (SIPRI), dipendenza energetica (Eurostat), produzione di petrolio e gas, primi mercati e fornitori, fornitori di greggio e GNL, quota dal Golfo Persico, principali prodotti esportati e importati (UN Comtrade). In fondo i dati mancanti e il pulsante per andare al Paese sulla mappa. Si apre sull'Italia.
+**Cosa mostra.** Un menu con 33 Paesi (si apre sull'Italia): macro (FMI, WEO ottobre 2026), spesa militare (SIPRI), dipendenza energetica (Eurostat), mercati e fornitori, greggio e GNL, quota dal Golfo Persico, prodotti scambiati (UN Comtrade), dati mancanti e pulsante per andare al Paese sulla mappa.
 
 **Domanda tipica.** *«Quanto dipende l'Italia dal gas importato e da chi compra il greggio?»* Dipendenza dal gas 95,2% (2024); greggio da Libia 24,5%, Azerbaigian 15,9%, Kazakistan 12,5% (2025).
 
@@ -270,15 +270,7 @@ La pagina è `docs/simulatore.html` (sul sito: *“What if…” simulator*, dal
 
 ### Come si usa
 
-Tre scelte: **lo stretto** (Hormuz, Bab el-Mandeb, Suez, Malacca, Taiwan, Bosforo, Stretti danesi, Panama, Sicilia/TransMed), **l'intensità** (rallentamento 25%, 50%, chiusura totale) e **la durata** (2 settimane, 1 mese, 3 mesi). Si parte da Hormuz chiuso per un mese. Il risultato si legge in sei passi numerati, che seguono la catena dell'osservatorio:
-1. **Flussi coinvolti**: che cosa passa in condizioni normali (petrolio, GNL, fertilizzanti, container, cibo) e quanto ne viene colpito; navi al giorno per tipo, un anno fa e oggi.
-2. **Alternative e volume scoperto**: oleodotti di aggiramento, altri terminali; quanto del flusso resta senza via d'uscita.
-3. **Rotte alternative**: giorni e chilometri in più.
-4. **Noli**: quanto costa in più spedire.
-5. **Prezzi**: Brent e TTF, come forchetta.
-6. **Chi è esposto**: Italia, Paesi Bassi, Germania e Danimarca in evidenza, poi i Paesi più esposti al mondo; porti e settori che perdono (−), guadagnano (+) o incerti (?).
-
-A destra, sempre visibili: le ipotesi del modello, le regole usate, i limiti e le fonti.
+Tre scelte: **lo stretto** (Hormuz, Bab el-Mandeb, Suez, Malacca, Taiwan, Bosforo, Stretti danesi, Panama, Sicilia/TransMed), **l'intensità** (rallentamento 25%, 50%, chiusura totale) e **la durata** (2 settimane, 1 mese, 3 mesi). Si parte da Hormuz chiuso per un mese. Il risultato segue la catena dell'osservatorio in sei passi numerati: (1) flussi coinvolti, (2) alternative e volume scoperto, (3) rotte alternative con giorni e km in più, (4) noli, (5) prezzi di Brent e TTF, (6) chi è esposto, con Italia, Paesi Bassi, Germania e Danimarca in evidenza e i porti e settori che perdono (−), guadagnano (+) o incerti (?). A destra restano visibili ipotesi, regole, limiti e fonti.
 
 ### Come calcola (le quattro regole da saper spiegare)
 

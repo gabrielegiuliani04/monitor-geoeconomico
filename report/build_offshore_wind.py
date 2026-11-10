@@ -363,7 +363,7 @@ def compute(today, offline):
     for x in EXT["prezzi_aste_eur"]["voci"]:
         pts.append({"label": f"{CN[x['paese']]} · {x['progetto']}", "c": x["paese"], "v": x["eur_mwh"], "kind": "award", "year": x["anno"], "src": "WindEurope"})
     if dkp[0]:
-        pts.append({"label": "Denmark · Holmsland (ex North Sea I Mid), 1 GW", "c": "DK", "v": dkp[0], "kind": "award", "year": 2026, "src": "offshoreWIND.biz / KEFM"})
+        pts.append({"label": "Denmark · Holmsland, 1 GW", "c": "DK", "v": dkp[0], "kind": "award", "year": 2026, "src": "offshoreWIND.biz / KEFM"})
         pts.append({"label": "Denmark · Hesselø, 0.8 GW", "c": "DK", "v": dkp[1], "kind": "award", "year": 2026, "src": "offshoreWIND.biz / KEFM"})
     if V["gamma_caps"][0]:
         pts.append({"label": "Netherlands · IJmuiden Ver Gamma-A, cap", "c": "NL", "v": V["gamma_caps"][0], "kind": "cap", "year": 2026, "src": "wind-calendar"})
@@ -635,7 +635,7 @@ def chart_targets(V, wide=True):
         end = max(X(tg), X(inst + aw), X(fc) + 5)
         tx = X(tg) + 6
         anchor = "start"
-        if tx + len(lab) * 6.6 > w - 4:
+        if tx + (len(lab) + (0 if wide else 7)) * 6.7 > w - 4:
             tx, anchor = X(tg) - 6, "end"
         o.append(f'<text class="ow-m ow-h" x="{tx:.1f}" y="{y + 37}" text-anchor="{anchor}">target {lab}</text>' if not wide
                  else f'<text class="ow-m ow-h" x="{tx:.1f}" y="{y + 37}" text-anchor="{anchor}">{lab}</text>')
@@ -715,7 +715,7 @@ def chart_calendar(V, wide=True):
         if m.month in (1, 7) or m == t0:
             xx = X(m)
             o.append(f'<line class="ow-g" x1="{xx:.1f}" x2="{xx:.1f}" y1="{y_axis_top}" y2="{y_axis_bot}"/>')
-            lab = f"{MON[m.month - 1]} {str(m.year)[2:]}" if (wide or m.month == 1 or m == t0) else ""
+            lab = f"{MON[m.month - 1]} {str(m.year)[2:]}" if (m.month in (1, 7) and (wide or m.month == 1)) else ""
             if lab:
                 o.append(f'<text class="ow-m" x="{xx:.1f}" y="{h - 14}" text-anchor="middle">{lab}</text>')
         m = dt.date(m.year + (m.month // 12), m.month % 12 + 1, 1)
@@ -725,7 +725,7 @@ def chart_calendar(V, wide=True):
         y = top + i * rowh
         cls, mark = STATUS_CLS[e["status_effective"]]
         nm = f'{CN.get(e["country"], e["country"])} · {e["project"]}'
-        cut = 40 if wide else 54
+        cut = 36 if wide else 54
         nm = nm if len(nm) <= cut else nm[:cut - 1] + "…"
         a, b = d(e["period_start"]), d(e["period_end"])
         xa, xb = X(a), max(X(b), X(a) + 6)
@@ -764,7 +764,7 @@ def chart_markets(V, wide=True):
     for i, (ttl, series, is_idx) in enumerate(panels):
         ox = 12 + (i * (pw + 40) if wide else 0)
         oy = 44 + (0 if wide else i * (ph + 60))
-        x0, x1, y0, y1 = ox + 34, ox + pw - 4, oy + 46, oy + ph
+        x0, x1, y0, y1 = ox + 34, ox + pw - 38, oy + 46, oy + ph
         allv = [v for _, s, _, _ in series for _, v in s]
         if not allv:
             o.append(f'<text class="ow-l" x="{ox}" y="{oy + 30}">data missing</text>')
@@ -794,7 +794,7 @@ def chart_markets(V, wide=True):
             path = "M" + " L".join(f"{X(a):.1f},{Y(v):.1f}" for a, v in s)
             o.append(f'<path d="{path}" fill="none" class="{cls}" stroke-width="2"{dash} stroke-linejoin="round"><title>{nm}: {num(s[0][1], 2)} on {date_en(s[0][0])}, {num(s[-1][1], 2)} on {date_en(s[-1][0])}</title></path>')
             xe, ye = X(s[-1][0]), Y(s[-1][1])
-            o.append(f'<text class="ow-m ow-h" x="{xe - 4:.1f}" y="{ye - 8:.1f}" text-anchor="end">{num(s[-1][1], 2 if not is_idx else 0)}</text>')
+            o.append(f'<text class="ow-m ow-h" x="{xe + 4:.1f}" y="{ye + 4:.1f}">{num(s[-1][1], 2 if not is_idx else 0)}</text>')
     o.append("</svg>")
     return "".join(o)
 
