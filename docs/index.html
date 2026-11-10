@@ -2337,7 +2337,7 @@ function renderTerminal() {
     for (const g in grp) { body.appendChild(el('h3', 'mkt-grp', tr(g)));
       for (const e of grp[g]) { const r = el('a', 'trm-row'); if (e.link) { r.href = e.link; r.target = '_blank'; r.rel = 'noopener noreferrer'; }
         const sp = el('span', 'mkt-sp'), sv = xSpark(e.serie, 60); if (sv) sp.appendChild(sv); const u = e.ultimo || {};
-        const nm = trStock(e.nome).replace(/ – .*$/, '').replace(/\s*\(.*\)$/, '');
+        const nm = trStock(e.nome).replace(/\s*\((Eurostat|EIA|USDA|IMF|AGSI\+?|GIE)[^)]*\)$/, '');
         const ya = e.confronto && e.confronto.var_anno_pct != null ? +e.confronto.var_anno_pct : (u.var_anno_pct != null ? +u.var_anno_pct : null);
         r.append(el('span', 'nm', nm), sp, el('span', 'mkt-v', u.valore != null ? itNumber(+u.valore) : '—'), xVar(ya), el('span', 'mkt-d flat', (u.data || '').slice(0, 7)), el('span', 'mkt-d flat', ''));
         r.title = (e.unita || '') + ' · ' + e.fonte + (e.note ? ' · ' + e.note : ''); body.appendChild(r); } }
@@ -2395,7 +2395,7 @@ function renderTerminal() {
       f('Gas', c.gas); if (c.gnl && c.gnl.quota_usa_pct != null) f('LNG', 'US ' + c.gnl.quota_usa_pct + '%' + (c.gnl.quota_russia_pct != null ? ' · Russia ' + c.gnl.quota_russia_pct + '%' : '') + (c.gnl.periodo ? ' (' + c.gnl.periodo + ')' : '')); f('Ports', c.porti); f('Links', c.cavi_interconnessioni); f('Risks', c.rischi); body.appendChild(dl); }
     const B = X.data.bk; if (B && B.esempi_costo) { body.appendChild(el('h3', 'mkt-grp', 'How much fuel, ETS and FuelEU weigh on a voyage'));
       for (const e of B.esempi_costo) { const r = el('div', 'trm-ev'); r.appendChild(el('p', 'trm-evt', e.nome)); r.appendChild(el('p', 'trm-evd', 'Fuel €' + itNum(e.costo_carburante_eur / 1e6) + ' m · ETS €' + itNum(e.costo_ets_eur / 1e6) + ' m (' + itNum(e.quota_ets_su_totale_pct) + '%) · FuelEU at most €' + itNum(e.costo_fueleu_max_eur / 1e6) + ' m. Assumptions: ' + e.ipotesi)); body.appendChild(r); }
-      if (B.eua) body.appendChild(el('p', 'trm-evd', 'ETS allowance price (EUA): €' + JSON.stringify(B.eua).match(/\d+[.,]\d+/) + ' (EEX auction)')); }
+      if (B.eua && B.eua.asta_ultima) { const A = B.eua.asta_ultima; body.appendChild(el('p', 'trm-evd', 'EU ETS allowance (EUA): €' + itNum(+A.prezzo_eur) + ' at the EEX auction of ' + A.data + (B.eua.ship_and_bunker ? '; secondary-market reference €' + itNum(+B.eua.ship_and_bunker.prezzo_eur) + ' (Ship & Bunker, ' + B.eua.ship_and_bunker.data + ')' : '') + '.')); } }
   } else if (trmTab === 'minerali' && X.data.min) {
     $('trm-note').textContent = 'Who produces the critical raw materials, and the dependencies of the EU and Italy (products where a single country supplies more than 50%). Sources: USGS 2026, EIA, UN Comtrade.';
     const DEP = X.data.com && X.data.com.dipendenze; if (DEP) { body.appendChild(el('h3', 'mkt-grp', 'Critical dependencies')); body.appendChild(el('p', 'trm-evd', 'Note: for purchases from other EU countries the supplier is the country of consignment, not of origin (e.g. lithium “from Germany” or nickel “from the Netherlands” actually come from outside the EU).')); const arr = Array.isArray(DEP) ? DEP : Object.values(DEP).flat(); for (const d of arr.slice(0, 20)) { const r = el('div', 'trm-ev hi'); const f0 = (d.fornitori || [])[0] || {}; r.appendChild(el('p', 'trm-evt', tr(d.importatore) + ' · ' + d.prodotto + ' → ' + (PAESI[f0.iso2] || tr(f0.partner) || '') + ' ' + (f0.quota != null ? itNum(f0.quota) + '%' : '') + ' (' + d.anno + ')')); body.appendChild(r); } }
