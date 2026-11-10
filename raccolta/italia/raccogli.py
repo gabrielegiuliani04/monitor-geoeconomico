@@ -496,7 +496,40 @@ def rischio(prezzo_max, aumento_pct, soglie):
     return "basso"
 
 
-def scenari_italia(curati, sim, coeff, base, pesi, rapp_elettrico, W, date, osservati):
+def applica(base, brent, ttf, k_g, k_b, b_pun, pesi, rapp_elettrico, soglie, spiegazione):
+    """Traduce variazioni % di Brent e TTF in prezzi italiani a partire da una base."""
+    d_brent_eur_l = [base["brent"] * x / 100 / base["eurusd"] / LITRI_BARILE for x in brent]
+    d_g = [d_brent_eur_l[0] * k_g[0] * (1 + IVA), d_brent_eur_l[1] * k_g[1] * (1 + IVA)]
+    d_b = [d_brent_eur_l[0] * k_b[0] * (1 + IVA), d_brent_eur_l[1] * k_b[1] * (1 + IVA)]
+    g = [base["gasolio"] + x for x in d_g]
+    bz = [base["benzina"] + x for x in d_b]
+    d_ttf = [base["ttf"] * x / 100 for x in ttf]
+    d_pun = [x * b_pun for x in d_ttf] if (b_pun and base.get("pun")) else [None, None]
+    d_smc = [x * KWH_SMC / 1000 * 1.10 for x in d_ttf]  # €/Smc con IVA al 10%
+    gas_pct = [x / base["gas_rif_eur_smc"] * 100 for x in d_smc] if base.get("gas_rif_eur_smc") else [None, None]
+    w_fuel = pesi.get("FUEL", {}).get("2026") or 0
+    w_gas = pesi.get("CP0452", {}).get("2026") or 0
+    w_el = pesi.get("CP0451", {}).get("2026") or 0
+    pct_fuel = [(d_g[i] / base["gasolio"] + d_b[i] / base["benzina"]) / 2 * 100 for i in (0, 1)]
+    pct_el = [d_pun[i] / base["pun"] * 100 * rapp_elettrico if (d_pun[i] is not None and rapp_elettrico) else 0 for i in (0, 1)]
+    pp = [(w_fuel * pct_fuel[i] + w_gas * (gas_pct[i] or 0) + w_el * pct_el[i]) / 1000 for i in (0, 1)]
+    aumento = d_g[1] / base["gasolio"] * 100
+    liv = rischio(g[1], aumento, soglie)
+    return {
+        "spiegazione": spiegazione,
+        "base": {k: base.get(k) for k in ("data_carburanti", "gasolio", "benzina", "brent", "eurusd", "ttf", "pun", "mese_pun")},
+        "gasolio_eur_l": [r(x, 2) for x in g], "benzina_eur_l": [r(x, 2) for x in bz],
+        "gasolio_aumento_cent": [r(x * 100, 1) for x in d_g], "benzina_aumento_cent": [r(x * 100, 1) for x in d_b],
+        "pun_eur_mwh": [r(base["pun"] + x, 0) if x is not None else None for x in d_pun],
+        "gas_vulnerabili_aumento_cent_smc": [r(x * 100, 1) for x in d_smc],
+        "gas_vulnerabili_spesa_pct": [r(x, 1) for x in gas_pct],
+        "inflazione_effetto_diretto_punti": [r(x, 2) for x in pp],
+        "rischio_fermo_tir": liv,
+        "rischio_motivo": "gasolio fino a %.2f €/l (+%.0f%% sulla base); soglie: alto se %s" % (g[1], aumento, soglie["alto"]),
+    }
+
+
+def scenari_italia(curati, sim, coeff, base, base_normale, pesi, rapp_elettrico, W, date, osservati):
     sc_def = curati["scenari"]
     soglie = sc_def["soglie_fermo"]
     ep = sim.get("episodi", {})
@@ -533,40 +566,21 @@ def scenari_italia(curati, sim, coeff, base, pesi, rapp_elettrico, W, date, osse
         else:
             k_g = [kg["diff_8_sett"]["b"], max(kg["diff_13_sett"]["b"], kg["livello"]["b"])]
             k_b = [kb["diff_8_sett"]["b"], max(kb["diff_13_sett"]["b"], kb["livello"]["b"])]
-        d_brent_eur_l = [base["brent"] * x / 100 / base["eurusd"] / LITRI_BARILE for x in brent]
-        d_g = [d_brent_eur_l[0] * k_g[0] * (1 + IVA), d_brent_eur_l[1] * k_g[1] * (1 + IVA)]
-        d_b = [d_brent_eur_l[0] * k_b[0] * (1 + IVA), d_brent_eur_l[1] * k_b[1] * (1 + IVA)]
-        g = [base["gasolio"] + x for x in d_g]
-        bz = [base["benzina"] + x for x in d_b]
-        d_ttf = [base["ttf"] * x / 100 for x in ttf]
         b_pun = coeff.get("pun_ttf", {}).get("b")
-        d_pun = [x * b_pun for x in d_ttf] if b_pun else [None, None]
-        d_smc = [x * KWH_SMC / 1000 for x in d_ttf]  # €/Smc, IVA esclusa
-        gas_pct = [x * 1.10 / base["gas_rif_eur_smc"] * 100 for x in d_smc] if base.get("gas_rif_eur_smc") else [None, None]
-        # inflazione: effetto diretto in punti di HICP
-        w_fuel = pesi.get("FUEL", {}).get("2026") or 0
-        w_gas = pesi.get("CP0452", {}).get("2026") or 0
-        w_el = pesi.get("CP0451", {}).get("2026") or 0
-        pct_fuel = [(d_g[i] / base["gasolio"] + d_b[i] / base["benzina"]) / 2 * 100 for i in (0, 1)]
-        pct_el = [d_pun[i] / base["pun"] * 100 * rapp_elettrico if (d_pun[i] is not None and rapp_elettrico) else 0 for i in (0, 1)]
-        pp = [(w_fuel * pct_fuel[i] + w_gas * (gas_pct[i] or 0) + w_el * pct_el[i]) / 1000 for i in (0, 1)]
-        aumento = d_g[1] / base["gasolio"] * 100
-        liv = rischio(g[1], aumento, soglie)
         res = {
             "id": s["id"], "nome": s["nome"], "passaggio": s["passaggio"], "durata_giorni": s["durata_giorni"],
             "valutazione": True,
             "ingresso": {"brent_pct": [r(x, 1) for x in brent], "ttf_pct": [r(x, 1) for x in ttf], "origine": origine},
-            "base_oggi": {k: base[k] for k in ("data_carburanti", "gasolio", "benzina", "brent", "eurusd", "ttf", "pun", "mese_pun")},
             "coefficienti_usati": {"gasolio": k_g, "benzina": k_b, "pun_per_ttf": b_pun, "rapporto_elettricita_dettaglio_pun": rapp_elettrico},
-            "gasolio_eur_l": [r(x, 2) for x in g], "benzina_eur_l": [r(x, 2) for x in bz],
-            "gasolio_aumento_cent": [r(x * 100, 1) for x in d_g], "benzina_aumento_cent": [r(x * 100, 1) for x in d_b],
-            "pun_eur_mwh": [r(base["pun"] + x, 0) if x is not None else None for x in d_pun],
-            "gas_vulnerabili_spesa_pct": [r(x, 1) for x in gas_pct],
-            "inflazione_effetto_diretto_punti": [r(x, 2) for x in pp],
-            "rischio_fermo_tir": liv,
-            "rischio_motivo": "gasolio fino a %.2f €/l (+%.0f%% sul livello di oggi); soglie: %s" % (g[1], aumento, soglie["alto"]),
-            "catene": s["catene"], "misure_probabili": s["misure_probabili"], "indicatori": s["indicatori"],
+            "da_oggi": applica(base, brent, ttf, k_g, k_b, b_pun, pesi, rapp_elettrico, soglie,
+                               "se uno shock della stessa forma partisse dai prezzi di oggi (che includono già la crisi di Hormuz)"),
         }
+        if base_normale:
+            res["da_condizioni_normali"] = applica(base_normale, brent, ttf, k_g, k_b, b_pun, pesi, rapp_elettrico, soglie,
+                                                   "partendo dai prezzi dell'ultima settimana prima della guerra (fine febbraio 2026), con le accise ordinarie e senza tagli")
+        res["catene"] = s["catene"]
+        res["misure_probabili"] = s["misure_probabili"]
+        res["indicatori"] = s["indicatori"]
         if s.get("nota"):
             res["nota"] = s["nota"]
         if s["id"] in osservati:
@@ -702,7 +716,23 @@ def principale():
         o["nota"] = "Fatti dai dati: prezzi medi settimanali MASE (con i tagli di accise effettivi e, a parte, senza tagli: netto osservato più accisa della settimana base, con IVA), inflazione Istat/Eurostat, PUN GME, vendite MASE."
         osservati[sid] = o
 
-    scen = scenari_italia(curati, sim, coeff, base, pesi, rapp_el, W, date, osservati)
+    # base 'condizioni normali': ultima settimana prima della guerra (stessa base del simulatore)
+    base_normale = None
+    try:
+        hb = sim["episodi"]["hormuz_2026"]["calcolato"]
+        bd = sim["episodi"]["hormuz_2026"]["base"]
+        e_feb = [v for k, v in E.items() if bd["da"] <= k.isoformat() <= bd["a"]]
+        d0, g0 = prezzo_a(W, date, bd["a"], "2")
+        _, b0 = prezzo_a(W, date, bd["a"], "1")
+        pun_feb = dict(g.get("mensile", [])).get(bd["a"][:7]) or ((precedente.get("regole_trasmissione") or {}).get("per_il_simulatore", {}).get("base_condizioni_normali") or {}).get("pun")
+        base_normale = {"data_carburanti": d0, "gasolio": r(g0), "benzina": r(b0), "brent": hb["brent"]["base"],
+                        "eurusd": r(st.mean(e_feb), 4) if e_feb else None, "ttf": hb["ttf"]["base"],
+                        "pun": pun_feb, "mese_pun": bd["a"][:7], "gas_rif_eur_smc": None}
+        if not base_normale["eurusd"]:
+            base_normale = None
+    except Exception as e:
+        avvisi.append("base 'condizioni normali' non calcolata: %s" % e)
+    scen = scenari_italia(curati, sim, coeff, base, base_normale, pesi, rapp_el, W, date, osservati)
 
     # precedenti: prezzo del gasolio alla data e variazione su un anno
     prec = []
@@ -773,6 +803,7 @@ def principale():
         "per_il_simulatore": {
             "testo": "Come usare le regole nella sezione 'Cosa succede in Italia': dato Δ%Brent e Δ%TTF calcolati dal simulatore, ΔBrent €/l = Brent_oggi × Δ%/100 / EURUSD / 158,987. Gasolio = gasolio_oggi + ΔBrent€/l × coeff × 1,22 (coeff 4 settimane per 2 settimane–1 mese, 8–13 settimane per 3 mesi). PUN = PUN_ultimo_mese + b × ΔTTF€/MWh. Gas vulnerabili: +ΔTTF × 0,01057 €/Smc più IVA. Inflazione diretta = Σ peso × Δ% (pesi in millesimi). Rischio fermo dalle soglie in 'soglie_fermo'. Gli scenari già calcolati sono in 'scenari'.",
             "base_oggi": base,
+            "base_condizioni_normali": base_normale,
             "pesi_hicp_millesimi_2026": {k: v.get("2026") for k, v in pesi.items()},
         },
     }
