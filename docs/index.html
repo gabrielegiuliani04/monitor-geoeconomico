@@ -2121,7 +2121,7 @@ function xDrawPoints(z) {                                 // in screen units, af
       if (s.hollow) { ctx.fillStyle = C.paper; ctx.fill(); ctx.strokeStyle = col; ctx.stroke(); } else { ctx.fill(); ctx.stroke(); }
       ctx.globalAlpha = 1;
       if (on) { ctx.beginPath(); ctx.arc(x, y, r + 4, 0, 2 * Math.PI); ctx.strokeStyle = C.ink; ctx.lineWidth = 1.5; ctx.stroke(); }
-      hits.push({ p, x, y, r: Math.max(r, 7) });
+      hits.push({ p, x, y, r: l === 'xruo' ? 6 : Math.max(r, 7) });
     }
   }
 }
@@ -2161,7 +2161,7 @@ function renderExtra(card, p) {
     fact('Origin', d.provenienza); fact('Status', d.stato);
     const r = d.flussi && d.flussi.entry && d.flussi.entry.riassunto;
     if (r) for (const k in r) if (typeof r[k] !== 'object') fact(({ totale_periodo_twh: 'Total for the period, TWh', media_365g_gwh: '365-day average, GWh/day', giorni: 'Days', ultimo_giorno: 'Latest day', ultimo_gwh: 'Latest, GWh', media_30g_gwh: '30-day average, GWh/day', media_7g_gwh: '7-day average, GWh/day', ultimo_mln_smc: 'Latest, million Sm³', totale_periodo_mld_smc: 'Total for the period, bn Sm³' })[k] || cap(k.replace(/_/g, ' ')), r[k] + (/gwh|media|ultimo|tot/i.test(k) ? '' : ''));
-    const q = X.data.gasit && X.data.gasit.quote_12_mesi; if (q && typeof q === 'object') { const v = Array.isArray(q) ? q.find(o => o.id === d.id) : q[d.id]; if (v) fact('Share of entries, 12 months', typeof v === 'object' ? (v.quota_pct != null ? v.quota_pct + '%' : JSON.stringify(v)) : v + '%'); }
+    const q = X.data.gasit && X.data.gasit.quote_12_mesi; if (q && typeof q === 'object') { const v = Array.isArray(q) ? q.find(o => o.id === d.id) : q[d.id]; if (v) fact('Share of entries, 12 months', typeof v === 'object' ? (v.quota_ingressi_pct != null ? itNum(v.quota_ingressi_pct) + '% (' + itNum(v.twh_12m) + ' TWh)' : v.quota_pct != null ? v.quota_pct + '%' : '—') : v + '%'); }
   } else if (lay === 'xcable') {
     fact('Status', d.stato); fact('Year', d.anno || d.data_evento); fact('Length', d.km ? itNum(+d.km) + ' km' : null); fact('Owners', d.proprietari);
     fact('Chokepoints', d.s); fact('Landings in Italy', d.approdi_it); fact('Cables involved', d.cavi); fact('Cause', d.causa); fact('Outcome', d.esito);
@@ -2194,6 +2194,7 @@ function renderExtra(card, p) {
   } else if (lay === 'xeof') {
     fact('Roles', d.ruoli); fact('Sea', d.mare); fact('New land', d.area_nuova_ha ? d.area_nuova_ha + ' ha' : null); fact('Quays', d.banchine); fact('Bearing capacity', d.portata_t_m2 ? d.portata_t_m2 + ' t/m²' : null); fact('Projects served', d.progetti_serviti); fact('Investment', d.investimenti); fact('Bottlenecks', d.colli_bottiglia);
   } else if (lay === 'xru') {
+    $('cd-name').textContent = [d.citta || d.oblast, d.data].filter(Boolean).join(' · ') + (d.categoria ? ' — ' + tr(d.categoria) : '');
     fact('Date', d.data); fact('Place', [d.citta, d.oblast].filter(Boolean).join(', ')); fact('Target', trCat(d.categoria)); fact('Weapons', d.mezzi); fact('How many', d.quanti); fact('Effect', d.effetto);
   } else if (lay === 'xh2') {
     fact('Type', trCat(d.categoria)); fact('Port', d.porto); fact('Status', d.stato); fact('Capacity', d.mw ? d.mw + ' MW' : null); fact('Capacity', d.capacita); fact('Year', d.anno); fact('Operator', d.operatore); fact('Length', d.km ? d.km + ' km' : null);

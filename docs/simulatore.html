@@ -964,6 +964,7 @@ const IT_PERCORSI = /*IT_PERCORSI*/[
   "misure_governo[id=oneri-iva-gas-2022].link",
   "misure_governo[id=crediti-energivori-2022].link",
   "misure_governo[id=bonus-200-2022].link",
+  "scenari[id=hormuz_1m].ingresso.brent_pct",
   "scenari[id=hormuz_1m].da_condizioni_normali.gasolio_eur_l",
   "scenari[id=hormuz_1m].da_condizioni_normali.pun_eur_mwh",
   "scenari[id=hormuz_1m].osservato.gasolio.base.data",
@@ -1071,8 +1072,9 @@ function disegnaItalia(p, r, du, io) {
   const fMase = itv("fonti[nome~=prezzi medi settimanali dei carburanti].link"), fGme = itv("fonti[nome~=esiti del mercato elettrico].link"), fIstat = itv("fonti[nome~=prezzi al consumo NIC].link"), fEuro = itv("fonti[nome~=HICP ECOICOP].link");
   const tagFile = srcFile("italia-impatti.json", agg);
   const eur = (a, d = 2) => a ? "€" + rng(a[0], a[1], d) : "n/a";
-  const cent = (a) => a ? rng(a[0] * 100, a[1] * 100, 1, (x, d) => sgn(x, d)) + " c€/l" : "";
-  const ppTxt = (a) => rng(a[0], a[1], 2, (x, d) => sgn(x, d)) + " pp";
+  const pm = (a, b, d) => Math.abs(a - b) < Math.pow(10, -d) / 2 ? sgn(a, d) : sgn(a, d) + "–" + (b < 0 ? "−" : "") + n(Math.abs(b), d);
+  const cent = (a) => a ? pm(a[0] * 100, a[1] * 100, 1) + " c€/l" : "";
+  const ppTxt = (a) => pm(a[0], a[1], 2) + " pp";
   let h = `<li class="passo"><div class="scheda" id="italia"><h2>What happens in Italy</h2>`;
   h += `<p class="domanda">Pump prices, truck-stoppage risk, inflation, electricity and gas bills, likely government measures and what to watch. The Brent and TTF changes of step 5 go through the observatory's Italian transmission rules.</p>`;
   h += `<span class="it-etichetta">Observatory assessment · not a forecast</span>`;
@@ -1096,8 +1098,8 @@ function disegnaItalia(p, r, du, io) {
   h += riga("PUN, wholesale electricity", `monthly average, €/MWh ${srcIt("GME", fGme)}`,
     "€" + rng(N.pun[0], N.pun[1], 0), `from €${n(bN.pun, 2)} (${itMeseBreve(bN.mese_pun)})`, "€" + rng(O.pun[0], O.pun[1], 0), `from €${n(bO.pun, 2)} (${itMeseBreve(bO.mese_pun)})`);
   h += riga("Regulated gas (vulnerable customers)", `ARERA price, the month after ${srcIt("ARERA · " + itMeseBreve(itv("oggi.arera_cmem_ultimo.mese")), itv("oggi.arera_cmem_ultimo.link"))}`,
-    rng(N.dSmc[0] * 100, N.dSmc[1] * 100, 1, (x, d) => sgn(x, d)) + " c€/Smc", "share of the bill not available for Feb 2026",
-    rng(O.dSmc[0] * 100, O.dSmc[1] * 100, 1, (x, d) => sgn(x, d)) + " c€/Smc", O.gasPct ? `${rngS(O.gasPct[0], O.gasPct[1], 0)} on the reference price of ${n(bO.gas_rif_eur_smc * 100, 1)} c€/Smc` : "");
+    pm(N.dSmc[0] * 100, N.dSmc[1] * 100, 1) + " c€/Smc", "share of the bill not available for Feb 2026",
+    pm(O.dSmc[0] * 100, O.dSmc[1] * 100, 1) + " c€/Smc", O.gasPct ? `${rngS(O.gasPct[0], O.gasPct[1], 0)} on the reference price of ${n(bO.gas_rif_eur_smc * 100, 1)} c€/Smc` : "");
   h += `</div>`;
   h += `<p class="piccolo">Range: the low end uses the average Brent/TTF change in the window and the shorter-lag coefficient, the high end the peak change and the longer-lag coefficient. ${tagFile}</p>`;
 
@@ -1179,7 +1181,7 @@ function disegnaItalia(p, r, du, io) {
   h += `<h3>Backtest: Hormuz, February–March 2026</h3>`;
   h += `<p class="piccolo">The same rule applied to the prices of ${dataBreve(itv(BT + "osservato.gasolio.base.data"))} with Hormuz closed for a month, against what MASE then recorded up to ${dataBreve(itv(BT + "osservato.gasolio.fino_a"))} ${srcIt("MASE weekly", fMase)} ${tagFile}</p>`;
   h += `<div class="it-back">
-    <div><p class="et">Predicted diesel</p><p class="val">€${rng(prev[0], prev[1], 2)}</p><p class="sub">rule, normal conditions, excise unchanged</p></div>
+    <div><p class="et">Predicted diesel</p><p class="val">€${rng(prev[0], prev[1], 2)}</p><p class="sub">rule from normal conditions, excise unchanged, fed with the episode's Brent change (${rngS(itv(BT + "ingresso.brent_pct")[0], itv(BT + "ingresso.brent_pct")[1], 1)})</p></div>
     <div><p class="et">Actual, without the cuts</p><p class="val">€${n(itv(BT + "osservato.gasolio.media_senza_tagli_accise"), 2)} avg · €${n(itv(BT + "osservato.gasolio.max_senza_tagli_accise"), 2)} max</p><p class="sub">net price observed + February excise, with VAT</p></div>
     <div><p class="et">Actual at the pump</p><p class="val">€${n(itv(BT + "osservato.gasolio.media_eur_l"), 2)} avg · €${n(itv(BT + "osservato.gasolio.max_eur_l"), 2)} max</p><p class="sub">with the March 2026 excise cut; peak ${dataBreve(itv(BT + "osservato.gasolio.data_max"))}</p></div>
   </div>`;

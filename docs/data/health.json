@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-10T06:49Z",
+ "updated": "2026-11-10T06:50Z",
  "date": "2026-11-10",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 33.8,
+ "seconds": 33.6,
  "summary": {
   "critical": 0,
   "high": 1,
@@ -521,7 +521,7 @@
    "validator": "originali (fissi, italia, iran, difesa, mobili, eventi, ibrido, linee, condotte)",
    "script": "raccolta/originali/controlla.py",
    "exit": 0,
-   "seconds": 0.2,
+   "seconds": 0.1,
    "tail": "== linee.json: 588 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | == condotte.json: 454 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | Totale errori: 0"
   },
   {
@@ -577,7 +577,7 @@
    "validator": "supply-chain-ai --valida",
    "script": "raccolta/supply-chain-ai/raccogli.py",
    "exit": 0,
-   "seconds": 0.2,
+   "seconds": 0.1,
    "tail": "AVVISO: materia germanio: nessuna quota per paese (dato mancante dichiarato) | AVVISO: collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare | AVVISO: collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
   },
   {

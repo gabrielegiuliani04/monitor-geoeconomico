@@ -112,6 +112,15 @@ CADENZA = {
     "mercati.json":           ("manual market collections, about weekly", 8, 8, ["data"]),
     "health.json":            ("daily (this check)", 2, None, None),
 }
+# Weekly workflow (aggiorna-settimanale.yml, Sundays 03:40 UTC): 7 days + 2 of slack.
+SETTIMANALE = ["cavi.json", "cavi-incidenti.json", "paesi.json", "rete-elettrica.json", "interconnessioni.json",
+               "nucleare.json", "ferrovie.json", "ai-mondo.json", "investimenti.json", "supply-chain-ai.json",
+               "webcam.json", "idrogeno.json", "eolico-filiera.json", "assicurazioni.json", "basi-mondo.json"]
+for _f in SETTIMANALE:
+    CADENZA.setdefault(_f, ("weekly (aggiorna-settimanale.yml)", 9, None, None))
+# Monthly in the same workflow (first Sunday): 31 days + slack.
+for _f in ["commercio.json", "minerali.json"]:
+    CADENZA.setdefault(_f, ("monthly (first Sunday, aggiorna-settimanale.yml)", 38, None, None))
 MENSILE = ["eventi.json", "mobili.json", "ibrido.json", "iran.json", "italia.json", "difesa.json", "fissi.json",
            "dossier.json", "report.json", "basi-mondo.json", "assicurazioni.json", "cyber-energia.json",
            "ai-mondo.json", "investimenti.json", "ai.json", "minerali.json", "commercio.json", "paesi.json",
