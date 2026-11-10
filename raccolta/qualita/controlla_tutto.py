@@ -1084,7 +1084,7 @@ def segreti(R):
             for m in rx.finditer(t):
                 s = m.group(m.lastindex or 0)
                 ctx = t[max(0, m.start() - 30): m.end() + 10]
-                if FALSI.search(s) or FALSI.search(ctx):
+                if FALSI.search(s) or re.search(r"(?i)nascost|hidden|redacted|\[chiave", ctx):
                     continue
                 if nome != "private key" and not sembra_chiave(s):
                     continue

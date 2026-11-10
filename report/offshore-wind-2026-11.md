@@ -229,17 +229,17 @@ Rebuilding about 453 m of quays on the Smeltė peninsula (36.6 million € contr
 
 ### Interest rates
 
-The US 10-year Treasury yield was 4.88% on 9 November 2026, +77 basis points on a year earlier ([prezzi.json](../docs/data/prezzi.json)). The euro-area AAA 10-year yield was 3.29% on 6 November 2026, +55 basis points on 6 November 2025 ([ECB Data Portal](https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y)). The ECB deposit rate is 2.50% (10 November 2026; 2.00% a year earlier). Market data cache (offline run).
+The US 10-year Treasury yield was 4.88% on 9 November 2026, +77 basis points on a year earlier ([prezzi.json](../docs/data/prezzi.json)). The euro-area AAA 10-year yield was 3.29% on 6 November 2026, +55 basis points on 6 November 2025 ([ECB Data Portal](https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y)). The ECB deposit rate is 2.50% (10 November 2026; 2.00% a year earlier). Market data partly from cache.
 
 *Assessment (illustrative calculation, not a forecast).* For a project financed over 25 years, the annual capital charge per euro invested is 7.82% at a 6% cost of capital and 8.58% at 7%: one point more raises it by 9.7%. Since capital is most of the cost of offshore wind, the price a developer needs rises almost as much. Rates are higher than a year ago on both sides of the Atlantic, which is why rounds without a CfD remain hard to clear.
 
 ### Steel and copper
 
-COMEX copper was 6.33 $/lb on 10 November 2026, +24.5% on a year earlier (front-month future, provisional; [Yahoo Finance](https://finance.yahoo.com/quote/HG%3DF)). US Midwest hot-rolled coil steel was 1,413 $ per short ton, +66.0%: a US price shaped by tariffs, used here only as a direction; **missing**: a European steel plate series. Metal prices show up in contracts: NKT reports its backlog at 13.0 billion € at market metal prices and 11.6 billion € at standard prices, a difference of 1.4 billion €. For monopiles, steel and the carbon border charge decide whether Chinese supply undercuts European yards (section 4).
+COMEX copper was 6.33 $/lb on 10 November 2026, +24.4% on a year earlier (front-month future, provisional; [Yahoo Finance](https://finance.yahoo.com/quote/HG%3DF)). US Midwest hot-rolled coil steel was 1,413 $ per short ton, +66.0%: a US price shaped by tariffs, used here only as a direction; **missing**: a European steel plate series. Metal prices show up in contracts: NKT reports its backlog at 13.0 billion € at market metal prices and 11.6 billion € at standard prices, a difference of 1.4 billion €. For monopiles, steel and the carbon border charge decide whether Chinese supply undercuts European yards (section 4).
 
 ![Cost of capital and materials, last 12 months](grafici/ow-2026-11-markets.svg)
 
-**Cost of capital and materials, last 12 months.** Left: 10-year government bond yields, %. Right: copper (COMEX) and US hot-rolled coil steel (CME), index 100 = first close a year earlier; front-month futures, latest close provisional. Sources: US Treasury via [prezzi.json](../docs/data/prezzi.json); ECB Data Portal (AAA yield curve) and Yahoo Finance, cached in report/dati/offshore-wind-mercati.json (cache (offline run)).
+**Cost of capital and materials, last 12 months.** Left: 10-year government bond yields, %. Right: copper (COMEX) and US hot-rolled coil steel (CME), index 100 = first close a year earlier; front-month futures, latest close provisional. Sources: US Treasury via [prezzi.json](../docs/data/prezzi.json); ECB Data Portal (AAA yield curve) and Yahoo Finance, cached in report/dati/offshore-wind-mercati.json (partly from cache).
 
 Gas sets the other side of the CfD bill. The TTF was 82.33 €/MWh on 9 November 2026 (+164% on a year earlier, provisional), with German storage at 58.9% and Dutch at 63.5% on 8 November 2026 ([prezzi.json](../docs/data/prezzi.json); [scorte.json](../docs/data/scorte.json)). *Assessment:* expensive gas raises power prices, so a two-sided CfD costs the state little or pays it back; if gas falls, the same contracts cost more.
 
@@ -294,7 +294,7 @@ Of the 20 vessels in the monitor's fleet table, four were built in Chinese yards
 | Siemens Gamesa and GE Vernova offshore | 44 M€ loss (Q2 FY2026); GE offshore orders suspended | renewed losses or GE exit confirmed | two Western suppliers left | company results |
 | Euro-area AAA 10-year yield | 3.29% (6 November 2026) | above 3.5% | cost of capital for non-CfD rounds | ECB Data Portal |
 | US 10-year yield | 4.88% (9 November 2026) | above 5.0% | global cost of capital, USD-priced kit | prezzi.json |
-| Copper (COMEX) | 6.33 $/lb (10 November 2026) | above 6.97 $/lb (+10%) | cable contract values | Yahoo Finance |
+| Copper (COMEX) | 6.33 $/lb (10 November 2026) | above 6.96 $/lb (+10%) | cable contract values | Yahoo Finance |
 | Baltic cable or pipeline damage | last on 2 January 2026 | any new incident near a wind export route | same seabed, same anchors | baltico-sicurezza.json |
 | GNSS high cells within 75 km of Baltic wind ports and farms | Baltic Power 6, Baltica 2 3, Baltyk II 2, Gdańsk 9, Klaipėda 10 | Świnoujście or German Baltic sites affected | jamming moving west | baltico-sicurezza.json |
 | Cyber incident at a wind OEM, operator or service firm | none known offshore (9 Nov 2026) | any incident affecting remote control | KA-SAT and Poland precedents | cyber-energia.json |
@@ -316,7 +316,7 @@ The report is built by report/build_offshore_wind.py from the monitor's data fil
 | rete-elettrica.json / interconnessioni.json | HVDC lines (OpenStreetMap); interconnectors | 2026-11-09T19:17Z / 2026-11-09T19:17Z | OSM coverage uneven |
 | baltico-sicurezza.json / cyber-energia.json | cables, drones, GNSS; cyber incidents | 2026-11-09T20:05Z / 2026-11-09T19:56Z | curated; attribution as stated |
 | prezzi.json / scorte.json / idrogeno.json | US yields, TTF; gas storage; electrolysis | 2026-11-10T03:40Z / 2026-11-09T19:19Z / 2026-11-09T20:09Z | daily closes, provisional |
-| ECB Data Portal; Yahoo Finance | euro AAA 10y, deposit rate; copper, US HRC | 2026-11-10 | cache (offline run) |
+| ECB Data Portal; Yahoo Finance | euro AAA 10y, deposit rate; copper, US HRC | 2026-11-10 | partly from cache |
 | WindEurope 2025 Statistics (PDF) | auction prices in €/MWh, 2025 FIDs | 2026-02 | high; read 10 Nov 2026 |
 
 

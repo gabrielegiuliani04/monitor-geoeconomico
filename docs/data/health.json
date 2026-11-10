@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-10T06:48Z",
+ "updated": "2026-11-10T06:49Z",
  "date": "2026-11-10",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 33.6,
+ "seconds": 33.8,
  "summary": {
   "critical": 0,
   "high": 1,
@@ -22,7 +22,7 @@
    "area": "freshness",
    "name": "files against cadence",
    "status": "amber",
-   "detail": "65 ok, 0 stale, 1 missing; 0 lagging series inside files"
+   "detail": "65 ok, 0 stale, 0 missing, 1 undated (report.json); 0 lagging series inside files"
   },
   {
    "area": "schema",
@@ -159,7 +159,7 @@
    "severity": "medium",
    "area": "freshness",
    "file": "docs/data/report.json",
-   "problem": "missing: no 'aggiornato'/'updated' field (cadence: monthly (curated))",
+   "problem": "undated: no 'aggiornato'/'updated' field (cadence: monthly (curated))",
    "fix": "Curated layer: schedule the monthly review of this file (agent or by hand) and refresh dates and sources."
   },
   {
@@ -428,7 +428,7 @@
    "cadence": "monthly (curated)",
    "updated": null,
    "newest_data_date": "2026-11-09",
-   "status": "missing",
+   "status": "undated",
    "why": "no 'aggiornato'/'updated' field"
   }
  ],
@@ -521,7 +521,7 @@
    "validator": "originali (fissi, italia, iran, difesa, mobili, eventi, ibrido, linee, condotte)",
    "script": "raccolta/originali/controlla.py",
    "exit": 0,
-   "seconds": 0.1,
+   "seconds": 0.2,
    "tail": "== linee.json: 588 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | == condotte.json: 454 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | Totale errori: 0"
   },
   {
@@ -549,7 +549,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.5,
+   "seconds": 0.6,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -577,7 +577,7 @@
    "validator": "supply-chain-ai --valida",
    "script": "raccolta/supply-chain-ai/raccogli.py",
    "exit": 0,
-   "seconds": 0.1,
+   "seconds": 0.2,
    "tail": "AVVISO: materia germanio: nessuna quota per paese (dato mancante dichiarato) | AVVISO: collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare | AVVISO: collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
   },
   {
