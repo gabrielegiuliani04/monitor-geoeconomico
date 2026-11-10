@@ -136,7 +136,7 @@ Il cuscinetto delle scorte si è assottigliato. L'IEA ha coordinato un rilascio 
 - **War risk.** Da 0,25% del valore della nave prima della guerra a fino al 3% per le navi legate a USA, Regno Unito o Israele; per una nave da 100 milioni di dollari un transito nel Golfo costava circa 250.000 dollari prima della guerra e da 375.000 a 3 milioni a marzo, secondo il profilo di rischio della nave ([Howden Re, marzo](https://www.howdenre.com/sites/howdenre.howdenprod.com/files/2026-03/HowdenRe_Strait_of_Hormuz_report_March272026.pdf)). Una stima di ottobre (32 volte il livello prebellico, [straits.live](https://straits.live/)) ha affidabilità bassa: un premio aggiornato da fonte primaria **manca**.
 - **Petroliere.** Il nolo Golfo–Cina (TD3C) è quasi triplicato a marzo, circa 12 milioni di dollari a viaggio per una VLCC (Howden Re). Una serie aggiornata dei noli tanker **manca** nell'osservatorio.
 - **Container.** Drewry WCI a 4.389 dollari per container da 40 piedi il 5 novembre (−1% sulla settimana, +124% su un anno secondo il [report sulla supply chain](supply-chain-2026-11.md)); Shanghai–Genova 4.166, Shanghai–Rotterdam 3.615. Freightos FBX globale 3.452 dollari il 6 novembre, da 3.690 a metà agosto; Cina–Mediterraneo 4.324 ([`noli.json`](../docs/data/noli.json)). Hapag-Lloyd applica dal marzo un sovrapprezzo di guerra di 1.500 dollari per TEU (Howden Re).
-- **Rinfuse.** Baltic Dry a 2.854 punti il 9 novembre, +37% su un anno (Trading Economics, ripreso in [`nord.md`](agenti/nord.md); non è più raccolto in `noli.json`: affidabilità media).
+- **Rinfuse.** Baltic Dry a 2.805 punti il 6 novembre (Baltic Exchange, ripreso da Trading Economics; variazione annua non verificata). Il valore di 2.854 del 9 novembre citato in [`nord.md`](agenti/nord.md) viene da un contratto derivato (CFD) che replica l'indice, non dall'indice: non è più raccolto in `noli.json` (affidabilità media).
 
 *Valutazione:* i noli container scendono piano perché il ritorno a Suez accorcia i viaggi e libera navi; è un fattore ribassista per il 2027. Che il nolo verso Genova resti sopra quello verso Rotterdam è coerente con la maggiore esposizione del Mediterraneo al Mar Rosso.
 
@@ -276,7 +276,7 @@ Ogni settimana: aggiornamento di IMF PortWatch (con circa una settimana di ritar
 |---|---|---|---|
 | Transiti negli stretti e nei porti | IMF PortWatch (FMI e Università di Oxford), dati AIS | `portwatch.json` | 1/11/2026 |
 | Prezzi di Brent, WTI, TTF, Henry Hub, oro; tassi USA | Yahoo Finance; U.S. Department of the Treasury | `prezzi.json` | 9/11/2026, 19:47 UTC (tassi 6/11; grafico: lettura delle 19:38) |
-| Noli | Drewry, Freightos, Shanghai Shipping Exchange (Baltic Dry da Trading Economics, citato a mano) | `noli.json` | 5–9/11/2026 |
+| Noli | Drewry, Freightos, Shanghai Shipping Exchange (Baltic Dry: Baltic Exchange via Trading Economics, citato a mano, non raccolto in automatico) | `noli.json` | 5–9/11/2026 |
 | Rischio geopolitico | Caldara e Iacoviello, GPR | `gpr.json` | 2/11/2026 |
 | Gas in Italia | ENTSOG, dati Snam Rete Gas | `gas-italia.json` | 8/11/2026 |
 | Scorte | GIE AGSI+, EIA, Eurostat, USDA, FMI | `scorte.json` | agosto–8 novembre 2026 |
@@ -298,7 +298,7 @@ Ogni settimana: aggiornamento di IMF PortWatch (con circa una settimana di ritar
 
 ## Revisione
 
-> **Data:** 9 novembre 2026, revisione indipendente contro lo [standard editoriale](STANDARD.md).
+> **Data:** 9 novembre 2026, revisione indipendente contro lo [standard editoriale](STANDARD.md); aggiornata il 10 novembre (Baltic Dry, su segnalazione di un secondo revisore).
 >
 > **Affermazioni verificate:** 183 tra numeri e fatti datati: 135 confermate, 38 corrette, 10 non verificabili da qui (fonte a pagamento, sito non raggiungibile o dato solo nei rapporti degli agenti).
 >
@@ -306,7 +306,7 @@ Ogni settimana: aggiornamento di IMF PortWatch (con circa una settimana di ritar
 >
 > **Chiarezza:** «In breve» riscritto con frasi più corte e sigle spiegate; aggiunto un glossario; segnalata la coerenza con il cruscotto del rischio (TransMed: impatto alto, probabilità bassa).
 >
-> **Resta non verificabile:** origine dei carichi di GNL in Italia; volumi di ADCOP ed Est-Ovest dopo settembre; Kirkuk–Ceyhan a 500.000 b/g (fonti anonime); importazioni cinesi dal Medio Oriente (Kpler); calo di 60 miliardi di m³ di GNL (pagina IEA non raggiungibile); attacco a Fujairah del 14 marzo; Baltic Dry; premio war risk attuale. Il grafico dei prezzi conserva le date anticipate di un giorno finché lo script di raccolta non è corretto. Resoconto completo in [`revisioni/hormuz-mar-rosso-2026-11.md`](revisioni/hormuz-mar-rosso-2026-11.md).
+> **Resta non verificabile:** origine dei carichi di GNL in Italia; volumi di ADCOP ed Est-Ovest dopo settembre; Kirkuk–Ceyhan a 500.000 b/g (fonti anonime); importazioni cinesi dal Medio Oriente (Kpler); calo di 60 miliardi di m³ di GNL (pagina IEA non raggiungibile); attacco a Fujairah del 14 marzo; variazione annua del Baltic Dry (il dato di 2.854 punti e +37% veniva da un CFD di Trading Economics e non da fonte primaria: sostituito il 10 novembre con 2.805 punti al 6 novembre); premio war risk attuale. Il grafico dei prezzi conserva le date anticipate di un giorno finché lo script di raccolta non è corretto. Resoconto completo in [`revisioni/hormuz-mar-rosso-2026-11.md`](revisioni/hormuz-mar-rosso-2026-11.md).
 
 ---
 

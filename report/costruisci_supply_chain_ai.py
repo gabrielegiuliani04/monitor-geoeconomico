@@ -513,20 +513,28 @@ def costruisci(d, mese):
         n_sez += 1
         doc.p("**Dove sta.** " + a["dove"])
         doc.p("**Chi lo controlla.** " + a["chi_controlla"])
+        vis = set(a.get("visibili", [0]))
+        altri = [par for k, par in enumerate(a["testo"]) if k not in vis and not par.startswith("Valutazione: ")]
+        for k, par in enumerate(a["testo"]):
+            if k in vis:
+                doc.p(par)
+        if altri:
+            doc.apri("Approfondimento (%d paragrafi)" % len(altri))
+            for par in altri:
+                doc.p(par)
+            doc.chiudi()
         for par in a["testo"]:
             if par.startswith("Valutazione: "):
                 vv = par[len("Valutazione: "):]
                 doc.val(vv[:1].upper() + vv[1:])
-            else:
-                doc.p(par)
         if a["id"] == "materie":
             doc.svg(grafico_concentrazione(d, True), grafico_concentrazione(d, False),
                     "Quota del primo paese produttore, in % della produzione mondiale 2025 (stime), materie con primo produttore almeno al 30%. Fonte: [USGS Mineral Commodity Summaries 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf), 5 febbraio 2026; quote calcolate in docs/data/supply-chain-ai.json e uguali a quelle di minerali.json.",
                     "sca-%s-concentrazione.svg" % mese)
             altre = conf.get("altre_materie_controllate") or []
             if altre:
-                doc.p("Altre materie sotto licenza cinese toccano la catena: %s ([minerali.json](https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release), USGS, dati 2025)." % "; ".join(
-                    "%s, Cina %s%% della produzione mondiale" % (x["nome"].lower(), num(x["quota_cina"])) for x in sorted(altre, key=lambda x: -(x["quota_cina"] or 0))))
+                doc.p("Altre materie sotto licenza cinese toccano la catena. Quota della Cina nella produzione mondiale 2025: %s ([minerali.json](https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release), USGS)." % ", ".join(
+                    "%s %s%%" % (x["nome"].lower(), num(x["quota_cina"])) for x in sorted(altre, key=lambda x: -(x["quota_cina"] or 0))))
             doc.apri("Produttori e quote per materia (USGS, dati 2025)")
             rr = [[x["nome"], x["uso_ai"], quote_materia(x), "[%s](%s)" % (x["fonte"].split(": ")[-1], x["link"])] for x in d["materie"]]
             doc.tab(["Materia", "A cosa serve", "Primi produttori (quota della produzione mondiale)", "Fonte USGS"], rr,
@@ -714,7 +722,7 @@ nav.indice{background:var(--card);border:1px solid var(--rule);border-radius:8px
 nav.indice h2{font:600 13px/1.4 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px;padding:0;color:var(--soft)}
 nav.indice ol{margin:0;padding-left:1.4em;columns:2;column-gap:28px;font-size:15px}
 nav.indice li{margin:0 0 4px;break-inside:avoid}
-@media (max-width:560px){nav.indice ol{columns:1}}
+@media (max-width:560px){nav.indice ol{columns:2;column-gap:16px;font-size:13px}nav.indice li{margin:0 0 2px}nav.indice{padding:10px 12px}}
 .valutazione{border-left:3px solid var(--accent);background:var(--band);padding:10px 14px;margin:0 0 18px;border-radius:0 6px 6px 0;font-size:16px}
 .valutazione .etichetta{font:600 12px/1 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
 .tabella{overflow-x:auto;margin:0 0 16px;-webkit-overflow-scrolling:touch;border:1px solid var(--rule);border-radius:6px;background:var(--card)}
@@ -753,7 +761,7 @@ footer .firma{font-weight:600;color:var(--ink)}"""
 
 def pagina_html(titolo, doc, d, mese):
     sezioni = [(b[1], b[2]) for b in doc.b if b[0] == "h2"]
-    indice = "".join('<li><a href="#%s">%s</a></li>' % (i, html.escape(re.sub(r"^\d+\. ", "", t))) for i, t in sezioni)
+    indice = "".join('<li><a href="#%s">%s</a></li>' % (i, html.escape(re.sub(r"^\d+\. ", "", t).split(":")[0])) for i, t in sezioni)
     anno, m = mese.split("-")
     return """<!doctype html>
 <html lang="it">

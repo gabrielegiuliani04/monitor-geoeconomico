@@ -1,5 +1,5 @@
 {
- "nota": "Gli otto anelli della catena dell'AI, dalla miniera al data center. 'testo' è markdown con link alle fonti; le parti che iniziano con «Valutazione» sono ragionamenti dell'osservatorio. Le quote numeriche delle tabelle vengono dai file di dati, non da questo testo. 'paesi_chiave' è una valutazione dell'osservatorio (i paesi che contano di più in quell'anello), usata dal diagramma.",
+ "nota": "Gli otto anelli della catena dell'AI, dalla miniera al data center. 'testo' è markdown con link alle fonti; le parti che iniziano con «Valutazione» sono ragionamenti dell'osservatorio. Le quote numeriche delle tabelle vengono dai file di dati, non da questo testo. 'paesi_chiave' è una valutazione dell'osservatorio (i paesi che contano di più in quell'anello), usata dal diagramma. visibili = indici dei paragrafi di 'testo' mostrati subito nella pagina del report; gli altri vanno nel blocco comprimibile «Approfondimento» (le valutazioni restano sempre visibili).",
  "elementi": [
   {
    "id": "materie",
@@ -26,6 +26,9 @@
     "CN",
     "CD",
     "QA"
+   ],
+   "visibili": [
+    2
    ]
   },
   {
@@ -50,6 +53,9 @@
     "NL",
     "US",
     "JP"
+   ],
+   "visibili": [
+    0
    ]
   },
   {
@@ -73,6 +79,9 @@
     "TW",
     "KR",
     "US"
+   ],
+   "visibili": [
+    0
    ]
   },
   {
@@ -97,6 +106,10 @@
     "TW",
     "KR",
     "US"
+   ],
+   "visibili": [
+    0,
+    1
    ]
   },
   {
@@ -119,6 +132,9 @@
    "paesi_chiave": [
     "US",
     "CN"
+   ],
+   "visibili": [
+    0
    ]
   },
   {
@@ -143,6 +159,9 @@
     "TW",
     "MX",
     "CN"
+   ],
+   "visibili": [
+    0
    ]
   },
   {
@@ -168,6 +187,9 @@
     "TW",
     "KR",
     "NL"
+   ],
+   "visibili": [
+    2
    ]
   },
   {
@@ -193,6 +215,9 @@
     "US",
     "AE",
     "TW"
+   ],
+   "visibili": [
+    1
    ]
   }
  ]

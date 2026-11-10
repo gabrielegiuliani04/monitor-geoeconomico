@@ -54,3 +54,5 @@ Each JSON file also lists its sources in its own `fonti[]` field (name, link, li
 If you hold rights in any of this data and want it credited differently or removed, open an issue in this repository.
 
 | `docs/data/attacchi-russi.json` | Russian strikes in Ukraine: curated events (Kyiv Independent, Reuters, AP and others, cited per event) + per-oblast counts from P. Ivaniuk's dataset | CC BY-NC-SA 4.0 (inherited from the Ivaniuk dataset); events cited with link |
+
+| `docs/data/italia.json` (10 command locations) | Coordinates from OpenStreetMap | ODbL 1.0 — © OpenStreetMap contributors |

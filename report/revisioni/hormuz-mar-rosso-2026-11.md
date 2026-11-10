@@ -173,7 +173,7 @@ Esiti: **ok** = corrisponde; **corretto** = sbagliato o impreciso, corretto nel 
 | 131 | FBX 3.452 il 6/11, da 3.690 a metà agosto | — | 3.451,8; 3.689,8 il 14/8 | `noli.json` | ok |
 | 132 | FBX13 Cina–Mediterraneo 4.324 | 4.324 | 4.324 | `noli.json` | ok |
 | 133 | Hapag-Lloyd 1.500 $/TEU | 1.500 | sì | Howden Re | ok |
-| 134 | Baltic Dry 2.854, +37% (Trading Economics) | 2.854 | non è in `noli.json` (non più raccolto); presente solo in `nord.md` | `nord.md` | n.v. (fonte esplicitata) |
+| 134 | Baltic Dry 2.854, +37% (Trading Economics) | 2.854 | non è in `noli.json` (non più raccolto); presente solo in `nord.md`. **Aggiornamento del 10 novembre:** Trading Economics ricava 2.854 (9/11) e +36,95% da un CFD che replica l'indice; l'ultimo valore dell'indice è 2.805 il 6 novembre | Trading Economics, pagina «Baltic Dry» letta il 10/11; segnalazione di un altro revisore | corretto (2.805 il 6/11; variazione annua tolta perché non verificata) |
 | 135 | Brent: media febbraio 69,4, marzo 99,7 | 69,4 / 99,7 | 69,41 / **99,60** (sedute di marzo con date corrette) | Yahoo Finance | corretto |
 | 136 | WTI | 86,91 | 86,95 (stessa lettura del Brent) | `prezzi.json` | corretto |
 | 137 | Brent +52% da inizio anno | +52% | +52,2% | `prezzi.json` | ok |
