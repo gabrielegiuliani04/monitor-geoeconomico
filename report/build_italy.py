@@ -459,7 +459,7 @@ def legend(items, x, y, w, kind="rect"):
     return "".join(o), y
 
 
-def line_chart(uid, wide, title, desc, series, y_lo, y_hi, y_step, x_lo, x_hi, x_ticks, hlines=(), events=(), unit_fmt=lambda v: num(v, 2), monthly=False, label_last=True):
+def line_chart(uid, wide, title, desc, series, y_lo, y_hi, y_step, x_lo, x_hi, x_ticks, hlines=(), events=(), unit_fmt=lambda v: num(v, 2), monthly=False, label_last=None):
     w = 680 if wide else 360
     left, right = (44 if wide else 38), (60 if wide else 46)
     leg, ly = legend([(s[0], s[1], s[3]) for s in series], 12, 32, w, "line")
@@ -480,14 +480,14 @@ def line_chart(uid, wide, title, desc, series, y_lo, y_hi, y_step, x_lo, x_hi, x
     for xt, n in events:
         o.append(f'<line class="it-g" x1="{X(xt):.1f}" x2="{X(xt):.1f}" y1="{y1 - 4}" y2="{y0}" stroke-dasharray="2 2"/>'
                  f'<circle cx="{X(xt):.1f}" cy="{y1 - 6}" r="7" class="it-s5"/><text class="it-m" x="{X(xt):.1f}" y="{y1 - 2.5}" text-anchor="middle" style="fill:#fff;font-size:9.5px">{n}</text>')
-    for nm, cls, pts_, dash in series:
+    for si, (nm, cls, pts_, dash) in enumerate(series):
         if not pts_:
             continue
         path = "M" + " L".join(f"{X(a):.1f},{Y(v):.1f}" for a, v in pts_)
         o.append(f'<path d="{path}" fill="none" class="{cls.replace("s", "k")}" stroke-width="2" stroke-linejoin="round"{dash}/>')
         for a, v in pts_[-1:]:
             o.append(f'<circle cx="{X(a):.1f}" cy="{Y(v):.1f}" r="3.5" class="{cls}"/>')
-            if label_last:
+            if label_last is None or si in label_last:
                 o.append(f'<text class="it-m it-h" x="{X(a) + 6:.1f}" y="{Y(v) + 4:.1f}">{unit_fmt(v)}</text>')
         # hover targets (one per point, thinned for long series)
         step = max(1, len(pts_) // 120)
@@ -507,8 +507,7 @@ def chart_pump(V, wide):
          ("petrol", "it-s2", [(ordinal(k), v) for k, v in ptr], ' stroke-dasharray="5 3"')]
     x_lo, x_hi = ordinal(dsl[0][0]), ordinal(dsl[-1][0]) + 20
     xt = [(str(y) if wide else f"'{str(y)[2:]}", ordinal(f"{y}-01-01")) for y in range(2022, 2027)]
-    ev = [(ordinal("2022-03-22"), 1), (ordinal("2023-01-01"), 2), (ordinal("2026-02-28"), 3), (ordinal("2026-03-23"), 4),
-          (ordinal("2026-09-28"), 5)]
+    ev = [(ordinal("2022-03-22"), 1), (ordinal("2023-01-01"), 2), (ordinal("2026-02-28"), 3), (ordinal("2026-09-28"), 4)]
     lo, hi = V["thr"]
     return line_chart("c1" + ("w" if wide else "n"), wide, "Weekly pump prices, €/litre",
                       "Diesel and petrol, national weekly average (MASE), January 2022 to the latest week, with the monitor's 1.90 and 2.10 diesel thresholds.",
@@ -556,7 +555,7 @@ def chart_breakdown(V, wide):
 def chart_gas(V, wide):
     Q = V["gas_q"]
     w = 680 if wide else 360
-    left = 186 if wide else 112
+    left = 186 if wide else 126
     right = 50
     top = 54
     rowh = 26
@@ -585,7 +584,7 @@ def chart_gas(V, wide):
 def chart_pun(V, wide):
     M = V["pun_m"]
     w = 680 if wide else 360
-    left, right = 42, (78 if wide else 54)
+    left, right = 42, (78 if wide else 62)
     top = 52
     h = top + (220 if wide else 190) + 34
     y0, y1 = h - 34, top
@@ -626,7 +625,7 @@ def chart_infl(V, wide):
     xt = [(MON[m - 1] if wide or m % 3 == 1 else "", ordinal(f"2026-{m:02d}-01")) for m in range(1, 11)]
     return line_chart("c5" + ("w" if wide else "n"), wide, "Consumer prices (NIC), % on a year earlier, 2026",
                       "Istat NIC annual rates: headline, energy, food, core, January to October 2026 (October preliminary).",
-                      s, -10, 35, 5, x_lo, x_hi, xt, events=[(ordinal("2026-02-28"), 1)], unit_fmt=lambda v: num(v, 1))
+                      s, -10, 35, 5, x_lo, x_hi, xt, events=[(ordinal("2026-02-28"), 1)], unit_fmt=lambda v: num(v, 1), label_last=(0, 1))
 
 
 def chart_sales(V, wide):
@@ -727,12 +726,13 @@ def chart_ports(V, wide):
         o.append(f'<line class="{"it-z" if t == 0 else "it-g"}" x1="{X(t):.1f}" x2="{X(t):.1f}" y1="{top - 6}" y2="{h - 26}"/><text class="it-m" x="{X(t):.1f}" y="{h - 10}" text-anchor="middle">{"0" if t == 0 else f"{int(t):+d}".replace("-", "−")}</text>')
     for i, p in enumerate(P):
         y = top + i * rowh
-        o.append(f'<text class="it-l" x="{left - 8}" y="{y + 17}" text-anchor="end">{esc(p["name"])}</text>')
+        pn = p["name"] if wide else p["name"].replace("Malamocco", "Mal.")
+        o.append(f'<text class="it-l" x="{left - 8}" y="{y + 17}" text-anchor="end">{esc(pn)}</text>')
         for j, (k, cls) in enumerate([("ytd", "it-s2"), ("var30", "it-s1")]):
             v = p[k]
             yy = y + 4 + j * 13
             o.append(f'<path class="{cls}" d="{bar_path(X(0), X(v), yy, 11)}"><title>{esc(p["name"])}: {pct(v)} ({"year to date" if k == "ytd" else "last 30 days"})</title></path>')
-            o.append(f'<text class="it-m" x="{X(v) + (4 if v >= 0 else -4):.1f}" y="{yy + 9.5}" text-anchor="{"start" if v >= 0 else "end"}">{pct(v, 0)}</text>')
+            o.append(f'<text class="it-m" x="{X(v) + (4 if v >= 0 else -4):.1f}" y="{yy + 9.5}" text-anchor="{"start" if v >= 0 else "end"}">{"0%" if abs(v) < 0.5 else pct(v, 0)}</text>')
     o.append("</svg>")
     return "".join(o)
 
@@ -744,7 +744,7 @@ def chart_transit(V, wide):
             ("Mumbai → Genoa", R[("nhava_sheva", "genoa")] if ("nhava_sheva", "genoa") in R else None)]
     rows = [r for r in rows if r[1]]
     w = 680 if wide else 360
-    left = 150 if wide else 118
+    left = 150 if wide else 132
     right = 30
     leg, ly = legend([("via Suez", "it-s2", ""), ("today's mix (63% Suez)", "it-s1", ""), ("via the Cape", "it-s3", "")], 12, 30, w)
     top = ly + 30
@@ -773,20 +773,20 @@ def chart_transit(V, wide):
 
 def chart_scen(V, wide):
     S = V["scen"]
-    names = {"hormuz_1m": "Hormuz closed, 1 month", "hormuz_3m": "Hormuz closed, 3 months", "mar_rosso_1m": "Red Sea, ships via the Cape, 1 month", "transmed_1m": "TransMed shut, 1 month"}
+    names = {"hormuz_1m": "Hormuz closed, 1 month", "hormuz_3m": "Hormuz closed, 3 months", "mar_rosso_1m": "Red Sea via the Cape, 1 month", "transmed_1m": "TransMed shut, 1 month"}
     shortn = {"hormuz_1m": "Hormuz 1 m", "hormuz_3m": "Hormuz 3 m", "mar_rosso_1m": "Red Sea 1 m", "transmed_1m": "TransMed 1 m"}
     w = 680 if wide else 360
-    left = 196 if wide else 98
+    left = 200 if wide else 92
     right = 24
     leg, ly = legend([("from pre-war prices (Feb 2026)", "it-s2", ""), ("from today's prices", "it-s1", ""), ("observed in 2026 (no excise cut)", "it-s3", "")], 12, 30, w)
     top = ly + 30
     rowh = 46
     h = top + rowh * len(S) + 30
-    lo, hi = 1.5, 3.2
+    lo, hi = (1.3, 3.2) if wide else (1.5, 3.2)
     X = lambda v: left + (v - lo) / (hi - lo) * (w - left - right)
     o = [svg_open(w, h, "Scenario ranges for the diesel price", "Assessment: diesel €/litre ranges from the transmission rules, two starting points; observed 2026 values for the Hormuz scenarios.", "c10" + ("w" if wide else "n")),
          '<text class="it-t" x="12" y="20">Diesel in each scenario, €/litre (assessment)</text>', leg]
-    for t in ticks(lo, hi, 0.25 if wide else 0.5):
+    for t in ticks(1.5, hi, 0.25 if wide else 0.5):
         o.append(f'<line class="it-g" x1="{X(t):.1f}" x2="{X(t):.1f}" y1="{top - 6}" y2="{h - 26}"/><text class="it-m" x="{X(t):.1f}" y="{h - 10}" text-anchor="middle">{num(t, 2)}</text>')
     for val in V["thr"]:
         o.append(f'<line class="it-z" x1="{X(val):.1f}" x2="{X(val):.1f}" y1="{top - 6}" y2="{h - 26}" stroke-dasharray="3 3"/>')
@@ -798,7 +798,9 @@ def chart_scen(V, wide):
             yy = y + 4 + j * 15
             xa, xb = X(a), max(X(b), X(a) + 4)
             o.append(f'<path class="{cls}" d="M{xa:.1f},{yy}H{xb:.1f}V{yy + 11}H{xa:.1f}Z" rx="2"><title>{esc(names[k])}, {"from pre-war prices" if j == 0 else "from today"}: €{num(a, 2)}–{num(b, 2)}</title></path>')
-            o.append(f'<text class="it-m" x="{xb + 4:.1f}" y="{yy + 9.5}">{num(a, 2)}–{num(b, 2)}</text>' if wide or j == 1 else "")
+            lab = num(a, 2) if num(a, 2) == num(b, 2) else f"{num(a, 2)}–{num(b, 2)}"
+            if wide or j == 1:
+                o.append(f'<text class="it-m it-h" x="{xa - 4:.1f}" y="{yy + 9.5}" text-anchor="end">{lab}</text>')
         ob = s.get("osservato", {}).get("gasolio")
         if ob and k.startswith("hormuz"):
             for v in (ob["media_senza_tagli_accise"], ob["max_senza_tagli_accise"]):
@@ -954,7 +956,7 @@ def blocks(V, edition, today):
     need(V["measures"]["tetto-eni-ip-2026"]["testo"], "4.100", "2,19", "1,99", where="misure_governo tetto-eni-ip-2026")
     FIG("pump", f"*Weekly national average pump prices, €/litre, {month_en(V['dsl_first'])} to {date_en(lastd)}. Dashed lines: the monitor's diesel alert levels "
                 f"(€{num(lo, 2)} and €{num(hi, 2)}; an assessment). Events: 1 = excise cut of 25 cents (30.5 with VAT), 22 March 2022; 2 = cut fully withdrawn, 1 January 2023; "
-                f"3 = war on Iran begins, 28 February 2026; 4 = excise cut of 20 cents (24.4 with VAT), MASE survey of 23 March 2026; 5 = Eni/IP price caps, 28 September 2026. "
+                f"3 = war on Iran begins, 28 February 2026, followed by an excise cut of 20 cents (24.4 with VAT) in the MASE survey of 23 March; 4 = Eni/IP price caps, 28 September 2026. "
                 f"Source: MASE, DGSAIE weekly prices, {dl('italia-impatti.json')}, data to {date_en(lastd)}.*")
     mx = V["dsl_max"]
     P(f"In the last week before the war ({date_en(V['pre'])}) diesel cost €{num(V['pre_d'], 3)} and petrol €{num(V['pre_p'], 3)}. Diesel peaked at **€{num(mx[1], 3)}** in the week of "

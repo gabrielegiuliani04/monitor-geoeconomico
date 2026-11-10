@@ -74,7 +74,7 @@ That survey still included the last diesel excise cut, 4.9 cents a litre with VA
 
 ![Weekly national average pump prices, €/litre, January 2022 to 2 November 2026. Dashed lines: the monitor's die](grafici/it-2026-11-pump.svg)
 
-*Weekly national average pump prices, €/litre, January 2022 to 2 November 2026. Dashed lines: the monitor's diesel alert levels (€1.90 and €2.10; an assessment). Events: 1 = excise cut of 25 cents (30.5 with VAT), 22 March 2022; 2 = cut fully withdrawn, 1 January 2023; 3 = war on Iran begins, 28 February 2026; 4 = excise cut of 20 cents (24.4 with VAT), MASE survey of 23 March 2026; 5 = Eni/IP price caps, 28 September 2026. Source: MASE, DGSAIE weekly prices, [`italia-impatti.json`](../docs/data/italia-impatti.json), data to 2 November 2026.*
+*Weekly national average pump prices, €/litre, January 2022 to 2 November 2026. Dashed lines: the monitor's diesel alert levels (€1.90 and €2.10; an assessment). Events: 1 = excise cut of 25 cents (30.5 with VAT), 22 March 2022; 2 = cut fully withdrawn, 1 January 2023; 3 = war on Iran begins, 28 February 2026, followed by an excise cut of 20 cents (24.4 with VAT) in the MASE survey of 23 March; 4 = Eni/IP price caps, 28 September 2026. Source: MASE, DGSAIE weekly prices, [`italia-impatti.json`](../docs/data/italia-impatti.json), data to 2 November 2026.*
 
 In the last week before the war (23 February 2026) diesel cost €1.702 and petrol €1.655. Diesel peaked at **€2.351** in the week of 28 September 2026, the highest weekly average in the file's series (which starts in January 2022). Since February the net price of diesel has risen 66%, while Brent crude in euro rose 35% (from 71.27 to 91.7 dollars a barrel; calculation on [`italia-impatti.json`](../docs/data/italia-impatti.json)).
 

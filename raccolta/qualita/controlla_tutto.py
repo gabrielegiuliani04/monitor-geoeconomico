@@ -585,7 +585,7 @@ def confronta_conteggi(R):
         for f in spariti:
             R.problema("medium", "schema", f"docs/data/{f}", f"file present in {origine} is gone (if retired on purpose, also remove "
                        "it from DATA_LICENSES.md, manifest.json and the pages that load it)", "missing")
-        R.check("schema", "counts vs yesterday", "red" if cali or spariti else "green",
+        R.check("schema", "counts vs yesterday", "red" if cali else ("amber" if spariti else "green"),
                 f"compared with {origine}: {len(cali)} drops > 20%" + (f", {len(spariti)} files gone" if spariti else ""))
     else:
         R.check("schema", "counts vs yesterday", "amber", "no previous counts (first run, no git history): baseline saved")
