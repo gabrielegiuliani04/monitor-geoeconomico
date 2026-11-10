@@ -1,9 +1,9 @@
 {
- "updated": "2026-11-10T06:46Z",
+ "updated": "2026-11-10T06:48Z",
  "date": "2026-11-10",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 33.6,
+ "seconds": 6.8,
  "summary": {
   "critical": 0,
   "high": 1,
@@ -58,7 +58,7 @@
    "area": "consistency",
    "name": "key report figures vs data",
    "status": "amber",
-   "detail": "20 match, 1 differ, 0 not found in the report (fatti_chiave.json)"
+   "detail": "28 match, 1 differ, 0 not found in the report (fatti_chiave.json)"
   },
   {
    "area": "secrets",
@@ -73,16 +73,16 @@
    "detail": "42 of 67 files listed; missing: ai-mondo.json, assicurazioni.json, attacchi-analisti.json, baltico-sicurezza.json, basi-mondo.json, bunker-emissioni.json, commercio.json, cyber-energia.json, eolico-filiera.json, esposizione-nord.json, health.json, idrogeno.json, investimenti.json, italia-impatti.json, minerali.json, notizie-testate.json, offshore-nord.json, port-risk.json, porti-nord.json, rischio.json, simulatore.json, supply-chain-ai.json, transit-times.json, webcam.json, wind-calendar.json"
   },
   {
+   "area": "links",
+   "name": "source links",
+   "status": "amber",
+   "detail": "9384 distinct links found; not checked (offline run)"
+  },
+  {
    "area": "validators",
    "name": "repository validators",
    "status": "green",
    "detail": "10 run, 0 with a non-zero exit: originali 0; simulatore 0; eolico 0; stretti 0; basi 0; assicurazioni 0; ai 0; italia 0; supply-chain-ai 0; ucraina 0"
-  },
-  {
-   "area": "links",
-   "name": "source links (rotating sample)",
-   "status": "green",
-   "detail": "150 of 9384 distinct links checked today: 6 blocked, 4 error, 139 ok, 1 proxy; 0 confirmed broken, 0 failed once (rolling record)"
   },
   {
    "area": "smoke",
@@ -528,7 +528,7 @@
    "validator": "simulatore",
    "script": "raccolta/simulatore/controlla.py",
    "exit": 0,
-   "seconds": 0.2,
+   "seconds": 0.1,
    "tail": "GNL Italia: capacità 28.0 bcm/anno, uso 12 mesi 20.1, libera 7.9 | AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | Esito: 0 errori, 1 avvisi"
   },
   {
@@ -577,7 +577,7 @@
    "validator": "supply-chain-ai --valida",
    "script": "raccolta/supply-chain-ai/raccogli.py",
    "exit": 0,
-   "seconds": 0.2,
+   "seconds": 0.1,
    "tail": "AVVISO: materia germanio: nessuna quota per paese (dato mancante dichiarato) | AVVISO: collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare | AVVISO: collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
   },
   {
