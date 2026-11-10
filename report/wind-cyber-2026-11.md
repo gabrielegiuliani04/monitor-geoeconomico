@@ -202,7 +202,7 @@ KA-SAT (2022), Deutsche Windtechnik (2022), Nordex (2022) and Poland (December 2
 | Germany | NIS2UmsuCG (amends BSIG and EnWG) | 6 Dec 2025 | published in the Federal Law Gazette on 5 Dec 2025 (BGBl. 2025 I No. 301); KRITIS threshold for generation 104 MW |
 | Lithuania | Amended Law on Cyber Security | 18 Oct 2024 | further amended in 2026 (not verified) |
 | Poland | Amended KSC Act of 23 Jan 2026 (Dz.U. 2026 poz. 252) | 3 Apr 2026 | published 2 Mar 2026; in force one month later (official ELI register) |
-| Netherlands | Cyberbeveiligingswet (with the CER law, Wwke) | 15 Aug 2026 | about 8,000 organisations in scope |
+| Netherlands | Cyberbeveiligingswet (with the CER law, Wwke) | 15 Aug 2026 | 'thousands of organisations' in scope (Rijksoverheid); about 8,000 per cyber-energia.json |
 | Latvia, Estonia | — | — | **Missing:** not covered by the research notes |
 
 *Sources: report/ricerca/eolico-cyber-esposizione.md, section 4.1 (ECSO and other trackers, Rijksoverheid); [`cyber-energia.json`](../docs/data/cyber-energia.json); reviewer's checks of the Danish, German and Polish gazettes and registers, 10 Nov 2026. NIS2 transposition deadline: 17 Oct 2024.*
@@ -272,14 +272,14 @@ KA-SAT (2022), Deutsche Windtechnik (2022), Nordex (2022) and Poland (December 2
 
 ---
 
-### Review · pending
+### Review · 10 November 2026
 
-Pending. An independent reviewer will check every number in this report against the data files and the cited sources, under report/STANDARD.md, and record the result here: date, number of claims checked, corrections, what remains unverifiable. Until then, treat the report as a draft.
+Independent review on 10 November 2026 under report/STANDARD.md: 100 claims checked against the data files, the research notes and, where reachable, the original sources (80 confirmed, 15 corrected, 5 not verifiable from here). Main corrections: the early French store count (500–700, not 250–350); Denmark's NIS2 law for energy (Act no. 258, in force 7 Mar 2025); German and Polish NIS2 dates confirmed in the official gazettes; Lithuania's deadline for existing plants (1 June 2026); the UK Mingyang statement (a government source, not Downing Street); the Polish follow-up, now from CERT Polska (heat supply not disrupted); the inverter-concentration figure and its assumption; the LMA clause date. Safety: two links whose articles reproduce device-level detail were replaced; no exploit details, identifiers, credentials or locations remain. Not verifiable from here: the IRGC attribution (press only), the 1,000-store and EFS figures, the French exposed-panel counts and ANSSI's wording, SentinelOne's assessment.
 
-Review log, when done: report/revisioni/wind-cyber-2026-11.md.
+Review log: [report/revisioni/wind-cyber-2026-11.md](revisioni/wind-cyber-2026-11.md).
 
 ---
 
 Gabriele Giuliani · Geo-economic Risk Monitor · November 2026
 
-Note on AI use: this report was prepared with an AI assistant (Claude, Anthropic), which wrote the build script, the calculations, the charts and the draft text from the monitor's data files and two research notes that were also prepared with AI assistance and cite their sources. Numbers come from the data files and linked sources; assessments and estimates are marked. An independent review is pending. Gabriele Giuliani is responsible for publication.
+Note on AI use: this report was prepared with an AI assistant (Claude, Anthropic), which wrote the build script, the calculations, the charts and the draft text from the monitor's data files and two research notes that were also prepared with AI assistance and cite their sources. Numbers come from the data files and linked sources; assessments and estimates are marked. The independent review (10 November 2026) was also carried out with an AI assistant; its log lists every check. Gabriele Giuliani is responsible for publication.

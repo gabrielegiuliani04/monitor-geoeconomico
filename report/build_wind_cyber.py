@@ -835,7 +835,7 @@ figcaption{font-size:13px;color:var(--soft);margin-top:8px}
 @media (max-width:600px){.wide{display:none}.narrow{display:block}td{min-width:9em}td:first-child{min-width:7em}}
 details{margin-top:6px;font-size:13px}
 summary{cursor:pointer;color:var(--soft)}
-.review{margin:40px 0 0;padding:16px 18px;background:var(--card);border:1px dashed var(--soft);border-left:3px solid var(--soft);border-radius:0 8px 8px 0;font-size:15px}
+.review{margin:40px 0 0;padding:16px 18px;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;font-size:15px}
 .review h2{font:600 13px/1.4 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin:0 0 10px;padding:0}
 .review p{margin:0 0 10px}
 footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);font-size:14px;color:var(--soft)}
