@@ -922,7 +922,7 @@ def blocks(V, edition, today):
           f"{date_en(V['above_since'], False)}. *Assessment:* the risk that a stoppage is called before the end of the year is high; wildcat blockades need no notice.")
     s1 = sc["hormuz_1m"]
     k5 = (f"**A second Hormuz shock would put diesel at €{num(s1['da_oggi']['gasolio_eur_l'][0], 2)}–{num(s1['da_oggi']['gasolio_eur_l'][1], 2)} within a month** "
-          f"(*assessment*: Brent up {num(s1['ingresso']['brent_pct'][0], 0)}–{num(s1['ingresso']['brent_pct'][1], 0)}% as in March 2026, no new tax cuts). Tested on 2026: from pre-war prices the rule gave "
+          f"(*assessment*: Brent up {num(s1['ingresso']['brent_pct'][0], 0)}–{num(s1['ingresso']['brent_pct'][1], 0)}% as in spring 2026, no new tax cuts). Tested on 2026: from pre-war prices the rule gave "
           f"€{num(s1['da_condizioni_normali']['gasolio_eur_l'][0], 2)}–{num(s1['da_condizioni_normali']['gasolio_eur_l'][1], 2)}; diesel averaged "
           f"€{num(s1['osservato']['gasolio']['media_senza_tagli_accise'], 2)} once the excise cuts are added back. A TransMed outage would hit bills, not pumps.")
     UL([k1, k2, k3, k4, k5])
@@ -940,7 +940,7 @@ def blocks(V, edition, today):
         ("Istat, NIC, HICP", "the national statistics institute; NIC is its consumer price index for the whole population, HICP the EU-harmonised version"),
         ("Excise (accisa)", "a fixed tax per litre on fuel; VAT at 22% is charged on top of it"),
         ("Fermo", "a stoppage of road hauliers: firms keep their trucks off the road; it is treated like a strike"),
-        ("Unatras", "the joint committee of the main road-haulage associations; Trasportounito and Federtrasporti are associations outside it"),
+        ("Unatras", "the joint committee of the main road-haulage associations; Trasportounito is outside it"),
         ("Excise refund (rimborso accise)", "hauliers with trucks of 7.5 tonnes or more get back, every quarter, the diesel excise above a fixed reference rate"),
         ("CNR", "Comité national routier, the French road-haulage cost observatory, used here for want of an Italian figure"),
         ("Law 146/1990", "the law on strikes in essential public services; an independent Strike Guarantee Commission (Commissione di garanzia) enforces notice and minimum services"),

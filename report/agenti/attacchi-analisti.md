@@ -67,7 +67,7 @@ Il formato è quello di AGENTI.md: `aggiornato`, `fonti`, `nota`, `elementi`, `e
 
 | Categoria | Totale | di cui RU>UA |
 |---|---|---|
-| altro (esplosioni senza bersaglio indicato) | 1.721 | 1.564 |
+| altro (esplosioni senza bersaglio indicato) | 1.721 | 1.565 |
 | energia | 508 | 408 |
 | industria | 438 | 331 |
 | civile | 385 | 344 |
@@ -77,7 +77,7 @@ Il formato è quello di AGENTI.md: `aggiornato`, `fonti`, `nota`, `elementi`, `e
 | porto | 171 | 128 |
 | ferrovia | 150 | 141 |
 
-**Corroborazione.** 451 attacchi hanno affidabilità `alta`: lo stesso evento, a ±1 giorno ed entro 30 km, compare in `attacchi-russi.json` (280 abbinamenti), in `ucraina-storico.json` (102) o nell'altro canale (139). Gli altri 3.642 restano `media`: sono segnalati da un analista OSINT e non corroborati.
+**Corroborazione.** 451 attacchi hanno affidabilità `alta`: lo stesso evento, a ±1 giorno ed entro 30 km, compare in `attacchi-russi.json` (279 abbinamenti), in `ucraina-storico.json` (102) o nell'altro canale (139). Gli altri 3.642 restano `media`: sono segnalati da un analista OSINT e non corroborati.
 
 **Precisione del luogo.** 486 punti hanno le coordinate scritte nel post (1 km) e 121 le coordinate dell'impianto (2–3 km). Gli altri sono 3.076 centri abitati (10 km), 406 regioni (80 km) e 4 impianti a 30 km.
 
