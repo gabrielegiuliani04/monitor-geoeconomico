@@ -283,6 +283,10 @@ def compute(today):
     fd = veh["fuel_t_day"]
     units = veh["units_per_voyage"]
     hull = veh["hull_value_musd"] * 1e6
+    mh = re.search(r"priced about (\d+) M\$", veh["hull_note"])
+    V["veh_newbuild"] = float(mh.group(1)) if mh else None
+    if not mh:
+        warn("newbuild price not found in hull_note")
     sg = R[("singapore", "rotterdam")]
     p_now = sh["fuel_price"]["vlsfo_usd_t"]
     p_prewar = sh["fuel_price"]["prewar_usd_t"]
@@ -778,22 +782,29 @@ def blocks(V, edition):
                      "expected by Q1 2027 would lower costs, but it would also bring back the bunching of arrivals at North Sea hubs seen when routings change."))
 
     # ---------------------------------------------------------------- 2. route map
-    B.append(("h2", "routes", f"2. The route map today: Suez back for {S}% of capacity, Cape for the rest, Hormuz closed"))
+    B.append(("h2", "routes", f"2. The route map today: Suez back for most Asia–Europe capacity, Cape for the rest, Hormuz closed"))
     B.append(("p", f"**Passages, {date_en(V['passages']['Suez Canal']['date'])}.** Suez is «{V['passages']['Suez Canal']['level']}»; "
                    f"Bab el-Mandeb «{V['passages']['Bab el-Mandeb']['level']}»; Hormuz «{V['passages']['Strait of Hormuz']['level']}» "
                    f"({dl('stretti-dettaglio.json')}, via {dl('transit-times.json')}). IMF PortWatch counts transits of ships with AIS on "
                    f"(the Automatic Identification System, the ship's position transponder). In the week to {date_en(sz['date'])}: "
                    f"Suez {num(sz['transits_7d_avg'], 1)} a day ({pct(sz['var_vs_1y_pct'])} on a year earlier, {pct(sz['var_vs_3y_pct'])} on three years earlier); "
                    f"Bab el-Mandeb {num(bab['transits_7d_avg'], 1)} ({pct(bab['var_vs_3y_pct'])} on three years); "
-                   f"Cape of Good Hope {num(cape['transits_7d_avg'], 1)} ({pct(cape['var_vs_3y_pct'])}); Hormuz {num(hz['transits_7d_avg'], 1)} "
-                   f"({pct(hz['var_vs_3y_pct'])})."))
-    B.append(("p", f"**The {S}/{Cp} split.** {S}% of Far East–Europe container capacity was on Red Sea services in October 2026 (Alphaliner); "
-                   f"Linerlytica expects a full return by Q1 2027 ([Seatrade Maritime](https://www.seatrade-maritime.com/containers/full-suez-return-for-container-carriers-expected-by-q1-2027), "
+                   f"Cape of Good Hope {num(cape['transits_7d_avg'], 1)} ({pct(cape['var_vs_3y_pct'])} on three years); Hormuz {num(hz['transits_7d_avg'], 1)} "
+                   f"({pct(hz['var_vs_3y_pct'])} on three years)."))
+    B.append(("p", f"**How much is back on Suez.** Alphaliner counts {num(A['teu_red_sea'], 2)} of {num(A['teu_total'], 2)} million TEU deployed on Far East–Europe "
+                   f"services using the Red Sea between {A['period']}: {S63}% overall, but {S}% on Far East–North Europe and {SM}% on Far East–Mediterranean. "
+                   f"Some services use the Red Sea westbound only and the Cape on the way back ([{A['source']}]({A['link']}), reliability {A['reliability']}: {A['read']}). "
+                   f"Other measures give lower shares (Sea-Intelligence 27% of capacity on a normalised basis, Maritime Strategies International about 35% of sailings; "
+                   f"search excerpts, not checked). Linerlytica expects a full return by Q1 2027 "
+                   f"([Seatrade Maritime](https://www.seatrade-maritime.com/containers/full-suez-return-for-container-carriers-expected-by-q1-2027), "
                    f"in {dl('stretti-dettaglio.json')}, reliability medium). BIMCO counts 753,000 TEU a week through Suez in the first two weeks of October 2026, "
                    f"against 1,457,000 in the same weeks of 2023 ([BIMCO](https://www.bimco.org/news-insights/market-analysis/shipping-number-of-the-week/2026/1014-snow/), "
-                   f"14 October 2026). The report uses the {S}% share as the weight of Suez routings for all Asia–Europe lanes, as the transit model does."))
+                   f"14 October 2026). This report weights North European and Baltic lanes with {S}% via Suez and Mediterranean lanes with {SM}%; "
+                   f"{dl('transit-times.json')} uses {S63}% for every lane, so its weighted days are slightly lower for the North (Shanghai–Rotterdam "
+                   f"{num(sh['days_today_weighted'], 1)} days there, {num(lr['d_w'], 1)} here)."))
     B.append(("fig", "lanes", f"**Days at sea by lane.** Sea time only at 15 knots (no canal queue, port time or bunkering stops). Dot: route via Suez, the 2023 "
-                              f"routing and today's Suez services; diamond: via the Cape; bar: capacity-weighted average with {S}% via Suez. "
+                              f"routing and today's Suez services; diamond: via the Cape; bar: capacity-weighted average today, {S}% via Suez to North Europe "
+                              f"and the Baltic, {SM}% to the Mediterranean (Alphaliner, {A['period']}). "
                               f"Jebel Ali loads at Khor Fakkan today (land bridge), so its Suez point is the sea leg from there. Source: "
                               f"{dl('transit-times.json')} (routes on Benden shipping lanes, Dijkstra shortest path), updated {V['tt']['updated'][:10]}."))
     cv = [r["error_pct"] for r in V["validation"]["rows"] if "Cape" in r["pair"] and "published_nm" in r]
@@ -801,8 +812,9 @@ def blocks(V, edition):
     for l in V["lanes"]:
         rows.append([f"{l['from']} → {l['to']}", f"{num(l['nm_base'])}", f"{num(l['nm_today'])}" if l["nm_today"] != l["nm_base"] else "same",
                      num(l["d_today"], 1), f"{num(l['nm_cape'])} nm, {num(l['d_cape'], 1)} d", f"+{num(l['d_cape'] - l['d_today'], 1)}", num(l["d_w"], 1)])
-    B.append(("tab", ["Lane", "nm 2023", "nm today", "Days via Suez", "Via the Cape", "Cape penalty, days", f"Weighted today ({S}% Suez)"], rows,
-              f"Nautical miles (nm) and days from {dl('transit-times.json')}. «2023» is the routing with every passage open; the Suez route today is the same, except "
+    B.append(("tab", ["Lane", "nm 2023", "nm today", "Days via Suez", "Via the Cape", "Cape penalty, days", f"Weighted today ({S}% / {SM}% Suez)"], rows,
+              f"Nautical miles (nm) and days from {dl('transit-times.json')}; weights {S}% via Suez for North Europe and the Baltic "
+              f"(also used, as a proxy, for Nhava Sheva and Jebel Ali), {SM}% for Genoa and Piraeus (Alphaliner). «2023» is the routing with every passage open; the Suez route today is the same, except "
               f"from Jebel Ali. The model's distances are within {num(V['validation']['max_abs_error_nm_pct'], 1)}% of published references; "
               f"the Cape route is overstated by {num(min(cv), 1)}–{num(max(cv), 1)}%, so Cape penalties are slightly too high (validation in the same file)."))
     B.append(("p", f"**North versus south.** The Cape penalty is {num(V['med_cape_penalty']['rotterdam'], 1)} days to Rotterdam but "
@@ -814,9 +826,10 @@ def blocks(V, edition):
     B.append(("p", f"**Hormuz.** Qatari LNG to Rotterdam is «{lf['status']}»: Qatar has no export terminal outside the Gulf. "
                    f"Saudi crude piped to Yanbu reaches Rotterdam in {num(rt['days_today'], 1)} days, against {num(rt['days_base'], 1)} from Ras Tanura "
                    f"via Hormuz, but Yanbu carries a war-risk premium of {num(rt['war_risk_items'][0]['pct_hull'], 1)}% of hull value for Saudi-linked ships "
-                   f"({rt['war_risk_items'][0]['source']}). Jebel Ali boxes are trucked to Khor Fakkan on the Gulf of Oman; the sea leg to Rotterdam is "
+                   f"({rt['war_risk_items'][0]['source'].rsplit(' (', 1)[0]}, {date_en(V['prem_last']['mar-rosso-saudita']['data'])}). Jebel Ali boxes are trucked to Khor Fakkan on the Gulf of Oman; the sea leg to Rotterdam is "
                    f"{num(V['jebel']['days_today'], 1)} days ({dl('transit-times.json')})."))
-    B.append(("val", "*Assessment.* The return to Suez helps the Mediterranean about twice as much as the North Sea, because the Cape penalty to Genoa or "
+    B.append(("val", f"*Assessment.* The return to Suez helps the Mediterranean about {num(V['med_cape_penalty']['genoa'] / V['med_cape_penalty']['rotterdam'], 1)} to "
+                     f"{num(V['med_cape_penalty']['piraeus'] / V['med_cape_penalty']['rotterdam'], 1)} times as much as the North Sea in sea days, because the Cape penalty to Genoa or "
                      f"Piraeus is {num(V['med_cape_penalty']['genoa'], 0)}–{num(V['med_cape_penalty']['piraeus'], 0)} days against about {num(V['med_cape_penalty']['rotterdam'], 0)} to Rotterdam. "
                      "For Rotterdam, Antwerp, Hamburg and the Baltic feeders the routing question is "
                      f"mainly one of schedule reliability: services are being moved between two routes that differ by {num(lr['d_cape'] - lr['d_today'], 0)} days."))
@@ -826,14 +839,14 @@ def blocks(V, edition):
     B.append(("h2", "costs", "3. Cost stack of an Asia–North Europe voyage, today against 2023"))
     B.append(("p", f"One voyage Shanghai → Rotterdam with a container ship of about 15,000 TEU (twenty-foot equivalent units), at {num(ci['speed'])} knots, "
                    f"burning {num(ci['fd'])} t of very-low-sulphur fuel oil (VLSFO) a day and carrying {num(ci['units'])} FEU "
-                   f"(15,000 TEU × 85% utilisation ÷ 2). Hull value {musd(ci['hull'], 0)}. These are the transit model's declared hypotheses "
+                   f"(15,000 TEU × 85% utilisation ÷ 2). Hull value {musd(ci['hull'], 0)}, an in-service ship (a 15,500 TEU newbuild is priced about 222 M$). These are the transit model's declared hypotheses "
                    f"({dl('transit-times.json')}), not the data of a real ship. Four scenarios: **2023** (Suez, 2023 fuel price, no carbon rules, "
-                   f"pre-crisis war risk), **today via Suez**, **today via the Cape**, and **today weighted** {S}/{Cp}."))
+                   f"pre-crisis war risk), **today via Suez**, **today via the Cape**, and **today weighted** {S}/{Cp}, the Far East–North Europe split."))
     B.append(("h3", "The calculation"))
     B.append(("ul", [
         f"**Fuel** = sea days × {num(ci['fd'])} t/day × VLSFO price. Suez {num(ts['days'], 1)} d → {num(ts['fuel_t'])} t; Cape {num(tc['days'], 1)} d → {num(tc['fuel_t'])} t. "
         f"Price today: Singapore {num(ci['p_now'], 1)} $/t ({date_en(ci['p_date'])}, Ship & Bunker in {dl('bunker-emissioni.json')}). "
-        f"Price 2023: {num(ci['p_2023'], 1)} $/t, {E1['text']} ([{E1['source']}]({E1['link']}), reliability {E1['reliability']}: {E1['read']}). "
+        f"Price 2023: {num(ci['p_2023'], 1)} $/t, Singapore VLSFO, October 2023 monthly average ([{E1['source']}]({E1['link']}), reliability {E1['reliability']}: {E1['read']}). "
         f"Fuel today via Suez: {num(ts['fuel_t'])} × {num(ci['p_now'], 1)} = {musd(ts['fuel'])}.",
         f"**EU ETS** (the EU Emissions Trading System, which since 2024 makes ships buy allowances for their emissions). It covers 50% of the last voyage into "
         f"the EU from a non-EU port; a call at Tanger Med or East Port Said does not break the voyage. Assumption: the last non-EU call is Singapore, so the "
@@ -866,14 +879,28 @@ def blocks(V, edition):
                    f"{num(V['W'][5][1])} $. Since the eve of the Iran war, the Suez voyage's fuel bill alone has grown by "
                    f"{musd(ts['fuel_t'] * (ci['p_now'] - ci['p_prewar']))} (Singapore VLSFO {num(ci['p_prewar'], 1)} $/t on {date_en(ci['prewar_date'])}), the same figure "
                    f"as in {dl('transit-times.json')}."))
+    veh_newbuild = V["veh_newbuild"] or 0
+    ass_ex = {x["id"]: x for x in V["ass"]["esempi_costo"]}["mar-rosso-portacontainer-contro-capo"]
+    ass_hull = ass_ex["ingressi"]["valore_nave_musd"]["valore"]
+    ass_extra = ass_ex["ingressi"]["extra_capo_musd"]["valore"]
+    ass_thr = next(r["valore"] for r in ass_ex["risultati"] if r["nome"] == "soglia_pct_nave_nuova")
+    if abs(ass_hull - veh_newbuild) > 1:
+        warn("newbuild hull value in assicurazioni.json differs from the transit model note")
     B.append(("p", f"**When does the Cape pay?** Via the Cape the voyage costs {musd(be_['extra'])} more in fuel, ETS and FuelEU than via Suez. The Cape avoids the Red "
                    f"Sea premium and the canal toll. Without the toll, the break-even premium is {num(be_['pct'], 2)}% of a {musd(ci['hull'], 0)} hull; with a toll of "
                    f"{musd(be_['toll'][0], 1)}–{musd(be_['toll'][1], 1)} it falls to {num(be_['pct_toll'][0], 2)}–{num(be_['pct_toll'][1], 2)}%. "
-                   f"{dl('assicurazioni.json')} finds 0.32% for a new 221.7 M$ ship, using UNCTAD's 2024 extra Cape cost of 0.7 M$: a different ship value and "
-                   f"cost base, shown here rather than reconciled."))
+                   f"These are lower bounds for the Cape: the charter hire or capital cost of {num(lr['d_cape'] - lr['d_today'], 1)} more days at sea is not counted, and it would raise the line."))
+    B.append(("p", f"**Why {dl('assicurazioni.json')} finds a lower line.** Its example gives {num(ass_thr, 2)}%: UNCTAD's 2024 extra Cape cost of "
+                   f"{num(ass_extra, 1)} M$ for a mid-size container ship at 2024 fuel prices, divided by the {num(ass_hull, 1)} M$ price of a new 15,500 TEU ship. "
+                   f"Both inputs differ from this model. The cost base is {num(be_['extra'] / 1e6 / ass_extra, 1)} times larger here (a 15,000 TEU ship at 2026 fuel prices, "
+                   f"with ETS and FuelEU); the hull is {num(ass_hull / (ci['hull'] / 1e6), 1)} times smaller. With this model's cost on a {num(ass_hull, 1)} M$ hull the line is "
+                   f"{num(be_['extra'] / (ass_hull * 1e6) * 100, 2)}% without the toll and {num((be_['extra'] - be_['toll'][1]) / (ass_hull * 1e6) * 100, 2)}–"
+                   f"{num((be_['extra'] - be_['toll'][0]) / (ass_hull * 1e6) * 100, 2)}% with it. The hull value matters for the premium bill too: the "
+                   f"Northern Europe report prices one Red Sea premium on the {num(ass_hull, 1)} M$ newbuild, {musd(ass_hull * 1e6 * ci['war_today_pct'] / 100)} "
+                   f"at {num(ci['war_today_pct'], 2)}%, against {musd(ts['war'])} here."))
     B.append(("val", "*Assessment.* Carriers decide the route on the whole voyage economics (charter cost of ten more days, schedule, crew safety), not on "
-                     f"this stack alone. Even so, a Red Sea premium back above about 0.5% would make the Cape competitive again for most "
-                     f"large ships, and the July 2026 quotes ({num(min(jul), 2)}–{num(max(jul), 2)}%) were above that line."))
+                     f"this stack alone. Because charter is left out, a Red Sea premium of about 0.5% is where the Cape starts to compete for an in-service ship, not "
+                     f"where it clearly wins. The quotes of 21–23 July 2026 ({num(min(jul), 2)}% to over {num(max(jul), 0)}%) were above that line."))
 
     # ---------------------------------------------------------------- 4. freight
     B.append(("h2", "freight", "4. Freight rates and what drives them"))

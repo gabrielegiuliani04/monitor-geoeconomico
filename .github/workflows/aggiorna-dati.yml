@@ -82,11 +82,22 @@ jobs:
         run: python3 raccolta/porti/rischio_porti.py
       - name: Nascondi eventuali chiavi nei file pubblici
         run: python3 raccolta/comune/nascondi_chiavi.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Smoke test (browser)
+        continue-on-error: true
+        run: |
+          npm i --no-save playwright
+          npx playwright install --with-deps chromium
+          node raccolta/qualita/smoke.js
+      - name: Health check (data, links, consistency, secrets)
+        run: python3 raccolta/qualita/controlla_tutto.py
       - name: Salva se cambiati
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
-          git add docs/data raccolta/porti/history.json raccolta/rischio/storico.json
+          git add docs/data raccolta/porti/history.json raccolta/qualita/storico.json raccolta/qualita/link_storico.json raccolta/qualita/smoke.json report/qualita raccolta/rischio/storico.json
           git diff --cached --quiet || git commit -m "Dati: aggiornamento automatico del $(date -u +%F)"
           git pull --rebase origin main
           git push
