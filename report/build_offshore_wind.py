@@ -1022,7 +1022,7 @@ def blocks(V):
         f"in Denmark, Germany and the Netherlands in 2024–2025. With two-sided contracts for difference, Denmark awarded {num(V['dk_gw'], 1)} GW at about {num(V['dk_eur'][0], 1)}–{num(V['dk_eur'][1], 1)} €/MWh, "
         f"signed on 6 November 2026.",
         f"**The next test starts on {date_en(rvo['apertura'], False)}.** The Dutch IJmuiden Ver Gamma round (2 GW) takes applications until {date_en(rvo['chiusura'])}, "
-        f"with price caps of {V["gamma_caps"][0]} and {V["gamma_caps"][1]} €/MWh (RVO; wind calendar). UK AR8 results are due between {date_en(ar8['date'], False)} and {date_en(ar8['date_end'])}; "
+        f"with price caps of {V['gamma_caps'][0]} and {V['gamma_caps'][1]} €/MWh (RVO; wind calendar). UK AR8 results are due between {date_en(ar8['date'], False)} and {date_en(ar8['date_end'])}; "
         f"Germany's auction reform still needs a Bundestag vote in December.",
         f"**The grid, not ships or steel, now sets the pace.** {word(grid_n, True)} of the {delay_n} delays in the monitor's wind calendar cite grid links or platforms; "
         f"Amprion's 2 GW BalWin1 slipped a year, to {date_en(bal['valore'])}. Monopile factories, by contrast, will run at about {num(pu['valore'], 0)}% of capacity in 2028 (Rystad).",

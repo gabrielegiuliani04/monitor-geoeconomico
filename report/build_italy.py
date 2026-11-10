@@ -1022,7 +1022,9 @@ def blocks(V, edition, today):
     W = V["W"]
     P(f"Energy weighs {num(W['NRG'] / 10, 1)}% of the 2026 HICP basket (fuels {num(W['FUEL'] / 10, 1)}%, electricity {num(W['CP0451'] / 10, 1)}%, gas {num(W['CP0452'] / 10, 1)}%) "
       f"and food {num(W['FOOD'] / 10, 1)}% (Eurostat). A 10% rise in consumer energy prices therefore adds about 1.1 points of inflation directly. Weight times annual rate gives "
-      f"energy about {num(V['energy_contrib'], 1)} of the {num(V['hicp_last'][1], 1)} points of HICP inflation in October (approximation, calculation).")
+      f"energy about {num(V['energy_contrib'], 1)} of the {num(V['hicp_last'][1], 1)} points of HICP inflation in October: electricity and gas about "
+      f"{num((W['CP0451'] * nic['elettricita'][-1][1] + W['CP0452'] * nic['gas'][-1][1]) / 1000, 1)}, fuels about {num(W['FUEL'] * nic['carburanti'][-1][1] / 1000, 1)} "
+      f"(weights × NIC annual rates; approximation, calculation).")
     A("more than half of Italian inflation is the direct effect of energy. Indirect effects (transport, food) come later; food inflation has started to rise "
       f"({num(nic['alimentari'][-3][1], 1)}% in August, {num(nic['alimentari'][-1][1], 1)}% in October) and freight transport services in the HICP rose "
       f"{num(V['hicp']['trasporto_merci'][-1][1], 1)}% in {month_en(V['hicp']['trasporto_merci'][-1][0])}.")

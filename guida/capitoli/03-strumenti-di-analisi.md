@@ -12,7 +12,7 @@
 
 Il Terminale è il pannello che si apre con il pulsante **Terminal** in alto a destra della mappa. Il codice sta in `docs/index.html`, funzione `renderTerminal()`; i file di dati sono elencati nell'oggetto `XF` dello stesso file e caricati da `xLoad()`. Ha **11 schede**, in quest'ordine: *Risk*, *Northern Europe*, *Prices and rates*, *Calendar*, *Chokepoints*, *Freight and risk*, *Stocks*, *Countries*, *Critical minerals*, *News*, *Ukraine*. Si apre sempre sulla scheda *Risk*.
 
-Ogni scheda ha in testa una **nota grigia** che dice da dove vengono i dati e quanto sono vecchi: in un colloquio, leggerla ad alta voce è il modo più rapido per mostrare che sai distinguere un dato fresco da uno di una settimana fa.
+Ogni scheda ha in testa una **nota grigia** con fonte e data dei dati: leggerla ad alta voce in un colloquio mostra che sai distinguere un dato fresco da uno vecchio di una settimana.
 
 | Scheda sul sito (nome interno) | File in `docs/data/` | In una riga |
 |---|---|---|
@@ -54,7 +54,6 @@ Ogni scheda ha in testa una **nota grigia** che dice da dove vengono i dati e qu
 
 ### Prices and rates (prezzi), con la curva dei tassi
 
-![La scheda Prices and rates](../img/cap3-terminale-prezzi.jpg)
 
 **Cosa mostra.** 33 serie in sei gruppi (indici, AI, tassi USA, materie prime, valute, cripto), ognuna con un mini-grafico degli ultimi 3 mesi, l'ultimo valore e le variazioni a 1 giorno, 1 mese e da inizio anno (YTD). I tassi sono variati in **punti base** (bp), il resto in percentuale. L'asterisco `*` segna una seduta non ancora chiusa. Passando il mouse su una riga compaiono unità, fonte e data.
 
@@ -65,7 +64,7 @@ Ogni scheda ha in testa una **nota grigia** che dice da dove vengono i dati e qu
 Come leggerla in 30 secondi, con i numeri di oggi (9 novembre 2026, `prezzi.json → curva`):
 - **Livello.** Il 10 anni è al 4,88%, un anno fa al 4,11%: i tassi lunghi sono più alti di un anno fa.
 - **Pendenza.** Il differenziale 10 anni − 2 anni è 0,32 punti (4,88 − 4,56): curva positiva ma piatta. Un anno fa il 2 anni era al 3,55%.
-- **Movimento recente.** Rispetto a un mese fa la curva è scesa su tutte le scadenze (10 anni da 5,24 a 4,88%): il mercato ha ridotto i timori sui tassi nell'ultimo mese.
+- **Movimento recente.** Rispetto a un mese fa i rendimenti sono scesi su tutte le scadenze (10 anni da 5,24 a 4,88%, 2 anni da 4,80 a 4,56%).
 
 **Domanda tipica.** *«Come è arrivato lo shock di Hormuz sui mercati?»* Brent a 91,70 $ (+50,7% da inizio anno), TTF a 82,33 €/MWh (+192,4% da inizio anno), entrambi provvisori (`*`).
 
@@ -93,7 +92,6 @@ Come leggerla in 30 secondi, con i numeri di oggi (9 novembre 2026, `prezzi.json
 
 ### Freight and risk (logistica)
 
-![La scheda Freight and risk](../img/cap3-terminale-logistica.jpg)
 
 **Cosa mostra.** Tre blocchi. (1) **Noli container**: Drewry WCI 4.389 $/FEU (5 novembre), Freightos FBX 3.451,8, SCFI 3.633,45, CCFI 1.924,69 (6 novembre). (2) **Rischio geopolitico GPR** di Caldara e Iacoviello (media 1985–2019 = 100): media 30 giorni 184,7, un anno prima 139,7, con grafico settimanale. (3) **Porti italiani**: approdi al giorno (media 7 giorni) e variazione sull'anno, per esempio Genova 8,9 (−4,3%), Ravenna 5,6 (−39,8%).
 
@@ -139,7 +137,7 @@ Come leggerla in 30 secondi, con i numeri di oggi (9 novembre 2026, `prezzi.json
 
 **Domanda tipica.** *«Il fronte si muove?»* Poco: +937 km² netti nel 2026, contro +4.325 nel 2025.
 
-**Limite.** Il tasso di abbattimento non è confrontabile prima e dopo agosto 2025 (è cambiato il modo di contare i droni persi per guerra elettronica). Il dataset è CC BY-NC-SA, quindi solo uso non commerciale. Per un colloquio nel settore porti ed energia questa scheda è contesto, non il cuore del progetto.
+**Limite.** Il tasso di abbattimento non è confrontabile prima e dopo agosto 2025 (è cambiato il modo di contare i droni persi per guerra elettronica); dataset CC BY-NC-SA, solo uso non commerciale. Per porti ed energia è contesto, non il cuore del progetto.
 
 ---
 
@@ -217,22 +215,22 @@ Copertura dei pesi: 1,0 per quasi tutte le unità. Fanno eccezione la rete ucrai
 
 | Porto | Paese | P | I | Punteggio | Livello | Tendenza | Cosa lo spinge (dal campo `why`) |
 |---|---|---|---|---|---|---|---|
-| Ust-Luga | RU | 3,1 | 3,0 | 9,3 | medio | stabile | impatto limitato a 3 (porto russo) |
-| St Petersburg | RU | 3,1 | 3,0 | 9,3 | medio | in aumento | idem |
-| Primorsk | RU | 3,3 | 2,6 | 8,6 | medio | stabile | idem |
+| Ust-Luga | RU | 3,1 | 3,0 | 9,3 | medio | stabile | interferenze GNSS entro 50 km e 22 petroliere sanzionate o della flotta ombra vicine; impatto limitato a 3 (porto russo) |
+| St Petersburg | RU | 3,1 | 3,0 | 9,3 | medio | in aumento | impatto limitato a 3 (porto russo) |
+| Primorsk | RU | 3,3 | 2,6 | 8,6 | medio | stabile | porto russo (impatto massimo 3) |
 | **Rotterdam** | NL | 1,5 | 5,0 | 7,5 | medio | stabile | impatto massimo: Gate LNG (11,8 Mt/anno), 917.000 t di merce al giorno |
 | Antwerp-Bruges | BE | 1,5 | 5,0 | 7,5 | medio | stabile | come Rotterdam |
-| **Klaipėda** | LT | 1,7 | 4,4 | 7,5 | medio | stabile | Baltico: Stretti danesi e corridoio baltico come dipendenze primarie |
-| La Spezia | IT | 2,0 | 3,6 | 7,2 | medio | stabile | Mar Rosso come dipendenza primaria |
+| **Klaipėda** | LT | 1,7 | 4,4 | 7,5 | medio | stabile | interferenze GNSS (60% dei 15 aerei nella cella peggiore); Baltico e Stretti danesi come dipendenze primarie; terminale GNL (FSRU) |
+| La Spezia | IT | 2,0 | 3,6 | 7,2 | medio | stabile | Mar Rosso e GNL del Qatar come dipendenze primarie; terminale GNL di Panigaglia |
 | **Gdańsk** | PL | 1,7 | 4,1 | 7,0 | medio | stabile | interferenze GNSS (32,5% degli aerei nella cella peggiore), 234.000 t al giorno |
-| Wilhelmshaven | DE | 1,5 | 4,4 | 6,6 | medio | in calo | |
-| Hamburg | DE | 1,5 | 4,1 | 6,1 | medio | stabile | |
-| **Eemshaven** | NL | 1,5 | 3,8 | 5,7 | basso | stabile | |
+| Wilhelmshaven | DE | 1,5 | 4,4 | 6,6 | medio | in calo | terminali GNL galleggianti (9,5 Mt/anno); da 7,9 a 6,6 in 7 giorni |
+| Hamburg | DE | 1,5 | 4,1 | 6,1 | medio | stabile | 323.000 t di merce al giorno |
+| **Eemshaven** | NL | 1,5 | 3,8 | 5,7 | basso | stabile | terminale GNL (5,9 Mt/anno), punto d'ingresso del gas su scala nazionale |
 | Genoa, Trieste, Gioia Tauro | IT | 2,0 | 2,6 | 5,2 | basso | stabili | |
 | **Amsterdam** | NL | 1,5 | 2,6 | 3,9 | basso | stabile | |
-| **Copenhagen-Malmö** | DK | 1,8 | 2,0 | 3,6 | basso | stabile | |
+| **Copenhagen-Malmö** | DK | 1,8 | 2,0 | 3,6 | basso | stabile | approdi a 7 giorni −25,0% sull'anno |
 | **Esbjerg** | DK | 1,6 | 2,0 | 3,2 | basso | in aumento | approdi a 7 giorni −42,9% sui 28 giorni precedenti (rosso) |
-| **Aarhus** | DK | 1,0 | 2,0 | 2,0 | basso | stabile | ultimo in classifica |
+| **Aarhus** | DK | 1,0 | 2,0 | 2,0 | basso | stabile | nessun indicatore giallo o rosso: ultimo in classifica |
 
 ![La tabella del Port Risk Index nel report Northern Europe](../img/cap3-port-risk.jpg)
 
@@ -364,7 +362,6 @@ Sono **due strumenti diversi**, da non confondere in un colloquio.
 
 ### Le notizie OSINT del Terminale e la regola delle due fonti
 
-![La scheda News del Terminale](../img/cap3-terminale-notizie.jpg)
 
 All'ultimo giro: 512 notizie in 7 giorni, 25 *Highlights*, 76 marcate come *possibile evento*. Coordinate approssimate: il centro del luogo citato, con la precisione in km dichiarata.
 
@@ -491,7 +488,6 @@ Con il 63% della capacità Asia–Europa di nuovo sul Mar Rosso (Alphaliner, ott
 - **Polonia:** terminale di installazione Gdansk T5 nel 4° trimestre 2026.
 - **Regno Unito:** prima energia di Hornsea 3 (2,9 GW) nel 1° trimestre 2027 (*at risk*).
 
-![La tabella «What to watch next month» del report Northern Europe, con le tappe del calendario](../img/cap3-ne-watch.jpg)
 
 **Come usarlo in un colloquio.** È lo strumento più adatto per un'azienda dell'eolico o un porto base (Esbjerg, Eemshaven, Gdańsk). Prima del colloquio filtra le voci del Paese dell'azienda, leggi le tre più vicine e preparati una domanda. Per esempio, per un colloquio olandese: «Se anche Gamma andasse senza offerte, l'obiettivo di 21 GW al 2032 regge?». Il messaggio di sintesi del calendario: le aste ripartono dove lo Stato si prende il rischio di prezzo (Regno Unito, Danimarca, Polonia) e restano ferme dove non lo fa (aste negative tedesche, modello olandese senza sussidi, Paesi baltici). Tra il 2023 e il 2025 circa 7,2 GW di gare non hanno avuto aggiudicatari.
 

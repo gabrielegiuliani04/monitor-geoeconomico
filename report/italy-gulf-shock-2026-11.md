@@ -131,7 +131,7 @@ Istat's preliminary estimate puts consumer price inflation (NIC) at **5.4%** in 
 
 *Consumer prices, Istat NIC, % change on the same month a year earlier, January–October 2026 (latest month preliminary). Event 1 = war on Iran begins, 28 February 2026. Source: Istat, dataflow 167_745, [`italia-impatti.json`](../docs/data/italia-impatti.json).*
 
-Energy weighs 10.9% of the 2026 HICP basket (fuels 4.7%, electricity 2.8%, gas 3.1%) and food 20.9% (Eurostat). A 10% rise in consumer energy prices therefore adds about 1.1 points of inflation directly. Weight times annual rate gives energy about 3.4 of the 5.6 points of HICP inflation in October (approximation, calculation).
+Energy weighs 10.9% of the 2026 HICP basket (fuels 4.7%, electricity 2.8%, gas 3.1%) and food 20.9% (Eurostat). A 10% rise in consumer energy prices therefore adds about 1.1 points of inflation directly. Weight times annual rate gives energy about 3.4 of the 5.6 points of HICP inflation in October: electricity and gas about 2.1, fuels about 1.3 (weights × NIC annual rates; approximation, calculation).
 
 *Assessment.* More than half of Italian inflation is the direct effect of energy. Indirect effects (transport, food) come later; food inflation has started to rise (1.0% in August, 2.7% in October) and freight transport services in the HICP rose 3.2% in September 2026.
 
