@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="it">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Notizie per argomento</title>
-<meta name="description" content="Notizie per argomento dalle principali testate internazionali, italiane, del Nord Europa e di settore (porti, shipping, energia offshore), con le fonti OSINT del Monitor geoeconomico di Gabriele Giuliani.">
+<title>News by Topic</title>
+<meta name="description" content="News by topic from the main international, Italian, Northern European and trade outlets (ports, shipping, offshore energy), with the OSINT sources of the Geo-economic Risk Monitor by Gabriele Giuliani.">
 <meta name="author" content="Gabriele Giuliani">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,21 +128,21 @@ footer.piede a{color:var(--accent)}
 </head>
 <body>
 <div class="barra"><div class="barra-in">
-  <a href="index.html">← Torna alla mappa</a>
-  <nav aria-label="Sezioni"><a href="report/">Report</a><a href="crediti.html">Fonti e crediti</a></nav>
+  <a href="index.html">← Back to the map</a>
+  <nav aria-label="Sections"><a href="report/">Reports</a><a href="crediti.html">Sources and credits</a></nav>
 </div></div>
 <main class="pagina">
   <header class="testa">
-    <p class="occhiello">Monitor geoeconomico · Notizie</p>
-    <h1>Notizie per argomento</h1>
-    <p class="sotto">Scegli un argomento: le storie del giorno riprese da più testate, poi tutti gli articoli in ordine di ora. Ogni titolo apre l'articolo sul sito della testata.</p>
-    <p class="meta" id="meta">Caricamento…</p>
+    <p class="occhiello">Geo-economic Risk Monitor · News</p>
+    <h1>News by topic</h1>
+    <p class="sotto">Choose a topic: first the day’s stories picked up by several outlets, then every article in time order. Each headline opens the article on the publisher’s site. Headlines and summaries appear in their original language.</p>
+    <p class="meta" id="meta">Loading…</p>
   </header>
-  <ul class="argomenti" id="argomenti" role="group" aria-label="Argomento"></ul>
+  <ul class="argomenti" id="argomenti" role="group" aria-label="Topic"></ul>
   <section id="vista" aria-live="polite"></section>
   <footer class="piede">
-    <p><b>Come funziona.</b> Ogni giorno lo script <code>raccolta/notizie/testate.py</code> legge i feed pubblici di circa 60 testate (generaliste USA, UK, UE, Nord Europa e Italia; stampa di settore marittimo ed energetico; centri studi). Tiene solo titolo, un sommario breve del feed e il link: il testo resta dell'editore. Gli argomenti si assegnano con parole chiave in inglese, italiano, danese/norvegese e olandese, quindi possono sbagliare. Le storie uniscono titoli simili usciti su testate diverse nelle ultime 48 ore. Alcune testate passano da Google News perché bloccano i feed. «Paywall» indica che l'articolo può essere a pagamento.</p>
-    <p>Le notizie del riquadro <b>Fonti specialistiche OSINT</b> vengono da <code>raccolta/notizie/raccogli.py</code> (avvisi marittimi, centri di analisi, canali di mappatura) e sono materia prima da verificare.</p>
+    <p><b>How it works.</b> Every day the script <code>raccolta/notizie/testate.py</code> reads the public feeds of about 60 outlets (general news from the US, UK, EU, Northern Europe and Italy; maritime and energy trade press; think tanks). It keeps only the headline, a short feed summary and the link: the text belongs to the publisher. Topics are assigned with keywords in English, Italian, Danish/Norwegian and Dutch, so they can be wrong. Stories group similar headlines published by different outlets in the last 48 hours. Some outlets are reached through Google News because they block their feeds. “Paywall” means the article may require a subscription.</p>
+    <p>Items in the <b>Specialist OSINT sources</b> box come from <code>raccolta/notizie/raccogli.py</code> (maritime advisories, analysis centres, mapping channels) and are raw material still to be verified.</p>
   </footer>
 </main>
 <script>
@@ -151,27 +151,43 @@ footer.piede a{color:var(--accent)}
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const okUrl = (u) => /^https?:\/\//i.test(u || '') ? u : '#';
-const LINGUE = {it: 'Italiano', en: 'English', da: 'Dansk', nl: 'Nederlands', no: 'Norsk'};
+const LINGUE = {it: 'Italian', en: 'English', da: 'Danish', nl: 'Dutch', no: 'Norwegian'};
+const ARG_EN = {
+  porti: ['Ports and logistics', 'North Sea and Baltic ports, terminals, supply chains, strikes, customs'],
+  shipping: ['Shipping and freight', 'Shipowners, container ships and tankers, freight rates, newbuild orders, crews'],
+  offshore: ['Offshore energy and wind', 'Offshore wind farms, auctions, export cables, offshore oil and gas'],
+  gas_petrolio: ['Gas, LNG and oil', 'Gas, LNG and crude prices and flows, OPEC+, refineries, pipelines, storage'],
+  idrogeno: ['Hydrogen and the port transition', 'Green hydrogen, ammonia and methanol, shore power, ETS and FuelEU, carbon capture'],
+  stretti: ['Chokepoints and maritime security', 'Hormuz, the Red Sea and Bab el-Mandeb, Suez, the Baltic and Danish straits, the shadow fleet, piracy, GPS'],
+  russia_ucraina: ['Russia–Ukraine', 'The front, strikes on infrastructure, sanctions, negotiations, the threat to NATO’s eastern flank'],
+  medio_oriente: ['Middle East and Iran', 'Iran, Israel, Gaza, Lebanon, the Gulf, Yemen: war, diplomacy and oil'],
+  infrastrutture: ['Critical infrastructure and cyber', 'Subsea cables, power grids, sabotage, drones over airports and bases, cyber attacks'],
+  mercati: ['Markets and central banks', 'The Fed, the ECB, the Bank of England and the Nordic central banks, rates, inflation, equities, currencies, tariffs'],
+  ai_chip: ['AI and chips', 'Artificial intelligence, semiconductors, data centres and their energy demand, export controls'],
+  italia: ['Italy', 'Italy’s economy, energy, ports and foreign policy, and how the crises affect it'],
+};
+const SEZ_EN = {Economia: 'Economy', Esteri: 'Foreign news', Mondo: 'World', 'Prima pagina': 'Front page', Politica: 'Politics', Cronaca: 'Home news', Energia: 'Energy'};
+const sezEn = (x) => { const m = /^(.*?)( \(solo titoli\))?$/.exec(x); return (SEZ_EN[m[1]] || m[1]) + (m[2] ? ' (headlines only)' : ''); };
 const ORE_STORIE = 36;
 const PASSO = 60;
 const st = {T: null, N: null, arg: null, lingua: 'tutte', senzaPay: false, mostra: PASSO};
 
 function data(s) { return new Date(s); }
-const fOra = new Intl.DateTimeFormat('it-IT', {hour: '2-digit', minute: '2-digit'});
-const fGiorno = new Intl.DateTimeFormat('it-IT', {weekday: 'long', day: 'numeric', month: 'long'});
-const fData = new Intl.DateTimeFormat('it-IT', {day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'});
+const fOra = new Intl.DateTimeFormat('en-GB', {hour: '2-digit', minute: '2-digit'});
+const fGiorno = new Intl.DateTimeFormat('en-GB', {weekday: 'long', day: 'numeric', month: 'long'});
+const fData = new Intl.DateTimeFormat('en-GB', {day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'});
 function chiaveGiorno(d) { return d.getFullYear() + '-' + d.getMonth() + '-' + d.getDate(); }
 function nomeGiorno(d) {
   const oggi = new Date(), ieri = new Date(Date.now() - 864e5);
-  if (chiaveGiorno(d) === chiaveGiorno(oggi)) return 'Oggi, ' + fGiorno.format(d);
-  if (chiaveGiorno(d) === chiaveGiorno(ieri)) return 'Ieri, ' + fGiorno.format(d);
+  if (chiaveGiorno(d) === chiaveGiorno(oggi)) return 'Today, ' + fGiorno.format(d);
+  if (chiaveGiorno(d) === chiaveGiorno(ieri)) return 'Yesterday, ' + fGiorno.format(d);
   return fGiorno.format(d);
 }
 function fa(d) {
   const m = Math.round((Date.now() - d) / 6e4);
-  if (m < 60) return Math.max(1, m) + ' min fa';
+  if (m < 60) return Math.max(1, m) + ' min ago';
   const h = Math.round(m / 60);
-  return h < 48 ? h + ' h fa' : fData.format(d);
+  return h < 48 ? h + ' h ago' : fData.format(d);
 }
 
 /* Parole chiave di argomenti.json -> espressioni regolari (stesse regole dello script Python) */
@@ -196,10 +212,10 @@ function init() {
   const T = st.T;
   T.mappa = Object.fromEntries(T.argomenti.map(a => [a.id, a]));
   T.perId = Object.fromEntries(T.elementi.map(e => [e.id, e]));
-  for (const a of T.argomenti) a.rx = compila(a.parole);
+  for (const a of T.argomenti) { a.rx = compila(a.parole); if (ARG_EN[a.id]) [a.nome, a.breve] = ARG_EN[a.id]; }
   const agg = data(T.aggiornato);
   const nt = new Set(T.elementi.map(e => e.testata)).size;
-  $('meta').textContent = `Aggiornato ${fData.format(agg)} · ${T.elementi.length} articoli da ${nt} testate negli ultimi 3 giorni · ${T.storie.length} storie riprese da più testate`;
+  $('meta').textContent = `Updated ${fData.format(agg)} · ${T.elementi.length} articles from ${nt} outlets in the last 3 days · ${T.storie.length} stories covered by several outlets`;
   const ul = $('argomenti');
   ul.innerHTML = T.argomenti.map(a => {
     const n = (T.riepilogo.per_argomento[a.id] || {})['24_ore'] || 0;
@@ -278,20 +294,20 @@ function htmlStoria(x) {
   return `<li class="storia">
     <h4><a href="${esc(okUrl(rap.link))}" target="_blank" rel="noopener noreferrer">${esc(rap.titolo)}</a></h4>
     ${somm ? `<p>${esc(somm)}</p>` : ''}
-    <div class="testate-g">${nT > 1 ? `<span class="badge n">${nT} testate</span> ` : '<span class="badge">una testata</span> '}${testate} · <span title="${esc(fData.format(data(ultima)))}">${esc(fa(data(ultima)))}</span></div>
+    <div class="testate-g">${nT > 1 ? `<span class="badge n">${nT} outlets</span> ` : '<span class="badge">one outlet</span> '}${testate} · <span title="${esc(fData.format(data(ultima)))}">${esc(fa(data(ultima)))}</span></div>
   </li>`;
 }
 
 function htmlArticolo(e) {
   const d = data(e.data_utc);
-  const sez = e.sezioni && e.sezioni[0] && !/^(Tutte|via Google News)/.test(e.sezioni[0]) ? ' · ' + esc(e.sezioni.join(', ')) : '';
-  const altri = e.n_testate > 1 ? `<div class="anche">Anche su altre ${e.n_testate - 1} ${e.n_testate - 1 === 1 ? 'testata' : 'testate'}</div>` : '';
-  const pay = e.paywall !== 'no' ? `<span class="badge pay" title="Paywall: ${esc(e.paywall)}">${e.paywall === 'sì' ? 'paywall' : 'paywall parziale'}</span>` : '';
+  const sez = e.sezioni && e.sezioni[0] && !/^(Tutte|via Google News)/.test(e.sezioni[0]) ? ' · ' + esc(e.sezioni.map(sezEn).join(', ')) : '';
+  const altri = e.n_testate > 1 ? `<div class="anche">Also in ${e.n_testate - 1} other ${e.n_testate - 1 === 1 ? 'outlet' : 'outlets'}</div>` : '';
+  const pay = e.paywall !== 'no' ? `<span class="badge pay" title="Paywall: ${esc(e.paywall)}">${e.paywall === 'sì' ? 'paywall' : 'partial paywall'}</span>` : '';
   const img = e.immagine ? `<img src="${esc(okUrl(e.immagine))}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">` : '';
   return `<li class="art">
-    <div class="ora" title="${esc(fData.format(d))}${e.data_stimata ? ' (data stimata)' : ''}">${esc(fOra.format(d))}</div>
+    <div class="ora" title="${esc(fData.format(d))}${e.data_stimata ? ' (estimated date)' : ''}">${esc(fOra.format(d))}</div>
     <div class="corpo">
-      <div class="fonte"><b>${esc(e.testata)}</b><span>${sez}</span><span class="badge">${esc(e.lingua)}</span>${pay}${e.via ? `<span class="badge" title="Link tramite Google News">via GN</span>` : ''}</div>
+      <div class="fonte"><b>${esc(e.testata)}</b><span>${sez}</span><span class="badge">${esc(e.lingua)}</span>${pay}${e.via ? `<span class="badge" title="Link through Google News">via GN</span>` : ''}</div>
       <h4><a href="${esc(okUrl(e.link))}" target="_blank" rel="noopener noreferrer">${esc(e.titolo)}</a></h4>
       ${e.sommario ? `<p>${esc(e.sommario)}</p>` : ''}${altri}
     </div>${img}
@@ -328,17 +344,17 @@ function disegna() {
   const storie = storieDelGiorno(tutti);
 
   let html = `<div class="intro-arg"><div><h2>${esc(a.nome)}</h2><p>${esc(a.breve)}</p></div>
-    <button type="button" class="condividi" id="copia" title="Copia il link a questo argomento">Copia link</button></div>
+    <button type="button" class="condividi" id="copia" title="Copy the link to this topic">Copy link</button></div>
     <div class="griglia"><div>
-    <h3 class="sez">Le 5 storie del giorno</h3>`;
-  html += storie.length ? `<ol class="storie">${storie.map(htmlStoria).join('')}</ol>` : `<p class="vuoto">Nessuna storia nelle ultime ${ORE_STORIE} ore con questi filtri.</p>`;
-  html += `<h3 class="sez">Tutti gli articoli, dal più recente</h3>
-    <div class="filtri" role="group" aria-label="Filtri">
-      <div class="grp"><span class="lab">Lingua</span>${['tutte', ...lingue].map(l => `<button type="button" class="lng" data-l="${l}" aria-pressed="${st.lingua === l}" title="${esc(LINGUE[l] || 'Tutte le lingue')}">${l === 'tutte' ? 'tutte' : l}</button>`).join('')}</div>
-      <label><input type="checkbox" id="nopay" ${st.senzaPay ? 'checked' : ''}> Solo senza paywall</label>
-      <span class="conteggio">${arts.length} articoli</span>
+    <h3 class="sez">The day’s top 5 stories</h3>`;
+  html += storie.length ? `<ol class="storie">${storie.map(htmlStoria).join('')}</ol>` : `<p class="vuoto">No stories in the last ${ORE_STORIE} hours with these filters.</p>`;
+  html += `<h3 class="sez">All articles, newest first</h3>
+    <div class="filtri" role="group" aria-label="Filters">
+      <div class="grp"><span class="lab">Language</span>${['tutte', ...lingue].map(l => `<button type="button" class="lng" data-l="${l}" aria-pressed="${st.lingua === l}" title="${esc(LINGUE[l] || 'All languages')}">${l === 'tutte' ? 'all' : l}</button>`).join('')}</div>
+      <label><input type="checkbox" id="nopay" ${st.senzaPay ? 'checked' : ''}> No paywall only</label>
+      <span class="conteggio">${arts.length} articles</span>
     </div>`;
-  if (!arts.length) html += `<p class="vuoto">Nessun articolo con questi filtri.</p>`;
+  if (!arts.length) html += `<p class="vuoto">No articles with these filters.</p>`;
   let giorno = '';
   html += '<div id="elenco">';
   let aperta = false;
@@ -349,17 +365,17 @@ function disegna() {
   }
   if (aperta) html += '</ul>';
   html += '</div>';
-  if (arts.length > st.mostra) html += `<button type="button" class="altri" id="altri">Mostra altri ${Math.min(PASSO, arts.length - st.mostra)} (di ${arts.length - st.mostra})</button>`;
+  if (arts.length > st.mostra) html += `<button type="button" class="altri" id="altri">Show ${Math.min(PASSO, arts.length - st.mostra)} more (of ${arts.length - st.mostra})</button>`;
   html += `</div>`;
 
   const o = osint();
-  html += `<aside class="osint" aria-label="Fonti specialistiche OSINT"><h3 class="sez">Fonti specialistiche OSINT</h3>
-    <p class="nota">Avvisi marittimi, centri di analisi, mappatori e banche centrali sullo stesso argomento (ultimi 3 giorni). Materia prima da verificare.</p>`;
-  if (o.err) html += `<p class="vuoto">Il file delle fonti OSINT (data/notizie.json) non è disponibile.</p>`;
-  else if (!o.lista.length) html += `<p class="vuoto">Nessuna notizia OSINT su questo argomento negli ultimi 3 giorni.</p>`;
-  else html += `<ul class="os">${o.lista.map(({e, d}) => `<li><div class="fonte">${esc(e.fonte)} · ${esc(fa(d))} <span class="aff">affidabilità ${esc(e.affidabilita || 'n.d.')}</span></div>
+  html += `<aside class="osint" aria-label="Specialist OSINT sources"><h3 class="sez">Specialist OSINT sources</h3>
+    <p class="nota">Maritime advisories, analysis centres, mappers and central banks on the same topic (last 3 days). Raw material still to be verified.</p>`;
+  if (o.err) html += `<p class="vuoto">The OSINT sources file (data/notizie.json) is not available.</p>`;
+  else if (!o.lista.length) html += `<p class="vuoto">No OSINT items on this topic in the last 3 days.</p>`;
+  else html += `<ul class="os">${o.lista.map(({e, d}) => `<li><div class="fonte">${esc(e.fonte)} · ${esc(fa(d))} <span class="aff">reliability ${esc(({alta: 'high', media: 'medium', bassa: 'low'})[e.affidabilita] || e.affidabilita || 'n/a')}</span></div>
       <a href="${esc(okUrl(e.link))}" target="_blank" rel="noopener noreferrer">${esc(e.titolo)}</a></li>`).join('')}</ul>
-      <p class="nota" style="margin-top:10px">${o.tot} notizie OSINT sull'argomento; qui le ${o.lista.length} più rilevanti.</p>`;
+      <p class="nota" style="margin-top:10px">${o.tot} OSINT items on the topic; the ${o.lista.length} most relevant are shown here.</p>`;
   html += `</aside></div>`;
   $('vista').innerHTML = html;
 
@@ -368,9 +384,9 @@ function disegna() {
   const alt = $('altri'); if (alt) alt.onclick = () => { st.mostra += PASSO; const y = scrollY; disegna(); scrollTo(0, y); };
   $('copia').onclick = async (ev) => {
     const u = location.href.split('#')[0] + '#' + st.arg;
-    try { await navigator.clipboard.writeText(u); ev.target.textContent = 'Link copiato'; }
+    try { await navigator.clipboard.writeText(u); ev.target.textContent = 'Link copied'; }
     catch (e) { ev.target.textContent = u; }
-    setTimeout(() => { const c = $('copia'); if (c) c.textContent = 'Copia link'; }, 2500);
+    setTimeout(() => { const c = $('copia'); if (c) c.textContent = 'Copy link'; }, 2500);
   };
 }
 
@@ -378,7 +394,7 @@ Promise.all([
   fetch('data/notizie-testate.json', {cache: 'no-cache'}).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }),
   fetch('data/notizie.json', {cache: 'no-cache'}).then(r => r.ok ? r.json() : null).catch(() => null),
 ]).then(([T, N]) => { st.T = T; st.N = N; init(); })
-  .catch(err => { $('meta').textContent = ''; $('vista').innerHTML = `<p class="errore">Non riesco a caricare data/notizie-testate.json (${esc(err.message)}). Se apri il file dal disco, servilo con un piccolo server locale (python3 -m http.server dentro docs/).</p>`; });
+  .catch(err => { $('meta').textContent = ''; $('vista').innerHTML = `<p class="errore">Could not load data/notizie-testate.json (${esc(err.message)}). If you opened the file from disk, serve it with a small local server (python3 -m http.server inside docs/).</p>`; });
 })();
 </script>
 </body>

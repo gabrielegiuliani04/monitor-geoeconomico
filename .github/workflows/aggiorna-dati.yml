@@ -68,13 +68,16 @@ jobs:
       - name: Cruscotto del rischio (legge i JSON appena scritti, per ultimo)
         continue-on-error: true
         run: python3 raccolta/rischio/calcola.py
+      - name: Port risk index (after the chokepoint risk)
+        continue-on-error: true
+        run: python3 raccolta/porti/rischio_porti.py
       - name: Nascondi eventuali chiavi nei file pubblici
         run: python3 raccolta/comune/nascondi_chiavi.py
       - name: Salva se cambiati
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
-          git add docs/data raccolta/rischio/storico.json
+          git add docs/data raccolta/porti/history.json raccolta/rischio/storico.json
           git diff --cached --quiet || git commit -m "Dati: aggiornamento automatico del $(date -u +%F)"
           git pull --rebase origin main
           git push

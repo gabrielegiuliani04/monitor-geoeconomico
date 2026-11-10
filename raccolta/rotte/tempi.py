@@ -65,8 +65,8 @@ DESTINATIONS = {
     "rotterdam": {"name": "Rotterdam", "country": "NL", "pos": [4.05, 51.97], "via": [[3.7, 52.0]], "range": "north"},
     "antwerp": {"name": "Antwerp", "country": "BE", "pos": [4.3, 51.3], "via": [[3.6, 51.42], [3.1, 51.5]], "range": "north"},
     "hamburg": {"name": "Hamburg", "country": "DE", "pos": [9.95, 53.54], "via": [[9.1, 53.88], [8.4, 53.98], [7.8, 54.05]], "range": "north"},
-    "gdansk": {"name": "Gdańsk", "country": "PL", "pos": [18.67, 54.4], "via": [[18.8, 54.6]], "range": "baltic"},
-    "klaipeda": {"name": "Klaipėda", "country": "LT", "pos": [21.13, 55.71], "via": [[21.0, 55.72]], "range": "baltic"},
+    "gdansk": {"name": "Gdańsk", "country": "PL", "pos": [18.67, 54.4], "via": [[18.8, 54.6], [18.2, 55.0]], "range": "baltic"},
+    "klaipeda": {"name": "Klaipėda", "country": "LT", "pos": [21.13, 55.71], "via": [[21.0, 55.72], [19.6, 55.6], [16.3, 55.45]], "k": 1, "range": "baltic"},
     "esbjerg": {"name": "Esbjerg", "country": "DK", "pos": [8.44, 55.46], "via": [[8.2, 55.45]], "range": "north"},
     "genoa": {"name": "Genoa", "country": "IT", "pos": [8.9, 44.4], "via": [], "range": "med"},
     "trieste": {"name": "Trieste", "country": "IT", "pos": [13.76, 45.65], "via": [], "range": "med"},
@@ -96,6 +96,7 @@ EXTRA_LANES = [
     {"name": "Florida Strait - Gibraltar (south of the Azores)", "g": [[-79.89, 25.87], [-70.0, 30.0], [-45.0, 35.3], [-26.0, 35.6], [-9.48, 36.47]]},
     {"name": "Brazil-Europe lane at Cape Verde - Gibraltar (west of the Canaries)", "g": [[-25.63, 16.96], [-19.6, 28.6], [-13.5, 33.5], [-9.48, 36.47]]},
     {"name": "Alboran Sea - Ligurian Sea (north of Algeria, east of the Balearics, west of Corsica)", "g": [[-2.41, 36.58], [1.0, 37.6], [5.0, 39.6], [7.9, 42.7], [8.9, 44.25]]},
+    {"name": "West coast of India - Arabian Sea - Gulf of Aden (north of Socotra)", "g": [[72.77, 18.56], [60.0, 15.0], [54.0, 13.4], [50.92, 12.32]]},
     {"name": "Port Said - south of Crete - Ionian Sea", "g": [[32.6, 31.52], [26.5, 34.5], [23.5, 34.6], [19.3, 37.6]]},
     {"name": "Ionian Sea - Strait of Messina - Tyrrhenian - Ligurian Sea", "g": [[19.3, 37.6], [15.7, 37.9], [15.62, 38.25], [14.5, 39.5], [10.6, 42.4], [9.6, 43.6], [8.9, 44.25]]},
     {"name": "Sicily Channel - Strait of Messina", "g": [[15.06, 36.52], [15.7, 37.9]]},
@@ -169,6 +170,33 @@ VALIDATION = [
     {"pair": "Ras Laffan-NW Europe via Cape (days)", "from": "ras_laffan", "to": "rotterdam", "scenario": "cape", "published_days": 27, "cargo": "lng",
      "source": "S&P Global: around 27 days around the Cape of Good Hope", "link": "https://www.spglobal.com/energy/en/news-research/latest-news/natural-gas/032421-lng-spot-shipping-market-not-feeling-impact-from-suez-canal-incident"},
 ]
+
+# The input files are written in Italian: labels used in this English output.
+LEVEL_EN = {"chiuso di fatto": "de facto closed", "chiuso": "closed", "aperto": "open", "aperti": "open",
+            "aperto, minaccia alta": "open, high threat", "aperto, in ripresa": "open, traffic recovering",
+            "aperto, porti a monte colpiti": "open, upstream ports under attack", "riaperto con permessi": "reopened with permits"}
+PASSAGE_EN = {"hormuz": "Strait of Hormuz", "bab-el-mandeb": "Bab el-Mandeb", "suez": "Suez Canal", "capo": "Cape of Good Hope",
+              "gibilterra": "Strait of Gibraltar", "stretti-danesi": "Danish straits"}
+PORTWATCH_EN = {"Stretto di Hormuz": "Strait of Hormuz", "Bab el-Mandeb": "Bab el-Mandeb", "Canale di Suez": "Suez Canal",
+                "Capo di Buona Speranza": "Cape of Good Hope", "Stretto di Gibilterra": "Strait of Gibraltar", "Stretti danesi": "Danish straits (Oresund)"}
+AREA_EN = {"golfo-oceano-indiano-mar-rosso": "JWC listed area: Persian Gulf, Gulf of Oman, western Indian Ocean, Gulf of Aden, southern Red Sea (S of 25.5N)",
+           "mar-nero-azov": "JWC listed area: Black Sea and Sea of Azov", "golfo-di-guinea": "JWC listed area: Gulf of Guinea",
+           "cabo-delgado": "JWC listed area: Cabo Delgado (Mozambique, Tanzania)",
+           "golfo-hormuz": "Persian Gulf and Strait of Hormuz", "mar-rosso": "Southern Red Sea and Bab el-Mandeb",
+           "mar-rosso-saudita": "Saudi Red Sea ports (Yanbu, Jeddah, Jizan) and Saudi-linked ships", "mar-nero": "Black Sea", "israele": "Israeli ports"}
+HUB_EN = {"hub-rotterdam": "Rotterdam", "hub-anversa": "Antwerp", "hub-gibilterra": "Gibraltar", "hub-pireo": "Piraeus",
+          "hub-istanbul": "Istanbul", "hub-fujairah": "Fujairah", "hub-singapore": "Singapore"}
+
+
+def en_source(t):
+    """Translates the recurring Italian words of press-source labels."""
+    if not t:
+        return t
+    for a, b in ((" ripreso da ", " via "), ("ripreso da", "via"), ("quattro fonti di mercato", "four market sources"),
+                 ("cinque fonti", "five sources"), (" il ", " on "), ("ottobre", "October"), ("settembre", "September")):
+        t = t.replace(a, b)
+    return t
+
 
 # Fuel price hub per origin region (Ship & Bunker VLSFO, bunker-emissioni.json ids).
 FUEL_HUB = {"east_asia": "hub-singapore", "se_asia": "hub-singapore", "south_asia": "hub-fujairah", "gulf": "hub-fujairah",
@@ -295,7 +323,7 @@ def attach(adj, pid, port, k=3, max_km=900):
         adj[names[i + 1]][names[i]] = w
     last = chain[-1]
     cand = sorted((hav(last, n), n) for n in adj if not (isinstance(n[0], str)))
-    for d, n in cand[:k]:
+    for d, n in cand[:port.get("k", k)]:
         if d <= max_km:
             adj[names[-1]][n] = d
             adj[n][names[-1]] = d
@@ -468,7 +496,7 @@ def bunker_prices(bk):
     for e in bk.get("elementi", []):
         v = (e.get("prezzi") or {}).get("VLSFO")
         if v and v.get("ultimo"):
-            out[e["id"]] = {"now": v["ultimo"], "date": v.get("data"), "prewar": v.get("valore_prima_guerra"), "prewar_date": v.get("data_prima_guerra"), "hub": e["nome"]}
+            out[e["id"]] = {"now": v["ultimo"], "date": v.get("data"), "prewar": v.get("valore_prima_guerra"), "prewar_date": v.get("data_prima_guerra"), "hub": HUB_EN.get(e["id"], e["nome"])}
     return out
 
 
@@ -480,7 +508,7 @@ def premiums(ass):
     for k, v in (ass.get("ultimo_premio") or {}).items():
         if v and v.get("min") is not None:
             out[k] = {"pct": round((v["min"] + v["max"]) / 2, 3), "min": v["min"], "max": v["max"], "date": v.get("data"),
-                      "segment": v.get("segmento"), "source": v.get("fonte"), "link": v.get("link")}
+                      "area_name": AREA_EN.get(k, k), "source": en_source(v.get("fonte")), "link": v.get("link")}
     return out
 
 
@@ -584,7 +612,7 @@ def main():
                 errors.append(f"{oid}->{did}: no path on the lane network")
                 continue
             # Cape alternative: Red Sea origins (Yanbu) can only avoid Suez, going south through Bab el-Mandeb
-            cape = describe(*route(oid, did, ban_suez_only if o["region"] == "red_sea" else ban_red))
+            cape = None  # computed below, from the port where the cargo loads today
             notes = []
             status = "normal"
             today_from = oid
@@ -596,6 +624,8 @@ def main():
                 else:
                     status = "blocked (Hormuz de facto closed)"
                     notes.append(o["bypass_note"] + " Only sporadic, often AIS-dark transits; the route shown is the one a ship would take if it got through, at Gulf war-risk rates.")
+            cape_from = today_from
+            cape = describe(*route(cape_from, did, ban_suez_only if cape_from == "yanbu" else ban_red))
             today_banned = ban_red if red_closed else empty
             today = describe(*route(today_from, did, today_banned)) if today_from in ORIGINS or today_from in BYPASS_PORTS else None
             if today is None:
@@ -605,7 +635,7 @@ def main():
             share = None
             if cargo == "container" and "suez" in today["gates"] and not red_closed:
                 share = CONFIG["container_red_sea_share"]
-                notes.append(f"{share['value_pct']}% of Far East-Europe container capacity is back on Red Sea/Suez services ({share['date']}); the rest still sails via the Cape (alternative given in 'cape').")
+                notes.append(f"{share['value_pct']}% of Far East-Europe container capacity is back on Red Sea/Suez services ({share['date']}; used as a proxy for all Asia-Europe services); the rest still sails via the Cape (alternative given in 'cape').")
             if oid == "yanbu" and o.get("saudi"):
                 notes.append("Northbound to Suez: does not cross Bab el-Mandeb; Yanbu is inside the JWC listed area since JWLA-034 (Red Sea limit moved from 18N to 25.5N).")
             if o.get("note"):
@@ -638,6 +668,9 @@ def main():
                         keys.append("mar-rosso-saudita")
                     if "bab_el_mandeb" in desc["gates"]:
                         keys.append("mar-rosso")
+                    if not keys:
+                        items.append({"area": "golfo-oceano-indiano-mar-rosso", "area_name": AREA_EN["golfo-oceano-indiano-mar-rosso"], "pct_hull": None, "usd": None,
+                                      "source": "listed area crossed outside the Gulf and the Red Sea (Gulf of Oman / Arabian Sea): no public premium for this segment, counted as 0"})
                     for pk in keys:
                         if today_flag and pk in prem:
                             pct = prem[pk]["pct"]
@@ -645,10 +678,10 @@ def main():
                         else:
                             b = CONFIG["base_premium_pct"][pk]
                             pct, src = b["value"], b["text"]
-                        items.append({"area": pk, "pct_hull": pct, "usd": round(hull * pct / 100), "source": src})
+                        items.append({"area": pk, "area_name": AREA_EN.get(pk, pk), "pct_hull": pct, "usd": round(hull * pct / 100), "source": src})
                         total += hull * pct / 100
                 for other in ar - {"golfo-oceano-indiano-mar-rosso"}:
-                    items.append({"area": other, "pct_hull": None, "usd": None, "source": "listed area crossed; no public premium in assicurazioni.json"})
+                    items.append({"area": other, "area_name": AREA_EN.get(other, other), "pct_hull": None, "usd": None, "source": "listed area crossed; no public premium in assicurazioni.json"})
                 return total, items
             wr_today, wr_items = wr(today, True, today_from)
             wr_base, wr_base_items = wr(base, False, oid)
@@ -658,6 +691,17 @@ def main():
             per_unit = None
             if extra_cost is not None:
                 per_unit = round((extra_cost + (price_effect or 0)) / ves["units_per_voyage"], 2)
+            def cape_block(c, d_base, w_base):
+                dc = days(c["nm"])
+                xf = round((dc - d_base) * ves["fuel_t_day"])
+                fu = xf * price_now if price_now else 0
+                et = xf * ets["tco2e_per_t_vlsfo"] * ets["share_extra_eu"] * ets["phase_in_2026"] * eua * eurusd if eua and eurusd else 0
+                wc, _ = wr(c, True, cape_from)
+                return {"nm": c["nm"], "days": dc, "extra_days_vs_base": round(dc - d_base, 1),
+                        "extra_fuel_t": xf, "extra_cost_usd": round(fu + et + wc - w_base),
+                        "cost_breakdown_usd": {"extra_fuel": round(fu), "ets_extra": round(et), "war_risk_extra": round(wc - w_base)},
+                        "chokepoints": [GATES[g]["name"] for g in c["gates"]], "listed_areas": c["areas"],
+                        "note": "Suez Canal toll saved on this route is not deducted"}
             route_label = " - ".join(GATES[g]["name"] for g in today["gates"]) or "direct"
             if today_from != oid:
                 route_label = f"from {BYPASS_PORTS.get(today_from, ORIGINS.get(today_from, {})).get('name')}: " + route_label
@@ -683,8 +727,7 @@ def main():
                 "chokepoints": [GATES[g]["name"] for g in today["gates"]],
                 "chokepoints_base": [GATES[g]["name"] for g in base["gates"]],
                 "listed_areas_today": today["areas"], "war_risk_items": wr_items,
-                "cape": {"nm": cape["nm"], "days": days(cape["nm"]), "extra_days_vs_base": round(days(cape["nm"]) - dt_base, 1),
-                         "chokepoints": [GATES[g]["name"] for g in cape["gates"]]} if cape else None,
+                "cape": cape_block(cape, dt_base, wr_base) if cape else None,
                 "freight": freight_for(oid, dst, noli),
                 "notes": notes,
                 "g": simplify(today["coords"]),
@@ -738,8 +781,10 @@ def main():
             "container_red_sea_share": CONFIG["container_red_sea_share"],
             "speed_assumption": "same speed today and in the base case, to isolate the distance effect; on the Cape many container lines sail faster to keep weekly schedules, which raises fuel per mile",
         },
-        "passages_today": {k: {"level": v["level"], "date": v["date"], "facts": v["facts"]} for k, v in state.items() if k in ("hormuz", "bab-el-mandeb", "suez", "capo", "gibilterra", "stretti-danesi")},
-        "portwatch": {k: v for k, v in pws.items() if k in ("Stretto di Hormuz", "Bab el-Mandeb", "Canale di Suez", "Capo di Buona Speranza", "Stretto di Gibilterra", "Stretti danesi")},
+        "passages_today": {PASSAGE_EN[k]: {"level": LEVEL_EN.get(v["level"], v["level"]), "level_source_it": v["level"], "date": v["date"],
+                                           "source_links": sorted({f["link"] for f in v["facts"] if f.get("link")})}
+                           for k, v in state.items() if k in PASSAGE_EN},
+        "portwatch_transits_per_day": {PORTWATCH_EN[k]: v for k, v in pws.items() if k in PORTWATCH_EN},
         "prices_used": {"vlsfo": prices, "eua_eur": eua, "eua_date": eua_date, "eurusd": eurusd, "war_risk_latest": prem},
         "origins": {k: {"name": v["name"], "country": v["country"], "lon": v["pos"][0], "lat": v["pos"][1], "cargo": v["cargo"]} for k, v in ORIGINS.items()},
         "bypass_ports": {k: {"name": v["name"], "country": v["country"], "lon": v["pos"][0], "lat": v["pos"][1]} for k, v in BYPASS_PORTS.items()},
