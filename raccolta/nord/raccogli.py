@@ -193,8 +193,15 @@ def raccogli_porti(errori):
                        "serie": {"portcalls": [[d, somma[d]["portcalls"]] for d in sorted(somma)
                                                if d >= inizio_serie and somma[d]["portcalls"] is not None]}})
         else:
-            errori.append("PortWatch %s: nessun dato giornaliero" % p["nome"])
-            el["data_fonte"] = None
+            vecchio = next((e for e in ((leggi_dato("porti-nord.json") or {}).get("elementi") or []) if e.get("id") == p["id"] and e.get("media7")), None)
+            if vecchio:  # PortWatch did not answer: keep yesterday's figures instead of publishing an empty port
+                errori.append("PortWatch %s: nessun dato giornaliero, riuso il dato precedente (%s)" % (p["nome"], vecchio.get("data_fonte")))
+                el = dict(vecchio, riusato=True)
+                if vecchio.get("data_fonte"):
+                    date_dato.append(vecchio["data_fonte"])
+            else:
+                errori.append("PortWatch %s: nessun dato giornaliero" % p["nome"])
+                el["data_fonte"] = None
         elementi.append(el)
     # passaggio degli Stretti danesi già raccolto dall'agente FLUSSI (sola lettura)
     stretti = []

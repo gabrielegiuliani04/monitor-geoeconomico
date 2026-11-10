@@ -164,16 +164,37 @@ def serie_di(righe, campo):
     return [[r["date"], r.get(campo)] for r in righe if r.get("date") and r.get(campo) is not None]
 
 
+def precedenti_portwatch():
+    """Elementi dell'esecuzione precedente, per id: se PortWatch non risponde si riusano invece di pubblicare un file vuoto."""
+    try:
+        with open(os.path.join(DATI, "portwatch.json"), encoding="utf-8") as h:
+            return {e["id"]: e for e in json.load(h).get("elementi", []) if e.get("id")}
+    except Exception:
+        return {}
+
+
+def riusa(prec, pid, elementi, fonti_date):
+    e = prec.get(pid)
+    if not e:
+        return
+    e = dict(e, riusato=True)
+    elementi.append(e)
+    if e.get("data_fonte"):
+        fonti_date.append(e["data_fonte"])
+
+
 def raccogli_portwatch(errori):
     inizio = date(OGGI.year - 3, 1, 1).isoformat()  # ultimi ~3 anni, per i confronti a 1 e 2 anni
     elementi, fonti_date = [], []
+    prec = precedenti_portwatch()
     coord_cp = pw_coordinate("PortWatch_chokepoints_database", [c[0] for c in CHOKEPOINT])
     for pid, chiave, nota in CHOKEPOINT:
         try:
             r = pw_query("Daily_Chokepoints_Data", "portid='%s' AND date>=DATE '%s'" % (pid, inizio),
                          ["date"] + TIPI_CP + ["capacity", "capacity_tanker"])
         except Exception as e:
-            errori.append("PortWatch %s (%s): %s" % (chiave, pid, e))
+            errori.append("PortWatch %s (%s): %s (riuso il dato precedente)" % (chiave, pid, e))
+            riusa(prec, pid, elementi, fonti_date)
             continue
         cf = confronti(r, TIPI_CP + ["capacity", "capacity_tanker"])
         if not cf:
@@ -197,7 +218,8 @@ def raccogli_portwatch(errori):
         try:
             r = pw_query("Daily_Ports_Data", "portid='%s' AND date>=DATE '%s'" % (pid, inizio), ["date"] + TIPI_PORTO)
         except Exception as e:
-            errori.append("PortWatch porto %s (%s): %s" % (nome, pid, e))
+            errori.append("PortWatch porto %s (%s): %s (riuso il dato precedente)" % (nome, pid, e))
+            riusa(prec, pid, elementi, fonti_date)
             continue
         cf = confronti(r, TIPI_PORTO)
         if not cf:
