@@ -184,13 +184,21 @@ def scarica_canale(canale):
                 salva_cache(st)
                 print("  %s: limite di %d pagine raggiunto" % (canale, max_pag))
                 return st
-            try:
-                posts = leggi_pagina(canale, before)
-            except Exception as e:
-                avviso("%s: pagina before=%s non letta (%s)" % (canale, before, e))
+            ids, posts = [], []
+            for prova in range(3):  # una pagina vuota a volte è solo un errore temporaneo
+                try:
+                    posts = leggi_pagina(canale, before)
+                except Exception as e:
+                    avviso("%s: pagina before=%s non letta (%s)" % (canale, before, e))
+                    posts = None
+                    break
+                ids = [p["id"] for p in posts if before is None or p["id"] < before]
+                if ids:
+                    break
+                time.sleep(5 * (prova + 1))
+            if posts is None:
                 break
             pagine += 1
-            ids = [p["id"] for p in posts if before is None or p["id"] < before]
             gia = any(i in noti for i in ids)
             for p in posts:
                 if p["id"] not in st["posts"]:

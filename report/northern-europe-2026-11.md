@@ -16,7 +16,7 @@ Every number has a source and a date. Paragraphs marked *Assessment* are the mon
 - **German and Dutch gas storage is far below normal before winter.** On 8 November 2026 Germany was 58.9% full and the Netherlands 63.5%, against an EU goal of 90%. Germany is 15.9 points below a year ago (GIE AGSI+). The TTF gas price is 82.33 €/MWh, +164% on a year.
 - **Offshore wind will reach under half of the North Sea goal for 2030.** Europe connected only 1.96 GW in 2025. For Denmark, Germany, the Netherlands and Belgium WindEurope expects 31.1 GW in 2030, 48% of the 65 GW promised at Esbjerg.
 - **Carbon rules now add a fifth to a half of fuel costs.** At the EU auction price of 86.91 €/t (9 November 2026), the EU ETS costs 275 € per tonne of fuel burnt on voyages between EU ports and 138 € on voyages to or from outside the EU (bunker-emissioni.json).
-- **The Gulf of Finland is where sabotage risk concentrates.** In the AIS snapshot of 9 November 2026, 44 of the 109 ships seen there were on Western sanction lists. Since November 2024 six Baltic cable incidents have been recorded. GPS jamming hit 214–246 areas a day in the week to 8 November 2026 (GPSJam).
+- **Sabotage risk sits in the Baltic, above all the Gulf of Finland.** In the AIS snapshot of 9 November 2026, 44 of the 109 ships seen there were on Western sanction lists. Since November 2024 six Baltic cable incidents have been recorded. GPS jamming hit 214–246 areas a day in the week to 8 November 2026 (GPSJam).
 
 <a id="ports"></a>
 
@@ -43,13 +43,13 @@ The ten ports are the largest by tonnes handled in 2025 among the 30 in [porti-n
 
 **Port calls, change on a year earlier, %.** Ten largest ports by 2025 tonnage. Pink: 30-day average to 30 October 2026; blue: 1 January to 30 October 2026. Source: IMF PortWatch via [porti-nord.json](../docs/data/porti-nord.json), data to 30 October 2026.
 
-**What the numbers say.** Over the year to date 6 of the ten ports are within ±5% of 2025. The biggest falls are Ust-Luga (−12.8%) and St Petersburg (−10.7%); the biggest rise is Szczecin-Świnoujście (+4.2%). The weekly figures swing much more: Rotterdam is −10.8% on the week to 30 October 2026 but +2.3% on 30 days. Calls count ships, not cargo: a port can handle fewer, larger ships.
+**What the numbers say.** Over the year to date six of the ten ports are within ±5% of 2025. The biggest falls are Ust-Luga (−12.8%) and St Petersburg (−10.7%); the biggest rise is Szczecin-Świnoujście (+4.2%). The weekly figures swing much more: Rotterdam is −10.8% on the week to 30 October 2026 but +2.3% on 30 days. Calls count ships, not cargo: a port can handle fewer, larger ships.
 
 **Containers moved east and to deep water in 2025.** Rotterdam handled 14.24 million TEU (+3.1%), Hamburg 8.3 million (+7.3%), Wilhelmshaven 1.47 million (+74%) and Gdańsk 2.77 million (+23%), according to the port authorities ([porti-nord.json](../docs/data/porti-nord.json)). TEU is the 20-foot container unit.
 
-**Russia's Baltic oil ports.** Primorsk averaged 1.3 calls a day this year against 2.7 in 2025 (−52%); Ust-Luga −12.8%. Ukrainian drones hit both ports on 23 and 29 March and again in July 2026 (baltico-sicurezza.json). PortWatch does not see ships with AIS switched off, so Russian ports are undercounted.
+**Russia's Baltic oil ports.** Primorsk averaged 1.3 calls a day this year against 2.7 in 2025 (−52%); Ust-Luga −12.8%. Ukrainian drones hit Primorsk on 23 March and Ust-Luga on 29 March, and the Baltic oil ports again in July 2026 (baltico-sicurezza.json). PortWatch does not see ships with AIS switched off, so Russian ports are undercounted.
 
-*Assessment.* Three forces drive the pattern. First, the return of some Asia–Europe services to Suez (transits +10.3% on a year, portwatch.json) adds calls in the Mediterranean before the North Sea, which flattens Rotterdam and Antwerp. Second, the Baltic is redistributing: Polish ports hold or gain, ports that lived on Russian transit (HaminaKotka −17%, Riga −5% year to date) lose. Third, energy: tanker calls follow the oil and LNG trade, and Rotterdam lost bunker sales (−23.2% tonnes in the first nine months of 2026, Port of Rotterdam via bunker-emissioni.json). These are links we draw; the data do not prove causation.
+*Assessment.* Three forces probably drive the pattern. First, some Asia–Europe services have returned to Suez (transits +10.3% on a year, portwatch.json); this may add Mediterranean calls before the North Sea and keep Rotterdam and Antwerp flat. Second, the Baltic is redistributing: Polish ports hold or gain, ports that lived on Russian transit (HaminaKotka −17%, Riga −5% year to date) lose. Third, energy: tanker calls follow the oil and LNG trade, and Rotterdam lost bunker sales (−23.9% in tonnes of oil and bio-blends in the first nine months of 2026, −23.2% counting LNG; Port of Rotterdam via bunker-emissioni.json). These are links we draw; the data do not prove causation.
 
 <a id="energy"></a>
 
@@ -70,7 +70,7 @@ The ten ports are the largest by tonnes handled in 2025 among the 30 in [porti-n
 
 **Gas storage fill, % of working capacity, Germany and the Netherlands,** daily, 2026 against 2025; dotted line: EU 90% target. Source: GIE AGSI+ via [scorte.json](../docs/data/scorte.json), data to 8 November 2026.
 
-Both countries are drawing gas already: over the last two weeks German storage fell by 0.21 points a day and Dutch by 0.15. At that pace Germany would be near 54% and the Netherlands near 60% on 1 December (straight-line projection by this script, not a forecast: cold weather speeds withdrawals). The EU as a whole held 729 TWh at the end of August 2026, −19.4% on a year (Eurostat, [scorte.json](../docs/data/scorte.json)).
+Both countries are drawing gas already: over the last two weeks German storage fell by 0.19 points a day and Dutch by 0.14. At that pace Germany would be near 54% and the Netherlands near 60% on 1 December (straight-line projection by this script, not a forecast: cold weather speeds withdrawals). The EU as a whole held 729 TWh at the end of August 2026, −19.4% on a year (Eurostat, [scorte.json](../docs/data/scorte.json)).
 
 Denmark and Poland look better. At the end of September 2026 Danish stocks were 6.89 TWh, +27% on a year; Polish stocks 39.4 TWh, −1.6% (Eurostat, updated 3 November 2026). Denmark is a net gas exporter again thanks to the Tyra field (up to 2.8 bcm a year against consumption of 1.4 bcm, [esposizione-nord.json](../docs/data/esposizione-nord.json)); Poland receives Norwegian gas through Baltic Pipe.
 
@@ -95,7 +95,7 @@ The **TTF**, the Dutch hub price that sets gas prices for most of Europe, closed
 
 North Sea countries trade power through subsea direct-current (HVDC) cables: NorNed (700 MW) and COBRAcable (700 MW) from the Netherlands, Viking Link (1.4 GW, Denmark–UK) and NordLink (1.4 GW, Norway–Germany) ([esposizione-nord.json](../docs/data/esposizione-nord.json)). OpenStreetMap shows these HVDC export and interconnector cables under construction: Bornholm–Germany, Eastern Green Link 1, Eastern Green Link 2, IJmuiden Ver Alpha, IJmuiden Ver Beta, IJmuiden Ver Gamma, Nederwiek 1, NeuConnect ([rete-elettrica.json](../docs/data/rete-elettrica.json)). In the Baltic, Estlink 2 (650 MW, Estonia–Finland) was cut by the anchor of the Eagle S on 25 December 2024 and restored in June 2025 ([interconnessioni.json](../docs/data/interconnessioni.json)).
 
-*Assessment.* The winter risk for North-West Europe is storage, not supply routes. With German storage 30 points below its five-year average and most LNG coming from the US, the TTF depends on two things a port or energy company cannot control: winter temperatures and the Qatar outage linked to the Strait of Hormuz (rated «critical» on the monitor's [rischio.json](../docs/data/rischio.json)).
+*Assessment.* The winter risk for North-West Europe is storage, not supply routes. German storage is 30 points below its five-year average and most LNG comes from the US. So the TTF depends on two things a port or energy company cannot control: winter temperatures and the Qatar outage linked to the Strait of Hormuz (rated «critical» on the monitor's [rischio.json](../docs/data/rischio.json)).
 
 <a id="wind"></a>
 
@@ -136,7 +136,7 @@ For the Baltic as a whole the EMODnet map gives 2.7 GW operating and 3.8 GW unde
 
 *From [eolico-filiera.json](../docs/data/eolico-filiera.json) (curated, one source per round). Negative bidding: the developer pays the state for the site. Two-sided CfD: the state guarantees a strike price and pays or collects the difference with the market price.*
 
-The pattern is clear in the data: rounds where the developer pays the state for the site failed in Denmark (3 GW, December 2024), Germany (2.5 GW, August 2025) and the Netherlands (1 GW, October 2025), with no bids. Rounds with a **two-sided contract for difference (CfD)**, where the state guarantees a fixed price and pays or collects the difference with the market, worked: the UK awarded 8.4 GW in January 2026, Poland 3.4 GW in December 2025 and Denmark 1.8 GW in August 2026, signed on 6 November 2026. Next: the Dutch IJmuiden Ver Gamma-A and Gamma-B rounds (2 GW) take applications from 26 November to 10 December 2026 (RVO, secondary source).
+The pattern is clear in the data: rounds where the developer pays the state for the site failed in Denmark (3 GW, December 2024), Germany (2.5 GW, August 2025) and the Netherlands (1 GW, October 2025), with no bids. Rounds with a **two-sided contract for difference (CfD)** worked. Under a CfD the state guarantees a fixed price and pays or collects the difference with the market. The UK awarded 8.4 GW in January 2026, Poland 3.4 GW in December 2025 and Denmark 1.8 GW in August 2026, signed on 6 November 2026. Next: the Dutch IJmuiden Ver Gamma-A and Gamma-B rounds (2 GW) take applications from 26 November to 10 December 2026 (RVO, secondary source).
 
 ### Bottlenecks
 
@@ -148,11 +148,11 @@ The pattern is clear in the data: rounds where the developer pays the state for 
 - **Ports** — strain: medium. investment announced since 2022 in factories, ports and vessels: 15.4 billion € ([WindEurope, 2025 Statistics](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf), February 2026).
 - **Foundations** — strain: overcapacity. European XXL monopile capacity from 2027: 2.7 million tonnes a year ([Rystad Energy](https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze), 18 September 2026).
 
-In plain terms: Prysmian holds about 16.5 billion € of transmission orders (29 October 2026) and NKT 13.0 billion (30 June 2026), so new HVDC cable capacity is booked for years; Amprion's BalWin1 2 GW grid link slipped from September 2030 to 15 September 2031 because of extra work on the offshore converter platform; European monopile factories, by contrast, will run at about 32% in 2026 and 19% in 2028 (Rystad).
+In plain terms: Prysmian holds about 16.5 billion € of transmission orders (29 October 2026) and NKT 13.0 billion (30 June 2026). New HVDC cable capacity is booked for years. Amprion's 2 GW BalWin1 grid link slipped from September 2030 to 15 September 2031 because of extra work on the offshore converter platform. European monopile factories, by contrast, will run at about 32% of capacity in 2026 and 19% in 2028 (Rystad).
 
 ### Ports and vessels
 
-Esbjerg has shipped over 27.5 GW of offshore wind in total ([Port Esbjerg](https://portesbjerg.dk/en/news/record-number-of-wind-vessels-calling-at-port-esbjerg-in-2025)). Rotterdam plans a 45-hectare wind terminal for mid-2029 and Cuxhaven a 1,250-metre heavy-load quay for about 2028, while the Bremerhaven terminal was never built ([eolico-filiera.json](../docs/data/eolico-filiera.json)). Vessels are no longer the main constraint: the fleet of Western installation ships able to handle 15 MW turbines goes from zero in 2020 to more than 25 by 2028 (Intelatus), and Cadeler, the market leader, used its fleet at 66% in the first half of 2026 with a 2.5 billion € order book.
+Esbjerg has shipped over 27.5 GW of offshore wind in total ([Port Esbjerg](https://portesbjerg.dk/en/news/record-number-of-wind-vessels-calling-at-port-esbjerg-in-2025)). Rotterdam plans a 45-hectare wind terminal for mid-2029 and Cuxhaven a 1,250-metre heavy-load quay for about 2028, while the Bremerhaven terminal was never built ([eolico-filiera.json](../docs/data/eolico-filiera.json)). Vessels are no longer the main constraint. Western installation ships able to handle 15 MW turbines go from zero in 2020 to more than 25 by 2028 (Intelatus). Cadeler, the market leader, used its fleet at 66% in the first half of 2026 and had a 2.5 billion € order book.
 
 ### Offshore wind calendar: the next 90 days
 
@@ -370,7 +370,7 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 | [porti-nord.json](../docs/data/porti-nord.json) | 2026-11-09T20:05Z | IMF PortWatch; Autorità portuali e statistiche nazionali |
 | [scorte.json](../docs/data/scorte.json) | 2026-11-09T19:19Z | GIE AGSI+; Eurostat – Gas products stock levels, monthly |
 | [prezzi.json](../docs/data/prezzi.json) | 2026-11-10T03:40Z | Yahoo Finance, US Treasury |
-| [eolico-filiera.json](../docs/data/eolico-filiera.json) | 2026-11-09T20:13Z | WindEurope, Wind energy in Europe - 2025 Statistics and the outlook fo; Port Esbjerg, 'Port Esbjerg expands by 570,000 square metres' |
+| [eolico-filiera.json](../docs/data/eolico-filiera.json) | 2026-11-10T06:25Z | WindEurope, Wind energy in Europe - 2025 Statistics and the outlook fo; Port Esbjerg, 'Port Esbjerg expands by 570,000 square metres' |
 | [offshore-nord.json](../docs/data/offshore-nord.json) | 2026-11-09T20:05Z | EMODnet Human Activities: wind farms; Wikipedia, List of offshore wind farms |
 | [bunker-emissioni.json](../docs/data/bunker-emissioni.json) | 2026-11-09T20:06Z | Ship & Bunker, prezzi bunker per porto; MPA Singapore via data.gov.sg |
 | [assicurazioni.json](../docs/data/assicurazioni.json) | 2026-11-09T20:12Z | Joint War Committee; IUA, Joint War Committee Risk List |
@@ -386,7 +386,7 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 | [port-risk.json](../docs/data/port-risk.json) | 2026-11-10T06:17Z | port risk scores (PORT-RISK agent) |
 | [transit-times.json](../docs/data/transit-times.json) | 2026-11-10T06:23Z | transit times to Rotterdam (TRANSIT agent) |
 | [wind-calendar.json](../docs/data/wind-calendar.json) | 2026-11-10T06:24Z | offshore wind calendar (WIND-CALENDAR agent) |
-| report/dati/eurostat-gas-nord.json | 2026-11-10T06:19Z | Eurostat nrg_stk_gasm (DK, PL) |
+| report/dati/eurostat-gas-nord.json | 2026-11-10T06:28Z | Eurostat nrg_stk_gasm (DK, PL) |
 
 *Each file lists its sources, licences and the date of each datum; the text cites the date of the datum, not of the reading.*
 
@@ -409,7 +409,30 @@ Thresholds are the monitor's **assessment** of when a change becomes material fo
 
 Independent check of every number against the data files or the cited source, done before publication with a second pass by an AI assistant (Claude) acting as reviewer under report/STANDARD.md. Full log: report/revisioni/northern-europe-2026-11.md.
 
-**Claims checked.** PENDING
+**Claims checked.** 64 claims checked (over 150 numbers): 58 recomputed from the data files (porti-nord, scorte, prezzi, eolico-filiera, offshore-nord, bunker-emissioni, assicurazioni, noli, portwatch, baltico-sicurezza, navi, cavi-incidenti, idrogeno, esposizione-nord, rete-elettrica, interconnessioni, rischio, port-risk, transit-times, wind-calendar, Eurostat) and 6 also against the original source: 3 confirmed (Maersk surcharge, Pipeline Journal on the Danish hydrogen pipeline, HVDC World on BalWin1), 3 not reachable. No calculation errors in the data files; 12 errors or weaknesses in the draft, corrected (list below); 4 inconsistencies between files, declared.
+
+**Corrections.**
+
+- Ports: the draft led with 7-day changes (Rotterdam −10.8%); the report now leads with 30-day (+2.3%) and year-to-date (−0.5%) averages, which are less noisy.
+- GPS jamming: the NORD agent wrote that all high-interference cells were east of 17°E; one cell at 55.8°N 16.96°E was high in the week to 8 November. Text and watch-list threshold corrected.
+- Rotterdam bunker sales: bunker-emissioni.json says its −23.9% includes LNG, but the figure is oil and bio-blends only; with LNG it is −23.2%. Both are now stated.
+- Storage projection: the slope used 13 days, not 14; recomputed (Germany −0.19 points a day, not −0.21).
+- Baltic cables: the draft counted five incidents since November 2024 and gave 31 December 2025 as the last one; the Šventoji–Liepāja cable (2 January 2026, baltico-sicurezza.json) makes six.
+- Copenhagen police statement: attributed to the agent report in the draft; it is in baltico-sicurezza.json (Wikipedia and sources, reliability medium).
+- Detentions in 2026: one of the six is by Russia, not by a Western coastal state; wording corrected.
+- Norway: «largest pipeline supplier» corrected to «largest gas supplier», as in the source.
+- Key points: 2025 offshore additions given as 2.0 GW in the key points and 1.96 GW in the body; aligned to 1.96.
+- Italian text from curated files (auction outcomes, bottleneck indicators, cable incidents, hydrogen projects, risk levels) translated into English.
+- Charts: tick labels of the port chart were broken by a character substitution; value labels on the wind chart overlapped the target ticks. Fixed and checked at 1440 and 390 px.
+- Transit times: the model's 10.5 extra days via the Cape (transit-times.json) and UNCTAD's 14–24 days are now both shown, with the reason they differ.
+
+**Still unverifiable.**
+
+- EU-wide US share of LNG (58% in 2025, 63% in Q1 2026) and the country shares: IEEFA page returns 403; figures from the agent report and esposizione-nord.json.
+- 292 shadow-fleet passages (Danish Maritime Authority via Euronews) and the Fitburg sentence of 42 months: Euronews not reachable from the session.
+- Prices from Ship & Bunker, EEX auction results, WindEurope statistics and offshoreWIND.biz articles: checked only against the data files.
+- IJmuiden Ver Gamma dates (26 November–10 December 2026): secondary source (RVO via trade press) in two files that agree.
+- Inconsistent perimeters declared, not resolved: sanctioned ships in the Gulf of Finland (44 of 109 ships; 38 of 96 tankers; 45 tankers in the whole Baltic); hull value of a large container ship (221.7 vs 150 million $); German LNG capacity still counting the Mukran terminal; Brent (91.70 in prezzi.json, 92.62 elsewhere).
 
 ---
 

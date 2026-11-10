@@ -89,9 +89,35 @@ THRESHOLDS = {
 REVIEW = {
     "date": "2026-11-10",
     "log": "report/revisioni/northern-europe-2026-11.md",
-    "checked": "PENDING",
-    "corrections": [],
-    "unverifiable": [],
+    "checked": ("64 claims checked (over 150 numbers): 58 recomputed from the data files (porti-nord, scorte, prezzi, eolico-filiera, offshore-nord, "
+                "bunker-emissioni, assicurazioni, noli, portwatch, baltico-sicurezza, navi, cavi-incidenti, idrogeno, esposizione-nord, rete-elettrica, "
+                "interconnessioni, rischio, port-risk, transit-times, wind-calendar, Eurostat) and 6 also against the original source: 3 confirmed "
+                "(Maersk surcharge, Pipeline Journal on the Danish hydrogen pipeline, HVDC World on BalWin1), 3 not reachable. "
+                "No calculation errors in the data files; 12 errors or weaknesses in the draft, corrected (list below); 4 inconsistencies between files, declared."),
+    "corrections": [
+        "Ports: the draft led with 7-day changes (Rotterdam −10.8%); the report now leads with 30-day (+2.3%) and year-to-date (−0.5%) averages, which are less noisy.",
+        "GPS jamming: the NORD agent wrote that all high-interference cells were east of 17°E; one cell at 55.8°N 16.96°E was high in the week to 8 November. "
+        "Text and watch-list threshold corrected.",
+        "Rotterdam bunker sales: bunker-emissioni.json says its −23.9% includes LNG, but the figure is oil and bio-blends only; with LNG it is −23.2%. Both are now stated.",
+        "Storage projection: the slope used 13 days, not 14; recomputed (Germany −0.19 points a day, not −0.21).",
+        "Baltic cables: the draft counted five incidents since November 2024 and gave 31 December 2025 as the last one; the Šventoji–Liepāja cable "
+        "(2 January 2026, baltico-sicurezza.json) makes six.",
+        "Copenhagen police statement: attributed to the agent report in the draft; it is in baltico-sicurezza.json (Wikipedia and sources, reliability medium).",
+        "Detentions in 2026: one of the six is by Russia, not by a Western coastal state; wording corrected.",
+        "Norway: «largest pipeline supplier» corrected to «largest gas supplier», as in the source.",
+        "Key points: 2025 offshore additions given as 2.0 GW in the key points and 1.96 GW in the body; aligned to 1.96.",
+        "Italian text from curated files (auction outcomes, bottleneck indicators, cable incidents, hydrogen projects, risk levels) translated into English.",
+        "Charts: tick labels of the port chart were broken by a character substitution; value labels on the wind chart overlapped the target ticks. Fixed and checked at 1440 and 390 px.",
+        "Transit times: the model's 10.5 extra days via the Cape (transit-times.json) and UNCTAD's 14–24 days are now both shown, with the reason they differ.",
+    ],
+    "unverifiable": [
+        "EU-wide US share of LNG (58% in 2025, 63% in Q1 2026) and the country shares: IEEFA page returns 403; figures from the agent report and esposizione-nord.json.",
+        "292 shadow-fleet passages (Danish Maritime Authority via Euronews) and the Fitburg sentence of 42 months: Euronews not reachable from the session.",
+        "Prices from Ship & Bunker, EEX auction results, WindEurope statistics and offshoreWIND.biz articles: checked only against the data files.",
+        "IJmuiden Ver Gamma dates (26 November–10 December 2026): secondary source (RVO via trade press) in two files that agree.",
+        "Inconsistent perimeters declared, not resolved: sanctioned ships in the Gulf of Finland (44 of 109 ships; 38 of 96 tankers; 45 tankers in the whole Baltic); "
+        "hull value of a large container ship (221.7 vs 150 million $); German LNG capacity still counting the Mukran terminal; Brent (91.70 in prezzi.json, 92.62 elsewhere).",
+    ],
 }
 
 OPTIONAL = {
@@ -375,7 +401,7 @@ def compute(today, offline):
         e, t = el[f"gas_stoccaggio_pct_{c}"], el[f"gas_stoccaggio_twh_{c}"]
         u = e["ultimo"]
         s = e["serie"]
-        last14 = [x for x in s if d(x[0]) > d(u["data"]) - dt.timedelta(days=14)]
+        last14 = [x for x in s if d(x[0]) >= d(u["data"]) - dt.timedelta(days=14)]
         slope = (last14[-1][1] - last14[0][1]) / max(1, (d(last14[-1][0]) - d(last14[0][0])).days)
         dec1 = dt.date(d(u["data"]).year, 12, 1)
         proj = u["valore"] + slope * (dec1 - d(u["data"])).days
@@ -479,7 +505,10 @@ def compute(today, offline):
     yy = max(int(k[:4]) for k in q)
     tot = lambda y_: sum((q.get(f"{y_}-T{i}") or {}).get("fossili_t", 0) + (q.get(f"{y_}-T{i}") or {}).get("bio_t", 0)
                          + 0.45 * (q.get(f"{y_}-T{i}") or {}).get("gnl_m3", 0) for i in (1, 2, 3))
-    V["rtm_bunker_9m"] = var(tot(yy), tot(yy - 1))
+    V["rtm_bunker_9m_lng"] = var(tot(yy), tot(yy - 1))
+    tot2 = lambda y_: sum((q.get(f"{y_}-T{i}") or {}).get("fossili_t", 0) + (q.get(f"{y_}-T{i}") or {}).get("bio_t", 0) for i in (1, 2, 3))
+    V["rtm_bunker_9m"] = var(tot2(yy), tot2(yy - 1))
+    V["rtm_bunker_9m_t"] = (tot2(yy), tot2(yy - 1))
     V["rtm_bunker_year"] = yy
     ops = {e["id"]: e for e in be["elementi"] if e.get("tipo") == "porto_ops"}
     V["ops_rtm"] = ops.get("ops-rotterdam")
@@ -821,7 +850,7 @@ def blocks(V, edition):
         f"**Carbon rules now add a fifth to a half of fuel costs.** At the EU auction price of {num(eua['prezzo_eur'], 2)} €/t "
         f"({date_en(eua['data'])}), the EU ETS costs {num(b['ets_per_t_carburante_bruciato_eur'], 0)} € per tonne of fuel burnt "
         f"on voyages between EU ports and {num(a['ets_per_t_carburante_bruciato_eur'], 0)} € on voyages to or from outside the EU (bunker-emissioni.json).",
-        f"**The Gulf of Finland is where sabotage risk concentrates.** In the AIS snapshot of {date_en(V['navi_date'])}, "
+        f"**Sabotage risk sits in the Baltic, above all the Gulf of Finland.** In the AIS snapshot of {date_en(V['navi_date'])}, "
         f"{gof['sanzionate']} of the {gof['navi']} ships seen there were on Western sanction lists. Since November 2024 "
         f"{WORDS.get(n_cab, n_cab)} Baltic cable incidents have been recorded. GPS jamming hit {gmin}–{gmax} areas a day "
         f"in the week to {date_en(V['gnss']['periodo'][1])} (GPSJam).",
@@ -850,7 +879,7 @@ def blocks(V, edition):
                               f"{date_en(V['ports_last'])}; blue: 1 January to {date_en(V['ports_last'])}. Source: IMF PortWatch via {pn_link}, data to "
                               f"{date_en(V['ports_last'])}."))
     up = sorted([p for p in T if p["ytd"] is not None], key=lambda p: -p["ytd"])
-    B.append(("p", f"**What the numbers say.** Over the year to date {len(flat)} of the ten ports are within ±5% of 2025. The biggest falls are "
+    B.append(("p", f"**What the numbers say.** Over the year to date {WORDS.get(len(flat), len(flat))} of the ten ports are within ±5% of 2025. The biggest falls are "
                    f"{up[-1]['name']} ({pct(up[-1]['ytd'])}) and {up[-2]['name']} ({pct(up[-2]['ytd'])}); the biggest rise is "
                    f"{up[0]['name']} ({pct(up[0]['ytd'])}). The weekly figures swing much more: Rotterdam is {pct(rtm['var7'])} on the "
                    f"week to {date_en(rtm['p7'][1])} but {pct(rtm['var30'])} on 30 days. Calls count ships, not cargo: a port can handle fewer, larger ships."))
@@ -863,17 +892,18 @@ def blocks(V, edition):
                    f"{num(wil['valore'], 2)} million ({pct(wil['var_pct'], 0)}) and Gdańsk {num(gd['valore'], 2)} million ({pct(gd['var_pct'], 0)}), "
                    f"according to the port authorities ({pn_link}). TEU is the 20-foot container unit."))
     B.append(("p", f"**Russia's Baltic oil ports.** Primorsk averaged {num(prim['ytd_now'])} calls a day this year against "
-                   f"{num(prim['ytd_prev'])} in 2025 ({pct(prim['ytd'], 0)}); Ust-Luga {pct(ust['ytd'])}. Ukrainian drones hit both ports on "
-                   f"23 and 29 March and again in July 2026 (baltico-sicurezza.json). PortWatch does not see ships with AIS switched off, so "
+                   f"{num(prim['ytd_prev'])} in 2025 ({pct(prim['ytd'], 0)}); Ust-Luga {pct(ust['ytd'])}. Ukrainian drones hit Primorsk on "
+                   f"23 March and Ust-Luga on 29 March, and the Baltic oil ports again in July 2026 (baltico-sicurezza.json). PortWatch does not see ships with AIS switched off, so "
                    f"Russian ports are undercounted."))
     rv = V["rtm_vol"]["trimestri"]
-    need(V["rtm_hub"]["note"], "-23.9%", where="bunker Rotterdam note")
-    B.append(("val", f"*Assessment.* Three forces drive the pattern. First, the return of some Asia–Europe services to Suez "
-                     f"(transits {pct(V['suez']['var7_anno_pct']['n_total'])} on a year, portwatch.json) adds calls in the Mediterranean before "
-                     f"the North Sea, which flattens Rotterdam and Antwerp. Second, the Baltic is redistributing: Polish ports hold or gain, ports that "
+    if abs(V["rtm_vol"].get("calcolato", {}).get("var_9_mesi_pct", 0) - round(V["rtm_bunker_9m"], 1)) > 0.05:
+        warn("Rotterdam bunker 9-month change differs from the file's own calculation")
+    B.append(("val", f"*Assessment.* Three forces probably drive the pattern. First, some Asia–Europe services have returned to Suez "
+                     f"(transits {pct(V['suez']['var7_anno_pct']['n_total'])} on a year, portwatch.json); this may add Mediterranean calls before "
+                     f"the North Sea and keep Rotterdam and Antwerp flat. Second, the Baltic is redistributing: Polish ports hold or gain, ports that "
                      f"lived on Russian transit (HaminaKotka {pct(pm['hamina-kotka']['ytd'], 0)}, Riga {pct(pm['riga']['ytd'], 0)} year to date) lose. "
                      f"Third, energy: tanker calls follow the oil and LNG trade, and Rotterdam lost bunker sales "
-                     f"({pct(V['rtm_bunker_9m'])} tonnes in the first nine months of {V['rtm_bunker_year']}, Port of Rotterdam via bunker-emissioni.json). These are links we draw; the data do not prove causation."))
+                     f"({pct(V['rtm_bunker_9m'])} in tonnes of oil and bio-blends in the first nine months of {V['rtm_bunker_year']}, {pct(V['rtm_bunker_9m_lng'])} counting LNG; Port of Rotterdam via bunker-emissioni.json). These are links we draw; the data do not prove causation."))
 
     # ------------------------------------------------------------------ 3 energy
     B.append(("h2", "energy", "3. Energy: gas storage, LNG, TTF and power links"))
@@ -942,8 +972,8 @@ def blocks(V, edition):
                    f"OpenStreetMap shows these HVDC export and interconnector cables under construction: "
                    + ", ".join(sorted(k.replace("Bornholm-Deutschland", "Bornholm–Germany") for k in uc)) + f" ({data_link('rete-elettrica.json')}). In the Baltic, Estlink 2 (650 MW, Estonia–Finland) was cut by "
                    f"the anchor of the Eagle S on 25 December 2024 and restored in June 2025 ({data_link('interconnessioni.json')})."))
-    B.append(("val", f"*Assessment.* The winter risk for North-West Europe is storage, not supply routes. With German storage "
-                     f"{num(abs(de['vs5']), 0)} points below its five-year average and most LNG coming from the US, the TTF depends on two "
+    B.append(("val", f"*Assessment.* The winter risk for North-West Europe is storage, not supply routes. German storage is "
+                     f"{num(abs(de['vs5']), 0)} points below its five-year average and most LNG comes from the US. So the TTF depends on two "
                      f"things a port or energy company cannot control: winter temperatures and the Qatar outage linked to the Strait of Hormuz "
                      f"(rated «{LEVEL.get(V['risk']['gnl-qatar']['livello'])}» on the monitor's {data_link('rischio.json')})."))
 
@@ -980,7 +1010,7 @@ def blocks(V, edition):
               "Two-sided CfD: the state guarantees a strike price and pays or collects the difference with the market price."))
     B.append(("p", f"The pattern is clear in the data: rounds where the developer pays the state for the site failed in Denmark (3 GW, December 2024), "
                    f"Germany (2.5 GW, August 2025) and the Netherlands (1 GW, October 2025), with no bids. Rounds with a **two-sided contract for "
-                   f"difference (CfD)**, where the state guarantees a fixed price and pays or collects the difference with the market, worked: the UK "
+                   f"difference (CfD)** worked. Under a CfD the state guarantees a fixed price and pays or collects the difference with the market. The UK "
                    f"awarded 8.4 GW in January 2026, Poland 3.4 GW in December 2025 and Denmark 1.8 GW in August 2026, signed on 6 November 2026. "
                    f"Next: the Dutch IJmuiden Ver Gamma-A and Gamma-B rounds (2 GW) take applications from 26 November to 10 December 2026 (RVO, secondary source)."))
     B.append(("h3", "Bottlenecks"))
@@ -999,9 +1029,9 @@ def blocks(V, edition):
         items.append(f"**{label}** — strain: {tens}. {lab}: {val}{unit} ({link(ind['fonte'], ind.get('link'))}, {date_en(ind['data'])}).")
     B.append(("ul", items))
     B.append(("p", "In plain terms: Prysmian holds about 16.5 billion € of "
-                   "transmission orders (29 October 2026) and NKT 13.0 billion (30 June 2026), so new HVDC cable capacity is booked for years; "
-                   "Amprion's BalWin1 2 GW grid link slipped from September 2030 to 15 September 2031 because of extra work on the offshore converter "
-                   "platform; European monopile factories, by contrast, will run at about 32% in 2026 and 19% in 2028 (Rystad)."))
+                   "transmission orders (29 October 2026) and NKT 13.0 billion (30 June 2026). New HVDC cable capacity is booked for years. "
+                   "Amprion's 2 GW BalWin1 grid link slipped from September 2030 to 15 September 2031 because of extra work on the offshore converter "
+                   "platform. European monopile factories, by contrast, will run at about 32% of capacity in 2026 and 19% in 2028 (Rystad)."))
     for tok in ["16.5", "13.0"]:
         need(json.dumps([bt["cavi-hvdc"]["indicatori"]]), tok, where="eolico-filiera cavi")
     need(json.dumps(bt["convertitori-hvdc"]), "2031-09-15", "16/09/2030", where="eolico-filiera convertitori")
@@ -1015,9 +1045,9 @@ def blocks(V, edition):
     need(json.dumps(bt["porti"]), "45", "1250", where="colli porti")
     B.append(("p", f"Esbjerg has shipped over {num(esb_p['valore'], 1)} GW of offshore wind in total ({link('Port Esbjerg', esb_p.get('link'))}). "
                    f"Rotterdam plans a 45-hectare wind terminal for mid-2029 and Cuxhaven a 1,250-metre heavy-load quay for about 2028, while the "
-                   f"Bremerhaven terminal was never built ({data_link('eolico-filiera.json')}). Vessels are no longer the main constraint: the fleet of "
-                   f"Western installation ships able to handle 15 MW turbines goes from zero in 2020 to more than 25 by 2028 (Intelatus), and Cadeler, "
-                   f"the market leader, used its fleet at 66% in the first half of 2026 with a 2.5 billion € order book."))
+                   f"Bremerhaven terminal was never built ({data_link('eolico-filiera.json')}). Vessels are no longer the main constraint. Western installation "
+                   f"ships able to handle 15 MW turbines go from zero in 2020 to more than 25 by 2028 (Intelatus). Cadeler, the market leader, used its "
+                   f"fleet at 66% in the first half of 2026 and had a 2.5 billion € order book."))
     wc = F.get("wind-calendar.json")
     if wc:
         B += wind_calendar_section(wc)
