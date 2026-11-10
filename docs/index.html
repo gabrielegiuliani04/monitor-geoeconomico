@@ -585,35 +585,75 @@ function readTheme() {
 }
 
 /* ---------- vocabulary of the project's common data schema (regole/02_schema-dati.md) ---------- */
-const TEATRI = [['MO', 'Medio Oriente'], ['RU-UA', 'Russia-Ucraina'], ['IT', 'Italia'], ['NATO', 'NATO ed Europa'], ['ALTRO', 'Altri teatri']];
+const TEATRI = [['MO', 'Middle East'], ['RU-UA', 'Russia–Ukraine'], ['IT', 'Italy'], ['NATO', 'NATO and Europe'], ['ALTRO', 'Other theatres']];
 const TNAME = Object.fromEntries(TEATRI);
-const PAESI = { US: 'Stati Uniti', GB: 'Regno Unito', FR: 'Francia', NO: 'Norvegia', CN: 'Cina', RU: 'Russia', UA: 'Ucraina', IR: 'Iran', IL: 'Israele', IT: 'Italia', JP: 'Giappone', AU: 'Australia', DE: 'Germania', CA: 'Canada', TR: 'Turchia', IN: 'India', QA: 'Qatar', BH: 'Bahrein', KW: 'Kuwait', AE: 'Emirati Arabi Uniti', SA: 'Arabia Saudita', JO: 'Giordania', IQ: 'Iraq', SY: 'Siria', OM: 'Oman', DJ: 'Gibuti', CY: 'Cipro', EG: 'Egitto', YE: 'Yemen', LB: 'Libano', SD: 'Sudan', ER: 'Eritrea', IO: "Territorio britannico dell'Oceano Indiano", BY: 'Bielorussia', KP: 'Corea del Nord', KR: 'Corea del Sud', TW: 'Taiwan', JE: 'Jersey', 'YE-H': 'Houthi (Ansarallah)', 'LB-H': 'Hezbollah', 'IQ-M': 'Milizie irachene', 'PS-H': 'Hamas', NATO: 'NATO' };
+const PAESI = { US: 'United States', GB: 'United Kingdom', FR: 'France', NO: 'Norway', CN: 'China', RU: 'Russia', UA: 'Ukraine', IR: 'Iran', IL: 'Israel', IT: 'Italy', JP: 'Japan', AU: 'Australia', DE: 'Germany', CA: 'Canada', TR: 'Türkiye', IN: 'India', QA: 'Qatar', BH: 'Bahrain', KW: 'Kuwait', AE: 'United Arab Emirates', SA: 'Saudi Arabia', JO: 'Jordan', IQ: 'Iraq', SY: 'Syria', OM: 'Oman', DJ: 'Djibouti', CY: 'Cyprus', EG: 'Egypt', YE: 'Yemen', LB: 'Lebanon', SD: 'Sudan', ER: 'Eritrea', IO: 'British Indian Ocean Territory', BY: 'Belarus', KP: 'North Korea', KR: 'South Korea', TW: 'Taiwan', JE: 'Jersey', 'YE-H': 'Houthis (Ansarallah)', 'LB-H': 'Hezbollah', 'IQ-M': 'Iraqi militias', 'PS-H': 'Hamas', NATO: 'NATO', ES: 'Spain', NL: 'Netherlands', BE: 'Belgium', DK: 'Denmark', PL: 'Poland', GR: 'Greece', PT: 'Portugal', RO: 'Romania', BG: 'Bulgaria', SE: 'Sweden', FI: 'Finland', EE: 'Estonia', LV: 'Latvia', LT: 'Lithuania', CZ: 'Czechia', SK: 'Slovakia', HU: 'Hungary', HR: 'Croatia', AT: 'Austria', CH: 'Switzerland', AZ: 'Azerbaijan', KZ: 'Kazakhstan', DZ: 'Algeria', LY: 'Libya', BR: 'Brazil', NG: 'Nigeria', CL: 'Chile', AR: 'Argentina', ZA: 'South Africa', ID: 'Indonesia', MY: 'Malaysia', PH: 'Philippines', VN: 'Vietnam', TH: 'Thailand', MX: 'Mexico', CD: 'DR Congo', PE: 'Peru', MM: 'Myanmar', GN: 'Guinea', SG: 'Singapore', EU: 'European Union' };
 // four groups of countries (regole/03 v4): allies, partners, adversaries, others in grey
 const PARTNER = new Set(['QA', 'BH', 'AE', 'SA', 'KW', 'OM', 'JO', 'EG']), ADV = new Set(['IR', 'RU', 'BY', 'KP']);
 const sideOf = a => ALLY.has(a) ? 'ally' : PARTNER.has(a) ? 'partner' : ADV.has(a) ? 'adv' : 'oth';
 const ALLY = new Set(['US', 'GB', 'FR', 'NO', 'IT', 'DE', 'CA', 'ES', 'NL', 'BE', 'DK', 'PL', 'GR', 'TR', 'PT', 'RO', 'BG', 'SE', 'FI', 'EE', 'LV', 'LT', 'CZ', 'SK', 'HU', 'HR', 'SI', 'AL', 'ME', 'MK', 'IS', 'LU', 'JP', 'AU', 'KR', 'IL', 'NATO']);
-const SIDE_IT = { ally: 'Alleati: NATO, Israele, Australia, Giappone, Corea del Sud', partner: 'Partner: paesi del Golfo, Giordania, Egitto', adv: 'Avversari: Iran, Russia, Bielorussia, Corea del Nord', oth: 'Altri' };
-const CAT_IT = { 'nave-portaerei': 'Portaerei', 'nave-anfibia': 'Nave anfibia', 'nave-scorta': 'Nave di scorta', 'sottomarino': 'Sottomarino', 'nave-ausiliaria': 'Nave ausiliaria', 'nave-petroliera': 'Petroliera', 'nave-gasiera': 'Gasiera', 'nave-mercantile': 'Mercantile',
-  'aereo-bombardiere': 'Bombardiere', 'aereo-cisterna': 'Aerocisterna', 'aereo-ricognizione': 'Aereo da ricognizione', 'aereo-trasporto': 'Aereo da trasporto', 'aereo-caccia': 'Caccia', 'attacco-tattico': 'Colpo lungo il fronte', avanzamento: 'Avanzata',
-  'base-aerea': 'Base aerea', 'base-navale': 'Base navale', 'base-terrestre': 'Base terrestre', comando: 'Comando', 'difesa-aerea': 'Radar e difesa aerea', 'difesa-aerea-mobile': 'Batteria di difesa aerea mobile', 'sito-missilistico': 'Sito missilistico', 'sito-nucleare': 'Sito nucleare', 'industria-militare': 'Industria militare', porto: 'Porto', aeroporto: 'Aeroporto',
-  sabotaggio: 'Sabotaggio', 'falso-allarme': 'Falso allarme', 'droni-non-identificati': 'Droni non identificati', 'disturbo-gnss': 'Disturbo GNSS', 'attacco-informatico': 'Attacco informatico', spionaggio: 'Spionaggio',
-  attacco: 'Attacco', lancio: 'Lancio', intercettazione: 'Intercettazione', allerta: 'Allerta', incidente: 'Incidente', sequestro: 'Sequestro', blackout: 'Blackout', 'chiusura-spazio-aereo': 'Chiusura dello spazio aereo', 'avviso-marittimo': 'Avviso ai naviganti', esercitazione: 'Esercitazione', rischieramento: 'Rischieramento', dichiarazione: 'Dichiarazione',
-  combattimento: 'Combattimento', 'chiusura-passaggio': 'Chiusura di un passaggio', poligono: 'Poligono', comunicazioni: 'Stazione di comunicazioni', 'energia-giacimento': 'Giacimento di petrolio o gas', 'data-center': 'Data center', 'fab-chip': 'Fabbrica di chip', supercomputer: 'Supercomputer' };
-const BERS_IT = { 'energia-centrale': 'centrale elettrica', 'energia-raffineria': 'raffineria', 'energia-rete': 'rete elettrica', 'energia-oleodotto': 'oleodotto', 'energia-gasdotto': 'gasdotto', 'energia-terminale': 'terminale energetico', porto: 'porto', infrastruttura: 'infrastruttura', 'base-aerea': 'base aerea', 'base-navale': 'base navale', 'base-terrestre': 'base terrestre', aeroporto: 'aeroporto', 'cavo-sottomarino': 'cavo sottomarino', 'nave-petroliera': 'petroliera', 'nave-mercantile': 'mercantile', 'unita-terrestre': 'mezzo o reparto a terra', 'difesa-aerea': 'difesa aerea', 'difesa-aerea-mobile': 'difesa aerea mobile', 'sito-missilistico': 'sito missilistico', 'sito-nucleare': 'sito nucleare', 'industria-militare': 'industria militare', 'passaggio-strategico': 'passaggio strategico', 'aereo-ricognizione': 'aereo da ricognizione', 'aereo-caccia': 'caccia', 'aereo-bombardiere': 'bombardiere', 'nave-portaerei': 'portaerei', 'aereo-trasporto': 'aereo da trasporto o di linea', 'rotta-marittima': 'rotta marittima', 'energia-giacimento': 'giacimento di petrolio o gas', 'data-center': 'data center', poligono: 'poligono', comunicazioni: 'stazione di comunicazioni' };
-const STATO_IT = { operativo: 'Operativo', 'in-costruzione': 'In costruzione', 'in-manutenzione': 'In manutenzione', danneggiato: 'Danneggiato', 'in-riparazione': 'In riparazione', 'fuori-servizio': 'Fuori servizio', lasciata: 'Lasciata' };
-const AFF_IT = { alta: 'Alta: confermato', media: 'Media: segnalato, non ancora confermato', bassa: 'Bassa: non verificato' };
+const SIDE_IT = { ally: 'Allies: NATO, Israel, Australia, Japan, South Korea', partner: 'Partners: Gulf states, Jordan, Egypt', adv: 'Adversaries: Iran, Russia, Belarus, North Korea', oth: 'Others' };
+const CAT_IT = { 'nave-portaerei': 'Aircraft carrier', 'nave-anfibia': 'Amphibious ship', 'nave-scorta': 'Escort ship', 'sottomarino': 'Submarine', 'nave-ausiliaria': 'Auxiliary ship', 'nave-petroliera': 'Tanker', 'nave-gasiera': 'Gas carrier', 'nave-mercantile': 'Merchant ship',
+  'aereo-bombardiere': 'Bomber', 'aereo-cisterna': 'Tanker aircraft', 'aereo-ricognizione': 'Reconnaissance aircraft', 'aereo-trasporto': 'Transport aircraft', 'aereo-caccia': 'Fighter', 'attacco-tattico': 'Strike along the front', avanzamento: 'Advance',
+  'base-aerea': 'Air base', 'base-navale': 'Naval base', 'base-terrestre': 'Land base', comando: 'Command', 'difesa-aerea': 'Radar and air defence', 'difesa-aerea-mobile': 'Mobile air-defence battery', 'sito-missilistico': 'Missile site', 'sito-nucleare': 'Nuclear site', 'industria-militare': 'Defence industry', porto: 'Port', aeroporto: 'Airport',
+  sabotaggio: 'Sabotage', 'falso-allarme': 'Hoax alert', 'droni-non-identificati': 'Unidentified drones', 'disturbo-gnss': 'GNSS interference', 'attacco-informatico': 'Cyber attack', spionaggio: 'Espionage',
+  attacco: 'Attack', lancio: 'Launch', intercettazione: 'Interception', allerta: 'Alert', incidente: 'Incident', sequestro: 'Seizure', blackout: 'Blackout', 'chiusura-spazio-aereo': 'Airspace closure', 'avviso-marittimo': 'Notice to mariners', esercitazione: 'Exercise', rischieramento: 'Redeployment', dichiarazione: 'Statement',
+  combattimento: 'Combat', 'chiusura-passaggio': 'Closure of a passage', poligono: 'Firing range', comunicazioni: 'Communications station', 'energia-giacimento': 'Oil or gas field', 'data-center': 'Data centre', 'fab-chip': 'Chip fab', supercomputer: 'Supercomputer' };
+const BERS_IT = { 'energia-centrale': 'power station', 'energia-raffineria': 'refinery', 'energia-rete': 'power grid', 'energia-oleodotto': 'oil pipeline', 'energia-gasdotto': 'gas pipeline', 'energia-terminale': 'energy terminal', porto: 'port', infrastruttura: 'infrastructure', 'base-aerea': 'air base', 'base-navale': 'naval base', 'base-terrestre': 'land base', aeroporto: 'airport', 'cavo-sottomarino': 'subsea cable', 'nave-petroliera': 'tanker', 'nave-mercantile': 'merchant ship', 'unita-terrestre': 'ground vehicle or unit', 'difesa-aerea': 'air defence', 'difesa-aerea-mobile': 'mobile air defence', 'sito-missilistico': 'missile site', 'sito-nucleare': 'nuclear site', 'industria-militare': 'defence industry', 'passaggio-strategico': 'chokepoint', 'aereo-ricognizione': 'reconnaissance aircraft', 'aereo-caccia': 'fighter', 'aereo-bombardiere': 'bomber', 'nave-portaerei': 'aircraft carrier', 'aereo-trasporto': 'transport or airliner', 'rotta-marittima': 'shipping lane', 'energia-giacimento': 'oil or gas field', 'data-center': 'data centre', poligono: 'firing range', comunicazioni: 'communications station' };
+const STATO_IT = { operativo: 'Operational', 'in-costruzione': 'Under construction', 'in-manutenzione': 'Under maintenance', danneggiato: 'Damaged', 'in-riparazione': 'Under repair', 'fuori-servizio': 'Out of service', lasciata: 'Vacated' };
+const AFF_IT = { alta: 'High: confirmed', media: 'Medium: reported, not yet confirmed', bassa: 'Low: unverified' };
+/* ---------- English display names for values that arrive in Italian from the data files (the data stay as they are) ---------- */
+const EN = {
+  // countries
+  "Stati Uniti": "United States", "Regno Unito": "United Kingdom", "Sudafrica": "South Africa", "Arabia Saudita": "Saudi Arabia", "Giappone": "Japan", "Germania": "Germany", "Francia": "France", "Egitto": "Egypt", "Cina": "China", "Cile": "Chile", "Brasile": "Brazil", "Groenlandia": "Greenland", "Turchia": "Türkiye", "Spagna": "Spain", "Perù": "Peru", "Nuova Zelanda": "New Zealand", "Messico": "Mexico", "Italia": "Italy", "Etiopia": "Ethiopia", "RD Congo": "DR Congo", "Svezia": "Sweden", "Islanda": "Iceland", "Corea del Sud": "South Korea", "Filippine": "Philippines", "Papua Nuova Guinea": "Papua New Guinea", "Polonia": "Poland", "Costa d'Avorio": "Côte d'Ivoire", "Ucraina": "Ukraine", "Thailandia": "Thailand", "Marocco": "Morocco", "Kazakistan": "Kazakhstan", "Grecia": "Greece", "Portogallo": "Portugal", "Siria": "Syria", "Sudan del Sud": "South Sudan", "Isole Salomone": "Solomon Islands", "Ruanda": "Rwanda", "Norvegia": "Norway", "Corea del Nord": "North Korea", "Mozambico": "Mozambique", "Libia": "Libya", "Irlanda": "Ireland", "Finlandia": "Finland", "Ciad": "Chad", "Camerun": "Cameroon", "Cambogia": "Cambodia", "Kirghizistan": "Kyrgyzstan", "Israele": "Israel", "Danimarca": "Denmark", "Bielorussia": "Belarus", "Figi": "Fiji", "Belgio": "Belgium", "Emirati Arabi Uniti": "United Arab Emirates", "Tagikistan": "Tajikistan", "Svizzera": "Switzerland", "Giordania": "Jordan", "Giamaica": "Jamaica", "Guinea Equatoriale": "Equatorial Guinea", "Rep. Centrafricana": "Central African Rep.", "Capo Verde": "Cape Verde", "Bahrein": "Bahrain", "Timor Est": "Timor-Leste", "Paesi Bassi": "Netherlands", "Maldive": "Maldives", "Lituania": "Lithuania", "Libano": "Lebanon", "Lettonia": "Latvia", "Ungheria": "Hungary", "Gibuti": "Djibouti", "Cechia": "Czechia", "Azerbaigian": "Azerbaijan", "Slovacchia": "Slovakia", "Croazia": "Croatia", "Comore": "Comoros", "Trinidad e Tobago": "Trinidad and Tobago", "Rep. Dominicana": "Dominican Rep.", "Cipro": "Cyprus", "Bosnia-Erzegovina": "Bosnia and Herzegovina", "Isole Marshall": "Marshall Islands", "São Tomé e Príncipe": "São Tomé and Príncipe", "Saint Kitts e Nevis": "Saint Kitts and Nevis", "Moldavia": "Moldova", "Macedonia del Nord": "North Macedonia", "Antigua e Barbuda": "Antigua and Barbuda", "Lussemburgo": "Luxembourg", "Unione europea": "European Union", "UE": "EU", "Mondo": "World", "Austria": "Austria", "Estonia": "Estonia",
+  // seas
+  "Oceano Atlantico": "Atlantic Ocean", "Oceano Pacifico": "Pacific Ocean", "Oceano Indiano": "Indian Ocean", "Mar Glaciale Artico": "Arctic Ocean", "Mar Mediterraneo": "Mediterranean Sea", "Mar Nero": "Black Sea", "Mar Caspio": "Caspian Sea", "Mar Rosso": "Red Sea", "Mar Arabico": "Arabian Sea", "Golfo Persico": "Persian Gulf", "Golfo di Oman": "Gulf of Oman", "Golfo di Aden": "Gulf of Aden", "Mar Egeo": "Aegean Sea", "Mar Ionio": "Ionian Sea", "Mar Adriatico": "Adriatic Sea", "Mar Tirreno": "Tyrrhenian Sea", "Mar di Levante": "Levantine Sea", "Mar di Marmara": "Sea of Marmara", "Mar d'Azov": "Sea of Azov", "Golfo di Suez": "Gulf of Suez", "Golfo di Aqaba": "Gulf of Aqaba", "Golfo della Sirte": "Gulf of Sirte", "Mar delle Laccadive": "Laccadive Sea", "Golfo del Bengala": "Bay of Bengal", "Canale di Mozambico": "Mozambique Channel", "Mare delle Andamane": "Andaman Sea", "Mar Cinese Meridionale": "South China Sea", "Mar Cinese Orientale": "East China Sea", "Mar Giallo": "Yellow Sea", "Mar del Giappone": "Sea of Japan", "Mare delle Filippine": "Philippine Sea", "Mare di Bering": "Bering Sea", "Mare di Okhotsk": "Sea of Okhotsk", "Mare del Nord": "North Sea", "Mar Baltico": "Baltic Sea", "Mare di Norvegia": "Norwegian Sea", "Mare di Barents": "Barents Sea", "Mare di Kara": "Kara Sea", "Mar dei Caraibi": "Caribbean Sea", "Golfo del Messico": "Gulf of Mexico", "Baia di Hudson": "Hudson Bay", "Golfo di Guinea": "Gulf of Guinea", "Mar dei Coralli": "Coral Sea", "Mar di Tasman": "Tasman Sea", "Golfo di Biscaglia": "Bay of Biscay", "Golfo d'Alaska": "Gulf of Alaska", "Mare del Labrador": "Labrador Sea", "Mare di Groenlandia": "Greenland Sea", "Mar di Giava": "Java Sea", "Golfo di Thailandia": "Gulf of Thailand", "Canale della Manica": "English Channel", "Golfo di Finlandia": "Gulf of Finland",
+  // chokepoints and risk units
+  "Stretto di Hormuz": "Strait of Hormuz", "Canale di Suez": "Suez Canal", "Bosforo": "Bosphorus", "Dardanelli": "Dardanelles", "Stretto di Tiran": "Strait of Tiran", "Stretto di Gibilterra": "Strait of Gibraltar", "Stretto di Malacca": "Strait of Malacca", "Canale di Panama": "Panama Canal", "Stretto di Taiwan": "Taiwan Strait", "Stretti danesi": "Danish Straits", "Capo di Buona Speranza": "Cape of Good Hope", "Canale di Sicilia": "Strait of Sicily", "Stretto di Luzon": "Luzon Strait", "Stretto di Bering": "Bering Strait", "Stretto di Kerch": "Kerch Strait", "Stretti turchi (Bosforo e Dardanelli)": "Turkish Straits (Bosphorus and Dardanelles)", "Stretti di Lombok e della Sonda": "Lombok and Sunda Straits", "TransMed Algeria–Tunisia–Italia": "TransMed Algeria–Tunisia–Italy", "Baltico: cavi, condotte ed elettrodotti": "Baltic: cables, pipelines and power links", "Mar Rosso: rotta container Asia–Europa": "Red Sea: Asia–Europe container route", "GNL del Qatar (Ras Laffan → Hormuz)": "Qatari LNG (Ras Laffan → Hormuz)", "Rete elettrica ucraina": "Ukrainian power grid", "Catena dei chip di Taiwan": "Taiwan chip supply chain",
+  // chokepoint status today
+  "chiuso di fatto": "closed in practice", "aperto": "open", "aperti": "open", "aperto, minaccia alta": "open, high threat", "aperto, in ripresa": "open, recovering", "aperto, porti a monte colpiti": "open, upstream ports hit", "riaperto con permessi": "reopened under permits", "aperto con minaccia houthi alle navi legate all'Arabia Saudita": "open, with a Houthi threat to Saudi-linked ships", "aperto, traffico in ripresa": "open, traffic recovering", "aperto, nessuna restrizione d'acqua": "open, no water restrictions", "aperto, traffico petrolifero ridotto": "open, reduced oil traffic", "aperto; porti del Mar Nero sotto attacco": "open; Black Sea ports under attack", "aperto, controlli sulla flotta ombra": "open, shadow-fleet inspections", "aperto, pressione della guardia costiera cinese": "open, pressure from the Chinese coast guard", "aperto, traffico record": "open, record traffic", "riaperto alle navi del grano con permessi russi": "reopened to grain ships with Russian permits",
+  // regions
+  "Cisgiordania": "West Bank", "Striscia di Gaza": "Gaza Strip", "Alture del Golan": "Golan Heights", "Kurdistan iracheno": "Iraqi Kurdistan", "Sahara Occidentale": "Western Sahara", "Balucistan": "Balochistan", "Abcasia": "Abkhazia", "Ossezia del Sud": "South Ossetia", "Creta": "Crete", "Sicilia": "Sicily", "Sardegna": "Sardinia", "Donbass": "Donbas",
+  // cities with an Italian exonym
+  "Il Cairo": "Cairo", "Pechino": "Beijing", "Mosca": "Moscow", "Parigi": "Paris", "Londra": "London", "Città del Capo": "Cape Town", "Santiago del Cile": "Santiago", "Città del Messico": "Mexico City", "Giacarta": "Jakarta", "Bogotà": "Bogotá", "Nuova Delhi": "New Delhi", "Berlino": "Berlin", "Roma": "Rome", "San Paolo": "São Paulo", "Seul": "Seoul", "Teheran": "Tehran", "Addis Abeba": "Addis Ababa", "Stoccolma": "Stockholm", "Calcutta": "Kolkata", "San Pietroburgo": "Saint Petersburg", "Riad": "Riyadh", "Xian": "Xi'an", "Atene": "Athens", "Kiev": "Kyiv", "La Mecca": "Mecca", "Ginevra": "Geneva", "Gerusalemme": "Jerusalem", "Dacca": "Dhaka", "Canton": "Guangzhou", "Tientsin": "Tianjin", "Barcellona": "Barcelona", "Khartum": "Khartoum", "Alessandria": "Alexandria", "Nanchino": "Nanjing", "Algeri": "Algiers", "Gedda": "Jeddah", "Francoforte": "Frankfurt", "Lisbona": "Lisbon", "L'Avana": "Havana", "Bucarest": "Bucharest", "Varsavia": "Warsaw", "Mogadiscio": "Mogadishu", "Copenaghen": "Copenhagen", "Dublino": "Dublin", "Ulan Bator": "Ulaanbaatar", "Sebastopoli": "Sevastopol", "Arcangelo": "Arkhangelsk", "Caienna": "Cayenne", "Jakutsk": "Yakutsk", "Milano": "Milan", "Damasco": "Damascus", "Napoli": "Naples", "Bruxelles": "Brussels", "Lione": "Lyon", "Monaco di Baviera": "Munich", "Bengasi": "Benghazi", "Praga": "Prague", "Zurigo": "Zurich", "Filadelfia": "Philadelphia", "Tsingtao": "Qingdao", "Tunisi": "Tunis", "Amburgo": "Hamburg", "Marsiglia": "Marseille", "Siviglia": "Seville", "Erevan": "Yerevan", "Belgrado": "Belgrade", "Città del Guatemala": "Guatemala City", "Colonia": "Cologne", "Krasnojarsk": "Krasnoyarsk", "Katmandu": "Kathmandu", "Salonicco": "Thessaloniki", "Orano": "Oran", "Danzica": "Gdańsk", "Mascate": "Muscat", "Zagabria": "Zagreb", "Samarcanda": "Samarkand", "Dresda": "Dresden", "La Valletta": "Valletta", "Prefettura di Shigatse": "Shigatse", "Timbuctù": "Timbuktu", "Smirne": "İzmir", "Rostov sul Don": "Rostov-on-Don", "Nizza": "Nice", "Bassora": "Basra", "Leopoli": "Lviv", "Cracovia": "Kraków", "Genova": "Genoa", "Santiago di Cuba": "Santiago de Cuba", "Edimburgo": "Edinburgh", "Venezia": "Venice", "Gibilterra": "Gibraltar", "Firenze": "Florence", "Porto Said": "Port Said", "Assuan": "Aswan", "Zuara": "Zuwara", "Torino": "Turin", "Chisimaio": "Kismayo", "Giamama": "Jamaame", "Patrasso": "Patras", "Gallacaio": "Galkayo", "Murzuch": "Murzuq", "Siracusa": "Syracuse", "Rodi": "Rhodes", "Corfù": "Corfu", "Massaua": "Massawa", "Sidone": "Sidon", "Nazaret": "Nazareth", "Alessandropoli": "Alexandroupolis", "Famagosta": "Famagusta", "Mitilene": "Mytilene", "Chio": "Chios", "Pireo": "Piraeus", "Mansura": "Mansoura", "Venezia (Lido)": "Venice (Lido)", "Venezia (Malamocco)": "Venice (Malamocco)",
+  // map views
+  "Europa e Medio Oriente": "Europe and the Middle East", "Mare del Nord e Baltico": "North Sea and Baltic", "Medio Oriente": "Middle East", "Russia-Ucraina": "Russia–Ukraine", "Europa": "Europe",
+  // risk levels, trends, importance
+  "basso": "low", "medio": "medium", "alto": "high", "critico": "critical", "medio-alto": "medium-high", "medio (esposta come fornitore, non come importatore)": "medium (exposed as a supplier, not as an importer)", "stabile": "stable", "in aumento": "rising", "in calo": "easing", "alta": "high", "media": "medium", "bassa": "low",
+  // status
+  "operativo": "operational", "operativa": "operational", "in-costruzione": "under construction", "in costruzione": "under construction", "danneggiato": "damaged", "danneggiata": "damaged", "in esercizio": "in service", "attivo": "active", "attiva": "active", "cancellato": "cancelled", "da verificare": "to be verified", "proposto": "proposed", "futuro": "future", "sospeso": "suspended", "sospesa": "suspended", "pianificato": "planned", "pianificata": "planned", "dismesso": "decommissioned", "dismessa": "decommissioned", "autorizzato": "authorised", "in corso": "ongoing", "annunciato": "announced", "annunciata": "announced", "in lista": "listed", "passato": "past", "operativo-parziale": "partly operational", "inattivo": "inactive", "fermo": "idle", "avvenuto": "occurred", "fuori-servizio": "out of service", "sviluppo": "in development", "in-flusso": "flowing", "lasciata": "vacated", "riparato": "repaired", "attenzione": "watch", "pre-costruzione": "pre-construction", "in-vigore": "in force", "in-riparazione": "under repair", "in-manutenzione": "under maintenance", "in produzione": "in production", "normale": "normal", "completato": "completed", "interrotto": "interrupted", "non_raggiungibile": "unreachable", "operativo, in ampliamento": "operational, being expanded", "da definire": "to be defined", "riparazione prevista": "repair planned", "parziale": "partial", "rinviato": "postponed", "in costruzione / esercizio parziale": "under construction / partly in service", "in costruzione / prima energia": "under construction / first power", "operativo-conteso": "operational, contested", "fermo-parziale": "partly idle", "incerto": "uncertain", "separato": "separated", "in-avvio": "starting up", "spento-in-riesame": "shut down, under review", "pubblico": "public", "ridotta": "scaled down", "colpito secondo una sola parte o una sola fonte": "hit according to one side or one source only", "attacco segnalato, esito non verificato": "attack reported, outcome unverified", "verde": "green", "giallo": "amber", "rosso": "red",
+  // categories and types
+  "approdo cavo": "cable landing", "cavo sottomarino": "subsea cable", "energia gasdotto": "gas pipeline", "gnl rigassificazione": "LNG regasification", "energia oleodotto": "oil pipeline", "porto": "port", "gnl liquefazione": "LNG liquefaction", "eolico offshore": "offshore wind farm", "centrale nucleare": "nuclear power plant", "raffineria": "refinery", "base aerea": "air base", "attacco": "attack", "energia": "energy", "base navale": "naval base", "base terrestre": "land base", "data center ai": "AI data centre", "data center": "data centre", "comando": "command", "civile/residenziale": "civilian/residential", "deposito": "depot", "ferrovia principale": "main railway", "area elencata jwc": "JWC listed area", "fab chip": "chip fab", "passaggio strategico": "chokepoint", "porto petrolifero": "oil port", "ferrovia": "railway", "grano/logistica": "grain/logistics", "supercalcolo": "supercomputing", "supercomputer": "supercomputer", "elettrolizzatore": "electrolyser", "incidente": "incident", "base mista": "joint base", "industria": "industry", "radar": "radar", "interconnessione elettrica": "power interconnector", "hub del bunkeraggio": "bunkering hub", "sito missilistico": "missile site", "porto installazione": "installation port", "sabotaggio": "sabotage", "difesa aerea": "air defence", "sito nucleare": "nuclear site", "danno ancora": "anchor damage", "corridoio strategico": "strategic corridor", "collegamento elettrico": "power link", "giacimento oil gas": "oil and gas field", "stazione pompaggio": "pumping station", "droni aeroporto": "drones over an airport", "terminale import": "import terminal", "spionaggio": "espionage", "elettrificazione banchine e carburanti alternativi": "shore power and alternative fuels", "danno cavo": "cable damage", "stretto": "strait", "gas ingresso gasdotto": "pipeline gas entry point", "droni non identificati": "unidentified drones", "fermo petroliera": "tanker detention", "falso allarme": "hoax alert", "hub energetico": "energy hub", "terminale": "terminal", "linea aerea": "overhead line", "cavo": "cable", "terrestre": "onshore", "navale": "naval", "aerea": "air", "mista": "joint", "militare": "military", "HVDC sottomarino": "subsea HVDC", "elettrodotto HVDC": "HVDC line", "corridoio": "corridor", "gasdotto": "gas pipeline", "petrolio": "oil", "gas": "gas", "grano": "grain", "liquidi del gas (NGL)": "natural gas liquids (NGL)", "video live": "live video", "immagine aggiornata": "refreshed still image", "YouTube live": "YouTube live", "principale": "main", "secondaria": "secondary", "fabbricazione": "fabrication", "materie": "materials", "energia-dc": "data-centre power", "packaging-memoria": "packaging and memory", "logistica": "logistics", "attrezzature": "equipment", "server-rete": "servers and networking", "progettazione": "design", "camion": "truck", "aereo": "air", "nave": "sea", "misto": "mixed", "rete": "grid", "schematica": "schematic", "schematico": "schematic", "molto alta": "very high", "no": "no", "sì: Regno Unito, Unione europea": "yes: UK, EU", "sì: USA": "yes: US", "sì: Regno Unito, USA, Unione europea": "yes: UK, US, EU", "sì: Unione europea": "yes: EU", "sì: Regno Unito": "yes: UK", "chip": "chips", "fondo": "fund", "export": "export", "import": "import", "probabile": "likely", "elettrolizzatore": "electrolyser",
+  // Terminal: price groups and names
+  "Indici": "Indices", "Tassi USA": "US rates", "Materie prime": "Commodities", "Valute": "Currencies", "Cripto": "Crypto", "Semiconduttori (SOX)": "Semiconductors (SOX)", "VIX (volatilità S&P 500)": "VIX (S&P 500 volatility)", "Titolo di Stato USA 2 anni": "US Treasury 2-year", "Titolo di Stato USA 10 anni": "US Treasury 10-year", "Titolo di Stato USA 30 anni": "US Treasury 30-year", "Differenza 10 anni − 2 anni": "10-year minus 2-year spread", "Oro": "Gold", "Argento": "Silver", "Petrolio Brent": "Brent crude", "Petrolio WTI": "WTI crude", "Gas TTF (Europa)": "TTF gas (Europe)", "Gas Henry Hub (USA)": "Henry Hub gas (US)",
+  // Terminal: stock groups
+  "Gas UE": "EU gas", "Petrolio UE": "EU oil", "Gas UE (mensile)": "EU gas (monthly)", "Petrolio USA": "US oil", "Grano": "Wheat",
+  "Strategic Petroleum Reserve (SPR) USA": "US Strategic Petroleum Reserve (SPR)", "Scorte commerciali di greggio USA (esclusa SPR)": "US commercial crude stocks (excl. SPR)", "Scorte di benzina USA": "US gasoline stocks", "Scorte di distillati USA (gasolio)": "US distillate stocks (diesel)", "Scorte di greggio a Cushing, Oklahoma": "Crude stocks at Cushing, Oklahoma",
+};
+const tr = s => (s != null && Object.prototype.hasOwnProperty.call(EN, s)) ? EN[s] : s;
+const trCat = s => { if (s == null) return s; const t = String(s); return EN[t] || EN[t.replace(/-/g, ' ')] || cap(t.replace(/-/g, ' ')); };
+function trStock(n) {                                   // the stock series names follow a few fixed patterns
+  let m;
+  if ((m = /^Stoccaggi gas (.+) – riempimento$/.exec(n))) return 'Gas storage ' + tr(m[1]) + ' – fill level';
+  if ((m = /^Stoccaggi gas (.+) – gas in stoccaggio$/.exec(n))) return 'Gas storage ' + tr(m[1]) + ' – gas in store';
+  if ((m = /^Gas in stoccaggio (.+) – fine mese \(Eurostat\)$/.exec(n))) return 'Gas in store ' + tr(m[1]).replace('UE-27', 'EU-27') + ' – end of month (Eurostat)';
+  if ((m = /^Scorte petrolifere di emergenza (.+) – giorni$/.exec(n))) return 'Emergency oil stocks ' + tr(m[1]) + ' – days';
+  if ((m = /^Grano – scorte finali (.+?)( \(somma paesi PSD\))?$/.exec(n))) return 'Wheat – ending stocks ' + tr(m[1]) + (m[2] ? ' (sum of PSD countries)' : '');
+  if ((m = /^Riserve d'oro (.+)$/.exec(n))) return 'Gold reserves ' + tr(m[1]);
+  return tr(n);
+}
 
 /* ---------- symbols ---------- */
 // ships: side-view silhouettes, bow to the right, keel at y = 0, sizes in 'units' (carrier = 100)
 const SIL = {
-  portaerei:    { it: 'Portaerei', len: 100, h: 26, d: 'M3 0L1 -5L0 -9L30 -9L30 -14L32 -14L32 -19L34 -19L34 -26L35 -26L35 -19L38 -19L38 -14L40 -14L40 -9L100 -9L96 -5L91 0Z' },
-  anfibia:      { it: "Nave d'assalto anfibio", len: 78, h: 27, d: 'M2 0L0 -10L28 -10L28 -15L31 -15L31 -21L33 -21L33 -27L34 -27L34 -21L40 -21L40 -24L41 -24L41 -21L44 -21L44 -15L47 -15L47 -10L78 -10L75 -5L71 0Z' },
-  lpd:          { it: 'Nave da trasporto anfibio', len: 62, h: 22, d: 'M2 0L0 -7L22 -7L22 -13L26 -13L27 -22L29 -22L30 -13L38 -13L39 -22L41 -22L42 -13L48 -13L48 -9L56 -9L62 -8L57 0Z' },
-  incrociatore: { it: 'Incrociatore', len: 55, h: 23, d: 'M2 0L0 -6L9 -6L9 -10L15 -10L15 -14L17 -14L17 -20L18 -20L18 -14L21 -14L21 -10L28 -10L28 -15L31 -15L31 -23L32 -23L32 -15L36 -15L36 -11L41 -11L41 -7L47 -7L55 -8L50 0Z' },
-  caccia:       { it: 'Cacciatorpediniere', len: 50, h: 22, d: 'M2 0L0 -6L12 -6L12 -9L17 -9L17 -12L20 -12L20 -9L23 -9L23 -13L26 -13L26 -9L29 -9L29 -14L31 -14L32 -22L33 -22L33 -14L36 -14L36 -10L39 -10L39 -7L44 -7L50 -8L46 0Z' },
-  fregata:      { it: 'Fregata', len: 42, h: 19, d: 'M2 0L0 -5L10 -5L10 -9L16 -9L16 -12L19 -12L19 -9L22 -9L22 -12L24 -12L25 -19L26 -19L26 -12L29 -12L29 -8L33 -8L33 -6L38 -6L42 -7L39 0Z' },
-  rifornitore:  { it: 'Rifornitore di squadra', len: 66, h: 19, d: 'M2 0L0 -6L5 -6L5 -15L8 -15L8 -19L9 -19L9 -15L13 -15L13 -8L24 -8L24 -14L25 -14L25 -8L36 -8L36 -14L37 -14L37 -8L48 -8L48 -14L49 -14L49 -8L60 -8L66 -9L62 0Z' },
-  sottomarino:  { it: 'Sottomarino', len: 46, h: 13, d: 'M0 -2Q2 -5 8 -5L18 -5L18 -11L19 -11L19 -13L20 -13L20 -11L24 -11L24 -5L40 -5Q45 -4 46 -2Q45 0 40 0L6 0Q1 0 0 -2Z' },
+  portaerei:    { it: 'Aircraft carrier', len: 100, h: 26, d: 'M3 0L1 -5L0 -9L30 -9L30 -14L32 -14L32 -19L34 -19L34 -26L35 -26L35 -19L38 -19L38 -14L40 -14L40 -9L100 -9L96 -5L91 0Z' },
+  anfibia:      { it: 'Amphibious assault ship', len: 78, h: 27, d: 'M2 0L0 -10L28 -10L28 -15L31 -15L31 -21L33 -21L33 -27L34 -27L34 -21L40 -21L40 -24L41 -24L41 -21L44 -21L44 -15L47 -15L47 -10L78 -10L75 -5L71 0Z' },
+  lpd:          { it: 'Amphibious transport dock', len: 62, h: 22, d: 'M2 0L0 -7L22 -7L22 -13L26 -13L27 -22L29 -22L30 -13L38 -13L39 -22L41 -22L42 -13L48 -13L48 -9L56 -9L62 -8L57 0Z' },
+  incrociatore: { it: 'Cruiser', len: 55, h: 23, d: 'M2 0L0 -6L9 -6L9 -10L15 -10L15 -14L17 -14L17 -20L18 -20L18 -14L21 -14L21 -10L28 -10L28 -15L31 -15L31 -23L32 -23L32 -15L36 -15L36 -11L41 -11L41 -7L47 -7L55 -8L50 0Z' },
+  caccia:       { it: 'Destroyer', len: 50, h: 22, d: 'M2 0L0 -6L12 -6L12 -9L17 -9L17 -12L20 -12L20 -9L23 -9L23 -13L26 -13L26 -9L29 -9L29 -14L31 -14L32 -22L33 -22L33 -14L36 -14L36 -10L39 -10L39 -7L44 -7L50 -8L46 0Z' },
+  fregata:      { it: 'Frigate', len: 42, h: 19, d: 'M2 0L0 -5L10 -5L10 -9L16 -9L16 -12L19 -12L19 -9L22 -9L22 -12L24 -12L25 -19L26 -19L26 -12L29 -12L29 -8L33 -8L33 -6L38 -6L42 -7L39 0Z' },
+  rifornitore:  { it: 'Fleet replenishment ship', len: 66, h: 19, d: 'M2 0L0 -6L5 -6L5 -15L8 -15L8 -19L9 -19L9 -15L13 -15L13 -8L24 -8L24 -14L25 -14L25 -8L36 -8L36 -14L37 -14L37 -8L48 -8L48 -14L49 -14L49 -8L60 -8L66 -9L62 0Z' },
+  sottomarino:  { it: 'Submarine', len: 46, h: 13, d: 'M0 -2Q2 -5 8 -5L18 -5L18 -11L19 -11L19 -13L20 -13L20 -11L24 -11L24 -5L40 -5Q45 -4 46 -2Q45 0 40 0L6 0Q1 0 0 -2Z' },
 };
 for (const k in SIL) SIL[k].p = new Path2D(SIL[k].d);
 const SIL_RANK = { portaerei: 0, anfibia: 1, sottomarino: 2, incrociatore: 3, caccia: 4, fregata: 5, lpd: 6, rifornitore: 7 };
@@ -634,29 +674,29 @@ const trefoil = (R, r, c) => {
   return d;
 };
 const GLYPH = {
-  attacco: { it: 'Attacco', d: star(8, 8.5, 4) }, blackout: { it: 'Blackout', d: 'M2 -9L-5.5 1.2L-1 1.2L-2.4 9L5.5 -1.6L1 -1.6Z' }, altro: { it: 'Altro evento', d: 'M0 -7.5L7.5 6L-7.5 6Z' },
-  aereo: { it: 'Aereo', d: 'M0 -10L1.7 -7L1.7 -2.6L10 3.2L10 5.2L1.7 2.6L1.3 7L4 9.2L4 10.4L0 9.5L-4 10.4L-4 9.2L-1.3 7L-1.7 2.6L-10 5.2L-10 3.2L-1.7 -2.6L-1.7 -7Z' },
-  caccia: { it: 'Caccia', d: 'M0 -10L1.4 -5.6L1.6 -1.6L9.4 5.4L9.4 7.4L1.6 5.4L1.6 6.8L4.4 9.2L4.4 10.4L0 9.6L-4.4 10.4L-4.4 9.2L-1.6 6.8L-1.6 5.4L-9.4 7.4L-9.4 5.4L-1.6 -1.6L-1.4 -5.6Z' },
-  bombardiere: { it: 'Bombardiere', d: 'M0 -6.6L10 3.4L8.6 5L6 3.8L4.4 5.8L2 4.4L0 6.2L-2 4.4L-4.4 5.8L-6 3.8L-8.6 5L-10 3.4Z' },
-  trasporto: { it: 'Aereo da trasporto', d: 'M0 -9.6C1.6 -9.6 2.3 -8.2 2.3 -6.4L2.3 -2.6L10 0.6L10 2.6L2.3 1.2L2 6.4L5.6 8.4L5.6 9.8L0 9.2L-5.6 9.8L-5.6 8.4L-2 6.4L-2.3 1.2L-10 2.6L-10 0.6L-2.3 -2.6L-2.3 -6.4C-2.3 -8.2 -1.6 -9.6 0 -9.6Z' },
-  cisterna: { it: 'Aerocisterna', d: 'M0 -10L1.7 -7L1.7 -2.6L10 3.2L10 5.2L1.7 2.6L1.3 7L4 9.2L4 10.4L0 9.5L-4 10.4L-4 9.2L-1.3 7L-1.7 2.6L-10 5.2L-10 3.2L-1.7 -2.6L-1.7 -7ZM-0.8 9.4L0.8 9.4L0.6 14.4L-0.6 14.4Z' },
-  ricognizione: { it: 'Ricognizione e sorveglianza', d: 'M0 -10L1.7 -7L1.7 -2.6L10 3.2L10 5.2L1.7 2.6L1.3 7L4 9.2L4 10.4L0 9.5L-4 10.4L-4 9.2L-1.3 7L-1.7 2.6L-10 5.2L-10 3.2L-1.7 -2.6L-1.7 -7ZM3.6 4A3.6 3.6 0 1 1 -3.6 4A3.6 3.6 0 1 1 3.6 4Z' },
-  bandiera: { it: 'Avanzata', d: 'M-5 9L-5 -9L7 -5.2L-3.2 -1.2L-3.2 9Z' }, colpo: { it: 'Colpo lungo il fronte', d: star(4, 6.5, 2.4) },
-  stella: { it: 'Base terrestre o comando', d: star(5, 6, 2.5) }, scudo: { it: 'Batteria di difesa aerea mobile', d: 'M0 -6.6L5.6 -4.4V0.4C5.6 3.8 3.2 6 0 7.2C-3.2 6 -5.6 3.8 -5.6 0.4V-4.4Z' }, cupola: { it: 'Radar', d: 'M-5.4 2.2A5.4 5.4 0 0 1 5.4 2.2ZM-5.4 3.8H5.4V5.4H-5.4Z' },
-  ancora: { it: 'Porto o base navale', stroke: true, d: 'M0 -3.6V6M-3 -1.4H3M-5 2Q-4.6 6 0 6Q4.6 6 5 2M1.6 -5.2A1.6 1.6 0 1 1 -1.6 -5.2A1.6 1.6 0 1 1 1.6 -5.2' },
-  razzo: { it: 'Sito missilistico', d: 'M0 -7.6C2.3 -5.2 2.7 -2.2 2.7 1.4L4.8 5.6H2.3L1.7 4.1H-1.7L-2.3 5.6H-4.8L-2.7 1.4C-2.7 -2.2 -2.3 -5.2 0 -7.6Z' },
-  atomo: { it: 'Sito nucleare', d: trefoil(6.7, 2.2, 1.3) },
-  fiamma: { it: 'Sabotaggio', d: 'M0 -7.2C2.6 -4.2 4.6 -1.6 4.6 1.8C4.6 4.9 2.6 7 0 7C-2.6 7 -4.6 4.9 -4.6 1.8C-4.6 -0.7 -3.1 -2.3 -1.8 -3.8C-1.6 -1.7 -0.8 -0.4 0.4 0.2C0.9 -2.5 0.4 -4.7 0 -7.2Z' },
-  allarme: { it: 'Falso allarme bomba', d: 'M0 -6.6C2.9 -6.6 4.6 -4.4 4.6 -1.6V2L6.3 4.3H-6.3L-4.6 2V-1.6C-4.6 -4.4 -2.9 -6.6 0 -6.6ZM-1.9 5.3H1.9C1.9 6.4 1 7.1 0 7.1C-1 7.1 -1.9 6.4 -1.9 5.3Z' },
-  drone: { it: 'Droni non identificati', d: 'M-6.8 -4.3A2.5 2.5 0 1 1 -1.8 -4.3A2.5 2.5 0 1 1 -6.8 -4.3ZM1.8 -4.3A2.5 2.5 0 1 1 6.8 -4.3A2.5 2.5 0 1 1 1.8 -4.3ZM-6.8 4.3A2.5 2.5 0 1 1 -1.8 4.3A2.5 2.5 0 1 1 -6.8 4.3ZM1.8 4.3A2.5 2.5 0 1 1 6.8 4.3A2.5 2.5 0 1 1 1.8 4.3ZM-1.9 -1.9H1.9V1.9H-1.9ZM-3.5 -2.6L-2.6 -3.5L3.5 2.6L2.6 3.5ZM2.6 -3.5L3.5 -2.6L-2.6 3.5L-3.5 2.6Z' },
-  gnss: { it: 'Disturbo GNSS', d: 'M-2 -2H2V2H-2ZM-7 -1.4H-2.8V1.4H-7ZM2.8 -1.4H7V1.4H2.8ZM-0.6 2.6H0.6V4.9H-0.6ZM-3 5.2H3V6.6H-3ZM-5.6 -6.4L-4.6 -7.2L5.6 5.2L4.6 6Z' },
-  cyber: { it: 'Attacco informatico', d: 'M-4.2 -4.2H4.2V4.2H-4.2ZM-2.7 -7H-1.3V-4.6H-2.7ZM1.3 -7H2.7V-4.6H1.3ZM-2.7 4.6H-1.3V7H-2.7ZM1.3 4.6H2.7V7H1.3ZM-7 -2.7H-4.6V-1.3H-7ZM-7 1.3H-4.6V2.7H-7ZM4.6 -2.7H7V-1.3H4.6ZM4.6 1.3H7V2.7H4.6Z' },
-  spia: { it: 'Spionaggio, arresti', d: 'M-7.2 0C-5 -3.9 -2.5 -5.2 0 -5.2C2.5 -5.2 5 -3.9 7.2 0C5 3.9 2.5 5.2 0 5.2C-2.5 5.2 -5 3.9 -7.2 0ZM2.5 0A2.5 2.5 0 1 0 -2.5 0A2.5 2.5 0 1 0 2.5 0ZM1.1 0A1.1 1.1 0 1 1 -1.1 0A1.1 1.1 0 1 1 1.1 0Z' },
-  mirino: { it: 'Poligono', d: 'M-0.8 -7.2H0.8V-2.4H-0.8ZM-0.8 2.4H0.8V7.2H-0.8ZM-7.2 -0.8H-2.4V0.8H-7.2ZM2.4 -0.8H7.2V0.8H2.4ZM1.5 0A1.5 1.5 0 1 1 -1.5 0A1.5 1.5 0 1 1 1.5 0Z' },
-  antenna: { it: 'Stazione di comunicazioni', d: 'M-6.4 -1.6A7.4 7.4 0 0 0 1.6 6.4ZM-1.9 1.3L3.1 -3.7L4.3 -2.5L-0.7 2.5ZM5.6 -4.6A1.7 1.7 0 1 1 2.2 -4.6A1.7 1.7 0 1 1 5.6 -4.6Z' },
-  pozzo: { it: 'Giacimento di petrolio o gas', d: 'M-1.1 -7.2H1.1L4.8 6.6H2.6L1.7 3H-1.7L-2.6 6.6H-4.8ZM-1.2 0.9H1.2L0.6 -1.6H-0.6Z' },
-  server: { it: 'Data center', d: 'M-6 -6.4H6V-2.6H-6ZM-6 -1.9H6V1.9H-6ZM-6 2.6H6V6.4H-6Z' },
-  fabbrica: { it: 'Fabbrica di chip', d: 'M-6.8 6.4V-0.6L-3.2 -3.2V-0.6L0.4 -3.2V-0.6L4 -3.2V-7H6.8V6.4Z' },
+  attacco: { it: 'Attack', d: star(8, 8.5, 4) }, blackout: { it: 'Blackout', d: 'M2 -9L-5.5 1.2L-1 1.2L-2.4 9L5.5 -1.6L1 -1.6Z' }, altro: { it: 'Other event', d: 'M0 -7.5L7.5 6L-7.5 6Z' },
+  aereo: { it: 'Aircraft', d: 'M0 -10L1.7 -7L1.7 -2.6L10 3.2L10 5.2L1.7 2.6L1.3 7L4 9.2L4 10.4L0 9.5L-4 10.4L-4 9.2L-1.3 7L-1.7 2.6L-10 5.2L-10 3.2L-1.7 -2.6L-1.7 -7Z' },
+  caccia: { it: 'Fighter', d: 'M0 -10L1.4 -5.6L1.6 -1.6L9.4 5.4L9.4 7.4L1.6 5.4L1.6 6.8L4.4 9.2L4.4 10.4L0 9.6L-4.4 10.4L-4.4 9.2L-1.6 6.8L-1.6 5.4L-9.4 7.4L-9.4 5.4L-1.6 -1.6L-1.4 -5.6Z' },
+  bombardiere: { it: 'Bomber', d: 'M0 -6.6L10 3.4L8.6 5L6 3.8L4.4 5.8L2 4.4L0 6.2L-2 4.4L-4.4 5.8L-6 3.8L-8.6 5L-10 3.4Z' },
+  trasporto: { it: 'Transport aircraft', d: 'M0 -9.6C1.6 -9.6 2.3 -8.2 2.3 -6.4L2.3 -2.6L10 0.6L10 2.6L2.3 1.2L2 6.4L5.6 8.4L5.6 9.8L0 9.2L-5.6 9.8L-5.6 8.4L-2 6.4L-2.3 1.2L-10 2.6L-10 0.6L-2.3 -2.6L-2.3 -6.4C-2.3 -8.2 -1.6 -9.6 0 -9.6Z' },
+  cisterna: { it: 'Tanker aircraft', d: 'M0 -10L1.7 -7L1.7 -2.6L10 3.2L10 5.2L1.7 2.6L1.3 7L4 9.2L4 10.4L0 9.5L-4 10.4L-4 9.2L-1.3 7L-1.7 2.6L-10 5.2L-10 3.2L-1.7 -2.6L-1.7 -7ZM-0.8 9.4L0.8 9.4L0.6 14.4L-0.6 14.4Z' },
+  ricognizione: { it: 'Reconnaissance and surveillance', d: 'M0 -10L1.7 -7L1.7 -2.6L10 3.2L10 5.2L1.7 2.6L1.3 7L4 9.2L4 10.4L0 9.5L-4 10.4L-4 9.2L-1.3 7L-1.7 2.6L-10 5.2L-10 3.2L-1.7 -2.6L-1.7 -7ZM3.6 4A3.6 3.6 0 1 1 -3.6 4A3.6 3.6 0 1 1 3.6 4Z' },
+  bandiera: { it: 'Advance', d: 'M-5 9L-5 -9L7 -5.2L-3.2 -1.2L-3.2 9Z' }, colpo: { it: 'Strike along the front', d: star(4, 6.5, 2.4) },
+  stella: { it: 'Land base or command', d: star(5, 6, 2.5) }, scudo: { it: 'Mobile air-defence battery', d: 'M0 -6.6L5.6 -4.4V0.4C5.6 3.8 3.2 6 0 7.2C-3.2 6 -5.6 3.8 -5.6 0.4V-4.4Z' }, cupola: { it: 'Radar', d: 'M-5.4 2.2A5.4 5.4 0 0 1 5.4 2.2ZM-5.4 3.8H5.4V5.4H-5.4Z' },
+  ancora: { it: 'Port or naval base', stroke: true, d: 'M0 -3.6V6M-3 -1.4H3M-5 2Q-4.6 6 0 6Q4.6 6 5 2M1.6 -5.2A1.6 1.6 0 1 1 -1.6 -5.2A1.6 1.6 0 1 1 1.6 -5.2' },
+  razzo: { it: 'Missile site', d: 'M0 -7.6C2.3 -5.2 2.7 -2.2 2.7 1.4L4.8 5.6H2.3L1.7 4.1H-1.7L-2.3 5.6H-4.8L-2.7 1.4C-2.7 -2.2 -2.3 -5.2 0 -7.6Z' },
+  atomo: { it: 'Nuclear site', d: trefoil(6.7, 2.2, 1.3) },
+  fiamma: { it: 'Sabotage', d: 'M0 -7.2C2.6 -4.2 4.6 -1.6 4.6 1.8C4.6 4.9 2.6 7 0 7C-2.6 7 -4.6 4.9 -4.6 1.8C-4.6 -0.7 -3.1 -2.3 -1.8 -3.8C-1.6 -1.7 -0.8 -0.4 0.4 0.2C0.9 -2.5 0.4 -4.7 0 -7.2Z' },
+  allarme: { it: 'Hoax bomb alert', d: 'M0 -6.6C2.9 -6.6 4.6 -4.4 4.6 -1.6V2L6.3 4.3H-6.3L-4.6 2V-1.6C-4.6 -4.4 -2.9 -6.6 0 -6.6ZM-1.9 5.3H1.9C1.9 6.4 1 7.1 0 7.1C-1 7.1 -1.9 6.4 -1.9 5.3Z' },
+  drone: { it: 'Unidentified drones', d: 'M-6.8 -4.3A2.5 2.5 0 1 1 -1.8 -4.3A2.5 2.5 0 1 1 -6.8 -4.3ZM1.8 -4.3A2.5 2.5 0 1 1 6.8 -4.3A2.5 2.5 0 1 1 1.8 -4.3ZM-6.8 4.3A2.5 2.5 0 1 1 -1.8 4.3A2.5 2.5 0 1 1 -6.8 4.3ZM1.8 4.3A2.5 2.5 0 1 1 6.8 4.3A2.5 2.5 0 1 1 1.8 4.3ZM-1.9 -1.9H1.9V1.9H-1.9ZM-3.5 -2.6L-2.6 -3.5L3.5 2.6L2.6 3.5ZM2.6 -3.5L3.5 -2.6L-2.6 3.5L-3.5 2.6Z' },
+  gnss: { it: 'GNSS interference', d: 'M-2 -2H2V2H-2ZM-7 -1.4H-2.8V1.4H-7ZM2.8 -1.4H7V1.4H2.8ZM-0.6 2.6H0.6V4.9H-0.6ZM-3 5.2H3V6.6H-3ZM-5.6 -6.4L-4.6 -7.2L5.6 5.2L4.6 6Z' },
+  cyber: { it: 'Cyber attack', d: 'M-4.2 -4.2H4.2V4.2H-4.2ZM-2.7 -7H-1.3V-4.6H-2.7ZM1.3 -7H2.7V-4.6H1.3ZM-2.7 4.6H-1.3V7H-2.7ZM1.3 4.6H2.7V7H1.3ZM-7 -2.7H-4.6V-1.3H-7ZM-7 1.3H-4.6V2.7H-7ZM4.6 -2.7H7V-1.3H4.6ZM4.6 1.3H7V2.7H4.6Z' },
+  spia: { it: 'Espionage, arrests', d: 'M-7.2 0C-5 -3.9 -2.5 -5.2 0 -5.2C2.5 -5.2 5 -3.9 7.2 0C5 3.9 2.5 5.2 0 5.2C-2.5 5.2 -5 3.9 -7.2 0ZM2.5 0A2.5 2.5 0 1 0 -2.5 0A2.5 2.5 0 1 0 2.5 0ZM1.1 0A1.1 1.1 0 1 1 -1.1 0A1.1 1.1 0 1 1 1.1 0Z' },
+  mirino: { it: 'Firing range', d: 'M-0.8 -7.2H0.8V-2.4H-0.8ZM-0.8 2.4H0.8V7.2H-0.8ZM-7.2 -0.8H-2.4V0.8H-7.2ZM2.4 -0.8H7.2V0.8H2.4ZM1.5 0A1.5 1.5 0 1 1 -1.5 0A1.5 1.5 0 1 1 1.5 0Z' },
+  antenna: { it: 'Communications station', d: 'M-6.4 -1.6A7.4 7.4 0 0 0 1.6 6.4ZM-1.9 1.3L3.1 -3.7L4.3 -2.5L-0.7 2.5ZM5.6 -4.6A1.7 1.7 0 1 1 2.2 -4.6A1.7 1.7 0 1 1 5.6 -4.6Z' },
+  pozzo: { it: 'Oil or gas field', d: 'M-1.1 -7.2H1.1L4.8 6.6H2.6L1.7 3H-1.7L-2.6 6.6H-4.8ZM-1.2 0.9H1.2L0.6 -1.6H-0.6Z' },
+  server: { it: 'Data centre', d: 'M-6 -6.4H6V-2.6H-6ZM-6 -1.9H6V1.9H-6ZM-6 2.6H6V6.4H-6Z' },
+  fabbrica: { it: 'Chip fab', d: 'M-6.8 6.4V-0.6L-3.2 -3.2V-0.6L0.4 -3.2V-0.6L4 -3.2V-7H6.8V6.4Z' },
   supercalc: { it: 'Supercomputer', d: 'M-6.6 -6.4H-2.7V6.4H-6.6ZM-1.95 -6.4H1.95V6.4H-1.95ZM2.7 -6.4H6.6V6.4H2.7Z' },
 };
 const AIR_GLYPH = { 'aereo-caccia': 'caccia', 'aereo-bombardiere': 'bombardiere', 'aereo-trasporto': 'trasporto', 'aereo-cisterna': 'cisterna', 'aereo-ricognizione': 'ricognizione' };   // phase 1c: one symbol per aircraft category
@@ -711,14 +751,14 @@ function iconOf(p, wscale) {
   if (p.kind === 'aereo') return svgGlyph(p.glyph || 'aereo', `var(--${p.side})`, hollow, big ? 30 : 17);
   return svgGlyph(p.glyph, EV_VAR[akOf(p)], hollow, big ? 26 : 16);
 }
-const ageText = d => d === 0 ? 'oggi' : d === 1 ? 'ieri' : d + ' giorni fa';
-const fmtLL = (lat, lon, n) => Math.abs(lat).toFixed(n) + '°' + (lat >= 0 ? 'N' : 'S') + ' ' + Math.abs(lon).toFixed(n) + '°' + (lon >= 0 ? 'E' : 'O');
+const ageText = d => d === 0 ? 'today' : d === 1 ? 'yesterday' : d + ' days ago';
+const fmtLL = (lat, lon, n) => Math.abs(lat).toFixed(n) + '°' + (lat >= 0 ? 'N' : 'S') + ' ' + Math.abs(lon).toFixed(n) + '°' + (lon >= 0 ? 'E' : 'W');
 const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
-const dateLong = d => d.toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' });
+const dateLong = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
 /* ---------- operational points ---------- */
 function addPoints(list) {
-  const dl = d => d.toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
+  const dl = d => d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
   for (const p of list || []) {
     p.d = new Date(p.data_evento + 'T12:00:00'); p.age = Math.max(0, Math.round((TODAY - p.d) / 864e5));
     p.dlabel = dl(p.d);
@@ -739,7 +779,7 @@ function addPoints(list) {
       p.ai = p.categoria in AI_CAT;                      // AI infrastructure, from the dossiers (rules v4)
       if (p.stato === 'lasciata') p.ex = 1;              // state lasciata (rules v2): drawn grey
       p.hit = p.stato === 'danneggiato' || p.stato === 'in-riparazione' || (p.stato === 'fuori-servizio' && !p.ex);   // a base that was left is not a base that was hit
-      p.dlabel = p.stato === 'danneggiato' ? 'danni' : p.stato === 'in-riparazione' ? 'in riparazione' : p.ex ? 'lasciata' : p.stato === 'fuori-servizio' ? 'fuori uso' : p.stato === 'in-costruzione' ? 'cantiere' : '';
+      p.dlabel = p.stato === 'danneggiato' ? 'damaged' : p.stato === 'in-riparazione' ? 'under repair' : p.ex ? 'vacated' : p.stato === 'fuori-servizio' ? 'out of use' : p.stato === 'in-costruzione' ? 'building' : '';
     } else if (p.classe === 'mobile' && p.categoria === 'difesa-aerea-mobile') {   // a mobile battery: a plate with a shield, in the air-defence layer, 14/60 days like the other mobile assets
       p.kind = 'base'; p.ad = 1; p.mob = 1; p.glyph = 'scudo'; p.fase = p.age <= 14 ? 0 : p.age <= 60 ? 1 : 2;
       p.side = sideOf(p.appartenenza);
@@ -759,13 +799,13 @@ function addPoints(list) {
       p.ib = p.categoria in IB_GLYPH;                    // hybrid attack: its own switch, window and age scale
       p.fase = 0; p.glyph = glyphFor(p);
     }
-    p.why = !p.hasPos ? 'senza posizione' : p.affidabilita === 'bassa' ? 'affidabilità bassa' : (p.classe === 'evento' && p.precisione_km > 100) ? 'raggio oltre 100 km: solo nel report' : p.fase === 2 ? 'dato scaduto, vecchio di ' + p.age + ' giorni' : (p.kind === 'altro' || (p.kind === 'nave' && !p.sil)) ? 'categoria non ancora disegnata' : '';
+    p.why = !p.hasPos ? 'no position' : p.affidabilita === 'bassa' ? 'low reliability' : (p.classe === 'evento' && p.precisione_km > 100) ? 'radius over 100 km: report only' : p.fase === 2 ? 'expired, ' + p.age + ' days old' : (p.kind === 'altro' || (p.kind === 'nave' && !p.sil)) ? 'category not yet drawn' : '';
     PT.push(p);
   }
 }
 function finishPoints() {
   const rank = p => p.kind === 'nave' ? (SIL_RANK[p.sil] == null ? 9 : SIL_RANK[p.sil]) : p.kind === 'aereo' ? 12 : p.kind === 'base' ? (p.ir ? 16 + ({ 'sito-nucleare': 0, 'sito-missilistico': .2, 'base-navale': .4, 'base-aerea': .6 }[p.categoria] ?? .8) + (p.hit ? 0 : .1) : p.ex ? 15 : 14) : p.kind === 'evento' ? 20 : p.kind === 'avanzata' ? 30 : 40;
-  PT.sort((a, b) => (rank(a) - rank(b)) || ((b.capo || 0) - (a.capo || 0)) || (b.d - a.d) || a.label.localeCompare(b.label, 'it'));
+  PT.sort((a, b) => (rank(a) - rank(b)) || ((b.capo || 0) - (a.capo || 0)) || (b.d - a.d) || a.label.localeCompare(b.label, 'en'));
   const close = (a, b, deg) => Math.abs(a.slat - b.slat) < deg && Math.abs(a.slon - b.slon) < deg;
   for (const p of PT) {
     p.mates = []; p.near = []; p.lead = null;
@@ -823,73 +863,73 @@ function buildPanel() {
   const lg = $('legend'), row = (icon, text) => { const r = el('div', 'legend-row'); r.append(icon, el('span', null, text)); lg.appendChild(r); };
   const cap = t => lg.appendChild(el('div', 'legend-cap', t));
   const chips = list => { const box = el('div', 'sides'); for (const [color, text] of list) { const sp = el('span', 'side'), i = el('i'); i.style.background = color; sp.append(i, text); box.appendChild(sp); } lg.appendChild(box); };
-  cap('Navi e aerei');
-  row(svgSil('caccia', 'var(--ink)', false, 26), 'Pieno: confermato da più fonti indipendenti, da una fonte ufficiale o da immagini geolocalizzate');
-  row(svgSil('caccia', 'var(--ink)', true, 26), 'Vuoto: segnalato, non ancora confermato');
-  const faded = svgSil('caccia', 'var(--ink)', false, 26); faded.style.opacity = .5; row(faded, 'Sbiadito: ultima posizione nota, nave vista da più di 7 giorni. Dopo 30 giorni sparisce');
-  row(svgSil('caccia', 'var(--ink)', true, 26, true), 'Tratteggiato: in costruzione');
+  cap('Ships and aircraft');
+  row(svgSil('caccia', 'var(--ink)', false, 26), 'Solid: confirmed by several independent sources, an official source or geolocated imagery');
+  row(svgSil('caccia', 'var(--ink)', true, 26), 'Hollow: reported, not yet confirmed');
+  const faded = svgSil('caccia', 'var(--ink)', false, 26); faded.style.opacity = .5; row(faded, 'Faded: last known position, ship last seen more than 7 days ago. Removed after 30 days');
+  row(svgSil('caccia', 'var(--ink)', true, 26, true), 'Dashed: under construction');
   const ring = svgEl('svg', { width: 18, height: 18, 'aria-hidden': 'true' }); ring.appendChild(svgEl('circle', { cx: 9, cy: 9, r: 7.5, fill: 'none', stroke: 'var(--ink)', 'stroke-dasharray': '3 3' }));
-  row(ring, 'Cerchio: margine di incertezza in scala. Se la fonte indica solo una zona, il simbolo è appoggiato dentro il cerchio');
-  row(el('span', 'plus', '?'), 'Punto interrogativo: potrebbe non essere più lì, perché il dato è vecchio o la posizione non è precisata. Le portaerei restano sempre in mappa');
-  row(el('span', 'plus', '+2'), 'Altri punti sotto lo stesso simbolo: ingrandisci per separarli');
+  row(ring, 'Circle: margin of uncertainty, to scale. When the source gives only an area, the symbol sits inside the circle');
+  row(el('span', 'plus', '?'), 'Question mark: it may no longer be there, because the data are old or the position is vague. Aircraft carriers always stay on the map');
+  row(el('span', 'plus', '+2'), 'More points under the same symbol: zoom in to separate them');
   const trk = svgEl('svg', { width: 26, height: 8, 'aria-hidden': 'true' }); trk.appendChild(svgEl('path', { d: 'M1 4h24', stroke: 'var(--ink)', 'stroke-width': 1.3, 'stroke-dasharray': '5 4' }));
-  row(trk, 'Linea tratteggiata: da dove arriva la nave, con la data della posizione precedente');
+  row(trk, 'Dashed line: where the ship came from, with the date of the previous position');
   if (has('aereo')) {
     for (const g of ['caccia', 'bombardiere', 'cisterna', 'trasporto', 'ricognizione']) row(svgGlyph(g, 'var(--ink)', false, 17), GLYPH[g].it);
-    lg.appendChild(el('div', 'legend-note', 'Aerei rischierati: valgono 14 giorni, poi sbiadiscono. Con il «?» il punto è la destinazione di un volo, non una posizione vista.'));
+    lg.appendChild(el('div', 'legend-note', 'Redeployed aircraft: shown for 14 days, then faded. With a “?” the point is a flight’s destination, not an observed position.'));
   }
   chips(Object.keys(SIDE_IT).filter(k => PT.some(p => p.side === k)).map(k => [`var(--${k})`, SIDE_IT[k]]));
-  cap('Eventi');
+  cap('Events');
   for (const k of EV_GLYPHS) row(svgGlyph(k, 'var(--ev0)', false, 16), GLYPH[k].it);
-  lg.appendChild(el('div', 'legend-note', 'Il colore dice solo quanto è recente. Un evento resta 7 giorni, poi va in archivio:'));
-  chips([[EV_VAR[0], 'oggi e ieri'], [EV_VAR[1], 'da 2 a 4 giorni'], [EV_VAR[2], 'da 5 a 7 giorni'], [EV_VAR[3], 'archivio']]);
+  lg.appendChild(el('div', 'legend-note', 'Colour only shows how recent it is. An event stays for 7 days, then moves to the archive:'));
+  chips([[EV_VAR[0], 'today and yesterday'], [EV_VAR[1], '2 to 4 days'], [EV_VAR[2], '5 to 7 days'], [EV_VAR[3], 'archive']]);
   if (PT.some(p => p.ib)) {
-    cap('Europa, attacchi ibridi');
+    cap('Europe, hybrid attacks');
     for (const k of ['fiamma', 'allarme', 'drone', 'gnss', 'cyber', 'spia']) row(svgGlyph(k, 'var(--ev0)', false, 16), GLYPH[k].it);
-    lg.appendChild(el('div', 'legend-note', 'Sono pochi e contano come serie: restano 30 giorni, con una scala più lunga. Con «90 giorni» si vede la serie intera:'));
-    chips([[EV_VAR[0], 'da 0 a 3 giorni'], [EV_VAR[1], 'da 4 a 14 giorni'], [EV_VAR[2], 'da 15 a 30 giorni'], [EV_VAR[3], 'oltre']]);
+    lg.appendChild(el('div', 'legend-note', 'They are few and matter as a series: they stay for 30 days, on a longer scale. Choose “90 days” to see the whole series:'));
+    chips([[EV_VAR[0], '0 to 3 days'], [EV_VAR[1], '4 to 14 days'], [EV_VAR[2], '15 to 30 days'], [EV_VAR[3], 'older']]);
   }
   if (FRONT || has('fronte')) {
-    cap('Ucraina');
-    row(svgBox('var(--rus)', .3), 'Area sotto controllo russo');
-    row(svgBox('var(--contesa)', .45), 'Area contesa o zona grigia');
-    row(svgBox('var(--ev1)', .7), 'Avanzata russa di un giorno, con il colore della sua età. Da lontano la segna una bandierina');
-    row(svgDot('var(--ev1)', 17, '5'), 'Fronte: colpi geolocalizzati. Il numero dice quanti ce ne sono lì: ingrandisci o tocca il cerchio per separarli');
+    cap('Ukraine');
+    row(svgBox('var(--rus)', .3), 'Area under Russian control');
+    row(svgBox('var(--contesa)', .45), 'Contested area or grey zone');
+    row(svgBox('var(--ev1)', .7), 'One day’s Russian advance, coloured by age. From afar a small flag marks it');
+    row(svgDot('var(--ev1)', 17, '5'), 'Front: geolocated strikes. The number shows how many are there: zoom in or tap the circle to separate them');
     if (FRONT) lg.appendChild(el('div', 'legend-note', FRONT.credit));
   }
   if (has('base') || has('porto') || LN || RT || SB) {
-    cap('Basi e infrastrutture');
-    row(svgPlate('aereo', 'var(--ally)', false, 18), 'Base aerea. Con l\u2019ancora: base navale. Con la stella: base terrestre o comando. Con la cupola: radar. Il colore dice di chi è');
-    if (hasIr) { row(svgPlate('razzo', 'var(--adv)', false, 18), 'Sito missilistico'); row(svgPlate('atomo', 'var(--adv)', false, 18), 'Sito nucleare'); }
-    if (PT.some(p => p.ad)) { row(svgPlate('cupola', 'var(--ally)', false, 18), 'Difesa aerea fissa: radar o batteria. Il punto rosso: colpita nel 2026'); row(svgPlate('scudo', 'var(--ally)', true, 18), 'Batteria mobile, dalle raccolte: vale 14 giorni, poi sbiadisce'); }
-    row(svgPlate('stella', 'var(--ally)', true, 18), 'Riquadro vuoto: presenza o danni segnalati da una sola fonte');
-    row(svgPlate('aereo', 'var(--ally)', false, 18, { dan: 1 }), 'Punto rosso: danneggiata o messa fuori uso dagli attacchi del 2025 e del 2026');
-    row(svgPlate('aereo', 'var(--ink-faint)', true, 18, { ex: 1 }), 'Grigio barrato: base lasciata dagli Stati Uniti');
-    if (has('porto')) row(svgAnchor('var(--port)', 15), 'Porto del World Port Index. I minori compaiono ingrandendo');
+    cap('Bases and infrastructure');
+    row(svgPlate('aereo', 'var(--ally)', false, 18), 'Air base. With an anchor: naval base. With a star: land base or command. With a dome: radar. The colour shows whose it is');
+    if (hasIr) { row(svgPlate('razzo', 'var(--adv)', false, 18), 'Missile site'); row(svgPlate('atomo', 'var(--adv)', false, 18), 'Nuclear site'); }
+    if (PT.some(p => p.ad)) { row(svgPlate('cupola', 'var(--ally)', false, 18), 'Fixed air defence: radar or battery. Red dot: hit in 2026'); row(svgPlate('scudo', 'var(--ally)', true, 18), 'Mobile battery, from the collections: shown for 14 days, then faded'); }
+    row(svgPlate('stella', 'var(--ally)', true, 18), 'Hollow plate: presence or damage reported by a single source');
+    row(svgPlate('aereo', 'var(--ally)', false, 18, { dan: 1 }), 'Red dot: damaged or put out of action by the 2025 and 2026 strikes');
+    row(svgPlate('aereo', 'var(--ink-faint)', true, 18, { ex: 1 }), 'Grey, struck through: base vacated by the United States');
+    if (has('porto')) row(svgAnchor('var(--port)', 15), 'Port from the World Port Index. Smaller ones appear as you zoom in');
     if (LN) {
-      row(svgLine('var(--oil)'), 'Oleodotto'); row(svgLine('var(--gas)'), 'Gasdotto');
-      row(svgLine('var(--ink-soft)', '6 4'), 'Tratteggiato: in costruzione. Puntinato: fermo');
-      lg.appendChild(el('div', 'legend-note', LN.credit + ' Tocca una linea per la sua scheda.'));
+      row(svgLine('var(--oil)'), 'Oil pipeline'); row(svgLine('var(--gas)'), 'Gas pipeline');
+      row(svgLine('var(--ink-soft)', '6 4'), 'Dashed: under construction. Dotted: idle');
+      lg.appendChild(el('div', 'legend-note', LN.credit + ' Tap a line for its card.'));
     }
-    if (PT.some(p => p.ita)) row(svgPlate('aereo', 'var(--ally)', true, 18), 'Basi in Italia: italiane, USA e NATO, tutte nel colore degli alleati. Riquadro vuoto perché lo stato attuale non è ancora verificato');
-    if (SB) lg.appendChild(el('div', 'legend-note', 'Condotte sottomarine: stessi colori e tratti degli oleodotti e gasdotti. Una condotta è sottomarina quando almeno 20 km del suo percorso sono in mare, misurati dalla mappa. ' + SB.credit));
+    if (PT.some(p => p.ita)) row(svgPlate('aereo', 'var(--ally)', true, 18), 'Bases in Italy: Italian, US and NATO, all in the allies’ colour. Status verified November 2026');
+    if (SB) lg.appendChild(el('div', 'legend-note', 'Subsea pipelines: same colours and strokes as oil and gas pipelines. A pipeline counts as subsea when at least 20 km of its route is at sea, measured on the map. ' + SB.credit));
     if (RT) {
       const rw = svgEl('svg', { width: 26, height: 12, 'aria-hidden': 'true' });
       for (const [y, wd] of [[2, 2.2], [6, 1.4], [10, .9]]) rw.appendChild(svgEl('path', { d: 'M1 ' + y + 'h24', stroke: 'var(--route)', 'stroke-width': wd }));
-      row(rw, 'Rotte marittime: principale, media, secondaria. Tracciato schematico');
+      row(rw, 'Shipping lanes: major, medium, minor. Schematic routing');
       const dm = svgEl('svg', { width: 12, height: 12, 'aria-hidden': 'true' }); dm.appendChild(svgEl('path', { d: 'M6 1 11 6 6 11 1 6Z', fill: 'var(--accent)' }));
-      row(dm, 'Passaggio strategico: tocca il rombo per le quote mondiali di petrolio, gas, fertilizzanti, grano e merci, con l’anno del dato');
+      row(dm, 'Chokepoint: tap the diamond for world shares of oil, gas, fertilisers, grain and cargo, with the year of the data');
       lg.appendChild(el('div', 'legend-note', RT.credit));
     }
   }
 
-  if (PT.some(p => p.categoria === 'poligono' || p.categoria === 'comunicazioni')) { row(svgPlate('mirino', 'var(--ally)', true, 18), 'Poligono di tiro e addestramento'); row(svgPlate('antenna', 'var(--ally)', true, 18), 'Stazione di comunicazioni, non di difesa aerea'); }
+  if (PT.some(p => p.categoria === 'poligono' || p.categoria === 'comunicazioni')) { row(svgPlate('mirino', 'var(--ally)', true, 18), 'Firing and training range'); row(svgPlate('antenna', 'var(--ally)', true, 18), 'Communications station, not air defence'); }
   if (PT.some(p => p.ai)) {
-    cap('Infrastruttura AI');
-    row(svgPlate('server', 'var(--ally)', true, 18), 'Data center: campus da 100 MW in su o di un grande operatore cloud');
-    row(svgPlate('fabbrica', 'var(--ally)', true, 18), 'Fabbrica di chip');
-    row(svgPlate('supercalc', 'var(--ally)', true, 18), 'Supercomputer della Top500');
-    lg.appendChild(el('div', 'legend-note', 'Dai dossier AI, un paese alla volta: la scheda dice capacità, proprietario, anno e chip quando la fonte li dà. Spento all’apertura: si accende qui o dalla sezione Dossier.'));
+    cap('AI infrastructure');
+    row(svgPlate('server', 'var(--ally)', true, 18), 'Data centre: campus of 100 MW or more, or run by a major cloud operator');
+    row(svgPlate('fabbrica', 'var(--ally)', true, 18), 'Chip fab');
+    row(svgPlate('supercalc', 'var(--ally)', true, 18), 'Top500 supercomputer');
+    lg.appendChild(el('div', 'legend-note', 'From the AI dossiers, one country at a time: the card gives capacity, owner, year and chips when the source does. Off at start: switch it on here or from the Dossier section.'));
   }
   $('range').querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
     evRange = +b.dataset.days; $('range').querySelectorAll('button').forEach(o => o.setAttribute('aria-pressed', String(o === b)));
@@ -898,7 +938,7 @@ function buildPanel() {
 }
 function buildLists() {
   const box = $('lists'); box.textContent = ''; let n = 0;
-  const evs = VE.slice().sort((a, b) => a.age - b.age || a.label.localeCompare(b.label, 'it'));
+  const evs = VE.slice().sort((a, b) => a.age - b.age || a.label.localeCompare(b.label, 'en'));
   for (const [code, name] of TEATRI) {
     const rows = VS.concat(VA, VB, evs, VV).filter(p => p.teatro === code), nf = VF.filter(p => p.teatro === code).length, np = VP.filter(p => p.teatro === code).length;
     if (!rows.length && !nf && !np) continue;
@@ -907,23 +947,23 @@ function buildLists() {
     for (const p of rows) {
       const li = el('li'), b = el('button', 'pt-row' + (p.fase === 1 ? ' old' : '')); b.type = 'button'; b.dataset.id = p.id;
       b.setAttribute('aria-current', String(p === picked));
-      b.title = kindName(p) + (p.regione ? ', ' + p.regione : '') + (p.fase === 1 ? ' (ultima posizione nota, ' + p.age + ' giorni fa)' : '');
+      b.title = kindName(p) + (p.regione ? ', ' + p.regione : '') + (p.fase === 1 ? ' (last known position, ' + p.age + ' days ago)' : '');
       b.append(iconOf(p, .32), el('span', 'nm', p.label + (p.dub ? ' ?' : '')), el('span', 'dt', p.dlabel));
       b.addEventListener('click', () => { if (window.innerWidth <= 640) setPanel(false); pick(p, p.kind === 'nave' ? 5.6 : p.kind === 'avanzata' ? 8.8 : p.kind === 'base' ? 7 : 6.4); });
       li.appendChild(b); ul.appendChild(li); n++;
     }
     if (rows.length) box.appendChild(ul);
-    if (np) box.appendChild(el('p', 'empty', 'Porti: ' + np + ' nel registro. Sono sulla mappa: i principali da lontano, gli altri ingrandendo.'));
-    if (nf) box.appendChild(el('p', 'empty', 'Fronte: ' + nf + ' colpi geolocalizzati. Sono solo sulla mappa, raggruppati in cerchi con il loro numero.'));
+    if (np) box.appendChild(el('p', 'empty', 'Ports: ' + np + ' in the register. They are on the map: the main ones from afar, the others as you zoom in.'));
+    if (nf) box.appendChild(el('p', 'empty', 'Front: ' + nf + ' geolocated strikes. They are on the map only, grouped in numbered circles.'));
   }
-  if (!n) box.appendChild(el('p', 'empty', 'Nessun punto con questi filtri.'));
+  if (!n) box.appendChild(el('p', 'empty', 'No points with these filters.'));
   if (D && D.straits.length) {                            // the passages, always reachable from here: on a crowded chart their diamond can be hidden
-    box.appendChild(el('h3', 'theater', 'Passaggi strategici')); const ul = el('ul', 'pt-list');
-    for (const o of D.straits.slice().sort((a, b) => a.n.localeCompare(b.n, 'it'))) {
-      const li = el('li'), b = el('button', 'pt-row'); b.type = 'button'; b.dataset.id = 'stretto-' + o.n; b.title = 'Passaggio strategico: quanto vi passa, in quota mondiale';
+    box.appendChild(el('h3', 'theater', 'Chokepoints')); const ul = el('ul', 'pt-list');
+    for (const o of D.straits.slice().sort((a, b) => a.label.localeCompare(b.label, 'en'))) {
+      const li = el('li'), b = el('button', 'pt-row'); b.type = 'button'; b.dataset.id = 'stretto-' + o.n; b.title = 'Chokepoint: how much passes through, as a world share';
       const dm = svgEl('svg', { width: 11, height: 11, 'aria-hidden': 'true' }); dm.appendChild(svgEl('path', { d: 'M5.5 1 10 5.5 5.5 10 1 5.5Z', fill: 'var(--accent)' }));
       const d = ST && ST.stretti && ST.stretti[o.n];
-      b.append(dm, el('span', 'nm', o.n), el('span', 'dt', d && d.voci.length ? [...new Set(d.voci.map(x => x.voce.split(' ')[0].toLowerCase()))].slice(0, 2).join(', ') : ''));
+      b.append(dm, el('span', 'nm', o.label), el('span', 'dt', d && d.voci.length ? [...new Set(d.voci.map(x => tr(x.voce.split(' ')[0]).split(' ')[0].toLowerCase()))].slice(0, 2).join(', ') : ''));
       b.addEventListener('click', () => { if (window.innerWidth <= 640) setPanel(false); pick(o, Math.max(5, o.z + .4)); });
       li.appendChild(b); ul.appendChild(li);
     }
@@ -931,7 +971,7 @@ function buildLists() {
   }
   const off = PT.filter(p => p.why);
   if (off.length) {
-    box.appendChild(el('h3', 'theater', 'Fuori mappa'));
+    box.appendChild(el('h3', 'theater', 'Not on the map'));
     const ul = el('ul', 'off-list'); for (const p of off) ul.appendChild(el('li', null, p.nome + ': ' + p.why)); box.appendChild(ul);
   }
   $('list-n').textContent = n;
@@ -962,44 +1002,44 @@ function renderCard() {
   if (picked.kind === 'stretto') { renderStrait(card, picked); return; }
   if (picked.kind === 'extra') { renderExtra(card, picked); return; }
   const p = picked, ev = p.classe === 'evento';
-  $('cd-kind').textContent = (ev ? ['Evento', CAT_IT[p.categoria] || p.categoria, TNAME[p.teatro]] : [kindName(p), p.dettaglio, PAESI[p.appartenenza] || p.appartenenza]).filter(Boolean).join(' · ');
+  $('cd-kind').textContent = (ev ? ['Event', CAT_IT[p.categoria] || p.categoria, TNAME[p.teatro]] : [kindName(p), p.dettaglio, PAESI[p.appartenenza] || p.appartenenza]).filter(Boolean).join(' · ');
   $('cd-name').textContent = p.nome + (p.identificativo ? ' (' + p.identificativo + ')' : '');
   const cs = $('cd-sil'); cs.textContent = ''; cs.appendChild(iconOf(p, 1.05));
   const facts = $('cd-facts'); facts.textContent = '';
   const fact = (k, v, cls) => { const dd = el('dd', cls); dd.append(...[].concat(v)); facts.append(el('dt', null, k), dd); };
-  const where = [p.regione, PAESI[p.paese] || p.paese].filter(Boolean).join(', ');
+  const where = [tr(p.regione), PAESI[p.paese] || p.paese].filter(Boolean).join(', ');
   if (ev) {
-    if (p.incerta) fact('Quando', 'Evento precedente al ' + dateLong(p.d) + ': la fonte non dà il giorno', 'warn');
-    else fact('Quando', dateLong(p.d) + (p.ora_utc ? ', ' + p.ora_utc + ' UTC' : '') + ', ' + ageText(p.age) + (p.age > 7 ? '. In archivio' : ''));
-    if (where) fact('Dove', where);
-    if (p.attore || p.bersaglio) fact('Chi e cosa', (p.attore === 'contestato' ? 'Contestato: le parti si accusano a vicenda' : PAESI[p.attore] || p.attore || 'Attore non indicato') + (p.bersaglio ? ' → ' + (BERS_IT[p.bersaglio] || p.bersaglio) : ''));
-    if (p.attribuito) fact('Attribuito a', p.attribuito + ' (accusa, non una sentenza)');
-    if (p.mezzo) fact('Mezzo', cap(p.mezzo));
-    if (p.esito) fact('Esito', cap(p.esito));
-    if (p.area_km2) fact('Area', 'circa ' + itNum(p.area_km2) + ' km²');
+    if (p.incerta) fact('When', 'Before ' + dateLong(p.d) + ': the source gives no exact day', 'warn');
+    else fact('When', dateLong(p.d) + (p.ora_utc ? ', ' + p.ora_utc + ' UTC' : '') + ', ' + ageText(p.age) + (p.age > 7 ? '. Archived' : ''));
+    if (where) fact('Where', where);
+    if (p.attore || p.bersaglio) fact('Who and what', (p.attore === 'contestato' ? 'Disputed: the parties blame each other' : PAESI[p.attore] || p.attore || 'Actor not given') + (p.bersaglio ? ' → ' + (BERS_IT[p.bersaglio] || p.bersaglio) : ''));
+    if (p.attribuito) fact('Attributed to', p.attribuito + ' (an accusation, not a ruling)');
+    if (p.mezzo) fact('Means', cap(p.mezzo));
+    if (p.esito) fact('Outcome', cap(p.esito));
+    if (p.area_km2) fact('Area', 'about ' + itNum(p.area_km2) + ' km²');
   } else if (p.classe === 'fisso') {
-    fact('Stato', p.ex ? 'Lasciata: non è più una base degli Stati Uniti' : p.ir ? ({ danneggiato: 'Danneggiato dagli attacchi', 'in-riparazione': 'In riparazione dopo gli attacchi', 'fuori-servizio': 'Fuori servizio dopo gli attacchi', 'in-costruzione': 'In costruzione', operativo: 'Operativo' }[p.stato] || 'Non noto: nessuna fonte datata parla di danni') : p.stato === 'danneggiato' ? 'Danneggiata nel 2026' : STATO_IT[p.stato] || 'Non verificato', p.hit ? 'warn' : null);
-    if (p.forza) fact('Forza', p.forza);
-    if (where) fact('Dove', where);
-    if (p.utenti && p.utenti.length) fact(p.ex ? 'Presenze fino al ritiro' : 'Presenze', p.utenti.map(u => PAESI[u] || u).join(', '));
-    fact('Controllo del', dateLong(p.d));
+    fact('Status', p.ex ? 'Vacated: no longer a US base' : p.ir ? ({ danneggiato: 'Damaged by the strikes', 'in-riparazione': 'Under repair after the strikes', 'fuori-servizio': 'Out of service after the strikes', 'in-costruzione': 'Under construction', operativo: 'Operational' }[p.stato] || 'Unknown: no dated source reports damage') : p.stato === 'danneggiato' ? 'Damaged in 2026' : STATO_IT[p.stato] || 'Not verified', p.hit ? 'warn' : null);
+    if (p.forza) fact('Forces', p.forza);
+    if (where) fact('Where', where);
+    if (p.utenti && p.utenti.length) fact(p.ex ? 'Presence until withdrawal' : 'Presence', p.utenti.map(u => PAESI[u] || u).join(', '));
+    fact('Checked on', dateLong(p.d));
   } else {
-    fact('Stato', STATO_IT[p.stato] || 'Non noto');
-    if (where) fact('Zona', where);
-    fact('Ultimo dato', dateLong(p.d) + (p.ora_utc ? ', ' + p.ora_utc + ' UTC' : '') + ', ' + ageText(p.age) + (p.dub ? '. Potrebbe non essere più qui' : p.fase === 1 ? '. Ultima posizione nota' : ''), p.dub || p.fase === 1 ? 'warn' : null);
-    for (const q of p.storico || []) fact('Prima', [q.dlabel + ': ', el('span', 'mono', fmtLL(q.lat, q.lon, 4)), q.nota ? ', ' + q.nota : '']);
+    fact('Status', STATO_IT[p.stato] || 'Unknown');
+    if (where) fact('Area', where);
+    fact('Last report', dateLong(p.d) + (p.ora_utc ? ', ' + p.ora_utc + ' UTC' : '') + ', ' + ageText(p.age) + (p.dub ? '. May no longer be here' : p.fase === 1 ? '. Last known position' : ''), p.dub || p.fase === 1 ? 'warn' : null);
+    for (const q of p.storico || []) fact('Before', [q.dlabel + ': ', el('span', 'mono', fmtLL(q.lat, q.lon, 4)), q.nota ? ', ' + q.nota : '']);
   }
-  fact('Posizione', [el('span', 'mono', fmtLL(p.lat, p.lon, p.precisione_km <= 3 ? 4 : 2)), p.origine_coord === 'fonte' ? ', data dalla fonte' : p.sim && p.precisione_km > 10 ? ", centro dell'area indicata dalla fonte" : ', stimata']);
-  fact('Precisione', p.precisione_km <= 1 ? 'entro 1 km' : 'entro circa ' + itNum(p.precisione_km) + ' km');
-  fact('Affidabilità', [el('span', 'rel' + (p.affidabilita === 'alta' ? ' full' : '')), AFF_IT[p.affidabilita] || p.affidabilita]);
-  if (p.riv) fact('Natura', 'Rivendicazione di una parte in guerra, senza riscontro indipendente', 'warn');
-  if (p.why) fact('Sulla mappa', 'Non disegnato: ' + p.why);
+  fact('Position', [el('span', 'mono', fmtLL(p.lat, p.lon, p.precisione_km <= 3 ? 4 : 2)), p.origine_coord === 'fonte' ? ', given by the source' : p.sim && p.precisione_km > 10 ? ', centre of the area given by the source' : ', estimated']);
+  fact('Precision', p.precisione_km <= 1 ? 'within 1 km' : 'within about ' + itNum(p.precisione_km) + ' km');
+  fact('Reliability', [el('span', 'rel' + (p.affidabilita === 'alta' ? ' full' : '')), AFF_IT[p.affidabilita] || p.affidabilita]);
+  if (p.riv) fact('Nature', 'Claim by a warring party, not independently confirmed', 'warn');
+  if (p.why) fact('On the map', 'Not drawn: ' + p.why);
   $('cd-info').textContent = p.note || '';
   const mt = $('cd-mates'); mt.textContent = '';
   const sn = D.straits.filter(o => ((p.regione || '') + ' ' + p.nome).includes(o.n));   // an event in a passage: a way to its card, which the crowd of symbols may hide
-  if (p.ai && DOS) { const d = DOS.dossier.find(x => x.slug === p.dossier); if (d) { mt.appendChild(el('h3', null, 'Dossier')); const sb = el('div', 'mates'), b = el('button', 'chip', 'Leggi il dossier: ' + d.paese); b.type = 'button'; b.addEventListener('click', () => openDossier(d.slug)); sb.appendChild(b); mt.appendChild(sb); } }
-  if (sn.length) { mt.appendChild(el('h3', null, 'Passaggio strategico')); const sb = el('div', 'mates'); for (const o of sn) { const b = el('button', 'chip', o.n + ': quote mondiali'); b.type = 'button'; b.addEventListener('click', () => pick(o, null)); sb.appendChild(b); } mt.appendChild(sb); }
-  for (const [title, arr] of [['Stesso gruppo', p.mates], [p.kind === 'nave' ? 'Nello stesso punto' : p.kind === 'fronte' ? 'Altri colpi nello stesso punto' : p.kind === 'base' ? (p.ir || p.ai ? 'Siti vicini' : 'Basi vicine') : 'Eventi vicini', p.near]]) {
+  if (p.ai && DOS) { const d = DOS.dossier.find(x => x.slug === p.dossier); if (d) { mt.appendChild(el('h3', null, 'Dossier')); const sb = el('div', 'mates'), b = el('button', 'chip', 'Read the dossier: ' + tr(d.paese)); b.type = 'button'; b.addEventListener('click', () => openDossier(d.slug)); sb.appendChild(b); mt.appendChild(sb); } }
+  if (sn.length) { mt.appendChild(el('h3', null, 'Chokepoint')); const sb = el('div', 'mates'); for (const o of sn) { const b = el('button', 'chip', o.label + ': world shares'); b.type = 'button'; b.addEventListener('click', () => pick(o, null)); sb.appendChild(b); } mt.appendChild(sb); }
+  for (const [title, arr] of [['Same group', p.mates], [p.kind === 'nave' ? 'At the same spot' : p.kind === 'fronte' ? 'Other strikes at the same spot' : p.kind === 'base' ? (p.ir || p.ai ? 'Nearby sites' : 'Nearby bases') : 'Nearby events', p.near]]) {
     const on = arr.filter(o => VIS.has(o)); if (!on.length) continue; mt.appendChild(el('h3', null, title));
     const box = el('div', 'mates');
     for (const o of on) { const b = el('button', 'chip', o.label + (o.kind === 'nave' || o.kind === 'base' ? '' : ' · ' + o.dlabel)); b.type = 'button'; b.addEventListener('click', () => pick(o, 0)); box.appendChild(b); }
@@ -1008,7 +1048,7 @@ function renderCard() {
   const src = $('cd-src'); src.textContent = '';
   for (const r of (p.fonti && p.fonti.length ? p.fonti : [{ fonte: p.fonte, link: p.link, data_fonte: p.data_fonte }])) {
     const li = el('li'); if (r.link) { const a = el('a', null, r.fonte); a.href = r.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.appendChild(a); } else li.textContent = r.fonte;
-    if (r.data_fonte) li.appendChild(el('small', null, new Date(r.data_fonte + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short' })));
+    if (r.data_fonte) li.appendChild(el('small', null, new Date(r.data_fonte + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })));
     src.appendChild(li);
   }
   card.hidden = false; card.scrollTop = 0;
@@ -1027,16 +1067,16 @@ function inline(parent, text) {
 function renderNews(i) {
   const r = REPORTS[i], body = $('news-body'); body.textContent = ''; if (!r) return;
   const sec = /\n## Contesto in corso\n([\s\S]*?)(?=\n## |$)/.exec(r.md);
-  if (sec) { const box = $('news-ctx'); box.textContent = ''; box.appendChild(el('h3', null, 'CONTESTO IN CORSO')); const ul = el('ul');
+  if (sec) { const box = $('news-ctx'); box.textContent = ''; box.appendChild(el('h3', null, 'ONGOING CONTEXT')); const ul = el('ul');
     for (const t of sec[1].split('\n').map(x => x.trim()).filter(Boolean)) { const li = el('li'); inline(li, t.replace(/^- /, '')); ul.appendChild(li); }
     box.appendChild(ul); box.hidden = false; }
   else renderCtx(i === 0 ? CTX : null);
-  $('news-date').textContent = 'Report del ' + dateLong(new Date(r.data + 'T12:00:00'));
+  $('news-date').textContent = 'Report of ' + dateLong(new Date(r.data + 'T12:00:00'));
   let ul = null, skip = false;
   for (const line of r.md.split('\n')) {
     const t = line.trim();
     if (!t || /^# /.test(t)) { ul = null; continue; }
-    if (/^## /.test(t)) { ul = null; skip = /^## Contesto in corso/.test(t); if (!skip) body.appendChild(el('h3', null, t.slice(3).toLocaleUpperCase('it-IT'))); }
+    if (/^## /.test(t)) { ul = null; skip = /^## Contesto in corso/.test(t); if (!skip) body.appendChild(el('h3', null, t.slice(3).toLocaleUpperCase('en-GB'))); }
     else if (skip) continue;
     else if (/^- /.test(t)) { if (!ul) { ul = el('ul'); body.appendChild(ul); } const li = el('li'); inline(li, t.slice(2)); ul.appendChild(li); }
     else { ul = null; const p = el('p'); inline(p, t); body.appendChild(p); }
@@ -1053,18 +1093,18 @@ function showNews(open) { if (open && !REPORTS.length) return; showSide('news', 
 function renderCtx(ctx) {
   const box = $('news-ctx'); box.textContent = '';
   if (!ctx || !ctx.voci || !ctx.voci.length) { box.hidden = true; return; }
-  box.appendChild(el('h3', null, 'CONTESTO'));
+  box.appendChild(el('h3', null, 'CONTEXT'));
   const ul = el('ul');
   for (const v of ctx.voci) { const li = el('li'); inline(li, v.t + (v.link ? ' ([' + v.fonte + '](' + v.link + '))' : v.fonte ? ' (' + v.fonte + ')' : '')); ul.appendChild(li); }
   box.appendChild(ul);
-  if (ctx.aggiornato) box.appendChild(el('p', 'ctx-when', 'Situazioni in corso, aggiornate al ' + dateLong(new Date(ctx.aggiornato + 'T12:00:00'))));
+  if (ctx.aggiornato) box.appendChild(el('p', 'ctx-when', 'Ongoing situations, updated ' + dateLong(new Date(ctx.aggiornato + 'T12:00:00'))));
   box.hidden = false;
 }
 function initNews(data) {
   REPORTS = (data && data.reports) || []; if (!REPORTS.length) return;
   CTX = data.contesto || null;
   const btn = $('news-btn'), pickEl = $('news-pick');
-  $('news-btn-date').textContent = new Date(REPORTS[0].data + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
+  $('news-btn-date').textContent = new Date(REPORTS[0].data + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
   btn.hidden = false; btn.addEventListener('click', () => showNews($('news').hidden));
   $('news-close').addEventListener('click', () => showNews(false));
   if (REPORTS.length > 1) {
@@ -1091,19 +1131,19 @@ function mdRender(body, md) {
     tbl = null;
     if (!t || /^# /.test(t)) { ul = null; continue; }
     if (/^### /.test(t)) { ul = null; body.appendChild(el('h4', null, t.slice(4))); }
-    else if (/^## /.test(t)) { ul = null; body.appendChild(el('h3', null, t.slice(3).toLocaleUpperCase('it-IT'))); }
+    else if (/^## /.test(t)) { ul = null; body.appendChild(el('h3', null, t.slice(3).toLocaleUpperCase('en-GB'))); }
     else if (/^- /.test(t)) { if (!ul) { ul = el('ul'); body.appendChild(ul); } const li = el('li'); inline(li, t.slice(2)); ul.appendChild(li); }
     else { ul = null; const p = el('p'); inline(p, t); body.appendChild(p); }
   }
 }
 
 /* ---------- Mercati: the indicators of the market collections, accumulated day by day (regole/02 v4) ---------- */
-const GR_IT = { energia: 'Energia', 'trasporto-marittimo': 'Trasporto marittimo', borse: 'Borse', difesa: 'Difesa', 'tecnologia-ai': 'Tecnologia e AI', valute: 'Valute', tassi: 'Tassi', 'materie-prime': 'Materie prime', assicurazioni: 'Assicurazioni' };
-const itNumber = v => v == null || isNaN(+v) ? '—' : (+v).toLocaleString('it-IT', { maximumFractionDigits: Math.abs(+v) >= 100000 ? 0 : Math.abs(+v) < 10 ? 3 : 2 });
+const GR_IT = { energia: 'Energy', 'trasporto-marittimo': 'Shipping', borse: 'Equities', difesa: 'Defence', 'tecnologia-ai': 'Technology and AI', valute: 'Currencies', tassi: 'Rates', 'materie-prime': 'Commodities', assicurazioni: 'Insurance' };
+const itNumber = v => v == null || isNaN(+v) ? '—' : (+v).toLocaleString('en-GB', { maximumFractionDigits: Math.abs(+v) >= 100000 ? 0 : Math.abs(+v) < 10 ? 3 : 2 });
 function mkVar(r) {                                      // the day's change: % for prices, basis points for yields and spreads
   if (r.var_giorno == null) return { t: '—', c: 'flat' };
-  const pb = r.gruppo === 'tassi', v = r.var_giorno, a = Math.abs(v).toLocaleString('it-IT', { minimumFractionDigits: pb ? 1 : 2, maximumFractionDigits: 2 });
-  return v > 0 ? { t: '▲ +' + a + (pb ? ' pb' : '%'), c: 'up' } : v < 0 ? { t: '▼ −' + a + (pb ? ' pb' : '%'), c: 'down' } : { t: '0' + (pb ? ' pb' : '%'), c: 'flat' };
+  const pb = r.gruppo === 'tassi', v = r.var_giorno, a = Math.abs(v).toLocaleString('en-GB', { minimumFractionDigits: pb ? 1 : 2, maximumFractionDigits: 2 });
+  return v > 0 ? { t: '▲ +' + a + (pb ? ' bp' : '%'), c: 'up' } : v < 0 ? { t: '▼ −' + a + (pb ? ' bp' : '%'), c: 'down' } : { t: '0' + (pb ? ' bp' : '%'), c: 'flat' };
 }
 function spark(name, upto) {                              // the last 30 days, once there are at least five
   const pts = MK.giorni.filter(g => g.data <= upto).slice(-30).map(g => (g.righe.find(r => r.indicatore === name) || {}).valore).filter(v => typeof v === 'number');
@@ -1115,9 +1155,9 @@ function spark(name, upto) {                              // the last 30 days, o
 function renderMkt(i) {
   const g = MK.giorni[i], body = $('mkt-body'); body.textContent = ''; if (!g) return;
   const hrs = g.righe.map(r => r.ora_utc).filter(Boolean).sort();
-  $('mkt-date').textContent = 'Dati del ' + dateLong(new Date(g.data + 'T12:00:00')) + (hrs.length ? ', ore ' + hrs[0] + '–' + hrs[hrs.length - 1] + ' UTC' : '');
-  $('mkt-note').textContent = MK.nota || 'Dati di mercato a fini informativi.';
-  if (g.periodo) { const dt = el('details', 'mkt-per'); dt.append(el('summary', null, 'Periodo coperto e avvertenze'), el('p', null, g.periodo)); body.appendChild(dt); }
+  $('mkt-date').textContent = 'Data of ' + dateLong(new Date(g.data + 'T12:00:00')) + (hrs.length ? ', ' + hrs[0] + '–' + hrs[hrs.length - 1] + ' UTC' : '');
+  $('mkt-note').textContent = MK.nota || 'Market data for information only.';
+  if (g.periodo) { const dt = el('details', 'mkt-per'); dt.append(el('summary', null, 'Period covered and caveats'), el('p', null, g.periodo)); body.appendChild(dt); }
   for (const gr of MK.gruppi || Object.keys(GR_IT)) {
     const rows = g.righe.filter(r => r.gruppo === gr); if (!rows.length) continue;
     body.appendChild(el('h3', 'mkt-grp', GR_IT[gr] || gr));
@@ -1127,12 +1167,12 @@ function renderMkt(i) {
       const val = el('span', 'mkt-v', r.valore == null ? '—' : itNumber(r.valore)); if (r.unita && r.valore != null) val.appendChild(el('small', null, r.unita));
       b.append(el('span', 'nm', r.indicatore), sp, val, el('span', 'mkt-d ' + vr.c, vr.t));
       const more = el('div', 'mkt-more'); more.hidden = true;
-      const head = el('p'); head.append((r.ora_utc ? r.ora_utc + ' UTC del ' : '') + dateLong(new Date((r.data || g.data) + 'T12:00:00')) + ' · ');
-      if (r.link) { const a = el('a', null, r.fonte || 'fonte'); a.href = r.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; head.appendChild(a); } else head.append(r.fonte || '');
-      if (r.var_settimana != null) head.append(' · settimana ' + (r.var_settimana > 0 ? '+' : '') + r.var_settimana.toLocaleString('it-IT') + (r.gruppo === 'tassi' ? ' pb' : '%'));
+      const head = el('p'); head.append((r.ora_utc ? r.ora_utc + ' UTC, ' : '') + dateLong(new Date((r.data || g.data) + 'T12:00:00')) + ' · ');
+      if (r.link) { const a = el('a', null, r.fonte || 'source'); a.href = r.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; head.appendChild(a); } else head.append(r.fonte || '');
+      if (r.var_settimana != null) head.append(' · week ' + (r.var_settimana > 0 ? '+' : '') + r.var_settimana.toLocaleString('en-GB') + (r.gruppo === 'tassi' ? ' bp' : '%'));
       more.appendChild(head); if (r.note) more.appendChild(el('p', null, r.note));
       const ev = r.evento && PT.find(p => p.id === r.evento || (p.ids || []).includes(r.evento));
-      if (ev) { const eb = el('button', 'chip', 'Sulla mappa: ' + ev.label); eb.type = 'button'; eb.addEventListener('click', () => { if (window.innerWidth <= 640) setPanel(false); pick(ev, 6.4); }); more.appendChild(eb); }
+      if (ev) { const eb = el('button', 'chip', 'On the map: ' + ev.label); eb.type = 'button'; eb.addEventListener('click', () => { if (window.innerWidth <= 640) setPanel(false); pick(ev, 6.4); }); more.appendChild(eb); }
       b.addEventListener('click', () => { more.hidden = !more.hidden; b.setAttribute('aria-expanded', String(!more.hidden)); });
       body.append(b, more);
     }
@@ -1141,7 +1181,7 @@ function renderMkt(i) {
 function initMkt(data) {
   MK = data && data.giorni && data.giorni.length ? data : null; if (!MK) return;
   const last = MK.giorni.length - 1, btn = $('mkt-btn'), pk = $('mkt-pick');
-  $('mkt-btn-date').textContent = new Date(MK.giorni[last].data + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short' });
+  $('mkt-btn-date').textContent = new Date(MK.giorni[last].data + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
   btn.hidden = false; btn.addEventListener('click', () => showSide('mkt', $('mkt').hidden)); $('mkt-close').addEventListener('click', () => showSide('mkt', false));
   if (MK.giorni.length > 1) { for (let i = last; i >= 0; i--) { const o = el('option', null, dateLong(new Date(MK.giorni[i].data + 'T12:00:00'))); o.value = i; pk.appendChild(o); } pk.hidden = false; pk.addEventListener('change', () => renderMkt(+pk.value)); }
   renderMkt(last);
@@ -1151,9 +1191,9 @@ function initMkt(data) {
 let dosCur = 0;
 function renderDos(i) {
   const d = DOS.dossier[i]; if (!d) return; dosCur = i;
-  $('dos-date').textContent = d.paese + ', ' + dateLong(new Date(d.data + 'T12:00:00'));
+  $('dos-date').textContent = tr(d.paese) + ', ' + dateLong(new Date(d.data + 'T12:00:00'));
   const nOn = PT.filter(p => p.ai && p.dossier === d.slug && !p.why).length;
-  $('dos-map').textContent = nOn === 1 ? 'Mostra il punto sulla mappa' : 'Mostra i ' + nOn + ' punti sulla mappa'; $('dos-map').hidden = !nOn;
+  $('dos-map').textContent = nOn === 1 ? 'Show the point on the map' : 'Show the ' + nOn + ' points on the map'; $('dos-map').hidden = !nOn;
   mdRender($('dos-body'), d.md);
 }
 function openDossier(slug) { const i = DOS.dossier.findIndex(d => d.slug === slug); if (i < 0) return; $('dos-pick').value = i; renderDos(i); showSide('dos', true); }
@@ -1162,7 +1202,7 @@ function initDos(data) {
   const btn = $('dos-btn'), pk = $('dos-pick');
   $('dos-btn-n').textContent = DOS.dossier.length; btn.hidden = false;
   btn.addEventListener('click', () => showSide('dos', $('dos').hidden)); $('dos-close').addEventListener('click', () => showSide('dos', false));
-  if (DOS.dossier.length > 1) { DOS.dossier.forEach((d, i) => { const o = el('option', null, d.paese + ' · ' + dateLong(new Date(d.data + 'T12:00:00'))); o.value = i; pk.appendChild(o); }); pk.hidden = false; pk.addEventListener('change', () => renderDos(+pk.value)); }
+  if (DOS.dossier.length > 1) { DOS.dossier.forEach((d, i) => { const o = el('option', null, tr(d.paese) + ' · ' + dateLong(new Date(d.data + 'T12:00:00'))); o.value = i; pk.appendChild(o); }); pk.hidden = false; pk.addEventListener('change', () => renderDos(+pk.value)); }
   $('dos-map').addEventListener('click', () => {               // switch the layer on and frame this dossier's points
     const d = DOS.dossier[dosCur], pts = PT.filter(p => p.ai && p.dossier === d.slug && !p.why); if (!pts.length) return;
     if (!L.ai) { L.ai = true; $('lyr-ai').checked = true; refilter(); }
@@ -1201,7 +1241,7 @@ function buildFront(fr) {                                // Ukraine: the mapper'
   const of = t => { const path = new Path2D(); for (const a of fr.aree) if (a.t === t) add(a.p, path); return path; };
   FRONT = { ru: of('ru'), contesa: of('contesa'), cleared: of('cleared'),
     adv: fr.aree.filter(a => a.t === 'avanzata' && a.d).map(a => ({ path: add(a.p, new Path2D()), age: Math.max(0, Math.round((TODAY - new Date(a.d + 'T12:00:00')) / 864e5)) })),
-    credit: 'Fronte e aree: ' + (fr.fonte || fr.autore || 'fonte non indicata') + ', dati del ' + dateLong(new Date(fr.data + 'T12:00:00')) + '. Il tipo di area è dedotto dai colori usati dall\u2019autore.' };
+    credit: 'Front and areas: ' + (fr.fonte || fr.autore || 'source not given') + ', data of ' + dateLong(new Date(fr.data + 'T12:00:00')) + '. The type of area is inferred from the author\u2019s colours.' };
   Object.assign(FRONT, { x0, y0, x1, y1 });
 }
 
@@ -1220,7 +1260,7 @@ function buildLines(ln, sea) {                     // sea: the submarine pipelin
     n[cat]++; if (bb[0] < x0) x0 = bb[0]; if (bb[1] < y0) y0 = bb[1]; if (bb[2] > x1) x1 = bb[2]; if (bb[3] > y1) y1 = bb[3];
     return Object.assign(l, { kind: 'linea', cat, parts, bb, path, label: l.nome, g: null, sea: sea ? 1 : 0 });
   });
-  const o = { items, paths, n, x0, y0, x1, y1, credit: (sea ? 'Condotte sottomarine: ' : 'Oleodotti e gasdotti: ') + ln.fonte + '. Sono i ' + ln.versione + '.' };
+  const o = { items, paths, n, x0, y0, x1, y1, credit: (sea ? 'Subsea pipelines: ' : 'Oil and gas pipelines: ') + ln.fonte + '. Release: ' + ln.versione + '.' };
   if (sea) SB = o; else LN = o;
 }
 function drawLines(k, z, LS = LN) {                    // in base units, like the borders: solid when operating, dashed under construction, dotted when idle
@@ -1251,24 +1291,24 @@ function lineAt(x, y) {                                  // the pipeline under a
   return best;
 }
 function renderLine(card, p) {
-  $('cd-kind').textContent = [p.cat === 'o' ? 'Oleodotto' : 'Gasdotto', STATO_IT[p.stato] || p.stato, p.sea ? 'Sottomarino' : 'Medio Oriente'].join(' · ');
+  $('cd-kind').textContent = [p.cat === 'o' ? 'Oil pipeline' : 'Gas pipeline', STATO_IT[p.stato] || p.stato, p.sea ? 'Subsea' : 'Middle East'].join(' · ');
   $('cd-name').textContent = p.nome + (p.segmento ? ' · ' + p.segmento : '');
   const cs = $('cd-sil'); cs.textContent = ''; cs.appendChild(iconOf(p, 1.05));
   const facts = $('cd-facts'); facts.textContent = '';
   const fact = (k, v) => { if (v == null || v === '') return; facts.append(el('dt', null, k), el('dd', null, String(v))); };
-  fact('Trasporta', cap(p.combustibile));
-  fact('Stato', (STATO_IT[p.stato] || p.stato) + (p.stato === 'fuori-servizio' ? ': fermo o in conservazione' : ''));
-  fact('Paesi', p.paesi.join(', '));
-  if (p.da && p.a) fact('Percorso', 'Da ' + p.da + ' a ' + p.a);
-  if (p.km) fact('Lunghezza', itNum(p.km) + ' km');
-  if (p.mare_km) fact('In mare', 'circa ' + itNum(p.mare_km) + ' km, misurati dalla mappa sulla costa di Natural Earth' + (p.anche_mo ? '. È anche nel livello oleodotti e gasdotti del Medio Oriente' : ''));
-  fact('Capacità', p.capacita); fact('In servizio dal', p.anno); fact('Proprietario', p.proprietario);
-  fact('Tracciato', 'Accuratezza ' + p.tracciato + (p.tracciato === 'schematica' ? ': linea indicativa, non il percorso reale' : ''));
-  $('cd-info').textContent = 'Dati di Global Energy Monitor, una sola fonte. Lo stato è quello del suo registro: danni o fermi recenti possono mancare.';
+  fact('Carries', cap(tr(p.combustibile)));
+  fact('Status', (STATO_IT[p.stato] || p.stato) + (p.stato === 'fuori-servizio' ? ': idle or mothballed' : ''));
+  fact('Countries', p.paesi.map(tr).join(', '));
+  if (p.da && p.a) fact('Route', 'From ' + tr(p.da) + ' to ' + tr(p.a));
+  if (p.km) fact('Length', itNum(p.km) + ' km');
+  if (p.mare_km) fact('At sea', 'about ' + itNum(p.mare_km) + ' km, measured on the map against the Natural Earth coastline' + (p.anche_mo ? '. Also in the Middle East oil and gas pipelines layer' : ''));
+  fact('Capacity', p.capacita); fact('In service since', p.anno); fact('Owner', p.proprietario);
+  fact('Routing', 'Accuracy: ' + tr(p.tracciato) + (p.tracciato === 'schematica' ? ' (indicative line, not the actual route)' : ''));
+  $('cd-info').textContent = 'Global Energy Monitor data, a single source. Status is as in its register: recent damage or outages may be missing.';
   $('cd-mates').textContent = '';
   const src = $('cd-src'); src.textContent = '';
-  const li = el('li'), a = el('a', null, 'Global Energy Monitor, scheda di questa linea'); a.href = p.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.appendChild(a);
-  if (p.data_fonte) li.appendChild(el('small', null, 'agg. ' + new Date(p.data_fonte + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' })));
+  const li = el('li'), a = el('a', null, 'Global Energy Monitor, page for this line'); a.href = p.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; li.appendChild(a);
+  if (p.data_fonte) li.appendChild(el('small', null, 'upd. ' + new Date(p.data_fonte + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })));
   src.appendChild(li);
   card.hidden = false; card.scrollTop = 0;
 }
@@ -1282,10 +1322,10 @@ function buildRoutes(rt) {
     r.g.forEach(([lon, lat], j) => { const x = bx(lon), y = by(lat); a[2 * j] = x; a[2 * j + 1] = y; if (j) { path.lineTo(x, y); P.lineTo(x, y); } else { path.moveTo(x, y); P.moveTo(x, y); }
       if (x < bb[0]) bb[0] = x; if (y < bb[1]) bb[1] = y; if (x > bb[2]) bb[2] = x; if (y > bb[3]) bb[3] = y; });
     if (bb[0] < x0) x0 = bb[0]; if (bb[1] < y0) y0 = bb[1]; if (bb[2] > x1) x1 = bb[2]; if (bb[3] > y1) y1 = bb[3];
-    return { kind: 'rotta', id: 'rotta-' + i, t: r.t, km: r.km, s: r.s, parts: [a], bb, path, label: 'Rotta ' + rt.tipi[r.t] };
+    return { kind: 'rotta', id: 'rotta-' + i, t: r.t, km: r.km, s: r.s, parts: [a], bb, path, label: ({ M: 'Major', m: 'Medium', n: 'Minor' }[r.t] || rt.tipi[r.t]) + ' shipping lane' };
   });
   RT = { items, paths, tipi: rt.tipi, fonte: rt.fonte, link: rt.link, origine: rt.origine, licenza: rt.licenza, x0, y0, x1, y1,
-    credit: 'Rotte marittime: ' + rt.fonte + '. ' + rt.origine + '.' };
+    credit: 'Shipping lanes: ' + rt.fonte + '. ' + rt.origine + '.' };
 }
 function drawRoutes(k, z) {                              // under the pipelines, thin: they are context, not news
   const f = z < 4 ? 1 : z < 6 ? 1.25 : 1.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.setLineDash([]); ctx.strokeStyle = C.route;
@@ -1307,44 +1347,44 @@ function routeAt(x, y) {                                 // the route under a ta
   return best;
 }
 const srcItem = (text, link, date) => { const li = el('li'), a = el('a', null, text); if (link) { a.href = link; a.target = '_blank'; a.rel = 'noopener noreferrer'; } li.appendChild(a);
-  if (date) li.appendChild(el('small', null, new Date(date + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'short', year: 'numeric' }))); return li; };
+  if (date) li.appendChild(el('small', null, new Date(date + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }))); return li; };
 function straitChips(names, title) {
   const mt = $('cd-mates'); mt.textContent = ''; const on = names.map(n => D.straits.find(s => s.n === n)).filter(Boolean); if (!on.length) return;
   mt.appendChild(el('h3', null, title)); const box = el('div', 'mates');
-  for (const o of on) { const b = el('button', 'chip', o.n); b.type = 'button'; b.addEventListener('click', () => pick(o, Math.max(4.2, o.z))); box.appendChild(b); }
+  for (const o of on) { const b = el('button', 'chip', o.label); b.type = 'button'; b.addEventListener('click', () => pick(o, Math.max(4.2, o.z))); box.appendChild(b); }
   mt.appendChild(box);
 }
 function renderRoute(card, p) {
-  $('cd-kind').textContent = ['Rotta marittima', RT.tipi[p.t], 'Mondo'].join(' · ');
-  $('cd-name').textContent = 'Rotta ' + RT.tipi[p.t] + (p.s.length ? ': ' + p.s.slice(0, 3).join(', ') + (p.s.length > 3 ? '…' : '') : '');
+  $('cd-kind').textContent = ['Shipping lane', { M: 'major', m: 'medium', n: 'minor' }[p.t], 'World'].join(' · ');
+  $('cd-name').textContent = p.label + (p.s.length ? ': ' + p.s.slice(0, 3).map(tr).join(', ') + (p.s.length > 3 ? '…' : '') : '');
   const cs = $('cd-sil'); cs.textContent = ''; cs.appendChild(svgLine('var(--route)', null, 64));
   const facts = $('cd-facts'); facts.textContent = '';
   const fact = (k, v) => facts.append(el('dt', null, k), el('dd', null, v));
-  fact('Importanza', { M: 'Principale: una delle grandi rotte del commercio mondiale', m: 'Media', n: 'Secondaria' }[p.t]);
-  fact('Passaggi strategici', p.s.length ? p.s.join(', ') : 'Nessuno di quelli in mappa lungo questo tratto');
-  fact('Questo tratto', 'circa ' + itNum(p.km) + ' km');
-  fact('Tracciato', 'Schematico: corsie disegnate su una carta, non il percorso delle singole navi');
+  fact('Importance', { M: 'Major: one of the great lanes of world trade', m: 'Medium', n: 'Minor' }[p.t]);
+  fact('Chokepoints', p.s.length ? p.s.map(tr).join(', ') : 'None of those on the map along this stretch');
+  fact('This stretch', 'about ' + itNum(p.km) + ' km');
+  fact('Routing', 'Schematic: lanes drawn on a chart, not the tracks of individual ships');
   $('cd-info').textContent = RT.origine + '. ' + RT.licenza + '.';
-  straitChips(p.s, 'Passaggi lungo questo tratto');
+  straitChips(p.s, 'Chokepoints along this stretch');
   const src = $('cd-src'); src.textContent = ''; src.appendChild(srcItem('Benden, Global Shipping Lanes, v1.3.1 (2022)', RT.link, null));
   card.hidden = false; card.scrollTop = 0;
 }
 function renderStrait(card, s) {
   const d = ST && ST.stretti && ST.stretti[s.n];
-  $('cd-kind').textContent = ['Passaggio strategico', d && d.gruppo].filter(Boolean).join(' · ');
-  $('cd-name').textContent = s.n;
+  $('cd-kind').textContent = ['Chokepoint', d && tr(d.gruppo)].filter(Boolean).join(' · ');
+  $('cd-name').textContent = s.label;
   const cs = $('cd-sil'); cs.textContent = ''; const dm = svgEl('svg', { width: 26, height: 26, 'aria-hidden': 'true' }); dm.appendChild(svgEl('path', { d: 'M13 2 24 13 13 24 2 13Z', fill: 'var(--accent)' })); cs.appendChild(dm);
   const facts = $('cd-facts'); facts.textContent = '';
   const fact = (k, v, cls) => { const dd = el('dd', cls); dd.append(...[].concat(v)); facts.append(el('dt', null, k), dd); };
   const xsrc = el('ul'), xsint = xStrait(s, fact, xsrc);
-  if (!d) fact('Quote mondiali', 'Dati non caricati.');
-  else if (!d.voci.length) fact('Quote mondiali', d.vuoto || 'Nessun dato.');
-  else for (const x of d.voci) fact(x.voce, [el('b', null, x.quota), '. ' + cap(x.valore) + '. ', el('span', 'muted', 'Dato: ' + x.anno + (x.nota ? '. ' + x.nota : ''))]);
-  for (const o of (d && d.oggi) || []) fact('Più recente', o.testo);
-  fact('Posizione', [el('span', 'mono', fmtLL(s.y, s.x, 2)), ', indicativa: il centro del passaggio']);
+  if (!d) fact('World shares', 'Data not loaded.');
+  else if (!d.voci.length) fact('World shares', d.vuoto || 'No data.');
+  else for (const x of d.voci) fact(tr(x.voce), [el('b', null, x.quota), '. ' + cap(x.valore) + '. ', el('span', 'muted', 'Data: ' + x.anno + (x.nota ? '. ' + x.nota : ''))]);
+  for (const o of (d && d.oggi) || []) fact('Latest', o.testo);
+  fact('Position', [el('span', 'mono', fmtLL(s.y, s.x, 2)), ', indicative: the centre of the passage']);
   $('cd-info').textContent = xsint || (ST ? ST.nota : '');
   const mt = $('cd-mates'); mt.textContent = '';
-  if (RT && !L.routes) { const b = el('button', 'chip', 'Mostra le rotte marittime'); b.type = 'button'; b.addEventListener('click', () => { L.routes = true; $('lyr-routes').checked = true; refilter(); b.remove(); }); const box = el('div', 'mates'); box.appendChild(b); mt.appendChild(box); }
+  if (RT && !L.routes) { const b = el('button', 'chip', 'Show the shipping lanes'); b.type = 'button'; b.addEventListener('click', () => { L.routes = true; $('lyr-routes').checked = true; refilter(); b.remove(); }); const box = el('div', 'mates'); box.appendChild(b); mt.appendChild(box); }
   const src = $('cd-src'); src.textContent = ''; const seen = new Set();
   for (const x of [...((d && d.voci) || []), ...((d && d.oggi) || [])]) { if (seen.has(x.link)) continue; seen.add(x.link); src.appendChild(srcItem(x.fonte, x.link, x.data_fonte)); }
   src.append(...xsrc.children);
@@ -1778,7 +1818,7 @@ function drawLabels(z) {
 
 /* ---------- instruments: scale bar, position read-out, live-tracker links ---------- */
 const nice = max => { const p = Math.pow(10, Math.floor(Math.log10(max))), m = max / p; return (m >= 5 ? 5 : m >= 2 ? 2 : 1) * p; };
-const itNum = v => v == null || v === '' || isNaN(+v) ? '—' : (+v).toLocaleString('it-IT', { maximumFractionDigits: 2 });
+const itNum = v => v == null || v === '' || isNaN(+v) ? '—' : (+v).toLocaleString('en-GB', { maximumFractionDigits: 2 });
 function fmtDM(v, pos, neg, pad, prec) {
   const a = Math.abs(v); let d = Math.floor(a), m = +((a - d) * 60).toFixed(prec);
   if (m >= 60) { m = 0; d++; }
@@ -2201,7 +2241,7 @@ function xSpark(serie, n = 90) {
   const d = pts.map((v, i) => (i ? 'L' : 'M') + (i * 62 / (pts.length - 1) + 1).toFixed(1) + ' ' + (hi === lo ? 9 : 16 - (v - lo) / (hi - lo) * 14).toFixed(1)).join('');
   sv.appendChild(svgEl('path', { d, fill: 'none', stroke: pts[pts.length - 1] >= pts[0] ? 'var(--ally)' : 'var(--error)', 'stroke-width': 1.3, 'stroke-linejoin': 'round' })); return sv;
 }
-function xVar(v, pb) { if (v == null) return el('span', 'mkt-d flat', '—'); const a = Math.abs(v).toLocaleString('it-IT', { maximumFractionDigits: pb ? 0 : 2 }); return el('span', 'mkt-d ' + (v > 0 ? 'up' : v < 0 ? 'down' : 'flat'), (v > 0 ? '+' : v < 0 ? '−' : '') + a + (pb ? ' pb' : '%')); }
+function xVar(v, pb) { if (v == null) return el('span', 'mkt-d flat', '—'); const a = Math.abs(v).toLocaleString('en-GB', { maximumFractionDigits: pb ? 0 : 2 }); return el('span', 'mkt-d ' + (v > 0 ? 'up' : v < 0 ? 'down' : 'flat'), (v > 0 ? '+' : v < 0 ? '−' : '') + a + (pb ? ' pb' : '%')); }
 function xCurve(c) {
   const sv = svgEl('svg', { width: 360, height: 120, viewBox: '0 0 360 120', role: 'img', 'aria-label': 'Curva dei rendimenti USA oggi, un mese fa e un anno fa' });
   const ks = c.scadenze, sets = [['un_anno_fa', 'var(--ink-faint)', '3 3'], ['un_mese_fa', 'var(--ink-soft)', '5 3'], ['oggi', 'var(--accent)', null]];
@@ -2397,8 +2437,8 @@ async function start(snap) {
     tiles = manifest.tiles.map((t, i) => Object.assign(buildSet(tt[i], t.bbox), { id: t.id }));
     D = lab;
     for (const k of ['countries', 'cities', 'seas', 'straits', 'regions']) for (const l of D[k]) { l.bx = bx(l.x); l.by = by(l.y); }
-    for (const c of D.countries) { c.N = c.n.toLocaleUpperCase('it-IT'); c.px = c.r <= 2 ? 13 : c.r === 3 ? 12 : c.r === 4 ? 11 : 10.5; }
-    for (const s of D.straits) Object.assign(s, { N: s.n.toLocaleUpperCase('it-IT'), kind: 'stretto', label: s.n, nome: s.n, slon: s.x, slat: s.y });
+    for (const c of D.countries) { c.N = c.n.toLocaleUpperCase('en-GB'); c.px = c.r <= 2 ? 13 : c.r === 3 ? 12 : c.r === 4 ? 11 : 10.5; }
+    for (const s of D.straits) Object.assign(s, { N: s.n.toLocaleUpperCase('en-GB'), kind: 'stretto', label: s.n, nome: s.n, slon: s.x, slat: s.y });
   } catch (err) {
     statusEl.textContent = 'Non riesco a caricare i dati della mappa. Ricarica la pagina.'; console.error(err); return;
   }
