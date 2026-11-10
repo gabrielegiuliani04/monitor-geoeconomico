@@ -411,6 +411,10 @@ button, input, select { font: inherit; color: inherit; }
               <span class="sw"><svg width="12" height="12" aria-hidden="true"><path d="M6 1L11 10H1Z" fill="var(--wind)"/></svg></span>Offshore wind base ports<span class="cnt" id="n-xeof"></span></label><p class="hint">Installation and O&amp;M: land, quays, projects, bottlenecks</p></li>
             <li id="li-xruo" hidden><label><input type="checkbox" id="lyr-xruo" data-layer="xruo">
               <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--ev0)" fill-opacity=".5"/></svg></span>Russian attacks by region<span class="cnt" id="n-xruo"></span></label><p class="hint">Circles scaled to the number of days the region was targeted, in the period chosen below</p></li>
+            <li id="li-xpr" hidden><label><input type="checkbox" id="lyr-xpr" data-layer="xpr" checked>
+              <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="5" fill="var(--rk1)" fill-opacity=".6"/></svg></span>Port risk index<span class="cnt" id="n-xpr"></span></label><p class="hint">39 ports scored daily: colour = level, size = score. Tap for indicators</p></li>
+            <li id="li-xtt" hidden><label><input type="checkbox" id="lyr-xtt" data-layer="xtt">
+              <span class="sw"><svg width="22" height="8" aria-hidden="true"><path d="M1 4H21" stroke="var(--rk2)" stroke-width="2"/></svg></span>Sea routes to Europe<span class="cnt" id="n-xtt"></span></label><p class="hint">99 routes, today vs 2023. Colour = extra days (green 0–3, amber 3–8, orange 8+, red dashed = blocked)</p></li>
             <li id="li-xru" hidden><label><input type="checkbox" id="lyr-xru" data-layer="xru">
               <span class="sw"><svg width="12" height="12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" fill="var(--ev1)"/></svg></span>Russian strikes in Ukraine<span class="cnt" id="n-xru"></span></label><p class="hint">Major documented strikes since 2022: energy, ports, railways, cities</p></li>
             <li id="li-xnavi" hidden><label><input type="checkbox" id="lyr-xnavi" data-layer="xnavi" checked>
@@ -497,7 +501,7 @@ button, input, select { font: inherit; color: inherit; }
           <div><h2>Terminal</h2></div>
           <button class="x" id="trm-close" type="button" aria-label="Close the terminal">×</button>
         </div>
-        <div id="trm-tabs" role="group" aria-label="Section"><button class="chip" type="button" data-tab="rischio">Risk</button><button class="chip" type="button" data-tab="nord">Northern Europe</button><button class="chip" type="button" data-tab="prezzi">Prices and rates</button><button class="chip" type="button" data-tab="agenda">Calendar</button><button class="chip" type="button" data-tab="stretti">Chokepoints</button><button class="chip" type="button" data-tab="logistica">Freight and risk</button><button class="chip" type="button" data-tab="scorte">Stocks</button><button class="chip" type="button" data-tab="paesi">Countries</button><button class="chip" type="button" data-tab="minerali">Critical minerals</button><button class="chip" type="button" data-tab="notizie">News</button><button class="chip" type="button" data-tab="ucraina">Ukraine</button></div>
+        <div id="trm-tabs" role="group" aria-label="Section"><button class="chip" type="button" data-tab="rischio">Risk</button><button class="chip" type="button" data-tab="porti">Ports</button><button class="chip" type="button" data-tab="tempi">Transit times</button><button class="chip" type="button" data-tab="eolico">Wind calendar</button><button class="chip" type="button" data-tab="nord">Northern Europe</button><button class="chip" type="button" data-tab="prezzi">Prices and rates</button><button class="chip" type="button" data-tab="agenda">Calendar</button><button class="chip" type="button" data-tab="stretti">Chokepoints</button><button class="chip" type="button" data-tab="logistica">Freight and risk</button><button class="chip" type="button" data-tab="scorte">Stocks</button><button class="chip" type="button" data-tab="paesi">Countries</button><button class="chip" type="button" data-tab="minerali">Critical minerals</button><button class="chip" type="button" data-tab="notizie">News</button><button class="chip" type="button" data-tab="ucraina">Ukraine</button></div>
         <p class="mkt-note" id="trm-note"></p>
         <div id="trm-body"></div>
       </aside>
@@ -568,7 +572,7 @@ let VB = [], VP = [], LN = null, SB = null, RT = null, ST = null;   // SB: subma
 let FRONT = null, areasOn = false;                // Ukraine: areas of control; whether they are in view in this frame
 let evRange = 7, REPORTS = [], CTX = null, liveKey = '', MK = null, DOS = null;
 let setPanel = () => {};
-const L = { xruo: false, xsca: false, xjwc: false, xeof: true, xru: false, xh2: false, xpn: true, xwind: true, xbs: true, xbk: false, xbm: false, xrisk: true, xcam: false, xai: false, xinv: false, xcy: false, xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
+const L = { xpr: true, xtt: false, xruo: false, xsca: false, xjwc: false, xeof: true, xru: false, xh2: false, xpn: true, xwind: true, xbs: true, xbk: false, xbm: false, xrisk: true, xcam: false, xai: false, xinv: false, xcy: false, xua: false, xrail: false, xcable: false, xpower: false, xnuke: false, xlng: false, xgas: true, xnavi: true, ships: false, air: false, events: true, hybrid: true, adv: true, front: false, bases: false, iran: false, ita: false, ad: false, ai: false, ports: true, routes: false, subsea: false, oil: true, gas: true, borders: true, countries: true, cities: true, seas: true, straits: true, regions: true, water: true, grat: true };
 const TH = {};                                    // theater switches, filled from the data
 const C = {}, FF = {};
 const TODAY = new Date(); TODAY.setHours(12, 0, 0, 0);
@@ -1963,7 +1967,7 @@ function wire() {
     const id = cb.dataset.layer;
     if (id in L) cb.checked = !!L[id];
     if (saved && typeof saved[id] === 'boolean' && id !== 'front' && id !== 'routes' && id !== 'subsea' && id !== 'ai') { L[id] = saved[id]; cb.checked = saved[id]; }   // the front and the routes always start switched off
-    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua', 'xai', 'xinv', 'xcy', 'xcam', 'xrisk', 'xbm', 'xpn', 'xwind', 'xbs', 'xbk', 'xh2', 'xru', 'xjwc', 'xeof', 'xsca', 'xruo'].includes(id)) refilter(); else schedule(); });
+    cb.addEventListener('change', () => { L[id] = cb.checked; try { localStorage.setItem('monitor-osint.layers', JSON.stringify(L)); } catch (e) {} if (['ships', 'air', 'events', 'hybrid', 'adv', 'front', 'bases', 'iran', 'ita', 'ad', 'ports', 'oil', 'gas', 'routes', 'subsea', 'ai', 'xrail', 'xcable', 'xpower', 'xnuke', 'xlng', 'xgas', 'xnavi', 'xua', 'xai', 'xinv', 'xcy', 'xcam', 'xrisk', 'xbm', 'xpn', 'xwind', 'xbs', 'xbk', 'xh2', 'xru', 'xjwc', 'xeof', 'xsca', 'xruo', 'xpr', 'xtt'].includes(id)) refilter(); else schedule(); });
   });
 
   const input = $('goto-input'), msg = $('goto-msg');
@@ -1985,14 +1989,14 @@ function wire() {
 /* ---------- Strati aggiunti: infrastrutture, flussi, navi, terminale (prezzi, agenda, stretti) ---------- */
 const XF = { ferrovie: 'data/ferrovie.json', cavi: 'data/cavi.json', caviInc: 'data/cavi-incidenti.json', gnl: 'data/terminali-gnl.json', gasit: 'data/gas-italia.json',
   navi: 'data/navi.json', pw: 'data/portwatch.json', sd: 'data/stretti-dettaglio.json', prezzi: 'data/prezzi.json', cal: 'data/calendario.json',
-  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json', aim: 'data/ai-mondo.json', inv: 'data/investimenti.json', cy: 'data/cyber-energia.json', cam: 'data/webcam.json', rk: 'data/rischio.json', bm: 'data/basi-mondo.json', pn: 'data/porti-nord.json', on: 'data/offshore-nord.json', bs: 'data/baltico-sicurezza.json', en: 'data/esposizione-nord.json', bk: 'data/bunker-emissioni.json', h2: 'data/idrogeno.json', ru: 'data/attacchi-russi.json', com: 'data/commercio.json', min: 'data/minerali.json', ass: 'data/assicurazioni.json', eof: 'data/eolico-filiera.json', sca: 'data/supply-chain-ai.json' };
+  rete: 'data/rete-elettrica.json', nucleare: 'data/nucleare.json', noli: 'data/noli.json', scorte: 'data/scorte.json', gpr: 'data/gpr.json', ic: 'data/interconnessioni.json', paesi: 'data/paesi.json', ua: 'data/ucraina-storico.json', nt: 'data/notizie.json', fs: 'data/fronte-storico.json', aim: 'data/ai-mondo.json', inv: 'data/investimenti.json', cy: 'data/cyber-energia.json', cam: 'data/webcam.json', rk: 'data/rischio.json', bm: 'data/basi-mondo.json', pn: 'data/porti-nord.json', on: 'data/offshore-nord.json', bs: 'data/baltico-sicurezza.json', en: 'data/esposizione-nord.json', bk: 'data/bunker-emissioni.json', h2: 'data/idrogeno.json', ru: 'data/attacchi-russi.json', com: 'data/commercio.json', min: 'data/minerali.json', ass: 'data/assicurazioni.json', eof: 'data/eolico-filiera.json', sca: 'data/supply-chain-ai.json', pr: 'data/port-risk.json', tt: 'data/transit-times.json', wc: 'data/wind-calendar.json' };
 const X = { lines: {}, pts: {}, data: {} };
 const XDATED = new Set(['xua', 'xru', 'xcy', 'xbs']), XR = { da: '2022-02-24', a: '2099-12-31' };
 const XLAYERS = {   // layer -> colour token, label
   xrail: ['rail', 'Railways'], xcable: ['cable', 'Subsea cables'], xpower: ['power', 'Power grid'], xlng: ['lng', 'LNG terminals'],
-  xgas: ['gasit', 'Gas into Italy'], xnavi: ['sanz', 'Ships (AIS)'], xnuke: ['power', 'Nuclear power plants'], xua: ['uastrike', 'Ukrainian strikes in Russia'], xai: ['ai', 'AI worldwide'], xinv: ['inv', 'AI investment'], xcy: ['cy', 'Cyber incidents'], xcam: ['cam', 'Public webcams'], xrisk: ['rk3', 'Risk'], xbm: ['bm', 'Bases worldwide'], xpn: ['pn', 'Northern ports'], xwind: ['wind', 'Offshore wind'], xbs: ['bs', 'Baltic security'], xbk: ['bk', 'Bunkering'], xh2: ['h2', 'Hydrogen'], xru: ['ev1', 'Russian strikes in Ukraine'], xjwc: ['jwc', 'War-risk areas'], xeof: ['wind', 'Wind base ports'], xsca: ['sca', 'AI value chain'], xruo: ['ev0', 'Attacks by region'] };
+  xgas: ['gasit', 'Gas into Italy'], xnavi: ['sanz', 'Ships (AIS)'], xnuke: ['power', 'Nuclear power plants'], xua: ['uastrike', 'Ukrainian strikes in Russia'], xai: ['ai', 'AI worldwide'], xinv: ['inv', 'AI investment'], xcy: ['cy', 'Cyber incidents'], xcam: ['cam', 'Public webcams'], xrisk: ['rk3', 'Risk'], xbm: ['bm', 'Bases worldwide'], xpn: ['pn', 'Northern ports'], xwind: ['wind', 'Offshore wind'], xbs: ['bs', 'Baltic security'], xbk: ['bk', 'Bunkering'], xh2: ['h2', 'Hydrogen'], xru: ['ev1', 'Russian strikes in Ukraine'], xjwc: ['jwc', 'War-risk areas'], xeof: ['wind', 'Wind base ports'], xsca: ['sca', 'AI value chain'], xruo: ['ev0', 'Attacks by region'], xpr: ['rk2', 'Port risk'], xtt: ['route', 'Transit routes'] };
 const num = v => (v == null || v === '' ? null : +v);
-const XFAM = { xrail: 'Railways', xcable: 'Subsea cables', xpower: 'Power grid', xlng: 'LNG terminal', xgas: 'Gas into Italy', xnavi: 'Ship', xnuke: 'Nuclear power plant', xua: 'Ukrainian deep strike', xai: 'AI infrastructure', xinv: 'Investment', xcy: 'Cyber incident', xcam: 'Public webcam', xrisk: 'Risk', xbm: 'Military base', xpn: 'Port', xwind: 'Offshore energy', xbs: 'Baltic and North Sea security', xbk: 'Bunkering hub', xh2: 'Hydrogen and ammonia', xru: 'Russian strike in Ukraine', xjwc: 'War-risk area (Joint War Committee)', xeof: 'Offshore wind base port', xsca: 'AI value chain', xruo: 'Ukrainian region: days cited in attacks' };
+const XFAM = { xrail: 'Railways', xcable: 'Subsea cables', xpower: 'Power grid', xlng: 'LNG terminal', xgas: 'Gas into Italy', xnavi: 'Ship', xnuke: 'Nuclear power plant', xua: 'Ukrainian deep strike', xai: 'AI infrastructure', xinv: 'Investment', xcy: 'Cyber incident', xcam: 'Public webcam', xrisk: 'Risk', xbm: 'Military base', xpn: 'Port', xwind: 'Offshore energy', xbs: 'Baltic and North Sea security', xbk: 'Bunkering hub', xh2: 'Hydrogen and ammonia', xru: 'Russian strike in Ukraine', xjwc: 'War-risk area (Joint War Committee)', xeof: 'Offshore wind base port', xsca: 'AI value chain', xruo: 'Ukrainian region: days cited in attacks', xpr: 'Port risk index', xtt: 'Sea route to Europe' };
 
 function xBuildLines(layer, items, styleOf) {           // items with g = parts of [lon, lat]
   const groups = {}; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; const list = [];
@@ -2053,6 +2057,8 @@ async function xLoad(opt) {
     const arcs = (D2.sca.archi || []).filter(e => e.da_lat != null).map(e => { const a = [+e.da_lon, +e.da_lat], b = [+e.a_lon, +e.a_lat]; let bx2 = b[0]; if (bx2 - a[0] > 180) bx2 -= 360; else if (a[0] - bx2 > 180) bx2 += 360; const n = 24, mx = (a[0] + bx2) / 2, my = (a[1] + b[1]) / 2, c = [mx - (b[1] - a[1]) * .15, my + (bx2 - a[0]) * .15], g = []; for (let i = 0; i <= n; i++) { const t = i / n, u = 1 - t; g.push([u * u * a[0] + 2 * u * t * c[0] + t * t * bx2, u * u * a[1] + 2 * u * t * c[1] + t * t * b[1]]); } return Object.assign({}, e, { g: [g], nome: e.da_nome + ' → ' + e.a_nome }); });
     xBuildLines('xsca', arcs, e => ({ key: e.modo || 'x', w: 1.2, dash: e.tipo === 'valutazione' ? [4, 3] : null, a: .75 })); }
   if (D2.eof && D2.eof.elementi) xAddPoints('xeof', D2.eof.elementi, { style: () => ({ shape: 'up', r: 6 }) });
+  if (D2.pr && D2.pr.ports) xAddPoints('xpr', D2.pr.ports, { style: e => ({ shape: 'dot', r: 4 + (+e.score || 0) / 2.5, col: 'rk' + ({ low: 0, medium: 1, high: 2, critical: 3 }[e.level] || 0) }) });
+  if (D2.tt && D2.tt.routes) xBuildLines('xtt', D2.tt.routes.map(r => Object.assign({ nome: r.from_name + ' → ' + r.to_name }, r)), r => { const d = +r.extra_days || 0, k = r.status === 'blocked' ? 'b' : d >= 8 ? 'h' : d >= 3 ? 'm' : 'l'; return { key: k, w: k === 'b' ? 2.2 : k === 'h' ? 1.8 : 1.1, dash: k === 'b' ? [4, 3] : null, a: k === 'l' ? .5 : .85 }; });
   if (D2.ru && D2.ru.per_oblast) xAddPoints('xruo', D2.ru.per_oblast.map(o => Object.assign({ nome: o.oblast }, o)), { style: () => ({ shape: 'dot', r: 4, col: 'ev0' }) });
   if (D2.ru && D2.ru.elementi) xAddPoints('xru', D2.ru.elementi, { style: e => ({ shape: 'dot', r: /energia|porto|ferrovia|grano/.test(e.categoria || '') ? 4.6 : 3.6, col: 'ev1' }) });
   if (D2.h2 && D2.h2.elementi) { xAddPoints('xh2', D2.h2.elementi, { style: e => ({ shape: e.categoria === 'elettrolizzatore' ? 'dot' : 'sq', r: e.mw ? Math.min(7, 3 + Math.sqrt(+e.mw) / 5) : 4, hollow: !/operativ|esercizio/.test(e.stato || '') }) }); if (D2.h2.pipeline) xBuildLines('xh2', D2.h2.pipeline, e => ({ key: /costruz|esercizio/.test(e.stato || '') ? 'a' : 'p', w: 1.8, dash: /costruz|esercizio/.test(e.stato || '') ? null : [4, 3], a: .9 })); }
@@ -2086,16 +2092,16 @@ async function xLoad(opt) {
 function xDrawLines(k, z, vx0, vy0, vx1, vy1) {        // in base units, under the pipelines
   ctx.lineCap = 'round'; ctx.lineJoin = 'round';
   const f = z < 4 ? 1 : z < 6 ? 1.3 : 1.6;
-  for (const l of ['xsca', 'xjwc', 'xpower', 'xrail', 'xcable', 'xinv', 'xwind', 'xh2']) {
+  for (const l of ['xtt', 'xsca', 'xjwc', 'xpower', 'xrail', 'xcable', 'xinv', 'xwind', 'xh2']) {
     const S = X.lines[l]; if (!S || !L[l] || S.x1 < vx0 || S.x0 > vx1 || S.y1 < vy0 || S.y0 > vy1) continue;
     ctx.strokeStyle = C[XLAYERS[l][0]];
-    for (const g of S.groups) { ctx.globalAlpha = g.st.a; ctx.lineWidth = g.st.w * f / k; ctx.setLineDash(g.st.dash ? g.st.dash.map(v => v / k) : []); ctx.stroke(g.path); }
+    for (const g of S.groups) { if (l === 'xtt') ctx.strokeStyle = C[{ l: 'rk0', m: 'rk1', h: 'rk2', b: 'rk3' }[g.st.key] || 'route']; ctx.globalAlpha = g.st.a; ctx.lineWidth = g.st.w * f / k; ctx.setLineDash(g.st.dash ? g.st.dash.map(v => v / k) : []); ctx.stroke(g.path); }
   }
   ctx.globalAlpha = 1; ctx.setLineDash([]);
   if (picked && picked.kind === 'extra' && picked.path) { ctx.strokeStyle = C.haloLand; ctx.lineWidth = 6 / k; ctx.stroke(picked.path); ctx.strokeStyle = C[XLAYERS[picked.layer][0]]; ctx.lineWidth = 2.6 / k; ctx.stroke(picked.path); }
 }
 function xDrawPoints(z) {                                 // in screen units, after the labels; they add themselves to the taps
-  for (const l of ['xruo', 'xsca', 'xeof', 'xjwc', 'xru', 'xrisk', 'xh2', 'xpn', 'xwind', 'xbs', 'xbk', 'xbm', 'xcam', 'xai', 'xcy', 'xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
+  for (const l of ['xpr', 'xruo', 'xsca', 'xeof', 'xjwc', 'xru', 'xrisk', 'xh2', 'xpn', 'xwind', 'xbs', 'xbk', 'xbm', 'xcam', 'xai', 'xcy', 'xua', 'xlng', 'xgas', 'xnuke', 'xrail', 'xcable', 'xnavi']) {
     const P = X.pts[l]; if (!P || !L[l]) continue;
     if (l === 'xlng' && z < 3.2) continue;
     const col = C[XLAYERS[l][0]];
@@ -2105,7 +2111,7 @@ function xDrawPoints(z) {                                 // in screen units, af
       const x = T.applyX(p.bx), y = T.applyY(p.by); if (x < -10 || y < -10 || x > w + 10 || y > h + 10) continue;
       if (l === 'xruo') { let n = 0; for (const [m, v] of (p.d.giorni_citati || [])) if (m.slice(0, 7) >= XR.da.slice(0, 7) && m.slice(0, 7) <= XR.a.slice(0, 7)) n += v; p.n = n; if (!n) continue; p.st.r = Math.min(26, 3 + Math.sqrt(n) * 1.6); }
       const s = p.st, r = s.r || 4.5, on = picked === p;
-      ctx.lineWidth = 1.3; ctx.strokeStyle = C.paper; ctx.fillStyle = s.col ? C[s.col] : col; if (l === 'xrisk' || l === 'xruo') ctx.globalAlpha = .5; ctx.beginPath();
+      ctx.lineWidth = 1.3; ctx.strokeStyle = C.paper; ctx.fillStyle = s.col ? C[s.col] : col; if (l === 'xrisk' || l === 'xruo' || l === 'xpr') ctx.globalAlpha = .5; ctx.beginPath();
       if (s.shape === 'up' || s.shape === 'down') { const d = s.shape === 'up' ? -1 : 1; ctx.moveTo(x, y + d * r); ctx.lineTo(x + r, y - d * r * .8); ctx.lineTo(x - r, y - d * r * .8); ctx.closePath(); }
       else if (s.shape === 'sq') { ctx.rect(x - r, y - r, 2 * r, 2 * r); }
       else if (s.shape === 'x') { ctx.strokeStyle = col; ctx.lineWidth = 2.4; ctx.moveTo(x - 4, y - 4); ctx.lineTo(x + 4, y + 4); ctx.moveTo(x + 4, y - 4); ctx.lineTo(x - 4, y + 4); ctx.stroke(); hits.push({ p, x, y, r: 8 }); continue; }
@@ -2121,7 +2127,7 @@ function xDrawPoints(z) {                                 // in screen units, af
 }
 function xLineAt(x, y) {
   const px = (x - T.x) / T.k, py = (y - T.y) / T.k, tol = 6 / T.k; let best = null, bd = tol;
-  for (const l of ['xsca', 'xh2', 'xwind', 'xinv', 'xcable', 'xrail', 'xpower', 'xjwc']) {
+  for (const l of ['xtt', 'xsca', 'xh2', 'xwind', 'xinv', 'xcable', 'xrail', 'xpower', 'xjwc']) {
     const S = X.lines[l]; if (!S || !L[l]) continue;
     for (const it of S.list) {
       if (px < it.bb[0] - tol || px > it.bb[2] + tol || py < it.bb[1] - tol || py > it.bb[3] + tol) continue;
@@ -2167,6 +2173,15 @@ function renderExtra(card, p) {
     fact('Type', d.categoria && trCat(d.categoria)); fact('Status', d.stato); fact('Capacity', d.mw ? itNum(+d.mw) + ' MW' : null); fact('Turbines', d.turbine); fact('Year', d.anno); fact('Operator', d.operatore || d.operatori); fact('Sea', d.mare); fact('Distance from shore', d.distanza_costa_km ? d.distanza_costa_km + ' km' : null); fact('Capacity', d.capacita); fact('Facts', d.fatti);
   } else if (lay === 'xbs') {
     fact('Date', d.data); fact('Category', trCat(d.categoria)); fact('Country', PAESI[d.paese] || d.paese);
+  } else if (lay === 'xpr') {
+    $('cd-name').textContent = d.name + ' · ' + d.level + ' risk'; fact('Score', itNum(+d.score) + ' / 25 (probability ' + itNum(+d.probability) + ' × impact ' + itNum(+d.impact) + '), rank ' + d.rank); fact('Trend over 7 days', d.trend); fact('Roles', d.strategic_roles);
+    fact('Why', d.why); for (const i of (d.indicators || []).slice(0, 8)) fact((i.status === 'red' ? '● ' : i.status === 'amber' ? '◐ ' : i.status === 'green' ? '○ ' : '· ') + i.name, i.text || (i.value != null ? i.value + ' ' + (i.unit || '') : 'n/a')); fact('Watch', d.watch); if (d.impact_cap) fact('Note', d.impact_cap);
+    d.fonte = 'Port Risk Index (method: report/port-risk-method.md)'; d.link = 'https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/port-risk-method.md';
+  } else if (lay === 'xtt') {
+    fact('Cargo', [d.cargo, d.vessel].filter(Boolean).join(' · ')); fact('Status', d.status); fact('Route today', d.route_today); fact('Days today', d.days_today + (d.days_today_range ? ' (' + d.days_today_range.join('–') + ')' : '') + ' · ' + itNum(+d.nm_today) + ' nm'); fact('Days in 2023 (via Suez)', d.days_base + ' · ' + itNum(+d.nm_base) + ' nm'); fact('Extra days', d.extra_days);
+    fact('Extra cost per voyage', d.extra_cost_usd != null ? '$' + itNum(+d.extra_cost_usd) : null); fact('Extra cost per ' + (d.unit || 'unit'), d.extra_cost_per_unit_incl_price_effect != null ? '$' + itNum(+d.extra_cost_per_unit_incl_price_effect) : null);
+    if (d.cape) fact('Via the Cape', d.cape.days + ' days (+' + d.cape.extra_days_vs_base + ')'); fact('Chokepoints', d.chokepoints); fact('Notes', d.notes);
+    d.fonte = 'Transit-time model on Benden shipping lanes (method in docs/data/transit-times.json)'; d.link = 'https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/agenti/transit-times.md';
   } else if (lay === 'xruo') {
     fact('Days cited in the chosen period', (p.n || 0) + ' (' + XR.da.slice(0, 7) + ' → ' + (XR.a > '2090' ? 'today' : XR.a.slice(0, 7)) + ')'); fact('Days cited in total', d.totale_giorni_citati); fact('Major documented attacks', d.totale_eventi_curati);
     fact('What it measures', 'Days on which the Ukrainian Air Force names the region as a target or heading of missiles and drones (Ivaniuk dataset, CC BY-NC-SA). These are not confirmed hits.');
@@ -2386,6 +2401,29 @@ function renderTerminal() {
     const DEP = X.data.com && X.data.com.dipendenze; if (DEP) { body.appendChild(el('h3', 'mkt-grp', 'Critical dependencies')); body.appendChild(el('p', 'trm-evd', 'Note: for purchases from other EU countries the supplier is the country of consignment, not of origin (e.g. lithium “from Germany” or nickel “from the Netherlands” actually come from outside the EU).')); const arr = Array.isArray(DEP) ? DEP : Object.values(DEP).flat(); for (const d of arr.slice(0, 20)) { const r = el('div', 'trm-ev hi'); const f0 = (d.fornitori || [])[0] || {}; r.appendChild(el('p', 'trm-evt', tr(d.importatore) + ' · ' + d.prodotto + ' → ' + (PAESI[f0.iso2] || tr(f0.partner) || '') + ' ' + (f0.quota != null ? itNum(f0.quota) + '%' : '') + ' (' + d.anno + ')')); body.appendChild(r); } }
     body.appendChild(el('h3', 'mkt-grp', 'Top producers'));
     for (const m of X.data.min.elementi) { const r = el('div', 'trm-ev'), t = el('p', 'trm-evt'); t.append(el('b', null, m.minerale), ' (' + m.anno + ')'); r.appendChild(t); r.appendChild(el('p', 'trm-evd', (m.produttori || []).slice(0, 4).map(p => (PAESI[p.iso2] || p.iso2) + ' ' + itNum(p.quota) + '%').join(' · '))); body.appendChild(r); }
+  } else if (trmTab === 'porti' && X.data.pr) {
+    const PR = X.data.pr; $('trm-note').textContent = 'Port Risk Index: probability (traffic, security, chokepoint dependence, war-risk listing) × impact (strategic role, cargo, energy cost), 1–25. Thresholds calibrated on PortWatch history. Updated ' + (PR.reference_date || PR.updated) + '.';
+    const col = { low: 'rk0', medium: 'rk1', high: 'rk2', critical: 'rk3' };
+    for (const reg of [...new Set(PR.ports.map(x => x.region))]) { body.appendChild(el('h3', 'mkt-grp', reg));
+      PR.ports.filter(x => x.region === reg).sort((a, b) => b.score - a.score).forEach(u => { const r = el('button', 'trm-st'); r.type = 'button'; const h = el('p', 'trm-evt'), dot = el('span', 'rk-dot'); dot.style.background = 'var(--' + col[u.level] + ')';
+        h.append(dot, el('b', null, u.name), ' · ' + u.country + ' · ' + u.level + ' · ' + itNum(+u.score) + (u.trend && u.trend !== 'stable' ? ' · ' + u.trend : '')); r.appendChild(h); if (u.why) r.appendChild(el('p', 'trm-evd', u.why));
+        r.addEventListener('click', () => { const pt = (X.pts.xpr || []).find(q => q.d.id === u.id); if (pt) { if (window.innerWidth <= 640) setPanel(false); pick(pt, 6); } }); body.appendChild(r); }); }
+  } else if (trmTab === 'tempi' && X.data.tt) {
+    const TT = X.data.tt; $('trm-note').textContent = 'Sea days and extra cost from key origins to European ports, today vs 2023 (via Suez). Distances on the shipping-lane network (mean error 1.8% vs published distances). Sea time only.';
+    const dests = TT.destinations || [...new Set(TT.routes.map(r => ({ id: r.to, name: r.to_name })))], sel3 = el('select', 'trm-sel');
+    for (const d of (Array.isArray(dests) ? dests : [])) { const o = el('option', null, d.name || d.nome || d.id); o.value = d.id; sel3.appendChild(o); }
+    sel3.value = xDest; body.appendChild(sel3); const box = el('div'); body.appendChild(box);
+    const show = id => { xDest = id; box.textContent = ''; const hd = el('div', 'trm-row trm-hd'); hd.append(el('span', 'nm', 'from'), el('span', null, 'cargo'), el('span', 'mkt-v', 'days'), el('span', null, '2023'), el('span', null, '+days'), el('span', null, '+$/unit')); box.appendChild(hd);
+      for (const r of TT.routes.filter(r => r.to === id)) { const row = el('button', 'trm-row'); row.type = 'button'; row.style.background = 'none'; row.style.border = '0'; row.style.borderBottom = '1px solid var(--line)'; row.style.textAlign = 'left';
+        row.append(el('span', 'nm', r.from_name), el('span', 'mkt-d flat', r.cargo), el('span', 'mkt-v', r.status === 'blocked' ? 'blocked' : String(r.days_today)), el('span', 'mkt-d flat', String(r.days_base)), el('span', 'mkt-d ' + (+r.extra_days > 0 ? 'down' : 'flat'), (+r.extra_days > 0 ? '+' : '') + r.extra_days), el('span', 'mkt-d flat', r.extra_cost_per_unit_incl_price_effect != null ? '$' + itNum(Math.round(+r.extra_cost_per_unit_incl_price_effect)) : '—'));
+        row.addEventListener('click', () => { const ln = X.lines.xtt && X.lines.xtt.list.find(q => q.d.from === r.from && q.d.to === r.to); if (ln) { L.xtt = true; $('lyr-xtt').checked = true; refilter(); pick(ln, null); } }); box.appendChild(row); } };
+    sel3.addEventListener('change', () => show(sel3.value)); show(xDest);
+  } else if (trmTab === 'eolico' && X.data.wc) {
+    const W = X.data.wc, today = new Date().toISOString().slice(0, 10), in90 = new Date(Date.now() + 90 * 864e5).toISOString().slice(0, 10), ago90 = new Date(Date.now() - 90 * 864e5).toISOString().slice(0, 10);
+    $('trm-note').textContent = 'Offshore wind milestones in the North Sea and the Baltic: auctions, FIDs, first power, delays, cancellations, grid and policy. ' + (W.riepilogo && W.riepilogo.items || W.elementi.length) + ' items with sources.';
+    const pick2 = (a, b) => W.elementi.filter(e => (e.period_start || e.date) <= b && (e.period_end || e.date) >= a).sort((x, y) => (x.period_start || x.date).localeCompare(y.period_start || y.date));
+    for (const [tit, arr] of [['Next 90 days', pick2(today, in90)], ['Last 90 days', pick2(ago90, today).reverse()], ['At risk or unconfirmed', W.elementi.filter(e => /risk|unconfirmed/.test(e.status_effective || e.status))]]) { if (!arr.length) continue; body.appendChild(el('h3', 'mkt-grp', tit));
+      for (const e of arr) { const r = el('div', 'trm-ev' + (/risk|unconfirmed|cancel|delay/.test((e.status_effective || '') + e.type) ? ' hi' : '')), t = el('p', 'trm-evt'); t.append(el('span', 'mono', e.date), ' ', el('b', null, e.country), ' · ' + e.type + ' · ' + e.project + (e.capacity_mw ? ' · ' + itNum(+e.capacity_mw) + ' MW' : '')); r.appendChild(t); if (e.summary) r.appendChild(el('p', 'trm-evd', e.summary)); if (e.link) { const a = el('a', 'trm-src', e.source || 'source'); a.href = e.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); } body.appendChild(r); } }
   } else if (trmTab === 'notizie' && X.data.nt) {
     const N = X.data.nt; $('trm-note').textContent = 'News from the last 7 days from ' + ((N.stato_fonti || []).length || 35) + ' open sources (maritime security, conflicts, energy and logistics, central banks). All unverified: they become map events only with two independent sources. Headlines are shown in their original language.';
     const ids = new Set(N.in_evidenza || []), top = N.elementi.filter(e => ids.has(e.id)), rest = N.elementi.filter(e => !ids.has(e.id) && e.possibile_evento).slice(0, 25);
@@ -2405,7 +2443,7 @@ function xBars(rows) {                                    // monthly bars: [mont
   const t = svgEl('text', { x: W - 2, y: 9, 'font-size': 9, 'text-anchor': 'end', fill: 'var(--ink-soft)' }); t.textContent = 'max ' + itNum(mx) + ' · grey: shot down'; sv.appendChild(t);
   const box = el('div', 'trm-curve'); box.appendChild(sv); return box;
 }
-let xPaese = 'IT';
+let xPaese = 'IT', xDest = 'rotterdam';
 function xMatrix(U) {                                     // 5×5 probability × impact matrix
   const S = 32, P = 34, sv = svgEl('svg', { width: '100%', style: 'max-width:300px', viewBox: `0 0 ${P + 5 * S + 8} ${5 * S + 28}`, role: 'img', 'aria-label': 'Likelihood by impact matrix' });
   for (let i = 0; i < 5; i++) for (let j = 0; j < 5; j++) { const sc = (i + 1) * (j + 1), c = sc >= 20 ? 'rk3' : sc >= 12 ? 'rk2' : sc >= 6 ? 'rk1' : 'rk0'; sv.appendChild(svgEl('rect', { x: P + i * S, y: (4 - j) * S, width: S - 1, height: S - 1, fill: 'var(--' + c + ')', 'fill-opacity': .18 })); }

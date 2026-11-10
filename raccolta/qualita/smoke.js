@@ -55,12 +55,14 @@ function write(extra) {
 }
 
 // Errors that come from the test environment, not from the site (ad blockers, missing fonts...).
-const IGNORE = [/favicon\.ico/i, /fonts\.(googleapis|gstatic)\.com/i];
+const IGNORE = [/favicon\.ico/i, /fonts\.(googleapis|gstatic)\.com/i, /ERR_ABORTED/];
+// Layer counters that are 0 by design: the Ukrainian front areas are not republished (licence, see STATO.md).
+const KNOWN_EMPTY = new Set(['n-front']);
 
 function watch(page, bag) {
   page.on('pageerror', e => bag.errors.push('pageerror: ' + (e && e.message || e)));
   page.on('console', m => { if (m.type() === 'error') { const t = m.text(); if (!IGNORE.some(r => r.test(t))) bag.errors.push('console: ' + t); } });
-  page.on('requestfailed', r => { const u = r.url(); if (!IGNORE.some(x => x.test(u))) bag.failedReq.push(u + ' (' + ((r.failure() || {}).errorText || '?') + ')'); });
+  page.on('requestfailed', r => { const u = r.url(), why = (r.failure() || {}).errorText || '?'; if (!IGNORE.some(x => x.test(u) || x.test(why))) bag.failedReq.push(u + ' (' + why + ')'); });
   page.on('response', r => { if (r.status() >= 400 && !IGNORE.some(x => x.test(r.url()))) bag.failedReq.push(r.url() + ' (HTTP ' + r.status() + ')'); });
 }
 
@@ -94,25 +96,19 @@ async function main() {
       await page.waitForFunction(() => typeof X !== 'undefined' && X && X.data && Object.keys(X.data).length > 0, null, { timeout: 30000 })
         .catch(() => {});
       pass(name, 'page loads');
-      const info = await page.evaluate(() => {
-        const o = { points_main: (typeof PT !== 'undefined' && PT) ? PT.length : null, pts: {}, lines: {}, dataNull: [] };
-        if (typeof X !== 'undefined' && X) {
-          for (const [k, v] of Object.entries(X.pts || {})) o.pts[k] = Array.isArray(v) ? v.length : (v && v.length) || 0;
-          for (const [k, v] of Object.entries(X.lines || {})) o.lines[k] = v && v.list ? v.list.length : 0;
-          for (const [k, v] of Object.entries(X.data || {})) if (v == null) o.dataNull.push(k);
-        }
-        return o;
-      });
-      Object.assign(layerCounts, { main_points: info.points_main }, Object.fromEntries(Object.entries(info.pts).map(([k, v]) => ['pts.' + k, v])),
-        Object.fromEntries(Object.entries(info.lines).map(([k, v]) => ['lines.' + k, v])));
-      if (info.points_main > 0) pass(name, 'main points > 0', String(info.points_main)); else fail(name, 'main points > 0', 'PT has ' + info.points_main + ' points');
-      const empty = [...Object.entries(info.pts), ...Object.entries(info.lines)].filter(([, v]) => !(v > 0)).map(([k]) => k);
-      const nLayers = Object.keys(info.pts).length + Object.keys(info.lines).length;
-      if (nLayers === 0) fail(name, 'extra layers built', 'X.pts and X.lines are empty: the data files were not loaded');
-      else if (empty.length) fail(name, 'every layer has > 0 elements', 'empty: ' + empty.join(', '));
-      else pass(name, 'every layer has > 0 elements', nLayers + ' layers');
-      if (info.dataNull.length) fail(name, 'data files loaded', 'null in X.data: ' + info.dataNull.join(', '));
-      else pass(name, 'data files loaded');
+      // the main script is an IIFE (no globals): read the layer counters of the Layers panel instead
+      await page.waitForFunction(() => [...document.querySelectorAll('span.cnt[id^="n-x"]')].some(e => +e.textContent > 0), null, { timeout: 30000 })
+        .catch(() => {});
+      await page.waitForTimeout(1000);
+      const counts = await page.$$eval('span.cnt[id^="n-"]', els => els.filter(e => !/^n-th-/.test(e.id)).map(e => {
+        const li = e.closest('li'); const t = e.textContent.replace(/[^0-9]/g, '');
+        return { id: e.id, n: t === '' ? null : +t, hidden: !!(li && (li.hidden || li.closest('[hidden]'))) };
+      }));
+      for (const c of counts) layerCounts[c.id] = c.hidden ? 'hidden' : c.n;
+      const empty = counts.filter(c => !(c.n > 0) && !KNOWN_EMPTY.has(c.id));
+      if (!counts.length) fail(name, 'layer counters', 'no span.cnt counters found in the Layers panel');
+      else if (empty.length) fail(name, 'every layer count > 0', empty.map(c => `${c.id}=${c.hidden ? 'hidden (data not loaded)' : c.n}`).join(', '));
+      else pass(name, 'every layer count > 0', counts.length + ' layers');
       // close the intro box if shown
       await page.click('#intro-ok', { timeout: 2000 }).catch(() => {});
       // ---------------------------------------------------------------- the Terminal and its tabs

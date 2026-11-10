@@ -1,0 +1,296 @@
+{
+ "updated": "2026-11-10T06:42Z",
+ "overall": "red",
+ "seconds": 50,
+ "passed": 39,
+ "failed": [
+  {
+   "page": "index.html",
+   "test": "main points > 0",
+   "ok": false,
+   "detail": "PT has null points"
+  },
+  {
+   "page": "index.html",
+   "test": "extra layers built",
+   "ok": false,
+   "detail": "X.pts and X.lines are empty: the data files were not loaded"
+  },
+  {
+   "page": "index.html",
+   "test": "no failed requests (scripts, pages)",
+   "ok": false,
+   "detail": "http://127.0.0.1:46315/notizie.html (net::ERR_ABORTED) | http://127.0.0.1:46315/simulatore.html (net::ERR_ABORTED)"
+  }
+ ],
+ "results": [
+  {
+   "page": "index.html",
+   "test": "page loads",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "index.html",
+   "test": "main points > 0",
+   "ok": false,
+   "detail": "PT has null points"
+  },
+  {
+   "page": "index.html",
+   "test": "extra layers built",
+   "ok": false,
+   "detail": "X.pts and X.lines are empty: the data files were not loaded"
+  },
+  {
+   "page": "index.html",
+   "test": "data files loaded",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Risk",
+   "ok": true,
+   "detail": "9978 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Northern Europe",
+   "ok": true,
+   "detail": "8402 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Prices and rates",
+   "ok": true,
+   "detail": "1908 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Calendar",
+   "ok": true,
+   "detail": "5156 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Chokepoints",
+   "ok": true,
+   "detail": "4416 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Freight and risk",
+   "ok": true,
+   "detail": "823 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Stocks",
+   "ok": true,
+   "detail": "2041 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Countries",
+   "ok": true,
+   "detail": "2040 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Critical minerals",
+   "ok": true,
+   "detail": "3730 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab News",
+   "ok": true,
+   "detail": "9890 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "Terminal tab Ukraine",
+   "ok": true,
+   "detail": "9853 characters"
+  },
+  {
+   "page": "index.html",
+   "test": "no failed data requests",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "index.html",
+   "test": "no failed requests (scripts, pages)",
+   "ok": false,
+   "detail": "http://127.0.0.1:46315/notizie.html (net::ERR_ABORTED) | http://127.0.0.1:46315/simulatore.html (net::ERR_ABORTED)"
+  },
+  {
+   "page": "index.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "simulatore.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "14436 characters"
+  },
+  {
+   "page": "simulatore.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "notizie.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "12028 characters"
+  },
+  {
+   "page": "notizie.html",
+   "test": "news links listed",
+   "ok": true,
+   "detail": "47 external links"
+  },
+  {
+   "page": "notizie.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "crediti.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "5246 characters"
+  },
+  {
+   "page": "crediti.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/hormuz-mar-rosso-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "39989 characters"
+  },
+  {
+   "page": "report/hormuz-mar-rosso-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/index.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "2409 characters"
+  },
+  {
+   "page": "report/index.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/supply-chain-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "44113 characters"
+  },
+  {
+   "page": "report/supply-chain-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/supply-chain-ai-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "27058 characters"
+  },
+  {
+   "page": "report/supply-chain-ai-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/en/ai-supply-chain-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "26303 characters"
+  },
+  {
+   "page": "report/en/ai-supply-chain-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/en/hormuz-red-sea-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "38836 characters"
+  },
+  {
+   "page": "report/en/hormuz-red-sea-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/en/northern-europe-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "43618 characters"
+  },
+  {
+   "page": "report/en/northern-europe-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/en/supply-chain-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "43124 characters"
+  },
+  {
+   "page": "report/en/supply-chain-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  }
+ ],
+ "layer_counts": {
+  "main_points": null
+ },
+ "pages": [
+  "simulatore.html",
+  "notizie.html",
+  "crediti.html",
+  "report/hormuz-mar-rosso-2026-11.html",
+  "report/index.html",
+  "report/supply-chain-2026-11.html",
+  "report/supply-chain-ai-2026-11.html",
+  "report/en/ai-supply-chain-2026-11.html",
+  "report/en/hormuz-red-sea-2026-11.html",
+  "report/en/northern-europe-2026-11.html",
+  "report/en/supply-chain-2026-11.html"
+ ]
+}
