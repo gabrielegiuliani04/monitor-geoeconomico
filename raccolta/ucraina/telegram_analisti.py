@@ -1170,6 +1170,16 @@ def estrai_tutto(senza_firms=False):
         "riepilogo": rie,
         "errori": ERRORI,
     }
+    # never shrink the published file: on a runner whose cache is still being rebuilt
+    # (a few pages per run) the extraction sees only part of the history
+    try:
+        with open(USCITA, encoding="utf-8") as h:
+            prima = len(json.load(h).get("elementi", []))
+    except Exception:
+        prima = 0
+    if prima and len(elementi) < 0.9 * prima and os.environ.get("TG_FORZA") != "1":
+        print("NON scritto: %d attacchi contro %d già pubblicati (cache incompleta?); tengo il file attuale" % (len(elementi), prima))
+        return
     with open(USCITA, "w", encoding="utf-8") as h:
         json.dump(out, h, ensure_ascii=False, separators=(",", ":"))
     print("scritto %s: %d attacchi, %.2f MB" % (USCITA, len(elementi), os.path.getsize(USCITA) / 1e6))

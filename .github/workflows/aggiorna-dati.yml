@@ -15,7 +15,7 @@ concurrency:
 jobs:
   aggiorna:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 60
     env:
       AISSTREAM_API_KEY: ${{ secrets.AISSTREAM_API_KEY }}
       GFW_API_KEY: ${{ secrets.GFW_API_KEY }}
@@ -53,8 +53,17 @@ jobs:
       - name: Ucraina (lanci e abbattimenti)
         continue-on-error: true
         run: python3 raccolta/ucraina/raccogli.py
+      - name: Telegram cache (posts already read, kept between runs)
+        uses: actions/cache@v4
+        with:
+          path: raccolta/ucraina/cache_telegram
+          key: telegram-${{ github.run_id }}
+          restore-keys: telegram-
       - name: Strikes reported by OSINT analysts (AMK Mapping, Clément Molin on Telegram; incremental)
         continue-on-error: true
+        timeout-minutes: 12
+        env:
+          TG_MAX_PAGINE: "120"
         run: python3 raccolta/ucraina/telegram_analisti.py
       - name: Russian strikes in Ukraine (per-oblast counts + curated events)
         continue-on-error: true
