@@ -28,7 +28,10 @@ MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", 
 PAESI = {"US": "Stati Uniti", "CN": "Cina", "TW": "Taiwan", "KR": "Corea del Sud", "JP": "Giappone",
          "NL": "Paesi Bassi", "DE": "Germania", "IE": "Irlanda", "SG": "Singapore", "MY": "Malesia",
          "AE": "Emirati", "QA": "Qatar", "UA": "Ucraina", "CD": "Congo (RD)", "EE": "Estonia", "MX": "Messico",
-         "FR": "Francia", "IT": "Italia", "OM": "Oman", "IL": "Israele", "IN": "India"}
+         "FR": "Francia", "IT": "Italia", "OM": "Oman", "IL": "Israele", "IN": "India",
+         "AT": "Austria", "BE": "Belgio", "BG": "Bulgaria", "BR": "Brasile", "CH": "Svizzera", "CL": "Cile",
+         "DK": "Danimarca", "ES": "Spagna", "GB": "Regno Unito", "NO": "Norvegia", "PE": "Perù", "PL": "Polonia",
+         "VN": "Vietnam", "ZA": "Sudafrica", "AU": "Australia", "CA": "Canada", "RU": "Russia", "TR": "Turchia"}
 STATO_ETICHETTA = {"critico": ("■", "critico", "s-critico"), "attenzione": ("▲", "attenzione", "s-attenzione"),
                    "normale": ("●", "normale", "s-normale"), "informativo": ("○", "informativo", ""),
                    "non misurato": ("○", "non misurato", "")}
@@ -459,9 +462,9 @@ def costruisci(d, mese):
 
     # --- In breve (STANDARD §5: massimo 5 punti, ognuno con cifra e fonte)
     if ree.get("verifica"):
-        p1 = ("**Pechino annuncia la proroga sulle terre rare, ma il testo ufficiale manca.** Il 9 novembre la Cina ha annunciato di prorogare al %s la sospensione delle misure di ottobre 2025, compresa la regola dello 0,1%% (Reuters); al %s l'annuncio non è nell'elenco ufficiale del MOFCOM. "
-              "Il divieto di export di gallio e germanio verso gli USA torna il %s (%s) se non prorogato. La Cina fa il %s%% del gallio primario e il %s%% delle terre rare estratte ([USGS](%s), dati 2025)." % (
-                  data_it(ree["scadenza"]), data_it(rif), data_it(gage["scadenza"]), giorni_txt(gage["giorni_alla_scadenza"]),
+        p1 = ("**Pechino annuncia la proroga sulle terre rare, senza testo ufficiale.** Il 9 novembre la Cina ha prorogato al %s la sospensione delle misure di ottobre 2025 (Reuters), ma l'annuncio non è ancora nell'elenco del MOFCOM. "
+              "Il divieto di export di gallio e germanio verso gli USA è sospeso fino al %s. La Cina fa il %s%% del gallio primario e il %s%% delle terre rare estratte ([USGS](%s), dati 2025)." % (
+                  data_it(ree["scadenza"]), data_it(gage["scadenza"]),
                   num(mat["gallio"]["primo_produttore"]["quota_pct"], 0), num(mat["terre-rare"]["primo_produttore"]["quota_pct"]), mat["terre-rare"]["link"]))
     else:
         p1 = ("**Le misure cinesi su terre rare e gallio restano sospese.** Misure di ottobre 2025 sospese fino al %s; divieto verso gli USA fino al %s. La Cina fa il %s%% del gallio primario e il %s%% delle terre rare estratte ([USGS](%s), dati 2025)." % (
@@ -471,7 +474,7 @@ def costruisci(d, mese):
         p1,
         "**Tre punti unici di rottura reggono la catena.** Gli scanner EUV escono solo da Veldhoven (Paesi Bassi); TSMC ha il %s%% dei ricavi mondiali di fonderia (2° trimestre 2026, [TrendForce](%s)) e fa il 2 nm solo a Taiwan; il packaging CoWoS delle GPU è quasi tutto a Tainan e Chiayi. Arizona, Kumamoto e Dresda non cambiano il quadro prima del 2028." % (
             num(tsmc.get("valore")), tsmc.get("link")),
-        "**Hormuz è quasi chiuso, lo Stretto di Taiwan no.** A Hormuz sono passate %s navi al giorno nella settimana al %s, %s sulla stessa settimana del 2025 ([IMF PortWatch](https://portwatch.imf.org/)); l'elio del Qatar (%s%% del mondo) è fermo dal 2 marzo. Nello Stretto di Taiwan %s navi al giorno, %s." % (
+        "**Hormuz è quasi chiuso, lo Stretto di Taiwan no.** A Hormuz sono passate %s navi al giorno nella settimana al %s, %s sulla stessa settimana del 2025 ([IMF PortWatch](https://portwatch.imf.org/)); il Qatar, %s%% dell'elio mondiale, ha fermato la produzione il 2 marzo (AP). Nello Stretto di Taiwan %s navi al giorno, %s sulla stessa settimana del 2025." % (
             num((hz.get("dettaglio") or {}).get("navi_giorno")), data_it(hz.get("data")), pct(hz.get("valore")), num(mat["elio"]["quote"][1]["quota_pct"]) if mat["elio"]["quote"][1]["paese"] == "QA" else "—",
             num((tw.get("dettaglio") or {}).get("navi_giorno"), 0), pct(tw.get("valore"))),
         "**La memoria è il collo di bottiglia che stringe.** L'HBM è divisa tra SK Hynix 50%%, Samsung 33%% e Micron 18%% (Counterpoint, 2° trimestre 2026); TrendForce prevede prezzi contrattuali DRAM +%s%% sul trimestre nel 4° trimestre ([TrendForce](%s)). Per la Cina l'HBM è il limite della produzione Huawei." % (
@@ -485,7 +488,9 @@ def costruisci(d, mese):
     sc = []
     for c in d["controlli"]:
         if c["paese"] == "CN" and c.get("scadenza"):
-            sc.append("**%s** — %s" % (c["misura"].split(";")[0].rstrip("."), stato_controllo(c)))
+            etich = {"CN-2025-10-TR": "Misure di ottobre 2025 (altre cinque terre rare, regola dello 0,1%, impianti e tecnologie)",
+                     "CN-2024-USBAN": "Divieto di export verso gli USA di gallio, germanio e antimonio (dicembre 2024)"}.get(c["id"], c["misura"].split(";")[0].rstrip("."))
+            sc.append("**%s** — %s" % (etich, stato_controllo(c)))
     sc.append("Le licenze cinesi su gallio e germanio (2023), sulle sette terre rare medie e pesanti (aprile 2025) e il divieto di export di elio (luglio 2026) sono in vigore in ogni caso.")
     doc.box("scadenze", "Scadenze cinesi: stato al %s" % data_it(rif), sc)
 
@@ -516,7 +521,7 @@ def costruisci(d, mese):
                 doc.p(par)
         if a["id"] == "materie":
             doc.svg(grafico_concentrazione(d, True), grafico_concentrazione(d, False),
-                    "Quota del primo paese produttore, in %% della produzione mondiale 2025 (stime), materie con primo produttore almeno al 30%%. Fonte: [USGS Mineral Commodity Summaries 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf), 5 febbraio 2026; quote calcolate in docs/data/supply-chain-ai.json e uguali a quelle di minerali.json.",
+                    "Quota del primo paese produttore, in % della produzione mondiale 2025 (stime), materie con primo produttore almeno al 30%. Fonte: [USGS Mineral Commodity Summaries 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf), 5 febbraio 2026; quote calcolate in docs/data/supply-chain-ai.json e uguali a quelle di minerali.json.",
                     "sca-%s-concentrazione.svg" % mese)
             altre = conf.get("altre_materie_controllate") or []
             if altre:

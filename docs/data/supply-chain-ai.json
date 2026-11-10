@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-10T06:00Z",
- "data_riferimento": "2026-11-09",
+ "aggiornato": "2026-11-10T06:05Z",
+ "data_riferimento": "2026-11-10",
  "fonti": [
   {
    "nome": "USGS, Mineral Commodity Summaries 2026",
@@ -13,7 +13,7 @@
    "link": null,
    "file": "raccolta/supply-chain-ai/*.json",
    "licenza": "fatti citati con fonte e link per ogni voce",
-   "data_dato": "2026-11-09"
+   "data_dato": "2026-11-10"
   },
   {
    "nome": "OpenStreetMap Nominatim (geocodifica una tantum)",
@@ -80,12 +80,12 @@
    "testo": [
     "Un chip per l'AI contiene poche decine di grammi di materiali, ma senza alcuni di essi la fabbrica si ferma. Il gallio serve ai semiconduttori di potenza e all'ottica, il germanio alla fibra, l'elio al raffreddamento dei wafer, il neon ai laser della litografia, la fluorite ai gas di incisione, il quarzo di Spruce Pine ai crogioli in cui si fonde il silicio. Rame e terre rare servono a valle: cavi, trasformatori, motori delle ventole e dei sistemi di raffreddamento, dischi rigidi.",
     "La concentrazione è estrema e misurabile con l'ultima edizione del [USGS Mineral Commodity Summaries 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf) (5 febbraio 2026, dati 2025): la tabella sotto calcola le quote dai dati di produzione per paese.",
-    "Il rischio di questa settimana sono i controlli cinesi. Le licenze su gallio e germanio (agosto 2023) e sulle sette terre rare medie e pesanti (aprile 2025) sono in vigore. Il divieto di export di gallio e germanio verso gli USA (dicembre 2024) è sospeso fino al 27 novembre 2026; le misure di ottobre 2025, compresa la regola dello 0,1% di contenuto cinese nei prodotti esteri, erano sospese fino al 10 novembre 2026. Il 9 novembre le fonti non concordano: [Tech Times](https://www.techtimes.com/articles/330288/20261109/china-rare-earth-export-controls-pause-ends-tuesday-law-beijing-has-published-no-extension.htm) scrive che nessun testo cinese sposta la data, [Shanghai Metals Market](https://news.metal.com/newscontent/CNTOCBN4QTSC2L3BEOVBYILPAZVOOIHVV6INVPY-china-extends-suspension-of-rare-earth-export-controls-until-january-2027) riporta una proroga al 10 gennaio 2027.",
-    "L'elio è il caso di scuola di un rischio logistico che diventa industriale: il Qatar fa un terzo dell'elio mondiale a Ras Laffan e da marzo 2026 la produzione è in gran parte ferma per la guerra con l'Iran e la chiusura di fatto di Hormuz ([WTOP/AP](https://wtop.com/news/2026/03/iran-war-halts-qatar-helium-output-threatening-global-tech-supply-chains/)). A giugno però [Morningstar/Dow Jones](https://www.morningstar.com/news/dow-jones/202606253275/why-the-middle-east-helium-supply-shock-didnt-hit-chip-makers) spiegava perché lo shock non aveva colpito i produttori di chip: scorte, carichi già in viaggio, elio americano.",
+    "Il rischio di questa settimana sono i controlli cinesi. Le licenze su gallio e germanio (agosto 2023) e sulle sette terre rare medie e pesanti (aprile 2025) sono in vigore e non sono mai state sospese. Il divieto di export di gallio, germanio e antimonio verso gli USA (dicembre 2024) è sospeso fino al 27 novembre 2026: una proroga non è stata trovata. Le misure di ottobre 2025, compresa la regola dello 0,1% di contenuto cinese nei prodotti esteri, erano sospese fino al 10 novembre 2026. Il 9 novembre il ministero del Commercio cinese (MOFCOM) ha annunciato una proroga di due mesi, fino al 10 gennaio 2027 ([Reuters, via The Star](https://www.thestar.com.my/aseanplus/aseanplus-news/2026/11/09/china-extends-suspension-of-rare-earth-export-controls-until-january)); [Shanghai Metals Market](https://news.metal.com/newscontent/CNTOCBN4QTSC2L3BEOVBYILPAZVOOIHVV6INVPY-china-extends-suspension-of-rare-earth-export-controls-until-january-2027) ne riporta il testo come annuncio n. 58 del 2026. **Stato: proroga annunciata, non verificata sulla fonte primaria**: al 10 novembre l'annuncio non compare nell'[elenco ufficiale del MOFCOM](https://www.mofcom.gov.cn/zcfb/blgg/gg/2026/index.html), fermo al n. 52 del 26 ottobre. [Tech Times](https://www.techtimes.com/articles/330288/20261109/china-rare-earth-export-controls-pause-ends-tuesday-law-beijing-has-published-no-extension.htm), uscito il 9 novembre prima dell'annuncio, scriveva che nessun testo spostava la data.",
+    "L'elio è il caso di scuola di un rischio logistico che diventa industriale. Il Qatar fa un terzo dell'elio mondiale (33,2% nel 2025, USGS) a Ras Laffan; QatarGas ha fermato la produzione il 2 marzo 2026 e dichiarato forza maggiore due giorni dopo, per la guerra con l'Iran ([WTOP/AP](https://wtop.com/news/2026/03/iran-war-halts-qatar-helium-output-threatening-global-tech-supply-chains/), marzo 2026). Lo stato attuale della produzione non è verificato da fonte primaria; Hormuz resta chiuso di fatto (portwatch.json). A giugno [Morningstar/Dow Jones](https://www.morningstar.com/news/dow-jones/202606253275/why-the-middle-east-helium-supply-shock-didnt-hit-chip-makers) spiegava perché lo shock non aveva colpito i produttori di chip: contratti di lungo periodo, fornitori diversi, caverne di stoccaggio e scorte negli impianti. Dal 10 luglio 2026 anche la Cina vieta temporaneamente l'export di elio ([annuncio MOFCOM n. 29](https://www.mofcom.gov.cn/zcfb/blgg/gg/2026/art/2026/art_e715aef77348447fb40cea835cdd8015.html)), ma ne produce poco (1,6% del mondo).",
     "Valutazione: per l'Europa del Nord l'anello debole sono le terre rare. Il Baltico ha l'unico tratto europeo di filiera completa fuori dalla Cina, a Sillamäe e Narva in Estonia, a pochi chilometri dal confine russo; la Groenlandia (Danimarca) ha 1,5 milioni di tonnellate di riserve ma nessuna produzione."
    ],
    "indicatori": [
-    "Annunci MOFCOM sulle sospensioni (10 novembre e 27 novembre 2026)",
+    "Testo ufficiale MOFCOM della proroga al 10 gennaio 2027 e decisione sul divieto verso gli USA che scade il 27 novembre 2026",
     "Tassi di approvazione delle licenze cinesi e dati doganali di export di terre rare, gallio, germanio",
     "Transiti a Hormuz (PortWatch) e stato di Ras Laffan",
     "Stagione degli uragani in North Carolina (giugno–novembre)",
@@ -116,9 +116,9 @@
    "dove": "Paesi Bassi (Veldhoven), Germania (Oberkochen, Ditzingen), California (San Diego, Santa Clara, Fremont, Milpitas), Giappone (Tokyo).",
    "chi_controlla": "ASML per la litografia (unico fornitore EUV), Applied Materials, Lam Research, KLA e Tokyo Electron per il resto; i governi di USA, Paesi Bassi e Giappone con le licenze.",
    "testo": [
-    "È l'anello in cui l'Europa conta di più, e il legame più diretto con l'area di lavoro di questo osservatorio: **ogni scanner EUV del mondo esce da Veldhoven**, vicino a Eindhoven. Dentro ci sono le ottiche di Carl Zeiss SMT (Oberkochen, ASML ne possiede il 24,9%), il laser CO2 di Trumpf (Ditzingen) e la sorgente di luce di Cymer, società di ASML a San Diego ([The Value Edge](https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials)). La catena delle EUV attraversa quindi Paesi Bassi, Germania e Stati Uniti prima di arrivare a Taiwan, Corea, Giappone e Arizona.",
-    "Nel 3° trimestre 2026 ASML ha venduto 113 sistemi nuovi e 11,7 miliardi di euro, con una guida 2026 di 44–45 miliardi ([comunicato ASML, 14 ottobre 2026](https://seekingalpha.com/pr/20684919)). La Cina compra solo DUV e pesa circa il 20% delle vendite dell'anno secondo la guida del direttore finanziario.",
-    "I controlli si sono stratificati: USA ottobre 2022 e ottobre 2023; Paesi Bassi dal 1° settembre 2023 e dal 7 settembre 2024 per le DUV a immersione 1970i e 1980i; Giappone dal 23 luglio 2023 per 23 tipi di macchine; USA 2 dicembre 2024 per 24 tipi di macchine, l'HBM e 140 entità ([BIS](https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military)). Nel 2026 il fronte aperto è l'assistenza alle macchine già installate in Cina, che l'Aia ancora permette, e la proposta americana (MATCH Act) di obbligare gli alleati ad allinearsi ([Bits&Chips](https://bits-chips.com/article/dutch-minister-pushes-back-on-us-bid-to-tighten-china-chip-controls/)).",
+    "È l'anello in cui l'Europa conta di più, e il legame più diretto con l'area di lavoro di questo osservatorio: **ogni scanner EUV del mondo esce da Veldhoven**, vicino a Eindhoven. Dentro ci sono le ottiche di Carl Zeiss SMT (Oberkochen, di cui ASML possiede circa un quarto), il laser CO2 di Trumpf (Ditzingen) e la sorgente di luce di Cymer, società di ASML a San Diego ([The Value Edge](https://thevalueedge.substack.com/p/asmls-supply-chain-bill-of-materials), analisi generata con un assistente AI: affidabilità bassa). La catena delle EUV attraversa quindi Paesi Bassi, Germania e Stati Uniti prima di arrivare a Taiwan, Corea, Giappone e Arizona.",
+    "Nel 3° trimestre 2026 ASML ha venduto 113 sistemi litografici nuovi (86 nel 2°) per 11,7 miliardi di euro di ricavi; per tutto il 2026 prevede 44–45 miliardi ([comunicato ASML del 14 ottobre 2026, depositato alla SEC](https://www.sec.gov/Archives/edgar/data/0000937966/000162828026065813/pressreleasefinancialresul.htm)). La Cina compra solo DUV e peserebbe circa il 20% delle vendite 2026 secondo la direzione (ai-mondo.json, trascrizione della conferenza di luglio): il comunicato di ottobre non dà la quota.",
+    "I controlli si sono stratificati: USA ottobre 2022 e ottobre 2023; Paesi Bassi dal 1° settembre 2023 e dal 7 settembre 2024 per le DUV a immersione 1970i e 1980i; Giappone dal 23 luglio 2023 per 23 tipi di macchine (licenza verso tutti i paesi, procedura semplificata per 42); USA 2 dicembre 2024 per 24 tipi di macchine, 3 software, l'HBM e 140 entità ([BIS](https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military)). Nel 2026 il fronte aperto è l'assistenza alle macchine già installate in Cina, che l'Aia ancora permette, e la proposta americana (MATCH Act) di vietare l'export in Cina di tutte le DUV a immersione e di spingere gli alleati ad allinearsi ([Bits&Chips](https://bits-chips.com/article/dutch-minister-pushes-back-on-us-bid-to-tighten-china-chip-controls/)).",
     "Valutazione: un blocco dell'EUV è il colpo più grave per la catena, ma è anche il più improbabile perché tocca Paesi alleati. Il rischio concreto per Veldhoven è politico e commerciale (regole sulle DUV e sui servizi in Cina), non fisico."
    ],
    "indicatori": [
@@ -184,7 +184,7 @@
    "dove": "Taiwan (Tainan, Chiayi) per il CoWoS; Corea (Icheon, Cheongju, Onyang) per l'HBM; Giappone, Singapore e Indiana per la memoria in arrivo; Hefei per l'HBM cinese.",
    "chi_controlla": "TSMC per il CoWoS; SK Hynix, Samsung e Micron per l'HBM; CXMT in Cina.",
    "testo": [
-    "Una GPU per l'AI non è un chip ma un pacchetto: il die logico di TSMC viene montato accanto a più pile di memoria HBM su un interposer (CoWoS). Questo passaggio avviene quasi tutto a Taiwan. La capacità CoWoS di TSMC a fine 2026 è stimata in 125.000–130.000 wafer al mese, con 170.000 a fine 2027 secondo [KGI](https://www.kgi.com.hk/en/-/media/files/kgishk/research-reports/tw-reports/tsmc_2330-tt_09032026e.pdf); Nvidia ne avrebbe prenotato circa il 60% (stime di analisti riportate dalla stampa).",
+    "Una GPU per l'AI non è un chip ma un pacchetto: il die logico di TSMC viene montato accanto a più pile di memoria HBM su un interposer (CoWoS). Questo passaggio avviene quasi tutto a Taiwan. La capacità CoWoS di TSMC passa da 65.000–75.000 wafer al mese nel 2025 a un obiettivo di 120.000–130.000 nel 2026; Nvidia ha circa il 60% delle assegnazioni 2026, Broadcom circa il 15%, AMD circa l'11% ([Tom's Hardware](https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia), maggio 2026). Per fine 2027 [KGI](https://www.kgi.com.hk/en/-/media/files/kgishk/research-reports/tw-reports/tsmc_2330-tt_09032026e.pdf) stima 170.000 wafer al mese.",
     "Nel 2° trimestre 2026 l'HBM era divisa tra SK Hynix 50%, Samsung 33% e Micron 18% ([Counterpoint](https://counterpointresearch.com/insights/global-dram-and-hbm-market-share)): Samsung ha recuperato dodici punti in un trimestre. L'AI toglie capacità alla DRAM normale: TrendForce prevede prezzi contrattuali DRAM +20% sul trimestre nel 4° trimestre 2026 ([TrendForce, 20 ottobre 2026](https://www.trendforce.com/news/2026/10/20/news-dram-prices-seen-rising-20-qoq-in-4q26-despite-slower-gains-ai-demand)).",
     "Per la Cina l'HBM è il vincolo vero: i controlli USA di dicembre 2024 hanno tolto la memoria coreana, e secondo [Epoch AI](https://epoch.ai/publications/huaweis-roadmap-to-2031) Huawei produrrà nel 2026 meno del 4% del calcolo AI di Nvidia."
    ],
@@ -220,9 +220,9 @@
    "dove": "California (Santa Clara, Palo Alto, Mountain View), Shenzhen.",
    "chi_controlla": "Nvidia, con larga maggioranza; AMD; Broadcom e Marvell come co-progettisti dei chip dei grandi cloud (TPU di Google, Trainium di Amazon, MTIA di Meta); Huawei in Cina.",
    "testo": [
-    "Il progetto è l'anello più ricco e il meno fisico: nessuno di questi gruppi possiede una fabbrica di chip avanzati. Le stime della quota di Nvidia nel 2026 vanno dal 75% all'86% a seconda della definizione, con IDC intorno all'81% (stime riportate da terzi; [Tom's Hardware](https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia) sugli ASIC su misura). Broadcom è il secondo cliente CoWoS di TSMC.",
-    "Le regole americane decidono dove vanno i chip: da gennaio 2026 gli USA permettono di vendere l'H200 in Cina con dazio del 25% e verifiche, ma a maggio nessun chip risultava spedito perché Pechino non aveva dato il via libera ([TechRepublic](https://www.techrepublic.com/article/news-nvidia-h200-ai-chip-sales-china-stalled/)). Huawei prevede circa 12 miliardi di dollari di ricavi da chip AI nel 2026.",
-    "Valutazione: il potere di mercato di questo anello dipende da anelli che non controlla (CoWoS, HBM, EUV). In borsa si vede: da inizio anno Nvidia e Broadcom sono in calo mentre memoria e macchine salgono (tabella dei titoli)."
+    "Il progetto è l'anello più ricco e il meno fisico: nessuno di questi gruppi possiede una fabbrica di chip avanzati. Le stime della quota di Nvidia nei ricavi degli acceleratori AI 2026 vanno dal 70% all'86% a seconda che si contino i chip su misura dei cloud: 81% per IDC, 75% per Silicon Analysts; AMD il 5–7% ([commandlinux](https://commandlinux.com/ai/ai-chip-market-share/), sintesi di stime di terzi, affidabilità bassa). Broadcom e Marvell fanno circa il 95% della co-progettazione di ASIC; Broadcom è il secondo cliente CoWoS di TSMC ([Tom's Hardware](https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia)).",
+    "Le regole americane decidono dove vanno i chip: da gennaio 2026 gli USA permettono di vendere l'H200 in Cina con dazio del 25% e verifiche, ma a maggio nessun chip risultava spedito perché Pechino non aveva dato il via libera ([TechRepublic](https://www.techrepublic.com/article/news-nvidia-h200-ai-chip-sales-china-stalled/)).",
+    "Valutazione: il potere di mercato di questo anello dipende da anelli che non controlla (CoWoS, HBM, EUV). In borsa si vede in parte: da inizio anno Nvidia e Broadcom sono in calo mentre memoria e macchine salgono; l'eccezione è AMD, più che raddoppiata (tabella dei titoli)."
    ],
    "indicatori": [
     "Conti trimestrali di Nvidia (prossimi a fine novembre 2026)",
@@ -252,7 +252,7 @@
    "dove": "Taiwan (Nuova Taipei, Taoyuan), Messico (Jalisco), Texas (Houston, Dallas), Cina (Suzhou, Chengdu) per l'ottica, USA (Pennsylvania) per i laser.",
    "chi_controlla": "Foxconn, Quanta e Wistron per i rack; InnoLight, Coherent ed Eoptolink per l'ottica; Coherent e Lumentum per i laser EML.",
    "testo": [
-    "Le GPU impacchettate diventano schede, vassoi e rack completi (GB300, VR200) negli impianti dei grandi assemblatori taiwanesi. Foxconn è il primo con circa il 40% dei server AI ([TechNews](https://finance.technews.tw/2026/05/12/foxconn-leads-quanta-and-wistron-in-ai-server-shipments/)). L'assemblaggio si sta spostando verso il mercato finale: Messico (Jalisco), Texas (Foxconn a Houston, Wistron a Dallas), Thailandia. Il risultato si vede nell'export di Taiwan: server e computer sono diventati la prima voce, 192,6 miliardi di dollari in gennaio–agosto 2026, +87,5% ([STAT Times](https://www.stattimes.com/latest-news/is-taiwans-ai-engine-on-fire-1360979)).",
+    "Le GPU impacchettate diventano schede, vassoi e rack completi (GB300, VR200) negli impianti dei grandi assemblatori taiwanesi. Foxconn è il primo, con oltre il 44% dei rack AI spediti (circa 3.700; [TechNews](https://finance.technews.tw/2026/05/12/foxconn-leads-quanta-and-wistron-in-ai-server-shipments/), maggio 2026). L'assemblaggio si sta spostando verso il mercato finale: Messico (Jalisco), Texas (Foxconn a Houston, Wistron a Dallas), Thailandia. Il risultato si vede nell'export di Taiwan: le macchine per l'elaborazione dati (server e schede grafiche) sono diventate la prima voce, 192,6 miliardi di dollari in gennaio–agosto 2026, +87,5% sugli stessi mesi del 2025 e il 62,8% verso gli USA ([STAT Times](https://www.stattimes.com/latest-news/is-taiwans-ai-engine-on-fire-1360979)).",
     "La rete ottica dei cluster dipende dalla Cina per i moduli (InnoLight intorno al 27% dei ricavi) e da due società americane per i chip laser EML: per [Yole](https://www.yolegroup.com/strategy-insights/opinion-optical-transceivers-at-the-chokepoint-of-ai-growth-and-supply-chain-constraints/) è il vincolo dell'1,6T nel 2026.",
     "Fuori dal rack, il collo di bottiglia è elettrico: i tempi di consegna dei trasformatori elevatori hanno superato le 160 settimane nel 1° trimestre 2026 ([Reuters via Kitco](https://www.kitco.com/news/off-the-wire/2026-07-09/us-power-companies-scramble-secure-equipment-surging-data-center))."
    ],
@@ -291,7 +291,7 @@
    "testo": [
     "I chip e i server viaggiano in aereo: valgono molto e pesano poco. Le macchine viaggiano smontate: una EUV richiede circa 40 container, 20 camion e 3 Boeing 747 cargo ([Asia Times](https://asiatimes.com/2021/09/the-150mn-machine-that-is-changing-the-world/); [DHL](https://www.dhl.com/global-en/delivered/innovation/focus-on-the-details.html)); una High-NA è andata in Oregon in 43 container. Le materie (elio, quarzo, GNL per le centrali di Taiwan) viaggiano per nave.",
     "Il cargo aereo di Taiwan è trainato dall'AI: per EVA Air il carico legato all'AI vale il 40–50% del cargo, il Nord America circa il 70% dei ricavi cargo (stampa taiwanese). Le rotte transpacifiche fanno scalo ad Anchorage.",
-    "Lo Stretto di Taiwan è il punto unico di rottura. Ci passa metà delle portacontainer del mondo; un blocco o un conflitto costerebbero all'economia mondiale circa 10.600 miliardi di dollari (9,6% del PIL mondiale) nel primo anno nello scenario estremo di Bloomberg Economics ([Insurance Journal](https://www.insurancejournal.com/news/international/2026/02/12/857770.htm)), e le aziende dipendenti dai chip di Taiwan perderebbero fino a 1.600 miliardi di ricavi l'anno secondo [Rhodium](https://rhg.com/research/taiwan-economic-disruptions/). I cavi sottomarini intorno all'isola sono già stati danneggiati più volte (cavi-incidenti.json).",
+    "Lo Stretto di Taiwan è il punto unico di rottura. Il 48% delle 5.400 portacontainer in servizio nel mondo vi è passato almeno una volta tra gennaio e luglio 2022 (Bloomberg, ripreso in stretti-dettaglio.json). Nello scenario estremo di Bloomberg Economics, una guerra tra USA e Cina per Taiwan costerebbe all'economia mondiale circa 10.600 miliardi di dollari (9,6% del PIL mondiale) nel primo anno ([Insurance Journal](https://www.insurancejournal.com/news/international/2026/02/12/857770.htm), febbraio 2026). In un blocco, le aziende che dipendono dai chip di Taiwan perderebbero fino a 1.600 miliardi di dollari di ricavi l'anno secondo [Rhodium](https://rhg.com/research/taiwan-economic-disruptions/) (stima del 2022). I cavi sottomarini intorno all'isola sono già stati danneggiati più volte (cavi-incidenti.json).",
     "Valutazione: in un blocco navale gli aerei potrebbero continuare a portare chip per qualche tempo, ma il GNL no: Taiwan si fermerebbe per mancanza di energia prima che per mancanza di trasporti. Terremoti (aprile 2024: TSMC ha recuperato oltre il 70% delle macchine in 10 ore, [Tom's Hardware](https://www.tomshardware.com/tech-industry/tsmc-resumes-chip-production-following-biggest-earthquake-in-25-years-incurred-no-damage-to-its-critical-tools)), siccità e blackout sono i rischi ricorrenti."
    ],
    "indicatori": [
@@ -319,8 +319,9 @@
    "dove": "Stati Uniti (Texas, Tennessee, Indiana, Georgia), Golfo, Malesia (Johor), Europa (Francia, Paesi del Nord, Italia); Taiwan per l'energia delle fab.",
    "chi_controlla": "I grandi cloud (Microsoft, Amazon, Google, Meta, Oracle), i laboratori (OpenAI, xAI, Anthropic come cliente), i gestori di rete e i produttori di energia.",
    "testo": [
-    "Secondo l'IEA i data center hanno consumato circa 485 TWh nel 2025 e arriveranno a circa 950 TWh nel 2030, intorno al 3% dell'elettricità mondiale; i siti dedicati all'AI crescono molto più in fretta ([IEA, Key questions on energy and AI](https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary)).",
-    "L'energia entra nella catena due volte. A monte, Taiwan produce metà dell'elettricità col gas e tiene scorte di GNL per 12–14 giorni ([Focus Taiwan](https://focustaiwan.tw/business/202603210010)); ha spento le centrali nucleari e ora valuta il riavvio di Maanshan ([FDD](https://www.fdd.org/analysis/in-major-reversal-taiwan-seeks-to-rewire-its-energy-strategy-by-restarting-its-nuclear-plants/)). A valle, i campus americani si scontrano con i tempi dei trasformatori e degli allacci, quelli europei con il prezzo: i progetti a gas come Ferrera Erbognone legano l'AI italiana al TTF, la Francia sfrutta il nucleare (Fouju è vicino a Nogent).",
+    "Secondo l'IEA i data center hanno consumato circa 485 TWh nel 2025 (+17%) e arriveranno a circa 950 TWh nel 2030, intorno al 3% dell'elettricità mondiale; i consumi dei siti dedicati all'AI sono cresciuti del 50% nel 2025 ([IEA, Key questions on energy and AI](https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary): pagina non raggiungibile da qui, cifre riprese dal sommario IEA citato dalla stampa).",
+    "L'energia entra nella catena due volte. A monte, Taiwan produce metà dell'elettricità col gas e tiene scorte di GNL per 12–14 giorni ([Focus Taiwan](https://focustaiwan.tw/business/202603210010)); ha spento le centrali nucleari e ora valuta il riavvio di Maanshan ([FDD](https://www.fdd.org/analysis/in-major-reversal-taiwan-seeks-to-rewire-its-energy-strategy-by-restarting-its-nuclear-plants/)). A valle, i campus americani si scontrano con i tempi dei trasformatori e degli allacci, quelli europei con il prezzo: i progetti a gas come Ferrera Erbognone legano l'AI italiana al TTF, la Francia sfrutta il nucleare (il campus di Fouju, 1,4 GW, è a circa 55 km dalla centrale di Nogent-sur-Seine).",
+    "Il denaro non manca: per il 2026 Amazon indica circa 220 miliardi di dollari di spese in conto capitale, Alphabet 195–205, Microsoft 170–190, Meta 135–145 (guide aziendali di fine ottobre, fonti secondarie discordi; investimenti.json). La maggior parte va negli USA.",
     "Valutazione: per l'Europa del Nord il vantaggio è l'elettricità pulita e il clima freddo (Paesi nordici, Finlandia), il limite è la capacità di rete; il legame con la mappa è nei livelli rete-elettrica e interconnessioni."
    ],
    "indicatori": [
@@ -449,7 +450,7 @@
    "materie": [
     "tantalio"
    ],
-   "quota": "circa 15% della produzione mondiale di coltan (stampa di settore)",
+   "quota": "circa il 15% dell'offerta mondiale di tantalio (Global Witness, giugno 2026); frana con oltre 200 morti a fine gennaio 2026 (Argus)",
    "fonte": "Argus Media, «Rubaya mine collapse and the tantalum supply chain»",
    "link": "https://www.argusmedia.com/en/news-and-insights/market-opinion-and-analysis-blog/rubaya-mine-collapse-tantalum-supply-chain",
    "data_fonte": "2026-02-12",
@@ -1447,7 +1448,7 @@
    "origine_coord": "OSM Nominatim (Bantian, distretto della sede)",
    "precisione_km": 3,
    "stato": "operativo",
-   "quota": "ricavi attesi dai chip AI circa 12 mld USD nel 2026 (7,5 nel 2025); meno del 4% del calcolo AI prodotto da Nvidia nel 2026 secondo Epoch AI",
+   "quota": "meno del 4% del calcolo AI prodotto da Nvidia nel 2026 secondo Epoch AI",
    "fonte": "Epoch AI, «Huawei's roadmap to 2031»",
    "link": "https://epoch.ai/publications/huaweis-roadmap-to-2031",
    "data_fonte": "2026",
@@ -3291,9 +3292,9 @@
      "link": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/11/09/china-extends-suspension-of-rare-earth-export-controls-until-january",
      "data": "2026-11-09",
      "affidabilita": "media",
-     "nota": "scadenza 2027-01-10; stato del controllo: sospeso; giorni contati al 2026-11-09; proroga annunciata, testo primario non reperito",
+     "nota": "scadenza 2027-01-10; stato del controllo: sospeso; giorni contati al 2026-11-10; proroga annunciata, testo primario non reperito",
      "verifica": "proroga annunciata, testo primario non reperito",
-     "valore": 62,
+     "valore": 61,
      "stato": "normale"
     },
     {
@@ -3307,8 +3308,8 @@
      "link": "https://www.fastmarkets.com/insights/china-suspends-export-prohibition-on-superhard-materials-us/",
      "data": "2025-11-09",
      "affidabilita": "alta",
-     "nota": "scadenza 2026-11-27; stato del controllo: sospeso; giorni contati al 2026-11-09",
-     "valore": 18,
+     "nota": "scadenza 2026-11-27; stato del controllo: sospeso; giorni contati al 2026-11-10",
+     "valore": 17,
      "stato": "attenzione"
     },
     {
@@ -3559,7 +3560,7 @@
      "soglia_critica": 3,
      "fonte": "cavi-incidenti.json (osservatorio)",
      "link": "https://www.submarinecablemap.com/",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "affidabilita": "media",
      "eventi": [
       "Matsu: cavo Taiwan-Matsu n. 3 tagliato al largo di Dongyin"
@@ -4019,7 +4020,7 @@
    "data_fonte": "2025-11-09",
    "affidabilita": "alta",
    "note": "Sospeso il 9 novembre 2025 fino al 27 novembre 2026 (annuncio MOFCOM n. 72 del 2025). Restano licenze e divieto verso utilizzatori militari. Alla data del 9 novembre 2026 non trovata una proroga pubblicata.",
-   "giorni_alla_scadenza": 18
+   "giorni_alla_scadenza": 17
   },
   {
    "id": "CN-2025-04-TR",
@@ -4060,7 +4061,7 @@
    "data_fonte": "2026-11-09",
    "affidabilita": "media",
    "note": "Applied Materials stimava 600 milioni di dollari di ricavi persi nell'esercizio 2026 (TipRanks, ottobre 2025). Sospesa da novembre 2025 con la tregua di Busan; sospensione prorogata al 10 gennaio 2027.",
-   "giorni_alla_scadenza": 62
+   "giorni_alla_scadenza": 61
   },
   {
    "id": "NL-2025-NEXPERIA",
@@ -4124,7 +4125,7 @@
     }
    ],
    "note": "Sospesi dall'annuncio n. 70 del 7 novembre 2025 fino al 10 novembre 2026. Il 9 novembre 2026 il MOFCOM ha annunciato con una breve dichiarazione la proroga di due mesi, fino al 10 gennaio 2027 (Reuters); SMM ne riporta il testo come annuncio n. 58 del 2026. Al 10 novembre il testo non compare ancora nell'elenco ufficiale sul sito del MOFCOM: proroga da considerare annunciata ma non verificata sulla fonte primaria. Tech Times, uscito prima dell'annuncio, scriveva che nessun testo spostava la data.",
-   "giorni_alla_scadenza": 62
+   "giorni_alla_scadenza": 61
   },
   {
    "id": "US-2026-MATCH",
@@ -4132,7 +4133,7 @@
    "autorita": "Congresso USA (MATCH Act, proposta)",
    "data_annuncio": "2026",
    "data_effetto": null,
-   "misura": "Obbligherebbe gli alleati ad allineare i controlli a quelli USA entro 150 giorni: potrebbe toccare vendite e assistenza delle DUV ASML già in Cina.",
+   "misura": "Vieterebbe l'export in Cina di tutte le DUV a immersione, limiterebbe ancora l'assistenza e creerebbe meccanismi per spingere gli alleati ad allinearsi: toccherebbe vendite e assistenza delle DUV ASML in Cina.",
    "materie": [],
    "anelli": [
     "attrezzature"

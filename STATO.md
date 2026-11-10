@@ -79,3 +79,15 @@ Regole, valide per ogni sessione:
 - Creare repository e attivare Pages sono stati bloccati dai controlli di sicurezza: li fa Gabriele a mano.
 - Dalla sessione cloud: Overpass (OpenStreetMap), EIA, IEA, UNCTAD, OPEC e alcuni siti di stampa sono bloccati; da GitHub Actions possono funzionare.
 - Il push da questa sessione funziona (app Claude installata sul repository).
+
+## Agenti lanciati il 2026-11-10 (da riprendere se la sessione si ferma)
+| Agente | Output atteso |
+|---|---|
+| Traduzione in inglese del sito (UNICO che modifica docs/index.html e le pagine finché non finisce) | docs/*.html in inglese, docs/report/en/*.html |
+| Port risk index | docs/data/port-risk.json, report/port-risk-method.md, raccolta/porti/rischio_porti.py |
+| Transit times | docs/data/transit-times.json, raccolta/rotte/tempi.py |
+| Offshore wind calendar | docs/data/wind-calendar.json, raccolta/eolico/calendario.py |
+| Report "Northern Europe: Ports and Energy" n. 1 (con auto-revisione) | docs/report/en/northern-europe-2026-11.html, report/build_northern_europe.py |
+| Attacchi da Clément Molin e AMK Mapping (Telegram) | docs/data/attacchi-analisti.json |
+| Impatti in Italia; revisione livelli originali; revisione report supply chain AI | vedi tabella sopra |
+Decisioni del 2026-11-10: sito tutto in inglese (le versioni italiane dei report restano); tolta la sezione analisti economici YouTube.
