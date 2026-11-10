@@ -1050,23 +1050,27 @@ def estrai_tutto(senza_firms=False):
         p = a["post"]
         e = {
             "id": "an-%s-%s-%d" % (a["data"], "cm" if p["canale"] == "clement_molin" else "amk", p["id"]),
-            "data": a["data"], "data_post_utc": p["data"],
-            "direzione": a["direzione"],
+            "data": a["data"], "ora_utc": p["data"][11:16],
+            "direzione": "RU>UA" if a["direzione"].startswith("russo") else "UA>RU",
             "lat": a["lat"], "lon": a["lon"], "precisione_km": a["precisione_km"],
-            "origine_coord": a["origine_coord"],
+            "origine_coord": a["origine_coord"].split(":")[0].split(" (")[0],
             "nome": a["luogo"], "oblast": a["oblast"], "paese": a["paese"],
-            "territorio_occupato": a["occupato"],
-            "categoria": a["categoria"], "mezzi": a["mezzi"], "luoghi_citati": a["luoghi_citati"],
-            "fonte": "%s (Telegram @%s)" % ("Clément Molin" if p["canale"] == "clement_molin" else "AMK Mapping",
-                                             p["canale"]),
-            "canale": p["canale"], "link": p["link"], "data_fonte": p["data"][:10],
+            "categoria": a["categoria"], "mezzi": a["mezzi"],
+            "fonte": "Clément Molin" if p["canale"] == "clement_molin" else "AMK Mapping",
+            "link": p["link"], "data_fonte": p["data"][:10],
             "estratto": estratto(p["testo"]),
-            "immagini": p["immagini"], "video": p["video"],
             "affidabilita": "alta" if a["corroborato_da"] else "media",
-            "stato": "segnalato da analista OSINT" + (" e corroborato" if a["corroborato_da"] else ", non corroborato"),
         }
+        if a["occupato"]:
+            e["territorio_occupato"] = True
+        if a["luoghi_citati"] > 1:
+            e["luoghi_citati"] = a["luoghi_citati"]
+        if p["immagini"]:
+            e["immagini"] = True
+        if p["video"]:
+            e["video"] = True
         if a["corroborato_da"]:
-            e["corroborato_da"] = a["corroborato_da"][:3]
+            e["corroborato_da"] = [c.get("id") or c["link"] for c in a["corroborato_da"][:3]]
         if a.get("altri_post"):
             e["altri_post"] = a["altri_post"][:5]
         if "firms" in a:
@@ -1075,16 +1079,17 @@ def estrai_tutto(senza_firms=False):
                 e["firms_focolaio"] = a["firms_focolaio"]
         elementi.append(e)
     # riepilogo
+    a_dir = {"RU>UA": "russo su Ucraina", "UA>RU": "ucraino su Russia o territori occupati"}
     rie = {"per_anno": {}, "per_direzione": {}, "per_categoria": {}, "per_anno_direzione_categoria": {},
            "per_canale": {}, "corroborati": 0, "firms_verificati": 0, "firms_positivi": 0,
            "motivi_scarto_post": dict(sorted(motivi.items(), key=lambda x: -x[1]))}
     for e in elementi:
         y = e["data"][:4]
         rie["per_anno"][y] = rie["per_anno"].get(y, 0) + 1
-        rie["per_direzione"][e["direzione"]] = rie["per_direzione"].get(e["direzione"], 0) + 1
+        rie["per_direzione"][a_dir[e["direzione"]]] = rie["per_direzione"].get(e["direzione"], 0) + 1
         rie["per_categoria"][e["categoria"]] = rie["per_categoria"].get(e["categoria"], 0) + 1
-        rie["per_canale"][e["canale"]] = rie["per_canale"].get(e["canale"], 0) + 1
-        x = rie["per_anno_direzione_categoria"].setdefault(y, {}).setdefault(e["direzione"], {})
+        rie["per_canale"][e["fonte"]] = rie["per_canale"].get(e["fonte"], 0) + 1
+        x = rie["per_anno_direzione_categoria"].setdefault(y, {}).setdefault(a_dir[e["direzione"]], {})
         x[e["categoria"]] = x.get(e["categoria"], 0) + 1
         rie["corroborati"] += e["affidabilita"] == "alta"
         if e.get("firms") is not None and "firms" in e:
@@ -1116,6 +1121,9 @@ def estrai_tutto(senza_firms=False):
                  "raffinerie/depositi; null = nessun dato FIRMS per quelle date). L'estrazione è automatica: "
                  "precisione stimata a mano nel rapporto report/agenti/attacchi-analisti.md. Il testo dei post non "
                  "è incluso: solo un estratto e il link."),
+        "legenda": {"direzione": a_dir, "corroborato_da": "id in attacchi-russi.json / ucraina-storico.json, "
+                    "o link al post dell'altro canale", "ora_utc": "ora del post (UTC)",
+                    "luoghi_citati": "numero di luoghi riconosciuti nel post (il punto è il primo pertinente)"},
         "canali": info_canali,
         "categorie": sorted({c for c, _ in CATEGORIE} | {"altro"}),
         "elementi": elementi,
@@ -1134,7 +1142,8 @@ def campione(n=40, seme=20261110):
     random.seed(seme)
     cache = {c["canale"]: carica_cache(c["canale"])["posts"] for c in CANALI}
     for e in random.sample(el, min(n, len(el))):
-        p = cache[e["canale"]][int(e["link"].rsplit("/", 1)[1])]
+        can, pid = e["link"].rsplit("/", 2)[1:]
+        p = cache[can][int(pid)]
         print("=" * 100)
         print(e["id"], "|", e["direzione"], "|", e["nome"], e["paese"], "|", e["categoria"], "|", e["mezzi"])
         print(re.sub(r"\s+", " ", p["testo"])[:700])

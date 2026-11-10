@@ -90,7 +90,6 @@ THRESHOLDS = {
     "fbx11_high": 4500,    # $/FEU: rates repricing a relapse
     "redsea_war_high": 0.5,  # % of hull: Red Sea premium at which Cape becomes cheaper once the Suez toll is counted (computed band shown in text)
     "vlsfo_sg_high": 1000,   # $/t Singapore VLSFO
-    "gof_sanctioned": 50,    # sanctioned tankers in one AIS snapshot, Gulf of Finland
 }
 
 REVIEW = None  # placeholder: filled in after the independent review (log in report/revisioni/)
@@ -183,6 +182,10 @@ SIG_EN = {
     "Bab el-Mandeb sopra 35 navi al giorno": "Bab el-Mandeb above 35 ships a day",
     "WCI composito sotto 4.000 $/FEU": "WCI composite below 4,000 $/FEU",
     "Premio Genova su Rotterdam sotto il 5%": "Genoa premium over Rotterdam below 5%",
+    "Almeno un incidente a cavi o condotte negli ultimi 30 giorni": "at least one cable or pipeline incident in the last 30 days",
+    "Almeno 3 eventi ibridi o attacchi nell'area negli ultimi 30 giorni": "at least 3 hybrid events or attacks in the area in the last 30 days",
+    "Flotta ombra visibile oltre 60 petroliere": "visible shadow fleet above 60 tankers",
+    "Stretti danesi sotto −30% su un anno": "Danish straits below −30% on a year",
 }
 
 
@@ -758,9 +761,9 @@ def blocks(V, edition):
     B.append(("h2", "key-points", "1. Key points"))
     B.append(("ul", [
         f"**Suez is back for {S}% of Far East–North Europe container capacity; the rest still sails round the Cape.** Shanghai–Rotterdam takes "
-        f"{num(lr['d_today'], 1)} days at sea via Suez and {num(lr['d_cape'], 1)} via the Cape, {num(lr['d_w'], 1)} on average today "
-        f"(Alphaliner, 15 September–15 October 2026; model at 15 knots, {dl('transit-times.json')}). Hormuz is de facto closed: "
-        f"{num(hz['transits_7d_avg'], 1)} transits a day against {num(hz['transits_7d_avg_1y_ago'], 1)} a year earlier (IMF PortWatch, week to {date_en(hz['date'])}).",
+        f"{num(lr['d_today'], 1)} sea days via Suez, {num(lr['d_cape'], 1)} via the Cape, {num(lr['d_w'], 1)} on today's mix (Alphaliner, mid-October 2026; "
+        f"{dl('transit-times.json')}). Hormuz is de facto closed: {num(hz['transits_7d_avg'], 1)} transits a day against "
+        f"{num(hz['transits_7d_avg_1y_ago'], 1)} a year earlier (IMF PortWatch, week to {date_en(hz['date'])}).",
         f"**Fuel, carbon and war risk per box are up {num(up, 0)}% since late 2023.** On Shanghai–Rotterdam they come to about {num(tw['feu']['total'])} $ "
         f"per 40-foot container (FEU) today against {num(t23['feu']['total'])} $ in 2023. The fuel price adds {num(V['W'][1][1])} $, EU carbon rules "
         f"{num(V['W'][3][1] + V['W'][4][1])} $, the Cape detour {num(V['W'][2][1])} $ (section 3; prices of {date_en(ci['p_date'])} and {date_en(ci['eua_date'])}).",
@@ -792,7 +795,7 @@ def blocks(V, edition):
                    f"Cape of Good Hope {num(cape['transits_7d_avg'], 1)} ({pct(cape['var_vs_3y_pct'])} on three years); Hormuz {num(hz['transits_7d_avg'], 1)} "
                    f"({pct(hz['var_vs_3y_pct'])} on three years)."))
     B.append(("p", f"**How much is back on Suez.** Alphaliner counts {num(A['teu_red_sea'], 2)} of {num(A['teu_total'], 2)} million TEU deployed on Far East–Europe "
-                   f"services using the Red Sea between {A['period']}: {S63}% overall, but {S}% on Far East–North Europe and {SM}% on Far East–Mediterranean. "
+                   f"services using the Red Sea in the month {A['period']}: {S63}% overall, but {S}% on Far East–North Europe and {SM}% on Far East–Mediterranean. "
                    f"Some services use the Red Sea westbound only and the Cape on the way back ([{A['source']}]({A['link']}), reliability {A['reliability']}: {A['read']}). "
                    f"Other measures give lower shares (Sea-Intelligence 27% of capacity on a normalised basis, Maritime Strategies International about 35% of sailings; "
                    f"search excerpts, not checked). Linerlytica expects a full return by Q1 2027 "
@@ -858,7 +861,8 @@ def blocks(V, edition):
         f"maximum cost is the penalty: {num(ci['fueleu_t_eur'], 2)} €/t on the same 50% leg ({dl('bunker-emissioni.json')}, example «asia-rotterdam»). "
         f"Via Suez: {musd(ts['fueleu'])}. Pooling or bio-blends can cost less; zero in 2023.",
         f"**War risk** = premium × hull value. Today via Suez: {num(ci['war_today_pct'], 2)}% × {musd(ci['hull'], 0)} = {musd(ts['war'])} "
-        f"(midpoint of {ci['war_src']}). Via the Cape: no listed area on the route, so zero. 2023: {num(ci['war_base_pct'], 3)}%, the pre-crisis level "
+        f"(midpoint of the {num(V['prem_last']['mar-rosso']['min'], 1)}–{num(V['prem_last']['mar-rosso']['max'], 1)}% quoted for tankers by {ci['war_src'].rsplit(' (', 1)[0]}, "
+        f"{date_en(V['prem_last']['mar-rosso']['data'])}). Via the Cape: no listed area on the route, so zero. 2023: {num(ci['war_base_pct'], 3)}%, the pre-crisis level "
         f"(less than 0.1% in late 2023, Moody's via {dl('assicurazioni.json')}) = {musd(t23['war'])}.",
         f"**Per FEU** = voyage cost ÷ {num(ci['units'])} FEU. **Weighted** = {S}% × Suez + {Cp}% × Cape.",
     ]))
@@ -889,7 +893,7 @@ def blocks(V, edition):
     B.append(("p", f"**When does the Cape pay?** Via the Cape the voyage costs {musd(be_['extra'])} more in fuel, ETS and FuelEU than via Suez. The Cape avoids the Red "
                    f"Sea premium and the canal toll. Without the toll, the break-even premium is {num(be_['pct'], 2)}% of a {musd(ci['hull'], 0)} hull; with a toll of "
                    f"{musd(be_['toll'][0], 1)}–{musd(be_['toll'][1], 1)} it falls to {num(be_['pct_toll'][0], 2)}–{num(be_['pct_toll'][1], 2)}%. "
-                   f"These are lower bounds for the Cape: the charter hire or capital cost of {num(lr['d_cape'] - lr['d_today'], 1)} more days at sea is not counted, and it would raise the line."))
+                   f"These break-even values are lower bounds: the charter hire or capital cost of {num(lr['d_cape'] - lr['d_today'], 1)} more days at sea is not counted, and it would raise the line."))
     B.append(("p", f"**Why {dl('assicurazioni.json')} finds a lower line.** Its example gives {num(ass_thr, 2)}%: UNCTAD's 2024 extra Cape cost of "
                    f"{num(ass_extra, 1)} M$ for a mid-size container ship at 2024 fuel prices, divided by the {num(ass_hull, 1)} M$ price of a new 15,500 TEU ship. "
                    f"Both inputs differ from this model. The cost base is {num(be_['extra'] / 1e6 / ass_extra, 1)} times larger here (a 15,000 TEU ship at 2026 fuel prices, "
@@ -924,7 +928,7 @@ def blocks(V, edition):
                              f"(secondary source, reliability medium) and {date_en(V['wci_date'])} ({dl('noli.json')}), split into the cost items of section 3 "
                              f"(capacity-weighted today) and the rest, which covers charter, port, canal, overheads and margin. Carrier costs and spot prices are "
                              f"different things: the split is an order of magnitude. The 2023 cost "
-                             f"items use the October 2023 fuel price; the WCI is that of {date_en(E2['date'])}, before the Red Sea attacks began on 19 November 2023."))
+                             f"items use the October 2023 fuel price; the WCI is that of {date_en(E2['date'])}, before the main carriers suspended Red Sea transits in mid-December 2023 (simulatore.json, Red Sea episode)."))
     B.append(("p", f"**What drives the rate.** (1) *Capacity released by the Suez return.* Each ship moved back from the Cape to Suez saves about "
                    f"{num(V['med_cape_penalty']['rotterdam'], 1)} days each way to North Europe, so the same fleet offers more weekly slots. (2) *Fuel.* Singapore VLSFO is "
                    f"up {pct(V['vlsfo_sg']['var_da_prima_guerra_pct'], sign=False)} since {date_en(V['vlsfo_sg']['data_prima_guerra'])} and {pct(V['vlsfo_sg']['var_1a_pct'], sign=False)} on a year earlier "
@@ -979,7 +983,7 @@ def blocks(V, edition):
     # ---------------------------------------------------------------- 6. alternatives
     B.append(("h2", "alternatives", "6. Alternatives: rail, air and nearshoring"))
     B.append(("p", f"**China–Europe rail.** {num(rail1['treni nel 2025']['valore'])} trains in 2025 ({first_pct(rail1['treni nel 2025']['trend'])} on 2024), "
-                   f"carrying about {num(teu25 / 1e6, 2)} million TEU ({first_pct(rail1['TEU trasportati nel 2025']['trend'])} on 2024); "
+                   f"carrying more than {num(teu25 / 1e6, 2)} million TEU ({first_pct(rail1['TEU trasportati nel 2025']['trend'])} on 2024); "
                    f"{num(rail1['treni gennaio-marzo 2026']['valore'])} trains in Q1 2026 ({first_pct(rail1['treni gennaio-marzo 2026']['trend'])} on Q1 2025) "
                    f"([CGTN]({rail1['treni nel 2025']['link']}), [Railmarket]({rail1['TEU trasportati nel 2025']['link']}), "
                    f"[Index1520]({rail1['treni gennaio-marzo 2026']['link']}), in {dl('ferrovie.json')}; TEU figure reliability medium). "
@@ -987,10 +991,10 @@ def blocks(V, edition):
     B.append(("p", f"**Middle Corridor** (Trans-Caspian route via Kazakhstan, the Caspian, Azerbaijan and Georgia): {num(rail2['merci 2025']['valore'], 1)} million tonnes in 2025 "
                    f"(Organisation of Turkic States via [BESA]({rail2['merci 2025']['link']}); other 2025 estimates 4.5–5.2 Mt), target "
                    f"{num(rail2['obiettivo 2030']['valore'], 1)} Mt by 2030 (reliability low). **INSTC** (North–South corridor, Russia–Iran–India): "
-                   f"{num(rail3[next(k for k in rail3 if 'traffico' in k)]['valore'], 1)} Mt by rail in 2024; work on the missing Rasht–Astara link has slipped to "
+                   f"{num(rail3[next(k for k in rail3 if 'traffico' in k)]['valore'], 1)} Mt by rail in 2024; the start of construction on the missing Rasht–Astara link has slipped to "
                    f"{rail3['avvio lavori Rasht-Astara']['valore']} ([Interfax]({rail3['avvio lavori Rasht-Astara']['link']}), {date_en(rail3['avvio lavori Rasht-Astara']['data_fonte'])}). "
                    f"It runs through Iran, so it is no alternative for EU shippers under current sanctions."))
-    B.append(("val", f"*Assessment.* Rail is a niche for time-sensitive cargo, not a substitute. {num(teu25 / 1e6, 2)} million TEU a year is about "
+    B.append(("val", f"*Assessment.* Rail is a niche for time-sensitive cargo, not a substitute. Some {num(teu25 / 1e6, 2)} million TEU a year is about "
                      f"{num(teu25 / 52 / 1000)},000 TEU a week, roughly {num(teu25 / 52 / teu_week_suez * 100)}% of the capacity that passed Suez each week in "
                      f"early October 2026. The two figures measure different things: loaded boxes on trains against ship capacity. **Missing:** rail transit "
                      f"times and $/FEU rates for 2026."))
@@ -1028,23 +1032,25 @@ def blocks(V, edition):
                    f"{num(sanc['ambito_russia'])} are linked to Russia and {num(sanc['ambito_iran'])} to Iran; {num(sanc['flotta_ombra_probabile'])} are tankers "
                    f"(or of unknown type) sanctioned for Russia or Iran, which the monitor counts as probable shadow fleet ({dl('sanzioni-navi.json')}: OFAC "
                    f"{date_en(V['sanc_lists_date']['OFAC SDN List'])}, UK {date_en(V['sanc_lists_date']['UK Sanctions List'])}, EU via OpenSanctions "
-                   f"{date_en(V['sanc_lists_date']['UE'])}). Of the {num(V['sanc_eu_ru'])} Russia-linked ships on EU lists, most are under the port-access ban "
-                   f"of Regulation 833/2014."))
+                   f"{date_en(V['sanc_lists_date']['UE'])}). {num(V['sanc_eu_ru'])} Russia-linked ships are on EU lists, which include the port-access ban "
+                   f"of Annex XLII to Regulation 833/2014; the file does not say how many fall under that ban."))
     rec = V["sanc_recent"]
     if rec:
         typ = sorted(set(e.get("tipo_nave") or "type not given" for e in rec))
-        rec_txt = (f"{len(rec)} ships, between {date_en(rec[0]['prima_designazione'])} and {date_en(rec[-1]['prima_designazione'])} "
+        rec_txt = (f"{len(rec)} ships with a known date, between {date_en(rec[0]['prima_designazione'])} and {date_en(rec[-1]['prima_designazione'])} "
                    f"({', '.join(sorted(set(x for e in rec for x in e['sanzionata_da'])) ).replace('Regno Unito', 'UK').replace('Unione europea', 'EU')}; "
                    f"scope {', '.join(sorted(set(a for e in rec for a in e['ambito'])))}; types: {', '.join(typ)})")
     else:
         rec_txt = "none"
     B.append(("p", f"**Container ships are on the lists too.** {V['sanc_cont']['n']} container ships are sanctioned: {V['sanc_cont']['iran']} linked to Iran and "
                    f"{V['sanc_cont']['russia']} to Russia, all by the US only. A box on one of them can breach US secondary-sanctions rules even when the EU "
-                   f"lists do not name the ship. New first designations in the last 90 days: {rec_txt} ({dl('sanzioni-navi.json')})."))
+                   f"lists do not name the ship. New first designations in the last 90 days: {rec_txt} ({dl('sanzioni-navi.json')}). "
+                   f"The OFAC list gives no designation dates, so ships listed by the US alone are not counted in that figure."))
     B.append(("p", f"**Baltic exposure.** In the AIS snapshot of {date_en(V['navi_date'])} {gof['sanzionate']} of {gof['petroliere_viste']} tankers seen in the "
                    f"Gulf of Finland were sanctioned; in the Danish straits {dk['sanzionate']} of {dk['petroliere_viste']} ({dl('navi.json')}). The Port Risk Index "
                    f"counts likely shadow-fleet or sanctioned tankers within 50 km of " + ", ".join(f"{n} ({v})" for n, v, _ in V["shadow_ports"]) +
-              f" ({dl('port-risk.json')}). Russia as a whole is a Joint War Committee listed area under {V['jwla']['id']} ({date_en(V['jwla']['data'])})."))
+              f" ({dl('port-risk.json')}). Russia remains a Joint War Committee listed area (war-risk cover needs notice and an additional premium) in the circular in force, "
+              f"{V['jwla']['id']} of {date_en(V['jwla']['data'])}."))
     B.append(("val", "*Assessment.* For shippers and ports in the Netherlands, Denmark and the Baltic the compliance risk sits in three places. "
                      "(1) **Screening by IMO number, not by name**: sanctioned ships change name and flag often, and the flag is frequently false. "
                      "(2) **US-only listings**: the container ships on the lists are almost all US designations for Iran, which an EU-only screening misses. "
@@ -1054,25 +1060,29 @@ def blocks(V, edition):
     # ---------------------------------------------------------------- 8. scenarios
     sc = V["risk_sc"]["mar-rosso-container"]
     sig = {s["id"]: s for s in sc["scenari"]}
-    def sigs(sid):
+    sig_b = {x["id"]: x for x in V["risk_sc"]["baltico"]["scenari"]}
+    def sigs(sid, src=None):
         out = []
-        for g in sig[sid]["segnali"]:
+        for g in (src or sig)[sid]["segnali"]:
             v = g["valore"]
             vs = num(v, 1) if isinstance(v, float) and abs(v) < 100 else num(v)
-            if "Premio" in g["descrizione"]:
-                vs += "%"
+            if "Premio" in g["descrizione"] or "Stretti danesi" in g["descrizione"]:
+                vs = (pct(v) if "Stretti danesi" in g["descrizione"] else vs + "%")
             out.append(f"{sig_en(g['descrizione'])} (now {vs}{', met' if g['attivo'] else ''})")
         return "; ".join(out)
     all_suez = ts["feu"]["total"]
     all_cape = tc["feu"]["total"]
     B.append(("h2", "scenarios", "8. Scenarios for Q1 2027"))
     B.append(("val", f"*Assessment.* These scenarios are the monitor's reasoning, without probabilities: each comes with observable thresholds. The first three "
-                     f"follow the Red Sea scenarios of the risk dashboard ({dl('rischio.json')}, {date_en(V['risk_date'])}); the cost per FEU uses the section 3 "
-                     f"model at today's fuel and EUA prices. Try each case on the [«What if» simulator](../../simulatore.html), which estimates the effect of a "
-                     f"slowdown or closure of a passage."))
+                     f"follow the Red Sea scenarios of the risk dashboard and E its Baltic «worse» scenario ({dl('rischio.json')}, {date_en(V['risk_date'])}); the cost per FEU "
+                     f"uses the section 3 model at today's fuel and EUA prices. Each case can be tried on the [«What if» simulator](../../simulatore.html), which "
+                     f"estimates the effect of a slowdown or closure of a passage. The simulator starts from normal traffic, not from today's, and its lowest "
+                     f"freight effect for a Cape detour is 160 $/FEU (UNCTAD 2024, mid-size ship); this model gives "
+                     f"{num((tc['feu']['fuel'] + tc['feu']['ets'] + tc['feu']['fueleu']) - (ts['feu']['fuel'] + ts['feu']['ets'] + ts['feu']['fueleu']))} $/FEU in fuel "
+                     f"and carbon for a 15,000 TEU ship at 2026 prices."))
     B.append(("tab", ["Scenario", "Route mix", "Cost items, $/FEU", "Indicators and thresholds", "Simulator"], [
         ["A. Gradual return under threat (base: the dashboard's current reading, " + f"{sig['mar-rosso-base']['segnali_attivi']} of {sig['mar-rosso-base']['segnali_valutabili']} signals met)",
-         f"{S}% Suez, rising slowly", num(tw["feu"]["total"]), sigs("mar-rosso-base"), "[Bab el-Mandeb −25%, 1 month](../../simulatore.html#bab-el-mandeb/r25/1m)"],
+         f"{S}% Suez (North Europe), rising slowly", num(tw["feu"]["total"]), sigs("mar-rosso-base"), "[Bab el-Mandeb −25%, 1 month](../../simulatore.html#bab-el-mandeb/r25/1m)"],
         ["B. Full return by Q1 2027 (better)", "100% Suez", num(all_suez),
          sigs("mar-rosso-migliorativo") + f"; FBX11 below {num(THRESHOLDS['fbx11_low'])} $/FEU (set here; now {num(V['fbx11']['valore'])})", "—"],
         ["C. Houthi attacks resume (worse)", "back to the Cape", num(all_cape),
@@ -1083,10 +1093,9 @@ def blocks(V, edition):
          f"Singapore VLSFO above {num(THRESHOLDS['vlsfo_sg_high'])} $/t (now {num(ci['p_now'], 1)}; high of the year {num(V['vlsfo_sg']['massimo_anno'][1], 1)} on {date_en(V['vlsfo_sg']['massimo_anno'][0])}); "
          f"Hormuz below 5 ships a day (now {num(hz['transits_7d_avg'], 1)})", "[Hormuz closed, 3 months](../../simulatore.html#hormuz/chiuso/3m)"],
         ["E. Baltic incident (overlay)", "feeders to Gdańsk, Klaipėda delayed", "not modelled",
-         f"a cable or pipeline incident within 30 days; Danish straits below −30% on a year (now {pct(pw['Danish straits (Oresund)']['var_vs_1y_pct'])}); "
-         f"sanctioned tankers in the Gulf of Finland above {THRESHOLDS['gof_sanctioned']} (now {gof['sanzionate']})",
+         sigs("baltico-peggiorativo", sig_b) + f" (sanctioned tankers seen in the Gulf of Finland on {date_en(V['navi_date'])}: {gof['sanzionate']})",
          "[Danish straits −25%, 1 month](../../simulatore.html#stretti-danesi/r25/1m)"],
-    ], "Signal texts translated from rischio.json; values from rischio.json, noli.json, bunker-emissioni.json, transit-times.json, navi.json. "
+    ], "Signal texts translated from rischio.json (scenarios A–C: Red Sea container route; E: Baltic); values from rischio.json, noli.json, bunker-emissioni.json, transit-times.json, navi.json. "
        "Thresholds marked «set here» are this report's assessment, in THRESHOLDS in report/build_logistics.py."))
     cal = V["cal"]
     imo_next = next((x for x in V["imo"] if x["data"] >= V["today"].isoformat()), None)
@@ -1107,10 +1116,33 @@ def blocks(V, edition):
     B.append(("p", "**Dates in the window.** "
               + (f"IMO, from {date_en(imo_next['data'])}: ISWG-GHG 23, MEPC 85 and, on 4 December 2026 if confirmed, the resumed extraordinary session that "
                  f"may vote the Net-Zero Framework, a global carbon price for shipping. " if imo_next else "")
-              + "; ".join(cal_txt) + f" ({dl('calendario.json')}, {dl('bunker-emissioni.json')})."))
+              + "; ".join(cal_txt) + f" ({dl('calendario.json')}, {dl('bunker-emissioni.json')}). **Missing:** {dl('calendario.json')} does not list the "
+              "six-monthly renewal of the EU economic sanctions on Russia (Regulation 833/2014, which holds the port-access ban); in recent years it has fallen "
+              "on 31 January and 31 July, so the next one is likely due by 31 January 2027 (not checked against the Official Journal)."))
 
-    # ---------------------------------------------------------------- 9. method
-    B.append(("h2", "method", "9. Method, sources and limits"))
+    # ---------------------------------------------------------------- 9. glossary
+    B.append(("h2", "glossary", "9. Glossary"))
+    B.append(("ul", [
+        "**TEU / FEU**: twenty-foot / forty-foot equivalent unit, the standard container sizes; one FEU = 2 TEU. Freight rates are quoted per FEU.",
+        "**VLSFO**: very-low-sulphur fuel oil (0.5% sulphur), the standard marine fuel since 2020, priced in $ per tonne at bunkering hubs such as Singapore and Rotterdam.",
+        "**EU ETS / EUA**: the EU Emissions Trading System; ships calling at EU ports must surrender one EU Allowance (EUA) per tonne of CO2-equivalent, "
+        "for 50% of voyages into or out of the EU and 100% within it.",
+        "**FuelEU Maritime**: EU rule capping the greenhouse-gas intensity of ship fuel from 2025; ships above the limit pay a penalty or pool with cleaner ships.",
+        "**War risk / additional premium**: war cover for the hull, bought separately; entering a Joint War Committee (JWC) **listed area** requires notice "
+        "and an additional premium, quoted in % of hull value per transit (usually 7 days).",
+        "**Hull value**: the insured value of the ship; the premium bill is premium × hull value.",
+        "**Break-even premium**: the war-risk premium at which the Cape detour and the Suez route cost the same in this model.",
+        "**WCI / FBX / CCFI**: Drewry World Container Index (weekly spot rates), Freightos Baltic Index (spot), China Containerized Freight Index "
+        "(Shanghai Shipping Exchange, spot and contract rates).",
+        "**AIS / PortWatch**: the Automatic Identification System transponder; IMF PortWatch turns AIS positions into daily port calls and chokepoint transits.",
+        "**Blank sailing**: a scheduled departure a carrier cancels, usually to match capacity to demand or after a routing change.",
+        "**Shadow fleet**: old tankers with opaque ownership and insurance carrying sanctioned Russian or Iranian oil; here, tankers (or ships of unknown type) "
+        "sanctioned for Russia or Iran.",
+        "**OFAC**: the US Treasury's Office of Foreign Assets Control, which keeps the SDN sanctions list.",
+    ]))
+
+    # ---------------------------------------------------------------- 10. method
+    B.append(("h2", "method", "10. Method, sources and limits"))
     B.append(("tab", ["Source", "What", "Date of the data"], [
         [dl("transit-times.json"), "99 routes, nm and days today vs 2023, Cape alternative, vessel hypotheses", V["tt"]["updated"][:10]],
         [dl("bunker-emissioni.json"), "VLSFO prices (Ship & Bunker), EUA auction (EEX), ETS and FuelEU rules and cost example, Maersk surcharge", f"{ci['p_date']} / {ci['eua_date']}"],
@@ -1123,18 +1155,22 @@ def blocks(V, edition):
         [f"{dl('sanzioni-navi.json')}, {dl('navi.json')}", "sanctioned ships (OFAC, UK, EU), AIS snapshot", V["navi_date"][:10]],
         [f"[{E1['source']}]({E1['link']})", E1["text"] + f" (reliability {E1['reliability']}; {E1['read']})", E1["date"]],
         [f"[{E2['source']}]({E2['link']})", E2["text"] + f" (reliability {E2['reliability']}; {E2['read']})", E2["date"]],
+        [f"[{A['source']}]({A['link']})", A["text"] + f" (reliability {A['reliability']}; {A['read']})", A["date"]],
     ], ""))
     B.append(("ul", [
         "**Model, not ship data.** Daily consumption, hull value, utilisation and speed are declared hypotheses of the transit model. A real service calls at several "
         "ports, sails faster on the Cape to keep a weekly schedule and has its own MRV emissions data. The cost stack is an order of magnitude for comparison.",
         "**Same speed in every scenario**, so the Cape penalty is distance only; faster Cape sailing would raise fuel per mile (UNCTAD: 14 → 16 knots = +31% fuel per mile).",
-        f"**2023 baselines from outside the repository**: the fuel price ({date_en(E1['date'])}) and the WCI ({date_en(E2['date'])}) come from search-result excerpts of "
-        "secondary sources. They should be checked against the publishers before quotation.",
+        f"**2023 baselines from outside the repository**: the fuel price ({date_en(E1['date'])}) and the WCI ({date_en(E2['date'])}) come from secondary sources. "
+        "The review confirmed both values in search-result excerpts (two reprints for the WCI) but could not open the pages; they should be checked against "
+        "the publishers' archives before quotation.",
         "**War-risk premiums** are press quotes for tankers; no public quote exists for container ships. The last Red Sea quote is from "
         f"{date_en(V['prem_last']['mar-rosso']['data'])}.",
         "**AIS** counts only ships with the transponder on, about a week late. The congestion proxy is not waiting-time data.",
-        f"**Inconsistent perimeters, declared not resolved:** hull value 150 M$ here (transit model) against 221.7 M$ (new ship) in {dl('assicurazioni.json')}; "
-        f"the {S}% Suez share is for Far East–Europe capacity and is applied to every Asian origin.",
+        f"**Different perimeters, explained in section 3:** hull value 150 M$ here (an in-service ship, transit model hypothesis) against 221.7 M$ "
+        f"(newbuild price) in {dl('assicurazioni.json')} and in the Northern Europe report; extra Cape cost 1.64 M$ here against UNCTAD's 0.7 M$ "
+        f"(mid-size ship, 2024) in {dl('assicurazioni.json')}, the simulator and the Italian supply-chain report (about 160 $/FEU). "
+        f"The Suez shares ({S}% North Europe, {SM}% Mediterranean) are for Far East services and are applied, as a proxy, to Nhava Sheva and Jebel Ali too.",
         "**Not repeated here**: the Italian report *Supply chain e logistica — novembre 2026* covers strait-by-strait transits, Italian ports and energy prices.",
         "**AI assistance.** An AI assistant (Claude, Anthropic) wrote the build script, ran the calculations and drafted the text from the monitor's data files "
         "and the cited sources. Every figure is generated from the files; the two external 2023 values are flagged. Gabriele Giuliani is responsible for publication.",
