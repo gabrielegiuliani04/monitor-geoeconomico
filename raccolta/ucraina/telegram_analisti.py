@@ -386,7 +386,7 @@ CITTA_ALIAS = {
 }
 
 # parole troppo comuni o ambigue da non usare come nomi di luogo
-STOP_LUOGHI = {
+STOP_LUOGHI = {"dniepr", "dnieper", "dnipro river",
     "mir", "pobeda", "sovetskiy", "sovetsky", "oktyabrskiy", "lenina", "zarya", "progress",
     "front", "port", "mayak", "ukraine", "russia", "nova", "novyi", "stantsiya", "drone",
     "druzhba", "energetik", "promin", "pervomaisk", "pervomaysk", "zelenyi gai", "russkiy",
@@ -1080,15 +1080,14 @@ def estrai_tutto(senza_firms=False):
     for i, a in enumerate(sorted(attacchi, key=lambda x: (x["data"], x["post"]["canale"], x["post"]["id"]))):
         p = a["post"]
         e = {
-            "id": "an-%s-%s-%d" % (a["data"], "cm" if p["canale"] == "clement_molin" else "amk", p["id"]),
-            "data": a["data"], "ora_utc": p["data"][11:16],
+            "id": "%s-%d" % ("cm" if p["canale"] == "clement_molin" else "amk", p["id"]),
+            "data": a["data"],
             "direzione": "RU>UA" if a["direzione"].startswith("russo") else "UA>RU",
             "lat": a["lat"], "lon": a["lon"], "precisione_km": a["precisione_km"],
-            "origine_coord": a["origine_coord"].split(":")[0].split(" (")[0],
             "nome": a["luogo"], "oblast": a["oblast"], "paese": a["paese"],
             "categoria": a["categoria"], "mezzi": a["mezzi"],
             "fonte": "Clément Molin" if p["canale"] == "clement_molin" else "AMK Mapping",
-            "link": p["link"], "data_fonte": p["data"][:10],
+            "link": p["link"],
             "estratto": estratto(p["testo"]),
             "affidabilita": "alta" if a["corroborato_da"] else "media",
         }
@@ -1153,7 +1152,10 @@ def estrai_tutto(senza_firms=False):
                  "precisione stimata a mano nel rapporto report/agenti/attacchi-analisti.md. Il testo dei post non "
                  "è incluso: solo un estratto e il link."),
         "legenda": {"direzione": a_dir, "corroborato_da": "id in attacchi-russi.json / ucraina-storico.json, "
-                    "o link al post dell'altro canale", "ora_utc": "ora del post (UTC)",
+                    "o link al post dell'altro canale", "data": "data UTC del post (= data_fonte)",
+                    "precisione_km": "1 = coordinate scritte nel post; 2-10 con nome di impianto = coordinate OSM "
+                    "dell'impianto da ucraina-storico.json; 10 = centro abitato GeoNames; 80 = punto GeoNames della regione",
+                    "id": "cm = Clément Molin, amk = AMK Mapping, seguito dal numero del post",
                     "luoghi_citati": "numero di luoghi riconosciuti nel post (il punto è il primo pertinente)"},
         "canali": info_canali,
         "categorie": sorted({c for c, _ in CATEGORIE} | {"altro"}),
