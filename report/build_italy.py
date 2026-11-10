@@ -62,32 +62,75 @@ EXTERNAL = {
     },
     "qatar_trains": {
         "date": "2026-10-12",
-        "text": "two liquefaction trains at Ras Laffan (about 12.8 Mt a year) are out of service",
-        "source": "Cyprus Mail, 12 October 2026, via the ENERGIA agent (report/agenti/energia.md)",
+        "text": "Iranian missile attacks knocked out about 17% of Qatar's export capacity; Qatar's LNG exports were 1.6 million tonnes in September, under a quarter of the pre-war average, and on track for 0.6 million in October (Kpler)",
+        "source": "Reuters column republished by Cyprus Mail, 12 October 2026 (re-read 10 November 2026). The column gives 17% of capacity, not the trains: "
+                  "trains 4 and 6, about 12.8 Mt a year, come from Global LNG Hub as cited in report/hormuz-mar-rosso-2026-11.md",
         "link": "https://cyprus-mail.com/2026/10/12/qatar-lng-exports-remain-severely-disrupted-despite-recovery-in-gulf-oil-shipments",
-        "reliability": "medium",
+        "reliability": "medium (Reuters opinion column quoting Kpler)",
     },
     "iea_storage": {
         "date": "2026-11-03",
         "text": "EU storage enters the winter at its lowest level since 2013",
         "source": "IEA, Global Gas Security Review 2026 (3 November 2026), via the SCORTE agent (report/agenti/scorte.md)",
         "link": "https://www.iea.org/reports/global-gas-security-review-2026/executive-summary",
-        "reliability": "high (primary), not re-opened for this report",
+        "reliability": "high (primary); iea.org not reachable from this environment, sentence confirmed by search on 10 November 2026 (IEA press release, WAM)",
     },
     "mimit_9nov": {
         "date": "2026-11-09",
-        "text": "the Mimit daily average reported by ANSA on 9 November: diesel 2.232 €/l, petrol 2.000 €/l",
-        "source": "ANSA, 9 November 2026 (headline in notizie-testate.json; figures in the headline)",
+        "text": "the Mimit self-service average on ordinary roads was €2.232 for diesel on 9 November, against €2.224 on 7 November, the last day of the cut; petrol was €2.000",
+        "self_7nov": 2.224, "self_9nov": 2.232,
+        "source": "ANSA, 9 November 2026 (9 Nov figures, self-service, ordinary road network; motorways: diesel 2.287); Rai News, 8 November 2026 (7 Nov figure). "
+                  "ANSA quotes the ministry: thanks to the price cap joined by the main companies, self-service diesel stays below €2.20 on most of the network",
         "link": "https://www.ansa.it/sito/notizie/economia/2026/11/09/mimit-prezzo-benzina-stabile-a-2000-euro-gasolio-in-leggero-aumento-a-2232_9d0752c9-8a30-4d1f-9149-b033ff112a55.html",
         "reliability": "high (agency quoting the ministry)",
     },
 }
 
-# Review box: placeholder until the independent review (report/revisioni/<slug>.md) is done.
+EXTERNAL.update({
+    "brent_close_9nov": {
+        "date": "2026-11-09",
+        "value": 92.57,
+        "text": "Brent's final close for the 9 November session was 92.57 dollars (Yahoo Finance daily bar, read 10 November 2026 at 06:49 UTC)",
+        "source": "Yahoo Finance BZ=F, daily and hourly chart data, read by the reviewer on 10 November 2026. prezzi.json (read 03:40 UTC on 10 November) "
+                  "records 91.70 under 9 November: the hourly bars show that 91.70 is a price from the overnight trading of the 10 November session "
+                  "(91.73 at 02:00 and 91.57 at 03:00 UTC), not the 9 November close. 92.62, used by the risk dashboard and the Hormuz report, is the "
+                  "intraday reading of 19:47 UTC on 9 November.",
+        "link": "https://finance.yahoo.com/quote/BZ%3DF",
+        "reliability": "medium (futures quote, not an official settlement price)",
+    },
+    "excise_refund": {
+        "date": "2026-11-10",
+        "rate": 0.40322,
+        "text": "the refund covers the excise above a fixed reference rate of €403.22 per 1,000 litres (art. 24-ter of the excise code; trucks of 7.5 tonnes or more, Euro V or cleaner)",
+        "source": "Legislative decree 504/1995, art. 24-ter and Table A point 4-bis, as summarised by Assolombarda and customs agency (ADM) circulars; Federtrasporti (Teleborsa, 10 September 2026) quotes 26.5 cents",
+        "link": "https://www.assolombarda.it/servizi/fisco/informazioni/credito-d2019imposta-per-gli-autotrasportatori-rimborso-accise-dal-1deg-al-31-dicembre-2022",
+        "reliability": "high (law); page not opened, confirmed by search",
+    },
+    "bill_decree": {
+        "date": "2026-11-09",
+        "text": "a cap of €58.9/MWh on the gas used to generate electricity, from January 2027 for 18 months, which the energy minister says will cut the wholesale power price by about 15 €/MWh on average",
+        "source": "ANSA and Corriere della Sera, 9 November 2026 (Corriere gives 59 €/MWh)",
+        "link": "https://www.ansa.it/sito/notizie/economia/2026/11/09/dal-cdm-ok-al-decreto-bollette-15-euro-in-meno-al-megawattora_cbf74d76-2c12-4718-89af-73ab9c1e6fec.html",
+        "reliability": "high (agency)",
+    },
+    # MASE weekly national average diesel price (€/l) for weeks before January 2022, which italia-impatti.json does not keep.
+    # Read by the reviewer from the MASE weekly CSV (sisen.mase.gov.it, GASOLIO_AUTO, €/1000 l) on 10 November 2026.
+    "mase_diesel_pre2022": {
+        "link": "https://sisen.mase.gov.it/dgsaie/prezzi-settimanali-carburanti",
+        "values": {"2006-12-11": 1.11387, "2007-12-10": 1.29003, "2011-01-17": 1.34035, "2011-01-24": 1.34945,
+                   "2012-01-16": 1.68151, "2012-01-23": 1.68700, "2021-03-15": 1.43607},
+    },
+})
+
+# Review box, filled in by the independent review (report/revisioni/<slug>.md).
 REVIEW = {
-    "status": "pending",
-    "date": None,
+    "status": "done",
+    "date": "10 November 2026",
     "log": "report/revisioni/italy-gulf-shock-2026-11.md",
+    "claims": 214,
+    "ok": 168,
+    "corrected": 33,
+    "unverified": 13,
 }
 
 PORT_EN = {"Genova": "Genoa", "Venezia (Lido)": "Venice (Lido)", "Venezia (Malamocco)": "Venice (Malamocco)"}
@@ -293,14 +336,31 @@ def compute(today):
     V["scen"] = {s["id"]: s for s in ii["scenari"]}
     V["notice_days"] = 25
     V["earliest"] = (today + dt.timedelta(days=V["notice_days"])).isoformat()
-    # precedents: 8-week change where the weekly series covers the date
+    # precedents: diesel in the MASE survey of the week the protest began (a weekend start counts from the next Monday),
+    # change on the same week a year earlier and over 8 weeks, recomputed from the weekly series (review, 10/11/2026:
+    # the curated values in the file mixed different reference weeks).
+    allw = sorted(list(EXTERNAL["mase_diesel_pre2022"]["values"].items()) + [tuple(x) for x in dsl])
+    wk_map = dict(allw)
     for p in V["prec"]:
         gd = p.get("gasolio_alla_data")
-        if gd and gd["settimana"] >= dsl[0][0]:
+        p["_8w"] = None
+        if not gd:
+            continue
+        st0 = d(p["data_inizio"])
+        if st0.weekday() >= 5:
+            st0 += dt.timedelta(days=7 - st0.weekday())
+        wk = (st0 - dt.timedelta(days=st0.weekday())).isoformat()
+        val = wk_map.get(wk)
+        ya = before(allw, (d(wk) - dt.timedelta(days=364)).isoformat())
+        if val is None or ya is None:
+            if p["id"] in PREC_EN:
+                warn(f"precedent {p['id']}: week {wk} not in the MASE series; curated value kept")
+        else:
+            p["gasolio_alla_data"] = dict(gd, settimana=wk, eur_l=round(val, 3), var_pct_un_anno=round(var(val, ya[1]), 1), un_anno_prima=round(ya[1], 3))
+            gd = p["gasolio_alla_data"]
+        if gd["settimana"] >= dsl[0][0]:
             b8 = week_back(dsl, gd["settimana"], 8)
             p["_8w"] = var(gd["eur_l"], b8[1]) if b8 else None
-        else:
-            p["_8w"] = None
     # gas Italy
     gi = load("gas-italia.json")
     V["gas_q"] = gi["quote_12_mesi"]
@@ -369,6 +429,8 @@ def compute(today):
     # prices
     pz = {e["id"]: e for e in load("prezzi.json")["serie"]}
     V["brent"], V["ttf"], V["eurusd"] = pz["brent"], pz["ttf"], pz["eurusd"]
+    V["brent_close"] = EXTERNAL["brent_close_9nov"]["value"] if pz["brent"]["data"] == EXTERNAL["brent_close_9nov"]["date"] else pz["brent"]["ultimo"]
+    V["brent_eur_var_close"] = var(V["brent_close"] / today_b["eurusd"], base["brent"] / base["eurusd"])
     if abs(pz["brent"]["ultimo"] - o["brent"]) > 0.01:
         warn("Brent in prezzi.json differs from italia-impatti.json")
     # calendar
@@ -841,23 +903,28 @@ def blocks(V, edition, today):
     lo, hi = V["thr"]
     # ------------------------------------------------------------------ 1
     H2("key", "1. Key points")
-    k1 = (f"**Diesel is back near €{num(V['dsl_post'], 2)} a litre after the last excise cut expired on 8 November.** "
-          f"The weekly average of the energy ministry (MASE) was €{num(g['eur_l'], 3)} for diesel and €{num(b['eur_l'], 3)} for petrol on {date_en(lastd)}; "
-          f"without the {num(V['cut_cents_vat'], 1)}-cent cut, diesel works out at €{num(V['dsl_post'], 3)}. That is {pct(V['dsl_yoy'], 0)} on a year earlier.")
-    k2 = (f"**Gas and power bills now drive inflation more than fuel.** Consumer prices (Istat NIC, preliminary) rose {num(V['nic_last'][1], 1)}% in "
-          f"{month_en(V['nic_last'][0])}, from {num(V['nic_feb'], 1)}% in February. Energy items rose {num(nic['energetici'][-1][1], 1)}%, electricity "
-          f"{num(nic['elettricita'][-1][1], 1)}%, gas {num(nic['gas'][-1][1], 1)}%. The wholesale power price (PUN) averaged {num(V['pun_oct'][1], 1)} €/MWh in October.")
+    mm9 = EXTERNAL["mimit_9nov"]
+    k1 = (f"**Diesel has risen less than the end of the excise cut implies.** The {num(V['cut_cents_vat'], 1)}-cent cut expired on 8 November. "
+          f"Diesel averaged €{num(g['eur_l'], 3)} a litre in the week of {date_en(lastd, False)} (MASE), {pct(V['dsl_yoy'], 0)} on a year; full excise would make it "
+          f"€{num(V['dsl_post'], 3)} (calculation). Self-service diesel rose only from €{num(mm9['self_7nov'], 3)} to €{num(mm9['self_9nov'], 3)} between 7 and 9 November (Mimit).")
+    W_ = V["W"]
+    eg = (W_['CP0451'] * nic['elettricita'][-1][1] + W_['CP0452'] * nic['gas'][-1][1]) / 1000
+    fu = W_['FUEL'] * nic['carburanti'][-1][1] / 1000
+    k2 = (f"**Gas and power bills now push inflation more than fuel does.** Consumer prices (Istat NIC, preliminary) were up {num(V['nic_last'][1], 1)}% on a year in "
+          f"{month_en(V['nic_last'][0])}, from {num(V['nic_feb'], 1)}% in February. Electricity (+{num(nic['elettricita'][-1][1], 1)}%) and gas (+{num(nic['gas'][-1][1], 1)}%) "
+          f"account for about {num(eg, 1)} points, fuels for about {num(fu, 1)} (calculation). The wholesale power price (PUN) averaged {num(V['pun_oct'][1], 1)} €/MWh in October.")
     k3 = (f"**Italy has the gas; the problem is its price.** Storage was {num(it['valore'], 1)}% full on {date_en(it['data'], False)} "
-          f"(Germany {num(st['de']['valore'], 1)}%). Algeria's TransMed pipeline brought {num(sh['mazara']['quota_ingressi_pct'], 0)}% of gas entering Italy in 12 months; "
-          f"Qatar, in force majeure, supplied {num(pa['quota_gnl_golfo_persico']['valore']['min_pct'], 1)}% of LNG imports in 2025. Gas (TTF) is {pct(ttf['var']['1a'], 0)} on a year.")
-    k4 = (f"**Hauliers: no national stoppage had been called by 9 November.** A stoppage needs {V['notice_days']} days' notice, so one called on "
-          f"{date_en(today.isoformat(), False)} could not start before {date_en(V['earliest'], False)}. Diesel has stayed above the monitor's €{num(hi, 2)} "
-          f"alert level since {date_en(V['above_since'], False)}. *Assessment:* risk of a call is high; a lawful stoppage in November is ruled out.")
+          f"(Germany {num(st['de']['valore'], 1)}%). Algeria's TransMed pipeline, flowing normally, brought {num(sh['mazara']['quota_ingressi_pct'], 0)}% of imported gas over 12 months; "
+          f"Qatar, in force majeure since March, supplied {num(pa['quota_gnl_golfo_persico']['valore']['min_pct'], 1)}% of LNG imports by value in 2025. "
+          f"The Dutch TTF gas price, which Italy's follows, was {pct(ttf['var']['1a'], 0)} on a year on {date_en(ttf['data'], False)}.")
+    k4 = (f"**No national truck stoppage had been called by 9 November, and none can lawfully start before {date_en(V['earliest'], False)}.** "
+          f"Hauliers must give the Strike Guarantee Commission {V['notice_days']} days' notice. Diesel has been above the monitor's €{num(hi, 2)} alert level since the week of "
+          f"{date_en(V['above_since'], False)}. *Assessment:* the risk that a stoppage is called before the end of the year is high; wildcat blockades need no notice.")
     s1 = sc["hormuz_1m"]
-    k5 = (f"**A second Hormuz shock would push diesel to €{num(s1['da_oggi']['gasolio_eur_l'][0], 2)}–{num(s1['da_oggi']['gasolio_eur_l'][1], 2)} within a month** "
-          f"(*assessment*, rule-based). Tested on 2026: from February prices the rule gave €{num(s1['da_condizioni_normali']['gasolio_eur_l'][0], 2)}–"
-          f"{num(s1['da_condizioni_normali']['gasolio_eur_l'][1], 2)}; diesel actually averaged €{num(s1['osservato']['gasolio']['media_senza_tagli_accise'], 2)} once the excise cuts are added back. "
-          f"A TransMed outage hits bills, not pumps.")
+    k5 = (f"**A second Hormuz shock would put diesel at €{num(s1['da_oggi']['gasolio_eur_l'][0], 2)}–{num(s1['da_oggi']['gasolio_eur_l'][1], 2)} within a month** "
+          f"(*assessment*: Brent up {num(s1['ingresso']['brent_pct'][0], 0)}–{num(s1['ingresso']['brent_pct'][1], 0)}% as in March 2026, no new tax cuts). Tested on 2026: from pre-war prices the rule gave "
+          f"€{num(s1['da_condizioni_normali']['gasolio_eur_l'][0], 2)}–{num(s1['da_condizioni_normali']['gasolio_eur_l'][1], 2)}; diesel averaged "
+          f"€{num(s1['osservato']['gasolio']['media_senza_tagli_accise'], 2)} once the excise cuts are added back. A TransMed outage would hit bills, not pumps.")
     UL([k1, k2, k3, k4, k5])
     for k in (k1, k2, k3, k4, k5):
         nw = len(re.sub(r"[*\[\]()`]", "", k).split())
@@ -865,7 +932,7 @@ def blocks(V, edition, today):
             warn(f"key point over 60 words ({nw}): {k[:60]}")
     B.append(("gloss", [
         ("MASE", "Ministry of the Environment and Energy Security; publishes the weekly national average of fuel prices, with tax and excise broken out"),
-        ("Mimit", "Ministry of Enterprises and Made in Italy; runs the daily fuel-price observatory fed by every filling station"),
+        ("Mimit", "Ministry of Enterprises and Made in Italy; runs the daily fuel-price observatory fed by every filling station; the daily national averages quoted in the press are for self-service"),
         ("ARERA", "the energy regulator; sets the gas price for 'vulnerable' households still on regulated terms"),
         ("GME", "the operator of Italy's power and gas exchanges"),
         ("PUN", "the national wholesale electricity price, set daily on the GME exchange, in €/MWh"),
@@ -873,8 +940,12 @@ def blocks(V, edition, today):
         ("Istat, NIC, HICP", "the national statistics institute; NIC is its consumer price index for the whole population, HICP the EU-harmonised version"),
         ("Excise (accisa)", "a fixed tax per litre on fuel; VAT at 22% is charged on top of it"),
         ("Fermo", "a stoppage of road hauliers: firms keep their trucks off the road; it is treated like a strike"),
-        ("Unatras", "the joint committee of the main road-haulage associations"),
+        ("Unatras", "the joint committee of the main road-haulage associations; Trasportounito and Federtrasporti are associations outside it"),
+        ("Excise refund (rimborso accise)", "hauliers with trucks of 7.5 tonnes or more get back, every quarter, the diesel excise above a fixed reference rate"),
+        ("CNR", "Comité national routier, the French road-haulage cost observatory, used here for want of an Italian figure"),
         ("Law 146/1990", "the law on strikes in essential public services; an independent Strike Guarantee Commission (Commissione di garanzia) enforces notice and minimum services"),
+        ("Precettazione", "an order by a minister or prefect that obliges workers or firms to keep an essential service running during a strike"),
+        ("ENTSOG, GIE AGSI+, PortWatch", "the European gas network operators' flow platform; the European gas storage database; the IMF's ship-tracking service"),
         ("LNG, FSRU", "liquefied natural gas; a floating storage and regasification unit is a ship-based import terminal"),
         ("FEU, AIS", "a 40-foot container; the transponder ships use to broadcast position, the basis of PortWatch counts"),
     ]))
@@ -904,7 +975,8 @@ def blocks(V, edition, today):
     P(f"**LNG from Qatar.** In {pa['fornitori_gnl']['anno']} the United States supplied {num(fl[0]['quota_pct'], 1)}% of the value of Italy's LNG imports, "
       f"Qatar {num(fl[1]['quota_pct'], 1)}% and Algeria {num(fl[2]['quota_pct'], 1)}% (UN Comtrade, {dl('paesi.json')}). "
       f"{EXTERNAL['qatar_fm']['text'][0].upper() + EXTERNAL['qatar_fm']['text'][1:]} ({link('gasworld', EXTERNAL['qatar_fm']['link'])}), and "
-      f"{EXTERNAL['qatar_trains']['text']} ({link('Cyprus Mail', EXTERNAL['qatar_trains']['link'])}). The monitor's risk dashboard rates Qatari LNG "
+      f"{EXTERNAL['qatar_trains']['text']} ({link('Reuters via Cyprus Mail, 12 October 2026', EXTERNAL['qatar_trains']['link'])}; the monitor's Hormuz report identifies "
+      f"the damaged units as trains 4 and 6, about 12.8 Mt a year). The monitor's risk dashboard rates Qatari LNG "
       f"**{LEVEL[q['livello']]}**, {num(q['punteggio'], 1)} out of 25 ({dl('rischio.json')}, {date_en(V['ri_date'])}). **Missing:** the origin of the cargoes that reached "
       f"Italian terminals in 2026 (it would need Kpler or GIIGNL data).")
     tm = Ra["transmed"]
@@ -923,8 +995,8 @@ def blocks(V, edition, today):
     gq = pa["quota_greggio_golfo_persico"]["valore"]
     P(f"Between {num(gq['min_pct'], 1)}% and {num(gq['max_pct'], 1)}% of Italy's crude came from the Gulf in {pa['quota_greggio_golfo_persico']['anno']} "
       f"(the lower figure counts only suppliers with no route around Hormuz; the higher one adds Saudi Arabia and the UAE). The exposure is through price and refined products. "
-      f"The fuel industry association Unem says Italy is more exposed on products than on crude, because Gulf refineries ship through Hormuz and more than 30 European refineries "
-      f"have closed in fifteen years ({link('Il Fatto Quotidiano, 17 April 2026', lit['unem-raffinazione']['link'])}; reliability medium).")
+      f"The president of the fuel industry association Unem said in April that falls in diesel prices would prove temporary, citing among other things the closure of more than 30 European "
+      f"refineries in fifteen years ({link('Il Fatto Quotidiano, 17 April 2026', lit['unem-raffinazione']['link'])}; reliability medium).")
     need(lit["unem-raffinazione"]["testo"], "30 raffinerie", where="italia-impatti.json letteratura unem")
     H3("Emergency stocks: oil below the norm, gas close to target")
     od = V["oil_days"]
@@ -933,10 +1005,11 @@ def blocks(V, edition, today):
       f"and a five-year average of {num(od['it']['media_5_anni']['valore'], 1)} (Eurostat, {dl('scorte.json')}). EU law (directive 2009/119/EC) requires the larger of "
       f"90 days of net imports or 61 days of consumption. The series fell from {num(at(ser, '2026-03-01'), 1)} days in March to {num(at(ser, '2026-04-01'), 1)} in April 2026. "
       f"Germany held {num(od['de']['valore'], 1)}, France {num(od['fr']['valore'], 1)} and the Netherlands {num(od['nl']['valore'], 1)} days. The June figure "
-      f"({num(at(ser, '2026-06-01'), 1)}) breaks the pattern and is treated as an anomaly.")
+      f"({num(at(ser, '2026-06-01'), 1)}, between {num(at(ser, '2026-05-01'), 1)} in May and {num(at(ser, '2026-07-01'), 1)} in July) is almost certainly a reporting anomaly and is not used. "
+      f"**Missing:** whether the spring drawdown was part of a coordinated stock release (the Hormuz report suggests it probably was).")
     P(f"Gas storage was **{num(it['valore'], 1)}%** full on {date_en(it['data'])} ({num(V['st_twh']['valore'], 1)} TWh of about {num(V['st_cap'], 1)}), "
-      f"{pts(it['anno_scorso']['variazione'], 1)} points on a year earlier and {pts(it['media_5_anni']['scarto'], 1)} on the five-year average; it fell "
-      f"{num(abs(it['precedente']['variazione']), 2)} points on the last day as winter withdrawals began. Germany was at {num(st['de']['valore'], 1)}%, the Netherlands "
+      f"{pts(it['anno_scorso']['variazione'], 1)} points on a year earlier and {pts(it['media_5_anni']['scarto'], 1)} on the five-year average; winter withdrawals began on "
+      f"1 November and took {num(abs(it['precedente']['variazione']), 2)} points on the last day. Germany was at {num(st['de']['valore'], 1)}%, the Netherlands "
       f"{num(st['nl']['valore'], 1)}%, Austria {num(st['at']['valore'], 1)}% and France {num(st['fr']['valore'], 1)}% (GIE AGSI+, {dl('scorte.json')}). "
       f"For the IEA, {EXTERNAL['iea_storage']['text']} ({link('IEA, 3 November 2026', EXTERNAL['iea_storage']['link'])}).")
     A("Italy's physical position is better than northern Europe's: full storage, two large pipelines from the south and five LNG terminals. Its weak points are the price, "
@@ -950,9 +1023,10 @@ def blocks(V, edition, today):
       f"The MASE average mixes self-service and attended pumps.")
     P(f"That survey still included the last diesel excise cut, {num(V['cut_cents_vat'], 1)} cents a litre with VAT, in force from 28 October to 7 November and not renewed "
       f"({link('Rai News, 8 November 2026', V['measures']['accise-marzo-2026']['link2'])}). With the ordinary excise of €{num(V['ordinary'], 4)} and an unchanged net price, diesel "
-      f"comes to **€{num(V['dsl_post'], 3)}** (calculation). The first daily reading after the expiry is lower: {EXTERNAL['mimit_9nov']['text']} "
-      f"({link('ANSA', EXTERNAL['mimit_9nov']['link'])}). The two are not the same measure: the Mimit figure is a daily average, and since 28 September Eni/Enilive and IP "
-      f"have capped prices voluntarily at about 4,100 of 20,000 stations (diesel €2.19, petrol €1.99; {link('La Prealpina, 28 September 2026', V['measures']['tetto-eni-ip-2026']['link'])}).")
+      f"comes to **€{num(V['dsl_post'], 3)}** (calculation, mixed self-service and attended). The daily readings after the expiry show a much smaller rise: {EXTERNAL['mimit_9nov']['text']} "
+      f"({link('ANSA', EXTERNAL['mimit_9nov']['link'])}; Rai News). The ministry credits the voluntary price caps: since 28 September Eni/Enilive and IP have capped prices at about 4,100 of "
+      f"20,000 stations (diesel €2.19, petrol €1.99; {link('La Prealpina, 28 September 2026', V['measures']['tetto-eni-ip-2026']['link'])}), and by 9 November, according to the ministry, "
+      f"the main companies had joined, keeping self-service diesel below €2.20 on most of the network. *Assessment:* the €{num(V['dsl_post'], 2)} estimate is an upper bound while the caps last.")
     need(V["measures"]["tetto-eni-ip-2026"]["testo"], "4.100", "2,19", "1,99", where="misure_governo tetto-eni-ip-2026")
     FIG("pump", f"*Weekly national average pump prices, €/litre, {month_en(V['dsl_first'])} to {date_en(lastd)}. Dashed lines: the monitor's diesel alert levels "
                 f"(€{num(lo, 2)} and €{num(hi, 2)}; an assessment). Events: 1 = excise cut of 25 cents (30.5 with VAT), 22 March 2022; 2 = cut fully withdrawn, 1 January 2023; "
@@ -961,10 +1035,15 @@ def blocks(V, edition, today):
     mx = V["dsl_max"]
     P(f"In the last week before the war ({date_en(V['pre'])}) diesel cost €{num(V['pre_d'], 3)} and petrol €{num(V['pre_p'], 3)}. Diesel peaked at **€{num(mx[1], 3)}** in the week of "
       f"{date_en(mx[0])}, the highest weekly average in the file's series (which starts in {month_en(V['dsl_first'])}). Since February the net price of diesel has risen "
-      f"{pct(V['net_var'], 0, False)}, while Brent crude in euro rose {pct(V['brent_eur_var'], 0, False)} (from {num(V['base_n']['brent'], 2)} to {num(V['base_t']['brent'], 1)} dollars a barrel; "
-      f"calculation on {dl('italia-impatti.json')}).")
-    P(f"Since January 2026 diesel and petrol carry the same ordinary excise (€{num(V['ordinary'], 4)}). Diesel now costs {num(V['gap_now'], 1)} cents more than petrol, "
-      f"against {num(V['gap_pre'], 1)} cents before the war. With equal excise, the gap is in the pre-tax price.")
+      f"{pct(V['net_var'], 0, False)}, while Brent crude in euro rose {pct(V['brent_eur_var_close'], 0, False)} (from a pre-war weekly average of {num(V['base_n']['brent'], 2)} to the "
+      f"9 November close of {num(V['brent_close'], 2)} dollars a barrel; calculation on {dl('italia-impatti.json')} and Yahoo Finance).")
+    cs_ = ii["serie"]["carburanti_settimanali"]
+    gap_now = (at(cs_["gasolio"], lastd) - at(cs_["benzina"], lastd)) * 100
+    gapn_now = (at(cs_["gasolio_netto"], lastd) - at(cs_["benzina_netto"], lastd)) * 100
+    gapn_pre = (at(cs_["gasolio_netto"], V["pre"]) - at(cs_["benzina_netto"], V["pre"])) * 100
+    P(f"Since January 2026 diesel and petrol carry the same ordinary excise (€{num(V['ordinary'], 4)}). On {date_en(lastd, False)} diesel cost {num(gap_now, 1)} cents more than petrol, "
+      f"against {num(V['gap_pre'], 1)} cents before the war, even though its excise was {num((V['ordinary'] - g['accisa']) * 100, 0)} cents lower that week. Before tax the gap is "
+      f"{num(gapn_now, 1)} cents, against {num(gapn_pre, 1)} before the war (calculation).")
     A("diesel has risen about twice as fast as crude because the refining margin on diesel widened: Europe imports diesel, and part of it came from Gulf refineries. "
       "That is why haulage, which runs on diesel, is under more pressure than private motoring.")
     FIG("breakdown", f"*Diesel price per litre split into net price, excise and VAT, for the last pre-war week, the April and September peaks, the latest survey ({date_en(lastd)}) and the "
@@ -1001,13 +1080,13 @@ def blocks(V, edition, today):
       f"the Italian wholesale price, so wholesale changes reach the bill in full a month later. The October 2026 value was **{num(a['cmem_eur_mwh'], 2)} €/MWh**, against "
       f"{num(cm.get('2026-04'), 2)} in April and {num(cm.get('2026-05'), 2)} in May; the typical customer's bill rose {num(a['var_spesa_utente_tipo_pct'], 1)}% on September "
       f"({link('ARERA, 3 November 2026', a['link'])}), and the reference price was {num(a['prezzo_riferimento_cliente_tipo_cent_smc'], 2)} cents per cubic metre "
-      f"({link('Sky TG24', a['link2'])}). Rule of thumb: 10 €/MWh on wholesale gas adds 10.6 cents per cubic metre plus VAT, about 7% of the bill. **Missing:** the June and August values.")
+      f"(Sky TG24, not reachable from here). About 2.3 million households are still on this service (ARERA). Rule of thumb: 10 €/MWh on wholesale gas adds 10.6 cents per cubic metre plus VAT, about 7% of the bill. **Missing:** the June and August values.")
     need(R["ttf_gas_vulnerabili"]["testo"], "10.6", where="regole ttf_gas_vulnerabili")
     db = V["measures"]["decreto-bollette-2026"]
     need(db["testo"], "15 euro", "30 euro", where="misure_governo decreto-bollette-2026")
-    P(f"On 9 November the cabinet approved a decree on energy bills: from January an average cut of about 15 €/MWh, according to the energy minister ({link('ANSA', db['link'])}); "
-      f"less than 30 euros a year per household, according to {link('Corriere della Sera', db['link2'])}; a cap on the gas price according to Il Sole 24 Ore. "
-      f"Bloomberg's headline the same day: \"Meloni Backs Gas Price Cap to Curb Bills Ahead of Italy Election\" (headline only). **Missing:** the text of the decree.")
+    P(f"On 9 November the cabinet approved a decree on energy bills: {EXTERNAL['bill_decree']['text']} ({link('ANSA', db['link'])}; {link('Corriere della Sera', db['link2'])}). "
+      f"It applies to customers on variable-price power contracts, almost 18 million according to the Corriere. **Missing:** the published text of the decree and an official estimate "
+      f"of the saving per household.")
     # ------------------------------------------------------------------ 4
     H2("households", "4. Inflation and households")
     nl = V["nic_last"]
@@ -1059,12 +1138,18 @@ def blocks(V, edition, today):
     exvat_pre, exvat_now = V["pre_d"] / 1.22, V["dsl_post"] / 1.22
     dv = var(exvat_now, exvat_pre)
     V["haul_cost"] = dv * pw[0]["valore_pct"] / 100
+    rr = EXTERNAL["excise_refund"]["rate"]
+    ref_pre, ref_now = V["pre_net"] + rr, g["netto"] + rr
+    dvr = var(ref_now, ref_pre)
+    V["haul_cost_ref"] = dvr * pw[0]["valore_pct"] / 100
     H3("How much diesel weighs")
     P(f"There is no up-to-date official Italian figure for the share of diesel in a haulier's costs (the association Federtrasporti noted the gap in September). The closest reference "
-      f"is French: diesel is **{num(pw[0]['valore_pct'], 1)}%** of the cost of a 40-tonne articulated truck on long-haul work in 2026, after 22.1% in 2025 and 24.4% in 2024 "
-      f"(Comité national routier, {link('CNR', pw[0]['link'])}; reliability medium, read from a research summary). The CNR estimated that the March 2026 rise alone added 4.2% "
+      f"is French: diesel is **{num(pw[0]['valore_pct'], 1)}%** of the cost of a long-haul articulated truck in 2026, after 22.1% in 2025 and 24.4% in 2024 "
+      f"(Comité national routier, {link('CNR', pw[0]['link'])}; reliability medium: read from a research summary, the PDF is blocked from this environment and was not verified). The CNR estimated that the March 2026 rise alone added 4.2% "
       f"to the total cost ({link('CNR, 27 March 2026', pw[1]['link'])}). Excluding VAT, which firms recover, diesel has gone from €{num(exvat_pre, 3)} to about €{num(exvat_now, 3)} "
-      f"a litre since February ({pct(dv, 0)}); with the French weight that is roughly **{pct(V['haul_cost'], 0)} on total cost** before any excise refund (calculation).")
+      f"a litre since February ({pct(dv, 0)}); with the French weight that is roughly **{pct(V['haul_cost'], 0)} on total cost**. For a truck that gets the excise refund "
+      f"the litre has gone from €{num(ref_pre, 3)} to €{num(ref_now, 3)} net of tax and refund ({pct(dvr, 0)}), about **{pct(V['haul_cost_ref'], 0)}** on total cost "
+      f"(calculation; the refund makes the percentage rise larger, because the excise it leaves is fixed).")
     cna = [x for x in hau["associazioni"] if x["nome"] == "CNA Fita"][0]
     d1 = [x for x in hau["dichiarazioni_2026"] if x["data"] == "2026-04-17"][0]
     need(pw[2]["testo"], "100 euro", "2.000 euro", where="peso_gasolio CNA Fermo")
@@ -1076,29 +1161,34 @@ def blocks(V, edition, today):
     mr = hau["meccanismo_rimborso_accise"]
     need(mr["testo"], "26,5", where="meccanismo_rimborso_accise")
     d2 = [x for x in hau["dichiarazioni_2026"] if x["data"] == "2026-05-23"][0]
-    P(f"Hauliers with heavy trucks get back part of the excise on diesel: 26.5 cents a litre, according to Federtrasporti. When the government cuts the excise for everybody, "
-      f"the refundable part shrinks by the same amount. In May Unatras called the general cut 'a wrong decision that shifted the 20-cent reduction onto haulage firms' "
-      f"({link('Shipping Italy, 23 May 2026', d2['link'])}), and this was the main reason for the stoppage it called for 25–29 May.")
+    P(f"Hauliers with heavy trucks get back part of the excise on diesel: {EXTERNAL['excise_refund']['text']}. At the ordinary excise that is "
+      f"{num((V['ordinary'] - rr) * 100, 1)} cents a litre (26.5 according to Federtrasporti). Because the haulier's own excise is fixed at the reference rate, a general cut "
+      f"shrinks the refund by the same amount, as long as the cut is smaller than the refundable part. In April Unatras put about 20 of its 40 cents of extra burden down to "
+      f"this lost refund and asked for compensation of 200 euros per 1,000 litres ({link('Il Fatto Quotidiano, 17 April 2026', d1['link'])}); in May it called the general cut "
+      f"'a wrong decision that shifted the 20-cent reduction onto haulage firms' ({link('Shipping Italy, 23 May 2026', d2['link'])}). It was one of the two grievances behind the "
+      f"stoppage called for 25–29 May; the other was clients' pressure on rates.")
     cr = V["measures"]["credito-autotrasporto-2026"]
     need(cr["testo"], "242,2", "480", "300 milioni", where="misure credito-autotrasporto-2026")
     d4 = [x for x in hau["dichiarazioni_2026"] if x["data"] == "2026-10-21"][0]
     need(d4["testo"], "434", where="dichiarazioni Unatras 21/10")
     P(f"The government suspended that stoppage on 22 May with a package: a tax credit on diesel of 300 million euros (200 of them new), the quarterly excise refund paid in "
-      f"30 days instead of 60, and a standing table with the sector. By November 242.2 million of the 480 million allocated had been granted, to be used by 31 December 2026 "
-      f"(Ministry of Transport via {link('TrasportoEuropa', [x for x in hau['dichiarazioni_2026'] if x['data'] == '2026-11-09'][0]['link'])}, 9 November). In October Unatras said 434 million of credits had not yet reached firms "
-      f"({link('Logisticamente.it', d4['link'])}); the two sources use different totals.")
-    A("for a truck that qualifies for the refund, a general excise cut is worth little: the price at the pump falls, the refund falls with it. The expiry of the cut on 8 November "
-      "therefore raises motorists' costs; for hauliers it mainly raises the cash they must advance until the quarterly refund, rather than their final cost. The grievance that moves hauliers "
-      "is the credit that must be used by 31 December and the pressure from clients on rates, not the expiry itself.")
+      f"30 days instead of 60, a two-week extension of the excise cut to 6 June, and a standing table with the sector. By November 242.2 million of the 480 million allocated had been "
+      f"granted, to be used by 31 December 2026 (Ministry of Transport via {link('TrasportoEuropa', [x for x in hau['dichiarazioni_2026'] if x['data'] == '2026-11-09'][0]['link'])}, 9 November). "
+      f"On 21 October Unatras said firms had not yet received the credit and put the funds allocated at 434 million ({link('Logisticamente.it', d4['link'])}). Both figures are "
+      f"allocations: the sources do not explain the 46-million difference (a later top-up is possible but not documented).")
+    A("for a truck that qualifies for the refund, a general excise cut of up to about 27 cents is worth nothing in final cost: the price at the pump falls, the refund falls with it "
+      "(VAT is recovered anyway). It only reduces the cash the firm advances until the quarterly refund. By the same logic the expiry of the cut on 8 November raises motorists' costs, "
+      "not hauliers' final costs. The grievances that move hauliers are the tax credit, which must be used by 31 December, and clients' pressure on rates, not the expiry itself.")
     H3("The rules on stoppages")
     rl = {x["id"]: x for x in hau["regole_scioperi"]}
     need(rl["preavviso-25-giorni"]["testo"], "25 giorni", "10", where="regole_scioperi preavviso")
     P(f"Law 146 of 1990, amended in 2000, governs strikes in essential public services: notice, duration, minimum services, conciliation. The Strike Guarantee Commission reviews "
       f"each call, can ask for it to be withdrawn and can refer it for a *precettazione*, an order by the minister or the prefect that requires the service to run "
       f"({link('Normattiva', rl['legge-146-1990']['link'])}). For haulage stoppages the sector's self-regulation code requires **{V['notice_days']} days' notice** to the Commission "
-      f"(more than the legal minimum of 10) and minimum services; a rule of 'objective spacing' forbids stoppages in the same sector too close together. In March 2022 and April 2026 "
-      f"the Commission challenged stoppages called with less than 25 days' notice ({link('LaPresse, 20 April 2026', rl['preavviso-25-giorni']['link'])}). The national stoppages "
-      f"called properly in 2026 lasted five days; the maximum duration allowed by the code is **not verified** (the Commission's site was not reachable from this environment).")
+      f"(the law sets a minimum of 10) and minimum services; a rule of 'objective spacing' forbids stoppages in the same sector too close together. In March 2022 and April 2026 "
+      f"the Commission challenged stoppages called with less than 25 days' notice (Trasportounito gave 20 days in April 2026, according to Unatras; "
+      f"{link('LaPresse, 20 April 2026', rl['preavviso-25-giorni']['link'])}). The one national stoppage called with proper notice in 2026 (Unatras, 25–29 May, later suspended) "
+      f"was for five days; the maximum duration allowed by the code is **not verified** (the Commission's site was not reachable from this environment).")
     H3("Precedents: what triggered past protests")
     rows = []
     for p in V["prec"]:
@@ -1116,14 +1206,15 @@ def blocks(V, edition, today):
                      link(p["fonte"].split(",")[0], p["link"])])
     TAB(["When", "What", "Diesel that week", "On a year", "In 8 weeks", "Source"], rows,
         f"Diesel: MASE weekly national average in the week the protest began ({dl('italia-impatti.json')}); the 8-week change is computed only where the weekly series in the file "
-        f"covers it (from {month_en(V['dsl_first'])}). Sources are news reports (reliability medium, LaPresse and Shipping Italy high).")
+        f"covers it (from {month_en(V['dsl_first'])}); a weekend start counts from the next Monday. Weeks before 2022 come from the MASE weekly file ({link('MASE', EXTERNAL['mase_diesel_pre2022']['link'])}). "
+        f"Sources are news reports (reliability medium, LaPresse and Shipping Italy high).")
     FIG("protests", f"*Diesel price in the week each protest began, €/litre, with the change on a year earlier in brackets; 'today' is the MASE survey of {date_en(lastd)}. "
                     f"Dashed lines: the monitor's alert levels €{num(lo, 2)} and €{num(hi, 2)}. The 2024 tractor protest was about farm income tax and EU farm policy, "
                     f"not fuel. Source: MASE weekly prices, curated precedents in {dl('italia-impatti.json')}.*")
     P("What happened: in December 2007 the stoppage lasted three days, with milk, medicines and petrol guaranteed from 12 December; in January 2012 the Forconi blockades left most of "
       "Sicily's filling stations dry by the fourth day, and about 60 pickets then blocked motorway toll gates across Italy; in March 2022 a stoppage was blocked by the Commission "
       "for lack of notice, and the excise cut followed on 22 March; in April 2026 Trasportounito's stoppage was suspended on its first day after a truck driver was killed on the "
-      "A1 motorway; in May Unatras's was suspended after the government package; in October regional stoppages ran in Sicily and Calabria after wildcat blockades that started in Puglia.")
+      "A1 motorway; in May Unatras's was suspended after the government package; in October regional stoppages ran in Sicily and Calabria (16–20 October, in the ministry's strike calendar) after protests and blockades that began in Puglia.")
     sf = ii["soglie_fermo"]
     yy = [p["gasolio_alla_data"]["var_pct_un_anno"] for p in V["prec"] if p["id"] in PREC_EN and p["id"] != "trattori-2024"]
     tp = V["thr_pct"]
@@ -1145,7 +1236,7 @@ def blocks(V, edition, today):
       f"year is {pct(V['dsl_yoy'])}, inside the range of past protests.")
     A(f"the level of diesel alone has not been enough: it has been above €{num(hi, 2)} for more than two months without a national call. The 2026 calls came from a policy "
       f"grievance on top of the price (the refund cut in May, unpaid credits in October). The risk that a national stoppage is **called** before the end of the year is rated "
-      f"**high**; a lawful stoppage before {date_en(V['earliest'], False)} is ruled out by the notice rule. Wildcat blockades, like Sicily in 2012 or Puglia in October 2026, need "
+      f"**high**; a lawful stoppage before {date_en(V['earliest'], False)} is ruled out by the notice rule. Wildcat blockades, like Sicily in 2012 or the protests in Puglia in October 2026, need "
       f"no notice and remain possible at any time. Signals that would raise the risk: a filing with the Commission; credits not usable by 31 December; a new general excise "
       f"cut without compensation for hauliers; diesel up more than {tp[0]}% in 8 weeks. Signals that would lower it: the credit extended into 2027, or an automatic fuel surcharge on "
       f"haulage rates, which Federtrasporti has proposed.")
@@ -1155,7 +1246,7 @@ def blocks(V, edition, today):
     pmap = {p["name"]: p for p in PP}
     P(f"From 1 January to {date_en(V['pw_last'])} the busiest Italian ports in the PortWatch sample had about the same number of ship calls as a year earlier: Genoa "
       f"{pct(pmap['Genoa']['ytd'])}, Trieste {pct(pmap['Trieste']['ytd'])}, Gioia Tauro {pct(pmap['Gioia Tauro']['ytd'])} (calls per day, same days of 2025; IMF PortWatch, "
-      f"{dl('portwatch.json')}). The falls are in the Adriatic energy ports: Ravenna {pct(pmap['Ravenna']['ytd'])} for the year and {pct(pmap['Ravenna']['var30'])} in the last "
+      f"{dl('portwatch.json')}). The largest falls are in the northern Adriatic: Ravenna {pct(pmap['Ravenna']['ytd'])} for the year and {pct(pmap['Ravenna']['var30'])} in the last "
       f"30 days, Venice (Lido) {pct(pmap['Venice (Lido)']['ytd'])} and {pct(pmap['Venice (Lido)']['var30'])}. La Spezia is up, {pct(pmap['La Spezia']['ytd'])} for the year.")
     FIG("ports", f"*Ship calls per day, change on the same days of 2025, %: 1 January to {date_en(V['pw_last'])} and the last 30 days. Ports ordered by calls per day this year. "
                  f"PortWatch counts only ships with AIS switched on; data arrive about a week late. Source: IMF PortWatch, {dl('portwatch.json')}, data to {date_en(V['pw_last'])}.*")
@@ -1177,13 +1268,14 @@ def blocks(V, edition, today):
     wr = sg["war_risk_items"][0]
     P(f"Spot freight from Shanghai to Genoa was **{num(wci['rotte']['Shanghai-Genoa'], 0)} dollars per FEU** on {date_en(wci['data'])}, against "
       f"{num(wci['rotte']['Shanghai-Rotterdam'], 0)} to Rotterdam (Drewry WCI, {dl('noli.json')}); the Freightos China–Mediterranean index was {num(fbx13['valore'], 0)} "
-      f"({fbx13['var'].replace('-', '−')} on the week). The Red Sea war-risk premium, about {num(wr['pct_hull'], 2)}% of hull value per voyage (Reuters via Insurance Journal), "
+      f"on {date_en(V['fbx']['data'], False)} ({fbx13['var'].replace('-', '−')} on the week). The Red Sea war-risk premium, about {num(wr['pct_hull'], 2)}% of hull value per voyage (Reuters via Insurance Journal), "
       f"adds {num(sg['cost_breakdown_usd']['war_risk_extra'], 0)} dollars to a Suez voyage compared with before the war; with dearer bunker fuel the model puts the extra cost at "
       f"about {num(sg['extra_cost_per_unit_incl_price_effect'], 0)} dollars per FEU to Genoa.")
     rl_ = Rt[("ras_laffan", "genoa")] if ("ras_laffan", "genoa") in Rt else None
     yb = Rt.get(("yanbu", "genoa"))
     if rl_ and yb:
-        P(f"For energy cargoes the routes have changed more. LNG from Ras Laffan is **blocked**: Qatar has no export terminal outside the Gulf. Saudi crude is piped to Yanbu on the "
+        P(f"For energy cargoes the routes have changed more. The model treats LNG from Ras Laffan as **blocked**: Qatar has no export terminal outside the Gulf, and the "
+          f"few cargoes still leaving (1.6 million tonnes in September, Kpler via Reuters) cross Hormuz under war risk. Saudi crude is piped to Yanbu on the "
           f"Red Sea and reaches Genoa in {num(yb['days_base'], 1)} days via Suez, inside the war-risk area. LNG from the US Gulf (Sabine Pass) takes "
           f"{num(Rt[('sabine_pass', 'genoa')]['days_base'], 1) if ('sabine_pass', 'genoa') in Rt else 'n/a'} days to Genoa ({dl('transit-times.json')}).")
     H3("La Spezia's exposure")
@@ -1193,21 +1285,24 @@ def blocks(V, edition, today):
     ind = {i["group"] + ":" + i["name"][:20]: i for i in ls["indicators"]}
     cont = [i for i in ls["indicators"] if i["name"].startswith("Port calls")][0]
     P(f"In the monitor's Port Risk Index La Spezia scores **{num(ls['score'], 1)} out of 25 ({ls['level']})**, rank {ls['rank']} of {V['pr_n']} ports and the highest in Italy "
-      f"(next is {nxt['name']} at {num(nxt['score'], 1)}) ({dl('port-risk.json')}, {date_en(V['pr']['reference_date'])}). The score comes from impact ({num(ls['impact'], 1)} of 5), "
-      f"not from traffic: the index counts three strategic roles (the Panigaglia LNG terminal, a container gateway, the naval base) and assigns the port a primary dependency on "
-      f"Qatari LNG and on the Red Sea container route. Traffic is rising: {cont['text']} over 28 days.")
+      f"(next is {nxt['name']} at {num(nxt['score'], 1)}) ({dl('port-risk.json')}, {date_en(V['pr']['reference_date'])}). The score is probability {num(ls['probability'], 1)} of 5 times "
+      f"impact {num(ls['impact'], 1)} of 5. Impact is high because the index counts three strategic roles (the Panigaglia LNG terminal, a container gateway, the naval base). "
+      f"Probability comes almost entirely from a rule that gives the port a primary dependency on Qatari LNG and on the Red Sea container route, not from its traffic, which is "
+      f"rising: {cont['text'].split(':')[0]} over 28 days ({cont['text'].split(': ')[-1]}).")
     A(f"the index describes a structural exposure rather than a current disruption. Panigaglia is a small terminal: it delivered {num(pan['twh_12m'], 1)} TWh in 12 months, "
-      f"{num(pan['quota_ingressi_pct'], 1)}% of gas entering Italy (ENTSOG). The data in the repository do not show where its cargoes come from, so the dependency on Qatar is the "
-      f"index's rule, not an observed flow. What would change La Spezia's risk is a fall in its container calls, which the index triggers below half of last year's level.")
+      f"{num(pan['quota_ingressi_pct'], 1)}% of gas entering Italy (ENTSOG). The Qatar dependency is a rule that applies Italy's national share of LNG from the Gulf (32.6% by value in 2025) "
+      f"to every Italian LNG port; it is not an observed flow, since the repository does not show where Panigaglia's cargoes come from. La Spezia's score would fall mainly if the "
+      f"Qatari LNG and Red Sea scores in the risk dashboard fell; a collapse in its own calls (below half of last year's level) would raise it.")
     # ------------------------------------------------------------------ 7
     H2("scenarios", "7. Scenarios: what a new shock would do")
     A("everything in this section is the monitor's reasoning. The scenarios have no probabilities. They show what the transmission rules give when a shock of a known shape hits Italian prices, "
       "with no new government measures and excise unchanged.")
     P(f"**Method.** The changes in Brent and TTF come from the monitor's simulator: for Hormuz, the average and the peak change in the 2026 episode over 30 or 91 days; for the Red Sea, "
-      f"the 2023–24 episode; for TransMed, the loss of {num(20.86, 2)} billion cubic metres a year net of spare LNG terminal capacity. Italian prices then follow the rules of section 3 "
+      f"the 2023–24 episode; for TransMed, the loss of the {num(20.86, 2)} billion cubic metres it carried in the last 12 months, net of 7.9 of spare LNG terminal capacity (low end) or with no bypass (high end). Italian prices then follow the rules of section 3 "
       f"({dl('italia-impatti.json')}, field `scenari`). There are two starting points: **pre-war prices** (week of {date_en(V['pre'])}: Brent {num(V['base_n']['brent'], 2)} dollars, "
       f"TTF {num(V['base_n']['ttf'], 2)} €/MWh, diesel €{num(V['base_n']['gasolio'], 3)}) and **today's prices** (Brent {num(V['base_t']['brent'], 1)}, TTF {num(V['base_t']['ttf'], 2)}, "
-      f"diesel €{num(V['base_t']['gasolio'], 3)} after the expiry). Because Hormuz is already closed in practice, the 'today' version is a *second* shock on top of the first.")
+      f"diesel €{num(V['base_t']['gasolio'], 3)} after the expiry). The simulator's Brent base, {num(V['base_t']['brent'], 2)}, is an overnight price of 10 November, not the "
+      f"9 November close of {num(V['brent_close'], 2)}; the difference moves the diesel results by less than half a cent. Because Hormuz is already closed in practice, the 'today' version is a *second* shock on top of the first.")
     need(sc["transmed_1m"]["ingresso"]["origine"], "20.86", where="scenari transmed origine")
     nm_ = {"hormuz_1m": "Hormuz closed, 1 month", "hormuz_3m": "Hormuz closed, 3 months", "mar_rosso_1m": "Red Sea: ships via the Cape, 1 month", "transmed_1m": "TransMed shut, 1 month"}
     rows = []
@@ -1237,7 +1332,7 @@ def blocks(V, edition, today):
       f"with VAT). At three months the rule gave €{num(n3['gasolio_eur_l'][0], 2)}–{num(n3['gasolio_eur_l'][1], 2)}; without the cuts diesel averaged "
       f"€{num(g3['media_senza_tagli_accise'], 3)} and peaked at €{num(g3['max_senza_tagli_accise'], 3)} on the week of {date_en(g3['data_max'], False)}: the average falls inside the range, the peak above it.")
     i1, i3 = o1["inflazione"], o3["inflazione"]
-    P(f"Inflation rose from {num(i1['prima']['nic_generale'], 1)}% in February to {num(i1['nic_generale'][-1], 1)}% in {month_en(i1['mesi'][-1], False)} and "
+    P(f"Inflation rose from {num(i1['prima']['nic_generale'], 1)}% in February to {num(i1['nic_generale'][0], 1)}% in March, {num(i1['nic_generale'][-1], 1)}% in {month_en(i1['mesi'][-1], False)} and "
       f"{num(i3['nic_generale'][-1], 1)}% in {month_en(i3['mesi'][-1], False)}: {pts(i1['nic_generale'][-1] - i1['prima']['nic_generale'], 1)} and "
       f"{pts(i3['nic_generale'][-1] - i3['prima']['nic_generale'], 1)} points, against a direct effect of +{num(n1['inflazione_effetto_diretto_punti'][0], 1)} to "
       f"+{num(n1['inflazione_effetto_diretto_punti'][1], 1)} (1 month) and +{num(n3['inflazione_effetto_diretto_punti'][0], 1)} to +{num(n3['inflazione_effetto_diretto_punti'][1], 1)} "
@@ -1312,14 +1407,19 @@ def blocks(V, edition, today):
          ["Yahoo Finance; Drewry, Freightos", "Brent, TTF; container freight", f"{date_en(brent['data'])}; {date_en(wci['data'])}", f"{dl('prezzi.json')}, {dl('noli.json')}"]], "")
     P("**Limits.**")
     UL([f"The Mimit daily price file could not be downloaded from this environment; the report uses the MASE weekly average (self-service and attended together) and one daily figure from ANSA.",
-        f"The pass-through coefficients are simple regressions over a period with two large crises ({est['periodo'][0][:4]}–{est['periodo'][1][:4]}; the weekly series kept in the file starts in "
-        f"{month_en(V['dsl_first'])}). They work for large shocks, less for small moves, and treat rises and falls alike, whereas pump prices usually fall more slowly than they rise.",
+        f"The pass-through coefficients are simple regressions estimated by the data collector on {est['n_settimane']} MASE weeks from {date_en(est['periodo'][0])} to {date_en(est['periodo'][1])}, "
+        f"a period with two large crises. The file keeps only the {len(V['dsl'])} weeks from {month_en(V['dsl_first'])}, so the coefficients cannot be re-estimated from the repository "
+        f"alone (the MASE file has the missing weeks). They work for large shocks, less for small moves, and treat rises and falls alike, whereas pump prices usually fall more slowly than they rise.",
         "Inflation in the scenarios is the direct effect of energy only. The ratio from the PUN to household power prices (0.75) comes from a single year, 2022 (reliability low).",
-        "The stoppage thresholds are a judgement on precedents, not a model. The diesel weight in haulage costs is French (CNR) and was read from a summary, not the PDF.",
-        f"Brent is {num(brent['ultimo'], 1)} dollars on {date_en(brent['data'])} in {dl('prezzi.json')} (provisional, {pct(brent['var']['1g'])} on the day); the risk dashboard and the other "
-        f"November reports used an earlier reading of the same session, 92.62 dollars.",
-        "The haulage tax credit appears as 480 million euros allocated (Ministry of Transport) and as 434 million not yet paid (Unatras): the sources do not say how the figures relate.",
-        "The emergency-stock series has an anomalous June 2026 value. Consumer confidence is not seasonally adjusted. Comtrade shares are by value and rely on the importer's declaration.",
+        "The stoppage thresholds are a judgement on precedents, not a model. The diesel weight in haulage costs is French (CNR, long-haul articulated truck); it was read from a summary, "
+        "not the PDF, and Italian trucks, wages and tolls differ.",
+        f"Brent: {dl('prezzi.json')} records {num(brent['ultimo'], 2)} dollars under {date_en(brent['data'])} ({pct(brent['var']['1g'])} on the day), but that is a price read at 03:40 UTC "
+        f"on 10 November, during the next session's overnight trading. The 9 November close was {num(V['brent_close'], 2)} (Yahoo Finance, read 10 November, −5.8% on the day); "
+        f"the risk dashboard and the Hormuz report use 92.62, an intraday reading of the same session. This report quotes the close; the scenarios keep the simulator's "
+        f"{num(brent['ultimo'], 2)}. The TTF close was 82.50 against 82.33 in the file; the +164% on a year is unchanged.",
+        "The haulage tax credit appears as 480 million euros allocated (Ministry of Transport, 9 November) and as 434 million allocated (Unatras, 21 October): the sources do not explain the difference.",
+        "The emergency-stock series has an anomalous June 2026 value (89.7 days between 76.6 and 77.3), not used. The diesel prices at the start of past protests were recomputed "
+        "from the MASE weekly series by the review; the curated values in the data file use inconsistent reference weeks. Consumer confidence is not seasonally adjusted. Comtrade shares are by value and rely on the importer's declaration.",
         "PortWatch counts only ships with AIS on and arrives a week late. The transit-time model has no port or waiting time.",
         "**Missing:** an official Italian figure for diesel in haulage costs; the text of the haulage self-regulation code (maximum durations); the official strike calendar; the outcome of the "
         "27 October meeting; the origin of LNG cargoes in 2026; the ARERA values for June and August 2026; the text of the 9 November bill decree."])
@@ -1344,9 +1444,18 @@ def inline_html(t, P):
 
 
 def review_parts():
-    return [("p", "**Pending.** This box is a placeholder. An independent reviewer will check every number in this report against the data files or the cited source, "
-                  "and the logic and tone against report/STANDARD.md, before the report is published. The verification table, corrections and what remains unverifiable "
-                  f"will be logged in {REVIEW['log']} and summarised here.")]
+    r = REVIEW
+    return [
+        ("p", f"**Reviewed on {r['date']}** by an independent fact-check and edit (carried out with an AI assistant). {r['claims']} claims checked against the data files and the cited "
+              f"sources: {r['ok']} confirmed, {r['corrected']} corrected, {r['unverified']} not verifiable from here. Full table in `{r['log']}`."),
+        ("p", "**Main corrections.** Brent: the 91.70 dollars in prezzi.json is an overnight price of 10 November; the 9 November close was 92.57. The key point on diesel claimed "
+              "a return to about €2.29 after the excise cut ended; daily self-service prices rose less than a cent. The Unatras figure of 434 million is an allocation, "
+              "not unpaid credit. The diesel prices and year-on-year changes at past protests were recomputed on the same MASE week. Unem, the Qatar trains and the bill decree "
+              "were re-attributed to what the sources say. The haulage-cost estimate now shows the case with the excise refund (about +9% on total cost). La Spezia's risk "
+              "is explained by the rule that drives it."),
+        ("p", "**Not verifiable from here:** the CNR diesel weight (PDF blocked), the Sky TG24 reference gas price, the maximum stoppage duration in the haulage code, the "
+              "outcome of the 27 October meeting, the Corriere estimate of under 30 euros a year (dropped), the origin of Panigaglia's cargoes, the official strike calendar."),
+    ]
 
 
 def render_md(B, meta, figs):
@@ -1374,7 +1483,7 @@ def render_md(B, meta, figs):
         elif k == "fig":
             o += [f"![{re.sub(r'[*`]', '', b[2])[:110]}]({figs[b[1]]})", "", inline_md(b[2], P), ""]
         elif k == "review":
-            o += ['<a id="review"></a>', "", "---", "", "### Review · pending", ""]
+            o += ['<a id="review"></a>', "", "---", "", f"### Review · {REVIEW['date']}", ""]
             for kk, x in review_parts():
                 o += [inline_md(x, P), ""]
     o += ["---", "", "Gabriele Giuliani · Geo-economic Risk Monitor · " + meta["edition"], "", meta["ai_note"], ""]
@@ -1490,7 +1599,7 @@ def render_html(B, meta, svg):
                      f'<details><summary>Chart data as a table</summary>{g["table"]}</details></figure>')
         elif k == "review":
             parts = "".join(f"<p>{inline_html(x, P)}</p>" for kk, x in review_parts())
-            o.append(f'<aside class="review" id="review"><h2>Review · pending</h2>{parts}</aside>')
+            o.append(f'<aside class="review" id="review"><h2>Review · {esc(REVIEW["date"])}</h2>{parts}</aside>')
     o.append(f'<footer><p class="sig">Gabriele Giuliani · Geo-economic Risk Monitor</p><p>{esc(meta["edition"])}. {inline_html(meta["ai_note"], P)}</p>'
              '<p><a href="../../index.html">← Back to the map</a></p></footer>')
     o += ["</main>", "</body>", "</html>"]
@@ -1541,7 +1650,8 @@ def main():
             "edition": edition, "read": date_en(today.isoformat()),
             "ai_note": ("Note on AI use: this report was prepared with an AI assistant (Claude, Anthropic), which wrote the build script, the calculations, the charts "
                         "and the draft text from the monitor's data files and the sources cited. Numbers come from the data files and linked sources; assessments are marked. "
-                        "An independent review is pending. Gabriele Giuliani is responsible for publication.")}
+                        "An independent review (10 November 2026, report/revisioni/italy-gulf-shock-2026-11.md) checked the numbers against the data and the sources. "
+                        "Gabriele Giuliani is responsible for publication.")}
     os.makedirs(OUT_SVG, exist_ok=True)
     os.makedirs(OUT_HTML, exist_ok=True)
     C = charts(V)

@@ -399,7 +399,8 @@ def chart_germany(V, wide=True):
         orp = V["de_orphan_on"][p]
         x1 = left + pw * orp / mx
         x2 = left + pw * totp / mx
-        o.append(f'<text class="wc-l" x="{left - 8}" y="{y + bh - 6}" text-anchor="end">{esc(PER_LABEL[p])}</text>')
+        plab = PER_LABEL[p] if wide else {"pre2010": "pre-2010", "2010-2017": "2010–17", "2018+": "2018+"}[p]
+        o.append(f'<text class="wc-l" x="{left - 8}" y="{y + bh - 6}" text-anchor="end">{esc(plab)}</text>')
         o.append(f'<rect class="wc-s1" x="{left}" y="{y}" width="{x1 - left:.1f}" height="{bh}" rx="2"><title>{PER_LABEL[p]}: {num(orp)} MW from brands no longer active</title></rect>')
         o.append(f'<rect class="wc-s2" x="{x1:.1f}" y="{y}" width="{x2 - x1:.1f}" height="{bh}" rx="2"><title>{PER_LABEL[p]}: {num(totp - orp)} MW from active brands</title></rect>')
         o.append(f'<line class="wc-gap" x1="{x1:.1f}" y1="{y}" x2="{x1:.1f}" y2="{y + bh}"/>')
@@ -426,10 +427,10 @@ def chart_scen(V, wide=True):
         return left + pw * mw / mx
     for g in range(0, mx + 1, 5000):
         o.append(f'<line class="wc-g" x1="{X_(g):.1f}" y1="{top - 6}" x2="{X_(g):.1f}" y2="{top + rowh * len(sc)}"/>'
-                 f'<text class="wc-m" x="{X_(g):.1f}" y="{top + rowh * len(sc) + 16}" text-anchor="middle">{g // 1000}{" GW" if g == mx else ""}</text>')
-    refs = [(V["ce_ref"], "Continental Europe ref. incident", "CE", "wc-k1", "4 3"),
-            (V["gb_max"], "GB infrequent infeed loss", "GB", "wc-k3", "1 3"),
-            (V["nordic"], "Nordic dimensioning incident", "Nordic", "wc-k2", "6 2")]
+                 f'<text class="wc-m" x="{X_(g):.1f}" y="{top + rowh * len(sc) + 16}" text-anchor="{'end' if g == mx else 'middle'}">{g // 1000}{" GW" if g == mx else ""}</text>')
+    refs = sorted([(V["ce_ref"], "Continental Europe ref. incident", "CE", "wc-k1", "4 3"),
+                   (V["gb_max"], "GB infrequent infeed loss", "GB", "wc-k3", "1 3"),
+                   (V["nordic"], "Nordic dimensioning incident", "Nordic", "wc-k2", "6 2")])  # left line on top row: no label crossed
     for j, (mw, lab, sh_, cls, dash) in enumerate(refs):
         yy = 58 + j * 16
         x = X_(mw)
@@ -439,10 +440,11 @@ def chart_scen(V, wide=True):
     for i, r in enumerate(sc):
         y = top + i * rowh + 10
         bh = 16
-        o.append(f'<text class="wc-l" x="{left - 8}" y="{y + 12}" text-anchor="end">{esc(r["short"])}</text>')
+        lab = r["short"] if wide else r["short"].replace("One OEM fleet (DE)", "One OEM (DE)").replace("One service firm", "One ISP")
+        o.append(f'<text class="wc-l" x="{left - 8}" y="{y + 12}" text-anchor="end">{esc(lab)}</text>')
         if r["hi"] <= 0:
             o.append(f'<circle class="wc-s0" cx="{left + 4}" cy="{y + 8}" r="4"><title>{esc(r["name"])}: ≈0 GW lost at once</title></circle>'
-                     f'<text class="wc-l" x="{left + 14}" y="{y + 12}">≈0 GW: turbines keep producing</text>')
+                     f'<text class="wc-l" x="{left + 14}" y="{y + 12}">{"≈0 GW: turbines keep producing" if wide else "≈0 GW"}</text>')
             continue
         x1, x2 = X_(r["lo"]), X_(r["hi"])
         if r["hi"] - r["lo"] < 50:
