@@ -129,7 +129,9 @@ Altre materie sotto licenza cinese toccano la catena: magnesio metallico, Cina 8
 
 **Collo di bottiglia: Tantalio dal Kivu e dal Ruanda.** Congo e Ruanda fanno la maggior parte del tantalio estratto; la miniera di Rubaya è in mano al gruppo M23 da aprile 2024.
 
-<details><summary>Indicatori e soglie (7)</summary>
+<details><summary>Dettagli dell'anello: 7 indicatori, 9 nodi, 3 titoli, cosa seguire</summary>
+
+### Indicatori e soglie
 
 | Indicatore | Valore | Soglie (attenzione / critico) | Stato | Fonte, data del dato |
 |---|---|---|---|---|
@@ -141,9 +143,7 @@ Altre materie sotto licenza cinese toccano la catena: magnesio metallico, Cina 8
 | Quota stimata di Spruce Pine nell'offerta di quarzo ad alta purezza (stima BloombergNEF: oltre l'80%) | 80 % | 50 / 75 % | ■ critico | [BNN Bloomberg (BloombergNEF)](https://bnnbloomberg.ca/investing/commodities/2024/10/02/hurricane-helene-halts-quartz-mines-vital-for-chipmaking-and-solar), 2024-10-02 |
 | Quota di Congo e Ruanda nell'estrazione di tantalio | 68,0 % | 40 / 60 % | ■ critico | [USGS, Mineral Commodity Summaries 2026: Tantalum](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-tantalum.pdf), 2026-02-05 |
 
-</details>
-
-<details><summary>Dove sono i nodi (9)</summary>
+### Dove sono i nodi
 
 | Nodo | Paese | Ruolo | Quota o peso | Fonte (affidabilità) |
 |---|---|---|---|---|
@@ -159,15 +159,13 @@ Altre materie sotto licenza cinese toccano la catena: magnesio metallico, Cina 8
 
 <small>Coordinate nel file di dati (precisione indicata per ogni punto).</small>
 
-</details>
-
-<details><summary>Titoli collegati (3, di cui 0 con prezzo)</summary>
+### Titoli collegati
 
 Non ancora seguiti in prezzi.json: MP Materials (MP), terre rare USA (Mountain Pass); Lynas Rare Earths (LYC.AX), terre rare fuori dalla Cina (Australia, Malesia); Freeport-McMoRan (FCX), rame.
 
-</details>
-
 **Indicatori da seguire:** Testo ufficiale MOFCOM della proroga al 10 gennaio 2027 e decisione sul divieto verso gli USA che scade il 27 novembre 2026; Tassi di approvazione delle licenze cinesi e dati doganali di export di terre rare, gallio, germanio; Transiti a Hormuz (PortWatch) e stato di Ras Laffan; Stagione degli uragani in North Carolina (giugno–novembre); Notizie su Rubaya e sul Kivu (M23).
+
+</details>
 
 <a id="anello-attrezzature"></a>
 
@@ -202,7 +200,9 @@ I controlli si sono stratificati: USA ottobre 2022 e ottobre 2023; Paesi Bassi d
 
 **Collo di bottiglia: Litografia EUV: un solo fornitore, in Olanda.** Ogni chip AI avanzato passa da scanner EUV costruiti solo a Veldhoven, con ottiche da Oberkochen e laser da Ditzingen. Gli USA spingono per estendere i limiti alle DUV e all'assistenza in Cina.
 
-<details><summary>Indicatori e soglie (3)</summary>
+<details><summary>Dettagli dell'anello: 3 indicatori, 8 nodi, 6 titoli, cosa seguire</summary>
+
+### Indicatori e soglie
 
 | Indicatore | Valore | Soglie (attenzione / critico) | Stato | Fonte, data del dato |
 |---|---|---|---|---|
@@ -210,9 +210,7 @@ I controlli si sono stratificati: USA ottobre 2022 e ottobre 2023; Paesi Bassi d
 | Quota della Cina nelle vendite ASML 2026 (guida) | 20 % | 25 / 40 % | ● normale | [XenoSpectrum / Seeking Alpha sui risultati ASML del 3° trimestre 2026 (guida del direttore finanziario Roger Dassen)](https://xenospectrum.com/en/asml-china-sales-q3-2026/), 2026-10-14 |
 | ASML in borsa, variazione a 1 mese | -15,0 % | -10 / -25 % | ▲ attenzione | [Yahoo Finance (prezzi.json)](https://finance.yahoo.com/quote/ASML), 2026-11-09 |
 
-</details>
-
-<details><summary>Dove sono i nodi (8)</summary>
+### Dove sono i nodi
 
 | Nodo | Paese | Ruolo | Quota o peso | Fonte (affidabilità) |
 |---|---|---|---|---|
@@ -227,9 +225,7 @@ I controlli si sono stratificati: USA ottobre 2022 e ottobre 2023; Paesi Bassi d
 
 <small>Coordinate nel file di dati (precisione indicata per ogni punto).</small>
 
-</details>
-
-<details><summary>Titoli collegati (6, di cui 2 con prezzo)</summary>
+### Titoli collegati
 
 | Titolo | Ruolo nella catena | Ultimo | 1 mese | Da inizio anno | 1 anno |
 |---|---|---|---|---|---|
@@ -240,9 +236,9 @@ I controlli si sono stratificati: USA ottobre 2022 e ottobre 2023; Paesi Bassi d
 
 Non ancora seguiti in prezzi.json: Applied Materials (AMAT), deposizione, incisione; Lam Research (LRCX), incisione e deposizione; KLA (KLAC), ispezione e metrologia; Tokyo Electron (8035.T), deposizione, coater/developer, incisione.
 
-</details>
-
 **Indicatori da seguire:** Ordini e quota Cina nei conti trimestrali ASML (prossimi a gennaio 2027); Testo e iter del MATCH Act; decisioni del governo olandese sulle licenze di assistenza; Elenco BIS delle entità e regola sulle affiliate (sospesa fino al 10 gennaio 2027).
+
+</details>
 
 <a id="anello-fabbricazione"></a>
 
@@ -260,7 +256,9 @@ SMIC produce a 7 nm senza EUV i chip Huawei; i suoi ricavi sono cresciuti del 20
 
 **Collo di bottiglia: Fonderia avanzata concentrata a Taiwan.** TSMC ha il 72,5% dei ricavi di fonderia e il 2 nm è in volume solo a Hsinchu e Kaohsiung; lo Stretto di Taiwan è il punto unico di rottura.
 
-<details><summary>Indicatori e soglie (4)</summary>
+<details><summary>Dettagli dell'anello: 4 indicatori, 13 nodi, 5 titoli, cosa seguire</summary>
+
+### Indicatori e soglie
 
 | Indicatore | Valore | Soglie (attenzione / critico) | Stato | Fonte, data del dato |
 |---|---|---|---|---|
@@ -269,9 +267,7 @@ SMIC produce a 7 nm senza EUV i chip Huawei; i suoi ricavi sono cresciuti del 20
 | Danni a cavi sottomarini intorno a Taiwan negli ultimi 365 giorni | 1 eventi | 1 / 3 eventi | ▲ attenzione | [cavi-incidenti.json (osservatorio)](https://www.submarinecablemap.com/), 2026-11-10 |
 | TSMC (ADR) in borsa, variazione a 1 mese | -14,3 % | -10 / -25 % | ▲ attenzione | [Yahoo Finance (prezzi.json)](https://finance.yahoo.com/quote/TSM), 2026-11-09 |
 
-</details>
-
-<details><summary>Dove sono i nodi (13)</summary>
+### Dove sono i nodi
 
 | Nodo | Paese | Ruolo | Quota o peso | Fonte (affidabilità) |
 |---|---|---|---|---|
@@ -291,9 +287,7 @@ SMIC produce a 7 nm senza EUV i chip Huawei; i suoi ricavi sono cresciuti del 20
 
 <small>Coordinate nel file di dati (precisione indicata per ogni punto).</small>
 
-</details>
-
-<details><summary>Titoli collegati (5, di cui 2 con prezzo)</summary>
+### Titoli collegati
 
 | Titolo | Ruolo nella catena | Ultimo | 1 mese | Da inizio anno | 1 anno |
 |---|---|---|---|---|---|
@@ -304,9 +298,9 @@ SMIC produce a 7 nm senza EUV i chip Huawei; i suoi ricavi sono cresciuti del 20
 
 Non ancora seguiti in prezzi.json: Samsung Electronics (005930.KS), fonderia, DRAM, HBM; Intel (INTC), fonderia 18A negli USA; SMIC (0981.HK), fonderia cinese (chip Huawei).
 
-</details>
-
 **Indicatori da seguire:** Quote di fonderia trimestrali (TrendForce, prossima a dicembre 2026); Ricavi mensili di TSMC (pubblicati intorno al 10 di ogni mese); Avanzamento di Arizona Fab 2 e del packaging AP1.
+
+</details>
 
 <a id="anello-packaging-memoria"></a>
 
@@ -326,7 +320,9 @@ Per la Cina l'HBM è il vincolo vero: i controlli USA di dicembre 2024 hanno tol
 
 **Collo di bottiglia: Memoria HBM e DRAM.** Tre produttori (SK Hynix, Samsung, Micron) fanno tutta l'HBM occidentale; l'AI toglie capacità alla DRAM normale e i prezzi salgono. SK Hynix vede carenza fino al 2030.
 
-<details><summary>Indicatori e soglie (3)</summary>
+<details><summary>Dettagli dell'anello: 3 indicatori, 9 nodi, 6 titoli, cosa seguire</summary>
+
+### Indicatori e soglie
 
 | Indicatore | Valore | Soglie (attenzione / critico) | Stato | Fonte, data del dato |
 |---|---|---|---|---|
@@ -334,9 +330,7 @@ Per la Cina l'HBM è il vincolo vero: i controlli USA di dicembre 2024 hanno tol
 | Prezzi contrattuali DRAM nel 4° trimestre 2026, variazione sul trimestre (previsione) | 20 % | 10 / 30 % | ▲ attenzione | [TrendForce, «DRAM prices seen rising 20% QoQ in 4Q26»](https://www.trendforce.com/news/2026/10/20/news-dram-prices-seen-rising-20-qoq-in-4q26-despite-slower-gains-ai-demand), 2026-10-20 |
 | SK Hynix in borsa, variazione a 1 mese | -27,7 % | -10 / -25 % | ■ critico | [Yahoo Finance (prezzi.json)](https://finance.yahoo.com/quote/000660.KS), 2026-11-10 |
 
-</details>
-
-<details><summary>Dove sono i nodi (9)</summary>
+### Dove sono i nodi
 
 | Nodo | Paese | Ruolo | Quota o peso | Fonte (affidabilità) |
 |---|---|---|---|---|
@@ -352,9 +346,7 @@ Per la Cina l'HBM è il vincolo vero: i controlli USA di dicembre 2024 hanno tol
 
 <small>Coordinate nel file di dati (precisione indicata per ogni punto).</small>
 
-</details>
-
-<details><summary>Titoli collegati (6, di cui 4 con prezzo)</summary>
+### Titoli collegati
 
 | Titolo | Ruolo nella catena | Ultimo | 1 mese | Da inizio anno | 1 anno |
 |---|---|---|---|---|---|
@@ -367,9 +359,9 @@ Per la Cina l'HBM è il vincolo vero: i controlli USA di dicembre 2024 hanno tol
 
 Non ancora seguiti in prezzi.json: Samsung Electronics (005930.KS), fonderia, DRAM, HBM; Micron Technology (MU), HBM e DRAM.
 
-</details>
-
 **Indicatori da seguire:** Prezzi contrattuali DRAM e HBM (TrendForce, mensili); Quote HBM trimestrali (Counterpoint); Capacità CoWoS e nuove sedi (AP7, AP8, Arizona AP1); Qualifiche HBM4 presso Nvidia.
+
+</details>
 
 <a id="anello-progettazione"></a>
 
@@ -387,16 +379,16 @@ Le regole americane decidono dove vanno i chip: da gennaio 2026 gli USA permetto
 
 **Collo di bottiglia: Un solo progettista dominante e regole USA sui chip.** Nvidia ha la grande maggioranza dei chip AI per data center; dove vanno i chip lo decidono le licenze USA (H200 per la Cina con dazio del 25%) e la risposta di Pechino.
 
-<details><summary>Indicatori e soglie (2)</summary>
+<details><summary>Dettagli dell'anello: 2 indicatori, 5 nodi, 5 titoli, cosa seguire</summary>
+
+### Indicatori e soglie
 
 | Indicatore | Valore | Soglie (attenzione / critico) | Stato | Fonte, data del dato |
 |---|---|---|---|---|
 | Quota di Nvidia nei chip AI per data center 2026 (stima IDC riportata da terzi; forchetta delle stime 70–86%) | 81 % | 50 / 70 % | ■ critico | [commandlinux.com (sintesi di stime IDC)](https://commandlinux.com/ai/ai-chip-market-share/), 2026 |
 | Nvidia in borsa, variazione a 1 mese | -22,1 % | -10 / -25 % | ▲ attenzione | [Yahoo Finance (prezzi.json)](https://finance.yahoo.com/quote/NVDA), 2026-11-09 |
 
-</details>
-
-<details><summary>Dove sono i nodi (5)</summary>
+### Dove sono i nodi
 
 | Nodo | Paese | Ruolo | Quota o peso | Fonte (affidabilità) |
 |---|---|---|---|---|
@@ -408,9 +400,7 @@ Le regole americane decidono dove vanno i chip: da gennaio 2026 gli USA permetto
 
 <small>Coordinate nel file di dati (precisione indicata per ogni punto).</small>
 
-</details>
-
-<details><summary>Titoli collegati (5, di cui 5 con prezzo)</summary>
+### Titoli collegati
 
 | Titolo | Ruolo nella catena | Ultimo | 1 mese | Da inizio anno | 1 anno |
 |---|---|---|---|---|---|
@@ -422,9 +412,9 @@ Le regole americane decidono dove vanno i chip: da gennaio 2026 gli USA permetto
 
 <small>Prezzi da prezzi.json (Yahoo Finance): chiusure del 9 novembre 2026 salvo dove indicato; * = valore provvisorio (seduta in corso). Variazioni rispetto alla chiusura di un mese prima, del 31 dicembre 2025 e di un anno prima.</small>
 
-</details>
-
 **Indicatori da seguire:** Conti trimestrali di Nvidia (prossimi a fine novembre 2026); Licenze USA per la Cina e risposta di Pechino; Quota degli ASIC nei server AI (TrendForce).
+
+</details>
 
 <a id="anello-server-rete"></a>
 
@@ -442,15 +432,15 @@ Fuori dal rack, il collo di bottiglia è elettrico: i tempi di consegna dei tras
 
 **Collo di bottiglia: Ottica: chip laser EML per l'1,6T.** I chip EML da 200G per corsia vengono da pochi fornitori (Coherent, Lumentum e un terzo); per Yole sono il vincolo dell'1,6T nel 2026. I moduli sono assemblati soprattutto in Cina.
 
-<details><summary>Indicatori e soglie (1)</summary>
+<details><summary>Dettagli dell'anello: 1 indicatori, 7 nodi, 8 titoli, cosa seguire</summary>
+
+### Indicatori e soglie
 
 | Indicatore | Valore | Soglie (attenzione / critico) | Stato | Fonte, data del dato |
 |---|---|---|---|---|
 | Carenza di chip EML da 200G per corsia (stima) | 60 % | 10 / 30 % | ■ critico | [cnyes, blog di analisi (北風窗, in cinese): divario oltre il 60%](https://hao.cnyes.com/post/271963), 2026-10-12 |
 
-</details>
-
-<details><summary>Dove sono i nodi (7)</summary>
+### Dove sono i nodi
 
 | Nodo | Paese | Ruolo | Quota o peso | Fonte (affidabilità) |
 |---|---|---|---|---|
@@ -464,9 +454,7 @@ Fuori dal rack, il collo di bottiglia è elettrico: i tempi di consegna dei tras
 
 <small>Coordinate nel file di dati (precisione indicata per ogni punto).</small>
 
-</details>
-
-<details><summary>Titoli collegati (8, di cui 2 con prezzo)</summary>
+### Titoli collegati
 
 | Titolo | Ruolo nella catena | Ultimo | 1 mese | Da inizio anno | 1 anno |
 |---|---|---|---|---|---|
@@ -477,9 +465,9 @@ Fuori dal rack, il collo di bottiglia è elettrico: i tempi di consegna dei tras
 
 Non ancora seguiti in prezzi.json: Hon Hai (Foxconn) (2317.TW), assemblaggio server AI; Quanta Computer (2382.TW), assemblaggio server AI; Wistron (3231.TW), assemblaggio server AI; Coherent (COHR), laser EML e transceiver; Zhongji Innolight (300308.SZ), transceiver 800G/1,6T; Eoptolink (300502.SZ), transceiver.
 
-</details>
-
 **Indicatori da seguire:** Export mensile di Taiwan per categoria (Ministero delle Finanze); Ricavi mensili di Foxconn, Quanta, Wistron; Tempi di consegna di trasformatori e quadri (Wood Mackenzie); Prezzi e disponibilità dei transceiver 1,6T.
+
+</details>
 
 <a id="anello-logistica"></a>
 
@@ -497,7 +485,9 @@ Lo Stretto di Taiwan è il punto unico di rottura. Il 48% delle 5.400 portaconta
 
 > *Valutazione.* In un blocco navale gli aerei potrebbero continuare a portare chip per qualche tempo, ma il GNL no: Taiwan si fermerebbe per mancanza di energia prima che per mancanza di trasporti. Terremoti (aprile 2024: TSMC ha recuperato oltre il 70% delle macchine in 10 ore, [Tom's Hardware](https://www.tomshardware.com/tech-industry/tsmc-resumes-chip-production-following-biggest-earthquake-in-25-years-incurred-no-damage-to-its-critical-tools)), siccità e blackout sono i rischi ricorrenti.
 
-<details><summary>Dove sono i nodi (10)</summary>
+<details><summary>Dettagli dell'anello: 10 nodi, 2 titoli, cosa seguire</summary>
+
+### Dove sono i nodi
 
 | Nodo | Paese | Ruolo | Quota o peso | Fonte (affidabilità) |
 |---|---|---|---|---|
@@ -514,15 +504,13 @@ Lo Stretto di Taiwan è il punto unico di rottura. Il 48% delle 5.400 portaconta
 
 <small>Coordinate nel file di dati (precisione indicata per ogni punto).</small>
 
-</details>
-
-<details><summary>Titoli collegati (2, di cui 0 con prezzo)</summary>
+### Titoli collegati
 
 Non ancora seguiti in prezzi.json: EVA Airways (2618.TW), cargo aereo AI da Taoyuan; China Airlines (2610.TW), cargo aereo AI da Taoyuan.
 
-</details>
-
 **Indicatori da seguire:** Transiti nello Stretto di Taiwan, di Luzon e di Malacca (PortWatch, settimanali); Incidenti ai cavi intorno a Taiwan; Esercitazioni cinesi intorno a Taiwan; Tariffe cargo aereo Asia–Nord America.
+
+</details>
 
 <a id="anello-energia-dc"></a>
 
@@ -546,7 +534,9 @@ Il denaro non manca: per il 2026 Amazon indica circa 220 miliardi di dollari di 
 
 **Collo di bottiglia: Costo dell'energia per i data center.** In Europa i progetti a gas (come Ferrera Erbognone) legano l'AI al TTF e quindi a Hormuz; negli USA conta il prezzo dell'Henry Hub e la capacità di rete.
 
-<details><summary>Indicatori e soglie (4)</summary>
+<details><summary>Dettagli dell'anello: 4 indicatori, 9 nodi, 8 titoli, cosa seguire</summary>
+
+### Indicatori e soglie
 
 | Indicatore | Valore | Soglie (attenzione / critico) | Stato | Fonte, data del dato |
 |---|---|---|---|---|
@@ -555,9 +545,7 @@ Il denaro non manca: per il 2026 Amazon indica circa 220 miliardi di dollari di 
 | Gas TTF (Europa) | 82,3 EUR/MWh | 40 / 70 EUR/MWh | ■ critico | [Yahoo Finance (prezzi.json)](https://finance.yahoo.com/quote/TTF%3DF), 2026-11-09 |
 | Gas Henry Hub (USA) | 3,2 USD/MMBtu | 4 / 6 USD/MMBtu | ● normale | [Yahoo Finance (prezzi.json)](https://finance.yahoo.com/quote/NG%3DF), 2026-11-09 |
 
-</details>
-
-<details><summary>Dove sono i nodi (9)</summary>
+### Dove sono i nodi
 
 | Nodo | Paese | Ruolo | Quota o peso | Fonte (affidabilità) |
 |---|---|---|---|---|
@@ -573,9 +561,7 @@ Il denaro non manca: per il 2026 Amazon indica circa 220 miliardi di dollari di 
 
 <small>Coordinate nel file di dati (precisione indicata per ogni punto).</small>
 
-</details>
-
-<details><summary>Titoli collegati (8, di cui 7 con prezzo)</summary>
+### Titoli collegati
 
 | Titolo | Ruolo nella catena | Ultimo | 1 mese | Da inizio anno | 1 anno |
 |---|---|---|---|---|---|
@@ -591,9 +577,9 @@ Il denaro non manca: per il 2026 Amazon indica circa 220 miliardi di dollari di 
 
 Non ancora seguiti in prezzi.json: Freeport-McMoRan (FCX), rame.
 
-</details>
-
 **Indicatori da seguire:** Prezzi del gas TTF e Henry Hub (prezzi.json); Aste di capacità PJM e code di allaccio; Iter del riavvio di Maanshan; Aggiornamenti IEA sui consumi dei data center.
+
+</details>
 
 <a id="europa"></a>
 

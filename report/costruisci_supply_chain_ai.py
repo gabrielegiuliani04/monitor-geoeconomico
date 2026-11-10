@@ -550,8 +550,12 @@ def costruisci(d, mese):
         cc = [c for c in d["colli"] if c["anello"] == a["id"]]
         for c in cc:
             doc.p("**Collo di bottiglia: %s.** %s" % (c["nome"], c["perche"]))
+        nn = [n for n in d["elementi"] if n["anello"] == a["id"]]
+        tt = [t for t in d["titoli"] if a["id"] in t["anelli"]]
+        parti = (["%d indicatori" % sum(len(c["indicatori"]) for c in cc)] if cc else []) + ["%d nodi" % len(nn)] + (["%d titoli" % len(tt)] if tt else []) + ["cosa seguire"]
+        doc.apri("Dettagli dell'anello: " + ", ".join(parti))
         if cc:
-            doc.apri("Indicatori e soglie (%d)" % sum(len(c["indicatori"]) for c in cc))
+            doc.h3("Indicatori e soglie")
             rr = []
             for c in cc:
                 for i in c["indicatori"]:
@@ -561,18 +565,14 @@ def costruisci(d, mese):
                         val += " (" + i["verifica"] + ")"
                     rr.append([i["nome"], val.strip(), soglia, cella_stato(i["stato"]), "%s, %s" % (fonte_md(i), i.get("data") or "—")])
             doc.tab(["Indicatore", "Valore", "Soglie (attenzione / critico)", "Stato", "Fonte, data del dato"], rr)
-            doc.chiudi()
-        nn = [n for n in d["elementi"] if n["anello"] == a["id"]]
-        doc.apri("Dove sono i nodi (%d)" % len(nn))
+        doc.h3("Dove sono i nodi")
         doc.tab(["Nodo", "Paese", "Ruolo", "Quota o peso", "Fonte (affidabilità)"],
                 [[n["nome"], PAESI.get(n["paese"], n["paese"]), n.get("ruolo") or "—", n.get("quota") or "—",
                   "%s, %s (%s)" % (fonte_md(n), n.get("data_fonte", "—"), n.get("affidabilita", "—"))] for n in nn],
                 "Coordinate nel file di dati (precisione indicata per ogni punto).")
-        doc.chiudi()
-        tt = [t for t in d["titoli"] if a["id"] in t["anelli"]]
         if tt:
             seguiti = [t for t in tt if t.get("prezzo")]
-            doc.apri("Titoli collegati (%d, di cui %d con prezzo)" % (len(tt), len(seguiti)))
+            doc.h3("Titoli collegati")
             rr = []
             for t in seguiti:
                 ult, m1, ytd, a1 = prezzo_txt(t)
@@ -583,8 +583,8 @@ def costruisci(d, mese):
             fuori = [t for t in tt if not t.get("prezzo")]
             if fuori:
                 doc.p("Non ancora seguiti in prezzi.json: " + "; ".join("%s (%s), %s" % (t["nome"], t["simbolo"], t["ruolo"]) for t in fuori) + ".")
-            doc.chiudi()
         doc.p("**Indicatori da seguire:** " + "; ".join(a["indicatori"]) + ".")
+        doc.chiudi()
 
     # --- Europa e Italia
     doc.h2("europa", "%d. Europa e Italia: dove tocca la catena" % n_sez)
@@ -734,6 +734,19 @@ figcaption{font-size:13px;color:var(--soft);margin-top:8px}
 .s-normale::before{content:"● ";color:var(--ok)}
 .s-attenzione::before{content:"▲ ";color:var(--warn)}
 .s-critico::before{content:"■ ";color:var(--crit)}
+details.dettagli{border:1px solid var(--rule);border-radius:8px;background:var(--card);margin:0 0 12px}
+details.dettagli>summary{cursor:pointer;padding:10px 14px;font-weight:600;font-size:15px;color:var(--ink);list-style:none;display:flex;gap:8px;align-items:baseline}
+details.dettagli>summary::-webkit-details-marker{display:none}
+details.dettagli>summary::before{content:"+";font:600 15px/1 "IBM Plex Mono",monospace;color:var(--accent);width:1ch}
+details.dettagli[open]>summary::before{content:"−"}
+details.dettagli>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+details.dettagli>:not(summary){margin-left:12px;margin-right:12px}
+details.dettagli>.tabella{margin-top:4px}
+details.dettagli[open]{padding-bottom:4px}
+.box{border:1px solid var(--rule);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;background:var(--card);padding:12px 16px 4px;margin:0 0 20px}
+.box.scadenze{border-left-color:var(--warn)}
+.box .box-titolo{font:600 13px/1.4 "IBM Plex Mono",monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--soft);margin:0 0 8px}
+.box ul{font-size:15px}
 footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);font-size:14px;color:var(--soft)}
 footer .firma{font-weight:600;color:var(--ink)}"""
 
