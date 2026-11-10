@@ -2500,14 +2500,14 @@ async function start(snap) {
   }
   // operational layers: one that fails to load must not take the chart down with it
   const lay = manifest.layers || {}, opt = async u => { if (!u) return null; try { return await get(u); } catch (err) { console.error(err); return null; } };
-  const [mob, evt, rep, fr, fx, ln, ir, ib, rt, st, ita, dif, cdt, mk, dos, aip] = await Promise.all([opt(lay.mobili), opt(lay.eventi), opt(lay.report), opt(lay.fronte), opt(lay.fissi), opt(lay.linee), opt(lay.iran), opt(lay.ibrido), opt(lay.rotte), opt(lay.stretti), opt(lay.italia), opt(lay.difesa), opt(lay.condotte), opt(lay.mercati), opt(lay.dossier), opt(lay.ai)]);
+  const [mob, evt, rep, fr, fx, ln, ir, ib, rt, st, ita, dif, cdt, mk, dos, aip, aer] = await Promise.all([opt(lay.mobili), opt(lay.eventi), opt(lay.report), opt(lay.fronte), opt(lay.fissi), opt(lay.linee), opt(lay.iran), opt(lay.ibrido), opt(lay.rotte), opt(lay.stretti), opt(lay.italia), opt(lay.difesa), opt(lay.condotte), opt(lay.mercati), opt(lay.dossier), opt(lay.ai), opt(lay.aerei)]);
   if (rt && rt.rotte) { buildRoutes(rt); const cr = $('credit-routes'); cr.textContent = 'Shipping lanes: Benden 2022, from a 2012 CIA chart'; cr.hidden = false; }
   ST = st;
   if (cdt && cdt.linee) { buildLines(cdt, true); }
   if (ln && ln.linee) { buildLines(ln); const cg = $('credit-gem'); cg.textContent = 'Oil and gas pipelines: Global Energy Monitor'; cg.hidden = false; }
   if (fr && fr.aree && fr.aree.length) { buildFront(fr); const cf = $('credit-front'); cf.textContent = 'Front: ' + fr.autore; cf.hidden = false; }
   else if (fr && fr.mappe_esterne) { const cf = $('credit-front'); cf.textContent = ''; cf.append('Ukrainian front: '); fr.mappe_esterne.slice(0, 3).forEach((m, i) => { const a = document.createElement('a'); a.href = m.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.style.color = 'var(--water-ink)'; a.textContent = ['ISW', 'ISW daily', 'DeepState'][i]; if (i) cf.append(' · '); cf.appendChild(a); }); cf.hidden = false; }
-  addPoints(mob && mob.punti); addPoints(evt && evt.punti); addPoints(fr && fr.punti); addPoints(fx && fx.punti); addPoints(ir && ir.punti); addPoints(ib && ib.punti); addPoints(ita && ita.punti); addPoints(dif && dif.punti); addPoints(aip && aip.punti); finishPoints(); buildPanel(); initNews(rep); initMkt(mk); initDos(dos); xLoad(opt);
+  addPoints(mob && mob.punti); addPoints(evt && evt.punti); addPoints(fr && fr.punti); addPoints(fx && fx.punti); addPoints(ir && ir.punti); addPoints(ib && ib.punti); addPoints(ita && ita.punti); addPoints(dif && dif.punti); addPoints(aip && aip.punti); addPoints(aer && aer.punti); finishPoints(); buildPanel(); initNews(rep); initMkt(mk); initDos(dos); xLoad(opt);
   const upd = [mob, evt].map(o => o && o.aggiornato).filter(Boolean).sort().pop();
   $('note').textContent = 'Open-source data' + (upd ? ', updated ' + dateLong(new Date(upd + 'T12:00:00')) : '') + '. Not a real-time radar: every point has a date, source and margin of uncertainty on its card. Some source descriptions are in Italian.';
 
