@@ -372,19 +372,65 @@ def prezzo_txt(t):
     return ult.strip() + (" *" if p.get("provvisorio") else ""), pct(v.get("1m")), pct(v.get("ytd")), pct(v.get("1a"))
 
 
+STATO_CTRL = {"in-vigore": "in vigore", "sospeso": "sospeso", "incerto": "incerto", "proposto": "proposto", "interrotto": "interrotto"}
+
+# Riquadro «Revisione» (STANDARD.md §10): aggiornare a ogni revisione indipendente.
+REVISIONE = {
+    "data": "10 novembre 2026",
+    "file": "report/revisioni/supply-chain-ai-2026-11.md",
+    "voci": [
+        "Revisione indipendente del 9–10 novembre 2026 (fact-checking ed editing, svolta con un assistente AI): __N__ affermazioni verificate contro i file di dati e le fonti, __OK__ confermate, __COR__ corrette, __NV__ non verificabili da qui.",
+        "Correzioni principali: stato della scadenza cinese del 10 novembre (proroga annunciata il 9 novembre, non ancora nel testo ufficiale); quote di AMD (5–7%, non 10%) e di Broadcom nel CoWoS (circa 15%, non «oltre 240.000 wafer»); Foxconn «oltre il 44% dei rack» (non «40% dei server»); costo di Bloomberg Economics riferito a una guerra, non a un blocco; «metà delle portacontainer» ricondotto al 48% del 2022 con la sua fonte; Colossus 2 non è il campus più grande nei dati Epoch; capacità CoWoS riattribuita a Tom's Hardware (la nota KGI dà solo il dato 2027).",
+        "Corretti anche nello script: gli stati degli indicatori apparivano come codice («{stato:critico}») nel Markdown; la data delle scadenze indicava il giorno del calcolo invece della fonte; il neon mostrava gli USA come «primo produttore» pur essendo l'unico paese pubblicato da USGS; le tabelle dei titoli non segnalavano le sedute di data diversa.",
+        "Non verificabili da qui: pagine bloccate o a pagamento (Counterpoint, TechRepublic, TipRanks, DIGITIMES, USITC, Focus Taiwan, IEA), le scorte di GNL di Taiwan (12–14 giorni), la quota del quarzo di Spruce Pine (stime Everstream e BloombergNEF), la carenza di chip EML (blog di analisi, affidabilità bassa).",
+        "Aggiunti: dipendenze di UE e Italia (commercio.json), altre materie sotto licenza cinese (minerali.json), spese in conto capitale 2026 dei grandi cloud (investimenti.json), divieto cinese di export di elio (annuncio MOFCOM n. 29 del 2026). Resoconto completo in [`%s`](https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/revisioni/supply-chain-ai-2026-11.md).",
+    ],
+}
+
+
+def giorni_txt(g):
+    return "oggi" if g == 0 else "domani" if g == 1 else ("tra %d giorni" % g if g > 1 else "da %d giorni" % -g)
+
+
+def stato_controllo(c):
+    s = STATO_CTRL.get(c["stato"], c["stato"])
+    if c.get("scadenza"):
+        s += " fino al %s (%s)" % (data_it(c["scadenza"]), giorni_txt(c["giorni_alla_scadenza"]))
+    if c.get("verifica"):
+        s += "; **%s**" % c["verifica"]
+        if c.get("scadenza_precedente"):
+            s += " (scadenza precedente: %s)" % data_it(c["scadenza_precedente"])
+    return s
+
+
+def quote_materia(x):
+    if x.get("quote"):
+        if len(x["quote"]) == 1 and not x.get("quota_dichiarata"):
+            q = x["quote"][0]
+            s = "USGS pubblica solo %s: %s%% del totale mondiale; il resto non è ripartito per paese" % (q["nome_paese"], num(q["quota_pct"]))
+            if x.get("quota_stima"):
+                s += ". Stima storica: " + x["quota_stima"]["testo"]
+            return s
+        return "; ".join("%s %s%%" % (y["nome_paese"], num(y["quota_pct"])) for y in x["quote"][:3])
+    if x.get("quota_stima"):
+        return "stima: " + x["quota_stima"]["testo"]
+    return "dato mancante (" + (x.get("nota_quota") or "").split(".")[0] + ")"
+
+
+def mln_usd(v):
+    return num(v / 1e6, 1 if v < 1e8 else 0)
+
+
 def costruisci(d, mese):
     anno, m = mese.split("-")
     titolo = "La catena dell'AI, dalla miniera al data center — %s %s" % (MESI[int(m) - 1], anno)
     rif = d["data_riferimento"]
-    colli = {c["id"]: c for c in d["colli"]}
     ctrl = {c["id"]: c for c in d["controlli"]}
     mat = {x["id"]: x for x in d["materie"]}
     nodi = {n["id"]: n for n in d["elementi"]}
     tit = {t["simbolo"]: t for t in d["titoli"]}
+    conf = d.get("confronti") or {}
     doc = Doc()
-
-    # --- In breve
-    ree, gage = ctrl["CN-2025-10-TR"], ctrl["CN-2024-USBAN"]
     ind = {(c["id"], i["nome"]): i for c in d["colli"] for i in c["indicatori"]}
 
     def ival(cid, inizio):
@@ -392,35 +438,67 @@ def costruisci(d, mese):
             if c == cid and n.startswith(inizio):
                 return i
         return {}
-    hz = ival("C02", "Transiti a Hormuz")
-    tw = ival("C06", "Transiti nello Stretto")
-    sox, nvda, hyn, asml = (tit[s].get("prezzo") or {} for s in ("SOX", "NVDA", "000660.KS", "ASML"))
+    hz, tw = ival("C02", "Transiti a Hormuz"), ival("C06", "Transiti nello Stretto")
+    tsmc = ival("C06", "Quota TSMC")
+    dram = ival("C08", "Prezzi contrattuali")
+    sox, nvda, hyn, asml, amd = (tit[s].get("prezzo") or {} for s in ("SOX", "NVDA", "000660.KS", "ASML", "AMD"))
+    data_usa = sox.get("data")
+    ree, gage = ctrl["CN-2025-10-TR"], ctrl["CN-2024-USBAN"]
+
+    def v(p, k):
+        return pct((p.get("var") or {}).get(k))
+
+    def quando(p):
+        """Data della seduta se diversa da quella delle chiusure USA, e «provvisorio»."""
+        extra = []
+        if p.get("data") and p.get("data") != data_usa:
+            extra.append("seduta del %s" % data_it(p["data"]))
+        if p.get("provvisorio"):
+            extra.append("provvisorio")
+        return (" (" + ", ".join(extra) + ")") if extra else ""
+
+    # --- In breve (STANDARD §5: massimo 5 punti, ognuno con cifra e fonte)
+    if ree.get("verifica"):
+        p1 = ("**Pechino annuncia la proroga sulle terre rare, ma il testo ufficiale manca.** Il 9 novembre la Cina ha annunciato di prorogare al %s la sospensione delle misure di ottobre 2025, compresa la regola dello 0,1%% (Reuters); al %s l'annuncio non è nell'elenco ufficiale del MOFCOM. "
+              "Il divieto di export di gallio e germanio verso gli USA torna il %s (%s) se non prorogato. La Cina fa il %s%% del gallio primario e il %s%% delle terre rare estratte ([USGS](%s), dati 2025)." % (
+                  data_it(ree["scadenza"]), data_it(rif), data_it(gage["scadenza"]), giorni_txt(gage["giorni_alla_scadenza"]),
+                  num(mat["gallio"]["primo_produttore"]["quota_pct"], 0), num(mat["terre-rare"]["primo_produttore"]["quota_pct"]), mat["terre-rare"]["link"]))
+    else:
+        p1 = ("**Le misure cinesi su terre rare e gallio restano sospese.** Misure di ottobre 2025 sospese fino al %s; divieto verso gli USA fino al %s. La Cina fa il %s%% del gallio primario e il %s%% delle terre rare estratte ([USGS](%s), dati 2025)." % (
+            data_it(ree["scadenza"]), data_it(gage["scadenza"]), num(mat["gallio"]["primo_produttore"]["quota_pct"], 0),
+            num(mat["terre-rare"]["primo_produttore"]["quota_pct"]), mat["terre-rare"]["link"]))
     breve = [
-        "**Il rischio di questa settimana è cinese.** La sospensione delle misure di ottobre 2025 su terre rare e regola dello 0,1%% scade %s (%s) e le fonti non concordano su una proroga; il divieto di export di gallio e germanio verso gli USA torna tra %d giorni (%s). La Cina fa il %s%% del gallio primario e il %s%% delle terre rare estratte ([USGS MCS 2026](%s))." % (
-            ("domani" if ree["giorni_alla_scadenza"] == 1 else "oggi" if ree["giorni_alla_scadenza"] == 0 else "tra %d giorni" % ree["giorni_alla_scadenza"]), data_it(ree["scadenza"]), gage["giorni_alla_scadenza"], data_it(gage["scadenza"]),
-            num(mat["gallio"]["primo_produttore"]["quota_pct"], 0), num(mat["terre-rare"]["primo_produttore"]["quota_pct"]), mat["terre-rare"]["link"]),
-        "**Tre punti unici di rottura.** Gli scanner EUV escono solo da Veldhoven (Paesi Bassi); TSMC ha il %s%% della fonderia mondiale e fa il 2 nm solo a Taiwan; il packaging CoWoS delle GPU è quasi tutto a Tainan e Chiayi. Diversificazione in corso (Arizona, Kumamoto, Dresda) ma i wafer americani tornano a Taiwan per il packaging ([TrendForce](%s))." % (num(ival("C06", "Quota TSMC").get("valore")), ival("C06", "Quota TSMC").get("link")),
-        "**La logistica pesa già.** A Hormuz passano %s navi al giorno (%s su un anno, [IMF PortWatch](https://portwatch.imf.org/)): l'elio del Qatar, un terzo del mondo, è in gran parte fermo da marzo. Lo Stretto di Taiwan invece è normale (%s navi al giorno, %s su un anno)." % (
-            num((hz.get("dettaglio") or {}).get("navi_giorno")), pct(hz.get("valore")), num((tw.get("dettaglio") or {}).get("navi_giorno"), 0), pct(tw.get("valore"))),
-        "**La memoria è il nuovo collo di bottiglia.** HBM divisa tra SK Hynix 50%%, Samsung 33%% e Micron 18%% (Counterpoint, 2° trimestre 2026); prezzi DRAM previsti +%s%% nel 4° trimestre ([TrendForce](%s)). Per la Cina l'HBM è il limite vero della produzione Huawei." % (num(ival("C08", "Prezzi contrattuali").get("valore"), 0), ival("C08", "Prezzi contrattuali").get("link")),
-        "**In borsa vincono i colli di bottiglia fisici.** Da inizio anno SK Hynix %s, ASML %s, indice SOX %s; Nvidia %s. Nell'ultimo mese correzione su tutto il comparto (SOX %s; prezzi.json, %s)." % (
-            pct((hyn.get("var") or {}).get("ytd")), pct((asml.get("var") or {}).get("ytd")), pct((sox.get("var") or {}).get("ytd")),
-            pct((nvda.get("var") or {}).get("ytd")), pct((sox.get("var") or {}).get("1m")), data_it(sox.get("data"))),
+        p1,
+        "**Tre punti unici di rottura reggono la catena.** Gli scanner EUV escono solo da Veldhoven (Paesi Bassi); TSMC ha il %s%% dei ricavi mondiali di fonderia (2° trimestre 2026, [TrendForce](%s)) e fa il 2 nm solo a Taiwan; il packaging CoWoS delle GPU è quasi tutto a Tainan e Chiayi. Arizona, Kumamoto e Dresda non cambiano il quadro prima del 2028." % (
+            num(tsmc.get("valore")), tsmc.get("link")),
+        "**Hormuz è quasi chiuso, lo Stretto di Taiwan no.** A Hormuz sono passate %s navi al giorno nella settimana al %s, %s sulla stessa settimana del 2025 ([IMF PortWatch](https://portwatch.imf.org/)); l'elio del Qatar (%s%% del mondo) è fermo dal 2 marzo. Nello Stretto di Taiwan %s navi al giorno, %s." % (
+            num((hz.get("dettaglio") or {}).get("navi_giorno")), data_it(hz.get("data")), pct(hz.get("valore")), num(mat["elio"]["quote"][1]["quota_pct"]) if mat["elio"]["quote"][1]["paese"] == "QA" else "—",
+            num((tw.get("dettaglio") or {}).get("navi_giorno"), 0), pct(tw.get("valore"))),
+        "**La memoria è il collo di bottiglia che stringe.** L'HBM è divisa tra SK Hynix 50%%, Samsung 33%% e Micron 18%% (Counterpoint, 2° trimestre 2026); TrendForce prevede prezzi contrattuali DRAM +%s%% sul trimestre nel 4° trimestre ([TrendForce](%s)). Per la Cina l'HBM è il limite della produzione Huawei." % (
+            num(dram.get("valore"), 0), dram.get("link")),
+        "**In borsa salgono memoria e macchine, Nvidia resta sotto l'inizio d'anno.** Da inizio anno SK Hynix %s%s, ASML %s, indice SOX %s, AMD %s; Nvidia %s (chiusure del %s, prezzi.json). Nell'ultimo mese i semiconduttori correggono: SOX %s." % (
+            v(hyn, "ytd"), quando(hyn), v(asml, "ytd"), v(sox, "ytd"), v(amd, "ytd"), v(nvda, "ytd"), data_it(data_usa), v(sox, "1m")),
     ]
     doc.h2("in-breve", "1. In breve")
     doc.ul(breve)
-    doc.val("La catena dell'AI è lunga ma stretta in pochi punti, e quasi tutti sono in Asia orientale o dipendono da una sola società. Per l'Europa del Nord il legame più forte è anche il più solido: le macchine EUV di Veldhoven. I punti deboli sono a monte (terre rare, gallio, elio) e a valle (energia e trasformatori), più che nei chip.")
+    doc.val("La catena dell'AI è lunga ma stretta in pochi punti, e quasi tutti sono in Asia orientale o dipendono da una sola società. Per l'Europa del Nord il legame più forte è anche il più solido: le macchine EUV di Veldhoven. I punti deboli sono a monte (terre rare, magneti, gallio, elio) e a valle (energia e trasformatori), più che nei chip.")
+    sc = []
+    for c in d["controlli"]:
+        if c["paese"] == "CN" and c.get("scadenza"):
+            sc.append("**%s** — %s" % (c["misura"].split(";")[0].rstrip("."), stato_controllo(c)))
+    sc.append("Le licenze cinesi su gallio e germanio (2023), sulle sette terre rare medie e pesanti (aprile 2025) e il divieto di export di elio (luglio 2026) sono in vigore in ogni caso.")
+    doc.box("scadenze", "Scadenze cinesi: stato al %s" % data_it(rif), sc)
 
     # --- Diagramma
     doc.h2("catena", "2. La catena in un colpo d'occhio")
-    doc.p("Otto anelli, dalla miniera al data center. Ogni riquadro mostra i paesi chiave dell'anello (valutazione dell'osservatorio), quanti nodi e titoli quotati sono collegati e lo stato del collo di bottiglia peggiore. Il riquadro ha il bordo colorato quando un indicatore supera una soglia: le soglie sono una valutazione dell'osservatorio, spiegata nella sezione degli indicatori.")
+    doc.p("Otto anelli, dalla miniera al data center. Ogni riquadro mostra i paesi chiave (valutazione dell'osservatorio), quanti nodi e titoli quotati sono collegati e lo stato del collo di bottiglia peggiore. Le soglie degli indicatori sono una valutazione dell'osservatorio (sezione «Appendice»).")
     doc.svg(diagramma(d, True), diagramma(d, False),
-            "Diagramma generato da docs/data/supply-chain-ai.json (%d nodi, %d collegamenti, %d colli di bottiglia). Passare sopra un riquadro per l'elenco dei colli." % (
-                len(d["elementi"]), len(d["archi"]), len(d["colli"])), "sca-%s-catena.svg" % mese)
-    righe = [["%d. %s" % (a["ordine"], a["nome"]), a["dove"], stato_md(dati_anello(d, a)[3] or "non misurato")] for a in d["anelli"]]
+            "La catena del valore dell'AI in otto anelli. Diagramma generato da docs/data/supply-chain-ai.json (%d nodi, %d collegamenti, %d colli di bottiglia; dati al %s). Passare sopra un riquadro per l'elenco dei colli." % (
+                len(d["elementi"]), len(d["archi"]), len(d["colli"]), data_it(rif)), "sca-%s-catena.svg" % mese)
+    doc.apri("Versione in tabella del diagramma")
     doc.tab(["Anello", "Dove sta", "Collo peggiore"],
-            [[r[0], r[1], cella_stato(dati_anello(d, a)[3] or "non misurato")] for r, a in zip(righe, d["anelli"])],
-            "Versione in tabella del diagramma.")
+            [["%d. %s" % (a["ordine"], a["nome"]), a["dove"], cella_stato(dati_anello(d, a)[3] or "non misurato")] for a in d["anelli"]])
+    doc.chiudi()
 
     # --- Anelli
     n_sez = 3
@@ -432,143 +510,177 @@ def costruisci(d, mese):
         doc.p("**Chi lo controlla.** " + a["chi_controlla"])
         for par in a["testo"]:
             if par.startswith("Valutazione: "):
-                v = par[len("Valutazione: "):]
-                doc.val(v[:1].upper() + v[1:])
+                vv = par[len("Valutazione: "):]
+                doc.val(vv[:1].upper() + vv[1:])
             else:
                 doc.p(par)
         if a["id"] == "materie":
-            doc.h3("Produttori e quote (USGS, dati 2025)")
-            rr = []
-            for x in d["materie"]:
-                if x.get("quote"):
-                    q = x["quote"][:3]
-                    quote = "; ".join("%s %s%%" % (y["nome_paese"], num(y["quota_pct"])) for y in q)
-                elif x.get("quota_stima"):
-                    quote = "stima: " + x["quota_stima"]["testo"]
-                else:
-                    quote = "dato mancante (" + (x.get("nota_quota") or "").split(".")[0] + ")"
-                rr.append([x["nome"], x["uso_ai"], quote, "[%s](%s)" % (x["fonte"].split(": ")[-1], x["link"])])
-            doc.tab(["Materia", "A cosa serve", "Primi produttori (quota)", "Fonte USGS"], rr,
-                    "Quote calcolate da raccogli.py come produzione del paese / totale mondiale USGS (stime 2025); per il gallio la quota è quella dichiarata da USGS. Rame: estrazione; la Cina raffina il %s%% del rame mondiale." % num(mat["rame"]["quote_raffinazione"][0]["quota_pct"]))
             doc.svg(grafico_concentrazione(d, True), grafico_concentrazione(d, False),
-                    "Quota del primo paese produttore. Fonte: [USGS Mineral Commodity Summaries 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf), 5 febbraio 2026.",
+                    "Quota del primo paese produttore, in %% della produzione mondiale 2025 (stime), materie con primo produttore almeno al 30%%. Fonte: [USGS Mineral Commodity Summaries 2026](https://pubs.usgs.gov/periodicals/mcs2026/mcs2026.pdf), 5 febbraio 2026; quote calcolate in docs/data/supply-chain-ai.json e uguali a quelle di minerali.json.",
                     "sca-%s-concentrazione.svg" % mese)
-            doc.h3("Controlli cinesi all'export, 2023–2026")
-            rr = []
-            for c in d["controlli"]:
-                if c["paese"] != "CN":
-                    continue
-                stato = c["stato"] + (" fino al %s (%s)" % (data_it(c["scadenza"]), "tra 1 giorno" if c["giorni_alla_scadenza"] == 1 else "tra %d giorni" % c["giorni_alla_scadenza"]) if c.get("scadenza") else "")
-                rr.append([data_it(c["data_annuncio"]), c["misura"], stato, fonte_md(c)])
+            altre = conf.get("altre_materie_controllate") or []
+            if altre:
+                doc.p("Altre materie sotto licenza cinese toccano la catena: %s ([minerali.json](https://www.usgs.gov/data/mineral-commodity-summaries-2026-data-release), USGS, dati 2025)." % "; ".join(
+                    "%s, Cina %s%% della produzione mondiale" % (x["nome"].lower(), num(x["quota_cina"])) for x in sorted(altre, key=lambda x: -(x["quota_cina"] or 0))))
+            doc.apri("Produttori e quote per materia (USGS, dati 2025)")
+            rr = [[x["nome"], x["uso_ai"], quote_materia(x), "[%s](%s)" % (x["fonte"].split(": ")[-1], x["link"])] for x in d["materie"]]
+            doc.tab(["Materia", "A cosa serve", "Primi produttori (quota della produzione mondiale)", "Fonte USGS"], rr,
+                    "Quote calcolate da raccogli.py come produzione del paese / totale mondiale USGS (stime 2025); per il gallio la quota è quella dichiarata da USGS. Rame: estrazione; la Cina raffina il %s%% del rame mondiale." % num(mat["rame"]["quote_raffinazione"][0]["quota_pct"]))
+            doc.chiudi()
+            doc.apri("Controlli cinesi all'export, 2023–2026")
+            rr = [[data_it(c["data_annuncio"]), c["misura"], stato_controllo(c), fonte_md(c)] for c in d["controlli"] if c["paese"] == "CN"]
             doc.tab(["Annuncio", "Misura", "Stato al %s" % data_it(rif), "Fonte"], rr,
-                    "Per le misure di ottobre 2025 le fonti del 9 novembre 2026 sono in disaccordo: vedi il testo sopra.")
+                    "Per le misure di ottobre 2025 le fonti sono in disaccordo: vedi il testo sopra e il riquadro delle scadenze.")
+            doc.chiudi()
         if a["id"] == "attrezzature":
-            doc.h3("Regole sull'export di macchine e chip (USA, Paesi Bassi, Giappone)")
+            doc.apri("Regole sull'export di macchine e chip (USA, Paesi Bassi, Giappone)")
             rr = []
             for c in d["controlli"]:
                 if c["paese"] == "CN" or not ({"attrezzature", "progettazione", "packaging-memoria"} & set(c["anelli"])):
                     continue
-                stato = c["stato"] + (" fino al %s" % data_it(c["scadenza"]) if c.get("scadenza") else "")
-                rr.append([PAESI.get(c["paese"], c["paese"]), data_it(c["data_effetto"] or c["data_annuncio"]) if (c["data_effetto"] or c["data_annuncio"] or "").count("-") == 2 else (c["data_effetto"] or c["data_annuncio"]), c["misura"], stato, fonte_md(c)])
+                dal = c["data_effetto"] or c["data_annuncio"] or ""
+                rr.append([PAESI.get(c["paese"], c["paese"]), data_it(dal) if dal.count("-") == 2 else dal, c["misura"], stato_controllo(c), fonte_md(c)])
             doc.tab(["Paese", "Dal", "Misura", "Stato", "Fonte"], rr)
-        # nodi
-        nn = [n for n in d["elementi"] if n["anello"] == a["id"]]
-        doc.h3("Dove sono i nodi")
-        doc.tab(["Nodo", "Paese", "Ruolo", "Quota o peso", "Fonte (affidabilità)"],
-                [[n["nome"], PAESI.get(n["paese"], n["paese"]), n.get("ruolo") or "—", n.get("quota") or "—",
-                  "%s, %s (%s)" % (fonte_md(n), n.get("data_fonte", "—"), n.get("affidabilita", "—"))] for n in nn],
-                "Coordinate nel file di dati (precisione indicata per ogni punto).")
-        # colli
+            doc.chiudi()
         cc = [c for c in d["colli"] if c["anello"] == a["id"]]
+        for c in cc:
+            doc.p("**Collo di bottiglia: %s.** %s" % (c["nome"], c["perche"]))
         if cc:
-            doc.h3("Colli di bottiglia e indicatori")
+            doc.apri("Indicatori e soglie (%d)" % sum(len(c["indicatori"]) for c in cc))
             rr = []
             for c in cc:
                 for i in c["indicatori"]:
                     soglia = "%s / %s %s" % (num(i.get("soglia_attenzione"), 0), num(i.get("soglia_critica"), 0), i.get("unita", ""))
                     val = "%s %s" % (num(i["valore"]) if isinstance(i["valore"], float) else num(i["valore"], 0), i.get("unita", ""))
-                    rr.append([c["nome"], i["nome"], val.strip(), soglia, cella_stato(i["stato"]),
-                               "%s, %s" % (fonte_md(i), i.get("data") or "—")])
-            doc.tab(["Collo", "Indicatore", "Valore", "Soglie (attenzione / critico)", "Stato", "Fonte"], rr)
-            for c in cc:
-                doc.p("**%s.** %s" % (c["nome"], c["perche"]))
-        # titoli
+                    if i.get("verifica"):
+                        val += " (" + i["verifica"] + ")"
+                    rr.append([i["nome"], val.strip(), soglia, cella_stato(i["stato"]), "%s, %s" % (fonte_md(i), i.get("data") or "—")])
+            doc.tab(["Indicatore", "Valore", "Soglie (attenzione / critico)", "Stato", "Fonte, data del dato"], rr)
+            doc.chiudi()
+        nn = [n for n in d["elementi"] if n["anello"] == a["id"]]
+        doc.apri("Dove sono i nodi (%d)" % len(nn))
+        doc.tab(["Nodo", "Paese", "Ruolo", "Quota o peso", "Fonte (affidabilità)"],
+                [[n["nome"], PAESI.get(n["paese"], n["paese"]), n.get("ruolo") or "—", n.get("quota") or "—",
+                  "%s, %s (%s)" % (fonte_md(n), n.get("data_fonte", "—"), n.get("affidabilita", "—"))] for n in nn],
+                "Coordinate nel file di dati (precisione indicata per ogni punto).")
+        doc.chiudi()
         tt = [t for t in d["titoli"] if a["id"] in t["anelli"]]
         if tt:
-            doc.h3("Titoli collegati")
+            seguiti = [t for t in tt if t.get("prezzo")]
+            doc.apri("Titoli collegati (%d, di cui %d con prezzo)" % (len(tt), len(seguiti)))
             rr = []
-            for t in tt:
+            for t in seguiti:
                 ult, m1, ytd, a1 = prezzo_txt(t)
-                rr.append(["%s (%s)" % (t["nome"], t["simbolo"]), t["ruolo"], ult, m1, ytd, a1])
-            doc.tab(["Titolo", "Ruolo nella catena", "Ultimo", "1 mese", "Da inizio anno", "1 anno"], rr,
-                    "Prezzi da prezzi.json (Yahoo Finance, chiusure al %s; * = serie provvisoria). «non seguito»: titolo non ancora in prezzi.json." % data_it(sox.get("data")))
+                rr.append(["%s (%s)" % (t["nome"], t["simbolo"]), t["ruolo"], ult + quando(t["prezzo"]).replace(", provvisorio", "").replace(" (provvisorio)", ""), m1, ytd, a1])
+            if rr:
+                doc.tab(["Titolo", "Ruolo nella catena", "Ultimo", "1 mese", "Da inizio anno", "1 anno"], rr,
+                        "Prezzi da prezzi.json (Yahoo Finance): chiusure del %s salvo dove indicato; * = valore provvisorio (seduta in corso). Variazioni rispetto alla chiusura di un mese prima, del 31 dicembre 2025 e di un anno prima." % data_it(data_usa))
+            fuori = [t for t in tt if not t.get("prezzo")]
+            if fuori:
+                doc.p("Non ancora seguiti in prezzi.json: " + "; ".join("%s (%s), %s" % (t["nome"], t["simbolo"], t["ruolo"]) for t in fuori) + ".")
+            doc.chiudi()
         doc.p("**Indicatori da seguire:** " + "; ".join(a["indicatori"]) + ".")
 
-    # --- Logistica: collegamenti
-    doc.h2("collegamenti", "%d. Come si spostano le cose: i collegamenti" % n_sez)
-    n_sez += 1
-    doc.p("Ogni riga è un arco «da → a» del file di dati. Le righe marcate *valutazione* sono percorsi tipici ricostruiti dall'osservatorio (per esempio l'aeroporto usato), non tracciati reali: le società non pubblicano le rotte.")
-    rr = []
-    for x in d["archi"]:
-        via = (" via " + ", ".join(nodi[v]["nome"] for v in x.get("via", []))) if x.get("via") else ""
-        rr.append(["%s → %s" % (x["da_nome"], x["a_nome"]), x["cosa"] + via, x["modo"], x["stato"], x["tipo"], num(x["km"], 0)])
-    doc.tab(["Da → a", "Cosa", "Modo", "Stato", "Tipo", "km in linea d'aria"], rr)
-
-    # --- Paesi Bassi, Danimarca, Baltico
-    doc.h2("nord-europa", "%d. Paesi Bassi, Danimarca e Baltico" % n_sez)
+    # --- Europa e Italia
+    doc.h2("europa", "%d. Europa e Italia: dove tocca la catena" % n_sez)
     n_sez += 1
     reti = {r["nodo"]: r for r in d["legami"]["rete_380kv"]}
+
     def rete(nid):
         r = reti.get(nid)
         return ("a %s km da una linea da %s" % (num(r["km"]), r["linea"])) if r else "distanza dalla rete non calcolata"
-    gl = mat["terre-rare"].get("riserve", {}).get("GL")
-    doc.ul([
+    dip = conf.get("dipendenze_ue_italia") or []
+    dd = {(x["iso2"], x["hs"]): x for x in dip}
+    ue_mag, it_mag = dd.get(("EU", "850511")) or {}, dd.get(("IT", "850511")) or {}
+    if not ue_mag:
+        ue_mag = next((x for x in dip if x["hs"] == "850511" and x["iso2"] != "IT"), {})
+    ue_tr = next((x for x in dip if x["hs"] == "280530" and x["iso2"] != "IT"), {})
+    ue_si = next((x for x in dip if x["hs"] == "280461" and x["iso2"] != "IT"), {})
+    it_si = dd.get(("IT", "280461")) or {}
+    voci = []
+    if ue_mag and it_mag:
+        voci.append("**Magneti di terre rare: la dipendenza più netta.** Nel 2025 l'%s ha comprato dalla Cina l'%s%% dei magneti permanenti (NdFeB) importati da fuori l'Unione, %s milioni di dollari su %s; l'Italia l'%s%% dei suoi (%s milioni di dollari). Sono i magneti di motori, ventole, pompe e dischi rigidi dei data center ([commercio.json](../data/commercio.json), UN Comtrade)." % (
+            "UE", num(ue_mag["quota_cina"]), mln_usd(ue_mag["fornitori"][0]["valore_usd"]), mln_usd(ue_mag["import_totale_usd"]), num(it_mag["quota_cina"]), mln_usd(it_mag["import_totale_usd"])))
+    if ue_tr:
+        voci.append("**Terre rare a monte dei magneti.** La Cina pesa il %s%% dei metalli delle terre rare importati dall'UE nel 2025; per gli ossidi e composti separati il %s%%, seguita da Norvegia e Malesia. Gli acquisti italiani sono piccoli e passano da altri paesi UE (Francia, Austria, Paesi Bassi, Estonia), che il dato doganale registra come paesi di spedizione, non di origine." % (
+            num(ue_tr["quota_cina"]), num((next((x for x in dip if x["hs"] == "284690" and x["iso2"] != "IT"), {}) or {}).get("quota_cina"))))
+    if ue_si and it_si:
+        voci.append("**Silicio ad altissima purezza: dipendenza americana, non cinese.** L'UE importa il %s%% del silicio sopra il 99,99%% dagli USA; l'Italia lo compra per il %s%% dalla Danimarca (paese di spedizione)." % (
+            num(ue_si["fornitori"][0]["quota"]), num(it_si["fornitori"][0]["quota"])))
+    voci += [
         "**Veldhoven (ASML)** è il nodo più critico della catena che si trovi in Europa: unico produttore di EUV, %s (rete-elettrica.json). Le macchine partono smontate verso Taiwan, Corea, Giappone e USA; per via aerea l'uscita naturale è Schiphol (valutazione: ASML non pubblica gli aeroporti)." % rete("veldhoven"),
-        "**Schiphol** è quindi un punto logistico della catena dell'AI oltre che dei fiori e della farmaceutica: un ritardo lì rallenta le nuove fab nel mondo, non la produzione corrente.",
-        "**Nexperia (Nijmegen)** mostra il rischio opposto: un intervento dello Stato olandese (settembre 2025) e la risposta cinese hanno spezzato una catena Europa–Cina. Non tocca i chip AI, ma è il precedente da tenere a mente per ASML.",
-        "**Regole olandesi.** Le licenze su DUV dal 2023 e 2024 sono olandesi; la proposta americana MATCH Act e le pressioni su assistenza e ricambi in Cina sono il prossimo fronte.",
-        "**Danimarca e Groenlandia.** La Groenlandia ha %s tonnellate di riserve di terre rare (USGS) e nessuna produzione: è un'opzione di lungo periodo, non un'offerta. Gli Stretti danesi non sono una rotta della catena dei chip." % (num(gl, 0) if gl else "—"),
-        "**Baltico.** In Estonia, a Sillamäe (%s) e Narva (%s), Neo Performance Materials separa terre rare (anche terbio e disprosio dal 2026) e produce magneti: il tratto di filiera europea più completo fuori dalla Cina, a pochi chilometri dal confine russo. Rischio da seguire: sicurezza della zona di confine e dei cavi del Baltico (livello cavi-incidenti)." % (rete("sillamae"), rete("narva")),
-    ])
+        "**Nexperia (Nijmegen)** mostra il rischio opposto: la presa di controllo dello Stato olandese (settembre 2025) e la risposta cinese hanno spezzato una catena Europa–Cina. Non tocca i chip AI, ma è il precedente da tenere a mente per ASML.",
+        "**Danimarca e Groenlandia.** La Groenlandia ha %s tonnellate di riserve di terre rare (USGS) e nessuna produzione: è un'opzione di lungo periodo, non un'offerta. Gli Stretti danesi non sono una rotta della catena dei chip." % (num(mat["terre-rare"].get("riserve", {}).get("GL"), 0)),
+        "**Baltico.** In Estonia, a Sillamäe (%s) e Narva (%s), Neo Performance Materials separa terre rare (anche terbio e disprosio dal 2026) e produce magneti (2.000 t l'anno all'avvio, 5.000 in prospettiva): il tratto di filiera europea più completo fuori dalla Cina, a pochi chilometri dal confine russo. Da seguire: sicurezza della zona di confine e dei cavi del Baltico (cavi-incidenti.json)." % (rete("sillamae"), rete("narva")),
+        "**Italia.** Il campus Eni-Khazna di Ferrera Erbognone (500 MW nella prima fase, a gas con cattura della CO2) lega l'AI italiana al prezzo del gas TTF e quindi a Hormuz (valutazione).",
+    ]
+    doc.ul(voci)
+    if dip:
+        doc.apri("Import di UE e Italia per voce doganale (2025, primi tre fornitori)")
+        rr = []
+        for x in sorted(dip, key=lambda x: (x["hs"], x["iso2"] == "IT")):
+            rr.append(["%s (HS %s)" % (x["prodotto"], x["hs"]), x["uso_ai"], "Italia" if x["iso2"] == "IT" else "UE-27, da fuori UE",
+                       mln_usd(x["import_totale_usd"]) + ("" if not x["valore_trascurabile"] else " (trascurabile)"),
+                       "; ".join("%s %s%%" % (PAESI.get(f.get("iso2"), f.get("partner")), num(f.get("quota"))) for f in x["fornitori"]),
+                       "—" if x["quota_cina"] is None else num(x["quota_cina"]) + "%"])
+        doc.tab(["Voce", "Uso nella catena", "Importatore", "Import, milioni di USD", "Primi fornitori (quota)", "Cina"], rr,
+                "Fonte: [commercio.json](../data/commercio.json) (UN Comtrade, anno 2025). " + (conf.get("nota") or "").split("; ")[-1])
+        doc.chiudi()
 
     # --- Scenari
     doc.h2("scenari", "%d. Scenari di rottura" % n_sez)
     n_sez += 1
-    doc.p("Ragionamenti dell'osservatorio, non previsioni. Per ogni scenario: cosa si ferma per primo e quale indicatore lo segnala.")
+    doc.p("Ragionamenti dell'osservatorio, non previsioni: nessuna probabilità numerica. Per ogni scenario, che cosa si ferma per primo e quale indicatore lo segnala.")
     doc.tab(["Scenario", "Cosa si ferma per primo", "Segnale da guardare"], [
-        ["Blocco navale di Taiwan", "Il GNL (scorte 12–14 giorni) e quindi l'elettricità delle fab; poi l'uscita di wafer, CoWoS e server. Gli aerei cargo potrebbero continuare per un po'.", "Transiti PortWatch nello Stretto di Taiwan e di Luzon; esercitazioni; cavi tagliati"],
-        ["Conflitto aperto su Taiwan", "Tutta la fonderia avanzata e il packaging: nessun sostituto per anni (Arizona fa 4 nm, packaging AP1 dal 2028).", "Come sopra; TSM e SOX in borsa"],
+        ["Blocco navale di Taiwan", "Il GNL (scorte dichiarate di 12–14 giorni, dato non verificato da qui) e quindi l'elettricità delle fab; poi l'uscita di wafer, CoWoS e server. Gli aerei cargo potrebbero continuare per un po'.", "Transiti PortWatch nello Stretto di Taiwan e di Luzon; esercitazioni; cavi tagliati"],
+        ["Conflitto aperto su Taiwan", "Tutta la fonderia avanzata e il packaging: nessun sostituto per anni (Arizona fa 4 nm, packaging in Arizona dal 2028).", "Come sopra; TSM e SOX in borsa"],
         ["Hormuz chiuso a lungo (in corso)", "L'elio del Qatar (un terzo del mondo) e il GNL che alimenta Taiwan, Corea e Giappone; prezzi dell'energia europei.", "Transiti a Hormuz; TTF; notizie su Ras Laffan"],
-        ["Ritorno dei controlli cinesi di ottobre 2025", "Magneti e componenti con terre rare cinesi oltre lo 0,1% del valore: motori, ventole, dischi rigidi; impianti di separazione fuori dalla Cina.", "Testo MOFCOM dopo il 10 novembre; licenze e dati doganali"],
-        ["Stretta USA sulle DUV e sull'assistenza in Cina", "Ricavi ASML dalla Cina (circa un quinto); risposta cinese con terre rare e gallio.", "MATCH Act; decisioni dell'Aia; conti ASML"],
+        ["Ritorno dei controlli cinesi di ottobre 2025", "Magneti e componenti con terre rare cinesi oltre lo 0,1% del valore: motori, ventole, dischi rigidi; impianti di separazione fuori dalla Cina. L'UE compra dalla Cina l'88% dei magneti importati.", "Testo MOFCOM della proroga al 10 gennaio 2027; licenze e dati doganali"],
+        ["Stretta USA sulle DUV e sull'assistenza in Cina", "Ricavi ASML dalla Cina (circa un quinto nel 2026); risposta cinese con terre rare e gallio.", "MATCH Act; decisioni dell'Aia; conti ASML"],
         ["Uragano a Spruce Pine", "Quarzo per i crogioli: scorte di alcuni mesi, poi meno wafer.", "Stagione degli uragani; forza maggiore Sibelco o The Quartz Corp"],
     ])
 
-    # --- Indicatori complessivi
-    doc.h2("indicatori", "%d. Tutti gli indicatori e le soglie" % n_sez)
+    # --- Metodo
+    doc.h2("metodo", "%d. Metodo, fonti e limiti" % n_sez)
     n_sez += 1
-    doc.p("Le soglie sono una **valutazione dell'osservatorio**, scelte per distinguere una situazione normale da una da seguire; non sono valori ufficiali. Indicatori *strutturali* (concentrazione) cambiano in anni e restano spesso «critici»: dicono dove si romperebbe la catena, non che si stia rompendo. Gli indicatori *congiunturali* si muovono in settimane.")
+    doc.ul([
+        "**Dati.** Il file docs/data/supply-chain-ai.json è costruito da raccolta/supply-chain-ai/raccogli.py a partire da voci curate a mano (raccolta/supply-chain-ai/*.json), ciascuna con fonte, link, data e affidabilità, e da altri file dell'osservatorio (ai.json, ai-mondo.json, stretti-dettaglio.json, portwatch.json, prezzi.json, cavi-incidenti.json, rete-elettrica.json, cavi.json, minerali.json, commercio.json, investimenti.json). Le quote dei paesi sono calcolate dalle tabelle USGS e confrontate con minerali.json; i giorni alle scadenze e lo stato degli indicatori sono calcolati dallo script al %s." % data_it(rif),
+        "**Date.** PortWatch: settimana al %s. Prezzi: chiusure del %s, salvo dove indicato. Quote USGS: produzione 2025 (stime), pubblicate il 5 febbraio 2026. Commercio: anno 2025 (UN Comtrade)." % (data_it(hz.get("data")), data_it(data_usa)),
+        "**Coordinate.** I nodi nuovi sono geocodificati con OpenStreetMap Nominatim a livello di comune, sede o sito (precisione nel file); quelli già presenti nella mappa riusano le coordinate di ai.json e ai-mondo.json. Il punto di una sede non è la posizione di un impianto.",
+        "**Limiti.** Mancano da fonte verificata: quote per nodo tecnologico (3 nm, 2 nm), quote di mercato dei singoli fornitori di macchine, quota attuale del neon ucraino, volumi di cargo AI per aeroporto, quota mondiale del germanio e del polisilicio, stato attuale della produzione di elio a Ras Laffan, testo ufficiale della proroga cinese del 9 novembre. Le quote dei chip AI (Nvidia, ASIC) e dei moduli ottici variano molto tra le fonti. Le fonti di stampa secondaria e le analisi generate con assistenti AI hanno affidabilità bassa e sono marcate.",
+        "**Soglie.** Le soglie degli indicatori sono una valutazione dell'osservatorio: gli indicatori strutturali (concentrazione) restano spesso «critici» e dicono dove si romperebbe la catena, non che si stia rompendo.",
+        "**Non è un consiglio di investimento.** I titoli sono collegati agli anelli per leggere la catena attraverso i mercati.",
+        "**Uso di un assistente AI e trasparenza.** Raccolta delle voci, script, stesura e revisione sono stati fatti con l'aiuto di un assistente AI (Claude, un modello di Anthropic), sotto la cura e la responsabilità di Gabriele Giuliani, che risponde delle scelte e delle valutazioni. Anthropic è un cliente di questa catena: usa chip, server e data center descritti qui (per esempio il campus Amazon di New Carlisle). I dati che la riguardano vengono solo da fonti pubbliche e sono trattati come gli altri.",
+    ])
+
+    # --- Appendice: tabelle lunghe in fondo
+    doc.h2("appendice", "%d. Appendice: tutti gli indicatori e i collegamenti" % n_sez)
+    n_sez += 1
+    cong = {}
+    for c in d["colli"]:
+        cong[c["stato_congiunturale"]] = cong.get(c["stato_congiunturale"], 0) + 1
+    doc.p("Su %d colli di bottiglia, guardando solo gli indicatori congiunturali (che si muovono in settimane), %d sono critici, %d in attenzione, %d normali o non misurati. Le soglie sono una **valutazione dell'osservatorio**, non valori ufficiali." % (
+        len(d["colli"]), cong.get("critico", 0), cong.get("attenzione", 0), len(d["colli"]) - cong.get("critico", 0) - cong.get("attenzione", 0)))
+    doc.apri("Tutti gli indicatori (%d)" % sum(len(c["indicatori"]) for c in d["colli"]))
     rr = []
     for c in d["colli"]:
         for i in c["indicatori"]:
             val = "%s %s" % (num(i["valore"]) if isinstance(i["valore"], float) else num(i["valore"], 0), i.get("unita", ""))
             rr.append([c["nome"], i["nome"], i.get("tipo", "—"), val.strip(), cella_stato(i["stato"])])
     doc.tab(["Collo", "Indicatore", "Tipo", "Valore", "Stato"], rr)
-    cong = {}
-    for c in d["colli"]:
-        cong[c["stato_congiunturale"]] = cong.get(c["stato_congiunturale"], 0) + 1
-    doc.p("Riepilogo: su %d colli di bottiglia, guardando solo gli indicatori congiunturali, %d sono critici, %d in attenzione, %d normali o non misurati." % (
-        len(d["colli"]), cong.get("critico", 0), cong.get("attenzione", 0), len(d["colli"]) - cong.get("critico", 0) - cong.get("attenzione", 0)))
+    doc.chiudi()
+    doc.apri("Come si spostano le cose: i %d collegamenti" % len(d["archi"]))
+    doc.p("Ogni riga è un arco «da → a» del file di dati. Le righe di tipo *valutazione* sono percorsi tipici ricostruiti dall'osservatorio (per esempio l'aeroporto usato), non tracciati reali: le società non pubblicano le rotte.")
+    rr = []
+    for x in d["archi"]:
+        via = (" via " + ", ".join(nodi[vv]["nome"] for vv in x.get("via", []))) if x.get("via") else ""
+        rr.append(["%s → %s" % (x["da_nome"], x["a_nome"]), x["cosa"] + via, x["modo"], x["stato"], x["tipo"], num(x["km"], 0)])
+    doc.tab(["Da → a", "Cosa", "Modo", "Stato", "Tipo", "km in linea d'aria"], rr)
+    doc.chiudi()
 
-    # --- Metodo
-    doc.h2("metodo", "%d. Metodo, limiti e trasparenza" % n_sez)
-    doc.ul([
-        "**Dati.** Il file docs/data/supply-chain-ai.json è costruito da raccolta/supply-chain-ai/raccogli.py a partire da voci curate a mano (raccolta/supply-chain-ai/*.json), ciascuna con fonte, link, data e affidabilità, e da altri file dell'osservatorio (ai.json, ai-mondo.json, stretti-dettaglio.json, portwatch.json, prezzi.json, cavi-incidenti.json, rete-elettrica.json, cavi.json). Le quote dei paesi sono calcolate dalle tabelle USGS; i giorni alle scadenze e lo stato degli indicatori sono calcolati dallo script.",
-        "**Coordinate.** I nodi nuovi sono geocodificati con OpenStreetMap Nominatim a livello di comune, sede o sito (precisione nel file); quelli già presenti nella mappa riusano le coordinate di ai.json e ai-mondo.json. Il punto di una sede non è la posizione di un impianto.",
-        "**Limiti.** Mancano da fonte verificata: quote per nodo tecnologico (3 nm, 2 nm), quote di mercato dei singoli fornitori di macchine, quota attuale del neon ucraino, volumi di cargo AI per aeroporto, quota mondiale del germanio e del polisilicio. Le quote dei chip AI (Nvidia, ASIC) e dei moduli ottici variano molto tra le fonti. Alcune fonti di stampa secondaria hanno affidabilità bassa e sono marcate.",
-        "**Non è un consiglio di investimento.** I titoli sono collegati agli anelli per leggere la catena attraverso i mercati.",
-        "**Uso di un assistente AI e trasparenza.** Questo report è stato scritto con l'aiuto di un assistente AI: chi scrive è Claude, un modello di Anthropic, sotto la cura e la responsabilità di Gabriele Giuliani. Anthropic è un cliente di questa catena: usa chip, server e data center descritti qui (per esempio il campus Amazon di New Carlisle). I dati che la riguardano vengono solo da fonti pubbliche e sono trattati come gli altri; nessuna valutazione è stata orientata a suo favore.",
-    ])
+    # --- Revisione
+    doc.h2("revisione", "%d. Revisione" % n_sez)
+    doc.box("revisione", "Revisione del %s" % REVISIONE["data"], [x.replace("%s", REVISIONE["file"]) if "%s" in x else x for x in REVISIONE["voci"]])
     return titolo, doc
 
 
