@@ -1,0 +1,72 @@
+name: Weekly and monthly update
+
+on:
+  schedule:
+    - cron: "40 3 * * 0"     # every Sunday 03:40 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aggiorna-dati
+  cancel-in-progress: false
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      AGSI_API_KEY: ${{ secrets.AGSI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Undersea cables (TeleGeography)
+        continue-on-error: true
+        run: python3 raccolta/cavi/raccogli.py
+      - name: Country profiles (IMF, World Bank, SIPRI, Eurostat)
+        continue-on-error: true
+        run: python3 raccolta/paesi/raccogli.py
+      - name: Power grid, interconnectors, nuclear
+        continue-on-error: true
+        run: python3 raccolta/elettricita/raccogli.py
+      - name: Railways
+        continue-on-error: true
+        run: python3 raccolta/ferrovie/raccogli.py
+      - name: AI infrastructure and investments
+        continue-on-error: true
+        run: python3 raccolta/ai/raccogli.py
+      - name: AI supply chain (validation)
+        continue-on-error: true
+        run: python3 raccolta/supply-chain-ai/raccogli.py
+      - name: Public webcams (link check)
+        continue-on-error: true
+        run: python3 raccolta/webcam/raccogli.py
+      - name: Hydrogen
+        continue-on-error: true
+        run: python3 raccolta/idrogeno/raccogli.py
+      - name: Offshore wind supply chain
+        continue-on-error: true
+        run: python3 raccolta/eolico/raccogli.py
+      - name: Marine insurance (JWC listed areas check)
+        continue-on-error: true
+        run: python3 raccolta/assicurazioni/raccogli.py
+      - name: Military bases (validation)
+        continue-on-error: true
+        run: python3 raccolta/basi/raccogli.py
+      - name: Trade and minerals (first Sunday of the month only, ~40 min)
+        continue-on-error: true
+        run: |
+          if [ "$(date -u +%d)" -le 07 ]; then python3 raccolta/commercio/raccogli.py; else echo "not the first Sunday: skipped"; fi
+      - name: Hide any keys in public files
+        run: python3 raccolta/comune/nascondi_chiavi.py
+      - name: Save if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
+          git add docs/data
+          git diff --cached --quiet || git commit -m "Data: weekly update $(date -u +%F)"
+          git pull --rebase origin main
+          git push

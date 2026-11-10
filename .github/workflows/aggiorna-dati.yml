@@ -47,6 +47,9 @@ jobs:
       - name: Ucraina (lanci e abbattimenti)
         continue-on-error: true
         run: python3 raccolta/ucraina/raccogli.py
+      - name: Russian strikes in Ukraine (per-oblast counts + curated events)
+        continue-on-error: true
+        run: python3 raccolta/ucraina/attacchi_russi.py
       - name: Notizie OSINT (ultimi 7 giorni)
         continue-on-error: true
         run: python3 raccolta/notizie/raccogli.py
