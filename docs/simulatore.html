@@ -482,6 +482,7 @@ async function carica() {
   D.gas = D["gas-italia"];
   D.gnl = D["terminali-gnl"].elementi;
   D.it = D["italia-impatti"];
+  for (const k of IT_PERCORSI) if (itPath(D.it, k) === undefined) IT_MANCANTI.push(k);
 }
 
 /* --- comandi --- */
@@ -937,7 +938,7 @@ const IT_PERCORSI = /*IT_PERCORSI*/[
   "accise.cambi[data_rilevazione=2022-03-28,prodotto=gasolio].variazione_cent_con_iva",
   "accise.cambi[data_rilevazione=2026-03-23,prodotto=gasolio].variazione_cent_con_iva",
   "accise.cambi[data_rilevazione=2026-11-02,prodotto=gasolio].variazione_cent_con_iva",
-  "letteratura[id=accise-applicazione-2026].link",
+  "regole_trasmissione.letteratura[id=accise-applicazione-2026].link",
   "autotrasporto.meccanismo_rimborso_accise.link",
   "autotrasporto.regole_scioperi[id=legge-146-1990].link",
   "autotrasporto.regole_scioperi[id=preavviso-25-giorni].link",
@@ -1022,7 +1023,7 @@ function itRischio(prezzo, aumento, s) {
   return { liv: "basso", perche: `diesel stays below €${n(s1, 2)}/l (top of range €${n(prezzo, 2)}) and rises less than ${a1}% (${n(aumento, 0)}%)` };
 }
 /* The rule of italia-impatti.json applied to the Brent and TTF changes computed above (same formulas as raccolta/italia/raccogli.py) */
-function calcolaItalia(r, du) {
+function calcolaItalia(r, du, senzaPetrolio) {
   const lungo = du.giorni > 45;     // 2 weeks and 1 month: 4- and 8-week coefficients; 3 months: 8 weeks and long run
   const c = (prod) => lungo
     ? [itv(ITS + prod + ".diff_8_sett.b"), Math.max(itv(ITS + prod + ".diff_13_sett.b"), itv(ITS + prod + ".livello.b"))]
@@ -1033,7 +1034,7 @@ function calcolaItalia(r, du) {
   const w = { fuel: itv(ITP + "pesi_hicp_millesimi_2026.FUEL"), el: itv(ITP + "pesi_hicp_millesimi_2026.CP0451"), gas: itv(ITP + "pesi_hicp_millesimi_2026.CP0452") };
   const soglie = { eur: itv("soglie_fermo.soglie_eur_l"), pct: itv("soglie_fermo.soglie_aumento_pct") };
   const kwh = D.M.costanti.kwh_per_smc.valore;
-  const brent = r.brent.pct, ttf = r.ttf.pct || [0, 0];
+  const brent = r.brent.pct || (senzaPetrolio ? [0, 0] : null), ttf = r.ttf.pct || [0, 0];   // no oil through the chokepoint: Brent unchanged
   const IVA = 1 + IT_K.iva_carburanti, L = IT_K.litri_barile;
   const applica = (b) => {
     const o = { b };
@@ -1063,7 +1064,7 @@ const RISCHIO_EN = { basso: "low", medio: "medium", alto: "high" };
 function srcIt(testo, link) { return srcTesto(testo, link || "data/italia-impatti.json"); }
 function itMeseBreve(m) { return m ? MESI[+m.slice(5, 7) - 1].slice(0, 3) + " " + m.slice(0, 4) : ""; }
 function disegnaItalia(p, r, du, io) {
-  const I = calcolaItalia(r, du);
+  const I = calcolaItalia(r, du, !p.petrolio);
   if (IT_MANCANTI.length) return `<p class="errore">italia-impatti.json lacks: ${esc(IT_MANCANTI.join(", "))}</p>`;
   const N = I.normale, O = I.oggi, bN = N.b, bO = O.b;
   const agg = dataBreve(itv("aggiornato"));
@@ -1075,7 +1076,7 @@ function disegnaItalia(p, r, du, io) {
   let h = `<li class="passo"><div class="scheda" id="italia"><h2>What happens in Italy</h2>`;
   h += `<p class="domanda">Pump prices, truck-stoppage risk, inflation, electricity and gas bills, likely government measures and what to watch. The Brent and TTF changes of step 5 go through the observatory's Italian transmission rules.</p>`;
   h += `<span class="it-etichetta">Observatory assessment · not a forecast</span>`;
-  h += `<p class="it-ingresso">Input from step 5: Brent <b>${r.brent.pct ? rngS(r.brent.pct[0], r.brent.pct[1], 1) : "not estimated"}</b>, TTF <b>${r.ttf.pct ? rngS(r.ttf.pct[0], r.ttf.pct[1], 1) : "0% (no gas flow in the files)"}</b> over ${du.giorni} days. Excise duties unchanged, no government measures. Two starting points: <b>normal conditions</b> (the last week before the 2026 war: ${dataBreve(bN.data_carburanti)}, Brent $${n(bN.brent, 2)}, TTF €${n(bN.ttf, 2)}) and <b>today's prices</b> (Brent $${n(bO.brent, 2)}, TTF €${n(bO.ttf, 2)}, EUR/USD ${n(bO.eurusd, 4)}). ${tagFile}</p>`;
+  h += `<p class="it-ingresso">Input from step 5: Brent <b>${r.brent.pct ? rngS(r.brent.pct[0], r.brent.pct[1], 1) : !p.petrolio ? "0% (no oil through the chokepoint)" : "not estimated"}</b>, TTF <b>${r.ttf.pct ? rngS(r.ttf.pct[0], r.ttf.pct[1], 1) : "0% (no gas flow in the files)"}</b> over ${du.giorni} days. Excise duties unchanged, no government measures. Two starting points: <b>normal conditions</b> (the last week before the 2026 war: ${dataBreve(bN.data_carburanti)}, Brent $${n(bN.brent, 2)}, TTF €${n(bN.ttf, 2)}) and <b>today's prices</b> (Brent $${n(bO.brent, 2)}, TTF €${n(bO.ttf, 2)}, EUR/USD ${n(bO.eurusd, 4)}). ${tagFile}</p>`;
   if (p.id === "hormuz") h += `<div class="avviso">Hormuz has been closed since 2 March 2026, so today's prices already include this shock: read the <b>normal conditions</b> column as the effect of the closure, and the “today” column as a second shock of the same size on top of it.</div>`;
 
   // table
@@ -1108,7 +1109,7 @@ function disegnaItalia(p, r, du, io) {
   if (N.g) {
     h += `<div class="calcolo">2022-type cut (${n(t22 * 100, 1)} c€/l incl. VAT ${srcIt("MASE series", fMase)}): diesel normal <b>€${rng(N.g[0] + t22, N.g[1] + t22, 2)}</b> · today <b>€${rng(O.g[0] + t22, O.g[1] + t22, 2)}</b><br>2026-type cut (${n(t26 * 100, 1)} c€/l incl. VAT): diesel normal <b>€${rng(N.g[0] + t26, N.g[1] + t26, 2)}</b> · today <b>€${rng(O.g[0] + t26, O.g[1] + t26, 2)}</b>; petrol the same amount lower.</div>`;
   }
-  h += `<p class="piccolo">A cut reaches the pump in days, but not everywhere: between 23 and 25 March 2026 only 60% of filling stations had applied it ${srcIt("Mimit observatory via Today.it", itv("letteratura[id=accise-applicazione-2026].link"))}. Hauliers get back part of the diesel excise, so a general cut is worth less to them: it was the main grievance behind the May 2026 stoppage call ${srcIt("Shipping Italy", itv("autotrasporto.meccanismo_rimborso_accise.link"))}. Today's diesel base (€${n(bO.gasolio, 3)}) is the MASE price of ${dataBreve(itv("oggi.gasolio_settimanale.data"))} (€${n(itv("oggi.gasolio_settimanale.eur_l"), 3)}) plus the ${n(-tFine, 1)} c€/l cut that expired on 8 November 2026.</p>`;
+  h += `<p class="piccolo">A cut reaches the pump in days, but not everywhere: between 23 and 25 March 2026 only 60% of filling stations had applied it ${srcIt("Mimit observatory via Today.it", itv("regole_trasmissione.letteratura[id=accise-applicazione-2026].link"))}. Hauliers get back part of the diesel excise, so a general cut is worth less to them: it was the main grievance behind the May 2026 stoppage call ${srcIt("Shipping Italy", itv("autotrasporto.meccanismo_rimborso_accise.link"))}. Today's diesel base (€${n(bO.gasolio, 3)}) is the MASE price of ${dataBreve(itv("oggi.gasolio_settimanale.data"))} (€${n(itv("oggi.gasolio_settimanale.eur_l"), 3)}) plus the ${n(-tFine, 1)} c€/l cut that expired on 8 November 2026.</p>`;
 
   // formulas
   const dBrentTxt = (o) => o.dBl ? `$${n(o.b.brent, 2)} × (${rng(I.brent[0], I.brent[1], 1)}%) ÷ ${n(o.b.eurusd, 4)} ÷ ${n(IT_K.litri_barile, 3)} l = €${rng(o.dBl[0], o.dBl[1], 3)}/l of crude` : "Brent not estimated";
@@ -1161,7 +1162,7 @@ function disegnaItalia(p, r, du, io) {
   if (O.dG && O.dG[1] > 0.005) {
     ind.push(`<b>Pump prices</b>: the Mimit daily average of self-service prices (Mimit, the Ministry of Enterprises and Made in Italy, collects the prices every station must report) and the MASE weekly national average every Monday (MASE, the Ministry of the Environment and Energy Security) ${srcIt("MASE", fMase)}.`);
     ind.push(`<b>The diesel–petrol gap</b>: diesel already costs more than petrol; a widening gap means refining margins are rising.`);
-    ind.push(`<b>Off-network diesel sales</b> (fleets and haulage), monthly from MASE: a sharp fall is the first sign of hauliers cutting trips ${srcIt("MASE consumption", itv("fonti[nome~=Consumi petroliferi].link"))}.`);
+    ind.push(`<b>Off-network diesel sales</b> (fleets and haulage), monthly from MASE: a sharp fall means hauliers are cutting trips (assessment) ${srcIt("MASE consumption", itv("fonti[nome~=Consumi petroliferi].link"))}.`);
   }
   ind.push(`<b>Stoppage notices</b> on the strike calendar of the Ministry of Infrastructure and Transport and of the Commissione di garanzia: with 25 days' notice they give almost a month's warning ${srcIt("Rai News", itv("scioperi_proclamati.link"))}.`);
   if (O.dP[1] > 0.5) {
