@@ -47,6 +47,9 @@ jobs:
       - name: Ucraina (lanci e abbattimenti)
         continue-on-error: true
         run: python3 raccolta/ucraina/raccogli.py
+      - name: Strikes reported by OSINT analysts (AMK Mapping, Clément Molin on Telegram; incremental)
+        continue-on-error: true
+        run: python3 raccolta/ucraina/telegram_analisti.py
       - name: Russian strikes in Ukraine (per-oblast counts + curated events)
         continue-on-error: true
         run: python3 raccolta/ucraina/attacchi_russi.py
