@@ -53,7 +53,7 @@ ORIGINS = {
     "jebel_ali": {"name": "Jebel Ali", "country": "AE", "pos": [55.03, 25.01], "via": [[55.0, 25.3]], "cargo": "container", "region": "gulf", "inside_hormuz": True,
                   "bypass": "khor_fakkan", "bypass_note": "Boxes are trucked to Khor Fakkan or Fujairah on the Gulf of Oman (land bridge) and loaded there."},
     "nhava_sheva": {"name": "Mumbai / Nhava Sheva (JNPA)", "country": "IN", "pos": [72.95, 18.95], "via": [[72.6, 18.8]], "cargo": "container", "region": "south_asia"},
-    "sabine_pass": {"name": "Houston / Sabine Pass", "country": "US", "pos": [-93.87, 29.73], "via": [[-93.8, 29.4]], "cargo": "lng", "region": "us_gulf",
+    "sabine_pass": {"name": "Houston / Sabine Pass", "country": "US", "pos": [-93.87, 29.73], "via": [[-93.8, 29.4], [-89.5, 26.3], [-84.6, 24.3]], "cargo": "lng", "region": "us_gulf",
                     "note": "Sabine Pass LNG terminal; Houston (Galveston Bay entrance) is about 70 nm further west, i.e. +0.2 days."},
     "new_york": {"name": "New York / New Jersey", "country": "US", "pos": [-74.04, 40.66], "via": [[-73.83, 40.45]], "cargo": "container", "region": "us_east"},
     "santos": {"name": "Santos", "country": "BR", "pos": [-46.3, -23.98], "via": [[-46.3, -24.2]], "cargo": "container", "region": "south_america"},
@@ -68,9 +68,9 @@ DESTINATIONS = {
     "gdansk": {"name": "Gdańsk", "country": "PL", "pos": [18.67, 54.4], "via": [[18.8, 54.6]], "range": "baltic"},
     "klaipeda": {"name": "Klaipėda", "country": "LT", "pos": [21.13, 55.71], "via": [[21.0, 55.72]], "range": "baltic"},
     "esbjerg": {"name": "Esbjerg", "country": "DK", "pos": [8.44, 55.46], "via": [[8.2, 55.45]], "range": "north"},
-    "genoa": {"name": "Genoa", "country": "IT", "pos": [8.9, 44.4], "via": [[8.9, 44.3]], "range": "med"},
-    "trieste": {"name": "Trieste", "country": "IT", "pos": [13.76, 45.65], "via": [[13.6, 45.6]], "range": "med"},
-    "piraeus": {"name": "Piraeus", "country": "GR", "pos": [23.62, 37.94], "via": [[23.55, 37.9]], "range": "med"},
+    "genoa": {"name": "Genoa", "country": "IT", "pos": [8.9, 44.4], "via": [], "range": "med"},
+    "trieste": {"name": "Trieste", "country": "IT", "pos": [13.76, 45.65], "via": [], "range": "med"},
+    "piraeus": {"name": "Piraeus", "country": "GR", "pos": [23.62, 37.94], "via": [[23.55, 37.85], [23.65, 37.3], [23.5, 36.8]], "range": "med"},
 }
 
 # ---------------------------------------------------------------- passages (gates)
@@ -88,6 +88,20 @@ GATES = {
     "danish": {"name": "Danish straits (Skagerrak-Kattegat-Great Belt/Oresund)", "pos": [11.3, 56.4], "radius_km": 160, "stretti_id": "stretti-danesi"},
     "panama": {"name": "Panama Canal", "pos": [-79.7, 9.1], "radius_km": 80, "stretti_id": "panama"},
 }
+
+# Open-ocean connectors missing from the Benden network (the CIA map draws no lane from the
+# Florida Strait or from the Brazil-Europe lane straight to Gibraltar). Ends are existing vertices;
+# waypoints keep clear of Bermuda, the Azores and the Canary Islands. Declared in "method".
+EXTRA_LANES = [
+    {"name": "Florida Strait - Gibraltar (south of the Azores)", "g": [[-79.89, 25.87], [-70.0, 30.0], [-45.0, 35.3], [-26.0, 35.6], [-9.48, 36.47]]},
+    {"name": "Brazil-Europe lane at Cape Verde - Gibraltar (west of the Canaries)", "g": [[-25.63, 16.96], [-19.6, 28.6], [-13.5, 33.5], [-9.48, 36.47]]},
+    {"name": "Alboran Sea - Ligurian Sea (north of Algeria, east of the Balearics, west of Corsica)", "g": [[-2.41, 36.58], [1.0, 37.6], [5.0, 39.6], [7.9, 42.7], [8.9, 44.25]]},
+    {"name": "Port Said - south of Crete - Ionian Sea", "g": [[32.6, 31.52], [26.5, 34.5], [23.5, 34.6], [19.3, 37.6]]},
+    {"name": "Ionian Sea - Strait of Messina - Tyrrhenian - Ligurian Sea", "g": [[19.3, 37.6], [15.7, 37.9], [15.62, 38.25], [14.5, 39.5], [10.6, 42.4], [9.6, 43.6], [8.9, 44.25]]},
+    {"name": "Sicily Channel - Strait of Messina", "g": [[15.06, 36.52], [15.7, 37.9]]},
+    {"name": "South of Crete - Kasos Strait - Saronic approach (Piraeus)", "g": [[26.5, 34.5], [26.6, 35.45], [24.6, 36.55], [23.6, 36.7]]},
+    {"name": "Ionian Sea - Strait of Otranto - Adriatic - Gulf of Trieste", "g": [[19.3, 37.6], [18.9, 40.0], [17.6, 41.3], [15.2, 42.9], [13.6, 44.4], [13.5, 45.5]]},
+]
 
 # ---------------------------------------------------------------- vessels (sourced speeds, declared consumptions)
 CONFIG = {
@@ -211,7 +225,7 @@ def key(p):
 
 
 # ---------------------------------------------------------------- graph
-def build_graph(lanes):
+def build_graph(lanes, extra_lanes=()):
     adj = {}
 
     def add(a, b, w):
@@ -223,17 +237,49 @@ def build_graph(lanes):
             adj[a][b] = w
             adj[b][a] = w
 
-    for r in lanes:
+    lane_of = {}
+    segs = []
+    for li, r in enumerate(lanes):
         g = [key(p) for p in r["g"]]
         for i in range(len(g) - 1):
             add(g[i], g[i + 1], hav(g[i], g[i + 1]))
-    nodes = list(adj)
-    for n in nodes:  # snap dangling ends
-        if len(adj[n]) == 1 and abs(abs(n[0]) - 180) > 0.01:
-            best = min(((hav(n, m), m) for m in nodes if m != n and m not in adj[n]), default=None)
-            if best and best[0] < 250:
-                add(n, best[1], best[0])
-    # antimeridian: join +180 and -180 copies (key() already maps -180 to 180)
+            segs.append((li, g[i], g[i + 1]))
+        for p in g:
+            lane_of.setdefault(p, set()).add(li)
+    # snap dangling lane ends (degree 1) to the nearest point of ANOTHER lane within 250 km,
+    # splitting that lane's segment there (T-junctions of the original map are not noded).
+    # Ends on the antimeridian are joined by key() (-180 -> 180).
+    for n in [n for n in adj if len(adj[n]) == 1 and abs(abs(n[0]) - 180) > 0.01]:
+        mine = lane_of.get(n, set())
+        best = None
+        for li, a, b in segs:
+            if li in mine:
+                continue
+            L = hav(a, b)
+            if hav(n, a) > L + 250 and hav(n, b) > L + 250:
+                continue
+            for p in gc_points(a, b, 10):
+                d = hav(n, p)
+                if best is None or d < best[0]:
+                    best = (d, p, a, b)
+        if best and best[0] < 250:
+            d, p, a, b = best
+            p = (round(p[0], 2), round(p[1], 2))
+            if p not in (a, b):
+                add(p, a, hav(p, a))
+                add(p, b, hav(p, b))
+            add(n, p, d)
+    # declared connectors are added after snapping, so they do not change which ends are dangling;
+    # a connector end that is not an existing vertex is joined to the nearest vertex
+    for r in extra_lanes:
+        g = [key(p) for p in r["g"]]
+        for i in range(len(g) - 1):
+            add(g[i], g[i + 1], hav(g[i], g[i + 1]))
+        for e in (g[0], g[-1]):
+            if len(adj[e]) == 1:
+                best = min((hav(e, m), m) for m in adj if m != e and m not in g)
+                if best[0] < 250:
+                    add(e, best[1], best[0])
     return adj
 
 
@@ -269,6 +315,9 @@ def dijkstra(adj, src, dst, banned):
         if u == dst:
             break
         if d > dist.get(u, 1e18):
+            continue
+        # port connectors are dead ends: a route may not cut through another port's approach
+        if isinstance(u[0], str) and u[1] not in (src[1], dst[1]):
             continue
         for v, w in adj[u].items():
             if (u, v) in banned:
@@ -327,7 +376,7 @@ def areas_on(pts, areas):
     return out
 
 
-def simplify(coords, tol_km=40.0):
+def simplify(coords, tol_km=15.0):
     """Douglas-Peucker on lon/lat with km tolerance (approximate), splits at the antimeridian."""
     def dp(pts):
         if len(pts) < 3:
@@ -479,7 +528,7 @@ def main():
     bk = load("bunker-emissioni.json", errors)
     ass = load("assicurazioni.json", errors)
 
-    adj = build_graph(rotte["rotte"])
+    adj = build_graph(rotte["rotte"], EXTRA_LANES)
     extra = {}
     entry = {}
     for pid, p in list(ORIGINS.items()) + list(BYPASS_PORTS.items()) + list(DESTINATIONS.items()):
@@ -534,7 +583,8 @@ def main():
             if base is None:
                 errors.append(f"{oid}->{did}: no path on the lane network")
                 continue
-            cape = describe(*route(oid, did, ban_red | (empty if not o.get("inside_hormuz") else empty)))
+            # Cape alternative: Red Sea origins (Yanbu) can only avoid Suez, going south through Bab el-Mandeb
+            cape = describe(*route(oid, did, ban_suez_only if o["region"] == "red_sea" else ban_red))
             notes = []
             status = "normal"
             today_from = oid
@@ -581,15 +631,14 @@ def main():
                 hull = ves["hull_value_musd"] * 1e6
                 ar = set(desc["areas"])
                 if "golfo-oceano-indiano-mar-rosso" in ar:
+                    keys = []
                     if "hormuz" in desc["gates"] or ORIGINS.get(from_id, {}).get("inside_hormuz"):
-                        pk = "golfo-hormuz"
-                    elif from_id == "yanbu":
-                        pk = "mar-rosso-saudita"
-                    elif "bab_el_mandeb" in desc["gates"]:
-                        pk = "mar-rosso"
-                    else:
-                        pk = None
-                    if pk:
+                        keys.append("golfo-hormuz")
+                    if from_id == "yanbu":
+                        keys.append("mar-rosso-saudita")
+                    if "bab_el_mandeb" in desc["gates"]:
+                        keys.append("mar-rosso")
+                    for pk in keys:
                         if today_flag and pk in prem:
                             pct = prem[pk]["pct"]
                             src = f"{prem[pk]['source']} ({prem[pk]['date']}), {prem[pk]['min']}-{prem[pk]['max']}%"
@@ -598,10 +647,6 @@ def main():
                             pct, src = b["value"], b["text"]
                         items.append({"area": pk, "pct_hull": pct, "usd": round(hull * pct / 100), "source": src})
                         total += hull * pct / 100
-                        if from_id == "yanbu" and "bab_el_mandeb" in desc["gates"] and today_flag and "mar-rosso" in prem:
-                            pct2 = prem["mar-rosso"]["pct"]
-                            items.append({"area": "mar-rosso", "pct_hull": pct2, "usd": round(hull * pct2 / 100), "source": prem["mar-rosso"]["source"]})
-                            total += hull * pct2 / 100
                 for other in ar - {"golfo-oceano-indiano-mar-rosso"}:
                     items.append({"area": other, "pct_hull": None, "usd": None, "source": "listed area crossed; no public premium in assicurazioni.json"})
                 return total, items
@@ -683,7 +728,7 @@ def main():
             {"name": "Drewry WCI, Freightos FBX, SSE CCFI (docs/data/noli.json)", "link": "docs/data/noli.json", "date": (noli or {}).get("aggiornato")},
         ] + [{"name": "Speed: " + c["label"], "text": c["speed_source"], "links": c["speed_links"]} for c in CONFIG["vessels"].values()],
         "method": {
-            "graph": f"{sum(1 for n in adj if not isinstance(n[0], str))} lane vertices from {len(rotte['rotte'])} Benden lanes; shared vertices are junctions, dangling ends snapped to the nearest vertex within 250 km; ports attached via approach waypoints to the 3 nearest vertices; Dijkstra on great-circle edge lengths.",
+            "graph": f"{sum(1 for n in adj if not isinstance(n[0], str))} lane vertices from {len(rotte['rotte'])} Benden lanes; shared vertices are junctions, dangling ends snapped to the nearest vertex within 250 km; plus {len(EXTRA_LANES)} declared open-ocean connectors ({'; '.join(x['name'] for x in EXTRA_LANES)}); ports attached via approach waypoints to the 3 nearest vertices; Dijkstra on great-circle edge lengths.",
             "scenarios": "base = all passages open (2023, via Suez and Bab el-Mandeb, Hormuz open); cape = edges within 120 km of Suez or Bab el-Mandeb removed; today = chosen from stretti-dettaglio.json levels (Hormuz 'chiuso' -> Gulf origins load at their bypass port or are flagged blocked; Suez/Bab 'chiuso' -> Cape).",
             "days": "nm / (speed_kn x 24), sea time only: no canal waiting, port time or bunkering stops. days_today_range = at the high and low end of the speed range.",
             "fuel": "days x hypothetical daily consumption per vessel type (see vessels); extra_fuel_t = fuel today - fuel base at the same speed. Cost at today's Ship & Bunker VLSFO at the bunkering hub of the origin region.",

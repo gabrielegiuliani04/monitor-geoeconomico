@@ -384,7 +384,7 @@ STOP_LUOGHI = {
     "druzhba", "energetik", "promin", "pervomaisk", "pervomaysk", "zelenyi gai", "russkiy",
     "ugol", "parkovy", "lyman", "liman", "ray", "oleksandrivka", "mykolaivka", "andriivka",
     "ivanivka", "novoselivka", "petrivka", "vasylivka", "bilohorivka", "kamianka",
-    "march", "may", "august", "trump", "putin", "ukraina", "nato", "europe", "american", "france",
+    "march", "may", "august", "azov", "serhii", "serhiyi", "skala", "artem", "nove", "shevchenko", "ukrainka", "trump", "putin", "ukraina", "nato", "europe", "american", "france",
 }
 
 
@@ -448,7 +448,7 @@ MEZZI = [
     ("KAB/bombe plananti", r"\bkab\b|\bkabs\b|glide bomb|guided aerial bomb|bombe planante|fab-?\d{3,4}"),
     ("missili", r"missile|cruise|ballistic|balistique|\bmissiles?\b"),
     ("droni", r"\bdrones?\b|\buavs?\b|\buas\b|lyuty|liutyi|fp-1\b|fp-5|flamingo|neptune|\bfpv\b|lancet"),
-    ("artiglieria/MLRS", r"artillery|artillerie|himars|\bmlrs\b|grad\b|tornado-s|uragan"),
+    ("artiglieria/MLRS", r"\bartillery\b|\bartillerie\b|himars|\bmlrs\b|\bgrad\b|tornado-s|uragan|\bsmerch"),
     ("Storm Shadow/SCALP/ATACMS", r"storm shadow|scalp|atacms"),
 ]
 CATEGORIE = [
@@ -465,42 +465,116 @@ CATEGORIE = [
                  r"train station|ukrzaliznytsia"),
     ("aeroporto", r"airfield|air base|airbase|airport|aérodrome|aéroport|base aérienne"),
     ("militare", r"\bammunition|ammo depot|arsenal|munitions|\bbase\b|command post|headquarters|\bhq\b|"
-                 r"radar|air defen[cs]e|s-400|s-300|pantsir|buk\b|tor-m|warehouse|barracks|military|militaire|"
+                 r"radar|air defen[cs]e|s-400|s-300|pantsir|buk\b|tor-m|barracks|military|militaire|"
                  r"positions?\b|brigade|regiment|logistic|tank\b|tanks\b|armou?red|launcher|lanceur"),
     ("industria", r"plant\b|factory|usine|industrial|industriel|enterprise|chemical|chimique|"
                   r"metallurg|steel|aciérie|azot|fertili[sz]er|defen[cs]e industry|electronics|"
-                  r"shipyard|chantier naval"),
+                  r"shipyard|chantier naval|warehouse|entrepôt|data cent(?:re|er)|logistics (?:centre|terminal)|nova poshta"),
     ("civile", r"civilian|civil|residential|apartment|building|immeuble|hospital|hôpital|school|école|"
-               r"\bkilled\b|\binjured\b|\btués?\b|\bblessés?\b|\bmorts?\b|house|maison|market|shopping"),
+               r"\bkilled\b|\binjured\b|\btués?\b|\bblessés?\b|\bmorts?\b|house|maison|market|shopping|district|"
+               r"petrol station|gas station|station-service|\bbus\b|trolleybus|church|église|university"),
 ]
 ATTACCO = re.compile(
     r"\bstrikes?\b|\bstruck\b|\bhit\b|\bhits\b|\battack(?:s|ed)?\b|\bdrones?\b|\bmissiles?\b|shahed|geran|"
     r"iskander|kh-?101|kalibr|\bkabs?\b|refiner|oil depot|substation|explosion|\bfires?\b|\bblaze\b|burning|"
     r"\bfrappes?\b|\bfrappé|\bbombard|raffinerie|d[ée]p[ôo]t|incendie|touch[ée]|\bvisé|"
     r"\bdestroyed\b|\bdétrui", re.I)
-# temi che non sono attacchi a lungo raggio (guerra di terra, mappe del fronte, politica)
-NON_ATTACCO = re.compile(
-    r"\badvance[sd]?\b|\bprogression\b|\bavanc[ée]|captured|\bcapture\b|liberat|libér|front ?line|"
-    r"ligne de front|assault|assaut|counteroffensive|contre-offensive|\bgains?\b|frontline map|"
-    r"geolocated (?:footage|video) (?:shows|of) (?:russian|ukrainian) (?:troops|soldiers|forces)|"
-    r"\bentered\b|seized|took control|pris le contrôle", re.I)
-VERBI_FORTI = re.compile(
-    r"\bstrikes?\b|\bstruck\b|\bhit\b|\bhits\b|\battack(?:s|ed)?\b|\bfrapp|\bbombard|\btarget(?:s|ed)?\b|"
-    r"\bvis[ée]|\btouch[ée]|explosions?|\bfires?\b|\bincendie|\bburning\b|\bdestroyed\b|\bdétrui|\bdamaged?\b|"
-    r"\bendommag|\bshot down|\binterc|\blaunch(?:ed)?\b", re.I)
+# impatto avvenuto (non solo allerta o lancio)
+IMPATTO = re.compile(
+    r"\bstruck\b|\bwas hit\b|\bwere hit\b|\bbeen hit\b|\bhit (?:a|an|the|two|three|several|multiple|its|their)\b|"
+    r"\bhits? on\b|\bimpact(?:ed|s)?\b|\bdamag(?:ed|ing)\b|\bdestroy(?:ed|ing)\b|"
+    r"\bfires? (?:broke out|br[eo]ke|is burning|are burning|burning|raging|continu)|\blarge fire|\bmassive fire|"
+    r"\bon fire\b|\bblaze\b|\bexplosions? (?:were|was|have been|has been|are being)? ?(?:heard|reported|seen|recorded)|"
+    r"\bexplosions? (?:in|at|near|over)\b|\baftermath\b|\btargeted\b|\battacked\b|\battacks? on\b|"
+    r"\battacks? against\b|\bstrikes? (?:on|against|at|targeting|hit)\b|\bstrike (?:hit|on)\b|"
+    r"\bcame under (?:attack|fire)\b|\bpower outages?\b|\bblackouts?\b|\bkilled\b|\binjured\b|"
+    r"\bfrapp[ée]e?s?\b|\bont frapp|\ba frapp|\btouch[ée]e?s?\b|\bvis[ée]e?s?\b|\bincendies?\b|"
+    r"\bexplosions?\b.{0,40}\b(?:signal|rapport|entendu)|\bd[ée]g[aâ]ts\b|\bd[ée]truit|\bendommag", re.I)
+# allerte e tracciamento di lanci senza impatto confermato
+ALLERTA = re.compile(
+    r"\bthreat\b|\bflying (?:to|towards|past|over|in)\b|\bheading (?:to|towards|for)\b|\ben route\b|"
+    r"\bmoving towards\b|\btook off\b|\btaking off\b|\bairborne\b|\bare (?:redeploying|conducting|preparing)\b|"
+    r"\bexpected to\b|\bmay (?:launch|strike)\b|\bcould (?:launch|strike|be)\b|\bwarning\b|\balert\b|"
+    r"\bmenace\b|\ben direction de\b", re.I)
+# guerra di terra, analisi del fronte
+FRONTE = re.compile(
+    r"\badvanc|\bcaptur|\bassault|\binfiltrat|\btreelines?\b|counter-?attack|counter-?offensive|\bpositions?\b|"
+    r"\bbrigades?\b|\bbattalions?\b|\bregiments?\b|\bcorps\b|mechani[sz]ed|\binfantry\b|\bsoldiers\b|grey zone|"
+    r"km²|\bsalient\b|encircl|front ?line|\bfpv\b|\bclearing\b|\bbridgehead\b|\bpocket\b|\bprogress|"
+    r"\bavanc|\bprogression|\bassaut|\bfantassins|\bsoldats|\bligne de front|\bencercl|\bcapturé|\bpris le contr|"
+    r"\bstalemate\b|\bfighting\b|\bbattle\b|\bcombats?\b|\bgains?\b|\bdirection\b", re.I)
+INFRA = re.compile(
+    r"refiner|oil depot|fuel depot|substation|power plant|power station|thermal|\bchp\b|\btpp\b|\bhpp\b|"
+    r"pumping station|oil terminal|\bport\b|railway|locomotive|airbase|air base|airfield|ammunition depot|"
+    r"arsenal|plant\b|factory|raffinerie|d[ée]p[ôo]t|sous-station|centrale|usine|a[ée]roport|a[ée]rodrome", re.I)
+MESI = re.compile(r"\b(?:january|february|march|april|may|june|july|august|september|october|november|december|"
+                  r"janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\b", re.I)
+VERBI_FORTI = IMPATTO
 DIR_UA = re.compile(
-    r"ukrainian (?:long[- ]range |kamikaze |attack )?(?:drones?|forces|strikes?|missiles?|uavs?|sbu|gur|navy)|"
-    r"\bsbu\b|\bgur\b|\bhur\b|ukraine (?:struck|strikes|hit|attacked|targeted)|drones? ukrainiens?|"
-    r"frappes? ukrainiennes?|missiles? ukrainiens?|l'ukraine a (?:frappé|touché|visé)|"
-    r"flamingo|neptune|lyuty|liutyi|storm shadow|scalp|atacms|himars|\bfp-1\b|\bfp-5\b|"
-    r"in russia\b|en russie\b|deep strike|frappe en profondeur", re.I)
+    r"ukrainian (?:long[- ]range |kamikaze |attack |naval |unmanned |sea |)(?:drones?|forces|strikes?|missiles?|uavs?|"
+    r"sbu|gur|hur|navy|usv|attack)|\bsbu\b|\bgur\b|\bhur\b|\busf\b|ukraine (?:struck|strikes|hit|attacked|targeted)|"
+    r"drones? ukrainiens?|frappes? ukrainiennes?|missiles? ukrainiens?|l'ukraine a (?:frappé|touché|visé)|"
+    r"\bles ukrainiens\b|flamingo|neptune|lyuty|liutyi|storm shadow|scalp|atacms|himars|\bfp-1\b|\bfp-5\b|"
+    r"russian-controlled|occupied|deep strike|frappe en profondeur|governor|gouverneur|russian mod claims", re.I)
 DIR_RU = re.compile(
-    r"russian (?:forces |army |)(?:strikes?|missiles?|drones?|attack|shaheds?|bombs?|kabs?|geran)|"
+    r"russian (?:forces |army |)(?:strikes?|missiles?|drones?|attack|shaheds?|bombs?|kabs?|geran|glide)|"
     r"russia (?:struck|strikes|hit|attacked|launched|targeted)|shahed|geran|iskander|kh-?101|kalibr|"
-    r"kinzhal|\bkabs?\b|glide bomb|frappes? russes?|drones? russes|missiles? russes|la russie a (?:frappé|lancé|visé)|"
-    r"in ukraine\b|en ukraine\b|ukrenergo|naftogaz|dtek|ukrzaliznytsia", re.I)
+    r"kinzhal|\bkabs?\b|glide[- ]bomb|banderol|frappes? russes?|drones? russes|missiles? russes|"
+    r"la russie a (?:frappé|lancé|visé)|ukrenergo|naftogaz|dtek|ukrzaliznytsia|ukrainian air force|"
+    r"air defen[cs]e of ukraine", re.I)
 COORD = re.compile(r"(?<![\d.])([45]\d\.\d{3,6})\s*[,;/ ]\s*([2-9]\d\.\d{3,6}|1[0-4]\d\.\d{3,6})(?![\d.])")
-PAROLA = re.compile(r"[A-Za-zÀ-ÿ'\-]+(?:[ \-][A-Za-zÀ-ÿ'\-]+){0,2}")
+# luoghi da non usare (persone, unità, nomi in codice) quando seguono/precedono certe parole
+NON_LUOGO = re.compile(r"^(?:\s+(?:putin|zelensky|zelenskyy|solovyov|saldo)|['’]s (?:mayor|governor|administration)|"
+                       r"\s+(?:says|said|claims|claimed|reports|government|regime|officials))", re.I)
+PRIMA_LANCIO = re.compile(r"(?:from|from near|launched from|de|depuis|d'|over|by)\s+(?:the\s+)?(?:\w+\s+)?$", re.I)
+PRIMA_LUOGO = re.compile(r"(?:\bin|\bon|\bat|\bnear|\bof|\bstruck|\bhit|\btargeted|\btargeting|\battacked|\bà|\bsur|"
+                         r"\bdans|\bprès de|\bcity of|\btown of|\bvillage of)\s+(?:the\s+)?(?:city\s+of\s+|town\s+of\s+)?$",
+                         re.I)
+
+
+# Impianti con coordinate OSM già presenti in docs/data/ucraina-storico.json (precisione 2–10 km):
+# regola sul testo -> parte del nome dell'impianto in quel file
+IMPIANTI = [
+    (r"kirishi", "Kirishi"), (r"kstovo|norsi", "Kstovo"), (r"yaroslavl\w*.{0,40}refiner|yanos|slavneft", "Jaroslavl"),
+    (r"ryazan\w*.{0,40}refiner|riazan\w*.{0,40}raffinerie|raffinerie de riazan|refinery in ryazan", "Riazan"),
+    (r"saratov\w*.{0,40}refiner|raffinerie de saratov|refinery in saratov", "Raffineria di Saratov"),
+    (r"volgograd\w*.{0,40}refiner|raffinerie de volgograd|refinery in volgograd", "Raffineria di Volgograd"),
+    (r"tuapse", "Tuapse"), (r"afips", "Afipskij"), (r"\bilsk", "Ilskij"), (r"novoshakhtinsk", "Novošachtinsk"),
+    (r"syzran", "Syzran"), (r"novokuybyshevsk|novokuibyshevsk|novokouïbychevsk", "Novokujbyševsk"),
+    (r"salavat", "Salavat"), (r"\bufa\b.{0,40}refiner|bashneft|raffinerie d'oufa|raffineries? d'ufa", "Ufa"),
+    (r"\borsk\b", "Orsk"), (r"\bomsk\b.{0,40}refiner", "Omsk"), (r"\bperm\b.{0,40}refiner|permnefteorgsintez", "Perm"),
+    (r"ukhta", "Uchta"), (r"taneco|nizhnekamsk", "TANECO"), (r"kapotnya|moscow (?:oil )?refinery", "Mosca"),
+    (r"slavyansk-na-kubani|slaviansk-na-kubani|slavyansk eco", "Slavjansk"), (r"ust-luga|oust-louga", "Ust-Luga"),
+    (r"\bprimorsk\b", "Primorsk"), (r"sheskharis", "Novorossijsk"), (r"tamanneftegaz|\btaman\b", "Taman"),
+    (r"unecha", "Unecha"), (r"kavkazskaya", "Kavkazskaja"), (r"vtorovo", "Vtorovo"), (r"prosvet", "Prosvet"),
+    (r"kuibyshev refinery|kuybyshev refinery|samara refinery", "Kujbyšev"), (r"antipinsk", "Antipinskij"),
+    (r"belaya air|belaya airbase|belaïa", "Belaja"), (r"olenya|olenegorsk", "Olenja"), (r"engels", "Engels-2"),
+    (r"marinovka", "Marinovka"), (r"morozovsk", "Morozovsk"), (r"millerovo", "Millerovo"),
+    (r"borisoglebsk", "Borisoglebsk"), (r"akhtubinsk", "Achtubinsk"), (r"dyagilevo|diaghilevo|dyaghilevo", "Djagilevo"),
+    (r"yeysk air|yeysk airbase|yeysk airfield", "Base aerea di Ejsk"), (r"khanskaya", "Chanskaja"),
+    (r"savasleyka", "Savasleika"), (r"soltsy", "Sol'cy"), (r"shaykovka|shaikovka", "Šajkovka"),
+    (r"lipetsk air", "Lipeck"), (r"khalino", "Kursk-Chalino"), (r"krymsk", "Krymsk"),
+    (r"kushchevskaya", "Kuščëvskaja"), (r"chkalovsk", "Čkalovskij"), (r"ivanovo[- ]sever", "Ivanovo-Severnyj"),
+    (r"\bkavkaz port|port kavkaz|port of kavkaz", "Porto Kavkaz"), (r"surgut", "Surgut"),
+    (r"orenburg gas|orenburg gas processing|gazprom.{0,30}orenburg", "Orenburg"),
+    (r"feodosi\w*.{0,40}(?:oil|terminal|depot)", "Feodosia"), (r"proletarsk", "Proletarsk"),
+    (r"novospassk", "Novospasskoe"), (r"\bklintsy\b.{0,40}(?:oil|depot)", "Klincy"),
+]
+
+
+def carica_impianti():
+    try:
+        with open(os.path.join(DATI, "ucraina-storico.json"), encoding="utf-8") as h:
+            el = json.load(h)["elementi"]
+    except Exception:
+        return []
+    out = []
+    for rx, pezzo in IMPIANTI:
+        for e in el:
+            if pezzo in e["nome"] and e.get("lat") is not None:
+                out.append((re.compile(rx, re.I), e))
+                break
+    return out
 
 
 def trova_luoghi(testo, idx, obl):
@@ -616,69 +690,102 @@ def oblast_ua_occupato(v):
     return v["tipo"] == "citta" and v["n"].lower() in OCCUPATE_CITTA
 
 
-def estrai_attacco(post, idx, obl):
+def estrai_attacco(post, idx, obl, impianti=()):
     t = post["testo"]
     if not t or len(t) < 25:
         return None, "testo vuoto o troppo corto"
     if not ATTACCO.search(t):
         return None, "nessuna parola chiave d'attacco"
-    if not VERBI_FORTI.search(t):
-        return None, "nessun verbo d'attacco"
-    nf = len(NON_ATTACCO.findall(t))
-    na = len(ATTACCO.findall(t))
-    if nf and nf >= na:
+    imp = IMPATTO.search(t)
+    if not imp:
+        return None, "nessun impatto (solo menzione)"
+    infra = INFRA.search(t)
+    if len(set(m.lower() for m in MESI.findall(t))) >= 3 or len(re.findall(r"\d+", t)) >= 25:
+        return None, "post di sintesi o statistiche"
+    nfr = len(FRONTE.findall(t))
+    if (nfr >= 2 and not infra) or nfr >= 4 or (nfr >= 1 and not infra and len(t) > 500) \
+            or re.match(r"\s*situation (?:on|in|near|around)", t, re.I):
         return None, "post sul fronte terrestre"
-    luoghi = trova_luoghi(t, idx, obl)
+    if ALLERTA.search(t) and not re.search(r"\bstruck\b|\bimpact|\bdamag|\bfire|\bexplosions? (?:were|was) (?:heard|reported)"
+                                           r"|\baftermath|\bfrapp|\btouch|\bincendie", t, re.I):
+        return None, "allerta o lancio senza impatto"
+    luoghi = []
+    for v, tipo, pos in trova_luoghi(t, idx, obl):
+        dopo = t[pos + len(v["n"]): pos + len(v["n"]) + 40] if tipo == "citta" else ""
+        frase = re.match(r"[A-Za-zÀ-ÿ'’\-]+(?:[ \-][A-ZÀ-Ý][A-Za-zÀ-ÿ'’\-]+)*", t[pos:])
+        if frase:
+            dopo = t[pos + len(frase.group(0)): pos + len(frase.group(0)) + 40]
+        if tipo == "citta" and (NON_LUOGO.match(dopo) or re.match(r"[A-Z]\w+\s+(?:Putin|Zelensk|Solovyov)", t[pos:])):
+            continue
+        prima = t[max(0, pos - 30): pos]
+        lancio = bool(PRIMA_LANCIO.search(prima))
+        prep = bool(PRIMA_LUOGO.search(prima))
+        luoghi.append((v, tipo, pos, lancio, prep))
     coord = None
     m = COORD.search(t)
     if m:
         la, lo = float(m.group(1)), float(m.group(2))
         if 43 <= la <= 70 and 20 <= lo <= 140:
             coord = (la, lo)
-    if not luoghi and not coord:
+    impianto = None
+    for rx, e in impianti:
+        mm = rx.search(t)
+        if mm and not PRIMA_LANCIO.search(t[max(0, mm.start() - 30): mm.start()]):
+            impianto = e
+            break
+    if not luoghi and not coord and not impianto:
         return None, "nessun luogo riconosciuto"
-    # scelta del luogo: prima città menzionata vicino al primo verbo d'attacco; altrimenti prima oblast
-    vpos = VERBI_FORTI.search(t).start()
-    citta = [x for x in luoghi if x[1] == "citta" and x[0].get("paese") in ("UA", "RU", "")]
-    oblasti = [x for x in luoghi if x[1] == "oblast"]
-    scelto = None
-    if citta:
-        scelto = min(citta, key=lambda x: abs(x[2] - vpos))
-    elif oblasti:
-        scelto = min(oblasti, key=lambda x: abs(x[2] - vpos))
-    if scelto:
-        v, tipo, _ = scelto
-        paese = v.get("paese") or ""
-        if not paese:  # città di labels.json: paese dalla città GeoNames omonima se c'è
-            w = idx.get(v["n"].lower())
-            paese = w.get("paese", "") if w else ""
-    else:
-        v, tipo, paese = None, None, ""
-    if coord:
+    vpos = imp.start()
+
+    def punteggio(x):
+        v, tipo, pos, lancio, prep = x
+        return (lancio, 0 if tipo == "citta" else 1, 0 if prep else 1, abs(pos - vpos))
+    cand = sorted([x for x in luoghi if x[0].get("paese") in ("UA", "RU", "")], key=punteggio)
+    if cand and cand[0][3] and not impianto and not coord:
+        return None, "solo luoghi di lancio"
+    scelto = cand[0] if cand else None
+    v, tipo = (scelto[0], scelto[1]) if scelto else (None, None)
+    paese = (v.get("paese") or "") if v else ""
+    if v and not paese:
+        w = idx.get(v["n"].lower())
+        paese = w.get("paese", "") if w else ""
+    if impianto:
+        lat, lon = impianto["lat"], impianto["lon"]
+        prec = impianto.get("precisione_km") or 3
+        orig = "impianto in ucraina-storico.json (%s; %s)" % (impianto["nome"], impianto.get("origine_coord", "OSM"))
+        nome = impianto["nome"]
+        paese = impianto.get("paese") or "RU"
+        obl_n = impianto.get("regione") or ""
+    elif coord:
         lat, lon, prec, orig = coord[0], coord[1], 1, "coordinate scritte nel post"
+        nome = v["n"] if v else "coordinate del post"
+        obl_n = (v.get("oblast") if v else "") or ""
+        if v:
+            if dist_km(lat, lon, v["lat"], v["lon"]) > 150:
+                nome, obl_n, paese = "coordinate del post", "", ""
         if not paese:
-            paese = "RU" if lon > 40.3 or lat > 52.4 else ""
-    elif v:
+            paese = "RU" if lon > 40.3 or lat > 52.4 else "UA"
+    else:
         lat, lon = v["lat"], v["lon"]
         prec = 10 if tipo == "citta" else 80
         orig = "GeoNames: %s (%s)" % (v["n"], "centro abitato" if tipo == "citta" else "regione")
-    if paese not in ("UA", "RU"):
-        if not paese and lat and lon:
+        nome, obl_n = v["n"], v.get("oblast") or ""
+        if not paese:
             paese = "RU" if lon > 40.3 or lat > 52.4 else "UA"
-        else:
-            return None, "luogo fuori da Ucraina/Russia"
-    occupato = paese == "UA" and v is not None and oblast_ua_occupato(v)
+    if paese not in ("UA", "RU"):
+        return None, "luogo fuori da Ucraina/Russia"
+    occupato = paese == "UA" and v is not None and not impianto and oblast_ua_occupato(v)
+    if impianto and "Crimea" in impianto["nome"]:
+        occupato = True
     d = direzione(t, paese, occupato)
     if d is None:
         return None, "direzione non determinata"
-    cat = classifica(t)
     return {
         "post": post,
         "lat": round(lat, 4), "lon": round(lon, 4), "precisione_km": prec, "origine_coord": orig,
-        "luogo": v["n"] if v else "coordinate del post",
-        "oblast": (v.get("oblast") if v else "") or "",
-        "paese": paese, "occupato": occupato,
-        "direzione": d, "categoria": cat, "mezzi": mezzi(t),
+        "luogo": nome, "oblast": obl_n, "paese": paese, "occupato": occupato,
+        "direzione": d, "categoria": classifica(t), "mezzi": mezzi(t),
+        "luoghi_citati": len({x[0]["n"] for x in luoghi}),
     }, "ok"
 
 
@@ -869,8 +976,9 @@ def estrai_tutto(senza_firms=False):
                             "cronologia_completa": st["completo"]})
     motivi = {}
     grezzi = []
+    impianti = carica_impianti()
     for p in posts:
-        a, mot = estrai_attacco(p, idx, obl)
+        a, mot = estrai_attacco(p, idx, obl, impianti)
         motivi[mot] = motivi.get(mot, 0) + 1
         if a:
             a["data"] = p["data"][:10]
@@ -940,7 +1048,7 @@ def estrai_tutto(senza_firms=False):
             "origine_coord": a["origine_coord"],
             "nome": a["luogo"], "oblast": a["oblast"], "paese": a["paese"],
             "territorio_occupato": a["occupato"],
-            "categoria": a["categoria"], "mezzi": a["mezzi"],
+            "categoria": a["categoria"], "mezzi": a["mezzi"], "luoghi_citati": a["luoghi_citati"],
             "fonte": "%s (Telegram @%s)" % ("Clément Molin" if p["canale"] == "clement_molin" else "AMK Mapping",
                                              p["canale"]),
             "canale": p["canale"], "link": p["link"], "data_fonte": p["data"][:10],

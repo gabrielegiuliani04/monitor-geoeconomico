@@ -91,3 +91,5 @@ Regole, valide per ogni sessione:
 | Attacchi da Clément Molin e AMK Mapping (Telegram) | docs/data/attacchi-analisti.json |
 | Impatti in Italia; revisione livelli originali; revisione report supply chain AI | vedi tabella sopra |
 Decisioni del 2026-11-10: sito tutto in inglese (le versioni italiane dei report restano); tolta la sezione analisti economici YouTube.
+
+- 2026-11-10: impatti in Italia FATTI (docs/data/italia-impatti.json, sezione regole_trasmissione.per_il_simulatore). DA FARE dopo la traduzione: aggiungere al simulatore la sezione "What happens in Italy" (prezzi carburanti, rischio fermo TIR, inflazione, PUN, misure probabili).

@@ -630,6 +630,7 @@ const EN = {
   "Gas UE": "EU gas", "Petrolio UE": "EU oil", "Gas UE (mensile)": "EU gas (monthly)", "Petrolio USA": "US oil", "Grano": "Wheat",
   "Strategic Petroleum Reserve (SPR) USA": "US Strategic Petroleum Reserve (SPR)", "Scorte commerciali di greggio USA (esclusa SPR)": "US commercial crude stocks (excl. SPR)", "Scorte di benzina USA": "US gasoline stocks", "Scorte di distillati USA (gasolio)": "US distillate stocks (diesel)", "Scorte di greggio a Cushing, Oklahoma": "Crude stocks at Cushing, Oklahoma",
 };
+const TEMI_EN = { guerra_iran: 'Iran war', petrolio: 'oil', hormuz: 'Hormuz', droni_missili: 'drones and missiles', logistica_noli: 'logistics and freight', diplomazia_negoziati: 'diplomacy and talks', sicurezza_marittima: 'maritime security', nucleare: 'nuclear', gnl_gas: 'LNG and gas', mar_rosso_houthi: 'Red Sea and Houthis', ucraina_fronte: 'Ukraine front', flotta_ombra_sanzioni: 'shadow fleet and sanctions', attacchi_energia: 'attacks on energy', banche_centrali: 'central banks', sabotaggi_ibrido: 'sabotage and hybrid threats', elettricita_blackout: 'power and blackouts' };
 const tr = s => (s != null && Object.prototype.hasOwnProperty.call(EN, s)) ? EN[s] : s;
 const trCat = s => { if (s == null) return s; const t = String(s); return EN[t] || EN[t.replace(/-/g, ' ')] || cap(t.replace(/-/g, ' ')); };
 function trStock(n) {                                   // the stock series names follow a few fixed patterns
@@ -1475,7 +1476,7 @@ function drawGraticule(z, vx0, vy0, vx1, vy1) {
   ctx.stroke();
   ctx.font = `400 10px ${FF.mono}`; ctx.fillStyle = C.inkFaint; ctx.textBaseline = 'top'; ctx.textAlign = 'left';
   if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
-  for (const [x, v] of xs) ctx.fillText(fmtDeg(v, 'E', 'O'), x + 3, 3);
+  for (const [x, v] of xs) ctx.fillText(fmtDeg(v, 'E', 'W'), x + 3, 3);
   ctx.textAlign = 'right'; ctx.textBaseline = 'bottom';
   for (const [y, v] of ys) if (y > 16) ctx.fillText(fmtDeg(v, 'N', 'S'), w - 4, y - 2);
 }
@@ -1833,8 +1834,8 @@ function updateHud(z) {
   const px = pointer ? pointer.x : w / 2, py = pointer ? pointer.y : h / 2;
   const lon = lonOf((px - T.x) / T.k), lat = latOf((py - T.y) / T.k);
   const prec = z >= 7 ? 1 : 0, dec = z >= 8 ? 4 : z >= 6 ? 3 : 2;
-  $('ro-k').textContent = pointer ? 'Cursore' : 'Centro';
-  $('ro-dm').textContent = fmtDM(lat, 'N', 'S', 2, prec) + ' ' + fmtDM(lon, 'E', 'O', 3, prec);
+  $('ro-k').textContent = pointer ? 'Cursor' : 'Centre';
+  $('ro-dm').textContent = fmtDM(lat, 'N', 'S', 2, prec) + ' ' + fmtDM(lon, 'E', 'W', 3, prec);
   $('ro-dec').textContent = lat.toFixed(dec) + ', ' + lon.toFixed(dec);
   const zz = Math.max(2, Math.min(14, Math.round(z))), key = cLat.toFixed(2) + ',' + cLon.toFixed(2) + ',' + zz;
   if (key !== liveKey) {              // the public real-time trackers, opened on the area in view: the map links to them instead of copying their data
@@ -1965,7 +1966,7 @@ function wire() {
     ev.preventDefault(); if (!ready) return;
     if (!input.value.trim()) { say(''); return; }
     const p = parseCoords(input.value);
-    if (!p) { say('Non riconosco queste coordinate. Scrivi latitudine e longitudine, per esempio 26.57 N, 56.25 E oppure 26°34′N 56°15′E.'); return; }
+    if (!p) { say('Coordinates not recognised. Enter latitude and longitude, for example 26.57 N, 56.25 E or 26°34′N 56°15′E.'); return; }
     say(''); setPin(p, true); canvas.focus({ preventScroll: true });
   });
   input.addEventListener('input', () => say(''));
@@ -1982,10 +1983,10 @@ const XF = { ferrovie: 'data/ferrovie.json', cavi: 'data/cavi.json', caviInc: 'd
 const X = { lines: {}, pts: {}, data: {} };
 const XDATED = new Set(['xua', 'xru', 'xcy', 'xbs']), XR = { da: '2022-02-24', a: '2099-12-31' };
 const XLAYERS = {   // layer -> colour token, label
-  xrail: ['rail', 'Ferrovie'], xcable: ['cable', 'Cavi sottomarini'], xpower: ['power', 'Rete elettrica'], xlng: ['lng', 'Terminali GNL'],
-  xgas: ['gasit', 'Gas in Italia'], xnavi: ['sanz', 'Navi (AIS)'], xnuke: ['power', 'Centrali nucleari'], xua: ['uastrike', 'Attacchi ucraini in Russia'], xai: ['ai', 'AI nel mondo'], xinv: ['inv', 'Investimenti AI'], xcy: ['cy', 'Incidenti cyber'], xcam: ['cam', 'Webcam pubbliche'], xrisk: ['rk3', 'Rischio'], xbm: ['bm', 'Basi nel mondo'], xpn: ['pn', 'Porti del Nord'], xwind: ['wind', 'Eolico offshore'], xbs: ['bs', 'Sicurezza nel Baltico'], xbk: ['bk', 'Bunker'], xh2: ['h2', 'Idrogeno'], xru: ['ev1', 'Attacchi russi in Ucraina'], xjwc: ['jwc', 'Aree a rischio guerra'], xeof: ['wind', 'Porti base eolico'], xsca: ['sca', 'Catena dell\'AI'], xruo: ['ev0', 'Attacchi per regione'] };
+  xrail: ['rail', 'Railways'], xcable: ['cable', 'Subsea cables'], xpower: ['power', 'Power grid'], xlng: ['lng', 'LNG terminals'],
+  xgas: ['gasit', 'Gas into Italy'], xnavi: ['sanz', 'Ships (AIS)'], xnuke: ['power', 'Nuclear power plants'], xua: ['uastrike', 'Ukrainian strikes in Russia'], xai: ['ai', 'AI worldwide'], xinv: ['inv', 'AI investment'], xcy: ['cy', 'Cyber incidents'], xcam: ['cam', 'Public webcams'], xrisk: ['rk3', 'Risk'], xbm: ['bm', 'Bases worldwide'], xpn: ['pn', 'Northern ports'], xwind: ['wind', 'Offshore wind'], xbs: ['bs', 'Baltic security'], xbk: ['bk', 'Bunkering'], xh2: ['h2', 'Hydrogen'], xru: ['ev1', 'Russian strikes in Ukraine'], xjwc: ['jwc', 'War-risk areas'], xeof: ['wind', 'Wind base ports'], xsca: ['sca', 'AI value chain'], xruo: ['ev0', 'Attacks by region'] };
 const num = v => (v == null || v === '' ? null : +v);
-const XFAM = { xrail: 'Ferrovie', xcable: 'Cavi sottomarini', xpower: 'Rete elettrica', xlng: 'Terminale GNL', xgas: 'Gas in Italia', xnavi: 'Nave', xnuke: 'Centrale nucleare', xua: 'Attacco ucraino in profondità', xai: 'Infrastruttura AI', xinv: 'Investimento', xcy: 'Incidente cyber', xcam: 'Webcam pubblica', xrisk: 'Rischio', xbm: 'Base militare', xpn: 'Porto', xwind: 'Energia offshore', xbs: 'Sicurezza Baltico e Mare del Nord', xbk: 'Hub del bunker', xh2: 'Idrogeno e ammoniaca', xru: 'Attacco russo in Ucraina', xjwc: 'Area a rischio guerra (Joint War Committee)', xeof: 'Porto base dell\'eolico offshore', xsca: 'Catena del valore dell\'AI', xruo: 'Regione ucraina: giorni citati negli attacchi' };
+const XFAM = { xrail: 'Railways', xcable: 'Subsea cables', xpower: 'Power grid', xlng: 'LNG terminal', xgas: 'Gas into Italy', xnavi: 'Ship', xnuke: 'Nuclear power plant', xua: 'Ukrainian deep strike', xai: 'AI infrastructure', xinv: 'Investment', xcy: 'Cyber incident', xcam: 'Public webcam', xrisk: 'Risk', xbm: 'Military base', xpn: 'Port', xwind: 'Offshore energy', xbs: 'Baltic and North Sea security', xbk: 'Bunkering hub', xh2: 'Hydrogen and ammonia', xru: 'Russian strike in Ukraine', xjwc: 'War-risk area (Joint War Committee)', xeof: 'Offshore wind base port', xsca: 'AI value chain', xruo: 'Ukrainian region: days cited in attacks' };
 
 function xBuildLines(layer, items, styleOf) {           // items with g = parts of [lon, lat]
   const groups = {}; let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; const list = [];
@@ -2062,7 +2063,7 @@ async function xLoad(opt) {
   $('x-h').hidden = $('x-ul').hidden = !Object.keys(XLAYERS).some(l => X.lines[l] || X.pts[l]);
   xInitTerminal();
   const today = new Date().toISOString().slice(0, 10), da = $('xper-da'), aa = $('xper-a'); aa.value = today; aa.max = today; da.max = today;
-  const cnt = () => { let n = 0, t = 0; for (const l of XDATED) for (const p of (X.pts[l] || [])) { if (!L[l]) continue; t++; const dd = p.d.data_evento || p.d.data || ''; if (!dd || (dd >= XR.da && dd <= XR.a)) n++; } $('xper-n').textContent = t ? n + ' eventi su ' + t + ' nei livelli accesi' : 'Accendi un livello con eventi datati (es. attacchi ucraini in Russia).'; };
+  const cnt = () => { let n = 0, t = 0; for (const l of XDATED) for (const p of (X.pts[l] || [])) { if (!L[l]) continue; t++; const dd = p.d.data_evento || p.d.data || ''; if (!dd || (dd >= XR.da && dd <= XR.a)) n++; } $('xper-n').textContent = t ? n + ' of ' + t + ' events in the layers switched on' : 'Switch on a layer with dated events (e.g. Ukrainian strikes in Russia).'; };
   const setR = (d1, d2, btn) => { XR.da = d1; XR.a = d2; da.value = d1; aa.value = d2 > today ? today : d2; document.querySelectorAll('#xper-pre .chip').forEach(b => b.setAttribute('aria-pressed', String(b === btn))); cnt(); schedule(); };
   da.addEventListener('change', () => setR(da.value || '2014-01-01', aa.value || today, null)); aa.addEventListener('change', () => setR(da.value || '2014-01-01', aa.value || today, null));
   document.querySelectorAll('#xper-pre .chip').forEach(b => b.addEventListener('click', () => { const v = b.dataset.p; if (v === 'all') setR('2014-01-01', '2099-12-31', b); else if (v === '30') setR(new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10), today, b); else setR(v + '-01-01', v + '-12-31', b); }));
@@ -2130,104 +2131,104 @@ function xLineAt(x, y) {
 const xList = v => Array.isArray(v) ? v.join(', ') : v;
 function renderExtra(card, p) {
   const d = p.d, lay = p.layer;
-  $('cd-kind').textContent = [XFAM[lay], d.categoria && cap(String(d.categoria).replace(/-/g, ' ')), d.paese].filter(Boolean).join(' · ');
+  $('cd-kind').textContent = [XFAM[lay], d.categoria && trCat(d.categoria), tr(PAESI[d.paese] || d.paese)].filter(Boolean).join(' · ');
   $('cd-name').textContent = d.nome || p.label;
   const cs = $('cd-sil'); cs.textContent = ''; cs.appendChild(svgLine('var(--' + XLAYERS[lay][0] + ')', null, 40));
   const facts = $('cd-facts'); facts.textContent = '';
-  const fact = (k, v) => { if (v == null || v === '' || (Array.isArray(v) && !v.length)) return; facts.append(el('dt', null, k), el('dd', null, String(xList(v)))); };
+  const fact = (k, v) => { if (v == null || v === '' || (Array.isArray(v) && !v.length)) return; facts.append(el('dt', null, k), el('dd', null, String(xList(Array.isArray(v) ? v.map(tr) : tr(v))))); };
   if (lay === 'xnavi') {
-    fact('Tipo', d.tipo); fact('Bandiera', d.bandiera); fact('IMO / MMSI', [d.imo, d.mmsi].filter(Boolean).join(' / '));
-    fact('Sanzionata', d.sanzionata); if (String(d.flotta_ombra_probabile) === 'true') fact('Flotta ombra', 'probabile');
-    fact('Velocità', d.velocita_nodi != null ? d.velocita_nodi + ' nodi' : null); fact('Rotta', d.rotta_gradi != null ? d.rotta_gradi + '°' : null);
-    fact('Destinazione AIS', d.destinazione); fact('Ultima posizione', d.ora_utc); fact('Area', d.area);
+    fact('Type', d.tipo); fact('Flag', d.bandiera); fact('IMO / MMSI', [d.imo, d.mmsi].filter(Boolean).join(' / '));
+    fact('Sanctioned', d.sanzionata); if (String(d.flotta_ombra_probabile) === 'true') fact('Shadow fleet', 'likely');
+    fact('Speed', d.velocita_nodi != null ? d.velocita_nodi + ' knots' : null); fact('Course', d.rotta_gradi != null ? d.rotta_gradi + '°' : null);
+    fact('AIS destination', d.destinazione); fact('Last position', d.ora_utc); fact('Area', d.area);
   } else if (lay === 'xlng') {
-    fact('Tipo', d.categoria === 'gnl-liquefazione' ? 'Liquefazione (export)' : 'Rigassificazione (import)'); fact('Stato', d.stato);
-    fact('Capacità operativa', d.capacita_operativa_mtpa != null ? d.capacita_operativa_mtpa + ' Mt/anno' : null); fact('Capacità totale', d.capacita_totale_mtpa != null ? d.capacita_totale_mtpa + ' Mt/anno' : null);
-    fact('Proprietario', d.proprietario); fact('Area', d.area);
+    fact('Type', d.categoria === 'gnl-liquefazione' ? 'Liquefaction (export)' : 'Regasification (import)'); fact('Status', d.stato);
+    fact('Operating capacity', d.capacita_operativa_mtpa != null ? d.capacita_operativa_mtpa + ' Mt/yr' : null); fact('Total capacity', d.capacita_totale_mtpa != null ? d.capacita_totale_mtpa + ' Mt/yr' : null);
+    fact('Owner', d.proprietario); fact('Area', d.area);
   } else if (lay === 'xgas') {
-    fact('Provenienza', d.provenienza); fact('Stato', d.stato);
+    fact('Origin', d.provenienza); fact('Status', d.stato);
     const r = d.flussi && d.flussi.entry && d.flussi.entry.riassunto;
-    if (r) for (const k in r) if (typeof r[k] !== 'object') fact(cap(k.replace(/_/g, ' ')), r[k] + (/gwh|media|ultimo|tot/i.test(k) ? '' : ''));
-    const q = X.data.gasit && X.data.gasit.quote_12_mesi; if (q && typeof q === 'object') { const v = Array.isArray(q) ? q.find(o => o.id === d.id) : q[d.id]; if (v) fact('Quota degli ingressi, 12 mesi', typeof v === 'object' ? (v.quota_pct != null ? v.quota_pct + '%' : JSON.stringify(v)) : v + '%'); }
+    if (r) for (const k in r) if (typeof r[k] !== 'object') fact(({ totale_periodo_twh: 'Total for the period, TWh', media_365g_gwh: '365-day average, GWh/day', giorni: 'Days', ultimo_giorno: 'Latest day', ultimo_gwh: 'Latest, GWh', media_30g_gwh: '30-day average, GWh/day', media_7g_gwh: '7-day average, GWh/day', ultimo_mln_smc: 'Latest, million Sm³', totale_periodo_mld_smc: 'Total for the period, bn Sm³' })[k] || cap(k.replace(/_/g, ' ')), r[k] + (/gwh|media|ultimo|tot/i.test(k) ? '' : ''));
+    const q = X.data.gasit && X.data.gasit.quote_12_mesi; if (q && typeof q === 'object') { const v = Array.isArray(q) ? q.find(o => o.id === d.id) : q[d.id]; if (v) fact('Share of entries, 12 months', typeof v === 'object' ? (v.quota_pct != null ? v.quota_pct + '%' : JSON.stringify(v)) : v + '%'); }
   } else if (lay === 'xcable') {
-    fact('Stato', d.stato); fact('Anno', d.anno || d.data_evento); fact('Lunghezza', d.km ? itNum(+d.km) + ' km' : null); fact('Proprietari', d.proprietari);
-    fact('Passaggi strategici', d.s); fact('Approdi in Italia', d.approdi_it); fact('Cavi coinvolti', d.cavi); fact('Causa', d.causa); fact('Esito', d.esito);
+    fact('Status', d.stato); fact('Year', d.anno || d.data_evento); fact('Length', d.km ? itNum(+d.km) + ' km' : null); fact('Owners', d.proprietari);
+    fact('Chokepoints', d.s); fact('Landings in Italy', d.approdi_it); fact('Cables involved', d.cavi); fact('Cause', d.causa); fact('Outcome', d.esito);
   } else if (lay === 'xpn') {
-    fact('Specializzazione', d.specializzazione); for (const t of (d.traffico_annuo || []).slice(0, 3)) fact('Traffico ' + t.anno, itNumber(+t.valore) + ' ' + t.unita + (t.var_pct != null ? ' (' + (t.var_pct > 0 ? '+' : '') + itNum(+t.var_pct) + '%)' : ''));
-    if (d.media7) fact('Navi in arrivo al giorno', itNum(d.media7.portcalls) + ' (media 7 gg al ' + d.ultima_data + ')' + (d.var7_anno_pct && d.var7_anno_pct.portcalls != null ? ', ' + (d.var7_anno_pct.portcalls > 0 ? '+' : '') + itNum(d.var7_anno_pct.portcalls) + '% su un anno' : ''));
-    fact('Peso economico', d.peso_economico && (d.peso_economico.valore || d.peso_economico)); fact('Ruolo', d.ruolo);
+    fact('Specialisation', d.specializzazione); for (const t of (d.traffico_annuo || []).slice(0, 3)) fact('Throughput ' + t.anno, itNumber(+t.valore) + ' ' + t.unita + (t.var_pct != null ? ' (' + (t.var_pct > 0 ? '+' : '') + itNum(+t.var_pct) + '%)' : ''));
+    if (d.media7) fact('Port calls per day', itNum(d.media7.portcalls) + ' (7-day average to ' + d.ultima_data + ')' + (d.var7_anno_pct && d.var7_anno_pct.portcalls != null ? ', ' + (d.var7_anno_pct.portcalls > 0 ? '+' : '') + itNum(d.var7_anno_pct.portcalls) + '% year on year' : ''));
+    fact('Economic weight', d.peso_economico && (d.peso_economico.valore || d.peso_economico)); fact('Role', d.ruolo);
   } else if (lay === 'xwind') {
-    fact('Tipo', d.categoria && cap(String(d.categoria).replace(/-/g, ' '))); fact('Stato', d.stato); fact('Potenza', d.mw ? itNum(+d.mw) + ' MW' : null); fact('Turbine', d.turbine); fact('Anno', d.anno); fact('Operatore', d.operatore || d.operatori); fact('Mare', d.mare); fact('Distanza dalla costa', d.distanza_costa_km ? d.distanza_costa_km + ' km' : null); fact('Capacità', d.capacita); fact('Fatti', d.fatti);
+    fact('Type', d.categoria && trCat(d.categoria)); fact('Status', d.stato); fact('Capacity', d.mw ? itNum(+d.mw) + ' MW' : null); fact('Turbines', d.turbine); fact('Year', d.anno); fact('Operator', d.operatore || d.operatori); fact('Sea', d.mare); fact('Distance from shore', d.distanza_costa_km ? d.distanza_costa_km + ' km' : null); fact('Capacity', d.capacita); fact('Facts', d.fatti);
   } else if (lay === 'xbs') {
-    fact('Data', d.data); fact('Categoria', d.categoria); fact('Paese', PAESI[d.paese] || d.paese);
+    fact('Date', d.data); fact('Category', trCat(d.categoria)); fact('Country', PAESI[d.paese] || d.paese);
   } else if (lay === 'xruo') {
-    fact('Giorni citati nel periodo scelto', (p.n || 0) + ' (' + XR.da.slice(0, 7) + ' → ' + (XR.a > '2090' ? 'oggi' : XR.a.slice(0, 7)) + ')'); fact('Giorni citati in totale', d.totale_giorni_citati); fact('Grandi attacchi documentati', d.totale_eventi_curati);
-    fact('Cosa misura', 'Giorni in cui l’Aeronautica ucraina cita la regione come bersaglio o direzione di missili e droni (dataset Ivaniuk, CC BY-NC-SA). Non sono i colpi andati a segno.');
-    d.fonte = d.fonte || 'Dataset di P. Ivaniuk (comunicati dell’Aeronautica ucraina), CC BY-NC-SA 4.0'; d.link = d.link || 'https://www.kaggle.com/datasets/piterfm/massive-missile-attacks-on-ukraine';
+    fact('Days cited in the chosen period', (p.n || 0) + ' (' + XR.da.slice(0, 7) + ' → ' + (XR.a > '2090' ? 'today' : XR.a.slice(0, 7)) + ')'); fact('Days cited in total', d.totale_giorni_citati); fact('Major documented attacks', d.totale_eventi_curati);
+    fact('What it measures', 'Days on which the Ukrainian Air Force names the region as a target or heading of missiles and drones (Ivaniuk dataset, CC BY-NC-SA). These are not confirmed hits.');
+    d.fonte = d.fonte || 'P. Ivaniuk dataset (Ukrainian Air Force statements), CC BY-NC-SA 4.0'; d.link = d.link || 'https://www.kaggle.com/datasets/piterfm/massive-missile-attacks-on-ukraine';
   } else if (lay === 'xsca') {
-    fact('Anello', d.anello); fact('Ruolo', d.ruolo); fact('Azienda', d.azienda); fact('Quota', d.quota); fact('Stato', d.stato); fact('Materie', d.materie); fact('Cosa viaggia', d.cosa); fact('Come', d.modo); fact('Passa da', d.via); fact('Distanza', d.km ? itNum(+d.km) + ' km' : null);
+    fact('Link in the chain', d.anello); fact('Role', d.ruolo); fact('Company', d.azienda); fact('Share', d.quota); fact('Status', d.stato); fact('Materials', d.materie); fact('What travels', d.cosa); fact('How', d.modo); fact('Via', d.via); fact('Distance', d.km ? itNum(+d.km) + ' km' : null);
   } else if (lay === 'xjwc') {
-    fact('Gruppo', d.gruppo); fact('Stato', d.stato); fact('Ultima modifica', [d.ultima_modifica, d.circolare_modifica].filter(Boolean).join(' · ')); fact('Inserimento', d.data_inserimento); fact('Testo della circolare', d.testo_circolare); fact('Geometria', d.geometria);
-    const A = X.data.ass, pr = A && A.percepito_misurato && A.percepito_misurato.find(x => d.id && x.area && d.id.indexOf(x.area.split('-')[0]) >= 0); if (pr) fact('Premio vs traffico', 'premio ' + (pr.premio_ultimo_pct || []).join('–') + '% del valore della nave (' + pr.premio_data + ') · navi al giorno ' + pr.navi_giorno_7g + ' (' + pr.var_anno_pct + '% su un anno)');
+    fact('Group', d.gruppo); fact('Status', d.stato); fact('Last amended', [d.ultima_modifica, d.circolare_modifica].filter(Boolean).join(' · ')); fact('Listed on', d.data_inserimento); fact('Circular text', d.testo_circolare); fact('Geometry', d.geometria);
+    const A = X.data.ass, pr = A && A.percepito_misurato && A.percepito_misurato.find(x => d.id && x.area && d.id.indexOf(x.area.split('-')[0]) >= 0); if (pr) fact('Premium vs traffic', 'premium ' + (pr.premio_ultimo_pct || []).join('–') + '% of hull value (' + pr.premio_data + ') · ships per day ' + pr.navi_giorno_7g + ' (' + pr.var_anno_pct + '% year on year)');
   } else if (lay === 'xeof') {
-    fact('Ruoli', d.ruoli); fact('Mare', d.mare); fact('Area nuova', d.area_nuova_ha ? d.area_nuova_ha + ' ha' : null); fact('Banchine', d.banchine); fact('Portata', d.portata_t_m2 ? d.portata_t_m2 + ' t/m²' : null); fact('Progetti serviti', d.progetti_serviti); fact('Investimenti', d.investimenti); fact('Colli di bottiglia', d.colli_bottiglia);
+    fact('Roles', d.ruoli); fact('Sea', d.mare); fact('New land', d.area_nuova_ha ? d.area_nuova_ha + ' ha' : null); fact('Quays', d.banchine); fact('Bearing capacity', d.portata_t_m2 ? d.portata_t_m2 + ' t/m²' : null); fact('Projects served', d.progetti_serviti); fact('Investment', d.investimenti); fact('Bottlenecks', d.colli_bottiglia);
   } else if (lay === 'xru') {
-    fact('Data', d.data); fact('Luogo', [d.citta, d.oblast].filter(Boolean).join(', ')); fact('Bersaglio', d.categoria); fact('Mezzi', d.mezzi); fact('Quanti', d.quanti); fact('Effetto', d.effetto);
+    fact('Date', d.data); fact('Place', [d.citta, d.oblast].filter(Boolean).join(', ')); fact('Target', trCat(d.categoria)); fact('Weapons', d.mezzi); fact('How many', d.quanti); fact('Effect', d.effetto);
   } else if (lay === 'xh2') {
-    fact('Tipo', d.categoria); fact('Porto', d.porto); fact('Stato', d.stato); fact('Potenza', d.mw ? d.mw + ' MW' : null); fact('Capacità', d.capacita); fact('Anno', d.anno); fact('Operatore', d.operatore); fact('Lunghezza', d.km ? d.km + ' km' : null);
+    fact('Type', trCat(d.categoria)); fact('Port', d.porto); fact('Status', d.stato); fact('Capacity', d.mw ? d.mw + ' MW' : null); fact('Capacity', d.capacita); fact('Year', d.anno); fact('Operator', d.operatore); fact('Length', d.km ? d.km + ' km' : null);
   } else if (lay === 'xbk') {
-    for (const k in (d.prezzi || {})) { const v = d.prezzi[k]; fact(k, itNumber(+v.ultimo) + ' $/t al ' + v.data + (v.var_pct_prima_guerra != null ? ' (' + (v.var_pct_prima_guerra > 0 ? '+' : '') + itNum(v.var_pct_prima_guerra) + '% dal 27/2)' : '')); }
-    fact('Volume venduto', d.volume_9_mesi_t ? itNum(+d.volume_9_mesi_t[1]) + ' t (' + d.volume_9_mesi_t[0] + ', 9 mesi)' : null);
+    for (const k in (d.prezzi || {})) { const v = d.prezzi[k]; fact(k, itNumber(+v.ultimo) + ' $/t on ' + v.data + (v.var_pct_prima_guerra != null ? ' (' + (v.var_pct_prima_guerra > 0 ? '+' : '') + itNum(v.var_pct_prima_guerra) + '% since 27 Feb)' : '')); }
+    fact('Volume sold', d.volume_9_mesi_t ? itNum(+d.volume_9_mesi_t[1]) + ' t (' + d.volume_9_mesi_t[0] + ', 9 months)' : null);
   } else if (lay === 'xbm') {
-    fact('Usata da', PAESI[d.appartenenza] || d.appartenenza); fact('Paese ospite', PAESI[d.paese] || d.paese); fact('Tipo', d.tipo); fact('Stato', d.stato); fact('Anno', d.anno); fact('Forze', d.forze); fact('Perché conta', d.perche_conta || d.perche); fact('Vicino a', d.vicino || d.stretti_vicini);
+    fact('Used by', PAESI[d.appartenenza] || d.appartenenza); fact('Host country', PAESI[d.paese] || d.paese); fact('Type', d.tipo); fact('Status', d.stato); fact('Year', d.anno); fact('Forces', d.forze); fact('Why it matters', d.perche_conta || d.perche); fact('Near', d.vicino || d.stretti_vicini);
   } else if (lay === 'xrisk') {
-    $('cd-name').textContent = d.nome + ' · rischio ' + d.livello;
-    fact('Punteggio', itNum(+d.punteggio) + ' su 25 (probabilità ' + itNum(+d.probabilita) + ' × impatto ' + itNum(+d.impatto) + ')'); fact('Tendenza su 7 giorni', d.tendenza);
-    fact('Perché', d.perche); for (const i of (d.indicatori || []).slice(0, 8)) fact((i.stato === 'rosso' ? '● ' : i.stato === 'giallo' ? '◐ ' : i.stato === 'verde' ? '○ ' : '· ') + i.nome, i.testo || (i.valore != null ? i.valore + ' ' + (i.unita || '') : 'n.d.'));
-    fact('Cosa osservare', (d.cosa_osservare || []).join(' · ')); fact('Chi è esposto', (d.esposti || []).join(' · '));
+    $('cd-name').textContent = tr(d.nome) + ' · ' + tr(d.livello) + ' risk';
+    fact('Score', itNum(+d.punteggio) + ' out of 25 (likelihood ' + itNum(+d.probabilita) + ' × impact ' + itNum(+d.impatto) + ')'); fact('7-day trend', d.tendenza);
+    fact('Why', d.perche); for (const i of (d.indicatori || []).slice(0, 8)) fact((i.stato === 'rosso' ? '● ' : i.stato === 'giallo' ? '◐ ' : i.stato === 'verde' ? '○ ' : '· ') + i.nome, i.testo || (i.valore != null ? i.valore + ' ' + (i.unita || '') : 'n/a'));
+    fact('What to watch', (d.cosa_osservare || []).join(' · ')); fact('Who is exposed', (d.esposti || []).join(' · '));
   } else if (lay === 'xcam') {
-    fact('Inquadra', d.inquadra || d.cosa_inquadra); fact('Tipo', d.tipo); fact('Editore', d.proprietario || d.editore); fact('Stato', d.stato); fact('Verificata il', d.verificato_il || d.ultima_verifica_ok);
-    const mt = $('cd-mates'); setTimeout(() => { const a = el('a', 'chip', 'Guarda dal vivo ↗'); a.href = d.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.style.textDecoration = 'none'; mt.textContent = ''; mt.appendChild(a); }, 0);
+    fact('View', d.inquadra || d.cosa_inquadra); fact('Type', d.tipo); fact('Publisher', d.proprietario || d.editore); fact('Status', d.stato); fact('Checked on', d.verificato_il || d.ultima_verifica_ok);
+    const mt = $('cd-mates'); setTimeout(() => { const a = el('a', 'chip', 'Watch live ↗'); a.href = d.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.style.textDecoration = 'none'; mt.textContent = ''; mt.appendChild(a); }, 0);
   } else if (lay === 'xai') {
-    fact('Tipo', cap(String(d.categoria).replace(/-/g, ' '))); fact('Luogo', d.luogo); fact('Potenza', d.mw ? d.mw + ' MW' + (d.mw_tipo ? ' (' + d.mw_tipo + ')' : '') : null); fact('Proprietario', d.proprietario); fact('Stato', d.stato); fact('Anno', d.anno); fact('Investimento', d.importo_usd_mld ? itNum(+d.importo_usd_mld) + ' mld USD' : null); fact('Nodo', d.nodo); fact('Prestazioni', d.rmax_pflops ? d.rmax_pflops + ' PFlop/s' : null);
+    fact('Type', trCat(d.categoria)); fact('Place', d.luogo); fact('Power', d.mw ? d.mw + ' MW' + (d.mw_tipo ? ' (' + d.mw_tipo + ')' : '') : null); fact('Owner', d.proprietario); fact('Status', d.stato); fact('Year', d.anno); fact('Investment', d.importo_usd_mld ? itNum(+d.importo_usd_mld) + ' bn USD' : null); fact('Process node', d.nodo); fact('Performance', d.rmax_pflops ? d.rmax_pflops + ' PFlop/s' : null);
   } else if (lay === 'xinv') {
-    fact('Chi investe', d.attore); fact('Da', [d.da_luogo, d.da_paese].filter(Boolean).join(', ')); fact('Verso', [d.a_luogo, d.a_paese].filter(Boolean).join(', ')); fact('Importo', d.importo_usd_mld ? itNum(+d.importo_usd_mld) + ' mld USD' + (d.importo_originale ? ' (' + d.importo_originale + ')' : '') : null); fact('Settore', d.settore); fact('Stato', d.stato); fact('Anno', d.anno); fact('Periodo', d.periodo);
+    fact('Investor', d.attore); fact('From', [d.da_luogo, tr(d.da_paese)].filter(Boolean).join(', ')); fact('To', [d.a_luogo, tr(d.a_paese)].filter(Boolean).join(', ')); fact('Amount', d.importo_usd_mld ? itNum(+d.importo_usd_mld) + ' bn USD' + (d.importo_originale ? ' (' + d.importo_originale + ')' : '') : null); fact('Sector', d.settore); fact('Status', d.stato); fact('Year', d.anno); fact('Period', d.periodo);
   } else if (lay === 'xcy') {
-    fact('Data', d.data_evento); fact('Settore', d.settore); fact('Vittima', d.vittima); fact('Effetto', d.effetto); fact('Attore', d.attore); fact('Attribuzione', d.attribuzione_stato); fact('Lezione', d.lezione);
+    fact('Date', d.data_evento); fact('Sector', d.settore); fact('Victim', d.vittima); fact('Effect', d.effetto); fact('Actor', d.attore); fact('Attribution', d.attribuzione_stato); fact('Lesson', d.lezione);
   } else if (lay === 'xua') {
-    fact('Data', d.data_evento); fact('Bersaglio', d.categoria && cap(String(d.categoria).replace(/-/g, ' '))); fact('Luogo', d.regione || d.luogo); fact('Mezzo', d.mezzo); fact('Esito', d.esito); fact('Rivendicato da', d.attore);
+    fact('Date', d.data_evento); fact('Target', d.categoria && trCat(d.categoria)); fact('Place', d.regione || d.luogo); fact('Means', d.mezzo); fact('Outcome', d.esito); fact('Claimed by', d.attore);
   } else if (lay === 'xrail') {
-    fact('Paesi', d.paesi); fact('Stato', d.stato); fact('Data', d.data_evento); fact('Lunghezza', d.km ? itNum(+d.km) + ' km' : null); fact('Tracciato', d.tracciato);
+    fact('Countries', d.paesi); fact('Status', d.stato); fact('Date', d.data_evento); fact('Length', d.km ? itNum(+d.km) + ' km' : null); fact('Routing', d.tracciato);
     for (const v of (d.volumi || []).slice(0, 4)) fact(v.voce, [v.valore, v.unita, v.anno && '(' + v.anno + ')', v.trend].filter(Boolean).join(' '));
   } else {
-    if (d.categoria === 'interconnessione-elettrica') { fact('Tipo', d.tipo); fact('Da – a', [d.da, d.a].filter(Boolean).join(' – ')); fact('Capacità', d.mw ? d.mw + ' MW' + (d.mw_progetto ? ' (progetto ' + d.mw_progetto + ' MW)' : '') : null); fact('Tensione', d.kv ? d.kv + ' kV' : null); fact('Lunghezza', d.km ? d.km + ' km' : null); fact('Stato', d.stato); fact('Anno', d.anno); fact('Paesi', d.paesi); fact('Tracciato', d.tracciato); }
-    else for (const k of ['stato', 'tensione_kv', 'hvdc', 'capacita_mw', 'mw_installati', 'mw_in_esercizio', 'operatore', 'paesi', 'anno']) fact(cap(k.replace(/_/g, ' ')), d[k]);
+    if (d.categoria === 'interconnessione-elettrica') { fact('Type', d.tipo); fact('From – to', [d.da, d.a].filter(Boolean).join(' – ')); fact('Capacity', d.mw ? d.mw + ' MW' + (d.mw_progetto ? ' (planned ' + d.mw_progetto + ' MW)' : '') : null); fact('Voltage', d.kv ? d.kv + ' kV' : null); fact('Length', d.km ? d.km + ' km' : null); fact('Status', d.stato); fact('Year', d.anno); fact('Countries', d.paesi); fact('Routing', d.tracciato); }
+    else for (const [k, lb] of [['stato', 'Status'], ['tensione_kv', 'Voltage (kV)'], ['hvdc', 'HVDC'], ['capacita_mw', 'Capacity (MW)'], ['mw_installati', 'Installed MW'], ['mw_in_esercizio', 'MW in service'], ['operatore', 'Operator'], ['paesi', 'Countries'], ['anno', 'Year']]) fact(lb, d[k]);
   }
-  if (d.affidabilita) fact('Affidabilità', AFF_IT[d.affidabilita] || d.affidabilita);
-  if (p.lat != null) fact('Posizione', fmtLL(p.lat, p.lon, 2) + (d.precisione_km ? ', ± ' + d.precisione_km + ' km' : ''));
+  if (d.affidabilita) fact('Reliability', AFF_IT[d.affidabilita] || d.affidabilita);
+  if (p.lat != null) fact('Position', fmtLL(p.lat, p.lon, 2) + (d.precisione_km ? ', ± ' + d.precisione_km + ' km' : ''));
   $('cd-info').textContent = d.note || d.sintesi || '';
   $('cd-mates').textContent = '';
-  const src = $('cd-src'); src.textContent = ''; src.appendChild(srcItem(d.fonte || 'Fonte', d.link || d.sito, d.data_fonte));
+  const src = $('cd-src'); src.textContent = ''; src.appendChild(srcItem(d.fonte || 'Source', d.link || d.sito, d.data_fonte));
   card.hidden = false; card.scrollTop = 0;
 }
 function xStrait(s, fact, src) {                          // the strait card, with the measured traffic and the details
   const pw = X.data.pw && (X.data.pw.elementi || []).find(e => e.tipo === 'chokepoint' && (e.nome === s.n || (e.nome || '').includes(s.n.replace(/^Stretto (di |dei |del )?/, ''))));
   const sd = X.data.sd && (X.data.sd.elementi || []).find(e => (e.chiavi_stretti || []).includes(s.n) || e.nome === s.n);
   if (pw && pw.media7) {
-    const v = pw.var7_anno_pct || {}, sg = x => x == null ? '' : ' (' + (x > 0 ? '+' : '') + itNum(x) + '% su un anno)';
-    fact('Navi al giorno', [el('b', null, itNum(pw.media7.n_total)), sg(v.n_total) + ', media 7 giorni al ' + dateLong(new Date(pw.ultima_data + 'T12:00:00')) + '. Un anno prima: ' + itNum(pw.media7_anno_prima.n_total) + '.']);
-    fact('Petroliere al giorno', [el('b', null, itNum(pw.media7.n_tanker)), sg(v.n_tanker)]);
-    if (pw.serie && pw.serie.n_total) fact('Navi al giorno dal ' + pw.serie.n_total[0][0].slice(0, 4) + ', media settimanale', xWeekly(pw.serie.n_total), 'wide');
-    src.appendChild(srcItem('IMF PortWatch, transiti giornalieri', pw.link, pw.data_fonte));
+    const v = pw.var7_anno_pct || {}, sg = x => x == null ? '' : ' (' + (x > 0 ? '+' : '') + itNum(x) + '% year on year)';
+    fact('Ships per day', [el('b', null, itNum(pw.media7.n_total)), sg(v.n_total) + ', 7-day average to ' + dateLong(new Date(pw.ultima_data + 'T12:00:00')) + '. A year earlier: ' + itNum(pw.media7_anno_prima.n_total) + '.']);
+    fact('Tankers per day', [el('b', null, itNum(pw.media7.n_tanker)), sg(v.n_tanker)]);
+    if (pw.serie && pw.serie.n_total) fact('Ships per day since ' + pw.serie.n_total[0][0].slice(0, 4) + ', weekly average', xWeekly(pw.serie.n_total), 'wide');
+    src.appendChild(srcItem('IMF PortWatch, daily transits', pw.link, pw.data_fonte));
   }
   if (sd) {
-    if (sd.stato_attuale) fact('Stato oggi', [el('b', null, sd.stato_attuale.livello || sd.stato || ''), ' ', el('span', 'muted', sd.stato_attuale.data || '')]);
-    for (const x of (sd.flussi || []).slice(0, 4)) fact('Passa: ' + x.voce, x.valore + (x.anno ? ' (' + x.anno + ')' : ''));
+    if (sd.stato_attuale) fact('Status today', [el('b', null, tr(sd.stato_attuale.livello || sd.stato || '')), ' ', el('span', 'muted', sd.stato_attuale.data || '')]);
+    for (const x of (sd.flussi || []).slice(0, 4)) fact('Flow: ' + x.voce, x.valore + (x.anno ? ' (' + x.anno + ')' : ''));
     for (const x of (sd.esposizione_italia_ue || []).slice(0, 2)) fact(x.voce, x.valore);
-    for (const x of (sd.alternative || []).slice(0, 2)) fact('Alternativa: ' + x.voce, x.valore);
-    for (const x of (sd.impatti_mercato || []).slice(0, 3)) fact('Mercato: ' + x.voce, x.valore);
-    for (const x of (sd.prezzi_collegati_valori || []).slice(0, 4)) fact('Prezzo: ' + x.nome, itNumber(+x.ultimo) + (x.var && x.var['1g'] != null ? ' (' + (x.var['1g'] > 0 ? '+' : '') + itNum(x.var['1g']) + '% oggi)' : ''));
-    const seen = new Set(); for (const x of [...(sd.flussi || []).slice(0, 4), ...(sd.impatti_mercato || []).slice(0, 3)]) { if (!x.link || seen.has(x.link)) continue; seen.add(x.link); src.appendChild(srcItem(x.fonte || 'Fonte', x.link, x.data_fonte)); }
+    for (const x of (sd.alternative || []).slice(0, 2)) fact('Alternative: ' + x.voce, x.valore);
+    for (const x of (sd.impatti_mercato || []).slice(0, 3)) fact('Market: ' + x.voce, x.valore);
+    for (const x of (sd.prezzi_collegati_valori || []).slice(0, 4)) fact('Price: ' + tr(x.nome), itNumber(+x.ultimo) + (x.var && x.var['1g'] != null ? ' (' + (x.var['1g'] > 0 ? '+' : '') + itNum(x.var['1g']) + '% today)' : ''));
+    const seen = new Set(); for (const x of [...(sd.flussi || []).slice(0, 4), ...(sd.impatti_mercato || []).slice(0, 3)]) { if (!x.link || seen.has(x.link)) continue; seen.add(x.link); src.appendChild(srcItem(x.fonte || 'Source', x.link, x.data_fonte)); }
     return sd.sintesi || '';
   }
   return '';
@@ -2241,16 +2242,16 @@ function xSpark(serie, n = 90) {
   const d = pts.map((v, i) => (i ? 'L' : 'M') + (i * 62 / (pts.length - 1) + 1).toFixed(1) + ' ' + (hi === lo ? 9 : 16 - (v - lo) / (hi - lo) * 14).toFixed(1)).join('');
   sv.appendChild(svgEl('path', { d, fill: 'none', stroke: pts[pts.length - 1] >= pts[0] ? 'var(--ally)' : 'var(--error)', 'stroke-width': 1.3, 'stroke-linejoin': 'round' })); return sv;
 }
-function xVar(v, pb) { if (v == null) return el('span', 'mkt-d flat', '—'); const a = Math.abs(v).toLocaleString('en-GB', { maximumFractionDigits: pb ? 0 : 2 }); return el('span', 'mkt-d ' + (v > 0 ? 'up' : v < 0 ? 'down' : 'flat'), (v > 0 ? '+' : v < 0 ? '−' : '') + a + (pb ? ' pb' : '%')); }
+function xVar(v, pb) { if (v == null) return el('span', 'mkt-d flat', '—'); const a = Math.abs(v).toLocaleString('en-GB', { maximumFractionDigits: pb ? 0 : 2 }); return el('span', 'mkt-d ' + (v > 0 ? 'up' : v < 0 ? 'down' : 'flat'), (v > 0 ? '+' : v < 0 ? '−' : '') + a + (pb ? ' bp' : '%')); }
 function xCurve(c) {
-  const sv = svgEl('svg', { width: 360, height: 120, viewBox: '0 0 360 120', role: 'img', 'aria-label': 'Curva dei rendimenti USA oggi, un mese fa e un anno fa' });
+  const sv = svgEl('svg', { width: 360, height: 120, viewBox: '0 0 360 120', role: 'img', 'aria-label': 'US yield curve today, a month ago and a year ago' });
   const ks = c.scadenze, sets = [['un_anno_fa', 'var(--ink-faint)', '3 3'], ['un_mese_fa', 'var(--ink-soft)', '5 3'], ['oggi', 'var(--accent)', null]];
   const all = sets.flatMap(([k]) => ks.map(s => c[k] && c[k].v[s]).filter(v => v != null)), lo = Math.floor(Math.min(...all) * 4) / 4, hi = Math.ceil(Math.max(...all) * 4) / 4;
   const X0 = 34, X1 = 352, Y0 = 8, Y1 = 96, xs = i => X0 + i * (X1 - X0) / (ks.length - 1), ys = v => Y1 - (v - lo) / (hi - lo || 1) * (Y1 - Y0);
   for (let v = lo; v <= hi + 1e-9; v += .25) { sv.appendChild(svgEl('line', { x1: X0, x2: X1, y1: ys(v), y2: ys(v), stroke: 'var(--line)', 'stroke-width': 1 })); const t = svgEl('text', { x: 2, y: ys(v) + 3.5, 'font-size': 9.5, fill: 'var(--ink-soft)', 'font-family': 'IBM Plex Mono, monospace' }); t.textContent = v.toFixed(2) + '%'; sv.appendChild(t); }
-  ks.forEach((s, i) => { if (i % 2) return; const t = svgEl('text', { x: xs(i), y: 112, 'font-size': 9.5, 'text-anchor': 'middle', fill: 'var(--ink-soft)' }); t.textContent = s.replace(' Mo', 'm').replace(' Yr', 'a'); sv.appendChild(t); });
+  ks.forEach((s, i) => { if (i % 2) return; const t = svgEl('text', { x: xs(i), y: 112, 'font-size': 9.5, 'text-anchor': 'middle', fill: 'var(--ink-soft)' }); t.textContent = s.replace(' Mo', 'm').replace(' Yr', 'y'); sv.appendChild(t); });
   for (const [k, col, dash] of sets) { if (!c[k]) continue; const d = ks.map((s, i) => c[k].v[s] == null ? null : [xs(i), ys(c[k].v[s])]).filter(Boolean).map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(''); sv.appendChild(svgEl('path', Object.assign({ d, fill: 'none', stroke: col, 'stroke-width': k === 'oggi' ? 2 : 1.4 }, dash ? { 'stroke-dasharray': dash } : {}))); }
-  const lg = el('p', 'trm-lg'); lg.append(el('span', 'k1', 'oggi ' + c.oggi.data), ' · ', el('span', 'k2', 'un mese fa'), ' · ', el('span', 'k3', 'un anno fa'));
+  const lg = el('p', 'trm-lg'); lg.append(el('span', 'k1', 'today ' + c.oggi.data), ' · ', el('span', 'k2', 'a month ago'), ' · ', el('span', 'k3', 'a year ago'));
   const box = el('div', 'trm-curve'); box.append(sv, lg); return box;
 }
 function renderTerminal() {
@@ -2258,152 +2259,152 @@ function renderTerminal() {
   document.querySelectorAll('#trm-tabs .chip').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.tab === trmTab)));
   const P = X.data.prezzi, Cal = X.data.cal, SD = X.data.sd, PW = X.data.pw;
   if (trmTab === 'prezzi' && P) {
-    $('trm-note').textContent = 'Chiusure giornaliere, ' + (P.serie.some(s => s.provvisorio) ? 'alcune di seduta ancora aperta (segnate con *). ' : '') + 'Grafico: ultimi 3 mesi. Aggiornato ' + P.aggiornato.replace('T', ' ') + '. Non è una quotazione in tempo reale né un consiglio.';
+    $('trm-note').textContent = 'Daily closes, ' + (P.serie.some(s => s.provvisorio) ? 'some from a session still open (marked *). ' : '') + 'Chart: last 3 months. Updated ' + P.aggiornato.replace('T', ' ') + '. Not a real-time quote, nor advice.';
     for (const g of P.gruppi) {
       const rows = P.serie.filter(s => s.gruppo === g); if (!rows.length) continue;
-      body.appendChild(el('h3', 'mkt-grp', g));
-      const hd = el('div', 'trm-row trm-hd'); hd.append(el('span', 'nm', ''), el('span', null, ''), el('span', 'mkt-v', 'ultimo'), el('span', null, '1 g'), el('span', null, '1 m'), el('span', null, 'inizio anno')); body.appendChild(hd);
+      body.appendChild(el('h3', 'mkt-grp', tr(g)));
+      const hd = el('div', 'trm-row trm-hd'); hd.append(el('span', 'nm', ''), el('span', null, ''), el('span', 'mkt-v', 'last'), el('span', null, '1 d'), el('span', null, '1 m'), el('span', null, 'YTD')); body.appendChild(hd);
       for (const s of rows) {
         const pb = s.var_unita === 'punti base', r = el('a', 'trm-row'); if (s.link) { r.href = s.link; r.target = '_blank'; r.rel = 'noopener noreferrer'; }
         const sp = el('span', 'mkt-sp'), sv = xSpark(s.serie); if (sv) sp.appendChild(sv);
-        r.append(el('span', 'nm', s.nome), sp, el('span', 'mkt-v', itNumber(s.ultimo) + (s.provvisorio ? '*' : '')), xVar(s.var['1g'], pb), xVar(s.var['1m'], pb), xVar(s.var.ytd, pb));
+        r.append(el('span', 'nm', tr(s.nome)), sp, el('span', 'mkt-v', itNumber(s.ultimo) + (s.provvisorio ? '*' : '')), xVar(s.var['1g'], pb), xVar(s.var['1m'], pb), xVar(s.var.ytd, pb));
         r.title = (s.unita || '') + ' · ' + s.fonte + ' · ' + s.data; body.appendChild(r);
       }
-      if (g === 'Tassi USA' && P.curva) { body.appendChild(el('h3', 'mkt-grp', 'Curva dei rendimenti USA')); body.appendChild(xCurve(P.curva)); }
+      if (g === 'Tassi USA' && P.curva) { body.appendChild(el('h3', 'mkt-grp', 'US yield curve')); body.appendChild(xCurve(P.curva)); }
     }
   } else if (trmTab === 'agenda' && Cal) {
-    $('trm-note').textContent = 'Banche centrali, dati macro, energia, elezioni, vertici e sanzioni. Orari in UTC. Fonti ufficiali dove possibile.';
+    $('trm-note').textContent = 'Central banks, macro data, energy, elections, summits and sanctions. Times in UTC. Official sources where possible.';
     const today = new Date().toISOString().slice(0, 10), lim = new Date(Date.now() + 21 * 864e5).toISOString().slice(0, 10), past = new Date(Date.now() - 10 * 864e5).toISOString().slice(0, 10);
     const items = Cal.elementi.filter(e => e.data >= past && e.data <= lim && e.importanza !== 'bassa').sort((a, b) => (a.data + (a.ora_utc || '')).localeCompare(b.data + (b.ora_utc || '')));
     let lastD = '';
     for (const e of items) {
-      if (e.data !== lastD) { lastD = e.data; body.appendChild(el('h3', 'mkt-grp' + (e.data < today ? ' old' : ''), (e.data === today ? 'Oggi, ' : '') + dateLong(new Date(e.data + 'T12:00:00')))); }
+      if (e.data !== lastD) { lastD = e.data; body.appendChild(el('h3', 'mkt-grp' + (e.data < today ? ' old' : ''), (e.data === today ? 'Today, ' : '') + dateLong(new Date(e.data + 'T12:00:00')))); }
       const r = el('div', 'trm-ev' + (e.importanza === 'alta' ? ' hi' : '')), t = el('p', 'trm-evt');
       t.append(el('span', 'mono', e.ora_utc || '—'), ' ', e.titolo); r.appendChild(t);
-      const det = [e.valore_uscito && 'Uscito: ' + e.valore_uscito, e.valore_atteso && 'Atteso: ' + e.valore_atteso, e.valore_precedente && 'Precedente: ' + e.valore_precedente].filter(Boolean).join(' · ');
+      const det = [e.valore_uscito && 'Actual: ' + e.valore_uscito, e.valore_atteso && 'Expected: ' + e.valore_atteso, e.valore_precedente && 'Previous: ' + e.valore_precedente].filter(Boolean).join(' · ');
       if (det) r.appendChild(el('p', 'trm-evd', det));
-      if (e.link) { const a = el('a', 'trm-src', e.fonte || 'fonte'); a.href = e.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); }
+      if (e.link) { const a = el('a', 'trm-src', e.fonte || 'source'); a.href = e.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); }
       body.appendChild(r);
     }
   } else if (trmTab === 'stretti' && SD) {
-    $('trm-note').textContent = 'Cosa passa, chi è esposto e quali prezzi si muovono. Navi al giorno: IMF PortWatch, media 7 giorni. Tocca un nome per andarci.';
+    $('trm-note').textContent = 'What passes through, who is exposed and which prices move. Ships per day: IMF PortWatch, 7-day average. Tap a name to go there.';
     for (const e of SD.elementi) {
       const pw = PW && PW.elementi.find(p => p.tipo === 'chokepoint' && (e.portwatch_nomi || []).includes(p.nome_portwatch));
       const r = el('button', 'trm-st'); r.type = 'button';
-      const h = el('p', 'trm-evt'); h.append(el('b', null, e.nome), ' · ', el('span', 'trm-lv', e.stato || ''));
-      if (pw && pw.media7) { h.append(' · ' + itNum(pw.media7.n_total) + ' navi/g '); h.appendChild(xVar(pw.var7_anno_pct && pw.var7_anno_pct.n_total)); }
+      const h = el('p', 'trm-evt'); h.append(el('b', null, tr(e.nome)), ' · ', el('span', 'trm-lv', tr(e.stato || '')));
+      if (pw && pw.media7) { h.append(' · ' + itNum(pw.media7.n_total) + ' ships/day '); h.appendChild(xVar(pw.var7_anno_pct && pw.var7_anno_pct.n_total)); }
       r.appendChild(h); if (e.sintesi) r.appendChild(el('p', 'trm-evd', e.sintesi));
       r.addEventListener('click', () => { const s = D.straits.find(o => (e.chiavi_stretti || []).includes(o.n)); if (s) { if (window.innerWidth <= 640) setPanel(false); pick(s, 5.6); } else flyTo(+e.lon, +e.lat, 5.6, true); });
       body.appendChild(r);
     }
   } else if (trmTab === 'logistica' && (X.data.noli || X.data.gpr || PW)) {
-    $('trm-note').textContent = 'Noli dei container e delle rinfuse, rischio geopolitico e traffico nei porti italiani. Valori dalle pagine pubbliche, con la data di ciascuno.';
-    if (X.data.noli) { body.appendChild(el('h3', 'mkt-grp', 'Noli'));
+    $('trm-note').textContent = 'Container and bulk freight rates, geopolitical risk and traffic in Italian ports. Values from public pages, each with its date.';
+    if (X.data.noli) { body.appendChild(el('h3', 'mkt-grp', 'Freight rates'));
       for (const n of X.data.noli.elementi) { const r = el('a', 'trm-row'); if (n.link) { r.href = n.link; r.target = '_blank'; r.rel = 'noopener noreferrer'; } const sp = el('span', 'mkt-sp'), sv = xSpark(n.storico, 60); if (sv) sp.appendChild(sv);
-        r.append(el('span', 'nm', n.nome.replace(/\s*\(.*\)$/, '').replace('Freightos Baltic Index FBX', 'Freightos FBX').replace('Drewry World Container Index', 'Drewry WCI').replace('Shanghai Containerized Freight Index SCFI', 'SCFI Shanghai').replace('China Containerized Freight Index CCFI', 'CCFI Cina')), sp, el('span', 'mkt-v', itNumber(+n.valore)), xVar(n.var_pct != null ? +n.var_pct : null), el('span', 'mkt-d flat', n.data ? n.data.slice(5) : ''), el('span', 'mkt-d flat', ''));
+        r.append(el('span', 'nm', n.nome.replace(/\s*\(.*\)$/, '').replace('Freightos Baltic Index FBX', 'Freightos FBX').replace('Drewry World Container Index', 'Drewry WCI').replace('Shanghai Containerized Freight Index SCFI', 'SCFI Shanghai').replace('China Containerized Freight Index CCFI', 'CCFI China')), sp, el('span', 'mkt-v', itNumber(+n.valore)), xVar(n.var_pct != null ? +n.var_pct : null), el('span', 'mkt-d flat', n.data ? n.data.slice(5) : ''), el('span', 'mkt-d flat', ''));
         r.title = (n.unita || '') + ' · ' + n.fonte; body.appendChild(r); } }
-    if (X.data.gpr) { const g = X.data.gpr.elementi.find(e => e.id === 'GPRD') || X.data.gpr.elementi[0]; body.appendChild(el('h3', 'mkt-grp', 'Rischio geopolitico (GPR, media 1985–2019 = 100)'));
-      const p1 = el('p', 'trm-evd'); p1.append(el('b', null, 'Media 30 giorni: ' + itNum(+g.media30)), ' (un anno prima ' + itNum(+g.media30_anno_prima) + '). Ultimo dato ' + g.data + ': ' + itNum(+g.ultimo) + '.'); body.appendChild(p1);
-      if (g.serie) body.appendChild(xWeekly(g.serie, 7, 'GPR, media settimanale')); }
-    if (PW) { body.appendChild(el('h3', 'mkt-grp', 'Porti italiani: navi in arrivo, media 7 giorni'));
+    if (X.data.gpr) { const g = X.data.gpr.elementi.find(e => e.id === 'GPRD') || X.data.gpr.elementi[0]; body.appendChild(el('h3', 'mkt-grp', 'Geopolitical risk (GPR, 1985–2019 average = 100)'));
+      const p1 = el('p', 'trm-evd'); p1.append(el('b', null, '30-day average: ' + itNum(+g.media30)), ' (a year earlier ' + itNum(+g.media30_anno_prima) + '). Latest reading ' + g.data + ': ' + itNum(+g.ultimo) + '.'); body.appendChild(p1);
+      if (g.serie) body.appendChild(xWeekly(g.serie, 7, 'GPR, weekly average')); }
+    if (PW) { body.appendChild(el('h3', 'mkt-grp', 'Italian ports: port calls, 7-day average'));
       for (const e of PW.elementi.filter(e => e.tipo !== 'chokepoint')) { const r = el('div', 'trm-row'), v = e.var7_anno_pct && e.var7_anno_pct.portcalls;
         const sp = el('span', 'mkt-sp'), sv = e.serie && e.serie.portcalls ? xSpark(e.serie.portcalls, 120) : null; if (sv) sp.appendChild(sv);
-        r.append(el('span', 'nm', e.nome), sp, el('span', 'mkt-v', e.media7 && e.media7.portcalls != null ? itNum(e.media7.portcalls) : '—'), xVar(v != null ? v : null), el('span', 'mkt-d flat', 'su 1 anno'), el('span', 'mkt-d flat', '')); body.appendChild(r); } }
+        r.append(el('span', 'nm', tr(e.nome)), sp, el('span', 'mkt-v', e.media7 && e.media7.portcalls != null ? itNum(e.media7.portcalls) : '—'), xVar(v != null ? v : null), el('span', 'mkt-d flat', 'y/y'), el('span', 'mkt-d flat', '')); body.appendChild(r); } }
   } else if (trmTab === 'scorte' && X.data.scorte) {
-    const S = X.data.scorte; $('trm-note').textContent = S.nota || '';
+    const S = X.data.scorte; $('trm-note').textContent = 'Strategic stocks: EU gas (AGSI+ daily, or Eurostat monthly), US oil (EIA weekly, million barrels), EU emergency oil stocks (days), wheat (USDA PSD, ending stocks), central-bank gold (IMF, tonnes). Change shown against a year earlier.';
     const grp = {}; for (const e of S.elementi) (grp[e.gruppo] = grp[e.gruppo] || []).push(e);
-    for (const g in grp) { body.appendChild(el('h3', 'mkt-grp', g));
+    for (const g in grp) { body.appendChild(el('h3', 'mkt-grp', tr(g)));
       for (const e of grp[g]) { const r = el('a', 'trm-row'); if (e.link) { r.href = e.link; r.target = '_blank'; r.rel = 'noopener noreferrer'; }
         const sp = el('span', 'mkt-sp'), sv = xSpark(e.serie, 60); if (sv) sp.appendChild(sv); const u = e.ultimo || {};
-        const nm = e.nome.replace(/ – .*$/, '').replace(/\s*\(.*\)$/, '');
+        const nm = trStock(e.nome).replace(/ – .*$/, '').replace(/\s*\(.*\)$/, '');
         const ya = e.confronto && e.confronto.var_anno_pct != null ? +e.confronto.var_anno_pct : (u.var_anno_pct != null ? +u.var_anno_pct : null);
         r.append(el('span', 'nm', nm), sp, el('span', 'mkt-v', u.valore != null ? itNumber(+u.valore) : '—'), xVar(ya), el('span', 'mkt-d flat', (u.data || '').slice(0, 7)), el('span', 'mkt-d flat', ''));
         r.title = (e.unita || '') + ' · ' + e.fonte + (e.note ? ' · ' + e.note : ''); body.appendChild(r); } }
   } else if (trmTab === 'paesi' && X.data.paesi) {
-    $('trm-note').textContent = 'Indicatori per paese: FMI (WEO ottobre 2026), Banca Mondiale, SIPRI, Eurostat, UN Comtrade, Energy Institute. Scegli un paese.';
-    const P2 = X.data.paesi.elementi.slice().sort((a, b) => a.nome.localeCompare(b.nome, 'it')), sel2 = el('select', 'trm-sel');
-    for (const c of P2) { const o = el('option', null, c.nome); o.value = c.paese; sel2.appendChild(o); }
+    $('trm-note').textContent = 'Country indicators: IMF (WEO October 2026), World Bank, SIPRI, Eurostat, UN Comtrade, Energy Institute. Choose a country.';
+    const P2 = X.data.paesi.elementi.slice().sort((a, b) => tr(a.nome).localeCompare(tr(b.nome), 'en')), sel2 = el('select', 'trm-sel');
+    for (const c of P2) { const o = el('option', null, tr(c.nome)); o.value = c.paese; sel2.appendChild(o); }
     sel2.value = xPaese; body.appendChild(sel2); const box = el('div'); body.appendChild(box);
     const show = iso => { xPaese = iso; box.textContent = ''; const c = P2.find(x => x.paese === iso); if (!c) return; const I = c.indicatori || {}, dl = el('dl', 'facts');
       const f = (k, v) => { if (v == null || v === '') return; dl.append(el('dt', null, k), el('dd', null, v)); };
       const val = (k, fmt) => { const o = I[k]; if (!o || o.valore == null) return null; return fmt(o.valore) + ' (' + o.anno + ')'; };
-      const big = v => v >= 1e12 ? itNum(v / 1e12) + ' mila mld $' : v >= 1e9 ? itNum(v / 1e9) + ' mld $' : itNum(v / 1e6) + ' mln $';
-      f('PIL', val('pil_usd', big)); f('Crescita', [val('crescita_pil', v => itNum(v) + '%'), val('crescita_pil_previsione', v => 'prev. ' + itNum(v) + '%')].filter(Boolean).join(' · '));
-      f('Inflazione', [val('inflazione', v => itNum(v) + '%'), val('inflazione_previsione', v => 'prev. ' + itNum(v) + '%')].filter(Boolean).join(' · '));
-      f('Debito pubblico', val('debito_pubblico_pil', v => itNum(v) + '% del PIL')); f('Partite correnti', val('partite_correnti_pil', v => itNum(v) + '% del PIL'));
-      f('Popolazione', val('popolazione', v => itNum(v / 1e6) + ' milioni')); f('Spesa militare', [val('spesa_militare_pil', v => itNum(v) + '% del PIL'), val('spesa_militare_usd', big)].filter(Boolean).join(' · '));
-      f('Dipendenza energetica', [val('dipendenza_energetica', v => 'totale ' + itNum(v) + '%'), val('dipendenza_gas', v => 'gas ' + itNum(v) + '%'), val('dipendenza_petrolio', v => 'petrolio ' + itNum(v) + '%')].filter(Boolean).join(' · '));
-      f('Petrolio e gas, produzione', [val('petrolio_produzione', v => 'petrolio ' + itNum(v) + ' TWh'), val('gas_produzione', v => 'gas ' + itNum(v) + ' TWh')].filter(Boolean).join(' · '));
-      const top = k => { const o = I[k]; return o && Array.isArray(o.valore) ? o.valore.slice(0, 5).map(x => x.nome + ' ' + itNum(x.quota_pct) + '%').join(', ') + ' (' + o.anno + ')' : null; };
-      f('Primi clienti', top('partner_export')); f('Primi fornitori', top('partner_import')); f('Fornitori di greggio', top('fornitori_greggio')); f('Fornitori di GNL', top('fornitori_gnl'));
+      const big = v => v >= 1e12 ? '$' + itNum(v / 1e12) + ' tn' : v >= 1e9 ? '$' + itNum(v / 1e9) + ' bn' : '$' + itNum(v / 1e6) + ' m';
+      f('GDP', val('pil_usd', big)); f('Growth', [val('crescita_pil', v => itNum(v) + '%'), val('crescita_pil_previsione', v => 'fcst ' + itNum(v) + '%')].filter(Boolean).join(' · '));
+      f('Inflation', [val('inflazione', v => itNum(v) + '%'), val('inflazione_previsione', v => 'fcst ' + itNum(v) + '%')].filter(Boolean).join(' · '));
+      f('Public debt', val('debito_pubblico_pil', v => itNum(v) + '% of GDP')); f('Current account', val('partite_correnti_pil', v => itNum(v) + '% of GDP'));
+      f('Population', val('popolazione', v => itNum(v / 1e6) + ' million')); f('Military spending', [val('spesa_militare_pil', v => itNum(v) + '% of GDP'), val('spesa_militare_usd', big)].filter(Boolean).join(' · '));
+      f('Energy import dependency', [val('dipendenza_energetica', v => 'total ' + itNum(v) + '%'), val('dipendenza_gas', v => 'gas ' + itNum(v) + '%'), val('dipendenza_petrolio', v => 'oil ' + itNum(v) + '%')].filter(Boolean).join(' · '));
+      f('Oil and gas production', [val('petrolio_produzione', v => 'oil ' + itNum(v) + ' TWh'), val('gas_produzione', v => 'gas ' + itNum(v) + ' TWh')].filter(Boolean).join(' · '));
+      const top = k => { const o = I[k]; return o && Array.isArray(o.valore) ? o.valore.slice(0, 5).map(x => tr(x.nome) + ' ' + itNum(x.quota_pct) + '%').join(', ') + ' (' + o.anno + ')' : null; };
+      f('Top export markets', top('partner_export')); f('Top suppliers', top('partner_import')); f('Crude suppliers', top('fornitori_greggio')); f('LNG suppliers', top('fornitori_gnl'));
       const hz = k => { const o = I[k]; return o && o.valore ? itNum(o.valore.min_pct) + (o.valore.max_pct !== o.valore.min_pct ? '–' + itNum(o.valore.max_pct) : '') + '% (' + o.anno + ')' : null; };
-      f('Greggio dal Golfo Persico', hz('quota_greggio_golfo_persico')); f('GNL dal Golfo Persico', hz('quota_gnl_golfo_persico'));
-      const CO = X.data.com && X.data.com.elementi.find(x => x.iso2 === iso); if (CO) { const top = (arr, n) => (arr || []).slice(0, n).map(x => (x.nome || x.partner) + ' ' + itNum(x.quota) + '%').join(', ');
-        f('Cosa esporta (' + CO.anno + ')', top(CO.export_prodotti, 5)); f('Cosa importa', top(CO.import_prodotti, 5)); f('Risorse', (CO.risorse || []).slice(0, 5).map(r => r.risorsa.replace(/, produzione$/, '') + (r.quota != null ? ' ' + itNum(r.quota) + '% mondo' : '')).join(', ')); }
-      box.appendChild(dl); if (c.buchi && c.buchi.length) box.appendChild(el('p', 'trm-evd', 'Dati mancanti: ' + c.buchi.join('; ')));
-      const lab = D.countries.find(x => x.n === c.nome); if (lab) { const b = el('button', 'chip', 'Vai sulla mappa'); b.type = 'button'; b.addEventListener('click', () => flyTo(lab.x, lab.y, 4.2, true)); box.appendChild(b); } };
+      f('Crude from the Persian Gulf', hz('quota_greggio_golfo_persico')); f('LNG from the Persian Gulf', hz('quota_gnl_golfo_persico'));
+      const CO = X.data.com && X.data.com.elementi.find(x => x.iso2 === iso); if (CO) { const top = (arr, n) => (arr || []).slice(0, n).map(x => tr(x.nome || x.partner) + ' ' + itNum(x.quota) + '%').join(', ');
+        f('Main exports (' + CO.anno + ')', top(CO.export_prodotti, 5)); f('Main imports', top(CO.import_prodotti, 5)); f('Resources', (CO.risorse || []).slice(0, 5).map(r => r.risorsa.replace(/, produzione$/, '') + (r.quota != null ? ' ' + itNum(r.quota) + '% of world' : '')).join(', ')); }
+      box.appendChild(dl); if (c.buchi && c.buchi.length) box.appendChild(el('p', 'trm-evd', 'Missing data: ' + c.buchi.join('; ')));
+      const lab = D.countries.find(x => x.n === c.nome); if (lab) { const b = el('button', 'chip', 'Go to it on the map'); b.type = 'button'; b.addEventListener('click', () => flyTo(lab.x, lab.y, 4.2, true)); box.appendChild(b); } };
     sel2.addEventListener('change', () => show(sel2.value)); show(xPaese);
   } else if (trmTab === 'ucraina' && X.data.ua) {
-    const U = X.data.ua, R = U.riepilogo || {}; $('trm-note').textContent = 'Missili e droni lanciati dalla Russia e abbattuti, dai comunicati dell’Aeronautica ucraina (dataset di P. Ivaniuk, CC BY-NC-SA). Dal ' + R.primo_giorno + ' al ' + R.ultimo_giorno + '.';
-    const p1 = el('p', 'trm-evd'); p1.append(el('b', null, itNum(R.lanciati_totali) + ' lanciati, ' + itNum(R.abbattuti_totali) + ' abbattuti (' + itNum(R.tasso_abbattimento_pct) + '%)'), '. Il tasso di abbattimento non è confrontabile prima e dopo agosto 2025: è cambiato il modo di contare i droni persi per guerra elettronica.'); body.appendChild(p1);
-    body.appendChild(el('h3', 'mkt-grp', 'Lanciati al mese')); body.appendChild(xBars((U.mensile && U.mensile.totale) || []));
+    const U = X.data.ua, R = U.riepilogo || {}; $('trm-note').textContent = 'Missiles and drones launched by Russia and shot down, from Ukrainian Air Force statements (P. Ivaniuk dataset, CC BY-NC-SA). From ' + R.primo_giorno + ' to ' + R.ultimo_giorno + '.';
+    const p1 = el('p', 'trm-evd'); p1.append(el('b', null, itNum(R.lanciati_totali) + ' launched, ' + itNum(R.abbattuti_totali) + ' shot down (' + itNum(R.tasso_abbattimento_pct) + '%)'), '. The interception rate is not comparable before and after August 2025: the way drones lost to electronic warfare are counted changed.'); body.appendChild(p1);
+    body.appendChild(el('h3', 'mkt-grp', 'Launched per month')); body.appendChild(xBars((U.mensile && U.mensile.totale) || []));
     const FS = X.data.fs; if (FS && FS.serie_km2) { const last = FS.serie_km2[FS.serie_km2.length - 1], ist = FS.istantanee[FS.istantanee.length - 1];
-      body.appendChild(el('h3', 'mkt-grp', 'Territorio ucraino controllato dalla Russia, km²'));
-      const p2 = el('p', 'trm-evd'); p2.append(el('b', null, itNum(last[1]) + ' km² al ' + last[0]), (ist && ist.pct_ucraina ? ' (' + itNum(ist.pct_ucraina) + '% dell’Ucraina)' : '') + '. Prima dell’invasione: ' + itNum(FS.serie_km2[0][1]) + ' km². Fonti: ISW/CTP per febbraio–marzo 2022, poi DeepStateMap (aree unite e semplificate).'); body.appendChild(p2);
-      body.appendChild(xWeekly(FS.serie_km2, 1, 'Territorio controllato dalla Russia'));
-      if (Array.isArray(FS.per_anno)) { const t = FS.per_anno.map(v => v.anno + ': ' + (v.netto_km2 > 0 ? '+' : '') + itNum(v.netto_km2) + ' km²').join(' · '); body.appendChild(el('p', 'trm-evd', 'Saldo per anno: ' + t)); }
-      body.appendChild(el('h3', 'mkt-grp', 'Momenti chiave'));
-      for (const m of (FS.momenti_chiave || []).slice().reverse()) { const r = el('div', 'trm-ev'); const t = el('p', 'trm-evt'); t.append(el('span', 'mono', m.data), ' ', m.titolo); r.appendChild(t); if (m.descrizione) r.appendChild(el('p', 'trm-evd', m.descrizione)); if (m.link) { const a = el('a', 'trm-src', m.fonte || 'fonte'); a.href = m.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); } body.appendChild(r); } }
-    if (U.ondate_rete_ucraina) { body.appendChild(el('h3', 'mkt-grp', 'Ondate contro la rete elettrica ucraina'));
-      for (const o of U.ondate_rete_ucraina.slice().reverse()) { const r = el('div', 'trm-ev hi'); const t = el('p', 'trm-evt'); t.append(el('span', 'mono', o.data), ' ', o.nome); r.appendChild(t); if (o.danni_dichiarati) r.appendChild(el('p', 'trm-evd', o.danni_dichiarati)); if (o.link) { const a = el('a', 'trm-src', o.fonte || 'fonte'); a.href = o.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); } body.appendChild(r); } }
-    const b2 = el('button', 'chip', L.xua ? 'Attacchi in Russia già sulla mappa' : 'Mostra sulla mappa gli attacchi ucraini in Russia (' + (X.pts.xua || []).length + ')'); b2.type = 'button'; b2.addEventListener('click', () => { L.xua = true; $('lyr-xua').checked = true; refilter(); fitView([22, 42, 60, 62], true); }); body.appendChild(b2);
+      body.appendChild(el('h3', 'mkt-grp', 'Ukrainian territory controlled by Russia, km²'));
+      const p2 = el('p', 'trm-evd'); p2.append(el('b', null, itNum(last[1]) + ' km² on ' + last[0]), (ist && ist.pct_ucraina ? ' (' + itNum(ist.pct_ucraina) + '% of Ukraine)' : '') + '. Before the invasion: ' + itNum(FS.serie_km2[0][1]) + ' km². Sources: ISW/CTP for February–March 2022, then DeepStateMap (areas merged and simplified).'); body.appendChild(p2);
+      body.appendChild(xWeekly(FS.serie_km2, 1, 'Territory controlled by Russia'));
+      if (Array.isArray(FS.per_anno)) { const t = FS.per_anno.map(v => v.anno + ': ' + (v.netto_km2 > 0 ? '+' : '') + itNum(v.netto_km2) + ' km²').join(' · '); body.appendChild(el('p', 'trm-evd', 'Net change per year: ' + t)); }
+      body.appendChild(el('h3', 'mkt-grp', 'Key moments'));
+      for (const m of (FS.momenti_chiave || []).slice().reverse()) { const r = el('div', 'trm-ev'); const t = el('p', 'trm-evt'); t.append(el('span', 'mono', m.data), ' ', m.titolo); r.appendChild(t); if (m.descrizione) r.appendChild(el('p', 'trm-evd', m.descrizione)); if (m.link) { const a = el('a', 'trm-src', m.fonte || 'source'); a.href = m.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); } body.appendChild(r); } }
+    if (U.ondate_rete_ucraina) { body.appendChild(el('h3', 'mkt-grp', 'Waves of strikes on the Ukrainian power grid'));
+      for (const o of U.ondate_rete_ucraina.slice().reverse()) { const r = el('div', 'trm-ev hi'); const t = el('p', 'trm-evt'); t.append(el('span', 'mono', o.data), ' ', o.nome); r.appendChild(t); if (o.danni_dichiarati) r.appendChild(el('p', 'trm-evd', o.danni_dichiarati)); if (o.link) { const a = el('a', 'trm-src', o.fonte || 'source'); a.href = o.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; r.appendChild(a); } body.appendChild(r); } }
+    const b2 = el('button', 'chip', L.xua ? 'Strikes in Russia already on the map' : 'Show Ukrainian strikes in Russia on the map (' + (X.pts.xua || []).length + ')'); b2.type = 'button'; b2.addEventListener('click', () => { L.xua = true; $('lyr-xua').checked = true; refilter(); fitView([22, 42, 60, 62], true); }); body.appendChild(b2);
   } else if (trmTab === 'rischio' && X.data.rk) {
-    const RK = X.data.rk; $('trm-note').innerHTML = ''; $('trm-note').append('Rischio = probabilità × impatto (1–5 ciascuno, punteggio fino a 25), calcolato ogni giorno da indicatori misurabili: transiti, attacchi vicini, clima geopolitico, prezzi, alternative, scorte. Aggiornato ' + (RK.data_riferimento || RK.aggiornato) + '. ');
-    const ml = el('a', 'trm-src', 'Il metodo'); ml.href = 'https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/metodo-rischio.md'; ml.target = '_blank'; $('trm-note').appendChild(ml);
+    const RK = X.data.rk; $('trm-note').innerHTML = ''; $('trm-note').append('Risk = likelihood × impact (1–5 each, score up to 25), computed daily from measurable indicators: transits, nearby attacks, geopolitical climate, prices, alternatives, stocks. Updated ' + (RK.data_riferimento || RK.aggiornato) + '. ');
+    const ml = el('a', 'trm-src', 'Methodology (Italian)'); ml.href = 'https://github.com/gabrielegiuliani04/monitor-geoeconomico/blob/main/report/metodo-rischio.md'; ml.target = '_blank'; $('trm-note').appendChild(ml);
     body.appendChild(xMatrix(RK.unita));
     const U = RK.unita.slice().sort((a, b) => b.punteggio - a.punteggio), col = { basso: 'rk0', medio: 'rk1', alto: 'rk2', critico: 'rk3' };
     U.forEach((u, k) => { const r = el('button', 'trm-st'); r.type = 'button'; const h = el('p', 'trm-evt'), dot = el('span', 'rk-dot'); dot.style.background = 'var(--' + col[u.livello] + ')';
-      h.append(dot, el('span', 'mono', (k + 1) + ' '), el('b', null, u.nome), ' · ' + u.livello + ' · ' + itNum(+u.punteggio) + (u.tendenza && u.tendenza !== 'stabile' ? ' · ' + u.tendenza : '')); r.appendChild(h); if (u.perche) r.appendChild(el('p', 'trm-evd', u.perche));
+      h.append(dot, el('span', 'mono', (k + 1) + ' '), el('b', null, tr(u.nome)), ' · ' + tr(u.livello) + ' · ' + itNum(+u.punteggio) + (u.tendenza && u.tendenza !== 'stabile' ? ' · ' + tr(u.tendenza) : '')); r.appendChild(h); if (u.perche) r.appendChild(el('p', 'trm-evd', u.perche));
       r.addEventListener('click', () => { const p = (X.pts.xrisk || []).find(q => q.d.id === u.id); if (p) { if (window.innerWidth <= 640) setPanel(false); pick(p, 4.6); } }); body.appendChild(r); });
   } else if (trmTab === 'nord' && X.data.en) {
-    $('trm-note').textContent = 'Paesi Bassi, Danimarca, Germania, Polonia, Baltici, Paesi nordici: da dove arriva il gas, porti, collegamenti e rischi. Più il costo di un viaggio con carburante, ETS e FuelEU.';
-    const b0 = el('button', 'chip', 'Vai sul Mare del Nord e Baltico'); b0.type = 'button'; b0.addEventListener('click', () => fitView([-6, 50, 32, 66], true)); body.appendChild(b0);
-    for (const c of X.data.en.elementi) { body.appendChild(el('h3', 'mkt-grp', c.nome + (c.livello ? ' · esposizione ' + c.livello : ''))); const dl = el('dl', 'facts'), f = (k, v) => { if (v) dl.append(el('dt', null, k), el('dd', null, Array.isArray(v) ? v.join(' · ') : String(v))); };
-      const dp = c.dipendenza_importazioni_pct || {}; f('Dipendenza dalle importazioni', ['gas', 'petrolio', 'totale'].filter(k => dp[k]).map(k => k + ' ' + itNum(dp[k].pct) + '%').join(' · '));
-      f('Gas', c.gas); if (c.gnl && c.gnl.quota_usa_pct != null) f('GNL', 'USA ' + c.gnl.quota_usa_pct + '%' + (c.gnl.quota_russia_pct != null ? ' · Russia ' + c.gnl.quota_russia_pct + '%' : '') + (c.gnl.periodo ? ' (' + c.gnl.periodo + ')' : '')); f('Porti', c.porti); f('Collegamenti', c.cavi_interconnessioni); f('Rischi', c.rischi); body.appendChild(dl); }
-    const B = X.data.bk; if (B && B.esempi_costo) { body.appendChild(el('h3', 'mkt-grp', 'Quanto pesano carburante, ETS e FuelEU su un viaggio'));
-      for (const e of B.esempi_costo) { const r = el('div', 'trm-ev'); r.appendChild(el('p', 'trm-evt', e.nome)); r.appendChild(el('p', 'trm-evd', 'Carburante ' + itNum(e.costo_carburante_eur / 1e6) + ' mln € · ETS ' + itNum(e.costo_ets_eur / 1e6) + ' mln € (' + itNum(e.quota_ets_su_totale_pct) + '%) · FuelEU al massimo ' + itNum(e.costo_fueleu_max_eur / 1e6) + ' mln €. Ipotesi: ' + e.ipotesi)); body.appendChild(r); }
-      if (B.eua) body.appendChild(el('p', 'trm-evd', 'Prezzo della quota ETS (EUA): ' + JSON.stringify(B.eua).match(/\d+[.,]\d+/) + ' € (asta EEX)')); }
+    $('trm-note').textContent = 'The Netherlands, Denmark, Germany, Poland, the Baltic states and the Nordics: where the gas comes from, ports, links and risks. Plus the cost of a voyage with fuel, ETS and FuelEU.';
+    const b0 = el('button', 'chip', 'Go to the North Sea and Baltic'); b0.type = 'button'; b0.addEventListener('click', () => fitView([-6, 50, 32, 66], true)); body.appendChild(b0);
+    for (const c of X.data.en.elementi) { body.appendChild(el('h3', 'mkt-grp', tr(c.nome) + (c.livello ? ' · exposure ' + tr(c.livello) : ''))); const dl = el('dl', 'facts'), f = (k, v) => { if (v) dl.append(el('dt', null, k), el('dd', null, Array.isArray(v) ? v.join(' · ') : String(v))); };
+      const dp = c.dipendenza_importazioni_pct || {}; f('Import dependency', ['gas', 'petrolio', 'totale'].filter(k => dp[k]).map(k => ({ gas: 'gas', petrolio: 'oil', totale: 'total' }[k]) + ' ' + itNum(dp[k].pct) + '%').join(' · '));
+      f('Gas', c.gas); if (c.gnl && c.gnl.quota_usa_pct != null) f('LNG', 'US ' + c.gnl.quota_usa_pct + '%' + (c.gnl.quota_russia_pct != null ? ' · Russia ' + c.gnl.quota_russia_pct + '%' : '') + (c.gnl.periodo ? ' (' + c.gnl.periodo + ')' : '')); f('Ports', c.porti); f('Links', c.cavi_interconnessioni); f('Risks', c.rischi); body.appendChild(dl); }
+    const B = X.data.bk; if (B && B.esempi_costo) { body.appendChild(el('h3', 'mkt-grp', 'How much fuel, ETS and FuelEU weigh on a voyage'));
+      for (const e of B.esempi_costo) { const r = el('div', 'trm-ev'); r.appendChild(el('p', 'trm-evt', e.nome)); r.appendChild(el('p', 'trm-evd', 'Fuel €' + itNum(e.costo_carburante_eur / 1e6) + ' m · ETS €' + itNum(e.costo_ets_eur / 1e6) + ' m (' + itNum(e.quota_ets_su_totale_pct) + '%) · FuelEU at most €' + itNum(e.costo_fueleu_max_eur / 1e6) + ' m. Assumptions: ' + e.ipotesi)); body.appendChild(r); }
+      if (B.eua) body.appendChild(el('p', 'trm-evd', 'ETS allowance price (EUA): €' + JSON.stringify(B.eua).match(/\d+[.,]\d+/) + ' (EEX auction)')); }
   } else if (trmTab === 'minerali' && X.data.min) {
-    $('trm-note').textContent = 'Chi produce le materie prime critiche e le dipendenze dell’UE e dell’Italia (prodotti dove un solo paese fornisce oltre il 50%). Fonti: USGS 2026, EIA, UN Comtrade.';
-    const DEP = X.data.com && X.data.com.dipendenze; if (DEP) { body.appendChild(el('h3', 'mkt-grp', 'Dipendenze critiche')); body.appendChild(el('p', 'trm-evd', 'Attenzione: negli acquisti da altri paesi UE il fornitore è il paese di spedizione, non di origine (es. litio «dalla Germania», nichel «dai Paesi Bassi» vengono in realtà da fuori UE).')); const arr = Array.isArray(DEP) ? DEP : Object.values(DEP).flat(); for (const d of arr.slice(0, 20)) { const r = el('div', 'trm-ev hi'); const f0 = (d.fornitori || [])[0] || {}; r.appendChild(el('p', 'trm-evt', d.importatore + ' · ' + d.prodotto + ' → ' + (PAESI[f0.iso2] || f0.partner || '') + ' ' + (f0.quota != null ? itNum(f0.quota) + '%' : '') + ' (' + d.anno + ')')); body.appendChild(r); } }
-    body.appendChild(el('h3', 'mkt-grp', 'Primi produttori'));
+    $('trm-note').textContent = 'Who produces the critical raw materials, and the dependencies of the EU and Italy (products where a single country supplies more than 50%). Sources: USGS 2026, EIA, UN Comtrade.';
+    const DEP = X.data.com && X.data.com.dipendenze; if (DEP) { body.appendChild(el('h3', 'mkt-grp', 'Critical dependencies')); body.appendChild(el('p', 'trm-evd', 'Note: for purchases from other EU countries the supplier is the country of consignment, not of origin (e.g. lithium “from Germany” or nickel “from the Netherlands” actually come from outside the EU).')); const arr = Array.isArray(DEP) ? DEP : Object.values(DEP).flat(); for (const d of arr.slice(0, 20)) { const r = el('div', 'trm-ev hi'); const f0 = (d.fornitori || [])[0] || {}; r.appendChild(el('p', 'trm-evt', tr(d.importatore) + ' · ' + d.prodotto + ' → ' + (PAESI[f0.iso2] || tr(f0.partner) || '') + ' ' + (f0.quota != null ? itNum(f0.quota) + '%' : '') + ' (' + d.anno + ')')); body.appendChild(r); } }
+    body.appendChild(el('h3', 'mkt-grp', 'Top producers'));
     for (const m of X.data.min.elementi) { const r = el('div', 'trm-ev'), t = el('p', 'trm-evt'); t.append(el('b', null, m.minerale), ' (' + m.anno + ')'); r.appendChild(t); r.appendChild(el('p', 'trm-evd', (m.produttori || []).slice(0, 4).map(p => (PAESI[p.iso2] || p.iso2) + ' ' + itNum(p.quota) + '%').join(' · '))); body.appendChild(r); }
   } else if (trmTab === 'notizie' && X.data.nt) {
-    const N = X.data.nt; $('trm-note').textContent = 'Notizie degli ultimi 7 giorni da ' + ((N.stato_fonti || []).length || 35) + ' fonti aperte (sicurezza marittima, conflitti, energia e logistica, banche centrali). Tutte da verificare: diventano eventi in mappa solo con due fonti indipendenti.';
+    const N = X.data.nt; $('trm-note').textContent = 'News from the last 7 days from ' + ((N.stato_fonti || []).length || 35) + ' open sources (maritime security, conflicts, energy and logistics, central banks). All unverified: they become map events only with two independent sources. Headlines are shown in their original language.';
     const ids = new Set(N.in_evidenza || []), top = N.elementi.filter(e => ids.has(e.id)), rest = N.elementi.filter(e => !ids.has(e.id) && e.possibile_evento).slice(0, 25);
-    for (const [tit, arr] of [['In evidenza', top], ['Possibili eventi nuovi', rest]]) { if (!arr.length) continue; body.appendChild(el('h3', 'mkt-grp', tit));
+    for (const [tit, arr] of [['Highlights', top], ['Possible new events', rest]]) { if (!arr.length) continue; body.appendChild(el('h3', 'mkt-grp', tit));
       for (const e of arr) { const r = el('div', 'trm-ev' + (e.possibile_evento ? ' hi' : '')), t = el('p', 'trm-evt'); t.append(el('span', 'mono', (e.data_utc || '').slice(5, 16).replace('T', ' ')), ' ', e.titolo); r.appendChild(t);
-        const meta = [e.fonte, e.n_editori_gruppo > 1 ? e.n_editori_gruppo + ' editori' : '', (e.temi || []).slice(0, 3).join(', '), (e.forse_gia_in_mappa || []).length ? 'forse già in mappa' : ''].filter(Boolean).join(' · '); r.appendChild(el('p', 'trm-evd', meta));
-        const row = el('p', 'trm-evd'); if (e.link) { const a = el('a', 'trm-src', 'apri la fonte'); a.href = e.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; row.appendChild(a); }
-        if (e.lat != null && e.lat !== '') { const b = el('button', 'chip', 'sulla mappa'); b.type = 'button'; b.style.marginLeft = '8px'; b.addEventListener('click', () => { const z = e.precisione_km > 200 ? 4 : 5.6; setPin({ lat: +e.lat, lon: +e.lon }, true); flyTo(+e.lon, +e.lat, z, true); }); row.appendChild(b); }
+        const meta = [e.fonte, e.n_editori_gruppo > 1 ? e.n_editori_gruppo + ' publishers' : '', (e.temi || []).slice(0, 3).map(t => TEMI_EN[t] || t).join(', '), (e.forse_gia_in_mappa || []).length ? 'possibly already on the map' : ''].filter(Boolean).join(' · '); r.appendChild(el('p', 'trm-evd', meta));
+        const row = el('p', 'trm-evd'); if (e.link) { const a = el('a', 'trm-src', 'open the source'); a.href = e.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; row.appendChild(a); }
+        if (e.lat != null && e.lat !== '') { const b = el('button', 'chip', 'on the map'); b.type = 'button'; b.style.marginLeft = '8px'; b.addEventListener('click', () => { const z = e.precisione_km > 200 ? 4 : 5.6; setPin({ lat: +e.lat, lon: +e.lon }, true); flyTo(+e.lon, +e.lat, z, true); }); row.appendChild(b); }
         r.appendChild(row); body.appendChild(r); } }
-  } else body.appendChild(el('p', 'empty', 'Dati non disponibili.'));
+  } else body.appendChild(el('p', 'empty', 'Data not available.'));
 }
 function xBars(rows) {                                    // monthly bars: [month, launched, downed, rate]
   if (!rows.length) return ''; const W = 300, H = 80, n = rows.length, mx = Math.max(...rows.map(r => r[1])), bw = (W - 4) / n;
-  const sv = svgEl('svg', { width: '100%', viewBox: `0 0 ${W} ${H + 14}`, role: 'img', 'aria-label': 'Missili e droni lanciati al mese' });
+  const sv = svgEl('svg', { width: '100%', viewBox: `0 0 ${W} ${H + 14}`, role: 'img', 'aria-label': 'Missiles and drones launched per month' });
   rows.forEach((r, i) => { const hh = r[1] / mx * (H - 4); sv.appendChild(svgEl('rect', { x: 2 + i * bw, y: H - hh, width: Math.max(1, bw - .6), height: hh, fill: 'var(--ev1)' })); const hd = r[2] / mx * (H - 4); sv.appendChild(svgEl('rect', { x: 2 + i * bw, y: H - hd, width: Math.max(1, bw - .6), height: hd, fill: 'var(--ink-faint)', 'fill-opacity': .55 }));
     if (r[0].endsWith('-01')) { const t = svgEl('text', { x: 2 + i * bw, y: H + 11, 'font-size': 9, fill: 'var(--ink-soft)' }); t.textContent = r[0].slice(0, 4); sv.appendChild(t); } });
-  const t = svgEl('text', { x: W - 2, y: 9, 'font-size': 9, 'text-anchor': 'end', fill: 'var(--ink-soft)' }); t.textContent = 'max ' + itNum(mx) + ' · grigio: abbattuti'; sv.appendChild(t);
+  const t = svgEl('text', { x: W - 2, y: 9, 'font-size': 9, 'text-anchor': 'end', fill: 'var(--ink-soft)' }); t.textContent = 'max ' + itNum(mx) + ' · grey: shot down'; sv.appendChild(t);
   const box = el('div', 'trm-curve'); box.appendChild(sv); return box;
 }
 let xPaese = 'IT';
 function xMatrix(U) {                                     // 5×5 probability × impact matrix
-  const S = 32, P = 34, sv = svgEl('svg', { width: '100%', style: 'max-width:300px', viewBox: `0 0 ${P + 5 * S + 8} ${5 * S + 28}`, role: 'img', 'aria-label': 'Matrice probabilità per impatto' });
+  const S = 32, P = 34, sv = svgEl('svg', { width: '100%', style: 'max-width:300px', viewBox: `0 0 ${P + 5 * S + 8} ${5 * S + 28}`, role: 'img', 'aria-label': 'Likelihood by impact matrix' });
   for (let i = 0; i < 5; i++) for (let j = 0; j < 5; j++) { const sc = (i + 1) * (j + 1), c = sc >= 20 ? 'rk3' : sc >= 12 ? 'rk2' : sc >= 6 ? 'rk1' : 'rk0'; sv.appendChild(svgEl('rect', { x: P + i * S, y: (4 - j) * S, width: S - 1, height: S - 1, fill: 'var(--' + c + ')', 'fill-opacity': .18 })); }
   const tx = (x, y, t, a) => { const e = svgEl('text', Object.assign({ x, y, 'font-size': 9, fill: 'var(--ink-soft)' }, a || {})); e.textContent = t; sv.appendChild(e); };
-  tx(P, 5 * S + 12, 'probabilità →'); tx(2, 10, 'impatto'); for (let i = 1; i <= 5; i++) { tx(P + (i - .5) * S - 2, 5 * S + 24, i); tx(P - 10, (5 - i + .6) * S, i); }
+  tx(P, 5 * S + 12, 'likelihood →'); tx(2, 10, 'impact'); for (let i = 1; i <= 5; i++) { tx(P + (i - .5) * S - 2, 5 * S + 24, i); tx(P - 10, (5 - i + .6) * S, i); }
   const srt = U.slice().sort((a, b) => b.punteggio - a.punteggio), seen = {};
   srt.forEach((u, k) => { const key = u.probabilita + '|' + u.impatto, off = (seen[key] = (seen[key] || 0) + 1) - 1; const x = P + (+u.probabilita - .5) * S + (off % 3 - 1) * 9, y = (5 - +u.impatto + .5) * S + Math.floor(off / 3) * 9; sv.appendChild(svgEl('circle', { cx: x, cy: y, r: 5.5, fill: 'var(--ink)' })); const t = svgEl('text', { x, y: y + 2.6, 'font-size': 7, 'text-anchor': 'middle', fill: 'var(--panel)', 'font-weight': 600 }); t.textContent = k + 1; sv.appendChild(t); });
   const box = el('div', 'trm-curve'); box.appendChild(sv); return box;
@@ -2411,7 +2412,7 @@ function xMatrix(U) {                                     // 5×5 probability ×
 function xWeekly(serie, step = 7, label) {                 // a weekly-average line chart of a daily series, inline SVG
   const pts = []; for (let i = 0; i + step <= serie.length; i += step) { const w2 = serie.slice(i, i + step).map(x => +x[1]); pts.push([serie[i][0], w2.reduce((a, b) => a + b, 0) / w2.length]); }
   if (pts.length < 4) return '';
-  const W = 300, H = 70, lo = 0, hi = Math.max(...pts.map(p => p[1])) * 1.05, sv = svgEl('svg', { width: '100%', viewBox: `0 0 ${W} ${H + 14}`, role: 'img', 'aria-label': label || 'Andamento settimanale' });
+  const W = 300, H = 70, lo = 0, hi = Math.max(...pts.map(p => p[1])) * 1.05, sv = svgEl('svg', { width: '100%', viewBox: `0 0 ${W} ${H + 14}`, role: 'img', 'aria-label': label || 'Weekly trend' });
   const x = i => 2 + i * (W - 4) / (pts.length - 1), y = v => H - (v - lo) / (hi - lo || 1) * (H - 6);
   sv.appendChild(svgEl('path', { d: pts.map((p, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(p[1]).toFixed(1)).join(''), fill: 'none', stroke: 'var(--accent)', 'stroke-width': 1.5 }));
   let yr = '', lastX = -99; pts.forEach((p, i) => { const Y = p[0].slice(0, 4); if (Y !== yr) { yr = Y; if (x(i) - lastX < 30) return; lastX = x(i); sv.appendChild(svgEl('line', { x1: x(i), x2: x(i), y1: 0, y2: H, stroke: 'var(--line)' })); const t = svgEl('text', { x: x(i) + 2, y: H + 11, 'font-size': 9, fill: 'var(--ink-soft)' }); t.textContent = Y; sv.appendChild(t); } });
@@ -2427,7 +2428,7 @@ function xInitTerminal() {
 }
 
 async function start(snap) {
-  if (!window.d3 || !window.topojson) { statusEl.textContent = 'Non riesco a caricare le librerie della mappa. Ricarica la pagina.'; return; }
+  if (!window.d3 || !window.topojson) { statusEl.textContent = 'The map libraries could not be loaded. Please reload the page.'; return; }
   readTheme(); wire();
   const get = async u => { const r = await fetch(u); if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); };
   try {
@@ -2437,31 +2438,32 @@ async function start(snap) {
     tiles = manifest.tiles.map((t, i) => Object.assign(buildSet(tt[i], t.bbox), { id: t.id }));
     D = lab;
     for (const k of ['countries', 'cities', 'seas', 'straits', 'regions']) for (const l of D[k]) { l.bx = bx(l.x); l.by = by(l.y); }
-    for (const c of D.countries) { c.N = c.n.toLocaleUpperCase('en-GB'); c.px = c.r <= 2 ? 13 : c.r === 3 ? 12 : c.r === 4 ? 11 : 10.5; }
-    for (const s of D.straits) Object.assign(s, { N: s.n.toLocaleUpperCase('en-GB'), kind: 'stretto', label: s.n, nome: s.n, slon: s.x, slat: s.y });
+    for (const k of ['cities', 'seas', 'regions']) for (const l of D[k]) l.n = tr(l.n);
+    for (const c of D.countries) { c.N = tr(c.n).toLocaleUpperCase('en-GB'); c.px = c.r <= 2 ? 13 : c.r === 3 ? 12 : c.r === 4 ? 11 : 10.5; }
+    for (const s of D.straits) Object.assign(s, { N: tr(s.n).toLocaleUpperCase('en-GB'), kind: 'stretto', label: tr(s.n), nome: s.n, slon: s.x, slat: s.y });
   } catch (err) {
-    statusEl.textContent = 'Non riesco a caricare i dati della mappa. Ricarica la pagina.'; console.error(err); return;
+    statusEl.textContent = 'The map data could not be loaded. Please reload the page.'; console.error(err); return;
   }
   // operational layers: one that fails to load must not take the chart down with it
   const lay = manifest.layers || {}, opt = async u => { if (!u) return null; try { return await get(u); } catch (err) { console.error(err); return null; } };
   const [mob, evt, rep, fr, fx, ln, ir, ib, rt, st, ita, dif, cdt, mk, dos, aip] = await Promise.all([opt(lay.mobili), opt(lay.eventi), opt(lay.report), opt(lay.fronte), opt(lay.fissi), opt(lay.linee), opt(lay.iran), opt(lay.ibrido), opt(lay.rotte), opt(lay.stretti), opt(lay.italia), opt(lay.difesa), opt(lay.condotte), opt(lay.mercati), opt(lay.dossier), opt(lay.ai)]);
-  if (rt && rt.rotte) { buildRoutes(rt); const cr = $('credit-routes'); cr.textContent = 'Rotte marittime: Benden 2022, da una carta CIA del 2012'; cr.hidden = false; }
+  if (rt && rt.rotte) { buildRoutes(rt); const cr = $('credit-routes'); cr.textContent = 'Shipping lanes: Benden 2022, from a 2012 CIA chart'; cr.hidden = false; }
   ST = st;
   if (cdt && cdt.linee) { buildLines(cdt, true); }
-  if (ln && ln.linee) { buildLines(ln); const cg = $('credit-gem'); cg.textContent = 'Oleodotti e gasdotti: Global Energy Monitor'; cg.hidden = false; }
-  if (fr && fr.aree && fr.aree.length) { buildFront(fr); const cf = $('credit-front'); cf.textContent = 'Fronte: ' + fr.autore; cf.hidden = false; }
-  else if (fr && fr.mappe_esterne) { const cf = $('credit-front'); cf.textContent = ''; cf.append('Fronte ucraino: '); fr.mappe_esterne.slice(0, 3).forEach((m, i) => { const a = document.createElement('a'); a.href = m.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.style.color = 'var(--water-ink)'; a.textContent = ['ISW', 'ISW quotidiano', 'DeepState'][i]; if (i) cf.append(' · '); cf.appendChild(a); }); cf.hidden = false; }
+  if (ln && ln.linee) { buildLines(ln); const cg = $('credit-gem'); cg.textContent = 'Oil and gas pipelines: Global Energy Monitor'; cg.hidden = false; }
+  if (fr && fr.aree && fr.aree.length) { buildFront(fr); const cf = $('credit-front'); cf.textContent = 'Front: ' + fr.autore; cf.hidden = false; }
+  else if (fr && fr.mappe_esterne) { const cf = $('credit-front'); cf.textContent = ''; cf.append('Ukrainian front: '); fr.mappe_esterne.slice(0, 3).forEach((m, i) => { const a = document.createElement('a'); a.href = m.link; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.style.color = 'var(--water-ink)'; a.textContent = ['ISW', 'ISW daily', 'DeepState'][i]; if (i) cf.append(' · '); cf.appendChild(a); }); cf.hidden = false; }
   addPoints(mob && mob.punti); addPoints(evt && evt.punti); addPoints(fr && fr.punti); addPoints(fx && fx.punti); addPoints(ir && ir.punti); addPoints(ib && ib.punti); addPoints(ita && ita.punti); addPoints(dif && dif.punti); addPoints(aip && aip.punti); finishPoints(); buildPanel(); initNews(rep); initMkt(mk); initDos(dos); xLoad(opt);
   const upd = [mob, evt].map(o => o && o.aggiornato).filter(Boolean).sort().pop();
-  $('note').textContent = 'Dati da fonti aperte' + (upd ? ', aggiornati al ' + dateLong(new Date(upd + 'T12:00:00')) : '') + '. Non è un radar in tempo reale: ogni punto ha data, fonte e margine di incertezza nella sua scheda.';
+  $('note').textContent = 'Open-source data' + (upd ? ', updated ' + dateLong(new Date(upd + 'T12:00:00')) : '') + '. Not a real-time radar: every point has a date, source and margin of uncertainty on its card. Some source descriptions are in Italian.';
 
   const views = $('views'), def = manifest.tiles.find(t => t.id === manifest.defaultView) || manifest.tiles[0];
   const worldView = [-168, -52, 178, 76];
   homeView = manifest.home || (def ? def.view : worldView);
-  const vlist = manifest.views || [...manifest.tiles.map(t => ({ name: t.name, view: t.view })), { name: 'Mondo', view: worldView }];
-  const vsel = document.createElement('select'); vsel.className = 'chip vsel'; vsel.setAttribute('aria-label', 'Vai a una vista');
-  const o0 = document.createElement('option'); o0.textContent = 'Vista…'; o0.value = ''; vsel.appendChild(o0);
-  vlist.forEach((v, i) => { const o = document.createElement('option'); o.value = i; o.textContent = v.name; vsel.appendChild(o); });
+  const vlist = manifest.views || [...manifest.tiles.map(t => ({ name: t.name, view: t.view })), { name: 'World', view: worldView }];
+  const vsel = document.createElement('select'); vsel.className = 'chip vsel'; vsel.setAttribute('aria-label', 'Go to a view');
+  const o0 = document.createElement('option'); o0.textContent = 'View…'; o0.value = ''; vsel.appendChild(o0);
+  vlist.forEach((v, i) => { const o = document.createElement('option'); o.value = i; o.textContent = tr(v.name); vsel.appendChild(o); });
   vsel.addEventListener('change', () => { if (vsel.value !== '') fitView(vlist[+vsel.value].view, true); vsel.value = ''; }); views.appendChild(vsel);
   if (manifest.updated) $('credit').textContent = 'Natural Earth · ' + dateLong(new Date(manifest.updated + 'T12:00:00'));
 
