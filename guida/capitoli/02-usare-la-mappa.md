@@ -239,10 +239,10 @@ Per ogni livello trovi: **cosa mostra**, **dati** (file in `docs/data/` e fonte)
 ![La scheda di Mazara del Vallo (TransMed): flussi giornalieri ENTSOG e quota sugli ingressi](../img/cap2-scheda-transmed.jpg)
 
 **Power grid** (*Rete elettrica*) [2.367 linee + 16 interconnessioni] — spento
-- *Cosa mostra*: le linee ad altissima tensione (380 kV e più) e i collegamenti in corrente continua (HVDC) in Europa, Ucraina, Nord Africa e Medio Oriente, più 16 interconnessioni strategiche più spesse (es. Italia–Montenegro, NordLink, Estlink).
+- *Cosa mostra*: le linee ad altissima tensione (380 kV e più) e i collegamenti in corrente continua (HVDC) in Europa, Ucraina, Nord Africa e Medio Oriente, più 16 interconnessioni strategiche più spesse (es. Italia–Montenegro, ELMED Italia–Tunisia, Estlink 1 e 2, NordBalt, Great Sea Interconnector).
 - *Dati*: `rete-elettrica.json` (OpenStreetMap tramite le tessere OpenInfraMap) e `interconnessioni.json` (schede curate da Terna, ENTSO-E, Wikipedia e stampa; MW HVDC da PyPSA-Eur).
 - *Simbolo*: linea; tratteggiata = HVDC; spessa = interconnessione (la scheda dà MW, kV, km e stato).
-- *Domanda*: "Quanta capacità collega la Germania alla Norvegia, e da dove passa?"
+- *Domanda*: "Quanta capacità elettrica collega la Finlandia all'Estonia, e cosa succede se l'Estlink 2 si rompe?"
 - *Limite*: i dati OSM non sono completi né ufficiali; le tensioni minori di 380 kV mancano.
 
 **Nuclear power plants** (*Centrali nucleari*) [167] — spento
@@ -331,7 +331,7 @@ Per ogni livello trovi: **cosa mostra**, **dati** (file in `docs/data/` e fonte)
 ![Il livello Sea routes to Europe e la scheda Shanghai → Rotterdam](../img/cap2-scheda-rotta.jpg)
 
 **Railways** (*Ferrovie*) [49 + rete] — spento
-- *Cosa mostra*: le linee principali (Europa, Russia, Asia centrale, Cina), i corridoi strategici (Middle Corridor, INSTC, Rail Baltica…) e i sabotaggi alle ferrovie.
+- *Cosa mostra*: le linee principali (Europa, Russia, Asia centrale, Cina), i corridoi strategici (ferrovia Cina–Europa, Middle Corridor, INSTC, corridoio Ucraina–Polonia, corridoi TEN-T…) e i sabotaggi alle ferrovie.
 - *Dati*: `ferrovie.json` (Natural Earth 10m per la rete; corridoi e incidenti curati da fonti di stampa e ufficiali).
 - *Simbolo*: linea; tratteggio spesso = corridoio strategico; croce = sabotaggio o attacco. Scheda: Paesi, km, volumi.
 - *Domanda*: "Esiste un'alternativa terrestre al Mar Rosso tra Cina ed Europa?"
@@ -363,7 +363,7 @@ Per ogni livello trovi: **cosa mostra**, **dati** (file in `docs/data/` e fonte)
 ![Le aree del Joint War Committee in Medio Oriente e Mar Nero, con la scheda dell'Iran](../img/cap2-jwc.jpg)
 
 **Public webcams** (*Webcam pubbliche*) [45] — spento
-- *Cosa mostra*: webcam dal vivo su porti, stretti, canali e ponti (Rotterdam, Bosforo, Suez, Panama…).
+- *Cosa mostra*: webcam dal vivo su porti, stretti, canali e ponti (Stretto di Messina, Genova, Pireo, Dover, Bosforo, Øresund, Canale di Kiel, Rotterdam…).
 - *Dati*: `webcam.json` (elenco curato, mappa webcam del Port of Rotterdam, verifica dei canali YouTube).
 - *Simbolo*: quadratino vuoto; nella scheda il bottone **Watch live ↗** apre la pagina del proprietario.
 - *Domanda*: "C'è coda di navi al Bosforo adesso?"
@@ -402,7 +402,7 @@ Per ogni livello trovi: **cosa mostra**, **dati** (file in `docs/data/` e fonte)
 ### H. Altri livelli
 
 **Cyber incidents in energy** (*Incidenti cyber all'energia*) [30] — spento
-- *Cosa mostra*: precedenti dal 2015 di attacchi cyber a eolico, solare, reti elettriche e catena del freddo (Ucraina 2015–2016, Viasat-Enercon 2022, Danimarca 2023…).
+- *Cosa mostra*: precedenti dal 2015 di attacchi cyber a eolico, solare, reti elettriche e catena del freddo (Polonia: attacco a oltre 30 parchi eolici e solari; Danimarca: 22 aziende energetiche violate; controller della refrigerazione manomessi nei supermercati…).
 - *Dati*: `cyber-energia.json` (voci curate con una fonte ciascuna; CERT Polska, CISA, SektorCERT, ESET, Mandiant…).
 - *Simbolo*: croce. Segue il selettore del periodo. Scheda: settore, vittima, effetto, attore, attribuzione e la *Lesson*.
 - *Domanda*: "Un parco eolico offshore può essere fermato da remoto?"
@@ -481,7 +481,7 @@ Per ogni percorso trovi una frase d'apertura in inglese, cosa cliccare e cosa di
 
 4. Chiudi e tocca il **cerchio rosso del Risk** sopra lo stretto: **22,5 su 25**, probabilità 5 × impatto 4,5, con il perché in chiaro e gli indicatori a semaforo.
 5. Accendi **War-risk areas (insurance)**: l'area del Golfo è nella lista JWC; il premio war risk è passato dallo 0,25% a circa il 6–10% del valore dello scafo.
-6. Apri **Terminal → Prices and rates** per Brent, TTF e noli; oppure **Transit times**: 18 rotte verso l'Europa deviate e 9 bloccate.
+6. Apri **Terminal → Prices and rates** per le serie di prezzi e tassi; oppure **Transit times**: 18 rotte verso l'Europa deviate e 9 bloccate.
 
    ![Terminal, scheda Prices and rates](../img/cap2-terminale-prezzi.jpg)
 
@@ -527,7 +527,7 @@ Per ogni percorso trovi una frase d'apertura in inglese, cosa cliccare e cosa di
    ![Scheda dell'incidente all'Estlink 2](../img/cap2-baltico-sicurezza.jpg)
 
 4. Nel **Period for historical events** premi **2024**, poi **2025**, poi **2026**: le croci appaiono e spariscono anno per anno.
-   *Cosa dire*: "Gli incidenti ai cavi si concentrano nell'inverno 2024–2025, poi aumentano i fermi di petroliere."
+   *Cosa dire*: "Gli incidenti ai cavi arrivano a ondate, quasi sempre d'inverno (ottobre 2023, novembre 2024–gennaio 2025, dicembre 2025–gennaio 2026); nel 2025–2026 si aggiungono i fermi di petroliere."
 5. (Facoltativo) Tocca **Ust-Luga** o **Primorsk**: sono in testa al Port risk index (9,3), spinti dal disturbo GNSS e dal calo del traffico.
 
 *Chiusura*: "Per un operatore portuale o di energia offshore nel Baltico, il rischio non è teorico: ha date, navi e cavi precisi."
@@ -556,7 +556,7 @@ Per ogni percorso trovi una frase d'apertura in inglese, cosa cliccare e cosa di
 
 1. **View… → Russia–Ukraine**. Accendi **Russian strikes in Ukraine** e **Russian attacks by region**. Spegni *Baltic and North Sea security* se vuoi un conteggio pulito.
 2. Nel **Period for historical events** premi **2022**: pochi cerchi (i dati per regione partono da settembre 2022) e i primi attacchi alla rete elettrica.
-3. Premi **2023**: aumentano i colpi su Odesa e sui porti del Danubio, dopo la fine dell'accordo sul grano nel luglio 2023 (nel file: 9 attacchi ai porti nel 2023 contro 2 nel 2022).
+3. Premi **2023**: aumentano i colpi su Odesa e sui porti, dopo la fine dell'accordo sul grano nel luglio 2023 (nel file: 9 attacchi ai porti nel 2023 contro 2 nel 2022).
 4. Premi **2025**: i cerchi crescono su Kharkiv, Dnipro, Kyiv e Odesa. Tocca un punto su **Odesa**, per esempio l'1 marzo 2025: missile balistico sul porto, danneggiata la nave MSC Levante F.
 
    ![La scheda di un attacco al porto di Odesa](../img/cap2-scheda-attacco-odesa.jpg)
