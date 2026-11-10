@@ -392,7 +392,7 @@ STOP_LUOGHI = {"dniepr", "dnieper", "dnipro river",
     "druzhba", "energetik", "promin", "pervomaisk", "pervomaysk", "zelenyi gai", "russkiy",
     "ugol", "parkovy", "lyman", "liman", "ray", "oleksandrivka", "mykolaivka", "andriivka",
     "ivanivka", "novoselivka", "petrivka", "vasylivka", "bilohorivka", "kamianka",
-    "march", "may", "august", "azov", "serhii", "serhiyi", "skala", "artem", "nove", "shevchenko", "ukrainka", "trump", "putin", "ukraina", "nato", "europe", "american", "france",
+    "march", "may", "august", "smotrich", "smotrych", "azov", "serhii", "serhiyi", "skala", "artem", "nove", "shevchenko", "ukrainka", "trump", "putin", "ukraina", "nato", "europe", "american", "france",
 }
 
 
@@ -516,7 +516,7 @@ ALLERTA = re.compile(
     r"\bthreat\b|\bflying (?:to|towards|past|over|in)\b|\bheading (?:to|towards|for)\b|\ben route\b|"
     r"\bmoving towards\b|\btook off\b|\btaking off\b|\bairborne\b|\bare (?:redeploying|conducting|preparing)\b|"
     r"\bexpected to\b|\bmay (?:launch|strike)\b|\bcould (?:launch|strike|be)\b|\bwarning\b|\balert\b|"
-    r"\bmenace\b|\ben direction de\b|\bair raid alerts?\b|\balerts? (?:have|has) been lifted\b|\bsirens?\b", re.I)
+    r"\bmenace\b|\ben direction de\b|\bmay carry out\b|\bin the coming (?:days|weeks)\b|\bair raid alerts?\b|\balerts? (?:have|has) been lifted\b|\bsirens?\b", re.I)
 # guerra di terra, analisi del fronte
 FRONTE = re.compile(
     r"\badvanc|\bcaptur|\bassault|\binfiltrat|\btreelines?\b|counter-?attack|counter-?offensive|\bpositions?\b|"
@@ -742,6 +742,9 @@ def estrai_attacco(post, idx, obl, impianti=()):
     if ALLERTA.search(t) and not re.search(r"\bstruck\b|\bimpact|\bdamag|\bfire|\bexplosions? (?:were|was) (?:heard|reported)"
                                            r"|\baftermath|\bfrapp|\btouch|\bincendie", t, re.I):
         return None, "allerta o lancio senza impatto"
+    if re.search(r"strategic bombers?|\btu-95|\btu-160|\btu-22|\bmig-31k?\b.{0,40}(?:took off|airborne|redeploy)", t, re.I) \
+            and not UA_FORTE.search(t):
+        return None, "monitoraggio di bombardieri/lanciatori"
     luoghi = []
     for v, tipo, pos in trova_luoghi(t, idx, obl):
         dopo = t[pos + len(v["n"]): pos + len(v["n"]) + 40] if tipo == "citta" else ""
@@ -764,6 +767,10 @@ def estrai_attacco(post, idx, obl, impianti=()):
     for rx, e in impianti:
         mm = rx.search(t)
         if mm and not PRIMA_LANCIO.search(t[max(0, mm.start() - 30): mm.start()]):
+            # le basi aeree compaiono spesso solo come luogo di decollo dei bombardieri: servono un
+            # attacco ucraino esplicito nel post
+            if e.get("categoria") == "base-aerea" and not UA_FORTE.search(t):
+                continue
             impianto = e
             break
     if not luoghi and not coord and not impianto:
