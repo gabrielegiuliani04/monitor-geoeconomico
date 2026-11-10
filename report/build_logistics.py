@@ -897,6 +897,7 @@ def blocks(V, edition):
                    f"{num(be_['extra'] / (ass_hull * 1e6) * 100, 2)}% without the toll and {num((be_['extra'] - be_['toll'][1]) / (ass_hull * 1e6) * 100, 2)}–"
                    f"{num((be_['extra'] - be_['toll'][0]) / (ass_hull * 1e6) * 100, 2)}% with it. The hull value matters for the premium bill too: the "
                    f"Northern Europe report prices one Red Sea premium on the {num(ass_hull, 1)} M$ newbuild, {musd(ass_hull * 1e6 * ci['war_today_pct'] / 100)} "
+                   f"({num(ass_hull * 1e6 * ci['war_today_pct'] / 100 / ci['eurusd'] / 1e6, 2)} M€) "
                    f"at {num(ci['war_today_pct'], 2)}%, against {musd(ts['war'])} here."))
     B.append(("val", "*Assessment.* Carriers decide the route on the whole voyage economics (charter cost of ten more days, schedule, crew safety), not on "
                      f"this stack alone. Because charter is left out, a Red Sea premium of about 0.5% is where the Cape starts to compete for an in-service ship, not "
@@ -908,37 +909,39 @@ def blocks(V, edition):
     fbmax = max(fb, key=lambda x: x[1])
     ccfi = V["ccfi"]["rotte"]
     B.append(("tab", ["Index", "Value", "Date", "Note"], [
-        ["Drewry WCI Shanghai–Rotterdam", f"{num(V['wci_rtm'])} $/FEU", date_en(V["wci_date"]), f"{num(V['wci_2023'])} $ on {date_en(E2['date'])} (secondary source)"],
+        ["Drewry WCI Shanghai–Rotterdam", f"{num(V['wci_rtm'])} $/FEU", date_en(V["wci_date"]), f"{num(V['wci_2023'])} $ on {date_en(E2['date'])} (reprint of Drewry; composite then 1% below its 2019 average)"],
         ["Drewry WCI Shanghai–Genoa", f"{num(V['wci_goa'])} $/FEU", date_en(V["wci_date"]), f"premium over Rotterdam {pct(V['genoa_premium'])}"],
         ["Freightos FBX11 China–North Europe", f"{num(V['fbx11']['valore'])} $/FEU", date_en(V["fbx"]["data"]), f"{V['fbx11']['var'].replace('-', '−')} on the week"],
         ["Freightos FBX13 China–Mediterranean", f"{num(V['fbx13']['valore'])} $/FEU", date_en(V["fbx"]["data"]), f"{V['fbx13']['var'].replace('-', '−')} on the week"],
-        ["Freightos FBX global", f"{num(V['fbx']['valore'], 1)} $/FEU", date_en(V["fbx"]["data"]), f"{pct(var(V['fbx']['valore'], fbmax[1]))} since {date_en(fbmax[0])} ({num(fbmax[1], 1)}), the high of the series kept since then"],
+        ["Freightos FBX global", f"{num(V['fbx']['valore'], 1)} $/FEU", date_en(V["fbx"]["data"]), f"{pct(var(V['fbx']['valore'], fbmax[1]))} since {date_en(fbmax[0])} ({num(fbmax[1], 1)}), the highest of the {len(fb)} weekly values in the file"],
         ["CCFI Europe", f"{num(ccfi['EUROPE']['valore'], 2)} points", date_en(V["ccfi"]["data"]), f"{pct(ccfi['EUROPE']['var_pct'], 2)} on the week"],
         ["Maersk emissions surcharge, Far East → North Europe", f"{num(ems)} $/FEU", "Q4 2026", f"based on an average EUA of {num(maersk['eua_medio_usato_eur'], 2)} € over {it_period(maersk['periodo_eua'])}"],
     ], f"Freight indices from {dl('noli.json')} (Drewry, Freightos/Baltic Exchange, Shanghai Shipping Exchange; © the publishers, values cited). WCI and FBX "
-       f"measure spot rates with different methods and dates, so they differ by {num(abs(V['wci_rtm'] - V['fbx11']['valore']))} $ on the same lane. "
+       f"measure spot rates with different methods and dates, so they differ by {num(abs(V['wci_rtm'] - V['fbx11']['valore']))} $ on comparable lanes "
+       f"(Shanghai–Rotterdam against China–North Europe). The CCFI includes contract rates as well as spot rates. "
        f"Surcharge from {dl('bunker-emissioni.json')} ([Maersk]({maersk['link']}), {date_en(maersk['data_fonte'])})."))
     B.append(("fig", "rate", f"**How much of the freight rate the cost stack explains.** Drewry WCI Shanghai–Rotterdam on {date_en(E2['date'])} "
                              f"(secondary source, reliability medium) and {date_en(V['wci_date'])} ({dl('noli.json')}), split into the cost items of section 3 "
                              f"(capacity-weighted today) and the rest, which covers charter, port, canal, overheads and margin. Carrier costs and spot prices are "
-                             f"different things: the split is an order of magnitude."))
+                             f"different things: the split is an order of magnitude. The 2023 cost "
+                             f"items use the October 2023 fuel price; the WCI is that of {date_en(E2['date'])}, before the Red Sea attacks began on 19 November 2023."))
     B.append(("p", f"**What drives the rate.** (1) *Capacity released by the Suez return.* Each ship moved back from the Cape to Suez saves about "
-                   f"{num(V['med_cape_penalty']['rotterdam'], 1)} days each way, so the same fleet offers more weekly slots. (2) *Fuel.* Singapore VLSFO is "
+                   f"{num(V['med_cape_penalty']['rotterdam'], 1)} days each way to North Europe, so the same fleet offers more weekly slots. (2) *Fuel.* Singapore VLSFO is "
                    f"up {pct(V['vlsfo_sg']['var_da_prima_guerra_pct'], sign=False)} since {date_en(V['vlsfo_sg']['data_prima_guerra'])} and {pct(V['vlsfo_sg']['var_1a_pct'], sign=False)} on a year earlier "
                    f"({dl('bunker-emissioni.json')}). (3) *Carbon.* Maersk charges {num(ems)} $/FEU from the Far East to North Europe for ETS and FuelEU; the "
                    f"model's own ETS + FuelEU cost is {num(ets_fe_w)} $/FEU at today's EUA. A surcharge is a price, not a cost: it can include other lanes, "
                    f"feeder legs and a margin. (4) *War risk*, now {num(tw['feu']['war'])} $/FEU in the weighted case. (5) *The Mediterranean premium*: "
                    f"Shanghai–Genoa costs {pct(V['genoa_premium'], sign=False)} more than Shanghai–Rotterdam, inside the 5–20% band the risk dashboard reads as "
                    f"«gradual return under threat» ({dl('rischio.json')}, {date_en(V['risk_date'])})."))
-    B.append(("val", "*Assessment.* Spot rates are drifting down (FBX global from its August high, FBX11 down on the week) while the CCFI, which weights "
-                     f"contract rates, edges up. The cost floor computed here, about {num(round(tw['feu']['total'], -1))} $/FEU for fuel, carbon and war risk, is "
+    B.append(("val", "*Assessment.* Spot rates are drifting down (FBX global from its August high, FBX11 down on the week) while the CCFI, which also "
+                     f"reflects contract rates, edges up. The cost floor computed here, about {num(round(tw['feu']['total'], -1))} $/FEU for fuel, carbon and war risk, is "
                      f"{num(tw['feu']['total'] / V['wci_rtm'] * 100)}% of today's WCI. That leaves room for spot rates to fall as Cape capacity returns. Fuel would have to rise sharply to stop that."))
 
     # ---------------------------------------------------------------- 5. ports
     B.append(("h2", "ports", "5. Ports: risk ranking for the North Sea, the Baltic and the Mediterranean"))
     B.append(("p", f"The **Port Risk Index** scores 39 ports every day: probability of disruption (1–5: traffic, security events, exposure to disrupted chokepoints, "
                    f"war-risk listing) × impact on European supply chains (1–5: strategic role, cargo handled, energy cost) = 1–25. Low below 6, medium 6–11.9, "
-                   f"high 12–19.9, critical 20 and above. It is a rule-based assessment, not a forecast (method in report/port-risk-method.md; {dl('port-risk.json')}, "
+                   f"high 12–19.9, critical 20 and above with both axes at 4 or more. It is a rule-based assessment, not a forecast (method in report/port-risk-method.md; {dl('port-risk.json')}, "
                    f"{date_en(pr['reference_date'])}; PortWatch calls to {date_en(V['ports_date'])})."))
     rows = [[short(p["name"]), p["country"], num(p["probability"], 1), num(p["impact"], 1), num(p["score"], 1), p["level"], f"{p['trend']} ({num(p['score_7d_ago'], 1)})"]
             for p in V["ports_ns"]]
@@ -971,7 +974,7 @@ def blocks(V, edition):
     pxs = [abs(c[n]["proxy"]) for n in ("Rotterdam", "Hamburg", "Bremerhaven")]
     B.append(("val", f"*Assessment.* A drop of {num(min(pxs))}–{num(max(pxs))}% in a week at three North Sea hubs at once is more likely a schedule effect than port trouble. Ships "
                      "switching from the Cape to Suez arrive in a different order, and blank sailings follow. It is worth watching in the next PortWatch "
-                     "release: two more weeks below −20% would cross the index's amber line."))
+                     "release: a week more than 20% below the previous four would turn the index's traffic proxy amber at these ports."))
 
     # ---------------------------------------------------------------- 6. alternatives
     B.append(("h2", "alternatives", "6. Alternatives: rail, air and nearshoring"))
