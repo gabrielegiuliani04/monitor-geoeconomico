@@ -12,11 +12,11 @@ Every number has a source and a date. Paragraphs marked *Assessment* are the mon
 
 ## 1. Key points
 
-- **Seven North Sea and Baltic countries are 60.4 GW short of their targets.** WindEurope expects 68.4 GW in 2030 in the UK, Germany, the Netherlands, Denmark, Poland, Belgium and Norway, against 128.8 GW promised. Europe connected only 1.96 GW in 2025, the least since 2016 (WindEurope, February 2026).
+- **Seven North Sea and Baltic countries will fall 60.4 GW short of their targets.** For the UK, Germany, the Netherlands, Denmark, Poland, Belgium and Norway WindEurope expects 68.4 GW in 2030, against national targets of 128.8 GW. Europe connected only 1.96 GW in 2025, the least since 2016 (WindEurope, February 2026).
 - **Auctions clear again where the state carries the price risk.** Rounds in which developers had to pay for the seabed got no bids for 6.5 GW in Denmark, Germany and the Netherlands in 2024–2025. With two-sided contracts for difference, Denmark awarded 1.8 GW at about 67.6–72.7 €/MWh, signed on 6 November 2026.
 - **The next test starts on 26 November.** The Dutch IJmuiden Ver Gamma round (2 GW) takes applications until 10 December 2026, with price caps of 117 and 116 €/MWh (RVO). UK AR8 results are due between 27 November and 17 February 2027; Germany's auction reform still needs a Bundestag vote in December.
-- **The grid, not ships or steel, now sets the pace.** Six of the 11 delays in the monitor's wind calendar cite grid links or platforms; Amprion's 2 GW BalWin1 slipped a year, to 15 September 2031. Monopile factories, by contrast, will run at about 19% of capacity in 2028 (Rystad).
-- **Baltic ports are adding capacity; German North Sea quays come late.** Gdańsk's 253 million € T5 terminal serves Baltica 2 from the fourth quarter of 2026 and Klaipėda's 201 million € upgrade ends in 2027. Cuxhaven's 1,250 m heavy quay arrives around 2028; Bremerhaven's terminal was never built.
+- **The grid, not ships or steel, now sets the pace.** Five of the 11 delays in the monitor's wind calendar cite grid links or platforms; Amprion's 2 GW BalWin1 slipped a year, to 15 September 2031. Monopile factories, by contrast, will run at about 19% of capacity in 2028 (Rystad).
+- **Baltic ports are adding capacity; German North Sea quays come late.** Gdańsk's 253 million € T5 terminal serves Baltica 2 from the fourth quarter of 2026; Klaipėda's 201 million € upgrade ends in 2027. Cuxhaven's 1,250 m heavy quay arrives around 2028; Bremerhaven's terminal was never built.
 
 <a id="targets"></a>
 
@@ -48,13 +48,13 @@ The pace tells the story. Europe connected 1.96 GW in 2025. To reach WindEurope'
 | Belgium | 2.26 | 0 | 0.0 | — | 2.2 | 6.0 (2030) | 3.7 | 3.8 |
 | Norway | 0.10 | 0 | 1.5 | — | 0.5 | 3.0 (2030) | 2.9 | 2.5 |
 
-*GW. Installed and forecast: WindEurope national totals. Under construction: EMODnet polygons in offshore-nord.json (North Sea and Baltic only; for the UK the east coast only; EMODnet status can lag). Awarded: supported or zero-subsidy capacity awarded in 2023–2026 rounds (wind-calendar.json). FID: final investment decisions recorded in the calendar since January 2025 (Baltica 2 and Bałtyk 2+3 in Poland, Nordlicht in Germany); WindEurope counts six offshore FIDs in 2025, so the column is incomplete.*
+*GW. Installed and forecast: WindEurope national totals. Under construction: EMODnet polygons in offshore-nord.json (North Sea and Baltic only; for the UK the east coast only; EMODnet status can lag). Awarded: supported or zero-subsidy capacity awarded in 2023–2026 rounds (wind-calendar.json). FID: final investment decisions recorded in the calendar since January 2025 (Baltica 2 and Bałtyk 2+3 in Poland, Nordlicht in Germany); WindEurope counts more offshore FIDs in 2025, so the column is incomplete.*
 
 **Across the seven countries** the gap between targets and end-2025 capacity is 92.4 GW; capacity awarded since 2023 covers 46% of it, but most of that comes online after 2030. **Germany** has awarded 17.8 GW, 87% of its gap, yet 16 GW of awarded sites still lack an FID (Offshore Wind Foundation, September 2026, via the calendar). **The UK** has the largest gap, 33.0 GW against the upper end of its 43–50 GW range; net of Hornsea 4 its awards since 2023 are 11.4 GW. **The Netherlands** has moved its 21 GW target from 2030 to 2032 and cut its 2040 goal; WindEurope expects 8.4 GW in 2030. **Denmark** expects 4.0 GW against 12.9 GW (a target taken from a secondary source). **Poland** is the exception: from zero at end-2025 to a forecast of 4.9 GW, 84% of its Marienborg share.
 
 **In the Baltic**, EMODnet maps 2.7 GW operating and 3.8 GW under construction, 33% of the Marienborg goal even if every site under construction is finished by 2030 ([offshore-nord.json](../docs/data/offshore-nord.json)). Esbjerg also promised about 20 GW of green hydrogen by 2030; Europe had 571 MW of electrolysers in operation in July 2025 ([Hydrogen Europe via Renewables Now](https://renewablesnow.com/news/europe-hosts-571-mw-of-operational-electrolysis-capacity-1282499/)), 2.9% of that figure.
 
-*Assessment.* The 2030 targets are now political anchors, not delivery plans: no country on the chart except Poland and France is forecast to reach more than two thirds of its goal. For employers the useful number is not the target but the awarded-and-financed pipeline, which pushes the bulk of North Sea construction into 2028–2033 and makes the Dutch and German auction rounds of 2026–2027 decisive for port and vessel demand after 2030.
+*Assessment.* The 2030 targets are now political anchors, not delivery plans: no country on the chart except Poland is forecast to reach more than two thirds of its goal. For employers the useful number is not the target but the awarded-and-financed pipeline, which pushes the bulk of North Sea construction into 2028–2033 and makes the Dutch and German auction rounds of 2026–2027 decisive for port and vessel demand after 2030.
 
 <a id="auctions"></a>
 
@@ -76,7 +76,7 @@ Under a **two-sided contract for difference (CfD)** the state guarantees a strik
 
 **Offshore wind auction prices and caps, €/MWh, 2025–2026 rounds.** Dots: awarded strike prices; diamonds: tender caps (maximum allowed bid). Prices are not like for like: CfD length (20 years in Denmark, 25 in Poland), indexation, grid cost and currency differ. UK prices are WindEurope's euro conversion; on GOV.UK they are 91.20 and 89.49 £/MWh in 2024 prices. German caps are from a secondary source. Sources: [WindEurope 2025 Statistics, table 3](https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf) (February 2026, via report/dati/offshore-wind-esterni.json); Danish prices from [eolico-filiera.json](../docs/data/eolico-filiera.json) (offshoreWIND.biz, 6 November 2026, checked online); Dutch caps from [wind-calendar.json](../docs/data/wind-calendar.json).
 
-The spread is wide: Denmark's 67.6 €/MWh sits about 49 €/MWh below Poland's highest award. Baltic projects pay for a young supply chain and first-of-a-kind grid; Danish sites reuse an existing one. The Dutch caps (117 and 116 €/MWh, raised from 104) show what the government thinks it must offer to avoid another empty round.
+The spread is wide: Denmark's 67.6 €/MWh sits about 49 €/MWh below Poland's highest award (117 €/MWh). Baltic projects pay for a young supply chain and first-of-a-kind grid; Danish sites reuse an existing one. The Dutch caps (117 and 116 €/MWh, raised from 104) show what the government thinks it must offer to avoid another empty round.
 
 ### What is next
 
@@ -101,8 +101,8 @@ The ranking weighs three things: how much capacity one failure holds up, how lon
 | Rank | Link | Strain (curated) | Key indicator | When it eases | Who is exposed |
 |---|---|---|---|---|---|
 | 1 | HVDC cables and converter platforms | high | Prysmian 16.5 bn € and NKT 13.0 bn € transmission backlogs; BalWin1 +1 year | new cable lines from 2027 (Karlskrona); platforms not before 2030 | TSOs, developers with 2 GW connections |
-| 2 | Grid connections onshore and offshore | high | 6 of 11 calendar delays cite the grid | 2028–2031 as 2 GW links land | developers, ports' campaign windows |
-| 3 | Turbine makers' finances | medium | Siemens Gamesa -44 M€ (Q2 FY2026); GE Vernova wind EBITDA -275 M$ (Q2 2026) | when prices cover risk; two Western suppliers left | developers, pre-assembly ports |
+| 2 | Grid connections onshore and offshore | high | 5 of 11 calendar delays cite the grid | 2028–2031 as 2 GW links land | developers, ports' campaign windows |
+| 3 | Turbine makers' finances | medium | Siemens Gamesa loss 44 M€ (Q2 FY2026); GE Vernova wind EBITDA −275 M$ (Q2 2026) | when prices cover risk; two Western suppliers left | developers, pre-assembly ports |
 | 4 | Vessels | medium | Cadeler utilisation 66% (H1 2026); foundation vessels 8–9 by 2028 | WTIV ample to 2030, tight in Europe from 2032 | installation contractors |
 | 5 | Monopiles | overcapacity | utilisation ~32% in 2026, 19% in 2028; China ~41% cheaper | loading near 50% in 2031 | Sif (Rotterdam), EEW (Rostock), Steelwind |
 | 6 | Ports and labour | medium, local | 15.4 bn € invested since 2022 in factories, ports, vessels; technicians ~10,000 (2028) to over 19,000 (2032–33) | German North Sea quays ~2028 | Eemshaven, Esbjerg, Gdańsk; O&M towns |
@@ -117,12 +117,11 @@ OpenStreetMap shows 14 offshore wind HVDC connections under construction in the 
 
 ### 2. Grid connections
 
-Of the 11 delays in the calendar, 6 cite a grid link, a platform, a substation or an energy island:
+Of the 11 delays in the calendar, 5 cite a grid link, a platform, a substation or an energy island:
 
 - **North Sea Energy Island (Energio Nordsoen)** (Denmark, August 2024): Artificial island postponed again (to 2036) over costs above DKK 200 bn; tender suspended, a platform-based hub is studied instead.
 - **Princess Elisabeth Zone lot 1** (Belgium, 1 July 2025): Tender halted: legal uncertainty, unrealistic calendar for the energy island and onshore grid, unclear financial framework.
 - **Sorlige Nordsjo II (Ventyr)** (Norway, 24 August 2026): Licence application deadline extended by 12 months while an alternative grid route (via Lista) is reviewed.
-- **Dunkerque (EDF Renewables, Enbridge, RWE; awarded 2019 at about EUR 44/MWh)** (France, 2027): France's only North Sea project: EDF's 2026 commissioning target is out of date; trackers put operation in 2027-2028 and the project was still pre-construction in February 2026 (substation contract to Chantiers de l'Atlantique, Dec 2024).
 - **Hornsea 3 (Orsted)** (UK, Q1 2027): National Grid's enabling and reinforcement works at Norwich Main substation delay the grid connection by up to two months on the critical path: Orsted now expects first power in Q1 2027 (aim in Nov 2024: commissioning end-2026/H1 2027). Grid, not turbines, is the constraint.
 - **BalWin1 (Amprion, 2 GW) and BalWin2** (Germany, 15 September 2031): BalWin1 slips one year from 16 Sep 2030 to 15 Sep 2031 (extra converter platform work, difficult onshore ground); BalWin2 revised date pending. Blocks 2 GW of already awarded turbines for a year.
 
@@ -130,7 +129,7 @@ Completed projects tell the same story. Borkum Riffgrund 3 reached commercial op
 
 ### 3. Turbine makers' finances
 
-Two Western makers, Vestas and Siemens Gamesa, dominate European offshore. Siemens Gamesa's loss before special items narrowed to -44 million € in the second quarter of financial year 2026, from −249 million a year before ([Renewables Now](https://renewablesnow.com/news/siemens-gamesa-narrows-loss-in-q2-parent-lifts-2026-outlook-1293658/)). GE Vernova's wind segment lost 275 million $ (EBITDA) in Q2 2026, from 165 million a year earlier; it expects a loss of about 400 million $ in 2026 and has suspended new offshore orders ([reNEWS](https://www.renews.biz/other-news/finance/ge-vernova-wind-losses-deepen/)). Dogger Bank A's turbine repairs moved the start of its first 300 MW contract to 31 July 2027. Chinese makers offer 16–25 MW machines and are studying factories in the UK and Europe. Average offshore turbines installed in 2025 were 10.7 MW.
+Two Western makers, Vestas and Siemens Gamesa, dominate European offshore. Siemens Gamesa's loss before special items narrowed to 44 million € in the second quarter of financial year 2026, from 249 million a year before ([Renewables Now](https://renewablesnow.com/news/siemens-gamesa-narrows-loss-in-q2-parent-lifts-2026-outlook-1293658/)). GE Vernova's wind segment lost 275 million $ (EBITDA) in Q2 2026, from 165 million a year earlier; it expects a loss of about 400 million $ in 2026 and has suspended new offshore orders ([reNEWS](https://www.renews.biz/other-news/finance/ge-vernova-wind-losses-deepen/)). Dogger Bank A's turbine repairs moved the start of its first 300 MW contract to 31 July 2027. Chinese makers offer 16–25 MW machines and are studying factories in the UK and Europe. Average offshore turbines installed in 2025 were 10.7 MW.
 
 *Assessment.* The constraint is margin, not factory space. Makers now sign only at prices that cover their risk, and that cost passes into auction bids. With GE out of new offshore orders, a developer in Europe effectively chooses between two Western suppliers, or a Chinese one where rules allow.
 
@@ -150,7 +149,7 @@ Suppliers have announced 15.4 billion € of investment since 2022 in factories,
 
 ## 5. Base ports: what they need, what they are building, what holds them back
 
-A base port for installation needs three things: deep water and quays rated about 40–50 t/m² for jack-up vessels; tens of hectares of hard-standing for rotor blades longer than 115 m and towers; and a multi-year lease tied to a project. Operations and maintenance (O&M) bases need less space but give work for 25–30 years, against one or two seasons for installation (agent report report/agenti/eolico.md).
+A base port for installation needs three things: deep water and quays rated about 40–50 t/m² for the new jack-up vessels; tens of hectares of hard-standing for blades, towers and foundations; and a multi-year lease tied to a project ([eolico-filiera.json](../docs/data/eolico-filiera.json), bottleneck notes). Operations and maintenance (O&M) bases need less space but give work for 25–30 years, against one or two seasons for installation (agent report report/agenti/eolico.md).
 
 | Port | Role | Space and load | PortWatch calls, 30 days, vs a year earlier | Port Risk Index (1–25) | Source reliability |
 |---|---|---|---|---|---|
@@ -230,7 +229,7 @@ Rebuilding about 453 m of quays on the Smeltė peninsula (36.6 million € contr
 
 ### Interest rates
 
-The US 10-year Treasury yield was 4.88% on 9 November 2026, +77 basis points on a year earlier ([prezzi.json](../docs/data/prezzi.json)). The euro-area AAA 10-year yield was 3.29% on 6 November 2026, +55 basis points on 6 November 2025 ([ECB Data Portal](https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y)). The ECB deposit rate is 2.50% (10 November 2026; 2.00% a year earlier). Market data read online on 10 November 2026.
+The US 10-year Treasury yield was 4.88% on 9 November 2026, +77 basis points on a year earlier ([prezzi.json](../docs/data/prezzi.json)). The euro-area AAA 10-year yield was 3.29% on 6 November 2026, +55 basis points on 6 November 2025 ([ECB Data Portal](https://data.ecb.europa.eu/data/datasets/YC/YC.B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y)). The ECB deposit rate is 2.50% (10 November 2026; 2.00% a year earlier). Market data cache (offline run).
 
 *Assessment (illustrative calculation, not a forecast).* For a project financed over 25 years, the annual capital charge per euro invested is 7.82% at a 6% cost of capital and 8.58% at 7%: one point more raises it by 9.7%. Since capital is most of the cost of offshore wind, the price a developer needs rises almost as much. Rates are higher than a year ago on both sides of the Atlantic, which is why rounds without a CfD remain hard to clear.
 
@@ -240,19 +239,19 @@ COMEX copper was 6.33 $/lb on 10 November 2026, +24.5% on a year earlier (front-
 
 ![Cost of capital and materials, last 12 months](grafici/ow-2026-11-markets.svg)
 
-**Cost of capital and materials, last 12 months.** Left: 10-year government bond yields, %. Right: copper (COMEX) and US hot-rolled coil steel (CME), index 100 = first close a year earlier; front-month futures, latest close provisional. Sources: US Treasury via [prezzi.json](../docs/data/prezzi.json); ECB Data Portal (AAA yield curve) and Yahoo Finance, cached in report/dati/offshore-wind-mercati.json (read online on 10 November 2026).
+**Cost of capital and materials, last 12 months.** Left: 10-year government bond yields, %. Right: copper (COMEX) and US hot-rolled coil steel (CME), index 100 = first close a year earlier; front-month futures, latest close provisional. Sources: US Treasury via [prezzi.json](../docs/data/prezzi.json); ECB Data Portal (AAA yield curve) and Yahoo Finance, cached in report/dati/offshore-wind-mercati.json (cache (offline run)).
 
 Gas sets the other side of the CfD bill. The TTF was 82.33 €/MWh on 9 November 2026 (+164% on a year earlier, provisional), with German storage at 58.9% and Dutch at 63.5% on 8 November 2026 ([prezzi.json](../docs/data/prezzi.json); [scorte.json](../docs/data/scorte.json)). *Assessment:* expensive gas raises power prices, so a two-sided CfD costs the state little or pays it back; if gas falls, the same contracts cost more.
 
 ### Security: cables, drones, jamming, defence
 
-**Cables.** Six Baltic cable incidents have been recorded since November 2024, the latest on 2 January 2026 (data cable Šventoji (LT) - Liepāja (LV) damaged). Estlink 2, the 650 MW Estonia–Finland HVDC link, was cut by a ship's anchor on 25 December 2024 ([baltico-sicurezza.json](../docs/data/baltico-sicurezza.json); [interconnessioni.json](../docs/data/interconnessioni.json)). Offshore wind export cables and the new 2 GW links are the same kind of asset, on the same seabed.
+**Cables.** Six Baltic cable incidents have been recorded since November 2024, the latest on 2 January 2026 (data cable Šventoji (LT) - Liepāja (LV) damaged). Estlink 2, the 650 MW Estonia–Finland HVDC link, was damaged by a ship's anchor on 25 December 2024 ([baltico-sicurezza.json](../docs/data/baltico-sicurezza.json); [interconnessioni.json](../docs/data/interconnessioni.json)). Offshore wind export cables and the new 2 GW links are the same kind of asset, on the same seabed.
 
-**Drones.** 15 drone events over airports, bases, ports and energy sites have been logged around the North Sea and Baltic since September 2025, including sightings reported at Esbjerg on 24 September 2025 and formations over Kiel's shipyard and power plant the next day ([baltico-sicurezza.json](../docs/data/baltico-sicurezza.json)). None is recorded over an offshore wind farm.
+**Drones.** 15 drone events over airports, bases, ports and energy sites have been logged around the North Sea and Baltic since September 2025, including sightings reported at Esbjerg on 24 September 2025 and formations over Kiel's shipyard and power plant the next day ([baltico-sicurezza.json](../docs/data/baltico-sicurezza.json)). None of the events in the file concerns an offshore wind farm.
 
 **GNSS jamming.** Between 2 November 2026 and 8 November 2026 GPSJam counted 214–246 high-interference cells a day in the monitor's Baltic box. Within 75 km of the Polish and Lithuanian wind ports and farms Baltic Power had 6, Baltica 2 had 3, Baltyk II had 2, Gdańsk had 9, Klaipėda had 10 high cells in the week. GPSJam measures aircraft, not ships, but jack-up positioning and crew transfers also rely on satellite navigation ([baltico-sicurezza.json](../docs/data/baltico-sicurezza.json)).
 
-**Defence.** Sweden rejected 13 offshore wind applications on defence grounds in November 2024 and 11 more in July 2026, citing interference with missile detection; it approved two ([wind-calendar.json](../docs/data/wind-calendar.json)).
+**Defence.** Sweden rejected 13 offshore wind applications on defence grounds in November 2024 and 11 more in July 2026, on missile-detection grounds, while approving Poseidon in 2024 and two projects in 2026 ([wind-calendar.json](../docs/data/wind-calendar.json)).
 
 ### Cyber
 
@@ -292,7 +291,7 @@ Of the 20 vessels in the monitor's fleet table, four were built in Chinese yards
 | Prysmian + NKT transmission backlog | 29.5 bn € | above 32 bn € | cable slots booked further out | quarterly reports; eolico-filiera.json |
 | Cadeler fleet utilisation | 66% (H1 2026) | below 50% or above 85% | vessel glut or renewed scarcity | Cadeler reports |
 | Sif extraordinary meeting | 22 December 2026 | capital increase not approved | Europe's largest monopile maker (31% share) | eolico-filiera.json |
-| Siemens Gamesa and GE Vernova offshore | -44 M€ loss (Q2 FY2026); GE offshore orders suspended | renewed losses or GE exit confirmed | two Western suppliers left | company results |
+| Siemens Gamesa and GE Vernova offshore | 44 M€ loss (Q2 FY2026); GE offshore orders suspended | renewed losses or GE exit confirmed | two Western suppliers left | company results |
 | Euro-area AAA 10-year yield | 3.29% (6 November 2026) | above 3.5% | cost of capital for non-CfD rounds | ECB Data Portal |
 | US 10-year yield | 4.88% (9 November 2026) | above 5.0% | global cost of capital, USD-priced kit | prezzi.json |
 | Copper (COMEX) | 6.33 $/lb (10 November 2026) | above 6.97 $/lb (+10%) | cable contract values | Yahoo Finance |
@@ -317,7 +316,7 @@ The report is built by report/build_offshore_wind.py from the monitor's data fil
 | rete-elettrica.json / interconnessioni.json | HVDC lines (OpenStreetMap); interconnectors | 2026-11-09T19:17Z / 2026-11-09T19:17Z | OSM coverage uneven |
 | baltico-sicurezza.json / cyber-energia.json | cables, drones, GNSS; cyber incidents | 2026-11-09T20:05Z / 2026-11-09T19:56Z | curated; attribution as stated |
 | prezzi.json / scorte.json / idrogeno.json | US yields, TTF; gas storage; electrolysis | 2026-11-10T03:40Z / 2026-11-09T19:19Z / 2026-11-09T20:09Z | daily closes, provisional |
-| ECB Data Portal; Yahoo Finance | euro AAA 10y, deposit rate; copper, US HRC | 2026-11-10 | read online on 10 November 2026 |
+| ECB Data Portal; Yahoo Finance | euro AAA 10y, deposit rate; copper, US HRC | 2026-11-10 | cache (offline run) |
 | WindEurope 2025 Statistics (PDF) | auction prices in €/MWh, 2025 FIDs | 2026-02 | high; read 10 Nov 2026 |
 
 

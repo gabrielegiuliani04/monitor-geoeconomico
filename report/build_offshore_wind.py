@@ -319,7 +319,7 @@ def compute(today, offline):
     ar = next(x for x in ef["colli_bottiglia"] if x["id"] == "aste-ricavi")
     V["neg_failed_gw"] = ar["indicatori"][0]["valore"]
     V["cfd_2025_gw"] = ar["indicatori"][1]["valore"]
-    need(ar["indicatori"][0]["nota"], "3 GW Danimarca", "2,5 GW Germania", "1 GW Paesi Bassi", where="aste-ricavi indicator 1")
+    need(ar["indicatori"][0]["nota"], "3 GW Danimarca", "2,5 GW Germania", "1 GW Paesi Bassi", "Norvegia 1,5 GW", "Francia 1,2 GW", "Lituania 0,7 GW", where="aste-ricavi indicator 1")
     dk = next(x for x in aste if x["paese"] == "DK" and x["data"] == "2026-08-04")
     dkp = [it_num(m) for m in re.findall(r"circa ([\d,]+) EUR", dk["prezzo"])]
     dkk = re.findall(r"(\d+) DKK/MWh", dk["prezzo"])
@@ -355,12 +355,8 @@ def compute(today, offline):
     need(wcid["WC-EU-GRIDS"]["summary"], "from 2027", where="EU Grids package")
     need(wcid["WC-BE-PEZ-FRAME"]["summary"], "at least 75%", where="Belgian PEZ framework")
     need(wcid["WC-GB-AR7"]["summary"], "19-21%", where="AR7 vs ceiling")
-    # failed-tender total in the calendar (2023-2025), for the perimeter note
-    V["wc_failed_note"] = "about 7.2 GW"  # wind-calendar.md; recomputed below
-    failed = [e for e in wc["elementi"] if e["type"] == "auction" and e["period_start"][:4] in ("2023", "2024", "2025")
-              and re.search(r"no bid|no offshore wind capacity|zero bid|failure|did not go ahead|First Dutch tender without bidders|got no bids", e["summary"], re.I)]
-    V["wc_failed_mw"] = sum(e["capacity_mw"] or 0 for e in failed)
-    V["wc_failed"] = failed
+    V["dk_gw"] = dk["gw"]
+    V["pl_max"] = max(x["eur_mwh"] for x in EXT["prezzi_aste_eur"]["voci"] if x["paese"] == "PL")
 
     # price ladder (EUR/MWh)
     pts = []
@@ -385,7 +381,7 @@ def compute(today, offline):
     fut.sort(key=lambda e: (e["period_start"], e["id"]))
     V["future"] = fut
     delays = [e for e in wc["elementi"] if e["type"] == "delay"]
-    gridre = re.compile(r"grid|TSO|HVDC|platform|substation|converter|DolWin|BalWin|energy island|Norwich Main", re.I)
+    gridre = re.compile(r"grid|TSO|HVDC|converter|DolWin|BalWin|energy island|Norwich Main", re.I)
     V["delays"] = delays
     V["grid_delays"] = [e for e in delays if gridre.search(e["summary"] + " " + e["project"])]
     # grid links under construction for offshore wind, OSM (rete-elettrica.json)
@@ -441,6 +437,8 @@ def compute(today, offline):
     V["wtiv"] = nv["WTIV >=15 MW (esclusa Cina)"]
     po = {i["nome"]: i for i in cb["porti"]["indicatori"]}
     V["port_inv"] = po["Investimenti annunciati dal 2022 in manifattura, porti e navi"]
+    need(cb["porti"]["per_un_porto"], "40-50 t/m2", where="port requirements")
+    need(cb["navi"]["per_un_porto"], "40-50 t/m2", where="vessel quay requirements")
     lab = cb["manodopera"]["indicatori"]
     V["lab"] = lab
     need(lab[0]["valore"], "10.000", "19.000", where="GWO technicians")
@@ -487,6 +485,11 @@ def compute(today, offline):
     V["drones"] = [e for e in ev if e["categoria"].startswith("droni") and e["data"] >= "2025-09-01"]
     V["drone_esb"] = next((e for e in ev if e["id"] == "BS-2025-D03"), None)
     V["drone_kiel"] = next((e for e in ev if e["id"] == "BS-2025-D06"), None)
+    need(V["drone_esb"]["nome"], "Esbjerg", where="drones Aalborg/Esbjerg")
+    need(V["drone_kiel"]["nome"], "centrale elettrica", where="drones Kiel")
+    est = next(e for e in ev if e["id"] == "CI-2024-04")
+    need(est["nome"], "Estlink 2", "ancora", where="Estlink 2 incident")
+    V["estlink_date"] = est["data"]
     g = bs["gnss"]
     V["gnss_series"] = g["serie_giornaliera"]
     V["gnss_period"] = g["periodo"]
@@ -507,11 +510,15 @@ def compute(today, offline):
     se26 = wcid["WC-SE-2026-PERMITS"]
     m1 = re.search(r"(\d+) applications", se24["summary"])
     m2 = re.search(r"(\d+) rejected", se26["summary"])
+    need(se24["summary"], "missile detection", "Poseidon", where="Sweden 2024")
+    need(se26["summary"], "two approved", where="Sweden 2026")
     V["se_veto"] = (int(m1.group(1)) if m1 else None, int(m2.group(1)) if m2 else None)
     ic = {x["id"]: x for x in F["interconnessioni.json"]["elementi"]}
     V["estlink2"] = ic["EL-IC-09"]
     ce = {x["id"]: x for x in F["cyber-energia.json"]["elementi"]}
     V["cy"] = ce
+    need(ce["CE-2022-KASAT"]["attore"], "GRU", "UE, USA e Regno Unito", where="KA-SAT attribution")
+    need(ce["CE-2025-PL"]["attribuzione_stato"], "contestata", "Russia", where="Poland attribution")
     need(ce["CE-2022-KASAT"]["effetto"], "5.800", "10-11 GW", "95%", "19 aprile 2022", where="KA-SAT")
     need(ce["CE-2025-PL"]["vittima"], "oltre 30", where="Poland 2025")
     need(ce["CE-2025-PL"]["effetto"], "produzione elettrica non interrotta", where="Poland 2025")
@@ -1008,19 +1015,20 @@ def blocks(V):
     # ------------------------------------------------------------- 1. key points
     B.append(("h2", "key-points", "1. Key points"))
     B.append(("ul", [
-        f"**Seven North Sea and Baltic countries are {gw(V['tot_short'], 1)} GW short of their targets.** WindEurope expects {gw(V['tot_fc'], 1)} GW in 2030 in the UK, Germany, "
-        f"the Netherlands, Denmark, Poland, Belgium and Norway, against {num(V['tot_tgt'], 1)} GW promised. Europe connected only {gw(eu['aggiunto_2025_mw'], 2)} GW in 2025, "
-        f"the least since 2016 (WindEurope, February 2026).",
+        f"**Seven North Sea and Baltic countries will fall {gw(V['tot_short'], 1)} GW short of their targets.** For the UK, Germany, the Netherlands, Denmark, Poland, Belgium "
+        f"and Norway WindEurope expects {gw(V['tot_fc'], 1)} GW in 2030, against national targets of {num(V['tot_tgt'], 1)} GW. Europe connected only "
+        f"{gw(eu['aggiunto_2025_mw'], 2)} GW in 2025, the least since 2016 (WindEurope, February 2026).",
         f"**Auctions clear again where the state carries the price risk.** Rounds in which developers had to pay for the seabed got no bids for {num(V['neg_failed_gw'], 1)} GW "
-        f"in Denmark, Germany and the Netherlands in 2024–2025. With two-sided contracts for difference, Denmark awarded 1.8 GW at about {num(V['dk_eur'][0], 1)}–{num(V['dk_eur'][1], 1)} €/MWh, "
+        f"in Denmark, Germany and the Netherlands in 2024–2025. With two-sided contracts for difference, Denmark awarded {num(V['dk_gw'], 1)} GW at about {num(V['dk_eur'][0], 1)}–{num(V['dk_eur'][1], 1)} €/MWh, "
         f"signed on 6 November 2026.",
         f"**The next test starts on {date_en(rvo['apertura'], False)}.** The Dutch IJmuiden Ver Gamma round (2 GW) takes applications until {date_en(rvo['chiusura'])}, "
-        f"with price caps of {V['gamma_caps'][0]} and {V['gamma_caps'][1]} €/MWh (RVO). UK AR8 results are due between {date_en(ar8['date'], False)} and {date_en(ar8['date_end'])}; "
+        f"with price caps of {V["gamma_caps"][0]} and {V["gamma_caps"][1]} €/MWh (RVO; wind calendar). UK AR8 results are due between {date_en(ar8['date'], False)} and {date_en(ar8['date_end'])}; "
         f"Germany's auction reform still needs a Bundestag vote in December.",
         f"**The grid, not ships or steel, now sets the pace.** {word(grid_n, True)} of the {delay_n} delays in the monitor's wind calendar cite grid links or platforms; "
         f"Amprion's 2 GW BalWin1 slipped a year, to {date_en(bal['valore'])}. Monopile factories, by contrast, will run at about {num(pu['valore'], 0)}% of capacity in 2028 (Rystad).",
-        f"**Baltic ports are adding capacity; German North Sea quays come late.** Gdańsk's 253 million € T5 terminal serves Baltica 2 from the fourth quarter of 2026 and Klaipėda's "
-        f"201 million € upgrade ends in 2027. Cuxhaven's 1,250 m heavy quay arrives around 2028; Bremerhaven's terminal was never built.",
+        f"**Baltic ports are adding capacity; German North Sea quays come late.** Gdańsk's {num(V['ports']['gdansk-t5']['indicatori'][0]['valore'], 0)} million € T5 terminal "
+        f"serves Baltica 2 from the fourth quarter of 2026; Klaipėda's {num(V['ports']['klaipeda']['indicatori'][0]['valore'], 0)} million € upgrade ends in 2027. Cuxhaven's "
+        f"{num(V['ports']['cuxhaven']['indicatori'][0]['valore'], 0)} m heavy quay arrives around 2028; Bremerhaven's terminal was never built.",
     ]))
 
     # ------------------------------------------------------------- 2. targets vs reality
@@ -1057,7 +1065,7 @@ def blocks(V):
                       "Gap: target − installed", "Shortfall: target − forecast"], rows,
               "GW. Installed and forecast: WindEurope national totals. Under construction: EMODnet polygons in offshore-nord.json (North Sea and Baltic only; for the UK the east "
               "coast only; EMODnet status can lag). Awarded: supported or zero-subsidy capacity awarded in 2023–2026 rounds (wind-calendar.json). FID: final investment decisions "
-              "recorded in the calendar since January 2025 (Baltica 2 and Bałtyk 2+3 in Poland, Nordlicht in Germany); WindEurope counts six offshore FIDs in 2025, so the column is incomplete."))
+              "recorded in the calendar since January 2025 (Baltica 2 and Bałtyk 2+3 in Poland, Nordlicht in Germany); WindEurope counts more offshore FIDs in 2025, so the column is incomplete."))
     gb, de, nl, dk, pl = C["GB"], C["DE"], C["NL"], C["DK"], C["PL"]
     B.append(("p", f"**Across the seven countries** the gap between targets and end-2025 capacity is {gw(V['tot_gap'], 1)} GW; capacity awarded since 2023 covers "
                    f"{num(aw_pct, 0)}% of it, but most of that comes online after 2030. **Germany** has awarded {gw(de['awarded'], 1)} GW, {num(de['awarded'] / de['gap'] * 100, 0)}% of its gap, "
@@ -1071,7 +1079,7 @@ def blocks(V):
                    f"{num(bt['quota_obiettivo_2030_con_cantieri_pct'], 0)}% of the Marienborg goal even if every site under construction is finished by 2030 ({DL('offshore-nord.json')}). "
                    f"Esbjerg also promised about 20 GW of green hydrogen by 2030; Europe had {num(V['h2_mw'], 0)} MW of electrolysers in operation in July 2025 "
                    f"({L('Hydrogen Europe via Renewables Now', V['h2_src']['link'])}), {num(V['h2_share'], 1)}% of that figure."))
-    B.append(("val", "*Assessment.* The 2030 targets are now political anchors, not delivery plans: no country on the chart except Poland and France is forecast to reach more than "
+    B.append(("val", "*Assessment.* The 2030 targets are now political anchors, not delivery plans: no country on the chart except Poland is forecast to reach more than "
                      "two thirds of its goal. For employers the useful number is not the target but the awarded-and-financed pipeline, which pushes the bulk of North Sea "
                      "construction into 2028–2033 and makes the Dutch and German auction rounds of 2026–2027 decisive for port and vessel demand after 2030."))
 
@@ -1102,7 +1110,7 @@ def blocks(V):
                                f"euro conversion; on GOV.UK they are 91.20 and 89.49 £/MWh in 2024 prices. German caps are from a secondary source. Sources: "
                                f"{L('WindEurope 2025 Statistics, table 3', EXT['prezzi_aste_eur']['link'])} (February 2026, via report/dati/offshore-wind-esterni.json); Danish prices "
                                f"from {DL('eolico-filiera.json')} (offshoreWIND.biz, 6 November 2026, checked online); Dutch caps from {DL('wind-calendar.json')}."))
-    B.append(("p", f"The spread is wide: Denmark's {num(V['dk_eur'][0], 1)} €/MWh sits about {num(117 - V['dk_eur'][0], 0)} €/MWh below Poland's highest award. Baltic projects pay for a "
+    B.append(("p", f"The spread is wide: Denmark's {num(V['dk_eur'][0], 1)} €/MWh sits about {num(V['pl_max'] - V['dk_eur'][0], 0)} €/MWh below Poland's highest award ({V['pl_max']} €/MWh). Baltic projects pay for a "
                    f"young supply chain and first-of-a-kind grid; Danish sites reuse an existing one. The Dutch caps ({V['gamma_caps'][0]} and {V['gamma_caps'][1]} €/MWh, raised from "
                    f"{V['gamma_caps'][2]}) show what the government thinks it must offer to avoid another empty round."))
     B.append(("h3", "What is next"))
@@ -1140,7 +1148,7 @@ def blocks(V):
         ["1", "HVDC cables and converter platforms", "high", f"Prysmian {num(V['prysmian']['valore'], 1)} bn € and NKT {num(V['nkt']['valore'], 1)} bn € transmission backlogs; BalWin1 +1 year",
          "new cable lines from 2027 (Karlskrona); platforms not before 2030", "TSOs, developers with 2 GW connections"],
         ["2", "Grid connections onshore and offshore", "high", f"{grid_n} of {delay_n} calendar delays cite the grid", "2028–2031 as 2 GW links land", "developers, ports' campaign windows"],
-        ["3", "Turbine makers' finances", "medium", f"Siemens Gamesa {num(V['sgre']['valore'], 0)} M€ (Q2 FY2026); GE Vernova wind EBITDA {num(V['gev']['valore'], 0)} M$ (Q2 2026)",
+        ["3", "Turbine makers' finances", "medium", f"Siemens Gamesa loss {num(-V['sgre']['valore'], 0)} M€ (Q2 FY2026); GE Vernova wind EBITDA −{num(-V['gev']['valore'], 0)} M$ (Q2 2026)",
          "when prices cover risk; two Western suppliers left", "developers, pre-assembly ports"],
         ["4", "Vessels", "medium", f"Cadeler utilisation {num(V['cadeler_util']['valore'], 0)}% (H1 2026); foundation vessels 8–9 by 2028",
          "WTIV ample to 2030, tight in Europe from 2032", "installation contractors"],
@@ -1169,8 +1177,8 @@ def blocks(V):
                    f"delays on the DolWin5 link and unplanned TSO outages; in Sweden, Vattenfall paused Kriegers Flak in 2024 partly for lack of a reasonable offshore grid connection "
                    f"({DL('wind-calendar.json')})."))
     B.append(("h3", "3. Turbine makers' finances"))
-    B.append(("p", f"Two Western makers, Vestas and Siemens Gamesa, dominate European offshore. Siemens Gamesa's loss before special items narrowed to {num(V['sgre']['valore'], 0)} million € "
-                   f"in the second quarter of financial year 2026, from −249 million a year before ({L('Renewables Now', V['sgre']['link'])}). GE Vernova's wind segment lost "
+    B.append(("p", f"Two Western makers, Vestas and Siemens Gamesa, dominate European offshore. Siemens Gamesa's loss before special items narrowed to {num(-V['sgre']['valore'], 0)} million € "
+                   f"in the second quarter of financial year 2026, from 249 million a year before ({L('Renewables Now', V['sgre']['link'])}). GE Vernova's wind segment lost "
                    f"{num(-V['gev']['valore'], 0)} million $ (EBITDA) in Q2 2026, from 165 million a year earlier; it expects a loss of about 400 million $ in 2026 and has suspended new offshore "
                    f"orders ({L('reNEWS', V['gev']['link'])}). Dogger Bank A's turbine repairs moved the start of its first 300 MW contract to {date_en(wc['WC-GB-DBA-DELAY']['date'])}. "
                    f"Chinese makers offer 16–25 MW machines and are studying factories in the UK and Europe. Average offshore turbines installed in 2025 were {num(V['turb_mw']['valore'], 1)} MW."))
@@ -1200,8 +1208,8 @@ def blocks(V):
     # ------------------------------------------------------------- 5. ports
     pb, ptab = port_blocks(V)
     B.append(("h2", "ports", "5. Base ports: what they need, what they are building, what holds them back"))
-    B.append(("p", f"A base port for installation needs three things: deep water and quays rated about 40–50 t/m² for jack-up vessels; tens of hectares of hard-standing for "
-                   f"rotor blades longer than 115 m and towers; and a multi-year lease tied to a project. Operations and maintenance (O&M) bases need less space but give work "
+    B.append(("p", f"A base port for installation needs three things: deep water and quays rated about 40–50 t/m² for the new jack-up vessels; tens of hectares of "
+                   f"hard-standing for blades, towers and foundations; and a multi-year lease tied to a project ({DL('eolico-filiera.json')}, bottleneck notes). Operations and maintenance (O&M) bases need less space but give work "
                    f"for 25–30 years, against one or two seasons for installation (agent report report/agenti/eolico.md)."))
     B.append(("tab", ["Port", "Role", "Space and load", "PortWatch calls, 30 days, vs a year earlier", "Port Risk Index (1–25)", "Source reliability"], ptab,
               f"Space: new area in hectares and quay load rating where the source gives them. PortWatch: all ship calls a day, 30-day average to {date_en(V['pn_date'])}, IMF "
@@ -1252,12 +1260,12 @@ def blocks(V):
     cab = V["cables"]
     B.append(("p", f"**Cables.** {word(len(cab), True)} Baltic cable incidents have been recorded since November 2024, the latest on {date_en(cab[-1]['data'])} "
                    f"({cab[-1]['nome'].replace('Cavo dati', 'data cable').replace('danneggiato', 'damaged')}). Estlink 2, the "
-                   f"{num(V['estlink2']['mw'], 0)} MW Estonia–Finland HVDC link, was cut by a ship's anchor on 25 December 2024 ({DL('baltico-sicurezza.json')}; "
+                   f"{num(V['estlink2']['mw'], 0)} MW Estonia–Finland HVDC link, was damaged by a ship's anchor on {date_en(V['estlink_date'])} ({DL('baltico-sicurezza.json')}; "
                    f"{DL('interconnessioni.json')}). Offshore wind export cables and the new 2 GW links are the same kind of asset, on the same seabed."))
     de_ = V["drone_esb"]
     B.append(("p", f"**Drones.** {word(len(V['drones']), True)} drone events over airports, bases, ports and energy sites have been logged around the "
                    f"North Sea and Baltic since September 2025, including sightings reported at Esbjerg on 24 September 2025 and formations over Kiel's shipyard and power plant "
-                   f"the next day ({DL('baltico-sicurezza.json')}). None is recorded over an offshore wind farm."))
+                   f"the next day ({DL('baltico-sicurezza.json')}). None of the events in the file concerns an offshore wind farm."))
     gs = V["gnss_series"]
     near = V["gnss_near"]
     B.append(("p", f"**GNSS jamming.** Between {date_en(V['gnss_period'][0])} and {date_en(V['gnss_period'][1])} GPSJam counted {min(x[1] for x in gs)}–{max(x[1] for x in gs)} "
@@ -1265,7 +1273,7 @@ def blocks(V):
                    + (", ".join(f"{k} had {len(v)}" for k, v in sorted(near.items())) if near else "there were none")
                    + f" high cells in the week. GPSJam measures aircraft, not ships, but jack-up positioning and crew transfers also rely on satellite navigation ({DL('baltico-sicurezza.json')})."))
     B.append(("p", f"**Defence.** Sweden rejected {V['se_veto'][0]} offshore wind applications on defence grounds in November 2024 and {V['se_veto'][1]} more in July 2026, "
-                   f"citing interference with missile detection; it approved two ({DL('wind-calendar.json')})."))
+                   f"on missile-detection grounds, while approving Poseidon in 2024 and two projects in 2026 ({DL('wind-calendar.json')})."))
     B.append(("h3", "Cyber"))
     cy = V["cy"]
     B.append(("p", f"**KA-SAT and Enercon, 24 February 2022.** A wiper attack on Viasat's KA-SAT satellite network, attributed by the EU, US and UK to Russia's GRU, disabled the "
@@ -1324,7 +1332,7 @@ def blocks(V):
         ["Cadeler fleet utilisation", f"{num(V['cadeler_util']['valore'], 0)}% (H1 2026)", f"below {num(T['cadeler_util_low'], 0)}% or above {num(T['cadeler_util_high'], 0)}%",
          "vessel glut or renewed scarcity", "Cadeler reports"],
         ["Sif extraordinary meeting", "22 December 2026", "capital increase not approved", "Europe's largest monopile maker (31% share)", "eolico-filiera.json"],
-        ["Siemens Gamesa and GE Vernova offshore", f"{num(V['sgre']['valore'], 0)} M€ loss (Q2 FY2026); GE offshore orders suspended", "renewed losses or GE exit confirmed",
+        ["Siemens Gamesa and GE Vernova offshore", f"{num(-V['sgre']['valore'], 0)} M€ loss (Q2 FY2026); GE offshore orders suspended", "renewed losses or GE exit confirmed",
          "two Western suppliers left", "company results"],
         ["Euro-area AAA 10-year yield", f"{num(eu10['last'][1], 2)}% ({date_en(eu10['last'][0])})" if eu10 else "missing", f"above {num(T['eur10y'], 1)}%",
          "cost of capital for non-CfD rounds", "ECB Data Portal"],
@@ -1367,7 +1375,7 @@ def blocks(V):
         f"Failed auctions: WindEurope counts {num(V['neg_failed_gw'], 1)} GW of failed negative-bidding rounds in 2024–2025; the wind calendar's broader count of 2023–2025 tenders with "
         "no award (including UK AR5 and Lithuania) is about 7.2 GW (report/agenti/wind-calendar.md). Different perimeters, both shown.",
         "Germany: eolico-filiera.json says the 2026 offshore auctions were postponed to 2027; the cited source only says the N-10.1/N-10.2 retender moved. The report uses the narrower claim.",
-        "The FID column is incomplete: the calendar records three FIDs since 2025, WindEurope counts six offshore FIDs in 2025 alone. FIDs by country for 2026 are **missing**.",
+        f"The FID column is incomplete: the calendar records {word(sum(len(v) for v in V['fid_items'].values()))} FIDs since 2025, WindEurope counts {word(V['fid25']['progetti'])} offshore FIDs in 2025 alone. FIDs by country for 2026 are **missing**.",
         "Auction prices are not like for like (contract length, indexation, grid costs, currency). UK prices in euro are WindEurope's conversion.",
         "Day rates of installation vessels, European steel plate prices and labour data by port are **missing**.",
         "Copper and steel are front-month futures from Yahoo Finance; the latest close may be provisional. The HRC series is a US price.",
