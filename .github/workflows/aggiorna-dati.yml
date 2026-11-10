@@ -44,9 +44,6 @@ jobs:
       - name: Energia (GNL e gas Italia)
         continue-on-error: true
         run: python3 raccolta/energia/raccogli.py
-      - name: Analisti (feed YouTube)
-        continue-on-error: true
-        run: python3 raccolta/analisti/raccogli.py
       - name: Ucraina (lanci e abbattimenti)
         continue-on-error: true
         run: python3 raccolta/ucraina/raccogli.py
