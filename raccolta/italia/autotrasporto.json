@@ -1,0 +1,72 @@
+{
+  "descrizione": "Autotrasporto merci: regole sugli scioperi e sui fermi, associazioni, dichiarazioni 2026 sul caro gasolio, peso del gasolio sui costi. Voci curate a mano con fonte.",
+  "regole_scioperi": [
+    {
+      "id": "legge-146-1990",
+      "testo": "La legge 146/1990 (modificata dalla legge 83/2000) regola lo sciopero nei servizi pubblici essenziali: preavviso, durata, prestazioni minime, procedure di raffreddamento. La Commissione di garanzia valuta le proclamazioni, può chiederne la revoca e segnalare per la precettazione (ordinanza del ministro o del prefetto).",
+      "fonte": "Legge 12 giugno 1990, n. 146 (Normattiva)",
+      "link": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:legge:1990-06-12;146",
+      "data_fonte": "1990-06-12",
+      "affidabilita": "alta"
+    },
+    {
+      "id": "preavviso-25-giorni",
+      "testo": "Per i fermi dell'autotrasporto merci il codice di autoregolamentazione del settore prevede 25 giorni di preavviso alla Commissione di garanzia (più del minimo di 10 della legge) e servizi minimi garantiti. Nel marzo 2022 e nell'aprile 2026 la Commissione ha chiesto di revocare fermi proclamati con meno di 25 giorni.",
+      "fonte": "LaPresse (nota Unatras), 20 aprile 2026; La Sicilia, 12 marzo 2022",
+      "link": "https://www.lapresse.it/cronaca/2026/04/20/sciopero-autotrasportatori-trasportounito-camionista-muore-investito-sospeso-il-fermo/",
+      "data_fonte": "2026-04-20",
+      "affidabilita": "alta"
+    },
+    {
+      "id": "rarefazione",
+      "testo": "Regola della 'rarefazione oggettiva': vieta di concentrare più fermi dello stesso settore in un arco di tempo ristretto. Usata dalla Commissione nell'aprile 2026 contro il fermo di Trasportounito.",
+      "fonte": "TrasportoEuropa",
+      "link": "https://www.trasportoeuropa.it/notizie/autotrasporto/semaforo-rosso-del-garante-al-fermo-dellautotrasporto/",
+      "data_fonte": "2026-04-01",
+      "affidabilita": "alta"
+    },
+    {
+      "id": "durata-fermo",
+      "testo": "I fermi nazionali proclamati regolarmente nel 2026 durano 5 giorni (Unatras 25-29 maggio); il codice di autoregolamentazione fissa limiti di durata (valore non verificato in questa raccolta: il sito della Commissione cgsse.it non è raggiungibile da questo ambiente).",
+      "fonte": "LaPresse, 20 aprile 2026",
+      "link": "https://www.lapresse.it/cronaca/2026/04/20/sciopero-autotrasportatori-trasportounito-camionista-muore-investito-sospeso-il-fermo/",
+      "data_fonte": "2026-04-20",
+      "affidabilita": "media"
+    },
+    {
+      "id": "calendario-pubblico",
+      "testo": "Gli scioperi proclamati nei trasporti sono pubblicati nel calendario del Ministero delle Infrastrutture e dei Trasporti (scioperi.mit.gov.it) e dalla Commissione di garanzia (cgsse.it). Nel 2026 il calendario MIT ha riportato anche i fermi regionali dell'autotrasporto (Sicilia e Calabria, 16-20 ottobre).",
+      "fonte": "Logisticamente.it, ottobre 2026",
+      "link": "https://www.logisticamente.it/articoli/60800/caro-gasolio-autotrasporto-in-agitazione-rischio-fermo-nazionale/",
+      "data_fonte": "2026-10-21",
+      "affidabilita": "media"
+    }
+  ],
+  "associazioni": [
+    {"nome": "Unatras", "descrizione": "Coordinamento unitario delle principali associazioni dell'autotrasporto (presidente Paolo Uggè, anche presidente Fai-Conftrasporto). Dice di rappresentare oltre il 90% delle imprese (LaPresse, 20/4/2026); Il Fatto Quotidiano scrive circa l'80% delle 100 mila imprese.", "link": "https://www.lapresse.it/cronaca/2026/04/20/sciopero-autotrasportatori-trasportounito-camionista-muore-investito-sospeso-il-fermo/", "data_fonte": "2026-04-20"},
+    {"nome": "Trasportounito (con Fiap)", "descrizione": "Sigla esterna a Unatras; ha proclamato fermi nel marzo 2022 e nell'aprile 2026, entrambi contestati dalla Commissione di garanzia per il preavviso.", "link": "https://www.trasportoeuropa.it/notizie/autotrasporto/semaforo-rosso-del-garante-al-fermo-dellautotrasporto/", "data_fonte": "2026-04-01"},
+    {"nome": "CNA Fita", "descrizione": "Associazione degli autotrasportatori artigiani della CNA (parte di Unatras). Nel 2012 si dissociò dai blocchi; nel 2026 CNA Fermo stima circa 2.000 euro al mese di costi in più per un'impresa con un solo mezzo pesante.", "link": "https://www.logisticamente.it/articoli/60800/caro-gasolio-autotrasporto-in-agitazione-rischio-fermo-nazionale/", "data_fonte": "2026-10-21"},
+    {"nome": "Conftrasporto / Fai", "descrizione": "Confederazione dei trasporti di Confcommercio; la Fai (presidente Uggè) è la federazione degli autotrasportatori. Nel novembre 2026 Uggè risponde a Confindustria sul credito d'imposta ai committenti.", "link": "https://www.trasportoeuropa.it/notizie/autotrasporto/semaforo-rosso-del-garante-al-fermo-dellautotrasporto/", "data_fonte": "2026-11-09"},
+    {"nome": "Anita (Confindustria)", "descrizione": "Associazione delle imprese di autotrasporto di Confindustria (presidente Riccardo Morelli); ha approvato le misure del 22 maggio 2026.", "link": "https://www.shippingitaly.it/2026/05/23/sospeso-il-fermo-dellautotrasporto-in-programma-dal-25-maggio/", "data_fonte": "2026-05-23"},
+    {"nome": "Federtrasporti", "descrizione": "Propone la fuel surcharge automatica sulle tariffe (presidente Claudio Villa, settembre 2026).", "link": "https://www.teleborsa.it/DettaglioNews/91_2026-09-10_TLB/Gasolio-Federtrasporti-Basta-emergenze-Il-costo-del-carburante-va-trasferito-in-automatico-sulle-tariffe-di-trasporto.html", "data_fonte": "2026-09-10"}
+  ],
+  "dichiarazioni_2026": [
+    {"data": "2026-04-17", "chi": "Unatras (Paolo Uggè)", "testo": "Caro carburante con aggravio fino a 40 centesimi al litro: circa 20 per la mancata compensazione dei crediti fiscali e 20 per la pressione dei committenti a ridurre le tariffe. Perdita media di circa 9.000 euro al mese per impresa su base annua. Diesel sopra 2 euro: circa 2,16 sulla rete ordinaria e oltre 2,19 in autostrada (dati Mimit). Chiede ristori del mancato rimborso accise pari a 200 euro ogni 1.000 litri.", "fonte": "Il Fatto Quotidiano", "link": "https://www.ilfattoquotidiano.it/2026/04/17/fermo-autotrasporto-unatras-gasolio-logistica-notizie/8358442/"},
+    {"data": "2026-05-23", "chi": "Unatras / Paolo Uggè", "testo": "Il governo ha dato risposte concrete a una categoria 'fortemente penalizzata da una decisione errata che scaricava sulle imprese di autotrasporto la riduzione di 20 centesimi' (il taglio generale delle accise riduce il rimborso accise dei camionisti).", "fonte": "Shipping Italy", "link": "https://www.shippingitaly.it/2026/05/23/sospeso-il-fermo-dellautotrasporto-in-programma-dal-25-maggio/"},
+    {"data": "2026-09-10", "chi": "Federtrasporti (Claudio Villa)", "testo": "Il recupero delle accise funziona da tempo con un criterio semplice, 26,5 centesimi per ogni litro di gasolio; il nuovo credito d'imposta è complesso e scade il 31 dicembre 2026. Serve la fuel surcharge: adeguare il corrispettivo × incidenza del gasolio sui costi × variazione dell'indice del prezzo del gasolio pubblicato dal MASE.", "fonte": "Teleborsa", "link": "https://www.teleborsa.it/DettaglioNews/91_2026-09-10_TLB/Gasolio-Federtrasporti-Basta-emergenze-Il-costo-del-carburante-va-trasferito-in-automatico-sulle-tariffe-di-trasporto.html"},
+    {"data": "2026-10-21", "chi": "Unatras", "testo": "Possibile fermo nazionale senza risposte del governo; incontro al MIT il 27 ottobre; le imprese non hanno ancora ricevuto i ristori del credito d'imposta sul gasolio (434 milioni stanziati).", "fonte": "Logisticamente.it", "link": "https://www.logisticamente.it/articoli/60800/caro-gasolio-autotrasporto-in-agitazione-rischio-fermo-nazionale/"},
+    {"data": "2026-11-09", "chi": "Ministero dei Trasporti (via TrasportoEuropa)", "testo": "Concessi finora 242,2 milioni dei 480 milioni stanziati per il credito d'imposta sul gasolio, da usare in compensazione entro il 31 dicembre 2026. La Fiap chiede che l'adeguamento carburante arrivi anche ai subvettori.", "fonte": "TrasportoEuropa (breve in pagina)", "link": "https://www.trasportoeuropa.it/notizie/autotrasporto/semaforo-rosso-del-garante-al-fermo-dellautotrasporto/"}
+  ],
+  "peso_gasolio_sui_costi": [
+    {"valore_pct": 20.9, "anno": 2026, "veicolo": "ensemble articulé longue distance (40 t), Francia", "testo": "Ponderazione del gasolio professionale nell'indice del costo di produzione del CNR: 20,7% (2016), 24,4% (2024), 22,1% (2025), 20,9% (2026). Frigo longue distance: 18,3% (2025).", "fonte": "CNR (Comité national routier), Historique des pondérations indiciaires TRM 2026", "link": "https://www.cnr.fr/index.php/download/file/publications/CNR%20-%20Historique%20des%20pond%C3%A9rations%20indiciaires%20TRM%20-%202026.pdf", "data_fonte": "2026-01-01", "affidabilita": "media", "nota": "Dato francese al netto dell'IVA, usato come approssimazione: per l'Italia il MIT pubblica tabelle mensili dell'incidenza del gasolio, ma nel 2026 Federtrasporti nota che manca ancora un valore ufficiale dell'incidenza. Il PDF non si apre da questo ambiente: valori dal riassunto di ricerca."},
+    {"valore_pct": null, "anno": 2026, "veicolo": "ensemble articulé longue distance, Francia", "testo": "Il CNR stima che la forte salita del gasolio di marzo 2026 abbia aumentato il costo totale di un veicolo articolato a lunga distanza del 4,2%.", "fonte": "CNR, comunicato stampa 27 marzo 2026", "link": "https://www.cnr.fr/sites/default/files/2026-03/Communique%CC%81%20de%20presse%20CNR%20-%20hausse%20du%20carburant%20-%2027%20mars%202026.pdf", "data_fonte": "2026-03-27", "affidabilita": "media"},
+    {"valore_pct": null, "anno": 2026, "veicolo": "impresa con un mezzo pesante, Italia", "testo": "CNA Fermo: circa 100 euro in più al giorno, 2.000 euro al mese su 20 giornate lavorative.", "fonte": "Logisticamente.it", "link": "https://www.logisticamente.it/articoli/60800/caro-gasolio-autotrasporto-in-agitazione-rischio-fermo-nazionale/", "data_fonte": "2026-10-21", "affidabilita": "media"}
+  ],
+  "meccanismo_rimborso_accise": {
+    "testo": "Gli autotrasportatori con mezzi pesanti recuperano una parte dell'accisa sul gasolio (Federtrasporti: 26,5 centesimi al litro). Quando il governo taglia l'accisa per tutti, la parte rimborsabile si riduce: per i camionisti il taglio vale meno del previsto. È il motivo principale del fermo proclamato da Unatras nel maggio 2026.",
+    "fonte": "Shipping Italy, 23 maggio 2026; Teleborsa, 10 settembre 2026",
+    "link": "https://www.shippingitaly.it/2026/05/23/sospeso-il-fermo-dellautotrasporto-in-programma-dal-25-maggio/",
+    "data_fonte": "2026-09-10",
+    "affidabilita": "alta"
+  }
+}
