@@ -93,3 +93,5 @@ Regole, valide per ogni sessione:
 Decisioni del 2026-11-10: sito tutto in inglese (le versioni italiane dei report restano); tolta la sezione analisti economici YouTube.
 
 - 2026-11-10: impatti in Italia FATTI (docs/data/italia-impatti.json, sezione regole_trasmissione.per_il_simulatore). DA FARE dopo la traduzione: aggiungere al simulatore la sezione "What happens in Italy" (prezzi carburanti, rischio fermo TIR, inflazione, PUN, misure probabili).
+- 2026-11-10: GUIDA IN PDF per Gabriele (italiano). 5 agenti scrivono guida/capitoli/01..05-*.md (cos'è e come funziona; usare la mappa; strumenti di analisi; dati, fonti, limiti; CV e colloqui). POI: un revisore controlla tutti i capitoli contro il sito e i dati, li armonizza e monta guida/Guida-Geo-economic-Risk-Monitor.pdf (HTML + Playwright page.pdf, con screenshot in guida/img/). Rifare dopo la traduzione gli screenshot rimasti in italiano.
+- 2026-11-10: report nuovi in inglese in corso (offshore wind, Asia–Europe logistics, Italy and the Gulf shock), ognuno da far rivedere da un revisore indipendente; controllo qualità quotidiano in costruzione (raccolta/qualita/).

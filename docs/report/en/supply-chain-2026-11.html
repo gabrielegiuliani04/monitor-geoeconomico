@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supply chain November 2026</title>
+<meta name="description" content="Chokepoints, freight, ports, railways, energy, critical materials and logistics risks, with a focus on Italy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F6F5F0;--card:#FFFFFF;--ink:#1D272D;--soft:#52606A;--faint:#86929A;--rule:#DCDFDD;--accent:#A61E6B;--band:#ECE9E0;
+--ok:#0ca30c;--warn:#fab219;--crit:#d03b3b;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--paper:#10181D;--card:#172127;--ink:#DAE0E2;--soft:#A0ABB1;--faint:#6C787F;--rule:#2B373E;--accent:#d14f9a;--band:#1A252C}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+.pagina{max-width:72ch;margin:0 auto;padding:24px 16px 64px}
+.larga{max-width:760px}
+a{color:var(--accent);text-underline-offset:2px}
+a:hover{text-decoration-thickness:2px}
+.torna{display:inline-block;font-size:14px;margin-bottom:24px;text-decoration:none}
+.torna:hover{text-decoration:underline}
+.occhiello{font:600 13px/1.4 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h1{font:600 clamp(28px,5vw,40px)/1.15 "IBM Plex Serif",Georgia,serif;margin:0 0 12px;letter-spacing:-.01em}
+.sottotitolo{font-size:18px;color:var(--soft);margin:0 0 16px}
+.meta{font-size:14px;color:var(--soft);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px 0;margin:0 0 28px}
+h2{font:600 24px/1.25 "IBM Plex Serif",Georgia,serif;margin:48px 0 12px;padding-top:8px;scroll-margin-top:16px}
+h3{font:600 18px/1.3 "IBM Plex Sans",sans-serif;margin:28px 0 8px}
+p,ul{margin:0 0 16px}
+ul{padding-left:1.2em}
+li{margin:0 0 8px}
+strong{font-weight:600}
+code{font:14px "IBM Plex Mono",ui-monospace,monospace;background:var(--band);padding:1px 4px;border-radius:3px}
+nav.indice{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px 18px;margin:0 0 8px}
+nav.indice h2{font:600 13px/1.4 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px;padding:0;color:var(--soft)}
+nav.indice ol{margin:0;padding-left:1.4em;columns:2;column-gap:28px;font-size:15px}
+nav.indice li{margin:0 0 4px;break-inside:avoid}
+@media (max-width:560px){nav.indice ol{columns:1}}
+.valutazione{border-left:3px solid var(--accent);background:var(--band);padding:10px 14px;margin:0 0 18px;border-radius:0 6px 6px 0;font-size:16px}
+.valutazione .etichetta{font:600 12px/1 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+.tabella{overflow-x:auto;margin:0 0 16px;-webkit-overflow-scrolling:touch;border:1px solid var(--rule);border-radius:6px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+th{font-weight:600;color:var(--soft);background:var(--band);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.nota{font-size:13px;color:var(--soft);margin:-8px 0 20px}
+figure{margin:20px 0 22px}
+figure .grafico{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px}
+figcaption{font-size:13px;color:var(--soft);margin-top:8px}
+.stretto{display:none}
+@media (max-width:600px){.largo{display:none}.stretto{display:block}figure .grafico{padding:8px}
+td{min-width:5.5em}td:first-child{min-width:7.5em}td:last-child{min-width:15em}}
+details{margin-top:6px;font-size:13px}
+summary{cursor:pointer;color:var(--soft)}
+.s-verde::before{content:"● ";color:var(--ok)}
+.s-giallo::before{content:"▲ ";color:var(--warn)}
+.s-rosso::before{content:"■ ";color:var(--crit)}
+.revisione{margin:40px 0 0;padding:16px 18px;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--soft);border-radius:0 8px 8px 0;font-size:15px}
+.revisione h2{font:600 13px/1.4 "IBM Plex Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin:0 0 10px;padding:0}
+.revisione p,.revisione ul{margin:0 0 10px}
+footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--rule);font-size:14px;color:var(--soft)}
+footer .firma{font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+<main class="pagina">
+<a class="torna" href="../../index.html">← Back to the map</a> <span aria-hidden="true">·</span> <a class="torna" href="../supply-chain-2026-11.html" hreflang="it">Italian version</a>
+<p class="occhiello">Supply chain and logistics report · November 2026</p>
+<h1>Supply chain and logistics — November 2026</h1>
+<p class="sottotitolo">Chokepoints, freight, ports, railways, energy, critical materials and logistics risks, with a focus on Italy.</p>
+<p class="meta">Gabriele Giuliani · Geo-economic Risk Monitor · data read on 9 November 2026. Every number has a source and a date; the <em>Assessment</em> boxes are the observatory’s reasoning, not facts.</p>
+<nav class="indice" aria-label="Contents"><h2>Contents</h2><ol>
+<li><a href="#in-breve">Summary</a></li>
+<li><a href="#rotte">Sea routes: chokepoints and freight</a></li>
+<li><a href="#porti">Italian and European ports</a></li>
+<li><a href="#ferrovie">Railways and land corridors</a></li>
+<li><a href="#energia">Energy as a supply-chain input</a></li>
+<li><a href="#materie">Critical materials and bottlenecks</a></li>
+<li><a href="#rischi">Digital and physical risks</a></li>
+<li><a href="#nord">What it means for Northern Europe</a></li>
+<li><a href="#indicatori">Indicators to watch in the coming weeks</a></li>
+<li><a href="#metodo">Method and limits</a></li>
+</ol></nav>
+<h2 id="in-breve">1. Summary</h2>
+<ul><li><strong>Suez is recovering, Bab el-Mandeb stays at just over a third, Hormuz is closed in practice.</strong> Ships per day with AIS on: Suez 43.0, 58% of the January–October 2023 average; Bab el-Mandeb 27.3 (37%); Hormuz 4.4 (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, 7-day average 26 October–1 November 2026). On the risk dashboard Hormuz is at critical level, Bab el-Mandeb high, Suez medium.</li><li><strong>Container rates more than doubled, Italian ports moving at two speeds.</strong> Drewry WCI at 4,389 dollars per FEU (5 November 2026), +124% year on year; FBX global +3% over 4 weeks. Over 30 days Ravenna (−20%) and Venice Malamocco (−16%), energy and bulk ports, are down; Genoa −5% (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, to 30 October 2026).</li><li><strong>Energy remains the heaviest cost.</strong> TTF gas at €82.33/MWh, +164% year on year (Yahoo Finance, 9 November 2026); self-service diesel at €2.224 a litre (<a href="https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html" rel="noopener">Mimit, fuel price observatory (national self-service average), cited by Affaritaliani</a>, 7 November 2026); Italian gas storage 88.9% full (GIE AGSI+, 8 November 2026).</li><li><strong>Northern Europe: less exposed on freight, more exposed on gas.</strong> China–Northern Europe 3,422 dollars per FEU against 4,324 to the Mediterranean (Freightos, 6 November 2026); storage 63.5% full in the Netherlands and 58.9% in Germany, well below the 5-year average (GIE AGSI+). Details in section 8.</li><li><strong>Critical materials: Chinese decision on 10 November.</strong> The suspension of the rare-earth export controls decided in October 2025 expires; as of 9 November no extension had been announced (<a href="https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/" rel="noopener">CIRS Group (text of announcement no. 70/2025) and Mining Technology</a>, 9 November 2026).</li></ul>
+<aside class="valutazione"><span class="etichetta">Assessment</span>Europe’s supply chain in November 2026 runs at two speeds. Containers are returning towards Suez and spot rates are no longer rising, but they remain about double a year ago, while energy, fertilisers and critical materials stay tied to Hormuz and China. For Italy the most concrete risk over the next two months is not logistics but cost: gas, diesel and electricity in winter with low European storage.</aside>
+<h2 id="rotte">2. Sea routes: chokepoints and freight</h2>
+<h3>Chokepoint transits</h3>
+<div class="tabella"><table><thead><tr><th scope="col">Chokepoint</th><th scope="col">Ships/day</th><th scope="col">of which tankers</th><th scope="col">of which container ships</th><th scope="col">vs 1 year</th><th scope="col">vs the same week of 2023</th></tr></thead><tbody><tr><td>Suez Canal</td><td>43.0</td><td>17.0</td><td>11.7</td><td>+10%</td><td>−43%</td></tr><tr><td>Bab el-Mandeb</td><td>27.3</td><td>8.6</td><td>5.1</td><td>−22%</td><td>−66%</td></tr><tr><td>Cape of Good Hope</td><td>92.0</td><td>19.4</td><td>14.7</td><td>+5%</td><td>+89%</td></tr><tr><td>Strait of Hormuz</td><td>4.4</td><td>1.4</td><td>0.4</td><td>−95%</td><td>−95%</td></tr><tr><td>Strait of Gibraltar</td><td>131.6</td><td>39.7</td><td>31.6</td><td>−5%</td><td>+1%</td></tr><tr><td>Bosphorus</td><td>44.4</td><td>12.7</td><td>6.0</td><td>−55%</td><td>−57%</td></tr><tr><td>Danish Straits</td><td>38.7</td><td>9.0</td><td>4.1</td><td>−21%</td><td>−10%</td></tr><tr><td>Strait of Malacca</td><td>202.7</td><td>70.7</td><td>56.3</td><td>−15%</td><td>−11%</td></tr><tr><td>Panama Canal</td><td>27.3</td><td>11.3</td><td>8.1</td><td>−12%</td><td>0%</td></tr><tr><td>Kerch Strait</td><td>0.0</td><td>0.0</td><td>0.0</td><td>−100%</td><td>−100%</td></tr></tbody></table></div>
+<p class="nota">Source: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, 7-day average 26 October–1 November 2026. Ships with AIS on: those that switch it off are not counted. The same week of 2023 (late October) predates the Houthi attacks. For Suez and Bab el-Mandeb the risk dashboard uses the January–October 2023 average and for Hormuz the 2025 average: percentages may differ by a few points.</p>
+<figure><div class="grafico"><div class="largo"><svg class="viz" id="g-transiti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" width="100%" role="img" aria-labelledby="g-transiti-t g-transiti-d" style="--fs:12px;max-width:720px;height:auto;display:block">
+<title id="g-transiti-t">Daily transits at Suez, Bab el-Mandeb and the Cape of Good Hope, 2023–2026</title><desc id="g-transiti-d">Monthly average of ships per day (IMF PortWatch). Suez and Bab el-Mandeb collapse from December 2023, while the Cape of Good Hope doubles.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<text x="40" y="20" class="t-ink t-b">Ships per day, monthly average</text>
+<text x="40" y="36" class="t-faint">IMF PortWatch (AIS) · complete months up to October 2026</text>
+<line x1="40" x2="602" y1="346.0" y2="346.0" class="base"/>
+<text x="34" y="350.0" text-anchor="end" class="num">0</text>
+<line x1="40" x2="602" y1="271.0" y2="271.0" class="grid"/>
+<text x="34" y="275.0" text-anchor="end" class="num">25</text>
+<line x1="40" x2="602" y1="196.0" y2="196.0" class="grid"/>
+<text x="34" y="200.0" text-anchor="end" class="num">50</text>
+<line x1="40" x2="602" y1="121.0" y2="121.0" class="grid"/>
+<text x="34" y="125.0" text-anchor="end" class="num">75</text>
+<line x1="40" x2="602" y1="46.0" y2="46.0" class="grid"/>
+<text x="34" y="50.0" text-anchor="end" class="num">100</text>
+<text x="40.0" y="362" text-anchor="middle" class="num">2023</text>
+<line x1="40.0" x2="40.0" y1="346" y2="350" class="base"/>
+<text x="189.9" y="362" text-anchor="middle" class="num">2024</text>
+<line x1="189.9" x2="189.9" y1="346" y2="350" class="base"/>
+<text x="339.7" y="362" text-anchor="middle" class="num">2025</text>
+<line x1="339.7" x2="339.7" y1="346" y2="350" class="base"/>
+<text x="489.6" y="362" text-anchor="middle" class="num">2026</text>
+<line x1="489.6" x2="489.6" y1="346" y2="350" class="base"/>
+<line x1="177.4" x2="177.4" y1="46" y2="346" class="ev"/>
+<text x="181.4" y="298.0" text-anchor="start" class="t-faint">Dec 2023: Houthi attacks, diversions begin</text>
+<line x1="515.0" x2="515.0" y1="46" y2="346" class="ev"/>
+<text x="511.0" y="322.0" text-anchor="end" class="t-faint">2 Mar 2026: Hormuz closed in practice</text>
+<path d="M40.0,219.1 L52.5,220.1 L65.0,216.5 L77.5,210.6 L90.0,198.5 L102.4,191.3 L114.9,189.2 L127.4,176.5 L139.9,178.7 L152.4,194.9 L164.9,198.2 L177.4,191.8 L189.9,129.4 L202.4,88.7 L214.8,88.2 L227.3,83.0 L239.8,71.3 L252.3,59.5 L264.8,70.8 L277.3,65.0 L289.8,86.5 L302.3,79.1 L314.8,95.0 L327.2,102.9 L339.7,92.8 L352.2,82.3 L364.7,103.9 L377.2,93.6 L389.7,77.7 L402.2,70.4 L414.7,56.7 L427.2,51.6 L439.6,62.7 L452.1,63.8 L464.6,84.5 L477.1,91.8 L489.6,82.9 L502.1,84.9 L514.6,72.2 L527.1,67.6 L539.6,55.2 L552.0,67.6 L564.5,71.4 L577.0,75.0 L589.5,87.6 L602.0,82.7" class="l c-s2"/>
+<path d="M40.0,133.1 L52.5,135.8 L65.0,130.7 L77.5,114.1 L90.0,113.7 L102.4,120.2 L114.9,131.9 L127.4,131.4 L139.9,123.3 L152.4,117.3 L164.9,116.3 L177.4,131.7 L189.9,201.9 L202.4,218.9 L214.8,229.4 L227.3,223.4 L239.8,223.9 L252.3,229.1 L264.8,230.5 L277.3,225.0 L289.8,233.7 L302.3,233.4 L314.8,238.0 L327.2,238.8 L339.7,234.6 L352.2,243.6 L364.7,234.1 L377.2,234.9 L389.7,235.0 L402.2,236.0 L414.7,232.0 L427.2,230.1 L439.6,219.8 L452.1,222.0 L464.6,217.2 L477.1,225.8 L489.6,228.8 L502.1,221.9 L514.6,223.0 L527.1,219.6 L539.6,228.7 L552.0,224.8 L564.5,220.4 L577.0,223.0 L589.5,224.8 L602.0,216.8" class="l c-s3"/>
+<path d="M40.0,131.3 L52.5,134.4 L65.0,125.8 L77.5,121.7 L90.0,113.3 L102.4,116.4 L114.9,123.7 L127.4,127.0 L139.9,119.7 L152.4,110.1 L164.9,114.0 L177.4,150.4 L189.9,227.7 L202.4,241.2 L214.8,248.2 L227.3,248.8 L239.8,249.9 L252.3,251.9 L264.8,259.3 L277.3,252.1 L289.8,254.3 L302.3,251.4 L314.8,246.4 L327.2,250.0 L339.7,249.3 L352.2,250.0 L364.7,247.2 L377.2,247.5 L389.7,246.6 L402.2,250.8 L414.7,252.3 L427.2,240.9 L439.6,244.2 L452.1,237.7 L464.6,232.7 L477.1,247.9 L489.6,245.5 L502.1,235.6 L514.6,239.4 L527.1,235.8 L539.6,237.7 L552.0,236.1 L564.5,245.1 L577.0,263.9 L589.5,266.3 L602.0,262.4" class="l c-s1"/>
+<circle cx="602.0" cy="82.7" r="3.5" class="f-s2 ring"/>
+<text x="610.0" y="86.7" class="t-ink"><tspan class="t-b num">88</tspan> Cape</text>
+<circle cx="602.0" cy="216.8" r="3.5" class="f-s3 ring"/>
+<text x="610.0" y="220.8" class="t-ink"><tspan class="t-b num">43</tspan> Suez</text>
+<circle cx="602.0" cy="262.4" r="3.5" class="f-s1 ring"/>
+<text x="610.0" y="266.4" class="t-ink"><tspan class="t-b num">28</tspan> Bab el-Mandeb</text>
+<line x1="40" x2="54" y1="372" y2="372" class="l c-s2" style="stroke-width:3"/>
+<text x="58" y="376" class="t-ink">Cape</text>
+<line x1="99.84" x2="113.84" y1="372" y2="372" class="l c-s3" style="stroke-width:3"/>
+<text x="117.84" y="376" class="t-ink">Suez</text>
+<line x1="159.68" x2="173.68" y1="372" y2="372" class="l c-s1" style="stroke-width:3"/>
+<text x="177.68" y="376" class="t-ink">Bab el-Mandeb</text>
+<rect x="33.8" y="46" width="12.5" height="300" class="hit"><title>January 2023: Cape 42.3 · Suez 71.0 · Bab el-Mandeb 71.6 ships per day</title></rect>
+<rect x="46.2" y="46" width="12.5" height="300" class="hit"><title>February 2023: Cape 42.0 · Suez 70.1 · Bab el-Mandeb 70.5 ships per day</title></rect>
+<rect x="58.7" y="46" width="12.5" height="300" class="hit"><title>March 2023: Cape 43.2 · Suez 71.8 · Bab el-Mandeb 73.4 ships per day</title></rect>
+<rect x="71.2" y="46" width="12.5" height="300" class="hit"><title>April 2023: Cape 45.1 · Suez 77.3 · Bab el-Mandeb 74.8 ships per day</title></rect>
+<rect x="83.7" y="46" width="12.5" height="300" class="hit"><title>May 2023: Cape 49.2 · Suez 77.4 · Bab el-Mandeb 77.6 ships per day</title></rect>
+<rect x="96.2" y="46" width="12.5" height="300" class="hit"><title>June 2023: Cape 51.6 · Suez 75.3 · Bab el-Mandeb 76.5 ships per day</title></rect>
+<rect x="108.7" y="46" width="12.5" height="300" class="hit"><title>July 2023: Cape 52.3 · Suez 71.4 · Bab el-Mandeb 74.1 ships per day</title></rect>
+<rect x="121.2" y="46" width="12.5" height="300" class="hit"><title>August 2023: Cape 56.5 · Suez 71.5 · Bab el-Mandeb 73.0 ships per day</title></rect>
+<rect x="133.7" y="46" width="12.5" height="300" class="hit"><title>September 2023: Cape 55.8 · Suez 74.2 · Bab el-Mandeb 75.4 ships per day</title></rect>
+<rect x="146.2" y="46" width="12.5" height="300" class="hit"><title>October 2023: Cape 50.4 · Suez 76.2 · Bab el-Mandeb 78.6 ships per day</title></rect>
+<rect x="158.6" y="46" width="12.5" height="300" class="hit"><title>November 2023: Cape 49.3 · Suez 76.6 · Bab el-Mandeb 77.3 ships per day</title></rect>
+<rect x="171.1" y="46" width="12.5" height="300" class="hit"><title>December 2023: Cape 51.4 · Suez 71.4 · Bab el-Mandeb 65.2 ships per day</title></rect>
+<rect x="183.6" y="46" width="12.5" height="300" class="hit"><title>January 2024: Cape 72.2 · Suez 48.0 · Bab el-Mandeb 39.4 ships per day</title></rect>
+<rect x="196.1" y="46" width="12.5" height="300" class="hit"><title>February 2024: Cape 85.8 · Suez 42.4 · Bab el-Mandeb 34.9 ships per day</title></rect>
+<rect x="208.6" y="46" width="12.5" height="300" class="hit"><title>March 2024: Cape 85.9 · Suez 38.9 · Bab el-Mandeb 32.6 ships per day</title></rect>
+<rect x="221.1" y="46" width="12.5" height="300" class="hit"><title>April 2024: Cape 87.7 · Suez 40.9 · Bab el-Mandeb 32.4 ships per day</title></rect>
+<rect x="233.6" y="46" width="12.5" height="300" class="hit"><title>May 2024: Cape 91.6 · Suez 40.7 · Bab el-Mandeb 32.0 ships per day</title></rect>
+<rect x="246.1" y="46" width="12.5" height="300" class="hit"><title>June 2024: Cape 95.5 · Suez 39.0 · Bab el-Mandeb 31.4 ships per day</title></rect>
+<rect x="258.6" y="46" width="12.5" height="300" class="hit"><title>July 2024: Cape 91.7 · Suez 38.5 · Bab el-Mandeb 28.9 ships per day</title></rect>
+<rect x="271.0" y="46" width="12.5" height="300" class="hit"><title>August 2024: Cape 93.7 · Suez 40.3 · Bab el-Mandeb 31.3 ships per day</title></rect>
+<rect x="283.5" y="46" width="12.5" height="300" class="hit"><title>September 2024: Cape 86.5 · Suez 37.4 · Bab el-Mandeb 30.6 ships per day</title></rect>
+<rect x="296.0" y="46" width="12.5" height="300" class="hit"><title>October 2024: Cape 89.0 · Suez 37.5 · Bab el-Mandeb 31.5 ships per day</title></rect>
+<rect x="308.5" y="46" width="12.5" height="300" class="hit"><title>November 2024: Cape 83.7 · Suez 36.0 · Bab el-Mandeb 33.2 ships per day</title></rect>
+<rect x="321.0" y="46" width="12.5" height="300" class="hit"><title>December 2024: Cape 81.0 · Suez 35.7 · Bab el-Mandeb 32.0 ships per day</title></rect>
+<rect x="333.5" y="46" width="12.5" height="300" class="hit"><title>January 2025: Cape 84.4 · Suez 37.1 · Bab el-Mandeb 32.2 ships per day</title></rect>
+<rect x="346.0" y="46" width="12.5" height="300" class="hit"><title>February 2025: Cape 87.9 · Suez 34.1 · Bab el-Mandeb 32.0 ships per day</title></rect>
+<rect x="358.5" y="46" width="12.5" height="300" class="hit"><title>March 2025: Cape 80.7 · Suez 37.3 · Bab el-Mandeb 32.9 ships per day</title></rect>
+<rect x="371.0" y="46" width="12.5" height="300" class="hit"><title>April 2025: Cape 84.1 · Suez 37.0 · Bab el-Mandeb 32.8 ships per day</title></rect>
+<rect x="383.4" y="46" width="12.5" height="300" class="hit"><title>May 2025: Cape 89.4 · Suez 37.0 · Bab el-Mandeb 33.1 ships per day</title></rect>
+<rect x="395.9" y="46" width="12.5" height="300" class="hit"><title>June 2025: Cape 91.9 · Suez 36.7 · Bab el-Mandeb 31.7 ships per day</title></rect>
+<rect x="408.4" y="46" width="12.5" height="300" class="hit"><title>July 2025: Cape 96.4 · Suez 38.0 · Bab el-Mandeb 31.2 ships per day</title></rect>
+<rect x="420.9" y="46" width="12.5" height="300" class="hit"><title>August 2025: Cape 98.1 · Suez 38.6 · Bab el-Mandeb 35.0 ships per day</title></rect>
+<rect x="433.4" y="46" width="12.5" height="300" class="hit"><title>September 2025: Cape 94.4 · Suez 42.1 · Bab el-Mandeb 33.9 ships per day</title></rect>
+<rect x="445.9" y="46" width="12.5" height="300" class="hit"><title>October 2025: Cape 94.1 · Suez 41.3 · Bab el-Mandeb 36.1 ships per day</title></rect>
+<rect x="458.4" y="46" width="12.5" height="300" class="hit"><title>November 2025: Cape 87.2 · Suez 42.9 · Bab el-Mandeb 37.8 ships per day</title></rect>
+<rect x="470.9" y="46" width="12.5" height="300" class="hit"><title>December 2025: Cape 84.7 · Suez 40.1 · Bab el-Mandeb 32.7 ships per day</title></rect>
+<rect x="483.4" y="46" width="12.5" height="300" class="hit"><title>January 2026: Cape 87.7 · Suez 39.1 · Bab el-Mandeb 33.5 ships per day</title></rect>
+<rect x="495.8" y="46" width="12.5" height="300" class="hit"><title>February 2026: Cape 87.0 · Suez 41.4 · Bab el-Mandeb 36.8 ships per day</title></rect>
+<rect x="508.3" y="46" width="12.5" height="300" class="hit"><title>March 2026: Cape 91.3 · Suez 41.0 · Bab el-Mandeb 35.5 ships per day</title></rect>
+<rect x="520.8" y="46" width="12.5" height="300" class="hit"><title>April 2026: Cape 92.8 · Suez 42.1 · Bab el-Mandeb 36.7 ships per day</title></rect>
+<rect x="533.3" y="46" width="12.5" height="300" class="hit"><title>May 2026: Cape 96.9 · Suez 39.1 · Bab el-Mandeb 36.1 ships per day</title></rect>
+<rect x="545.8" y="46" width="12.5" height="300" class="hit"><title>June 2026: Cape 92.8 · Suez 40.4 · Bab el-Mandeb 36.6 ships per day</title></rect>
+<rect x="558.3" y="46" width="12.5" height="300" class="hit"><title>July 2026: Cape 91.5 · Suez 41.9 · Bab el-Mandeb 33.6 ships per day</title></rect>
+<rect x="570.8" y="46" width="12.5" height="300" class="hit"><title>August 2026: Cape 90.3 · Suez 41.0 · Bab el-Mandeb 27.4 ships per day</title></rect>
+<rect x="583.3" y="46" width="12.5" height="300" class="hit"><title>September 2026: Cape 86.1 · Suez 40.4 · Bab el-Mandeb 26.6 ships per day</title></rect>
+<rect x="595.8" y="46" width="12.5" height="300" class="hit"><title>October 2026: Cape 87.8 · Suez 43.1 · Bab el-Mandeb 27.9 ships per day</title></rect>
+</svg></div><div class="stretto"><svg class="viz" id="g-transiti-m" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 330" width="100%" role="img" aria-labelledby="g-transiti-m-t g-transiti-m-d" style="--fs:11px;max-width:360px;height:auto;display:block">
+<title id="g-transiti-m-t">Daily transits at Suez, Bab el-Mandeb and the Cape of Good Hope, 2023–2026</title><desc id="g-transiti-m-d">Monthly average of ships per day (IMF PortWatch). Suez and Bab el-Mandeb collapse from December 2023, while the Cape of Good Hope doubles.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<text x="30" y="26" class="t-ink t-b">Ships per day, monthly average</text>
+<text x="30" y="42" class="t-faint">IMF PortWatch (AIS) · complete months up to October 2026</text>
+<line x1="30" x2="268" y1="300.0" y2="300.0" class="base"/>
+<text x="24" y="304.0" text-anchor="end" class="num">0</text>
+<line x1="30" x2="268" y1="238.0" y2="238.0" class="grid"/>
+<text x="24" y="242.0" text-anchor="end" class="num">25</text>
+<line x1="30" x2="268" y1="176.0" y2="176.0" class="grid"/>
+<text x="24" y="180.0" text-anchor="end" class="num">50</text>
+<line x1="30" x2="268" y1="114.0" y2="114.0" class="grid"/>
+<text x="24" y="118.0" text-anchor="end" class="num">75</text>
+<line x1="30" x2="268" y1="52.0" y2="52.0" class="grid"/>
+<text x="24" y="56.0" text-anchor="end" class="num">100</text>
+<text x="30.0" y="316" text-anchor="middle" class="num">2023</text>
+<line x1="30.0" x2="30.0" y1="300" y2="304" class="base"/>
+<text x="93.5" y="316" text-anchor="middle" class="num">2024</text>
+<line x1="93.5" x2="93.5" y1="300" y2="304" class="base"/>
+<text x="156.9" y="316" text-anchor="middle" class="num">2025</text>
+<line x1="156.9" x2="156.9" y1="300" y2="304" class="base"/>
+<text x="220.4" y="316" text-anchor="middle" class="num">2026</text>
+<line x1="220.4" x2="220.4" y1="300" y2="304" class="base"/>
+<line x1="88.2" x2="88.2" y1="52" y2="300" class="ev"/>
+<text x="92.2" y="260.3" text-anchor="start" class="t-faint">Dec 2023</text>
+<line x1="231.1" x2="231.1" y1="52" y2="300" class="ev"/>
+<text x="227.1" y="280.2" text-anchor="end" class="t-faint">2 Mar 2026</text>
+<path d="M30.0,195.1 L35.3,195.9 L40.6,193.0 L45.9,188.1 L51.2,178.1 L56.4,172.1 L61.7,170.4 L67.0,159.8 L72.3,161.7 L77.6,175.1 L82.9,177.8 L88.2,172.6 L93.5,121.0 L98.8,87.3 L104.0,86.9 L109.3,82.6 L114.6,72.9 L119.9,63.2 L125.2,72.5 L130.5,67.7 L135.8,85.5 L141.1,79.4 L146.4,92.5 L151.6,99.0 L156.9,90.7 L162.2,82.0 L167.5,99.8 L172.8,91.3 L178.1,78.2 L183.4,72.2 L188.7,60.9 L194.0,56.6 L199.2,65.8 L204.5,66.7 L209.8,83.8 L215.1,89.8 L220.4,82.5 L225.7,84.2 L231.0,73.7 L236.3,69.9 L241.6,59.6 L246.8,69.9 L252.1,73.0 L257.4,76.0 L262.7,86.4 L268.0,82.3" class="l c-s2"/>
+<path d="M30.0,124.0 L35.3,126.2 L40.6,122.0 L45.9,108.3 L51.2,108.0 L56.4,113.3 L61.7,123.0 L67.0,122.6 L72.3,115.9 L77.6,111.0 L82.9,110.1 L88.2,122.9 L93.5,180.9 L98.8,194.9 L104.0,203.6 L109.3,198.7 L114.6,199.0 L119.9,203.4 L125.2,204.6 L130.5,200.0 L135.8,207.2 L141.1,206.9 L146.4,210.7 L151.6,211.4 L156.9,207.9 L162.2,215.3 L167.5,207.5 L172.8,208.2 L178.1,208.2 L183.4,209.1 L188.7,205.8 L194.0,204.2 L199.2,195.7 L204.5,197.5 L209.8,193.5 L215.1,200.6 L220.4,203.1 L225.7,197.4 L231.0,198.3 L236.3,195.5 L241.6,203.0 L246.8,199.8 L252.1,196.2 L257.4,198.3 L262.7,199.8 L268.0,193.2" class="l c-s3"/>
+<path d="M30.0,122.5 L35.3,125.1 L40.6,118.0 L45.9,114.6 L51.2,107.6 L56.4,110.2 L61.7,116.2 L67.0,119.0 L72.3,112.9 L77.6,105.0 L82.9,108.2 L88.2,138.3 L93.5,202.2 L98.8,213.4 L104.0,219.1 L109.3,219.6 L114.6,220.6 L119.9,222.2 L125.2,228.3 L130.5,222.4 L135.8,224.2 L141.1,221.8 L146.4,217.7 L151.6,220.6 L156.9,220.1 L162.2,220.6 L167.5,218.3 L172.8,218.6 L178.1,217.8 L183.4,221.3 L188.7,222.6 L194.0,213.1 L199.2,215.8 L204.5,210.5 L209.8,206.3 L215.1,218.9 L220.4,216.9 L225.7,208.8 L231.0,211.8 L236.3,208.9 L241.6,210.5 L246.8,209.1 L252.1,216.6 L257.4,232.2 L262.7,234.1 L268.0,230.9" class="l c-s1"/>
+<circle cx="268.0" cy="82.3" r="3.5" class="f-s2 ring"/>
+<text x="276.0" y="86.3" class="t-ink"><tspan class="t-b num">88</tspan> Cape</text>
+<circle cx="268.0" cy="193.2" r="3.5" class="f-s3 ring"/>
+<text x="276.0" y="197.2" class="t-ink"><tspan class="t-b num">43</tspan> Suez</text>
+<circle cx="268.0" cy="230.9" r="3.5" class="f-s1 ring"/>
+<text x="276.0" y="234.9" class="t-ink"><tspan class="t-b num">28</tspan> Bab</text>
+<line x1="30" x2="44" y1="322" y2="322" class="l c-s2" style="stroke-width:3"/>
+<text x="48" y="326" class="t-ink">Cape</text>
+<line x1="87.52" x2="101.52" y1="322" y2="322" class="l c-s3" style="stroke-width:3"/>
+<text x="105.52" y="326" class="t-ink">Suez</text>
+<line x1="145.04" x2="159.04" y1="322" y2="322" class="l c-s1" style="stroke-width:3"/>
+<text x="163.04" y="326" class="t-ink">Bab el-Mandeb</text>
+<rect x="27.4" y="52" width="5.3" height="248" class="hit"><title>January 2023: Cape 42.3 · Suez 71.0 · Bab el-Mandeb 71.6 ships per day</title></rect>
+<rect x="32.6" y="52" width="5.3" height="248" class="hit"><title>February 2023: Cape 42.0 · Suez 70.1 · Bab el-Mandeb 70.5 ships per day</title></rect>
+<rect x="37.9" y="52" width="5.3" height="248" class="hit"><title>March 2023: Cape 43.2 · Suez 71.8 · Bab el-Mandeb 73.4 ships per day</title></rect>
+<rect x="43.2" y="52" width="5.3" height="248" class="hit"><title>April 2023: Cape 45.1 · Suez 77.3 · Bab el-Mandeb 74.8 ships per day</title></rect>
+<rect x="48.5" y="52" width="5.3" height="248" class="hit"><title>May 2023: Cape 49.2 · Suez 77.4 · Bab el-Mandeb 77.6 ships per day</title></rect>
+<rect x="53.8" y="52" width="5.3" height="248" class="hit"><title>June 2023: Cape 51.6 · Suez 75.3 · Bab el-Mandeb 76.5 ships per day</title></rect>
+<rect x="59.1" y="52" width="5.3" height="248" class="hit"><title>July 2023: Cape 52.3 · Suez 71.4 · Bab el-Mandeb 74.1 ships per day</title></rect>
+<rect x="64.4" y="52" width="5.3" height="248" class="hit"><title>August 2023: Cape 56.5 · Suez 71.5 · Bab el-Mandeb 73.0 ships per day</title></rect>
+<rect x="69.7" y="52" width="5.3" height="248" class="hit"><title>September 2023: Cape 55.8 · Suez 74.2 · Bab el-Mandeb 75.4 ships per day</title></rect>
+<rect x="75.0" y="52" width="5.3" height="248" class="hit"><title>October 2023: Cape 50.4 · Suez 76.2 · Bab el-Mandeb 78.6 ships per day</title></rect>
+<rect x="80.2" y="52" width="5.3" height="248" class="hit"><title>November 2023: Cape 49.3 · Suez 76.6 · Bab el-Mandeb 77.3 ships per day</title></rect>
+<rect x="85.5" y="52" width="5.3" height="248" class="hit"><title>December 2023: Cape 51.4 · Suez 71.4 · Bab el-Mandeb 65.2 ships per day</title></rect>
+<rect x="90.8" y="52" width="5.3" height="248" class="hit"><title>January 2024: Cape 72.2 · Suez 48.0 · Bab el-Mandeb 39.4 ships per day</title></rect>
+<rect x="96.1" y="52" width="5.3" height="248" class="hit"><title>February 2024: Cape 85.8 · Suez 42.4 · Bab el-Mandeb 34.9 ships per day</title></rect>
+<rect x="101.4" y="52" width="5.3" height="248" class="hit"><title>March 2024: Cape 85.9 · Suez 38.9 · Bab el-Mandeb 32.6 ships per day</title></rect>
+<rect x="106.7" y="52" width="5.3" height="248" class="hit"><title>April 2024: Cape 87.7 · Suez 40.9 · Bab el-Mandeb 32.4 ships per day</title></rect>
+<rect x="112.0" y="52" width="5.3" height="248" class="hit"><title>May 2024: Cape 91.6 · Suez 40.7 · Bab el-Mandeb 32.0 ships per day</title></rect>
+<rect x="117.3" y="52" width="5.3" height="248" class="hit"><title>June 2024: Cape 95.5 · Suez 39.0 · Bab el-Mandeb 31.4 ships per day</title></rect>
+<rect x="122.6" y="52" width="5.3" height="248" class="hit"><title>July 2024: Cape 91.7 · Suez 38.5 · Bab el-Mandeb 28.9 ships per day</title></rect>
+<rect x="127.8" y="52" width="5.3" height="248" class="hit"><title>August 2024: Cape 93.7 · Suez 40.3 · Bab el-Mandeb 31.3 ships per day</title></rect>
+<rect x="133.1" y="52" width="5.3" height="248" class="hit"><title>September 2024: Cape 86.5 · Suez 37.4 · Bab el-Mandeb 30.6 ships per day</title></rect>
+<rect x="138.4" y="52" width="5.3" height="248" class="hit"><title>October 2024: Cape 89.0 · Suez 37.5 · Bab el-Mandeb 31.5 ships per day</title></rect>
+<rect x="143.7" y="52" width="5.3" height="248" class="hit"><title>November 2024: Cape 83.7 · Suez 36.0 · Bab el-Mandeb 33.2 ships per day</title></rect>
+<rect x="149.0" y="52" width="5.3" height="248" class="hit"><title>December 2024: Cape 81.0 · Suez 35.7 · Bab el-Mandeb 32.0 ships per day</title></rect>
+<rect x="154.3" y="52" width="5.3" height="248" class="hit"><title>January 2025: Cape 84.4 · Suez 37.1 · Bab el-Mandeb 32.2 ships per day</title></rect>
+<rect x="159.6" y="52" width="5.3" height="248" class="hit"><title>February 2025: Cape 87.9 · Suez 34.1 · Bab el-Mandeb 32.0 ships per day</title></rect>
+<rect x="164.9" y="52" width="5.3" height="248" class="hit"><title>March 2025: Cape 80.7 · Suez 37.3 · Bab el-Mandeb 32.9 ships per day</title></rect>
+<rect x="170.2" y="52" width="5.3" height="248" class="hit"><title>April 2025: Cape 84.1 · Suez 37.0 · Bab el-Mandeb 32.8 ships per day</title></rect>
+<rect x="175.4" y="52" width="5.3" height="248" class="hit"><title>May 2025: Cape 89.4 · Suez 37.0 · Bab el-Mandeb 33.1 ships per day</title></rect>
+<rect x="180.7" y="52" width="5.3" height="248" class="hit"><title>June 2025: Cape 91.9 · Suez 36.7 · Bab el-Mandeb 31.7 ships per day</title></rect>
+<rect x="186.0" y="52" width="5.3" height="248" class="hit"><title>July 2025: Cape 96.4 · Suez 38.0 · Bab el-Mandeb 31.2 ships per day</title></rect>
+<rect x="191.3" y="52" width="5.3" height="248" class="hit"><title>August 2025: Cape 98.1 · Suez 38.6 · Bab el-Mandeb 35.0 ships per day</title></rect>
+<rect x="196.6" y="52" width="5.3" height="248" class="hit"><title>September 2025: Cape 94.4 · Suez 42.1 · Bab el-Mandeb 33.9 ships per day</title></rect>
+<rect x="201.9" y="52" width="5.3" height="248" class="hit"><title>October 2025: Cape 94.1 · Suez 41.3 · Bab el-Mandeb 36.1 ships per day</title></rect>
+<rect x="207.2" y="52" width="5.3" height="248" class="hit"><title>November 2025: Cape 87.2 · Suez 42.9 · Bab el-Mandeb 37.8 ships per day</title></rect>
+<rect x="212.5" y="52" width="5.3" height="248" class="hit"><title>December 2025: Cape 84.7 · Suez 40.1 · Bab el-Mandeb 32.7 ships per day</title></rect>
+<rect x="217.8" y="52" width="5.3" height="248" class="hit"><title>January 2026: Cape 87.7 · Suez 39.1 · Bab el-Mandeb 33.5 ships per day</title></rect>
+<rect x="223.0" y="52" width="5.3" height="248" class="hit"><title>February 2026: Cape 87.0 · Suez 41.4 · Bab el-Mandeb 36.8 ships per day</title></rect>
+<rect x="228.3" y="52" width="5.3" height="248" class="hit"><title>March 2026: Cape 91.3 · Suez 41.0 · Bab el-Mandeb 35.5 ships per day</title></rect>
+<rect x="233.6" y="52" width="5.3" height="248" class="hit"><title>April 2026: Cape 92.8 · Suez 42.1 · Bab el-Mandeb 36.7 ships per day</title></rect>
+<rect x="238.9" y="52" width="5.3" height="248" class="hit"><title>May 2026: Cape 96.9 · Suez 39.1 · Bab el-Mandeb 36.1 ships per day</title></rect>
+<rect x="244.2" y="52" width="5.3" height="248" class="hit"><title>June 2026: Cape 92.8 · Suez 40.4 · Bab el-Mandeb 36.6 ships per day</title></rect>
+<rect x="249.5" y="52" width="5.3" height="248" class="hit"><title>July 2026: Cape 91.5 · Suez 41.9 · Bab el-Mandeb 33.6 ships per day</title></rect>
+<rect x="254.8" y="52" width="5.3" height="248" class="hit"><title>August 2026: Cape 90.3 · Suez 41.0 · Bab el-Mandeb 27.4 ships per day</title></rect>
+<rect x="260.1" y="52" width="5.3" height="248" class="hit"><title>September 2026: Cape 86.1 · Suez 40.4 · Bab el-Mandeb 26.6 ships per day</title></rect>
+<rect x="265.4" y="52" width="5.3" height="248" class="hit"><title>October 2026: Cape 87.8 · Suez 43.1 · Bab el-Mandeb 27.9 ships per day</title></rect>
+</svg></div></div><figcaption>Ships per day, monthly average of complete months. Source: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, file portwatch.json, data to 1 November 2026. Dashed lines: events (December 2023, Houthi attacks; 2 March 2026, Hormuz closed in practice), with sources in the script.</figcaption><details><summary>Chart data as a table</summary><div class="tabella"><table><thead><tr><th>Month</th><th>Suez</th><th>Bab el-Mandeb</th><th>Cape</th></tr></thead><tbody><tr><td>January 2023</td><td>71.0</td><td>71.6</td><td>42.3</td></tr><tr><td>February 2023</td><td>70.1</td><td>70.5</td><td>42.0</td></tr><tr><td>March 2023</td><td>71.8</td><td>73.4</td><td>43.2</td></tr><tr><td>April 2023</td><td>77.3</td><td>74.8</td><td>45.1</td></tr><tr><td>May 2023</td><td>77.4</td><td>77.6</td><td>49.2</td></tr><tr><td>June 2023</td><td>75.3</td><td>76.5</td><td>51.6</td></tr><tr><td>July 2023</td><td>71.4</td><td>74.1</td><td>52.3</td></tr><tr><td>August 2023</td><td>71.5</td><td>73.0</td><td>56.5</td></tr><tr><td>September 2023</td><td>74.2</td><td>75.4</td><td>55.8</td></tr><tr><td>October 2023</td><td>76.2</td><td>78.6</td><td>50.4</td></tr><tr><td>November 2023</td><td>76.6</td><td>77.3</td><td>49.3</td></tr><tr><td>December 2023</td><td>71.4</td><td>65.2</td><td>51.4</td></tr><tr><td>January 2024</td><td>48.0</td><td>39.4</td><td>72.2</td></tr><tr><td>February 2024</td><td>42.4</td><td>34.9</td><td>85.8</td></tr><tr><td>March 2024</td><td>38.9</td><td>32.6</td><td>85.9</td></tr><tr><td>April 2024</td><td>40.9</td><td>32.4</td><td>87.7</td></tr><tr><td>May 2024</td><td>40.7</td><td>32.0</td><td>91.6</td></tr><tr><td>June 2024</td><td>39.0</td><td>31.4</td><td>95.5</td></tr><tr><td>July 2024</td><td>38.5</td><td>28.9</td><td>91.7</td></tr><tr><td>August 2024</td><td>40.3</td><td>31.3</td><td>93.7</td></tr><tr><td>September 2024</td><td>37.4</td><td>30.6</td><td>86.5</td></tr><tr><td>October 2024</td><td>37.5</td><td>31.5</td><td>89.0</td></tr><tr><td>November 2024</td><td>36.0</td><td>33.2</td><td>83.7</td></tr><tr><td>December 2024</td><td>35.7</td><td>32.0</td><td>81.0</td></tr><tr><td>January 2025</td><td>37.1</td><td>32.2</td><td>84.4</td></tr><tr><td>February 2025</td><td>34.1</td><td>32.0</td><td>87.9</td></tr><tr><td>March 2025</td><td>37.3</td><td>32.9</td><td>80.7</td></tr><tr><td>April 2025</td><td>37.0</td><td>32.8</td><td>84.1</td></tr><tr><td>May 2025</td><td>37.0</td><td>33.1</td><td>89.4</td></tr><tr><td>June 2025</td><td>36.7</td><td>31.7</td><td>91.9</td></tr><tr><td>July 2025</td><td>38.0</td><td>31.2</td><td>96.4</td></tr><tr><td>August 2025</td><td>38.6</td><td>35.0</td><td>98.1</td></tr><tr><td>September 2025</td><td>42.1</td><td>33.9</td><td>94.4</td></tr><tr><td>October 2025</td><td>41.3</td><td>36.1</td><td>94.1</td></tr><tr><td>November 2025</td><td>42.9</td><td>37.8</td><td>87.2</td></tr><tr><td>December 2025</td><td>40.1</td><td>32.7</td><td>84.7</td></tr><tr><td>January 2026</td><td>39.1</td><td>33.5</td><td>87.7</td></tr><tr><td>February 2026</td><td>41.4</td><td>36.8</td><td>87.0</td></tr><tr><td>March 2026</td><td>41.0</td><td>35.5</td><td>91.3</td></tr><tr><td>April 2026</td><td>42.1</td><td>36.7</td><td>92.8</td></tr><tr><td>May 2026</td><td>39.1</td><td>36.1</td><td>96.9</td></tr><tr><td>June 2026</td><td>40.4</td><td>36.6</td><td>92.8</td></tr><tr><td>July 2026</td><td>41.9</td><td>33.6</td><td>91.5</td></tr><tr><td>August 2026</td><td>41.0</td><td>27.4</td><td>90.3</td></tr><tr><td>September 2026</td><td>40.4</td><td>26.6</td><td>86.1</td></tr><tr><td>October 2026</td><td>43.1</td><td>27.9</td><td>87.8</td></tr></tbody></table></div></details></figure>
+<p><strong>Facts.</strong> Before the Red Sea crisis (January–October 2023 average) Suez handled 74 ships a day and the Cape 49. Since December 2023 the ratio has reversed: Suez’s lowest monthly figure since 2024 is 34.1 (February 2025), the Cape’s highest 98.1 (August 2025). In the latest week measured the Cape is at 92.0 ships a day, 188% of the January–October 2023 average (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, 7-day average 26 October–1 November 2026). Suez is at 58% and Bab el-Mandeb at 37% of that average. At Hormuz PortWatch sees 4.4 ships a day; Lloyd’s List Intelligence, which also reconstructs transits with the transponder off, counts 116 transits by non-Iran-linked ships in the week 19–25 October 2026, about 17 a day (<a href="https://www.lloydslistintelligence.com/resources/blog/strait-of-hormuz-brief-5-november-2026" rel="noopener">Lloyd’s List Intelligence, Strait of Hormuz Brief</a>, 5 November 2026). On the risk dashboard Hormuz is at critical level (22.5 out of 25), Bab el-Mandeb high (19.0 out of 25) and Suez medium (9.9 out of 25) (rischio.json, 9 November 2026; details in section 9).</p>
+<p>Other sources confirm container ships returning to Suez: container capacity: 753,000 TEU a week in the first two weeks of October 2026, against 1,457,000 in the same period of 2023: above 50% of pre-crisis levels for the first time (<a href="https://www.bimco.org/news-insights/market-analysis/shipping-number-of-the-week/2026/1014-snow/" rel="noopener">BIMCO, Shipping Number of the Week, on Clarksons data</a>); transits: 1,195 transits and 111 million dwt from 28 September to 25 October 2026; tonnage still −36% on the period before the Houthis (<a href="https://www.lloydslistintelligence.com/resources/blog/red-sea-brief---29-october-2026" rel="noopener">Lloyd’s List Intelligence, Red Sea Brief of 29 October 2026</a>).</p>
+<p><strong>Time and cost of the Cape diversion.</strong> Compared with Suez: about 7,000 km and 14–24 more days; a mid-sized container ship costs about 1 million dollars via Suez and 1.7 million via the Cape (about 160 dollars more per FEU) (<a href="https://unctad.org/system/files/official-document/rmt2024ch2_en.pdf" rel="noopener">UNCTAD, Review of Maritime Transport 2024, chapter 2</a>). For a tanker: diverting an Aframax from Asia to Northern Europe via the Cape costs about 933,000 dollars more (+110%) and lengthens the voyage from 16 to 32 days; +35% for a large container ship (<a href="https://www.rivieramm.com/news-content-hub/diversions-from-red-sea-add-us1m-per-voyage-research-shows-79412" rel="noopener">Riviera Maritime Media, on LSEG Shipping Research: “Diversions from Red Sea add US$1M per voyage”</a>).</p>
+<p><strong>State of Bab el-Mandeb.</strong> UKMTO: no attacks in the Red Sea since 24 August 2026, but more radio contacts from self-styled “Yemeni authorities”; suspicious pirate activity in the Gulf of Aden on 28 October. (<a href="https://www.lloydslistintelligence.com/resources/blog/red-sea-brief---29-october-2026" rel="noopener">Lloyd’s List Intelligence</a>, 29 October 2026). Transits at Bab el-Mandeb: 295 in the week 12–18 October (−8% week on week), tonnage −46% on the period before the Houthis. (<a href="https://www.lloydslistintelligence.com/resources/blog/red-sea-brief---29-october-2026" rel="noopener">Lloyd’s List Intelligence</a>, 18 October 2026).</p>
+<aside class="valutazione"><span class="etichetta">Assessment</span>The return to Suez is real but partial and fragile. Container ships are coming back, while Saudi crude leaving Yanbu makes Bab el-Mandeb a “second Hormuz”: a successful attack on a tanker would send ships back round the Cape within days. The figure to watch is Bab el-Mandeb, not Suez.</aside>
+<h3>Container and bulk freight rates</h3>
+<div class="tabella"><table><thead><tr><th scope="col">Contents</th><th scope="col">Value</th><th scope="col">Date</th><th scope="col">Change</th><th scope="col">Source</th></tr></thead><tbody><tr><td>Drewry WCI composite</td><td>4,389 $/FEU</td><td>5 Nov 2026</td><td>+124% year on year (a)</td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" rel="noopener">Drewry</a></td></tr><tr><td>WCI Shanghai–Genoa</td><td>4,166 $/FEU</td><td>5 Nov 2026</td><td>+97% year on year (a)</td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" rel="noopener">Drewry</a></td></tr><tr><td>WCI Shanghai–Rotterdam</td><td>3,615 $/FEU</td><td>5 Nov 2026</td><td>+84% year on year (a)</td><td><a href="https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry" rel="noopener">Drewry</a></td></tr><tr><td>Freightos FBX global</td><td>3,452 $/FEU</td><td>6 Nov 2026</td><td>+3% over 4 weeks</td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a></td></tr><tr><td>FBX China–Mediterranean</td><td>4,324 $/FEU</td><td>6 Nov 2026</td><td>−1.2% week on week</td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a></td></tr><tr><td>FBX China–Northern Europe</td><td>3,422 $/FEU</td><td>6 Nov 2026</td><td>−4.8% week on week</td><td><a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a></td></tr><tr><td>SCFI (Shanghai, composite)</td><td>3,633.45 points</td><td>6 Nov 2026</td><td>−1.5% week on week</td><td><a href="https://en.sse.net.cn/indices/scfinew.jsp" rel="noopener">SSE</a></td></tr><tr><td>CCFI (China, composite)</td><td>1,924.69 points</td><td>6 Nov 2026</td><td>+2.3% week on week</td><td><a href="https://en.sse.net.cn/indices/ccfinew.jsp" rel="noopener">SSE</a></td></tr><tr><td>CCFI Mediterranean route</td><td>2,438.38 points</td><td>6 Nov 2026</td><td>+6.8% week on week</td><td><a href="https://en.sse.net.cn/indices/ccfinew.jsp" rel="noopener">SSE</a></td></tr><tr><td>Baltic Dry Index (dry bulk) (b)</td><td>2,805 points</td><td>6 Nov 2026</td><td>+2.4% on the day</td><td><a href="https://tradingeconomics.com/commodity/baltic/news/599210" rel="noopener">Baltic Exchange via Trading Economics</a></td></tr></tbody></table></div>
+<p class="nota">Containers: values from docs/data/noli.json. (a) Year-on-year change computed on the WCI of 6 November 2025 (<a href="https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/" rel="noopener">Drewry WCI of 6 November 2025, cited by Cyprus Shipping News and Alchempro/Fibre2Fashion</a>, 6 November 2025, medium reliability). (b) The Baltic Dry is no longer collected automatically by the observatory (Trading Economics terms of use): it is quoted by hand, a single value, with no series and no verified year-on-year change (<a href="https://tradingeconomics.com/commodity/baltic/news/599210" rel="noopener">Baltic Exchange, value taken from the Trading Economics market note</a>, 6 November 2026, medium reliability).</p>
+<figure><div class="grafico"><div class="largo"><svg class="viz" id="g-noli" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 454" width="100%" role="img" aria-labelledby="g-noli-t g-noli-d" style="--fs:12px;max-width:720px;height:auto;display:block">
+<title id="g-noli-t">Container rates: FBX trend and latest WCI value by route</title><desc id="g-noli-d">Weekly Freightos FBX global and Drewry WCI by route, in dollars per 40-foot container, with the year-earlier value where available.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<text x="44" y="18" class="t-ink t-b">Freightos FBX global, $ per FEU</text>
+<text x="44" y="34" class="t-faint">weekly series available free of charge: 14 August 2026 – 6 November 2026</text>
+<line x1="44" x2="650" y1="192.0" y2="192.0" class="grid"/>
+<text x="38" y="196.0" text-anchor="end" class="num">2,500</text>
+<line x1="44" x2="650" y1="142.7" y2="142.7" class="grid"/>
+<text x="38" y="146.7" text-anchor="end" class="num">3,000</text>
+<line x1="44" x2="650" y1="93.3" y2="93.3" class="grid"/>
+<text x="38" y="97.3" text-anchor="end" class="num">3,500</text>
+<line x1="44" x2="650" y1="44.0" y2="44.0" class="grid"/>
+<text x="38" y="48.0" text-anchor="end" class="num">4,000</text>
+<path d="M44.0,74.6 L94.5,86.3 L145.0,84.5 L195.5,91.4 L246.0,93.5 L296.5,102.5 L347.0,105.1 L397.5,108.8 L448.0,108.7 L498.5,103.5 L549.0,87.4 L599.5,92.0 L650.0,98.1" class="l c-s3"/>
+<circle cx="44.0" cy="74.6" r="3" class="f-s3 ring"/>
+<circle cx="44.0" cy="74.6" r="12" class="hit"><title>14 August 2026: 3,690 $/FEU</title></circle>
+<circle cx="94.5" cy="86.3" r="3" class="f-s3 ring"/>
+<circle cx="94.5" cy="86.3" r="12" class="hit"><title>21 August 2026: 3,571 $/FEU</title></circle>
+<circle cx="145.0" cy="84.5" r="3" class="f-s3 ring"/>
+<circle cx="145.0" cy="84.5" r="12" class="hit"><title>28 August 2026: 3,590 $/FEU</title></circle>
+<circle cx="195.5" cy="91.4" r="3" class="f-s3 ring"/>
+<circle cx="195.5" cy="91.4" r="12" class="hit"><title>4 September 2026: 3,520 $/FEU</title></circle>
+<circle cx="246.0" cy="93.5" r="3" class="f-s3 ring"/>
+<circle cx="246.0" cy="93.5" r="12" class="hit"><title>11 September 2026: 3,499 $/FEU</title></circle>
+<circle cx="296.5" cy="102.5" r="3" class="f-s3 ring"/>
+<circle cx="296.5" cy="102.5" r="12" class="hit"><title>18 September 2026: 3,407 $/FEU</title></circle>
+<circle cx="347.0" cy="105.1" r="3" class="f-s3 ring"/>
+<circle cx="347.0" cy="105.1" r="12" class="hit"><title>25 September 2026: 3,380 $/FEU</title></circle>
+<circle cx="397.5" cy="108.8" r="3" class="f-s3 ring"/>
+<circle cx="397.5" cy="108.8" r="12" class="hit"><title>2 October 2026: 3,343 $/FEU</title></circle>
+<circle cx="448.0" cy="108.7" r="3" class="f-s3 ring"/>
+<circle cx="448.0" cy="108.7" r="12" class="hit"><title>9 October 2026: 3,344 $/FEU</title></circle>
+<circle cx="498.5" cy="103.5" r="3" class="f-s3 ring"/>
+<circle cx="498.5" cy="103.5" r="12" class="hit"><title>16 October 2026: 3,397 $/FEU</title></circle>
+<circle cx="549.0" cy="87.4" r="3" class="f-s3 ring"/>
+<circle cx="549.0" cy="87.4" r="12" class="hit"><title>23 October 2026: 3,560 $/FEU</title></circle>
+<circle cx="599.5" cy="92.0" r="3" class="f-s3 ring"/>
+<circle cx="599.5" cy="92.0" r="12" class="hit"><title>30 October 2026: 3,513 $/FEU</title></circle>
+<circle cx="650.0" cy="98.1" r="3" class="f-s3 ring"/>
+<circle cx="650.0" cy="98.1" r="12" class="hit"><title>6 November 2026: 3,452 $/FEU</title></circle>
+<text x="44.0" y="64.6" text-anchor="start" class="t-ink num t-b">3,690</text>
+<text x="650.0" y="88.1" text-anchor="end" class="t-ink num t-b">3,452</text>
+<text x="44.0" y="208" text-anchor="start">14 August</text>
+<text x="347.0" y="208" text-anchor="middle">25 September</text>
+<text x="650.0" y="208" text-anchor="end">6 November</text>
+<text x="44" y="240" class="t-ink t-b">Drewry WCI by route, $ per FEU</text>
+<text x="44" y="256" class="t-faint">bar: 5 November 2026 · tick: 6 November 2025 (secondary source)</text>
+<text x="186" y="286" text-anchor="end" class="t-ink">WCI composite</text>
+<rect x="194" y="274" width="192.1" height="16" rx="3" class="f-s1"/>
+<text x="392.1" y="286" class="t-ink num t-b">4,389</text>
+<line x1="279.7" x2="279.7" y1="271" y2="293" class="tick"/>
+<rect x="44" y="268" width="676" height="28" class="hit"><title>WCI composite: 4,389 $/FEU; a year earlier 1,959 (+124%)</title></rect>
+<text x="186" y="316" text-anchor="end" class="t-ink">Shanghai–Genoa</text>
+<rect x="194" y="304" width="182.3" height="16" rx="3" class="f-s1"/>
+<text x="382.3" y="316" class="t-ink num t-b">4,166</text>
+<line x1="286.4" x2="286.4" y1="301" y2="323" class="tick"/>
+<rect x="44" y="298" width="676" height="28" class="hit"><title>Shanghai–Genoa: 4,166 $/FEU; a year earlier 2,111 (+97%)</title></rect>
+<text x="186" y="346" text-anchor="end" class="t-ink">Shanghai–Rotterdam</text>
+<rect x="194" y="334" width="158.2" height="16" rx="3" class="f-s1"/>
+<text x="358.2" y="346" class="t-ink num t-b">3,615</text>
+<line x1="279.9" x2="279.9" y1="331" y2="353" class="tick"/>
+<rect x="44" y="328" width="676" height="28" class="hit"><title>Shanghai–Rotterdam: 3,615 $/FEU; a year earlier 1,962 (+84%)</title></rect>
+<text x="186" y="376" text-anchor="end" class="t-ink">Shanghai–Los Angeles</text>
+<rect x="194" y="364" width="329.9" height="16" rx="3" class="f-s1"/>
+<text x="529.9" y="376" class="t-ink num t-b">7,539</text>
+<line x1="309.8" x2="309.8" y1="361" y2="383" class="tick"/>
+<rect x="44" y="358" width="676" height="28" class="hit"><title>Shanghai–Los Angeles: 7,539 $/FEU; a year earlier 2,647 (+185%)</title></rect>
+<text x="186" y="406" text-anchor="end" class="t-ink">Shanghai–New York</text>
+<rect x="194" y="394" width="407.1" height="16" rx="3" class="f-s1"/>
+<text x="607.1" y="406" class="t-ink num t-b">9,303</text>
+<line x1="361.9" x2="361.9" y1="391" y2="413" class="tick"/>
+<rect x="44" y="388" width="676" height="28" class="hit"><title>Shanghai–New York: 9,303 $/FEU; a year earlier 3,837 (+142%)</title></rect>
+</svg></div><div class="stretto"><svg class="viz" id="g-noli-m" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 434" width="100%" role="img" aria-labelledby="g-noli-m-t g-noli-m-d" style="--fs:11px;max-width:360px;height:auto;display:block">
+<title id="g-noli-m-t">Container rates: FBX trend and latest WCI value by route</title><desc id="g-noli-m-d">Weekly Freightos FBX global and Drewry WCI by route, in dollars per 40-foot container, with the year-earlier value where available.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<text x="40" y="18" class="t-ink t-b">Freightos FBX global, $ per FEU</text>
+<text x="40" y="34" class="t-faint">weekly, 14 August – 6 November 2026</text>
+<line x1="40" x2="308" y1="172.0" y2="172.0" class="grid"/>
+<text x="34" y="176.0" text-anchor="end" class="num">2,500</text>
+<line x1="40" x2="308" y1="129.3" y2="129.3" class="grid"/>
+<text x="34" y="133.3" text-anchor="end" class="num">3,000</text>
+<line x1="40" x2="308" y1="86.7" y2="86.7" class="grid"/>
+<text x="34" y="90.7" text-anchor="end" class="num">3,500</text>
+<line x1="40" x2="308" y1="44.0" y2="44.0" class="grid"/>
+<text x="34" y="48.0" text-anchor="end" class="num">4,000</text>
+<path d="M40.0,70.5 L62.3,80.6 L84.7,79.0 L107.0,85.0 L129.3,86.8 L151.7,94.6 L174.0,96.9 L196.3,100.1 L218.7,100.0 L241.0,95.4 L263.3,81.5 L285.7,85.5 L308.0,90.8" class="l c-s3"/>
+<circle cx="40.0" cy="70.5" r="3" class="f-s3 ring"/>
+<circle cx="40.0" cy="70.5" r="12" class="hit"><title>14 August 2026: 3,690 $/FEU</title></circle>
+<circle cx="62.3" cy="80.6" r="3" class="f-s3 ring"/>
+<circle cx="62.3" cy="80.6" r="12" class="hit"><title>21 August 2026: 3,571 $/FEU</title></circle>
+<circle cx="84.7" cy="79.0" r="3" class="f-s3 ring"/>
+<circle cx="84.7" cy="79.0" r="12" class="hit"><title>28 August 2026: 3,590 $/FEU</title></circle>
+<circle cx="107.0" cy="85.0" r="3" class="f-s3 ring"/>
+<circle cx="107.0" cy="85.0" r="12" class="hit"><title>4 September 2026: 3,520 $/FEU</title></circle>
+<circle cx="129.3" cy="86.8" r="3" class="f-s3 ring"/>
+<circle cx="129.3" cy="86.8" r="12" class="hit"><title>11 September 2026: 3,499 $/FEU</title></circle>
+<circle cx="151.7" cy="94.6" r="3" class="f-s3 ring"/>
+<circle cx="151.7" cy="94.6" r="12" class="hit"><title>18 September 2026: 3,407 $/FEU</title></circle>
+<circle cx="174.0" cy="96.9" r="3" class="f-s3 ring"/>
+<circle cx="174.0" cy="96.9" r="12" class="hit"><title>25 September 2026: 3,380 $/FEU</title></circle>
+<circle cx="196.3" cy="100.1" r="3" class="f-s3 ring"/>
+<circle cx="196.3" cy="100.1" r="12" class="hit"><title>2 October 2026: 3,343 $/FEU</title></circle>
+<circle cx="218.7" cy="100.0" r="3" class="f-s3 ring"/>
+<circle cx="218.7" cy="100.0" r="12" class="hit"><title>9 October 2026: 3,344 $/FEU</title></circle>
+<circle cx="241.0" cy="95.4" r="3" class="f-s3 ring"/>
+<circle cx="241.0" cy="95.4" r="12" class="hit"><title>16 October 2026: 3,397 $/FEU</title></circle>
+<circle cx="263.3" cy="81.5" r="3" class="f-s3 ring"/>
+<circle cx="263.3" cy="81.5" r="12" class="hit"><title>23 October 2026: 3,560 $/FEU</title></circle>
+<circle cx="285.7" cy="85.5" r="3" class="f-s3 ring"/>
+<circle cx="285.7" cy="85.5" r="12" class="hit"><title>30 October 2026: 3,513 $/FEU</title></circle>
+<circle cx="308.0" cy="90.8" r="3" class="f-s3 ring"/>
+<circle cx="308.0" cy="90.8" r="12" class="hit"><title>6 November 2026: 3,452 $/FEU</title></circle>
+<text x="40.0" y="60.5" text-anchor="start" class="t-ink num t-b">3,690</text>
+<text x="308.0" y="80.8" text-anchor="end" class="t-ink num t-b">3,452</text>
+<text x="40.0" y="188" text-anchor="start">14 August</text>
+<text x="174.0" y="188" text-anchor="middle">25 September</text>
+<text x="308.0" y="188" text-anchor="end">6 November</text>
+<text x="8" y="220" class="t-ink t-b">Drewry WCI by route, $ per FEU</text>
+<text x="8" y="236" class="t-faint">bar: 5 Nov 2026 · tick: 6 Nov 2025</text>
+<text x="118" y="266" text-anchor="end" class="t-ink">WCI composite</text>
+<rect x="126" y="254" width="79.2" height="16" rx="3" class="f-s1"/>
+<text x="211.2" y="266" class="t-ink num t-b">4,389</text>
+<line x1="161.3" x2="161.3" y1="251" y2="273" class="tick"/>
+<rect x="8" y="248" width="352" height="28" class="hit"><title>WCI composite: 4,389 $/FEU; a year earlier 1,959 (+124%)</title></rect>
+<text x="118" y="296" text-anchor="end" class="t-ink">Shanghai–Genoa</text>
+<rect x="126" y="284" width="75.2" height="16" rx="3" class="f-s1"/>
+<text x="207.2" y="296" class="t-ink num t-b">4,166</text>
+<line x1="164.1" x2="164.1" y1="281" y2="303" class="tick"/>
+<rect x="8" y="278" width="352" height="28" class="hit"><title>Shanghai–Genoa: 4,166 $/FEU; a year earlier 2,111 (+97%)</title></rect>
+<text x="118" y="326" text-anchor="end" class="t-ink">Shanghai–Rotterdam</text>
+<rect x="126" y="314" width="65.2" height="16" rx="3" class="f-s1"/>
+<text x="197.2" y="326" class="t-ink num t-b">3,615</text>
+<line x1="161.4" x2="161.4" y1="311" y2="333" class="tick"/>
+<rect x="8" y="308" width="352" height="28" class="hit"><title>Shanghai–Rotterdam: 3,615 $/FEU; a year earlier 1,962 (+84%)</title></rect>
+<text x="118" y="356" text-anchor="end" class="t-ink">Shanghai–Los Angeles</text>
+<rect x="126" y="344" width="136.0" height="16" rx="3" class="f-s1"/>
+<text x="268.0" y="356" class="t-ink num t-b">7,539</text>
+<line x1="173.8" x2="173.8" y1="341" y2="363" class="tick"/>
+<rect x="8" y="338" width="352" height="28" class="hit"><title>Shanghai–Los Angeles: 7,539 $/FEU; a year earlier 2,647 (+185%)</title></rect>
+<text x="118" y="386" text-anchor="end" class="t-ink">Shanghai–New York</text>
+<rect x="126" y="374" width="167.9" height="16" rx="3" class="f-s1"/>
+<text x="299.9" y="386" class="t-ink num t-b">9,303</text>
+<line x1="195.2" x2="195.2" y1="371" y2="393" class="tick"/>
+<rect x="8" y="368" width="352" height="28" class="hit"><title>Shanghai–New York: 9,303 $/FEU; a year earlier 3,837 (+142%)</title></rect>
+</svg></div></div><figcaption>Dollars per FEU (noli.json). Top: Freightos FBX global, weekly series available free of charge (<a href="https://www.freightos.com/enterprise/terminal/freightos-baltic-index-global-container-pricing-index/" rel="noopener">Freightos</a>). Bottom: Drewry WCI by route on 5 November 2026; the vertical tick is the value a year earlier (<a href="https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/" rel="noopener">Drewry WCI of 6 November 2025, cited by Cyprus Shipping News and Alchempro/Fibre2Fashion</a>, 6 November 2025).</figcaption><details><summary>Chart data as a table</summary><div class="tabella"><table><thead><tr><th>Week</th><th>FBX global ($/FEU)</th></tr></thead><tbody><tr><td>14 August 2026</td><td>3,690</td></tr><tr><td>21 August 2026</td><td>3,571</td></tr><tr><td>28 August 2026</td><td>3,590</td></tr><tr><td>4 September 2026</td><td>3,520</td></tr><tr><td>11 September 2026</td><td>3,499</td></tr><tr><td>18 September 2026</td><td>3,407</td></tr><tr><td>25 September 2026</td><td>3,380</td></tr><tr><td>2 October 2026</td><td>3,343</td></tr><tr><td>9 October 2026</td><td>3,344</td></tr><tr><td>16 October 2026</td><td>3,397</td></tr><tr><td>23 October 2026</td><td>3,560</td></tr><tr><td>30 October 2026</td><td>3,513</td></tr><tr><td>6 November 2026</td><td>3,452</td></tr></tbody></table></div></details></figure>
+<p><strong>Trend.</strong> The FBX global is at 3,452 dollars: −6% since 14 August 2026 (3,690), the series high of 3,690 on 14 August 2026. The China–Mediterranean route (FBX13, 4,324) costs more than China–Northern Europe (FBX11, 3,422), as in the WCI Shanghai–Genoa against Shanghai–Rotterdam. The SCFI is falling (−1.5%) while the CCFI, which weights contracts, is rising (+2.3%), with the Mediterranean route at +6.8% (SSE, 6 November 2026).</p>
+<p><strong>Dry bulk.</strong> The Baltic Dry is at 2,805 points on 6 November 2026, the highest since 12 October, a third rising session; capesize index (BCI) at 4,344 (<a href="https://tradingeconomics.com/commodity/baltic/news/599210" rel="noopener">Baltic Exchange, value taken from the Trading Economics market note</a>, 6 November 2026, quoted by hand, medium reliability). Without a series it is impossible to say whether dry bulk is moving in the same direction as containers.</p>
+<aside class="valutazione"><span class="etichetta">Assessment</span>Two opposing forces on container rates: the return to Suez frees up ships (bearish, and that is what the FBX shows) while the war premium linked to Hormuz and the Gulf keeps rates to the Mediterranean and the Middle East high. For an Italian importer the base case is a slow decline, not a return to end-2025 levels.</aside>
+<h2 id="porti">3. Italian and European ports</h2>
+<div class="tabella"><table><thead><tr><th scope="col">Port</th><th scope="col">Calls/day (7 d)</th><th scope="col">vs 1 year</th><th scope="col">Calls/day (30 d)</th><th scope="col">vs 1 year</th><th scope="col">container ships 7 d</th><th scope="col">tankers 7 d</th></tr></thead><tbody><tr><td>Genoa</td><td>8.9</td><td>−4%</td><td>8.4</td><td>−5%</td><td>+16%</td><td>−15%</td></tr><tr><td>Trieste</td><td>5.3</td><td>−13%</td><td>5.2</td><td>−6%</td><td>−7%</td><td>−24%</td></tr><tr><td>Gioia Tauro</td><td>5.0</td><td>+2%</td><td>5.0</td><td>−6%</td><td>+11%</td><td>−33%</td></tr><tr><td>La Spezia</td><td>2.4</td><td>+71%</td><td>2.3</td><td>+28%</td><td>+109%</td><td>0%</td></tr><tr><td>Livorno</td><td>6.4</td><td>−3%</td><td>6.1</td><td>0%</td><td>−31%</td><td>−23%</td></tr><tr><td>Venice (Lido)</td><td>4.6</td><td>−38%</td><td>5.9</td><td>−11%</td><td>−15%</td><td>−59%</td></tr><tr><td>Venice (Malamocco)</td><td>1.1</td><td>−62%</td><td>2.1</td><td>−16%</td><td>−14%</td><td>−100%</td></tr><tr><td>Ravenna</td><td>5.6</td><td>−40%</td><td>6.4</td><td>−20%</td><td>−24%</td><td>−50%</td></tr><tr><td>Augusta</td><td>4.7</td><td>+15%</td><td>4.3</td><td>0%</td><td>−25%</td><td>+33%</td></tr></tbody></table></div>
+<p class="nota">Source: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, data to 30 October 2026. Over 7 days the numbers are small: the 30-day average is more stable.</p>
+<div class="tabella"><table><thead><tr><th scope="col">Port (Mediterranean and Atlantic)</th><th scope="col">Calls/day (30 d)</th><th scope="col">vs 1 year</th><th scope="col">container ships</th><th scope="col">tankers</th></tr></thead><tbody><tr><td>Valencia</td><td>10.3</td><td>−7%</td><td>−4%</td><td>0%</td></tr><tr><td>Algeciras</td><td>16.0</td><td>−6%</td><td>−12%</td><td>−1%</td></tr><tr><td>Tanger Med</td><td>12.4</td><td>−3%</td><td>−6%</td><td>+15%</td></tr><tr><td>Piraeus</td><td>12.1</td><td>−14%</td><td>−8%</td><td>−21%</td></tr><tr><td>Marseille</td><td>3.0</td><td>−5%</td><td>+4%</td><td>−37%</td></tr><tr><td>Capodistria (Koper)</td><td>3.4</td><td>−16%</td><td>−10%</td><td>−17%</td></tr></tbody></table></div>
+<p class="nota">Source: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, data to 30 October 2026, downloaded by the report script (report/dati/porti-europei.json) with the same method as portwatch.json. Northern European ports are in section 8.</p>
+<figure><div class="grafico"><div class="largo"><svg class="viz" id="g-porti" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 796" width="100%" role="img" aria-labelledby="g-porti-t g-porti-d" style="--fs:12px;max-width:720px;height:auto;display:block">
+<title id="g-porti-t">Ports: ship calls, year-on-year change (30-day average)</title><desc id="g-porti-d">Percentage change in ship calls per day over the last 30 days against the same days a year earlier, IMF PortWatch.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<text x="8" y="18" class="t-ink t-b">Ship calls per day: last 30 days against a year earlier</text>
+<text x="8" y="34" class="t-faint">IMF PortWatch, data to 30 October 2026 · blue = increase, magenta = decrease</text>
+<text x="8" y="68" class="t-ink t-b">Italian ports</text>
+<line x1="404.0" x2="404.0" y1="74" y2="292" class="base"/>
+<text x="150" y="87" text-anchor="end" class="t-ink">La Spezia</text>
+<rect x="404.0" y="76" width="153.1" height="14" rx="3" class="f-s3"/>
+<text x="563.1" y="87" text-anchor="start" class="t-ink num">+28%</text>
+<rect x="0" y="72" width="720" height="24" class="hit"><title>La Spezia: 2.3 calls a day over the last 30 days, 1.8 a year earlier (+28%)</title></rect>
+<text x="150" y="111" text-anchor="end" class="t-ink">Livorno</text>
+<rect x="404.0" y="100" width="1.0" height="14" rx="3" class="f-s3"/>
+<text x="410.0" y="111" text-anchor="start" class="t-ink num">0%</text>
+<rect x="0" y="96" width="720" height="24" class="hit"><title>Livorno: 6.1 calls a day over the last 30 days, 6.1 a year earlier (0%)</title></rect>
+<text x="150" y="135" text-anchor="end" class="t-ink">Augusta</text>
+<rect x="404.0" y="124" width="1.0" height="14" rx="3" class="f-s3"/>
+<text x="410.0" y="135" text-anchor="start" class="t-ink num">0%</text>
+<rect x="0" y="120" width="720" height="24" class="hit"><title>Augusta: 4.3 calls a day over the last 30 days, 4.3 a year earlier (0%)</title></rect>
+<text x="150" y="159" text-anchor="end" class="t-ink">Genoa</text>
+<rect x="379.2" y="148" width="24.8" height="14" rx="3" class="f-s1"/>
+<text x="373.2" y="159" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="144" width="720" height="24" class="hit"><title>Genoa: 8.4 calls a day over the last 30 days, 8.8 a year earlier (−5%)</title></rect>
+<text x="150" y="183" text-anchor="end" class="t-ink">Trieste</text>
+<rect x="373.7" y="172" width="30.3" height="14" rx="3" class="f-s1"/>
+<text x="367.7" y="183" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="0" y="168" width="720" height="24" class="hit"><title>Trieste: 5.2 calls a day over the last 30 days, 5.5 a year earlier (−6%)</title></rect>
+<text x="150" y="207" text-anchor="end" class="t-ink">Gioia Tauro</text>
+<rect x="372.6" y="196" width="31.4" height="14" rx="3" class="f-s1"/>
+<text x="366.6" y="207" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="0" y="192" width="720" height="24" class="hit"><title>Gioia Tauro: 5.0 calls a day over the last 30 days, 5.3 a year earlier (−6%)</title></rect>
+<text x="150" y="231" text-anchor="end" class="t-ink">Venice (Lido)</text>
+<rect x="345.6" y="220" width="58.4" height="14" rx="3" class="f-s1"/>
+<text x="339.6" y="231" text-anchor="end" class="t-ink num">−11%</text>
+<rect x="0" y="216" width="720" height="24" class="hit"><title>Venice (Lido): 5.9 calls a day over the last 30 days, 6.6 a year earlier (−11%)</title></rect>
+<text x="150" y="255" text-anchor="end" class="t-ink">Venice (Malamocco)</text>
+<rect x="315.9" y="244" width="88.1" height="14" rx="3" class="f-s1"/>
+<text x="309.9" y="255" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="0" y="240" width="720" height="24" class="hit"><title>Venice (Malamocco): 2.1 calls a day over the last 30 days, 2.5 a year earlier (−16%)</title></rect>
+<text x="150" y="279" text-anchor="end" class="t-ink">Ravenna</text>
+<rect x="293.8" y="268" width="110.2" height="14" rx="3" class="f-s1"/>
+<text x="287.8" y="279" text-anchor="end" class="t-ink num">−20%</text>
+<rect x="0" y="264" width="720" height="24" class="hit"><title>Ravenna: 6.4 calls a day over the last 30 days, 8.0 a year earlier (−20%)</title></rect>
+<text x="8" y="310" class="t-ink t-b">Mediterranean and Atlantic</text>
+<line x1="404.0" x2="404.0" y1="316" y2="462" class="base"/>
+<text x="150" y="329" text-anchor="end" class="t-ink">Tanger Med</text>
+<rect x="389.7" y="318" width="14.3" height="14" rx="3" class="f-s1"/>
+<text x="383.7" y="329" text-anchor="end" class="t-ink num">−3%</text>
+<rect x="0" y="314" width="720" height="24" class="hit"><title>Tanger Med: 12.4 calls a day over the last 30 days, 12.8 a year earlier (−3%)</title></rect>
+<text x="150" y="353" text-anchor="end" class="t-ink">Marseille</text>
+<rect x="374.8" y="342" width="29.2" height="14" rx="3" class="f-s1"/>
+<text x="368.8" y="353" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="338" width="720" height="24" class="hit"><title>Marseille: 3.0 calls a day over the last 30 days, 3.1 a year earlier (−5%)</title></rect>
+<text x="150" y="377" text-anchor="end" class="t-ink">Algeciras</text>
+<rect x="372.6" y="366" width="31.4" height="14" rx="3" class="f-s1"/>
+<text x="366.6" y="377" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="0" y="362" width="720" height="24" class="hit"><title>Algeciras: 16.0 calls a day over the last 30 days, 17.0 a year earlier (−6%)</title></rect>
+<text x="150" y="401" text-anchor="end" class="t-ink">Valencia</text>
+<rect x="367.6" y="390" width="36.4" height="14" rx="3" class="f-s1"/>
+<text x="361.6" y="401" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="386" width="720" height="24" class="hit"><title>Valencia: 10.3 calls a day over the last 30 days, 11.0 a year earlier (−7%)</title></rect>
+<text x="150" y="425" text-anchor="end" class="t-ink">Piraeus</text>
+<rect x="324.7" y="414" width="79.3" height="14" rx="3" class="f-s1"/>
+<text x="318.7" y="425" text-anchor="end" class="t-ink num">−14%</text>
+<rect x="0" y="410" width="720" height="24" class="hit"><title>Piraeus: 12.1 calls a day over the last 30 days, 14.1 a year earlier (−14%)</title></rect>
+<text x="150" y="449" text-anchor="end" class="t-ink">Capodistria (Koper)</text>
+<rect x="314.2" y="438" width="89.8" height="14" rx="3" class="f-s1"/>
+<text x="308.2" y="449" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="0" y="434" width="720" height="24" class="hit"><title>Capodistria (Koper): 3.4 calls a day over the last 30 days, 4.1 a year earlier (−16%)</title></rect>
+<text x="8" y="480" class="t-ink t-b">Northern Europe and the Baltic (12 largest, excluding Russia)</text>
+<line x1="404.0" x2="404.0" y1="486" y2="776" class="base"/>
+<text x="150" y="499" text-anchor="end" class="t-ink">Świnoujście</text>
+<rect x="404.0" y="488" width="223.6" height="14" rx="3" class="f-s3"/>
+<text x="633.6" y="499" text-anchor="start" class="t-ink num">+41%</text>
+<rect x="0" y="484" width="720" height="24" class="hit"><title>Świnoujście: 9.7 calls a day over the last 30 days, 6.9 a year earlier (+41%)</title></rect>
+<text x="150" y="523" text-anchor="end" class="t-ink">Riga</text>
+<rect x="404.0" y="512" width="45.2" height="14" rx="3" class="f-s3"/>
+<text x="455.2" y="523" text-anchor="start" class="t-ink num">+8%</text>
+<rect x="0" y="508" width="720" height="24" class="hit"><title>Riga: 6.6 calls a day over the last 30 days, 6.1 a year earlier (+8%)</title></rect>
+<text x="150" y="547" text-anchor="end" class="t-ink">Rostock</text>
+<rect x="404.0" y="536" width="27.5" height="14" rx="3" class="f-s3"/>
+<text x="437.5" y="547" text-anchor="start" class="t-ink num">+5%</text>
+<rect x="0" y="532" width="720" height="24" class="hit"><title>Rostock: 6.3 calls a day over the last 30 days, 6.0 a year earlier (+5%)</title></rect>
+<text x="150" y="571" text-anchor="end" class="t-ink">Antwerp-Bruges</text>
+<rect x="404.0" y="560" width="19.3" height="14" rx="3" class="f-s3"/>
+<text x="429.3" y="571" text-anchor="start" class="t-ink num">+4%</text>
+<rect x="0" y="556" width="720" height="24" class="hit"><title>Antwerp-Bruges: 65.5 calls a day over the last 30 days, 63.3 a year earlier (+4%)</title></rect>
+<text x="150" y="595" text-anchor="end" class="t-ink">Rotterdam</text>
+<rect x="404.0" y="584" width="12.7" height="14" rx="3" class="f-s3"/>
+<text x="422.7" y="595" text-anchor="start" class="t-ink num">+2%</text>
+<rect x="0" y="580" width="720" height="24" class="hit"><title>Rotterdam: 81.4 calls a day over the last 30 days, 79.6 a year earlier (+2%)</title></rect>
+<text x="150" y="619" text-anchor="end" class="t-ink">Hamburg</text>
+<rect x="394.1" y="608" width="9.9" height="14" rx="3" class="f-s1"/>
+<text x="388.1" y="619" text-anchor="end" class="t-ink num">−2%</text>
+<rect x="0" y="604" width="720" height="24" class="hit"><title>Hamburg: 16.2 calls a day over the last 30 days, 16.5 a year earlier (−2%)</title></rect>
+<text x="150" y="643" text-anchor="end" class="t-ink">Klaipėda</text>
+<rect x="384.7" y="632" width="19.3" height="14" rx="3" class="f-s1"/>
+<text x="378.7" y="643" text-anchor="end" class="t-ink num">−4%</text>
+<rect x="0" y="628" width="720" height="24" class="hit"><title>Klaipėda: 8.3 calls a day over the last 30 days, 8.6 a year earlier (−4%)</title></rect>
+<text x="150" y="667" text-anchor="end" class="t-ink">Gdańsk</text>
+<rect x="376.5" y="656" width="27.5" height="14" rx="3" class="f-s1"/>
+<text x="370.5" y="667" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="652" width="720" height="24" class="hit"><title>Gdańsk: 9.5 calls a day over the last 30 days, 10.0 a year earlier (−5%)</title></rect>
+<text x="150" y="691" text-anchor="end" class="t-ink">Amsterdam</text>
+<rect x="366.5" y="680" width="37.5" height="14" rx="3" class="f-s1"/>
+<text x="360.5" y="691" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="676" width="720" height="24" class="hit"><title>Amsterdam: 20.4 calls a day over the last 30 days, 21.9 a year earlier (−7%)</title></rect>
+<text x="150" y="715" text-anchor="end" class="t-ink">Göteborg</text>
+<rect x="365.4" y="704" width="38.6" height="14" rx="3" class="f-s1"/>
+<text x="359.4" y="715" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="700" width="720" height="24" class="hit"><title>Göteborg: 9.3 calls a day over the last 30 days, 10.0 a year earlier (−7%)</title></rect>
+<text x="150" y="739" text-anchor="end" class="t-ink">Bremen / Bremerhaven</text>
+<rect x="361.6" y="728" width="42.4" height="14" rx="3" class="f-s1"/>
+<text x="355.6" y="739" text-anchor="end" class="t-ink num">−8%</text>
+<rect x="0" y="724" width="720" height="24" class="hit"><title>Bremen / Bremerhaven: 14.3 calls a day over the last 30 days, 15.5 a year earlier (−8%)</title></rect>
+<text x="150" y="763" text-anchor="end" class="t-ink">Brunsbüttel</text>
+<rect x="314.8" y="752" width="89.2" height="14" rx="3" class="f-s1"/>
+<text x="308.8" y="763" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="0" y="748" width="720" height="24" class="hit"><title>Brunsbüttel: 6.7 calls a day over the last 30 days, 8.0 a year earlier (−16%)</title></rect>
+</svg></div><div class="stretto"><svg class="viz" id="g-porti-m" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 742" width="100%" role="img" aria-labelledby="g-porti-m-t g-porti-m-d" style="--fs:11px;max-width:360px;height:auto;display:block">
+<title id="g-porti-m-t">Ports: ship calls, year-on-year change (30-day average)</title><desc id="g-porti-m-d">Percentage change in ship calls per day over the last 30 days against the same days a year earlier, IMF PortWatch.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<text x="8" y="18" class="t-ink t-b">Ship calls, 30 days, year on year</text>
+<text x="8" y="34" class="t-faint">IMF PortWatch, to 30 October 2026 · blue up, magenta down</text>
+<text x="8" y="68" class="t-ink t-b">Italian ports</text>
+<line x1="215.0" x2="215.0" y1="74" y2="274" class="base"/>
+<text x="112" y="87" text-anchor="end" class="t-ink">La Spezia</text>
+<rect x="215.0" y="76" width="59.1" height="14" rx="3" class="f-s3"/>
+<text x="280.1" y="87" text-anchor="start" class="t-ink num">+28%</text>
+<rect x="0" y="72" width="360" height="22" class="hit"><title>La Spezia: 2.3 calls a day over the last 30 days, 1.8 a year earlier (+28%)</title></rect>
+<text x="112" y="109" text-anchor="end" class="t-ink">Livorno</text>
+<rect x="215.0" y="98" width="1.0" height="14" rx="3" class="f-s3"/>
+<text x="221.0" y="109" text-anchor="start" class="t-ink num">0%</text>
+<rect x="0" y="94" width="360" height="22" class="hit"><title>Livorno: 6.1 calls a day over the last 30 days, 6.1 a year earlier (0%)</title></rect>
+<text x="112" y="131" text-anchor="end" class="t-ink">Augusta</text>
+<rect x="215.0" y="120" width="1.0" height="14" rx="3" class="f-s3"/>
+<text x="221.0" y="131" text-anchor="start" class="t-ink num">0%</text>
+<rect x="0" y="116" width="360" height="22" class="hit"><title>Augusta: 4.3 calls a day over the last 30 days, 4.3 a year earlier (0%)</title></rect>
+<text x="112" y="153" text-anchor="end" class="t-ink">Genoa</text>
+<rect x="205.4" y="142" width="9.6" height="14" rx="3" class="f-s1"/>
+<text x="199.4" y="153" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="138" width="360" height="22" class="hit"><title>Genoa: 8.4 calls a day over the last 30 days, 8.8 a year earlier (−5%)</title></rect>
+<text x="112" y="175" text-anchor="end" class="t-ink">Trieste</text>
+<rect x="203.3" y="164" width="11.7" height="14" rx="3" class="f-s1"/>
+<text x="197.3" y="175" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="0" y="160" width="360" height="22" class="hit"><title>Trieste: 5.2 calls a day over the last 30 days, 5.5 a year earlier (−6%)</title></rect>
+<text x="112" y="197" text-anchor="end" class="t-ink">Gioia Tauro</text>
+<rect x="202.9" y="186" width="12.1" height="14" rx="3" class="f-s1"/>
+<text x="196.9" y="197" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="0" y="182" width="360" height="22" class="hit"><title>Gioia Tauro: 5.0 calls a day over the last 30 days, 5.3 a year earlier (−6%)</title></rect>
+<text x="112" y="219" text-anchor="end" class="t-ink">Venice (Lido)</text>
+<rect x="192.5" y="208" width="22.5" height="14" rx="3" class="f-s1"/>
+<text x="186.5" y="219" text-anchor="end" class="t-ink num">−11%</text>
+<rect x="0" y="204" width="360" height="22" class="hit"><title>Venice (Lido): 5.9 calls a day over the last 30 days, 6.6 a year earlier (−11%)</title></rect>
+<text x="112" y="241" text-anchor="end" class="t-ink">Venice (Malamocco)</text>
+<rect x="181.0" y="230" width="34.0" height="14" rx="3" class="f-s1"/>
+<text x="175.0" y="241" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="0" y="226" width="360" height="22" class="hit"><title>Venice (Malamocco): 2.1 calls a day over the last 30 days, 2.5 a year earlier (−16%)</title></rect>
+<text x="112" y="263" text-anchor="end" class="t-ink">Ravenna</text>
+<rect x="172.5" y="252" width="42.5" height="14" rx="3" class="f-s1"/>
+<text x="166.5" y="263" text-anchor="end" class="t-ink num">−20%</text>
+<rect x="0" y="248" width="360" height="22" class="hit"><title>Ravenna: 6.4 calls a day over the last 30 days, 8.0 a year earlier (−20%)</title></rect>
+<text x="8" y="292" class="t-ink t-b">Mediterranean and Atlantic</text>
+<line x1="215.0" x2="215.0" y1="298" y2="432" class="base"/>
+<text x="112" y="311" text-anchor="end" class="t-ink">Tanger Med</text>
+<rect x="209.5" y="300" width="5.5" height="14" rx="3" class="f-s1"/>
+<text x="203.5" y="311" text-anchor="end" class="t-ink num">−3%</text>
+<rect x="0" y="296" width="360" height="22" class="hit"><title>Tanger Med: 12.4 calls a day over the last 30 days, 12.8 a year earlier (−3%)</title></rect>
+<text x="112" y="333" text-anchor="end" class="t-ink">Marseille</text>
+<rect x="203.7" y="322" width="11.3" height="14" rx="3" class="f-s1"/>
+<text x="197.7" y="333" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="318" width="360" height="22" class="hit"><title>Marseille: 3.0 calls a day over the last 30 days, 3.1 a year earlier (−5%)</title></rect>
+<text x="112" y="355" text-anchor="end" class="t-ink">Algeciras</text>
+<rect x="202.9" y="344" width="12.1" height="14" rx="3" class="f-s1"/>
+<text x="196.9" y="355" text-anchor="end" class="t-ink num">−6%</text>
+<rect x="0" y="340" width="360" height="22" class="hit"><title>Algeciras: 16.0 calls a day over the last 30 days, 17.0 a year earlier (−6%)</title></rect>
+<text x="112" y="377" text-anchor="end" class="t-ink">Valencia</text>
+<rect x="201.0" y="366" width="14.0" height="14" rx="3" class="f-s1"/>
+<text x="195.0" y="377" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="362" width="360" height="22" class="hit"><title>Valencia: 10.3 calls a day over the last 30 days, 11.0 a year earlier (−7%)</title></rect>
+<text x="112" y="399" text-anchor="end" class="t-ink">Piraeus</text>
+<rect x="184.4" y="388" width="30.6" height="14" rx="3" class="f-s1"/>
+<text x="178.4" y="399" text-anchor="end" class="t-ink num">−14%</text>
+<rect x="0" y="384" width="360" height="22" class="hit"><title>Piraeus: 12.1 calls a day over the last 30 days, 14.1 a year earlier (−14%)</title></rect>
+<text x="112" y="421" text-anchor="end" class="t-ink">Capodistria (Koper)</text>
+<rect x="180.3" y="410" width="34.7" height="14" rx="3" class="f-s1"/>
+<text x="174.3" y="421" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="0" y="406" width="360" height="22" class="hit"><title>Capodistria (Koper): 3.4 calls a day over the last 30 days, 4.1 a year earlier (−16%)</title></rect>
+<text x="8" y="450" class="t-ink t-b">Northern Europe and the Baltic (12 largest, excluding Russia)</text>
+<line x1="215.0" x2="215.0" y1="456" y2="722" class="base"/>
+<text x="112" y="469" text-anchor="end" class="t-ink">Świnoujście</text>
+<rect x="215.0" y="458" width="86.4" height="14" rx="3" class="f-s3"/>
+<text x="307.4" y="469" text-anchor="start" class="t-ink num">+41%</text>
+<rect x="0" y="454" width="360" height="22" class="hit"><title>Świnoujście: 9.7 calls a day over the last 30 days, 6.9 a year earlier (+41%)</title></rect>
+<text x="112" y="491" text-anchor="end" class="t-ink">Riga</text>
+<rect x="215.0" y="480" width="17.4" height="14" rx="3" class="f-s3"/>
+<text x="238.4" y="491" text-anchor="start" class="t-ink num">+8%</text>
+<rect x="0" y="476" width="360" height="22" class="hit"><title>Riga: 6.6 calls a day over the last 30 days, 6.1 a year earlier (+8%)</title></rect>
+<text x="112" y="513" text-anchor="end" class="t-ink">Rostock</text>
+<rect x="215.0" y="502" width="10.6" height="14" rx="3" class="f-s3"/>
+<text x="231.6" y="513" text-anchor="start" class="t-ink num">+5%</text>
+<rect x="0" y="498" width="360" height="22" class="hit"><title>Rostock: 6.3 calls a day over the last 30 days, 6.0 a year earlier (+5%)</title></rect>
+<text x="112" y="535" text-anchor="end" class="t-ink">Antwerp-Bruges</text>
+<rect x="215.0" y="524" width="7.4" height="14" rx="3" class="f-s3"/>
+<text x="228.4" y="535" text-anchor="start" class="t-ink num">+4%</text>
+<rect x="0" y="520" width="360" height="22" class="hit"><title>Antwerp-Bruges: 65.5 calls a day over the last 30 days, 63.3 a year earlier (+4%)</title></rect>
+<text x="112" y="557" text-anchor="end" class="t-ink">Rotterdam</text>
+<rect x="215.0" y="546" width="4.9" height="14" rx="3" class="f-s3"/>
+<text x="225.9" y="557" text-anchor="start" class="t-ink num">+2%</text>
+<rect x="0" y="542" width="360" height="22" class="hit"><title>Rotterdam: 81.4 calls a day over the last 30 days, 79.6 a year earlier (+2%)</title></rect>
+<text x="112" y="579" text-anchor="end" class="t-ink">Hamburg</text>
+<rect x="211.2" y="568" width="3.8" height="14" rx="3" class="f-s1"/>
+<text x="205.2" y="579" text-anchor="end" class="t-ink num">−2%</text>
+<rect x="0" y="564" width="360" height="22" class="hit"><title>Hamburg: 16.2 calls a day over the last 30 days, 16.5 a year earlier (−2%)</title></rect>
+<text x="112" y="601" text-anchor="end" class="t-ink">Klaipėda</text>
+<rect x="207.6" y="590" width="7.4" height="14" rx="3" class="f-s1"/>
+<text x="201.6" y="601" text-anchor="end" class="t-ink num">−4%</text>
+<rect x="0" y="586" width="360" height="22" class="hit"><title>Klaipėda: 8.3 calls a day over the last 30 days, 8.6 a year earlier (−4%)</title></rect>
+<text x="112" y="623" text-anchor="end" class="t-ink">Gdańsk</text>
+<rect x="204.4" y="612" width="10.6" height="14" rx="3" class="f-s1"/>
+<text x="198.4" y="623" text-anchor="end" class="t-ink num">−5%</text>
+<rect x="0" y="608" width="360" height="22" class="hit"><title>Gdańsk: 9.5 calls a day over the last 30 days, 10.0 a year earlier (−5%)</title></rect>
+<text x="112" y="645" text-anchor="end" class="t-ink">Amsterdam</text>
+<rect x="200.5" y="634" width="14.5" height="14" rx="3" class="f-s1"/>
+<text x="194.5" y="645" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="630" width="360" height="22" class="hit"><title>Amsterdam: 20.4 calls a day over the last 30 days, 21.9 a year earlier (−7%)</title></rect>
+<text x="112" y="667" text-anchor="end" class="t-ink">Göteborg</text>
+<rect x="200.1" y="656" width="14.9" height="14" rx="3" class="f-s1"/>
+<text x="194.1" y="667" text-anchor="end" class="t-ink num">−7%</text>
+<rect x="0" y="652" width="360" height="22" class="hit"><title>Göteborg: 9.3 calls a day over the last 30 days, 10.0 a year earlier (−7%)</title></rect>
+<text x="112" y="689" text-anchor="end" class="t-ink">Bremen / Bremerhaven</text>
+<rect x="198.6" y="678" width="16.4" height="14" rx="3" class="f-s1"/>
+<text x="192.6" y="689" text-anchor="end" class="t-ink num">−8%</text>
+<rect x="0" y="674" width="360" height="22" class="hit"><title>Bremen / Bremerhaven: 14.3 calls a day over the last 30 days, 15.5 a year earlier (−8%)</title></rect>
+<text x="112" y="711" text-anchor="end" class="t-ink">Brunsbüttel</text>
+<rect x="180.5" y="700" width="34.5" height="14" rx="3" class="f-s1"/>
+<text x="174.5" y="711" text-anchor="end" class="t-ink num">−16%</text>
+<rect x="0" y="696" width="360" height="22" class="hit"><title>Brunsbüttel: 6.7 calls a day over the last 30 days, 8.0 a year earlier (−16%)</title></rect>
+</svg></div></div><figcaption>Percentage change in ship calls per day, last 30 days against the same days a year earlier, data to 30 October 2026. Source: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a> (portwatch.json, report/dati/porti-europei.json, porti-nord.json).</figcaption><details><summary>Chart data as a table</summary><div class="tabella"><table><thead><tr><th>Port</th><th>Calls/day 30 d</th><th>A year earlier</th><th>Change</th></tr></thead><tbody><tr><td>La Spezia</td><td>2.3</td><td>1.8</td><td>+28%</td></tr><tr><td>Livorno</td><td>6.1</td><td>6.1</td><td>0%</td></tr><tr><td>Augusta</td><td>4.3</td><td>4.3</td><td>0%</td></tr><tr><td>Genoa</td><td>8.4</td><td>8.8</td><td>−5%</td></tr><tr><td>Trieste</td><td>5.2</td><td>5.5</td><td>−6%</td></tr><tr><td>Gioia Tauro</td><td>5.0</td><td>5.3</td><td>−6%</td></tr><tr><td>Venice (Lido)</td><td>5.9</td><td>6.6</td><td>−11%</td></tr><tr><td>Venice (Malamocco)</td><td>2.1</td><td>2.5</td><td>−16%</td></tr><tr><td>Ravenna</td><td>6.4</td><td>8.0</td><td>−20%</td></tr><tr><td>Tanger Med</td><td>12.4</td><td>12.8</td><td>−3%</td></tr><tr><td>Marseille</td><td>3.0</td><td>3.1</td><td>−5%</td></tr><tr><td>Algeciras</td><td>16.0</td><td>17.0</td><td>−6%</td></tr><tr><td>Valencia</td><td>10.3</td><td>11.0</td><td>−7%</td></tr><tr><td>Piraeus</td><td>12.1</td><td>14.1</td><td>−14%</td></tr><tr><td>Capodistria (Koper)</td><td>3.4</td><td>4.1</td><td>−16%</td></tr><tr><td>Świnoujście</td><td>9.7</td><td>6.9</td><td>+41%</td></tr><tr><td>Riga</td><td>6.6</td><td>6.1</td><td>+8%</td></tr><tr><td>Rostock</td><td>6.3</td><td>6.0</td><td>+5%</td></tr><tr><td>Antwerp-Bruges</td><td>65.5</td><td>63.3</td><td>+4%</td></tr><tr><td>Rotterdam</td><td>81.4</td><td>79.6</td><td>+2%</td></tr><tr><td>Hamburg</td><td>16.2</td><td>16.5</td><td>−2%</td></tr><tr><td>Klaipėda</td><td>8.3</td><td>8.6</td><td>−4%</td></tr><tr><td>Gdańsk</td><td>9.5</td><td>10.0</td><td>−5%</td></tr><tr><td>Amsterdam</td><td>20.4</td><td>21.9</td><td>−7%</td></tr><tr><td>Göteborg</td><td>9.3</td><td>10.0</td><td>−7%</td></tr><tr><td>Bremen / Bremerhaven</td><td>14.3</td><td>15.5</td><td>−8%</td></tr><tr><td>Brunsbüttel</td><td>6.7</td><td>8.0</td><td>−16%</td></tr></tbody></table></div></details></figure>
+<p><strong>Facts.</strong> Ravenna handles 6.4 calls a day over 30 days (−20%), with estimated imports −24%. Trieste, the crude port for the TAL pipeline to Austria and Germany, is at −6%, tankers −24% over 7 days. Container ports are holding up: Genoa −5% in calls but container ships +16% and estimated imports +31% over 7 days; Gioia Tauro, the leading transhipment port, container ships +11%. (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>).</p>
+<p>On an annual basis: Italian ports handled 12.8 million TEU in 2025 (11.9 in 2024); in H1 2026 Italian container traffic grew 1%, against 11% for North African ports (Tanger Med) (<a href="https://group.intesasanpaolo.com/it/research/area-media/macro-italia/2026/mediterraneo-traffico-container-porti-italia" rel="noopener">Intesa Sanpaolo, SRM (studies on Mediterranean container traffic, 2026)</a>, July 2026); container traffic in Italian ports fell 4.6% in Q1 2026 on Q1 2025 (<a href="https://www.9colonne.it/614809/hormuz-crisis-weighs-on-container-traffic-at-italian-ports" rel="noopener">9colonne, “Hormuz crisis weighs on container traffic at Italian ports”</a>, May 2026).</p>
+<p>Elsewhere in the Mediterranean and on the Atlantic, Capodistria (Koper) (−16%), Piraeus (−14%) and Valencia (−7%) are down (calls per day, 30 days year on year, <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>).</p>
+<aside class="valutazione"><span class="etichetta">Assessment</span>The sharpest falls are in Italian ports tied to energy and Adriatic dry bulk (Ravenna, Venice, Trieste). Hormuz alone explains little: only 5.6–10.2% of the crude Italy imports comes from the Persian Gulf (UN Comtrade 2025); weak industrial demand and expensive energy are more likely, but the PortWatch data cannot tell. Genoa and Gioia Tauro see more container ships over 7 days, consistent with the return to Suez, but over 30 days total calls remain below last year. Calls count ships, not tonnes or TEU: volumes require data from the port system authorities, which come out months later.</aside>
+<h2 id="ferrovie">4. Railways and land corridors</h2>
+<div class="tabella"><table><thead><tr><th scope="col">Corridor</th><th scope="col">Volume</th><th scope="col">Trend</th><th scope="col">Status</th><th scope="col">Source</th></tr></thead><tbody><tr><td>China–Europe rail</td><td>20,022 trains (2025)</td><td>+3.2% on 2024 (Railmarket); 1,702 in 2016</td><td class="s-operativo">operational</td><td><a href="https://news.cgtn.com/news/2026-06-19/China-Europe-freight-train-trips-up-10-8-fold-in-a-decade-1O6lmqO1Ka4/p.html" rel="noopener">CGTN on China State Railway Group data</a></td></tr><tr><td>Middle Corridor / Trans-Caspian International Transport Route</td><td>4.7 million tonnes (2025)</td><td>4.484 Mt in 2024 (Kazakhstan Ministry of Transport); other 2025 estimates between 4.5 and 5.2 Mt</td><td class="s-operativo con trasbordo navale sul Caspio (Aktau/Kuryk - Baku/Alat)">operational with transhipment by sea across the Caspian (Aktau/Kuryk – Baku/Alat)</td><td><a href="https://besacenter.org/azerbaijan-uses-the-middle-corridor-to-consolidate/" rel="noopener">Organization of Turkic States (reported by BESA Center)</a></td></tr><tr><td>INSTC western branch</td><td>12.9 million tonnes (2024)</td><td>full 2025 figure not found</td><td class="s-parziale: manca il tratto Rasht-Astara (162 km). Avvio lavori slittato al 2027, completamento in circa 3 anni (RZD, ottobre 2026)">partial: the Rasht–Astara section (162 km) is missing. Start of works postponed to 2027, completion in about 3 years (RZD, October 2026)</td><td><a href="https://www.grc.net/single-commentary/302" rel="noopener">Russian Railways (RZD), reported by Gulf Research Center</a></td></tr><tr><td>INSTC eastern branch</td><td>data missing</td><td></td><td class="s-operativo (linea Uzen-Bereket-Gorgan aperta nel 2014)">operational (Uzen–Bereket–Gorgan line opened in 2014)</td><td>ferrovie.json</td></tr></tbody></table></div>
+<p class="nota">Source: docs/data/ferrovie.json (curated profiles with a source for each entry).</p>
+<p><strong>Facts.</strong> China–Europe rail: 5,460 trains in Q1 2026, +29% trains and +22% TEU (546,000 TEU) on Q1 2025 (<a href="https://index1520.com/en/news/obemy-perevozok-po-marshrutu-kitay-evropa-vyrosli-na-chetvert-za-pervye-dva-mesyatsa-2026-goda/" rel="noopener">Index1520 / China State Railway Group</a>). The INSTC western branch is still waiting for the Rasht–Astara section: start of works expected in 2027 (<a href="https://interfax.com/newsroom/top-stories/119557/" rel="noopener">Interfax (RZD deputy CEO)</a>).</p>
+<p><strong>Order of magnitude.</strong> All China–Europe rail traffic in 2025 (2.05 million TEU, <a href="https://railmarket.com/news/freight-rail/51534" rel="noopener">Railmarket</a>) equals about 2.7 weeks of containers via Suez at the October 2026 rate (753,000 TEU a week, <a href="https://www.bimco.org/news-insights/market-analysis/shipping-number-of-the-week/2026/1014-snow/" rel="noopener">BIMCO, Shipping Number of the Week, on Clarksons data</a>). Observatory calculation.</p>
+<aside class="valutazione"><span class="etichetta">Assessment</span>Rail is not an alternative to the sea in volume terms: it is insurance for high-value, urgent goods. The northern route runs through Russia and Belarus (sanctions risk and the Polish border); the Middle Corridor is growing but stays below 5 million tonnes a year with transhipment across the Caspian; the INSTC will not be complete before the end of the decade. For Italy the direct weight of these corridors is a missing figure.</aside>
+<h2 id="energia">5. Energy as a supply-chain input</h2>
+<div class="tabella"><table><thead><tr><th scope="col">Item</th><th scope="col">Last</th><th scope="col">Date</th><th scope="col">1 month</th><th scope="col">1 year</th><th scope="col">Source</th></tr></thead><tbody><tr><td>Brent</td><td>92.62 USD/barrel</td><td>9 Nov 2026</td><td>−12%</td><td>+46%</td><td>Yahoo Finance (prezzi.json)</td></tr><tr><td>TTF gas</td><td>82.33 EUR/MWh</td><td>9 Nov 2026</td><td>+1%</td><td>+164%</td><td>Yahoo Finance (prezzi.json)</td></tr><tr><td>Henry Hub gas</td><td>3.21 USD/MMBtu</td><td>9 Nov 2026</td><td>0%</td><td>−26%</td><td>Yahoo Finance (prezzi.json)</td></tr><tr><td>Self-service diesel, Italian average</td><td>€2.224/litre</td><td>7 Nov 2026</td><td>—</td><td>about +37% (b)</td><td><a href="https://www.affaritaliani.it/economia/carburanti-benzina-a-un-soffio-dai-2-euro-il-self-scende-ancora-ma-il-gasolio-resta-alto.html" rel="noopener">Mimit via Affaritaliani</a></td></tr><tr><td>Electricity, Italian PUN</td><td>data missing</td><td>October 2026</td><td></td><td></td><td>secondary sources disagree (see below)</td></tr></tbody></table></div>
+<p class="nota">(b) Diesel a year earlier: €1.627/litre, <a href="https://quifinanza.it/osservatorio-prezzi/prezzi-carburanti-benzina-diesel-ottobre-2025/933821/" rel="noopener">QuiFinanza, fuel price observatory for October 2025 (exact date not given in the excerpt)</a>, October 2025, low reliability.</p>
+<p><strong>Gas in Italy.</strong> Over the last 12 months the main entry points are Mazara del Vallo 34.0%, Melendugno 16.5%, Adriatic LNG 14.1%, Passo Gries 13.0% (<a href="https://transparency.entsog.eu/" rel="noopener">ENTSOG</a>, Snam data to 8 November 2026). Average entries in October 2026: 1,696 GWh a day. Italian storage 88.93% full on 8 November 2026, −4.7 points year on year and 1.07 points short of the EU 90% target (GIE AGSI+). Germany is at 58.9%, 29.7 points below the 5-year average.</p>
+<p><strong>LNG.</strong> Behind Hormuz sits 14.5% of the world’s operating liquefaction capacity (82.9 of 570 Mt/yr); Italy has 21.8 Mt/yr of operating regasification (<a href="https://globalenergymonitor.org/projects/global-gas-infrastructure-tracker/" rel="noopener">Global Energy Monitor</a>, October 2026 file). In 2025 45.3% of Italy’s LNG came from the United States and 32.6% from Qatar (<a href="https://comtradeplus.un.org/TradeFlow?Frequency=A&amp;Flows=X&amp;CommodityCodes=TOTAL&amp;Partners=0&amp;Reporters=380&amp;period=2025&amp;AggregateBy=none&amp;BreakdownMode=plus" rel="noopener">UN Comtrade</a>, shares by value).</p>
+<p><strong>Diesel and stocks.</strong> The cut in diesel excise duty decided on 28 October was not renewed: since 8 November about 4.9 cents a litre more in excise and VAT (<a href="https://it.motor1.com/news/814756/stop-taglio-accise-diesel-novembre-2026/" rel="noopener">Motor1 Italia</a>, 8 November 2026). US distillate stocks, the reference for the Atlantic diesel market, are at 99.3 million barrels, −13.3% on the 5-year average (EIA, 30 October 2026). Italy’s emergency oil stocks are at 77.2 days (August 2026), against 90.5 a year earlier (Eurostat).</p>
+<p><strong>Electricity: data missing.</strong> No observatory file contains the PUN and the secondary sources found for October 2026 are inconsistent (a partial Selectra average around €389/MWh and a Comparasemplice figure of €216/MWh, with different definitions). The figure should be taken from the GME: <a href="https://www.mercatoelettrico.org/" rel="noopener">mercatoelettrico.org</a>.</p>
+<aside class="valutazione"><span class="etichetta">Assessment</span>Gas is the input that ties everything together: it sets the price of electricity, nitrogen fertilisers and part of the chemical industry. With TTF above €80/MWh and northern European storage well below normal, the price risk for Italian industry remains high until March 2027, even though Italian volumes are covered by Algeria, TAP and American LNG.</aside>
+<h2 id="materie">6. Critical materials and bottlenecks</h2>
+<p><strong>Rare earths.</strong> The suspension of the Chinese rare-earth export controls decided in October 2025 (MOFCOM–GAC announcement no. 70 of 2025, including the rule on 0.1% Chinese content in foreign products) expires on 10 November 2026; the April 2025 licences on seven medium and heavy rare earths (including dysprosium and yttrium) remain in force. As of the date of the report no extension had been announced (<a href="https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/" rel="noopener">CIRS Group (text of announcement no. 70/2025) and Mining Technology</a>, 9 November 2026). For the EU the dependency is almost total: China supplies 100% of the heavy rare earths used in the EU, Türkiye 98% of borate, South Africa 71% of platinum (<a href="https://ec.europa.eu/commission/presscorner/detail/en/ip_23_1661" rel="noopener">European Commission, press release on the Critical Raw Materials Act (IP/23/1661)</a>, 16 March 2023).</p>
+<p><strong>Chips and AI.</strong> S&amp;P Global Mobility expects DRAM prices +70–100% in 2026 on new contracts, as producers shift capacity towards chips for AI data centres; Micron (June 2026) says memory supply will stay tight beyond 2027 (<a href="https://www.spglobal.com/automotive-insights/en/blogs/2025/12/dram-makers-ai-data-centers-semiconductor-shortage" rel="noopener">S&amp;P Global Mobility (December 2025); Counterpoint Research on Micron (June 2026)</a>, June 2026). On the stock market the SOX semiconductor index is at 10,046 points, −20% in a month but +42% year to date; TSMC −14% in a month (Yahoo Finance, 9 November 2026). The Taiwan Strait: companies that depend on Taiwanese chips would lose up to 1.6 trillion dollars of revenue a year in a blockade; over 2 trillion of economic activity at risk (<a href="https://rhg.com/research/taiwan-economic-disruptions/" rel="noopener">Rhodium Group, “Taiwan economic disruptions”</a>).</p>
+<p><strong>Fertilisers.</strong> Almost a quarter of world urea exports used to pass through Hormuz (<a href="https://blogs.worldbank.org/en/opendata/fertilizer-prices-surge-as-strait-of-hormuz-disruptions-tighten-" rel="noopener">World Bank</a>); for S&amp;P Global the closure of Hormuz removes 29% of world urea trade (<a href="https://www.fertilizerdaily.com/20261020-global-food-crisis-hormuz-sp-global-el-nino/" rel="noopener">Fertilizer Daily, on S&amp;P Global</a>, 20 October 2026). Prices: the World Bank index in April 2026 at its highest since October 2022; urea briefly exceeded $850/t in April (+80% since February, according to press reports on the figure) (<a href="https://blogs.worldbank.org/en/opendata/fertilizer-prices-surge-as-strait-of-hormuz-disruptions-tighten-" rel="noopener">World Bank</a>). Middle East fertiliser exports: down 70% because of the war (<a href="https://www.thenationalnews.com/business/energy/2026/10/31/middle-east-fertiliser-exports-decline-by-70-as-iran-war-disrupts-supplies/" rel="noopener">The National</a>, October 2026).</p>
+<p><strong>Wheat.</strong> USDA estimates world ending stocks for 2026/27 at 276.0 million tonnes (−2.0%), but the EU falls to 11.7 (−38%), with stocks equal to 10% of consumption; Russia rises to 19.1 (USDA PSD). Ukraine: weekly exports of wheat and oilseeds −90% since early July 2026 (Kpler); the Ukrainian ministry has cut its 2026-27 farm export forecast by 54% (<a href="https://euromaidanpress.com/2026/08/11/russia-port-strikes-ukraine-farm-export-forecast/" rel="noopener">Euromaidan Press</a>). Kerch, latest update: transit permits are issued until 15 November, with a Russian navy escort. (<a href="https://www.bairdmaritime.com/shipping/dry-cargo/bulkers/sea-of-azov-reopens-to-grain-export-ships-after-months-long-shutdown-russian-naval-escorts-involved" rel="noopener">Baird Maritime</a>).</p>
+<p><strong>Italy’s dependencies.</strong> Italy imports 95.2% of the gas and 89.8% of the oil it consumes (<a href="https://ec.europa.eu/eurostat/databrowser/view/nrg_ind_id/default/table" rel="noopener">Eurostat</a>, 2024). China is the second-largest supplier of goods with 10.2% of imports (<a href="https://comtradeplus.un.org/TradeFlow?Frequency=A&amp;Flows=X&amp;CommodityCodes=TOTAL&amp;Partners=0&amp;Reporters=380&amp;period=2025&amp;AggregateBy=none&amp;BreakdownMode=plus" rel="noopener">UN Comtrade</a>, 2025). Crude comes mainly from Libya (24.5%), Azerbaijan (15.9%) and Kazakhstan (12.5%); from the Persian Gulf only 5.6–10.2% (UN Comtrade 2025). Data on minerals and components are missing: the files commercio.json and minerali.json reached the observatory on the day of this edition and are not yet integrated into the report.</p>
+<aside class="valutazione"><span class="etichetta">Assessment</span>The bottlenecks of late 2026 are not all at sea. Rare earths (Chinese decision expected on 10 November) and automotive memory chips (capacity absorbed by AI) can halt European production lines more than a high freight rate. For fertilisers the problem is expensive gas in Europe more than logistics. On wheat the EU has its thinnest buffer in years.</aside>
+<h2 id="rischi">7. Digital and physical risks</h2>
+<p><strong>Subsea cables.</strong> Italy has 37 cables and 55 landings; the active cables linking it to Asia through Bab el-Mandeb number 6 (2Africa, Asia Africa Europe-1 (AAE-1), IMEWE, Middle East North Africa (MENA) Cable System/Gulf Bridge International, SeaMeWe-4, SeaMeWe-5). 24 cables run through the Red Sea, 34 through the Baltic (<a href="https://www.submarinecablemap.com/" rel="noopener">TeleGeography</a>, CC BY-NC-SA, 9 November 2026). The observatory records 14 incidents since 2023, 3 in 2026; the latest: Australia: faults on Indigo West and Indigo Central in the Perth protection zone (8 August 2026, <a href="https://www.itnews.com.au/news/afp-assessing-report-in-connection-with-perth-cable-faults-628061" rel="noopener">iTnews</a>).</p>
+<p><strong>Sabotage and cyber attacks on logistics.</strong> The cold chain is the new target: a cyber attack on the refrigeration of hundreds of supermarkets in France (12 October 2026, <a href="https://www.aljazeera.com/news/2026/10/13/unprecedented-cyberattack-hits-french-supermarkets-causing-food-losses" rel="noopener">Al Jazeera</a>); attacks on supermarket refrigeration in Belgium, Luxembourg, Sweden, Ireland and Estonia (2 November 2026, <a href="https://www.aljazeera.com/news/2026/11/2/freezers-in-sweden-belgium-overheat-following-possible-cyberattacks" rel="noopener">Reuters</a>). Three attacks on Starlink stations in Central and Eastern Europe between September and October (LT, BG, PL): the Lithuanian prime minister links them and attributes them to Russia, as does the Polish government for the facility in Poland (political attributions, not court rulings; ibrido.json). In Italy NoName057(16) claimed DDoS attacks also against Terminal Container Ravenna and Interporto Padova in mid-October, with no confirmation from the victims (<a href="https://www.quotidiano.net/cronaca/guerra--hacker-russi-italia-ucraina-mlj9s3di" rel="noopener">QN</a>).</p>
+<p><strong>GNSS jamming.</strong> GNSS interference along almost all of NATO’s eastern flank from the Baltic to the Black Sea (3 November 2026, <a href="https://militarnyi.com/en/news/from-the-baltic-to-the-black-sea-large-scale-gps-jamming-detected-along-nato-borders/" rel="noopener">Militarnyi</a>, medium reliability). In the Gulf: in Q1 2026 Hormuz, the Persian Gulf and the Gulf of Oman accounted for 98% of GNSS jamming events recorded worldwide, with over 1,100 ships affected; AIS positions shifted onto airports and inland (<a href="https://windward.ai/blog/what-is-gps-jamming-and-why-are-we-seeing-so-much-of-it/" rel="noopener">Windward, “What is GPS jamming and why are we seeing so much of it?”</a>, April 2026). In the observatory’s AIS data 4 ships show impossible positions (over 40 knots or inland), a sign of spoofing or jamming (navi.json, 9 November 2026).</p>
+<p><strong>Shadow fleet.</strong> 2,022 ships are sanctioned by the US, the UK or the EU (950 linked to Russia, 679 to Iran); 1,163 are assessed as “probable shadow fleet” by the observatory (OFAC, FCDO, OpenSanctions, lists as of 6 November 2026). In the Gulf of Finland 38 of the 96 tankers seen on AIS are sanctioned (Digitraffic and aisstream, 9 November 2026).</p>
+<aside class="valutazione"><span class="etichetta">Assessment</span>The most likely physical risk for Italy is not a cable cut in the Mediterranean but an incident in the Red Sea (anchors of stricken ships, as in 2024) that degrades capacity to Asia and the Gulf, with slow repairs in a war zone. The new risk for European logistics is cyber attacks on control systems (refrigeration, terminals) and GNSS interference in the Baltic and the Gulf, which makes the AIS data these numbers also rely on less reliable.</aside>
+<h2 id="nord">8. What it means for Northern Europe</h2>
+<p>This section reads the same data from the point of view of someone working in a port or an energy company in the Netherlands, Denmark or the Baltic. The rest of the report focuses mainly on Italy.</p>
+<div class="tabella"><table><thead><tr><th scope="col">Port</th><th scope="col">Country</th><th scope="col">Calls/day (30 d)</th><th scope="col">vs 1 year</th><th scope="col">2025 throughput</th></tr></thead><tbody><tr><td>Rotterdam</td><td>NL</td><td>81.4</td><td>+2%</td><td>428.4 mn t; 14.24 mn TEU (<a href="https://www.portofrotterdam.com/en/node/5524" rel="noopener">Port of Rotterdam Authority</a>)</td></tr><tr><td>Antwerp-Bruges (Antwerp + Zeebrugge)</td><td>BE</td><td>65.5</td><td>+4%</td><td>266.5 mn t; 13.63 mn TEU (<a href="https://newsroom.portofantwerpbruges.com/hubfs/260122_Factsheet_Jaarcijfers_2025_DUI.pdf" rel="noopener">Port of Antwerp-Bruges</a>)</td></tr><tr><td>Amsterdam</td><td>NL</td><td>20.4</td><td>−7%</td><td>62.1 mn t (<a href="https://www.portofamsterdam.com/en/annual-report-2025-steadfast-and-motion" rel="noopener">Port of Amsterdam</a>)</td></tr><tr><td>Hamburg</td><td>DE</td><td>16.2</td><td>−2%</td><td>114.6 mn t; 8.3 mn TEU (<a href="https://www.verkehrsrundschau.de/nachrichten/transport-logistik/containerumschlag-treibt-hafen-hamburg-ins-plus-3770706" rel="noopener">Hamburg Port Authority</a>)</td></tr><tr><td>Bremen / Bremerhaven</td><td>DE</td><td>14.3</td><td>−8%</td><td>65.3 mn t; 4.9 mn TEU (<a href="https://www.bremenports.de/fileadmin/bremenports/Haefen/Monatsberichte/2025_12_Monatsbericht.pdf" rel="noopener">bremenports</a>)</td></tr><tr><td>Świnoujście (with Szczecin)</td><td>PL</td><td>9.7</td><td>+41%</td><td>34.79 mn t (Szczecin + Świnoujście, record); 80 LNG cargoes received (<a href="https://www.trade.gov.pl/en/news/the-ports-of-szczecin-and-swinoujscie-summed-up-the-record-year-2025" rel="noopener">Szczecin-Świnoujście Port Authority</a>)</td></tr><tr><td>Gdańsk</td><td>PL</td><td>9.5</td><td>−5%</td><td>80.4 mn t (record); 2.77 mn TEU (Baltic Hub 2,766,475) (<a href="https://dailymare.com/news/port-of-gdansk-posts-strong-2025-performance-as-liquid-fuels-dominate-and-container-volumes-hit-record-high,2192" rel="noopener">Port of Gdańsk</a>)</td></tr><tr><td>Göteborg</td><td>SE</td><td>9.3</td><td>−7%</td><td>0.934 mn TEU (record); 20.7 mn t of energy products (<a href="https://www.mynewsdesk.com/goteborgs_hamn/pressreleases/record-year-2025-port-of-gothenburg-handled-more-containers-than-ever-3430268" rel="noopener">Göteborgs Hamn</a>)</td></tr><tr><td>Klaipėda</td><td>LT</td><td>8.3</td><td>−4%</td><td>39 mn t (record); 1.3 mn TEU (provisional) (<a href="https://www.hellenicshippingnews.com/2025-a-record-breaking-year-for-the-port-of-klaipeda/" rel="noopener">Klaipėda State Seaport Authority</a>)</td></tr><tr><td>Copenhagen-Malmö (CMP)</td><td>DK</td><td>4.8</td><td>−26%</td><td>12.8 mn t (<a href="https://www.mynewsdesk.com/copenhagen-malmo-port-cmp/pressreleases/cmp-publishes-results-for-2025-continued-stability-in-a-changing-world-3445494" rel="noopener">Copenhagen Malmö Port</a>)</td></tr><tr><td>Aarhus</td><td>DK</td><td>3.9</td><td>0%</td><td>11.34 mn t; 0.844 mn TEU (843,665, a Danish record) (<a href="https://portofaarhus.dk/nyheder/aarhus-havn-godt-fra-land-i-2025-med-oget-containeromsaetning-og-effektiv-drift" rel="noopener">Aarhus Havn</a>)</td></tr><tr><td>Esbjerg</td><td>DK</td><td>3.3</td><td>−8%</td><td>4 mn t; 5,426 ship calls (<a href="https://portesbjerg.dk/pdflibrary/Annual-report-2025-EN.pdf" rel="noopener">Port Esbjerg</a>)</td></tr></tbody></table></div>
+<p class="nota">Calls: <a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, 30-day average to 30 October 2026 against the same days a year earlier (docs/data/porti-nord.json; some ports add up several PortWatch ids). These are ships estimated from AIS, not tonnes or TEU; in small ports a few ships move the percentage a lot. 2025 throughput: port authorities, with a source for each row.</p>
+<p><strong>Ports.</strong> Over 30 days the big North Sea ports are close to last year: Rotterdam +2%, Antwerp-Bruges +4%, Amsterdam −7%. The largest falls are at Copenhagen-Malmö (−26%), Esbjerg (−8%) and Bremen / Bremerhaven (−8%); growth at Świnoujście (+41%), Antwerp-Bruges (+4%) and Rotterdam (+2%). Over 7 days alone Rotterdam is at −11%: a single week swings a lot, which is why the report uses 30 days. In the Russian oil ports of the Gulf of Finland the visible calls are Primorsk −52%, Ust-Luga −16%, but here PortWatch underestimates: many shadow-fleet tankers sail with AIS off (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, porti-nord.json).</p>
+<p><strong>Danish Straits and the Baltic.</strong> 38.7 ships a day pass through the Danish Straits (of which 9.0 tankers), −21% on the same week a year earlier (<a href="https://portwatch.imf.org/" rel="noopener">IMF PortWatch</a>, week to 1 November 2026). Note: PortWatch measures only the Øresund, not the Great Belt, where the largest tankers pass (note in porti-nord.json). On the risk dashboard the Danish Straits are at medium level (8.3 out of 25) and the Baltic (cables, pipelines, power links) at medium level (9.0 out of 25); for the Baltic, flows are amber and German and Dutch gas storage red (rischio.json). 34 cables run through the Baltic (TeleGeography); the observatory’s archive counts 6 incidents to cables and pipelines in the Baltic since 2023, the latest on 31 December 2025, none in 2026 (cavi-incidenti.json). In the Gulf of Finland 38 of the 96 tankers seen on AIS are sanctioned; at the Danish Straits 0 out of 19, but with a single free AIS source (navi.json, 9 November 2026).</p>
+<p><strong>Freight.</strong> The China–Northern Europe route costs 3,422 dollars per FEU, −21% compared with China–Mediterranean (Freightos FBX, 6 November 2026). The WCI Shanghai–Rotterdam is at 3,615 dollars, +84% year on year (Drewry, 5 November 2026; year-earlier value from <a href="https://cyprusshippingnews.com/2025/11/12/drewrys-world-container-index-increased-8-to-1959-per-40ft-container-this-week/" rel="noopener">Drewry WCI of 6 November 2025, cited by Cyprus Shipping News and Alchempro/Fibre2Fashion</a>, 6 November 2025).</p>
+<p><strong>Gas.</strong> On 8 November storage is 63.5% full in the Netherlands (18.9 points below the 5-year average) and 58.9% in Germany (29.7 points below), against 88.9% in Italy (GIE AGSI+, scorte.json). Imported LNG comes mainly from the United States: the Netherlands 77% from the US and 12% from Russia; Germany 89% from the US; Poland 75% from the US and 21% from Qatar (<a href="https://ieefa.org/european-lng-tracker" rel="noopener">IEEFA European LNG Tracker, May 2026</a>, Q1 2026). Of these, Poland is the most exposed to a halt in Qatari LNG. Denmark is a net gas exporter (import dependency −17.5% in 2024, Eurostat) and a transit country for Baltic Pipe between Norway and Poland (esposizione-nord.json). 8.1–9.4% of the crude imported by the Netherlands comes from the Persian Gulf (UN Comtrade 2025).</p>
+<aside class="valutazione"><span class="etichetta">Assessment</span>For a North Sea port the Hormuz crisis arrives through price more than volumes. Rates to Northern Europe are lower than to the Mediterranean and the return to Suez adds capacity on the Asia–Europe route; Dutch and German LNG comes mainly from the United States, not the Gulf. The weak point is gas: with Dutch and German storage well below average, TTF (which is formed in the Netherlands itself) stays sensitive to every piece of news on Qatar and Hormuz and to a cold winter. For those operating in the Baltic and the Danish Straits the risk is hybrid: cables, the shadow fleet and GNSS interference, which also affects the vessels that install and service offshore wind farms. The data do not say why transits through the Danish Straits are falling: lower Russian exports, sanctions or ships with AIS off may all play a part.</aside>
+<h2 id="indicatori">9. Indicators to watch in the coming weeks</h2>
+<p>Two readings side by side. <strong>Chokepoint flows:</strong> the same references and thresholds as the risk dashboard (report/metodo-rischio.md): green if the fall against the reference is within 10%, amber between −10% and −30%, red beyond −30%; below −50% the method treats the disruption as ongoing. <strong>Prices, freight, diesel and storage:</strong> the report uses <em>level</em> thresholds, i.e. what it costs today to import or ship; the risk dashboard instead measures <em>changes</em> (against the 90-day average and against a year earlier). That is why a price can be red here and green on the dashboard: high, but not rising. The “Risk dashboard” column gives the method’s reading where one exists.</p>
+<aside class="valutazione"><span class="etichetta">Assessment</span>Level thresholds are an <strong>observatory assessment</strong>, not official thresholds: they show when a figure changes the picture. Brent $85, TTF €70 and WCI Shanghai–Genoa $5,000 match the scenario thresholds of the “Hormuz and the Red Sea” report. The status is recalculated by the script at each edition.</aside>
+<figure><div class="grafico"><div class="largo"><svg class="viz" id="g-cruscotto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 312" width="100%" role="img" aria-labelledby="g-cruscotto-t g-cruscotto-d" style="--fs:12px;max-width:720px;height:auto;display:block">
+<title id="g-cruscotto-t">Dashboard: six supply-chain indicators</title><desc id="g-cruscotto-d">Value, recent direction and status (assessment with stated thresholds) of six indicators.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<rect x="1.0" y="1.0" width="231.3" height="148" rx="8" class="card"/>
+<text x="13.0" y="23.0" class="t-ink t-b">Hormuz, transits</text>
+<text x="13.0" y="59.0" class="t-ink num t-b" style="font-size:26px">4.4</text>
+<text x="13.0" y="77.0">ships/day (7 d)</text>
+<text x="13.0" y="97.0" class="t-ink"><tspan class="t-b">↓</tspan> <tspan class="num">−95% on the reference</tspan></text>
+<text x="13.0" y="119.0"><tspan class="f-crit">■</tspan> <tspan class="t-ink t-b">red</tspan></text>
+<text x="13.0" y="139.0" class="t-faint">1 November · IMF PortWatch</text>
+<rect x="1.0" y="1.0" width="233.3" height="150" class="hit"><title>Hormuz, transits: 4.4 ships/day (7 d); −95% on the reference; status red</title></rect>
+<rect x="244.3" y="1.0" width="231.3" height="148" rx="8" class="card"/>
+<text x="256.3" y="23.0" class="t-ink t-b">Bab el-Mandeb, transits</text>
+<text x="256.3" y="59.0" class="t-ink num t-b" style="font-size:26px">27.3</text>
+<text x="256.3" y="77.0">ships/day (7 d)</text>
+<text x="256.3" y="97.0" class="t-ink"><tspan class="t-b">↓</tspan> <tspan class="num">−63% on the reference</tspan></text>
+<text x="256.3" y="119.0"><tspan class="f-crit">■</tspan> <tspan class="t-ink t-b">red</tspan></text>
+<text x="256.3" y="139.0" class="t-faint">1 November · IMF PortWatch</text>
+<rect x="244.3" y="1.0" width="233.3" height="150" class="hit"><title>Bab el-Mandeb, transits: 27.3 ships/day (7 d); −63% on the reference; status red</title></rect>
+<rect x="487.7" y="1.0" width="231.3" height="148" rx="8" class="card"/>
+<text x="499.7" y="23.0" class="t-ink t-b">Danish Straits, transits</text>
+<text x="499.7" y="59.0" class="t-ink num t-b" style="font-size:26px">38.7</text>
+<text x="499.7" y="77.0">ships/day (7 d)</text>
+<text x="499.7" y="97.0" class="t-ink"><tspan class="t-b">↓</tspan> <tspan class="num">−21% on the reference</tspan></text>
+<text x="499.7" y="119.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink t-b">amber</tspan></text>
+<text x="499.7" y="139.0" class="t-faint">1 November · IMF PortWatch</text>
+<rect x="487.7" y="1.0" width="233.3" height="150" class="hit"><title>Danish Straits, transits: 38.7 ships/day (7 d); −21% on the reference; status amber</title></rect>
+<rect x="1.0" y="161.0" width="231.3" height="148" rx="8" class="card"/>
+<text x="13.0" y="183.0" class="t-ink t-b">FBX container freight</text>
+<text x="13.0" y="219.0" class="t-ink num t-b" style="font-size:26px">3,452</text>
+<text x="13.0" y="237.0">$ per FEU</text>
+<text x="13.0" y="257.0" class="t-ink"><tspan class="t-b">↑</tspan> <tspan class="num">+3% over 4 weeks</tspan></text>
+<text x="13.0" y="279.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink t-b">amber</tspan></text>
+<text x="13.0" y="299.0" class="t-faint">6 November · Freightos</text>
+<rect x="1.0" y="161.0" width="233.3" height="150" class="hit"><title>FBX container freight: 3,452 $ per FEU; +3% over 4 weeks; status amber</title></rect>
+<rect x="244.3" y="161.0" width="231.3" height="148" rx="8" class="card"/>
+<text x="256.3" y="183.0" class="t-ink t-b">TTF gas</text>
+<text x="256.3" y="219.0" class="t-ink num t-b" style="font-size:26px">82.3</text>
+<text x="256.3" y="237.0">€/MWh</text>
+<text x="256.3" y="257.0" class="t-ink"><tspan class="t-b">↑</tspan> <tspan class="num">+164% year on year</tspan></text>
+<text x="256.3" y="279.0"><tspan class="f-crit">■</tspan> <tspan class="t-ink t-b">red</tspan></text>
+<text x="256.3" y="299.0" class="t-faint">9 November · Yahoo Fin.</text>
+<rect x="244.3" y="161.0" width="233.3" height="150" class="hit"><title>TTF gas: 82.3 €/MWh; +164% year on year; status red</title></rect>
+<rect x="487.7" y="161.0" width="231.3" height="148" rx="8" class="card"/>
+<text x="499.7" y="183.0" class="t-ink t-b">Italian gas storage</text>
+<text x="499.7" y="219.0" class="t-ink num t-b" style="font-size:26px">88.9</text>
+<text x="499.7" y="237.0">% full</text>
+<text x="499.7" y="257.0" class="t-ink"><tspan class="t-b">↓</tspan> <tspan class="num">−4.7 pp year on year</tspan></text>
+<text x="499.7" y="279.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink t-b">amber</tspan></text>
+<text x="499.7" y="299.0" class="t-faint">8 November · GIE AGSI+</text>
+<rect x="487.7" y="161.0" width="233.3" height="150" class="hit"><title>Italian gas storage: 88.9 % full; −4.7 pp year on year; status amber</title></rect>
+</svg></div><div class="stretto"><svg class="viz" id="g-cruscotto-m" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 490" width="100%" role="img" aria-labelledby="g-cruscotto-m-t g-cruscotto-m-d" style="--fs:11px;max-width:360px;height:auto;display:block">
+<title id="g-cruscotto-m-t">Dashboard: six supply-chain indicators</title><desc id="g-cruscotto-m-d">Value, recent direction and status (assessment with stated thresholds) of six indicators.</desc>
+<style>
+.viz{--v-s1:#A61E6B;--v-s2:#eb6834;--v-s3:#2a78d6;--v-ok:#0ca30c;--v-warn:#fab219;--v-crit:#d03b3b;
+--v-ink:#1D272D;--v-soft:#52606A;--v-faint:#86929A;--v-grid:#DCDFDD;--v-bg:#F6F5F0;--v-card:#FFFFFF;--v-band:#ECE9E0;
+font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){.viz{--v-s1:#d14f9a;--v-s2:#d95926;--v-s3:#3987e5;
+--v-ink:#DAE0E2;--v-soft:#A0ABB1;--v-faint:#6C787F;--v-grid:#2B373E;--v-bg:#10181D;--v-card:#172127;--v-band:#1A252C}}
+.viz text{fill:var(--v-soft);font-size:var(--fs,12px)}
+.viz .t-ink{fill:var(--v-ink)}.viz .t-b{font-weight:600}.viz .t-faint{fill:var(--v-faint)}
+.viz .num{font-variant-numeric:tabular-nums}
+.viz .grid{stroke:var(--v-grid);stroke-width:1}.viz .base{stroke:var(--v-faint);stroke-width:1}
+.viz .ev{stroke:var(--v-faint);stroke-width:1;stroke-dasharray:3 3}
+.viz .l{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.viz .c-s1{stroke:var(--v-s1)}.viz .c-s2{stroke:var(--v-s2)}.viz .c-s3{stroke:var(--v-s3)}
+.viz .f-s1{fill:var(--v-s1)}.viz .f-s2{fill:var(--v-s2)}.viz .f-s3{fill:var(--v-s3)}
+.viz .f-ok{fill:var(--v-ok)}.viz .f-warn{fill:var(--v-warn)}.viz .f-crit{fill:var(--v-crit)}
+.viz .card{fill:var(--v-card);stroke:var(--v-grid);stroke-width:1}
+.viz .ring{stroke:var(--v-bg);stroke-width:2}
+.viz .hit{fill:transparent}.viz .hit:hover{fill:var(--v-ink);fill-opacity:.06}
+.viz .tick{stroke:var(--v-ink);stroke-width:2}
+</style>
+<rect x="1.0" y="1.0" width="173.0" height="154" rx="8" class="card"/>
+<text x="13.0" y="23.0" class="t-ink t-b">Hormuz, transits</text>
+<text x="13.0" y="59.0" class="t-ink num t-b" style="font-size:24px">4.4</text>
+<text x="13.0" y="77.0">ships/day (7 d)</text>
+<text x="13.0" y="97.0" class="t-ink"><tspan class="t-b">↓</tspan> <tspan class="num">−95% on the reference</tspan></text>
+<text x="13.0" y="119.0"><tspan class="f-crit">■</tspan> <tspan class="t-ink t-b">red</tspan></text>
+<text x="13.0" y="139.0" class="t-faint">1 November · IMF PortWatch</text>
+<rect x="1.0" y="1.0" width="175.0" height="156" class="hit"><title>Hormuz, transits: 4.4 ships/day (7 d); −95% on the reference; status red</title></rect>
+<rect x="186.0" y="1.0" width="173.0" height="154" rx="8" class="card"/>
+<text x="198.0" y="23.0" class="t-ink t-b">Bab el-Mandeb, transits</text>
+<text x="198.0" y="59.0" class="t-ink num t-b" style="font-size:24px">27.3</text>
+<text x="198.0" y="77.0">ships/day (7 d)</text>
+<text x="198.0" y="97.0" class="t-ink"><tspan class="t-b">↓</tspan> <tspan class="num">−63% on the reference</tspan></text>
+<text x="198.0" y="119.0"><tspan class="f-crit">■</tspan> <tspan class="t-ink t-b">red</tspan></text>
+<text x="198.0" y="139.0" class="t-faint">1 November · IMF PortWatch</text>
+<rect x="186.0" y="1.0" width="175.0" height="156" class="hit"><title>Bab el-Mandeb, transits: 27.3 ships/day (7 d); −63% on the reference; status red</title></rect>
+<rect x="1.0" y="167.0" width="173.0" height="154" rx="8" class="card"/>
+<text x="13.0" y="189.0" class="t-ink t-b">Danish Straits, transits</text>
+<text x="13.0" y="225.0" class="t-ink num t-b" style="font-size:24px">38.7</text>
+<text x="13.0" y="243.0">ships/day (7 d)</text>
+<text x="13.0" y="263.0" class="t-ink"><tspan class="t-b">↓</tspan> <tspan class="num">−21% on the reference</tspan></text>
+<text x="13.0" y="285.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink t-b">amber</tspan></text>
+<text x="13.0" y="305.0" class="t-faint">1 November · IMF PortWatch</text>
+<rect x="1.0" y="167.0" width="175.0" height="156" class="hit"><title>Danish Straits, transits: 38.7 ships/day (7 d); −21% on the reference; status amber</title></rect>
+<rect x="186.0" y="167.0" width="173.0" height="154" rx="8" class="card"/>
+<text x="198.0" y="189.0" class="t-ink t-b">FBX container freight</text>
+<text x="198.0" y="225.0" class="t-ink num t-b" style="font-size:24px">3,452</text>
+<text x="198.0" y="243.0">$ per FEU</text>
+<text x="198.0" y="263.0" class="t-ink"><tspan class="t-b">↑</tspan> <tspan class="num">+3% over 4 weeks</tspan></text>
+<text x="198.0" y="285.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink t-b">amber</tspan></text>
+<text x="198.0" y="305.0" class="t-faint">6 November · Freightos</text>
+<rect x="186.0" y="167.0" width="175.0" height="156" class="hit"><title>FBX container freight: 3,452 $ per FEU; +3% over 4 weeks; status amber</title></rect>
+<rect x="1.0" y="333.0" width="173.0" height="154" rx="8" class="card"/>
+<text x="13.0" y="355.0" class="t-ink t-b">TTF gas</text>
+<text x="13.0" y="391.0" class="t-ink num t-b" style="font-size:24px">82.3</text>
+<text x="13.0" y="409.0">€/MWh</text>
+<text x="13.0" y="429.0" class="t-ink"><tspan class="t-b">↑</tspan> <tspan class="num">+164% year on year</tspan></text>
+<text x="13.0" y="451.0"><tspan class="f-crit">■</tspan> <tspan class="t-ink t-b">red</tspan></text>
+<text x="13.0" y="471.0" class="t-faint">9 November · Yahoo Fin.</text>
+<rect x="1.0" y="333.0" width="175.0" height="156" class="hit"><title>TTF gas: 82.3 €/MWh; +164% year on year; status red</title></rect>
+<rect x="186.0" y="333.0" width="173.0" height="154" rx="8" class="card"/>
+<text x="198.0" y="355.0" class="t-ink t-b">Italian gas storage</text>
+<text x="198.0" y="391.0" class="t-ink num t-b" style="font-size:24px">88.9</text>
+<text x="198.0" y="409.0">% full</text>
+<text x="198.0" y="429.0" class="t-ink"><tspan class="t-b">↓</tspan> <tspan class="num">−4.7 pp year on year</tspan></text>
+<text x="198.0" y="451.0"><tspan class="f-warn">▲</tspan> <tspan class="t-ink t-b">amber</tspan></text>
+<text x="198.0" y="471.0" class="t-faint">8 November · GIE AGSI+</text>
+<rect x="186.0" y="333.0" width="175.0" height="156" class="hit"><title>Italian gas storage: 88.9 % full; −4.7 pp year on year; status amber</title></rect>
+</svg></div></div><figcaption>Dashboard: value, recent direction and status. Transits with the risk-dashboard method thresholds, prices and storage with the level thresholds in the table below. ● green, ▲ amber, ■ red. Sources and dates in each box (portwatch.json, rischio.json, noli.json, prezzi.json, scorte.json).</figcaption><details><summary>Chart data as a table</summary><div class="tabella"><table><thead><tr><th>Indicator</th><th>Value</th><th>Unit</th><th>Status</th><th>Date</th><th>Source</th></tr></thead><tbody><tr><td>Hormuz, transits</td><td>4.4</td><td>ships/day (7 d)</td><td>red</td><td>1 November 2026</td><td>IMF PortWatch</td></tr><tr><td>Bab el-Mandeb, transits</td><td>27.3</td><td>ships/day (7 d)</td><td>red</td><td>1 November 2026</td><td>IMF PortWatch</td></tr><tr><td>Danish Straits, transits</td><td>38.7</td><td>ships/day (7 d)</td><td>amber</td><td>1 November 2026</td><td>IMF PortWatch</td></tr><tr><td>FBX container freight</td><td>3,452</td><td>$ per FEU</td><td>amber</td><td>6 November 2026</td><td>Freightos</td></tr><tr><td>TTF gas</td><td>82.3</td><td>€/MWh</td><td>red</td><td>9 November 2026</td><td>Yahoo Fin.</td></tr><tr><td>Italian gas storage</td><td>88.9</td><td>% full</td><td>amber</td><td>8 November 2026</td><td>GIE AGSI+</td></tr></tbody></table></div></details></figure>
+<div class="tabella"><table><thead><tr><th scope="col">Indicator</th><th scope="col">Last</th><th scope="col">Date</th><th scope="col">Thresholds</th><th scope="col">Status</th><th scope="col">Risk dashboard</th><th scope="col">Source</th></tr></thead><tbody><tr><td>Hormuz, ships/day (7 d)</td><td>4.4 (−95% on the reference of 85.5)</td><td>1 Nov 2026</td><td>method: −10% / −30% on the reference</td><td class="s-rosso">red</td><td>critical (22.5/25)</td><td>PortWatch</td></tr><tr><td>Bab el-Mandeb, ships/day (7 d)</td><td>27.3 (−63% on the reference of 74.6)</td><td>1 Nov 2026</td><td>method: −10% / −30% on the reference</td><td class="s-rosso">red</td><td>high (19.0/25)</td><td>PortWatch</td></tr><tr><td>Suez, ships/day (7 d)</td><td>43.0 (−42% on the reference of 73.6)</td><td>1 Nov 2026</td><td>method: −10% / −30% on the reference</td><td class="s-rosso">red</td><td>medium (9.9/25)</td><td>PortWatch</td></tr><tr><td>Danish Straits, ships/day (7 d)</td><td>38.7 (−21% on the reference of 48.7)</td><td>1 Nov 2026</td><td>method: −10% / −30% on the reference</td><td class="s-giallo">amber</td><td>medium (8.3/25)</td><td>PortWatch</td></tr><tr><td>FBX global, $/FEU</td><td>3,452</td><td>6 Nov 2026</td><td>amber above 2,500, red above 4,000</td><td class="s-giallo">amber</td><td>—</td><td>Freightos</td></tr><tr><td>WCI Shanghai–Genoa, $/FEU</td><td>4,166</td><td>5 Nov 2026</td><td>amber above 3,000, red above 5,000</td><td class="s-giallo">amber</td><td>—</td><td>Drewry</td></tr><tr><td>Brent, $/barrel</td><td>92.62</td><td>9 Nov 2026</td><td>amber above 85, red above 110</td><td class="s-giallo">amber</td><td>green: −8.8% on the 90-day average; red: +45.6% year on year</td><td>Yahoo Finance</td></tr><tr><td>TTF, €/MWh</td><td>82.33</td><td>9 Nov 2026</td><td>amber above 40, red above 70</td><td class="s-rosso">red</td><td>green: +4.7% on the 90-day average; red: +163.9% year on year</td><td>Yahoo Finance</td></tr><tr><td>Italian gas storage, %</td><td>88.93</td><td>8 Nov 2026</td><td>amber below 90%, red below 80%</td><td class="s-giallo">amber</td><td>amber: −5.7% on the 5-year average</td><td>GIE AGSI+</td></tr><tr><td>Italian self-service diesel, €/litre</td><td>2.224</td><td>7 Nov 2026</td><td>amber above 1.90, red above 2.20</td><td class="s-rosso">red</td><td>—</td><td>Mimit</td></tr></tbody></table></div>
+<p class="nota">Status computed by the script. For transits the “Risk dashboard” column gives the level of the unit (likelihood × impact, out of 25); for prices, the status of the individual method indicators (docs/data/rischio.json, 9 November 2026). Transit references: Hormuz 2025 average; Suez and Bab el-Mandeb January–October 2023 average; Danish Straits the same week a year earlier. Yahoo Finance prices: the latest value of 9 November is provisional. The Baltic Dry has left the table: it is no longer collected automatically. Sources and links in the previous sections.</p>
+<p><strong>Events to watch</strong> (from the observatory’s calendar and chokepoint profiles):</p>
+<ul><li>10 November 2026: China: the suspension of rare-earth export controls expires (announcement no. 70/2025) (<a href="https://www.mining-technology.com/news/china-rare-earth-export-pause-nears-expiry-amid-persistent-supply-concentration/" rel="noopener">CIRS Group / Mining Technology</a>)</li><li>10 November 2026: EIA: Short-Term Energy Outlook (STEO) (<a href="https://www.eia.gov/outlooks/steo/" rel="noopener">EIA</a>)</li><li>12 November 2026: EIA: Weekly Petroleum Status Report (WPSR), US stocks (<a href="https://www.eia.gov/petroleum/supply/weekly/schedule.php" rel="noopener">EIA</a>)</li><li>13 November 2026: IEA Oil Market Report – November 2026 (<a href="https://www.iea.org/events/oil-market-report-november-2026" rel="noopener">IEA</a>)</li><li>15 November 2026: Kerch: Russian transit permits for Azov grain ships expire (<a href="https://www.bairdmaritime.com/shipping/dry-cargo/bulkers/sea-of-azov-reopens-to-grain-export-ships-after-months-long-shutdown-russian-naval-escorts-involved" rel="noopener">Baird Maritime</a>)</li><li>18 November 2026: APEC: 33rd Economic Leaders’ Meeting, Shenzhen (18–19 November) (<a href="https://www.lg.gov.cn/english/news/latestnews/content/post_12588327.html" rel="noopener">Longgang District Government</a>)</li><li>29 November 2026: OPEC+: 42nd OPEC and non-OPEC Ministerial Meeting (ONOMM) and 69th JMMC – 2027 quotas (<a href="https://engineeringnews.co.za/article/opec-keeps-december-oil-output-targets-steady-ahead-of-tougher-call-for-2027-2026-11-02" rel="noopener">OPEC</a>)</li><li>1 December 2026: EU: end of the window for the gas storage filling target (90%, with derogations) (<a href="https://agsi.gie.eu/" rel="noopener">scorte.json</a>)</li><li>9 December 2026: Fed: FOMC decision (8–9 December meeting) with economic projections (SEP) (<a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" rel="noopener">Federal Reserve</a>)</li><li>14 December 2026: G20: Leaders’ Summit, Miami (14–15 December) (<a href="https://friendsofgovernance.org/diary-of-events-2026-and-2027-a-guide-to-upcoming-un-meetings/" rel="noopener">Press and international calendars</a>)</li><li>17 December 2026: ECB: monetary policy decision (with press conference) (<a href="https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html" rel="noopener">ECB</a>)</li><li>17 December 2026: European Council, Brussels (17–18 December) (<a href="https://www.consilium.europa.eu/en/meetings/future-euco-meetings/" rel="noopener">Council of the EU</a>)</li></ul>
+<aside class="valutazione"><span class="etichetta">Assessment</span>Three signals would change the picture before the next edition: (1) China does not extend the rare-earth suspension; (2) a successful attack on a tanker at Bab el-Mandeb, which would show up in rising Cape transits and in the FBX China–Mediterranean; (3) a deal on Hormuz with a reopening verified by PortWatch transits above 20 ships a day, which would bring down TTF and war premiums.</aside>
+<h2 id="metodo">10. Method and limits</h2>
+<p><strong>How it is made.</strong> Text, tables and charts are generated by <code>report/costruisci_supply_chain.py</code>, which reads the day’s files in <code>docs/data/</code> and can be re-run every month. Data figures are not typed by hand. Facts the files do not contain (diesel, rare earths, memory, GNSS in the Gulf, freight a year ago, the Baltic Dry, annual port throughput) sit in a table in the script with source, link, date and reliability, and the script warns when they age. Parts marked <em>Assessment</em> are the observatory’s reasoning on the sources cited, not facts.</p>
+<div class="tabella"><table><thead><tr><th scope="col">File read</th><th scope="col">Updated (UTC)</th></tr></thead><tbody><tr><td>portwatch.json</td><td>2026-11-09 19:16</td></tr><tr><td>noli.json</td><td>2026-11-09 19:16</td></tr><tr><td>stretti-dettaglio.json</td><td>2026-11-09 19:30</td></tr><tr><td>ferrovie.json</td><td>2026-11-09 18:54</td></tr><tr><td>cavi.json</td><td>2026-11-09 18:57</td></tr><tr><td>cavi-incidenti.json</td><td>2026-11-09 18:57</td></tr><tr><td>ibrido.json</td><td>2026-11-09</td></tr><tr><td>scorte.json</td><td>2026-11-09 19:19</td></tr><tr><td>gas-italia.json</td><td>2026-11-09 19:30</td></tr><tr><td>terminali-gnl.json</td><td>2026-11-09 19:30</td></tr><tr><td>calendario.json</td><td>2026-11-09 19:29</td></tr><tr><td>prezzi.json</td><td>2026-11-09 19:47</td></tr><tr><td>sanzioni-navi.json</td><td>2026-11-09 19:16</td></tr><tr><td>navi.json</td><td>2026-11-09 19:29</td></tr><tr><td>paesi.json</td><td>2026-11-09 19:08</td></tr><tr><td>rischio.json</td><td>2026-11-09 20:03</td></tr><tr><td>porti-nord.json</td><td>2026-11-09 20:05</td></tr><tr><td>esposizione-nord.json</td><td>2026-11-09 20:05</td></tr><tr><td>report/dati/porti-europei.json</td><td>2026-11-09 20:20</td></tr></tbody></table></div>
+<ul><li>PortWatch counts only ships with AIS on, about a week late: at Hormuz and in the Black Sea “dark” transits are missed (Lloyd’s List Intelligence counts many more transits at Hormuz).</li><li>Port calls count ships, not tonnes or TEU; over 7 days the numbers are small and swing.</li><li>Freight rates have no free historical series: the year-on-year WCI comparison uses a value taken from a secondary source. The Baltic Dry is no longer collected automatically (Trading Economics terms of use): it is quoted by hand, a single value, with no year-on-year change.</li><li>Prices (Brent, TTF, Henry Hub, equities): futures from Yahoo Finance, not official prices; the observatory publishes only about 3 months of series, so year-on-year and year-to-date changes come from the “var” field computed at collection and cannot be recalculated from the file. The latest value on the reading day is provisional.</li><li>Price level thresholds are assessments; transits use the risk-dashboard method thresholds. Hormuz and Qatari LNG share the same transits, and Brent and TTF appear in several dashboard units: the levels do not add up.</li><li>The railways are hand-curated profiles: volumes are annual or quarterly and some sources are partisan.</li><li>Missing: the electricity price (PUN), China–Europe volumes bound for Italy, Italian dependencies by mineral and component (commercio.json and minerali.json exist but are not yet read by the report), current urea and wheat prices from a primary source.</li><li>Some external sources were not opened (Trading Economics, Motor1, Windward, Riviera, Railmarket): those facts are read from search results and flagged with medium or low reliability. The sources opened during review are listed in the final box.</li><li>The Northern Europe section uses ports downloaded from PortWatch by the report script and the files paesi.json, scorte.json, navi.json and cavi-incidenti.json: country indicators are missing for Denmark (it is not in paesi.json).</li></ul>
+<p><strong>Glossary.</strong> <strong>AIS</strong>: transponder through which ships broadcast position and identity; those that switch it off disappear from the counts. <strong>FEU / TEU</strong>: 40 / 20-foot container. <strong>WCI, FBX, SCFI, CCFI</strong>: container freight indices from Drewry, Freightos and the Shanghai Shipping Exchange. <strong>Baltic Dry</strong>: freight index for dry-bulk ships (ores, coal, grain). <strong>LNG</strong>: liquefied natural gas. <strong>TTF</strong>: the benchmark gas price in Europe, traded on the Dutch hub. <strong>Brent</strong>: the benchmark crude price. <strong>Shadow fleet</strong>: old tankers with opaque ownership, used to evade sanctions. <strong>GNSS jamming / spoofing</strong>: interference with or falsification of satellite positioning signals. <strong>Port call</strong>: a ship’s arrival in port, estimated by PortWatch from AIS.</p>
+<aside class="revisione" id="revisione"><h2>Review · 9 November 2026</h2><p>Independent check of the numbers, the logic and consistency with the “Hormuz and the Red Sea” report and the risk dashboard, done before publication in a second pass with an AI assistant (Claude). Full account (in Italian): report/revisioni/supply-chain-2026-11.md.</p><p><strong>Claims checked.</strong> 59 claims checked (over 100 numbers): 43 against the files in docs/data (portwatch, noli, prezzi, scorte, gas-italia, paesi, cavi, sanzioni-navi, navi, ferrovie, rischio) and 16 also against the external source: 10 confirmed (BIMCO, Lloyd’s List Intelligence, Mimit via Affaritaliani, Cyprus Shipping News for the 2025 WCI, The Loadstar for the WCI by route, Mining Technology, Baltic Exchange for the weekly FBX, the European Commission), 6 not verifiable (list below). No calculation errors in the data; 9 errors or inaccuracies in the text, corrected.</p><p><strong>Corrections.</strong></p><ul><li>Baltic Dry: the Trading Economics value (2,854, +37% year on year) is no longer in the data; it is now quoted by hand (2,805 points, 6 November, Baltic Exchange) with no year-on-year change and no dashboard threshold.</li><li>The headline “The Red Sea reopens” was replaced: Bab el-Mandeb is at 37% of the 2023 average and “high” on the risk dashboard; the Hormuz report says the risk has shifted to the Red Sea.</li><li>Transit thresholds aligned with the dashboard method (−10% / −30% on the reference): with the old thresholds Suez and Bab el-Mandeb were only “watch”, for the method they are red. Statuses renamed green/amber/red so as not to confuse them with the dashboard’s “critical” level; for prices and freight the difference in method is explained.</li><li>“% of end-2023” corrected: it was the same week of 2023; the ratios now use the January–October 2023 average like the dashboard (Suez 58% instead of 57%, Bab el-Mandeb 37% instead of 34%).</li><li>Assessment on Adriatic ports corrected: it attributed the falls to “less crude from the Gulf”, but only 5.6–10.2% of Italian crude comes from the Gulf. “Container ports benefit from the return to Suez” toned down: over 30 days they are down.</li><li>Railway sources: the Middle Corridor link pointed to BESA Center but was labelled “Organization of Turkic States”, the INSTC one to the Gulf Research Center but labelled “Russian Railways”; the source name is now complete.</li><li>Starlink: “attributed to Russia by governments” made precise (the Lithuanian prime minister and the Polish government, political attributions).</li><li>Germany “−29.7 points below the average” (double negative) corrected to “29.7 points below”; rounding aligned with the dashboard’s (−20.5 becomes −21%, not −20%).</li><li>Added the section “What it means for Northern Europe” (ports from porti-nord.json, LNG by origin from esposizione-nord.json, the Danish Straits, freight, storage, the shadow fleet, cables); Danish Straits added to the transits table and the dashboard, with the caveat that PortWatch measures only the Øresund.</li><li>Text on the files commercio.json and minerali.json updated: they exist from today but the report does not read them yet.</li><li>Aligned with report/STANDARD.md: “Summary” cut from 6 to 5 short points, with numbers also present in the body; glossary; chart captions with the file and date of the data.</li></ul><p><strong>What remains unverifiable.</strong></p><ul><li>WCI composite of $4,389 (5 November): the Drewry site is unreachable; the route values (Genoa 4,166, Rotterdam 3,615) are confirmed by The Loadstar, and the composite is consistent with $4,429 on 29 October −1%.</li><li>Baltic Dry 2,805: a single secondary source (Trading Economics), page not opened.</li><li>FBX: the Baltic Exchange weekly release (6 November) gives $3,497 for the index and $3,384 for China–Northern Europe, against 3,452 and 3,422 in noli.json: different snapshots of the same week, a gap of 1–1.3%.</li><li>Diesel excise (Motor1), GNSS in the Gulf (Windward), diversion costs (Riviera/LSEG), China–Europe rail TEU (Railmarket), diesel a year earlier (QuiFinanza): pages not opened or blocked.</li><li>Many sentences in the body exceed the 30 words set by the standard: not all have been rewritten.</li><li>The curated profiles (stretti-dettaglio.json, ferrovie.json, ibrido.json, esposizione-nord.json) were only spot-checked; in esposizione-nord.json the Lithuania profile dates to “January 2026” cable damage that cavi-incidenti.json records on 26 January 2025: reported to the data curators, the report uses cavi-incidenti.json.</li></ul></aside>
+<footer><p class="firma">Gabriele Giuliani · Geo-economic Risk Monitor</p><p>November 2026. Note on the use of AI: this report was prepared with the help of an AI assistant (Claude, Anthropic), which wrote the build script, the calculations and the draft text from the observatory’s data and the sources cited. The numbers come from the data files and the linked sources; assessments are marked as such. Responsibility for publication lies with the author.</p><p><a href="../../index.html">← Back to the map</a></p></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "nota": "Curated external facts for report/build_offshore_wind.py: figures read on the web that docs/data/*.json does not hold in structured form. Each item has source, link, date of the figure, date read and reliability. The build script warns when an item is older than its max_age_days. Edit here, never in the script.",
+  "aggiornato": "2026-11-10",
+  "prezzi_aste_eur": {
+    "fonte": "WindEurope, Wind energy in Europe - 2025 Statistics and the outlook for 2026-2030, Table 3 (offshore), p. 27",
+    "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+    "data_dato": "2026-02",
+    "letto": "2026-11-10",
+    "affidabilita": "alta",
+    "max_age_days": 400,
+    "nota": "Prices in EUR/MWh as published by WindEurope (its own conversion and indexation; the UK AR7 strike prices are GBP 91.20 and 89.49 in 2024 prices on GOV.UK). Bottom-fixed only; floating (AR7 Pentland, Erebus: 258) left out.",
+    "voci": [
+      {"paese": "PL", "progetto": "Baltic East (Orlen)", "anno": 2025, "mw": 900, "eur_mwh": 113, "tipo": "aggiudicato"},
+      {"paese": "PL", "progetto": "Baltica 9 (PGE)", "anno": 2025, "mw": 975, "eur_mwh": 116, "tipo": "aggiudicato"},
+      {"paese": "PL", "progetto": "Bałtyk I (Polenergia, Equinor)", "anno": 2025, "mw": 1560, "eur_mwh": 117, "tipo": "aggiudicato"},
+      {"paese": "IE", "progetto": "ORESS 2.1 (Irish Sea)", "anno": 2025, "mw": 900, "eur_mwh": 99, "tipo": "aggiudicato"},
+      {"paese": "FR", "progetto": "AO8 Centre Manche 2 (Channel)", "anno": 2025, "mw": 1500, "eur_mwh": 66, "tipo": "aggiudicato"},
+      {"paese": "GB", "progetto": "AR7: Norfolk Vanguard E/W, Dogger Bank South W/E, Awel y Môr", "anno": 2026, "mw": 6865, "eur_mwh": 109, "tipo": "aggiudicato"},
+      {"paese": "GB", "progetto": "AR7: Berwick Bank B (Scotland)", "anno": 2026, "mw": 1380, "eur_mwh": 107, "tipo": "aggiudicato"}
+    ]
+  },
+  "fid_2025": {
+    "fonte": "WindEurope, 2025 Statistics, p. 35",
+    "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf",
+    "data_dato": "2026-02",
+    "letto": "2026-11-10",
+    "affidabilita": "alta",
+    "max_age_days": 400,
+    "gw": 5.4,
+    "mld_eur": 22.5,
+    "progetti": 6,
+    "progetti_polonia": 4,
+    "testo": "Poland led the investments, with four of the six projects reaching FID; one in Germany and one in the UK."
+  },
+  "rvo_gamma_b": {
+    "fonte": "RVO, Vergunning windpark IJmuiden Ver Gamma-B (Dutch page)",
+    "link": "https://www.rvo.nl/onderwerpen/windenergie-op-zee/ijmuiden-ver-gamma-b",
+    "data_dato": "2026-11",
+    "letto": "2026-11-10",
+    "affidabilita": "alta",
+    "max_age_days": 45,
+    "apertura": "2026-11-26",
+    "chiusura": "2026-12-10",
+    "chiusura_ora": "17:00",
+    "budget_eur": 4698000000
+  },
+  "verifiche_web": [
+    {"cosa": "Vattenfall, Danish CfD: DKK 504 (about EUR 67.60) and DKK 542 (about EUR 72.70) per MWh, 20 years, commissioning aim 2032, FID pending", "link": "https://www.offshorewind.biz/2026/11/06/vattenfall-signs-final-agreements-for-new-danish-offshore-wind-farms", "letto": "2026-11-10", "esito": "confermato"},
+    {"cosa": "Rystad: monopile factory utilisation about 32% in 2026-2027, 19% in 2028; Chinese cost about 41% below Europe (2.03 M$/kt)", "link": "https://www.rystadenergy.com/insights/from-scarcity-to-surplus-europes-monopile-factories-face-utilization-squeeze", "letto": "2026-11-10", "esito": "confermato"},
+    {"cosa": "CERT Polska: coordinated destructive attacks on 29 December 2025 against more than 30 wind and photovoltaic farms, a manufacturer and a CHP plant", "link": "https://cert.pl/en/posts/2026/01/incident-report-energy-sector-2025/", "letto": "2026-11-10", "esito": "confermato"},
+    {"cosa": "RVO: Gamma-B window 26 November 2026 00:00 to 10 December 2026 17:00, budget EUR 4,698,000,000", "link": "https://www.rvo.nl/onderwerpen/windenergie-op-zee/ijmuiden-ver-gamma-b", "letto": "2026-11-10", "esito": "confermato"},
+    {"cosa": "WindEurope 2025 Statistics: FIDs 5.4 GW / EUR 22.5 bn offshore; auction prices table", "link": "https://www.rinnovabili.it/wp-content/uploads/2026/02/WindEurope-European-Stats-2025.pdf", "letto": "2026-11-10", "esito": "confermato"},
+    {"cosa": "offshoreWIND.biz RSS, 20 Oct to 9 Nov 2026: no news on AR8 results, the Gamma tender or the Bundestag vote on WindSeeG after the data files were built", "link": "https://www.offshorewind.biz/feed/", "letto": "2026-11-10", "esito": "nessuna novità"}
+  ]
+}
