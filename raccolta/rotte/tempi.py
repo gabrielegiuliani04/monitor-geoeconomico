@@ -404,7 +404,7 @@ def areas_on(pts, areas):
     return out
 
 
-def simplify(coords, tol_km=15.0):
+def simplify(coords, tol_km=8.0):
     """Douglas-Peucker on lon/lat with km tolerance (approximate), splits at the antimeridian."""
     def dp(pts):
         if len(pts) < 3:
