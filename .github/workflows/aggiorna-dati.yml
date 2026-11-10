@@ -2,7 +2,7 @@ name: Aggiorna dati
 
 on:
   schedule:
-    - cron: "15 5 * * *"     # ogni giorno alle 05:15 UTC
+    - cron: "37 4 * * *"     # ogni giorno alle 04:37 UTC (minuto poco affollato)
   workflow_dispatch: {}
 
 permissions:

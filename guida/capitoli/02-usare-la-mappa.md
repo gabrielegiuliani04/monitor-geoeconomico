@@ -175,7 +175,7 @@ Prima del colloquio: apri il sito in **incognito**, controlla i numeri del giorn
 *"The Baltic is where shipping, energy and hybrid threats overlap."*
 
 1. Dalla vista **North Sea and Baltic**, premi **+**, spegni i due livelli dell'eolico e accendi **Subsea cables**.
-2. Avvicinati al **Golfo di Finlandia** (**Ships (AIS)** è già acceso): i triangolini rossi sono navi sanzionate. Tocca per esempio la **SERDOLIK**: petroliera russa, sanzionata da Regno Unito e UE, *Shadow fleet: likely*. «Nella fotografia AIS del 9 novembre ci sono 109 navi sanzionabili controllate nel Golfo di Finlandia: 44 sanzionate, 38 probabilmente della flotta ombra.»
+2. Avvicinati al **Golfo di Finlandia** (**Ships (AIS)** è già acceso): i triangolini rossi sono navi sanzionate. Tocca per esempio la **SERDOLIK**: petroliera russa, sanzionata da Regno Unito e UE, *Shadow fleet: likely*. «Nella fotografia AIS del 9 novembre nel Golfo di Finlandia si vedono 109 navi: 44 sanzionate, 38 probabilmente della flotta ombra.»
 
    ![La scheda di una petroliera sanzionata della flotta ombra](../img/cap2-baltico-navi.jpg)
 

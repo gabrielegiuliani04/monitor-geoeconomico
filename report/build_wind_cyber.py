@@ -554,7 +554,7 @@ def blocks(V):
     B.append(("h2", "refrigeration", "2. What happened in the refrigeration attacks, and why it worked"))
     B.append(("p", f"On the night of 11–12 October 2026, attackers remotely changed the set-points of connected refrigeration controllers in French supermarkets: temperatures were pushed up to 50 °C "
               f"or long defrost cycles were started, and stock was destroyed ({L('Al Jazeera, 13 Oct 2026', fr.get('link', '#'))}; {DL('cyber-energia.json')}). "
-              f"Store counts range from {X('fr_stores_low')}–{X('fr_stores_low_hi')} in early trade reports to more than {num(X('fr_stores_high'))} ({XL('fr_stores_high', 'Al Jazeera, 9 Nov 2026')}). "
+              f"Store counts range from {X('fr_stores_low')}–{X('fr_stores_low_hi')} in early trade reports to more than {num(X('fr_stores_high'))} (Al Jazeera, 9 Nov 2026, as recorded in `report/agenti/cyber-energia.md`; article not re-read). "
               f"A second wave on 1–2 November hit more than {X('wave2_stores')} stores in Belgium, the Netherlands, Luxembourg, Sweden, Ireland and Estonia ({XL('wave2_stores', 'SecurityWeek, 3 Nov 2026')}). "
               "France's blood service reported that refrigeration settings at three sites were changed through a supplier's remote-monitoring software (EFS statement, 3 Nov 2026, via TechSpot)."))
     B.append(("p", "**Attribution, with its uncertainty.** Press reports on 9 November 2026 — Al-Monitor carrying wire copy (AFP/Reuters) and AP — say French officials attributed the October attacks to Iran's "
@@ -643,7 +643,8 @@ def blocks(V):
     B.append(("p", f"Denmark has {num(V['dk_turb_pre'])} onshore turbines from before 2010 ({gw(on['DK']['pre2010'])} GW), averaging {num(V['dk_pre_avg_mw'], 1)} MW each; {num(V['dk_small_n'])} of its {num(V['dk_on_n'])} onshore turbines "
               f"({gw(V['dk_small_mw'])} GW) are smaller than 1 MW. {gw(V['dk_20y_on'], 2)} GW onshore and {gw(V['dk_20y_off'], 2)} GW offshore are 20 or more years old. "
               f"Germany has {gw(on['DE']['pre2010'])} GW onshore from before 2010 ({num(V['de_turb_pre'])} turbines) and {gw(V['de_20y'])} GW already 20 or more years old, {gw(V['de_2000'])} GW of it from 2000 or earlier. "
-              f"In the Baltic states, Sweden and Finland, 59–79% of the dated capacity is from 2018 or later. Italy's pre-2010 share ({pc(it)}) is a GEM figure and probably low."))
+              f"In the Baltic states, Sweden and Finland, {pc(min(sh[c][0]['2018+'] for c in ('LT','LV','EE','SE','FI')))}–{pc(max(sh[c][0]['2018+'] for c in ('LT','LV','EE','SE','FI')))} of the dated capacity is from 2018 or later (GEM). "
+              f" Italy's pre-2010 share ({pc(it)}) is a GEM figure and probably low."))
     B.append(("fig", "germany", f"**Figure 2.** Germany: onshore capacity in operation by commissioning period, split by whether the brand is still active (MW; brands no longer active: NEG Micon, REpower/Senvion, Tacke, Fuhrländer, DeWind, BARD, Adwen, Südwind, AN, Enron; only brands with >50 MW per period counted). "
               f"Source: Marktstammdatenregister, 10 Nov 2026, via {FLEET_LINK}."))
     B.append(("p", f"**Orphan brands.** In Germany {gw(V['de_orphan_on_tot'])} GW onshore and {gw(V['de_orphan_off_tot'])} GW offshore come from brands that no longer exist; their controllers are maintained, if at all, by independent providers or retrofitters. "
