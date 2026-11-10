@@ -92,7 +92,33 @@ THRESHOLDS = {
     "vlsfo_sg_high": 1000,   # $/t Singapore VLSFO
 }
 
-REVIEW = None  # placeholder: filled in after the independent review (log in report/revisioni/)
+REVIEW = {  # independent review of 10 November 2026; full log in report/revisioni/asia-europe-logistics-2026-11.md
+    "checked": ("10 November 2026. 118 claims checked against the data files, the cited sources and the other reports: 76 confirmed, "
+                "35 corrected, 7 not verifiable from here. Corrections were made in the build script and the report regenerated; no data file was changed. "
+                "Full log: report/revisioni/asia-europe-logistics-2026-11.md."),
+    "corrections": [
+        "Suez share: 63% is Alphaliner's figure for all Far East–Europe services; Far East–North Europe is 58%, the Mediterranean 70% "
+        "(15 September–15 October 2026). The cost stack and the northern lanes now use 58%: Shanghai–Rotterdam 34.0 days on today's mix (was 33.5), "
+        "842 $/FEU (was 832), +74% on 2023 (was +72%); Cape share 89 $, carbon rules 124 $, war risk 16 $.",
+        "2023 WCI: the value (1,048 $/FEU on 2 November 2023) is right, but the link pointed to the 9 November 2023 assessment (1,272 $/FEU); replaced.",
+        "Hull value 150 M$ against 221.7 M$: explained, not an error (in-service ship against newbuild price). The lower break-even in assicurazioni.json "
+        "comes mostly from UNCTAD's smaller 2024 cost base; with this model's cost on a 221.7 M$ hull the line is 0.74%.",
+        "Cape break-even (0.43–1.09%): arithmetic confirmed, but it excludes charter hire, so it is a lower bound; the assessment no longer says "
+        "0.5% would make the Cape competitive «for most large ships».",
+        "Scenario E now uses the risk dashboard's Baltic signals (visible shadow fleet above 60, not sanctioned tankers above 50); the simulator's "
+        "baseline and its 160 $/FEU Cape minimum are stated.",
+        "Smaller fixes: port index amber rule (one week below −20%, not two); critical level needs both axes at 4 or more; rail TEU «more than» 2.05 million; "
+        "Rasht–Astara start of construction, not the work, slipped to 2027; EU port-access ban count not in the file; OFAC designations have no dates; "
+        "«twice as much» replaced by 1.5–1.9 times; FBX, WCI/FBX and CCFI wording; causal sentence removed from the key points; glossary added.",
+    ],
+    "unverifiable": [
+        "The 2023 VLSFO price (668.5 $/t), the 2023 WCI (1,048 $/FEU) and the Alphaliner split: confirmed only in search-result excerpts; the pages "
+        "could not be opened from the review session.",
+        "Suez Canal toll (0.5–1.0 M$ per transit): no primary source in the repository.",
+        "Red Sea war-risk premiums for container ships: no public quote; tanker quotes are used.",
+        "Next renewal of the EU economic sanctions on Russia: not in calendario.json.",
+    ],
+}
 
 
 # =====================================================================================
@@ -1173,7 +1199,8 @@ def blocks(V, edition):
         f"The Suez shares ({S}% North Europe, {SM}% Mediterranean) are for Far East services and are applied, as a proxy, to Nhava Sheva and Jebel Ali too.",
         "**Not repeated here**: the Italian report *Supply chain e logistica — novembre 2026* covers strait-by-strait transits, Italian ports and energy prices.",
         "**AI assistance.** An AI assistant (Claude, Anthropic) wrote the build script, ran the calculations and drafted the text from the monitor's data files "
-        "and the cited sources. Every figure is generated from the files; the two external 2023 values are flagged. Gabriele Giuliani is responsible for publication.",
+        "and the cited sources. Every figure is generated from the files; the external values (2023 baselines, Alphaliner split) are flagged. An independent review, also "
+        "carried out with an AI assistant, checked the figures on 10 November 2026. Gabriele Giuliani is responsible for publication.",
     ]))
     B.append(("review",))
     return B
@@ -1379,7 +1406,7 @@ def main():
             "edition": edition, "read": date_en(today.isoformat()),
             "ai_note": ("Note on AI use: this report was prepared with an AI assistant (Claude, Anthropic), which wrote the build script "
                         "(report/build_logistics.py), the calculations and the draft text from the monitor's data files and the sources cited. "
-                        "Numbers come from the data files and linked sources; assessments are marked. An independent review is pending. "
+                        "Numbers come from the data files and linked sources; assessments are marked. An independent review (10 November 2026) checked 118 claims; see the Review box. "
                         "Gabriele Giuliani is responsible for publication.")}
     os.makedirs(OUT_SVG, exist_ok=True)
     os.makedirs(OUT_HTML, exist_ok=True)

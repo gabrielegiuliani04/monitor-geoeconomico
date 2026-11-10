@@ -397,11 +397,15 @@ STOP_LUOGHI = {
 
 
 ALIAS_MANCANTI = []
+OMONIMI = {}   # nome minuscolo -> tutte le città GeoNames con quel nome (per scegliere con l'oblast citata)
+CITTA_GN = []  # tutte le città GeoNames (per il paese delle coordinate scritte nei post)
 
 
 def carica_gazetteer():
     with open(GAZ, encoding="utf-8") as h:
         g = json.load(h)
+    OMONIMI.clear()
+    CITTA_GN.clear()
     idx = {}  # nome minuscolo -> voce (nome principale prima dei nomi alternativi, poi la più popolosa)
     rango = {}
     obl = {}  # nome della regione normalizzato -> voce ADM1
@@ -411,6 +415,10 @@ def carica_gazetteer():
             obl.setdefault(norm_obl(v["n"]), v)
             continue
         da_labels = bool(v.get("fonte"))
+        if not da_labels:
+            CITTA_GN.append(v)
+            for n in [v["n"]] + v.get("alt", []):
+                OMONIMI.setdefault(n.lower(), []).append(v)
         for j, n in enumerate([v["n"]] + v.get("alt", [])):
             k = n.lower().strip()
             if len(k) < 4 or k in STOP_LUOGHI:
@@ -503,7 +511,7 @@ ALLERTA = re.compile(
     r"\bthreat\b|\bflying (?:to|towards|past|over|in)\b|\bheading (?:to|towards|for)\b|\ben route\b|"
     r"\bmoving towards\b|\btook off\b|\btaking off\b|\bairborne\b|\bare (?:redeploying|conducting|preparing)\b|"
     r"\bexpected to\b|\bmay (?:launch|strike)\b|\bcould (?:launch|strike|be)\b|\bwarning\b|\balert\b|"
-    r"\bmenace\b|\ben direction de\b", re.I)
+    r"\bmenace\b|\ben direction de\b|\bair raid alerts?\b|\balerts? (?:have|has) been lifted\b|\bsirens?\b", re.I)
 # guerra di terra, analisi del fronte
 FRONTE = re.compile(
     r"\badvanc|\bcaptur|\bassault|\binfiltrat|\btreelines?\b|counter-?attack|counter-?offensive|\bpositions?\b|"
@@ -625,6 +633,15 @@ def trova_luoghi(testo, idx, obl):
                     break  # è la regione, già presa sopra
                 if re.search(r"(?:oblast|région|region) (?:de |d'|of )$", tl[max(0, m.start() - 12): m.start()]):
                     break
+                mo = re.match(r",\s*(?:western |eastern |northern |southern |central |russian-controlled |occupied )*"
+                              r"([A-Z][\w'’\-]+(?:[ \-][A-Z][\w'’\-]+)?)[ \-](?:Oblast|oblast|Krai|Kray|Republic)",
+                              t[fine: fine + 60])
+                if mo:
+                    ob = obl.get(norm_obl(mo.group(1))) or obl.get(mo.group(1).lower())
+                    if ob:
+                        alt = [w for w in OMONIMI.get(k, []) if norm_obl(w["oblast"]) == norm_obl(ob["oblast"])]
+                        if alt:
+                            v = max(alt, key=lambda w: w["pop"])
                 trovati.append((v, "citta", m.start()))
                 break
     return trovati
@@ -660,9 +677,21 @@ def mezzi(testo):
     return out
 
 
+RU_FORTE = re.compile(r"\brussian (?:forces |army |air force |)(?:geran|shahed|kabs?|fab|glide|drones?|missiles?|"
+                      r"strikes?|bombs?|iskander|artillery|fpv|lancet|airstrikes?|tactical aviation)", re.I)
+UA_FORTE = re.compile(r"\bukrainian (?:long[- ]range |mid-range |kamikaze |attack |naval |unmanned |sea |)"
+                      r"(?:drones?|uavs?|usvs?|missiles?|strikes?|forces|himars|neptune|flamingo)|\bukraine (?:struck|attacked|hit|"
+                      r"targeted|is carrying out)|\bsbu\b|\bgur\b|\bhur\b|drones? ukrainiens?|frappes? ukrainiennes?", re.I)
+
+
 def direzione(testo, luogo_paese, occupato):
     ua = len(DIR_UA.findall(testo))
     ru = len(DIR_RU.findall(testo))
+    ruf, uaf = RU_FORTE.search(testo), UA_FORTE.search(testo)
+    if ruf and not uaf:
+        return "russo su Ucraina"  # anche su forze ucraine in Russia (es. saliente di Kursk)
+    if uaf and not ruf and (luogo_paese == "RU" or occupato):
+        return "ucraino su Russia o territori occupati"
     if luogo_paese == "RU" or occupato:
         if ru > ua + 1 and luogo_paese != "RU":
             return "russo su Ucraina"
@@ -771,6 +800,12 @@ def estrai_attacco(post, idx, obl, impianti=()):
         if v:
             if dist_km(lat, lon, v["lat"], v["lon"]) > 150:
                 nome, obl_n, paese = "coordinate del post", "", ""
+        vic = min(CITTA_GN, key=lambda w: dist_km(lat, lon, w["lat"], w["lon"])) if CITTA_GN else None
+        if vic and dist_km(lat, lon, vic["lat"], vic["lon"]) < 60:
+            paese = vic["paese"]
+            if nome == "coordinate del post":
+                nome, obl_n = "presso " + vic["n"], vic.get("oblast") or ""
+                v = vic
         if not paese:
             paese = "RU" if lon > 40.3 or lat > 52.4 else "UA"
     else:
