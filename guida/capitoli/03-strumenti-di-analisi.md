@@ -220,16 +220,21 @@ Sono **due strumenti diversi**, da non confondere.
 
 ![La pagina dei report](../img/cap3-report.jpg)
 
-L'indice è `docs/report/index.html` (*Analysis reports*). Al 10 novembre 2026 i **report pubblicati sono quattro**:
+L'indice è `docs/report/index.html` (*Analysis reports*). Al 10 novembre 2026 i **report pubblicati sono sette**, tutti con la revisione in `report/revisioni/`:
 
 | Report | File | In breve |
 |---|---|---|
-| **Northern Europe: Ports and Energy**, n. 1 (*flagship*) | `en/northern-europe-2026-11.html` (solo inglese) | porti del Mare del Nord e del Baltico, stoccaggi tedeschi e olandesi sotto la norma, eolico offshore, costi della navigazione, sicurezza del Baltico, Port Risk Index. Revisione: 64 affermazioni, 12 corrette |
-| **Hormuz e Mar Rosso**, n. 1, 9 novembre | `hormuz-mar-rosso-2026-11.html` · `en/hormuz-red-sea-2026-11.html` | Hormuz chiuso dal 2 marzo, il rischio che si sposta su Bab el-Mandeb; noli, Brent, TTF; tre scenari con soglie. 183 affermazioni, 38 corrette |
-| **Supply chain e logistica**, n. 2 | `supply-chain-2026-11.html` · `en/supply-chain-2026-11.html` | Suez in ripresa, noli doppi sull'anno ma fermi, porti italiani a due velocità, cruscotto di 6 indicatori. 59 affermazioni, 9 corrette |
-| **La catena dell'AI**, n. 3 | `supply-chain-ai-2026-11.html` · `en/ai-supply-chain-2026-11.html` | otto anelli, dalle miniere alle macchine EUV di Veldhoven ai data center; controlli cinesi all'export. 110 affermazioni, 32 corrette |
+| **Northern Europe: Ports and Energy**, n. 1 (*flagship*) | `en/northern-europe-2026-11.html` | porti del Mare del Nord e del Baltico, stoccaggi sotto la norma, eolico offshore, costi della navigazione, sicurezza del Baltico, Port Risk Index. 64 affermazioni controllate, 12 corrette |
+| **Offshore Wind in Northern Europe** (n. 5) | `en/offshore-wind-2026-11.html` | obiettivi contro realtà per Paese (60 GW sotto i piani 2030), perché le aste a offerta negativa falliscono e i CfD funzionano, colli di bottiglia (rete e cavi HVDC per primi), porti base. 123 affermazioni, 25 corrette |
+| **Asia–Europe Logistics** (n. 4) | `en/asia-europe-logistics-2026-11.html` | dove navigano oggi le navi, giorni per rotta, costo di un viaggio Asia–Nord Europa voce per voce (carburante, ETS, FuelEU, war risk: da 483 a 842 $/FEU), rischio dei porti, scenari al 1° trimestre 2027. 118 affermazioni, 35 corrette |
+| **Italy and the Gulf Shock** (n. 6) | `en/italy-gulf-shock-2026-11.html` | carburanti, accise, bollette, inflazione, autotrasporto e rischio di fermo dei TIR, porti; scenari verificati su febbraio–marzo 2026. 120 affermazioni, 25 corrette |
+| **Hormuz e Mar Rosso** (n. 1) | `hormuz-mar-rosso-2026-11.html` · `en/hormuz-red-sea-2026-11.html` | Hormuz chiuso dal 2 marzo, il rischio che si sposta su Bab el-Mandeb; noli, Brent, TTF; tre scenari con soglie. 183 affermazioni, 38 corrette |
+| **Supply chain e logistica** (n. 2) | `supply-chain-2026-11.html` · `en/supply-chain-2026-11.html` | Suez in ripresa, noli doppi sull'anno ma fermi, porti italiani a due velocità, cruscotto di 6 indicatori. 59 affermazioni, 9 corrette |
+| **La catena dell'AI** (n. 3) | `supply-chain-ai-2026-11.html` · `en/ai-supply-chain-2026-11.html` | otto anelli, dalle miniere alle macchine EUV di Veldhoven ai data center; controlli cinesi all'export. 110 affermazioni, 32 corrette |
 
-> **Attenzione.** In `docs/report/en/` ci sono altre tre bozze, **non ancora pubblicate nell'indice e in revisione**: *Offshore wind in Northern Europe*, *Asia–Europe logistics*, *Italy and the Gulf shock*. Non citarle in un CV finché non hanno la loro revisione in `report/revisioni/`.
+Totale: **777 affermazioni controllate, 176 corrette**.
+
+> **Attenzione.** In `docs/report/en/` c'è anche una bozza **non pubblicata nell'indice e ancora in revisione**: il report sul rischio cyber delle turbine eoliche (`wind-cyber-2026-11.html`). Non citarla finché non ha la sua revisione. E la pagina indice dice ancora «More English reports are in preparation: offshore wind, Asia–Europe logistics, Italy and the Gulf shock», una frase superata da correggere.
 
 **Come sono fatti.** (1) i dati di `docs/data/`; (2) uno script Python legge i JSON, ricalcola ogni numero, disegna i grafici e scrive Markdown e HTML (eccezione: il report Hormuz è scritto a mano, solo i grafici vengono da `report/costruisci_grafici.py`); (3) la bozza segue `report/STANDARD.md`; (4) un revisore, cioè una sessione AI separata con il ruolo di fact-checker severo, ricontrolla ogni numero e scrive una tabella in `report/revisioni/<report>.md` (affermazione, valore, valore verificato, fonte, esito); le correzioni si fanno alla fonte e il report si rigenera.
 
@@ -242,9 +247,9 @@ python3 raccolta/supply-chain-ai/raccogli.py && python3 report/costruisci_supply
 python3 raccolta/simulatore/controlla.py
 ```
 
-Poi leggi gli avvisi dello script (fatti esterni con più di 60 giorni), fai fare la revisione, aggiungi l'edizione all'indice (scritto a mano) e ritraduci le versioni inglesi di *Supply chain* e *Catena dell'AI* (gli script scrivono solo in italiano). Il report Hormuz non ha uno script del testo.
+Poi leggi gli avvisi dello script (fatti esterni con più di 60 giorni), fai fare la revisione, aggiungi l'edizione all'indice (scritto a mano) e ritraduci le versioni inglesi di *Supply chain* e *Catena dell'AI* (gli script scrivono solo in italiano). Il report Hormuz non ha uno script del testo. I report n. 4–6 hanno i loro script (`report/build_logistics.py`, `report/build_offshore_wind.py`, `report/build_italy.py`).
 
-**Quale mandare a chi.** Porti e logistica nel Nord: *Northern Europe*. Eolico offshore: *Northern Europe* (eolico e calendario). Gas e GNL: *Hormuz e Mar Rosso*, poi *Northern Europe*. Armatori e spedizionieri: *Supply chain*. Semiconduttori e fornitori di ASML: *Catena dell'AI*. Consulenza del rischio e assicurazioni: *Hormuz* più il metodo del rischio. Regola pratica: **un solo report per email**, con una riga che dice quale sezione leggere.
+**Quale mandare a chi.** Porti e logistica nel Nord: *Northern Europe*. Eolico offshore e porti base: *Offshore Wind in Northern Europe*. Gas e GNL: *Hormuz e Mar Rosso*, poi *Northern Europe*. Armatori, spedizionieri, logistica container: *Asia–Europe Logistics*. Azienda italiana: *Italy and the Gulf Shock*. Semiconduttori e fornitori di ASML: *Catena dell'AI*. Consulenza del rischio e assicurazioni: *Hormuz* più il metodo del rischio. Regola pratica: **un solo report per email**, con una riga che dice quale sezione leggere.
 
 ## 3.6 Tempi di viaggio e calendario dell'eolico
 

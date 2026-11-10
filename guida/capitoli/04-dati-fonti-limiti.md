@@ -6,7 +6,7 @@ Un selezionatore può chiederti «da dove prendi questo dato?», «puoi usarlo?�
 
 La cartella contiene **67 file JSON**: 66 di dati più `health.json`, scritto dal controllo di qualità (§4.6). Il campo `fonti[]` di ogni file è il riferimento per fonte e licenza; `DATA_LICENSES.md` lo riassume e dal 10 novembre copre **tutti** i file.
 
-**Aggiornamento:** **Q** = ogni giorno alle 05:15 UTC (`aggiorna-dati.yml`); **M** = mercati, lun–ven alle 21:30 UTC (`aggiorna-mercati.yml`); **S** = ogni domenica (`aggiorna-settimanale.yml`; *mens.* = solo la prima domenica del mese); **C** = curato o lanciato a mano; **F** = fisso (base cartografica o file scaricato una volta).
+**Aggiornamento:** **Q** = ogni giorno alle 04:37 UTC (`aggiorna-dati.yml`); **M** = mercati, lun–ven alle 21:30 UTC (`aggiorna-mercati.yml`); **S** = ogni domenica (`aggiorna-settimanale.yml`; *mens.* = solo la prima domenica del mese); **C** = curato o lanciato a mano; **F** = fisso (base cartografica o file scaricato una volta).
 
 ### A. Base cartografica e infrastrutture
 
@@ -57,7 +57,7 @@ La cartella contiene **67 file JSON**: 66 di dati più `health.json`, scritto da
 | `eventi.json`, `ibrido.json`, `baltico-sicurezza.json` | Eventi recenti; minacce ibride; sicurezza Baltico | Stampa, comunicati, OSINT, GPSJam | C; C; Q | 126; 35; 48 eventi | Fatti citati |
 | `fronte.json`, `fronte-storico.json` | Link alle mappe del fronte; km² mensili | ISW, DeepState | C | 4 link; 60 istantanee | Nessuna geometria ripubblicata |
 | `ucraina-storico.json`, `attacchi-russi.json` | Lanci e abbattimenti, attacchi ucraini in Russia; attacchi russi | Dataset Ivaniuk; Kyiv Independent | Q | 258; 192 | **CC BY-NC-SA 4.0** |
-| `attacchi-analisti.json`, `cyber-energia.json` | Attacchi dai Telegram di Molin e AMK; incidenti cyber | Canali pubblici; CERT Polska, CISA… | C | 632; 30 | Solo fatti, estratto ≤160 caratteri e link |
+| `attacchi-analisti.json`, `cyber-energia.json` | Attacchi dai Telegram di Molin e AMK; incidenti cyber | Canali pubblici; CERT Polska, CISA… | Q; C | 4.093; 30 | Solo fatti, estratto ≤160 caratteri e link |
 
 ### E. AI, transizione, notizie
 
@@ -80,7 +80,7 @@ Per ogni fonte: chi è, perché fidarsi, cosa dà. «Perché fidarsi» non vuol 
 
 **Macro, commercio, Paesi.** **Tesoro USA**: curva dei rendimenti, ufficiale. **Yahoo Finance**: le altre 29 serie di `prezzi.json`, perché è l'unica fonte gratuita e giornaliera per tutte (FRED e Stooq rifiutano il server cloud). **FMI** (WEO ottobre 2026, riserve d'oro), **Banca Mondiale**, **UN Comtrade** (commercio dalle dichiarazioni doganali), **USGS** (minerali, pubblico dominio), **SIPRI** (spesa militare, uso non commerciale). **Epoch AI** (CC BY 4.0) per i data center AI.
 
-**Ucraina.** **ISW** e **DeepStateMap** sono autorevoli e indipendenti tra loro, ma nessuno dei due permette di ripubblicare le geometrie: il sito mostra solo **link** e, per lo storico, valori derivati (km²). Il **Kyiv Independent** è la fonte principale degli eventi curati (di parte ucraina, ma con redazione e correzioni pubbliche). Il **dataset di Petro Ivaniuk** trascrive i comunicati dell'Aeronautica ucraina (CC BY-NC-SA 4.0). I canali Telegram di **Clément Molin** e **AMK Mapping**: 632 attacchi a lungo raggio estratti, affidabilità «media» se segnalati da un solo analista, «alta» se confermati da un'altra fonte.
+**Ucraina.** **ISW** e **DeepStateMap** sono autorevoli e indipendenti tra loro, ma nessuno dei due permette di ripubblicare le geometrie: il sito mostra solo **link** e, per lo storico, valori derivati (km²). Il **Kyiv Independent** è la fonte principale degli eventi curati (di parte ucraina, ma con redazione e correzioni pubbliche). Il **dataset di Petro Ivaniuk** trascrive i comunicati dell'Aeronautica ucraina (CC BY-NC-SA 4.0). I canali Telegram di **Clément Molin** e **AMK Mapping**: al 10 novembre 4.093 attacchi geolocalizzati 2024–2026, aggiornati ogni giorno; affidabilità «media» se segnalati da un solo analista, «alta» se confermati da un'altra fonte.
 
 **Notizie.** 93 feed di 57 testate e 35 fonti OSINT e ufficiali (UKMTO, JMIC, MARAD, gCaptain, USNI…), ognuna con affidabilità e paywall dichiarati. Si tengono solo titolo, data, link e un sommario breve.
 

@@ -38,7 +38,7 @@ Il traffico non è sparito: si è spostato. PortWatch però conta solo le navi c
 
 **Noli e costi.** Premio *war risk* per le petroliere a Hormuz: 6–10% del valore della nave per viaggio (FT via Insurance Business, 14 ottobre 2026), contro lo 0,2–0,25% di prima della guerra (`assicurazioni.json`): per una superpetroliera da 100 milioni di dollari, 6–10 milioni a transito. VLSFO a Rotterdam: 739,5 $/t il 6 novembre, +51,1% dal 27 febbraio (`bunker-emissioni.json`). Drewry WCI: 4.389 $/FEU il 5 novembre (`noli.json`).
 
-**Prezzi** (`prezzi.json`, chiusure del 9 novembre lette il 10 alle 03:40 UTC; il file le segna ancora come provvisorie): Brent 91,70 $/barile (+44,1% su un anno), TTF 82,33 €/MWh (+163,9% su un anno).
+**Prezzi** (`prezzi.json`, chiusure del 9 novembre): Brent 91,70 $/barile (+44,1% su un anno), TTF 82,33 €/MWh (+163,9% su un anno). Il file si aggiorna anche in seduta con valori marcati provvisori: alle 11:19 UTC del 10 novembre Brent 91,15 $, TTF 83,00 €/MWh.
 
 **Chi è esposto.** Italia: il 32,6% del GNL importato arriva dal Qatar (UN Comtrade 2025, in valore), in forza maggiore dal 4 marzo; il TransMed dall'Algeria porta il 34,0% del gas entrato negli ultimi 12 mesi (`gas-italia.json`, ENTSOG); stoccaggi all'88,93% l'8 novembre contro una media quinquennale del 94,31%. Nord Europa: stoccaggi molto più bassi (Germania 58,94%, Paesi Bassi 63,51% l'8 novembre, `scorte.json`), ma il GNL olandese è per il 77% statunitense (IEEFA, 1° trimestre 2026): il Nord è esposto a Hormuz **soprattutto attraverso il prezzo** (il TTF è l'hub olandese).
 
@@ -84,11 +84,11 @@ Uno **script** è un piccolo programma Python che va su una fonte pubblica, scar
 
 | Workflow | Quando | Che cosa fa |
 |---|---|---|
-| `aggiorna-dati.yml` | ogni giorno alle 05:15 UTC (06:15 in Italia con l'ora solare); anche a mano: *Actions → Aggiorna dati → Run workflow* | 17 passi di dati: flussi, noli, GPR e sanzioni; scorte; navi AIS; calendario; energia (GNL, gas Italia); Ucraina (lanci) e attacchi russi; notizie OSINT e testate; Nord Europa; bunker ed ETS; Italia (carburanti, PUN, inflazione, scioperi); stretti; calendario eolico; tempi di viaggio; per ultimi il cruscotto del rischio e il Port Risk Index, che leggono i file appena scritti. Poi mascheramento delle chiavi, test con il browser (*smoke test*), controllo di qualità e salvataggio con un commit. Tempo massimo 40 minuti |
+| `aggiorna-dati.yml` | ogni giorno alle 04:37 UTC (05:37 in Italia con l'ora solare; fino al 9 novembre alle 05:15, spostato perché GitHub saltava le esecuzioni all'ora esatta); anche a mano: *Actions → Aggiorna dati → Run workflow* | 18 passi di dati: flussi, noli, GPR e sanzioni; scorte; navi AIS; calendario; energia (GNL, gas Italia); Ucraina (lanci), attacchi segnalati dagli analisti OSINT su Telegram e attacchi russi; notizie OSINT e testate; Nord Europa; bunker ed ETS; Italia (carburanti, PUN, inflazione, scioperi); stretti; calendario eolico; tempi di viaggio; per ultimi il cruscotto del rischio e il Port Risk Index, che leggono i file appena scritti. Poi mascheramento delle chiavi, test con il browser (*smoke test*), controllo di qualità e salvataggio con un commit. Tempo massimo 40 minuti |
 | `aggiorna-mercati.yml` | lun–ven alle 21:30 UTC, dopo la chiusura di Wall Street | Prezzi di chiusura (Tesoro USA per i tassi, Yahoo Finance per il resto) → `prezzi.json` |
 | `aggiorna-settimanale.yml` | ogni domenica alle 03:40 UTC | 11 passi: cavi, schede paese, rete elettrica e nucleare, ferrovie, AI e catena dell'AI, webcam, idrogeno, filiera eolica, aree war risk, basi; la prima domenica del mese anche commercio e minerali (circa 40 minuti) |
 
-Restano fuori dai workflow, da lanciare a mano: incidenti cyber, storico del fronte (`fronte/`) e attacchi segnalati su Telegram da Clément Molin e AMK Mapping.
+Restano fuori dai workflow, da lanciare a mano: incidenti cyber e storico del fronte (`fronte/`).
 
 ### Chiavi API, in breve
 
@@ -135,13 +135,16 @@ Ogni punto dice se le coordinate vengono dalla **fonte** o sono **stimate** (`or
 
 `report/STANDARD.md` ha dieci regole: fonte, data e unità per ogni numero, e ogni variazione con il suo termine di confronto («−95% sulla stessa settimana del 2025»); fatti separati dalle valutazioni; incertezza dichiarata; tono senza allarmismi e nessun consiglio di investimento; un «In breve» di massimo 5 punti; limiti espliciti; grafici generati da script; italiano chiaro; trasparenza sull'AI; revisione indipendente di ogni numero.
 
-| Report (pubblicati) | Affermazioni controllate | Corrette | File |
+| Report pubblicati (al 10 novembre 2026) | Affermazioni controllate | Corrette | Revisione in `report/revisioni/` |
 |---|---|---|---|
-| Hormuz e Mar Rosso (9 nov) | 183 | 38 (10 non verificabili) | `report/revisioni/hormuz-mar-rosso-2026-11.md` |
-| Supply chain e logistica (9 nov) | 59 | 9 | `report/revisioni/supply-chain-2026-11.md` |
-| La catena dell'AI (10 nov) | 110 | 32 (16 non verificabili) | `report/revisioni/supply-chain-ai-2026-11.md` |
-| Northern Europe: Ports and Energy (10 nov) | 64 | 12 | `report/revisioni/northern-europe-2026-11.md` |
-| **Totale** | **416** | **91** | |
+| Hormuz e Mar Rosso (n. 1, 9 nov) | 183 | 38 | `hormuz-mar-rosso-2026-11.md` |
+| Supply chain e logistica (n. 2, 9 nov) | 59 | 9 | `supply-chain-2026-11.md` |
+| La catena dell'AI (n. 3, 10 nov) | 110 | 32 | `supply-chain-ai-2026-11.md` |
+| Northern Europe: Ports and Energy (*flagship*, 10 nov) | 64 | 12 | `northern-europe-2026-11.md` |
+| Asia–Europe Logistics (n. 4, 10 nov) | 118 | 35 | `asia-europe-logistics-2026-11.md` |
+| Offshore Wind in Northern Europe (n. 5, 10 nov) | 123 | 25 | `offshore-wind-2026-11.md` |
+| Italy and the Gulf Shock (n. 6, 10 nov) | 120 | 25 | `italy-gulf-shock-2026-11.md` |
+| **Totale** | **777** | **176** | |
 
 **La scoperta più utile.** Rivedendo il report Hormuz, il revisore ha trovato un errore nei **dati**: lo script dei prezzi convertiva l'ora di Yahoo Finance con il fuso di New York dell'ora solare anche nei mesi di ora legale, così tra l'8 marzo e il 1° novembre 2026 ogni seduta risultava un giorno prima. Lo script ora usa il fuso corretto per ogni data (`raccolta/scarica_mercati.py`). È la storia da raccontare (§5.4, domanda 17).
 
@@ -162,7 +165,7 @@ Il cruscotto degli stretti e il Port Risk Index danno a ogni unità un punteggio
 <rect x="10" y="30" width="200" height="34" rx="4"/><rect x="10" y="70" width="200" height="34" rx="4"/><rect x="10" y="110" width="200" height="34" rx="4"/><rect x="10" y="150" width="200" height="34" rx="4"/><rect x="10" y="190" width="200" height="34" rx="4"/><rect x="10" y="230" width="200" height="34" rx="4"/><rect x="10" y="270" width="200" height="34" rx="4"/><rect x="10" y="310" width="200" height="34" rx="4"/></g>
 <g fill="#1D272D"><text x="20" y="52">IMF PortWatch (navi, porti)</text><text x="20" y="92">GIE AGSI+, Eurostat, ENTSOG</text><text x="20" y="132">AIS: Digitraffic, aisstream</text><text x="20" y="172">Sanzioni: OFAC, UK, UE</text><text x="20" y="212">Ship &amp; Bunker, Drewry, EEX</text><text x="20" y="252">UKMTO, stampa, OSINT</text><text x="20" y="292">Voci curate (JWC, eolico…)</text><text x="20" y="332">Tesoro USA, Yahoo Finance</text></g>
 <rect x="250" y="40" width="220" height="150" rx="6" fill="#DCE8F5" stroke="#2F6DB5"/>
-<text x="262" y="62" font-weight="600" fill="#1D3F6B">aggiorna-dati.yml</text><text x="262" y="80" fill="#1D3F6B">ogni giorno 05:15 UTC</text><text x="262" y="102" fill="#1D3F6B">17 passi indipendenti:</text><text x="262" y="120" fill="#1D3F6B">flussi, scorte, navi, energia,</text><text x="262" y="138" fill="#1D3F6B">Nord Europa, bunker, stretti…</text>
+<text x="262" y="62" font-weight="600" fill="#1D3F6B">aggiorna-dati.yml</text><text x="262" y="80" fill="#1D3F6B">ogni giorno 04:37 UTC</text><text x="262" y="102" fill="#1D3F6B">18 passi indipendenti:</text><text x="262" y="120" fill="#1D3F6B">flussi, scorte, navi, energia,</text><text x="262" y="138" fill="#1D3F6B">Nord Europa, bunker, stretti…</text>
 <rect x="262" y="150" width="196" height="32" rx="4" fill="#FBE3CC" stroke="#C26A12"/><text x="270" y="170" fill="#7A3E05">rischio + Port Risk (per ultimi)</text>
 <rect x="250" y="205" width="220" height="44" rx="6" fill="#DCE8F5" stroke="#2F6DB5"/><text x="262" y="224" font-weight="600" fill="#1D3F6B">aggiorna-settimanale.yml</text><text x="262" y="241" fill="#1D3F6B">domenica 03:40 UTC, 11 passi</text>
 <rect x="250" y="300" width="220" height="44" rx="6" fill="#DCE8F5" stroke="#2F6DB5"/><text x="262" y="319" font-weight="600" fill="#1D3F6B">aggiorna-mercati.yml</text><text x="262" y="336" fill="#1D3F6B">lun–ven 21:30 UTC → prezzi</text>
@@ -170,7 +173,7 @@ Il cruscotto degli stretti e il Port Risk Index danno a ogni unità un punteggio
 <g fill="#1B5E3A"><text x="532" y="110" font-weight="600">67 file JSON</text><text x="532" y="130">66 di dati +</text><text x="532" y="148">health.json</text><text x="532" y="176">aggiornato · fonti</text><text x="532" y="194">nota · elementi</text><text x="532" y="212">errori</text></g>
 <rect x="250" y="372" width="410" height="40" rx="5" fill="#F3E6EC" stroke="#A61E6B"/><text x="262" y="390" fill="#6B0F43" font-weight="600">Prima di salvare: nascondi_chiavi.py → smoke test → controllo qualità</text><text x="262" y="405" fill="#6B0F43">→ commit su main → GitHub Pages ripubblica</text>
 <g fill="#EEE3F3" stroke="#6E3D8F"><rect x="710" y="40" width="180" height="50" rx="5"/><rect x="710" y="105" width="180" height="50" rx="5"/><rect x="710" y="170" width="180" height="50" rx="5"/><rect x="710" y="235" width="180" height="50" rx="5"/></g>
-<g fill="#3E1F55"><text x="722" y="62" font-weight="600">Mappa</text><text x="722" y="80">42 livelli tematici</text><text x="722" y="127" font-weight="600">Terminal</text><text x="722" y="145">14 schede</text><text x="722" y="192" font-weight="600">Reports</text><text x="722" y="210">script + revisione (416)</text><text x="722" y="257" font-weight="600">Simulatore, News feed</text><text x="722" y="275">health.json, report/qualita</text></g>
+<g fill="#3E1F55"><text x="722" y="62" font-weight="600">Mappa</text><text x="722" y="80">42 livelli tematici</text><text x="722" y="127" font-weight="600">Terminal</text><text x="722" y="145">14 schede</text><text x="722" y="192" font-weight="600">Reports</text><text x="722" y="210">7 rivisti: 777 cifre</text><text x="722" y="257" font-weight="600">Simulatore, News feed</text><text x="722" y="275">health.json, report/qualita</text></g>
 <g stroke="#52606A" stroke-width="1.4" fill="none" marker-end="url(#fr)"><path d="M212,120 H246"/><path d="M212,228 H246"/><path d="M212,326 H246"/><path d="M472,115 H516"/><path d="M472,227 H516"/><path d="M472,322 H516"/><path d="M662,65 H706"/><path d="M662,130 H706"/><path d="M662,195 H706"/><path d="M662,260 H706"/></g>
 </svg>
 <figcaption>Il flusso dei dati: fonti pubbliche → script nei tre workflow → file JSON → mappa, Terminal, report e simulatore. Ogni passo è indipendente: se una fonte cade, le altre continuano. Situazione dei workflow al 10 novembre 2026.</figcaption>
@@ -180,6 +183,6 @@ Il cruscotto degli stretti e il Port Risk Index danno a ogni unità un punteggio
 
 1. **Che cos'è:** una mappa OSINT che segue la catena evento → stretto → flussi → noli → prezzi → esposizione, con fonte, data e affidabilità su ogni numero.
 2. **Come funziona:** sito statico su GitHub Pages; 67 file JSON; 37 script Python; tre workflow GitHub Actions (ogni giorno, nei giorni feriali per i mercati, ogni domenica); chiavi nei Secrets e mascheramento automatico.
-3. **Perché fidarsi:** tre livelli di affidabilità, fatti separati dalle valutazioni, precisione delle coordinate dichiarata, 416 affermazioni dei report controllate una per una, un controllo di qualità ogni mattina.
+3. **Perché fidarsi:** tre livelli di affidabilità, fatti separati dalle valutazioni, precisione delle coordinate dichiarata, 777 affermazioni dei sette report pubblicati controllate una per una, un controllo di qualità ogni mattina.
 4. **Il valore per un porto o un'azienda energetica del Nord:** un punteggio di rischio trasparente per 18 stretti e corridoi e per 39 porti, che chiunque può rifare a mano.
 5. **Il ruolo dell'AI:** l'assistente ha scritto il codice e le bozze; tu hai deciso domanda, metodo, fonti e controlli. L'aggiornamento quotidiano lo fanno script normali.

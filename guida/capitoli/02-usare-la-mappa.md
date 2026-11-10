@@ -45,7 +45,7 @@ Toccando un elemento si apre una **scheda** a destra: famiglia, categoria e Paes
 
 ## 2.2 I livelli, per tema
 
-Per ogni livello: che cosa mostra, il file in `docs/data/`, l'aggiornamento, la domanda a cui risponde e il limite principale. Tre ritmi di aggiornamento: **quotidiano** (05:15 UTC), **settimanale** (domenica) e **curato** (voci scritte e riviste a mano, con la data nel campo `aggiornato`). L'elenco completo dei file con fonti e licenze è nel §4.1.
+Per ogni livello: che cosa mostra, il file in `docs/data/`, l'aggiornamento, la domanda a cui risponde e il limite principale. Tre ritmi di aggiornamento: **quotidiano** (04:37 UTC), **settimanale** (domenica) e **curato** (voci scritte e riviste a mano, con la data nel campo `aggiornato`). L'elenco completo dei file con fonti e licenze è nel §4.1.
 
 ### A. Conflitti, Ucraina, sicurezza
 

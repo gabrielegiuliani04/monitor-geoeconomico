@@ -19,8 +19,8 @@ I testi da usare sono **in inglese**, perché lì selezione e colloqui si fanno 
 | Livelli tematici della mappa | 42 | pannello *Layers*, 10/11 |
 | File di dati | 66 file JSON di dati (67 con `health.json`) | `docs/data/` |
 | Script Python | 37 in `raccolta/`, di cui 33 raccolgono o calcolano dati | conteggio del 10/11 |
-| Aggiornamento automatico | 3 workflow: 17 passi di dati ogni giorno, mercati nei giorni feriali, 11–12 passi la domenica | `.github/workflows/` |
-| Affermazioni verificate nei 4 report pubblicati | 416, di cui 91 corrette | `report/revisioni/*.md` |
+| Aggiornamento automatico | 3 workflow: 18 passi di dati ogni giorno, mercati nei giorni feriali, 11–12 passi la domenica | `.github/workflows/` |
+| Affermazioni verificate nei 7 report pubblicati | 777, di cui 176 corrette | `report/revisioni/*.md` |
 | Fonti di dati distinte | oltre 50 | `DATA_LICENSES.md` |
 
 > **Attenzione.** I testi in `vetrina/` (9 novembre) e il `README.md` hanno numeri vecchi: «15 collectors», «42 data files», «24 layers». Aggiornali prima di usarli (§5.6, settimana 1).
@@ -35,7 +35,7 @@ Un selezionatore non assume «un progetto»: assume competenze che il progetto r
 | **OSINT e verifica delle fonti** | Fonte, link, data e affidabilità su ogni dato; coordinate con precisione; fatti separati dalle valutazioni; PortWatch contro Lloyd's List a Hormuz (23 contro 116 transiti nella stessa settimana) | `METODO.md`, `report/revisioni/` |
 | **Dati e automazione** | Script Python quasi tutti con la sola libreria standard; un formato comune per 66 file; tre workflow GitHub Actions; controllo di qualità ogni mattina | `raccolta/`, `.github/workflows/`, `health.json` |
 | **Cartografia** | Mappa (canvas + d3) con 42 livelli tematici: stretti, rotte, porti, condotte, GNL, cavi, rete elettrica, eolico, AIS | `docs/index.html` |
-| **Report con revisione** | 4 report con standard scritto e revisione indipendente: 416 affermazioni, 91 corrette | `report/STANDARD.md` |
+| **Report con revisione** | 7 report con standard scritto e revisione indipendente: 777 affermazioni, 176 corrette | `report/STANDARD.md` |
 | **Porti, energia e shipping** | Report *Northern Europe*; tempi di viaggio su 99 rotte; 114 tappe dell'eolico; filiera eolica (19 porti, 20 navi) | `docs/report/en/northern-europe-2026-11.html` |
 | **Dati usati in modo responsabile** | Audit delle licenze file per file; modulo ISW spento senza consenso scritto; chiavi mascherate | `DATA_LICENSES.md`, `report/licenze.md` |
 | **Lavorare con l'AI in modo controllato** | Regole comuni per le sessioni AI; una sola sessione può modificare la mappa; revisioni separate dalla scrittura | `raccolta/AGENTI.md`, `STATO.md` |
@@ -49,6 +49,8 @@ Metti il progetto in una sezione **"Projects"** subito dopo l'esperienza (o dopo
 - Mappa: https://gabrielegiuliani04.github.io/monitor-geoeconomico/
 - Report Nord Europa: https://gabrielegiuliani04.github.io/monitor-geoeconomico/report/en/northern-europe-2026-11.html
 - Report Hormuz e Mar Rosso: https://gabrielegiuliani04.github.io/monitor-geoeconomico/report/en/hormuz-red-sea-2026-11.html
+- Per l'eolico offshore: https://gabrielegiuliani04.github.io/monitor-geoeconomico/report/en/offshore-wind-2026-11.html
+- Per shipping e logistica: https://gabrielegiuliani04.github.io/monitor-geoeconomico/report/en/asia-europe-logistics-2026-11.html
 - Codice: https://github.com/gabrielegiuliani04/monitor-geoeconomico
 
 Per ogni tipo di datore di lavoro: **A** una riga (CV di una pagina), **B** tre righe (standard), **C** blocco completo (quando il progetto è il punto di forza).
@@ -69,7 +71,7 @@ Cercano chi capisce flussi di navi, esposizione del porto alle rotte, energia ne
 - *Designed an open-source OSINT map that follows a disruption from the event to the ports and countries exposed (event → chokepoint → flows → freight → prices → exposure), with 42 thematic layers from 50+ public sources.*
 - *Built a daily Port Risk Index for 39 ports, with thresholds calibrated on PortWatch history: a 20% drop in calls is amber because it happens in about one week in seven at a large port.*
 - *Wrote "Northern Europe: Ports and Energy" (issue 1, Nov 2026). Showed that Rotterdam's −10.8% weekly drop was noise: traffic was −0.5% year to date (PortWatch, to 30 Oct 2026).*
-- *Automated collection with Python and three GitHub Actions workflows (17 independent daily steps, plus a daily health check). Each data point carries source, date and a reliability level.*
+- *Automated collection with Python and three GitHub Actions workflows (18 independent daily steps, plus a daily health check). Each data point carries source, date and a reliability level.*
 - *Built with an AI coding assistant (Claude). I set the questions, schema, sources and review rules and checked the output.*
 
 *Per Port Esbjerg* aggiungi: *"Mapped the offshore wind supply chain: 19 ports, 20 installation vessels, 8 bottlenecks; Esbjerg has shipped over 27.5 GW"* (`eolico-filiera.json`).
@@ -141,19 +143,19 @@ Cercano chi capisce interconnessioni, HVDC, sicurezza degli approvvigionamenti, 
 
 Cercano metodo, scrittura chiara, separazione tra fatti e valutazioni, controllo di qualità.
 
-**A.** *Geo-economic Risk Monitor (personal project, 2026): open-source geo-economic risk monitor with probability × impact scoring of 18 chokepoints and 39 ports, and four reports with documented fact-checking (416 claims checked, 91 corrected).*
+**A.** *Geo-economic Risk Monitor (personal project, 2026): open-source geo-economic risk monitor with probability × impact scoring of 18 chokepoints and 39 ports, and seven reports with documented fact-checking (777 claims checked, 176 corrected).*
 
 **B.**
 
 - *Built risk scores with explicit weights and thresholds tested on historical data, scenario signals checked daily, and a rule that separates a disruption in progress from a risk.*
-- *Wrote four reports (Hormuz and Red Sea, supply chain, AI supply chain, Northern Europe) under a written editorial standard, each independently reviewed: 416 claims checked, 91 corrected.*
+- *Wrote seven reports (Northern Europe, offshore wind, Asia–Europe logistics, Hormuz and Red Sea, Italy and the Gulf shock, supply chain, AI supply chain) under a written editorial standard, each independently reviewed: 777 claims checked, 176 corrected.*
 
 **C.**
 
 - *Designed an open-source OSINT monitor that follows a shock from the event to who pays for it, with 50+ public sources.*
 - *Built an ISO 31000-style probability × impact dashboard for 18 units. Reading of 9 Nov 2026: Qatar LNG 24.0/25 and Hormuz 22.5 are critical; TransMed scores low on probability but 4.3/5 on impact, because one pipeline carries 34% of Italy's gas.*
 - *Defined reliability rules: high/medium/low on every data point, facts separated from assessments, stated coordinate precision, an explicit "missing" for missing data.*
-- *Independent reviews checked 416 claims and corrected 91, including a time-zone bug that shifted market dates by one day.*
+- *Independent reviews checked 777 claims and corrected 176, including a time-zone bug that shifted market dates by one day.*
 - *Built with an AI coding assistant (Claude): I set the questions, rules and review process and decided what was published.*
 
 ### 5.2.6 Parole chiave per i sistemi ATS
@@ -206,7 +208,7 @@ Regola: **parti da un fatto, non dalla tecnologia.** La tecnologia arriva solo s
 | 0–1 · *Problem* | "A map shows where things break, not how much it matters." Hormuz: 4.4 vs 90.3 ships a day (week to 1 Nov 2026) | Mappa, scheda di Hormuz |
 | 1–2 · *Method* | La catena, lo schema di 25 campi, i tre livelli di affidabilità, fatti contro valutazioni: "If a number has no source and date, it is not on the map." | Una scheda con fonte, data, affidabilità |
 | 2–3 · *Your region* | Port Risk Index, tempi di viaggio (+10,5 giorni via Capo), calendario eolico (gara IJmuiden Ver Gamma, 26 nov – 10 dic 2026), sicurezza del Baltico: scegli il più vicino all'azienda | Terminal → *Ports*, *Wind calendar*; report Nord Europa |
-| 3–4 · *Quality* | Standard scritto; 416 affermazioni controllate, 91 corrette; l'errore di fuso orario (domanda 17); il controllo di qualità quotidiano | `report/revisioni/northern-europe-2026-11.md` |
+| 3–4 · *Quality* | Standard scritto; 777 affermazioni controllate, 176 corrette; l'errore di fuso orario (domanda 17); il controllo di qualità quotidiano | `report/revisioni/northern-europe-2026-11.md` |
 | 4–5 · *Limits, next steps* | AIS, ritardo di PortWatch, prezzi Yahoo indicativi, licenze non commerciali: "Inside your company I would connect it to berth schedules and replace the non-commercial sources." | Sezione *Limits* del README |
 
 > **Attenzione.** Prepara lo schermo prima: schede del browser già aperte nell'ordine, zoom sulla regione, notifiche spente. Se la connessione è lenta, tieni pronti gli screenshot in `docs/img/` o le immagini di questa guida.
@@ -218,7 +220,7 @@ Le risposte sono tracce da dire con parole tue. Se non sai una cosa, dillo e spi
 ### A. Domande tecniche
 
 **1. "How does the daily update work?"**
-> *Three GitHub Actions workflows. The data one runs every day at 05:15 UTC with seventeen independent steps: flows and sanctions, gas storage, AIS, calendar, energy, Northern Europe ports, bunker, chokepoints, wind calendar, transit times, and last the two risk scores, because they read the files just written. Each step can fail without stopping the others; each file records its errors and the previous data stays. Before saving, a script masks anything that looks like an API key, a browser test checks the map and a health check flags stale or inconsistent files. Prices run on weekdays after the US close, slower sources every Sunday. The git history is the archive.*
+> *Three GitHub Actions workflows. The data one runs every day at 04:37 UTC with eighteen independent steps: flows and sanctions, gas storage, AIS, calendar, energy, Northern Europe ports, bunker, chokepoints, wind calendar, transit times, and last the two risk scores, because they read the files just written. Each step can fail without stopping the others; each file records its errors and the previous data stays. Before saving, a script masks anything that looks like an API key, a browser test checks the map and a health check flags stale or inconsistent files. Prices run on weekdays after the US close, slower sources every Sunday. The git history is the archive.*
 
 **2. "How do you verify a source?"**
 > *Five questions. Who produces it, and do they have a stake? Is it primary or a copy? Is there a second, independent source? When was it published, and when did the fact happen? How precise is it? Then a level: high, medium or low. When two sources disagree, I show both and explain why. At Hormuz, PortWatch counted 23 transits in a week where Lloyd's List Intelligence counted 116: they don't contradict each other, LLI also reconstructs ships with AIS switched off.*
@@ -279,7 +281,7 @@ Sono giorni di sola navigazione a velocità fissa; UNCTAD dà 14–24 giorni. Se
 
 **15. "What did you do yourself, and what did the AI do?"** *(la domanda chiave)*
 > *I'll be precise, because it matters. I defined the question and the chain, the goals, the regions and the priorities: for example, I decided to add a full North Sea and Baltic section because that's where I want to work, to put the whole site in English, and to drop a section that didn't fit. I chose the sources and the trade-offs on licences: I kept a module on the Ukrainian front switched off until the source gives written consent. I wrote the rules: source and date on every number, three reliability levels, facts separated from assessments, only one session allowed to change the map, a review before every report.*
-> *The AI assistant, Claude through Claude Code, wrote almost all the code and the first drafts, in several parallel sessions under those rules. Separate review sessions then checked every number against the data files and the original sources: 416 claims across four reports, 91 corrected. I read the reports and the reviews, spot-check numbers and decide what goes out.*
+> *The AI assistant, Claude through Claude Code, wrote almost all the code and the first drafts, in several parallel sessions under those rules. Separate review sessions then checked every number against the data files and the original sources: 777 claims across seven published reports, 176 corrected. I read the reports and the reviews, spot-check numbers and decide what goes out.*
 > *I wouldn't claim I could rewrite the map's rendering code from scratch. I can explain how every number gets there, why each rule exists, and how I'd check it. Directing and checking fast automated work is becoming part of most analyst jobs.*
 
 <div></div>
