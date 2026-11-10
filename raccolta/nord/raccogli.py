@@ -688,7 +688,7 @@ def eurostat_dipendenza(errori):
 
 
 def gie_stoccaggi(errori):
-    chiave = os.environ.get("GIE_API_KEY")
+    chiave = (os.environ.get("AGSI_API_KEY") or os.environ.get("GIE_API_KEY") or "")
     if not chiave:
         avviso("GIE_API_KEY assente: salto gli stoccaggi di gas (AGSI+)")
         return {}

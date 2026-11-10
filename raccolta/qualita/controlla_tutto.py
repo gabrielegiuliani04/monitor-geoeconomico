@@ -638,6 +638,13 @@ def raccogli_link(dati):
 
 def prova_link(u):
     """Returns (result, code, detail). result: ok / broken / blocked / proxy / error."""
+    parti = urllib.parse.urlsplit(u)
+    try:
+        host = parti.netloc.encode("idna").decode("ascii") if any(ord(c) > 127 for c in parti.netloc) else parti.netloc
+    except Exception:  # noqa: BLE001
+        host = parti.netloc
+    u = urllib.parse.urlunsplit((parti.scheme, host, urllib.parse.quote(parti.path, safe="/%:@!$&'()*+,;=-._~"),
+                                 urllib.parse.quote(parti.query, safe="=&%+/:,;@!$'()*-._~?"), ""))
     def apri(metodo):
         req = urllib.request.Request(u, method=metodo, headers={"User-Agent": UA, "Accept": "*/*"})
         if metodo == "GET":
@@ -667,6 +674,8 @@ def prova_link(u):
         r = str(e.reason)
         if "Tunnel connection failed" in r or "407" in r:
             return "proxy", None, f"blocked by the local network proxy ({r[:80]}): not tested"
+        if u.startswith("http://") and os.environ.get("HTTPS_PROXY") and not os.environ.get("HTTP_PROXY"):
+            return "proxy", None, "plain-http link not testable behind an HTTPS-only proxy"
         if any(x in r for x in ("Name or service not known", "nodename nor servname", "getaddrinfo failed", "No address associated")):
             return "broken", None, f"DNS: {r[:100]}"
         if "CERTIFICATE_VERIFY_FAILED" in r:
@@ -971,7 +980,8 @@ def coerenza(R, dati):
     # 6. key report figures
     rep_ok, rep_mis, rep_nf = report_figures(R, dati)
     stato = "red" if n_mis > 10 else ("amber" if n_mis or rep_mis or rep_nf else "green")
-    R.check("consistency", "same fact across data files", stato, f"{n_conf} comparisons, {n_mis} mismatches")
+    n_dati = sum(1 for m in R.mismatches if not m["fact"].startswith("report figure"))
+    R.check("consistency", "same fact across data files", stato, f"{n_conf} comparisons, {n_mis} disagree ({n_dati} distinct mismatches listed)")
     R.check("consistency", "key report figures vs data", "amber" if rep_mis or rep_nf else "green",
             f"{rep_ok} match, {rep_mis} differ, {rep_nf} not found in the report (fatti_chiave.json)")
 

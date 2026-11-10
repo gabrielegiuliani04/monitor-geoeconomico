@@ -46,7 +46,6 @@ Each JSON file also lists its sources in its own `fonti[]` field (name, link, li
 | `eventi.json`, `mobili.json`, `ibrido.json`, `report.json`, `dossier.json` | Press, official statements and OSINT accounts, each point with its own `fonti[]` | Facts with citation | Text is the project's own |
 | `ai.json` | Epoch AI (CC BY 4.0), company statements | CC BY 4.0; facts with citation | Attribute Epoch AI |
 | `notizie.json` | Google News RSS and official feeds (UKMTO, JMIC, MARAD and others) | Headlines and links; articles belong to their publishers | Headline, date and link only |
-| `analisti.json` | YouTube RSS feeds of 5 channels | Content belongs to the authors (all rights reserved) | Title, short description and link only |
 | `manifest.json` | Project file | MIT (part of the code) | None |
 
 ## Contact
