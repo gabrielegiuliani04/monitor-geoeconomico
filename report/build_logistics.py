@@ -530,7 +530,7 @@ def chart_lanes(V, wide=True):
         y = top + i * rowh + rowh / 2
         nm = f"{l['from']} → {l['to']}"
         if not wide:
-            nm = nm.replace("Shanghai", "Sha.").replace("Singapore", "Sin.").replace("Nhava Sheva", "Nhava S.").replace("Jebel Ali", "J. Ali")
+            nm = nm.replace("Shanghai", "Sha.").replace("Singapore", "Sin.").replace("Nhava Sheva", "N. Sheva").replace("Jebel Ali", "J. Ali").replace("Rotterdam", "Rott.")
         o.append(f'<text class="ael-l" x="{left - 8}" y="{y + 4:.1f}" text-anchor="end">{esc(nm)}</text>')
         a, b, c = X(l["d_today"]), X(l["d_cape"]), X(l["d_w"])
         o.append(f'<line class="ael-k0" x1="{a:.1f}" x2="{b:.1f}" y1="{y:.1f}" y2="{y:.1f}" stroke-width="2"/>')
@@ -560,7 +560,7 @@ def chart_waterfall(V, wide=True):
                   "Waterfall in dollars per FEU: 2023 voyage cost, then the change from fuel price, Cape share, EU ETS, FuelEU and war risk, to today's capacity-weighted cost.",
                   "ch2" + ("w" if wide else "n"))]
     o.append('<text class="ael-t" x="12" y="22">Voyage cost per FEU, Shanghai → Rotterdam, $</text>')
-    o.append('<text class="ael-m" x="12" y="38">fuel, EU ETS, FuelEU and war risk only (no charter, port or canal costs)</text>')
+    o.append(f'<text class="ael-m" x="12" y="38">{"fuel, EU ETS, FuelEU and war risk only (no charter, port or canal costs)" if wide else "fuel, ETS, FuelEU, war risk only"}</text>')
     for t in ticks(0, hi, step):
         o.append(f'<line class="ael-g" x1="{X(t):.1f}" x2="{X(t):.1f}" y1="{top - 4}" y2="{h - 26}"/>'
                  f'<text class="ael-m" x="{X(t):.1f}" y="{h - 10}" text-anchor="middle">{int(t)}</text>')

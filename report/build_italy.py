@@ -239,13 +239,9 @@ def compute(today):
     lo = ii["soglie_fermo"]["soglie_eur_l"][0]
     V["thr"] = (lo, hi)
     V["thr_pct"] = ii["soglie_fermo"]["soglie_aumento_pct"]
-    above = [k for k, v in dsl if k >= "2026-07-01" and v >= hi]
-    V["above_since"] = above[0] if above else None
-    run = True
-    for k, v in dsl:
-        if k >= (above[0] if above else "9999") and v < hi:
-            run = False
-    V["above_continuous"] = run
+    below = [k for k, v in dsl if v < hi]
+    after = [k for k, v in dsl if v >= hi and (not below or k > below[-1])]
+    V["above_since"] = after[0] if after else None
     # pass-through rules
     R = {r["id"]: r for r in ii["regole_trasmissione"]["regole"]}
     V["R"] = R
@@ -858,7 +854,7 @@ def blocks(V, edition, today):
     s1 = sc["hormuz_1m"]
     k5 = (f"**A second Hormuz shock would push diesel to €{num(s1['da_oggi']['gasolio_eur_l'][0], 2)}–{num(s1['da_oggi']['gasolio_eur_l'][1], 2)} within a month** "
           f"(*assessment*, rule-based). Tested on 2026: from February prices the rule gave €{num(s1['da_condizioni_normali']['gasolio_eur_l'][0], 2)}–"
-          f"{num(s1['da_condizioni_normali']['gasolio_eur_l'][1], 2)}; diesel actually averaged €{num(s1['osservato']['gasolio']['media_senza_tagli_accise'], 2)} before excise cuts. "
+          f"{num(s1['da_condizioni_normali']['gasolio_eur_l'][1], 2)}; diesel actually averaged €{num(s1['osservato']['gasolio']['media_senza_tagli_accise'], 2)} once the excise cuts are added back. "
           f"A TransMed outage hits bills, not pumps.")
     UL([k1, k2, k3, k4, k5])
     for k in (k1, k2, k3, k4, k5):
@@ -936,7 +932,7 @@ def blocks(V, edition, today):
       f"90 days of net imports or 61 days of consumption. The series fell from {num(at(ser, '2026-03-01'), 1)} days in March to {num(at(ser, '2026-04-01'), 1)} in April 2026. "
       f"Germany held {num(od['de']['valore'], 1)}, France {num(od['fr']['valore'], 1)} and the Netherlands {num(od['nl']['valore'], 1)} days. The June figure "
       f"({num(at(ser, '2026-06-01'), 1)}) breaks the pattern and is treated as an anomaly.")
-    P(f"Gas storage was **{num(it['valore'], 2)}%** full on {date_en(it['data'])} ({num(V['st_twh']['valore'], 1)} TWh of about {num(V['st_cap'], 1)}), "
+    P(f"Gas storage was **{num(it['valore'], 1)}%** full on {date_en(it['data'])} ({num(V['st_twh']['valore'], 1)} TWh of about {num(V['st_cap'], 1)}), "
       f"{pts(it['anno_scorso']['variazione'], 1)} points on a year earlier and {pts(it['media_5_anni']['scarto'], 1)} on the five-year average; it fell "
       f"{num(abs(it['precedente']['variazione']), 2)} points on the last day as winter withdrawals began. Germany was at {num(st['de']['valore'], 1)}%, the Netherlands "
       f"{num(st['nl']['valore'], 1)}%, Austria {num(st['at']['valore'], 1)}% and France {num(st['fr']['valore'], 1)}% (GIE AGSI+, {dl('scorte.json')}). "
@@ -963,7 +959,7 @@ def blocks(V, edition, today):
     mx = V["dsl_max"]
     P(f"In the last week before the war ({date_en(V['pre'])}) diesel cost €{num(V['pre_d'], 3)} and petrol €{num(V['pre_p'], 3)}. Diesel peaked at **€{num(mx[1], 3)}** in the week of "
       f"{date_en(mx[0])}, the highest weekly average in the file's series (which starts in {month_en(V['dsl_first'])}). Since February the net price of diesel has risen "
-      f"{pct(V['net_var'], 0)}, while Brent crude in euro rose {pct(V['brent_eur_var'], 0)} (from {num(V['base_n']['brent'], 2)} to {num(V['base_t']['brent'], 1)} dollars a barrel; "
+      f"{pct(V['net_var'], 0, False)}, while Brent crude in euro rose {pct(V['brent_eur_var'], 0, False)} (from {num(V['base_n']['brent'], 2)} to {num(V['base_t']['brent'], 1)} dollars a barrel; "
       f"calculation on {dl('italia-impatti.json')}).")
     P(f"Since January 2026 diesel and petrol carry the same ordinary excise (€{num(V['ordinary'], 4)}). Diesel now costs {num(V['gap_now'], 1)} cents more than petrol, "
       f"against {num(V['gap_pre'], 1)} cents before the war. With equal excise, the gap is in the pre-tax price.")
@@ -1033,9 +1029,9 @@ def blocks(V, edition, today):
       f"the judgement on the economy fell to {num(cf['clima_economico'][-1][1], 1)}, close to April's {num(at(cf['clima_economico'], '2026-04'), 1)}. The low of 2022 was "
       f"{num(V['conf_min'][1], 1)} ({month_en(V['conf_min'][0])}). The file holds the series not adjusted for season; Istat's press release uses the adjusted one, which can differ.")
     sm = V["sales_may"]
-    P(f"**Fuel sales.** Road diesel sales fell {pct(sales['gasolio_motori']['var_pct'])} in {month_en(sales['mese'])} on a year earlier and diesel sold off the retail network "
-      f"(to fleets and hauliers) {pct(sales['gasolio_extrarete']['var_pct'])}; in May the falls were {pct(sm['gasolio_motori']['var_pct'])} and {pct(sm['gasolio_extrarete']['var_pct'])}. "
-      f"Petrol sales rose {pct(sales['benzina']['var_pct'])} (MASE, {dl('italia-impatti.json')}). Diesel was already falling and petrol rising in January and February, before the war.")
+    P(f"**Fuel sales.** Road diesel sales fell {pct(-sales['gasolio_motori']['var_pct'], 1, False)} in {month_en(sales['mese'])} on a year earlier and diesel sold off the retail network "
+      f"(to fleets and hauliers) {pct(-sales['gasolio_extrarete']['var_pct'], 1, False)}; in May the falls were {pct(-sm['gasolio_motori']['var_pct'], 1, False)} and {pct(-sm['gasolio_extrarete']['var_pct'], 1, False)}. "
+      f"Petrol sales rose {pct(sales['benzina']['var_pct'], 1, False)} (MASE, {dl('italia-impatti.json')}). Diesel was already falling and petrol rising in January and February, before the war.")
     FIG("sales", f"*Fuel sales by month, % on the same month a year earlier, January–{month_en(sales['mese'])}: road diesel, off-network diesel (fleets, hauliers) and petrol. "
                  f"Event 1 = first full month of the war (March 2026). Source: MASE, DGSAIE, petroleum consumption (provisional), {dl('italia-impatti.json')}.*")
     el = lit["elasticita-benzina"]
@@ -1085,10 +1081,10 @@ def blocks(V, edition, today):
     need(d4["testo"], "434", where="dichiarazioni Unatras 21/10")
     P(f"The government suspended that stoppage on 22 May with a package: a tax credit on diesel of 300 million euros (200 of them new), the quarterly excise refund paid in "
       f"30 days instead of 60, and a standing table with the sector. By November 242.2 million of the 480 million allocated had been granted, to be used by 31 December 2026 "
-      f"(Ministry of Transport via {link('TrasportoEuropa', cr['link'])}, 9 November). In October Unatras said 434 million of credits had not yet reached firms "
+      f"(Ministry of Transport via {link('TrasportoEuropa', [x for x in hau['dichiarazioni_2026'] if x['data'] == '2026-11-09'][0]['link'])}, 9 November). In October Unatras said 434 million of credits had not yet reached firms "
       f"({link('Logisticamente.it', d4['link'])}); the two sources use different totals.")
     A("for a truck that qualifies for the refund, a general excise cut is worth little: the price at the pump falls, the refund falls with it. The expiry of the cut on 8 November "
-      "therefore raises the cost for motorists, and the cash hauliers must advance until the quarterly refund, more than their final cost. The grievance that moves hauliers "
+      "therefore raises motorists' costs; for hauliers it mainly raises the cash they must advance until the quarterly refund, rather than their final cost. The grievance that moves hauliers "
       "is the credit that must be used by 31 December and the pressure from clients on rates, not the expiry itself.")
     H3("The rules on stoppages")
     rl = {x["id"]: x for x in hau["regole_scioperi"]}
@@ -1105,7 +1101,13 @@ def blocks(V, edition, today):
         if p["id"] not in PREC_EN:
             continue
         gd = p["gasolio_alla_data"]
-        when = date_en(p["data_inizio"]) if not p.get("data_fine") or p["data_fine"] == p["data_inizio"] else f"{date_en(p['data_inizio'], False)}–{date_en(p['data_fine'])}"
+        a_, b_ = d(p["data_inizio"]), d(p["data_fine"]) if p.get("data_fine") else None
+        if not b_ or b_ == a_:
+            when = date_en(p["data_inizio"])
+        elif a_.month == b_.month:
+            when = f"{a_.day}–{b_.day} {MONTHS[b_.month - 1]} {b_.year}"
+        else:
+            when = f"{date_en(p['data_inizio'], False)} – {date_en(p['data_fine'])}"
         rows.append([when, PREC_EN[p["id"]][0], f"€{num(gd['eur_l'], 3)}", pct(gd["var_pct_un_anno"]), pct(p["_8w"]) if p["_8w"] is not None else "—",
                      link(p["fonte"].split(",")[0], p["link"])])
     TAB(["When", "What", "Diesel that week", "On a year", "In 8 weeks", "Source"], rows,
@@ -1115,21 +1117,22 @@ def blocks(V, edition, today):
                     f"Dashed lines: the monitor's alert levels €{num(lo, 2)} and €{num(hi, 2)}. The 2024 tractor protest was about farm income tax and EU farm policy, "
                     f"not fuel. Source: MASE weekly prices, curated precedents in {dl('italia-impatti.json')}.*")
     P("What happened: in December 2007 the stoppage lasted three days, with milk, medicines and petrol guaranteed from 12 December; in January 2012 the Forconi blockades left most of "
-      "Sicily's filling stations dry by the fourth day, and about 60 pickets then blocked motorway toll gates across Italy; in March 2022 a stoppage was stopped by the Commission "
+      "Sicily's filling stations dry by the fourth day, and about 60 pickets then blocked motorway toll gates across Italy; in March 2022 a stoppage was blocked by the Commission "
       "for lack of notice, and the excise cut followed on 22 March; in April 2026 Trasportounito's stoppage was suspended on its first day after a truck driver was killed on the "
       "A1 motorway; in May Unatras's was suspended after the government package; in October regional stoppages ran in Sicily and Calabria after wildcat blockades that started in Puglia.")
     sf = ii["soglie_fermo"]
+    yy = [p["gasolio_alla_data"]["var_pct_un_anno"] for p in V["prec"] if p["id"] in PREC_EN and p["id"] != "trattori-2024"]
     tp = V["thr_pct"]
     A(f"the monitor's thresholds, built on these precedents, rate the risk **low** with diesel below €{num(lo, 2)} and an 8-week rise below {tp[0]}%, **medium** between "
       f"€{num(lo, 2)} and €{num(hi, 2)} or a rise of {tp[0]}–{tp[1]}%, and **high** from €{num(hi, 2)} or a rise above {tp[1]}%. Protests started at or near a new price peak and, "
-      f"in every haulage case, with diesel 16–52% above a year earlier. The November supply-chain report uses €1.90 and €2.20; the upper level here is lower because March 2022 "
+      f"in every haulage case, with diesel {num(min(yy), 0)}–{num(max(yy), 0)}% above a year earlier. The November supply-chain report uses €1.90 and €2.20; the upper level here is lower because March 2022 "
       f"and April 2026 started below €2.20.")
     H3("Where things stand")
     sp = V["strikes"]
     need(sp["autotrasporto"], "9 novembre", where="scioperi_proclamati autotrasporto")
     gen = [x for x in sp["elementi"] if x["ambito"] == "nazionale"]
     P(f"**No national haulage stoppage had been called** in the sources consulted on 9 November (Rai News list of 8 November; the Ministry of Transport's strike calendar was "
-      f"not reachable from this environment). Unatras raised the possibility in October and met the ministry on 27 October; the outcome of that meeting was not found. "
+      f"not reachable from this environment). Unatras raised the possibility in October, and a meeting at the ministry was set for 27 October; its outcome was not found. "
       f"Other national actions this month: a general strike by the CGIL union on {date_en(gen[0]['data_inizio'], False)} and rail strikes, including freight, from 21:00 on "
       f"20 November to 20:00 on 21 November ({link('Rai News, 8 November 2026', sp['link'])}). With {V['notice_days']} days' notice, a stoppage called on "
       f"{date_en(today.isoformat(), False)} could not start before **{date_en(V['earliest'])}**.")
@@ -1194,7 +1197,7 @@ def blocks(V, edition, today):
       f"index's rule, not an observed flow. What would change La Spezia's risk is a fall in its container calls, which the index triggers below half of last year's level.")
     # ------------------------------------------------------------------ 7
     H2("scenarios", "7. Scenarios: what a new shock would do")
-    A("this whole section is the monitor's assessment. The scenarios have no probabilities. They show what the transmission rules give when a shock of a known shape hits Italian prices, "
+    A("everything in this section is the monitor's reasoning. The scenarios have no probabilities. They show what the transmission rules give when a shock of a known shape hits Italian prices, "
       "with no new government measures and excise unchanged.")
     P(f"**Method.** The changes in Brent and TTF come from the monitor's simulator: for Hormuz, the average and the peak change in the 2026 episode over 30 or 91 days; for the Red Sea, "
       f"the 2023–24 episode; for TransMed, the loss of {num(20.86, 2)} billion cubic metres a year net of spare LNG terminal capacity. Italian prices then follow the rules of section 3 "
@@ -1212,8 +1215,9 @@ def blocks(V, edition, today):
                    (f"+{num(x['gas_vulnerabili_aumento_cent_smc'][0], 0)} to +{num(x['gas_vulnerabili_aumento_cent_smc'][1], 0)} c/m³" if x["gas_vulnerabili_aumento_cent_smc"][1] else "unchanged"))
             rng = lambda a, dec=2: f"{num(a[0], dec)}–{num(a[1], dec)}" if a[0] != a[1] else num(a[0], dec)
             inf = x["inflazione_effetto_diretto_punti"]
+            infs = f"+{num(inf[0], 1)}" if num(inf[0], 1) == num(inf[1], 1) else f"+{num(inf[0], 1)} to +{num(inf[1], 1)}"
             rows.append([nm_[k] if base == "da_condizioni_normali" else "", lab, rng(x["gasolio_eur_l"]), rng(x["benzina_eur_l"]), rng(x["pun_eur_mwh"], 0), gas,
-                         f"+{num(inf[0], 1)} to +{num(inf[1], 1)}", LEVEL.get(x["rischio_fermo_tir"], x["rischio_fermo_tir"])])
+                         infs, LEVEL.get(x["rischio_fermo_tir"], x["rischio_fermo_tir"])])
     TAB(["Scenario", "Start", "Diesel €/l", "Petrol €/l", "PUN €/MWh", "Regulated gas", "Inflation, points (direct)", "Stoppage risk"], rows,
         f"Assessment. Ranges: average to peak of the input shock, 4-week to 8-week coefficients (1 month) or 8–13-week to long-run (3 months). Inflation: direct effect of energy only. "
         f"Stoppage risk from the monitor's thresholds; 'high' for every scenario from today because diesel is already above €{num(hi, 2)}. Source: {dl('italia-impatti.json')}.")
@@ -1239,7 +1243,8 @@ def blocks(V, edition, today):
     P(f"For the Red Sea, the 2023–24 episode: diesel was €{num(orr['base']['eur_l'], 3)} in the week of {date_en(orr['base']['data'])} and averaged €{num(orr['media_eur_l'], 3)} "
       f"in the next {orr['n_settimane']} weeks; the small rise the rule implies did not happen.")
     A("the rule is good enough for orders of magnitude on fuel at one to three months, underestimates the peak at three months and overestimates power in spring, when solar "
-      "and hydro cut the hours in which gas sets the price. Excise cuts matter as much as the shock: in 2026 they took 12–24 cents off the average.")
+      "and hydro cut the hours in which gas sets the price. Excise cuts matter as much as the shock: in 2026 they took "
+      f"{num((g1['media_senza_tagli_accise'] - g1['media_eur_l']) * 100, 0)}–{num((g3['media_senza_tagli_accise'] - g3['media_eur_l']) * 100, 0)} cents off the average diesel price.")
     H3("Likely government measures")
     MP = {"hormuz_1m": ["an excise cut on fuel (2022: 30.5 cents with VAT; 2026: 24.4)", "a tax credit and faster excise refunds for hauliers (2026: 300 million euros)",
                         "pressure for voluntary price caps (Eni and IP, September 2026)"],
@@ -1267,12 +1272,12 @@ def blocks(V, edition, today):
          ["NIC inflation", f"{num(nl[1], 1)}% ({month_en(nl[0], False)}, prelim.)", "food above 3%", "Istat"],
          ["Gas storage Italy", f"{num(it['valore'], 1)}% ({date_en(it['data'], False)})", "falling faster than last winter", "GIE AGSI+"],
          ["Mazara del Vallo flow", f"{num(m['media_7g_gwh'], 0)} GWh/day (7 days)", "below 70% of the annual average", "ENTSOG"],
-         ["Hormuz tanker and LNG transits", f"{num(q['indicatori'][0]['valore'], 1)}% on 2025", "above −30% for two weeks = disruption over", "IMF PortWatch, rischio.json"]],
+         ["Hormuz tanker and LNG transits, 7 days", f"{pct(q['indicatori'][0]['valore'], 1)} on the 2025 average", "above −30% for two weeks = disruption over", "IMF PortWatch, rischio.json"]],
         "Thresholds are the monitor's assessment; the last two follow report/metodo-rischio.md.")
     cal_rows = []
     for e in sorted(V["cal"], key=lambda x: x["data"]):
         t = e.get("titolo") or ""
-        if "2026-11-10" <= e["data"] <= "2026-12-31" and (e["categoria"] in ("energia", "banca-centrale") or "HICP" in t):
+        if "2026-11-10" <= e["data"] <= "2026-12-31" and any(w in t for w in ("IEA Oil Market", "HICP", "OPEC+", "BCE:")):
             tt_ = t.replace("Eurozona/UE: inflazione HICP, dato definitivo", "Euro area: HICP inflation, final").replace("Eurozona: inflazione HICP, stima flash", "Euro area: HICP inflation, flash estimate") \
                    .replace("BCE: decisione di politica monetaria (con conferenza stampa)", "ECB monetary policy decision").replace("novembre", "November") \
                    .replace("OPEC+: 42a riunione ministeriale OPEC e non-OPEC (ONOMM) e 69a riunione JMMC - quote 2027", "OPEC+ ministerial meeting: 2027 quotas")
