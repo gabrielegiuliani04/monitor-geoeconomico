@@ -147,7 +147,8 @@ def carica_curati():
 
 
 def carica_osservatorio():
-    nomi = ["ai", "ai-mondo", "stretti-dettaglio", "portwatch", "prezzi", "cavi-incidenti", "rete-elettrica", "cavi"]
+    nomi = ["ai", "ai-mondo", "stretti-dettaglio", "portwatch", "prezzi", "cavi-incidenti", "rete-elettrica", "cavi",
+            "minerali", "commercio", "investimenti"]
     return {n: leggi(os.path.join(DATI, n + ".json"), obbligatorio=False) for n in nomi}
 
 
@@ -383,8 +384,12 @@ def calcola_colli(colli, oss, materie, controlli, nodi_ids, oggi):
                     errore("%s: controllo %r inesistente" % (dove, s.get("controllo")))
                 else:
                     v = c.get("giorni_alla_scadenza")
-                    ri.update({"fonte": c.get("fonte"), "link": c.get("link"), "data": oggi.isoformat(), "affidabilita": c.get("affidabilita"),
-                               "nota": "scadenza %s; stato del controllo: %s" % (c.get("scadenza"), c.get("stato"))})
+                    # data = data della fonte sulla scadenza (non la data del calcolo: i giorni sono contati a oggi)
+                    ri.update({"fonte": c.get("fonte"), "link": c.get("link"), "data": c.get("data_fonte") or oggi.isoformat(), "affidabilita": c.get("affidabilita"),
+                               "nota": "scadenza %s; stato del controllo: %s; giorni contati al %s%s" % (
+                                   c.get("scadenza"), c.get("stato"), oggi.isoformat(), ("; " + c["verifica"]) if c.get("verifica") else "")})
+                    if c.get("verifica"):
+                        ri["verifica"] = c["verifica"]
             elif t == "cavi-incidenti":
                 lim = oggi - dt.timedelta(days=s.get("giorni", 365))
                 ev = [e for e in inc if e.get("paese") == s.get("paese") and data_valida(e.get("data_evento") or "") and lim <= data_valida(e["data_evento"]) <= oggi]

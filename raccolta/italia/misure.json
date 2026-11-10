@@ -1,0 +1,128 @@
+{
+ "descrizione": "Misure del governo contro il caro energia: precedenti 2022 e misure 2026. Le date e gli importi dei tagli delle accise sono controllati da raccogli.py sulla serie settimanale MASE (campo accisa), che li ricalcola in 'accise.cambi' del file finale.",
+ "elementi": [
+  {
+   "id": "accise-2022",
+   "anno": 2022,
+   "tipo": "taglio-accise",
+   "data_inizio": "2022-03-22",
+   "data_fine": "2022-12-31",
+   "testo": "Taglio delle accise su benzina e gasolio di 25 centesimi al litro (30,5 con l'IVA) dal 22 marzo 2022, prorogato più volte; ridotto a 15 centesimi (18,3 con IVA) a dicembre 2022; finito il 1° gennaio 2023. Nella serie MASE l'accisa passa da 728,4 a 478,4 €/1000 l (benzina) nella rilevazione del 28/3/2022, a 578,4 il 5/12/2022 e torna a 728,4 il 9/1/2023.",
+   "fonte": "DL 21 marzo 2022, n. 21; serie settimanale MASE",
+   "link": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2022-03-21;21",
+   "data_fonte": "2022-03-21",
+   "affidabilita": "alta"
+  },
+  {
+   "id": "crediti-energivori-2022",
+   "anno": 2022,
+   "tipo": "credito-imposta",
+   "data_inizio": "2022-01-01",
+   "data_fine": "2022-12-31",
+   "testo": "Crediti d'imposta per imprese energivore e gasivore sui costi dell'energia, introdotti a inizio 2022 e aumentati nel corso dell'anno (DL 4/2022 'Sostegni-ter', DL 17/2022 'Energia', DL 50/2022 'Aiuti', DL 144/2022 'Aiuti-ter').",
+   "fonte": "DL 1 marzo 2022, n. 17",
+   "link": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2022-03-01;17",
+   "data_fonte": "2022-03-01",
+   "affidabilita": "media",
+   "nota": "Le aliquote dei singoli decreti non sono riportate: vanno lette nei testi."
+  },
+  {
+   "id": "bonus-sociali-2022",
+   "anno": 2022,
+   "tipo": "bonus-sociale",
+   "data_inizio": "2022-04-01",
+   "data_fine": "2022-12-31",
+   "testo": "Bonus sociali elettricità e gas rafforzati dall'ARERA e soglia ISEE di accesso alzata a 12.000 euro dal 2° trimestre 2022.",
+   "fonte": "DL 1 marzo 2022, n. 17",
+   "link": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2022-03-01;17",
+   "data_fonte": "2022-03-01",
+   "affidabilita": "media"
+  },
+  {
+   "id": "oneri-iva-gas-2022",
+   "anno": 2022,
+   "tipo": "bollette",
+   "data_inizio": "2021-10-01",
+   "data_fine": "2023-03-31",
+   "testo": "Azzeramento degli oneri generali di sistema nelle bollette e IVA sul gas ridotta al 5%, introdotti dal quarto trimestre 2021 e prorogati per tutto il 2022.",
+   "fonte": "DL 27 settembre 2021, n. 130",
+   "link": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2021-09-27;130",
+   "data_fonte": "2021-09-27",
+   "affidabilita": "media"
+  },
+  {
+   "id": "bonus-200-2022",
+   "anno": 2022,
+   "tipo": "trasferimento",
+   "data_inizio": "2022-07-01",
+   "data_fine": "2022-11-30",
+   "testo": "Indennità una tantum di 200 euro (DL 50/2022 'Aiuti', luglio 2022) e di 150 euro (DL 144/2022 'Aiuti-ter', novembre 2022) per lavoratori e pensionati sotto soglie di reddito.",
+   "fonte": "DL 17 maggio 2022, n. 50",
+   "link": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2022-05-17;50",
+   "data_fonte": "2022-05-17",
+   "affidabilita": "media"
+  },
+  {
+   "id": "autotrasporto-2022",
+   "anno": 2022,
+   "tipo": "autotrasporto",
+   "data_inizio": "2022-03-15",
+   "data_fine": null,
+   "testo": "Nel marzo 2022 il governo mette sul tavolo 80 milioni di aiuti per l'autotrasporto (Unatras: 'non risolve i problemi').",
+   "fonte": "La Sicilia (ANSA), 12 marzo 2022",
+   "link": "https://www.lasicilia.it/news/economia/1208929/il-garante-ferma-lo-sciopero-degli-autotrasportatori-ma-e-solo-una-tregua.html",
+   "data_fonte": "2022-03-12",
+   "affidabilita": "media"
+  },
+  {
+   "id": "accise-marzo-2026",
+   "anno": 2026,
+   "tipo": "taglio-accise",
+   "data_inizio": "2026-03-19",
+   "data_fine": "2026-11-07",
+   "testo": "Decreto del 19 marzo 2026: accise su benzina e gasolio -24,4 centesimi al litro con IVA (-20 centesimi di accisa: nella serie MASE da 672,9 a 472,9 €/1000 l dalla rilevazione del 23/3/2026). Poi proroghe e riduzioni: il 22 maggio il taglio sul gasolio scende a 10 centesimi e sulla benzina a 5, fino al 6 giugno; altri tagli sul gasolio tra agosto e ottobre; l'ultimo (4 centesimi, 4,9 con IVA) dal 28 ottobre al 7 novembre non è stato prorogato.",
+   "fonte": "Today.it, 27 marzo 2026; Shipping Italy, 23 maggio 2026; Rai News, 8 novembre 2026; serie MASE",
+   "link": "https://www.today.it/economia/benzina-esaurita-cartelli-distributori.html",
+   "link2": "https://www.rainews.it/articoli/2026/11/carburanti-scade-lo-sconto-di-49-cent-sulle-accise-del-diesel-rischio-rincari-c2f0e782-44ba-426d-9017-19a5504f37b7.html",
+   "data_fonte": "2026-11-08",
+   "affidabilita": "alta"
+  },
+  {
+   "id": "credito-autotrasporto-2026",
+   "anno": 2026,
+   "tipo": "autotrasporto",
+   "data_inizio": "2026-05-22",
+   "data_fine": "2026-12-31",
+   "testo": "Credito d'imposta sul gasolio per l'autotrasporto: 300 milioni decisi il 22 maggio (200 nuovi), rimborso trimestrale delle accise in 30 giorni invece di 60, Tavolo permanente dell'autotrasporto. A novembre 2026 concessi 242,2 milioni dei 480 stanziati, utilizzabili entro il 31 dicembre 2026.",
+   "fonte": "Shipping Italy, 23 maggio 2026; TrasportoEuropa, novembre 2026",
+   "link": "https://www.shippingitaly.it/2026/05/23/sospeso-il-fermo-dellautotrasporto-in-programma-dal-25-maggio/",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "alta"
+  },
+  {
+   "id": "tetto-eni-ip-2026",
+   "anno": 2026,
+   "tipo": "prezzo-calmierato",
+   "data_inizio": "2026-09-28",
+   "data_fine": null,
+   "testo": "Prezzi calmierati volontari di Eni/Enilive (benzina 1,99 €/l, gasolio 2,19 €/l) e Socar-IP, circa 4.100 impianti su 20 mila; verifiche di Palazzo Chigi con Q8. Sindacati e gestori (Faib, Fegica) chiedono un tetto dinamico per legge.",
+   "fonte": "La Prealpina, 28 settembre 2026",
+   "link": "https://www.prealpina.it/news/economia/553287/corsa-al-pieno-scontato-alcuni-distributori-a-secco-code-e-lo-spettro-degli-scioperi.html",
+   "data_fonte": "2026-09-28",
+   "affidabilita": "media"
+  },
+  {
+   "id": "decreto-bollette-2026",
+   "anno": 2026,
+   "tipo": "bollette",
+   "data_inizio": "2027-01-01",
+   "data_fine": null,
+   "testo": "Il 9 novembre 2026 il Consiglio dei ministri approva il decreto Bollette: da gennaio taglio medio di circa 15 euro al megawattora (Pichetto); meno di 30 euro all'anno per famiglia secondo il Corriere; tetto al prezzo del gas secondo Il Sole 24 Ore.",
+   "fonte": "ANSA; Corriere della Sera; Il Sole 24 Ore, 9 novembre 2026",
+   "link": "https://www.ansa.it/sito/notizie/economia/2026/11/09/dal-cdm-ok-al-decreto-bollette-15-euro-in-meno-al-megawattora_cbf74d76-2c12-4718-89af-73ab9c1e6fec.html",
+   "data_fonte": "2026-11-09",
+   "affidabilita": "media",
+   "link2": "https://www.corriere.it/economia/energie/26_novembre_09/bollette-il-governo-ha-approvato-il-nuovo-decreto-9a245b11-fe65-4be6-93e8-4f024d742xlk.shtml"
+  }
+ ]
+}
