@@ -109,6 +109,14 @@ REVIEW = {
         "Italian text from curated files (auction outcomes, bottleneck indicators, cable incidents, hydrogen projects, risk levels) translated into English.",
         "Charts: tick labels of the port chart were broken by a character substitution; value labels on the wind chart overlapped the target ticks. Fixed and checked at 1440 and 390 px.",
         "Transit times: the model's 10.5 extra days via the Cape (transit-times.json) and UNCTAD's 14–24 days are now both shown, with the reason they differ.",
+        "Updated 10 Nov 2026 after the offshore wind review: the Dutch 21 GW target is shown for end-2032 (moved from 2030 in 2024; the March 2026 letter to "
+        "Parliament still says 'around 2030'), not for 2030; the turbine bottleneck now quotes Siemens Gamesa's first profitable quarter since financial year 2022 "
+        "(about +75 million € in April–June 2026, secondary summaries) instead of the Q2 loss of −44 million €, and GE Vernova's wind EBITDA of +72 million $ in Q3 2026 "
+        "(2026 guidance: a loss of 400–500 million $); supply-chain investment since 2022 is 'at least 15 billion €' as in the WindEurope PDF, not 15.4 billion €. "
+        "Corrected at the source in eolico-filiera.json. Brent: the note on files that disagree no longer gives 91.70 as the prezzi.json figure for 9 November; "
+        "that was overnight trading of the next session, and the 9 November close is 92.57 (the report does not use Brent). "
+        "Prices now skip the live session that prezzi.json marks as provisional: TTF is the 9 November close (82.50 €/MWh, not the 82.33 read overnight), "
+        "with its year-to-date change, since the 1-year change cannot be recomputed exactly for that day.",
     ],
     "unverifiable": [
         "EU-wide US share of LNG (58% in 2025, 63% in Q1 2026) and the country shares: IEEFA page returns 403; figures from the agent report and esposizione-nord.json.",
@@ -116,7 +124,7 @@ REVIEW = {
         "Prices from Ship & Bunker, EEX auction results, WindEurope statistics and offshoreWIND.biz articles: checked only against the data files.",
         "IJmuiden Ver Gamma dates (26 November–10 December 2026): secondary source (RVO via trade press) in two files that agree.",
         "Inconsistent perimeters declared, not resolved: sanctioned ships in the Gulf of Finland (44 of 109 ships; 38 of 96 tankers; 45 tankers in the whole Baltic); "
-        "hull value of a large container ship (221.7 vs 150 million $); German LNG capacity still counting the Mukran terminal; Brent (91.70 in prezzi.json, 92.62 elsewhere).",
+        "hull value of a large container ship (221.7 vs 150 million $); German LNG capacity still counting the Mukran terminal; Brent (92.57, the 9 November close, in prezzi.json; 92.62, an intraday reading, in bunker-emissioni.json and rischio.json).",
     ],
 }
 
@@ -190,6 +198,40 @@ def data_link(name):
     return f"[{name}](DATA/{name})"
 
 
+def last_close(s):
+    """prezzi.json marks a live session as 'provvisorio': use the last completed session instead.
+    1-day and 1-month changes are recomputed on the series; year-to-date and 1-year changes are
+    rebased from the live point; the 1-year change is dropped (see long_change)."""
+    ser = s.get("serie") or []
+    if not s.get("provvisorio") or len(ser) < 3:
+        return s
+    live = ser[-1][1]
+    (dc, vc), body = ser[-2], ser[:-1]
+    out = dict(s, ultimo=vc, data=dc, serie=body, provvisorio=False, live_escluso=ser[-1])
+    v = {}
+    if body[-2][1]:
+        v["1g"] = round(100 * (vc / body[-2][1] - 1), 2)
+    lim = (dt.date.fromisoformat(dc) - dt.timedelta(days=30)).isoformat()
+    m = [x for d_, x in body if d_ <= lim]
+    if m and m[-1]:
+        v["1m"] = round(100 * (vc / m[-1] - 1), 2)
+    # year to date: same reference (last close of the previous year), so it can be rebased exactly;
+    # the 1-year change cannot (its reference day shifts with the last point), so it is left out
+    if (s.get("var") or {}).get("ytd") is not None and live and dc[:4] == ser[-1][0][:4]:
+        ref = live / (1 + s["var"]["ytd"] / 100)
+        v["ytd"] = round(100 * (vc / ref - 1), 2)
+    out["var"] = v
+    return out
+
+
+def long_change(s, digits=0):
+    """'+164% on a year', or the year-to-date change when the 1-year one is not available."""
+    v = s.get("var") or {}
+    if v.get("1a") is not None:
+        return f"{pct(v['1a'], digits)} on a year"
+    return f"{pct(v['ytd'], digits)} since the start of the year"
+
+
 def need(text, *tokens, where=""):
     """Warn if a curated number quoted in the report is no longer in its source text."""
     t = str(text)
@@ -258,7 +300,7 @@ BOTTLE_EN = {  # first indicator of each bottleneck card: English label and unit
     "aste-ricavi": ("offshore capacity in failed negative-bidding rounds, 2024–2025", " GW"),
     "cavi-hvdc": ("Prysmian transmission order backlog", " billion €"),
     "convertitori-hvdc": ("new in-service date of Amprion's BalWin1 (2 GW) grid link", ""),
-    "turbine": ("Siemens Gamesa loss before special items, Q2 of financial year 2026", " million €"),
+    "turbine": ("Siemens Gamesa profit before special items in Q3 of financial year 2026 (April–June), its first profitable quarter since financial year 2022", " million € (about; figure from secondary summaries)"),
     "navi": ("Western installation vessels (WTIV) for turbines of 15 MW or more by 2028, more than", ""),
     "porti": ("investment announced since 2022 in factories, ports and vessels", " billion €"),
     "fondazioni": ("European XXL monopile capacity from 2027", " million tonnes a year"),
@@ -431,7 +473,7 @@ def compute(today, offline):
     V["dkpl"] = dkpl
 
     # ---------------------------------------------------------------- prices
-    pr = {s["id"]: s for s in F["prezzi.json"]["serie"]}
+    pr = {s["id"]: last_close(s) for s in F["prezzi.json"]["serie"]}
     V["ttf"], V["hh"], V["brent"], V["eurusd"] = pr["ttf"], pr["hh"], pr["brent"], pr["eurusd"]
     # TTF in USD/MMBtu: EUR/MWh x USD/EUR / 3.412 MMBtu per MWh
     V["ttf_usd_mmbtu"] = pr["ttf"]["ultimo"] * pr["eurusd"]["ultimo"] / 3.412
@@ -728,14 +770,14 @@ def chart_wind(V, wide=True):
     hi = max(max(c["obiettivo_2030_gw"] or 0 for c in C), max(c["previsione_2030_mw"] / 1000 for c in C))
     hi = 10 * (-(-hi // 10))
     X = lambda v: left + v / hi * (w - left - right)
-    o = [svg_open(w, h, "Offshore wind: installed, 2030 forecast and 2030 target",
-                  "GW by country: installed at end-2025, WindEurope 2030 forecast, national 2030 target.", "ch3" + ("w" if wide else "n"))]
+    o = [svg_open(w, h, "Offshore wind: installed, 2030 forecast and national target",
+                  "GW by country: installed at end-2025, WindEurope 2030 forecast, national target (2030; Netherlands end-2032).", "ch3" + ("w" if wide else "n"))]
     o.append('<text class="ne-t" x="12" y="22">Offshore wind, GW</text>')
     o.append('<rect class="ne-s2" x="12" y="34" width="12" height="10" rx="2"/><text class="ne-l" x="30" y="43">installed end-2025</text>')
     o.append(f'<rect class="ne-s3" x="{150 if wide else 140}" y="34" width="12" height="10" rx="2"/><text class="ne-l" x="{168 if wide else 158}" y="43">forecast 2030</text>')
     lx = 280 if wide else 12
     ly = 34 if wide else 52
-    o.append(f'<line class="ne-k1" x1="{lx + 6}" x2="{lx + 6}" y1="{ly - 2}" y2="{ly + 12}" stroke-width="3"/><text class="ne-l" x="{lx + 16}" y="{ly + 9}">2030 target</text>')
+    o.append(f'<line class="ne-k1" x1="{lx + 6}" x2="{lx + 6}" y1="{ly - 2}" y2="{ly + 12}" stroke-width="3"/><text class="ne-l" x="{lx + 16}" y="{ly + 9}">target (2030; NL end-2032)</text>')
     for t in ticks(0, hi, 10):
         o.append(f'<line class="ne-g" x1="{X(t):.1f}" x2="{X(t):.1f}" y1="{top - 6}" y2="{h - 26}"/><text class="ne-m" x="{X(t):.1f}" y="{h - 10}" text-anchor="middle">{int(t)}</text>')
     names = {"GB": "UK", "DE": "Germany", "NL": "Netherlands", "DK": "Denmark", "BE": "Belgium", "PL": "Poland", "FR": "France", "NO": "Norway"}
@@ -750,7 +792,7 @@ def chart_wind(V, wide=True):
             lx_ = X(tg) + 5
         o.append(f'<text class="ne-m" x="{lx_:.1f}" y="{y + 28}">{num(fc, 1)}</text>')
         if tg:
-            o.append(f'<line class="ne-k1" x1="{X(tg):.1f}" x2="{X(tg):.1f}" y1="{y + 1}" y2="{y + 33}" stroke-width="3"><title>{names[c["paese"]]}: target {num(tg, 1)} GW in 2030</title></line>')
+            o.append(f'<line class="ne-k1" x1="{X(tg):.1f}" x2="{X(tg):.1f}" y1="{y + 1}" y2="{y + 33}" stroke-width="3"><title>{names[c["paese"]]}: target {num(tg, 1)} GW {"by end-" + str(c["anno_obiettivo"]) if c.get("anno_obiettivo") else "in 2030"}</title></line>')
             o.append(f'<text class="ne-m" x="{X(tg) + 5:.1f}" y="{y + 13}">{num(tg, 1) if tg % 1 else int(tg)}</text>')
     o.append("</svg>")
     return "".join(o)
@@ -843,7 +885,7 @@ def blocks(V, edition):
         f"**German and Dutch gas storage is far below normal before winter.** On {date_en(st['de']['date'])} Germany was "
         f"{num(st['de']['pct'])}% full and the Netherlands {num(st['nl']['pct'])}%, against an EU goal of 90%. Germany is "
         f"{num(abs(st['de']['yoy_pp']))} points below a year ago (GIE AGSI+). The TTF gas price is {num(ttf['ultimo'], 2)} €/MWh, "
-        f"{pct(ttf['var']['1a'], 0)} on a year.",
+        f"{long_change(ttf)}.",
         f"**Offshore wind will reach under half of the North Sea goal for 2030.** Europe connected only "
         f"{num(eu['aggiunto_2025_mw'] / 1000, 2)} GW in 2025. For Denmark, Germany, the Netherlands and Belgium WindEurope expects "
         f"{num(esb['previsione_2030_gw_paesi'])} GW in 2030, {num(esb['quota_obiettivo_2030_previsto_pct'], 0)}% of the 65 GW promised at Esbjerg.",
@@ -956,8 +998,8 @@ def blocks(V, edition):
                    f"The Netherlands closed the Groningen field by law on 1 October 2024."))
     B.append(("h3", "TTF price"))
     B.append(("p", f"The **TTF**, the Dutch hub price that sets gas prices for most of Europe, closed at {num(ttf['ultimo'], 2)} €/MWh on "
-                   f"{date_en(ttf['data'])} (front-month future, provisional close): {pct(ttf['var']['1g'])} on the day, {pct(ttf['var']['1m'])} on a month "
-                   f"and {pct(ttf['var']['1a'], 0)} on a year. US Henry Hub was {num(V['hh']['ultimo'], 3)} $/MMBtu. Converted at "
+                   f"{date_en(ttf['data'])} (front-month future, {'provisional close' if ttf.get('provvisorio') else 'daily close; the live session of the day of reading is left out'}): {pct(ttf['var']['1g'])} on the day, {pct(ttf['var']['1m'])} on a month "
+                   f"and {long_change(ttf)}. US Henry Hub was {num(V['hh']['ultimo'], 3)} $/MMBtu. Converted at "
                    f"{num(V['eurusd']['ultimo'], 4)} $/€, TTF equals {num(V['ttf_usd_mmbtu'], 1)} $/MMBtu: the transatlantic gap of about "
                    f"{num(V['spread'], 0)} $/MMBtu is what pulls US cargoes to Europe (calculation by this script; {data_link('prezzi.json')}, Yahoo Finance)."))
     B.append(("h3", "Power links"))
@@ -983,8 +1025,11 @@ def blocks(V, edition):
     B.append(("p", f"Europe had {num(eu['installato_fine2025_mw'] / 1000)} GW of offshore wind at the end of 2025 and added "
                    f"{num(eu['aggiunto_2025_mw'] / 1000, 2)} GW during the year, the lowest since 2016. WindEurope expects "
                    f"{num(eu['previsione_2030_mw'] / 1000)} GW in 2030 ({link('WindEurope', ws['link'])}, {date_en(ws['data_fonte'])}, via {data_link('eolico-filiera.json')})."))
-    B.append(("fig", "wind", f"**Offshore wind by country, GW:** installed at the end of 2025, WindEurope forecast for 2030 and the 2030 "
-                             f"target (pink tick). National totals, so Germany and Denmark include the Baltic and the UK the Irish Sea. "
+    nl_t = next(c for c in V["wind_countries"] if c["paese"] == "NL")
+    need(f"{nl_t['obiettivo_2030_gw']} {nl_t.get('anno_obiettivo')} {nl_t['fonte_obiettivo']}", "21 2032", "intorno al 2030", where="Dutch target year")
+    B.append(("fig", "wind", f"**Offshore wind by country, GW:** installed at the end of 2025, WindEurope forecast for 2030 and national target "
+                             f"(pink tick). Targets are for 2030 except the Dutch 21 GW, due by end-2032 since 2024 (the March 2026 letter to Parliament still says "
+                             f"'around 2030'). National totals, so Germany and Denmark include the Baltic and the UK the Irish Sea. "
                              f"Source: WindEurope 2025 Statistics (February 2026) and national targets, via {data_link('eolico-filiera.json')}."))
     rows = []
     for k in ["esbjerg", "ostenda", "marienborg"]:
@@ -1026,7 +1071,18 @@ def blocks(V, edition):
         lab, unit = BOTTLE_EN[k]
         if k == "convertitori-hvdc":
             val = date_en(val)
-        items.append(f"**{label}** — strain: {tens}. {lab}: {val}{unit} ({link(ind['fonte'], ind.get('link'))}, {date_en(ind['data'])}).")
+        extra = ""
+        if k == "turbine":
+            need(ind["nome"], "Q3 esercizio 2026", where="eolico-filiera turbine Siemens Gamesa Q3")
+            val = f"+{val}"
+            gev = next(i for i in c["indicatori"] if i["nome"] == "GE Vernova: EBITDA segmento eolico Q3 2026")
+            need(gev["nota"], "-61", "400-500", where="eolico-filiera turbine GE Vernova Q3")
+            extra = (f" GE Vernova's wind segment earned +{num(gev['valore'], 0)} million $ (EBITDA) in Q3 2026, against −61 million a year earlier, "
+                     f"but GE now guides a 2026 wind loss of 400–500 million $ ({link('GE Vernova', gev.get('link'))}, {date_en(gev['data'])}).")
+        if k == "porti":
+            need(ind["unita"], "almeno", where="eolico-filiera porti investimenti")
+            val = f"at least {num(val, 0)}"
+        items.append(f"**{label}** — strain: {tens}. {lab}: {val}{unit} ({link(ind['fonte'], ind.get('link'))}, {date_en(ind['data'])}).{extra}")
     B.append(("ul", items))
     B.append(("p", "In plain terms: Prysmian holds about 16.5 billion € of "
                    "transmission orders (29 October 2026) and NKT 13.0 billion (30 June 2026). New HVDC cable capacity is booked for years. "
@@ -1277,7 +1333,7 @@ def blocks(V, edition):
         "**Seven days is too short.** Weekly port-call changes swing by ±10–30% on small numbers; the report leads with 30-day and year-to-date averages.",
         "**Conflicting counts.** baltico-sicurezza.json counts all sanctioned ships in the Gulf of Finland (44 of 109); navi.json counts tankers (38 of 96 sanctioned) and the risk dashboard counts sanctioned tankers in the whole Baltic (45). They are different perimeters of the same snapshot.",
         "**Offshore wind** totals differ between WindEurope (national, end-2025) and EMODnet (map polygons, status sometimes late, duplicates removed).",
-        "**Brent** in prezzi.json is a provisional front-month close updated overnight; other files of the monitor quote an earlier reading. This report does not use Brent.",
+        "**Brent** in prezzi.json gives 92.57 $/bbl as the 9 November close (an earlier run recorded 91.70, a price from the next session's overnight trading); bunker-emissioni.json and rischio.json still quote 92.62, an intraday reading of 9 November. This report does not use Brent.",
         "**Missing:** AGSI+ daily fill for Denmark and Poland; monthly LNG import volumes by country and origin; any public war-risk premium for Baltic calls"
         + "".join(f"; {n} at build time" for n in OPTIONAL if not F[n]) + ".",
         "**Hand-written items:** the external fact on the EU-wide US LNG share and the thresholds of section 8. Figures quoted from curated text fields "
@@ -1552,6 +1608,9 @@ def render_html(B, meta, svg):
     return "\n".join(o)
 
 
+WIND_NAMES = {"GB": "United Kingdom", "DE": "Germany", "NL": "Netherlands", "DK": "Denmark", "BE": "Belgium", "PL": "Poland", "FR": "France", "NO": "Norway"}
+
+
 def chart_tables(V):
     T = V["top10"]
     st = V["storage"]
@@ -1560,8 +1619,9 @@ def chart_tables(V):
         "ports": table_html(["Port", "30 days y/y", "Year to date y/y"], [[p["name"], pct(p["var30"]), pct(p["ytd"])] for p in T]),
         "storage": table_html(["Country", "Latest", "Same day last year", "5-year average"],
                               [[n, f"{num(st[c]['pct'], 2)}%", f"{num(st[c]['last_year'], 2)}%", f"{num(st[c]['avg5'], 2)}%"] for c, n in [("de", "Germany"), ("nl", "Netherlands")]]),
-        "wind": table_html(["Country", "Installed end-2025, GW", "Forecast 2030, GW", "Target 2030, GW"],
-                           [[c["nome"], num(c["installato_fine2025_mw"] / 1000, 2), num(c["previsione_2030_mw"] / 1000, 2), num(c["obiettivo_2030_gw"], 1)]
+        "wind": table_html(["Country", "Installed end-2025, GW", "Forecast 2030, GW", "Target, GW (2030 unless stated)"],
+                           [[WIND_NAMES.get(c["paese"], c["nome"]), num(c["installato_fine2025_mw"] / 1000, 2), num(c["previsione_2030_mw"] / 1000, 2),
+                             (num(c["obiettivo_2030_gw"], 1) + (f" (end-{c['anno_obiettivo']})" if c.get("anno_obiettivo") else "")) if c["obiettivo_2030_gw"] else "—"]
                             for c in V["wind_countries"]]),
         "costs": table_html(["Item", "Asia → Rotterdam, € m", "Rotterdam → Genoa, € m"],
                             [["Fuel", num(a["costo_carburante_eur"] / 1e6, 3), num(b["costo_carburante_eur"] / 1e6, 3)],

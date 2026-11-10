@@ -104,6 +104,8 @@ Per ogni fonte: chi è, perché fidarsi, cosa dà. «Perché fidarsi» non vuol 
 
 > **Cosa dire al colloquio.** «Ogni file ha un campo con fonte, link, licenza e data. Ho separato la licenza del codice (MIT) da quella dei dati, file per file. Dove una fonte non mi dava il permesso di ripubblicare, ho tolto il dato: i poligoni del fronte, il Baltic Dry preso in automatico, gli storici completi di Yahoo. Al loro posto metto un link o valori derivati. So anche quali fonti sono non commerciali: in azienda saprei quali sostituire.» Alternative già indicate in `report/licenze.md`: atti UE su EUR-Lex al posto di OpenSanctions; EIA, BCE e Banca Mondiale al posto di Yahoo per materie prime e cambi; GSCPI della New York Fed e PortWatch al posto del Baltic Dry; un estratto Geofabrik al posto delle tessere OpenInfraMap.
 
+<div></div>
+
 > **Attenzione.** Cose ancora aperte: la **cronologia di git è pubblica**, quindi ciò che era stato pubblicato prima delle correzioni (poligoni di @Majakovsk73, un anno di Yahoo, la chiave AGSI) resta nella storia del repository; nei file non c'è traccia di richieste di permesso inviate a @Majakovsk73, DeepState o ISW (la cartella `report/permessi/` prevista non esiste); la riga di `noli.json` in `DATA_LICENSES.md` e il suo campo `fonti[]` citano ancora il Baltic Exchange via Trading Economics; OpenSanctions non è ancora stato sostituito.
 
 ## 4.4 Limiti onesti, con la risposta pronta

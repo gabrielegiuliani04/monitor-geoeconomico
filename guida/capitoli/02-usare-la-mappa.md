@@ -9,6 +9,8 @@ Questo capitolo spiega la mappa pezzo per pezzo: cosa vedi al primo accesso, che
 Alla prima visita si apre un riquadro **Geo-economic Risk Monitor**: riassume la catena (*event → chokepoint or infrastructure → flows of ships and energy → freight rates → prices → who is exposed*) e dà tre consigli: leggere la mappa, toccare uno stretto, aprire **Terminal** e **Reports**. Si chiude con **Got it**. Il browser ricorda la scelta; per riaprirlo davanti a un selezionatore usa il link **How to use it** in basso a sinistra, accanto a *Credits and licences* e *GitHub*.
 
 
+![La mappa all'apertura: barra in alto, pannello Layers a sinistra, zoom e coordinate a destra](../img/cap2-mappa-iniziale.jpg)
+
 ### La barra in alto
 
 | Elemento | Cosa fa |
@@ -22,8 +24,6 @@ Alla prima visita si apre un riquadro **Geo-economic Risk Monitor**: riassume la
 | **Terminal** | Il pannello con 14 schede (§3.1) |
 | **Dossier** (numero) | Il dossier sull'AI per Paese (`dossier.json`, oggi solo Stati Uniti), con **Show the points on the map** |
 | **Go to coordinates** | Scrivi `51.92, 4.21` (o `26.57 N, 56.25 E`) e premi **Go**: la mappa vola lì e mette un segnaposto; **Clear** lo toglie. È il modo più rapido per arrivare a un porto durante una demo |
-
-![La mappa all'apertura: barra in alto, pannello Layers a sinistra, zoom e coordinate a destra](../img/cap2-mappa-iniziale.jpg)
 
 ### Il pannello dei livelli
 

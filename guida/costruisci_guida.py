@@ -40,6 +40,7 @@ h2 { font-size:14pt; color:var(--acc); margin:18pt 0 6pt; break-after:avoid; }
 h3 { font-size:11.5pt; margin:13pt 0 4pt; break-after:avoid; }
 h1, h2, h3 { position:relative; }
 p { margin:0 0 6.5pt; orphans:3; widows:3; }
+p:has(+ blockquote), p:has(+ ul), p:has(+ table), p:has(+ figure) { break-after:avoid; }
 ul, ol { margin:0 0 7pt; padding-left:16pt; } li { margin:0 0 2.5pt; }
 a { color:var(--acc); text-decoration:none; }
 code { font:8.6pt "IBM Plex Mono", ui-monospace, monospace; background:var(--note); padding:0 2.5pt; border-radius:2pt; overflow-wrap:anywhere; }
@@ -49,12 +50,13 @@ table { clear:both; width:100%; border-collapse:collapse; font-size:8.3pt; line-
 thead { display:table-header-group; }
 tr { break-inside:avoid; }
 th { text-align:left; background:#EFE7EB; color:#4A0F30; font-weight:600; border-bottom:1pt solid var(--acc); padding:3.5pt 5pt; vertical-align:bottom; }
-td { padding:3pt 5pt; border-bottom:0.5pt solid var(--line); vertical-align:top; overflow-wrap:anywhere; }
+td { padding:3pt 5pt; border-bottom:0.5pt solid var(--line); vertical-align:top; overflow-wrap:break-word; }
+td code { overflow-wrap:normal; word-break:normal; hyphens:none; }
 tbody tr:nth-child(even) td { background:#FAFAF8; }
 table.piccola { break-inside:avoid; }
 figure { margin:8pt 0 12pt; break-inside:avoid; text-align:center; }
 figure img { max-width:100%; max-height:90mm; border:0.5pt solid var(--line); border-radius:3pt; }
-figure.alta { float:right; width:44%; margin:2pt 0 8pt 12pt; }
+figure.alta { clear:right; float:right; width:38%; margin:2pt 0 8pt 12pt; }
 figure.alta img { max-height:none; width:100%; }
 h1, h2 { clear:both; }
 figcaption { font-size:8.3pt; color:var(--soft); margin-top:4pt; text-align:left; }
@@ -144,7 +146,7 @@ def converti_capitolo(n, testo, toc):
     # tabelle corte: non spezzarle
     def tab(m):
         righe = m.group(0).count("<tr>")
-        return m.group(0).replace("<table>", '<table class="piccola">', 1) if righe <= 9 else m.group(0)
+        return m.group(0).replace("<table>", '<table class="piccola">', 1) if righe <= 6 else m.group(0)
     corpo = re.sub(r"<table>.*?</table>", tab, corpo, flags=re.S)
     return f'<section class="capitolo" id="cap{n}">{corpo}</section>'
 

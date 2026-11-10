@@ -60,10 +60,12 @@ Cercano chi capisce flussi di navi, esposizione del porto alle rotte, energia ne
 **A.** *Geo-economic Risk Monitor (personal project, 2026): open-source map and daily risk index for 39 European ports, built from IMF PortWatch port calls, chokepoint transits, security events and energy prices; every number with source and date.*
 
 **B.**
+
 - *Built a daily Port Risk Index for 39 North Sea, Baltic and Italian ports (probability × impact): traffic vs last year, nearby security events, dependence on disrupted chokepoints, war-risk listings.*
 - *Wrote "Northern Europe: Ports and Energy" (Nov 2026): port calls, gas storage, offshore wind, shipping costs and Baltic security; 64 claims independently reviewed, 12 corrected.*
 
 **C.**
+
 - *Designed an open-source OSINT map that follows a disruption from the event to the ports and countries exposed (event → chokepoint → flows → freight → prices → exposure), with 42 thematic layers from 50+ public sources.*
 - *Built a daily Port Risk Index for 39 ports, with thresholds calibrated on PortWatch history: a 20% drop in calls is amber because it happens in about one week in seven at a large port.*
 - *Wrote "Northern Europe: Ports and Energy" (issue 1, Nov 2026). Showed that Rotterdam's −10.8% weekly drop was noise: traffic was −0.5% year to date (PortWatch, to 30 Oct 2026).*
@@ -79,10 +81,12 @@ Cercano chi conosce aste, calendari dei progetti, navi e porti d'installazione, 
 **A.** *Geo-economic Risk Monitor (personal project, 2026): open-source monitor of North Sea and Baltic energy infrastructure, with an offshore wind calendar of 114 milestones (auctions, grid, first power, delays) and Baltic cable security.*
 
 **B.**
+
 - *Built an offshore wind calendar for 2023–2027 (114 milestones, 13 countries), validated daily; it flags dates that have passed without confirmation.*
 - *Mapped the supply chain and its bottlenecks (auctions, HVDC cables and converter platforms, vessels, ports): about 7.2 GW of tenders drew no award in 2023–2025.*
 
 **C.**
+
 - *Designed an open-source map of energy infrastructure and shipping in the North Sea and Baltic: 180 wind farms, HVDC links, submarine cables and incidents, LNG terminals and AIS positions.*
 - *Built an offshore wind calendar of 114 milestones and an "awarded vs target" comparison by country: Germany awarded 17.8 GW in 2023–26, but 16 GW of awarded sites still lack an FID.*
 - *Analysed why auctions fail: 6.5 GW of negative-bid rounds got no bids (DK 2024, DE and NL 2025), while two-sided CfDs cleared in the UK (8.4 GW), Poland (3.4 GW) and Denmark (1.8 GW).*
@@ -98,10 +102,12 @@ Cercano chi ragiona su rotte, tempi di transito, noli, carburante, ETS e stretti
 **A.** *Geo-economic Risk Monitor (personal project, 2026): open-source map linking chokepoint transits to transit times, freight rates and fuel costs on 99 Asia, Gulf and Atlantic routes to European ports.*
 
 **B.**
+
 - *Modelled sea transit times on 99 routes to 9 European ports, today vs 2023: Shanghai–Rotterdam takes 29.6 days via Suez and 40.1 via the Cape (+10.5); to Genoa the Cape adds 15.7 days.*
 - *Tracked 13 chokepoints with IMF PortWatch (Hormuz −95% year on year) and broke down voyage costs into fuel, EU ETS and war-risk insurance.*
 
 **C.**
+
 - *Designed an open-source OSINT map that follows a disruption along the chain: event → chokepoint → flows → freight → prices → exposed ports.*
 - *Modelled transit times (Dijkstra routing on open shipping lanes, three scenarios) for 99 routes: the Red Sea crisis hurt Mediterranean ports far more than northern ones (+15.7 to Genoa vs +10.5 days to Rotterdam via the Cape).*
 - *Showed that fuel price, not distance, is now the largest extra cost: VLSFO in Singapore at $854/t vs $521.5/t on 27 Feb 2026 (+64%).*
@@ -117,10 +123,12 @@ Cercano chi capisce interconnessioni, HVDC, sicurezza degli approvvigionamenti, 
 **A.** *Geo-economic Risk Monitor (personal project, 2026): open-source map of North Sea and Baltic power and gas infrastructure (HVDC links, cables, LNG, storage) with daily risk scoring and a record of cable incidents.*
 
 **B.**
+
 - *Mapped HVDC interconnectors, offshore grid projects and Baltic cable incidents: Estlink 2 was out from 25 Dec 2024 to 18 Jun 2025, cutting Estonia–Finland capacity from 1,016 to 358 MW.*
 - *Showed that grid connections, not vessels or turbines, are now the main delay in offshore wind: BalWin1 (2 GW) slipped a year, to 15 Sep 2031.*
 
 **C.**
+
 - *Designed an open-source map of energy infrastructure: high-voltage grid and HVDC links, submarine cables, pipelines and LNG terminals, offshore wind farms and hubs such as Bornholm Energy Island (3 GW, planned 2034).*
 - *Built a probability × impact dashboard for 18 chokepoints and infrastructure systems, including Baltic cables, pipelines and power links, with written weights and thresholds tested on 2024–2026 data.*
 - *Tracked gas security of supply: German and Dutch storage at 58.9% and 63.5% on 8 Nov 2026, against an EU goal of 90% (GIE AGSI+).*
@@ -136,10 +144,12 @@ Cercano metodo, scrittura chiara, separazione tra fatti e valutazioni, controllo
 **A.** *Geo-economic Risk Monitor (personal project, 2026): open-source geo-economic risk monitor with probability × impact scoring of 18 chokepoints and 39 ports, and four reports with documented fact-checking (416 claims checked, 91 corrected).*
 
 **B.**
+
 - *Built risk scores with explicit weights and thresholds tested on historical data, scenario signals checked daily, and a rule that separates a disruption in progress from a risk.*
 - *Wrote four reports (Hormuz and Red Sea, supply chain, AI supply chain, Northern Europe) under a written editorial standard, each independently reviewed: 416 claims checked, 91 corrected.*
 
 **C.**
+
 - *Designed an open-source OSINT monitor that follows a shock from the event to who pays for it, with 50+ public sources.*
 - *Built an ISO 31000-style probability × impact dashboard for 18 units. Reading of 9 Nov 2026: Qatar LNG 24.0/25 and Hormuz 22.5 are critical; TransMed scores low on probability but 4.3/5 on impact, because one pipeline carries 34% of Italy's gas.*
 - *Defined reliability rules: high/medium/low on every data point, facts separated from assessments, stated coordinate precision, an explicit "missing" for missing data.*
@@ -247,6 +257,8 @@ Non sei un esperto di sicurezza informatica: se la domanda va sul tecnico, dillo
 **10. "What is the shadow fleet risk in the Baltic?"**
 > *Three risks: cables, spills and sanctions enforcement. In the AIS snapshot of 9 November, 44 of the 109 ships seen in the Gulf of Finland were on Western sanction lists. Since November 2024 six Baltic cable incidents have been recorded, mostly linked to dragged anchors; when Estlink 2 was cut, Estonia–Finland capacity fell from 1,016 to 358 MW for almost six months. About a third of Russia's seaborne oil exports passes the Danish straits. For a port or an offshore operator that means watching ship behaviour near cables and farms, AIS gaps and GNSS jamming.*
 
+<div></div>
+
 > **Attenzione.** Non usare il dato dei «292 passaggi di petroliere sanzionate nelle acque danesi nel 2025» senza dire che il revisore non ha potuto verificarlo.
 
 **11. "Why did the Red Sea crisis hit Mediterranean ports harder than northern ones?"**
@@ -270,6 +282,8 @@ Sono giorni di sola navigazione a velocità fissa; UNCTAD dà 14–24 giorni. Se
 > *The AI assistant, Claude through Claude Code, wrote almost all the code and the first drafts, in several parallel sessions under those rules. Separate review sessions then checked every number against the data files and the original sources: 416 claims across four reports, 91 corrected. I read the reports and the reviews, spot-check numbers and decide what goes out.*
 > *I wouldn't claim I could rewrite the map's rendering code from scratch. I can explain how every number gets there, why each rule exists, and how I'd check it. Directing and checking fast automated work is becoming part of most analyst jobs.*
 
+<div></div>
+
 > **Attenzione.** Le decisioni citate sono vere e documentate in `STATO.md`. **I revisori sono sessioni AI separate**: se ti chiedono "who were the reviewers?", rispondi *"Separate AI sessions acting as strict reviewers against a written standard, with no access to change the data. I read their findings and decided on the corrections."* Non dire mai "independent experts". Il repository ha circa 100 commit in due giorni (9–10 novembre), molti con il messaggio «Lavori in corso degli agenti (da verificare)»; se qualcuno lo nota: *"It was built fast, in parallel sessions. The review came after, and that's where the corrections are."* Di' «I spot-check» solo se lo fai davvero (§5.6).
 
 **16. "How do you know the AI didn't make numbers up?"**
@@ -282,6 +296,8 @@ Perché funziona: mostra un controllo di plausibilità (sedute di domenica), la 
 
 **18. "Have you had a security problem?"**
 > *Yes, a small one. A free API key for the gas storage data ended up in a public file, inside an error message written by a collector. I removed it, added a step that masks anything that looks like a key before every save, a daily check that turns red if it finds one, and I regenerated the key, because it stays in the git history. The lesson: in a public repository, errors and logs are outputs too.*
+
+<div></div>
 
 > **Attenzione.** «I regenerated the key» diventa vero solo dopo che l'hai fatto davvero (§4.5, §5.6). Fino ad allora di' "the key has to be regenerated".
 

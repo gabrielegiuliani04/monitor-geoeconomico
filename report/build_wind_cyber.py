@@ -50,8 +50,9 @@ R2 = "report/ricerca/eolico-cyber-esposizione.md"
 # Curated facts from the research notes (10 November 2026). value, unit, source, link, date.
 # ------------------------------------------------------------------------------------------------
 EXT = {
-    "fr_stores_low": (250, "stores", "early trade reports", "https://www.infosecurity-magazine.com/news/france-expose-danfoss-controllers/", "2026-10"),
-    "fr_stores_low_hi": (350, "stores", "early trade reports", "https://www.infosecurity-magazine.com/news/france-expose-danfoss-controllers/", "2026-10"),
+    # Review 10-11-2026: the draft had 250-350 (no source found); cyber-energia.json and the agent file give 500-700, AP 700 (13-10-2026)
+    "fr_stores_low": (500, "stores", "initial estimates (cyber-energia.json)", "https://aljazeera.com/news/2026/10/13/unprecedented-cyberattack-hits-french-supermarkets-causing-food-losses", "2026-10-13"),
+    "fr_stores_low_hi": (700, "stores", "initial estimates (cyber-energia.json; AP, 13-10-2026)", "https://aljazeera.com/news/2026/10/13/unprecedented-cyberattack-hits-french-supermarkets-causing-food-losses", "2026-10-13"),
     "fr_stores_high": (1000, "stores", "Al Jazeera", "https://aljazeera.com/news/2026/10/13/unprecedented-cyberattack-hits-french-supermarkets-causing-food-losses", "2026-11-09"),
     "wave2_stores": (115, "stores", "SecurityWeek", "https://securityweek.com/over-100-european-stores-hit-as-supermarket-fridge-attacks-resume", "2026-11-03"),
     "fr_panels_before": (1825, "panels", "Infosecurity Magazine (internet-scanner counts)", "https://www.infosecurity-magazine.com/news/france-expose-danfoss-controllers/", "2026-10-11"),
@@ -61,12 +62,14 @@ EXT = {
     "modat_wind": (605, "systems", "Modat and NCSC-NL via SWZ Maritime", "https://swzmaritime.nl/news/2026/10/08/8500-wind-and-solar-systems-exposed-online/", "2026-10-08"),
     "modat_wind_countries": (23, "countries", "Modat and NCSC-NL via SWZ Maritime", "https://swzmaritime.nl/news/2026/10/08/8500-wind-and-solar-systems-exposed-online/", "2026-10-08"),
     "spe_gw": (3, "GW", "DNV for SolarPower Europe", "https://www.solarpowereurope.org/press-releases/new-report-solar-sector-proposes-solutions-to-mitigate-critical-cybersecurity-risks", "2025-04-29"),
-    "spe_brands": (7, "brands", "DNV for SolarPower Europe", "https://www.solarpowereurope.org/press-releases/new-report-solar-sector-proposes-solutions-to-mitigate-critical-cybersecurity-risks", "2025-04-29"),
-    "sundown_gw": (4.5, "GW", "Forescout SUN:DOWN", "https://www.forescout.com/research-labs/sun-down-a-dark-side-to-solar-energy-grids/", "2025-03"),
+    # Review: the 7-brand figure is in the full report (p. on market concentration), not in the press release; it assumes remote access to 70% of each installed base, 2023 data
+    "spe_brands": (7, "brands", "DNV for SolarPower Europe, full report", "https://api.solarpowereurope.org/uploads/SPE_2025_Solutions_for_PV_Cyber_Risks_to_Grid_Stability_032dc2ae5a.pdf", "2025-04-29"),
+    "sundown_gw": (4.5, "GW", "Forescout SUN:DOWN, citing earlier research", "https://www.forescout.com/research-labs/sun-down-a-dark-side-to-solar-energy-grids/", "2025-03"),
     "vestas_gw": (161, "GW", "Vestas annual report 2025 via GreentechLead", "https://greentechlead.com/wind/vestas-reports-record-2025-revenue-of-eur-18-8-billion-sets-stronger-2026-outlook-52164", "2026-02-05"),
     "vestas_turbines": (56000, "turbines", "Vestas annual report 2025 via GreentechLead", "https://greentechlead.com/wind/vestas-reports-record-2025-revenue-of-eur-18-8-billion-sets-stronger-2026-outlook-52164", "2026-02-05"),
     "sg_turbines": (10000, "turbines", "Siemens Gamesa, offshore service logistics", "https://www.siemensgamesa.com/explore/innovations/offshore-service-logistics-part-1", "n/d"),
     "kasat_turbines": (5800, "turbines", "pv magazine", "https://www.pv-magazine.com/2022/03/01/satellite-cyber-attack-paralyzes-11gw-of-german-wind-turbines", "2022-03-01"),
+    # Review: pv magazine (Handelsblatt) 11 GW; Enercon itself: 'more than 10 GW' in central Europe (EVWind, 21-04-2022)
     "kasat_gw": (11, "GW", "pv magazine", "https://www.pv-magazine.com/2022/03/01/satellite-cyber-attack-paralyzes-11gw-of-german-wind-turbines", "2022-03-01"),
     "enercon_de_gw": (27.8, "GW", "MaStR 10-11-2026, researcher's calculation (" + R2 + ")", "https://www.marktstammdatenregister.de/MaStR/Datendownload", "2026-11-10"),
     "enercon_de_turbines": (12356, "turbines", "MaStR 10-11-2026, researcher's calculation (" + R2 + ")", "https://www.marktstammdatenregister.de/MaStR/Datendownload", "2026-11-10"),
@@ -75,12 +78,14 @@ EXT = {
     "kritis_mw": (104, "MW", "openKRITIS (reliability medium)", "https://www.openkritis.de/it-sicherheitsgesetz/sektor_energie.html", "2026"),
     "dnv_nl_mw": (750, "MW", "DNV case study (date not captured)", "https://www.dnv.com/cyber/insights/cases/designing-ot-cybersecurity-into-an-offshore-wind-farm-to-provide-800000-homes-with-clean-energy/", "n/d"),
     "gb2019_mw": (737, "MW", "Ofgem report on 9 August 2019", "https://www.ofgem.gov.uk/publications/investigation-9-august-2019-power-outage", "2020-01"),
-    "gb2019_customers": (1.1, "million customers", "Ofgem report on 9 August 2019", "https://www.ofgem.gov.uk/publications/investigation-9-august-2019-power-outage", "2020-01"),
+    "gb2019_customers": (1.15, "million customers", "Ofgem report on 9 August 2019", "https://www.ofgem.gov.uk/publications/investigation-9-august-2019-power-outage", "2020-01"),
     "pl_sites": (30, "sites", "CERT Polska", "https://cert.pl/en/posts/2026/01/incident-report-energy-sector-2025/", "2026-01-30"),
-    "chp_residents": (50000, "residents", "The Hacker News (secondary, not read in full)", "https://thehackernews.com/2026/08/hackers-breach-polish-power-plant.html", "2026-08-08"),
-    "uk_days": (4, "days", "Irish Times (original: The Telegraph)", "https://www.irishtimes.com/world/uk/2026/08/23/iran-linked-hackers-accused-of-cyberattack-that-shut-down-british-power-plant/", "2026-08-23"),
+    # Review: primary source read (CERT Polska follow-up, 8 Aug 2026) instead of The Hacker News, whose article reproduces device-level detail
+    "chp_residents": (50000, "residents", "CERT Polska follow-up report", "https://cert.pl/en/posts/2026/08/incident-follow-up-report-energy-sector-2025/", "2026-08-08"),
+    "uk_days": (4, "days", "Irish Times (original: The Sunday Telegraph)", "https://www.irishtimes.com/world/uk/2026/08/23/iran-linked-hackers-accused-of-cyberattack-that-shut-down-british-power-plant/", "2026-08-23"),
     "gamma_cn_max": (25, "% of turbines", "RVO draft permit IJmuiden Ver Gamma-B, rule 22", "https://www.rvo.nl/sites/default/files/2026-10/Concept-voorschriften-vergunning-IJmuiden-Ver-_kavel-Gamma-B_versie-oktober-2026.pdf", "2026-10"),
-    "lt_kw": (100, "kW", "LRT", "https://www.lrt.lt/en/news-in-english/19/2411602/lithuania-passes-law-to-block-chinese-access-tosolar-and-wind-farm-systems", "2024-11-12"),
+    "lt_kw": (100, "kW", "LRT", "https://www.lrt.lt/en/news-in-english/19/2411602/lithuania-passes-law-to-block-chinese-access-to-solar-and-wind-farm-systems", "2024-11-12"),
+    "lt_existing": ("1 June 2026", "deadline", "pv magazine (the draft said 1 May 2026)", "https://www.pv-magazine.com/2026/06/05/lithuanias-grid-operators-can-now-disconnect-solar-plants-without-cybersecurity-measures/", "2026-06-05"),
     "spower_mw": (500, "MW", "Utility Dive (NERC lesson learned)", "https://www.utilitydive.com/news/first-cyber-attack-on-solar-wind-assets-revealed-widespread-grid-weaknesse/566505/", "2019-09"),
     "eeg_kw": (25, "kW", "Vattenfall explainer on section 10b EEG", "https://energysales.vattenfall.de/en/renewables/remote-controllability", "n/d"),
 }
@@ -516,8 +521,8 @@ PREC = {
 }
 EXTRA_PREC = [
     ("2019-03-05", "sPower (USA): denial of service on vendor firewalls", f"Repeated reboots for about 12 hours; loss of visibility over about a dozen wind and solar sites (≈{X('spower_mw')} MW); no generation lost", "not attributed", EXT["spower_mw"][3], "high"),
-    ("2026-08-08", "Poland follow-up: CHP plant reached from wind-farm substations", f"Attacker moved through the grid operator's private cellular network to a CHP plant serving ≈{num(X('chp_residents'))} residents; a steam turbine shut down. First known case of a wind network used as the way in", "as for Poland 2025", EXT["chp_residents"][3], "medium (secondary)"),
-    ("2026-08-22", "UK: small generator offline", f"Offline for {X('uk_days')} days; government said no threat to the wider grid", "suspected Iran-linked; no formal attribution", EXT["uk_days"][3], "medium"),
+    ("2026-08-08", "Poland follow-up (incident Dec 2025, disclosed 8 Aug 2026): second CHP plant reached over a private cellular network", f"A steam turbine and the process-water system of a CHP plant serving ≈{num(X('chp_residents'))} residents shut down briefly; heat supply not disrupted. CERT Polska calls the private cellular (APN) route the first such case observed; press accounts of the report place its start at a wind farm", "as for Poland 2025", EXT["chp_residents"][3], "high (route via wind farm: secondary)"),
+    ("2026-08-23", "UK: small generator offline (incident in July, reported 23 Aug 2026)", f"Offline for {X('uk_days')} days; government said there was no risk to the wider energy system", "Iran-linked hackers blamed in press reports; no formal attribution", EXT["uk_days"][3], "medium"),
 ]
 
 
@@ -540,11 +545,11 @@ def blocks(V):
         f"**The old fleet is large where wind matters most.** Turbines commissioned before 2010 hold {pc(dk)} of onshore capacity in Denmark, {pc(de)} in Germany, "
         f"{pc(gb)} in the UK and {pc(it)} in Italy; offshore is young, with {pc(eu_off18)} of European capacity from 2018 or later (registers and GEM, 2026; {FLEET_LINK}).",
         f"**Concentration sits in control rooms, not parks.** {pc(V['de_dv'])} of German wind capacity is flagged as remotely controllable by its direct marketer (MaStR, 10 Nov 2026), "
-        f"and one satellite-network attack in February 2022 cut the remote link to {num(X('kasat_turbines'))} Enercon turbines (≈{X('kasat_gw')} GW, gigawatts) at once.",
+        f"and one satellite-network attack in February 2022 cut the remote link to {num(X('kasat_turbines'))} Enercon turbines (≈{X('kasat_gw')} GW, gigawatts) in central Europe at once.",
         f"**One stopped OEM fleet could exceed the grid's design loss, but no real incident has cut output.** Continental Europe's reserves are sized for a {gw(V['ce_ref'])} GW loss; "
         f"one manufacturer's German fleet stopping at the 2025 peak would be ≈{gw(scC['hi'], 0)} GW (*estimate*). Every wind incident so far, including Poland in December 2025, removed monitoring, not generation.",
         "**Rules have arrived for big operators, not for farmers.** NIS2 is in force in Denmark, Germany, Poland, the Netherlands and Lithuania (2024–2026); the Dutch draft permit for IJmuiden Ver Gamma-B (October 2026) "
-        "demands control from the EEA and a software bill of materials. Most small, old turbines sit below every threshold.",
+        "requires an EEA-based operator in control and a digital bill of materials down to software and firmware. Most small, old turbines sit below every threshold.",
     ]))
     B.append(("val", "*Assessment.* The direct answer for operators, regulators and investors: the analogy holds for the legacy, small-owner end of the fleet and for the shared platforms that reach it "
               "(service providers, direct marketers, inverter clouds). It breaks for modern offshore farms, whose realistic exposure is a vendor or supply-chain compromise, not an exposed panel. "
@@ -556,13 +561,14 @@ def blocks(V):
     B.append(("h2", "refrigeration", "2. What happened in the refrigeration attacks, and why it worked"))
     B.append(("p", f"On the night of 11–12 October 2026, attackers remotely changed the set-points of connected refrigeration controllers in French supermarkets: temperatures were pushed up to 50 °C "
               f"or long defrost cycles were started, and stock was destroyed ({L('Al Jazeera, 13 Oct 2026', fr.get('link', '#'))}; {DL('cyber-energia.json')}). "
-              f"Store counts range from {X('fr_stores_low')}–{X('fr_stores_low_hi')} in early trade reports to more than {num(X('fr_stores_high'))} (Al Jazeera, 9 Nov 2026, as recorded in `report/agenti/cyber-energia.md`; article not re-read). "
+              f"Store counts range from initial estimates of {X('fr_stores_low')}–{X('fr_stores_low_hi')} (AP gave 700 on 13 Oct 2026) to more than {num(X('fr_stores_high'))} (Al Jazeera, 9 Nov 2026, as recorded in `report/agenti/cyber-energia.md`; article not re-read). "
               f"A second wave on 1–2 November hit more than {X('wave2_stores')} stores in Belgium, the Netherlands, Luxembourg, Sweden, Ireland and Estonia ({XL('wave2_stores', 'SecurityWeek, 3 Nov 2026')}). "
               "France's blood service reported that refrigeration settings at three sites were changed through a supplier's remote-monitoring software (EFS statement, 3 Nov 2026, via TechSpot)."))
-    B.append(("p", "**Attribution, with its uncertainty.** Press reports on 9 November 2026 — Al-Monitor carrying wire copy (AFP/Reuters) and AP — say French officials attributed the October attacks to Iran's "
+    B.append(("p", "**Attribution, with its uncertainty.** Press reports on 9 November 2026 — Reuters (carried by Al-Monitor), AP, BBC and Al Jazeera, as recorded by the monitor's news agent — say French officials attributed the October attacks to Iran's "
               f"Islamic Revolutionary Guard Corps (IRGC) and asked for EU sanctions ({L('Al-Monitor, 9 Nov 2026', 'https://www.al-monitor.com/originals/2026/11/french-officials-blame-iran-refrigerator-hacks-vow-retaliation')}). "
-              "**The monitor could not confirm this against a French government statement.** France's earlier public attributions of cyber operations pointed to Russian services, pro-Russian groups had claimed some waves, "
-              "and SentinelOne considers Russia-aligned groups credible suspects for the November wave. Any link between the IRGC and the November wave is unproven. Reliability of the attribution: medium."))
+              "**The monitor could not confirm this against a French government statement, and the reviewer could not open the press reports.** France's earlier public attributions of cyber operations pointed to Russian services "
+              f"(in July 2026 the foreign minister blamed the FSB for a 'vast cyber campaign' in Europe: {L('AFP via LBCI, 13 Jul 2026', 'https://v7cdn.lbcgroup.tv/news/world-news/946246/paris-to-summon-russia-envoy-over-vast-cyber-campaign-in-europe-minist/en')}), pro-Russian groups had claimed some waves, "
+              "and SentinelOne considers Russia-aligned groups credible suspects for the November wave. Any link between the IRGC and the November wave is unproven. Reliability of the attribution: medium (press reports only; no official text or technical evidence seen)."))
     B.append(("h3", "Why it worked: five conditions (concept level)"))
     B.append(("tab", ["Condition", "What public reporting says", "Source"], [
         ["End-of-life devices", "Most affected units were legacy products that no longer receive software or security updates", "maker's statements to AFP and The Guardian, Oct 2026 (via Facilities Dive)"],
@@ -587,7 +593,7 @@ def blocks(V):
         ["Remote paths", "Retrofitted dial-up, cellular routers, satellite, DSL", "VPN to OEM centre; ISP and trader links", "Fibre in the export cable; OEM fleet centres; cloud analytics"],
         ["Who operates", "Farmers, cooperatives, small utilities; ISPs; direct marketers", "Utilities and funds under OEM service contracts", "Large utilities under NIS2; OEM; TSO interface"],
         ["Patching reality", "Often impossible; only boundary controls", "OEM-scheduled, slowed by certification and grid-code testing", "OEM-managed; secure-development claims where certified"],
-        ["Cyber certification", "None", "Rare", "Emerging: one Chinese OEM's farm control system to IEC 62443-3-3 SL2 (Sep 2026); others not public"],
+        ["Cyber certification", "None", "Rare", "Emerging: a Chinese OEM's farm control system to IEC 62443-3-3 SL2 (Sep 2026) and a Siemens Energy plant control system used offshore; turbine OEMs' certificates not public"],
         ["Exposure class (concept)", "Exposed panels and routers, shared credentials, old operating systems", "VPN appliances, OEM/ISP corporate IT, flat park networks", "Supply chain, OEM and cloud platforms, vendor conduits, substation and HVDC OT"],
         ["Strengths", "Small, varied, partly hardwired protection", "Standard protocols, OEM security teams", "Segmentation, security operations centres, remoteness, professional owners"],
         ["Remaining life", "0–10 years; repowering under way", "10–20 years", "25–30+ years"],
@@ -595,7 +601,8 @@ def blocks(V):
     ], f"Source: {R1}, section 4 (Tulsa/Staggs et al. 2017; INL 2024; DOE 2020; IEC; DNV; CIGRE 2026; OEM material). Generation boundaries are approximate; the fleet data in section 5 use before 2010 / 2010–2017 / 2018+."))
     B.append(("h3", "Legacy fleet (≈1995–2010)"))
     B.append(("p", "Controllers came from the original manufacturers, several of which merged or disappeared. Remote access was added later — first dial-up, then cellular routers, DSL and, in central Europe, satellite. "
-              f"The KA-SAT attack of 24 February 2022 showed what that means: {num(X('kasat_turbines'))} Enercon turbines lost remote monitoring and control because their satellite modems were wiped, and many farms had no backup link ({XL('kasat_turbines', 'pv magazine, 1 Mar 2022')}). "
+              f"The KA-SAT attack of 24 February 2022 showed what a single retrofitted link means: {num(X('kasat_turbines'))} Enercon turbines lost remote monitoring and control because their satellite modems were wiped, and many farms had no backup link ({XL('kasat_turbines', 'pv magazine, 1 Mar 2022')}). "
+              f"It was not only a legacy problem: an average of ≈{X('kasat_gw') * 1000 / X('kasat_turbines'):.1f} MW per turbine points to a mix of older and middle-generation machines (*assessment*). "
               "After the warranty, service often passes to independent providers, and in Germany direct marketers must be able to read and curtail plants above "
               f"{X('eeg_kw')} kW (kilowatts) that sell through direct marketing ({XL('eeg_kw', 'section 10b EEG')}). Patching the 1990s controller is rarely possible; the realistic controls sit at the network boundary."))
     B.append(("h3", "Middle generation (2010–2018)"))
@@ -619,12 +626,13 @@ def blocks(V):
         ["Grid protection", "n/a (a load)", "Distribution-grid protection, small units", "Grid codes, export-substation protection", "Breaks"],
         ["Owner's security capacity", "Store or small chain", "Farmer, cooperative, small utility", "Large utility with a security team", "Holds for legacy"],
         ["Regulatory floor", "Little until the CRA (2027)", "Mostly below NIS2 thresholds", "NIS2, network code, permit conditions", "Holds for legacy"],
-    ], f"Sources: {R1}, section 2.2; exposure counts from {XL('modat_wind', 'Modat and NCSC-NL, presented 6–9 Oct 2026')}. Counts only; no locations or system types are reported here."))
+    ], f"Sources: {R1}, section 2.2; exposure counts from {XL('modat_total', 'Modat and NCSC-NL via Security Magazine, 9 Oct 2026')}. Counts only; no locations, system types or access details are reported here."))
     B.append(("h3", "The weaker segment: legacy turbines, farmer and cooperative owners, inverters and clouds"))
     B.append(("p", f"Modat and the Dutch NCSC presented in October 2026 a scan finding {num(X('modat_total'))} wind and solar control systems reachable from the internet in {X('modat_countries')} countries; "
               f"{X('modat_wind')} of them were wind systems ({XL('modat_total', 'Security Magazine, 9 Oct 2026')}). Most of the rest were solar. For inverters the aggregation is larger: a DNV study for SolarPower Europe estimated that compromising about "
-              f"{X('spe_gw')} GW of inverter capacity could significantly affect the European grid, and that {X('spe_brands')} inverter brands could each remotely control more than 10 GW ({XL('spe_gw', 'SolarPower Europe, 29 Apr 2025')}); "
-              f"Forescout modelled about {X('sundown_gw')} GW to push frequency down to the 49 Hz load-shedding level ({XL('sundown_gw', 'Forescout, Mar 2025')})."))
+              f"{X('spe_gw')} GW of generation capacity could significantly affect the European grid ({XL('spe_gw', 'SolarPower Europe, 29 Apr 2025')}), and that {X('spe_brands')} inverter makers could each remotely manipulate more than 10 GW, "
+              f"assuming remote access to 70% of each installed base (2023 data; {XL('spe_brands', 'full report')}). "
+              f"Forescout, citing earlier research, puts at about {X('sundown_gw')} GW the capacity an attacker would need to push frequency down to the 49 Hz load-shedding level ({XL('sundown_gw', 'Forescout, Mar 2025')})."))
     B.append(("val", "*Assessment.* For small turbines the owner is not a security organisation, the device is out of support, a third party holds remote access, and the plant is below NIS2 thresholds — the refrigeration recipe. "
               "The impact per site is small; the systemic risk comes from aggregation in a service provider, a direct marketer's trading platform or an inverter cloud. Of these, the inverter cloud is the larger aggregation risk."))
     B.append(("h3", "Modern offshore farms"))
@@ -646,19 +654,19 @@ def blocks(V):
               f"({gw(V['dk_small_mw'])} GW) are smaller than 1 MW. {gw(V['dk_20y_on'], 2)} GW onshore and {gw(V['dk_20y_off'], 2)} GW offshore are 20 or more years old. "
               f"Germany has {gw(on['DE']['pre2010'])} GW onshore from before 2010 ({num(V['de_turb_pre'])} turbines) and {gw(V['de_20y'])} GW already 20 or more years old, {gw(V['de_2000'])} GW of it from 2000 or earlier. "
               f"In the Baltic states, Sweden and Finland, {pc(min(sh[c][0]['2018+'] for c in ('LT','LV','EE','SE','FI')))}–{pc(max(sh[c][0]['2018+'] for c in ('LT','LV','EE','SE','FI')))} of the dated capacity is from 2018 or later (GEM). "
-              f" Italy's pre-2010 share ({pc(it)}) is a GEM figure and probably low."))
+              f"Italy's pre-2010 share ({pc(it)}) is a GEM figure and probably low."))
     B.append(("fig", "germany", f"**Figure 2.** Germany: onshore capacity in operation by commissioning period, split by whether the brand is still active (MW; brands no longer active: NEG Micon, REpower/Senvion, Tacke, Fuhrländer, DeWind, BARD, Adwen, Südwind, AN, Enron; only brands with >50 MW per period counted). "
               f"Source: Marktstammdatenregister, 10 Nov 2026, via {FLEET_LINK}."))
     B.append(("p", f"**Orphan brands.** In Germany {gw(V['de_orphan_on_tot'])} GW onshore and {gw(V['de_orphan_off_tot'])} GW offshore come from brands that no longer exist; their controllers are maintained, if at all, by independent providers or retrofitters. "
               f"Natural persons are the registered operators of {gw(V['de_nat_tot'], 2)} GW of onshore capacity, {gw(V['de_nat_pre'], 2)} GW of it from before 2010 — a heavy understatement of citizen ownership, because citizen wind farms are usually registered as companies. "
-              f"Germany has {num(V['de_ops'])} registered operators. Chinese-made turbines are marginal: {V['de_vensys']['turbine']} Vensys units ({V['de_vensys']['mw']} MW) in Germany, none in the Danish register."))
+              f"Germany has {num(V['de_ops'])} registered operators. Turbines from Chinese-owned makers are marginal: {V['de_vensys']['turbine']} units ({V['de_vensys']['mw']} MW) from Vensys, a German designer controlled by Goldwind, in Germany; none in the Danish register."))
     B.append(("fig", "offshore", f"**Figure 3.** Offshore wind capacity by commissioning period, share of MW in operation. DK includes Thor (2026). Source: {FLEET_LINK} (ENS, MaStR, REPD, GEM), read 10 Nov 2026."))
     B.append(("p", f"Offshore is young, and it is concentrated. In EMODnet's North Sea and Baltic data, the {em['pre2010']['farms']} farms built before 2010 total {gw(em['pre2010']['mw'])} GW (average {num(em['pre2010']['avg'])} MW per farm); "
               f"the {em['2010-2017']['farms']} farms of 2010–2017 average {num(em['2010-2017']['avg'])} MW and the {em['2018+']['farms']} farms from 2018 average {num(em['2018+']['avg'])} MW ({FLEET_LINK}; EMODnet lags the registers)."))
     B.append(("h3", "Control-room concentration"))
     B.append(("tab", ["Actor", "Public figure", "Source"], [
         ["Vestas", f"{X('vestas_gw')} GW and more than {num(X('vestas_turbines'))} turbines under active service (end-2025)", XL("vestas_gw", "Vestas AR 2025 via GreentechLead")],
-        ["Siemens Gamesa", f"More than {num(X('sg_turbines'))} remotely connected turbines monitored from its Brande centre", XL("sg_turbines", "Siemens Gamesa (undated page)")],
+        ["Siemens Gamesa", f"More than {num(X('sg_turbines'))} remotely connected turbines monitored from its Brande centre (company figure, undated page; the same count appears in 2021 coverage)", XL("sg_turbines", "Siemens Gamesa (undated page)")],
         ["Enercon (KA-SAT case)", f"{num(X('kasat_turbines'))} turbines (≈{X('kasat_gw')} GW) lost their remote link through one satellite network, 24 Feb 2022; today Enercon has {num(X('enercon_de_turbines'))} turbines and {X('enercon_de_gw')} GW onshore in Germany", XL("kasat_turbines", "pv magazine") + "; " + XL("enercon_de_gw", "MaStR")],
         ["Direct marketers (DE)", f"{pc(V['de_dv'], 1)} of German wind capacity flagged as remotely controllable by its direct marketer", "MaStR 10 Nov 2026, " + FLEET_LINK],
         ["Independent service providers", f"Deutsche Windtechnik switched off remote monitoring of ≈{num(X('isp_turbines'))} turbines in 2022; **no reliable public figure** for the ISP market share", DL("cyber-energia.json")],
@@ -684,7 +692,7 @@ def blocks(V):
     B.append(("p", f"KA-SAT (2022), Deutsche Windtechnik (2022), Nordex (2022) and Poland (December 2025) all ended the same way: turbines kept producing in automatic mode while owners lost visibility and remote control. In Poland, more than {X('pl_sites')} wind and solar sites lost remote control at their grid-connection substations and control workstations were wiped, "
               f"yet output did not stop ({XL('pl_sites', 'CERT Polska, 30 Jan 2026')}). Turbines are designed to run unattended; the remote link is for optimisation, curtailment and restart."))
     B.append(("val", f"*Assessment.* The real system risk of 'monitoring lost' is indirect: the grid operator cannot curtail wind when supply exceeds demand — as in Denmark's {dk25['ore_vento_sopra_consumo']} such hours in 2025 — or restart plants after a blackout. "
-              f"The non-cyber precedent shows how losses combine: on 9 August 2019 an offshore farm lost about {X('gb2019_mw')} MW alongside a gas plant after a lightning strike, and about {X('gb2019_customers')} million customers were disconnected in Great Britain ({XL('gb2019_mw', 'Ofgem, Jan 2020')})."))
+              f"The non-cyber precedent shows how losses combine: on 9 August 2019 an offshore farm lost about {X('gb2019_mw')} MW alongside a gas plant after a lightning strike, and about {X('gb2019_customers')} million customers were disconnected in Great Britain ({XL('gb2019_mw', 'Ofgem, Jan 2020')}; Hornsea 1 deloaded by 737 MW)."))
 
     # 7 -----------------------------------------------------------------------------------------
     B.append(("h2", "precedents", "7. Precedents, 2015–2026"))
@@ -705,23 +713,24 @@ def blocks(V):
     # 8 -----------------------------------------------------------------------------------------
     B.append(("h2", "rules", "8. Rules and defences"))
     B.append(("tab", ["Country", "NIS2 law", "In force", "Note"], [
-        ["Denmark", "NIS 2 Act (Act no. 434 of 6 May 2025)", "1 Jul 2025", "threat level for destructive attacks: medium"],
-        ["Germany", "NIS2UmsuCG (amends BSIG and EnWG)", "6 Dec 2025", f"KRITIS threshold for generation {X('kritis_mw')} MW; date to be checked in the Federal Law Gazette"],
+        ["Denmark", "Energy-sector act on strengthened preparedness (Act no. 258 of 6 Mar 2025); general NIS 2 Act (Act no. 434 of 6 May 2025)", "7 Mar 2025 (energy); 1 Jul 2025 (general)", "threat level for destructive attacks: medium"],
+        ["Germany", "NIS2UmsuCG (amends BSIG and EnWG)", "6 Dec 2025", f"published in the Federal Law Gazette on 5 Dec 2025 (BGBl. 2025 I No. 301); KRITIS threshold for generation {X('kritis_mw')} MW"],
         ["Lithuania", "Amended Law on Cyber Security", "18 Oct 2024", "further amended in 2026 (not verified)"],
-        ["Poland", "Amended KSC Act (Dz.U. 2026 poz. 252)", "3 Apr 2026", "one tracker gives 2 Apr 2026"],
-        ["Netherlands", "Cyberbeveiligingswet (with the CER law, Wwke)", "15 Aug 2026", "about 8,000 organisations in scope"],
+        ["Poland", "Amended KSC Act of 23 Jan 2026 (Dz.U. 2026 poz. 252)", "3 Apr 2026", "published 2 Mar 2026; in force one month later (official ELI register)"],
+        ["Netherlands", "Cyberbeveiligingswet (with the CER law, Wwke)", "15 Aug 2026", "'thousands of organisations' in scope (Rijksoverheid); about 8,000 per cyber-energia.json"],
         ["Latvia, Estonia", "—", "—", "**Missing:** not covered by the research notes"],
-    ], f"Sources: {R2}, section 4.1 (ECSO and other trackers, Rijksoverheid); {DL('cyber-energia.json')}. NIS2 transposition deadline: 17 Oct 2024."))
+    ], f"Sources: {R2}, section 4.1 (ECSO and other trackers, Rijksoverheid); {DL('cyber-energia.json')}; reviewer's checks of the Danish, German and Polish gazettes and registers, 10 Nov 2026. NIS2 transposition deadline: 17 Oct 2024."))
     B.append(("ul", [
         "**Cyber Resilience Act** (Regulation (EU) 2024/2847): reporting of actively exploited vulnerabilities since 11 Sep 2026; full application from 11 Dec 2027. It covers controllers, gateways and inverters sold as products — not the installed base.",
         "**Network Code on Cybersecurity** (Delegated Regulation (EU) 2024/1366): in force since 13 Jun 2024; national authorities are still designating high- and critical-impact entities. No final EU list was found.",
         "**Radio Equipment Directive** delegated act 2022/30: cybersecurity requirements for wireless equipment mandatory since 1 Aug 2025.",
-        f"**Lithuania**: remote access from high-risk countries to solar, wind and storage above {X('lt_kw')} kW is banned; existing plants had to comply by 1 May 2026, and grid operators can now disconnect non-compliant plants ({XL('lt_kw', 'LRT, 12 Nov 2024')}).",
+        f"**Lithuania**: remote access from high-risk countries to solar, wind and storage above {X('lt_kw')} kW is banned; the law applied to new plants from 1 May 2025, existing plants had to comply by {X('lt_existing')}, and grid operators can now disconnect non-compliant plants ({XL('lt_kw', 'LRT, 12 Nov 2024')}; {XL('lt_existing', 'pv magazine, 5 Jun 2026')}).",
         f"**Netherlands, IJmuiden Ver Gamma-B draft permit** (October 2026): an operator based in the EEA keeps operational control and documents cybersecurity for itself and its ICT suppliers (rule 21); "
-        f"no more than {X('gamma_cn_max')}% of turbines from China, and a digital bill of materials including software and firmware, with origin (rule 22) ({XL('gamma_cn_max', 'RVO draft permit')}). The application window runs {gdate} ({DL('wind-calendar.json')}).",
-        "**United Kingdom**: Mingyang's planned Ardersier turbine factory was blocked on national-security grounds (about 25 Mar 2026); Downing Street said in August 2026 it was not reconsidering.",
+        f"at least 75% of turbines not from China (so no more than {X('gamma_cn_max')}% from China), drive trains and generators not from China, and digital bills of materials for hardware with digital functions and the software and firmware in it, with maker and country of origin (rule 22) ({XL('gamma_cn_max', 'RVO draft permit')}). "
+        f"The joint application window for Gamma-A and Gamma-B runs {gdate} ({DL('wind-calendar.json')}).",
+        "**United Kingdom**: the government blocked Mingyang's planned Ardersier turbine factory on 25 Mar 2026, saying it could not support the use of its turbines in UK offshore wind projects on national-security grounds ([Scottish Financial Review, 25 Mar 2026](https://scottishfinancialreview.com/2026/03/25/uk-govt-blocks-chinese-plan-for-1500-scots-jobs/)); in August 2026 a government source said there were no plans to reverse the decision ([energy-pedia, 12 Aug 2026](https://www.energy-pedia.com/news/united-kingdom/swinney-urges-burnham-to-rethink-%C2%A31-5bn-wind-factory-ban-204932)).",
         "**EU**: a Cybersecurity Act revision proposed in January 2026 would create a process to name high-risk suppliers; since April 2026 EU funds no longer go to projects using inverters from high-risk suppliers. Germany has no law excluding Chinese turbines; Denmark has no specific public measure.",
-        "**Insurance**: Lloyd's market cyber-war clauses (LMA 5564–5567, new edition 19 Mar 2026) exclude state-backed operations, so attribution decides cover — which is why the unconfirmed IRGC attribution matters for claims.",
+        "**Insurance**: the Lloyd's market's cyber-war clauses (LMA5564–5567, listed in the LMA model cyber clauses, version of 19 Mar 2026) exclude state-backed cyber operations, so attribution can decide cover — which is why the unconfirmed IRGC attribution matters for claims.",
     ]))
     B.append(("h3", "Good practices, by who you are"))
     B.append(("tab", ["Owners of old turbines (farmers, cooperatives, small utilities)", "Offshore and large operators", "Ports and O&M bases"], [
@@ -760,7 +769,7 @@ def blocks(V):
         "**Fleet data:** Energistyrelsen register (data to end-September 2026), Marktstammdatenregister export (10 Nov 2026, dl-de/by-2-0), DESNZ REPD (Q2 2026, OGL v3), Global Energy Monitor wind tracker (February 2026, CC BY 4.0, projects ≥10 MW), EMODnet (CC BY 4.0), WindEurope 2025 statistics.",
         "**Limits:** GEM understates old and small fleets (coverage 48–97% by country); the Danish register has no owner type; the German 'natural person' field understates citizen ownership; EMODnet lags the registers. No public data on ISP market share or on the share of turbines linked by satellite or cellular networks. **Missing:** NIS2 dates for Latvia and Estonia.",
         "**Scenarios** in section 6 are orders of magnitude with stated simplifications, not network studies. Section 9 scenarios are assessments without probabilities.",
-        "**Unverified or secondary:** the IRGC attribution (press only); the Polish August 2026 follow-up and the UK July 2026 case (secondary sources); exact German and Polish NIS2 dates; protection-system independence clauses (DNV-ST-0438, IEC 61400-1); OEM IEC 62443 status.",
+        "**Unverified or secondary:** the IRGC attribution (press only); the UK July 2026 case (secondary sources); that the Polish APN route started at a wind farm (press reading of CERT Polska's report); the French exposed-panel counts (1,825 and 537); protection-system independence clauses (DNV-ST-0438, IEC 61400-1); OEM IEC 62443 status.",
         "**Scope:** defensive. The report deliberately omits exploit details, vulnerability identifiers, product weaknesses, lists or locations of exposed systems and attack steps.",
         "**Related reports, not repeated here:** [Offshore Wind in Northern Europe](offshore-wind-2026-11.html) (targets, auctions, ports) and [Northern Europe: Ports and Energy](northern-europe-2026-11.html) (ports, gas, Baltic security).",
     ]))
@@ -773,9 +782,14 @@ def blocks(V):
 # ------------------------------------------------------------------------------------------------
 REVIEW = {
     "log": "report/revisioni/wind-cyber-2026-11.md",
-    "text": ("Pending. An independent reviewer will check every number in this report against the data files and the cited sources, "
-             "under report/STANDARD.md, and record the result here: date, number of claims checked, corrections, what remains unverifiable. "
-             "Until then, treat the report as a draft."),
+    "title": "Review · 10 November 2026",
+    "text": ("Independent review on 10 November 2026 under report/STANDARD.md: 100 claims checked against the data files, the research notes and, where reachable, the original sources "
+             "(80 confirmed, 15 corrected, 5 not verifiable from here). Main corrections: the early French store count (500–700, not 250–350); Denmark's NIS2 law for energy "
+             "(Act no. 258, in force 7 Mar 2025); German and Polish NIS2 dates confirmed in the official gazettes; Lithuania's deadline for existing plants (1 June 2026); "
+             "the UK Mingyang statement (a government source, not Downing Street); the Polish follow-up, now from CERT Polska (heat supply not disrupted); "
+             "the inverter-concentration figure and its assumption; the LMA clause date. Safety: two links whose articles reproduce device-level detail were replaced; "
+             "no exploit details, identifiers, credentials or locations remain. Not verifiable from here: the IRGC attribution (press only), the 1,000-store and EFS figures, "
+             "the French exposed-panel counts and ANSSI's wording, SentinelOne's assessment."),
 }
 
 CSS = """
@@ -876,7 +890,7 @@ def render_md(B, meta, figs):
             alt = re.sub(r"\*\*|\[|\]\([^)]*\)", "", b[2]).split(". ")[1] if ". " in b[2] else "chart"
             o += [f"![{alt}]({figs[b[1]]})", "", inline_md(b[2]), ""]
         elif k == "review":
-            o += ['<a id="review"></a>', "", "---", "", "### Review · pending", "", REVIEW["text"], "", f"Review log, when done: {REVIEW['log']}.", ""]
+            o += ['<a id="review"></a>', "", "---", "", f"### {REVIEW['title']}", "", REVIEW["text"], "", f"Review log: [{REVIEW['log']}](revisioni/wind-cyber-2026-11.md).", ""]
     o += ["---", "", "Gabriele Giuliani · Geo-economic Risk Monitor · " + meta["edition"], "", meta["ai_note"], ""]
     return "\n".join(o)
 
@@ -929,8 +943,8 @@ def render_html(B, meta, svg):
                      f'<figcaption>{inline_html(b[2])}</figcaption>'
                      f'<details><summary>Chart data as a table</summary>{g["table"]}</details></figure>')
         elif k == "review":
-            o.append(f'<aside class="review" id="review"><h2>Review · pending</h2><p>{esc(REVIEW["text"])}</p>'
-                     f'<p>Review log, when done: <code>{esc(REVIEW["log"])}</code>.</p></aside>')
+            o.append(f'<aside class="review" id="review"><h2>{esc(REVIEW["title"])}</h2><p>{esc(REVIEW["text"])}</p>'
+                     f'<p>Review log: <code>{esc(REVIEW["log"])}</code>.</p></aside>')
     o.append(f'<footer><p class="sig">Gabriele Giuliani · Geo-economic Risk Monitor</p><p>{esc(meta["edition"])}. {inline_html(meta["ai_note"])}</p>'
              '<p><a href="../../index.html">← Back to the map</a></p></footer>')
     o += ["</main>", "</body>", "</html>"]
@@ -953,7 +967,7 @@ def main():
             "edition": edition, "read": date_en(today.isoformat()),
             "ai_note": ("Note on AI use: this report was prepared with an AI assistant (Claude, Anthropic), which wrote the build script, the calculations, the charts and the draft text "
                         "from the monitor's data files and two research notes that were also prepared with AI assistance and cite their sources. Numbers come from the data files and linked sources; "
-                        "assessments and estimates are marked. An independent review is pending. Gabriele Giuliani is responsible for publication.")}
+                        "assessments and estimates are marked. The independent review (10 November 2026) was also carried out with an AI assistant; its log lists every check. Gabriele Giuliani is responsible for publication.")}
     os.makedirs(OUT_SVG, exist_ok=True)
     os.makedirs(OUT_HTML, exist_ok=True)
     tabs = chart_tables(V)

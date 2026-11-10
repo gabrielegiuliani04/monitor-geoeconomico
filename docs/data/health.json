@@ -1,13 +1,13 @@
 {
- "updated": "2026-11-10T06:52Z",
+ "updated": "2026-11-10T11:22Z",
  "date": "2026-11-10",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 34.5,
+ "seconds": 9.5,
  "summary": {
   "critical": 0,
   "high": 1,
-  "medium": 39,
+  "medium": 16,
   "low": 3,
   "info": 4
  },
@@ -58,7 +58,7 @@
    "area": "consistency",
    "name": "key report figures vs data",
    "status": "amber",
-   "detail": "28 match, 1 differ, 0 not found in the report (fatti_chiave.json)"
+   "detail": "26 match, 2 differ, 1 not found in the report (fatti_chiave.json)"
   },
   {
    "area": "secrets",
@@ -69,20 +69,20 @@
   {
    "area": "licences",
    "name": "every data file has a licence row",
+   "status": "green",
+   "detail": "67 of 67 files listed; missing: none"
+  },
+  {
+   "area": "links",
+   "name": "source links",
    "status": "amber",
-   "detail": "42 of 67 files listed; missing: ai-mondo.json, assicurazioni.json, attacchi-analisti.json, baltico-sicurezza.json, basi-mondo.json, bunker-emissioni.json, commercio.json, cyber-energia.json, eolico-filiera.json, esposizione-nord.json, health.json, idrogeno.json, investimenti.json, italia-impatti.json, minerali.json, notizie-testate.json, offshore-nord.json, port-risk.json, porti-nord.json, rischio.json, simulatore.json, supply-chain-ai.json, transit-times.json, webcam.json, wind-calendar.json"
+   "detail": "12845 distinct links found; not checked (offline run)"
   },
   {
    "area": "validators",
    "name": "repository validators",
    "status": "green",
    "detail": "10 run, 0 with a non-zero exit: originali 0; simulatore 0; eolico 0; stretti 0; basi 0; assicurazioni 0; ai 0; italia 0; supply-chain-ai 0; ucraina 0"
-  },
-  {
-   "area": "links",
-   "name": "source links (rotating sample)",
-   "status": "green",
-   "detail": "150 of 9384 distinct links checked today: 6 blocked, 5 error, 138 ok, 1 proxy; 0 confirmed broken, 0 failed once (rolling record)"
   },
   {
    "area": "smoke",
@@ -102,22 +102,29 @@
   {
    "severity": "medium",
    "area": "consistency",
-   "file": "prezzi.json, report/hormuz-mar-rosso-2026-11.md",
-   "problem": "report figure: Brent on 9 Nov 2026 (USD/bbl), In breve: report/hormuz-mar-rosso-2026-11.md regex 'il Brent è a ([0-9.,]+) dollari al baril' = 92.62; prezzi.json serie[id=brent].serie = 91.7 (2026-11-09). difference +0.92",
+   "file": "prezzi.json, report/northern-europe-2026-11.md",
+   "problem": "report figure: TTF on 9 Nov 2026 (EUR/MWh), Northern Europe key points: report/northern-europe-2026-11.md regex 'The TTF gas price is ([0-9.,]+) €/MWh' = 83; prezzi.json serie[id=ttf].serie = 82.5 (2026-11-09). difference +0.5",
+   "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "prezzi.json, report/northern-europe-2026-11.md",
+   "problem": "report figure: Brent value the Northern Europe report says prezzi.json holds (USD/bbl): report/northern-europe-2026-11.md regex 'Brent \\(([0-9.,]+) in prezzi\\.json' = 91.7; prezzi.json serie[id=brent].serie = 92.57 (2026-11-09). difference -0.87",
    "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
   },
   {
    "severity": "medium",
    "area": "consistency",
    "file": "prezzi.json, stretti-dettaglio.json",
-   "problem": "BRENT on 2026-11-09: prezzi.json serie[id=brent].serie[2026-11-09] = 91.7 (2026-11-09); stretti-dettaglio.json elementi[0].prezzi_collegati_valori[0] = 93.65 (2026-11-09). 2.1% apart; the file says it copies prezzi.json: it holds an earlier provisional reading",
+   "problem": "BRENT on 2026-11-09: prezzi.json serie[id=brent].serie[2026-11-09] = 92.57 (2026-11-09); stretti-dettaglio.json elementi[0].prezzi_collegati_valori[0] = 91.7 (2026-11-09). 0.9% apart; the file says it copies prezzi.json: it holds an earlier provisional reading",
    "fix": "Files disagree on the same fact: re-run the collector that copies the value (it read an older version) and make it read the value at run time, not from a cached copy."
   },
   {
    "severity": "medium",
    "area": "consistency",
    "file": "prezzi.json, stretti-dettaglio.json",
-   "problem": "WTI on 2026-11-09: prezzi.json serie[id=wti].serie[2026-11-09] = 85.84 (2026-11-09); stretti-dettaglio.json elementi[0].prezzi_collegati_valori[1] = 87.69 (2026-11-09). 2.2% apart; the file says it copies prezzi.json: it holds an earlier provisional reading",
+   "problem": "WTI on 2026-11-09: prezzi.json serie[id=wti].serie[2026-11-09] = 86.85 (2026-11-09); stretti-dettaglio.json elementi[0].prezzi_collegati_valori[1] = 85.84 (2026-11-09). 1.2% apart; the file says it copies prezzi.json: it holds an earlier provisional reading",
    "fix": "Files disagree on the same fact: re-run the collector that copies the value (it read an older version) and make it read the value at run time, not from a cached copy."
   },
   {
@@ -192,174 +199,6 @@
   },
   {
    "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/ai-mondo.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/assicurazioni.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/attacchi-analisti.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/baltico-sicurezza.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/basi-mondo.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/bunker-emissioni.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/commercio.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/cyber-energia.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/eolico-filiera.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/esposizione-nord.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/idrogeno.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/investimenti.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/italia-impatti.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/minerali.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/notizie-testate.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/offshore-nord.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/port-risk.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/porti-nord.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/rischio.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/simulatore.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/supply-chain-ai.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/transit-times.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/webcam.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
-   "area": "licences",
-   "file": "docs/data/wind-calendar.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
-  },
-  {
-   "severity": "medium",
    "area": "schema",
    "file": "docs/data/analisti.json",
    "problem": "file present in git 54aafe6 (last commit of 2026-11-09) is gone (if retired on purpose, also remove it from DATA_LICENSES.md, manifest.json and the pages that load it)",
@@ -374,10 +213,10 @@
   },
   {
    "severity": "low",
-   "area": "licences",
-   "file": "docs/data/health.json",
-   "problem": "no row in DATA_LICENSES.md",
-   "fix": "Add a row for the file to DATA_LICENSES.md (sources, licence, conditions), taken from its fonti[] field."
+   "area": "consistency",
+   "file": "report/asia-europe-logistics-2026-11.md",
+   "problem": "key figure 'ael-hormuz-3y' (Hormuz AIS transits three years earlier (Asia-Europe logistics report)) not found: the text changed",
+   "fix": "Update the regex in raccolta/qualita/fatti_chiave.json to the new wording."
   },
   {
    "severity": "low",
@@ -440,19 +279,19 @@
     {
      "file": "prezzi.json",
      "path": "serie[id=brent].serie[2026-11-09]",
-     "value": 91.7,
+     "value": 92.57,
      "date": "2026-11-09"
     },
     {
      "file": "stretti-dettaglio.json",
      "path": "elementi[0].prezzi_collegati_valori[0]",
-     "value": 93.65,
+     "value": 91.7,
      "date": "2026-11-09",
      "source": "docs/data/prezzi.json"
     }
    ],
    "severity": "medium",
-   "note": "2.1% apart; the file says it copies prezzi.json: it holds an earlier provisional reading"
+   "note": "0.9% apart; the file says it copies prezzi.json: it holds an earlier provisional reading"
   },
   {
    "fact": "WTI on 2026-11-09",
@@ -460,19 +299,19 @@
     {
      "file": "prezzi.json",
      "path": "serie[id=wti].serie[2026-11-09]",
-     "value": 85.84,
+     "value": 86.85,
      "date": "2026-11-09"
     },
     {
      "file": "stretti-dettaglio.json",
      "path": "elementi[0].prezzi_collegati_valori[1]",
-     "value": 87.69,
+     "value": 85.84,
      "date": "2026-11-09",
      "source": "docs/data/prezzi.json"
     }
    ],
    "severity": "medium",
-   "note": "2.2% apart; the file says it copies prezzi.json: it holds an earlier provisional reading"
+   "note": "1.2% apart; the file says it copies prezzi.json: it holds an earlier provisional reading"
   },
   {
    "fact": "gas storage by country",
@@ -498,22 +337,40 @@
    "note": "esposizione-nord.json has stoccaggi_gas = null"
   },
   {
-   "fact": "report figure: Brent on 9 Nov 2026 (USD/bbl), In breve",
+   "fact": "report figure: TTF on 9 Nov 2026 (EUR/MWh), Northern Europe key points",
    "values": [
     {
-     "file": "report/hormuz-mar-rosso-2026-11.md",
-     "path": "regex 'il Brent è a ([0-9.,]+) dollari al baril'",
-     "value": 92.62
+     "file": "report/northern-europe-2026-11.md",
+     "path": "regex 'The TTF gas price is ([0-9.,]+) €/MWh'",
+     "value": 83.0
     },
     {
      "file": "prezzi.json",
-     "path": "serie[id=brent].serie",
-     "value": 91.7,
+     "path": "serie[id=ttf].serie",
+     "value": 82.5,
      "date": "2026-11-09"
     }
    ],
    "severity": "medium",
-   "note": "difference +0.92"
+   "note": "difference +0.5"
+  },
+  {
+   "fact": "report figure: Brent value the Northern Europe report says prezzi.json holds (USD/bbl)",
+   "values": [
+    {
+     "file": "report/northern-europe-2026-11.md",
+     "path": "regex 'Brent \\(([0-9.,]+) in prezzi\\.json'",
+     "value": 91.7
+    },
+    {
+     "file": "prezzi.json",
+     "path": "serie[id=brent].serie",
+     "value": 92.57,
+     "date": "2026-11-09"
+    }
+   ],
+   "severity": "medium",
+   "note": "difference -0.87"
   }
  ],
  "validators": [
@@ -521,14 +378,14 @@
    "validator": "originali (fissi, italia, iran, difesa, mobili, eventi, ibrido, linee, condotte)",
    "script": "raccolta/originali/controlla.py",
    "exit": 0,
-   "seconds": 0.1,
+   "seconds": 0.2,
    "tail": "== linee.json: 588 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | == condotte.json: 454 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | Totale errori: 0"
   },
   {
    "validator": "simulatore",
    "script": "raccolta/simulatore/controlla.py",
    "exit": 0,
-   "seconds": 0.1,
+   "seconds": 0.2,
    "tail": "Italia (simulatore.html): 101 valori di italia-impatti.json controllati | AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | Esito: 0 errori, 1 avvisi"
   },
   {
@@ -549,7 +406,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.5,
+   "seconds": 0.7,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -592,7 +449,7 @@
   "ai-mondo.json": 82,
   "ai.json": 25,
   "assicurazioni.json": 27,
-  "attacchi-analisti.json": 632,
+  "attacchi-analisti.json": 4093,
   "attacchi-russi.json": 192,
   "baltico-sicurezza.json": 130,
   "basi-mondo.json": 181,
