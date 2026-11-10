@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-10T06:54Z",
+ "aggiornato": "2026-11-10T13:43Z",
  "fonti": [
   {
    "nome": "IEA, Strait of Hormuz Factsheet (febbraio 2026), su dati Kpler",
@@ -1374,23 +1374,16 @@
      "eventi_vicini": {
       "raggio_km": 250,
       "giorni": 30,
-      "totale": 27,
+      "totale": 35,
       "per_categoria": {
-       "attacco": 13,
-       "incidente": 8,
-       "rischieramento": 1,
+       "attacco": 19,
+       "incidente": 9,
+       "blackout": 1,
        "intercettazione": 4,
-       "blackout": 1
+       "rischieramento": 1,
+       "avviso-marittimo": 1
       },
       "ultimi": [
-       {
-        "id": "X-20261109-09",
-        "data": "2026-11-08",
-        "categoria": "attacco",
-        "nome": "Tre petroliere colpite a Hormuz su una rotta «non autorizzata» (Pasdaran)",
-        "affidabilita": "media",
-        "distanza_km": 7
-       },
        {
         "id": "X-20261109-10",
         "data": "2026-11-08",
@@ -1400,36 +1393,12 @@
         "distanza_km": 59
        },
        {
-        "id": "X-20261108-03",
-        "data": "2026-11-07",
+        "id": "X-20261109-09",
+        "data": "2026-11-08",
         "categoria": "attacco",
-        "nome": "Petroliera in fiamme a 8 miglia a nord-ovest di Khasab (UKMTO 199)",
-        "affidabilita": "alta",
-        "distanza_km": 48
-       },
-       {
-        "id": "X-20261108-04",
-        "data": "2026-11-07",
-        "categoria": "incidente",
-        "nome": "Bulk carrier coinvolto con forze militari a 18 miglia a est di Khor Fakkan (UKMTO 198)",
-        "affidabilita": "alta",
-        "distanza_km": 142
-       },
-       {
-        "id": "X-20261108-05",
-        "data": "2026-11-07",
-        "categoria": "attacco",
-        "nome": "M/V Huda disabilitata dagli USA nel Golfo di Oman (blocco dei porti iraniani)",
-        "affidabilita": "alta",
-        "distanza_km": 142
-       },
-       {
-        "id": "GI-20261108-04",
-        "data": "2026-11-07",
-        "categoria": "incidente",
-        "nome": "Due petroliere su mine a est di Hormuz (marina iraniana)",
+        "nome": "Tre petroliere colpite a Hormuz su una rotta «non autorizzata» (Pasdaran)",
         "affidabilita": "media",
-        "distanza_km": 27
+        "distanza_km": 7
        },
        {
         "id": "X-20261108-06",
@@ -1440,12 +1409,44 @@
         "distanza_km": 59
        },
        {
+        "id": "X-20261108-05",
+        "data": "2026-11-07",
+        "categoria": "attacco",
+        "nome": "M/V Huda disabilitata dagli USA nel Golfo di Oman (blocco dei porti iraniani)",
+        "affidabilita": "alta",
+        "distanza_km": 142
+       },
+       {
+        "id": "X-20261109-08",
+        "data": "2026-11-07",
+        "categoria": "attacco",
+        "nome": "Petroliera in uscita da Hormuz colpita da un proiettile (UKMTO 200)",
+        "affidabilita": "alta",
+        "distanza_km": 7
+       },
+       {
         "id": "X-20261108-07",
         "data": "2026-11-07",
         "categoria": "incidente",
         "nome": "Esplosioni a Bandar Abbas",
         "affidabilita": "media",
         "distanza_km": 68
+       },
+       {
+        "id": "X-20261108-08",
+        "data": "2026-11-07",
+        "categoria": "incidente",
+        "nome": "Esplosioni a Jask e incendio nel porto",
+        "affidabilita": "media",
+        "distanza_km": 170
+       },
+       {
+        "id": "X-20261108-03",
+        "data": "2026-11-07",
+        "categoria": "attacco",
+        "nome": "Petroliera in fiamme a 8 miglia a nord-ovest di Khasab (UKMTO 199)",
+        "affidabilita": "alta",
+        "distanza_km": 48
        }
       ],
       "fonte": "docs/data/eventi.json",
@@ -1455,41 +1456,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint6",
-        "nome": "Stretto di Hormuz",
-        "nome_portwatch": "Strait of Hormuz",
-        "lat": 26.29685349,
-        "lon": 56.85984844,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": -95.6,
-        "note": ""
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "dato": {
         "imo": "7904580",
         "nome": "HORMUZ 2",
@@ -1522,14 +1507,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 91.7,
+     "ultimo": 91.15,
      "unita": "USD/barile",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -6.73,
-      "1m": -12.43,
-      "ytd": 50.7,
-      "1a": 44.11
+      "1g": -1.53,
+      "1m": -12.96,
+      "ytd": 49.79,
+      "1a": 42.29
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -1537,14 +1522,14 @@
     {
      "id": "wti",
      "nome": "Petrolio WTI",
-     "ultimo": 85.84,
+     "ultimo": 85.8,
      "unita": "USD/barile",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -5.49,
-      "1m": -6.54,
-      "ytd": 49.49,
-      "1a": 43.67
+      "1g": -1.21,
+      "1m": -6.59,
+      "ytd": 49.43,
+      "1a": 42.69
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -1552,14 +1537,14 @@
     {
      "id": "ttf",
      "nome": "Gas TTF (Europa)",
-     "ultimo": 82.33,
+     "ultimo": 83.0,
      "unita": "EUR/MWh",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -3.81,
-      "1m": 1.11,
-      "ytd": 192.37,
-      "1a": 163.88
+      "1g": 0.61,
+      "1m": 1.93,
+      "ytd": 194.74,
+      "1a": 167.14
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -1567,14 +1552,14 @@
     {
      "id": "hh",
      "nome": "Gas Henry Hub (USA)",
-     "ultimo": 3.203,
+     "ultimo": 3.24,
      "unita": "USD/MMBtu",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": 6.84,
-      "1m": -0.53,
-      "ytd": -13.1,
-      "1a": -25.77
+      "1g": 0.68,
+      "1m": 0.62,
+      "ytd": -12.1,
+      "1a": -25.31
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -1942,22 +1927,6 @@
         "distanza_km": 333
        },
        {
-        "id": "X-20261106-17",
-        "data": "2026-11-06",
-        "categoria": "attacco",
-        "nome": "Attacco al mercato di al-Hadara, distretto di al-Waziiya (Taizz)",
-        "affidabilita": "media",
-        "distanza_km": 128
-       },
-       {
-        "id": "X-20261106-22",
-        "data": "2026-11-06",
-        "categoria": "lancio",
-        "nome": "Lancio di missile balistico da Sanaa",
-        "affidabilita": "media",
-        "distanza_km": 318
-       },
-       {
         "id": "X-20261106-23",
         "data": "2026-11-06",
         "categoria": "lancio",
@@ -1970,6 +1939,22 @@
         "data": "2026-11-06",
         "categoria": "attacco",
         "nome": "Raid aerei sauditi su Taizz",
+        "affidabilita": "media",
+        "distanza_km": 128
+       },
+       {
+        "id": "X-20261106-22",
+        "data": "2026-11-06",
+        "categoria": "lancio",
+        "nome": "Lancio di missile balistico da Sanaa",
+        "affidabilita": "media",
+        "distanza_km": 318
+       },
+       {
+        "id": "X-20261106-17",
+        "data": "2026-11-06",
+        "categoria": "attacco",
+        "nome": "Attacco al mercato di al-Hadara, distretto di al-Waziiya (Taizz)",
         "affidabilita": "media",
         "distanza_km": 128
        },
@@ -1989,41 +1974,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint4",
-        "nome": "Bab el-Mandeb",
-        "nome_portwatch": "Bab el-Mandeb Strait",
-        "lat": 12.78859715,
-        "lon": 43.34954476,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": -22.7,
-        "note": ""
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -2044,14 +2013,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 91.7,
+     "ultimo": 91.15,
      "unita": "USD/barile",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -6.73,
-      "1m": -12.43,
-      "ytd": 50.7,
-      "1a": 44.11
+      "1g": -1.53,
+      "1m": -12.96,
+      "ytd": 49.79,
+      "1a": 42.29
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -2059,14 +2028,14 @@
     {
      "id": "ttf",
      "nome": "Gas TTF (Europa)",
-     "ultimo": 82.33,
+     "ultimo": 83.0,
      "unita": "EUR/MWh",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -3.81,
-      "1m": 1.11,
-      "ytd": 192.37,
-      "1a": 163.88
+      "1g": 0.61,
+      "1m": 1.93,
+      "ytd": 194.74,
+      "1a": 167.14
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -2406,41 +2375,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint1",
-        "nome": "Canale di Suez",
-        "nome_portwatch": "Suez Canal",
-        "lat": 30.59334599,
-        "lon": 32.43688221,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": 4.4,
-        "note": ""
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -2460,14 +2413,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 91.7,
+     "ultimo": 91.15,
      "unita": "USD/barile",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -6.73,
-      "1m": -12.43,
-      "ytd": 50.7,
-      "1a": 44.11
+      "1g": -1.53,
+      "1m": -12.96,
+      "ytd": 49.79,
+      "1a": 42.29
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -2732,41 +2685,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint2",
-        "nome": "Canale di Panama",
-        "nome_portwatch": "Panama Canal",
-        "lat": 9.120512367,
-        "lon": -79.76723825,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": -14.6,
-        "note": ""
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -2786,14 +2723,14 @@
     {
      "id": "hh",
      "nome": "Gas Henry Hub (USA)",
-     "ultimo": 3.203,
+     "ultimo": 3.24,
      "unita": "USD/MMBtu",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": 6.84,
-      "1m": -0.53,
-      "ytd": -13.1,
-      "1a": -25.77
+      "1g": 0.68,
+      "1m": 0.62,
+      "ytd": -12.1,
+      "1a": -25.31
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -3051,9 +2988,36 @@
      "eventi_vicini": {
       "raggio_km": 400,
       "giorni": 30,
-      "totale": 0,
-      "per_categoria": {},
-      "ultimi": [],
+      "totale": 3,
+      "per_categoria": {
+       "pirateria": 3
+      },
+      "ultimi": [
+       {
+        "id": "EV-RECAAP-2026-11-04-apj-priti-2",
+        "data": "2026-11-04",
+        "categoria": "pirateria",
+        "nome": "Sea robbery: Bulk Carrier APJ Priti 2 boarded (Straits of Malacca)",
+        "affidabilita": "alta",
+        "distanza_km": 303
+       },
+       {
+        "id": "EV-RECAAP-2026-11-02-star-calypso",
+        "data": "2026-11-02",
+        "categoria": "pirateria",
+        "nome": "Sea robbery: Bulk Carrier Star Calypso boarded (Straits of Malacca)",
+        "affidabilita": "alta",
+        "distanza_km": 311
+       },
+       {
+        "id": "EV-RECAAP-2026-10-17-hk-tug-9-lkh",
+        "data": "2026-10-17",
+        "categoria": "pirateria",
+        "nome": "Sea robbery: Tug Boat & Barge HK Tug 9 & LKH boarded (Straits of Malacca)",
+        "affidabilita": "alta",
+        "distanza_km": 348
+       }
+      ],
       "fonte": "docs/data/eventi.json",
       "link": "docs/data/eventi.json"
      },
@@ -3061,41 +3025,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint5",
-        "nome": "Stretto di Malacca",
-        "nome_portwatch": "Malacca Strait",
-        "lat": 1.516954817,
-        "lon": 102.6651061,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": -9.0,
-        "note": ""
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -3114,14 +3062,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 91.7,
+     "ultimo": 91.15,
      "unita": "USD/barile",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -6.73,
-      "1m": -12.43,
-      "ytd": 50.7,
-      "1a": 44.11
+      "1g": -1.53,
+      "1m": -12.96,
+      "ytd": 49.79,
+      "1a": 42.29
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -3361,9 +3309,20 @@
      "eventi_vicini": {
       "raggio_km": 250,
       "giorni": 30,
-      "totale": 0,
-      "per_categoria": {},
-      "ultimi": [],
+      "totale": 1,
+      "per_categoria": {
+       "attacco": 1
+      },
+      "ultimi": [
+       {
+        "id": "EV-20261013-02",
+        "data": "2026-10-13",
+        "categoria": "attacco",
+        "nome": "Second drone attack in six days off Bulgaria: one more ship sunk",
+        "affidabilita": "alta",
+        "distanza_km": 207
+       }
+      ],
       "fonte": "docs/data/eventi.json",
       "link": "docs/data/eventi.json"
      },
@@ -3371,41 +3330,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint3",
-        "nome": "Bosforo",
-        "nome_portwatch": "Bosporus Strait",
-        "lat": 41.16928167,
-        "lon": 29.09150126,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": -49.1,
-        "note": "PortWatch misura il Bosforo; i Dardanelli hanno in pratica lo stesso traffico."
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -3425,14 +3368,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 91.7,
+     "ultimo": 91.15,
      "unita": "USD/barile",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -6.73,
-      "1m": -12.43,
-      "ytd": 50.7,
-      "1a": 44.11
+      "1g": -1.53,
+      "1m": -12.96,
+      "ytd": 49.79,
+      "1a": 42.29
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -3597,41 +3540,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint8",
-        "nome": "Stretto di Gibilterra",
-        "nome_portwatch": "Gibraltar Strait",
-        "lat": 35.94227416,
-        "lon": -5.754895722,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": -5.3,
-        "note": ""
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -3826,41 +3753,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint10",
-        "nome": "Stretti danesi",
-        "nome_portwatch": "Oresund Strait",
-        "lat": 55.50784043,
-        "lon": 12.85079477,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": -11.6,
-        "note": "PortWatch misura solo l'Øresund, non il Grande Belt (dove passano le petroliere più grandi)."
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -3880,14 +3791,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 91.7,
+     "ultimo": 91.15,
      "unita": "USD/barile",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -6.73,
-      "1m": -12.43,
-      "ytd": 50.7,
-      "1a": 44.11
+      "1g": -1.53,
+      "1m": -12.96,
+      "ytd": 49.79,
+      "1a": 42.29
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -4053,9 +3964,29 @@
      "eventi_vicini": {
       "raggio_km": 250,
       "giorni": 30,
-      "totale": 0,
-      "per_categoria": {},
-      "ultimi": [],
+      "totale": 2,
+      "per_categoria": {
+       "incidente": 1,
+       "tempesta": 1
+      },
+      "ultimi": [
+       {
+        "id": "EV-20261104-01",
+        "data": "2026-11-04",
+        "categoria": "incidente",
+        "nome": "Fire and explosion at a Panasonic subsidiary factory in Hsinchu",
+        "affidabilita": "media",
+        "distanza_km": 150
+       },
+       {
+        "id": "EV-20261023-05",
+        "data": "2026-10-23",
+        "categoria": "tempesta",
+        "nome": "Taiwan shuts down as Typhoon Champi approaches",
+        "affidabilita": "media",
+        "distanza_km": 210
+       }
+      ],
       "fonte": "docs/data/eventi.json",
       "link": "docs/data/eventi.json"
      },
@@ -4063,35 +3994,19 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint11",
-        "nome": "Stretto di Taiwan",
-        "nome_portwatch": "Taiwan Strait",
-        "lat": 24.72350972,
-        "lon": 119.8313644,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": 6.2,
-        "note": ""
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "dato": {
         "id": "GPRC_TWN",
         "nome": "GPR mensile per Taiwan",
@@ -4110,7 +4025,7 @@
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -4308,41 +4223,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint7",
-        "nome": "Capo di Buona Speranza",
-        "nome_portwatch": "Cape of Good Hope",
-        "lat": -34.92728556,
-        "lon": 20.88273666,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": -6.5,
-        "note": ""
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -4361,14 +4260,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 91.7,
+     "ultimo": 91.15,
      "unita": "USD/barile",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -6.73,
-      "1m": -12.43,
-      "ytd": 50.7,
-      "1a": 44.11
+      "1g": -1.53,
+      "1m": -12.96,
+      "ytd": 49.79,
+      "1a": 42.29
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -4543,28 +4442,28 @@
       {
        "id": "mazara",
        "nome": "Mazara del Vallo (TransMed / Transmed)",
-       "twh_12m": 220.5,
+       "twh_12m": 220.6,
        "quota_ingressi_pct": 34.0,
-       "ultimo_giorno": "2026-11-08",
-       "ultimo_gwh": 630.3,
-       "media_30g_gwh": 651.6,
+       "ultimo_giorno": "2026-11-09",
+       "ultimo_gwh": 634.53,
+       "media_30g_gwh": 651.8,
        "stato": "in-flusso",
        "fonte": "docs/data/gas-italia.json (ENTSOG)",
        "link": "docs/data/gas-italia.json",
-       "data_fonte": "2026-11-09T19:30Z"
+       "data_fonte": "2026-11-10T13:18Z"
       },
       {
        "id": "gela",
        "nome": "Gela (Greenstream)",
        "twh_12m": 5.1,
        "quota_ingressi_pct": 0.8,
-       "ultimo_giorno": "2026-11-08",
-       "ultimo_gwh": 27.33,
-       "media_30g_gwh": 20.6,
+       "ultimo_giorno": "2026-11-09",
+       "ultimo_gwh": 43.63,
+       "media_30g_gwh": 21.7,
        "stato": "in-flusso",
        "fonte": "docs/data/gas-italia.json (ENTSOG)",
        "link": "docs/data/gas-italia.json",
-       "data_fonte": "2026-11-09T19:30Z"
+       "data_fonte": "2026-11-10T13:18Z"
       }
      ],
      "eventi_vicini": {
@@ -4580,25 +4479,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -4619,14 +4518,14 @@
     {
      "id": "ttf",
      "nome": "Gas TTF (Europa)",
-     "ultimo": 82.33,
+     "ultimo": 83.0,
      "unita": "EUR/MWh",
-     "data": "2026-11-09",
+     "data": "2026-11-10",
      "var_pct": {
-      "1g": -3.81,
-      "1m": 1.11,
-      "ytd": 192.37,
-      "1a": 163.88
+      "1g": 0.61,
+      "1m": 1.93,
+      "ytd": 194.74,
+      "1a": 167.14
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -4820,41 +4719,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
-       "dato": {
-        "tipo": "chokepoint",
-        "id": "chokepoint28",
-        "nome": "Stretto di Kerch",
-        "nome_portwatch": "Kerch Strait",
-        "lat": 45.26676309041701,
-        "lon": 36.54390169965004,
-        "categoria": "passaggio strategico",
-        "fonte": "IMF PortWatch (Daily Chokepoints Data)",
-        "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-01",
-        "affidabilita": "alta",
-        "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-01",
-        "var30_anno_pct": -99.5,
-        "note": ""
-       }
+       "aggiornato": "2026-11-10T13:05Z",
+       "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -5018,25 +4901,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-09T19:16Z",
+       "aggiornato": "2026-11-10T13:05Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }

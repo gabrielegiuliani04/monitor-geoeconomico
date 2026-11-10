@@ -1,9 +1,22 @@
 {
- "updated": "2026-11-10T06:44Z",
- "overall": "green",
- "seconds": 55,
- "passed": 46,
- "failed": [],
+ "updated": "2026-11-10T13:44Z",
+ "overall": "amber",
+ "seconds": 57,
+ "passed": 48,
+ "failed": [
+  {
+   "page": "simulatore.html",
+   "test": "no JS errors",
+   "ok": false,
+   "detail": "console: TypeError: Cannot read properties of undefined (reading 'ultima_data')\n    at disegnaFisso (http://127.0.0.1:40063/simulatore.html:1210:243)\n    at http://127.0.0.1:40063/simulatore.html:1213:44"
+  },
+  {
+   "page": "notizie.html",
+   "test": "no JS errors",
+   "ok": false,
+   "detail": "console: Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin"
+  }
+ ],
  "results": [
   {
    "page": "index.html",
@@ -15,7 +28,7 @@
    "page": "index.html",
    "test": "every layer count > 0",
    "ok": true,
-   "detail": "42 layers"
+   "detail": "43 layers"
   },
   {
    "page": "index.html",
@@ -27,13 +40,13 @@
    "page": "index.html",
    "test": "Terminal tab Risk",
    "ok": true,
-   "detail": "10012 characters"
+   "detail": "10731 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Ports",
    "ok": true,
-   "detail": "14527 characters"
+   "detail": "11973 characters"
   },
   {
    "page": "index.html",
@@ -51,37 +64,37 @@
    "page": "index.html",
    "test": "Terminal tab Northern Europe",
    "ok": true,
-   "detail": "8436 characters"
+   "detail": "8514 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Prices and rates",
    "ok": true,
-   "detail": "1942 characters"
+   "detail": "1901 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Calendar",
    "ok": true,
-   "detail": "5190 characters"
+   "detail": "5209 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Chokepoints",
    "ok": true,
-   "detail": "4450 characters"
+   "detail": "4203 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Freight and risk",
    "ok": true,
-   "detail": "857 characters"
+   "detail": "638 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Stocks",
    "ok": true,
-   "detail": "2075 characters"
+   "detail": "2655 characters"
   },
   {
    "page": "index.html",
@@ -99,7 +112,7 @@
    "page": "index.html",
    "test": "Terminal tab News",
    "ok": true,
-   "detail": "9924 characters"
+   "detail": "9811 characters"
   },
   {
    "page": "index.html",
@@ -123,31 +136,31 @@
    "page": "simulatore.html",
    "test": "content rendered",
    "ok": true,
-   "detail": "14436 characters"
+   "detail": "3604 characters"
   },
   {
    "page": "simulatore.html",
    "test": "no JS errors",
-   "ok": true,
-   "detail": ""
+   "ok": false,
+   "detail": "console: TypeError: Cannot read properties of undefined (reading 'ultima_data')\n    at disegnaFisso (http://127.0.0.1:40063/simulatore.html:1210:243)\n    at http://127.0.0.1:40063/simulatore.html:1213:44"
   },
   {
    "page": "notizie.html",
    "test": "content rendered",
    "ok": true,
-   "detail": "12028 characters"
+   "detail": "21451 characters"
   },
   {
    "page": "notizie.html",
    "test": "news links listed",
    "ok": true,
-   "detail": "47 external links"
+   "detail": "85 external links"
   },
   {
    "page": "notizie.html",
    "test": "no JS errors",
-   "ok": true,
-   "detail": ""
+   "ok": false,
+   "detail": "console: Failed to load resource: net::ERR_BLOCKED_BY_RESPONSE.NotSameOrigin"
   },
   {
    "page": "crediti.html",
@@ -177,7 +190,7 @@
    "page": "report/index.html",
    "test": "content rendered",
    "ok": true,
-   "detail": "2409 characters"
+   "detail": "4431 characters"
   },
   {
    "page": "report/index.html",
@@ -225,7 +238,7 @@
    "page": "report/en/asia-europe-logistics-2026-11.html",
    "test": "content rendered",
    "ok": true,
-   "detail": "31809 characters"
+   "detail": "40304 characters"
   },
   {
    "page": "report/en/asia-europe-logistics-2026-11.html",
@@ -249,7 +262,7 @@
    "page": "report/en/italy-gulf-shock-2026-11.html",
    "test": "content rendered",
    "ok": true,
-   "detail": "42731 characters"
+   "detail": "46816 characters"
   },
   {
    "page": "report/en/italy-gulf-shock-2026-11.html",
@@ -261,10 +274,22 @@
    "page": "report/en/northern-europe-2026-11.html",
    "test": "content rendered",
    "ok": true,
-   "detail": "43618 characters"
+   "detail": "45509 characters"
   },
   {
    "page": "report/en/northern-europe-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "page": "report/en/offshore-wind-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "52824 characters"
+  },
+  {
+   "page": "report/en/offshore-wind-2026-11.html",
    "test": "no JS errors",
    "ok": true,
    "detail": ""
@@ -280,20 +305,32 @@
    "test": "no JS errors",
    "ok": true,
    "detail": ""
+  },
+  {
+   "page": "report/en/wind-cyber-2026-11.html",
+   "test": "content rendered",
+   "ok": true,
+   "detail": "40577 characters"
+  },
+  {
+   "page": "report/en/wind-cyber-2026-11.html",
+   "test": "no JS errors",
+   "ok": true,
+   "detail": ""
   }
  ],
  "layer_counts": {
-  "n-ships": 42,
-  "n-air": 9,
-  "n-events": 100,
+  "n-ships": 121,
+  "n-air": 74,
+  "n-events": 108,
   "n-adv": 3,
   "n-front": "hidden",
   "n-hyb": 25,
   "n-bases": 32,
   "n-iran": 53,
   "n-ad": 10,
-  "n-ita": 57,
-  "n-ai": 20,
+  "n-ita": 59,
+  "n-ai": 61,
   "n-ports": 159,
   "n-oil": 241,
   "n-gas": 347,
@@ -306,13 +343,13 @@
   "n-xlng": 323,
   "n-xgas": 11,
   "n-xua": 258,
-  "n-xai": 82,
+  "n-xai": 301,
   "n-xinv": 59,
   "n-xcy": 30,
   "n-xrisk": 18,
   "n-xpn": 30,
   "n-xwind": 362,
-  "n-xbs": 48,
+  "n-xbs": 47,
   "n-xh2": 48,
   "n-xbk": 24,
   "n-xbm": 181,
@@ -321,10 +358,11 @@
   "n-xjwc": 31,
   "n-xeof": 19,
   "n-xruo": 25,
-  "n-xpr": 39,
+  "n-xan": 4093,
+  "n-xpr": 30,
   "n-xtt": 99,
   "n-xru": 192,
-  "n-xnavi": 141
+  "n-xnavi": 143
  },
  "pages": [
   "simulatore.html",
@@ -339,6 +377,8 @@
   "report/en/hormuz-red-sea-2026-11.html",
   "report/en/italy-gulf-shock-2026-11.html",
   "report/en/northern-europe-2026-11.html",
-  "report/en/supply-chain-2026-11.html"
+  "report/en/offshore-wind-2026-11.html",
+  "report/en/supply-chain-2026-11.html",
+  "report/en/wind-cyber-2026-11.html"
  ]
 }
