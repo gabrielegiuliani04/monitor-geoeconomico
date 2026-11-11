@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-10T14:08Z",
- "date": "2026-11-10",
+ "updated": "2026-11-11T12:40Z",
+ "date": "2026-11-11",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 8.8,
+ "seconds": 37.3,
  "summary": {
   "critical": 0,
   "high": 0,
-  "medium": 18,
-  "low": 4,
+  "medium": 22,
+  "low": 3,
   "info": 5
  },
  "checks": [
@@ -40,25 +40,25 @@
    "area": "schema",
    "name": "counts vs yesterday",
    "status": "green",
-   "detail": "compared with git 54aafe6 (last commit of 2026-11-09): 0 drops > 20%"
+   "detail": "compared with storico.json 2026-11-10: 0 drops > 20%"
   },
   {
    "area": "errors",
    "name": "errori/errors arrays",
    "status": "amber",
-   "detail": "18 errors in 6 files"
+   "detail": "11 errors in 7 files"
   },
   {
    "area": "consistency",
    "name": "same fact across data files",
-   "status": "green",
-   "detail": "97 comparisons, 0 disagree (0 distinct mismatches listed)"
+   "status": "amber",
+   "detail": "110 comparisons, 0 disagree (0 distinct mismatches listed)"
   },
   {
    "area": "consistency",
    "name": "key report figures vs data",
-   "status": "green",
-   "detail": "27 match, 0 differ, 0 not found in the report (fatti_chiave.json)"
+   "status": "amber",
+   "detail": "19 match, 1 differ, 7 not found in the report (fatti_chiave.json)"
   },
   {
    "area": "secrets",
@@ -73,25 +73,81 @@
    "detail": "68 of 68 files listed; missing: none"
   },
   {
-   "area": "links",
-   "name": "source links",
-   "status": "amber",
-   "detail": "14104 distinct links found; not checked (offline run)"
-  },
-  {
    "area": "validators",
    "name": "repository validators",
    "status": "green",
    "detail": "10 run, 0 with a non-zero exit: originali 0; simulatore 0; eolico 0; stretti 0; basi 0; assicurazioni 0; ai 0; italia 0; supply-chain-ai 0; ucraina 0"
   },
   {
+   "area": "links",
+   "name": "source links (rotating sample)",
+   "status": "amber",
+   "detail": "152 of 15068 distinct links checked today: 6 blocked, 2 broken, 1 error, 143 ok; 1 confirmed broken, 1 failed once (rolling record)"
+  },
+  {
    "area": "smoke",
    "name": "browser smoke test",
    "status": "green",
-   "detail": "run 2026-11-10T14:05Z: 50 passed, 0 failed"
+   "detail": "run 2026-11-11T12:40Z: 50 passed, 0 failed"
   }
  ],
  "problems": [
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "docs/data/prezzi.json",
+   "problem": "key figure 'ttf-2026-11-09-it': no value at serie[id=ttf].serie on 2026-11-09",
+   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "docs/data/prezzi.json",
+   "problem": "key figure 'ne-ttf': no value at serie[id=ttf].serie on 2026-11-09",
+   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "docs/data/scorte.json",
+   "problem": "key figure 'stoccaggio-it-pct': no value at elementi[id=gas_stoccaggio_pct_it].serie on 2026-11-08",
+   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "docs/data/scorte.json",
+   "problem": "key figure 'stoccaggio-it-twh': no value at elementi[id=gas_stoccaggio_twh_it].serie on 2026-11-08",
+   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "docs/data/scorte.json",
+   "problem": "key figure 'igs-stoccaggio-it': no value at elementi[id=gas_stoccaggio_pct_it].serie on 2026-11-08",
+   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "docs/data/scorte.json",
+   "problem": "key figure 'igs-stoccaggio-it-twh': no value at elementi[id=gas_stoccaggio_twh_it].serie on 2026-11-08",
+   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "docs/data/scorte.json",
+   "problem": "key figure 'igs-stoccaggio-fr': no value at elementi[id=gas_stoccaggio_pct_fr].serie on 2026-11-08",
+   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "porti-nord.json, report/northern-europe-2026-11.md",
+   "problem": "report figure: Rotterdam port calls, 7-day mean to 30 Oct 2026, change on a year (%): report/northern-europe-2026-11.md regex 'The (−?[0-9.,]+)% in Rotterdam's latest ' = -10.8; porti-nord.json elementi[id=rotterdam].var7_anno_pct.portcalls = -6.9. difference -3.9",
+   "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
+  },
   {
    "severity": "medium",
    "area": "errors",
@@ -110,14 +166,14 @@
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/italia-impatti.json",
-   "problem": "collector error: Mimit giornaliero non scaricato (resta la serie settimanale MASE): https://www.mimit.gov.it/images/exportCSV/prezzo_alle_8.csv: <urlopen error [Errno 104] Connection reset by peer>",
+   "problem": "collector error: Mimit giornaliero non scaricato (resta la serie settimanale MASE): https://www.mimit.gov.it/images/exportCSV/prezzo_alle_8.csv: <urlopen error timed out>",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/italia-impatti.json",
-   "problem": "collector error: scioperi: calendario MIT non disponibile: https://scioperi.mit.gov.it/mit2/public/scioperi: <urlopen error [Errno 104] Connection reset by peer>; uso l'elenco curato raccolta/italia/scioperi.json",
+   "problem": "collector error: scioperi: calendario MIT non disponibile: https://scioperi.mit.gov.it/mit2/public/scioperi: <urlopen error timed out>; uso l'elenco curato raccolta/italia/scioperi.json",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -130,57 +186,22 @@
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Canale di Suez (chokepoint1): Daily_Chokepoints_Data: {'code': 400, 'message': 'Cannot perform query. Invalid query parameters.', 'details': ['Unable to perform query. Please check your parameters.']} (riuso il dato precedente)",
+   "file": "docs/data/notizie-testate.json",
+   "problem": "collector error: navalnews (Naval News): HTTPError: HTTP Error 503: Service Temporarily Unavailable",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Canale di Panama (chokepoint2): Daily_Chokepoints_Data: {'code': 400, 'message': 'Cannot perform query. Invalid query parameters.', 'details': ['Unable to perform query. Please check your parameters.']} (riuso il dato precedente)",
+   "file": "docs/data/scorte.json",
+   "problem": "collector error: AGSI+ IT: API key: [chiave nascosta]",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Malacca (chokepoint5): Daily_Chokepoints_Data: {'code': 400, 'message': 'Cannot perform query. Invalid query parameters.', 'details': ['Unable to perform query. Please check your parameters.']} (riuso il dato precedente)",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Gibilterra (chokepoint8): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Capo di Buona Speranza (chokepoint7): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Taiwan (chokepoint11): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretti danesi (chokepoint10): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Luzon (chokepoint14): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
+   "file": "docs/data/scorte.json",
+   "problem": "collector error: AGSI+ FR: API key: [chiave nascosta]",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -213,23 +234,23 @@
   },
   {
    "severity": "medium",
-   "area": "schema",
-   "file": "docs/data/navi.json",
-   "problem": "source fields on 'elementi': link missing in 144/144, affidabilita missing in 144/144",
-   "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
+   "area": "links",
+   "file": "docs/data/ucraina-storico.json",
+   "problem": "broken: https://www.reuters.com/world/europe/ukraine-launches-drones-moscow-other-regions-russian-officials-say-2024-08-31/ (401)",
+   "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
-   "severity": "low",
-   "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "... and 2 more errors",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+   "severity": "medium",
+   "area": "schema",
+   "file": "docs/data/navi.json",
+   "problem": "source fields on 'elementi': link missing in 140/140, affidabilita missing in 140/140",
+   "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
   },
   {
    "severity": "low",
    "area": "links",
    "file": "docs/data/ucraina-storico.json",
-   "problem": "failed once (re-checked tomorrow): https://www.reuters.com/world/europe/ukraine-launches-drones-moscow-other-regions-russian-officials-say-2024-08-31/ (401)",
+   "problem": "failed once (re-checked tomorrow): https://www.reuters.com/world/europe/russias-omsk-oil-refinery-reports-fire-operating-normally-2024-08-26/ (401)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
@@ -250,7 +271,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/aerei.json",
-   "problem": "2 warnings ('avvisi'), first: curati AE-C-20260901-39: last report 70 days old, the map will not draw it (limit 60 days)",
+   "problem": "2 warnings ('avvisi'), first: curati AE-C-20260901-39: last report 71 days old, the map will not draw it (limit 60 days)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -300,12 +321,42 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 1,
+   "fails_in_a_row": 2,
    "first_failed": "2026-11-10T13:44Z",
+   "confirmed": true
+  },
+  {
+   "url": "https://www.reuters.com/world/europe/russias-omsk-oil-refinery-reports-fire-operating-normally-2024-08-26/",
+   "files": [
+    "ucraina-storico.json"
+   ],
+   "code": 401,
+   "detail": "",
+   "fails_in_a_row": 1,
+   "first_failed": "2026-11-11T12:40Z",
    "confirmed": false
   }
  ],
- "mismatches": [],
+ "mismatches": [
+  {
+   "fact": "report figure: Rotterdam port calls, 7-day mean to 30 Oct 2026, change on a year (%)",
+   "values": [
+    {
+     "file": "report/northern-europe-2026-11.md",
+     "path": "regex 'The (−?[0-9.,]+)% in Rotterdam's latest '",
+     "value": -10.8
+    },
+    {
+     "file": "porti-nord.json",
+     "path": "elementi[id=rotterdam].var7_anno_pct.portcalls",
+     "value": -6.9,
+     "date": null
+    }
+   ],
+   "severity": "medium",
+   "note": "difference -3.9"
+  }
+ ],
  "validators": [
   {
    "validator": "originali (fissi, italia, iran, difesa, mobili, eventi, ibrido, linee, condotte)",
@@ -318,15 +369,15 @@
    "validator": "simulatore",
    "script": "raccolta/simulatore/controlla.py",
    "exit": 0,
-   "seconds": 0.2,
-   "tail": "Italia (simulatore.html): 101 valori di italia-impatti.json controllati | AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | Esito: 0 errori, 1 avvisi"
+   "seconds": 0.1,
+   "tail": "AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | AVVISO: scorte.json senza gas_stoccaggio_pct_it | Esito: 0 errori, 2 avvisi"
   },
   {
    "validator": "wind calendar --rigoroso (output redirected)",
    "script": "raccolta/eolico/calendario.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "Written /home/user/monitor-geoeconomico/raccolta/qualita/.tmp-wind-calendar.json (120 KB): 114 items, 8 next 90 days, 24 last 90 days, 4 unconfirmed, 0 RSS candidates, 0 warnings (0 validation)"
+   "tail": "Written /home/runner/work/monitor-geoeconomico/monitor-geoeconomico/raccolta/qualita/.tmp-wind-calendar.json (120 KB): 114 items, 8 next 90 days, 24 last 90 days, 4 unconfirmed, 0 RSS candidates, 0 warnings (0 validation)"
   },
   {
    "validator": "stretti-dettaglio --controlla",
@@ -339,7 +390,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.7,
+   "seconds": 0.9,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -379,16 +430,16 @@
   }
  ],
  "counts": {
-  "aerei.json": 71,
+  "aerei.json": 62,
   "ai-mondo.json": 301,
   "ai.json": 66,
   "assicurazioni.json": 27,
   "attacchi-analisti.json": 4093,
   "attacchi-russi.json": 192,
-  "baltico-sicurezza.json": 128,
+  "baltico-sicurezza.json": 123,
   "basi-mondo.json": 181,
   "bunker-emissioni.json": 24,
-  "calendario.json": 215,
+  "calendario.json": 217,
   "cavi-incidenti.json": 14,
   "cavi.json": 713,
   "commercio.json": 38,
@@ -398,7 +449,7 @@
   "dossier.json": 1,
   "eolico-filiera.json": 19,
   "esposizione-nord.json": 10,
-  "eventi.json": 385,
+  "eventi.json": 381,
   "ferrovie.json": 49,
   "fissi.json": 192,
   "fronte-storico.json": 60,
@@ -419,10 +470,10 @@
   "mercati.json": 1,
   "minerali.json": 25,
   "mobili.json": 134,
-  "navi.json": 144,
+  "navi.json": 140,
   "noli.json": 4,
-  "notizie-testate.json": 1622,
-  "notizie.json": 761,
+  "notizie-testate.json": 2389,
+  "notizie.json": 1060,
   "nucleare.json": 167,
   "offshore-nord.json": 180,
   "paesi.json": 33,
@@ -435,7 +486,7 @@
   "rischio.json": 18,
   "rotte.json": 239,
   "sanzioni-navi.json": 2022,
-  "scorte.json": 46,
+  "scorte.json": 42,
   "simulatore.json": 9,
   "stretti-dettaglio.json": 13,
   "stretti.json": 16,
@@ -447,6 +498,6 @@
   "wind-calendar.json": 114,
   "world.json": 1896
  },
- "report": "report/qualita/2026-11-10.md",
+ "report": "report/qualita/2026-11-11.md",
  "errors": []
 }
