@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-11T12:40Z",
- "date": "2026-11-11",
+ "updated": "2026-11-12T13:42Z",
+ "date": "2026-11-12",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 37.3,
+ "seconds": 40.4,
  "summary": {
   "critical": 0,
   "high": 0,
-  "medium": 22,
-  "low": 3,
+  "medium": 18,
+  "low": 2,
   "info": 5
  },
  "checks": [
@@ -40,25 +40,25 @@
    "area": "schema",
    "name": "counts vs yesterday",
    "status": "green",
-   "detail": "compared with storico.json 2026-11-10: 0 drops > 20%"
+   "detail": "compared with storico.json 2026-11-11: 0 drops > 20%"
   },
   {
    "area": "errors",
    "name": "errori/errors arrays",
    "status": "amber",
-   "detail": "11 errors in 7 files"
+   "detail": "10 errors in 6 files"
   },
   {
    "area": "consistency",
    "name": "same fact across data files",
    "status": "amber",
-   "detail": "110 comparisons, 0 disagree (0 distinct mismatches listed)"
+   "detail": "109 comparisons, 0 disagree (0 distinct mismatches listed)"
   },
   {
    "area": "consistency",
    "name": "key report figures vs data",
    "status": "amber",
-   "detail": "19 match, 1 differ, 7 not found in the report (fatti_chiave.json)"
+   "detail": "23 match, 2 differ, 2 not found in the report (fatti_chiave.json)"
   },
   {
    "area": "secrets",
@@ -82,13 +82,13 @@
    "area": "links",
    "name": "source links (rotating sample)",
    "status": "amber",
-   "detail": "152 of 15068 distinct links checked today: 6 blocked, 2 broken, 1 error, 143 ok; 1 confirmed broken, 1 failed once (rolling record)"
+   "detail": "153 of 15666 distinct links checked today: 7 blocked, 2 broken, 1 error, 143 ok; 2 confirmed broken, 0 failed once (rolling record)"
   },
   {
    "area": "smoke",
    "name": "browser smoke test",
    "status": "green",
-   "detail": "run 2026-11-11T12:40Z: 50 passed, 0 failed"
+   "detail": "run 2026-11-12T13:42Z: 50 passed, 0 failed"
   }
  ],
  "problems": [
@@ -109,37 +109,9 @@
   {
    "severity": "medium",
    "area": "consistency",
-   "file": "docs/data/scorte.json",
-   "problem": "key figure 'stoccaggio-it-pct': no value at elementi[id=gas_stoccaggio_pct_it].serie on 2026-11-08",
-   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
-  },
-  {
-   "severity": "medium",
-   "area": "consistency",
-   "file": "docs/data/scorte.json",
-   "problem": "key figure 'stoccaggio-it-twh': no value at elementi[id=gas_stoccaggio_twh_it].serie on 2026-11-08",
-   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
-  },
-  {
-   "severity": "medium",
-   "area": "consistency",
-   "file": "docs/data/scorte.json",
-   "problem": "key figure 'igs-stoccaggio-it': no value at elementi[id=gas_stoccaggio_pct_it].serie on 2026-11-08",
-   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
-  },
-  {
-   "severity": "medium",
-   "area": "consistency",
-   "file": "docs/data/scorte.json",
-   "problem": "key figure 'igs-stoccaggio-it-twh': no value at elementi[id=gas_stoccaggio_twh_it].serie on 2026-11-08",
-   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
-  },
-  {
-   "severity": "medium",
-   "area": "consistency",
-   "file": "docs/data/scorte.json",
-   "problem": "key figure 'igs-stoccaggio-fr': no value at elementi[id=gas_stoccaggio_pct_fr].serie on 2026-11-08",
-   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+   "file": "gas-italia.json, report/hormuz-mar-rosso-2026-11.md",
+   "problem": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%): report/hormuz-mar-rosso-2026-11.md regex 'porta il ([0-9.,]+)% del gas importato' = 34; gas-italia.json quote_12_mesi[id=mazara].quota_ingressi_pct = 34.1. difference -0.1",
+   "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
   },
   {
    "severity": "medium",
@@ -187,21 +159,14 @@
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/notizie-testate.json",
+   "problem": "collector error: err_news (ERR News): HTTPError: HTTP Error 403: Forbidden",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/notizie-testate.json",
    "problem": "collector error: navalnews (Naval News): HTTPError: HTTP Error 503: Service Temporarily Unavailable",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/scorte.json",
-   "problem": "collector error: AGSI+ IT: API key: [chiave nascosta]",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/scorte.json",
-   "problem": "collector error: AGSI+ FR: API key: [chiave nascosta]",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -241,17 +206,17 @@
   },
   {
    "severity": "medium",
+   "area": "links",
+   "file": "docs/data/ucraina-storico.json",
+   "problem": "broken: https://www.reuters.com/world/europe/russias-omsk-oil-refinery-reports-fire-operating-normally-2024-08-26/ (401)",
+   "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
+  },
+  {
+   "severity": "medium",
    "area": "schema",
    "file": "docs/data/navi.json",
    "problem": "source fields on 'elementi': link missing in 140/140, affidabilita missing in 140/140",
    "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
-  },
-  {
-   "severity": "low",
-   "area": "links",
-   "file": "docs/data/ucraina-storico.json",
-   "problem": "failed once (re-checked tomorrow): https://www.reuters.com/world/europe/russias-omsk-oil-refinery-reports-fire-operating-normally-2024-08-26/ (401)",
-   "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
    "severity": "low",
@@ -271,7 +236,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/aerei.json",
-   "problem": "2 warnings ('avvisi'), first: curati AE-C-20260901-39: last report 71 days old, the map will not draw it (limit 60 days)",
+   "problem": "2 warnings ('avvisi'), first: curati AE-C-20260901-39: last report 72 days old, the map will not draw it (limit 60 days)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -321,7 +286,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 2,
+   "fails_in_a_row": 3,
    "first_failed": "2026-11-10T13:44Z",
    "confirmed": true
   },
@@ -332,12 +297,30 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 1,
+   "fails_in_a_row": 2,
    "first_failed": "2026-11-11T12:40Z",
-   "confirmed": false
+   "confirmed": true
   }
  ],
  "mismatches": [
+  {
+   "fact": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%)",
+   "values": [
+    {
+     "file": "report/hormuz-mar-rosso-2026-11.md",
+     "path": "regex 'porta il ([0-9.,]+)% del gas importato'",
+     "value": 34.0
+    },
+    {
+     "file": "gas-italia.json",
+     "path": "quote_12_mesi[id=mazara].quota_ingressi_pct",
+     "value": 34.1,
+     "date": null
+    }
+   ],
+   "severity": "medium",
+   "note": "difference -0.1"
+  },
   {
    "fact": "report figure: Rotterdam port calls, 7-day mean to 30 Oct 2026, change on a year (%)",
    "values": [
@@ -370,7 +353,7 @@
    "script": "raccolta/simulatore/controlla.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | AVVISO: scorte.json senza gas_stoccaggio_pct_it | Esito: 0 errori, 2 avvisi"
+   "tail": "Italia (simulatore.html): 101 valori di italia-impatti.json controllati | AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | Esito: 0 errori, 1 avvisi"
   },
   {
    "validator": "wind calendar --rigoroso (output redirected)",
@@ -390,7 +373,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.9,
+   "seconds": 0.6,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -418,7 +401,7 @@
    "validator": "supply-chain-ai --valida",
    "script": "raccolta/supply-chain-ai/raccogli.py",
    "exit": 0,
-   "seconds": 0.2,
+   "seconds": 0.1,
    "tail": "AVVISO: materia germanio: nessuna quota per paese (dato mancante dichiarato) | AVVISO: collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare | AVVISO: collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
   },
   {
@@ -430,16 +413,16 @@
   }
  ],
  "counts": {
-  "aerei.json": 62,
+  "aerei.json": 65,
   "ai-mondo.json": 301,
   "ai.json": 66,
   "assicurazioni.json": 27,
   "attacchi-analisti.json": 4093,
   "attacchi-russi.json": 192,
-  "baltico-sicurezza.json": 123,
+  "baltico-sicurezza.json": 127,
   "basi-mondo.json": 181,
   "bunker-emissioni.json": 24,
-  "calendario.json": 217,
+  "calendario.json": 216,
   "cavi-incidenti.json": 14,
   "cavi.json": 713,
   "commercio.json": 38,
@@ -449,7 +432,7 @@
   "dossier.json": 1,
   "eolico-filiera.json": 19,
   "esposizione-nord.json": 10,
-  "eventi.json": 381,
+  "eventi.json": 379,
   "ferrovie.json": 49,
   "fissi.json": 192,
   "fronte-storico.json": 60,
@@ -472,8 +455,8 @@
   "mobili.json": 134,
   "navi.json": 140,
   "noli.json": 4,
-  "notizie-testate.json": 2389,
-  "notizie.json": 1060,
+  "notizie-testate.json": 2713,
+  "notizie.json": 1337,
   "nucleare.json": 167,
   "offshore-nord.json": 180,
   "paesi.json": 33,
@@ -486,7 +469,7 @@
   "rischio.json": 18,
   "rotte.json": 239,
   "sanzioni-navi.json": 2022,
-  "scorte.json": 42,
+  "scorte.json": 46,
   "simulatore.json": 9,
   "stretti-dettaglio.json": 13,
   "stretti.json": 16,
@@ -498,6 +481,6 @@
   "wind-calendar.json": 114,
   "world.json": 1896
  },
- "report": "report/qualita/2026-11-11.md",
+ "report": "report/qualita/2026-11-12.md",
  "errors": []
 }
