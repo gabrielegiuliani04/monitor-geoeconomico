@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-12T13:41Z",
- "riferimento": "2026-11-12",
+ "aggiornato": "2026-11-13T13:04Z",
+ "riferimento": "2026-11-13",
  "fonti": [
   {
    "nome": "RWE Thor project site",
@@ -282,7 +282,7 @@
    "nome": "offshoreWIND.biz RSS (candidate items only)",
    "link": "https://www.offshorewind.biz/feed",
    "licenza": "(c) Navingo/offshoreWIND.biz: headlines and links only",
-   "data_dato": "2026-11-12"
+   "data_dato": "2026-11-13"
   }
  ],
  "nota": "Offshore wind milestone calendar for the North Sea and the Baltic (GB, NL, BE, DE, DK, NO, SE, FI, PL, LT, LV, EE, FR, EU), 2023-2027 with later anchors. Curated items with source, link and source date; null = not found, never estimated. 'status' is curated (done/scheduled/at risk); 'status_effective' adds 'unconfirmed' when a scheduled date has passed without confirmation. Reliability high/medium/low = alta/media/bassa. 'precision' tells how exact the date is. 'candidati_rss' are suggestions from the offshoreWIND.biz feed, NOT verified items.",
@@ -322,8 +322,8 @@
    "SE": 5
   },
   "next_90_days": {
-   "from": "2026-11-12",
-   "to": "2027-02-10",
+   "from": "2026-11-13",
+   "to": "2027-02-11",
    "items": [
     {
      "id": "WC-PL-GDANSK-T5",
@@ -500,8 +500,8 @@
    ]
   },
   "last_90_days": {
-   "from": "2026-08-14",
-   "to": "2026-11-12",
+   "from": "2026-08-15",
+   "to": "2026-11-13",
    "items": [
     {
      "id": "WC-NO-SN2-DELAY",
@@ -797,7 +797,7 @@
     "project": "Bornholm offshore wind farms: joint DK-DE tender launch",
     "capacity_mw": 3000,
     "status_effective": "unconfirmed",
-    "days_overdue": 135
+    "days_overdue": 136
    },
    {
     "id": "WC-SE-SUPPORT",
@@ -808,7 +808,7 @@
     "project": "Swedish state-led tender and support system",
     "capacity_mw": null,
     "status_effective": "unconfirmed",
-    "days_overdue": 134
+    "days_overdue": 135
    },
    {
     "id": "WC-DE-HEDREIHT-FULL",
@@ -819,7 +819,7 @@
     "project": "He Dreiht: full 960 MW",
     "capacity_mw": 960,
     "status_effective": "unconfirmed",
-    "days_overdue": 12
+    "days_overdue": 13
    },
    {
     "id": "WC-FR-AO10-BIDS",
@@ -830,7 +830,7 @@
     "project": "AO10 bid deadline",
     "capacity_mw": 10000,
     "status_effective": "unconfirmed",
-    "days_overdue": 31
+    "days_overdue": 32
    }
   ],
   "needs_recheck": [
@@ -1929,7 +1929,7 @@
    "precision": "half",
    "period_start": "2026-01-01",
    "period_end": "2026-06-30",
-   "days_overdue": 135,
+   "days_overdue": 136,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2361,7 +2361,7 @@
    "precision": "day",
    "period_start": "2026-07-01",
    "period_end": "2026-07-01",
-   "days_overdue": 134,
+   "days_overdue": 135,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2685,7 +2685,7 @@
    "precision": "month",
    "period_start": "2026-10-01",
    "period_end": "2026-10-31",
-   "days_overdue": 12,
+   "days_overdue": 13,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -2751,7 +2751,7 @@
    "precision": "day",
    "period_start": "2026-10-12",
    "period_end": "2026-10-12",
-   "days_overdue": 31,
+   "days_overdue": 32,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -3499,8 +3499,44 @@
   }
  ],
  "candidati_rss": {
-  "stato": "ok: 50 RSS items read, 13 candidates",
+  "stato": "ok: 50 RSS items read, 15 candidates",
   "candidati": [
+   {
+    "title": "Ørsted Gearing Up for Turbine Installation at 2.9 GW UK Offshore Wind Farm",
+    "date": "2026-11-13",
+    "link": "https://www.offshorewind.biz/2026/11/13/orsted-gearing-up-for-turbine-installation-at-29-gw-uk-offshore-wind-farm",
+    "possible_duplicate_of": [],
+    "suggested_type": "construction",
+    "matched_types": [
+     "construction"
+    ],
+    "scope_terms": [
+     "uk",
+     "hornsea"
+    ],
+    "related_calendar_projects": [
+     "hornsea 3"
+    ],
+    "excerpt": "Ørsted is preparing to start installing wind turbines at its Hornsea 3 offshore wind farm in the UK, with the first Siemens Gamesa turbine...",
+    "action": "review manually; add to calendario_voci.json only with a primary source"
+   },
+   {
+    "title": "Finland Could Launch First Offshore Wind Tender in H1 2027 as Government Designates Four Development Areas",
+    "date": "2026-11-12",
+    "link": "https://www.offshorewind.biz/2026/11/12/finland-could-launch-first-offshore-wind-tender-in-h1-2027-as-government-designates-four-development-areas",
+    "possible_duplicate_of": [],
+    "suggested_type": "auction",
+    "matched_types": [
+     "auction",
+     "policy"
+    ],
+    "scope_terms": [
+     "finland"
+    ],
+    "related_calendar_projects": [],
+    "excerpt": "Finland could launch its first tender for offshore wind development in its exclusive economic zone (EEZ) in the first half of 2027, following the...",
+    "action": "review manually; add to calendario_voci.json only with a primary source"
+   },
    {
     "title": "Seaway7 Kicks Off Cable Installation Work at Ørsted's Hornsea 3",
     "date": "2026-11-12",

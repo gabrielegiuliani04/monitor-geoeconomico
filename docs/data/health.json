@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-12T13:42Z",
- "date": "2026-11-12",
+ "updated": "2026-11-13T13:05Z",
+ "date": "2026-11-13",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 40.4,
+ "seconds": 48.4,
  "summary": {
   "critical": 0,
-  "high": 0,
-  "medium": 18,
-  "low": 2,
+  "high": 1,
+  "medium": 15,
+  "low": 3,
   "info": 5
  },
  "checks": [
@@ -22,7 +22,7 @@
    "area": "freshness",
    "name": "files against cadence",
    "status": "amber",
-   "detail": "66 ok, 0 stale, 0 missing, 1 undated (report.json); 0 lagging series inside files"
+   "detail": "65 ok, 1 stale, 0 missing, 1 undated (report.json); 0 lagging series inside files"
   },
   {
    "area": "schema",
@@ -40,25 +40,25 @@
    "area": "schema",
    "name": "counts vs yesterday",
    "status": "green",
-   "detail": "compared with storico.json 2026-11-11: 0 drops > 20%"
+   "detail": "compared with storico.json 2026-11-12: 0 drops > 20%"
   },
   {
    "area": "errors",
    "name": "errori/errors arrays",
    "status": "amber",
-   "detail": "10 errors in 6 files"
+   "detail": "9 errors in 6 files"
   },
   {
    "area": "consistency",
    "name": "same fact across data files",
    "status": "amber",
-   "detail": "109 comparisons, 0 disagree (0 distinct mismatches listed)"
+   "detail": "114 comparisons, 0 disagree (0 distinct mismatches listed)"
   },
   {
    "area": "consistency",
    "name": "key report figures vs data",
    "status": "amber",
-   "detail": "23 match, 2 differ, 2 not found in the report (fatti_chiave.json)"
+   "detail": "25 match, 2 differ, 0 not found in the report (fatti_chiave.json)"
   },
   {
    "area": "secrets",
@@ -82,29 +82,22 @@
    "area": "links",
    "name": "source links (rotating sample)",
    "status": "amber",
-   "detail": "153 of 15666 distinct links checked today: 7 blocked, 2 broken, 1 error, 143 ok; 2 confirmed broken, 0 failed once (rolling record)"
+   "detail": "153 of 15908 distinct links checked today: 2 blocked, 3 broken, 2 error, 146 ok; 2 confirmed broken, 1 failed once (rolling record)"
   },
   {
    "area": "smoke",
    "name": "browser smoke test",
    "status": "green",
-   "detail": "run 2026-11-12T13:42Z: 50 passed, 0 failed"
+   "detail": "run 2026-11-13T13:05Z: 50 passed, 0 failed"
   }
  ],
  "problems": [
   {
-   "severity": "medium",
-   "area": "consistency",
-   "file": "docs/data/prezzi.json",
-   "problem": "key figure 'ttf-2026-11-09-it': no value at serie[id=ttf].serie on 2026-11-09",
-   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
-  },
-  {
-   "severity": "medium",
-   "area": "consistency",
-   "file": "docs/data/prezzi.json",
-   "problem": "key figure 'ne-ttf': no value at serie[id=ttf].serie on 2026-11-09",
-   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+   "severity": "high",
+   "area": "freshness",
+   "file": "docs/data/attacchi-analisti.json",
+   "problem": "stale: updated 3 days ago (limit 2) (cadence: daily (Telegram channels))",
+   "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
   },
   {
    "severity": "medium",
@@ -153,13 +146,6 @@
    "area": "errors",
    "file": "docs/data/navi.json",
    "problem": "collector error: DMA indice https://web.ais.dk/aisdata/ non raggiungibile: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'web.ais.dk'. (_ssl.c:1011)>",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/notizie-testate.json",
-   "problem": "collector error: err_news (ERR News): HTTPError: HTTP Error 403: Forbidden",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -215,8 +201,15 @@
    "severity": "medium",
    "area": "schema",
    "file": "docs/data/navi.json",
-   "problem": "source fields on 'elementi': link missing in 140/140, affidabilita missing in 140/140",
+   "problem": "source fields on 'elementi': link missing in 143/143, affidabilita missing in 143/143",
    "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
+  },
+  {
+   "severity": "low",
+   "area": "links",
+   "file": "docs/data/attacchi-analisti.json",
+   "problem": "failed once (re-checked tomorrow): https://firms.modaps.eosdis.nasa.gov/data/country/viirs-snpp/2026/viirs-snpp_2026_Russian_Federation.csv (404)",
+   "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
    "severity": "low",
@@ -236,7 +229,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/aerei.json",
-   "problem": "2 warnings ('avvisi'), first: curati AE-C-20260901-39: last report 72 days old, the map will not draw it (limit 60 days)",
+   "problem": "2 warnings ('avvisi'), first: curati AE-C-20260901-39: last report 73 days old, the map will not draw it (limit 60 days)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -270,6 +263,16 @@
  ],
  "stale": [
   {
+   "file": "attacchi-analisti.json",
+   "cadence": "daily (Telegram channels)",
+   "updated": "2026-11-10T11:11Z",
+   "newest_data_date": "2026-11-10",
+   "updated_age_days": 3,
+   "data_age_days": 3,
+   "status": "stale",
+   "why": "updated 3 days ago (limit 2)"
+  },
+  {
    "file": "report.json",
    "cadence": "monthly (curated)",
    "updated": null,
@@ -286,7 +289,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 3,
+   "fails_in_a_row": 4,
    "first_failed": "2026-11-10T13:44Z",
    "confirmed": true
   },
@@ -297,9 +300,20 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 2,
+   "fails_in_a_row": 3,
    "first_failed": "2026-11-11T12:40Z",
    "confirmed": true
+  },
+  {
+   "url": "https://firms.modaps.eosdis.nasa.gov/data/country/viirs-snpp/2026/viirs-snpp_2026_Russian_Federation.csv",
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "code": 404,
+   "detail": "",
+   "fails_in_a_row": 1,
+   "first_failed": "2026-11-13T13:05Z",
+   "confirmed": false
   }
  ],
  "mismatches": [
@@ -373,7 +387,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.6,
+   "seconds": 0.7,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -401,7 +415,7 @@
    "validator": "supply-chain-ai --valida",
    "script": "raccolta/supply-chain-ai/raccogli.py",
    "exit": 0,
-   "seconds": 0.1,
+   "seconds": 0.2,
    "tail": "AVVISO: materia germanio: nessuna quota per paese (dato mancante dichiarato) | AVVISO: collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare | AVVISO: collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
   },
   {
@@ -413,7 +427,7 @@
   }
  ],
  "counts": {
-  "aerei.json": 65,
+  "aerei.json": 68,
   "ai-mondo.json": 301,
   "ai.json": 66,
   "assicurazioni.json": 27,
@@ -422,7 +436,7 @@
   "baltico-sicurezza.json": 127,
   "basi-mondo.json": 181,
   "bunker-emissioni.json": 24,
-  "calendario.json": 216,
+  "calendario.json": 215,
   "cavi-incidenti.json": 14,
   "cavi.json": 713,
   "commercio.json": 38,
@@ -432,7 +446,7 @@
   "dossier.json": 1,
   "eolico-filiera.json": 19,
   "esposizione-nord.json": 10,
-  "eventi.json": 379,
+  "eventi.json": 378,
   "ferrovie.json": 49,
   "fissi.json": 192,
   "fronte-storico.json": 60,
@@ -453,10 +467,10 @@
   "mercati.json": 1,
   "minerali.json": 25,
   "mobili.json": 134,
-  "navi.json": 140,
+  "navi.json": 143,
   "noli.json": 4,
-  "notizie-testate.json": 2713,
-  "notizie.json": 1337,
+  "notizie-testate.json": 2662,
+  "notizie.json": 1617,
   "nucleare.json": 167,
   "offshore-nord.json": 180,
   "paesi.json": 33,
@@ -468,7 +482,7 @@
   "rete-elettrica.json": 2367,
   "rischio.json": 18,
   "rotte.json": 239,
-  "sanzioni-navi.json": 2022,
+  "sanzioni-navi.json": 2029,
   "scorte.json": 46,
   "simulatore.json": 9,
   "stretti-dettaglio.json": 13,
@@ -481,6 +495,6 @@
   "wind-calendar.json": 114,
   "world.json": 1896
  },
- "report": "report/qualita/2026-11-12.md",
+ "report": "report/qualita/2026-11-13.md",
  "errors": []
 }
