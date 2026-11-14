@@ -1,7 +1,7 @@
 {
  "nota": "Rolling record of source-link checks (controlla_tutto.py). A link is 'broken' after 2 failed checks in a row; 401/403/429 answers are anti-bot walls, not broken links; 'proxy' = not reachable from the check environment.",
- "aggiornato": "2026-11-13T13:05Z",
- "link_totali": 15908,
+ "aggiornato": "2026-11-14T12:15Z",
+ "link_totali": 15906,
  "link": {
   "https://www.submarinecablemap.com/landing-point/la-tour-fondue-france": {
    "files": [
@@ -2055,7 +2055,7 @@
    "files": [
     "notizie.json"
    ],
-   "last_checked": "2026-11-13T13:05Z",
+   "last_checked": "2026-11-14T12:15Z",
    "last_result": "blocked",
    "last_code": 403,
    "detail": "anti-bot or login wall: not counted as broken",
@@ -2063,11 +2063,11 @@
    "first_failed": "2026-11-10T06:44Z",
    "history": [
     "2026-11-10:proxy:",
-    "2026-11-10:proxy:",
     "2026-11-10:blocked:403",
     "2026-11-11:blocked:403",
     "2026-11-12:blocked:403",
-    "2026-11-13:blocked:403"
+    "2026-11-13:blocked:403",
+    "2026-11-14:blocked:403"
    ]
   },
   "https://www.foxnews.com/politics/new-satellite-images-show-fires-naval-base-damage-across-iran-after-us-israeli-strikes.amp": {
@@ -3464,18 +3464,6 @@
     "2026-11-10:ok:200"
    ]
   },
-  "https://news.google.com/rss/articles/CBMitwFBVV95cUxOUHVyQ19HZ1F6UmpoRDY5Z0x5M3IxaVhuMDY0NXpoanRBcmFEODluM2l1VVRnc01WOGVHZjJiV3NlSFFRYkRYZXpuQ3JYa1pjSjVpblB2N1ZpQTRDYU0zQ1NZdHVFTll3dV9IQlotRGhGZ2lILXp2a0ZVbXZqN04tZmJWblRiUkIzZFRjM2lvZEdBTFkxNHkxTUs3UXM5by1SNEx3dUFxai04dG5ISWFuMDJhM2hDRTQ?oc=5": {
-   "files": [
-    "notizie.json"
-   ],
-   "last_checked": "2026-11-10T13:44Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-10:ok:200"
-   ]
-  },
   "https://news.google.com/rss/articles/CBMiggFBVV95cUxOWUdHZWFQdzh4U25aT0hXNC16czN1X1NmMzFMYXZleGZ6SWU1bWswdzktZ0pFbXRXQTBTajJTRGg3MFhMMzE5Q1NzMHIwU1dKMW1vUE5LTGdBU2dZa2NqN2J4TjN2aVU0ZDZaLWRaVjhqTjFqMXl3M0dRNUJrY3NSNnhB?oc=5": {
    "files": [
     "notizie.json"
@@ -3831,16 +3819,17 @@
    "files": [
     "ucraina-storico.json"
    ],
-   "last_checked": "2026-11-13T13:05Z",
+   "last_checked": "2026-11-14T12:15Z",
    "last_result": "broken",
    "last_code": 401,
-   "fails_in_a_row": 4,
+   "fails_in_a_row": 5,
    "first_failed": "2026-11-10T13:44Z",
    "history": [
     "2026-11-10:broken:401",
     "2026-11-11:broken:401",
     "2026-11-12:broken:401",
-    "2026-11-13:broken:401"
+    "2026-11-13:broken:401",
+    "2026-11-14:broken:401"
    ]
   },
   "https://www.newsweek.com/photos-show-work-grind-to-halt-at-secret-russian-base-12286620": {
@@ -3919,15 +3908,16 @@
    "files": [
     "ucraina-storico.json"
    ],
-   "last_checked": "2026-11-13T13:05Z",
+   "last_checked": "2026-11-14T12:15Z",
    "last_result": "broken",
    "last_code": 401,
-   "fails_in_a_row": 3,
+   "fails_in_a_row": 4,
    "first_failed": "2026-11-11T12:40Z",
    "history": [
     "2026-11-11:broken:401",
     "2026-11-12:broken:401",
-    "2026-11-13:broken:401"
+    "2026-11-13:broken:401",
+    "2026-11-14:broken:401"
    ]
   },
   "https://t.me/AMK_Mapping/37570": {
@@ -4951,18 +4941,6 @@
     "2026-11-11:ok:200"
    ]
   },
-  "https://www.theguardian.com/politics/live/2026/nov/10/badenoch-conservative-welfare-cuts-disability-benefits-burnham-politics-latest-news-updates": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-11T12:40Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-11:ok:200"
-   ]
-  },
   "https://www.theguardian.com/world/rss": {
    "files": [
     "notizie-testate.json"
@@ -5027,18 +5005,6 @@
   "https://news.google.com/rss/articles/CBMipgFBVV95cUxPNDFxNG0zOVdWV2lCT1JVdlA3TnVIa09Ha1MzWTRYbDY1WTEtNUtTNUJUa1FtTFVpMlg2UEJscGFzZ3hiRW1WQks0QndKaUxjMWVETWtjNTZoVVdWTEdXTTU0NVNiTGE4VHRvR1VOVWphbDdQRlp2SkhaZnRINWRzWVJxNWpVWVlTbGdNOUtuWTE1NG83WGk3aElrVGVWWmU2M2wxXzZn?oc=5": {
    "files": [
     "notizie.json"
-   ],
-   "last_checked": "2026-11-11T12:40Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-11:ok:200"
-   ]
-  },
-  "https://news.google.com/rss/articles/CBMipgFBVV95cUxNRjN2bS1YaTV3R1d5UEo0Q0VpQTZLTVV6Q29nczNocWEyeHVweHFSRmZvdlZ0VHNwQTkxTy05WDdzYUlVWmMzUGF5X1JtYk45djJjUVdIVjBwUF9kUVpTM0VXVDdfMUlrMlVyT2RCcFNEcEVHMkNoOTVqMzhocF9jbWIzOUoyTHRBRXZHcmdYejdRQThWSUYtVnhZRGt0cmRFclc2RGJB?oc=5": {
-   "files": [
-    "notizie-testate.json"
    ],
    "last_checked": "2026-11-11T12:40Z",
    "last_result": "ok",
@@ -5133,30 +5099,6 @@
     "2026-11-11:ok:200"
    ]
   },
-  "https://www.ansa.it/sito/notizie/economia/2026/11/11/borsa-milano-azzera-il-calo-balzo-di-technoprobe-ed-stm-giu-mediolanum_ff8b165f-cb94-4d29-b23a-687285acb731.html": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-11T12:40Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-11:ok:200"
-   ]
-  },
-  "https://www.ansa.it/ansa2030/notizie/energia_energie/2026/11/11/conferenza-sul-clima-cop3-guterres-le-fonti-fossili-devono-scomparire-come_ff93a15d-609c-4280-b9b1-ac465d9e787f.html": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-11T12:40Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-11:ok:200"
-   ]
-  },
   "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32025R1127": {
    "files": [
     "bunker-emissioni.json"
@@ -5233,18 +5175,6 @@
   "https://www.digitimes.com/news/a20260316PD217.html": {
    "files": [
     "supply-chain-ai.json"
-   ],
-   "last_checked": "2026-11-11T12:40Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-11:ok:200"
-   ]
-  },
-  "https://nltimes.nl/2026/11/11/utrecht-considering-ban-ai-camera-glasses-municipal-buildings": {
-   "files": [
-    "notizie-testate.json"
    ],
    "last_checked": "2026-11-11T12:40Z",
    "last_result": "ok",
@@ -5342,18 +5272,6 @@
   "https://www.vortexa.com/insights/lng/falling-average-speeds-and-utilisation-rates-underscore-lng-vessel-oversupply-bringing-freight-prices-to-atypical-lows": {
    "files": [
     "transit-times.json"
-   ],
-   "last_checked": "2026-11-11T12:40Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-11:ok:200"
-   ]
-  },
-  "https://napoli.corriere.it/notizie/economia/26_novembre_11/finita-la-spinta-del-pnrr-nel-2027-il-pil-del-sud-solo-0-5-ora-un-nuovo-progetto-abc21a11-68d2-4df9-a5e1-997971154xlk.shtml": {
-   "files": [
-    "notizie-testate.json"
    ],
    "last_checked": "2026-11-11T12:40Z",
    "last_result": "ok",
@@ -5486,30 +5404,6 @@
   "https://news.google.com/rss/articles/CBMikgFBVV95cUxPbm1ic21pclZVbUxvcXhINlllQnMwMW9zR1YxckdBdEI1NHVSb2RlWTFEVUUtRlBhX081MFVabk1KeGF6alhPWk9NN3AtaG54WU9xZUNudWs5aWtaR0RuM1lTUVppMkVzOTgzWGM0c285eDItVnA4OWVFcVJ0WWJCSnM2Zi01QXpNZTlYVl9FNDVTdw?oc=5": {
    "files": [
     "notizie.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-12:ok:200"
-   ]
-  },
-  "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOX0pkaWRtdjRKeWpma185bUtPS1U5WDBKaUdMeXcxZkhYT041ZUdxRktiSHhDU0E3a3dkNjdWLXYyZUdaZ2tGU2d4NGJUNkVaNEMzLTN4anB0eHBWNzFUSkFOZ29icXI5aTBqR0dXVi1RNUx4em5SYmFONTdYZks2ekVEcTJiTmpvdl9zV3VETlpySVhpVllOZ0RxWE1RUXJFRHF3aVMwMnNuZVJORlRIU3c1SFB0Z18yb1JSWGhrTWhYNFFpOHdmR2RxUjAwbGRRZDVaeA?oc=5": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-12:ok:200"
-   ]
-  },
-  "https://news.google.com/rss/articles/CBMiygFBVV95cUxNY0VWNXYyNGxmd0lDM1R1QlFHZ3p2cndQLUZxeXRlaERUazlXX2poekhLVUstd3lUcHBlUkRSeXRGTW9Ib3VYV0RZTXQ5WV8zWTlmRklYSU9GcGtONGQ2bEljakgzOFNFN1dFXy14YVFNQzlvdnJVNXZVVXQzcjBNd290WnFZaG1lZGJRRy1Lb2N4cHphd2lnb1pqRUhQM1RsVWtfRjl0cjhkQVRUemNybEtudGtudXlYV0JzNDlFOHNWMVBxSmFqOEhB?oc=5": {
-   "files": [
-    "notizie-testate.json"
    ],
    "last_checked": "2026-11-12T13:42Z",
    "last_result": "ok",
@@ -6071,30 +5965,6 @@
     "2026-11-12:ok:200"
    ]
   },
-  "https://www.corriere.it/economia/finanza/26_novembre_10/banca-generali-utile-oltre-le-stime-a-384-1-milioni-verso-una-raccolta-superiore-agli-8-miliardi-nel-2026-1f26244d-c5ab-456f-987b-06d24387dxlk.shtml": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-12:ok:200"
-   ]
-  },
-  "https://www.corriere.it/economia/life/design-arte/26_novembre_11/arte-da-parigi-a-firenze-da-colonia-a-vercelli-incanti-preziosi-fra-foto-antichi-maestri-e-gioielli-milionari-31944214-6bd1-4d8a-8d3f-a9ad80cd8xlk.shtml": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-12:ok:200"
-   ]
-  },
   "https://www.corriere.it/economia/consumi/26_novembre_11/influencer-e-pubblicita-ingannevoli-la-stretta-ue-cosa-sara-vietato-e-con-quali-sanzioni-c839ed96-1ae3-4bd9-b83d-fd394b557xlk.shtml": {
    "files": [
     "notizie-testate.json"
@@ -6647,42 +6517,6 @@
     "2026-11-12:ok:200"
    ]
   },
-  "https://maritime-executive.com/article/sanctioned-russian-merchant-vessels-are-underway": {
-   "files": [
-    "notizie.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-12:ok:200"
-   ]
-  },
-  "https://www.ilsole24ore.com/art/giorgetti-con-questi-pezzi-dell-energia-impossibile-competere-livello-internazionale-AJxD6SCC": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-12:ok:200"
-   ]
-  },
-  "https://www.bloomberg.com/news/newsletters/2026-11-11/ai-doubts-collide-with-anthropic-s-mega-ipo": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "blocked",
-   "last_code": 403,
-   "detail": "anti-bot or login wall: not counted as broken",
-   "history": [
-    "2026-11-12:blocked:403"
-   ]
-  },
   "https://www.wikidata.org/wiki/Q6526": {
    "files": [
     "italia.json"
@@ -6719,18 +6553,6 @@
     "2026-11-12:ok:200"
    ]
   },
-  "https://www.nytimes.com/2026/11/10/world/middleeast/israel-parliament-eisenkot.html": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "blocked",
-   "last_code": 403,
-   "detail": "anti-bot or login wall: not counted as broken",
-   "history": [
-    "2026-11-12:blocked:403"
-   ]
-  },
   "https://www.nytimes.com/2026/11/12/world/middleeast/iran-confiscations-assets-dissidents.html": {
    "files": [
     "notizie-testate.json"
@@ -6755,31 +6577,7 @@
     "2026-11-12:ok:200"
    ]
   },
-  "https://www.ansa.it/sito/notizie/mondo/europa/2026/11/11/mosca-droni-causano-incendio-in-porto-petrolifero-sul-baltico_8cb92fd7-6549-4260-bbc5-73ef1040ce61.html": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-12:ok:200"
-   ]
-  },
   "https://www.ansa.it/sito/notizie/politica/2026/11/12/schlein-disponibili-a-collaborare-su-allarmi-bomba-ma-nessuna-delega-in-bianco_4e46172b-9520-4b00-ba9a-adde4baf9218.html": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-12T13:42Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-12:ok:200"
-   ]
-  },
-  "https://www.ansa.it/sito/notizie/economia/2026/11/11/loro-sale-a-4.06380-dollari-loncia_0269c74c-a5ba-4299-8965-3b950b00482f.html": {
    "files": [
     "notizie-testate.json"
    ],
@@ -7081,55 +6879,7 @@
     "2026-11-12:ok:200"
    ]
   },
-  "https://www.ansa.it/sito/notizie/politica/2026/11/10/tajani-il-sostegno-dellitalia-a-kiev-e-garantito_8d115d73-cd43-4748-a01c-04211a198264.html": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-13T13:05Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-13:ok:200"
-   ]
-  },
-  "https://www.ansa.it/sito/notizie/economia/2026/11/10/gruppo-sella-utile-9-mesi-sale-a-204-milioni-crescono-raccolta-e-impieghi_c7799cd8-774c-4d56-a056-5c8a6c1f6e97.html": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-13T13:05Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-13:ok:200"
-   ]
-  },
   "https://www.ansa.it/sito/notizie/mondo/europa/2026/11/11/meloni-porta-il-nodo-dellinviato-ue-a-dublino-pressing-di-zelensky_485675d6-6025-46e4-938a-dd1515ea5998.html": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-13T13:05Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-13:ok:200"
-   ]
-  },
-  "https://www.ansa.it/english/news/2026/11/10/tajani-dismisses-russian-embassy-attack-on-him-as-propaganda-disinformation_f751d247-d0a7-4969-8623-c06d8a64fddb.html": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-13T13:05Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-13:ok:200"
-   ]
-  },
-  "https://www.ansa.it/sito/notizie/economia/2026/11/10/nel-ddl-concorrenza-proroga-di-un-anno-delle-tutele-graduali-nellenergia_084d5272-96b6-4a45-8783-022d0a674a17.html": {
    "files": [
     "notizie-testate.json"
    ],
@@ -8768,13 +8518,14 @@
    "files": [
     "attacchi-analisti.json"
    ],
-   "last_checked": "2026-11-13T13:05Z",
+   "last_checked": "2026-11-14T12:15Z",
    "last_result": "broken",
    "last_code": 404,
-   "fails_in_a_row": 1,
+   "fails_in_a_row": 2,
    "first_failed": "2026-11-13T13:05Z",
    "history": [
-    "2026-11-13:broken:404"
+    "2026-11-13:broken:404",
+    "2026-11-14:broken:404"
    ]
   },
   "https://lngprime.com/contracts-and-tenders/sempra-wraps-up-sempra-infrastructure-stake-sale-to-kkr/199956/": {
@@ -8838,18 +8589,6 @@
     "2026-11-13:ok:200"
    ]
   },
-  "https://news.err.ee/1610192126/edf-issues-potential-air-threat-alerts-across-southern-eastern-estonia": {
-   "files": [
-    "notizie-testate.json"
-   ],
-   "last_checked": "2026-11-13T13:05Z",
-   "last_result": "ok",
-   "last_code": 200,
-   "fails_in_a_row": 0,
-   "history": [
-    "2026-11-13:ok:200"
-   ]
-  },
   "https://www.lanazione.it/firenze/cronaca/caserma-predieri-nato-3544934b": {
    "files": [
     "italia.json"
@@ -8884,6 +8623,1812 @@
    "fails_in_a_row": 0,
    "history": [
     "2026-11-13:ok:200"
+   ]
+  },
+  "https://www.wikidata.org/wiki/Q1092826": {
+   "files": [
+    "italia.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gdacs.org/report.aspx?eventid=1029643&episodeid=22&eventtype=WF": {
+   "files": [
+    "eventi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.ansa.it/sito/notizie/economia/2026/11/13/bombardieri-i-tagli-sulla-scuola-in-manovra-saltano_24f543df-c230-4e63-ab50-e7aa1b4f1d5d.html": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.ansa.it/english/news/news_from_embassies/2026/11/12/second-edition-of-italian-design-day-in-ghana_0c6388d9-d82e-4284-9b43-0d0a9275778a.html": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.france24.com/en/tv-shows/spotlight/20261113-hurry-up-and-wait-europe-wants-a-place-at-the-table-must-make-up-its-mind-over-ukraine": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.france24.com/en/rss": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/32976": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/9437": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/6449": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/8438": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/6586": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/wartranslated/20210": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/40461": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/26342": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/40476": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/22762": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/8184": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/8186": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/38683": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/9158": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/38976": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/30931": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/clement_molin/266": {
+   "files": [
+    "ucraina-storico.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/3297": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/16262": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/15873": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/24021": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/37133": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/21674": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/35546": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/26248": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/23157": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/15645": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/16759": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/6801": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/37189": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/wartranslated/20228": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/39533": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://t.me/AMK_Mapping/32386": {
+   "files": [
+    "attacchi-analisti.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.aljazeera.com/news/2026/8/20/gunmen-seize-tanker-off-yemen-amid-resurgence-of-somali-piracy": {
+   "files": [
+    "eventi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.aljazeera.com/video/newsfeed/2026/11/12/iran-open-to-deal-if-us-refrains-from-excessive-demands-says-ghalibaf?traffic_source=rss": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.aljazeera.com/news/2026/11/9/us-agencies-unite-to-combat-rogue-drone-threats-nationwide?traffic_source=rss": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://x.com/BeamTracker_/status/2118604761112936775": {
+   "files": [
+    "eventi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://x.com/BeamTracker_/status/2118979690916438162": {
+   "files": [
+    "eventi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://hvdcworld.com/news/amprion-delays-balwin1-hvdc-connection-to-2031": {
+   "files": [
+    "eolico-filiera.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.bloomberg.com/news/videos/2026-11-13/carrie-underwood-on-her-new-wellness-brand-hinote-video": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "blocked",
+   "last_code": 403,
+   "detail": "anti-bot or login wall: not counted as broken",
+   "history": [
+    "2026-11-14:blocked:403"
+   ]
+  },
+  "https://www.bloomberg.com/news/articles/2026-11-13/morgan-stanley-s-shalett-incredibly-bullish-despite-ai-turmoil": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "blocked",
+   "last_code": 403,
+   "detail": "anti-bot or login wall: not counted as broken",
+   "history": [
+    "2026-11-14:blocked:403"
+   ]
+  },
+  "https://www.bloomberg.com/news/articles/2026-11-12/us-envoys-witkoff-kushner-putin-talks-ukraine-zelenskyy-opportunity": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "blocked",
+   "last_code": 403,
+   "detail": "anti-bot or login wall: not counted as broken",
+   "history": [
+    "2026-11-14:blocked:403"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/machilipatnam-india": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/sanana-indonesia": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/mt-lavinia-sri-lanka": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/tanjung-bemban-indonesia": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/submarine-cable/southern-caribbean-fiber": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/submarine-cable/tikal-amx3": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/aguimes-canary-islands-spain": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/kangiqsualujjuaq-qc-canada": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/johnstone-point-ak-united-states": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/placer-philippines": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/amderma-russia": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/totalenergies-halfdan-denmark": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/winterton-on-sea-united-kingdom": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/submarine-cable/umo": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/san-andres-colombia": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/changi-north-singapore": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/egg-island-bc-canada": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/submarine-cable/vaka": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/markgrafenheide-germany": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/meersburg-germany": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/submarine-cable/adamasia-cable-system-1-acs-1": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/submarine-cable/sydney-melbourne-adelaide-perth-smap": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/legazpi-city-philippines": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.submarinecablemap.com/landing-point/tainan-taiwan": {
+   "files": [
+    "cavi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://video.corriere.it/da-venezia-alla-casa-bianca-i-velluti-dei-dogi-conquistano-il-lusso-mondiale/08437252-353c-41e2-8ff0-64d6f58b7xlk": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Idku-Abu_Hummus_Gas_Pipeline": {
+   "files": [
+    "linee.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Ingleside_Energy_LNG_Terminal": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Damietta%E2%80%93SEGAS_Pipeline": {
+   "files": [
+    "linee.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Altamira_LNG_Terminal": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Wakayama_LNG_Terminal": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Lubmin_FSRU": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Shenzhen_LNG_Terminal_(Shenzhen_Gas)": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/New_Fayoum_Gas_Pipeline": {
+   "files": [
+    "linee.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Mauritius_FSRU": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Browse_FLNG_Terminal": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Karpowership_Yucatán_FSRU": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Argent_LNG_Terminal": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Singapore_Offshore_LNG_Terminal": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Hamina_LNG_Terminal": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/AMIGO_FLNG_Terminal": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.gem.wiki/Woodfibre_LNG_Terminal": {
+   "files": [
+    "terminali-gnl.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://en.wikipedia.org/wiki/Burevestnik_(air_base)": {
+   "files": [
+    "basi-mondo.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://en.wikipedia.org/wiki/2026_Leipzig_Airport_drone_attack": {
+   "files": [
+    "baltico-sicurezza.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://en.wikipedia.org/wiki/Camp_Bondsteel": {
+   "files": [
+    "basi-mondo.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.hellenicshippingnews.com/evergreen-resumes-suez-canal-transits-after-nearly-3-year-hiatus/": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.hellenicshippingnews.com/bidding-announcement-of-bulk-carrier-yangze-12/": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.hellenicshippingnews.com/lr-partnering-the-right-yard-to-the-right-project/": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.offshorewind.biz/2026/08/05/aarsleff-wins-eur-495-million-contract-for-bornholm-energy-island-onshore-facilities/": {
+   "files": [
+    "wind-calendar.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNWU9KR2NMSF9FeHRaREozeW1IMEp3eDZMSHE2dTRSOEF2cWRzMW1LMW5yeUhFV2IxZUJQdlBkOHpWWTVQV0I3bGRYY2l3MkQ4WnJEdVlrY25GWkZZUmtrek5mZkRhTm1lMkxiTHo5SmQxWFZLUkxsQkcxUXZRN1NCdjR2Vm4zWVQ4d1UtUkpISVMxQmdyVkhKR0w4aURkUmkzRkROMmpKV0JyTUY5MlFQRnZ4aU1seHZj?oc=5": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZlNDY3ZNVk56RmdTT0pIeE4tMklXSWdIME0zazI0YUxoelFtbDd3VTRwTlJvNHd1N0JSelhzMjFtcms4TDNEdWVibTNqd1UzLWU4Qk14dkh6YVFJMFdYVW41R1BnWUhpZXBoTi04RVNnOUNxb2hPbUVkY3RIUV8tQUZR?oc=5": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPczVWLVJOY1J0Smt5Q3RZVVhuQmpRdExRbDUxX294RFhEQ0FmRGVVaW9UU0FvQUhoMkdEOUh6bGZGN0N6YlJVcFhmTXJpX3ZOUzItRThLYkZQekxNWTRUUm9hNHZsbklRUjNnQXdvTWxJQTd2VWtPLVg2ZEItTE5oWjVUbUtsQlh5ZjNLRnlZZEtoRjVqZmFvMGJWbnZ4QXEydTBveXpPRHRrelV1R0VsSGpvNHZBZlhsQUk0?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMivgFBVV95cUxONmVER0FfZDZhV01vU0FITjB6OVlpV3ZweE9QS0ZJdW85NmtMci1aSzB0NXNrazhZeE1vdkRSMldVVWVjX0s2R01ON3pTbGZKdmJOWEtCRzBNYVVKdFhyS3ZKWmhUSDJCS0dwRUs4VkNoNE84OEFzRjJTWWZDMmFzV1hWeEo2eXJmemwtbVRpT3NnQ2RZVnY2U0VtYUZmREtjXzJ0Y0Z3N29sd0xUaHJDaVUzalYzQWFfT19hNFNR?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMitgFBVV95cUxNRGdGSHoxdUN5RDcxMWZ4d1ZVYUZOVm8tTl85RURWSV9GMFFSdTA5T29qa0hHb2NOcnZ1MjZKeXQ3UmpkVnpqbzZPQkRYUTdicE94bEpscWxGbFZ2VldNdFVNY1E1M2c3ZDhzWlF5SWt1dWxVazc4dW0wQXh0b0pOU3FEbE1ZbFZpYlQ4Z01UallxLUp5WGpWMGh2ZnhoTVlHNWUwZ1VmeFY0S19UUFNOcDRkcy1WQQ?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMihAFBVV95cUxQMFRLX3NsenJzNmtnMmVMUXhtakFGcEU2RFRRZEk1NUl4aF8wWEtZQ1RuVG1oZ0ZJRmJqc3N3VnpfQjhLcV80UGxTTFc5Q0Z1Z01YNXJTNXZYZUhsRjhNWWx5bXdMTlI5dGF3VUJNQUR4VFNnb3pLLXFXY1dmUnJXVFVoaVTSAYoBQVVfeXFMTmVzVXVTOFZDV2VKVzM3T2NsVF9xSmtfcFNscWJNYTNZV3RtNExYMWRjQUM5bmxxOXk1eU8zR09iZVRlNXctTWlROVlQWEcwY3FnYy1scjRuZU5RbS1EUDNuMWI5d1hvTXpURENab1A4eURib3BqYjFaRXlXVFJXRHBsYU5NSG5QZktR?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMihwFBVV95cUxPQjktQ0FleXlwTVZlaHJFMmM3ejFSVENJZWg3OXF2V3EzYzAtXzZiY2hGak1sMENrS3JabnIxSlVXblVsXzFIaGc5LUxzdk43bUJlWGJVWVRka0UwalpLb0xLR2hqRTcyTDNnTUFRUFYtcDJLOW9JVl9DZmt2ZWJTXzZzU2gtMkE?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPdF9JU2VBMnl6OC02VjRybzNIMzVQZ0hlMWd1Zk93NndjdXI5WHpUY3U4cnZqUjZJVFRZSDl6dG4xMVlJODkxdFNPQlQ3alZYcEN5VGgzdlU0Q1RWUFVHcVpWVWhuTGhFYzRDdmVzVHlzdTVSTUExTWZVcklENXFLYXl1eXloVmdubUtSajZPTVNfS3JoSWkxQWlYLVNXcWpqTG40b3RiTjNjQnpiQ2FHQWJFMlNsTlYwdFZETTZCZlJQN3psMHl1a0JfUWptNHRCaUMxMXJUVTNCbmUyNEd5MnJZTjhfa2VGUWc?oc=5": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMigwFBVV95cUxOZ0cyVmdPTTRkWGt3UlMtUFRyOGhvdDNlM1FYVy1MSVN0elpQZHgtWXctVEE1M2RjQm9IcmwzUGU4cEhEQnhsQWlOX2RhUFk1NzBXeFkwM3lMek16ajB1ZmozdGpLR0cwQ2JTcGVlTTJwMEc2ZFZ3bklxeTk4eElFaHZLaw?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMizwFBVV95cUxQM253QjNkVjdyYy1jWm9QdGFFRHNVR2JrSDZNeWNYRlNEUEo4bWZJekFLUnljRTJYOGVQbHNLXzEyb2Fnc0xPWjNhWUtLX1k4bmxEZzd1eW5jdzRQdGF3S3JiT04zUk1KTmtiQVN3Y1lQZnZXaHFpWDlzcHB2MmUyNHBnR1NlM3h6dDFsT0JFV2xEcVFGTWRQSHpVcUpHTDJXMTVCWVllb0o1VFZjaWQtZGpCV0JtZVJqZ0pSX2pqNlR4RldrbUx1WWxqTUVuV0k?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMilwFBVV95cUxPUE9tOG43TmtSS1VHQTJKekw5TThsYXhSdXl3eGZqR1ZWMTE3MF9fcWZONXlXUkdydk1Bb1ZkZ3RvVTFXWlNVeWIxaGF5Nm13eWw0bVZtaFhLU0haWlVwM2F5dWpYVnl3SHU4UEVTYkVuX2lGMEtCelUtbjcyQ3hjVDF1T2ltNHZTSEV5cmdmTlpPSEFVbkln0gGcAUFVX3lxTE5jX1FGX3ZQaGM4UjlJSGdXTV8tVmh4MW5qZlRlLVNVcW8wM0x5cTVfR0hIYkdKajI0Nm9MV0owdDNDdFhENl9NeVFDeWJRUHF2NXRBaWNlZWljYzZmMml1LTlBaVd4dWtzanJHaFp3dkItdU5qdlh1YXBicWt6UUlyZlFUdlRwVUhlLWpXV1V6ZDBMQlpMZWlQZDlyeA?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMikAFBVV95cUxPcFluek0tV3dvY1RrR3NNdlhJQUVZOGJSMDZ3YUFVbDlmV3llTkhISzVXV1RwV0h1WEF1RjNNcVlRdTF4MFhGb1NHd1VOVHg4VENYZFFYRFZNdjI3RC1EYjlqUTF2ZHliaWNxZXVWV0JRQjVoUlFFY1Bkc3hMMm0ySm0xazJaWTZYR196dzJzaU0?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQSVI4YzdVYkJxMWQ1b1o5UU9VUmJPLXhZa2hOamRLMGNMNVZLdWJ1VndxeC0zd0t4QkttQ24zV2lGUUxGZHV3TWFkZ1JYekplMlBQV3BzMDV4c3FCV1g1UzJXY2FhandUZjNpa1NqMmhSVzFJeW1NVkZhWHVsb2hOSUJRSzRUeXJlRDR0d0ZuSXoxOTFGUTc1bTRqdzBMbTRoeXBfaFpjSmpwU1RLTklhZVJfWE9XVVBVVTA4?oc=5": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://portofrotterdam.com/en/experience-online/facts-and-figures": {
+   "files": [
+    "esposizione-nord.json",
+    "porti-nord.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://kyivindependent.com/ukrainian-drones-reportedly-strike-oil-refinery-in-russian-city-of-yaroslavl/": {
+   "files": [
+    "ucraina-storico.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://kyivindependent.com/canada-unveils-new-russia-sanctions-targeting-defense-industry-cyber-activities/": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://kyivindependent.com/russian-forces-hit-oil-depot-in-dnipro/": {
+   "files": [
+    "attacchi-russi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://kyivindependent.com/media-ukrainian-drones-behind-oil-refineries-attacks-in-russias-ryazan-voronezh-oblasts/": {
+   "files": [
+    "ucraina-storico.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://kyivindependent.com/drones-reportedly-attack-russian-refinery-in-samara-oblast/": {
+   "files": [
+    "ucraina-storico.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.reinsurancene.ws/marsh-mclennan-lloyds-backed-unity-expands-coverage-to-boost-ukrainian-economy/": {
+   "files": [
+    "assicurazioni.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://ourairports.com/airports/RU-4464/": {
+   "files": [
+    "basi-mondo.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "error",
+   "last_code": null,
+   "detail": "TLS: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1011)",
+   "history": [
+    "2026-11-14:error:"
+   ]
+  },
+  "https://ourairports.com/airports/LCGK/": {
+   "files": [
+    "basi-mondo.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "error",
+   "last_code": null,
+   "detail": "TLS: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1011)",
+   "history": [
+    "2026-11-14:error:"
+   ]
+  },
+  "https://www.al-monitor.com/originals/2026/11/iranian-iraqi-presidents-meet-after-border-closure-militia-row-what-know": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.al-monitor.com/originals/2026/11/trump-board-peace-says-israel-too-slow-floods-ravage-gaza": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.lemonde.fr/en/le-monde-africa/article/2026/11/14/gadi-eisenkot-israeli-pm-hopeful-and-son-of-immigrants-born-in-casablanca-and-marrakech-draws-interest-in-morocco_6780523_124.html": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.lemonde.fr/en/opinion/article/2026/11/12/what-xi-trump-and-putin-might-be-thinking-ahead-of-their-possible-summit_6778741_23.html": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.lemonde.fr/en/international/article/2026/11/13/gadi-eisenkot-accuses-netanyahu-s-racist-campaign-against-israeli-arabs_6780259_4.html": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.nytimes.com/2026/11/13/technology/nvidia-ceo-jen-huang-loss.html": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "blocked",
+   "last_code": 403,
+   "detail": "anti-bot or login wall: not counted as broken",
+   "history": [
+    "2026-11-14:blocked:403"
+   ]
+  },
+  "https://www.skylinewebcams.com/it/webcam/italia/veneto/venezia/san-giorgio.html": {
+   "files": [
+    "webcam.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://feeds.nos.nl/nosnieuwseconomie": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.imf.org/external/datamapper/NGDP_RPCH/UKR": {
+   "files": [
+    "paesi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 206,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:206"
+   ]
+  },
+  "https://www.imf.org/external/datamapper/BCA_NGDPD/POL": {
+   "files": [
+    "paesi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 206,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:206"
+   ]
+  },
+  "https://splash247.com/splash-wrap-seafarers-take-centre-stage/": {
+   "files": [
+    "notizie-testate.json",
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://splash247.com/us-ethanol-industry-eyes-growing-marine-fuel-market/": {
+   "files": [
+    "notizie-testate.json",
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.corriere.it/economia/finanza/26_novembre_13/consob-anac-agcm-agcom-se-le-autorita-di-garanzia-non-garantiscono-piu-come-salvarne-l-indipendenza-fb8537f8-c204-49b7-b2ab-73f2947caxlk.shtml": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://gcaptain.com/iraq-has-reached-understandings-with-us-to-allow-oil-exports-through-hormuz/": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://gcaptain.com/egypt-deepens-gas-cuts-to-fertilizer-makers-as-energy-squeeze-tightens/": {
+   "files": [
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.theguardian.com/us-news/2026/nov/11/first-thing-pete-hegseth-survives-effort-to-impeach-him": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://it.wikipedia.org/wiki/Arsenale_militare_marittimo_della_Spezia": {
+   "files": [
+    "italia.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.arabnews.pk/middle-east/satellite-images-show-major-building-work-underway-at-iranian-military-sites-3006287": {
+   "files": [
+    "iran.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.internazionale.it/ultime-notizie-reuters/2026/10/28/german-police-arrest-two-suspected-of-planning-sabotage-attacks-for-russia-spiegel-says": {
+   "files": [
+    "ibrido.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://newsletter.semianalysis.com/p/huawei-ascend-production-ramp?open=false": {
+   "files": [
+    "ai-mondo.json",
+    "ai.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.unite.ai/microsoft-brings-fourth-india-cloud-region-online-in-hyderabad/": {
+   "files": [
+    "ai-mondo.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.bbc.co.uk/news/articles/cwvg238zrnm5o?at_medium=RSS&at_campaign=rss": {
+   "files": [
+    "notizie-testate.json",
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.bbc.co.uk/news/articles/cmn0d33zz34zo?at_medium=RSS&at_campaign=rss": {
+   "files": [
+    "notizie-testate.json",
+    "notizie.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://united24media.com/war-in-ukraine/russia-reportedly-uses-aerial-bomb-against-odesa-for-first-time-amid-massive-missile-and-drone-attack-22104": {
+   "files": [
+    "attacchi-russi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://earthquake.usgs.gov/earthquakes/eventpage/us7000tdw6": {
+   "files": [
+    "eventi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://brusselssignal.eu/2026/09/eu-carbon-rules-raise-costs-at-spains-biggest-port-as-an-eu-backed-moroccan-port-prepares-to-open/": {
+   "files": [
+    "stretti-dettaglio.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://finance.yahoo.com/quote/%5ESTOXX50E": {
+   "files": [
+    "prezzi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.youtube.com/watch?v=qTglGNAdIDs&t=104s": {
+   "files": [
+    "eventi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.youtube.com/watch?v=qTglGNAdIDs&t=31s": {
+   "files": [
+    "eventi.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://yle.fi/rss/news": {
+   "files": [
+    "notizie-testate.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
+   ]
+  },
+  "https://www.spglobal.com/energy/en/news-research/latest-news/energy-transition/031926-feature-chiles-green-hydrogen-ambitions-face-skepticism-amid-delays-and-high-costs": {
+   "files": [
+    "idrogeno.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "blocked",
+   "last_code": 403,
+   "detail": "anti-bot or login wall: not counted as broken",
+   "history": [
+    "2026-11-14:blocked:403"
+   ]
+  },
+  "https://www.itamilradar.com/2026/09/14/raf-rc-135w-returns-to-the-black-sea-from-souda-bay-reinforcing-natos-surveillance-of-russias-southern-flank/": {
+   "files": [
+    "aerei.json"
+   ],
+   "last_checked": "2026-11-14T12:15Z",
+   "last_result": "ok",
+   "last_code": 200,
+   "fails_in_a_row": 0,
+   "history": [
+    "2026-11-14:ok:200"
    ]
   }
  }
