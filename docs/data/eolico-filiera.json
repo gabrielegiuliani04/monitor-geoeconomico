@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-10T11:21Z",
+ "aggiornato": "2026-11-15T12:12Z",
  "fonti": [
   {
    "nome": "WindEurope, Wind energy in Europe - 2025 Statistics and the outlook for 2026-2030 (tabelle 1 e 4)",
@@ -2601,70 +2601,65 @@
    {
     "id": "us2y",
     "nome": "Titolo di Stato USA 2 anni",
-    "ultimo": 4.56,
+    "ultimo": 4.88,
     "unita": "% rendimento",
-    "data": "2026-11-09",
+    "data": "2026-11-13",
     "var": {
-     "1g": 5,
-     "1m": -24,
-     "ytd": 109,
-     "1a": 101
+     "1g": 2,
+     "1m": 6,
+     "ytd": 141,
+     "1a": 130
     },
     "perche_conta": "Tasso a breve: aspettative di politica monetaria, condizioni del debito di costruzione."
    },
    {
     "id": "us10y",
     "nome": "Titolo di Stato USA 10 anni",
-    "ultimo": 4.88,
+    "ultimo": 5.15,
     "unita": "% rendimento",
-    "data": "2026-11-09",
+    "data": "2026-11-13",
     "var": {
-     "1g": 2,
-     "1m": -36,
-     "ytd": 70,
-     "1a": 77
+     "1g": 5,
+     "1m": -4,
+     "ytd": 97,
+     "1a": 104
     },
     "perche_conta": "Tasso a lungo termine (proxy del costo del capitale globale): un parco offshore e' quasi tutto capex, ogni punto di tasso pesa sul prezzo necessario."
    },
    {
     "id": "brent",
     "nome": "Petrolio Brent",
-    "ultimo": 91.15,
+    "ultimo": 96.08,
     "unita": "USD/barile",
-    "data": "2026-11-10",
+    "data": "2026-11-13",
     "var": {
-     "1g": -1.53,
-     "1m": -12.96,
-     "ytd": 49.79,
-     "1a": 42.29
+     "1g": 0.27,
+     "1m": -9.41,
+     "ytd": 57.9,
+     "1a": 52.48
     },
     "perche_conta": "Petrolio: concorrenza per navi e cantieri con l'offshore oil & gas."
    },
    {
     "id": "ttf",
     "nome": "Gas TTF (Europa)",
-    "ultimo": 83.0,
+    "ultimo": 89.54,
     "unita": "EUR/MWh",
-    "data": "2026-11-10",
-    "var": {
-     "1g": 0.61,
-     "1m": 1.93,
-     "ytd": 194.74,
-     "1a": 167.14
-    },
+    "data": "2026-11-13",
+    "var": {},
     "perche_conta": "Prezzo del gas europeo: fissa spesso il prezzo marginale dell'elettricita' e quindi i ricavi attesi (e il costo dei CfD per lo Stato)."
    },
    {
     "id": "eurusd",
     "nome": "EUR/USD",
-    "ultimo": 1.1226,
+    "ultimo": 1.105,
     "unita": "USD per 1 EUR",
-    "data": "2026-11-10",
+    "data": "2026-11-13",
     "var": {
-     "1g": 0.71,
-     "1m": 0.12,
-     "ytd": -4.44,
-     "1a": -2.75
+     "1g": -0.41,
+     "1m": -1.37,
+     "ytd": -5.93,
+     "1a": -4.68
     },
     "perche_conta": "Navi e componenti si pagano spesso in USD; ricavi in EUR/GBP/DKK."
    }
@@ -2683,7 +2678,7 @@
     "nota": "serie non presente in prezzi.json: da aggiungere allo script dei mercati"
    }
   ],
-  "aggiornato_prezzi": "2026-11-10T11:19Z"
+  "aggiornato_prezzi": "2026-11-14T01:31Z"
  },
  "collegamenti": {
   "file_nord": {
@@ -2691,22 +2686,22 @@
     {
      "file": "porti-nord.json",
      "presente": true,
-     "aggiornato": "2026-11-09T20:05Z"
+     "aggiornato": "2026-11-14T12:02Z"
     },
     {
      "file": "offshore-nord.json",
      "presente": true,
-     "aggiornato": "2026-11-09T20:05Z"
+     "aggiornato": "2026-11-14T12:02Z"
     },
     {
      "file": "baltico-sicurezza.json",
      "presente": true,
-     "aggiornato": "2026-11-09T20:05Z"
+     "aggiornato": "2026-11-14T12:02Z"
     },
     {
      "file": "esposizione-nord.json",
      "presente": true,
-     "aggiornato": "2026-11-09T20:05Z"
+     "aggiornato": "2026-11-14T12:02Z"
     }
    ],
    "corrispondenze": [
@@ -2871,41 +2866,17 @@
  },
  "notizie_recenti": [
   {
-   "titolo": "Vard starts building third sov for dong fang offshore",
-   "data": "2026-11-09",
-   "link": "https://www.offshorewind.biz/2026/11/09/vard-starts-building-third-sov-for-dong-fang-offshore",
+   "titolo": "Finland could launch first offshore wind tender in h1 2027 as government designates four development areas",
+   "data": "2026-11-12",
+   "link": "https://www.offshorewind.biz/2026/11/12/finland-could-launch-first-offshore-wind-tender-in-h1-2027-as-government-designates-four-development-areas",
    "parole": [
-    "sov"
+    "tender"
    ]
   },
   {
-   "titolo": "Hea energy buying seaway7s heavy transport vessel business",
-   "data": "2026-11-05",
-   "link": "https://www.offshorewind.biz/2026/11/05/hea-energy-buying-seaway7s-heavy-transport-vessel-business",
-   "parole": [
-    "vessel"
-   ]
-  },
-  {
-   "titolo": "Vard starts construction of second csov for upo",
-   "data": "2026-11-05",
-   "link": "https://www.offshorewind.biz/2026/11/05/vard-starts-construction-of-second-csov-for-upo",
-   "parole": [
-    "csov"
-   ]
-  },
-  {
-   "titolo": "Ls cable ls marine secure production and installation capacity for 504 mw south korean offshore wind farm",
-   "data": "2026-11-02",
-   "link": "https://www.offshorewind.biz/2026/11/02/ls-cable-ls-marine-secure-production-and-installation-capacity-for-504-mw-south-korean-offshore-wind-farm",
-   "parole": [
-    "cable"
-   ]
-  },
-  {
-   "titolo": "Deme and prysmian start cable installation for dutch offshore grid connections",
-   "data": "2026-10-29",
-   "link": "https://www.offshorewind.biz/2026/10/29/deme-and-prysmian-start-cable-installation-for-dutch-offshore-grid-connections",
+   "titolo": "Seaway7 kicks off cable installation work at orsteds hornsea 3",
+   "data": "2026-11-12",
+   "link": "https://www.offshorewind.biz/2026/11/12/seaway7-kicks-off-cable-installation-work-at-orsteds-hornsea-3",
    "parole": [
     "cable"
    ]

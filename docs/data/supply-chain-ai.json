@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-10T06:09Z",
- "data_riferimento": "2026-11-10",
+ "aggiornato": "2026-11-15T12:11Z",
+ "data_riferimento": "2026-11-15",
  "fonti": [
   {
    "nome": "USGS, Mineral Commodity Summaries 2026",
@@ -13,7 +13,7 @@
    "link": null,
    "file": "raccolta/supply-chain-ai/*.json",
    "licenza": "fatti citati con fonte e link per ogni voce",
-   "data_dato": "2026-11-10"
+   "data_dato": "2026-11-15"
   },
   {
    "nome": "OpenStreetMap Nominatim (geocodifica una tantum)",
@@ -25,35 +25,35 @@
  "fonti_osservatorio": [
   {
    "nome": "prezzi.json",
-   "aggiornato": "2026-11-10T03:40Z"
+   "aggiornato": "2026-11-14T01:31Z"
   },
   {
    "nome": "portwatch.json",
-   "aggiornato": "2026-11-09T19:16Z"
+   "aggiornato": "2026-11-14T11:41Z"
   },
   {
    "nome": "ai.json",
-   "aggiornato": "2026-11-09"
+   "aggiornato": "2026-11-15"
   },
   {
    "nome": "ai-mondo.json",
-   "aggiornato": "2026-11-09T19:56Z"
+   "aggiornato": "2026-11-15T12:11Z"
   },
   {
    "nome": "stretti-dettaglio.json",
-   "aggiornato": "2026-11-09T19:30Z"
+   "aggiornato": "2026-11-14T12:14Z"
   },
   {
    "nome": "cavi-incidenti.json",
-   "aggiornato": "2026-11-09T18:57Z"
+   "aggiornato": "2026-11-15T11:29Z"
   },
   {
    "nome": "rete-elettrica.json",
-   "aggiornato": "2026-11-09T19:17Z"
+   "aggiornato": "2026-11-15T12:08Z"
   },
   {
    "nome": "cavi.json",
-   "aggiornato": "2026-11-09T18:57Z"
+   "aggiornato": "2026-11-15T11:29Z"
   },
   {
    "nome": "minerali.json",
@@ -65,7 +65,7 @@
   },
   {
    "nome": "investimenti.json",
-   "aggiornato": "2026-11-09T19:56Z"
+   "aggiornato": "2026-11-15T12:11Z"
   }
  ],
  "nota": "Catena del valore dell'AI dalla miniera al data center, in 8 anelli. elementi = nodi (punti con lat/lon); archi = collegamenti da → a (g = [[lon, lat], ...]); colli = colli di bottiglia con indicatori, valori e stato rispetto a soglie che sono una VALUTAZIONE dell'osservatorio; controlli = controlli all'export 2022-2026; materie = produzione per paese (USGS) con quote calcolate; titoli = titoli quotati collegati, con prezzo da prezzi.json quando seguito. Gli archi di tipo 'valutazione' sono percorsi tipici, non tracciati reali. Non è una raccomandazione di investimento.",
@@ -626,9 +626,9 @@
    "note": "3° trimestre 2026: ricavi 11,7 mld EUR, 113 sistemi litografici nuovi venduti; guida 2026 44–45 mld EUR. Circa 65 EUV Low-NA previste nel 2026 (ai-mondo.json). Quota Cina 23% delle vendite di sistemi nel trimestre secondo una sintesi non ufficiale (aiweekly).",
    "lat": 51.4077,
    "lon": 5.3927,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del comune)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the municipality)",
    "precisione_km": 3,
-   "nodo": "fornitore unico al mondo di scanner EUV (Low-NA e High-NA)",
+   "nodo": "sole supplier worldwide of EUV scanners (Low-NA and High-NA)",
    "proprietario": "ASML",
    "categoria": "supply-chain-ai"
   },
@@ -810,9 +810,9 @@
    "note": "Nel 2° trimestre 2026 le linee a 5/4 e 3 nm erano piene e il 2 nm ha dato i primi ricavi (TrendForce).",
    "lat": 24.7602,
    "lon": 120.9909,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM di Baoshan)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of Baoshan)",
    "precisione_km": 3,
-   "nodo": "N2 (2 nm), poi A16",
+   "nodo": "N2 (2 nm), then A16",
    "proprietario": "TSMC",
    "categoria": "supply-chain-ai"
   },
@@ -834,14 +834,14 @@
    ],
    "lat": 22.7355,
    "lon": 120.3272,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del distretto)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the district)",
    "precisione_km": 4,
    "fonte": "TrendForce",
    "link": "https://www.trendforce.com/news/2026/02/23/news-tsmc-speeds-up-expansion-in-taiwan-up-to-10-fabs-reportedly-under-construction-or-starting-in-2026/",
    "data_fonte": "2026-02-23",
    "affidabilita": "alta",
-   "note": "P1 in volume dal 2° semestre 2025 (circa 10.000 wafer al mese), P2 in prova, P3 in costruzione. Stime di capacità 2 nm totale a fine 2026 molto diverse (100.000-140.000 wafer al mese).",
-   "nodo": "N2 (2 nm), poi A16",
+   "note": "P1 in volume since H2 2025 (about 10,000 wafers per month), P2 in trial, P3 under construction. Estimates of total 2 nm capacity at end-2026 vary widely (100,000-140,000 wafers per month).",
+   "nodo": "N2 (2 nm), then A16",
    "proprietario": "TSMC",
    "categoria": "supply-chain-ai"
   },
@@ -868,7 +868,7 @@
    "note": "Piano portato a 265 mld USD (10 fabbriche, 2 impianti di packaging). I chip fatti in Arizona tornano a Taiwan per il packaging avanzato (TrendForce): il packaging AP1 in Arizona è previsto dal 2028.",
    "lat": 33.78,
    "lon": -112.14,
-   "origine_coord": "da ai.json (stimata)",
+   "origine_coord": "da ai.json (estimated: TSMC Arizona site north of Phoenix (Loop 303 / I-17), from the US AI dossier)",
    "precisione_km": 3,
    "categoria": "supply-chain-ai"
   },
@@ -890,15 +890,15 @@
    ],
    "lat": 32.8626,
    "lon": 130.8284,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del comune)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the municipality)",
    "precisione_km": 3,
    "fonte": "Remio",
    "link": "https://www.remio.ai/post/tsmc-kumamoto-3nm-fab-approved-but-japan-is-trading-volume-for-advanced-chips",
    "data_fonte": "2026",
    "affidabilita": "media",
-   "note": "Fab 1 in produzione. Fab 2: a febbraio 2026 TSMC annuncia il passaggio a 3 nm (Taiwan approva il 2026-03-31), obiettivo 2028; segnali di rallentamento del cantiere. Importo = stima stampa per la sola Fab 2, non confermata da TSMC.",
-   "nodo": "Fab 1: 12-28 nm; Fab 2: 3 nm (previsto)",
-   "proprietario": "JASM (TSMC con Sony, Denso, Toyota)",
+   "note": "Fab 1 in production. Fab 2: in February 2026 TSMC announced the switch to 3 nm (Taiwan approved on 2026-03-31), target 2028; signs of a slower construction site. Amount = press estimate for Fab 2 only, not confirmed by TSMC.",
+   "nodo": "Fab 1: 12-28 nm; Fab 2: 3 nm (planned)",
+   "proprietario": "JASM (TSMC with Sony, Denso, Toyota)",
    "categoria": "supply-chain-ai"
   },
   {
@@ -919,14 +919,14 @@
    ],
    "lat": 51.1202,
    "lon": 13.7202,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del quartiere)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the district)",
    "precisione_km": 3,
    "fonte": "Focus Taiwan",
    "link": "https://focustaiwan.tw/business/202609150007",
    "data_fonte": "2026-09-15",
    "affidabilita": "alta",
-   "note": "Festa di fine strutture a settembre 2026. Macchinari spostati al 2° semestre 2027 (correzione dpa-AFX del 2026-09-14): produzione realistica nel 2028. 40.000 wafer al mese. Aiuto di Stato tedesco approvato dalla UE. Chip per auto e industria, non per GPU.",
-   "nodo": "28/22 nm e 16/12 nm FinFET",
+   "note": "Topping-out in September 2026. Tool move-in shifted to H2 2027 (dpa-AFX correction of 2026-09-14): realistic production in 2028. 40,000 wafers per month. German state aid approved by the EU. Chips for cars and industry, not for GPUs.",
+   "nodo": "28/22 nm and 16/12 nm FinFET",
    "proprietario": "ESMC (TSMC 70%)",
    "categoria": "supply-chain-ai"
   },
@@ -952,10 +952,10 @@
    ],
    "lat": 37.0481,
    "lon": 127.0364,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del quartiere)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the district)",
    "precisione_km": 3,
-   "note": "P4 a piena attività anticipata al 2026 (50.000 mld KRW = 50 trilioni). P5 in fondazione (agosto 2026). Fonti in disaccordo sull'uso di P4 (memoria o fonderia). A settembre 2026 avvio di una fabbrica HBM da 6 trilioni KRW a Onyang.",
-   "nodo": "DRAM 1c e base die HBM4; fonderia 2 nm",
+   "note": "P4 full operation brought forward to 2026 (50,000 bn KRW = 50 trillion). P5 at foundation stage (August 2026). Sources disagree on the use of P4 (memory or foundry). In September 2026 start of a 6 trillion KRW HBM plant in Onyang.",
+   "nodo": "DRAM 1c and HBM4 base die; 2 nm foundry",
    "proprietario": "Samsung Electronics",
    "categoria": "supply-chain-ai"
   },
@@ -977,13 +977,13 @@
    ],
    "lat": 30.57,
    "lon": -97.42,
-   "origine_coord": "da ai.json (stimata)",
+   "origine_coord": "da ai.json (estimated: Samsung Taylor site, from the US AI dossier)",
    "precisione_km": 5,
-   "fonte": "TrendForce News",
-   "link": "https://www.trendforce.com/news/?p=42788",
-   "data_fonte": "2025-07-28",
-   "affidabilita": "bassa",
-   "note": "Riconvertita a 2 nm. Produzione attesa a fine 2026 secondo fonti secondarie. Da verificare",
+   "fonte": "Electrek",
+   "link": "https://electrek.co/2026/07/13/samsung-taylor-fab-tesla-ai5-chip-2nm/",
+   "data_fonte": "2026-07-13",
+   "affidabilita": "media",
+   "note": "2 nm (SF2). Owner: Samsung Electronics. Converted to 2 nm. Tesla's AI5 chip has taped out for Taylor; trial production targeted end-2026 and volume in the second half of 2027 (Samsung), under a 16.5 bn USD Tesla deal. Yield is the main risk.",
    "categoria": "supply-chain-ai"
   },
   {
@@ -1002,15 +1002,15 @@
    "titoli": [
     "INTC"
    ],
-   "lat": 33.27,
-   "lon": -111.88,
-   "origine_coord": "da ai.json (stimata)",
-   "precisione_km": 2,
-   "fonte": "Telepolis (cita CNBC)",
-   "link": "https://www.telepolis.pl/tech/intel-tsmc-usa-produkcja-ukladow-polprzewodnikowych",
-   "data_fonte": "2026-11-09",
-   "affidabilita": "media",
-   "note": "Processo 18A. Rese ancora in salita secondo la fonte. Quattro scanner EUV Low-NA. Fab 62 prevista",
+   "lat": 33.2437,
+   "lon": -111.8584,
+   "origine_coord": "da ai.json (estimated: OSM Nominatim geocoding of 'Ocotillo, Chandler, Arizona')",
+   "precisione_km": 3,
+   "fonte": "Intel newsroom",
+   "link": "https://newsroom.intel.com/client-computing/intel-unveils-panther-lake-architecture-first-ai-pc-platform-built-on-18a",
+   "data_fonte": "2025-10-09",
+   "affidabilita": "alta",
+   "note": "Intel 18A. Owner: Intel. Fifth high-volume fab at Ocotillo, dedicated to Intel 18A; Panther Lake entered high-volume production there (Intel, October 2025). Yields still ramping according to later press. Fab 62 planned.",
    "categoria": "supply-chain-ai"
   },
   {
@@ -1031,15 +1031,15 @@
    ],
    "lat": 53.3645,
    "lon": -6.4897,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM della città)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the town)",
    "precisione_km": 3,
    "fonte": "Tom's Hardware",
    "link": "https://www.tomshardware.com/tech-industry/intel-commits-5-7-billion-to-ireland-one-year-after-cancelling-its-german-and-polish-fab-projects",
    "data_fonte": "2026",
    "affidabilita": "alta",
-   "note": "Unica fabbrica EUV di Intel in Europa. Nuovo investimento (circa 5 mld EUR) per produrre Intel 3 per Xeon 6; quota del 49% di Apollo riacquistata ad aprile 2026.",
+   "note": "Intel's only EUV fab in Europe. New investment (about 5 bn EUR) to make Intel 3 for Xeon 6; Apollo's 49% stake bought back in April 2026.",
    "nodo": "Intel 4 / Intel 3 (EUV)",
-   "proprietario": "Intel (100% da aprile 2026)",
+   "proprietario": "Intel (100% since April 2026)",
    "categoria": "supply-chain-ai"
   },
   {
@@ -1064,10 +1064,10 @@
    ],
    "lat": 31.2073,
    "lon": 121.6102,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM di Zhangjiang (sede SMIC); le linee 7/5 nm non hanno posizione pubblica)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of Zhangjiang (SMIC headquarters); the 7/5 nm lines have no public location)",
    "precisione_km": 25,
-   "note": "Stima SemiAnalysis: capacità a 7 nm e meno di 45.000 wafer al mese a fine 2025, 60.000 nel 2026. Produce i chip Huawei Ascend; il vincolo indicato è la memoria HBM, non la fonderia. La Cina punterebbe a quintuplicare la produzione a 7/5 nm (TrendForce). Numeri di analisti, non ufficiali.",
-   "nodo": "7 nm (N+2), 5 nm in prova; senza EUV",
+   "note": "SemiAnalysis estimate: 7 nm-and-below capacity under 45,000 wafers per month at end-2025, 60,000 in 2026. Makes the Huawei Ascend chips; the stated constraint is HBM memory, not the foundry. China reportedly aims to quintuple 7/5 nm output (TrendForce). Analyst numbers, not official.",
+   "nodo": "7 nm (N+2), 5 nm in trial; no EUV",
    "proprietario": "SMIC",
    "categoria": "supply-chain-ai"
   },
@@ -1086,15 +1086,15 @@
    "quota": null,
    "lat": 42.8209,
    "lon": 141.651,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM della città)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the city)",
    "precisione_km": 8,
    "fonte": "Tom's Hardware",
    "link": "https://www.tomshardware.com/tech-industry/semiconductors/rapidus-fab-roadmap-examined",
    "data_fonte": "2026",
    "affidabilita": "media",
-   "note": "Prototipi a 2 nm dal luglio 2025; produzione di massa nel 2° semestre dell'esercizio 2027, senza ancora un grande cliente. Importo = sostegno pubblico approvato per ricerca e sviluppo (2.354 mld JPY, aprile 2026); altra fonte parla di circa 2.900 mld JPY pianificati. Unico sito, nessuna riserva.",
+   "note": "2 nm prototypes since July 2025; mass production in H2 of fiscal 2027, still without a large customer. Amount = public R&D support approved (2,354 bn JPY, April 2026); another source cites about 2,900 bn JPY planned. Single site, no backup.",
    "nodo": "2 nm GAA",
-   "proprietario": "Rapidus (sostenuta dallo Stato giapponese)",
+   "proprietario": "Rapidus (backed by the Japanese state)",
    "categoria": "supply-chain-ai"
   },
   {
@@ -1178,14 +1178,14 @@
    ],
    "lat": 23.4759,
    "lon": 120.3107,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del parco scientifico)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the science park)",
    "precisione_km": 3,
    "fonte": "TrendForce",
    "link": "https://www.trendforce.com/news/2026/01/21/news-tsmc-advanced-packaging-capex-projected-to-grow-24-cagr-in-2025-27-chiayi-ap7-targets-wmcm-and-copos/",
    "data_fonte": "2026-01-21",
    "affidabilita": "alta",
-   "note": "Inaugurato il 2025-12-04, otto fasi. Il collo di bottiglia CoWoS per le GPU è soprattutto nel campus AP8 di Tainan. Capacità CoWoS TSMC 2026 stimata 120.000-140.000 wafer al mese; il divario domanda-offerta scenderebbe dal 20% al 10% a fine 2026 (TrendForce).",
-   "nodo": "impacchettamento avanzato (WMCM, SoIC, poi CoPoS)",
+   "note": "Inaugurated on 2025-12-04, eight phases; first plant producing since June 2026 and a second phase (plants 3 and 4) launched in July 2026 (press). The GPU CoWoS bottleneck sits mostly in the AP8 campus in Tainan. TSMC 2026 CoWoS capacity estimated at 120,000-140,000 wafers per month; the demand-supply gap would fall from 20% to 10% by end-2026 (TrendForce).",
+   "nodo": "advanced packaging (WMCM, SoIC, then CoPoS; part converted to CoWoS)",
    "proprietario": "TSMC",
    "categoria": "supply-chain-ai"
   },
@@ -1229,14 +1229,14 @@
    ],
    "lat": 36.6708,
    "lon": 127.4559,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM dell'area Technopolis)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the Technopolis area)",
    "precisione_km": 4,
    "fonte": "The Star (Reuters)",
    "link": "https://www.thestar.com.my/tech/tech-news/2026/01/15/exclusive-sk-hynix-speeds-up-new-chip-fab-opening-to-meet-memory-demand-executive-says",
    "data_fonte": "2026-01-15",
    "affidabilita": "media",
-   "note": "Wafer in ingresso da febbraio 2026, produzione di massa dalla prima camera bianca nel 1° semestre 2026. Importo indicativo (oltre 20 trilioni KRW, fonti discordi). Accanto, impianto di impacchettamento P&T7 (circa 19 trilioni KRW) da fine 2027.",
-   "nodo": "DRAM per HBM",
+   "note": "Wafers in from February 2026, mass production from the first cleanroom in H1 2026. Indicative amount (over 20 trillion KRW, sources differ). Next door, the P&T7 packaging plant (about 19 trillion KRW) from end-2027. SK Hynix held 58% of the HBM market in Q1 2026 (Counterpoint).",
+   "nodo": "DRAM for HBM",
    "proprietario": "SK Hynix",
    "categoria": "supply-chain-ai"
   },
@@ -1258,14 +1258,14 @@
    ],
    "lat": 40.4259,
    "lon": -86.9081,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM della città)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the city)",
    "precisione_km": 5,
    "fonte": "Korea Times (Reuters)",
    "link": "https://www.koreatimes.co.kr/world/20260828/sk-hynix-to-start-ai-chip-volume-production-in-indiana-in-2029",
    "data_fonte": "2026-08-28",
    "affidabilita": "alta",
-   "note": "Negli USA ma non presente in ai.json. Prima pietra il 2026-08-27; volume HBM4E dal 3° trimestre 2029. SK Hynix vede la carenza di memoria fino al 2030. Quota HBM di SK Hynix 58% nel 1° trimestre 2026 (Counterpoint).",
-   "nodo": "impacchettamento HBM4E",
+   "note": "Ground broken on 2026-08-27 (other reports April 2026); HBM4E volume from Q3 2029. SK Hynix sees the memory shortage lasting until 2030.",
+   "nodo": "HBM4E packaging",
    "proprietario": "SK Hynix",
    "categoria": "supply-chain-ai"
   },
@@ -1314,10 +1314,10 @@
    ],
    "lat": 34.4272,
    "lon": 132.7416,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM della città)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the city)",
    "precisione_km": 8,
-   "note": "Fabbrica esistente in produzione; l'ampliamento (1.500 mld JPY secondo Nikkei, 9,3 mld USD secondo un'altra fonte, aiuti pubblici fino a circa 3 mld USD) parte da maggio 2026 con consegne nel 2028. Prima EUV in produzione di massa in Giappone.",
-   "nodo": "DRAM con EUV e HBM",
+   "note": "Existing fab in production; the expansion (1,500 bn JPY according to Nikkei, 9.3 bn USD according to another source, public aid up to about 3 bn USD) starts from May 2026 with output in 2028. First EUV in mass production in Japan.",
+   "nodo": "DRAM with EUV and HBM",
    "proprietario": "Micron Technology",
    "categoria": "supply-chain-ai"
   },
@@ -1339,14 +1339,14 @@
    ],
    "lat": 1.3801,
    "lon": 103.8421,
-   "origine_coord": "da ai-mondo.json (stimata: area di Ang Mo Kio (sito non verificato))",
+   "origine_coord": "da ai-mondo.json (estimated: Ang Mo Kio area (site not verified))",
    "precisione_km": 10,
    "fonte": "Micron via Researchpool",
    "link": "https://app.researchpool.com/company/mu-us5951121038-micron-technology-inc-HzQHxJMipr/press/micron-technology-inc-mu-micron-breaks-ground-on-new-hbm-advanced-packaging-facility-in-singapo-D8fDEA5799",
    "data_fonte": "2025-01",
    "affidabilita": "media",
-   "note": "Prima pietra a gennaio 2025, avvio previsto nel 2026: apertura non confermata nelle fonti trovate.",
-   "nodo": "impacchettamento HBM",
+   "note": "Ground broken in January 2025, start planned in 2026: opening not confirmed in the sources found.",
+   "nodo": "HBM packaging",
    "proprietario": "Micron Technology",
    "categoria": "supply-chain-ai"
   },
@@ -1890,15 +1890,15 @@
    "titoli": [
     "ORCL"
    ],
-   "lat": 32.45,
-   "lon": -99.73,
-   "origine_coord": "da ai.json (stimata)",
-   "precisione_km": 10,
-   "fonte": "Epoch AI",
-   "link": "https://epoch.ai/blog/openai-stargate-where-the-us-sites-stand",
-   "data_fonte": "2026-04-17",
+   "lat": 32.4942,
+   "lon": -99.8009,
+   "origine_coord": "da ai.json (estimated: OSM Nominatim geocoding of '5502 Spinks Rd, Abilene, TX 79601')",
+   "precisione_km": 2,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-11-01",
    "affidabilita": "alta",
-   "note": "Operativo in parte. 1200 MW pianificati. Capacità attuale 0.3-0.6 GW o 421-618 MW a seconda di data e definizione (Epoch). Gas in loco e rete ERCOT. Completamento previsto T3-T4 2026",
+   "note": "824 MW (current IT power (Epoch estimate)). 1,018,696 H100-equivalents. Owner: Oracle. Latest Epoch observation (2026-11-01): Buildings 7-8 are estimated to be operational. On March 24, Building 8 roughly looked like where Building 3 was in September. Building 3 is estimated to be operational in April, 7 months later. This naively suggests Building 8 will be operational by early November, 7 months after March 24. Oracle gave no date for th... Epoch certainty on owner/users: Oracle: confident; OpenAI: confident",
    "categoria": "supply-chain-ai"
   },
   {
@@ -1914,15 +1914,15 @@
    },
    "stato": "operativo",
    "quota": null,
-   "lat": 35.15,
-   "lon": -90.05,
-   "origine_coord": "da ai.json (stimata)",
-   "precisione_km": 15,
-   "fonte": "Epoch AI (via techjacksolutions)",
-   "link": "https://techjacksolutions.com/?p=83881",
-   "data_fonte": "2026-09-22",
-   "affidabilita": "media",
-   "note": "946 MW IT, il maggiore operativo al 2026-09-22. 1112k H100e. Previsti 1531 MW nel 2027. Posizione dentro l'area di Memphis",
+   "lat": 34.998,
+   "lon": -90.0349,
+   "origine_coord": "da ai.json (estimated: OSM Nominatim geocoding of '5420 Tulane Rd, Memphis, TN 38109')",
+   "precisione_km": 1,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-06-15",
+   "affidabilita": "alta",
+   "note": "946 MW (current IT power (Epoch estimate)). 1531 MW planned by 2027-02-25. 1,111,672 H100-equivalents. Owner: SpaceXAI. Partly operational. Epoch projects 1531 MW IT by 2027-02-25. Latest Epoch observation (2026-06-15): The site is estimated to have at least ~830 MW of GPU server power, with at least \"at least 220,000 additional GB300 processors and over 400 additional megawatts of compute power\", corresponding to the \"next phase of expansion\" found in the following company S-1 filing, page 76. This estimate is backed up by our coo... Epoch certainty on owner/users: SpaceXAI: confident; Anthropic: confident; Cursor: confident; SpaceXAI: confident",
    "categoria": "supply-chain-ai"
   },
   {
@@ -1941,15 +1941,15 @@
    "titoli": [
     "AMZN"
    ],
-   "lat": 41.7,
-   "lon": -86.51,
-   "origine_coord": "da ai.json (stimata)",
-   "precisione_km": 5,
-   "fonte": "Epoch AI (via techjacksolutions)",
-   "link": "https://techjacksolutions.com/?p=83881",
-   "data_fonte": "2026-09-22",
-   "affidabilita": "media",
-   "note": "Circa 910 MW IT, operativo in parte. Previsti 1925 MW nel 2028. Cliente Anthropic (chi scrive è un modello di Anthropic)",
+   "lat": 41.7057,
+   "lon": -86.5098,
+   "origine_coord": "da ai.json (estimated: OSM Nominatim geocoding of 'New Carlisle, IN 46552, United States')",
+   "precisione_km": 6,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-10-19",
+   "affidabilita": "alta",
+   "note": "1037 MW (current IT power (Epoch estimate)). 1925 MW planned by 2028-03-17. 818,428 H100-equivalents. Owner: Amazon. Partly operational. Project Rainier. Anthropic is a user (the author of this layer, Claude, is an Anthropic model). Epoch projects 1925 MW IT by 2028-03-17. Latest Epoch observation (2026-10-19): Buildings 17-18 are operational. This is an estimate based on a rule of thumb of \"operational 5 months after roof is complete\", assuming the roofs took one more month after 2025-12-23. Also added four more months to account for commissioning and adjacent cooling units not being complete yet. Epoch certainty on owner/users: Amazon: confident; Anthropic: confident",
    "categoria": "supply-chain-ai"
   },
   {
@@ -1968,15 +1968,15 @@
    "titoli": [
     "MSFT"
    ],
-   "lat": 33.75,
-   "lon": -84.39,
-   "origine_coord": "da ai.json (stimata)",
-   "precisione_km": 20,
-   "fonte": "Epoch AI (via techjacksolutions)",
-   "link": "https://techjacksolutions.com/?p=83881",
-   "data_fonte": "2026-09-22",
-   "affidabilita": "media",
-   "note": "636 MW IT secondo Epoch. Posizione solo all'area di Atlanta",
+   "lat": 33.4454,
+   "lon": -84.5255,
+   "origine_coord": "da ai.json (estimated: OSM Nominatim geocoding of '1435 Hwy 54 W, Fayetteville, GA 30214')",
+   "precisione_km": 1,
+   "fonte": "Epoch AI, AI data centers",
+   "link": "https://epoch.ai/data/ai-data-centers",
+   "data_fonte": "2026-06-14",
+   "affidabilita": "alta",
+   "note": "636 MW (current IT power (Epoch estimate)). 768,768 H100-equivalents. Owner: Microsoft. Epoch address in Fayetteville, south of Atlanta. Latest Epoch observation (2026-06-14): Building 3 and 4 are operational. Epoch certainty on owner/users: Microsoft: confident; OpenAI: likely; Microsoft: likely",
    "categoria": "supply-chain-ai"
   },
   {
@@ -1994,13 +1994,13 @@
    "quota": null,
    "lat": 1.4308,
    "lon": 103.5951,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM di Nusajaya Tech Park (Epoch non dà l'indirizzo))",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of Nusajaya Tech Park (Epoch gives no address))",
    "precisione_km": 5,
    "fonte": "Epoch AI, AI data centers",
    "link": "https://epoch.ai/data/ai-data-centers",
    "data_fonte": "2026-10-02",
    "affidabilita": "alta",
-   "note": "Gestore DayOne, ex GDS International, gruppo di origine cinese. Polo di Johor, al confine con Singapore. Ultima osservazione Epoch (2026-10-02, in inglese): Buildings 7-10 are operational. Judging by their state in April 2026, we expect 3 months to finish construction and another 3 months to ramp to full capacity.",
+   "note": "Operator DayOne, formerly GDS International, a group of Chinese origin. Johor hub, on the border with Singapore. Latest Epoch observation (2026-10-02): Buildings 7-10 are operational. Judging by their state in April 2026, we expect 3 months to finish construction and another 3 months to ramp to full capacity.",
    "mw": 473.0,
    "categoria": "supply-chain-ai"
   },
@@ -2019,13 +2019,13 @@
    "quota": null,
    "lat": 24.1873,
    "lon": 54.4924,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM di Al Bihouth (ufficio di progetto indicato da Epoch))",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of Al Bihouth (project office named by Epoch))",
    "precisione_km": 25,
    "fonte": "Epoch AI, AI data centers",
    "link": "https://epoch.ai/data/ai-data-centers",
    "data_fonte": "2025-11-16",
    "affidabilita": "media",
-   "note": "1 GW dentro il campus AI Emirati-USA da 5 GW. Sviluppatore Khazna (G42); gestori OpenAI e Oracle; partner Nvidia, Cisco, SoftBank. Prima fase 200 MW attesa nel 3° trimestre 2026 (The National, 2025-12-05). Ultima osservazione Epoch (2025-11-16, in inglese): Building 1 and 2 are partly constructed. No clear evidence of more buildings starting construction. Certezza Epoch su proprietario/utilizzatori: G42: likely; OpenAI: confident",
+   "note": "1 GW inside the 5 GW UAE-US AI campus. Developer Khazna (G42); operators OpenAI and Oracle; partners Nvidia, Cisco, SoftBank. First 200 MW phase expected in Q3 2026 (The National, 2025-12-05); no commissioning announcement found by 2026-11-10. Epoch projects 1000 MW IT by 2028-01-01. Latest Epoch observation (2025-11-16): Building 1 and 2 are partly constructed. No clear evidence of more buildings starting construction. Epoch certainty on owner/users: G42: likely; OpenAI: confident",
    "mw": 0.0,
    "mw_previsto": 1000.0,
    "proprietario": "G42",
@@ -2046,15 +2046,15 @@
    "quota": null,
    "lat": 48.5864,
    "lon": 2.7785,
-   "origine_coord": "da ai-mondo.json (stimata: geocodifica OSM del comune)",
+   "origine_coord": "da ai-mondo.json (estimated: OSM geocoding of the municipality)",
    "precisione_km": 3,
-   "fonte": "Eiffage, comunicato",
+   "fonte": "Eiffage, press release",
    "link": "https://www.privacy.eiffage.com/files/live/sites/metal/files/publications/PR_Eiffage_Campus%2520AI%2520enters%2520the%2520implementation%2520phase_20260602.pdf",
    "data_fonte": "2026-06-02",
    "affidabilita": "media",
-   "note": "Il più grande campus AI annunciato in Europa. Giugno 2026: Eiffage capocommessa della sottostazione 400/33 kV (oltre 120 mln EUR). Messa in servizio prevista nel 2028. Importo: quadro Emirati-Francia di 30-50 mld EUR (uso il minimo). Si parla di un secondo sito per arrivare a 3 GW.",
+   "note": "Largest AI campus announced in Europe. June 2026: Eiffage main contractor for the 400/33 kV substation (over 120 m EUR). Commissioning planned in 2028. Amount: UAE-France framework of 30-50 bn EUR (minimum used). A second site to reach 3 GW is under discussion.",
    "mw": 1400,
-   "proprietario": "JV MGX (Emirati), Bpifrance, Mistral AI, Nvidia",
+   "proprietario": "JV MGX (UAE), Bpifrance, Mistral AI, Nvidia",
    "categoria": "supply-chain-ai"
   },
   {
@@ -2072,15 +2072,15 @@
    "quota": null,
    "lat": 45.101,
    "lon": 8.8596,
-   "origine_coord": "da ai-mondo.json (stimata: coordinate del Green Data Center Eni dal dataset GPU clusters di Epoch AI)",
+   "origine_coord": "da ai-mondo.json (estimated: coordinates of the Eni Green Data Center from the Epoch AI GPU clusters dataset)",
    "precisione_km": 2,
    "fonte": "DatacenterDynamics",
    "link": "https://www.datacenterdynamics.com/es/noticias/las-empresas-italianas-eni-y-khazna-se-asocian-para-construir-un-centro-de-datos-de-500-mw-en-las-afueras-de-mil%C3%A1n/",
    "data_fonte": "2025-07",
    "affidabilita": "media",
-   "note": "Prima fase (500 MW IT, in due tappe) di un programma fino a 1 GW in Italia. Energia da centrali a gas Eni con cattura della CO2. Legato all'impegno degli Emirati da 40 mld USD in Italia (2025-02), che non attribuisce una cifra al progetto. Nessun aggiornamento 2026 trovato: stato da verificare. Sullo stesso sito ci sono i supercalcolatori Eni HPC6 e HPC7 (TOP500).",
+   "note": "First phase (500 MW IT, in two steps) of a programme of up to 1 GW in Italy. Power from Eni gas plants with CO2 capture. Linked to the UAE's 40 bn USD commitment to Italy (2025-02), which assigns no figure to this project. No 2026 update found: status to be checked. The Eni HPC6 and HPC7 supercomputers (TOP500) are on the same site.",
    "mw": 500,
-   "proprietario": "JV Eni - Khazna Data Centers (gruppo G42, Emirati); intesa iniziale Eni-MGX-G42",
+   "proprietario": "JV Eni - Khazna Data Centers (G42 group, UAE); initial Eni-MGX-G42 agreement",
    "categoria": "supply-chain-ai"
   }
  ],
@@ -2922,9 +2922,9 @@
    "a_nome": "Stargate Abilene (Texas)",
    "da_lat": 32.8962,
    "da_lon": -97.0459,
-   "a_lat": 32.45,
-   "a_lon": -99.73,
-   "km": 256,
+   "a_lat": 32.4942,
+   "a_lon": -99.8009,
+   "km": 262,
    "g": [
     [
      [
@@ -2932,8 +2932,8 @@
       32.8962
      ],
      [
-      -99.73,
-      32.45
+      -99.8009,
+      32.4942
      ]
     ]
    ]
@@ -2957,9 +2957,9 @@
    "a_nome": "Stargate Abilene (Texas)",
    "da_lat": 20.6784,
    "da_lon": -103.3357,
-   "a_lat": 32.45,
-   "a_lon": -99.73,
-   "km": 1357,
+   "a_lat": 32.4942,
+   "a_lon": -99.8009,
+   "km": 1360,
    "g": [
     [
      [
@@ -2967,8 +2967,8 @@
       20.6784
      ],
      [
-      -99.73,
-      32.45
+      -99.8009,
+      32.4942
      ]
     ]
    ]
@@ -3027,9 +3027,9 @@
    "a_nome": "Stargate Abilene (Texas)",
    "da_lat": 29.7589,
    "da_lon": -95.3677,
-   "a_lat": 32.45,
-   "a_lon": -99.73,
-   "km": 512,
+   "a_lat": 32.4942,
+   "a_lon": -99.8009,
+   "km": 520,
    "g": [
     [
      [
@@ -3037,8 +3037,8 @@
       29.7589
      ],
      [
-      -99.73,
-      32.45
+      -99.8009,
+      32.4942
      ]
     ]
    ]
@@ -3097,9 +3097,9 @@
    "a_nome": "xAI Colossus 2, Memphis",
    "da_lat": 31.1427,
    "da_lon": 121.8041,
-   "a_lat": 35.15,
-   "a_lon": -90.05,
-   "km": 11927,
+   "a_lat": 34.998,
+   "a_lon": -90.0349,
+   "km": 11942,
    "g": [
     [
      [
@@ -3107,8 +3107,8 @@
       31.1427
      ],
      [
-      -90.05,
-      35.15
+      -90.0349,
+      34.998
      ]
     ]
    ]
@@ -3317,10 +3317,10 @@
      "link": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/11/09/china-extends-suspension-of-rare-earth-export-controls-until-january",
      "data": "2026-11-09",
      "affidabilita": "media",
-     "nota": "scadenza 2027-01-10; stato del controllo: sospeso; giorni contati al 2026-11-10; proroga annunciata, testo primario non reperito",
+     "nota": "scadenza 2027-01-10; stato del controllo: sospeso; giorni contati al 2026-11-15; proroga annunciata, testo primario non reperito",
      "verifica": "proroga annunciata, testo primario non reperito",
-     "valore": 61,
-     "stato": "normale"
+     "valore": 56,
+     "stato": "attenzione"
     },
     {
      "nome": "Giorni alla fine della sospensione del divieto di export di gallio e germanio verso gli USA",
@@ -3333,9 +3333,9 @@
      "link": "https://www.fastmarkets.com/insights/china-suspends-export-prohibition-on-superhard-materials-us/",
      "data": "2025-11-09",
      "affidabilita": "alta",
-     "nota": "scadenza 2026-11-27; stato del controllo: sospeso; giorni contati al 2026-11-10",
-     "valore": 17,
-     "stato": "attenzione"
+     "nota": "scadenza 2026-11-27; stato del controllo: sospeso; giorni contati al 2026-11-15",
+     "valore": 12,
+     "stato": "critico"
     },
     {
      "nome": "Quota cinese dell'estrazione di terre rare",
@@ -3354,7 +3354,7 @@
     }
    ],
    "stato": "critico",
-   "stato_congiunturale": "attenzione"
+   "stato_congiunturale": "critico"
   },
   {
    "id": "C02",
@@ -3377,14 +3377,14 @@
      "soglia_critica": -50,
      "fonte": "IMF PortWatch (portwatch.json)",
      "link": "https://portwatch.imf.org/",
-     "data": "2026-11-01",
+     "data": "2026-11-08",
      "affidabilita": "alta",
-     "nota": "media 7 giorni 2026-10-26 – 2026-11-01; navi con AIS acceso",
+     "nota": "media 7 giorni 2026-11-02 – 2026-11-08; navi con AIS acceso",
      "dettaglio": {
-      "navi_giorno": 4.4,
-      "anno_prima": 90.3
+      "navi_giorno": 3.9,
+      "anno_prima": 75.3
      },
-     "valore": -95.1,
+     "valore": -94.8,
      "stato": "critico"
     },
     {
@@ -3518,9 +3518,9 @@
      "soglia_critica": -25,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/ASML",
-     "data": "2026-11-09",
+     "data": "2026-11-12",
      "affidabilita": "alta",
-     "valore": -15.0,
+     "valore": -12.8,
      "stato": "attenzione"
     }
    ],
@@ -3566,14 +3566,14 @@
      "soglia_critica": -40,
      "fonte": "IMF PortWatch (portwatch.json)",
      "link": "https://portwatch.imf.org/",
-     "data": "2026-11-01",
+     "data": "2026-11-08",
      "affidabilita": "alta",
-     "nota": "media 7 giorni 2026-10-26 – 2026-11-01; navi con AIS acceso",
+     "nota": "media 7 giorni 2026-11-02 – 2026-11-08; navi con AIS acceso",
      "dettaglio": {
-      "navi_giorno": 247.0,
-      "anno_prima": 230.6
+      "navi_giorno": 229.9,
+      "anno_prima": 238.4
      },
-     "valore": 7.1,
+     "valore": -3.6,
      "stato": "normale"
     },
     {
@@ -3585,7 +3585,7 @@
      "soglia_critica": 3,
      "fonte": "cavi-incidenti.json (osservatorio)",
      "link": "https://www.submarinecablemap.com/",
-     "data": "2026-11-10",
+     "data": "2026-11-15",
      "affidabilita": "media",
      "eventi": [
       "Matsu: cavo Taiwan-Matsu n. 3 tagliato al largo di Dongyin"
@@ -3602,10 +3602,10 @@
      "soglia_critica": -25,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/TSM",
-     "data": "2026-11-09",
+     "data": "2026-11-12",
      "affidabilita": "alta",
-     "valore": -14.3,
-     "stato": "attenzione"
+     "valore": -8.9,
+     "stato": "normale"
     }
    ],
    "stato": "critico",
@@ -3688,15 +3688,14 @@
      "soglia_critica": -25,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/000660.KS",
-     "data": "2026-11-10",
-     "affidabilita": "media",
-     "nota": "serie marcata provvisoria in prezzi.json",
-     "valore": -27.7,
-     "stato": "critico"
+     "data": "2026-11-13",
+     "affidabilita": "alta",
+     "valore": -14.3,
+     "stato": "attenzione"
     }
    ],
-   "stato": "critico",
-   "stato_congiunturale": "critico"
+   "stato": "attenzione",
+   "stato_congiunturale": "attenzione"
   },
   {
    "id": "C09",
@@ -3829,10 +3828,10 @@
      "soglia_critica": 70,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
-     "data": "2026-11-09",
+     "data": "2026-11-13",
      "affidabilita": "media",
      "nota": "serie marcata provvisoria in prezzi.json",
-     "valore": 82.3,
+     "valore": 89.5,
      "stato": "critico"
     },
     {
@@ -3844,7 +3843,7 @@
      "soglia_critica": 6,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/NG%3DF",
-     "data": "2026-11-09",
+     "data": "2026-11-13",
      "affidabilita": "media",
      "nota": "serie marcata provvisoria in prezzi.json",
      "valore": 3.2,
@@ -3894,14 +3893,14 @@
      "soglia_critica": -25,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/NVDA",
-     "data": "2026-11-09",
+     "data": "2026-11-12",
      "affidabilita": "alta",
-     "valore": -22.1,
-     "stato": "attenzione"
+     "valore": -27.3,
+     "stato": "critico"
     }
    ],
    "stato": "critico",
-   "stato_congiunturale": "attenzione"
+   "stato_congiunturale": "critico"
   }
  ],
  "controlli": [
@@ -4045,7 +4044,7 @@
    "data_fonte": "2025-11-09",
    "affidabilita": "alta",
    "note": "Sospeso il 9 novembre 2025 fino al 27 novembre 2026 (annuncio MOFCOM n. 72 del 2025). Restano licenze e divieto verso utilizzatori militari. Alla data del 9 novembre 2026 non trovata una proroga pubblicata.",
-   "giorni_alla_scadenza": 17
+   "giorni_alla_scadenza": 12
   },
   {
    "id": "CN-2025-04-TR",
@@ -4086,7 +4085,7 @@
    "data_fonte": "2026-11-09",
    "affidabilita": "media",
    "note": "Applied Materials stimava 600 milioni di dollari di ricavi persi nell'esercizio 2026 (TipRanks, ottobre 2025). Sospesa da novembre 2025 con la tregua di Busan; sospensione prorogata al 10 gennaio 2027.",
-   "giorni_alla_scadenza": 61
+   "giorni_alla_scadenza": 56
   },
   {
    "id": "NL-2025-NEXPERIA",
@@ -4150,7 +4149,7 @@
     }
    ],
    "note": "Sospesi dall'annuncio n. 70 del 7 novembre 2025 fino al 10 novembre 2026. Il 9 novembre 2026 il MOFCOM ha annunciato con una breve dichiarazione la proroga di due mesi, fino al 10 gennaio 2027 (Reuters); SMM ne riporta il testo come annuncio n. 58 del 2026. Al 10 novembre il testo non compare ancora nell'elenco ufficiale sul sito del MOFCOM: proroga da considerare annunciata ma non verificata sulla fonte primaria. Tech Times, uscito prima dell'annuncio, scriveva che nessun testo spostava la data.",
-   "giorni_alla_scadenza": 61
+   "giorni_alla_scadenza": 56
   },
   {
    "id": "US-2026-MATCH",
@@ -5010,14 +5009,14 @@
    "ruolo": "litografia EUV e DUV (Veldhoven)",
    "prezzi_id": "asml",
    "prezzo": {
-    "ultimo": 1513.2,
+    "ultimo": 1497.1,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 6.2,
-     "1m": -15.0,
-     "ytd": 41.43,
-     "1a": 48.79
+     "1g": -2.43,
+     "1m": -12.85,
+     "ytd": 39.93,
+     "1a": 44.33
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/ASML",
@@ -5080,14 +5079,14 @@
    "ruolo": "fonderia avanzata e CoWoS",
    "prezzi_id": "tsm",
    "prezzo": {
-    "ultimo": 388.62,
+    "ultimo": 405.49,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 3.51,
-     "1m": -14.27,
-     "ytd": 27.88,
-     "1a": 35.64
+     "1g": -1.9,
+     "1m": -8.9,
+     "ytd": 33.43,
+     "1a": 39.53
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/TSM",
@@ -5139,18 +5138,18 @@
    "ruolo": "primo produttore di HBM",
    "prezzi_id": "hynix",
    "prezzo": {
-    "ultimo": 1215000.0,
+    "ultimo": 1216000.0,
     "valuta": "KRW",
-    "data": "2026-11-10",
+    "data": "2026-11-13",
     "var": {
-     "1g": 6.95,
-     "1m": -27.72,
-     "ytd": 86.64,
-     "1a": 100.5
+     "1g": -3.03,
+     "1m": -14.31,
+     "ytd": 86.79,
+     "1a": 98.69
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/000660.KS",
-    "provvisorio": true
+    "provvisorio": false
    },
    "in_prezzi": true
   },
@@ -5176,14 +5175,14 @@
    "ruolo": "dischi rigidi per i data center (magneti di terre rare)",
    "prezzi_id": "wdc",
    "prezzo": {
-    "ultimo": 289.78,
+    "ultimo": 311.21,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 9.86,
-     "1m": -27.06,
-     "ytd": 68.21,
-     "1a": 77.82
+     "1g": -0.67,
+     "1m": -18.26,
+     "ytd": 80.65,
+     "1a": 87.35
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/WDC",
@@ -5201,14 +5200,14 @@
    "ruolo": "GPU per data center",
    "prezzi_id": "nvda",
    "prezzo": {
-    "ultimo": 178.67,
+    "ultimo": 166.19,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": -4.27,
-     "1m": -22.07,
-     "ytd": -4.2,
-     "1a": -5.04
+     "1g": -4.34,
+     "1m": -27.28,
+     "ytd": -10.89,
+     "1a": -14.25
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/NVDA",
@@ -5226,14 +5225,14 @@
    "ruolo": "acceleratori Instinct",
    "prezzi_id": "amd",
    "prezzo": {
-    "ultimo": 508.58,
+    "ultimo": 585.3,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 13.26,
-     "1m": -16.37,
-     "ytd": 137.48,
-     "1a": 117.77
+     "1g": 5.86,
+     "1m": -3.34,
+     "ytd": 173.3,
+     "1a": 126.08
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/AMD",
@@ -5252,14 +5251,14 @@
    "ruolo": "ASIC su misura (TPU) e switch",
    "prezzi_id": "avgo",
    "prezzo": {
-    "ultimo": 319.48,
+    "ultimo": 364.36,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 8.78,
-     "1m": -11.63,
-     "ytd": -7.69,
-     "1a": -8.57
+     "1g": 5.54,
+     "1m": 1.97,
+     "ytd": 5.28,
+     "1a": 2.57
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/AVGO",
@@ -5278,14 +5277,14 @@
    "ruolo": "TPU e data center",
    "prezzi_id": "googl",
    "prezzo": {
-    "ultimo": 288.15,
+    "ultimo": 298.7,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 1.18,
-     "1m": -18.06,
-     "ytd": -7.94,
-     "1a": 3.34
+     "1g": 1.79,
+     "1m": -15.57,
+     "ytd": -4.57,
+     "1a": 4.18
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/GOOGL",
@@ -5391,14 +5390,14 @@
    "ruolo": "data center (Fairwater)",
    "prezzi_id": "msft",
    "prezzo": {
-    "ultimo": 545.18,
+    "ultimo": 523.0,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 2.75,
-     "1m": 1.89,
-     "ytd": 12.73,
-     "1a": 9.73
+     "1g": 0.36,
+     "1m": -3.76,
+     "ytd": 8.14,
+     "1a": 2.32
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/MSFT",
@@ -5416,14 +5415,14 @@
    "ruolo": "data center (New Carlisle), chip Trainium",
    "prezzi_id": "amzn",
    "prezzo": {
-    "ultimo": 266.93,
+    "ultimo": 267.44,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 2.94,
-     "1m": 1.71,
-     "ytd": 15.64,
-     "1a": 9.21
+     "1g": 0.48,
+     "1m": 3.43,
+     "ytd": 15.87,
+     "1a": 9.52
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/AMZN",
@@ -5441,14 +5440,14 @@
    "ruolo": "data center",
    "prezzi_id": "meta",
    "prezzo": {
-    "ultimo": 641.37,
+    "ultimo": 623.61,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 5.12,
-     "1m": -10.76,
-     "ytd": -2.84,
-     "1a": 3.16
+     "1g": -0.82,
+     "1m": -18.22,
+     "ytd": -5.53,
+     "1a": 2.4
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/META",
@@ -5466,14 +5465,14 @@
    "ruolo": "data center Stargate (Abilene)",
    "prezzi_id": "orcl",
    "prezzo": {
-    "ultimo": 119.79,
+    "ultimo": 127.11,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-12",
     "var": {
-     "1g": 3.18,
-     "1m": -15.28,
-     "ytd": -38.54,
-     "1a": -49.93
+     "1g": -0.99,
+     "1m": -11.24,
+     "ytd": -34.79,
+     "1a": -44.0
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/ORCL",
@@ -5494,14 +5493,14 @@
    "ruolo": "termometro dell'intera filiera dei chip",
    "prezzi_id": "sox",
    "prezzo": {
-    "ultimo": 10033.9,
+    "ultimo": 10146.3,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-13",
     "var": {
-     "1g": 6.86,
-     "1m": -20.19,
-     "ytd": 41.66,
-     "1a": 44.43
+     "1g": -3.43,
+     "1m": -13.16,
+     "ytd": 43.25,
+     "1a": 48.8
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/%5ESOX",
@@ -5519,15 +5518,10 @@
    "ruolo": "costo dell'energia dei data center europei a gas",
    "prezzi_id": "ttf",
    "prezzo": {
-    "ultimo": 82.33,
+    "ultimo": 89.54,
     "valuta": "EUR",
-    "data": "2026-11-09",
-    "var": {
-     "1g": -3.81,
-     "1m": 1.11,
-     "ytd": 192.37,
-     "1a": 163.88
-    },
+    "data": "2026-11-13",
+    "var": {},
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/TTF%3DF",
     "provvisorio": true
@@ -5544,14 +5538,14 @@
    "ruolo": "costo del gas per le centrali dei data center USA",
    "prezzi_id": "hh",
    "prezzo": {
-    "ultimo": 3.203,
+    "ultimo": 3.242,
     "valuta": "USD",
-    "data": "2026-11-09",
+    "data": "2026-11-13",
     "var": {
-     "1g": 6.84,
-     "1m": -0.53,
-     "ytd": -13.1,
-     "1a": -25.77
+     "1g": -2.93,
+     "1m": 1.38,
+     "ytd": -12.05,
+     "1a": -30.22
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/NG%3DF",
@@ -5595,7 +5589,7 @@
    {
     "nodo": "veldhoven",
     "nome": "ASML, Veldhoven (Paesi Bassi): scanner EUV",
-    "km": 10.8,
+    "km": 10.7,
     "linea": "380 kV"
    },
    {
@@ -5637,7 +5631,7 @@
    {
     "nodo": "dc-uae",
     "nome": "Stargate UAE, Abu Dhabi",
-    "km": 2.2,
+    "km": 2.5,
     "linea": "400 kV"
    },
    {
@@ -6265,8 +6259,8 @@
    "rete": 1
   },
   "colli_per_stato": {
-   "critico": 11,
-   "attenzione": 2
+   "critico": 10,
+   "attenzione": 3
   },
   "controlli_per_stato": {
    "in-vigore": 9,
