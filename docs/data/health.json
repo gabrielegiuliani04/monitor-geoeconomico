@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-15T12:46Z",
- "date": "2026-11-15",
+ "updated": "2026-11-16T13:38Z",
+ "date": "2026-11-16",
  "overall": "amber",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 56.2,
+ "seconds": 48.2,
  "summary": {
   "critical": 0,
   "high": 2,
-  "medium": 40,
-  "low": 5,
+  "medium": 46,
+  "low": 4,
   "info": 5
  },
  "checks": [
@@ -40,19 +40,19 @@
    "area": "schema",
    "name": "counts vs yesterday",
    "status": "green",
-   "detail": "compared with storico.json 2026-11-14: 0 drops > 20%"
+   "detail": "compared with storico.json 2026-11-15: 0 drops > 20%"
   },
   {
    "area": "errors",
    "name": "errori/errors arrays",
    "status": "amber",
-   "detail": "97 errors in 9 files"
+   "detail": "109 errors in 10 files"
   },
   {
    "area": "consistency",
    "name": "same fact across data files",
    "status": "amber",
-   "detail": "105 comparisons, 0 disagree (0 distinct mismatches listed)"
+   "detail": "107 comparisons, 0 disagree (0 distinct mismatches listed)"
   },
   {
    "area": "consistency",
@@ -82,13 +82,13 @@
    "area": "links",
    "name": "source links (rotating sample)",
    "status": "amber",
-   "detail": "153 of 15626 distinct links checked today: 8 blocked, 4 broken, 1 error, 140 ok; 3 confirmed broken, 1 failed once (rolling record)"
+   "detail": "155 of 15461 distinct links checked today: 5 blocked, 4 broken, 1 error, 145 ok; 4 confirmed broken, 0 failed once (rolling record)"
   },
   {
    "area": "smoke",
    "name": "browser smoke test",
    "status": "green",
-   "detail": "run 2026-11-15T12:46Z: 50 passed, 0 failed"
+   "detail": "run 2026-11-16T13:38Z: 50 passed, 0 failed"
   }
  ],
  "problems": [
@@ -96,14 +96,14 @@
    "severity": "high",
    "area": "freshness",
    "file": "docs/data/attacchi-analisti.json",
-   "problem": "stale: updated 5 days ago (limit 2) (cadence: daily (Telegram channels))",
+   "problem": "stale: updated 6 days ago (limit 2); newest data 2026-11-10 is 6 days old (limit 5) (cadence: daily (Telegram channels))",
    "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
   },
   {
    "severity": "high",
    "area": "validators",
    "file": "raccolta/simulatore/controlla.py",
-   "problem": "validator 'simulatore' exit 1: KeyError: 'pun_ttf'",
+   "problem": "validator 'simulatore' exit 1: ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 20.02 (eseguire --scrivi) | Esito: 1 errori, 2 avvisi",
    "fix": "Run the validator by hand, read its output and fix the curated input it names."
   },
   {
@@ -124,7 +124,7 @@
    "severity": "medium",
    "area": "consistency",
    "file": "gas-italia.json, report/hormuz-mar-rosso-2026-11.md",
-   "problem": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%): report/hormuz-mar-rosso-2026-11.md regex 'porta il ([0-9.,]+)% del gas importato' = 34; gas-italia.json quote_12_mesi[id=mazara].quota_ingressi_pct = 34.1. difference -0.1",
+   "problem": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%): report/hormuz-mar-rosso-2026-11.md regex 'porta il ([0-9.,]+)% del gas importato' = 34; gas-italia.json quote_12_mesi[id=mazara].quota_ingressi_pct = 34.2. difference -0.2",
    "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
   },
   {
@@ -187,7 +187,21 @@
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/notizie-testate.json",
-   "problem": "collector error: err_news (ERR News): HTTPError: HTTP Error 403: Forbidden",
+   "problem": "collector error: navalnews (Naval News): HTTPError: HTTP Error 503: Service Temporarily Unavailable",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/paesi.json",
+   "problem": "collector error: World Bank EG.IMP.CONS.ZS non scaricato: https://api.worldbank.org/v2/country/US;CN;RU;UA;IR;IL;SA;AE;QA;IQ;KW;OM;YE;EG;TR;IN;JP;KR;TW;DE;FR;IT;GB;ES;NL;PL;NO;AZ;KZ;DZ;LY;BR;NG/indicator/EG.IMP.CONS.ZS?format=json&per_page=2000&date=2010:2026: HTTP Error 503: Service Unavailable",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/paesi.json",
+   "problem": "collector error: World Bank MS.MIL.XPND.CD non scaricato: https://api.worldbank.org/v2/country/US;CN;RU;UA;IR;IL;SA;AE;QA;IQ;KW;OM;YE;EG;TR;IN;JP;KR;TW;DE;FR;IT;GB;ES;NL;PL;NO;AZ;KZ;DZ;LY;BR;NG/indicator/MS.MIL.XPND.CD?format=json&per_page=2000&date=2010:2026: HTTP Error 502: Bad Gateway",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -215,14 +229,14 @@
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/porti-nord.json",
-   "problem": "collector error: PortWatch coordinate porti: PortWatch_ports_database: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6007 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
+   "problem": "collector error: PortWatch coordinate porti: PortWatch_ports_database: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6255 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/porti-nord.json",
-   "problem": "collector error: PortWatch Rotterdam (port1114): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6022 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
+   "problem": "collector error: PortWatch Rotterdam (port1114): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6262 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -236,21 +250,21 @@
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/porti-nord.json",
-   "problem": "collector error: PortWatch Anversa-Bruges (Anversa + Zeebrugge) (port57): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6022 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
+   "problem": "collector error: PortWatch Anversa-Bruges (Anversa + Zeebrugge) (port57): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6277 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/porti-nord.json",
-   "problem": "collector error: PortWatch Anversa-Bruges (Anversa + Zeebrugge) (port1424): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6028 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
+   "problem": "collector error: PortWatch Anversa-Bruges (Anversa + Zeebrugge) (port1424): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6284 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/porti-nord.json",
-   "problem": "collector error: PortWatch Anversa-Bruges (Anversa + Zeebrugge) (port178): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6031 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
+   "problem": "collector error: PortWatch Anversa-Bruges (Anversa + Zeebrugge) (port178): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6295 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -264,84 +278,105 @@
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/porti-nord.json",
-   "problem": "collector error: PortWatch Brema / Bremerhaven (port168): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6015 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
+   "problem": "collector error: PortWatch Amburgo (port446): Daily_Ports_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6314 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']}",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Hormuz (chokepoint6): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6023 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
+   "problem": "collector error: PortWatch Stretto di Hormuz (chokepoint6): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (7369 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Canale di Suez (chokepoint1): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6001 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
+   "problem": "collector error: PortWatch Bab el-Mandeb (chokepoint4): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (7372 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Canale di Panama (chokepoint2): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6001 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
+   "problem": "collector error: PortWatch Canale di Suez (chokepoint1): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (7360 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Bosforo (chokepoint3): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6004 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
+   "problem": "collector error: PortWatch Canale di Panama (chokepoint2): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (7368 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Malacca (chokepoint5): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6003 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
+   "problem": "collector error: PortWatch Bosforo (chokepoint3): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (7378 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Gibilterra (chokepoint8): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6012 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente",
+   "problem": "collector error: PortWatch Stretto di Malacca (chokepoint5): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (7384 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Capo di Buona Speranza (chokepoint7): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6018 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedent",
+   "problem": "collector error: PortWatch Stretto di Gibilterra (chokepoint8): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (7392 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Taiwan (chokepoint11): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (6018 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedente)",
+   "problem": "collector error: PortWatch Capo di Buona Speranza (chokepoint7): Daily_Chokepoints_Data: {'code': 429, 'message': 'Unable to perform query. Too many requests.', 'details': ['API calls quota exceeded (7405 request units)! maximum allowed request units (6000) per Minute. Retry after 60 sec.']} (riuso il dato precedent",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/webcam.json",
-   "problem": "collector error: istanbul-ibb: non_raggiungibile (URLError: <urlopen error [Errno 104] Connection reset by peer>)",
+   "problem": "collector error: deal-downs: non_raggiungibile (HTTP 429)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/webcam.json",
-   "problem": "collector error: panama-pacifico: non_raggiungibile (URLError: <urlopen error [Errno 104] Connection reset by peer>)",
+   "problem": "collector error: dover-porto: non_raggiungibile (HTTP 429)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/webcam.json",
-   "problem": "collector error: panama-atlantico: non_raggiungibile (URLError: <urlopen error [Errno 104] Connection reset by peer>)",
+   "problem": "collector error: istanbul-ibb: non_raggiungibile (URLError: <urlopen error timed out>)",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/webcam.json",
+   "problem": "collector error: istanbul-corno-oro: non_raggiungibile (HTTP 429)",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/webcam.json",
+   "problem": "collector error: panama-pacifico: non_raggiungibile (URLError: <urlopen error timed out>)",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/webcam.json",
+   "problem": "collector error: panama-atlantico: non_raggiungibile (URLError: <urlopen error timed out>)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -368,6 +403,13 @@
   {
    "severity": "medium",
    "area": "links",
+   "file": "docs/data/notizie-testate.json",
+   "problem": "broken: https://www.marketwatch.com/story/she-can-always-change-her-mind-should-a-widow-leave-the-family-home-to-her-stepchildren-649b06af?mod=mw_rss_topstories (401)",
+   "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "links",
    "file": "docs/data/ucraina-storico.json",
    "problem": "broken: https://www.reuters.com/world/europe/ukraine-launches-drones-moscow-other-regions-russian-officials-say-2024-08-31/ (401)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
@@ -383,29 +425,22 @@
    "severity": "medium",
    "area": "schema",
    "file": "docs/data/navi.json",
-   "problem": "source fields on 'elementi': link missing in 142/142, affidabilita missing in 142/142",
+   "problem": "source fields on 'elementi': link missing in 147/147, affidabilita missing in 147/147",
    "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
   },
   {
    "severity": "low",
    "area": "errors",
    "file": "docs/data/porti-nord.json",
-   "problem": "... and 58 more errors",
+   "problem": "... and 62 more errors",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "low",
    "area": "errors",
    "file": "docs/data/portwatch.json",
-   "problem": "... and 11 more errors",
+   "problem": "... and 14 more errors",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "low",
-   "area": "links",
-   "file": "docs/data/notizie-testate.json",
-   "problem": "failed once (re-checked tomorrow): https://www.marketwatch.com/story/she-can-always-change-her-mind-should-a-widow-leave-the-family-home-to-her-stepchildren-649b06af?mod=mw_rss_topstories (401)",
-   "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
    "severity": "low",
@@ -425,7 +460,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/aerei.json",
-   "problem": "4 warnings ('avvisi'), first: curati AE-C-20260914-37: last report 62 days old, the map will not draw it (limit 60 days)",
+   "problem": "4 warnings ('avvisi'), first: curati AE-C-20260914-37: last report 63 days old, the map will not draw it (limit 60 days)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -463,10 +498,10 @@
    "cadence": "daily (Telegram channels)",
    "updated": "2026-11-10T11:11Z",
    "newest_data_date": "2026-11-10",
-   "updated_age_days": 5,
-   "data_age_days": 5,
+   "updated_age_days": 6,
+   "data_age_days": 6,
    "status": "stale",
-   "why": "updated 5 days ago (limit 2)"
+   "why": "updated 6 days ago (limit 2); newest data 2026-11-10 is 6 days old (limit 5)"
   },
   {
    "file": "report.json",
@@ -485,7 +520,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 6,
+   "fails_in_a_row": 7,
    "first_failed": "2026-11-10T13:44Z",
    "confirmed": true
   },
@@ -496,7 +531,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 5,
+   "fails_in_a_row": 6,
    "first_failed": "2026-11-11T12:40Z",
    "confirmed": true
   },
@@ -507,7 +542,7 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 3,
+   "fails_in_a_row": 4,
    "first_failed": "2026-11-13T13:05Z",
    "confirmed": true
   },
@@ -518,9 +553,9 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 1,
+   "fails_in_a_row": 2,
    "first_failed": "2026-11-15T12:46Z",
-   "confirmed": false
+   "confirmed": true
   }
  ],
  "mismatches": [
@@ -553,12 +588,12 @@
     {
      "file": "gas-italia.json",
      "path": "quote_12_mesi[id=mazara].quota_ingressi_pct",
-     "value": 34.1,
+     "value": 34.2,
      "date": null
     }
    ],
    "severity": "medium",
-   "note": "difference -0.1"
+   "note": "difference -0.2"
   },
   {
    "fact": "report figure: Dutch gas storage fill on 8 Nov 2026 (%), Northern Europe table",
@@ -609,8 +644,8 @@
    "validator": "simulatore",
    "script": "raccolta/simulatore/controlla.py",
    "exit": 1,
-   "seconds": 0.2,
-   "tail": "    if sc[\"coefficienti_usati\"].get(\"pun_per_ttf\") != st[\"pun_ttf\"][\"b\"]: |                                                       ~~^^^^^^^^^^^ | KeyError: 'pun_ttf'"
+   "seconds": 0.1,
+   "tail": "AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 20.02 (eseguire --scrivi) | Esito: 1 errori, 2 avvisi"
   },
   {
    "validator": "wind calendar --rigoroso (output redirected)",
@@ -630,7 +665,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 1.1,
+   "seconds": 0.7,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -670,18 +705,18 @@
   }
  ],
  "counts": {
-  "aerei.json": 51,
+  "aerei.json": 71,
   "ai-mondo.json": 301,
   "ai.json": 66,
   "assicurazioni.json": 27,
   "attacchi-analisti.json": 4093,
   "attacchi-russi.json": 192,
-  "baltico-sicurezza.json": 122,
+  "baltico-sicurezza.json": 128,
   "basi-mondo.json": 181,
   "bunker-emissioni.json": 24,
-  "calendario.json": 215,
+  "calendario.json": 214,
   "cavi-incidenti.json": 14,
-  "cavi.json": 713,
+  "cavi.json": 714,
   "commercio.json": 38,
   "condotte.json": 454,
   "cyber-energia.json": 30,
@@ -689,7 +724,7 @@
   "dossier.json": 1,
   "eolico-filiera.json": 19,
   "esposizione-nord.json": 10,
-  "eventi.json": 374,
+  "eventi.json": 371,
   "ferrovie.json": 49,
   "fissi.json": 192,
   "fronte-storico.json": 60,
@@ -710,10 +745,10 @@
   "mercati.json": 1,
   "minerali.json": 25,
   "mobili.json": 134,
-  "navi.json": 142,
+  "navi.json": 147,
   "noli.json": 4,
-  "notizie-testate.json": 1937,
-  "notizie.json": 1991,
+  "notizie-testate.json": 1653,
+  "notizie.json": 2098,
   "nucleare.json": 167,
   "offshore-nord.json": 180,
   "paesi.json": 33,
@@ -738,6 +773,6 @@
   "wind-calendar.json": 114,
   "world.json": 1896
  },
- "report": "report/qualita/2026-11-15.md",
+ "report": "report/qualita/2026-11-16.md",
  "errors": []
 }
