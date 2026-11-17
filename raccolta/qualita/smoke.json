@@ -1,9 +1,16 @@
 {
- "updated": "2026-11-16T13:38Z",
- "overall": "green",
- "seconds": 57,
- "passed": 50,
- "failed": [],
+ "updated": "2026-11-17T14:28Z",
+ "overall": "red",
+ "seconds": 56,
+ "passed": 49,
+ "failed": [
+  {
+   "page": "index.html",
+   "test": "every layer count > 0",
+   "ok": false,
+   "detail": "n-adv=0"
+  }
+ ],
  "results": [
   {
    "page": "index.html",
@@ -14,8 +21,8 @@
   {
    "page": "index.html",
    "test": "every layer count > 0",
-   "ok": true,
-   "detail": "43 layers"
+   "ok": false,
+   "detail": "n-adv=0"
   },
   {
    "page": "index.html",
@@ -27,13 +34,13 @@
    "page": "index.html",
    "test": "Terminal tab Risk",
    "ok": true,
-   "detail": "10512 characters"
+   "detail": "10366 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Ports",
    "ok": true,
-   "detail": "13573 characters"
+   "detail": "14251 characters"
   },
   {
    "page": "index.html",
@@ -51,31 +58,31 @@
    "page": "index.html",
    "test": "Terminal tab Northern Europe",
    "ok": true,
-   "detail": "8515 characters"
+   "detail": "8516 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Prices and rates",
    "ok": true,
-   "detail": "1908 characters"
+   "detail": "1928 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Calendar",
    "ok": true,
-   "detail": "3692 characters"
+   "detail": "3512 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Chokepoints",
    "ok": true,
-   "detail": "4434 characters"
+   "detail": "4437 characters"
   },
   {
    "page": "index.html",
    "test": "Terminal tab Freight and risk",
    "ok": true,
-   "detail": "865 characters"
+   "detail": "857 characters"
   },
   {
    "page": "index.html",
@@ -99,7 +106,7 @@
    "page": "index.html",
    "test": "Terminal tab News",
    "ok": true,
-   "detail": "9152 characters"
+   "detail": "9006 characters"
   },
   {
    "page": "index.html",
@@ -123,7 +130,7 @@
    "page": "simulatore.html",
    "test": "content rendered",
    "ok": true,
-   "detail": "22734 characters"
+   "detail": "22713 characters"
   },
   {
    "page": "simulatore.html",
@@ -135,13 +142,13 @@
    "page": "notizie.html",
    "test": "content rendered",
    "ok": true,
-   "detail": "18893 characters"
+   "detail": "19132 characters"
   },
   {
    "page": "notizie.html",
    "test": "news links listed",
    "ok": true,
-   "detail": "93 external links"
+   "detail": "87 external links"
   },
   {
    "page": "notizie.html",
@@ -307,10 +314,10 @@
   }
  ],
  "layer_counts": {
-  "n-ships": 115,
+  "n-ships": 116,
   "n-air": 72,
-  "n-events": 13,
-  "n-adv": 3,
+  "n-events": 3,
+  "n-adv": 0,
   "n-front": "hidden",
   "n-hyb": 24,
   "n-bases": 32,
@@ -334,7 +341,7 @@
   "n-xinv": 59,
   "n-xcy": 30,
   "n-xrisk": 18,
-  "n-xpn": 28,
+  "n-xpn": 30,
   "n-xwind": 362,
   "n-xbs": 47,
   "n-xh2": 48,
@@ -346,10 +353,10 @@
   "n-xeof": 19,
   "n-xruo": 25,
   "n-xan": 4093,
-  "n-xpr": 36,
+  "n-xpr": 38,
   "n-xtt": 99,
   "n-xru": 192,
-  "n-xnavi": 145
+  "n-xnavi": 159
  },
  "pages": [
   "simulatore.html",

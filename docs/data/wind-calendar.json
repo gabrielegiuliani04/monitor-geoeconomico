@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-16T13:36Z",
- "riferimento": "2026-11-16",
+ "aggiornato": "2026-11-17T14:27Z",
+ "riferimento": "2026-11-17",
  "fonti": [
   {
    "nome": "RWE Thor project site",
@@ -282,7 +282,7 @@
    "nome": "offshoreWIND.biz RSS (candidate items only)",
    "link": "https://www.offshorewind.biz/feed",
    "licenza": "(c) Navingo/offshoreWIND.biz: headlines and links only",
-   "data_dato": "2026-11-16"
+   "data_dato": "2026-11-17"
   }
  ],
  "nota": "Offshore wind milestone calendar for the North Sea and the Baltic (GB, NL, BE, DE, DK, NO, SE, FI, PL, LT, LV, EE, FR, EU), 2023-2027 with later anchors. Curated items with source, link and source date; null = not found, never estimated. 'status' is curated (done/scheduled/at risk); 'status_effective' adds 'unconfirmed' when a scheduled date has passed without confirmation. Reliability high/medium/low = alta/media/bassa. 'precision' tells how exact the date is. 'candidati_rss' are suggestions from the offshoreWIND.biz feed, NOT verified items.",
@@ -322,8 +322,8 @@
    "SE": 5
   },
   "next_90_days": {
-   "from": "2026-11-16",
-   "to": "2027-02-14",
+   "from": "2026-11-17",
+   "to": "2027-02-15",
    "items": [
     {
      "id": "WC-PL-GDANSK-T5",
@@ -500,8 +500,8 @@
    ]
   },
   "last_90_days": {
-   "from": "2026-08-18",
-   "to": "2026-11-16",
+   "from": "2026-08-19",
+   "to": "2026-11-17",
    "items": [
     {
      "id": "WC-NO-SN2-DELAY",
@@ -797,7 +797,7 @@
     "project": "Bornholm offshore wind farms: joint DK-DE tender launch",
     "capacity_mw": 3000,
     "status_effective": "unconfirmed",
-    "days_overdue": 139
+    "days_overdue": 140
    },
    {
     "id": "WC-SE-SUPPORT",
@@ -808,7 +808,7 @@
     "project": "Swedish state-led tender and support system",
     "capacity_mw": null,
     "status_effective": "unconfirmed",
-    "days_overdue": 138
+    "days_overdue": 139
    },
    {
     "id": "WC-DE-HEDREIHT-FULL",
@@ -819,7 +819,7 @@
     "project": "He Dreiht: full 960 MW",
     "capacity_mw": 960,
     "status_effective": "unconfirmed",
-    "days_overdue": 16
+    "days_overdue": 17
    },
    {
     "id": "WC-FR-AO10-BIDS",
@@ -830,7 +830,7 @@
     "project": "AO10 bid deadline",
     "capacity_mw": 10000,
     "status_effective": "unconfirmed",
-    "days_overdue": 35
+    "days_overdue": 36
    }
   ],
   "needs_recheck": [
@@ -1929,7 +1929,7 @@
    "precision": "half",
    "period_start": "2026-01-01",
    "period_end": "2026-06-30",
-   "days_overdue": 139,
+   "days_overdue": 140,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2361,7 +2361,7 @@
    "precision": "day",
    "period_start": "2026-07-01",
    "period_end": "2026-07-01",
-   "days_overdue": 138,
+   "days_overdue": 139,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2685,7 +2685,7 @@
    "precision": "month",
    "period_start": "2026-10-01",
    "period_end": "2026-10-31",
-   "days_overdue": 16,
+   "days_overdue": 17,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -2751,7 +2751,7 @@
    "precision": "day",
    "period_start": "2026-10-12",
    "period_end": "2026-10-12",
-   "days_overdue": 35,
+   "days_overdue": 36,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -3502,6 +3502,42 @@
   "stato": "ok: 50 RSS items read, 15 candidates",
   "candidati": [
    {
+    "title": "Smulders to Build Jacket Foundation for TenneT's LanWin Beta Offshore Platform",
+    "date": "2026-11-17",
+    "link": "https://www.offshorewind.biz/2026/11/17/smulders-to-build-jacket-foundation-for-tennets-lanwin-beta-offshore-platform",
+    "possible_duplicate_of": [],
+    "suggested_type": "grid",
+    "matched_types": [
+     "grid",
+     "construction"
+    ],
+    "scope_terms": [
+     "belgian",
+     "tennet",
+     "lanwin"
+    ],
+    "related_calendar_projects": [],
+    "excerpt": "Smulders, a Belgian arm of Eiffage Métal, has won a subcontract from Dragados Offshore for the fabrication of the jacket foundation supporting...",
+    "action": "review manually; add to calendario_voci.json only with a primary source"
+   },
+   {
+    "title": "Aberdeen Chamber Urges UK Gov’t to Protect Scotland’s Offshore Wind Pipeline",
+    "date": "2026-11-17",
+    "link": "https://www.offshorewind.biz/2026/11/17/aberdeen-chamber-urges-uk-govt-to-protect-scotlands-offshore-wind-pipeline",
+    "possible_duplicate_of": [],
+    "suggested_type": "policy",
+    "matched_types": [
+     "policy"
+    ],
+    "scope_terms": [
+     "uk",
+     "scotland"
+    ],
+    "related_calendar_projects": [],
+    "excerpt": "Aberdeen & Grampian Chamber of Commerce has called on the UK government to protect Scotland’s offshore wind pipeline, including floating wind...",
+    "action": "review manually; add to calendario_voci.json only with a primary source"
+   },
+   {
     "title": "Keel Laid for Heerema’s Barge Purpose-Built for TenneT 2 GW Offshore Grid Connection Platforms",
     "date": "2026-11-13",
     "link": "https://www.offshorewind.biz/2026/11/13/keel-laid-for-heeremas-barge-purpose-built-for-tennet-2-gw-offshore-grid-connection-platforms",
@@ -3727,42 +3763,6 @@
     ],
     "related_calendar_projects": [],
     "excerpt": "Fugro has secured a contract from Cadeler to carry out post-installation seabed surveys at the 960 MW East Anglia Two offshore wind farm in the...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "Norway Funds Floating Offshore Wind Projects Featuring 18.5 MW Turbines",
-    "date": "2026-10-30",
-    "link": "https://www.offshorewind.biz/2026/10/30/norway-funds-floating-offshore-wind-projects-featuring-185-mw-turbines",
-    "possible_duplicate_of": [],
-    "suggested_type": "policy",
-    "matched_types": [
-     "policy"
-    ],
-    "scope_terms": [
-     "norway",
-     "norwegian"
-    ],
-    "related_calendar_projects": [],
-    "excerpt": "Norwegian state enterprise Enova, owned by the Ministry of Climate and Environment, has awarded Fortius Offshore Wind AS and Fram Wind Solutions...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "PGE and Ørsted Add BGB Group to Baltica 2 Offshore Wind Team",
-    "date": "2026-10-27",
-    "link": "https://www.offshorewind.biz/2026/10/27/pge-and-orsted-add-bgb-group-to-baltica-2-offshore-wind-team",
-    "possible_duplicate_of": [],
-    "suggested_type": "construction",
-    "matched_types": [
-     "construction"
-    ],
-    "scope_terms": [
-     "uk",
-     "baltica"
-    ],
-    "related_calendar_projects": [
-     "baltica 2"
-    ],
-    "excerpt": "BGB Group Global Limited, a UK-headquartered offshore access specialist, has secured the offshore scaffolding and construction services framework...",
     "action": "review manually; add to calendario_voci.json only with a primary source"
    }
   ]
