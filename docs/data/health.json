@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-17T14:28Z",
- "date": "2026-11-17",
- "overall": "amber",
+ "updated": "2026-11-18T13:56Z",
+ "date": "2026-11-18",
+ "overall": "red",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 47.2,
+ "seconds": 42.9,
  "summary": {
   "critical": 0,
-  "high": 2,
-  "medium": 35,
-  "low": 5,
+  "high": 4,
+  "medium": 36,
+  "low": 4,
   "info": 5
  },
  "checks": [
@@ -22,7 +22,7 @@
    "area": "freshness",
    "name": "files against cadence",
    "status": "amber",
-   "detail": "65 ok, 1 stale, 0 missing, 1 undated (report.json); 1 lagging series inside files"
+   "detail": "64 ok, 2 stale, 0 missing, 1 undated (report.json); 1 lagging series inside files"
   },
   {
    "area": "schema",
@@ -39,20 +39,20 @@
   {
    "area": "schema",
    "name": "counts vs yesterday",
-   "status": "green",
-   "detail": "compared with storico.json 2026-11-16: 0 drops > 20%"
+   "status": "red",
+   "detail": "compared with storico.json 2026-11-17: 1 drops > 20%"
   },
   {
    "area": "errors",
    "name": "errori/errors arrays",
    "status": "amber",
-   "detail": "28 errors in 10 files"
+   "detail": "25 errors in 8 files"
   },
   {
    "area": "consistency",
    "name": "same fact across data files",
    "status": "amber",
-   "detail": "112 comparisons, 1 disagree (1 distinct mismatches listed)"
+   "detail": "114 comparisons, 1 disagree (1 distinct mismatches listed)"
   },
   {
    "area": "consistency",
@@ -75,20 +75,20 @@
   {
    "area": "validators",
    "name": "repository validators",
-   "status": "green",
-   "detail": "10 run, 0 with a non-zero exit: originali 0; simulatore 0; eolico 0; stretti 0; basi 0; assicurazioni 0; ai 0; italia 0; supply-chain-ai 0; ucraina 0"
+   "status": "amber",
+   "detail": "10 run, 1 with a non-zero exit: originali 0; simulatore 0; eolico 0; stretti 0; basi 0; assicurazioni 0; ai 0; italia 0; supply-chain-ai 1; ucraina 0"
   },
   {
    "area": "links",
    "name": "source links (rotating sample)",
    "status": "amber",
-   "detail": "154 of 15579 distinct links checked today: 1 blocked, 5 broken, 1 error, 147 ok; 4 confirmed broken, 1 failed once (rolling record)"
+   "detail": "155 of 16069 distinct links checked today: 27 blocked, 5 broken, 123 ok; 4 confirmed broken, 1 failed once (rolling record)"
   },
   {
    "area": "smoke",
    "name": "browser smoke test",
    "status": "red",
-   "detail": "run 2026-11-17T14:28Z: 49 passed, 1 failed"
+   "detail": "run 2026-11-18T13:56Z: 49 passed, 1 failed"
   }
  ],
  "problems": [
@@ -96,8 +96,22 @@
    "severity": "high",
    "area": "freshness",
    "file": "docs/data/attacchi-analisti.json",
-   "problem": "stale: updated 7 days ago (limit 2); newest data 2026-11-10 is 7 days old (limit 5) (cadence: daily (Telegram channels))",
+   "problem": "stale: updated 8 days ago (limit 2); newest data 2026-11-10 is 8 days old (limit 5) (cadence: daily (Telegram channels))",
    "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
+  },
+  {
+   "severity": "high",
+   "area": "freshness",
+   "file": "docs/data/mercati.json",
+   "problem": "stale: updated 9 days ago (limit 8); newest data 2026-11-09 is 9 days old (limit 8) (cadence: manual market collections, about weekly)",
+   "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
+  },
+  {
+   "severity": "high",
+   "area": "schema",
+   "file": "docs/data/prezzi.json",
+   "problem": "element count fell 33 -> 23 (-30%) vs storico.json 2026-11-17",
+   "fix": "A collector probably broke silently (empty answer, changed format, missing key). Compare with yesterday's file in git and look at the step log."
   },
   {
    "severity": "high",
@@ -180,6 +194,13 @@
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/notizie-testate.json",
+   "problem": "collector error: err_news (ERR News): HTTPError: HTTP Error 403: Forbidden",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/notizie-testate.json",
    "problem": "collector error: navalnews (Naval News): HTTPError: HTTP Error 503: Service Temporarily Unavailable",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
@@ -200,64 +221,57 @@
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/port-risk.json",
-   "problem": "collector error: trieste: computation failed (TypeError: must be real number, not NoneType)",
+   "file": "docs/data/prezzi.json",
+   "problem": "collector error: S&P 500 (^GSPC): HTTP Error 429: Too Many Requests",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Hormuz (chokepoint6): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
+   "file": "docs/data/prezzi.json",
+   "problem": "collector error: Nasdaq 100 (^NDX): HTTP Error 429: Too Many Requests",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Bab el-Mandeb (chokepoint4): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
+   "file": "docs/data/prezzi.json",
+   "problem": "collector error: Nasdaq Composite (^IXIC): HTTP Error 429: Too Many Requests",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Canale di Suez (chokepoint1): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
+   "file": "docs/data/prezzi.json",
+   "problem": "collector error: Semiconduttori (SOX) (^SOX): HTTP Error 429: Too Many Requests",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Canale di Panama (chokepoint2): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
+   "file": "docs/data/prezzi.json",
+   "problem": "collector error: VIX (volatilità S&P 500) (^VIX): HTTP Error 429: Too Many Requests",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Bosforo (chokepoint3): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
+   "file": "docs/data/prezzi.json",
+   "problem": "collector error: FTSE MIB (FTSEMIB.MI): HTTP Error 429: Too Many Requests",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Malacca (chokepoint5): Daily_Chokepoints_Data: {'code': 400, 'message': 'Object reference not set to an instance of an object.', 'details': []} (riuso il dato precedente)",
+   "file": "docs/data/prezzi.json",
+   "problem": "collector error: Euro Stoxx 50 (^STOXX50E): HTTP Error 429: Too Many Requests",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Stretto di Gibilterra (chokepoint8): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "collector error: PortWatch Capo di Buona Speranza (chokepoint7): Daily_Chokepoints_Data: {'code': 400, 'message': 'Invalid URL', 'details': ['Invalid URL']} (riuso il dato precedente)",
+   "file": "docs/data/prezzi.json",
+   "problem": "collector error: DAX (^GDAXI): HTTP Error 429: Too Many Requests",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -326,8 +340,8 @@
   {
    "severity": "medium",
    "area": "links",
-   "file": "docs/data/notizie-testate.json",
-   "problem": "broken: https://www.marketwatch.com/story/she-can-always-change-her-mind-should-a-widow-leave-the-family-home-to-her-stepchildren-649b06af?mod=mw_rss_topstories (401)",
+   "file": "docs/data/attacchi-russi.json",
+   "problem": "broken: https://www.reuters.com/world/americas/russian-drones-attacked-ukraines-izmail-port-damaged-panama-flagged-vessel-2026-04-14/ (401)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
@@ -348,28 +362,28 @@
    "severity": "medium",
    "area": "schema",
    "file": "docs/data/navi.json",
-   "problem": "source fields on 'elementi': link missing in 159/159, affidabilita missing in 159/159",
+   "problem": "source fields on 'elementi': link missing in 148/148, affidabilita missing in 148/148",
    "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
   },
   {
-   "severity": "low",
-   "area": "errors",
-   "file": "docs/data/eventi.json",
-   "problem": "collector error: EONET: The read operation timed out",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+   "severity": "medium",
+   "area": "validators",
+   "file": "raccolta/supply-chain-ai/raccogli.py",
+   "problem": "validator 'supply-chain-ai --valida' exit 1: validazione: 3 errori, 5 avvisi | ERRORE: titolo NVDA: prezzi_id 'nvda' non trovato in prezzi.json | ERRORE: titolo MSFT: prezzi_id 'msft' non trovato in prezzi.json | ERRORE: titolo SOX: prezzi_id 'sox' non trovato in prezzi.json",
+   "fix": "Run the validator by hand, read its output and fix the curated input it names."
   },
   {
    "severity": "low",
    "area": "errors",
-   "file": "docs/data/portwatch.json",
-   "problem": "... and 4 more errors",
+   "file": "docs/data/prezzi.json",
+   "problem": "... and 2 more errors",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "low",
    "area": "links",
-   "file": "docs/data/attacchi-russi.json",
-   "problem": "failed once (re-checked tomorrow): https://www.reuters.com/world/americas/russian-drones-attacked-ukraines-izmail-port-damaged-panama-flagged-vessel-2026-04-14/ (401)",
+   "file": "docs/data/ai-mondo.json, docs/data/ai.json",
+   "problem": "failed once (re-checked tomorrow): https://meatechwatch.com/2026/03/13/humain-secures-211-land-plots-in-saudi-arabia-for-gigawatt-scale-ai-expansion/ (404)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
@@ -390,7 +404,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/aerei.json",
-   "problem": "5 warnings ('avvisi'), first: curati AE-C-20260917-20: last report 61 days old, the map will not draw it (limit 60 days)",
+   "problem": "6 warnings ('avvisi'), first: curati AE-C-20260917-20: last report 62 days old, the map will not draw it (limit 60 days)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -428,10 +442,20 @@
    "cadence": "daily (Telegram channels)",
    "updated": "2026-11-10T11:11Z",
    "newest_data_date": "2026-11-10",
-   "updated_age_days": 7,
-   "data_age_days": 7,
+   "updated_age_days": 8,
+   "data_age_days": 8,
    "status": "stale",
-   "why": "updated 7 days ago (limit 2); newest data 2026-11-10 is 7 days old (limit 5)"
+   "why": "updated 8 days ago (limit 2); newest data 2026-11-10 is 8 days old (limit 5)"
+  },
+  {
+   "file": "mercati.json",
+   "cadence": "manual market collections, about weekly",
+   "updated": "2026-11-09",
+   "newest_data_date": "2026-11-09",
+   "updated_age_days": 9,
+   "data_age_days": 9,
+   "status": "stale",
+   "why": "updated 9 days ago (limit 8); newest data 2026-11-09 is 9 days old (limit 8)"
   },
   {
    "file": "report.json",
@@ -450,7 +474,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 8,
+   "fails_in_a_row": 9,
    "first_failed": "2026-11-10T13:44Z",
    "confirmed": true
   },
@@ -461,7 +485,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 7,
+   "fails_in_a_row": 8,
    "first_failed": "2026-11-11T12:40Z",
    "confirmed": true
   },
@@ -472,19 +496,8 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 5,
+   "fails_in_a_row": 6,
    "first_failed": "2026-11-13T13:05Z",
-   "confirmed": true
-  },
-  {
-   "url": "https://www.marketwatch.com/story/she-can-always-change-her-mind-should-a-widow-leave-the-family-home-to-her-stepchildren-649b06af?mod=mw_rss_topstories",
-   "files": [
-    "notizie-testate.json"
-   ],
-   "code": 401,
-   "detail": "",
-   "fails_in_a_row": 3,
-   "first_failed": "2026-11-15T12:46Z",
    "confirmed": true
   },
   {
@@ -494,8 +507,20 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 1,
+   "fails_in_a_row": 2,
    "first_failed": "2026-11-17T14:28Z",
+   "confirmed": true
+  },
+  {
+   "url": "https://meatechwatch.com/2026/03/13/humain-secures-211-land-plots-in-saudi-arabia-for-gigawatt-scale-ai-expansion/",
+   "files": [
+    "ai-mondo.json",
+    "ai.json"
+   ],
+   "code": 404,
+   "detail": "",
+   "fails_in_a_row": 1,
+   "first_failed": "2026-11-18T13:56Z",
    "confirmed": false
   }
  ],
@@ -606,7 +631,7 @@
    "script": "raccolta/simulatore/controlla.py",
    "exit": 0,
    "seconds": 0.2,
-   "tail": "AVVISO: passaggio canale-di-sicilia: flusso Gas, TransMed = 20.86, gas-italia.json ora dice 20.92 bcm (aggiornare) | AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | Esito: 0 errori, 2 avvisi"
+   "tail": "AVVISO: passaggio canale-di-sicilia: flusso Gas, TransMed = 20.86, gas-italia.json ora dice 20.94 bcm (aggiornare) | AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | Esito: 0 errori, 2 avvisi"
   },
   {
    "validator": "wind calendar --rigoroso (output redirected)",
@@ -626,7 +651,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.9,
+   "seconds": 0.7,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -653,9 +678,9 @@
   {
    "validator": "supply-chain-ai --valida",
    "script": "raccolta/supply-chain-ai/raccogli.py",
-   "exit": 0,
+   "exit": 1,
    "seconds": 0.2,
-   "tail": "AVVISO: materia germanio: nessuna quota per paese (dato mancante dichiarato) | AVVISO: collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare | AVVISO: collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
+   "tail": "ERRORE: titolo NVDA: prezzi_id 'nvda' non trovato in prezzi.json | ERRORE: titolo MSFT: prezzi_id 'msft' non trovato in prezzi.json | ERRORE: titolo SOX: prezzi_id 'sox' non trovato in prezzi.json"
   },
   {
    "validator": "attacchi-russi --solo-valida",
@@ -666,13 +691,13 @@
   }
  ],
  "counts": {
-  "aerei.json": 72,
+  "aerei.json": 75,
   "ai-mondo.json": 301,
   "ai.json": 66,
   "assicurazioni.json": 27,
   "attacchi-analisti.json": 4093,
   "attacchi-russi.json": 192,
-  "baltico-sicurezza.json": 133,
+  "baltico-sicurezza.json": 134,
   "basi-mondo.json": 181,
   "bunker-emissioni.json": 24,
   "calendario.json": 213,
@@ -685,7 +710,7 @@
   "dossier.json": 1,
   "eolico-filiera.json": 19,
   "esposizione-nord.json": 10,
-  "eventi.json": 372,
+  "eventi.json": 370,
   "ferrovie.json": 49,
   "fissi.json": 192,
   "fronte-storico.json": 60,
@@ -706,17 +731,17 @@
   "mercati.json": 1,
   "minerali.json": 25,
   "mobili.json": 135,
-  "navi.json": 159,
+  "navi.json": 148,
   "noli.json": 4,
-  "notizie-testate.json": 1857,
-  "notizie.json": 2044,
+  "notizie-testate.json": 2456,
+  "notizie.json": 2021,
   "nucleare.json": 167,
   "offshore-nord.json": 180,
   "paesi.json": 33,
-  "port-risk.json": 38,
+  "port-risk.json": 39,
   "porti-nord.json": 30,
   "portwatch.json": 22,
-  "prezzi.json": 33,
+  "prezzi.json": 23,
   "report.json": 5,
   "rete-elettrica.json": 2367,
   "rischio.json": 18,
@@ -734,6 +759,6 @@
   "wind-calendar.json": 114,
   "world.json": 1896
  },
- "report": "report/qualita/2026-11-17.md",
+ "report": "report/qualita/2026-11-18.md",
  "errors": []
 }

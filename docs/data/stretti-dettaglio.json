@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-17T14:27Z",
+ "aggiornato": "2026-11-18T13:54Z",
  "fonti": [
   {
    "nome": "IEA, Strait of Hormuz Factsheet (febbraio 2026), su dati Kpler",
@@ -1370,14 +1370,14 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 250,
       "giorni": 30,
-      "totale": 32,
+      "totale": 31,
       "per_categoria": {
        "attacco": 16,
-       "incidente": 9,
+       "incidente": 8,
        "blackout": 1,
        "intercettazione": 4,
        "rischieramento": 1,
@@ -1456,7 +1456,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint6",
@@ -1467,31 +1467,30 @@
         "categoria": "passaggio strategico",
         "fonte": "IMF PortWatch (Daily Chokepoints Data)",
         "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-08",
+        "data_fonte": "2026-11-15",
         "affidabilita": "alta",
         "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-08",
-        "var30_anno_pct": -95.5,
-        "note": "",
-        "riusato": true
+        "ultima_data": "2026-11-15",
+        "var30_anno_pct": -96.1,
+        "note": ""
        }
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "imo": "7904580",
         "nome": "HORMUZ 2",
@@ -1524,14 +1523,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 92.44,
+     "ultimo": 93.14,
      "unita": "USD/barile",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.55,
-      "1m": -15.86,
-      "ytd": 51.91,
-      "1a": 43.56
+      "1g": 0.76,
+      "1m": -15.22,
+      "ytd": 53.06,
+      "1a": 45.08
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -1539,14 +1538,14 @@
     {
      "id": "wti",
      "nome": "Petrolio WTI",
-     "ultimo": 85.72,
+     "ultimo": 86.01,
      "unita": "USD/barile",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.21,
-      "1m": -15.47,
-      "ytd": 49.29,
-      "1a": 42.65
+      "1g": 0.34,
+      "1m": -15.19,
+      "ytd": 49.79,
+      "1a": 43.57
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -1554,14 +1553,14 @@
     {
      "id": "ttf",
      "nome": "Gas TTF (Europa)",
-     "ultimo": 84.04,
+     "ultimo": 85.48,
      "unita": "EUR/MWh",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -7.6,
-      "1m": -4.01,
-      "ytd": 198.44,
-      "1a": 168.93
+      "1g": 0.86,
+      "1m": -2.36,
+      "ytd": 203.55,
+      "1a": 172.06
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -1569,14 +1568,14 @@
     {
      "id": "hh",
      "nome": "Gas Henry Hub (USA)",
-     "ultimo": 3.122,
+     "ultimo": 3.208,
      "unita": "USD/MMBtu",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.34,
-      "1m": 0.19,
-      "ytd": -15.3,
-      "1a": -31.63
+      "1g": 2.75,
+      "1m": 2.95,
+      "ytd": -12.97,
+      "1a": -26.44
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -1916,7 +1915,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 350,
       "giorni": 30,
@@ -1991,42 +1990,41 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint4",
         "nome": "Bab el-Mandeb",
-        "nome_portwatch": null,
-        "lat": null,
-        "lon": null,
+        "nome_portwatch": "Bab el-Mandeb Strait",
+        "lat": 12.78859715,
+        "lon": 43.34954476,
         "categoria": "passaggio strategico",
         "fonte": "IMF PortWatch (Daily Chokepoints Data)",
         "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-08",
+        "data_fonte": "2026-11-15",
         "affidabilita": "alta",
         "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-08",
+        "ultima_data": "2026-11-15",
         "var30_anno_pct": -26.7,
-        "note": "",
-        "riusato": true
+        "note": ""
        }
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -2047,14 +2045,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 92.44,
+     "ultimo": 93.14,
      "unita": "USD/barile",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.55,
-      "1m": -15.86,
-      "ytd": 51.91,
-      "1a": 43.56
+      "1g": 0.76,
+      "1m": -15.22,
+      "ytd": 53.06,
+      "1a": 45.08
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -2062,14 +2060,14 @@
     {
      "id": "ttf",
      "nome": "Gas TTF (Europa)",
-     "ultimo": 84.04,
+     "ultimo": 85.48,
      "unita": "EUR/MWh",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -7.6,
-      "1m": -4.01,
-      "ytd": 198.44,
-      "1a": 168.93
+      "1g": 0.86,
+      "1m": -2.36,
+      "ytd": 203.55,
+      "1a": 172.06
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -2395,7 +2393,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 200,
       "giorni": 30,
@@ -2409,7 +2407,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint1",
@@ -2420,31 +2418,30 @@
         "categoria": "passaggio strategico",
         "fonte": "IMF PortWatch (Daily Chokepoints Data)",
         "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-08",
+        "data_fonte": "2026-11-15",
         "affidabilita": "alta",
         "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-08",
-        "var30_anno_pct": 2.1,
-        "note": "",
-        "riusato": true
+        "ultima_data": "2026-11-15",
+        "var30_anno_pct": 2.3,
+        "note": ""
        }
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -2464,14 +2461,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 92.44,
+     "ultimo": 93.14,
      "unita": "USD/barile",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.55,
-      "1m": -15.86,
-      "ytd": 51.91,
-      "1a": 43.56
+      "1g": 0.76,
+      "1m": -15.22,
+      "ytd": 53.06,
+      "1a": 45.08
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -2722,7 +2719,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 200,
       "giorni": 30,
@@ -2736,7 +2733,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint2",
@@ -2747,31 +2744,30 @@
         "categoria": "passaggio strategico",
         "fonte": "IMF PortWatch (Daily Chokepoints Data)",
         "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-08",
+        "data_fonte": "2026-11-15",
         "affidabilita": "alta",
         "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-08",
-        "var30_anno_pct": -13.7,
-        "note": "",
-        "riusato": true
+        "ultima_data": "2026-11-15",
+        "var30_anno_pct": -11.1,
+        "note": ""
        }
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -2791,14 +2787,14 @@
     {
      "id": "hh",
      "nome": "Gas Henry Hub (USA)",
-     "ultimo": 3.122,
+     "ultimo": 3.208,
      "unita": "USD/MMBtu",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.34,
-      "1m": 0.19,
-      "ytd": -15.3,
-      "1a": -31.63
+      "1g": 2.75,
+      "1m": 2.95,
+      "ytd": -12.97,
+      "1a": -26.44
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -3052,7 +3048,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 400,
       "giorni": 30,
@@ -3093,7 +3089,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint5",
@@ -3104,31 +3100,30 @@
         "categoria": "passaggio strategico",
         "fonte": "IMF PortWatch (Daily Chokepoints Data)",
         "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-08",
+        "data_fonte": "2026-11-15",
         "affidabilita": "alta",
         "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-08",
-        "var30_anno_pct": -8.6,
-        "note": "",
-        "riusato": true
+        "ultima_data": "2026-11-15",
+        "var30_anno_pct": -7.0,
+        "note": ""
        }
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -3147,14 +3142,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 92.44,
+     "ultimo": 93.14,
      "unita": "USD/barile",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.55,
-      "1m": -15.86,
-      "ytd": 51.91,
-      "1a": 43.56
+      "1g": 0.76,
+      "1m": -15.22,
+      "ytd": 53.06,
+      "1a": 45.08
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -3390,7 +3385,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 250,
       "giorni": 30,
@@ -3404,7 +3399,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint3",
@@ -3415,31 +3410,30 @@
         "categoria": "passaggio strategico",
         "fonte": "IMF PortWatch (Daily Chokepoints Data)",
         "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-08",
+        "data_fonte": "2026-11-15",
         "affidabilita": "alta",
         "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-08",
+        "ultima_data": "2026-11-15",
         "var30_anno_pct": -51.8,
-        "note": "PortWatch misura il Bosforo; i Dardanelli hanno in pratica lo stesso traffico.",
-        "riusato": true
+        "note": "PortWatch misura il Bosforo; i Dardanelli hanno in pratica lo stesso traffico."
        }
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -3459,14 +3453,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 92.44,
+     "ultimo": 93.14,
      "unita": "USD/barile",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.55,
-      "1m": -15.86,
-      "ytd": 51.91,
-      "1a": 43.56
+      "1g": 0.76,
+      "1m": -15.22,
+      "ytd": 53.06,
+      "1a": 45.08
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -3617,7 +3611,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 200,
       "giorni": 30,
@@ -3631,7 +3625,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint8",
@@ -3642,31 +3636,30 @@
         "categoria": "passaggio strategico",
         "fonte": "IMF PortWatch (Daily Chokepoints Data)",
         "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-08",
+        "data_fonte": "2026-11-15",
         "affidabilita": "alta",
         "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-08",
-        "var30_anno_pct": -5.0,
-        "note": "",
-        "riusato": true
+        "ultima_data": "2026-11-15",
+        "var30_anno_pct": -5.5,
+        "note": ""
        }
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -3847,7 +3840,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 200,
       "giorni": 30,
@@ -3861,7 +3854,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint10",
@@ -3872,31 +3865,30 @@
         "categoria": "passaggio strategico",
         "fonte": "IMF PortWatch (Daily Chokepoints Data)",
         "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-08",
+        "data_fonte": "2026-11-15",
         "affidabilita": "alta",
         "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-08",
-        "var30_anno_pct": -13.5,
-        "note": "PortWatch misura solo l'Øresund, non il Grande Belt (dove passano le petroliere più grandi).",
-        "riusato": true
+        "ultima_data": "2026-11-15",
+        "var30_anno_pct": -14.5,
+        "note": "PortWatch misura solo l'Øresund, non il Grande Belt (dove passano le petroliere più grandi)."
        }
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -3916,14 +3908,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 92.44,
+     "ultimo": 93.14,
      "unita": "USD/barile",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.55,
-      "1m": -15.86,
-      "ytd": 51.91,
-      "1a": 43.56
+      "1g": 0.76,
+      "1m": -15.22,
+      "ytd": 53.06,
+      "1a": 45.08
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -4085,7 +4077,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 250,
       "giorni": 30,
@@ -4119,7 +4111,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint11",
@@ -4141,13 +4133,13 @@
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "id": "GPRC_TWN",
         "nome": "GPR mensile per Taiwan",
@@ -4166,7 +4158,7 @@
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -4350,7 +4342,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 200,
       "giorni": 30,
@@ -4364,7 +4356,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint7",
@@ -4375,31 +4367,30 @@
         "categoria": "passaggio strategico",
         "fonte": "IMF PortWatch (Daily Chokepoints Data)",
         "link": "https://portwatch.imf.org/",
-        "data_fonte": "2026-11-08",
+        "data_fonte": "2026-11-15",
         "affidabilita": "alta",
         "unita": "navi al giorno (n_*), tonnellate di portata lorda stimate (capacity*)",
-        "ultima_data": "2026-11-08",
-        "var30_anno_pct": -4.6,
-        "note": "",
-        "riusato": true
+        "ultima_data": "2026-11-15",
+        "var30_anno_pct": -5.6,
+        "note": ""
        }
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -4418,14 +4409,14 @@
     {
      "id": "brent",
      "nome": "Petrolio Brent",
-     "ultimo": 92.44,
+     "ultimo": 93.14,
      "unita": "USD/barile",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -3.55,
-      "1m": -15.86,
-      "ytd": 51.91,
-      "1a": 43.56
+      "1g": 0.76,
+      "1m": -15.22,
+      "ytd": 53.06,
+      "1a": 45.08
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -4595,33 +4586,33 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "gas_italia": [
       {
        "id": "mazara",
        "nome": "Mazara del Vallo (TransMed / Transmed)",
-       "twh_12m": 221.2,
+       "twh_12m": 221.3,
        "quota_ingressi_pct": 34.2,
-       "ultimo_giorno": "2026-11-16",
-       "ultimo_gwh": 648.94,
-       "media_30g_gwh": 652.8,
+       "ultimo_giorno": "2026-11-17",
+       "ultimo_gwh": 650.8,
+       "media_30g_gwh": 652.3,
        "stato": "in-flusso",
        "fonte": "docs/data/gas-italia.json (ENTSOG)",
        "link": "docs/data/gas-italia.json",
-       "data_fonte": "2026-11-17T14:02Z"
+       "data_fonte": "2026-11-18T13:35Z"
       },
       {
        "id": "gela",
        "nome": "Gela (Greenstream)",
        "twh_12m": 4.8,
        "quota_ingressi_pct": 0.7,
-       "ultimo_giorno": "2026-11-16",
-       "ultimo_gwh": 16.4,
-       "media_30g_gwh": 23.4,
+       "ultimo_giorno": "2026-11-17",
+       "ultimo_gwh": 38.3,
+       "media_30g_gwh": 24.1,
        "stato": "in-flusso",
        "fonte": "docs/data/gas-italia.json (ENTSOG)",
        "link": "docs/data/gas-italia.json",
-       "data_fonte": "2026-11-17T14:02Z"
+       "data_fonte": "2026-11-18T13:35Z"
       }
      ],
      "eventi_vicini": {
@@ -4637,25 +4628,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -4676,14 +4667,14 @@
     {
      "id": "ttf",
      "nome": "Gas TTF (Europa)",
-     "ultimo": 84.04,
+     "ultimo": 85.48,
      "unita": "EUR/MWh",
-     "data": "2026-11-16",
+     "data": "2026-11-17",
      "var_pct": {
-      "1g": -7.6,
-      "1m": -4.01,
-      "ytd": 198.44,
-      "1a": 168.93
+      "1g": 0.86,
+      "1m": -2.36,
+      "ytd": 203.55,
+      "1a": 172.06
      },
      "fonte": "docs/data/prezzi.json",
      "link": "docs/data/prezzi.json"
@@ -4852,7 +4843,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 200,
       "giorni": 30,
@@ -4877,7 +4868,7 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "dato": {
         "tipo": "chokepoint",
         "id": "chokepoint28",
@@ -4899,19 +4890,19 @@
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
@@ -5061,7 +5052,7 @@
      }
     ],
     "automatico": {
-     "aggiornato": "2026-11-17",
+     "aggiornato": "2026-11-18",
      "eventi_vicini": {
       "raggio_km": 200,
       "giorni": 30,
@@ -5075,25 +5066,25 @@
       "portwatch.json": {
        "presente": true,
        "link": "docs/data/portwatch.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "noli.json": {
        "presente": true,
        "link": "docs/data/noli.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "gpr.json": {
        "presente": true,
        "link": "docs/data/gpr.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       },
       "sanzioni-navi.json": {
        "presente": true,
        "link": "docs/data/sanzioni-navi.json",
-       "aggiornato": "2026-11-17T13:45Z",
+       "aggiornato": "2026-11-18T13:21Z",
        "nota": "nessuna voce che nomini questo passaggio"
       }
      }
