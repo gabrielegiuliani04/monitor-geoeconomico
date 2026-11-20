@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-19T14:19Z",
- "date": "2026-11-19",
+ "updated": "2026-11-20T14:05Z",
+ "date": "2026-11-20",
  "overall": "red",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 42.6,
+ "seconds": 50.3,
  "summary": {
   "critical": 0,
   "high": 4,
-  "medium": 29,
-  "low": 3,
+  "medium": 32,
+  "low": 2,
   "info": 6
  },
  "checks": [
@@ -40,13 +40,13 @@
    "area": "schema",
    "name": "counts vs yesterday",
    "status": "green",
-   "detail": "compared with storico.json 2026-11-18: 0 drops > 20%"
+   "detail": "compared with storico.json 2026-11-19: 0 drops > 20%"
   },
   {
    "area": "errors",
    "name": "errori/errors arrays",
    "status": "amber",
-   "detail": "16 errors in 7 files"
+   "detail": "18 errors in 8 files"
   },
   {
    "area": "consistency",
@@ -82,13 +82,13 @@
    "area": "links",
    "name": "source links (rotating sample)",
    "status": "amber",
-   "detail": "156 of 16342 distinct links checked today: 16 blocked, 6 broken, 134 ok; 5 confirmed broken, 1 failed once (rolling record)"
+   "detail": "156 of 16308 distinct links checked today: 18 blocked, 6 broken, 1 error, 131 ok; 6 confirmed broken, 0 failed once (rolling record)"
   },
   {
    "area": "smoke",
    "name": "browser smoke test",
    "status": "red",
-   "detail": "run 2026-11-19T14:19Z: 49 passed, 1 failed"
+   "detail": "run 2026-11-20T14:05Z: 49 passed, 1 failed"
   }
  ],
  "problems": [
@@ -96,14 +96,14 @@
    "severity": "high",
    "area": "freshness",
    "file": "docs/data/attacchi-analisti.json",
-   "problem": "stale: updated 9 days ago (limit 2); newest data 2026-11-10 is 9 days old (limit 5) (cadence: daily (Telegram channels))",
+   "problem": "stale: updated 10 days ago (limit 2); newest data 2026-11-10 is 10 days old (limit 5) (cadence: daily (Telegram channels))",
    "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
   },
   {
    "severity": "high",
    "area": "freshness",
    "file": "docs/data/mercati.json",
-   "problem": "stale: updated 10 days ago (limit 8); newest data 2026-11-09 is 10 days old (limit 8) (cadence: manual market collections, about weekly)",
+   "problem": "stale: updated 11 days ago (limit 8); newest data 2026-11-09 is 11 days old (limit 8) (cadence: manual market collections, about weekly)",
    "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
   },
   {
@@ -117,14 +117,14 @@
    "severity": "high",
    "area": "validators",
    "file": "raccolta/simulatore/controlla.py",
-   "problem": "validator 'simulatore' exit 1: ERRORE: Italia: fonti[nome~=prezzi al consumo NIC].link assente in italia-impatti.json | Esito: 1 errori, 2 avvisi",
+   "problem": "validator 'simulatore' exit 1: ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 20.02 (eseguire --scrivi) | Esito: 1 errori, 2 avvisi",
    "fix": "Run the validator by hand, read its output and fix the curated input it names."
   },
   {
    "severity": "medium",
    "area": "consistency",
    "file": "gas-italia.json, report/hormuz-mar-rosso-2026-11.md",
-   "problem": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%): report/hormuz-mar-rosso-2026-11.md regex 'porta il ([0-9.,]+)% del gas importato' = 34; gas-italia.json quote_12_mesi[id=mazara].quota_ingressi_pct = 34.2. difference -0.2",
+   "problem": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%): report/hormuz-mar-rosso-2026-11.md regex 'porta il ([0-9.,]+)% del gas importato' = 34; gas-italia.json quote_12_mesi[id=mazara].quota_ingressi_pct = 34.3. difference -0.3",
    "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
   },
   {
@@ -180,20 +180,6 @@
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/italia-impatti.json",
-   "problem": "collector error: Istat NIC non scaricato: https://esploradati.istat.it/SDMXWS/rest/data/IT1,167_745_DF_DCSP_NIC1B2025_6,1.0/M.IT.85.7.00+ENRGY+APENRGY+ENRGYXAPE+FOODXT+FOODHPC+0451+0452+0722+00XEFOODUNP?startPeriod=2026-01: HTTP Error 500: Internal Server Error",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/italia-impatti.json",
-   "problem": "collector error: Istat fiducia non scaricata: https://esploradati.istat.it/SDMXWS/rest/data/IT1,30_264,1.0/M.IT.COF_21_WE+COF_ECO_21_WE+COF_FUT_21_WE..TOTAL.9.99.99?startPeriod=2022-01: HTTP Error 500: Internal Server Error",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/italia-impatti.json",
    "problem": "collector error: scioperi: calendario MIT non disponibile: https://scioperi.mit.gov.it/mit2/public/scioperi: <urlopen error timed out>; uso l'elenco curato raccolta/italia/scioperi.json",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
@@ -207,8 +193,36 @@
   {
    "severity": "medium",
    "area": "errors",
+   "file": "docs/data/notizie-testate.json",
+   "problem": "collector error: repubblica_top (la Repubblica): HTTPError: HTTP Error 403: Forbidden",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/notizie-testate.json",
+   "problem": "collector error: repubblica_esteri (la Repubblica): HTTPError: HTTP Error 403: Forbidden",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/notizie-testate.json",
+   "problem": "collector error: repubblica_eco (la Repubblica): HTTPError: HTTP Error 403: Forbidden",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/notizie-testate.json",
+   "problem": "collector error: navalnews (Naval News): HTTPError: HTTP Error 503: Service Temporarily Unavailable",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
    "file": "docs/data/notizie.json",
-   "problem": "collector error: iaea: ParseError: undefined entity: line 23, column 138",
+   "problem": "collector error: iaea: ParseError: undefined entity: line 55, column 138",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -318,17 +332,17 @@
   },
   {
    "severity": "medium",
-   "area": "schema",
-   "file": "docs/data/navi.json",
-   "problem": "source fields on 'elementi': link missing in 156/156, affidabilita missing in 156/156",
-   "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
-  },
-  {
-   "severity": "low",
    "area": "links",
    "file": "docs/data/ucraina-storico.json",
-   "problem": "failed once (re-checked tomorrow): https://www.reuters.com/business/energy/ukrainian-attack-suspends-russian-oil-flows-hungary-slovakia-2025-08-22 (401)",
+   "problem": "broken: https://www.reuters.com/business/energy/ukrainian-attack-suspends-russian-oil-flows-hungary-slovakia-2025-08-22 (401)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "schema",
+   "file": "docs/data/navi.json",
+   "problem": "source fields on 'elementi': link missing in 144/144, affidabilita missing in 144/144",
+   "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
   },
   {
    "severity": "low",
@@ -348,7 +362,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/aerei.json",
-   "problem": "6 warnings ('avvisi'), first: curati AE-C-20260917-20: last report 63 days old, the map will not draw it (limit 60 days)",
+   "problem": "6 warnings ('avvisi'), first: curati AE-C-20260917-20: last report 64 days old, the map will not draw it (limit 60 days)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -393,20 +407,20 @@
    "cadence": "daily (Telegram channels)",
    "updated": "2026-11-10T11:11Z",
    "newest_data_date": "2026-11-10",
-   "updated_age_days": 9,
-   "data_age_days": 9,
+   "updated_age_days": 10,
+   "data_age_days": 10,
    "status": "stale",
-   "why": "updated 9 days ago (limit 2); newest data 2026-11-10 is 9 days old (limit 5)"
+   "why": "updated 10 days ago (limit 2); newest data 2026-11-10 is 10 days old (limit 5)"
   },
   {
    "file": "mercati.json",
    "cadence": "manual market collections, about weekly",
    "updated": "2026-11-09",
    "newest_data_date": "2026-11-09",
-   "updated_age_days": 10,
-   "data_age_days": 10,
+   "updated_age_days": 11,
+   "data_age_days": 11,
    "status": "stale",
-   "why": "updated 10 days ago (limit 8); newest data 2026-11-09 is 10 days old (limit 8)"
+   "why": "updated 11 days ago (limit 8); newest data 2026-11-09 is 11 days old (limit 8)"
   },
   {
    "file": "report.json",
@@ -425,7 +439,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 10,
+   "fails_in_a_row": 11,
    "first_failed": "2026-11-10T13:44Z",
    "confirmed": true
   },
@@ -436,7 +450,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 9,
+   "fails_in_a_row": 10,
    "first_failed": "2026-11-11T12:40Z",
    "confirmed": true
   },
@@ -447,7 +461,7 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 7,
+   "fails_in_a_row": 8,
    "first_failed": "2026-11-13T13:05Z",
    "confirmed": true
   },
@@ -458,7 +472,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 3,
+   "fails_in_a_row": 4,
    "first_failed": "2026-11-17T14:28Z",
    "confirmed": true
   },
@@ -470,7 +484,7 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 2,
+   "fails_in_a_row": 3,
    "first_failed": "2026-11-18T13:56Z",
    "confirmed": true
   },
@@ -481,9 +495,9 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 1,
+   "fails_in_a_row": 2,
    "first_failed": "2026-11-19T14:19Z",
-   "confirmed": false
+   "confirmed": true
   }
  ],
  "mismatches": [
@@ -536,12 +550,12 @@
     {
      "file": "gas-italia.json",
      "path": "quote_12_mesi[id=mazara].quota_ingressi_pct",
-     "value": 34.2,
+     "value": 34.3,
      "date": null
     }
    ],
    "severity": "medium",
-   "note": "difference -0.2"
+   "note": "difference -0.3"
   },
   {
    "fact": "report figure: Dutch gas storage fill on 8 Nov 2026 (%), Northern Europe table",
@@ -593,7 +607,7 @@
    "script": "raccolta/simulatore/controlla.py",
    "exit": 1,
    "seconds": 0.2,
-   "tail": "AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | ERRORE: Italia: fonti[nome~=prezzi al consumo NIC].link assente in italia-impatti.json | Esito: 1 errori, 2 avvisi"
+   "tail": "AVVISO: paese in evidenza DK assente in paesi.json: il simulatore lo descrive solo a parole | ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 20.02 (eseguire --scrivi) | Esito: 1 errori, 2 avvisi"
   },
   {
    "validator": "wind calendar --rigoroso (output redirected)",
@@ -613,7 +627,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.9,
+   "seconds": 0.8,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -653,13 +667,13 @@
   }
  ],
  "counts": {
-  "aerei.json": 72,
+  "aerei.json": 71,
   "ai-mondo.json": 301,
   "ai.json": 66,
   "assicurazioni.json": 27,
   "attacchi-analisti.json": 4093,
   "attacchi-russi.json": 192,
-  "baltico-sicurezza.json": 133,
+  "baltico-sicurezza.json": 124,
   "basi-mondo.json": 181,
   "bunker-emissioni.json": 24,
   "calendario.json": 213,
@@ -672,7 +686,7 @@
   "dossier.json": 1,
   "eolico-filiera.json": 19,
   "esposizione-nord.json": 10,
-  "eventi.json": 370,
+  "eventi.json": 365,
   "ferrovie.json": 49,
   "fissi.json": 192,
   "fronte-storico.json": 60,
@@ -693,10 +707,10 @@
   "mercati.json": 1,
   "minerali.json": 25,
   "mobili.json": 135,
-  "navi.json": 156,
+  "navi.json": 144,
   "noli.json": 4,
-  "notizie-testate.json": 2716,
-  "notizie.json": 2042,
+  "notizie-testate.json": 2680,
+  "notizie.json": 2046,
   "nucleare.json": 167,
   "offshore-nord.json": 180,
   "paesi.json": 33,
@@ -708,7 +722,7 @@
   "rete-elettrica.json": 2367,
   "rischio.json": 18,
   "rotte.json": 239,
-  "sanzioni-navi.json": 2029,
+  "sanzioni-navi.json": 2028,
   "scorte.json": 46,
   "simulatore.json": 9,
   "stretti-dettaglio.json": 13,
@@ -721,6 +735,6 @@
   "wind-calendar.json": 114,
   "world.json": 1896
  },
- "report": "report/qualita/2026-11-19.md",
+ "report": "report/qualita/2026-11-20.md",
  "errors": []
 }

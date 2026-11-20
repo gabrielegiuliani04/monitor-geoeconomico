@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-19T14:18Z",
- "riferimento": "2026-11-19",
+ "aggiornato": "2026-11-20T14:04Z",
+ "riferimento": "2026-11-20",
  "fonti": [
   {
    "nome": "RWE Thor project site",
@@ -282,7 +282,7 @@
    "nome": "offshoreWIND.biz RSS (candidate items only)",
    "link": "https://www.offshorewind.biz/feed",
    "licenza": "(c) Navingo/offshoreWIND.biz: headlines and links only",
-   "data_dato": "2026-11-19"
+   "data_dato": "2026-11-20"
   }
  ],
  "nota": "Offshore wind milestone calendar for the North Sea and the Baltic (GB, NL, BE, DE, DK, NO, SE, FI, PL, LT, LV, EE, FR, EU), 2023-2027 with later anchors. Curated items with source, link and source date; null = not found, never estimated. 'status' is curated (done/scheduled/at risk); 'status_effective' adds 'unconfirmed' when a scheduled date has passed without confirmation. Reliability high/medium/low = alta/media/bassa. 'precision' tells how exact the date is. 'candidati_rss' are suggestions from the offshoreWIND.biz feed, NOT verified items.",
@@ -322,8 +322,8 @@
    "SE": 5
   },
   "next_90_days": {
-   "from": "2026-11-19",
-   "to": "2027-02-17",
+   "from": "2026-11-20",
+   "to": "2027-02-18",
    "items": [
     {
      "id": "WC-PL-GDANSK-T5",
@@ -500,8 +500,8 @@
    ]
   },
   "last_90_days": {
-   "from": "2026-08-21",
-   "to": "2026-11-19",
+   "from": "2026-08-22",
+   "to": "2026-11-20",
    "items": [
     {
      "id": "WC-NO-SN2-DELAY",
@@ -797,7 +797,7 @@
     "project": "Bornholm offshore wind farms: joint DK-DE tender launch",
     "capacity_mw": 3000,
     "status_effective": "unconfirmed",
-    "days_overdue": 142
+    "days_overdue": 143
    },
    {
     "id": "WC-SE-SUPPORT",
@@ -808,7 +808,7 @@
     "project": "Swedish state-led tender and support system",
     "capacity_mw": null,
     "status_effective": "unconfirmed",
-    "days_overdue": 141
+    "days_overdue": 142
    },
    {
     "id": "WC-DE-HEDREIHT-FULL",
@@ -819,7 +819,7 @@
     "project": "He Dreiht: full 960 MW",
     "capacity_mw": 960,
     "status_effective": "unconfirmed",
-    "days_overdue": 19
+    "days_overdue": 20
    },
    {
     "id": "WC-FR-AO10-BIDS",
@@ -830,7 +830,7 @@
     "project": "AO10 bid deadline",
     "capacity_mw": 10000,
     "status_effective": "unconfirmed",
-    "days_overdue": 38
+    "days_overdue": 39
    }
   ],
   "needs_recheck": [
@@ -1929,7 +1929,7 @@
    "precision": "half",
    "period_start": "2026-01-01",
    "period_end": "2026-06-30",
-   "days_overdue": 142,
+   "days_overdue": 143,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2361,7 +2361,7 @@
    "precision": "day",
    "period_start": "2026-07-01",
    "period_end": "2026-07-01",
-   "days_overdue": 141,
+   "days_overdue": 142,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2685,7 +2685,7 @@
    "precision": "month",
    "period_start": "2026-10-01",
    "period_end": "2026-10-31",
-   "days_overdue": 19,
+   "days_overdue": 20,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -2751,7 +2751,7 @@
    "precision": "day",
    "period_start": "2026-10-12",
    "period_end": "2026-10-12",
-   "days_overdue": 38,
+   "days_overdue": 39,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -3499,8 +3499,43 @@
   }
  ],
  "candidati_rss": {
-  "stato": "ok: 50 RSS items read, 19 candidates",
+  "stato": "ok: 50 RSS items read, 20 candidates",
   "candidati": [
+   {
+    "title": "UK Gov't Sets Nominal GBP 1 Budget for Offshore Wind in AR8, Leaving Final Funding to Bid Review",
+    "date": "2026-11-20",
+    "link": "https://www.offshorewind.biz/2026/11/20/uk-sets-nominal-gbp-1-budget-for-offshore-wind-in-ar8-leaving-final-funding-to-bid-review",
+    "possible_duplicate_of": [],
+    "suggested_type": "auction",
+    "matched_types": [
+     "auction",
+     "policy"
+    ],
+    "scope_terms": [
+     "uk"
+    ],
+    "related_calendar_projects": [],
+    "excerpt": "The UK government has set a notional initial budget of GBP 1 for offshore wind in its latest contracts for difference (CfD) auction, Allocation...",
+    "action": "review manually; add to calendario_voci.json only with a primary source"
+   },
+   {
+    "title": "Around 150 Turbines Installed at 3.6 GW Dogger Bank Wind Farm, Remediation Work Underway at Dogger Bank A",
+    "date": "2026-11-20",
+    "link": "https://www.offshorewind.biz/2026/11/20/around-150-turbines-installed-at-36-gw-dogger-bank-wind-farm-remediation-work-underway-at-dogger-bank-a",
+    "possible_duplicate_of": [],
+    "suggested_type": "construction",
+    "matched_types": [
+     "construction"
+    ],
+    "scope_terms": [
+     "dogger"
+    ],
+    "related_calendar_projects": [
+     "dogger bank a"
+    ],
+    "excerpt": "Around 150 turbines have been installed across the three phases of the 3.6 GW Dogger Bank offshore wind farm, with approximately 100...",
+    "action": "review manually; add to calendario_voci.json only with a primary source"
+   },
    {
     "title": "NKT’s Karlskrona Offshore Cable Factory Expansion Set to Start Operations in Q2 2027",
     "date": "2026-11-19",
@@ -3814,22 +3849,6 @@
     ],
     "related_calendar_projects": [],
     "excerpt": "Dutch offshore wind foundation manufacturer Sif is negotiating short-term bridge financing and exploring strategic options as it faces a...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "Government of the Netherlands at OEEC 2026: Sharing Knowledge and Expertise",
-    "date": "2026-11-05",
-    "link": "https://www.offshorewind.biz/2026/11/05/government-of-the-netherlands-at-oeec-2026-sharing-knowledge-and-expertise",
-    "possible_duplicate_of": [],
-    "suggested_type": "policy",
-    "matched_types": [
-     "policy"
-    ],
-    "scope_terms": [
-     "netherlands"
-    ],
-    "related_calendar_projects": [],
-    "excerpt": "The Government of the Netherlands considers Offshore Energy Exhibition & Conference (OEEC) the flagship event for the offshore energy sector in...",
     "action": "review manually; add to calendario_voci.json only with a primary source"
    }
   ]
