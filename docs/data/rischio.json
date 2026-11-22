@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-21T13:27Z",
- "data_riferimento": "2026-11-21",
+ "aggiornato": "2026-11-22T13:26Z",
+ "data_riferimento": "2026-11-22",
  "metodo": "report/metodo-rischio.md",
  "nota": "Cruscotto del rischio: probabilità di disruption (1–5) × impatto (1–5) = punteggio 1–25. Ogni indicatore ha valore, soglie, stato, fonte e data. È una valutazione con regole esplicite, non una previsione: vedi il metodo per cosa il punteggio NON dice.",
  "regole": {
@@ -40,15 +40,15 @@
   },
   {
    "file": "eventi.json",
-   "aggiornato": "2026-11-21T13:15Z"
+   "aggiornato": "2026-11-22T13:13Z"
   },
   {
    "file": "gas-italia.json",
-   "aggiornato": "2026-11-21T13:09Z"
+   "aggiornato": "2026-11-22T13:07Z"
   },
   {
    "file": "gpr.json",
-   "aggiornato": "2026-11-21T12:55Z"
+   "aggiornato": "2026-11-22T12:53Z"
   },
   {
    "file": "ibrido.json",
@@ -56,11 +56,11 @@
   },
   {
    "file": "navi.json",
-   "aggiornato": "2026-11-21T13:08Z"
+   "aggiornato": "2026-11-22T13:06Z"
   },
   {
    "file": "noli.json",
-   "aggiornato": "2026-11-21T12:55Z"
+   "aggiornato": "2026-11-22T12:53Z"
   },
   {
    "file": "paesi.json",
@@ -68,7 +68,7 @@
   },
   {
    "file": "portwatch.json",
-   "aggiornato": "2026-11-21T12:55Z"
+   "aggiornato": "2026-11-22T12:53Z"
   },
   {
    "file": "prezzi.json",
@@ -76,11 +76,11 @@
   },
   {
    "file": "scorte.json",
-   "aggiornato": "2026-11-21T12:58Z"
+   "aggiornato": "2026-11-22T12:55Z"
   },
   {
    "file": "ucraina-storico.json",
-   "aggiornato": "2026-11-21T13:09Z"
+   "aggiornato": "2026-11-22T13:07Z"
   }
  ],
  "unita": [
@@ -96,7 +96,7 @@
    "livello": "critico",
    "tendenza": "stabile",
    "punteggio_7g_fa": 22.5,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": "Transiti, Stretto di Hormuz (media 7 gg): 2,3 navi/g contro 85,5 (media del 2025, prima della guerra): -97,3%",
    "copertura": 1.0,
@@ -145,9 +145,9 @@
     {
      "nome": "Eventi entro 150 km (ultimi 30 gg)",
      "gruppo": "minaccia",
-     "valore": 26,
+     "valore": 25,
      "unita": "eventi",
-     "testo": "26 eventi: 2026-11-08 Raid USA a Qeshm (Nariman); 2026-11-08 Tre petroliere, rivendicazione; 2026-11-07 Esplosioni a Qeshm",
+     "testo": "25 eventi: 2026-11-08 Raid USA a Qeshm (Nariman); 2026-11-08 Tre petroliere, rivendicazione; 2026-11-07 Esplosioni a Qeshm",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di 1",
@@ -157,7 +157,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -470,7 +470,7 @@
    "livello": "alto",
    "tendenza": "stabile",
    "punteggio_7g_fa": 19.0,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": "Transiti, Bab el-Mandeb (media 7 gg): 25,6 navi/g contro 74,6 (media gen.–ott. 2023, prima degli attacchi houthi): -65,7%",
    "copertura": 1.0,
@@ -531,7 +531,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -737,7 +737,7 @@
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 9.9,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -798,7 +798,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -998,7 +998,7 @@
    "livello": "basso",
    "tendenza": "stabile",
    "punteggio_7g_fa": 3.5,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -1059,7 +1059,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -1263,7 +1263,7 @@
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 8.8,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -1324,7 +1324,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -1533,7 +1533,7 @@
    "livello": "alto",
    "tendenza": "stabile",
    "punteggio_7g_fa": 16.5,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": "Transiti, Bosforo (media 7 gg): 48,6 navi/g contro 103,0 (stessi 7 giorni di un anno prima): -52,8%",
    "copertura": 1.0,
@@ -1594,7 +1594,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -1830,7 +1830,7 @@
    "livello": "medio",
    "tendenza": "in aumento",
    "punteggio_7g_fa": 5.1,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -1891,7 +1891,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -2020,7 +2020,7 @@
      "gruppo": "scorte",
      "valore": -6.7,
      "unita": "% sulla media 5 anni",
-     "testo": "86,0 % il 2026-11-19 contro 92,1 di media 5 anni: -6,7%",
+     "testo": "85,7 % il 2026-11-20 contro 91,9 di media 5 anni: -6,7%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -2030,7 +2030,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-19",
+     "data": "2026-11-20",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.25,
@@ -2067,7 +2067,7 @@
     "Transiti, Stretto di Gibilterra (media 7 gg): oggi -11,3%; sotto −50% scatta la regola della disruption in corso.",
     "Rischio geopolitico globale (GPR giornaliero, media 30 gg): oggi media 30 gg 151,5 contro 143,4 di media 5 anni (×1,06); diventa rosso con ×1,5 o più.",
     "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 86,0 % il 2026-11-19 contro 92,1 di media 5 anni: -6,7%."
+    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,7 % il 2026-11-20 contro 91,9 di media 5 anni: -6,7%."
    ],
    "esposti": [
     "Italia e Spagna: GNL atlantico e container",
@@ -2098,7 +2098,7 @@
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 8.3,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -2159,7 +2159,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -2171,9 +2171,9 @@
     {
      "nome": "Petroliere sanzionate o della flotta ombra viste ora nel Baltico (AIS)",
      "gruppo": "minaccia",
-     "valore": 51,
+     "valore": 50,
      "unita": "navi",
-     "testo": "51 navi nella fotografia AIS di oggi",
+     "testo": "50 navi nella fotografia AIS di oggi",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di 10",
@@ -2183,7 +2183,7 @@
      "fonte": "Digitraffic (Fintraffic), aisstream.io; incrocio con liste sanzioni",
      "link": "https://www.digitraffic.fi/",
      "file": "navi.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Fotografia di un momento, non una media; copertura buona solo nel Golfo di Finlandia. Le soglie sono una valutazione da ricalibrare con lo storico. Rischio: ancore trascinate su cavi e condotte.",
      "peso": 0.15,
@@ -2353,7 +2353,7 @@
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (2,3/5) è spinta da «Transiti, Stretti danesi (media 7 gg)» (38,7 navi/g contro 46,4 (stessi 7 giorni di un anno prima): -16,6%) e da «Petroliere sanzionate o della flotta ombra viste ora nel Baltico (AIS)» (51 navi nella fotografia AIS di oggi). L'impatto (3,6/5) è alto per «Mancanza di alternative» (4/5: il petrolio russo del Baltico non ha alternative marittime); «Petrolio Brent contro un anno prima» (89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (8,3 → 8,3).",
+   "perche": "La probabilità (2,3/5) è spinta da «Transiti, Stretti danesi (media 7 gg)» (38,7 navi/g contro 46,4 (stessi 7 giorni di un anno prima): -16,6%) e da «Petroliere sanzionate o della flotta ombra viste ora nel Baltico (AIS)» (50 navi nella fotografia AIS di oggi). L'impatto (3,6/5) è alto per «Mancanza di alternative» (4/5: il petrolio russo del Baltico non ha alternative marittime); «Petrolio Brent contro un anno prima» (89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (8,3 → 8,3).",
    "cosa_osservare": [
     "Transiti, Stretti danesi (media 7 gg): oggi -16,6%; sotto −50% scatta la regola della disruption in corso.",
     "Strategic Petroleum Reserve (SPR) USA contro la media 5 anni: 276,4 milioni di barili il 2026-11-13 contro 429,9 di media 5 anni: -35,7%.",
@@ -2390,7 +2390,7 @@
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 6.2,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 0.78,
@@ -2449,7 +2449,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -2475,7 +2475,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -2632,7 +2632,7 @@
    "livello": "basso",
    "tendenza": "stabile",
    "punteggio_7g_fa": 4.2,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -2693,7 +2693,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -2898,7 +2898,7 @@
    "livello": "medio",
    "tendenza": "in aumento",
    "punteggio_7g_fa": 4.8,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -2920,9 +2920,9 @@
     {
      "nome": "Gas da Mazara e Gela (media 7 gg)",
      "gruppo": "flussi",
-     "valore": 11.53,
+     "valore": 12.6,
      "unita": "% sulla media annua",
-     "testo": "690,7 GWh/g contro una media annua di 619,3: +11,5%",
+     "testo": "697,3 GWh/g contro una media annua di 619,3: +12,6%",
      "stato": "verde",
      "soglie": {
       "verde": "≥ −10% sulla media annua",
@@ -2933,11 +2933,11 @@
      "fonte": "ENTSOG Transparency Platform (dati Snam Rete Gas)",
      "link": "https://transparency.entsog.eu/",
      "file": "gas-italia.json",
-     "data": "2026-11-20",
+     "data": "2026-11-21",
      "tipo": "dato",
      "nota": "A settembre 2026 il TransMed scese a circa −37% senza causa documentata.",
      "disruption": false,
-     "media7": 690.7,
+     "media7": 697.3,
      "peso": 0.35,
      "punti": 1,
      "asse": "probabilita",
@@ -2958,7 +2958,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -2982,7 +2982,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -3087,7 +3087,7 @@
      "gruppo": "scorte",
      "valore": -6.7,
      "unita": "% sulla media 5 anni",
-     "testo": "86,0 % il 2026-11-19 contro 92,1 di media 5 anni: -6,7%",
+     "testo": "85,7 % il 2026-11-20 contro 91,9 di media 5 anni: -6,7%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -3097,7 +3097,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-19",
+     "data": "2026-11-20",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.25,
@@ -3133,7 +3133,7 @@
    "cosa_osservare": [
     "Rischio geopolitico globale (GPR giornaliero, media 30 gg): oggi media 30 gg 151,5 contro 143,4 di media 5 anni (×1,06); diventa rosso con ×1,5 o più.",
     "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 86,0 % il 2026-11-19 contro 92,1 di media 5 anni: -6,7%."
+    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,7 % il 2026-11-20 contro 91,9 di media 5 anni: -6,7%."
    ],
    "esposti": [
     "Italia: gas, cavi dati (Mazara, Palermo, Catania)",
@@ -3166,7 +3166,7 @@
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 9.5,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": "Transiti, Stretto di Kerch (media 7 gg): 0,4 navi/g contro 12,7 (stessi 7 giorni di un anno prima): -96,6%",
    "copertura": 0.8,
@@ -3225,7 +3225,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -3382,7 +3382,7 @@
    "livello": "medio",
    "tendenza": "in aumento",
    "punteggio_7g_fa": 5.3,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -3404,9 +3404,9 @@
     {
      "nome": "Gas TransMed a Mazara del Vallo (media 7 gg)",
      "gruppo": "flussi",
-     "valore": 8.36,
+     "valore": 8.68,
      "unita": "% sulla media annua",
-     "testo": "657,0 GWh/g contro una media annua di 606,3: +8,4%",
+     "testo": "658,9 GWh/g contro una media annua di 606,3: +8,7%",
      "stato": "verde",
      "soglie": {
       "verde": "≥ −10% sulla media annua",
@@ -3417,11 +3417,11 @@
      "fonte": "ENTSOG Transparency Platform (dati Snam Rete Gas)",
      "link": "https://transparency.entsog.eu/",
      "file": "gas-italia.json",
-     "data": "2026-11-20",
+     "data": "2026-11-21",
      "tipo": "dato",
      "nota": "A settembre 2026 il TransMed scese a circa −37% senza causa documentata.",
      "disruption": false,
-     "media7": 657.0,
+     "media7": 658.9,
      "peso": 0.35,
      "punti": 1,
      "asse": "probabilita",
@@ -3442,7 +3442,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -3466,7 +3466,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -3548,7 +3548,7 @@
      "gruppo": "peso",
      "valore": 34.3,
      "unita": "%",
-     "testo": "34,3% degli ingressi da gasdotti e GNL (221,8 TWh)",
+     "testo": "34,3% degli ingressi da gasdotti e GNL (222,0 TWh)",
      "stato": "rosso",
      "soglie": {
       "verde": "meno del 10%",
@@ -3558,7 +3558,7 @@
      "fonte": "ENTSOG Transparency Platform (dati Snam)",
      "link": "https://transparency.entsog.eu/",
      "file": "gas-italia.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "",
      "peso": 0.175,
@@ -3594,7 +3594,7 @@
      "gruppo": "scorte",
      "valore": -6.7,
      "unita": "% sulla media 5 anni",
-     "testo": "86,0 % il 2026-11-19 contro 92,1 di media 5 anni: -6,7%",
+     "testo": "85,7 % il 2026-11-20 contro 91,9 di media 5 anni: -6,7%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -3604,7 +3604,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-19",
+     "data": "2026-11-20",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.25,
@@ -3640,7 +3640,7 @@
    "cosa_osservare": [
     "Rischio geopolitico globale (GPR giornaliero, media 30 gg): oggi media 30 gg 151,5 contro 143,4 di media 5 anni (×1,06); diventa rosso con ×1,5 o più.",
     "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 86,0 % il 2026-11-19 contro 92,1 di media 5 anni: -6,7%.",
+    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,7 % il 2026-11-20 contro 91,9 di media 5 anni: -6,7%.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json).",
     "Scenari a 3 mesi: oggi i segnali sono più coerenti con lo scenario «Flussi regolari, inverno caro» (raccolta/rischio/scenari.json)."
    ],
@@ -3676,7 +3676,7 @@
    "livello": "medio",
    "tendenza": "in aumento",
    "punteggio_7g_fa": 8.3,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -3737,7 +3737,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -3761,7 +3761,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.1,
@@ -3772,9 +3772,9 @@
     {
      "nome": "Petroliere sanzionate o della flotta ombra viste ora nel Baltico (AIS)",
      "gruppo": "minaccia",
-     "valore": 51,
+     "valore": 50,
      "unita": "navi",
-     "testo": "51 navi nella fotografia AIS di oggi",
+     "testo": "50 navi nella fotografia AIS di oggi",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di 10",
@@ -3784,7 +3784,7 @@
      "fonte": "Digitraffic (Fintraffic), aisstream.io; incrocio con liste sanzioni",
      "link": "https://www.digitraffic.fi/",
      "file": "navi.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Fotografia di un momento, non una media; copertura buona solo nel Golfo di Finlandia. Le soglie sono una valutazione da ricalibrare con lo storico. Rischio: ancore trascinate su cavi e condotte.",
      "peso": 0.1,
@@ -3887,9 +3887,9 @@
     {
      "nome": "Stoccaggi gas Germania – riempimento contro la media 5 anni",
      "gruppo": "scorte",
-     "valore": -34.8,
+     "valore": -35.0,
      "unita": "% sulla media 5 anni",
-     "testo": "57,0 % il 2026-11-19 contro 87,5 di media 5 anni: -34,8%",
+     "testo": "56,7 % il 2026-11-20 contro 87,3 di media 5 anni: -35,0%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -3899,7 +3899,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-19",
+     "data": "2026-11-20",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.125,
@@ -3910,9 +3910,9 @@
     {
      "nome": "Stoccaggi gas Paesi Bassi – riempimento contro la media 5 anni",
      "gruppo": "scorte",
-     "valore": -24.8,
+     "valore": -24.9,
      "unita": "% sulla media 5 anni",
-     "testo": "60,1 % il 2026-11-19 contro 80,0 di media 5 anni: -24,8%",
+     "testo": "59,8 % il 2026-11-20 contro 79,6 di media 5 anni: -24,9%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -3922,7 +3922,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-19",
+     "data": "2026-11-20",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.125,
@@ -3954,13 +3954,13 @@
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (2,7/5) è spinta da «Transiti, Stretti danesi (media 7 gg)» (38,7 navi/g contro 46,4 (stessi 7 giorni di un anno prima): -16,6%) e da «Gas TTF (Europa) contro la media 90 gg» (88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%). L'impatto (3,9/5) è alto per «Gas TTF (Europa) contro un anno prima» (88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)); «Stoccaggi gas Germania – riempimento contro la media 5 anni» (57,0 % il 2026-11-19 contro 87,5 di media 5 anni: -34,8%). Rispetto a 7 giorni fa il punteggio è in aumento (8,3 → 10,5).",
+   "perche": "La probabilità (2,7/5) è spinta da «Transiti, Stretti danesi (media 7 gg)» (38,7 navi/g contro 46,4 (stessi 7 giorni di un anno prima): -16,6%) e da «Gas TTF (Europa) contro la media 90 gg» (88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%). L'impatto (3,9/5) è alto per «Gas TTF (Europa) contro un anno prima» (88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)); «Stoccaggi gas Germania – riempimento contro la media 5 anni» (56,7 % il 2026-11-20 contro 87,3 di media 5 anni: -35,0%). Rispetto a 7 giorni fa il punteggio è in aumento (8,3 → 10,5).",
    "cosa_osservare": [
     "Transiti, Stretti danesi (media 7 gg): oggi -16,6%; sotto −50% scatta la regola della disruption in corso.",
     "Incidenti a cavi e condotte sottomarine (ultimi 12 mesi): oggi 1 incidente: 2025-12-31 Golfo di Finlandia: cavi Elisa e Arelion Helsinki-Tallinn…; diventa rosso con 2 o più.",
     "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Germania – riempimento contro la media 5 anni: 57,0 % il 2026-11-19 contro 87,5 di media 5 anni: -34,8%.",
-    "Stoccaggi gas Paesi Bassi – riempimento contro la media 5 anni: 60,1 % il 2026-11-19 contro 80,0 di media 5 anni: -24,8%.",
+    "Stoccaggi gas Germania – riempimento contro la media 5 anni: 56,7 % il 2026-11-20 contro 87,3 di media 5 anni: -35,0%.",
+    "Stoccaggi gas Paesi Bassi – riempimento contro la media 5 anni: 59,8 % il 2026-11-20 contro 79,6 di media 5 anni: -24,9%.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json).",
     "Scenari a 3 mesi: oggi i segnali sono più coerenti con lo scenario «Pressione ibrida senza danni gravi» (raccolta/rischio/scenari.json)."
    ],
@@ -3998,7 +3998,7 @@
    "livello": "alto",
    "tendenza": "stabile",
    "punteggio_7g_fa": 18.0,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": "Portacontainer, Bab el-Mandeb (media 7 gg): 4,4 portacontainer/g contro 21,3 (stessa settimana del 2023, prima degli attacchi houthi): -79,3%",
    "copertura": 0.78,
@@ -4080,7 +4080,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -4108,7 +4108,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -4284,7 +4284,7 @@
    "livello": "critico",
    "tendenza": "stabile",
    "punteggio_7g_fa": 24.0,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": "Petroliere e metaniere, Stretto di Hormuz (media 7 gg): 0,4 navi/g contro 48,2 (media del 2025, prima della guerra): -99,1%",
    "copertura": 1.0,
@@ -4333,9 +4333,9 @@
     {
      "nome": "Eventi entro 150 km (ultimi 30 gg)",
      "gruppo": "minaccia",
-     "valore": 28,
+     "valore": 27,
      "unita": "eventi",
-     "testo": "28 eventi: 2026-11-08 Raid USA a Qeshm (Nariman); 2026-11-08 Tre petroliere, rivendicazione; 2026-11-07 Esplosioni a Qeshm",
+     "testo": "27 eventi: 2026-11-08 Raid USA a Qeshm (Nariman); 2026-11-08 Tre petroliere, rivendicazione; 2026-11-07 Esplosioni a Qeshm",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di 1",
@@ -4345,7 +4345,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -4478,7 +4478,7 @@
      "gruppo": "scorte",
      "valore": -6.7,
      "unita": "% sulla media 5 anni",
-     "testo": "86,0 % il 2026-11-19 contro 92,1 di media 5 anni: -6,7%",
+     "testo": "85,7 % il 2026-11-20 contro 91,9 di media 5 anni: -6,7%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -4488,7 +4488,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-19",
+     "data": "2026-11-20",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.083,
@@ -4499,9 +4499,9 @@
     {
      "nome": "Stoccaggi gas Germania – riempimento contro la media 5 anni",
      "gruppo": "scorte",
-     "valore": -34.8,
+     "valore": -35.0,
      "unita": "% sulla media 5 anni",
-     "testo": "57,0 % il 2026-11-19 contro 87,5 di media 5 anni: -34,8%",
+     "testo": "56,7 % il 2026-11-20 contro 87,3 di media 5 anni: -35,0%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -4511,7 +4511,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-19",
+     "data": "2026-11-20",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.083,
@@ -4522,9 +4522,9 @@
     {
      "nome": "Stoccaggi gas Paesi Bassi – riempimento contro la media 5 anni",
      "gruppo": "scorte",
-     "valore": -24.8,
+     "valore": -24.9,
      "unita": "% sulla media 5 anni",
-     "testo": "60,1 % il 2026-11-19 contro 80,0 di media 5 anni: -24,8%",
+     "testo": "59,8 % il 2026-11-20 contro 79,6 di media 5 anni: -24,9%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -4534,7 +4534,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-19",
+     "data": "2026-11-20",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.083,
@@ -4570,9 +4570,9 @@
    "cosa_osservare": [
     "Fine della disruption: «Petroliere e metaniere, Stretto di Hormuz (media 7 gg)» sopra −30% del riferimento (circa 33,7 navi/g) per due settimane di fila.",
     "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 86,0 % il 2026-11-19 contro 92,1 di media 5 anni: -6,7%.",
-    "Stoccaggi gas Germania – riempimento contro la media 5 anni: 57,0 % il 2026-11-19 contro 87,5 di media 5 anni: -34,8%.",
-    "Stoccaggi gas Paesi Bassi – riempimento contro la media 5 anni: 60,1 % il 2026-11-19 contro 80,0 di media 5 anni: -24,8%.",
+    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,7 % il 2026-11-20 contro 91,9 di media 5 anni: -6,7%.",
+    "Stoccaggi gas Germania – riempimento contro la media 5 anni: 56,7 % il 2026-11-20 contro 87,3 di media 5 anni: -35,0%.",
+    "Stoccaggi gas Paesi Bassi – riempimento contro la media 5 anni: 59,8 % il 2026-11-20 contro 79,6 di media 5 anni: -24,9%.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json)."
    ],
    "esposti": [
@@ -4602,13 +4602,13 @@
    "tipo": "corridoio",
    "lat": 49.0,
    "lon": 31.5,
-   "probabilita": 3.2,
+   "probabilita": 2.8,
    "impatto": 3.4,
-   "punteggio": 10.9,
+   "punteggio": 9.5,
    "livello": "medio",
    "tendenza": "in calo",
    "punteggio_7g_fa": 17.0,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 0.5,
@@ -4626,10 +4626,10 @@
     {
      "nome": "Missili e droni russi lanciati (7 gg contro la media dell'anno precedente)",
      "gruppo": "minaccia",
-     "valore": 1.0,
+     "valore": 0.99,
      "unita": "rapporto",
-     "testo": "242 al giorno contro 242 di media nei 12 mesi precedenti (×1,00)",
-     "stato": "giallo",
+     "testo": "239 al giorno contro 242 di media nei 12 mesi precedenti (×0,99)",
+     "stato": "verde",
      "soglie": {
       "verde": "sotto la media (×<1)",
       "giallo": "×1–1,5",
@@ -4638,11 +4638,11 @@
      "fonte": "Aeronautica ucraina, dataset di Petro Ivaniuk (CC BY-NC-SA)",
      "link": "https://www.kaggle.com/datasets/piterfm/massive-missile-attacks-on-ukraine",
      "file": "ucraina-storico.json",
-     "data": "2026-11-13",
+     "data": "2026-11-20",
      "tipo": "dato",
      "nota": "Dichiarazioni di una parte; dal 13/8/2026 alcune cifre sui balistici non sono pubblicate.",
      "peso": 0.222,
-     "punti": 3,
+     "punti": 1,
      "asse": "probabilita",
      "domanda": "Ci sono attacchi o incidenti vicino?"
     },
@@ -4661,7 +4661,7 @@
      "fonte": "Ondate curate dall'agente UCRAINA (DiXi Group, Ukrenergo, stampa)",
      "link": "",
      "file": "ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Elenco curato a mano: dipende dall'aggiornamento dell'agente.",
      "peso": 0.222,
@@ -4684,7 +4684,7 @@
      "fonte": "Agenzie, DTEK, Ukrenergo, OSINT",
      "link": "",
      "file": "eventi.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Il file degli eventi copre una finestra recente: il conteggio è un minimo.",
      "peso": 0.222,
@@ -4785,9 +4785,8 @@
      "domanda": "Ci sono alternative?"
     }
    ],
-   "perche": "La probabilità (3,2/5) è spinta da «Ondate di attacchi di massa contro la rete (ultimi 30 gg)» (2 ondate: 2026-11-01 Campagna d'autunno 2026 contro la rete; 2026-11-07 Attacchi del 7 novembre 2026 su Kyiv e centro) e da «Attacchi e blackout sulla rete elettrica ucraina (ultimi 30 gg)» (33 eventi, di cui 6 blackout). L'impatto (3,4/5) è alto per «Mancanza di alternative» (4/5: poche: generazione distribuita e import dall'UE, limitati dalla capacità di rete). Rispetto a 7 giorni fa il punteggio è in calo (17,0 → 10,9). Attenzione: le domande con dati coprono solo il 50% dei pesi.",
+   "perche": "La probabilità (2,8/5) è spinta da «Ondate di attacchi di massa contro la rete (ultimi 30 gg)» (2 ondate: 2026-11-01 Campagna d'autunno 2026 contro la rete; 2026-11-07 Attacchi del 7 novembre 2026 su Kyiv e centro) e da «Attacchi e blackout sulla rete elettrica ucraina (ultimi 30 gg)» (33 eventi, di cui 6 blackout). L'impatto (3,4/5) è alto per «Mancanza di alternative» (4/5: poche: generazione distribuita e import dall'UE, limitati dalla capacità di rete). Rispetto a 7 giorni fa il punteggio è in calo (17,0 → 9,5). Attenzione: le domande con dati coprono solo il 50% dei pesi.",
    "cosa_osservare": [
-    "Missili e droni russi lanciati (7 gg contro la media dell'anno precedente): oggi 242 al giorno contro 242 di media nei 12 mesi precedenti (×1,00); diventa rosso con ×1,5 o più.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json)."
    ],
    "esposti": [
@@ -4821,7 +4820,7 @@
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 8.0,
-   "data_7g_fa": "2026-11-14",
+   "data_7g_fa": "2026-11-15",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 0.78,
@@ -4880,7 +4879,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -4906,7 +4905,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -5090,7 +5089,7 @@
       {
        "descrizione": "Attacchi o incidenti entro 150 km da Hormuz negli ultimi 30 giorni (almeno 1)",
        "metrica": "eventi.hormuz.30g",
-       "valore": 26,
+       "valore": 25,
        "condizione": ">= 1",
        "attivo": true
       }
@@ -5339,7 +5338,7 @@
       {
        "descrizione": "Flotta ombra visibile tra 20 e 60 petroliere",
        "metrica": "navi.flotta_ombra_baltico",
-       "valore": 51,
+       "valore": 50,
        "condizione": "tra [20, 60]",
        "attivo": true
       },
@@ -5377,7 +5376,7 @@
       {
        "descrizione": "Flotta ombra visibile oltre 60 petroliere",
        "metrica": "navi.flotta_ombra_baltico",
-       "valore": 51,
+       "valore": 50,
        "condizione": "> 60",
        "attivo": false
       },
@@ -5401,7 +5400,7 @@
       {
        "descrizione": "Flotta ombra visibile sotto 20 petroliere",
        "metrica": "navi.flotta_ombra_baltico",
-       "valore": 51,
+       "valore": 50,
        "condizione": "< 20",
        "attivo": false
       },
@@ -5439,7 +5438,7 @@
       {
        "descrizione": "Mazara tra 550 e 700 GWh/g (media 7 gg)",
        "metrica": "gas.mazara.media7",
-       "valore": 657.0,
+       "valore": 658.9,
        "condizione": "tra [550, 700]",
        "attivo": true
       },
@@ -5470,7 +5469,7 @@
       {
        "descrizione": "Mazara sotto 420 GWh/g (media 7 gg)",
        "metrica": "gas.mazara.media7",
-       "valore": 657.0,
+       "valore": 658.9,
        "condizione": "< 420",
        "attivo": false
       },
@@ -5515,7 +5514,7 @@
       {
        "descrizione": "Mazara sopra 650 GWh/g (media 7 gg)",
        "metrica": "gas.mazara.media7",
-       "valore": 657.0,
+       "valore": 658.9,
        "condizione": "> 650",
        "attivo": true
       },
