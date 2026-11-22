@@ -1,5 +1,5 @@
 {
- "aggiornato": "2026-11-15T12:12Z",
+ "aggiornato": "2026-11-22T12:53Z",
  "fonti": [
   {
    "nome": "WindEurope, Wind energy in Europe - 2025 Statistics and the outlook for 2026-2030 (tabelle 1 e 4)",
@@ -2601,65 +2601,70 @@
    {
     "id": "us2y",
     "nome": "Titolo di Stato USA 2 anni",
-    "ultimo": 4.88,
+    "ultimo": 4.63,
     "unita": "% rendimento",
-    "data": "2026-11-13",
+    "data": "2026-11-20",
     "var": {
-     "1g": 2,
-     "1m": 6,
-     "ytd": 141,
-     "1a": 130
+     "1g": -13,
+     "1m": -18,
+     "ytd": 116,
+     "1a": 108
     },
     "perche_conta": "Tasso a breve: aspettative di politica monetaria, condizioni del debito di costruzione."
    },
    {
     "id": "us10y",
     "nome": "Titolo di Stato USA 10 anni",
-    "ultimo": 5.15,
+    "ultimo": 4.92,
     "unita": "% rendimento",
-    "data": "2026-11-13",
+    "data": "2026-11-20",
     "var": {
-     "1g": 5,
-     "1m": -4,
-     "ytd": 97,
-     "1a": 104
+     "1g": -12,
+     "1m": -21,
+     "ytd": 74,
+     "1a": 82
     },
     "perche_conta": "Tasso a lungo termine (proxy del costo del capitale globale): un parco offshore e' quasi tutto capex, ogni punto di tasso pesa sul prezzo necessario."
    },
    {
     "id": "brent",
     "nome": "Petrolio Brent",
-    "ultimo": 96.08,
+    "ultimo": 89.87,
     "unita": "USD/barile",
-    "data": "2026-11-13",
+    "data": "2026-11-20",
     "var": {
-     "1g": 0.27,
-     "1m": -9.41,
-     "ytd": 57.9,
-     "1a": 52.48
+     "1g": -2.29,
+     "1m": -17.41,
+     "ytd": 47.69,
+     "1a": 41.8
     },
     "perche_conta": "Petrolio: concorrenza per navi e cantieri con l'offshore oil & gas."
    },
    {
     "id": "ttf",
     "nome": "Gas TTF (Europa)",
-    "ultimo": 89.54,
+    "ultimo": 88.7,
     "unita": "EUR/MWh",
-    "data": "2026-11-13",
-    "var": {},
+    "data": "2026-11-20",
+    "var": {
+     "1g": 5.02,
+     "1m": 1.45,
+     "ytd": 214.99,
+     "1a": 184.66
+    },
     "perche_conta": "Prezzo del gas europeo: fissa spesso il prezzo marginale dell'elettricita' e quindi i ricavi attesi (e il costo dei CfD per lo Stato)."
    },
    {
     "id": "eurusd",
     "nome": "EUR/USD",
-    "ultimo": 1.105,
+    "ultimo": 1.097,
     "unita": "USD per 1 EUR",
-    "data": "2026-11-13",
+    "data": "2026-11-20",
     "var": {
-     "1g": -0.41,
-     "1m": -1.37,
-     "ytd": -5.93,
-     "1a": -4.68
+     "1g": -0.02,
+     "1m": -2.29,
+     "ytd": -6.61,
+     "1a": -4.95
     },
     "perche_conta": "Navi e componenti si pagano spesso in USD; ricavi in EUR/GBP/DKK."
    }
@@ -2678,7 +2683,7 @@
     "nota": "serie non presente in prezzi.json: da aggiungere allo script dei mercati"
    }
   ],
-  "aggiornato_prezzi": "2026-11-14T01:31Z"
+  "aggiornato_prezzi": "2026-11-21T02:36Z"
  },
  "collegamenti": {
   "file_nord": {
@@ -2686,22 +2691,22 @@
     {
      "file": "porti-nord.json",
      "presente": true,
-     "aggiornato": "2026-11-14T12:02Z"
+     "aggiornato": "2026-11-21T13:16Z"
     },
     {
      "file": "offshore-nord.json",
      "presente": true,
-     "aggiornato": "2026-11-14T12:02Z"
+     "aggiornato": "2026-11-21T13:16Z"
     },
     {
      "file": "baltico-sicurezza.json",
      "presente": true,
-     "aggiornato": "2026-11-14T12:02Z"
+     "aggiornato": "2026-11-21T13:16Z"
     },
     {
      "file": "esposizione-nord.json",
      "presente": true,
-     "aggiornato": "2026-11-14T12:02Z"
+     "aggiornato": "2026-11-21T13:16Z"
     }
    ],
    "corrispondenze": [
@@ -2866,19 +2871,44 @@
  },
  "notizie_recenti": [
   {
-   "titolo": "Finland could launch first offshore wind tender in h1 2027 as government designates four development areas",
-   "data": "2026-11-12",
-   "link": "https://www.offshorewind.biz/2026/11/12/finland-could-launch-first-offshore-wind-tender-in-h1-2027-as-government-designates-four-development-areas",
+   "titolo": "Nkts karlskrona offshore cable factory expansion set to start operations in q2 2027",
+   "data": "2026-11-19",
+   "link": "https://www.offshorewind.biz/2026/11/19/nkts-karlskrona-offshore-cable-factory-expansion-set-to-start-operations-in-q2-2027",
    "parole": [
-    "tender"
+    "cable"
    ]
   },
   {
-   "titolo": "Seaway7 kicks off cable installation work at orsteds hornsea 3",
-   "data": "2026-11-12",
-   "link": "https://www.offshorewind.biz/2026/11/12/seaway7-kicks-off-cable-installation-work-at-orsteds-hornsea-3",
+   "titolo": "Seaway7 reveals vessel trio for berwick bank b work",
+   "data": "2026-11-19",
+   "link": "https://www.offshorewind.biz/2026/11/19/seaway7-reveals-vessel-trio-for-berwick-bank-b-work",
+   "parole": [
+    "vessel"
+   ]
+  },
+  {
+   "titolo": "Purus takes delivery of first damen csov",
+   "data": "2026-11-19",
+   "link": "https://www.offshorewind.biz/2026/11/19/purus-takes-delivery-of-first-damen-csov",
+   "parole": [
+    "csov"
+   ]
+  },
+  {
+   "titolo": "Nkt upgrading barge bought from boskalis for nearshore cable laying ops",
+   "data": "2026-11-19",
+   "link": "https://www.offshorewind.biz/2026/11/19/nkt-upgrading-barge-bought-from-boskalis-for-nearshore-cable-laying-ops",
    "parole": [
     "cable"
+   ]
+  },
+  {
+   "titolo": "Windar inks turbine tower supply deal for bc wind as projects first monopiles arrive at swinoujscie port",
+   "data": "2026-11-19",
+   "link": "https://www.offshorewind.biz/2026/11/19/windar-inks-turbine-tower-supply-deal-for-bc-wind-as-projects-first-monopiles-arrive-at-swinoujscie-port",
+   "parole": [
+    "port",
+    "swinoujscie"
    ]
   },
   {

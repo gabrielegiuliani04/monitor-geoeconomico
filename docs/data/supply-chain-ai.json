@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-15T12:11Z",
- "data_riferimento": "2026-11-15",
+ "aggiornato": "2026-11-22T12:52Z",
+ "data_riferimento": "2026-11-22",
  "fonti": [
   {
    "nome": "USGS, Mineral Commodity Summaries 2026",
@@ -13,7 +13,7 @@
    "link": null,
    "file": "raccolta/supply-chain-ai/*.json",
    "licenza": "fatti citati con fonte e link per ogni voce",
-   "data_dato": "2026-11-15"
+   "data_dato": "2026-11-22"
   },
   {
    "nome": "OpenStreetMap Nominatim (geocodifica una tantum)",
@@ -25,35 +25,35 @@
  "fonti_osservatorio": [
   {
    "nome": "prezzi.json",
-   "aggiornato": "2026-11-14T01:31Z"
+   "aggiornato": "2026-11-21T02:36Z"
   },
   {
    "nome": "portwatch.json",
-   "aggiornato": "2026-11-14T11:41Z"
+   "aggiornato": "2026-11-21T12:55Z"
   },
   {
    "nome": "ai.json",
-   "aggiornato": "2026-11-15"
+   "aggiornato": "2026-11-22"
   },
   {
    "nome": "ai-mondo.json",
-   "aggiornato": "2026-11-15T12:11Z"
+   "aggiornato": "2026-11-22T12:52Z"
   },
   {
    "nome": "stretti-dettaglio.json",
-   "aggiornato": "2026-11-14T12:14Z"
+   "aggiornato": "2026-11-21T13:27Z"
   },
   {
    "nome": "cavi-incidenti.json",
-   "aggiornato": "2026-11-15T11:29Z"
+   "aggiornato": "2026-11-22T11:58Z"
   },
   {
    "nome": "rete-elettrica.json",
-   "aggiornato": "2026-11-15T12:08Z"
+   "aggiornato": "2026-11-22T12:49Z"
   },
   {
    "nome": "cavi.json",
-   "aggiornato": "2026-11-15T11:29Z"
+   "aggiornato": "2026-11-22T11:58Z"
   },
   {
    "nome": "minerali.json",
@@ -65,7 +65,7 @@
   },
   {
    "nome": "investimenti.json",
-   "aggiornato": "2026-11-15T12:11Z"
+   "aggiornato": "2026-11-22T12:52Z"
   }
  ],
  "nota": "Catena del valore dell'AI dalla miniera al data center, in 8 anelli. elementi = nodi (punti con lat/lon); archi = collegamenti da → a (g = [[lon, lat], ...]); colli = colli di bottiglia con indicatori, valori e stato rispetto a soglie che sono una VALUTAZIONE dell'osservatorio; controlli = controlli all'export 2022-2026; materie = produzione per paese (USGS) con quote calcolate; titoli = titoli quotati collegati, con prezzo da prezzi.json quando seguito. Gli archi di tipo 'valutazione' sono percorsi tipici, non tracciati reali. Non è una raccomandazione di investimento.",
@@ -3317,9 +3317,9 @@
      "link": "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/11/09/china-extends-suspension-of-rare-earth-export-controls-until-january",
      "data": "2026-11-09",
      "affidabilita": "media",
-     "nota": "scadenza 2027-01-10; stato del controllo: sospeso; giorni contati al 2026-11-15; proroga annunciata, testo primario non reperito",
+     "nota": "scadenza 2027-01-10; stato del controllo: sospeso; giorni contati al 2026-11-22; proroga annunciata, testo primario non reperito",
      "verifica": "proroga annunciata, testo primario non reperito",
-     "valore": 56,
+     "valore": 49,
      "stato": "attenzione"
     },
     {
@@ -3333,8 +3333,8 @@
      "link": "https://www.fastmarkets.com/insights/china-suspends-export-prohibition-on-superhard-materials-us/",
      "data": "2025-11-09",
      "affidabilita": "alta",
-     "nota": "scadenza 2026-11-27; stato del controllo: sospeso; giorni contati al 2026-11-15",
-     "valore": 12,
+     "nota": "scadenza 2026-11-27; stato del controllo: sospeso; giorni contati al 2026-11-22",
+     "valore": 5,
      "stato": "critico"
     },
     {
@@ -3377,14 +3377,14 @@
      "soglia_critica": -50,
      "fonte": "IMF PortWatch (portwatch.json)",
      "link": "https://portwatch.imf.org/",
-     "data": "2026-11-08",
+     "data": "2026-11-15",
      "affidabilita": "alta",
-     "nota": "media 7 giorni 2026-11-02 – 2026-11-08; navi con AIS acceso",
+     "nota": "media 7 giorni 2026-11-09 – 2026-11-15; navi con AIS acceso",
      "dettaglio": {
-      "navi_giorno": 3.9,
-      "anno_prima": 75.3
+      "navi_giorno": 2.3,
+      "anno_prima": 79.9
      },
-     "valore": -94.8,
+     "valore": -97.1,
      "stato": "critico"
     },
     {
@@ -3518,9 +3518,9 @@
      "soglia_critica": -25,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/ASML",
-     "data": "2026-11-12",
+     "data": "2026-11-20",
      "affidabilita": "alta",
-     "valore": -12.8,
+     "valore": -24.5,
      "stato": "attenzione"
     }
    ],
@@ -3566,14 +3566,14 @@
      "soglia_critica": -40,
      "fonte": "IMF PortWatch (portwatch.json)",
      "link": "https://portwatch.imf.org/",
-     "data": "2026-11-08",
+     "data": "2026-11-15",
      "affidabilita": "alta",
-     "nota": "media 7 giorni 2026-11-02 – 2026-11-08; navi con AIS acceso",
+     "nota": "media 7 giorni 2026-11-09 – 2026-11-15; navi con AIS acceso",
      "dettaglio": {
-      "navi_giorno": 229.9,
-      "anno_prima": 238.4
+      "navi_giorno": 220.9,
+      "anno_prima": 216.0
      },
-     "valore": -3.6,
+     "valore": 2.3,
      "stato": "normale"
     },
     {
@@ -3585,7 +3585,7 @@
      "soglia_critica": 3,
      "fonte": "cavi-incidenti.json (osservatorio)",
      "link": "https://www.submarinecablemap.com/",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "affidabilita": "media",
      "eventi": [
       "Matsu: cavo Taiwan-Matsu n. 3 tagliato al largo di Dongyin"
@@ -3602,14 +3602,14 @@
      "soglia_critica": -25,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/TSM",
-     "data": "2026-11-12",
+     "data": "2026-11-20",
      "affidabilita": "alta",
-     "valore": -8.9,
-     "stato": "normale"
+     "valore": -26.2,
+     "stato": "critico"
     }
    ],
    "stato": "critico",
-   "stato_congiunturale": "attenzione"
+   "stato_congiunturale": "critico"
   },
   {
    "id": "C07",
@@ -3688,9 +3688,9 @@
      "soglia_critica": -25,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/000660.KS",
-     "data": "2026-11-13",
+     "data": "2026-11-20",
      "affidabilita": "alta",
-     "valore": -14.3,
+     "valore": -14.0,
      "stato": "attenzione"
     }
    ],
@@ -3828,10 +3828,10 @@
      "soglia_critica": 70,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
-     "data": "2026-11-13",
+     "data": "2026-11-20",
      "affidabilita": "media",
      "nota": "serie marcata provvisoria in prezzi.json",
-     "valore": 89.5,
+     "valore": 88.7,
      "stato": "critico"
     },
     {
@@ -3843,10 +3843,10 @@
      "soglia_critica": 6,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/NG%3DF",
-     "data": "2026-11-13",
+     "data": "2026-11-20",
      "affidabilita": "media",
      "nota": "serie marcata provvisoria in prezzi.json",
-     "valore": 3.2,
+     "valore": 3.8,
      "stato": "normale"
     }
    ],
@@ -3893,9 +3893,9 @@
      "soglia_critica": -25,
      "fonte": "Yahoo Finance (prezzi.json)",
      "link": "https://finance.yahoo.com/quote/NVDA",
-     "data": "2026-11-12",
+     "data": "2026-11-20",
      "affidabilita": "alta",
-     "valore": -27.3,
+     "valore": -43.5,
      "stato": "critico"
     }
    ],
@@ -4044,7 +4044,7 @@
    "data_fonte": "2025-11-09",
    "affidabilita": "alta",
    "note": "Sospeso il 9 novembre 2025 fino al 27 novembre 2026 (annuncio MOFCOM n. 72 del 2025). Restano licenze e divieto verso utilizzatori militari. Alla data del 9 novembre 2026 non trovata una proroga pubblicata.",
-   "giorni_alla_scadenza": 12
+   "giorni_alla_scadenza": 5
   },
   {
    "id": "CN-2025-04-TR",
@@ -4085,7 +4085,7 @@
    "data_fonte": "2026-11-09",
    "affidabilita": "media",
    "note": "Applied Materials stimava 600 milioni di dollari di ricavi persi nell'esercizio 2026 (TipRanks, ottobre 2025). Sospesa da novembre 2025 con la tregua di Busan; sospensione prorogata al 10 gennaio 2027.",
-   "giorni_alla_scadenza": 56
+   "giorni_alla_scadenza": 49
   },
   {
    "id": "NL-2025-NEXPERIA",
@@ -4149,7 +4149,7 @@
     }
    ],
    "note": "Sospesi dall'annuncio n. 70 del 7 novembre 2025 fino al 10 novembre 2026. Il 9 novembre 2026 il MOFCOM ha annunciato con una breve dichiarazione la proroga di due mesi, fino al 10 gennaio 2027 (Reuters); SMM ne riporta il testo come annuncio n. 58 del 2026. Al 10 novembre il testo non compare ancora nell'elenco ufficiale sul sito del MOFCOM: proroga da considerare annunciata ma non verificata sulla fonte primaria. Tech Times, uscito prima dell'annuncio, scriveva che nessun testo spostava la data.",
-   "giorni_alla_scadenza": 56
+   "giorni_alla_scadenza": 49
   },
   {
    "id": "US-2026-MATCH",
@@ -5009,14 +5009,14 @@
    "ruolo": "litografia EUV e DUV (Veldhoven)",
    "prezzi_id": "asml",
    "prezzo": {
-    "ultimo": 1497.1,
+    "ultimo": 1266.2,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": -2.43,
-     "1m": -12.85,
-     "ytd": 39.93,
-     "1a": 44.33
+     "1g": -6.64,
+     "1m": -24.48,
+     "ytd": 18.35,
+     "1a": 29.07
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/ASML",
@@ -5079,14 +5079,14 @@
    "ruolo": "fonderia avanzata e CoWoS",
    "prezzi_id": "tsm",
    "prezzo": {
-    "ultimo": 405.49,
+    "ultimo": 318.71,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": -1.9,
-     "1m": -8.9,
-     "ytd": 33.43,
-     "1a": 39.53
+     "1g": -9.48,
+     "1m": -26.21,
+     "ytd": 4.88,
+     "1a": 14.85
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/TSM",
@@ -5138,14 +5138,14 @@
    "ruolo": "primo produttore di HBM",
    "prezzi_id": "hynix",
    "prezzo": {
-    "ultimo": 1216000.0,
+    "ultimo": 1113000.0,
     "valuta": "KRW",
-    "data": "2026-11-13",
+    "data": "2026-11-20",
     "var": {
-     "1g": -3.03,
-     "1m": -14.31,
-     "ytd": 86.79,
-     "1a": 98.69
+     "1g": -5.92,
+     "1m": -13.99,
+     "ytd": 70.97,
+     "1a": 94.92
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/000660.KS",
@@ -5175,14 +5175,14 @@
    "ruolo": "dischi rigidi per i data center (magneti di terre rare)",
    "prezzi_id": "wdc",
    "prezzo": {
-    "ultimo": 311.21,
+    "ultimo": 261.11,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": -0.67,
-     "1m": -18.26,
-     "ytd": 80.65,
-     "1a": 87.35
+     "1g": -12.02,
+     "1m": -31.02,
+     "ytd": 51.57,
+     "1a": 86.2
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/WDC",
@@ -5200,14 +5200,14 @@
    "ruolo": "GPU per data center",
    "prezzi_id": "nvda",
    "prezzo": {
-    "ultimo": 166.19,
+    "ultimo": 125.53,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": -4.34,
-     "1m": -27.28,
-     "ytd": -10.89,
-     "1a": -14.25
+     "1g": -14.01,
+     "1m": -43.45,
+     "ytd": -32.69,
+     "1a": -30.51
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/NVDA",
@@ -5225,14 +5225,14 @@
    "ruolo": "acceleratori Instinct",
    "prezzi_id": "amd",
    "prezzo": {
-    "ultimo": 585.3,
+    "ultimo": 424.39,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": 5.86,
-     "1m": -3.34,
-     "ytd": 173.3,
-     "1a": 126.08
+     "1g": -13.25,
+     "1m": -23.22,
+     "ytd": 98.16,
+     "1a": 105.99
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/AMD",
@@ -5251,14 +5251,14 @@
    "ruolo": "ASIC su misura (TPU) e switch",
    "prezzi_id": "avgo",
    "prezzo": {
-    "ultimo": 364.36,
+    "ultimo": 304.41,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": 5.54,
-     "1m": 1.97,
-     "ytd": 5.28,
-     "1a": 2.57
+     "1g": -12.19,
+     "1m": -9.88,
+     "ytd": -12.05,
+     "1a": -12.23
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/AVGO",
@@ -5277,14 +5277,14 @@
    "ruolo": "TPU e data center",
    "prezzi_id": "googl",
    "prezzo": {
-    "ultimo": 298.7,
+    "ultimo": 265.29,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": 1.79,
-     "1m": -15.57,
-     "ytd": -4.57,
-     "1a": 4.18
+     "1g": -2.7,
+     "1m": -20.75,
+     "ytd": -15.24,
+     "1a": -8.35
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/GOOGL",
@@ -5390,14 +5390,14 @@
    "ruolo": "data center (Fairwater)",
    "prezzi_id": "msft",
    "prezzo": {
-    "ultimo": 523.0,
+    "ultimo": 484.52,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": 0.36,
-     "1m": -3.76,
-     "ytd": 8.14,
-     "1a": 2.32
+     "1g": -2.77,
+     "1m": -9.09,
+     "ytd": 0.19,
+     "1a": 1.27
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/MSFT",
@@ -5415,14 +5415,14 @@
    "ruolo": "data center (New Carlisle), chip Trainium",
    "prezzi_id": "amzn",
    "prezzo": {
-    "ultimo": 267.44,
+    "ultimo": 246.82,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": 0.48,
-     "1m": 3.43,
-     "ytd": 15.87,
-     "1a": 9.52
+     "1g": -4.1,
+     "1m": -5.93,
+     "ytd": 6.93,
+     "1a": 13.67
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/AMZN",
@@ -5440,14 +5440,14 @@
    "ruolo": "data center",
    "prezzi_id": "meta",
    "prezzo": {
-    "ultimo": 623.61,
+    "ultimo": 560.84,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": -0.82,
-     "1m": -18.22,
-     "ytd": -5.53,
-     "1a": 2.4
+     "1g": -5.93,
+     "1m": -19.6,
+     "ytd": -15.04,
+     "1a": -4.81
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/META",
@@ -5465,14 +5465,14 @@
    "ruolo": "data center Stargate (Abilene)",
    "prezzi_id": "orcl",
    "prezzo": {
-    "ultimo": 127.11,
+    "ultimo": 101.19,
     "valuta": "USD",
-    "data": "2026-11-12",
+    "data": "2026-11-20",
     "var": {
-     "1g": -0.99,
-     "1m": -11.24,
-     "ytd": -34.79,
-     "1a": -44.0
+     "1g": -8.48,
+     "1m": -21.64,
+     "ytd": -48.08,
+     "1a": -51.97
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/ORCL",
@@ -5493,14 +5493,14 @@
    "ruolo": "termometro dell'intera filiera dei chip",
    "prezzi_id": "sox",
    "prezzo": {
-    "ultimo": 10146.3,
+    "ultimo": 8408.6,
     "valuta": "USD",
-    "data": "2026-11-13",
+    "data": "2026-11-20",
     "var": {
-     "1g": -3.43,
-     "1m": -13.16,
-     "ytd": 43.25,
-     "1a": 48.8
+     "1g": -10.73,
+     "1m": -26.92,
+     "ytd": 18.71,
+     "1a": 32.38
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/%5ESOX",
@@ -5518,10 +5518,15 @@
    "ruolo": "costo dell'energia dei data center europei a gas",
    "prezzi_id": "ttf",
    "prezzo": {
-    "ultimo": 89.54,
+    "ultimo": 88.7,
     "valuta": "EUR",
-    "data": "2026-11-13",
-    "var": {},
+    "data": "2026-11-20",
+    "var": {
+     "1g": 5.02,
+     "1m": 1.45,
+     "ytd": 214.99,
+     "1a": 184.66
+    },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/TTF%3DF",
     "provvisorio": true
@@ -5538,14 +5543,14 @@
    "ruolo": "costo del gas per le centrali dei data center USA",
    "prezzi_id": "hh",
    "prezzo": {
-    "ultimo": 3.242,
+    "ultimo": 3.791,
     "valuta": "USD",
-    "data": "2026-11-13",
+    "data": "2026-11-20",
     "var": {
-     "1g": -2.93,
-     "1m": 1.38,
-     "ytd": -12.05,
-     "1a": -30.22
+     "1g": 16.0,
+     "1m": 35.88,
+     "ytd": 2.85,
+     "1a": -15.27
     },
     "fonte": "Yahoo Finance",
     "link": "https://finance.yahoo.com/quote/NG%3DF",
@@ -5631,7 +5636,7 @@
    {
     "nodo": "dc-uae",
     "nome": "Stargate UAE, Abu Dhabi",
-    "km": 2.5,
+    "km": 2.2,
     "linea": "400 kV"
    },
    {
