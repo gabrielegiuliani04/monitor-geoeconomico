@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-22T13:27Z",
- "date": "2026-11-22",
+ "updated": "2026-11-23T16:00Z",
+ "date": "2026-11-23",
  "overall": "red",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 50.8,
+ "seconds": 52.0,
  "summary": {
   "critical": 0,
-  "high": 5,
-  "medium": 33,
-  "low": 3,
+  "high": 4,
+  "medium": 41,
+  "low": 4,
   "info": 6
  },
  "checks": [
@@ -22,7 +22,7 @@
    "area": "freshness",
    "name": "files against cadence",
    "status": "amber",
-   "detail": "64 ok, 2 stale, 0 missing, 1 undated (report.json); 1 lagging series inside files"
+   "detail": "65 ok, 1 stale, 0 missing, 1 undated (report.json); 1 lagging series inside files"
   },
   {
    "area": "schema",
@@ -40,25 +40,25 @@
    "area": "schema",
    "name": "counts vs yesterday",
    "status": "red",
-   "detail": "compared with storico.json 2026-11-21: 1 drops > 20%"
+   "detail": "compared with storico.json 2026-11-22: 1 drops > 20%"
   },
   {
    "area": "errors",
    "name": "errori/errors arrays",
    "status": "amber",
-   "detail": "17 errors in 9 files"
+   "detail": "54 errors in 10 files"
   },
   {
    "area": "consistency",
    "name": "same fact across data files",
    "status": "amber",
-   "detail": "114 comparisons, 1 disagree (1 distinct mismatches listed)"
+   "detail": "113 comparisons, 0 disagree (0 distinct mismatches listed)"
   },
   {
    "area": "consistency",
    "name": "key report figures vs data",
    "status": "amber",
-   "detail": "23 match, 4 differ, 0 not found in the report (fatti_chiave.json)"
+   "detail": "23 match, 2 differ, 2 not found in the report (fatti_chiave.json)"
   },
   {
    "area": "secrets",
@@ -82,35 +82,28 @@
    "area": "links",
    "name": "source links (rotating sample)",
    "status": "amber",
-   "detail": "158 of 15603 distinct links checked today: 14 blocked, 9 broken, 5 error, 130 ok; 8 confirmed broken, 1 failed once (rolling record)"
+   "detail": "158 of 14865 distinct links checked today: 22 blocked, 9 broken, 1 error, 126 ok; 8 confirmed broken, 1 failed once (rolling record)"
   },
   {
    "area": "smoke",
    "name": "browser smoke test",
    "status": "red",
-   "detail": "run 2026-11-22T13:27Z: 49 passed, 1 failed"
+   "detail": "run 2026-11-23T16:00Z: 49 passed, 1 failed"
   }
  ],
  "problems": [
   {
    "severity": "high",
    "area": "freshness",
-   "file": "docs/data/attacchi-analisti.json",
-   "problem": "stale: updated 12 days ago (limit 2); newest data 2026-11-10 is 12 days old (limit 5) (cadence: daily (Telegram channels))",
-   "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
-  },
-  {
-   "severity": "high",
-   "area": "freshness",
    "file": "docs/data/mercati.json",
-   "problem": "stale: updated 13 days ago (limit 8); newest data 2026-11-09 is 13 days old (limit 8) (cadence: manual market collections, about weekly)",
+   "problem": "stale: updated 14 days ago (limit 8); newest data 2026-11-09 is 14 days old (limit 8) (cadence: manual market collections, about weekly)",
    "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
   },
   {
    "severity": "high",
    "area": "schema",
-   "file": "docs/data/notizie-testate.json",
-   "problem": "element count fell 2360 -> 1818 (-23%) vs storico.json 2026-11-21",
+   "file": "docs/data/navi.json",
+   "problem": "element count fell 156 -> 111 (-29%) vs storico.json 2026-11-22",
    "fix": "A collector probably broke silently (empty answer, changed format, missing key). Compare with yesterday's file in git and look at the step log."
   },
   {
@@ -124,14 +117,28 @@
    "severity": "high",
    "area": "validators",
    "file": "raccolta/simulatore/controlla.py",
-   "problem": "validator 'simulatore' exit 1: ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.99 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 7.99 (eseguire --scrivi) | Esito: 2 errori, 2 avvisi",
+   "problem": "validator 'simulatore' exit 1: ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.96 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.02 (eseguire --scrivi) | Esito: 2 errori, 3 avvisi",
    "fix": "Run the validator by hand, read its output and fix the curated input it names."
   },
   {
    "severity": "medium",
    "area": "consistency",
+   "file": "docs/data/scorte.json",
+   "problem": "key figure 'stoccaggio-nl-it': no value at elementi[id=gas_stoccaggio_pct_nl].serie on 2026-11-08",
+   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
+   "file": "docs/data/scorte.json",
+   "problem": "key figure 'ne-stoccaggio-nl': no value at elementi[id=gas_stoccaggio_pct_nl].serie on 2026-11-08",
+   "fix": "The data file changed structure or lost the date: update fatti_chiave.json or the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "consistency",
    "file": "gas-italia.json, report/hormuz-mar-rosso-2026-11.md",
-   "problem": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%): report/hormuz-mar-rosso-2026-11.md regex 'porta il ([0-9.,]+)% del gas importato' = 34; gas-italia.json quote_12_mesi[id=mazara].quota_ingressi_pct = 34.3. difference -0.3",
+   "problem": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%): report/hormuz-mar-rosso-2026-11.md regex 'porta il ([0-9.,]+)% del gas importato' = 34; gas-italia.json quote_12_mesi[id=mazara].quota_ingressi_pct = 34.4. difference -0.4",
    "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
   },
   {
@@ -143,24 +150,17 @@
   },
   {
    "severity": "medium",
-   "area": "consistency",
-   "file": "prezzi.json, supply-chain-ai.json",
-   "problem": "TTF on 2026-11-13: prezzi.json serie[id=ttf].serie[2026-11-13] = 90.95 (2026-11-13); supply-chain-ai.json colli[11].indicatori[0] = 89.5 (2026-11-13). 1.6% apart; the file says it copies prezzi.json: it holds an earlier provisional reading",
-   "fix": "Files disagree on the same fact: re-run the collector that copies the value (it read an older version) and make it read the value at run time, not from a cached copy."
+   "area": "errors",
+   "file": "docs/data/ai-mondo.json",
+   "problem": "collector error: TOP500: new site 50103 (KISTI Supercomputing Center, South Korea) without coordinates: not mapped. Add it to raccolta/ai/top500_siti.json",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
-   "area": "consistency",
-   "file": "report/hormuz-mar-rosso-2026-11.md, scorte.json",
-   "problem": "report figure: Dutch gas storage fill on 8 Nov 2026 (%): report/hormuz-mar-rosso-2026-11.md regex 'e al ([0-9.,]+)% nei Paesi Bassi' = 63.5; scorte.json elementi[id=gas_stoccaggio_pct_nl].serie = 63.4 (2026-11-08). difference +0.1",
-   "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
-  },
-  {
-   "severity": "medium",
-   "area": "consistency",
-   "file": "report/northern-europe-2026-11.md, scorte.json",
-   "problem": "report figure: Dutch gas storage fill on 8 Nov 2026 (%), Northern Europe table: report/northern-europe-2026-11.md regex '\\| Netherlands \\| ([0-9.,]+)% \\(8 Nov 20' = 63.51; scorte.json elementi[id=gas_stoccaggio_pct_nl].serie = 63.4 (2026-11-08). difference +0.11",
-   "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
+   "area": "errors",
+   "file": "docs/data/ai-mondo.json",
+   "problem": "collector error: TOP500: new site 48958 (Texas Advanced Computing Center/Univ. of Texas, United States) without coordinates: not mapped. Add it to raccolta/ai/top500_siti.json",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
@@ -200,6 +200,13 @@
   {
    "severity": "medium",
    "area": "errors",
+   "file": "docs/data/navi.json",
+   "problem": "collector error: aisstream.io errore: timed out during opening handshake",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
    "file": "docs/data/notizie-testate.json",
    "problem": "collector error: navalnews (Naval News): HTTPError: HTTP Error 503: Service Temporarily Unavailable",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
@@ -214,36 +221,64 @@
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/notizie.json",
-   "problem": "collector error: fed: HTTPError: HTTP Error 404: Not Found",
+   "file": "docs/data/paesi.json",
+   "problem": "collector error: IMF metadati non letti: https://www.imf.org/external/datamapper/api/v1/indicators: HTTP Error 503: Service Unavailable",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/paesi.json",
-   "problem": "collector error: World Bank EG.IMP.CONS.ZS non scaricato: https://api.worldbank.org/v2/country/US;CN;RU;UA;IR;IL;SA;AE;QA;IQ;KW;OM;YE;EG;TR;IN;JP;KR;TW;DE;FR;IT;GB;ES;NL;PL;NO;AZ;KZ;DZ;LY;BR;NG/indicator/EG.IMP.CONS.ZS?format=json&per_page=2000&date=2010:2026: HTTP Error 503: Service Unavailable",
+   "problem": "collector error: IMF NGDPD non scaricato: https://www.imf.org/external/datamapper/api/v1/NGDPD: HTTP Error 503: Service Unavailable",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/paesi.json",
-   "problem": "collector error: World Bank MS.MIL.XPND.CD non scaricato: https://api.worldbank.org/v2/country/US;CN;RU;UA;IR;IL;SA;AE;QA;IQ;KW;OM;YE;EG;TR;IN;JP;KR;TW;DE;FR;IT;GB;ES;NL;PL;NO;AZ;KZ;DZ;LY;BR;NG/indicator/MS.MIL.XPND.CD?format=json&per_page=2000&date=2010:2026: HTTP Error 502: Bad Gateway",
+   "problem": "collector error: IMF NGDP_RPCH non scaricato: https://www.imf.org/external/datamapper/api/v1/NGDP_RPCH: HTTP Error 503: Service Unavailable",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/paesi.json",
+   "problem": "collector error: IMF PCPIPCH non scaricato: https://www.imf.org/external/datamapper/api/v1/PCPIPCH: HTTP Error 503: Service Unavailable",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/paesi.json",
+   "problem": "collector error: IMF GGXWDG_NGDP non scaricato: https://www.imf.org/external/datamapper/api/v1/GGXWDG_NGDP: HTTP Error 503: Service Unavailable",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/paesi.json",
+   "problem": "collector error: IMF BCA_NGDPD non scaricato: https://www.imf.org/external/datamapper/api/v1/BCA_NGDPD: HTTP Error 503: Service Unavailable",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/paesi.json",
+   "problem": "collector error: IMF LP non scaricato: https://www.imf.org/external/datamapper/api/v1/LP: HTTP Error 503: Service Unavailable",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/paesi.json",
+   "problem": "collector error: Comtrade ES scambi di energia: https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=724&period=2025&flowCode=X%2CM&cmdCode=2709%2C271111%2C271121&partnerCode=0: HTTP Error 403: Quota Exceeded",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/scorte.json",
-   "problem": "collector error: AGSI+ EU: API key: [chiave nascosta]",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/webcam.json",
-   "problem": "collector error: deal-downs: non_raggiungibile (HTTP 429)",
+   "problem": "collector error: AGSI+ NL: API key: [chiave nascosta]",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -257,14 +292,28 @@
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/webcam.json",
-   "problem": "collector error: istanbul-ibb: non_raggiungibile (URLError: <urlopen error timed out>)",
+   "problem": "collector error: pireo-porto: non_raggiungibile (HTTP 429)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "medium",
    "area": "errors",
    "file": "docs/data/webcam.json",
-   "problem": "collector error: istanbul-corno-oro: non_raggiungibile (HTTP 429)",
+   "problem": "collector error: valletta-grand-harbour: non_raggiungibile (HTTP 429)",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/webcam.json",
+   "problem": "collector error: birzebbuga-freeport: non_raggiungibile (HTTP 429)",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/webcam.json",
+   "problem": "collector error: istanbul-ibb: non_raggiungibile (URLError: <urlopen error timed out>)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -326,8 +375,8 @@
   {
    "severity": "medium",
    "area": "links",
-   "file": "docs/data/notizie-testate.json",
-   "problem": "broken: https://www.marketwatch.com/story/anthropic-soared-in-its-debut-as-stocks-tanked-only-one-other-ipo-has-done-that-since-1990-77b75258?mod=mw_rss_topstories (401)",
+   "file": "docs/data/eventi.json",
+   "problem": "broken: https://www.reuters.com/world/asia-pacific/iranian-strait-authority-says-sinokor-vessels-will-face-legal-action-2026-10-27/ (401)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
@@ -355,14 +404,21 @@
    "severity": "medium",
    "area": "schema",
    "file": "docs/data/navi.json",
-   "problem": "source fields on 'elementi': link missing in 156/156, affidabilita missing in 156/156",
+   "problem": "source fields on 'elementi': link missing in 111/111, affidabilita missing in 111/111",
    "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
+  },
+  {
+   "severity": "low",
+   "area": "errors",
+   "file": "docs/data/paesi.json",
+   "problem": "... and 28 more errors",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
    "severity": "low",
    "area": "links",
    "file": "docs/data/eventi.json",
-   "problem": "failed once (re-checked tomorrow): https://www.reuters.com/world/asia-pacific/iranian-strait-authority-says-sinokor-vessels-will-face-legal-action-2026-10-27/ (401)",
+   "problem": "failed once (re-checked tomorrow): https://www.reuters.com/world/asia-pacific/two-confirmed-dead-after-taiwan-panasonic-factory-fire-2026-11-05/ (401)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
@@ -383,7 +439,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/aerei.json",
-   "problem": "7 warnings ('avvisi'), first: curati AE-C-20260922-16: last report 61 days old, the map will not draw it (limit 60 days)",
+   "problem": "7 warnings ('avvisi'), first: curati AE-C-20260922-16: last report 62 days old, the map will not draw it (limit 60 days)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -424,24 +480,14 @@
  ],
  "stale": [
   {
-   "file": "attacchi-analisti.json",
-   "cadence": "daily (Telegram channels)",
-   "updated": "2026-11-10T11:11Z",
-   "newest_data_date": "2026-11-10",
-   "updated_age_days": 12,
-   "data_age_days": 12,
-   "status": "stale",
-   "why": "updated 12 days ago (limit 2); newest data 2026-11-10 is 12 days old (limit 5)"
-  },
-  {
    "file": "mercati.json",
    "cadence": "manual market collections, about weekly",
    "updated": "2026-11-09",
    "newest_data_date": "2026-11-09",
-   "updated_age_days": 13,
-   "data_age_days": 13,
+   "updated_age_days": 14,
+   "data_age_days": 14,
    "status": "stale",
-   "why": "updated 13 days ago (limit 8); newest data 2026-11-09 is 13 days old (limit 8)"
+   "why": "updated 14 days ago (limit 8); newest data 2026-11-09 is 14 days old (limit 8)"
   },
   {
    "file": "report.json",
@@ -460,7 +506,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 13,
+   "fails_in_a_row": 14,
    "first_failed": "2026-11-10T13:44Z",
    "confirmed": true
   },
@@ -471,7 +517,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 12,
+   "fails_in_a_row": 13,
    "first_failed": "2026-11-11T12:40Z",
    "confirmed": true
   },
@@ -482,7 +528,7 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 10,
+   "fails_in_a_row": 11,
    "first_failed": "2026-11-13T13:05Z",
    "confirmed": true
   },
@@ -493,7 +539,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 6,
+   "fails_in_a_row": 7,
    "first_failed": "2026-11-17T14:28Z",
    "confirmed": true
   },
@@ -505,7 +551,7 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 5,
+   "fails_in_a_row": 6,
    "first_failed": "2026-11-18T13:56Z",
    "confirmed": true
   },
@@ -516,19 +562,8 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 4,
+   "fails_in_a_row": 5,
    "first_failed": "2026-11-19T14:19Z",
-   "confirmed": true
-  },
-  {
-   "url": "https://www.marketwatch.com/story/anthropic-soared-in-its-debut-as-stocks-tanked-only-one-other-ipo-has-done-that-since-1990-77b75258?mod=mw_rss_topstories",
-   "files": [
-    "notizie-testate.json"
-   ],
-   "code": 401,
-   "detail": "",
-   "fails_in_a_row": 2,
-   "first_failed": "2026-11-21T13:28Z",
    "confirmed": true
   },
   {
@@ -538,7 +573,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 2,
+   "fails_in_a_row": 3,
    "first_failed": "2026-11-21T13:28Z",
    "confirmed": true
   },
@@ -549,50 +584,23 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 1,
+   "fails_in_a_row": 2,
    "first_failed": "2026-11-22T13:27Z",
+   "confirmed": true
+  },
+  {
+   "url": "https://www.reuters.com/world/asia-pacific/two-confirmed-dead-after-taiwan-panasonic-factory-fire-2026-11-05/",
+   "files": [
+    "eventi.json"
+   ],
+   "code": 401,
+   "detail": "",
+   "fails_in_a_row": 1,
+   "first_failed": "2026-11-23T16:00Z",
    "confirmed": false
   }
  ],
  "mismatches": [
-  {
-   "fact": "TTF on 2026-11-13",
-   "values": [
-    {
-     "file": "prezzi.json",
-     "path": "serie[id=ttf].serie[2026-11-13]",
-     "value": 90.95,
-     "date": "2026-11-13"
-    },
-    {
-     "file": "supply-chain-ai.json",
-     "path": "colli[11].indicatori[0]",
-     "value": 89.5,
-     "date": "2026-11-13",
-     "source": "Yahoo Finance (prezzi.json)"
-    }
-   ],
-   "severity": "medium",
-   "note": "1.6% apart; the file says it copies prezzi.json: it holds an earlier provisional reading"
-  },
-  {
-   "fact": "report figure: Dutch gas storage fill on 8 Nov 2026 (%)",
-   "values": [
-    {
-     "file": "report/hormuz-mar-rosso-2026-11.md",
-     "path": "regex 'e al ([0-9.,]+)% nei Paesi Bassi'",
-     "value": 63.5
-    },
-    {
-     "file": "scorte.json",
-     "path": "elementi[id=gas_stoccaggio_pct_nl].serie",
-     "value": 63.4,
-     "date": "2026-11-08"
-    }
-   ],
-   "severity": "medium",
-   "note": "difference +0.1"
-  },
   {
    "fact": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%)",
    "values": [
@@ -604,30 +612,12 @@
     {
      "file": "gas-italia.json",
      "path": "quote_12_mesi[id=mazara].quota_ingressi_pct",
-     "value": 34.3,
+     "value": 34.4,
      "date": null
     }
    ],
    "severity": "medium",
-   "note": "difference -0.3"
-  },
-  {
-   "fact": "report figure: Dutch gas storage fill on 8 Nov 2026 (%), Northern Europe table",
-   "values": [
-    {
-     "file": "report/northern-europe-2026-11.md",
-     "path": "regex '\\| Netherlands \\| ([0-9.,]+)% \\(8 Nov 20'",
-     "value": 63.51
-    },
-    {
-     "file": "scorte.json",
-     "path": "elementi[id=gas_stoccaggio_pct_nl].serie",
-     "value": 63.4,
-     "date": "2026-11-08"
-    }
-   ],
-   "severity": "medium",
-   "note": "difference +0.11"
+   "note": "difference -0.4"
   },
   {
    "fact": "report figure: Rotterdam port calls, 7-day mean to 30 Oct 2026, change on a year (%)",
@@ -653,7 +643,7 @@
    "validator": "originali (fissi, italia, iran, difesa, mobili, eventi, ibrido, linee, condotte)",
    "script": "raccolta/originali/controlla.py",
    "exit": 0,
-   "seconds": 0.1,
+   "seconds": 0.2,
    "tail": "== linee.json: 588 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | == condotte.json: 454 elementi, 0 errori, 0 avvisi, 0 da rivedere (data_fonte oltre 90 giorni) | Totale errori: 0"
   },
   {
@@ -661,14 +651,14 @@
    "script": "raccolta/simulatore/controlla.py",
    "exit": 1,
    "seconds": 0.1,
-   "tail": "ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.99 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 7.99 (eseguire --scrivi) | Esito: 2 errori, 2 avvisi"
+   "tail": "ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.96 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.02 (eseguire --scrivi) | Esito: 2 errori, 3 avvisi"
   },
   {
    "validator": "wind calendar --rigoroso (output redirected)",
    "script": "raccolta/eolico/calendario.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "Written /home/runner/work/monitor-geoeconomico/monitor-geoeconomico/raccolta/qualita/.tmp-wind-calendar.json (120 KB): 114 items, 8 next 90 days, 24 last 90 days, 4 unconfirmed, 0 RSS candidates, 0 warnings (0 validation)"
+   "tail": "Written /home/runner/work/monitor-geoeconomico/monitor-geoeconomico/raccolta/qualita/.tmp-wind-calendar.json (120 KB): 114 items, 8 next 90 days, 23 last 90 days, 4 unconfirmed, 0 RSS candidates, 0 warnings (0 validation)"
   },
   {
    "validator": "stretti-dettaglio --controlla",
@@ -681,7 +671,7 @@
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.6,
+   "seconds": 0.8,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -696,7 +686,7 @@
    "script": "raccolta/ai/raccogli.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "Validated 301 points, 66 ai.json points and 64 flows: 0 problems"
+   "tail": "Validated 303 points, 66 ai.json points and 64 flows: 0 problems"
   },
   {
    "validator": "italia-impatti --valida",
@@ -709,28 +699,28 @@
    "validator": "supply-chain-ai --valida",
    "script": "raccolta/supply-chain-ai/raccogli.py",
    "exit": 0,
-   "seconds": 0.1,
+   "seconds": 0.2,
    "tail": "AVVISO: materia germanio: nessuna quota per paese (dato mancante dichiarato) | AVVISO: collo C07: valore manuale «Divario tra domanda e offerta CoWoS a fine 2026» del 2026-06-15, da ricontrollare | AVVISO: collo C11: valore manuale «Scorte di GNL di Taiwan (estremo basso della forchetta 12–14 giorni)» del 2026-03-21, da ricontrollare"
   },
   {
    "validator": "attacchi-russi --solo-valida",
    "script": "raccolta/ucraina/attacchi_russi.py",
    "exit": 0,
-   "seconds": 0.0,
+   "seconds": 0.1,
    "tail": "Curati: 192 validi, 0 scartati"
   }
  ],
  "counts": {
-  "aerei.json": 52,
-  "ai-mondo.json": 301,
+  "aerei.json": 80,
+  "ai-mondo.json": 303,
   "ai.json": 66,
   "assicurazioni.json": 27,
-  "attacchi-analisti.json": 4093,
+  "attacchi-analisti.json": 3734,
   "attacchi-russi.json": 192,
-  "baltico-sicurezza.json": 132,
+  "baltico-sicurezza.json": 122,
   "basi-mondo.json": 181,
   "bunker-emissioni.json": 24,
-  "calendario.json": 212,
+  "calendario.json": 209,
   "cavi-incidenti.json": 14,
   "cavi.json": 714,
   "commercio.json": 38,
@@ -740,7 +730,7 @@
   "dossier.json": 1,
   "eolico-filiera.json": 19,
   "esposizione-nord.json": 10,
-  "eventi.json": 364,
+  "eventi.json": 362,
   "ferrovie.json": 49,
   "fissi.json": 192,
   "fronte-storico.json": 60,
@@ -761,10 +751,10 @@
   "mercati.json": 1,
   "minerali.json": 25,
   "mobili.json": 135,
-  "navi.json": 156,
+  "navi.json": 111,
   "noli.json": 4,
-  "notizie-testate.json": 1818,
-  "notizie.json": 2106,
+  "notizie-testate.json": 1546,
+  "notizie.json": 2161,
   "nucleare.json": 167,
   "offshore-nord.json": 180,
   "paesi.json": 33,
@@ -773,7 +763,7 @@
   "portwatch.json": 22,
   "prezzi.json": 33,
   "report.json": 5,
-  "rete-elettrica.json": 2367,
+  "rete-elettrica.json": 2368,
   "rischio.json": 18,
   "rotte.json": 239,
   "sanzioni-navi.json": 2028,
@@ -789,6 +779,6 @@
   "wind-calendar.json": 114,
   "world.json": 1896
  },
- "report": "report/qualita/2026-11-22.md",
+ "report": "report/qualita/2026-11-23.md",
  "errors": []
 }

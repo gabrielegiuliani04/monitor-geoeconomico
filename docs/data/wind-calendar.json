@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-22T13:26Z",
- "riferimento": "2026-11-22",
+ "aggiornato": "2026-11-23T15:59Z",
+ "riferimento": "2026-11-23",
  "fonti": [
   {
    "nome": "RWE Thor project site",
@@ -282,7 +282,7 @@
    "nome": "offshoreWIND.biz RSS (candidate items only)",
    "link": "https://www.offshorewind.biz/feed",
    "licenza": "(c) Navingo/offshoreWIND.biz: headlines and links only",
-   "data_dato": "2026-11-22"
+   "data_dato": "2026-11-23"
   }
  ],
  "nota": "Offshore wind milestone calendar for the North Sea and the Baltic (GB, NL, BE, DE, DK, NO, SE, FI, PL, LT, LV, EE, FR, EU), 2023-2027 with later anchors. Curated items with source, link and source date; null = not found, never estimated. 'status' is curated (done/scheduled/at risk); 'status_effective' adds 'unconfirmed' when a scheduled date has passed without confirmation. Reliability high/medium/low = alta/media/bassa. 'precision' tells how exact the date is. 'candidati_rss' are suggestions from the offshoreWIND.biz feed, NOT verified items.",
@@ -322,8 +322,8 @@
    "SE": 5
   },
   "next_90_days": {
-   "from": "2026-11-22",
-   "to": "2027-02-20",
+   "from": "2026-11-23",
+   "to": "2027-02-21",
    "items": [
     {
      "id": "WC-PL-GDANSK-T5",
@@ -500,19 +500,9 @@
    ]
   },
   "last_90_days": {
-   "from": "2026-08-24",
-   "to": "2026-11-22",
+   "from": "2026-08-25",
+   "to": "2026-11-23",
    "items": [
-    {
-     "id": "WC-NO-SN2-DELAY",
-     "date": "2026-08-24",
-     "date_end": null,
-     "country": "NO",
-     "type": "delay",
-     "project": "Sorlige Nordsjo II (Ventyr)",
-     "capacity_mw": 1500,
-     "status_effective": "done"
-    },
     {
      "id": "WC-DE-BR3-COD",
      "date": "2026-08-31",
@@ -797,7 +787,7 @@
     "project": "Bornholm offshore wind farms: joint DK-DE tender launch",
     "capacity_mw": 3000,
     "status_effective": "unconfirmed",
-    "days_overdue": 145
+    "days_overdue": 146
    },
    {
     "id": "WC-SE-SUPPORT",
@@ -808,7 +798,7 @@
     "project": "Swedish state-led tender and support system",
     "capacity_mw": null,
     "status_effective": "unconfirmed",
-    "days_overdue": 144
+    "days_overdue": 145
    },
    {
     "id": "WC-DE-HEDREIHT-FULL",
@@ -819,7 +809,7 @@
     "project": "He Dreiht: full 960 MW",
     "capacity_mw": 960,
     "status_effective": "unconfirmed",
-    "days_overdue": 22
+    "days_overdue": 23
    },
    {
     "id": "WC-FR-AO10-BIDS",
@@ -830,7 +820,7 @@
     "project": "AO10 bid deadline",
     "capacity_mw": 10000,
     "status_effective": "unconfirmed",
-    "days_overdue": 41
+    "days_overdue": 42
    }
   ],
   "needs_recheck": [
@@ -1929,7 +1919,7 @@
    "precision": "half",
    "period_start": "2026-01-01",
    "period_end": "2026-06-30",
-   "days_overdue": 145,
+   "days_overdue": 146,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2361,7 +2351,7 @@
    "precision": "day",
    "period_start": "2026-07-01",
    "period_end": "2026-07-01",
-   "days_overdue": 144,
+   "days_overdue": 145,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2685,7 +2675,7 @@
    "precision": "month",
    "period_start": "2026-10-01",
    "period_end": "2026-10-31",
-   "days_overdue": 22,
+   "days_overdue": 23,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -2751,7 +2741,7 @@
    "precision": "day",
    "period_start": "2026-10-12",
    "period_end": "2026-10-12",
-   "days_overdue": 41,
+   "days_overdue": 42,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -3499,8 +3489,24 @@
   }
  ],
  "candidati_rss": {
-  "stato": "ok: 50 RSS items read, 21 candidates",
+  "stato": "ok: 50 RSS items read, 17 candidates",
   "candidati": [
+   {
+    "title": "First Monopile Batch for Nordseecluster B Arrives in Eemshaven",
+    "date": "2026-11-23",
+    "link": "https://www.offshorewind.biz/2026/11/23/first-monopile-batch-for-nordseecluster-b-arrives-in-eemshaven",
+    "possible_duplicate_of": [],
+    "suggested_type": "construction",
+    "matched_types": [
+     "construction"
+    ],
+    "scope_terms": [
+     "nordseecluster"
+    ],
+    "related_calendar_projects": [],
+    "excerpt": "The first ten foundations for the second phase of RWE’s Nordseecluster offshore wind project, which is expected to produce around 6.5 TW hours of...",
+    "action": "review manually; add to calendario_voci.json only with a primary source"
+   },
    {
     "title": "DEME Wraps Up Foundation Installation at Germany’s Largest Offshore Wind Farm",
     "date": "2026-11-20",
@@ -3780,94 +3786,6 @@
     ],
     "related_calendar_projects": [],
     "excerpt": "Cadeler has signed an exclusivity agreement for the installation of foundations and wind turbines on a large-scale offshore wind farm in the UK,...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "TenneT's Onshore Link for Three New Dutch Offshore Wind Areas Nearing Completion",
-    "date": "2026-11-11",
-    "link": "https://www.offshorewind.biz/2026/11/11/tennets-onshore-link-for-three-new-dutch-offshore-wind-areas-nearing-completion",
-    "possible_duplicate_of": [],
-    "suggested_type": "policy",
-    "matched_types": [
-     "policy",
-     "construction"
-    ],
-    "scope_terms": [
-     "dutch",
-     "tennet"
-    ],
-    "related_calendar_projects": [],
-    "excerpt": "The installation of underground electricity cables at the Maasvlakte industrial and port area in Rotterdam, which will connect three new offshore...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "Belgium to Relaunch First Princess Elisabeth Offshore Wind Farm Tender as EU Commission Approves EUR 2.04 Billion CfD Scheme",
-    "date": "2026-11-11",
-    "link": "https://www.offshorewind.biz/2026/11/11/belgium-to-relaunch-first-princess-elisabeth-offshore-wind-farm-tender-as-eu-commission-approves-eur-204-billion-cfd-scheme",
-    "possible_duplicate_of": [],
-    "suggested_type": "auction",
-    "matched_types": [
-     "auction",
-     "construction"
-    ],
-    "scope_terms": [
-     "belgium",
-     "princess elisabeth"
-    ],
-    "related_calendar_projects": [],
-    "excerpt": "The European Commission has approved a EUR 2.04 billion state-aid scheme to support the construction and operation of the first offshore wind...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "Siemens Energy Named Preferred Supplier for Berwick Bank B Offshore Wind Turbines and Substations",
-    "date": "2026-11-11",
-    "link": "https://www.offshorewind.biz/2026/11/11/siemens-energy-named-preferred-supplier-for-berwick-bank-b-offshore-wind-turbines-and-substations",
-    "possible_duplicate_of": [
-     "WC-GB-BERWICK-CONSENT"
-    ],
-    "suggested_type": "grid",
-    "matched_types": [
-     "grid"
-    ],
-    "scope_terms": [
-     "berwick"
-    ],
-    "related_calendar_projects": [
-     "berwick bank"
-    ],
-    "excerpt": "SSE has selected Siemens Energy as the preferred supplier for wind turbines and offshore substation platforms for its 1.4 GW Berwick Bank B...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "RWE and KKR Reach Financial Close for 2.8 GW UK Offshore Wind Projects",
-    "date": "2026-11-11",
-    "link": "https://www.offshorewind.biz/2026/11/11/rwe-and-kkr-reach-financial-close-for-28-gw-uk-offshore-wind-projects",
-    "possible_duplicate_of": [],
-    "suggested_type": "FID",
-    "matched_types": [
-     "FID"
-    ],
-    "scope_terms": [
-     "uk"
-    ],
-    "related_calendar_projects": [],
-    "excerpt": "RWE and investment firm KKR have completed their 50:50 joint venture for the Vanguard West and Vanguard East offshore wind projects in the UK and...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "Sif to Close One Monopile Production Line, Seeks Bridge Financing Amid Uncertainties with Large Offshore Wind Project",
-    "date": "2026-11-10",
-    "link": "https://www.offshorewind.biz/2026/11/10/sif-to-close-one-monopile-production-line-seeks-bridge-financing-amid-uncertainties-with-large-offshore-wind-project",
-    "possible_duplicate_of": [],
-    "suggested_type": "construction",
-    "matched_types": [
-     "construction"
-    ],
-    "scope_terms": [
-     "dutch"
-    ],
-    "related_calendar_projects": [],
-    "excerpt": "Dutch offshore wind foundation manufacturer Sif is negotiating short-term bridge financing and exploring strategic options as it faces a...",
     "action": "review manually; add to calendario_voci.json only with a primary source"
    }
   ]
