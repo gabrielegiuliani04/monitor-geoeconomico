@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-23T16:00Z",
- "date": "2026-11-23",
+ "updated": "2026-11-24T16:03Z",
+ "date": "2026-11-24",
  "overall": "red",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 52.0,
+ "seconds": 51.0,
  "summary": {
   "critical": 0,
-  "high": 4,
-  "medium": 41,
-  "low": 4,
+  "high": 3,
+  "medium": 40,
+  "low": 5,
   "info": 6
  },
  "checks": [
@@ -39,20 +39,20 @@
   {
    "area": "schema",
    "name": "counts vs yesterday",
-   "status": "red",
-   "detail": "compared with storico.json 2026-11-22: 1 drops > 20%"
+   "status": "green",
+   "detail": "compared with storico.json 2026-11-23: 0 drops > 20%"
   },
   {
    "area": "errors",
    "name": "errori/errors arrays",
    "status": "amber",
-   "detail": "54 errors in 10 files"
+   "detail": "52 errors in 9 files"
   },
   {
    "area": "consistency",
    "name": "same fact across data files",
    "status": "amber",
-   "detail": "113 comparisons, 0 disagree (0 distinct mismatches listed)"
+   "detail": "113 comparisons, 1 disagree (1 distinct mismatches listed)"
   },
   {
    "area": "consistency",
@@ -82,13 +82,13 @@
    "area": "links",
    "name": "source links (rotating sample)",
    "status": "amber",
-   "detail": "158 of 14865 distinct links checked today: 22 blocked, 9 broken, 1 error, 126 ok; 8 confirmed broken, 1 failed once (rolling record)"
+   "detail": "159 of 15212 distinct links checked today: 14 blocked, 10 broken, 1 error, 134 ok; 9 confirmed broken, 1 failed once (rolling record)"
   },
   {
    "area": "smoke",
    "name": "browser smoke test",
    "status": "red",
-   "detail": "run 2026-11-23T16:00Z: 49 passed, 1 failed"
+   "detail": "run 2026-11-24T16:03Z: 49 passed, 1 failed"
   }
  ],
  "problems": [
@@ -96,15 +96,8 @@
    "severity": "high",
    "area": "freshness",
    "file": "docs/data/mercati.json",
-   "problem": "stale: updated 14 days ago (limit 8); newest data 2026-11-09 is 14 days old (limit 8) (cadence: manual market collections, about weekly)",
+   "problem": "stale: updated 15 days ago (limit 8); newest data 2026-11-09 is 15 days old (limit 8) (cadence: manual market collections, about weekly)",
    "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
-  },
-  {
-   "severity": "high",
-   "area": "schema",
-   "file": "docs/data/navi.json",
-   "problem": "element count fell 156 -> 111 (-29%) vs storico.json 2026-11-22",
-   "fix": "A collector probably broke silently (empty answer, changed format, missing key). Compare with yesterday's file in git and look at the step log."
   },
   {
    "severity": "high",
@@ -117,7 +110,7 @@
    "severity": "high",
    "area": "validators",
    "file": "raccolta/simulatore/controlla.py",
-   "problem": "validator 'simulatore' exit 1: ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.96 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.02 (eseguire --scrivi) | Esito: 2 errori, 3 avvisi",
+   "problem": "validator 'simulatore' exit 1: ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.95 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.03 (eseguire --scrivi) | Esito: 2 errori, 3 avvisi",
    "fix": "Run the validator by hand, read its output and fix the curated input it names."
   },
   {
@@ -145,7 +138,7 @@
    "severity": "medium",
    "area": "consistency",
    "file": "porti-nord.json, report/northern-europe-2026-11.md",
-   "problem": "report figure: Rotterdam port calls, 7-day mean to 30 Oct 2026, change on a year (%): report/northern-europe-2026-11.md regex 'The (−?[0-9.,]+)% in Rotterdam's latest ' = -10.8; porti-nord.json elementi[id=rotterdam].var7_anno_pct.portcalls = -4.3. difference -6.5",
+   "problem": "report figure: Rotterdam port calls, 7-day mean to 30 Oct 2026, change on a year (%): report/northern-europe-2026-11.md regex 'The (−?[0-9.,]+)% in Rotterdam's latest ' = -10.8; porti-nord.json elementi[id=rotterdam].var7_anno_pct.portcalls = -0.6. difference -10.2",
    "fix": "Correct the figure in the report (Markdown and HTML) or add a dated note that the report used an earlier reading."
   },
   {
@@ -200,22 +193,8 @@
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/navi.json",
-   "problem": "collector error: aisstream.io errore: timed out during opening handshake",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
    "file": "docs/data/notizie-testate.json",
-   "problem": "collector error: navalnews (Naval News): HTTPError: HTTP Error 503: Service Temporarily Unavailable",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
-   "file": "docs/data/notizie.json",
-   "problem": "collector error: iaea: ParseError: undefined entity: line 55, column 138",
+   "problem": "collector error: err_news (ERR News): HTTPError: HTTP Error 403: Forbidden",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -382,6 +361,13 @@
   {
    "severity": "medium",
    "area": "links",
+   "file": "docs/data/eventi.json",
+   "problem": "broken: https://www.reuters.com/world/asia-pacific/two-confirmed-dead-after-taiwan-panasonic-factory-fire-2026-11-05/ (401)",
+   "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
+  },
+  {
+   "severity": "medium",
+   "area": "links",
    "file": "docs/data/ucraina-storico.json",
    "problem": "broken: https://www.reuters.com/world/europe/ukraine-launches-drones-moscow-other-regions-russian-officials-say-2024-08-31/ (401)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
@@ -404,8 +390,15 @@
    "severity": "medium",
    "area": "schema",
    "file": "docs/data/navi.json",
-   "problem": "source fields on 'elementi': link missing in 111/111, affidabilita missing in 111/111",
+   "problem": "source fields on 'elementi': link missing in 151/151, affidabilita missing in 151/151",
    "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
+  },
+  {
+   "severity": "low",
+   "area": "consistency",
+   "file": "eolico-filiera.json, prezzi.json",
+   "problem": "BRENT on 2026-11-20: prezzi.json serie[id=brent].serie[2026-11-20] = 92.57 (2026-11-20); eolico-filiera.json prezzi_collegati.serie[2] = 89.87 (2026-11-20). 2.9% apart; different source or intraday reading (tolerance 2.5%)",
+   "fix": "Files disagree on the same fact: re-run the collector that copies the value (it read an older version) and make it read the value at run time, not from a cached copy."
   },
   {
    "severity": "low",
@@ -417,8 +410,8 @@
   {
    "severity": "low",
    "area": "links",
-   "file": "docs/data/eventi.json",
-   "problem": "failed once (re-checked tomorrow): https://www.reuters.com/world/asia-pacific/two-confirmed-dead-after-taiwan-panasonic-factory-fire-2026-11-05/ (401)",
+   "file": "docs/data/ucraina-storico.json",
+   "problem": "failed once (re-checked tomorrow): https://abcnews.com/International/wireStory/ukrainian-drone-attack-triggers-fire-russian-oil-terminal-133246913 (404)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
@@ -439,7 +432,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/aerei.json",
-   "problem": "7 warnings ('avvisi'), first: curati AE-C-20260922-16: last report 62 days old, the map will not draw it (limit 60 days)",
+   "problem": "7 warnings ('avvisi'), first: curati AE-C-20260922-16: last report 63 days old, the map will not draw it (limit 60 days)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -467,7 +460,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/stretti-dettaglio.json",
-   "problem": "4 warnings ('avvisi'), first: panama: fatto del 2026-07-23 nello stato attuale ha più di 90 giorni",
+   "problem": "18 warnings ('avvisi'), first: hormuz: stato attuale fermo al 2026-11-09 (15 giorni): da ricontrollare a mano",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -484,10 +477,10 @@
    "cadence": "manual market collections, about weekly",
    "updated": "2026-11-09",
    "newest_data_date": "2026-11-09",
-   "updated_age_days": 14,
-   "data_age_days": 14,
+   "updated_age_days": 15,
+   "data_age_days": 15,
    "status": "stale",
-   "why": "updated 14 days ago (limit 8); newest data 2026-11-09 is 14 days old (limit 8)"
+   "why": "updated 15 days ago (limit 8); newest data 2026-11-09 is 15 days old (limit 8)"
   },
   {
    "file": "report.json",
@@ -506,7 +499,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 14,
+   "fails_in_a_row": 15,
    "first_failed": "2026-11-10T13:44Z",
    "confirmed": true
   },
@@ -517,7 +510,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 13,
+   "fails_in_a_row": 14,
    "first_failed": "2026-11-11T12:40Z",
    "confirmed": true
   },
@@ -528,7 +521,7 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 11,
+   "fails_in_a_row": 12,
    "first_failed": "2026-11-13T13:05Z",
    "confirmed": true
   },
@@ -539,7 +532,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 7,
+   "fails_in_a_row": 8,
    "first_failed": "2026-11-17T14:28Z",
    "confirmed": true
   },
@@ -551,7 +544,7 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 6,
+   "fails_in_a_row": 7,
    "first_failed": "2026-11-18T13:56Z",
    "confirmed": true
   },
@@ -562,7 +555,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 5,
+   "fails_in_a_row": 6,
    "first_failed": "2026-11-19T14:19Z",
    "confirmed": true
   },
@@ -573,7 +566,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 3,
+   "fails_in_a_row": 4,
    "first_failed": "2026-11-21T13:28Z",
    "confirmed": true
   },
@@ -584,7 +577,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 2,
+   "fails_in_a_row": 3,
    "first_failed": "2026-11-22T13:27Z",
    "confirmed": true
   },
@@ -595,12 +588,43 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 1,
+   "fails_in_a_row": 2,
    "first_failed": "2026-11-23T16:00Z",
+   "confirmed": true
+  },
+  {
+   "url": "https://abcnews.com/International/wireStory/ukrainian-drone-attack-triggers-fire-russian-oil-terminal-133246913",
+   "files": [
+    "ucraina-storico.json"
+   ],
+   "code": 404,
+   "detail": "",
+   "fails_in_a_row": 1,
+   "first_failed": "2026-11-24T16:03Z",
    "confirmed": false
   }
  ],
  "mismatches": [
+  {
+   "fact": "BRENT on 2026-11-20",
+   "values": [
+    {
+     "file": "prezzi.json",
+     "path": "serie[id=brent].serie[2026-11-20]",
+     "value": 92.57,
+     "date": "2026-11-20"
+    },
+    {
+     "file": "eolico-filiera.json",
+     "path": "prezzi_collegati.serie[2]",
+     "value": 89.87,
+     "date": "2026-11-20",
+     "source": ""
+    }
+   ],
+   "severity": "low",
+   "note": "2.9% apart; different source or intraday reading (tolerance 2.5%)"
+  },
   {
    "fact": "report figure: TransMed (Mazara) share of Italian gas entries, last 12 months (%)",
    "values": [
@@ -630,12 +654,12 @@
     {
      "file": "porti-nord.json",
      "path": "elementi[id=rotterdam].var7_anno_pct.portcalls",
-     "value": -4.3,
+     "value": -0.6,
      "date": null
     }
    ],
    "severity": "medium",
-   "note": "difference -6.5"
+   "note": "difference -10.2"
   }
  ],
  "validators": [
@@ -650,8 +674,8 @@
    "validator": "simulatore",
    "script": "raccolta/simulatore/controlla.py",
    "exit": 1,
-   "seconds": 0.1,
-   "tail": "ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.96 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.02 (eseguire --scrivi) | Esito: 2 errori, 3 avvisi"
+   "seconds": 0.2,
+   "tail": "ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.95 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.03 (eseguire --scrivi) | Esito: 2 errori, 3 avvisi"
   },
   {
    "validator": "wind calendar --rigoroso (output redirected)",
@@ -665,13 +689,13 @@
    "script": "raccolta/stretti/raccogli.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "AVVISO: malacca: fatto del 2026-08-01 nello stato attuale ha più di 90 giorni | AVVISO: gibilterra: fatto del 2026-01-01 nello stato attuale ha più di 90 giorni | AVVISO: lombok-sonda: fatto del 2026-05-01 nello stato attuale ha più di 90 giorni"
+   "tail": "AVVISO: kerch: stato attuale fermo al 2026-11-09 (15 giorni): da ricontrollare a mano | AVVISO: lombok-sonda: stato attuale fermo al 2026-11-09 (15 giorni): da ricontrollare a mano | AVVISO: lombok-sonda: fatto del 2026-05-01 nello stato attuale ha più di 90 giorni"
   },
   {
    "validator": "basi-mondo --controlla",
    "script": "raccolta/basi/raccogli.py",
    "exit": 0,
-   "seconds": 0.8,
+   "seconds": 1.1,
    "tail": "AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Camp Lemonnier' (US) di fissi.json: tenuta, utilizzatore diverso | AVVISO: 'Base delle Forze di autodifesa giapponesi a Gibuti' (JP) è a 0.0 km da 'Forze francesi a Gibuti' (FR) di fissi.json: tenuta, utilizzatore diverso | basi valide: 181 su 181; errori 0, avvisi 4"
   },
   {
@@ -679,7 +703,7 @@
    "script": "raccolta/assicurazioni/raccogli.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "  [israele-giugno-2025] premio una settimana prima: 100 * 0.2 / 100 = 0.2 milioni di $ |   [israele-giugno-2025] premio durante la guerra, minimo: 100 * 0.7 / 100 = 0.7 milioni di $ |   [israele-giugno-2025] premio durante la guerra, massimo: 100 * 1 / 100 = 1 milioni di $"
+   "tail": "AVVISO: premi/mar-rosso-saudita: ultima quotazione pubblica del 2026-09-24 (61 giorni): cercarne una più recente | AVVISO: premi/mar-nero: ultima quotazione pubblica del 2026-09-23 (62 giorni): cercarne una più recente | AVVISO: premi/israele: ultima quotazione pubblica del 2025-06-17 (525 giorni): cercarne una più recente"
   },
   {
    "validator": "ai-mondo / investimenti --valida",
@@ -711,16 +735,16 @@
   }
  ],
  "counts": {
-  "aerei.json": 80,
+  "aerei.json": 75,
   "ai-mondo.json": 303,
   "ai.json": 66,
   "assicurazioni.json": 27,
-  "attacchi-analisti.json": 3734,
+  "attacchi-analisti.json": 3916,
   "attacchi-russi.json": 192,
-  "baltico-sicurezza.json": 122,
+  "baltico-sicurezza.json": 120,
   "basi-mondo.json": 181,
   "bunker-emissioni.json": 24,
-  "calendario.json": 209,
+  "calendario.json": 214,
   "cavi-incidenti.json": 14,
   "cavi.json": 714,
   "commercio.json": 38,
@@ -750,11 +774,11 @@
   "medio-oriente.json": 1434,
   "mercati.json": 1,
   "minerali.json": 25,
-  "mobili.json": 135,
-  "navi.json": 111,
+  "mobili.json": 138,
+  "navi.json": 151,
   "noli.json": 4,
-  "notizie-testate.json": 1546,
-  "notizie.json": 2161,
+  "notizie-testate.json": 1746,
+  "notizie.json": 2154,
   "nucleare.json": 167,
   "offshore-nord.json": 180,
   "paesi.json": 33,
@@ -779,6 +803,6 @@
   "wind-calendar.json": 114,
   "world.json": 1896
  },
- "report": "report/qualita/2026-11-23.md",
+ "report": "report/qualita/2026-11-24.md",
  "errors": []
 }

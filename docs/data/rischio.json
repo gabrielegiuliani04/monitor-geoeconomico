@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-23T15:59Z",
- "data_riferimento": "2026-11-23",
+ "aggiornato": "2026-11-24T16:02Z",
+ "data_riferimento": "2026-11-24",
  "metodo": "report/metodo-rischio.md",
  "nota": "Cruscotto del rischio: probabilità di disruption (1–5) × impatto (1–5) = punteggio 1–25. Ogni indicatore ha valore, soglie, stato, fonte e data. È una valutazione con regole esplicite, non una previsione: vedi il metodo per cosa il punteggio NON dice.",
  "regole": {
@@ -40,15 +40,15 @@
   },
   {
    "file": "eventi.json",
-   "aggiornato": "2026-11-23T15:40Z"
+   "aggiornato": "2026-11-24T15:45Z"
   },
   {
    "file": "gas-italia.json",
-   "aggiornato": "2026-11-23T15:23Z"
+   "aggiornato": "2026-11-24T15:29Z"
   },
   {
    "file": "gpr.json",
-   "aggiornato": "2026-11-23T15:12Z"
+   "aggiornato": "2026-11-24T15:10Z"
   },
   {
    "file": "ibrido.json",
@@ -56,11 +56,11 @@
   },
   {
    "file": "navi.json",
-   "aggiornato": "2026-11-23T15:22Z"
+   "aggiornato": "2026-11-24T15:28Z"
   },
   {
    "file": "noli.json",
-   "aggiornato": "2026-11-23T15:12Z"
+   "aggiornato": "2026-11-24T15:10Z"
   },
   {
    "file": "paesi.json",
@@ -68,19 +68,19 @@
   },
   {
    "file": "portwatch.json",
-   "aggiornato": "2026-11-23T15:12Z"
+   "aggiornato": "2026-11-24T15:10Z"
   },
   {
    "file": "prezzi.json",
-   "aggiornato": "2026-11-21T02:36Z"
+   "aggiornato": "2026-11-24T05:24Z"
   },
   {
    "file": "scorte.json",
-   "aggiornato": "2026-11-23T15:21Z"
+   "aggiornato": "2026-11-24T15:17Z"
   },
   {
    "file": "ucraina-storico.json",
-   "aggiornato": "2026-11-23T15:33Z"
+   "aggiornato": "2026-11-24T15:38Z"
   }
  ],
  "unita": [
@@ -91,14 +91,14 @@
    "lat": 26.6,
    "lon": 56.45,
    "probabilita": 5.0,
-   "impatto": 4.5,
-   "punteggio": 22.5,
+   "impatto": 4.3,
+   "punteggio": 21.5,
    "livello": "critico",
-   "tendenza": "stabile",
+   "tendenza": "in calo",
    "punteggio_7g_fa": 22.5,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
-   "regola_disruption": "Transiti, Stretto di Hormuz (media 7 gg): 2,3 navi/g contro 85,5 (media del 2025, prima della guerra): -97,3%",
+   "regola_disruption": "Transiti, Stretto di Hormuz (media 7 gg): 2,7 navi/g contro 85,5 (media del 2025, prima della guerra): -96,8%",
    "copertura": 1.0,
    "pesi_usati": {
     "probabilita": {
@@ -118,9 +118,9 @@
     {
      "nome": "Transiti, Stretto di Hormuz (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -97.33,
+     "valore": -96.83,
      "unita": "% sul riferimento",
-     "testo": "2,3 navi/g contro 85,5 (media del 2025, prima della guerra): -97,3%",
+     "testo": "2,7 navi/g contro 85,5 (media del 2025, prima della guerra): -96,8%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -131,11 +131,11 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": true,
-     "media7": 2.3,
+     "media7": 2.7,
      "riferimento": 85.5,
      "peso": 0.35,
      "punti": 5,
@@ -157,7 +157,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -196,9 +196,9 @@
     {
      "nome": "Petrolio Brent contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": -11.46,
+     "valore": -15.27,
      "unita": "% sulla media 90 gg",
-     "testo": "89,87 USD/barile contro 101,51 di media 90 gg: -11,5%",
+     "testo": "86,16 USD/barile contro 101,68 di media 90 gg: -15,3%",
      "stato": "verde",
      "soglie": {
       "verde": "meno di +5%",
@@ -208,7 +208,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.067,
@@ -219,9 +219,9 @@
     {
      "nome": "Gas TTF (Europa) contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": 8.94,
+     "valore": 10.91,
      "unita": "% sulla media 90 gg",
-     "testo": "88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%",
+     "testo": "91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%",
      "stato": "giallo",
      "soglie": {
       "verde": "meno di +5%",
@@ -231,7 +231,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.067,
@@ -380,10 +380,10 @@
     {
      "nome": "Petrolio Brent contro un anno prima",
      "gruppo": "costo",
-     "valore": 41.8,
+     "valore": 35.96,
      "unita": "% su un anno",
-     "testo": "89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)",
-     "stato": "rosso",
+     "testo": "86,16 USD/barile, +36,0% su un anno (variazione pubblicata in prezzi.json)",
+     "stato": "giallo",
      "soglie": {
       "verde": "meno di +10%",
       "giallo": "+10% / +40%",
@@ -392,20 +392,20 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.1,
-     "punti": 5,
+     "punti": 3,
      "asse": "impatto",
      "domanda": "Quanto costa già?"
     },
     {
      "nome": "Gas TTF (Europa) contro un anno prima",
      "gruppo": "costo",
-     "valore": 184.66,
+     "valore": 207.19,
      "unita": "% su un anno",
-     "testo": "88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)",
+     "testo": "91,39 EUR/MWh, +207,2% su un anno (variazione pubblicata in prezzi.json)",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di +10%",
@@ -415,7 +415,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.1,
@@ -424,10 +424,10 @@
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La disruption è già in corso (Transiti, Stretto di Hormuz (media 7 gg): 2,3 navi/g contro 85,5 (media del 2025, prima della guerra): -97,3%): per regola la probabilità è 5. L'impatto (4,5/5) è alto per «Mancanza di alternative» (4/5: gli oleodotti di aggiramento portano al massimo 5,5–7 mb/g; il GNL non ha alternative); «Peso di ciò che passa» (5/5: circa 20 mb/g di petrolio (un quarto del petrolio via mare) e il 20% del GNL mondiale nel 2025). Rispetto a 7 giorni fa il punteggio è stabile (22,5 → 22,5).",
+   "perche": "La disruption è già in corso (Transiti, Stretto di Hormuz (media 7 gg): 2,7 navi/g contro 85,5 (media del 2025, prima della guerra): -96,8%): per regola la probabilità è 5. L'impatto (4,3/5) è alto per «Mancanza di alternative» (4/5: gli oleodotti di aggiramento portano al massimo 5,5–7 mb/g; il GNL non ha alternative); «Peso di ciò che passa» (5/5: circa 20 mb/g di petrolio (un quarto del petrolio via mare) e il 20% del GNL mondiale nel 2025). Rispetto a 7 giorni fa il punteggio è in calo (22,5 → 21,5).",
    "cosa_osservare": [
     "Fine della disruption: «Transiti, Stretto di Hormuz (media 7 gg)» sopra −30% del riferimento (circa 59,8 navi/g) per due settimane di fila.",
-    "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
+    "Gas TTF (Europa) contro la media 90 gg: oggi 91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%; diventa rosso con oltre +15%.",
     "Nolo CCFI Golfo Persico/Mar Rosso: variazione settimanale: oggi 4.063 (punti indice), +3,8% sulla settimana; diventa rosso con oltre +10%.",
     "Scorte petrolifere di emergenza Italia – giorni contro la media 5 anni: 77,2 giorni equivalenti il 2026-08-01 contro 89,3 di media 5 anni: -13,5%.",
     "Strategic Petroleum Reserve (SPR) USA contro la media 5 anni: 276,4 milioni di barili il 2026-11-13 contro 429,9 di media 5 anni: -35,7%.",
@@ -465,14 +465,14 @@
    "lat": 12.6,
    "lon": 43.4,
    "probabilita": 5.0,
-   "impatto": 3.8,
-   "punteggio": 19.0,
+   "impatto": 3.4,
+   "punteggio": 17.0,
    "livello": "alto",
-   "tendenza": "stabile",
+   "tendenza": "in calo",
    "punteggio_7g_fa": 19.0,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
-   "regola_disruption": "Transiti, Bab el-Mandeb (media 7 gg): 25,6 navi/g contro 74,6 (media gen.–ott. 2023, prima degli attacchi houthi): -65,7%",
+   "regola_disruption": "Transiti, Bab el-Mandeb (media 7 gg): 27,0 navi/g contro 74,6 (media gen.–ott. 2023, prima degli attacchi houthi): -63,8%",
    "copertura": 1.0,
    "pesi_usati": {
     "probabilita": {
@@ -492,9 +492,9 @@
     {
      "nome": "Transiti, Bab el-Mandeb (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -65.72,
+     "valore": -63.8,
      "unita": "% sul riferimento",
-     "testo": "25,6 navi/g contro 74,6 (media gen.–ott. 2023, prima degli attacchi houthi): -65,7%",
+     "testo": "27,0 navi/g contro 74,6 (media gen.–ott. 2023, prima degli attacchi houthi): -63,8%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -505,11 +505,11 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": true,
-     "media7": 25.6,
+     "media7": 27.0,
      "riferimento": 74.6,
      "peso": 0.35,
      "punti": 5,
@@ -531,7 +531,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -570,9 +570,9 @@
     {
      "nome": "Petrolio Brent contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": -11.46,
+     "valore": -15.27,
      "unita": "% sulla media 90 gg",
-     "testo": "89,87 USD/barile contro 101,51 di media 90 gg: -11,5%",
+     "testo": "86,16 USD/barile contro 101,68 di media 90 gg: -15,3%",
      "stato": "verde",
      "soglie": {
       "verde": "meno di +5%",
@@ -582,7 +582,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.2,
@@ -678,10 +678,10 @@
     {
      "nome": "Petrolio Brent contro un anno prima",
      "gruppo": "costo",
-     "valore": 41.8,
+     "valore": 35.96,
      "unita": "% su un anno",
-     "testo": "89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)",
-     "stato": "rosso",
+     "testo": "86,16 USD/barile, +36,0% su un anno (variazione pubblicata in prezzi.json)",
+     "stato": "giallo",
      "soglie": {
       "verde": "meno di +10%",
       "giallo": "+10% / +40%",
@@ -690,16 +690,16 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
-     "punti": 5,
+     "punti": 3,
      "asse": "impatto",
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La disruption è già in corso (Transiti, Bab el-Mandeb (media 7 gg): 25,6 navi/g contro 74,6 (media gen.–ott. 2023, prima degli attacchi houthi): -65,7%): per regola la probabilità è 5. L'impatto (3,8/5) è alto per «Peso di ciò che passa» (4/5: 8,1 mb/g nel 2° trimestre 2026 per il greggio saudita deviato a Yanbu; con Suez circa il 12% del petrolio via mare); «Petrolio Brent contro un anno prima» (89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (19,0 → 19,0); 1 indicatori sono n.d..",
+   "perche": "La disruption è già in corso (Transiti, Bab el-Mandeb (media 7 gg): 27,0 navi/g contro 74,6 (media gen.–ott. 2023, prima degli attacchi houthi): -63,8%): per regola la probabilità è 5. L'impatto (3,4/5) è alto per «Peso di ciò che passa» (4/5: 8,1 mb/g nel 2° trimestre 2026 per il greggio saudita deviato a Yanbu; con Suez circa il 12% del petrolio via mare). Rispetto a 7 giorni fa il punteggio è in calo (19,0 → 17,0); 1 indicatori sono n.d..",
    "cosa_osservare": [
     "Fine della disruption: «Transiti, Bab el-Mandeb (media 7 gg)» sopra −30% del riferimento (circa 52,2 navi/g) per due settimane di fila.",
     "Scorte petrolifere di emergenza Italia – giorni contro la media 5 anni: 77,2 giorni equivalenti il 2026-08-01 contro 89,3 di media 5 anni: -13,5%."
@@ -732,12 +732,12 @@
    "lat": 30.05,
    "lon": 32.53,
    "probabilita": 2.4,
-   "impatto": 3.8,
-   "punteggio": 9.1,
+   "impatto": 3.4,
+   "punteggio": 8.2,
    "livello": "medio",
-   "tendenza": "stabile",
+   "tendenza": "in calo",
    "punteggio_7g_fa": 9.9,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -759,9 +759,9 @@
     {
      "nome": "Transiti, Canale di Suez (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -37.33,
+     "valore": -38.11,
      "unita": "% sul riferimento",
-     "testo": "46,1 navi/g contro 73,6 (media gen.–ott. 2023, prima degli attacchi houthi): -37,3%",
+     "testo": "45,6 navi/g contro 73,6 (media gen.–ott. 2023, prima degli attacchi houthi): -38,1%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -772,11 +772,11 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": false,
-     "media7": 46.1,
+     "media7": 45.6,
      "riferimento": 73.6,
      "peso": 0.35,
      "punti": 5,
@@ -798,7 +798,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -833,9 +833,9 @@
     {
      "nome": "Petrolio Brent contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": -11.46,
+     "valore": -15.27,
      "unita": "% sulla media 90 gg",
-     "testo": "89,87 USD/barile contro 101,51 di media 90 gg: -11,5%",
+     "testo": "86,16 USD/barile contro 101,68 di media 90 gg: -15,3%",
      "stato": "verde",
      "soglie": {
       "verde": "meno di +5%",
@@ -845,7 +845,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.2,
@@ -941,10 +941,10 @@
     {
      "nome": "Petrolio Brent contro un anno prima",
      "gruppo": "costo",
-     "valore": 41.8,
+     "valore": 35.96,
      "unita": "% su un anno",
-     "testo": "89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)",
-     "stato": "rosso",
+     "testo": "86,16 USD/barile, +36,0% su un anno (variazione pubblicata in prezzi.json)",
+     "stato": "giallo",
      "soglie": {
       "verde": "meno di +10%",
       "giallo": "+10% / +40%",
@@ -953,18 +953,18 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
-     "punti": 5,
+     "punti": 3,
      "asse": "impatto",
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (2,4/5) è spinta da «Transiti, Canale di Suez (media 7 gg)» (46,1 navi/g contro 73,6 (media gen.–ott. 2023, prima degli attacchi houthi): -37,3%). L'impatto (3,8/5) è alto per «Peso di ciò che passa» (4/5: dal 12 al 15% del commercio mondiale; principale via Asia–Mediterraneo per i porti italiani); «Petrolio Brent contro un anno prima» (89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (9,9 → 9,1); 1 indicatori sono n.d..",
+   "perche": "La probabilità (2,4/5) è spinta da «Transiti, Canale di Suez (media 7 gg)» (45,6 navi/g contro 73,6 (media gen.–ott. 2023, prima degli attacchi houthi): -38,1%). L'impatto (3,4/5) è alto per «Peso di ciò che passa» (4/5: dal 12 al 15% del commercio mondiale; principale via Asia–Mediterraneo per i porti italiani). Rispetto a 7 giorni fa il punteggio è in calo (9,9 → 8,2); 1 indicatori sono n.d..",
    "cosa_osservare": [
-    "Transiti, Canale di Suez (media 7 gg): oggi -37,3%; sotto −50% scatta la regola della disruption in corso.",
+    "Transiti, Canale di Suez (media 7 gg): oggi -38,1%; sotto −50% scatta la regola della disruption in corso.",
     "Scorte petrolifere di emergenza Italia – giorni contro la media 5 anni: 77,2 giorni equivalenti il 2026-08-01 contro 89,3 di media 5 anni: -13,5%."
    ],
    "esposti": [
@@ -997,8 +997,8 @@
    "punteggio": 2.7,
    "livello": "basso",
    "tendenza": "stabile",
-   "punteggio_7g_fa": 3.5,
-   "data_7g_fa": "2026-11-16",
+   "punteggio_7g_fa": 3.2,
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -1020,9 +1020,9 @@
     {
      "nome": "Transiti, Canale di Panama (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -5.29,
+     "valore": -6.73,
      "unita": "% sul riferimento",
-     "testo": "28,1 navi/g contro 29,7 (stessi 7 giorni di un anno prima): -5,3%",
+     "testo": "27,7 navi/g contro 29,7 (stessi 7 giorni di un anno prima): -6,7%",
      "stato": "verde",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -1033,11 +1033,11 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": false,
-     "media7": 28.1,
+     "media7": 27.7,
      "riferimento": 29.7,
      "peso": 0.35,
      "punti": 1,
@@ -1059,7 +1059,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -1094,9 +1094,9 @@
     {
      "nome": "Gas Henry Hub (USA) contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": 25.81,
+     "valore": 16.66,
      "unita": "% sulla media 90 gg",
-     "testo": "3,79 USD/MMBtu contro 3,01 di media 90 gg: +25,8%",
+     "testo": "3,53 USD/MMBtu contro 3,03 di media 90 gg: +16,7%",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di +5%",
@@ -1106,7 +1106,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/NG%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.1,
@@ -1209,9 +1209,9 @@
     {
      "nome": "Gas Henry Hub (USA) contro un anno prima",
      "gruppo": "costo",
-     "valore": -15.27,
+     "valore": -22.33,
      "unita": "% su un anno",
-     "testo": "3,79 USD/MMBtu, -15,3% su un anno (variazione pubblicata in prezzi.json)",
+     "testo": "3,53 USD/MMBtu, -22,3% su un anno (variazione pubblicata in prezzi.json)",
      "stato": "verde",
      "soglie": {
       "verde": "meno di +10%",
@@ -1221,7 +1221,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/NG%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
@@ -1230,7 +1230,7 @@
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (1,7/5) è spinta da «Gas Henry Hub (USA) contro la media 90 gg» (3,79 USD/MMBtu contro 3,01 di media 90 gg: +25,8%) e da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto è contenuto (1,6/5): nessuna voce di impatto è in rosso. Rispetto a 7 giorni fa il punteggio è stabile (3,5 → 2,7).",
+   "perche": "La probabilità (1,7/5) è spinta da «Gas Henry Hub (USA) contro la media 90 gg» (3,53 USD/MMBtu contro 3,03 di media 90 gg: +16,7%) e da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto è contenuto (1,6/5): nessuna voce di impatto è in rosso. Rispetto a 7 giorni fa il punteggio è stabile (3,2 → 2,7).",
    "cosa_osservare": [
     "Rischio geopolitico globale (GPR giornaliero, media 30 gg): oggi media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00); diventa rosso con ×1,5 o più."
    ],
@@ -1258,12 +1258,12 @@
    "lat": 2.6,
    "lon": 101.2,
    "probabilita": 2.5,
-   "impatto": 3.5,
-   "punteggio": 8.8,
+   "impatto": 3.1,
+   "punteggio": 7.8,
    "livello": "medio",
-   "tendenza": "stabile",
+   "tendenza": "in calo",
    "punteggio_7g_fa": 8.8,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -1285,9 +1285,9 @@
     {
      "nome": "Transiti, Stretto di Malacca (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -6.83,
+     "valore": -8.7,
      "unita": "% sul riferimento",
-     "testo": "229,9 navi/g contro 246,7 (stessi 7 giorni di un anno prima): -6,8%",
+     "testo": "219,0 navi/g contro 239,9 (stessi 7 giorni di un anno prima): -8,7%",
      "stato": "verde",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -1298,12 +1298,12 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": false,
-     "media7": 229.9,
-     "riferimento": 246.7,
+     "media7": 219.0,
+     "riferimento": 239.9,
      "peso": 0.35,
      "punti": 1,
      "asse": "probabilita",
@@ -1324,7 +1324,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -1363,9 +1363,9 @@
     {
      "nome": "Petrolio Brent contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": -11.46,
+     "valore": -15.27,
      "unita": "% sulla media 90 gg",
-     "testo": "89,87 USD/barile contro 101,51 di media 90 gg: -11,5%",
+     "testo": "86,16 USD/barile contro 101,68 di media 90 gg: -15,3%",
      "stato": "verde",
      "soglie": {
       "verde": "meno di +5%",
@@ -1375,7 +1375,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.1,
@@ -1478,10 +1478,10 @@
     {
      "nome": "Petrolio Brent contro un anno prima",
      "gruppo": "costo",
-     "valore": 41.8,
+     "valore": 35.96,
      "unita": "% su un anno",
-     "testo": "89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)",
-     "stato": "rosso",
+     "testo": "86,16 USD/barile, +36,0% su un anno (variazione pubblicata in prezzi.json)",
+     "stato": "giallo",
      "soglie": {
       "verde": "meno di +10%",
       "giallo": "+10% / +40%",
@@ -1490,16 +1490,16 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
-     "punti": 5,
+     "punti": 3,
      "asse": "impatto",
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (2,5/5) è spinta da «Eventi entro 150 km (ultimi 30 gg)» (3 eventi: 2026-11-10 Robbery: Salsa; 2026-11-04 Robbery: APJ Priti 2; 2026-11-02 Robbery: Star Calypso) e da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto (3,5/5) è alto per «Peso di ciò che passa» (4/5: 23,2 mb/g di petrolio (29% del petrolio via mare); con lo Stretto di Taiwan quasi metà del commercio via mare); «Petrolio Brent contro un anno prima» (89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (8,8 → 8,8).",
+   "perche": "La probabilità (2,5/5) è spinta da «Eventi entro 150 km (ultimi 30 gg)» (3 eventi: 2026-11-10 Robbery: Salsa; 2026-11-04 Robbery: APJ Priti 2; 2026-11-02 Robbery: Star Calypso) e da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto (3,1/5) è alto per «Peso di ciò che passa» (4/5: 23,2 mb/g di petrolio (29% del petrolio via mare); con lo Stretto di Taiwan quasi metà del commercio via mare). Rispetto a 7 giorni fa il punteggio è in calo (8,8 → 7,8).",
    "cosa_osservare": [
     "Rischio geopolitico globale (GPR giornaliero, media 30 gg): oggi media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00); diventa rosso con ×1,5 o più.",
     "Scorte petrolifere di emergenza Italia – giorni contro la media 5 anni: 77,2 giorni equivalenti il 2026-08-01 contro 89,3 di media 5 anni: -13,5%."
@@ -1527,15 +1527,15 @@
    "tipo": "passaggio",
    "lat": 41.1,
    "lon": 29.06,
-   "probabilita": 5.0,
-   "impatto": 3.3,
-   "punteggio": 16.5,
-   "livello": "alto",
-   "tendenza": "stabile",
+   "probabilita": 3.6,
+   "impatto": 3.0,
+   "punteggio": 10.8,
+   "livello": "medio",
+   "tendenza": "in calo",
    "punteggio_7g_fa": 16.5,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
-   "regola_disruption": "Transiti, Bosforo (media 7 gg): 48,6 navi/g contro 103,0 (stessi 7 giorni di un anno prima): -52,8%",
+   "regola_disruption": null,
    "copertura": 1.0,
    "pesi_usati": {
     "probabilita": {
@@ -1555,9 +1555,9 @@
     {
      "nome": "Transiti, Bosforo (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -52.84,
+     "valore": -48.34,
      "unita": "% sul riferimento",
-     "testo": "48,6 navi/g contro 103,0 (stessi 7 giorni di un anno prima): -52,8%",
+     "testo": "49,0 navi/g contro 94,9 (stessi 7 giorni di un anno prima): -48,3%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -1568,12 +1568,12 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
-     "disruption": true,
-     "media7": 48.6,
-     "riferimento": 103.0,
+     "disruption": false,
+     "media7": 49.0,
+     "riferimento": 94.9,
      "peso": 0.35,
      "punti": 5,
      "asse": "probabilita",
@@ -1594,7 +1594,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -1656,9 +1656,9 @@
     {
      "nome": "Petrolio Brent contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": -11.46,
+     "valore": -15.27,
      "unita": "% sulla media 90 gg",
-     "testo": "89,87 USD/barile contro 101,51 di media 90 gg: -11,5%",
+     "testo": "86,16 USD/barile contro 101,68 di media 90 gg: -15,3%",
      "stato": "verde",
      "soglie": {
       "verde": "meno di +5%",
@@ -1668,7 +1668,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.2,
@@ -1771,10 +1771,10 @@
     {
      "nome": "Petrolio Brent contro un anno prima",
      "gruppo": "costo",
-     "valore": 41.8,
+     "valore": 35.96,
      "unita": "% su un anno",
-     "testo": "89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)",
-     "stato": "rosso",
+     "testo": "86,16 USD/barile, +36,0% su un anno (variazione pubblicata in prezzi.json)",
+     "stato": "giallo",
      "soglie": {
       "verde": "meno di +10%",
       "giallo": "+10% / +40%",
@@ -1783,18 +1783,18 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
-     "punti": 5,
+     "punti": 3,
      "asse": "impatto",
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La disruption è già in corso (Transiti, Bosforo (media 7 gg): 48,6 navi/g contro 103,0 (stessi 7 giorni di un anno prima): -52,8%): per regola la probabilità è 5. L'impatto (3,3/5) è alto per «Mancanza di alternative» (4/5: per il greggio CPC non c'è un'alternativa vera); «Petrolio Brent contro un anno prima» (89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (16,5 → 16,5).",
+   "perche": "La probabilità (3,6/5) è spinta da «Transiti, Bosforo (media 7 gg)» (49,0 navi/g contro 94,9 (stessi 7 giorni di un anno prima): -48,3%) e da «Eventi entro 150 km (ultimi 30 gg)» (10 eventi: 2026-11-08 Rete elettrica, Odesa; 2026-11-07 Nave colpita, Mar Nero; 2026-11-06 Raffineria di Afipsky). L'impatto (3,0/5) è alto per «Mancanza di alternative» (4/5: per il greggio CPC non c'è un'alternativa vera). Rispetto a 7 giorni fa il punteggio è in calo (16,5 → 10,8).",
    "cosa_osservare": [
-    "Fine della disruption: «Transiti, Bosforo (media 7 gg)» sopra −30% del riferimento (circa 72,1 navi/g) per due settimane di fila.",
+    "Transiti, Bosforo (media 7 gg): oggi -48,3%; sotto −50% scatta la regola della disruption in corso.",
     "Scorte petrolifere di emergenza Italia – giorni contro la media 5 anni: 77,2 giorni equivalenti il 2026-08-01 contro 89,3 di media 5 anni: -13,5%.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json)."
    ],
@@ -1829,8 +1829,8 @@
    "punteggio": 10.9,
    "livello": "medio",
    "tendenza": "in aumento",
-   "punteggio_7g_fa": 5.1,
-   "data_7g_fa": "2026-11-16",
+   "punteggio_7g_fa": 5.5,
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -1852,9 +1852,9 @@
     {
      "nome": "Transiti, Stretto di Gibilterra (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -11.27,
+     "valore": -12.09,
      "unita": "% sul riferimento",
-     "testo": "123,7 navi/g contro 139,4 (stessi 7 giorni di un anno prima): -11,3%",
+     "testo": "125,7 navi/g contro 143,0 (stessi 7 giorni di un anno prima): -12,1%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -1865,12 +1865,12 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": false,
-     "media7": 123.7,
-     "riferimento": 139.4,
+     "media7": 125.7,
+     "riferimento": 143.0,
      "peso": 0.35,
      "punti": 3,
      "asse": "probabilita",
@@ -1891,7 +1891,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -1926,9 +1926,9 @@
     {
      "nome": "Gas TTF (Europa) contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": 8.94,
+     "valore": 10.91,
      "unita": "% sulla media 90 gg",
-     "testo": "88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%",
+     "testo": "91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%",
      "stato": "giallo",
      "soglie": {
       "verde": "meno di +5%",
@@ -1938,7 +1938,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.1,
@@ -2020,7 +2020,7 @@
      "gruppo": "scorte",
      "valore": -6.5,
      "unita": "% sulla media 5 anni",
-     "testo": "85,5 % il 2026-11-21 contro 91,5 di media 5 anni: -6,5%",
+     "testo": "85,3 % il 2026-11-22 contro 91,2 di media 5 anni: -6,5%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -2030,7 +2030,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.25,
@@ -2041,9 +2041,9 @@
     {
      "nome": "Gas TTF (Europa) contro un anno prima",
      "gruppo": "costo",
-     "valore": 184.66,
+     "valore": 207.19,
      "unita": "% su un anno",
-     "testo": "88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)",
+     "testo": "91,39 EUR/MWh, +207,2% su un anno (variazione pubblicata in prezzi.json)",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di +10%",
@@ -2053,7 +2053,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
@@ -2062,12 +2062,12 @@
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (2,6/5) è spinta da «Transiti, Stretto di Gibilterra (media 7 gg)» (123,7 navi/g contro 139,4 (stessi 7 giorni di un anno prima): -11,3%) e da «Nolo Cina–Mediterraneo (FBX13): variazione settimanale» (5.162 (USD per container da 40 piedi), +20,2% sulla settimana). L'impatto (4,2/5) è alto per «Peso di ciò che passa» (4/5: 132–135 transiti al giorno; porta del GNL statunitense che ha sostituito quello qatarino in Italia); «Mancanza di alternative» (5/5: nessuna alternativa marittima per il Mediterraneo occidentale). Rispetto a 7 giorni fa il punteggio è in aumento (5,1 → 10,9).",
+   "perche": "La probabilità (2,6/5) è spinta da «Transiti, Stretto di Gibilterra (media 7 gg)» (125,7 navi/g contro 143,0 (stessi 7 giorni di un anno prima): -12,1%) e da «Nolo Cina–Mediterraneo (FBX13): variazione settimanale» (5.162 (USD per container da 40 piedi), +20,2% sulla settimana). L'impatto (4,2/5) è alto per «Peso di ciò che passa» (4/5: 132–135 transiti al giorno; porta del GNL statunitense che ha sostituito quello qatarino in Italia); «Mancanza di alternative» (5/5: nessuna alternativa marittima per il Mediterraneo occidentale). Rispetto a 7 giorni fa il punteggio è in aumento (5,5 → 10,9).",
    "cosa_osservare": [
-    "Transiti, Stretto di Gibilterra (media 7 gg): oggi -11,3%; sotto −50% scatta la regola della disruption in corso.",
+    "Transiti, Stretto di Gibilterra (media 7 gg): oggi -12,1%; sotto −50% scatta la regola della disruption in corso.",
     "Rischio geopolitico globale (GPR giornaliero, media 30 gg): oggi media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00); diventa rosso con ×1,5 o più.",
-    "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,5 % il 2026-11-21 contro 91,5 di media 5 anni: -6,5%."
+    "Gas TTF (Europa) contro la media 90 gg: oggi 91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%; diventa rosso con oltre +15%.",
+    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,3 % il 2026-11-22 contro 91,2 di media 5 anni: -6,5%."
    ],
    "esposti": [
     "Italia e Spagna: GNL atlantico e container",
@@ -2093,12 +2093,12 @@
    "lat": 55.5,
    "lon": 11.3,
    "probabilita": 2.3,
-   "impatto": 3.6,
-   "punteggio": 8.3,
+   "impatto": 3.2,
+   "punteggio": 7.4,
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 8.3,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -2120,9 +2120,9 @@
     {
      "nome": "Transiti, Stretti danesi (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -16.62,
+     "valore": -19.76,
      "unita": "% sul riferimento",
-     "testo": "38,7 navi/g contro 46,4 (stessi 7 giorni di un anno prima): -16,6%",
+     "testo": "37,7 navi/g contro 47,0 (stessi 7 giorni di un anno prima): -19,8%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -2133,12 +2133,12 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": false,
-     "media7": 38.7,
-     "riferimento": 46.4,
+     "media7": 37.7,
+     "riferimento": 47.0,
      "peso": 0.35,
      "punti": 3,
      "asse": "probabilita",
@@ -2159,7 +2159,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -2171,9 +2171,9 @@
     {
      "nome": "Petroliere sanzionate o della flotta ombra viste ora nel Baltico (AIS)",
      "gruppo": "minaccia",
-     "valore": 42,
+     "valore": 40,
      "unita": "navi",
-     "testo": "42 navi nella fotografia AIS di oggi",
+     "testo": "40 navi nella fotografia AIS di oggi",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di 10",
@@ -2183,7 +2183,7 @@
      "fonte": "Digitraffic (Fintraffic), aisstream.io; incrocio con liste sanzioni",
      "link": "https://www.digitraffic.fi/",
      "file": "navi.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Fotografia di un momento, non una media; copertura buona solo nel Golfo di Finlandia. Le soglie sono una valutazione da ricalibrare con lo storico. Rischio: ancore trascinate su cavi e condotte.",
      "peso": 0.15,
@@ -2217,9 +2217,9 @@
     {
      "nome": "Petrolio Brent contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": -11.46,
+     "valore": -15.27,
      "unita": "% sulla media 90 gg",
-     "testo": "89,87 USD/barile contro 101,51 di media 90 gg: -11,5%",
+     "testo": "86,16 USD/barile contro 101,68 di media 90 gg: -15,3%",
      "stato": "verde",
      "soglie": {
       "verde": "meno di +5%",
@@ -2229,7 +2229,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.2,
@@ -2332,10 +2332,10 @@
     {
      "nome": "Petrolio Brent contro un anno prima",
      "gruppo": "costo",
-     "valore": 41.8,
+     "valore": 35.96,
      "unita": "% su un anno",
-     "testo": "89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)",
-     "stato": "rosso",
+     "testo": "86,16 USD/barile, +36,0% su un anno (variazione pubblicata in prezzi.json)",
+     "stato": "giallo",
      "soglie": {
       "verde": "meno di +10%",
       "giallo": "+10% / +40%",
@@ -2344,18 +2344,18 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
-     "punti": 5,
+     "punti": 3,
      "asse": "impatto",
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (2,3/5) è spinta da «Transiti, Stretti danesi (media 7 gg)» (38,7 navi/g contro 46,4 (stessi 7 giorni di un anno prima): -16,6%) e da «Petroliere sanzionate o della flotta ombra viste ora nel Baltico (AIS)» (42 navi nella fotografia AIS di oggi). L'impatto (3,6/5) è alto per «Mancanza di alternative» (4/5: il petrolio russo del Baltico non ha alternative marittime); «Petrolio Brent contro un anno prima» (89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (8,3 → 8,3).",
+   "perche": "La probabilità (2,3/5) è spinta da «Transiti, Stretti danesi (media 7 gg)» (37,7 navi/g contro 47,0 (stessi 7 giorni di un anno prima): -19,8%) e da «Petroliere sanzionate o della flotta ombra viste ora nel Baltico (AIS)» (40 navi nella fotografia AIS di oggi). L'impatto (3,2/5) è alto per «Mancanza di alternative» (4/5: il petrolio russo del Baltico non ha alternative marittime); «Strategic Petroleum Reserve (SPR) USA contro la media 5 anni» (276,4 milioni di barili il 2026-11-13 contro 429,9 di media 5 anni: -35,7%). Rispetto a 7 giorni fa il punteggio è stabile (8,3 → 7,4).",
    "cosa_osservare": [
-    "Transiti, Stretti danesi (media 7 gg): oggi -16,6%; sotto −50% scatta la regola della disruption in corso.",
+    "Transiti, Stretti danesi (media 7 gg): oggi -19,8%; sotto −50% scatta la regola della disruption in corso.",
     "Strategic Petroleum Reserve (SPR) USA contro la media 5 anni: 276,4 milioni di barili il 2026-11-13 contro 429,9 di media 5 anni: -35,7%.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json)."
    ],
@@ -2390,7 +2390,7 @@
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 6.2,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 0.78,
@@ -2410,9 +2410,9 @@
     {
      "nome": "Transiti, Stretto di Taiwan (media 7 gg)",
      "gruppo": "flussi",
-     "valore": 2.25,
+     "valore": 5.53,
      "unita": "% sul riferimento",
-     "testo": "220,9 navi/g contro 216,0 (stessi 7 giorni di un anno prima): +2,2%",
+     "testo": "223,4 navi/g contro 211,7 (stessi 7 giorni di un anno prima): +5,5%",
      "stato": "verde",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -2423,12 +2423,12 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": false,
-     "media7": 220.9,
-     "riferimento": 216.0,
+     "media7": 223.4,
+     "riferimento": 211.7,
      "peso": 0.35,
      "punti": 1,
      "asse": "probabilita",
@@ -2449,7 +2449,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -2475,7 +2475,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -2626,13 +2626,13 @@
    "tipo": "passaggio",
    "lat": -34.36,
    "lon": 18.47,
-   "probabilita": 1.3,
-   "impatto": 3.2,
-   "punteggio": 4.2,
+   "probabilita": 2.0,
+   "impatto": 2.8,
+   "punteggio": 5.6,
    "livello": "basso",
-   "tendenza": "stabile",
+   "tendenza": "in aumento",
    "punteggio_7g_fa": 4.2,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -2654,10 +2654,10 @@
     {
      "nome": "Transiti, Capo di Buona Speranza (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -7.89,
+     "valore": -24.05,
      "unita": "% sul riferimento",
-     "testo": "75,0 navi/g contro 81,4 (stessi 7 giorni di un anno prima): -7,9%",
-     "stato": "verde",
+     "testo": "68,6 navi/g contro 90,3 (stessi 7 giorni di un anno prima): -24,1%",
+     "stato": "giallo",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
       "giallo": "tra −10% e −30%",
@@ -2667,14 +2667,14 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": false,
-     "media7": 75.0,
-     "riferimento": 81.4,
+     "media7": 68.6,
+     "riferimento": 90.3,
      "peso": 0.35,
-     "punti": 1,
+     "punti": 3,
      "asse": "probabilita",
      "domanda": "I flussi calano?"
     },
@@ -2693,7 +2693,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -2728,9 +2728,9 @@
     {
      "nome": "Petrolio Brent contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": -11.46,
+     "valore": -15.27,
      "unita": "% sulla media 90 gg",
-     "testo": "89,87 USD/barile contro 101,51 di media 90 gg: -11,5%",
+     "testo": "86,16 USD/barile contro 101,68 di media 90 gg: -15,3%",
      "stato": "verde",
      "soglie": {
       "verde": "meno di +5%",
@@ -2740,7 +2740,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.1,
@@ -2843,10 +2843,10 @@
     {
      "nome": "Petrolio Brent contro un anno prima",
      "gruppo": "costo",
-     "valore": 41.8,
+     "valore": 35.96,
      "unita": "% su un anno",
-     "testo": "89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)",
-     "stato": "rosso",
+     "testo": "86,16 USD/barile, +36,0% su un anno (variazione pubblicata in prezzi.json)",
+     "stato": "giallo",
      "soglie": {
       "verde": "meno di +10%",
       "giallo": "+10% / +40%",
@@ -2855,17 +2855,18 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/BZ%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
-     "punti": 5,
+     "punti": 3,
      "asse": "impatto",
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (1,3/5) è spinta da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto (3,2/5) è alto per «Petrolio Brent contro un anno prima» (89,87 USD/barile, +41,8% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (4,2 → 4,2).",
+   "perche": "La probabilità (2,0/5) è spinta da «Transiti, Capo di Buona Speranza (media 7 gg)» (68,6 navi/g contro 90,3 (stessi 7 giorni di un anno prima): -24,1%) e da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto è contenuto (2,8/5): nessuna voce di impatto è in rosso. Rispetto a 7 giorni fa il punteggio è in aumento (4,2 → 5,6).",
    "cosa_osservare": [
+    "Transiti, Capo di Buona Speranza (media 7 gg): oggi -24,1%; sotto −50% scatta la regola della disruption in corso.",
     "Rischio geopolitico globale (GPR giornaliero, media 30 gg): oggi media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00); diventa rosso con ×1,5 o più.",
     "Scorte petrolifere di emergenza Italia – giorni contro la media 5 anni: 77,2 giorni equivalenti il 2026-08-01 contro 89,3 di media 5 anni: -13,5%."
    ],
@@ -2897,8 +2898,8 @@
    "punteggio": 6.8,
    "livello": "medio",
    "tendenza": "in aumento",
-   "punteggio_7g_fa": 4.8,
-   "data_7g_fa": "2026-11-16",
+   "punteggio_7g_fa": 5.2,
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -2920,9 +2921,9 @@
     {
      "nome": "Gas da Mazara e Gela (media 7 gg)",
      "gruppo": "flussi",
-     "valore": 13.77,
+     "valore": 14.93,
      "unita": "% sulla media annua",
-     "testo": "704,5 GWh/g contro una media annua di 619,2: +13,8%",
+     "testo": "711,6 GWh/g contro una media annua di 619,2: +14,9%",
      "stato": "verde",
      "soglie": {
       "verde": "≥ −10% sulla media annua",
@@ -2933,11 +2934,11 @@
      "fonte": "ENTSOG Transparency Platform (dati Snam Rete Gas)",
      "link": "https://transparency.entsog.eu/",
      "file": "gas-italia.json",
-     "data": "2026-11-22",
+     "data": "2026-11-23",
      "tipo": "dato",
      "nota": "A settembre 2026 il TransMed scese a circa −37% senza causa documentata.",
      "disruption": false,
-     "media7": 704.5,
+     "media7": 711.6,
      "peso": 0.35,
      "punti": 1,
      "asse": "probabilita",
@@ -2958,7 +2959,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -2982,7 +2983,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -3016,9 +3017,9 @@
     {
      "nome": "Gas TTF (Europa) contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": 8.94,
+     "valore": 10.91,
      "unita": "% sulla media 90 gg",
-     "testo": "88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%",
+     "testo": "91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%",
      "stato": "giallo",
      "soglie": {
       "verde": "meno di +5%",
@@ -3028,7 +3029,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.2,
@@ -3087,7 +3088,7 @@
      "gruppo": "scorte",
      "valore": -6.5,
      "unita": "% sulla media 5 anni",
-     "testo": "85,5 % il 2026-11-21 contro 91,5 di media 5 anni: -6,5%",
+     "testo": "85,3 % il 2026-11-22 contro 91,2 di media 5 anni: -6,5%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -3097,7 +3098,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.25,
@@ -3108,9 +3109,9 @@
     {
      "nome": "Gas TTF (Europa) contro un anno prima",
      "gruppo": "costo",
-     "valore": 184.66,
+     "valore": 207.19,
      "unita": "% su un anno",
-     "testo": "88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)",
+     "testo": "91,39 EUR/MWh, +207,2% su un anno (variazione pubblicata in prezzi.json)",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di +10%",
@@ -3120,7 +3121,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
@@ -3129,11 +3130,11 @@
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (1,7/5) è spinta da «Gas TTF (Europa) contro la media 90 gg» (88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%) e da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto (4,0/5) è alto per «Peso di ciò che passa» (4/5: un terzo del gas italiano (TransMed), 29 cavi dati, il futuro ELMED); «Mancanza di alternative» (4/5: il gas algerino non ha un'altra via verso l'Italia: l'alternativa è altro GNL). Rispetto a 7 giorni fa il punteggio è in aumento (4,8 → 6,8).",
+   "perche": "La probabilità (1,7/5) è spinta da «Gas TTF (Europa) contro la media 90 gg» (91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%) e da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto (4,0/5) è alto per «Peso di ciò che passa» (4/5: un terzo del gas italiano (TransMed), 29 cavi dati, il futuro ELMED); «Mancanza di alternative» (4/5: il gas algerino non ha un'altra via verso l'Italia: l'alternativa è altro GNL). Rispetto a 7 giorni fa il punteggio è in aumento (5,2 → 6,8).",
    "cosa_osservare": [
     "Rischio geopolitico globale (GPR giornaliero, media 30 gg): oggi media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00); diventa rosso con ×1,5 o più.",
-    "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,5 % il 2026-11-21 contro 91,5 di media 5 anni: -6,5%."
+    "Gas TTF (Europa) contro la media 90 gg: oggi 91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%; diventa rosso con oltre +15%.",
+    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,3 % il 2026-11-22 contro 91,2 di media 5 anni: -6,5%."
    ],
    "esposti": [
     "Italia: gas, cavi dati (Mazara, Palermo, Catania)",
@@ -3166,9 +3167,9 @@
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 9.5,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
-   "regola_disruption": "Transiti, Stretto di Kerch (media 7 gg): 0,4 navi/g contro 12,7 (stessi 7 giorni di un anno prima): -96,6%",
+   "regola_disruption": "Transiti, Stretto di Kerch (media 7 gg): 0,1 navi/g contro 23,4 (stessi 7 giorni di un anno prima): -99,4%",
    "copertura": 0.8,
    "pesi_usati": {
     "probabilita": {
@@ -3186,9 +3187,9 @@
     {
      "nome": "Transiti, Stretto di Kerch (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -96.63,
+     "valore": -99.39,
      "unita": "% sul riferimento",
-     "testo": "0,4 navi/g contro 12,7 (stessi 7 giorni di un anno prima): -96,6%",
+     "testo": "0,1 navi/g contro 23,4 (stessi 7 giorni di un anno prima): -99,4%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -3199,12 +3200,12 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": true,
-     "media7": 0.4,
-     "riferimento": 12.7,
+     "media7": 0.1,
+     "riferimento": 23.4,
      "peso": 0.438,
      "punti": 5,
      "asse": "probabilita",
@@ -3225,7 +3226,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -3350,9 +3351,9 @@
      "domanda": "Quanto cuscinetto c'è?"
     }
    ],
-   "perche": "La disruption è già in corso (Transiti, Stretto di Kerch (media 7 gg): 0,4 navi/g contro 12,7 (stessi 7 giorni di un anno prima): -96,6%): per regola la probabilità è 5. L'impatto è contenuto (1,9/5): nessuna voce di impatto è in rosso. Rispetto a 7 giorni fa il punteggio è stabile (9,5 → 9,5).",
+   "perche": "La disruption è già in corso (Transiti, Stretto di Kerch (media 7 gg): 0,1 navi/g contro 23,4 (stessi 7 giorni di un anno prima): -99,4%): per regola la probabilità è 5. L'impatto è contenuto (1,9/5): nessuna voce di impatto è in rosso. Rispetto a 7 giorni fa il punteggio è stabile (9,5 → 9,5).",
    "cosa_osservare": [
-    "Fine della disruption: «Transiti, Stretto di Kerch (media 7 gg)» sopra −30% del riferimento (circa 8,9 navi/g) per due settimane di fila.",
+    "Fine della disruption: «Transiti, Stretto di Kerch (media 7 gg)» sopra −30% del riferimento (circa 16,4 navi/g) per due settimane di fila.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json)."
    ],
    "esposti": [
@@ -3381,8 +3382,8 @@
    "punteggio": 7.3,
    "livello": "medio",
    "tendenza": "in aumento",
-   "punteggio_7g_fa": 5.3,
-   "data_7g_fa": "2026-11-16",
+   "punteggio_7g_fa": 5.6,
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -3404,9 +3405,9 @@
     {
      "nome": "Gas TransMed a Mazara del Vallo (media 7 gg)",
      "gruppo": "flussi",
-     "valore": 9.1,
+     "valore": 9.52,
      "unita": "% sulla media annua",
-     "testo": "661,3 GWh/g contro una media annua di 606,2: +9,1%",
+     "testo": "663,7 GWh/g contro una media annua di 606,1: +9,5%",
      "stato": "verde",
      "soglie": {
       "verde": "≥ −10% sulla media annua",
@@ -3417,11 +3418,11 @@
      "fonte": "ENTSOG Transparency Platform (dati Snam Rete Gas)",
      "link": "https://transparency.entsog.eu/",
      "file": "gas-italia.json",
-     "data": "2026-11-22",
+     "data": "2026-11-23",
      "tipo": "dato",
      "nota": "A settembre 2026 il TransMed scese a circa −37% senza causa documentata.",
      "disruption": false,
-     "media7": 661.3,
+     "media7": 663.7,
      "peso": 0.35,
      "punti": 1,
      "asse": "probabilita",
@@ -3442,7 +3443,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -3466,7 +3467,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -3500,9 +3501,9 @@
     {
      "nome": "Gas TTF (Europa) contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": 8.94,
+     "valore": 10.91,
      "unita": "% sulla media 90 gg",
-     "testo": "88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%",
+     "testo": "91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%",
      "stato": "giallo",
      "soglie": {
       "verde": "meno di +5%",
@@ -3512,7 +3513,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.2,
@@ -3548,7 +3549,7 @@
      "gruppo": "peso",
      "valore": 34.4,
      "unita": "%",
-     "testo": "34,4% degli ingressi da gasdotti e GNL (222,0 TWh)",
+     "testo": "34,4% degli ingressi da gasdotti e GNL (221,9 TWh)",
      "stato": "rosso",
      "soglie": {
       "verde": "meno del 10%",
@@ -3558,7 +3559,7 @@
      "fonte": "ENTSOG Transparency Platform (dati Snam)",
      "link": "https://transparency.entsog.eu/",
      "file": "gas-italia.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "",
      "peso": 0.175,
@@ -3594,7 +3595,7 @@
      "gruppo": "scorte",
      "valore": -6.5,
      "unita": "% sulla media 5 anni",
-     "testo": "85,5 % il 2026-11-21 contro 91,5 di media 5 anni: -6,5%",
+     "testo": "85,3 % il 2026-11-22 contro 91,2 di media 5 anni: -6,5%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -3604,7 +3605,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.25,
@@ -3615,9 +3616,9 @@
     {
      "nome": "Gas TTF (Europa) contro un anno prima",
      "gruppo": "costo",
-     "valore": 184.66,
+     "valore": 207.19,
      "unita": "% su un anno",
-     "testo": "88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)",
+     "testo": "91,39 EUR/MWh, +207,2% su un anno (variazione pubblicata in prezzi.json)",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di +10%",
@@ -3627,7 +3628,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
@@ -3636,11 +3637,11 @@
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (1,7/5) è spinta da «Gas TTF (Europa) contro la media 90 gg» (88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%) e da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto (4,3/5) è alto per «Mancanza di alternative» (4/5: solo più GNL, limitato dalla capacità dei rigassificatori (21,8 Mt/a)); «Gas TTF (Europa) contro un anno prima» (88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è in aumento (5,3 → 7,3).",
+   "perche": "La probabilità (1,7/5) è spinta da «Gas TTF (Europa) contro la media 90 gg» (91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%) e da «Rischio geopolitico globale (GPR giornaliero, media 30 gg)» (media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00)). L'impatto (4,3/5) è alto per «Mancanza di alternative» (4/5: solo più GNL, limitato dalla capacità dei rigassificatori (21,8 Mt/a)); «Gas TTF (Europa) contro un anno prima» (91,39 EUR/MWh, +207,2% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è in aumento (5,6 → 7,3).",
    "cosa_osservare": [
     "Rischio geopolitico globale (GPR giornaliero, media 30 gg): oggi media 30 gg 143,6 contro 143,4 di media 5 anni (×1,00); diventa rosso con ×1,5 o più.",
-    "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,5 % il 2026-11-21 contro 91,5 di media 5 anni: -6,5%.",
+    "Gas TTF (Europa) contro la media 90 gg: oggi 91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%; diventa rosso con oltre +15%.",
+    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,3 % il 2026-11-22 contro 91,2 di media 5 anni: -6,5%.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json).",
     "Scenari a 3 mesi: oggi i segnali sono più coerenti con lo scenario «Flussi regolari, inverno caro» (raccolta/rischio/scenari.json)."
    ],
@@ -3675,8 +3676,8 @@
    "punteggio": 10.5,
    "livello": "medio",
    "tendenza": "in aumento",
-   "punteggio_7g_fa": 8.3,
-   "data_7g_fa": "2026-11-16",
+   "punteggio_7g_fa": 9.0,
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 1.0,
@@ -3698,9 +3699,9 @@
     {
      "nome": "Transiti, Stretti danesi (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -16.62,
+     "valore": -19.76,
      "unita": "% sul riferimento",
-     "testo": "38,7 navi/g contro 46,4 (stessi 7 giorni di un anno prima): -16,6%",
+     "testo": "37,7 navi/g contro 47,0 (stessi 7 giorni di un anno prima): -19,8%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -3711,12 +3712,12 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": false,
-     "media7": 38.7,
-     "riferimento": 46.4,
+     "media7": 37.7,
+     "riferimento": 47.0,
      "peso": 0.35,
      "punti": 3,
      "asse": "probabilita",
@@ -3737,7 +3738,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [],
@@ -3761,7 +3762,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.1,
@@ -3772,9 +3773,9 @@
     {
      "nome": "Petroliere sanzionate o della flotta ombra viste ora nel Baltico (AIS)",
      "gruppo": "minaccia",
-     "valore": 42,
+     "valore": 40,
      "unita": "navi",
-     "testo": "42 navi nella fotografia AIS di oggi",
+     "testo": "40 navi nella fotografia AIS di oggi",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di 10",
@@ -3784,7 +3785,7 @@
      "fonte": "Digitraffic (Fintraffic), aisstream.io; incrocio con liste sanzioni",
      "link": "https://www.digitraffic.fi/",
      "file": "navi.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Fotografia di un momento, non una media; copertura buona solo nel Golfo di Finlandia. Le soglie sono una valutazione da ricalibrare con lo storico. Rischio: ancore trascinate su cavi e condotte.",
      "peso": 0.1,
@@ -3818,9 +3819,9 @@
     {
      "nome": "Gas TTF (Europa) contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": 8.94,
+     "valore": 10.91,
      "unita": "% sulla media 90 gg",
-     "testo": "88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%",
+     "testo": "91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%",
      "stato": "giallo",
      "soglie": {
       "verde": "meno di +5%",
@@ -3830,7 +3831,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.2,
@@ -3887,9 +3888,9 @@
     {
      "nome": "Stoccaggi gas Germania – riempimento contro la media 5 anni",
      "gruppo": "scorte",
-     "valore": -34.9,
+     "valore": -34.7,
      "unita": "% sulla media 5 anni",
-     "testo": "56,6 % il 2026-11-21 contro 86,9 di media 5 anni: -34,9%",
+     "testo": "56,5 % il 2026-11-22 contro 86,5 di media 5 anni: -34,7%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -3899,7 +3900,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.25,
@@ -3926,9 +3927,9 @@
     {
      "nome": "Gas TTF (Europa) contro un anno prima",
      "gruppo": "costo",
-     "valore": 184.66,
+     "valore": 207.19,
      "unita": "% su un anno",
-     "testo": "88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)",
+     "testo": "91,39 EUR/MWh, +207,2% su un anno (variazione pubblicata in prezzi.json)",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di +10%",
@@ -3938,7 +3939,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
@@ -3947,12 +3948,12 @@
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La probabilità (2,7/5) è spinta da «Transiti, Stretti danesi (media 7 gg)» (38,7 navi/g contro 46,4 (stessi 7 giorni di un anno prima): -16,6%) e da «Gas TTF (Europa) contro la media 90 gg» (88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%). L'impatto (3,9/5) è alto per «Stoccaggi gas Germania – riempimento contro la media 5 anni» (56,6 % il 2026-11-21 contro 86,9 di media 5 anni: -34,9%); «Gas TTF (Europa) contro un anno prima» (88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è in aumento (8,3 → 10,5); 1 indicatori sono n.d..",
+   "perche": "La probabilità (2,7/5) è spinta da «Transiti, Stretti danesi (media 7 gg)» (37,7 navi/g contro 47,0 (stessi 7 giorni di un anno prima): -19,8%) e da «Gas TTF (Europa) contro la media 90 gg» (91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%). L'impatto (3,9/5) è alto per «Stoccaggi gas Germania – riempimento contro la media 5 anni» (56,5 % il 2026-11-22 contro 86,5 di media 5 anni: -34,7%); «Gas TTF (Europa) contro un anno prima» (91,39 EUR/MWh, +207,2% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è in aumento (9,0 → 10,5); 1 indicatori sono n.d..",
    "cosa_osservare": [
-    "Transiti, Stretti danesi (media 7 gg): oggi -16,6%; sotto −50% scatta la regola della disruption in corso.",
+    "Transiti, Stretti danesi (media 7 gg): oggi -19,8%; sotto −50% scatta la regola della disruption in corso.",
     "Incidenti a cavi e condotte sottomarine (ultimi 12 mesi): oggi 1 incidente: 2025-12-31 Golfo di Finlandia: cavi Elisa e Arelion Helsinki-Tallinn…; diventa rosso con 2 o più.",
-    "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Germania – riempimento contro la media 5 anni: 56,6 % il 2026-11-21 contro 86,9 di media 5 anni: -34,9%.",
+    "Gas TTF (Europa) contro la media 90 gg: oggi 91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%; diventa rosso con oltre +15%.",
+    "Stoccaggi gas Germania – riempimento contro la media 5 anni: 56,5 % il 2026-11-22 contro 86,5 di media 5 anni: -34,7%.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json).",
     "Scenari a 3 mesi: oggi i segnali sono più coerenti con lo scenario «Pressione ibrida senza danni gravi» (raccolta/rischio/scenari.json)."
    ],
@@ -3990,9 +3991,9 @@
    "livello": "alto",
    "tendenza": "stabile",
    "punteggio_7g_fa": 18.0,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
-   "regola_disruption": "Portacontainer, Bab el-Mandeb (media 7 gg): 4,4 portacontainer/g contro 21,3 (stessa settimana del 2023, prima degli attacchi houthi): -79,3%",
+   "regola_disruption": "Portacontainer, Bab el-Mandeb (media 7 gg): 5,3 portacontainer/g contro 18,3 (stessa settimana del 2023, prima degli attacchi houthi): -71,0%",
    "copertura": 0.78,
    "pesi_usati": {
     "probabilita": {
@@ -4010,9 +4011,9 @@
     {
      "nome": "Portacontainer, Bab el-Mandeb (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -79.3,
+     "valore": -71.0,
      "unita": "% sul riferimento",
-     "testo": "4,4 portacontainer/g contro 21,3 (stessa settimana del 2023, prima degli attacchi houthi): -79,3%",
+     "testo": "5,3 portacontainer/g contro 18,3 (stessa settimana del 2023, prima degli attacchi houthi): -71,0%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −10%",
@@ -4023,7 +4024,7 @@
      "fonte": "IMF PortWatch",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Valore già calcolato nel file (nessuna serie per tipo): nello storico ricostruito resta uguale.",
      "disruption": true,
@@ -4035,10 +4036,10 @@
     {
      "nome": "Portacontainer, Canale di Suez (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -36.8,
+     "valore": -24.0,
      "unita": "% sul riferimento",
-     "testo": "13,9 portacontainer/g contro 22,0 (stessa settimana del 2023, prima degli attacchi houthi): -36,8%",
-     "stato": "rosso",
+     "testo": "14,9 portacontainer/g contro 19,6 (stessa settimana del 2023, prima degli attacchi houthi): -24,0%",
+     "stato": "giallo",
      "soglie": {
       "verde": "≥ −10%",
       "giallo": "tra −10% e −30%",
@@ -4048,12 +4049,12 @@
      "fonte": "IMF PortWatch",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Valore già calcolato nel file (nessuna serie per tipo): nello storico ricostruito resta uguale.",
      "disruption": false,
      "peso": 0.175,
-     "punti": 5,
+     "punti": 3,
      "asse": "probabilita",
      "domanda": "I flussi calano?"
     },
@@ -4072,7 +4073,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -4100,7 +4101,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -4240,10 +4241,10 @@
      "domanda": "Ci sono alternative?"
     }
    ],
-   "perche": "La disruption è già in corso (Portacontainer, Bab el-Mandeb (media 7 gg): 4,4 portacontainer/g contro 21,3 (stessa settimana del 2023, prima degli attacchi houthi): -79,3%): per regola la probabilità è 5. L'impatto (3,6/5) è alto per «Peso di ciò che passa» (4/5: 12–15% del commercio mondiale; tutti i 6 cavi attivi Italia–Asia passano dal Mar Rosso). Rispetto a 7 giorni fa il punteggio è stabile (18,0 → 18,0); 1 indicatori sono n.d..",
+   "perche": "La disruption è già in corso (Portacontainer, Bab el-Mandeb (media 7 gg): 5,3 portacontainer/g contro 18,3 (stessa settimana del 2023, prima degli attacchi houthi): -71,0%): per regola la probabilità è 5. L'impatto (3,6/5) è alto per «Peso di ciò che passa» (4/5: 12–15% del commercio mondiale; tutti i 6 cavi attivi Italia–Asia passano dal Mar Rosso). Rispetto a 7 giorni fa il punteggio è stabile (18,0 → 18,0); 1 indicatori sono n.d..",
    "cosa_osservare": [
     "Fine della disruption: «Portacontainer, Bab el-Mandeb (media 7 gg)» sopra −30% del riferimento per due settimane di fila.",
-    "Portacontainer, Canale di Suez (media 7 gg): oggi -36,8%; sotto −50% scatta la regola della disruption in corso.",
+    "Portacontainer, Canale di Suez (media 7 gg): oggi -24,0%; sotto −50% scatta la regola della disruption in corso.",
     "Scenari a 3 mesi: oggi i segnali sono più coerenti con lo scenario «Ritorno graduale sotto minaccia» (raccolta/rischio/scenari.json)."
    ],
    "esposti": [
@@ -4276,9 +4277,9 @@
    "livello": "critico",
    "tendenza": "stabile",
    "punteggio_7g_fa": 24.0,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
-   "regola_disruption": "Petroliere e metaniere, Stretto di Hormuz (media 7 gg): 0,4 navi/g contro 48,2 (media del 2025, prima della guerra): -99,1%",
+   "regola_disruption": "Petroliere e metaniere, Stretto di Hormuz (media 7 gg): 0,3 navi/g contro 48,2 (media del 2025, prima della guerra): -99,4%",
    "copertura": 1.0,
    "pesi_usati": {
     "probabilita": {
@@ -4298,9 +4299,9 @@
     {
      "nome": "Petroliere e metaniere, Stretto di Hormuz (media 7 gg)",
      "gruppo": "flussi",
-     "valore": -99.11,
+     "valore": -99.41,
      "unita": "% sul riferimento",
-     "testo": "0,4 navi/g contro 48,2 (media del 2025, prima della guerra): -99,1%",
+     "testo": "0,3 navi/g contro 48,2 (media del 2025, prima della guerra): -99,4%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -4311,11 +4312,11 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": true,
-     "media7": 0.4,
+     "media7": 0.3,
      "riferimento": 48.2,
      "peso": 0.35,
      "punti": 5,
@@ -4337,7 +4338,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -4376,9 +4377,9 @@
     {
      "nome": "Gas TTF (Europa) contro la media 90 gg",
      "gruppo": "mercato",
-     "valore": 8.94,
+     "valore": 10.91,
      "unita": "% sulla media 90 gg",
-     "testo": "88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%",
+     "testo": "91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%",
      "stato": "giallo",
      "soglie": {
       "verde": "meno di +5%",
@@ -4388,7 +4389,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Segnale anticipatore: il mercato prezza un rischio nuovo. Future più vicino, non prezzo ufficiale.",
      "peso": 0.2,
@@ -4470,7 +4471,7 @@
      "gruppo": "scorte",
      "valore": -6.5,
      "unita": "% sulla media 5 anni",
-     "testo": "85,5 % il 2026-11-21 contro 91,5 di media 5 anni: -6,5%",
+     "testo": "85,3 % il 2026-11-22 contro 91,2 di media 5 anni: -6,5%",
      "stato": "giallo",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -4480,7 +4481,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.125,
@@ -4491,9 +4492,9 @@
     {
      "nome": "Stoccaggi gas Germania – riempimento contro la media 5 anni",
      "gruppo": "scorte",
-     "valore": -34.9,
+     "valore": -34.7,
      "unita": "% sulla media 5 anni",
-     "testo": "56,6 % il 2026-11-21 contro 86,9 di media 5 anni: -34,9%",
+     "testo": "56,5 % il 2026-11-22 contro 86,5 di media 5 anni: -34,7%",
      "stato": "rosso",
      "soglie": {
       "verde": "≥ −5% sulla media 5 anni",
@@ -4503,7 +4504,7 @@
      "fonte": "GIE AGSI+",
      "link": "https://agsi.gie.eu/",
      "file": "scorte.json",
-     "data": "2026-11-21",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Obiettivo UE 90% fra 1 ottobre e 1 dicembre (con deroghe).",
      "peso": 0.125,
@@ -4530,9 +4531,9 @@
     {
      "nome": "Gas TTF (Europa) contro un anno prima",
      "gruppo": "costo",
-     "valore": 184.66,
+     "valore": 207.19,
      "unita": "% su un anno",
-     "testo": "88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)",
+     "testo": "91,39 EUR/MWh, +207,2% su un anno (variazione pubblicata in prezzi.json)",
      "stato": "rosso",
      "soglie": {
       "verde": "meno di +10%",
@@ -4542,7 +4543,7 @@
      "fonte": "Yahoo Finance",
      "link": "https://finance.yahoo.com/quote/TTF%3DF",
      "file": "prezzi.json",
-     "data": "2026-11-20",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il costo che famiglie e imprese pagano già. Variazione a 1 anno letta dal campo 'var.1a' (la serie pubblicata copre solo circa 3 mesi): nello storico ricostruito resta uguale.",
      "peso": 0.2,
@@ -4551,12 +4552,12 @@
      "domanda": "Quanto costa già?"
     }
    ],
-   "perche": "La disruption è già in corso (Petroliere e metaniere, Stretto di Hormuz (media 7 gg): 0,4 navi/g contro 48,2 (media del 2025, prima della guerra): -99,1%): per regola la probabilità è 5. L'impatto (4,8/5) è alto per «Mancanza di alternative» (5/5: nessuna: solo il gasdotto Dolphin verso Emirati e Oman, con poca capacità libera); «Gas TTF (Europa) contro un anno prima» (88,70 EUR/MWh, +184,7% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (24,0 → 24,0); 1 indicatori sono n.d..",
+   "perche": "La disruption è già in corso (Petroliere e metaniere, Stretto di Hormuz (media 7 gg): 0,3 navi/g contro 48,2 (media del 2025, prima della guerra): -99,4%): per regola la probabilità è 5. L'impatto (4,8/5) è alto per «Mancanza di alternative» (5/5: nessuna: solo il gasdotto Dolphin verso Emirati e Oman, con poca capacità libera); «Gas TTF (Europa) contro un anno prima» (91,39 EUR/MWh, +207,2% su un anno (variazione pubblicata in prezzi.json)). Rispetto a 7 giorni fa il punteggio è stabile (24,0 → 24,0); 1 indicatori sono n.d..",
    "cosa_osservare": [
     "Fine della disruption: «Petroliere e metaniere, Stretto di Hormuz (media 7 gg)» sopra −30% del riferimento (circa 33,7 navi/g) per due settimane di fila.",
-    "Gas TTF (Europa) contro la media 90 gg: oggi 88,70 EUR/MWh contro 81,42 di media 90 gg: +8,9%; diventa rosso con oltre +15%.",
-    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,5 % il 2026-11-21 contro 91,5 di media 5 anni: -6,5%.",
-    "Stoccaggi gas Germania – riempimento contro la media 5 anni: 56,6 % il 2026-11-21 contro 86,9 di media 5 anni: -34,9%.",
+    "Gas TTF (Europa) contro la media 90 gg: oggi 91,39 EUR/MWh contro 82,40 di media 90 gg: +10,9%; diventa rosso con oltre +15%.",
+    "Stoccaggi gas Italia – riempimento contro la media 5 anni: 85,3 % il 2026-11-22 contro 91,2 di media 5 anni: -6,5%.",
+    "Stoccaggi gas Germania – riempimento contro la media 5 anni: 56,5 % il 2026-11-22 contro 86,5 di media 5 anni: -34,7%.",
     "In agenda il 2026-12-17: Consiglio europeo, Bruxelles (17-18 dicembre) (calendario.json)."
    ],
    "esposti": [
@@ -4592,7 +4593,7 @@
    "livello": "medio",
    "tendenza": "in calo",
    "punteggio_7g_fa": 10.9,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 0.5,
@@ -4645,7 +4646,7 @@
      "fonte": "Ondate curate dall'agente UCRAINA (DiXi Group, Ukrenergo, stampa)",
      "link": "",
      "file": "ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Elenco curato a mano: dipende dall'aggiornamento dell'agente.",
      "peso": 0.222,
@@ -4668,7 +4669,7 @@
      "fonte": "Agenzie, DTEK, Ukrenergo, OSINT",
      "link": "",
      "file": "eventi.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Il file degli eventi copre una finestra recente: il conteggio è un minimo.",
      "peso": 0.222,
@@ -4804,7 +4805,7 @@
    "livello": "medio",
    "tendenza": "stabile",
    "punteggio_7g_fa": 8.0,
-   "data_7g_fa": "2026-11-16",
+   "data_7g_fa": "2026-11-17",
    "storico_ricostruito": false,
    "regola_disruption": null,
    "copertura": 0.78,
@@ -4824,9 +4825,9 @@
     {
      "nome": "Transiti, Stretto di Taiwan (media 7 gg)",
      "gruppo": "flussi",
-     "valore": 2.25,
+     "valore": 5.53,
      "unita": "% sul riferimento",
-     "testo": "220,9 navi/g contro 216,0 (stessi 7 giorni di un anno prima): +2,2%",
+     "testo": "223,4 navi/g contro 211,7 (stessi 7 giorni di un anno prima): +5,5%",
      "stato": "verde",
      "soglie": {
       "verde": "≥ −10% sul riferimento",
@@ -4837,12 +4838,12 @@
      "fonte": "IMF PortWatch (FMI e Università di Oxford), dati AIS",
      "link": "https://portwatch.imf.org/",
      "file": "portwatch.json",
-     "data": "2026-11-15",
+     "data": "2026-11-22",
      "tipo": "dato",
      "nota": "Conta solo le navi con l'AIS acceso; dati con circa una settimana di ritardo.",
      "disruption": false,
-     "media7": 220.9,
-     "riferimento": 216.0,
+     "media7": 223.4,
+     "riferimento": 211.7,
      "peso": 0.35,
      "punti": 1,
      "asse": "probabilita",
@@ -4863,7 +4864,7 @@
      "fonte": "UKMTO, CENTCOM, agenzie, OSINT (affidabilità alta o media)",
      "link": "",
      "file": "eventi.json, ibrido.json, ucraina-storico.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Esclusi eventi ad affidabilità bassa, esercitazioni, falsi allarmi. I file degli eventi coprono finestre recenti: un conteggio basso può voler dire poca raccolta.",
      "ids": [
@@ -4889,7 +4890,7 @@
      "fonte": "Stampa e operatori, curati dall'agente CAVI",
      "link": "",
      "file": "cavi-incidenti.json",
-     "data": "2026-11-23",
+     "data": "2026-11-24",
      "tipo": "dato",
      "nota": "Raggio 300 km. La causa è spesso solo un'ipotesi: un guasto naturale conta come un sabotaggio.",
      "peso": 0.15,
@@ -5052,21 +5053,21 @@
       {
        "descrizione": "Hormuz sotto 10 navi al giorno (PortWatch, media 7 gg)",
        "metrica": "transiti.hormuz.media7",
-       "valore": 2.3,
+       "valore": 2.7,
        "condizione": "< 10",
        "attivo": true
       },
       {
        "descrizione": "Brent tra 90 e 115 $",
        "metrica": "prezzo.brent",
-       "valore": 89.87,
+       "valore": 86.16,
        "condizione": "tra [90, 115]",
        "attivo": false
       },
       {
        "descrizione": "TTF tra 75 e 105 €/MWh",
        "metrica": "prezzo.ttf",
-       "valore": 88.7,
+       "valore": 91.39,
        "condizione": "tra [75, 105]",
        "attivo": true
       },
@@ -5090,35 +5091,35 @@
       {
        "descrizione": "Hormuz sotto 5 navi al giorno",
        "metrica": "transiti.hormuz.media7",
-       "valore": 2.3,
+       "valore": 2.7,
        "condizione": "< 5",
        "attivo": true
       },
       {
        "descrizione": "Bab el-Mandeb sotto 20 navi al giorno",
        "metrica": "transiti.bab.media7",
-       "valore": 25.6,
+       "valore": 27.0,
        "condizione": "< 20",
        "attivo": false
       },
       {
        "descrizione": "Suez sotto 35 navi al giorno",
        "metrica": "transiti.suez.media7",
-       "valore": 46.1,
+       "valore": 45.6,
        "condizione": "< 35",
        "attivo": false
       },
       {
        "descrizione": "Brent sopra 118,35 $",
        "metrica": "prezzo.brent",
-       "valore": 89.87,
+       "valore": 86.16,
        "condizione": "> 118.35",
        "attivo": false
       },
       {
        "descrizione": "TTF sopra 103,94 €/MWh",
        "metrica": "prezzo.ttf",
-       "valore": 88.7,
+       "valore": 91.39,
        "condizione": "> 103.94",
        "attivo": false
       },
@@ -5142,21 +5143,21 @@
       {
        "descrizione": "Hormuz sopra 20 navi al giorno",
        "metrica": "transiti.hormuz.media7",
-       "valore": 2.3,
+       "valore": 2.7,
        "condizione": "> 20",
        "attivo": false
       },
       {
        "descrizione": "Brent sotto 85 $",
        "metrica": "prezzo.brent",
-       "valore": 89.87,
+       "valore": 86.16,
        "condizione": "< 85",
        "attivo": false
       },
       {
        "descrizione": "TTF sotto 70 €/MWh",
        "metrica": "prezzo.ttf",
-       "valore": 88.7,
+       "valore": 91.39,
        "condizione": "< 70",
        "attivo": false
       },
@@ -5187,14 +5188,14 @@
       {
        "descrizione": "Suez tra 40 e 50 navi al giorno",
        "metrica": "transiti.suez.media7",
-       "valore": 46.1,
+       "valore": 45.6,
        "condizione": "tra [40, 50]",
        "attivo": true
       },
       {
        "descrizione": "Bab el-Mandeb tra 25 e 35 navi al giorno",
        "metrica": "transiti.bab.media7",
-       "valore": 25.6,
+       "valore": 27.0,
        "condizione": "tra [25, 35]",
        "attivo": true
       },
@@ -5232,14 +5233,14 @@
       {
        "descrizione": "Bab el-Mandeb sotto 20 navi al giorno",
        "metrica": "transiti.bab.media7",
-       "valore": 25.6,
+       "valore": 27.0,
        "condizione": "< 20",
        "attivo": false
       },
       {
        "descrizione": "Suez sotto 35 navi al giorno",
        "metrica": "transiti.suez.media7",
-       "valore": 46.1,
+       "valore": 45.6,
        "condizione": "< 35",
        "attivo": false
       },
@@ -5270,14 +5271,14 @@
       {
        "descrizione": "Suez sopra 50 navi al giorno",
        "metrica": "transiti.suez.media7",
-       "valore": 46.1,
+       "valore": 45.6,
        "condizione": "> 50",
        "attivo": false
       },
       {
        "descrizione": "Bab el-Mandeb sopra 35 navi al giorno",
        "metrica": "transiti.bab.media7",
-       "valore": 25.6,
+       "valore": 27.0,
        "condizione": "> 35",
        "attivo": false
       },
@@ -5322,14 +5323,14 @@
       {
        "descrizione": "Flotta ombra visibile tra 20 e 60 petroliere",
        "metrica": "navi.flotta_ombra_baltico",
-       "valore": 42,
+       "valore": 40,
        "condizione": "tra [20, 60]",
        "attivo": true
       },
       {
        "descrizione": "Stretti danesi tra −30% e −10% su un anno",
        "metrica": "transiti.danesi.var_anno",
-       "valore": -16.62,
+       "valore": -19.76,
        "condizione": "tra [-30, -10]",
        "attivo": true
       }
@@ -5360,14 +5361,14 @@
       {
        "descrizione": "Flotta ombra visibile oltre 60 petroliere",
        "metrica": "navi.flotta_ombra_baltico",
-       "valore": 42,
+       "valore": 40,
        "condizione": "> 60",
        "attivo": false
       },
       {
        "descrizione": "Stretti danesi sotto −30% su un anno",
        "metrica": "transiti.danesi.var_anno",
-       "valore": -16.62,
+       "valore": -19.76,
        "condizione": "< -30",
        "attivo": false
       }
@@ -5384,7 +5385,7 @@
       {
        "descrizione": "Flotta ombra visibile sotto 20 petroliere",
        "metrica": "navi.flotta_ombra_baltico",
-       "valore": 42,
+       "valore": 40,
        "condizione": "< 20",
        "attivo": false
       },
@@ -5398,7 +5399,7 @@
       {
        "descrizione": "Stretti danesi sopra −10% su un anno",
        "metrica": "transiti.danesi.var_anno",
-       "valore": -16.62,
+       "valore": -19.76,
        "condizione": "> -10",
        "attivo": false
       }
@@ -5422,7 +5423,7 @@
       {
        "descrizione": "Mazara tra 550 e 700 GWh/g (media 7 gg)",
        "metrica": "gas.mazara.media7",
-       "valore": 661.3,
+       "valore": 663.7,
        "condizione": "tra [550, 700]",
        "attivo": true
       },
@@ -5436,7 +5437,7 @@
       {
        "descrizione": "TTF tra 75 e 105 €/MWh",
        "metrica": "prezzo.ttf",
-       "valore": 88.7,
+       "valore": 91.39,
        "condizione": "tra [75, 105]",
        "attivo": true
       }
@@ -5453,7 +5454,7 @@
       {
        "descrizione": "Mazara sotto 420 GWh/g (media 7 gg)",
        "metrica": "gas.mazara.media7",
-       "valore": 661.3,
+       "valore": 663.7,
        "condizione": "< 420",
        "attivo": false
       },
@@ -5467,7 +5468,7 @@
       {
        "descrizione": "TTF sopra 103,94 €/MWh",
        "metrica": "prezzo.ttf",
-       "valore": 88.7,
+       "valore": 91.39,
        "condizione": "> 103.94",
        "attivo": false
       },
@@ -5498,7 +5499,7 @@
       {
        "descrizione": "Mazara sopra 650 GWh/g (media 7 gg)",
        "metrica": "gas.mazara.media7",
-       "valore": 661.3,
+       "valore": 663.7,
        "condizione": "> 650",
        "attivo": true
       },
@@ -5512,7 +5513,7 @@
       {
        "descrizione": "TTF sotto 70 €/MWh",
        "metrica": "prezzo.ttf",
-       "valore": 88.7,
+       "valore": 91.39,
        "condizione": "< 70",
        "attivo": false
       }

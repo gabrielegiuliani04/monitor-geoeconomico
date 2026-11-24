@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-23T15:59Z",
- "riferimento": "2026-11-23",
+ "aggiornato": "2026-11-24T16:02Z",
+ "riferimento": "2026-11-24",
  "fonti": [
   {
    "nome": "RWE Thor project site",
@@ -282,7 +282,7 @@
    "nome": "offshoreWIND.biz RSS (candidate items only)",
    "link": "https://www.offshorewind.biz/feed",
    "licenza": "(c) Navingo/offshoreWIND.biz: headlines and links only",
-   "data_dato": "2026-11-23"
+   "data_dato": "2026-11-24"
   }
  ],
  "nota": "Offshore wind milestone calendar for the North Sea and the Baltic (GB, NL, BE, DE, DK, NO, SE, FI, PL, LT, LV, EE, FR, EU), 2023-2027 with later anchors. Curated items with source, link and source date; null = not found, never estimated. 'status' is curated (done/scheduled/at risk); 'status_effective' adds 'unconfirmed' when a scheduled date has passed without confirmation. Reliability high/medium/low = alta/media/bassa. 'precision' tells how exact the date is. 'candidati_rss' are suggestions from the offshoreWIND.biz feed, NOT verified items.",
@@ -322,8 +322,8 @@
    "SE": 5
   },
   "next_90_days": {
-   "from": "2026-11-23",
-   "to": "2027-02-21",
+   "from": "2026-11-24",
+   "to": "2027-02-22",
    "items": [
     {
      "id": "WC-PL-GDANSK-T5",
@@ -500,8 +500,8 @@
    ]
   },
   "last_90_days": {
-   "from": "2026-08-25",
-   "to": "2026-11-23",
+   "from": "2026-08-26",
+   "to": "2026-11-24",
    "items": [
     {
      "id": "WC-DE-BR3-COD",
@@ -787,7 +787,7 @@
     "project": "Bornholm offshore wind farms: joint DK-DE tender launch",
     "capacity_mw": 3000,
     "status_effective": "unconfirmed",
-    "days_overdue": 146
+    "days_overdue": 147
    },
    {
     "id": "WC-SE-SUPPORT",
@@ -798,7 +798,7 @@
     "project": "Swedish state-led tender and support system",
     "capacity_mw": null,
     "status_effective": "unconfirmed",
-    "days_overdue": 145
+    "days_overdue": 146
    },
    {
     "id": "WC-DE-HEDREIHT-FULL",
@@ -809,7 +809,7 @@
     "project": "He Dreiht: full 960 MW",
     "capacity_mw": 960,
     "status_effective": "unconfirmed",
-    "days_overdue": 23
+    "days_overdue": 24
    },
    {
     "id": "WC-FR-AO10-BIDS",
@@ -820,7 +820,7 @@
     "project": "AO10 bid deadline",
     "capacity_mw": 10000,
     "status_effective": "unconfirmed",
-    "days_overdue": 42
+    "days_overdue": 43
    }
   ],
   "needs_recheck": [
@@ -1919,7 +1919,7 @@
    "precision": "half",
    "period_start": "2026-01-01",
    "period_end": "2026-06-30",
-   "days_overdue": 146,
+   "days_overdue": 147,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2351,7 +2351,7 @@
    "precision": "day",
    "period_start": "2026-07-01",
    "period_end": "2026-07-01",
-   "days_overdue": 145,
+   "days_overdue": 146,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2675,7 +2675,7 @@
    "precision": "month",
    "period_start": "2026-10-01",
    "period_end": "2026-10-31",
-   "days_overdue": 23,
+   "days_overdue": 24,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -2741,7 +2741,7 @@
    "precision": "day",
    "period_start": "2026-10-12",
    "period_end": "2026-10-12",
-   "days_overdue": 42,
+   "days_overdue": 43,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -3489,8 +3489,46 @@
   }
  ],
  "candidati_rss": {
-  "stato": "ok: 50 RSS items read, 17 candidates",
+  "stato": "ok: 50 RSS items read, 16 candidates",
   "candidati": [
+   {
+    "title": "NKT Starts Power Cable Production for IJmuiden Ver Beta Offshore Wind Grid Connection",
+    "date": "2026-11-24",
+    "link": "https://www.offshorewind.biz/2026/11/24/nkt-starts-power-cable-production-for-ijmuiden-ver-beta-offshore-wind-grid-connection",
+    "possible_duplicate_of": [],
+    "suggested_type": "grid",
+    "matched_types": [
+     "grid"
+    ],
+    "scope_terms": [
+     "tennet",
+     "ijmuiden"
+    ],
+    "related_calendar_projects": [],
+    "excerpt": "NKT has begun production of the high-voltage direct current (HVDC) power cable systems for TenneT’s IJmuiden Ver Beta offshore grid connection...",
+    "action": "review manually; add to calendario_voci.json only with a primary source"
+   },
+   {
+    "title": "Buss Terminal Starts Handling Nordseecluster B, OranjeWind Offshore Wind Components",
+    "date": "2026-11-24",
+    "link": "https://www.offshorewind.biz/2026/11/24/buss-terminal-starts-handling-nordseecluster-b-oranjewind-offshore-wind-components",
+    "possible_duplicate_of": [],
+    "suggested_type": "policy",
+    "matched_types": [
+     "policy"
+    ],
+    "scope_terms": [
+     "netherlands",
+     "germany",
+     "nordseecluster",
+     "oranjewind"
+    ],
+    "related_calendar_projects": [
+     "oranjewind"
+    ],
+    "excerpt": "Buss Terminal Eemshaven in the Netherlands has begun marshalling operations for Germany's 900 MW Nordseecluster B offshore wind farm and the...",
+    "action": "review manually; add to calendario_voci.json only with a primary source"
+   },
    {
     "title": "First Monopile Batch for Nordseecluster B Arrives in Eemshaven",
     "date": "2026-11-23",
@@ -3731,61 +3769,6 @@
     ],
     "related_calendar_projects": [],
     "excerpt": "Finland could launch its first tender for offshore wind development in its exclusive economic zone (EEZ) in the first half of 2027, following the...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "Seaway7 Kicks Off Cable Installation Work at Ørsted's Hornsea 3",
-    "date": "2026-11-12",
-    "link": "https://www.offshorewind.biz/2026/11/12/seaway7-kicks-off-cable-installation-work-at-orsteds-hornsea-3",
-    "possible_duplicate_of": [],
-    "suggested_type": "construction",
-    "matched_types": [
-     "construction"
-    ],
-    "scope_terms": [
-     "uk",
-     "hornsea"
-    ],
-    "related_calendar_projects": [
-     "hornsea 3"
-    ],
-    "excerpt": "Seaway7 has begun installing inter-array cables at Ørsted's Hornsea 3 offshore wind farm site in the UK. The company will install 500 kilometres...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "Six Oyster Hubs Installed at Ecowende Offshore Wind Farm",
-    "date": "2026-11-12",
-    "link": "https://www.offshorewind.biz/2026/11/12/six-oyster-hubs-installed-at-ecowende-offshore-wind-farm",
-    "possible_duplicate_of": [],
-    "suggested_type": "construction",
-    "matched_types": [
-     "construction"
-    ],
-    "scope_terms": [
-     "north sea",
-     "dutch",
-     "ecowende"
-    ],
-    "related_calendar_projects": [
-     "ecowende"
-    ],
-    "excerpt": "Six offshore oyster hubs have been installed at the 760 MW Ecowende offshore wind farm in the Dutch North Sea, as part of an initiative to help...",
-    "action": "review manually; add to calendario_voci.json only with a primary source"
-   },
-   {
-    "title": "Cadeler Secures Turbine and Foundation Installation Work on Large UK Offshore Wind Farm",
-    "date": "2026-11-12",
-    "link": "https://www.offshorewind.biz/2026/11/12/cadeler-secures-turbine-and-foundation-installation-work-on-large-uk-offshore-wind-farm",
-    "possible_duplicate_of": [],
-    "suggested_type": "construction",
-    "matched_types": [
-     "construction"
-    ],
-    "scope_terms": [
-     "uk"
-    ],
-    "related_calendar_projects": [],
-    "excerpt": "Cadeler has signed an exclusivity agreement for the installation of foundations and wind turbines on a large-scale offshore wind farm in the UK,...",
     "action": "review manually; add to calendario_voci.json only with a primary source"
    }
   ]
