@@ -1,6 +1,6 @@
 {
- "aggiornato": "2026-11-25T15:31Z",
- "riferimento": "2026-11-25",
+ "aggiornato": "2026-11-26T14:50Z",
+ "riferimento": "2026-11-26",
  "fonti": [
   {
    "nome": "RWE Thor project site",
@@ -282,7 +282,7 @@
    "nome": "offshoreWIND.biz RSS (candidate items only)",
    "link": "https://www.offshorewind.biz/feed",
    "licenza": "(c) Navingo/offshoreWIND.biz: headlines and links only",
-   "data_dato": "2026-11-25"
+   "data_dato": "2026-11-26"
   }
  ],
  "nota": "Offshore wind milestone calendar for the North Sea and the Baltic (GB, NL, BE, DE, DK, NO, SE, FI, PL, LT, LV, EE, FR, EU), 2023-2027 with later anchors. Curated items with source, link and source date; null = not found, never estimated. 'status' is curated (done/scheduled/at risk); 'status_effective' adds 'unconfirmed' when a scheduled date has passed without confirmation. Reliability high/medium/low = alta/media/bassa. 'precision' tells how exact the date is. 'candidati_rss' are suggestions from the offshoreWIND.biz feed, NOT verified items.",
@@ -322,8 +322,8 @@
    "SE": 5
   },
   "next_90_days": {
-   "from": "2026-11-25",
-   "to": "2027-02-23",
+   "from": "2026-11-26",
+   "to": "2027-02-24",
    "items": [
     {
      "id": "WC-PL-GDANSK-T5",
@@ -500,8 +500,8 @@
    ]
   },
   "last_90_days": {
-   "from": "2026-08-27",
-   "to": "2026-11-25",
+   "from": "2026-08-28",
+   "to": "2026-11-26",
    "items": [
     {
      "id": "WC-DE-BR3-COD",
@@ -732,6 +732,16 @@
      "project": "Berwick Bank (SSE)",
      "capacity_mw": 4100,
      "status_effective": "done"
+    },
+    {
+     "id": "WC-NL-GAMMA-TENDER",
+     "date": "2026-11-26",
+     "date_end": "2026-12-10",
+     "country": "NL",
+     "type": "auction",
+     "project": "IJmuiden Ver Gamma-A and Gamma-B",
+     "capacity_mw": 2000,
+     "status_effective": "scheduled"
     }
    ],
    "broad_dates": [
@@ -787,7 +797,7 @@
     "project": "Bornholm offshore wind farms: joint DK-DE tender launch",
     "capacity_mw": 3000,
     "status_effective": "unconfirmed",
-    "days_overdue": 148
+    "days_overdue": 149
    },
    {
     "id": "WC-SE-SUPPORT",
@@ -798,7 +808,7 @@
     "project": "Swedish state-led tender and support system",
     "capacity_mw": null,
     "status_effective": "unconfirmed",
-    "days_overdue": 147
+    "days_overdue": 148
    },
    {
     "id": "WC-DE-HEDREIHT-FULL",
@@ -809,7 +819,7 @@
     "project": "He Dreiht: full 960 MW",
     "capacity_mw": 960,
     "status_effective": "unconfirmed",
-    "days_overdue": 25
+    "days_overdue": 26
    },
    {
     "id": "WC-FR-AO10-BIDS",
@@ -820,7 +830,7 @@
     "project": "AO10 bid deadline",
     "capacity_mw": 10000,
     "status_effective": "unconfirmed",
-    "days_overdue": 44
+    "days_overdue": 45
    }
   ],
   "needs_recheck": [
@@ -1919,7 +1929,7 @@
    "precision": "half",
    "period_start": "2026-01-01",
    "period_end": "2026-06-30",
-   "days_overdue": 148,
+   "days_overdue": 149,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2351,7 +2361,7 @@
    "precision": "day",
    "period_start": "2026-07-01",
    "period_end": "2026-07-01",
-   "days_overdue": 147,
+   "days_overdue": 148,
    "status_effective": "unconfirmed",
    "flags": [
     "stale",
@@ -2675,7 +2685,7 @@
    "precision": "month",
    "period_start": "2026-10-01",
    "period_end": "2026-10-31",
-   "days_overdue": 25,
+   "days_overdue": 26,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -2741,7 +2751,7 @@
    "precision": "day",
    "period_start": "2026-10-12",
    "period_end": "2026-10-12",
-   "days_overdue": 44,
+   "days_overdue": 45,
    "status_effective": "unconfirmed",
    "flags": [
     "stale"
@@ -3045,7 +3055,7 @@
    "period_end": "2026-12-10",
    "status_effective": "scheduled",
    "flags": [],
-   "timing": "future"
+   "timing": "current"
   },
   {
    "id": "WC-GB-AR8-RESULTS",

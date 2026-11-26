@@ -1,13 +1,13 @@
 {
- "updated": "2026-11-25T15:32Z",
- "date": "2026-11-25",
+ "updated": "2026-11-26T14:51Z",
+ "date": "2026-11-26",
  "overall": "red",
  "rule": "red: secret found, file unparsable/missing, or 3+ high problems; amber: any high or medium problem; green otherwise",
- "seconds": 48.7,
+ "seconds": 37.8,
  "summary": {
   "critical": 0,
-  "high": 3,
-  "medium": 43,
+  "high": 4,
+  "medium": 46,
   "low": 5,
   "info": 6
  },
@@ -22,7 +22,7 @@
    "area": "freshness",
    "name": "files against cadence",
    "status": "amber",
-   "detail": "65 ok, 1 stale, 0 missing, 1 undated (report.json); 1 lagging series inside files"
+   "detail": "65 ok, 1 stale, 0 missing, 1 undated (report.json); 0 lagging series inside files"
   },
   {
    "area": "schema",
@@ -39,14 +39,14 @@
   {
    "area": "schema",
    "name": "counts vs yesterday",
-   "status": "green",
-   "detail": "compared with storico.json 2026-11-24: 0 drops > 20%"
+   "status": "red",
+   "detail": "compared with storico.json 2026-11-25: 1 drops > 20%"
   },
   {
    "area": "errors",
    "name": "errori/errors arrays",
    "status": "amber",
-   "detail": "54 errors in 10 files"
+   "detail": "58 errors in 12 files"
   },
   {
    "area": "consistency",
@@ -82,13 +82,13 @@
    "area": "links",
    "name": "source links (rotating sample)",
    "status": "amber",
-   "detail": "160 of 15690 distinct links checked today: 24 blocked, 11 broken, 3 error, 122 ok; 10 confirmed broken, 1 failed once (rolling record)"
+   "detail": "160 of 16019 distinct links checked today: 22 blocked, 11 broken, 1 error, 126 ok; 10 confirmed broken, 1 failed once (rolling record)"
   },
   {
    "area": "smoke",
    "name": "browser smoke test",
    "status": "red",
-   "detail": "run 2026-11-25T15:32Z: 49 passed, 1 failed"
+   "detail": "run 2026-11-26T14:51Z: 49 passed, 1 failed"
   }
  ],
  "problems": [
@@ -96,8 +96,15 @@
    "severity": "high",
    "area": "freshness",
    "file": "docs/data/mercati.json",
-   "problem": "stale: updated 16 days ago (limit 8); newest data 2026-11-09 is 16 days old (limit 8) (cadence: manual market collections, about weekly)",
+   "problem": "stale: updated 17 days ago (limit 8); newest data 2026-11-09 is 17 days old (limit 8) (cadence: manual market collections, about weekly)",
    "fix": "Check the GitHub Actions log of the step that writes this file; run the collector by hand; if the source moved, update the URL in the collector."
+  },
+  {
+   "severity": "high",
+   "area": "schema",
+   "file": "docs/data/scorte.json",
+   "problem": "element count fell 46 -> 32 (-30%) vs storico.json 2026-11-25",
+   "fix": "A collector probably broke silently (empty answer, changed format, missing key). Compare with yesterday's file in git and look at the step log."
   },
   {
    "severity": "high",
@@ -110,7 +117,7 @@
    "severity": "high",
    "area": "validators",
    "file": "raccolta/simulatore/controlla.py",
-   "problem": "validator 'simulatore' exit 1: ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.93 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.05 (eseguire --scrivi) | Esito: 2 errori, 2 avvisi",
+   "problem": "validator 'simulatore' exit 1: ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.91 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.07 (eseguire --scrivi) | Esito: 2 errori, 2 avvisi",
    "fix": "Run the validator by hand, read its output and fix the curated input it names."
   },
   {
@@ -165,13 +172,6 @@
   {
    "severity": "medium",
    "area": "errors",
-   "file": "docs/data/calendario.json",
-   "problem": "collector error: {\"fonte\": \"EIA WPSR tabella 1\", \"errore\": \"HTTP Error 403: Forbidden\", \"quando\": \"2026-11-25T15:04Z\"}",
-   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
-  },
-  {
-   "severity": "medium",
-   "area": "errors",
    "file": "docs/data/idrogeno.json",
    "problem": "collector error: IEA Hydrogen Production and Infrastructure Projects Database non usato: la pagina IEA risponde 403 ai client automatici e il download passa dal sito. Per includerlo: salvare l'xlsx in raccolta/idrogeno/iea/ oppure impostare IEA_H2_DB_URL.",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
@@ -200,6 +200,20 @@
   {
    "severity": "medium",
    "area": "errors",
+   "file": "docs/data/noli.json",
+   "problem": "collector error: Noli Freightos FBX: FBX: serie non trovata nella pagina",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/notizie-testate.json",
+   "problem": "collector error: splash (Splash247): HTTPError: HTTP Error 415: Unsupported Media Type",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
    "file": "docs/data/notizie-testate.json",
    "problem": "collector error: owb (offshoreWIND.biz): HTTPError: HTTP Error 429: Too Many Requests",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
@@ -209,6 +223,13 @@
    "area": "errors",
    "file": "docs/data/notizie-testate.json",
    "problem": "collector error: oe (Offshore Energy): HTTPError: HTTP Error 429: Too Many Requests",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/notizie.json",
+   "problem": "collector error: splash247: HTTPError: HTTP Error 415: Unsupported Media Type",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -265,6 +286,20 @@
    "area": "errors",
    "file": "docs/data/paesi.json",
    "problem": "collector error: Comtrade ES scambi di energia: https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=724&period=2025&flowCode=X%2CM&cmdCode=2709%2C271111%2C271121&partnerCode=0: HTTP Error 403: Quota Exceeded",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/scorte.json",
+   "problem": "collector error: AGSI+ EU: API key: [chiave nascosta]",
+   "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
+  },
+  {
+   "severity": "medium",
+   "area": "errors",
+   "file": "docs/data/scorte.json",
+   "problem": "collector error: FMI oro: https://api.imf.org/external/sdmx/2.1/data/IMF.STA,IRFCL/ITA+DEU+FRA+NLD+USA+CHN+RUS+IND+TUR+POL+JPN+CHE.IRFCLDT1_IRFCL56V_FTO.S1XS1311.M: <urlopen error [Errno 111] Connection refused>",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -329,13 +364,6 @@
    "file": "docs/data/report.json",
    "problem": "undated: no 'aggiornato'/'updated' field (cadence: monthly (curated))",
    "fix": "Curated layer: schedule the monthly review of this file (agent or by hand) and refresh dates and sources."
-  },
-  {
-   "severity": "medium",
-   "area": "freshness",
-   "file": "docs/data/scorte.json",
-   "problem": "series lagging behind its frequency: oro_riserve_us (mensile, last 2026-07-01)",
-   "fix": "The collector ran but this series did not move: check the source endpoint and the API key for this series."
   },
   {
    "severity": "medium",
@@ -411,7 +439,7 @@
    "severity": "medium",
    "area": "schema",
    "file": "docs/data/navi.json",
-   "problem": "source fields on 'elementi': link missing in 140/140, affidabilita missing in 140/140",
+   "problem": "source fields on 'elementi': link missing in 125/125, affidabilita missing in 125/125",
    "fix": "Add fonte/link/data_fonte/affidabilita to the points in the curated input of this collector (raccolta/AGENTI.md, Punti)."
   },
   {
@@ -431,8 +459,8 @@
   {
    "severity": "low",
    "area": "links",
-   "file": "docs/data/notizie-testate.json",
-   "problem": "failed once (re-checked tomorrow): https://www.marketwatch.com/story/cybersecurity-stocks-have-been-hot-and-now-crowdstrike-inks-deal-to-buy-zscaler-df8fd163?mod=mw_rss_topstories (401)",
+   "file": "docs/data/ucraina-storico.json",
+   "problem": "failed once (re-checked tomorrow): https://www.reuters.com/business/energy/russias-kuibyshevsk-refinery-halted-operations-after-drone-attacks-sources-say-2025-08-29/ (401)",
    "fix": "Replace the URL with the current page of the same source (or an archived copy at web.archive.org) in the curated file, then re-run the collector."
   },
   {
@@ -453,7 +481,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/aerei.json",
-   "problem": "7 warnings ('avvisi'), first: curati AE-C-20260922-16: last report 64 days old, the map will not draw it (limit 60 days)",
+   "problem": "7 warnings ('avvisi'), first: curati AE-C-20260922-16: last report 65 days old, the map will not draw it (limit 60 days)",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -481,7 +509,7 @@
    "severity": "info",
    "area": "errors",
    "file": "docs/data/stretti-dettaglio.json",
-   "problem": "18 warnings ('avvisi'), first: hormuz: stato attuale fermo al 2026-11-09 (16 giorni): da ricontrollare a mano",
+   "problem": "18 warnings ('avvisi'), first: hormuz: stato attuale fermo al 2026-11-09 (17 giorni): da ricontrollare a mano",
    "fix": "Read the error text: missing key -> add the secret to the workflow env; HTTP error -> check the source URL; then re-run."
   },
   {
@@ -498,10 +526,10 @@
    "cadence": "manual market collections, about weekly",
    "updated": "2026-11-09",
    "newest_data_date": "2026-11-09",
-   "updated_age_days": 16,
-   "data_age_days": 16,
+   "updated_age_days": 17,
+   "data_age_days": 17,
    "status": "stale",
-   "why": "updated 16 days ago (limit 8); newest data 2026-11-09 is 16 days old (limit 8)"
+   "why": "updated 17 days ago (limit 8); newest data 2026-11-09 is 17 days old (limit 8)"
   },
   {
    "file": "report.json",
@@ -520,7 +548,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 16,
+   "fails_in_a_row": 17,
    "first_failed": "2026-11-10T13:44Z",
    "confirmed": true
   },
@@ -531,7 +559,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 15,
+   "fails_in_a_row": 16,
    "first_failed": "2026-11-11T12:40Z",
    "confirmed": true
   },
@@ -542,7 +570,7 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 13,
+   "fails_in_a_row": 14,
    "first_failed": "2026-11-13T13:05Z",
    "confirmed": true
   },
@@ -553,7 +581,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 9,
+   "fails_in_a_row": 10,
    "first_failed": "2026-11-17T14:28Z",
    "confirmed": true
   },
@@ -565,7 +593,7 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 8,
+   "fails_in_a_row": 9,
    "first_failed": "2026-11-18T13:56Z",
    "confirmed": true
   },
@@ -576,7 +604,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 7,
+   "fails_in_a_row": 8,
    "first_failed": "2026-11-19T14:19Z",
    "confirmed": true
   },
@@ -587,7 +615,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 5,
+   "fails_in_a_row": 6,
    "first_failed": "2026-11-21T13:28Z",
    "confirmed": true
   },
@@ -598,7 +626,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 4,
+   "fails_in_a_row": 5,
    "first_failed": "2026-11-22T13:27Z",
    "confirmed": true
   },
@@ -609,7 +637,7 @@
    ],
    "code": 401,
    "detail": "",
-   "fails_in_a_row": 3,
+   "fails_in_a_row": 4,
    "first_failed": "2026-11-23T16:00Z",
    "confirmed": true
   },
@@ -620,19 +648,19 @@
    ],
    "code": 404,
    "detail": "",
-   "fails_in_a_row": 2,
+   "fails_in_a_row": 3,
    "first_failed": "2026-11-24T16:03Z",
    "confirmed": true
   },
   {
-   "url": "https://www.marketwatch.com/story/cybersecurity-stocks-have-been-hot-and-now-crowdstrike-inks-deal-to-buy-zscaler-df8fd163?mod=mw_rss_topstories",
+   "url": "https://www.reuters.com/business/energy/russias-kuibyshevsk-refinery-halted-operations-after-drone-attacks-sources-say-2025-08-29/",
    "files": [
-    "notizie-testate.json"
+    "ucraina-storico.json"
    ],
    "code": 401,
    "detail": "",
    "fails_in_a_row": 1,
-   "first_failed": "2026-11-25T15:32Z",
+   "first_failed": "2026-11-26T14:51Z",
    "confirmed": false
   }
  ],
@@ -743,21 +771,21 @@
    "script": "raccolta/simulatore/controlla.py",
    "exit": 1,
    "seconds": 0.1,
-   "tail": "ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.93 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.05 (eseguire --scrivi) | Esito: 2 errori, 2 avvisi"
+   "tail": "ERRORE: calcolato.gnl_italia.uso_12m_bcm: nel file 20.08, ricalcolato 19.91 (eseguire --scrivi) | ERRORE: calcolato.gnl_italia.libera_bcm: nel file 7.9, ricalcolato 8.07 (eseguire --scrivi) | Esito: 2 errori, 2 avvisi"
   },
   {
    "validator": "wind calendar --rigoroso (output redirected)",
    "script": "raccolta/eolico/calendario.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "Written /home/runner/work/monitor-geoeconomico/monitor-geoeconomico/raccolta/qualita/.tmp-wind-calendar.json (120 KB): 114 items, 8 next 90 days, 23 last 90 days, 4 unconfirmed, 0 RSS candidates, 0 warnings (0 validation)"
+   "tail": "Written /home/runner/work/monitor-geoeconomico/monitor-geoeconomico/raccolta/qualita/.tmp-wind-calendar.json (120 KB): 114 items, 8 next 90 days, 24 last 90 days, 4 unconfirmed, 0 RSS candidates, 0 warnings (0 validation)"
   },
   {
    "validator": "stretti-dettaglio --controlla",
    "script": "raccolta/stretti/raccogli.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "AVVISO: kerch: stato attuale fermo al 2026-11-09 (16 giorni): da ricontrollare a mano | AVVISO: lombok-sonda: stato attuale fermo al 2026-11-09 (16 giorni): da ricontrollare a mano | AVVISO: lombok-sonda: fatto del 2026-05-01 nello stato attuale ha più di 90 giorni"
+   "tail": "AVVISO: kerch: stato attuale fermo al 2026-11-09 (17 giorni): da ricontrollare a mano | AVVISO: lombok-sonda: stato attuale fermo al 2026-11-09 (17 giorni): da ricontrollare a mano | AVVISO: lombok-sonda: fatto del 2026-05-01 nello stato attuale ha più di 90 giorni"
   },
   {
    "validator": "basi-mondo --controlla",
@@ -771,7 +799,7 @@
    "script": "raccolta/assicurazioni/raccogli.py",
    "exit": 0,
    "seconds": 0.1,
-   "tail": "AVVISO: premi/mar-rosso-saudita: ultima quotazione pubblica del 2026-09-24 (62 giorni): cercarne una più recente | AVVISO: premi/mar-nero: ultima quotazione pubblica del 2026-09-23 (63 giorni): cercarne una più recente | AVVISO: premi/israele: ultima quotazione pubblica del 2025-06-17 (526 giorni): cercarne una più recente"
+   "tail": "AVVISO: premi/mar-rosso-saudita: ultima quotazione pubblica del 2026-09-24 (63 giorni): cercarne una più recente | AVVISO: premi/mar-nero: ultima quotazione pubblica del 2026-09-23 (64 giorni): cercarne una più recente | AVVISO: premi/israele: ultima quotazione pubblica del 2025-06-17 (527 giorni): cercarne una più recente"
   },
   {
    "validator": "ai-mondo / investimenti --valida",
@@ -803,16 +831,16 @@
   }
  ],
  "counts": {
-  "aerei.json": 68,
+  "aerei.json": 62,
   "ai-mondo.json": 303,
   "ai.json": 66,
   "assicurazioni.json": 27,
-  "attacchi-analisti.json": 4034,
+  "attacchi-analisti.json": 4256,
   "attacchi-russi.json": 192,
-  "baltico-sicurezza.json": 120,
+  "baltico-sicurezza.json": 117,
   "basi-mondo.json": 181,
   "bunker-emissioni.json": 24,
-  "calendario.json": 214,
+  "calendario.json": 215,
   "cavi-incidenti.json": 14,
   "cavi.json": 714,
   "commercio.json": 38,
@@ -822,7 +850,7 @@
   "dossier.json": 1,
   "eolico-filiera.json": 19,
   "esposizione-nord.json": 10,
-  "eventi.json": 360,
+  "eventi.json": 357,
   "ferrovie.json": 49,
   "fissi.json": 192,
   "fronte-storico.json": 60,
@@ -843,10 +871,10 @@
   "mercati.json": 1,
   "minerali.json": 25,
   "mobili.json": 138,
-  "navi.json": 140,
+  "navi.json": 125,
   "noli.json": 4,
-  "notizie-testate.json": 2228,
-  "notizie.json": 2128,
+  "notizie-testate.json": 2342,
+  "notizie.json": 2114,
   "nucleare.json": 167,
   "offshore-nord.json": 180,
   "paesi.json": 33,
@@ -858,19 +886,19 @@
   "rete-elettrica.json": 2368,
   "rischio.json": 18,
   "rotte.json": 239,
-  "sanzioni-navi.json": 2028,
-  "scorte.json": 46,
+  "sanzioni-navi.json": 2029,
+  "scorte.json": 32,
   "simulatore.json": 9,
   "stretti-dettaglio.json": 13,
   "stretti.json": 16,
   "supply-chain-ai.json": 70,
-  "terminali-gnl.json": 840,
+  "terminali-gnl.json": 841,
   "transit-times.json": 99,
   "ucraina-storico.json": 258,
   "webcam.json": 45,
   "wind-calendar.json": 114,
   "world.json": 1896
  },
- "report": "report/qualita/2026-11-25.md",
+ "report": "report/qualita/2026-11-26.md",
  "errors": []
 }

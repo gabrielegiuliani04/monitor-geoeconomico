@@ -1,29 +1,29 @@
 {
- "aggiornato": "2026-11-25T15:04Z",
+ "aggiornato": "2026-11-26T14:32Z",
  "fonti": [
   {
    "nome": "Elenco navi sanzionate del progetto (docs/data/sanzioni-navi.json)",
    "link": "data/sanzioni-navi.json",
    "licenza": "vedi le fonti di quel file",
-   "data_dato": "2026-11-25T14:50Z"
+   "data_dato": "2026-11-26T14:16Z"
   },
   {
    "nome": "Digitraffic, AIS marittimo (Fintraffic)",
    "link": "https://meri.digitraffic.fi/api/ais/v1/locations",
    "licenza": "CC BY 4.0",
-   "data_dato": "2026-11-25T14:51:55Z"
+   "data_dato": "2026-11-26T14:20:27Z"
   },
   {
    "nome": "aisstream.io",
    "link": "https://aisstream.io",
    "licenza": "termini aisstream.io",
-   "data_dato": "2026-11-25T15:03Z"
+   "data_dato": "2026-11-26T14:32Z"
   },
   {
    "nome": "Global Fishing Watch API v3",
    "link": "https://globalfishingwatch.org/our-apis/",
    "licenza": "CC BY-NC 4.0 (non commerciale)",
-   "data_dato": "2026-11-25T15:04Z"
+   "data_dato": "2026-11-26T14:32Z"
   },
   {
    "nome": "USNI News Fleet and Marine Tracker",
@@ -63,139 +63,141 @@
    "nota": "nessuna fonte gratuita attiva per quest'area in questa esecuzione"
   },
   "Stretti danesi": {
-   "petroliere_viste": 28,
-   "sanzionate": 0,
+   "petroliere_viste": 26,
+   "sanzionate": 1,
    "transiti_stimati": 0,
    "fonti": [
     "aisstream.io"
    ]
   },
   "Golfo di Finlandia": {
-   "petroliere_viste": 102,
-   "sanzionate": 39,
+   "petroliere_viste": 87,
+   "sanzionate": 33,
    "transiti_stimati": null,
    "fonti": [
-    "Digitraffic (Fintraffic)",
-    "aisstream.io"
+    "Digitraffic (Fintraffic)"
    ]
   }
  },
  "elementi": [
   {
-   "mmsi": "461000247",
-   "imo": "9413573",
-   "nome": "ARCADIA",
+   "mmsi": "273350220",
+   "imo": "8414477",
+   "nome": "FLANDRIA",
    "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "OM",
-   "lat": 59.109,
-   "lon": 21.5232,
-   "velocita_nodi": 11.3,
-   "rotta_gradi": 212.0,
-   "ora_utc": "2026-11-25T02:38Z",
+   "bandiera": "RU",
+   "lat": 58.4193,
+   "lon": 21.2402,
+   "velocita_nodi": 11.0,
+   "rotta_gradi": 198.7,
+   "ora_utc": "2026-11-26T01:07Z",
    "area": "Baltico (copertura Digitraffic)",
-   "sanzionata": "sì: Regno Unito, USA, Unione europea",
+   "sanzionata": "sì: Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
    "flotta_ombra_probabile": true,
-   "destinazione": "EGPSD",
-   "pescaggio_m": 13.1,
-   "avviso_ais": "nessuna posizione da 12 ore",
+   "destinazione": "RUKGD",
+   "pescaggio_m": 5.9,
+   "avviso_ais": "nessuna posizione da 13 ore",
    "scia": [
     [
-     27.9774,
-     60.3123,
-     "2026-11-19T13:47Z"
+     23.5305,
+     59.6631,
+     "2026-11-25T14:59Z"
     ],
     [
-     28.55,
-     60.5978,
+     21.2402,
+     58.4193,
+     "2026-11-26T01:07Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "273271850",
+   "imo": "9288746",
+   "nome": "PLUTON",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "RU",
+   "lat": 58.8581,
+   "lon": 21.2431,
+   "velocita_nodi": 11.9,
+   "rotta_gradi": 213.9,
+   "ora_utc": "2026-11-26T09:08Z",
+   "area": "Baltico (copertura Digitraffic)",
+   "sanzionata": "sì: Regno Unito, Unione europea",
+   "fonte": "Digitraffic (Fintraffic)",
+   "flotta_ombra_probabile": true,
+   "destinazione": "EG PSD",
+   "pescaggio_m": 15.0,
+   "scia": [
+    [
+     28.0473,
+     60.1657,
      "2026-11-20T13:32Z"
     ],
     [
-     28.5478,
-     60.5921,
-     "2026-11-21T12:54Z"
+     28.0416,
+     60.3374,
+     "2026-11-21T12:55Z"
     ],
     [
-     28.5632,
-     60.571,
-     "2026-11-22T12:54Z"
+     28.0376,
+     60.3342,
+     "2026-11-22T12:52Z"
     ],
     [
-     28.5477,
-     60.5921,
-     "2026-11-23T15:19Z"
+     28.0402,
+     60.3325,
+     "2026-11-23T15:16Z"
     ],
     [
-     25.4702,
-     59.8913,
-     "2026-11-24T15:17Z"
+     28.038,
+     60.3331,
+     "2026-11-24T15:15Z"
     ],
     [
-     21.5232,
-     59.109,
-     "2026-11-25T02:38Z"
+     27.666,
+     60.1756,
+     "2026-11-25T14:51Z"
+    ],
+    [
+     21.2431,
+     58.8581,
+     "2026-11-26T09:08Z"
     ]
    ]
   },
   {
-   "mmsi": "422031300",
-   "imo": "9349590",
-   "nome": "BEHTA",
-   "tipo": "cargo (AIS 70)",
-   "bandiera": "IR",
-   "lat": 59.1176,
-   "lon": 21.5721,
-   "velocita_nodi": 17.8,
-   "rotta_gradi": 216.2,
-   "ora_utc": "2026-11-25T03:24Z",
-   "area": "Baltico (copertura Digitraffic)",
-   "sanzionata": "sì: USA",
-   "fonte": "Digitraffic (Fintraffic)",
-   "flotta_ombra_probabile": false,
-   "destinazione": "PORT SAEID",
-   "pescaggio_m": 9.0,
-   "avviso_ais": "nessuna posizione da 12 ore",
-   "scia": [
-    [
-     28.225,
-     60.1413,
-     "2026-11-24T15:17Z"
-    ],
-    [
-     21.5721,
-     59.1176,
-     "2026-11-25T03:24Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "273343810",
-   "imo": "9216482",
-   "nome": "MIKHAIL LOMONOSOV",
-   "tipo": "cargo (AIS 70)",
+   "mmsi": "273120230",
+   "imo": "9384992",
+   "nome": "SAPFIR",
+   "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.065,
-   "lon": 21.5551,
-   "velocita_nodi": 9.7,
-   "rotta_gradi": 201.9,
-   "ora_utc": "2026-11-24T22:55Z",
+   "lat": 59.336,
+   "lon": 22.0892,
+   "velocita_nodi": 11.4,
+   "rotta_gradi": 229.7,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Baltico (copertura Digitraffic)",
-   "sanzionata": "sì: USA",
+   "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
-   "flotta_ombra_probabile": false,
-   "destinazione": "RUKGD",
-   "pescaggio_m": 5.8,
-   "avviso_ais": "nessuna posizione da 16 ore",
+   "flotta_ombra_probabile": true,
+   "destinazione": "PORT SAID",
+   "pescaggio_m": 14.9,
    "scia": [
     [
-     23.6116,
-     59.668,
-     "2026-11-24T15:17Z"
+     28.6578,
+     59.9283,
+     "2026-11-24T15:15Z"
     ],
     [
-     21.5551,
-     59.065,
-     "2026-11-24T22:55Z"
+     28.4212,
+     59.7791,
+     "2026-11-25T14:47Z"
+    ],
+    [
+     22.0892,
+     59.336,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -205,11 +207,11 @@
    "nome": "ALDANA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "PA",
-   "lat": 59.8965,
-   "lon": 28.6611,
-   "velocita_nodi": 0.0,
-   "rotta_gradi": 360.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.8949,
+   "lon": 28.508,
+   "velocita_nodi": 4.8,
+   "rotta_gradi": 219.2,
+   "ora_utc": "2026-11-25T19:53Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -220,6 +222,36 @@
      28.6611,
      59.8965,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.508,
+     59.8949,
+     "2026-11-25T19:53Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "273216620",
+   "imo": "9889198",
+   "nome": "ALEKSANDR SOKOLOV",
+   "tipo": "cargo (AIS 70)",
+   "bandiera": "RU",
+   "lat": 59.9996,
+   "lon": 27.1727,
+   "velocita_nodi": 9.0,
+   "rotta_gradi": 56.5,
+   "ora_utc": "2026-11-26T14:20Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "sì: USA",
+   "fonte": "Digitraffic (Fintraffic)",
+   "flotta_ombra_probabile": false,
+   "destinazione": "RU_VYS",
+   "pescaggio_m": 3.2,
+   "scia": [
+    [
+     27.1727,
+     59.9996,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -229,11 +261,11 @@
    "nome": "AMAZON",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "OM",
-   "lat": 60.0245,
-   "lon": 27.0762,
-   "velocita_nodi": 0.4,
-   "rotta_gradi": 234.6,
-   "ora_utc": "2026-11-25T14:49Z",
+   "lat": 60.0243,
+   "lon": 27.0752,
+   "velocita_nodi": 0.3,
+   "rotta_gradi": 248.1,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -255,6 +287,60 @@
      27.0762,
      60.0245,
      "2026-11-25T14:49Z"
+    ],
+    [
+     27.0752,
+     60.0243,
+     "2026-11-26T14:19Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "273355410",
+   "imo": "8807416",
+   "nome": "AMBAL",
+   "tipo": "cargo (AIS 70)",
+   "bandiera": "RU",
+   "lat": 60.0282,
+   "lon": 29.1309,
+   "velocita_nodi": 8.8,
+   "rotta_gradi": 90.7,
+   "ora_utc": "2026-11-26T13:45Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "sì: USA",
+   "fonte": "Digitraffic (Fintraffic)",
+   "flotta_ombra_probabile": false,
+   "destinazione": "RUSPB",
+   "pescaggio_m": 4.4,
+   "scia": [
+    [
+     29.1309,
+     60.0282,
+     "2026-11-26T13:45Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "636016951",
+   "imo": "9724623",
+   "nome": "AMFITRION",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "LR",
+   "lat": 59.891,
+   "lon": 25.4607,
+   "velocita_nodi": 12.0,
+   "rotta_gradi": 261.8,
+   "ora_utc": "2026-11-26T14:20Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "no",
+   "fonte": "Digitraffic (Fintraffic)",
+   "destinazione": "MAPTM",
+   "pescaggio_m": 12.2,
+   "scia": [
+    [
+     25.4607,
+     59.891,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -264,11 +350,11 @@
    "nome": "ANIKITOS STAR",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "LR",
-   "lat": 59.8022,
-   "lon": 28.406,
+   "lat": 59.8021,
+   "lon": 28.4062,
    "velocita_nodi": 0.0,
    "rotta_gradi": 38.0,
-   "ora_utc": "2026-11-25T14:50Z",
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -279,6 +365,35 @@
      28.406,
      59.8022,
      "2026-11-25T14:50Z"
+    ],
+    [
+     28.4062,
+     59.8021,
+     "2026-11-26T14:19Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "273391340",
+   "imo": "9829069",
+   "nome": "ANNA",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "RU",
+   "lat": 59.7926,
+   "lon": 27.0667,
+   "velocita_nodi": 102.3,
+   "rotta_gradi": 360.0,
+   "ora_utc": "2026-11-25T18:54Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "no",
+   "fonte": "Digitraffic (Fintraffic)",
+   "destinazione": "RU LED",
+   "pescaggio_m": 4.5,
+   "scia": [
+    [
+     27.0667,
+     59.7926,
+     "2026-11-25T18:54Z"
     ]
    ]
   },
@@ -288,22 +403,17 @@
    "nome": "ARA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "AG",
-   "lat": 60.0381,
-   "lon": 28.524,
-   "velocita_nodi": 11.1,
-   "rotta_gradi": 99.0,
-   "ora_utc": "2026-11-24T16:55Z",
+   "lat": 60.1082,
+   "lon": 29.4114,
+   "velocita_nodi": 0.0,
+   "rotta_gradi": 227.2,
+   "ora_utc": "2026-11-26T08:35Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "RULED",
    "pescaggio_m": 7.6,
    "scia": [
-    [
-     28.5634,
-     60.6154,
-     "2026-11-19T13:45Z"
-    ],
     [
      28.5635,
      60.6154,
@@ -333,6 +443,11 @@
      28.524,
      60.0381,
      "2026-11-24T16:55Z"
+    ],
+    [
+     29.4114,
+     60.1082,
+     "2026-11-26T08:35Z"
     ]
    ]
   },
@@ -345,19 +460,14 @@
    "lat": 59.7249,
    "lon": 28.4343,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 221.4,
-   "ora_utc": "2026-11-25T14:35Z",
+   "rotta_gradi": 212.5,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "RU ULU",
    "pescaggio_m": 7.0,
    "scia": [
-    [
-     28.5218,
-     59.9823,
-     "2026-11-19T13:51Z"
-    ],
     [
      28.6173,
      59.9248,
@@ -387,45 +497,11 @@
      28.4343,
      59.7249,
      "2026-11-25T14:35Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "372939000",
-   "imo": "9337391",
-   "nome": "ATHENS VOYAGER",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "PA",
-   "lat": 59.6151,
-   "lon": 23.1832,
-   "velocita_nodi": 11.4,
-   "rotta_gradi": 254.0,
-   "ora_utc": "2026-11-25T14:51Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "GDYNIA",
-   "pescaggio_m": 14.7,
-   "scia": [
-    [
-     23.929,
-     59.6428,
-     "2026-11-22T12:54Z"
     ],
     [
-     28.6708,
-     60.3353,
-     "2026-11-23T15:20Z"
-    ],
-    [
-     28.6994,
-     60.3364,
-     "2026-11-24T15:16Z"
-    ],
-    [
-     23.1832,
-     59.6151,
-     "2026-11-25T14:51Z"
+     28.4343,
+     59.7249,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -436,10 +512,10 @@
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
    "lat": 59.771,
-   "lon": 28.4002,
+   "lon": 28.401,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 166.2,
-   "ora_utc": "2026-11-25T14:51Z",
+   "rotta_gradi": 357.1,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, USA, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -447,11 +523,6 @@
    "destinazione": "RUULU",
    "pescaggio_m": 14.8,
    "scia": [
-    [
-     28.6341,
-     59.9925,
-     "2026-11-19T13:47Z"
-    ],
     [
      28.611,
      59.9937,
@@ -481,6 +552,11 @@
      28.4002,
      59.771,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.401,
+     59.771,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -490,22 +566,17 @@
    "nome": "AVERO",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "BB",
-   "lat": 59.92,
-   "lon": 28.6216,
+   "lat": 59.9198,
+   "lon": 28.6213,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 147.7,
-   "ora_utc": "2026-11-25T14:48Z",
+   "rotta_gradi": 134.7,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "GOF FOR ORDERS",
    "pescaggio_m": 15.0,
    "scia": [
-    [
-     25.9011,
-     59.8433,
-     "2026-11-19T13:46Z"
-    ],
     [
      25.9012,
      59.8433,
@@ -535,6 +606,11 @@
      28.6216,
      59.92,
      "2026-11-25T14:48Z"
+    ],
+    [
+     28.6213,
+     59.9198,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -544,17 +620,18 @@
    "nome": "AVIOR",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.8997,
-   "lon": 28.6871,
-   "velocita_nodi": 0.3,
-   "rotta_gradi": 87.8,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.9194,
+   "lon": 28.6677,
+   "velocita_nodi": 3.5,
+   "rotta_gradi": 329.0,
+   "ora_utc": "2026-11-26T07:23Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
    "flotta_ombra_probabile": true,
    "destinazione": "RU ULU",
    "pescaggio_m": 7.2,
+   "avviso_ais": "nessuna posizione da 7 ore",
    "scia": [
     [
      28.6842,
@@ -575,6 +652,11 @@
      28.6871,
      59.8997,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.6677,
+     59.9194,
+     "2026-11-26T07:23Z"
     ]
    ]
   },
@@ -584,11 +666,11 @@
    "nome": "AZORIN",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SL",
-   "lat": 59.928,
-   "lon": 28.661,
+   "lat": 59.9278,
+   "lon": 28.6609,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 191.9,
-   "ora_utc": "2026-11-25T14:49Z",
+   "rotta_gradi": 284.2,
+   "ora_utc": "2026-11-26T14:16Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -615,6 +697,11 @@
      28.661,
      59.928,
      "2026-11-25T14:49Z"
+    ],
+    [
+     28.6609,
+     59.9278,
+     "2026-11-26T14:16Z"
     ]
    ]
   },
@@ -624,11 +711,11 @@
    "nome": "BALTIC STAR",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "LR",
-   "lat": 60.0061,
-   "lon": 28.624,
-   "velocita_nodi": 1.2,
-   "rotta_gradi": 220.6,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.9768,
+   "lon": 28.6417,
+   "velocita_nodi": 3.0,
+   "rotta_gradi": 242.1,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -649,41 +736,11 @@
      28.624,
      60.0061,
      "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "273317640",
-   "imo": "8318130",
-   "nome": "BALTIYSK",
-   "tipo": "cargo (AIS 70)",
-   "bandiera": "RU",
-   "lat": 59.7002,
-   "lon": 28.2595,
-   "velocita_nodi": 0.5,
-   "rotta_gradi": 115.8,
-   "ora_utc": "2026-11-25T09:39Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "sì: USA",
-   "fonte": "Digitraffic (Fintraffic)",
-   "flotta_ombra_probabile": false,
-   "destinazione": "RUULU",
-   "pescaggio_m": 4.2,
-   "scia": [
-    [
-     28.1352,
-     59.9386,
-     "2026-11-23T15:20Z"
     ],
     [
-     28.2667,
-     59.7054,
-     "2026-11-24T14:47Z"
-    ],
-    [
-     28.2595,
-     59.7002,
-     "2026-11-25T09:39Z"
+     28.6417,
+     59.9768,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -693,11 +750,11 @@
    "nome": "BOLTARIS",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 60.0922,
-   "lon": 29.3743,
+   "lat": 60.0917,
+   "lon": 29.3727,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 332.6,
-   "ora_utc": "2026-11-25T14:51Z",
+   "rotta_gradi": 206.5,
+   "ora_utc": "2026-11-26T14:10Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -705,11 +762,6 @@
    "destinazione": "BALTIC FOR ORDERS",
    "pescaggio_m": 9.0,
    "scia": [
-    [
-     29.3633,
-     60.0933,
-     "2026-11-18T19:51Z"
-    ],
     [
      29.3632,
      60.0948,
@@ -739,6 +791,11 @@
      29.3743,
      60.0922,
      "2026-11-25T14:51Z"
+    ],
+    [
+     29.3727,
+     60.0917,
+     "2026-11-26T14:10Z"
     ]
    ]
   },
@@ -748,11 +805,11 @@
    "nome": "BULLAR",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SL",
-   "lat": 60.0092,
-   "lon": 28.4911,
+   "lat": 60.0091,
+   "lon": 28.4907,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 322.0,
-   "ora_utc": "2026-11-25T14:49Z",
+   "rotta_gradi": 147.3,
+   "ora_utc": "2026-11-26T14:17Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -760,11 +817,6 @@
    "destinazione": "RUULU",
    "pescaggio_m": 14.2,
    "scia": [
-    [
-     26.025,
-     59.8367,
-     "2026-11-19T13:45Z"
-    ],
     [
      26.0248,
      59.8365,
@@ -794,50 +846,11 @@
      28.4911,
      60.0092,
      "2026-11-25T14:49Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "229717000",
-   "imo": "9692832",
-   "nome": "CAPTAIN JOHN",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "MT",
-   "lat": 60.3248,
-   "lon": 28.6988,
-   "velocita_nodi": 0.0,
-   "rotta_gradi": 271.9,
-   "ora_utc": "2026-11-25T14:50Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "TURKEY",
-   "pescaggio_m": 14.3,
-   "scia": [
-    [
-     25.8021,
-     59.8617,
-     "2026-11-21T12:57Z"
     ],
     [
-     25.8795,
-     59.8386,
-     "2026-11-22T12:54Z"
-    ],
-    [
-     26.9537,
-     59.97,
-     "2026-11-23T15:20Z"
-    ],
-    [
-     28.7111,
-     60.3316,
-     "2026-11-24T15:16Z"
-    ],
-    [
-     28.6988,
-     60.3248,
-     "2026-11-25T14:50Z"
+     28.4907,
+     60.0091,
+     "2026-11-26T14:17Z"
     ]
    ]
   },
@@ -851,7 +864,7 @@
    "lon": 28.5634,
    "velocita_nodi": 0.0,
    "rotta_gradi": 360.0,
-   "ora_utc": "2026-11-25T14:50Z",
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -872,6 +885,11 @@
      28.5634,
      60.6156,
      "2026-11-25T14:50Z"
+    ],
+    [
+     28.5634,
+     60.6156,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -881,15 +899,15 @@
    "nome": "CAPTAIN PARIS",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "MT",
-   "lat": 59.4838,
-   "lon": 24.5253,
-   "velocita_nodi": 0.0,
-   "rotta_gradi": 78.7,
-   "ora_utc": "2026-11-25T14:49Z",
+   "lat": 59.7112,
+   "lon": 24.4147,
+   "velocita_nodi": 8.7,
+   "rotta_gradi": 67.8,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "EETLL",
+   "destinazione": "RUULU",
    "pescaggio_m": 8.9,
    "scia": [
     [
@@ -901,6 +919,11 @@
      24.5253,
      59.4838,
      "2026-11-25T14:49Z"
+    ],
+    [
+     24.4147,
+     59.7112,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -910,11 +933,11 @@
    "nome": "CAVELA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SL",
-   "lat": 60.3318,
+   "lat": 60.3317,
    "lon": 28.7111,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 1.3,
-   "ora_utc": "2026-11-25T14:49Z",
+   "rotta_gradi": 213.7,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -936,6 +959,11 @@
      28.7111,
      60.3318,
      "2026-11-25T14:49Z"
+    ],
+    [
+     28.7111,
+     60.3317,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -945,11 +973,11 @@
    "nome": "CHARA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "MH",
-   "lat": 59.8652,
-   "lon": 28.4111,
-   "velocita_nodi": 0.3,
-   "rotta_gradi": 73.6,
-   "ora_utc": "2026-11-25T14:50Z",
+   "lat": 59.8651,
+   "lon": 28.411,
+   "velocita_nodi": 0.4,
+   "rotta_gradi": 68.7,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -975,6 +1003,11 @@
      28.4111,
      59.8652,
      "2026-11-25T14:50Z"
+    ],
+    [
+     28.411,
+     59.8651,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -985,21 +1018,16 @@
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "MH",
    "lat": 59.9278,
-   "lon": 28.6466,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 34.0,
-   "ora_utc": "2026-11-25T14:50Z",
+   "lon": 28.6479,
+   "velocita_nodi": 0.2,
+   "rotta_gradi": 78.8,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "RUULU",
    "pescaggio_m": 8.0,
    "scia": [
-    [
-     28.4169,
-     59.8505,
-     "2026-11-19T13:42Z"
-    ],
     [
      28.4269,
      59.7114,
@@ -1029,6 +1057,11 @@
      28.6466,
      59.9278,
      "2026-11-25T14:50Z"
+    ],
+    [
+     28.6479,
+     59.9278,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -1038,11 +1071,11 @@
    "nome": "CLYNELISH",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SG",
-   "lat": 59.5103,
-   "lon": 23.1126,
-   "velocita_nodi": 12.4,
-   "rotta_gradi": 71.6,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.4996,
+   "lon": 24.9417,
+   "velocita_nodi": 0.0,
+   "rotta_gradi": 39.7,
+   "ora_utc": "2026-11-26T14:15Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -1053,6 +1086,11 @@
      23.1126,
      59.5103,
      "2026-11-25T14:51Z"
+    ],
+    [
+     24.9417,
+     59.4996,
+     "2026-11-26T14:15Z"
     ]
    ]
   },
@@ -1065,19 +1103,14 @@
    "lat": 60.2898,
    "lon": 25.5428,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 344.0,
-   "ora_utc": "2026-11-25T14:50Z",
+   "rotta_gradi": 18.0,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "FIPRV",
    "pescaggio_m": 5.5,
    "scia": [
-    [
-     25.5428,
-     60.2898,
-     "2026-11-19T13:46Z"
-    ],
     [
      25.4932,
      60.0165,
@@ -1107,6 +1140,11 @@
      25.5428,
      60.2898,
      "2026-11-25T14:50Z"
+    ],
+    [
+     25.5428,
+     60.2898,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -1116,22 +1154,17 @@
    "nome": "DERIN",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "BB",
-   "lat": 59.8866,
-   "lon": 26.0711,
-   "velocita_nodi": 0.2,
-   "rotta_gradi": 280.3,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.8864,
+   "lon": 26.0719,
+   "velocita_nodi": 0.6,
+   "rotta_gradi": 272.1,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "EETLL",
    "pescaggio_m": 7.0,
    "scia": [
-    [
-     27.0411,
-     60.0321,
-     "2026-11-19T13:45Z"
-    ],
     [
      27.0415,
      60.0324,
@@ -1161,60 +1194,35 @@
      26.0711,
      59.8866,
      "2026-11-25T14:51Z"
+    ],
+    [
+     26.0719,
+     59.8864,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
   {
-   "mmsi": "636019539",
-   "imo": "9278686",
-   "nome": "E PIONEER",
+   "mmsi": "273424720",
+   "imo": "8724767",
+   "nome": "DMITRIY RULEVSKIY",
    "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "LR",
-   "lat": 59.8295,
-   "lon": 25.7624,
-   "velocita_nodi": 0.2,
-   "rotta_gradi": 236.0,
-   "ora_utc": "2026-11-25T14:50Z",
+   "bandiera": "RU",
+   "lat": 59.989,
+   "lon": 28.962,
+   "velocita_nodi": 9.0,
+   "rotta_gradi": 41.3,
+   "ora_utc": "2026-11-25T17:17Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "RU PRI",
-   "pescaggio_m": 6.6,
+   "destinazione": "RU LED",
+   "pescaggio_m": 4.6,
    "scia": [
     [
-     25.8265,
-     59.8334,
-     "2026-11-19T13:44Z"
-    ],
-    [
-     25.8273,
-     59.834,
-     "2026-11-20T13:41Z"
-    ],
-    [
-     25.8288,
-     59.8342,
-     "2026-11-21T12:56Z"
-    ],
-    [
-     25.8288,
-     59.8292,
-     "2026-11-22T12:53Z"
-    ],
-    [
-     25.7587,
-     59.828,
-     "2026-11-23T15:17Z"
-    ],
-    [
-     25.76,
-     59.8276,
-     "2026-11-24T15:14Z"
-    ],
-    [
-     25.7624,
-     59.8295,
-     "2026-11-25T14:50Z"
+     28.962,
+     59.989,
+     "2026-11-25T17:17Z"
     ]
    ]
   },
@@ -1224,21 +1232,17 @@
    "nome": "E PIONEER",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "LR",
-   "lat": 59.8284,
-   "lon": 25.7621,
-   "velocita_nodi": 1,
-   "rotta_gradi": 183,
-   "ora_utc": "2026-11-25T14:56Z",
+   "lat": 59.984,
+   "lon": 28.6033,
+   "velocita_nodi": 1.6,
+   "rotta_gradi": 114.6,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "RU PRI",
+   "fonte": "Digitraffic (Fintraffic)",
+   "destinazione": "UST LUGA",
+   "pescaggio_m": 6.7,
    "scia": [
-    [
-     25.8265,
-     59.8334,
-     "2026-11-19T13:44Z"
-    ],
     [
      25.8273,
      59.834,
@@ -1268,6 +1272,11 @@
      25.7621,
      59.8284,
      "2026-11-25T14:56Z"
+    ],
+    [
+     28.6033,
+     59.984,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -1277,16 +1286,16 @@
    "nome": "ECO ICE",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "MH",
-   "lat": 60.2979,
-   "lon": 25.5468,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 9.3,
-   "ora_utc": "2026-11-25T14:49Z",
+   "lat": 59.7267,
+   "lon": 23.9727,
+   "velocita_nodi": 14.7,
+   "rotta_gradi": 252.5,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "FI PRV",
-   "pescaggio_m": 8.4,
+   "destinazione": "GBB FB",
+   "pescaggio_m": 7.4,
    "scia": [
     [
      25.3886,
@@ -1302,6 +1311,59 @@
      25.5468,
      60.2979,
      "2026-11-25T14:49Z"
+    ],
+    [
+     23.9727,
+     59.7267,
+     "2026-11-26T14:20Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "276425000",
+   "imo": "",
+   "nome": "EST WARSHIP N6741",
+   "tipo": "militare",
+   "bandiera": "EE",
+   "lat": 60.0409,
+   "lon": 24.3357,
+   "velocita_nodi": 8.3,
+   "rotta_gradi": 231.7,
+   "ora_utc": "2026-11-26T09:27Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "no",
+   "fonte": "Digitraffic (Fintraffic)",
+   "destinazione": "",
+   "pescaggio_m": null,
+   "scia": [
+    [
+     24.3357,
+     60.0409,
+     "2026-11-26T09:27Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "538010193",
+   "imo": "9388015",
+   "nome": "EVGENIA S",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "MH",
+   "lat": 60.3233,
+   "lon": 28.697,
+   "velocita_nodi": 0.3,
+   "rotta_gradi": 360.0,
+   "ora_utc": "2026-11-26T14:20Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "no",
+   "fonte": "Digitraffic (Fintraffic)",
+   "destinazione": "RUPRI",
+   "pescaggio_m": 7.5,
+   "scia": [
+    [
+     28.697,
+     60.3233,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -1311,22 +1373,17 @@
    "nome": "EVREN",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "PW",
-   "lat": 60.3304,
-   "lon": 28.0107,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 178.5,
-   "ora_utc": "2026-11-25T14:50Z",
+   "lat": 60.3302,
+   "lon": 28.0099,
+   "velocita_nodi": 0.0,
+   "rotta_gradi": 348.7,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "RUVYS",
    "pescaggio_m": 13.2,
    "scia": [
-    [
-     28.0388,
-     60.3378,
-     "2026-11-19T13:45Z"
-    ],
     [
      28.0342,
      60.3345,
@@ -1356,6 +1413,11 @@
      28.0107,
      60.3304,
      "2026-11-25T14:50Z"
+    ],
+    [
+     28.0099,
+     60.3302,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -1365,16 +1427,16 @@
    "nome": "EVRIDIKI",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "LR",
-   "lat": 60.0991,
-   "lon": 28.3084,
-   "velocita_nodi": 13.5,
-   "rotta_gradi": 121.7,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.7057,
+   "lon": 28.4243,
+   "velocita_nodi": 1.0,
+   "rotta_gradi": 353.3,
+   "ora_utc": "2026-11-26T06:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "RUPRI",
-   "pescaggio_m": 9.5,
+   "destinazione": "RUULU",
+   "pescaggio_m": 9.7,
    "scia": [
     [
      24.2191,
@@ -1405,6 +1467,11 @@
      28.3084,
      60.0991,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.4243,
+     59.7057,
+     "2026-11-26T06:19Z"
     ]
    ]
   },
@@ -1418,18 +1485,13 @@
    "lon": 23.919,
    "velocita_nodi": 0.0,
    "rotta_gradi": 0.0,
-   "ora_utc": "2026-11-25T14:49Z",
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "FIINK",
    "pescaggio_m": 9.7,
    "scia": [
-    [
-     23.919,
-     60.0146,
-     "2026-11-19T13:46Z"
-    ],
     [
      23.919,
      60.0146,
@@ -1459,6 +1521,11 @@
      23.919,
      60.0146,
      "2026-11-25T14:49Z"
+    ],
+    [
+     23.919,
+     60.0146,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -1468,11 +1535,11 @@
    "nome": "FIDAN",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "PW",
-   "lat": 60.3368,
-   "lon": 28.0281,
+   "lat": 60.3366,
+   "lon": 28.0277,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 255.7,
-   "ora_utc": "2026-11-25T14:48Z",
+   "rotta_gradi": 25.2,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -1493,55 +1560,35 @@
      28.0281,
      60.3368,
      "2026-11-25T14:48Z"
+    ],
+    [
+     28.0277,
+     60.3366,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
   {
-   "mmsi": "273350220",
-   "imo": "8414477",
-   "nome": "FLANDRIA",
+   "mmsi": "511102003",
+   "imo": "9140841",
+   "nome": "GANT",
    "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "RU",
-   "lat": 59.6698,
-   "lon": 23.5732,
-   "velocita_nodi": 10.8,
-   "rotta_gradi": 253.2,
-   "ora_utc": "2026-11-25T14:51Z",
+   "bandiera": "PW",
+   "lat": 59.9322,
+   "lon": 28.6347,
+   "velocita_nodi": 0.3,
+   "rotta_gradi": 143.4,
+   "ora_utc": "2026-11-26T08:05Z",
    "area": "Golfo di Finlandia",
-   "sanzionata": "sì: Unione europea",
+   "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "flotta_ombra_probabile": true,
-   "destinazione": "RUKGD",
-   "pescaggio_m": 5.9,
+   "destinazione": "",
+   "pescaggio_m": 5.8,
    "scia": [
     [
-     23.5732,
-     59.6698,
-     "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "273350220",
-   "imo": "8414477",
-   "nome": "FLANDRIA",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "RU",
-   "lat": 59.6631,
-   "lon": 23.5305,
-   "velocita_nodi": 10.7,
-   "rotta_gradi": 252.5,
-   "ora_utc": "2026-11-25T14:59Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "sì: Unione europea",
-   "fonte": "aisstream.io",
-   "flotta_ombra_probabile": true,
-   "destinazione": "RUKGD",
-   "scia": [
-    [
-     23.5305,
-     59.6631,
-     "2026-11-25T14:59Z"
+     28.6347,
+     59.9322,
+     "2026-11-26T08:05Z"
     ]
    ]
   },
@@ -1552,10 +1599,10 @@
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "GR",
    "lat": 60.0142,
-   "lon": 23.9186,
+   "lon": 23.9187,
    "velocita_nodi": 0.0,
    "rotta_gradi": 324.0,
-   "ora_utc": "2026-11-25T14:49Z",
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -1566,6 +1613,11 @@
      23.9186,
      60.0142,
      "2026-11-25T14:49Z"
+    ],
+    [
+     23.9187,
+     60.0142,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -1575,11 +1627,11 @@
    "nome": "GEFEST",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 60.0179,
-   "lon": 27.05,
-   "velocita_nodi": 0.2,
-   "rotta_gradi": 233.5,
-   "ora_utc": "2026-11-25T14:49Z",
+   "lat": 60.0178,
+   "lon": 27.0477,
+   "velocita_nodi": 0.5,
+   "rotta_gradi": 50.7,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -1606,6 +1658,11 @@
      27.05,
      60.0179,
      "2026-11-25T14:49Z"
+    ],
+    [
+     27.0477,
+     60.0178,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -1615,11 +1672,11 @@
    "nome": "GELIOTROP",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.8969,
-   "lon": 28.6004,
-   "velocita_nodi": 0.2,
-   "rotta_gradi": 273.3,
-   "ora_utc": "2026-11-25T14:46Z",
+   "lat": 59.897,
+   "lon": 28.6014,
+   "velocita_nodi": 0.3,
+   "rotta_gradi": 108.7,
+   "ora_utc": "2026-11-26T14:17Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -1627,11 +1684,6 @@
    "destinazione": "UST LUGA",
    "pescaggio_m": 8.2,
    "scia": [
-    [
-     28.5985,
-     59.9057,
-     "2026-11-19T13:44Z"
-    ],
     [
      28.5987,
      59.9059,
@@ -1661,6 +1713,11 @@
      28.6004,
      59.8969,
      "2026-11-25T14:46Z"
+    ],
+    [
+     28.6014,
+     59.897,
+     "2026-11-26T14:17Z"
     ]
    ]
   },
@@ -1670,11 +1727,11 @@
    "nome": "GESSONIT",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.9004,
-   "lon": 28.7996,
-   "velocita_nodi": 0.9,
-   "rotta_gradi": 130.9,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.895,
+   "lon": 28.6981,
+   "velocita_nodi": 1.5,
+   "rotta_gradi": 222.4,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -1682,11 +1739,6 @@
    "destinazione": "UST-LUGA",
    "pescaggio_m": 8.0,
    "scia": [
-    [
-     27.0544,
-     60.0318,
-     "2026-11-19T13:43Z"
-    ],
     [
      27.0564,
      60.0326,
@@ -1716,6 +1768,11 @@
      28.7996,
      59.9004,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.6981,
+     59.895,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -1725,75 +1782,17 @@
    "nome": "GREGAL",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SL",
-   "lat": 59.8654,
-   "lon": 24.8873,
-   "velocita_nodi": 1.2,
-   "rotta_gradi": 241.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 60.3292,
+   "lon": 28.6828,
+   "velocita_nodi": 0.0,
+   "rotta_gradi": 278.8,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "EETLL",
-   "pescaggio_m": 9.0,
+   "destinazione": "RUPRA",
+   "pescaggio_m": 8.9,
    "scia": [
-    [
-     25.4839,
-     59.8249,
-     "2026-11-19T13:45Z"
-    ],
-    [
-     25.4847,
-     59.8255,
-     "2026-11-20T13:30Z"
-    ],
-    [
-     25.4869,
-     59.8258,
-     "2026-11-21T12:57Z"
-    ],
-    [
-     25.4863,
-     59.8195,
-     "2026-11-22T12:54Z"
-    ],
-    [
-     25.8833,
-     59.8824,
-     "2026-11-23T15:20Z"
-    ],
-    [
-     25.3875,
-     59.9048,
-     "2026-11-24T15:28Z"
-    ],
-    [
-     24.8873,
-     59.8654,
-     "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "667002511",
-   "imo": "9378876",
-   "nome": "GREGAL",
-   "tipo": "petroliera/gasiera (AIS 89)",
-   "bandiera": "SL",
-   "lat": 59.8633,
-   "lon": 24.8806,
-   "velocita_nodi": 1.2,
-   "rotta_gradi": 237.5,
-   "ora_utc": "2026-11-25T15:02Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "EETLL",
-   "scia": [
-    [
-     25.4839,
-     59.8249,
-     "2026-11-19T13:45Z"
-    ],
     [
      25.4847,
      59.8255,
@@ -1823,6 +1822,11 @@
      24.8806,
      59.8633,
      "2026-11-25T15:02Z"
+    ],
+    [
+     28.6828,
+     60.3292,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -1836,18 +1840,13 @@
    "lon": 28.5604,
    "velocita_nodi": 0.0,
    "rotta_gradi": 100.5,
-   "ora_utc": "2026-11-25T10:53Z",
+   "ora_utc": "2026-11-26T14:17Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "VYSOTSK",
    "pescaggio_m": 11.0,
    "scia": [
-    [
-     26.115,
-     59.901,
-     "2026-11-19T13:42Z"
-    ],
     [
      26.115,
      59.9011,
@@ -1877,40 +1876,11 @@
      28.5604,
      60.6183,
      "2026-11-25T10:53Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "636022668",
-   "imo": "9334789",
-   "nome": "HORIZZON",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "LR",
-   "lat": 59.8146,
-   "lon": 28.4025,
-   "velocita_nodi": 0.0,
-   "rotta_gradi": 45.9,
-   "ora_utc": "2026-11-25T14:50Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "TG LFW",
-   "pescaggio_m": 11.2,
-   "scia": [
-    [
-     28.4004,
-     59.8146,
-     "2026-11-23T14:44Z"
     ],
     [
-     28.3993,
-     59.8149,
-     "2026-11-24T15:13Z"
-    ],
-    [
-     28.4025,
-     59.8146,
-     "2026-11-25T14:50Z"
+     28.5604,
+     60.6183,
+     "2026-11-26T14:17Z"
     ]
    ]
   },
@@ -1920,22 +1890,17 @@
    "nome": "IKLA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "EE",
-   "lat": 59.4844,
-   "lon": 24.5251,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 125.6,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.4988,
+   "lon": 24.8171,
+   "velocita_nodi": 0.0,
+   "rotta_gradi": 65.9,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "MIIDURANNA SADAM",
    "pescaggio_m": 3.0,
    "scia": [
-    [
-     24.8126,
-     59.5,
-     "2026-11-19T13:46Z"
-    ],
     [
      24.8127,
      59.5,
@@ -1965,6 +1930,11 @@
      24.5251,
      59.4844,
      "2026-11-25T14:51Z"
+    ],
+    [
+     24.8171,
+     59.4988,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -1974,16 +1944,16 @@
    "nome": "IONIAN SUNRISE",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "LR",
-   "lat": 60.3364,
-   "lon": 28.6993,
-   "velocita_nodi": 0.0,
-   "rotta_gradi": 241.6,
-   "ora_utc": "2026-11-25T14:50Z",
+   "lat": 60.1951,
+   "lon": 27.8247,
+   "velocita_nodi": 11.5,
+   "rotta_gradi": 285.9,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "PRIMORSK",
-   "pescaggio_m": 7.0,
+   "pescaggio_m": 14.2,
    "scia": [
     [
      27.6431,
@@ -1994,6 +1964,11 @@
      28.6993,
      60.3364,
      "2026-11-25T14:50Z"
+    ],
+    [
+     27.8247,
+     60.1951,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -2003,11 +1978,11 @@
    "nome": "JASMIN JOY",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "BS",
-   "lat": 59.9222,
-   "lon": 28.603,
-   "velocita_nodi": 0.1,
+   "lat": 59.922,
+   "lon": 28.602,
+   "velocita_nodi": 0.3,
    "rotta_gradi": 360.0,
-   "ora_utc": "2026-11-25T14:47Z",
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2033,6 +2008,11 @@
      28.603,
      59.9222,
      "2026-11-25T14:47Z"
+    ],
+    [
+     28.602,
+     59.922,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -2043,21 +2023,16 @@
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "LR",
    "lat": 59.8524,
-   "lon": 25.8715,
-   "velocita_nodi": 0.0,
-   "rotta_gradi": 197.7,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lon": 25.8705,
+   "velocita_nodi": 0.1,
+   "rotta_gradi": 271.1,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "BALTIC FOR ORDERS",
    "pescaggio_m": 10.7,
    "scia": [
-    [
-     25.8723,
-     59.8575,
-     "2026-11-19T13:44Z"
-    ],
     [
      25.8733,
      59.8579,
@@ -2087,6 +2062,36 @@
      25.8715,
      59.8524,
      "2026-11-25T14:51Z"
+    ],
+    [
+     25.8705,
+     59.8524,
+     "2026-11-26T14:18Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "273396150",
+   "imo": "9279422",
+   "nome": "KAPITAN KOKOVIN",
+   "tipo": "cargo (AIS 70)",
+   "bandiera": "RU",
+   "lat": 59.8401,
+   "lon": 25.5127,
+   "velocita_nodi": 9.3,
+   "rotta_gradi": 75.1,
+   "ora_utc": "2026-11-26T14:20Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "sì: USA",
+   "fonte": "Digitraffic (Fintraffic)",
+   "flotta_ombra_probabile": false,
+   "destinazione": "RULED",
+   "pescaggio_m": 4.1,
+   "scia": [
+    [
+     25.5127,
+     59.8401,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -2096,11 +2101,11 @@
    "nome": "KATTEGAT",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "DK",
-   "lat": 60.0239,
-   "lon": 25.4871,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 74.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 60.0238,
+   "lon": 25.4873,
+   "velocita_nodi": 0.0,
+   "rotta_gradi": 100.0,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2118,42 +2123,14 @@
      "2026-11-24T15:15Z"
     ],
     [
-     25.4871,
-     60.0239,
-     "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "219222000",
-   "imo": "9432866",
-   "nome": "KATTEGAT",
-   "tipo": "petroliera/gasiera (AIS 89)",
-   "bandiera": "DK",
-   "lat": 60.024,
-   "lon": 25.4873,
-   "velocita_nodi": 0,
-   "rotta_gradi": 142,
-   "ora_utc": "2026-11-25T15:03Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "FI SKV",
-   "scia": [
-    [
-     22.5548,
-     59.3997,
-     "2026-11-23T15:20Z"
-    ],
-    [
-     25.4843,
-     60.0245,
-     "2026-11-24T15:15Z"
-    ],
-    [
      25.4873,
      60.024,
      "2026-11-25T15:03Z"
+    ],
+    [
+     25.4873,
+     60.0238,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -2164,10 +2141,10 @@
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
    "lat": 59.8974,
-   "lon": 28.6221,
+   "lon": 28.6226,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 37.5,
-   "ora_utc": "2026-11-25T14:50Z",
+   "rotta_gradi": 15.8,
+   "ora_utc": "2026-11-26T14:10Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2175,11 +2152,6 @@
    "destinazione": "UST LUGA RUS",
    "pescaggio_m": 15.1,
    "scia": [
-    [
-     28.1548,
-     60.136,
-     "2026-11-19T13:47Z"
-    ],
     [
      28.6177,
      59.9015,
@@ -2209,6 +2181,11 @@
      28.6221,
      59.8974,
      "2026-11-25T14:50Z"
+    ],
+    [
+     28.6226,
+     59.8974,
+     "2026-11-26T14:10Z"
     ]
    ]
   },
@@ -2218,11 +2195,11 @@
    "nome": "KOUSAI",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SL",
-   "lat": 59.8088,
-   "lon": 28.4111,
+   "lat": 59.8084,
+   "lon": 28.4096,
    "velocita_nodi": 0.5,
-   "rotta_gradi": 360.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "rotta_gradi": 246.8,
+   "ora_utc": "2026-11-26T14:14Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2230,11 +2207,6 @@
    "destinazione": "RUULU",
    "pescaggio_m": 8.0,
    "scia": [
-    [
-     26.1231,
-     59.8889,
-     "2026-11-19T13:45Z"
-    ],
     [
      26.1257,
      59.89,
@@ -2264,6 +2236,11 @@
      28.4111,
      59.8088,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.4096,
+     59.8084,
+     "2026-11-26T14:14Z"
     ]
    ]
   },
@@ -2273,11 +2250,11 @@
    "nome": "LAVENDER",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "OM",
-   "lat": 60.0318,
-   "lon": 28.5644,
-   "velocita_nodi": 9.4,
-   "rotta_gradi": 215.1,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 60.0275,
+   "lon": 28.4392,
+   "velocita_nodi": 0.1,
+   "rotta_gradi": 115.7,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, USA, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2289,6 +2266,11 @@
      28.5644,
      60.0318,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.4392,
+     60.0275,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -2299,21 +2281,16 @@
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "EE",
    "lat": 59.4577,
-   "lon": 24.7073,
+   "lon": 24.7072,
    "velocita_nodi": 0.0,
    "rotta_gradi": 0.0,
-   "ora_utc": "2026-11-25T14:50Z",
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "PALJASSAARE",
    "pescaggio_m": 3.0,
    "scia": [
-    [
-     24.7075,
-     59.4577,
-     "2026-11-19T13:47Z"
-    ],
     [
      24.7073,
      59.4578,
@@ -2343,6 +2320,11 @@
      24.7073,
      59.4577,
      "2026-11-25T14:50Z"
+    ],
+    [
+     24.7072,
+     59.4577,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -2353,10 +2335,10 @@
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
    "lat": 59.7954,
-   "lon": 28.4011,
-   "velocita_nodi": 0.0,
-   "rotta_gradi": 271.0,
-   "ora_utc": "2026-11-25T14:38Z",
+   "lon": 28.4027,
+   "velocita_nodi": 0.3,
+   "rotta_gradi": 17.6,
+   "ora_utc": "2026-11-26T14:17Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2364,11 +2346,6 @@
    "destinazione": "FOR ORDERS",
    "pescaggio_m": 8.0,
    "scia": [
-    [
-     28.419,
-     59.8405,
-     "2026-11-19T13:13Z"
-    ],
     [
      28.4168,
      59.8404,
@@ -2398,30 +2375,11 @@
      28.4011,
      59.7954,
      "2026-11-25T14:38Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "311027500",
-   "imo": "9438860",
-   "nome": "MARAN NANSEN",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "BS",
-   "lat": 60.3138,
-   "lon": 25.5553,
-   "velocita_nodi": 0.0,
-   "rotta_gradi": 330.6,
-   "ora_utc": "2026-11-25T11:21Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "FISKV",
-   "pescaggio_m": 12.9,
-   "scia": [
+    ],
     [
-     25.5553,
-     60.3138,
-     "2026-11-25T11:21Z"
+     28.4027,
+     59.7954,
+     "2026-11-26T14:17Z"
     ]
    ]
   },
@@ -2431,23 +2389,18 @@
    "nome": "MARJORIE",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SL",
-   "lat": 59.9943,
-   "lon": 28.5684,
-   "velocita_nodi": 4.9,
-   "rotta_gradi": 357.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 60.3365,
+   "lon": 28.6996,
+   "velocita_nodi": 0.0,
+   "rotta_gradi": 178.7,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
    "flotta_ombra_probabile": true,
-   "destinazione": "UST_LUGA",
+   "destinazione": "PRIMORSK",
    "pescaggio_m": 8.5,
    "scia": [
-    [
-     28.6234,
-     59.9369,
-     "2026-11-19T13:40Z"
-    ],
     [
      28.6243,
      59.9373,
@@ -2477,6 +2430,11 @@
      28.5684,
      59.9943,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.6996,
+     60.3365,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -2486,11 +2444,11 @@
    "nome": "MILOU",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "BS",
-   "lat": 59.8354,
-   "lon": 25.9855,
-   "velocita_nodi": 0.7,
+   "lat": 59.8353,
+   "lon": 25.9856,
+   "velocita_nodi": 0.9,
    "rotta_gradi": 79.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2516,59 +2474,11 @@
      25.9855,
      59.8354,
      "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "636026318",
-   "imo": "9380831",
-   "nome": "MINERVA JULIE",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "LR",
-   "lat": 60.102,
-   "lon": 29.4283,
-   "velocita_nodi": 6.5,
-   "rotta_gradi": 123.0,
-   "ora_utc": "2026-11-25T12:50Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "FOR ORDERS",
-   "pescaggio_m": 8.0,
-   "scia": [
-    [
-     27.8169,
-     60.1763,
-     "2026-11-24T15:17Z"
     ],
     [
-     29.4283,
-     60.102,
-     "2026-11-25T12:50Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "538008717",
-   "imo": "9347310",
-   "nome": "MOGIANA",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "MH",
-   "lat": 59.7634,
-   "lon": 24.1735,
-   "velocita_nodi": 12.1,
-   "rotta_gradi": 254.0,
-   "ora_utc": "2026-11-25T14:51Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "MAPTM",
-   "pescaggio_m": 11.0,
-   "scia": [
-    [
-     24.1735,
-     59.7634,
-     "2026-11-25T14:51Z"
+     25.9856,
+     59.8353,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -2581,19 +2491,14 @@
    "lat": 59.458,
    "lon": 24.7085,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 235.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "rotta_gradi": 277.1,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "GOLF",
    "pescaggio_m": 4.0,
    "scia": [
-    [
-     24.7085,
-     59.458,
-     "2026-11-19T13:47Z"
-    ],
     [
      24.7085,
      59.4579,
@@ -2623,6 +2528,11 @@
      24.7085,
      59.458,
      "2026-11-25T14:51Z"
+    ],
+    [
+     24.7085,
+     59.458,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -2632,22 +2542,27 @@
    "nome": "NAVIK",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.7958,
-   "lon": 28.4037,
-   "velocita_nodi": 0.5,
-   "rotta_gradi": 43.3,
-   "ora_utc": "2026-11-25T14:48Z",
+   "lat": 60.0129,
+   "lon": 29.0869,
+   "velocita_nodi": 2.7,
+   "rotta_gradi": 61.7,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
    "flotta_ombra_probabile": true,
-   "destinazione": "RU ULU",
-   "pescaggio_m": 6.3,
+   "destinazione": "RU LED",
+   "pescaggio_m": 6.2,
    "scia": [
     [
      28.4037,
      59.7958,
      "2026-11-25T14:48Z"
+    ],
+    [
+     29.0869,
+     60.0129,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -2657,11 +2572,11 @@
    "nome": "NERO",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "VN",
-   "lat": 59.8393,
-   "lon": 25.8129,
-   "velocita_nodi": 0.2,
-   "rotta_gradi": 42.9,
-   "ora_utc": "2026-11-25T14:50Z",
+   "lat": 59.839,
+   "lon": 25.8133,
+   "velocita_nodi": 0.4,
+   "rotta_gradi": 107.0,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2669,11 +2584,6 @@
    "destinazione": "UST_LUGA",
    "pescaggio_m": 9.0,
    "scia": [
-    [
-     25.6656,
-     59.8385,
-     "2026-11-19T13:45Z"
-    ],
     [
      25.667,
      59.8391,
@@ -2703,6 +2613,11 @@
      25.8129,
      59.8393,
      "2026-11-25T14:50Z"
+    ],
+    [
+     25.8133,
+     59.839,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -2713,10 +2628,10 @@
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "OM",
    "lat": 60.0016,
-   "lon": 28.4783,
+   "lon": 28.4784,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 51.0,
-   "ora_utc": "2026-11-25T14:43Z",
+   "rotta_gradi": 241.5,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, USA, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2724,11 +2639,6 @@
    "destinazione": "RUULU",
    "pescaggio_m": 9.3,
    "scia": [
-    [
-     28.4745,
-     60.0063,
-     "2026-11-19T13:41Z"
-    ],
     [
      28.4749,
      60.0066,
@@ -2753,6 +2663,11 @@
      28.4783,
      60.0016,
      "2026-11-25T14:43Z"
+    ],
+    [
+     28.4784,
+     60.0016,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -2762,11 +2677,11 @@
    "nome": "NORD",
    "tipo": "altro (AIS 52)",
    "bandiera": "RU",
-   "lat": 60.0165,
-   "lon": 27.8541,
+   "lat": 60.0166,
+   "lon": 27.854,
    "velocita_nodi": 102.3,
    "rotta_gradi": 360.0,
-   "ora_utc": "2026-11-25T14:49Z",
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: USA",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2783,6 +2698,11 @@
      27.8541,
      60.0165,
      "2026-11-25T14:49Z"
+    ],
+    [
+     27.854,
+     60.0166,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -2792,22 +2712,17 @@
    "nome": "NOUNOU",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "MT",
-   "lat": 59.8729,
+   "lat": 59.8728,
    "lon": 26.0551,
    "velocita_nodi": 0.3,
-   "rotta_gradi": 263.1,
-   "ora_utc": "2026-11-25T14:49Z",
+   "rotta_gradi": 235.0,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "EETLL FOR ORDERS",
    "pescaggio_m": 8.2,
    "scia": [
-    [
-     26.0545,
-     59.8812,
-     "2026-11-19T13:46Z"
-    ],
     [
      26.0562,
      59.882,
@@ -2837,6 +2752,11 @@
      26.0551,
      59.8729,
      "2026-11-25T14:49Z"
+    ],
+    [
+     26.0551,
+     59.8728,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -2846,22 +2766,17 @@
    "nome": "NYSEA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "MH",
-   "lat": 59.8274,
-   "lon": 28.4015,
+   "lat": 59.8272,
+   "lon": 28.4013,
    "velocita_nodi": 0.1,
    "rotta_gradi": 360.0,
-   "ora_utc": "2026-11-25T14:32Z",
+   "ora_utc": "2026-11-26T13:15Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "RUULU",
    "pescaggio_m": 8.0,
    "scia": [
-    [
-     25.8749,
-     59.8784,
-     "2026-11-19T13:47Z"
-    ],
     [
      28.6263,
      59.9913,
@@ -2891,30 +2806,11 @@
      28.4015,
      59.8274,
      "2026-11-25T14:32Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "352005852",
-   "imo": "9299941",
-   "nome": "OCEAN L",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "PA",
-   "lat": 59.7521,
-   "lon": 24.1756,
-   "velocita_nodi": 11.4,
-   "rotta_gradi": 256.0,
-   "ora_utc": "2026-11-25T14:51Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "PORT-SAID_EGYPT",
-   "pescaggio_m": 14.6,
-   "scia": [
+    ],
     [
-     24.1756,
-     59.7521,
-     "2026-11-25T14:51Z"
+     28.4013,
+     59.8272,
+     "2026-11-26T13:15Z"
     ]
    ]
   },
@@ -2924,22 +2820,17 @@
    "nome": "OCEAN THALIA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "PA",
-   "lat": 59.8953,
+   "lat": 59.895,
    "lon": 28.6404,
-   "velocita_nodi": 0.4,
-   "rotta_gradi": 213.5,
-   "ora_utc": "2026-11-25T14:50Z",
+   "velocita_nodi": 0.7,
+   "rotta_gradi": 76.4,
+   "ora_utc": "2026-11-26T14:15Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "RU ULU",
    "pescaggio_m": 7.2,
    "scia": [
-    [
-     28.6373,
-     59.9062,
-     "2026-11-19T13:47Z"
-    ],
     [
      28.6378,
      59.9068,
@@ -2969,6 +2860,35 @@
      28.6404,
      59.8953,
      "2026-11-25T14:50Z"
+    ],
+    [
+     28.6404,
+     59.895,
+     "2026-11-26T14:15Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "636022387",
+   "imo": "9327097",
+   "nome": "OLYMPIC SPIRIT",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "LR",
+   "lat": 60.0238,
+   "lon": 29.2109,
+   "velocita_nodi": 5.2,
+   "rotta_gradi": 91.1,
+   "ora_utc": "2026-11-26T13:47Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "no",
+   "fonte": "Digitraffic (Fintraffic)",
+   "destinazione": "RU LED/ ST. PETERSBU",
+   "pescaggio_m": 6.4,
+   "scia": [
+    [
+     29.2109,
+     60.0238,
+     "2026-11-26T13:47Z"
     ]
    ]
   },
@@ -2978,11 +2898,11 @@
    "nome": "OSANA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SL",
-   "lat": 60.0224,
-   "lon": 28.4927,
+   "lat": 60.0223,
+   "lon": 28.4917,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 254.7,
-   "ora_utc": "2026-11-25T14:51Z",
+   "rotta_gradi": 48.7,
+   "ora_utc": "2026-11-26T14:16Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -2990,11 +2910,6 @@
    "destinazione": "UST-LUGA",
    "pescaggio_m": 14.6,
    "scia": [
-    [
-     28.655,
-     59.981,
-     "2026-11-19T13:47Z"
-    ],
     [
      28.7826,
      59.9574,
@@ -3024,6 +2939,11 @@
      28.4927,
      60.0224,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.4917,
+     60.0223,
+     "2026-11-26T14:16Z"
     ]
    ]
   },
@@ -3033,22 +2953,17 @@
    "nome": "PACIFIC MOON",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "BB",
-   "lat": 59.8491,
-   "lon": 28.4253,
-   "velocita_nodi": 0.3,
-   "rotta_gradi": 230.2,
-   "ora_utc": "2026-11-25T14:49Z",
+   "lat": 59.8486,
+   "lon": 28.4247,
+   "velocita_nodi": 0.4,
+   "rotta_gradi": 239.5,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "RUULU",
    "pescaggio_m": 7.4,
    "scia": [
-    [
-     26.0218,
-     59.8487,
-     "2026-11-19T13:44Z"
-    ],
     [
      26.0218,
      59.8488,
@@ -3078,61 +2993,11 @@
      28.4253,
      59.8491,
      "2026-11-25T14:49Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "273271850",
-   "imo": "9288746",
-   "nome": "PLUTON",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "RU",
-   "lat": 60.1756,
-   "lon": 27.666,
-   "velocita_nodi": 11.8,
-   "rotta_gradi": 240.6,
-   "ora_utc": "2026-11-25T14:51Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "sì: Regno Unito, Unione europea",
-   "fonte": "Digitraffic (Fintraffic)",
-   "flotta_ombra_probabile": true,
-   "destinazione": "EG PSD",
-   "pescaggio_m": 15.0,
-   "scia": [
-    [
-     28.4915,
-     60.019,
-     "2026-11-19T13:42Z"
     ],
     [
-     28.0473,
-     60.1657,
-     "2026-11-20T13:32Z"
-    ],
-    [
-     28.0416,
-     60.3374,
-     "2026-11-21T12:55Z"
-    ],
-    [
-     28.0376,
-     60.3342,
-     "2026-11-22T12:52Z"
-    ],
-    [
-     28.0402,
-     60.3325,
-     "2026-11-23T15:16Z"
-    ],
-    [
-     28.038,
-     60.3331,
-     "2026-11-24T15:15Z"
-    ],
-    [
-     27.666,
-     60.1756,
-     "2026-11-25T14:51Z"
+     28.4247,
+     59.8486,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -3143,10 +3008,10 @@
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
    "lat": 59.9103,
-   "lon": 28.6652,
+   "lon": 28.6647,
    "velocita_nodi": 0.1,
-   "rotta_gradi": 335.5,
-   "ora_utc": "2026-11-25T14:48Z",
+   "rotta_gradi": 340.6,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, USA, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3178,6 +3043,11 @@
      28.6652,
      59.9103,
      "2026-11-25T14:48Z"
+    ],
+    [
+     28.6647,
+     59.9103,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -3187,11 +3057,11 @@
    "nome": "QUOTA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "BS",
-   "lat": 59.8432,
-   "lon": 28.4184,
-   "velocita_nodi": 0.2,
-   "rotta_gradi": 12.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.8431,
+   "lon": 28.4176,
+   "velocita_nodi": 0.4,
+   "rotta_gradi": 84.6,
+   "ora_utc": "2026-11-26T14:17Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3207,6 +3077,11 @@
      28.4184,
      59.8432,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.4176,
+     59.8431,
+     "2026-11-26T14:17Z"
     ]
    ]
   },
@@ -3216,11 +3091,11 @@
    "nome": "RHEIN",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "CM",
-   "lat": 59.8273,
-   "lon": 26.0231,
-   "velocita_nodi": 0.4,
-   "rotta_gradi": 76.3,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.8272,
+   "lon": 26.0237,
+   "velocita_nodi": 0.6,
+   "rotta_gradi": 272.5,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3247,6 +3122,11 @@
      26.0231,
      59.8273,
      "2026-11-25T14:51Z"
+    ],
+    [
+     26.0237,
+     59.8272,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -3256,22 +3136,17 @@
    "nome": "ROSSA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "BS",
-   "lat": 59.8566,
-   "lon": 28.4126,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 43.4,
-   "ora_utc": "2026-11-25T14:49Z",
+   "lat": 59.8565,
+   "lon": 28.4113,
+   "velocita_nodi": 0.5,
+   "rotta_gradi": 92.5,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "FOR ORDERS",
    "pescaggio_m": 7.3,
    "scia": [
-    [
-     28.4087,
-     59.8617,
-     "2026-11-19T13:46Z"
-    ],
     [
      28.4084,
      59.8614,
@@ -3296,31 +3171,11 @@
      28.4126,
      59.8566,
      "2026-11-25T14:49Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "273148510",
-   "imo": "8711289",
-   "nome": "RZK CONSTANTA",
-   "tipo": "cargo (AIS 70)",
-   "bandiera": "RU",
-   "lat": 60.0287,
-   "lon": 29.1448,
-   "velocita_nodi": 10.8,
-   "rotta_gradi": 92.7,
-   "ora_utc": "2026-11-25T14:42Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "sì: USA",
-   "fonte": "Digitraffic (Fintraffic)",
-   "flotta_ombra_probabile": false,
-   "destinazione": "RU LED",
-   "pescaggio_m": 6.0,
-   "scia": [
+    ],
     [
-     29.1448,
-     60.0287,
-     "2026-11-25T14:42Z"
+     28.4113,
+     59.8565,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -3330,11 +3185,11 @@
    "nome": "SAGA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.9198,
-   "lon": 28.6596,
+   "lat": 59.92,
+   "lon": 28.6609,
    "velocita_nodi": 0.3,
-   "rotta_gradi": 88.6,
-   "ora_utc": "2026-11-25T14:51Z",
+   "rotta_gradi": 273.9,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, USA, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3342,11 +3197,6 @@
    "destinazione": "RUMMK>>RUULU",
    "pescaggio_m": 7.8,
    "scia": [
-    [
-     28.6562,
-     59.9238,
-     "2026-11-19T13:29Z"
-    ],
     [
      28.6561,
      59.9237,
@@ -3376,36 +3226,11 @@
      28.6596,
      59.9198,
      "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "273120230",
-   "imo": "9384992",
-   "nome": "SAPFIR",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "RU",
-   "lat": 59.7791,
-   "lon": 28.4212,
-   "velocita_nodi": 0.3,
-   "rotta_gradi": 348.2,
-   "ora_utc": "2026-11-25T14:47Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "sì: Regno Unito, Unione europea",
-   "fonte": "Digitraffic (Fintraffic)",
-   "flotta_ombra_probabile": true,
-   "destinazione": "PORT SAID",
-   "pescaggio_m": 14.9,
-   "scia": [
-    [
-     28.6578,
-     59.9283,
-     "2026-11-24T15:15Z"
     ],
     [
-     28.4212,
-     59.7791,
-     "2026-11-25T14:47Z"
+     28.6609,
+     59.92,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -3415,11 +3240,11 @@
    "nome": "SAPNA",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SL",
-   "lat": 59.8226,
-   "lon": 25.8606,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 227.0,
-   "ora_utc": "2026-11-25T14:50Z",
+   "lat": 59.8227,
+   "lon": 25.8617,
+   "velocita_nodi": 0.7,
+   "rotta_gradi": 100.0,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3438,111 +3263,14 @@
      "2026-11-24T15:17Z"
     ],
     [
-     25.8606,
-     59.8226,
-     "2026-11-25T14:50Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "667002270",
-   "imo": "9247883",
-   "nome": "SAPNA",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "SL",
-   "lat": 59.823,
-   "lon": 25.8618,
-   "velocita_nodi": 0.5,
-   "rotta_gradi": 68,
-   "ora_utc": "2026-11-25T14:56Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "sì: Regno Unito, Unione europea",
-   "fonte": "aisstream.io",
-   "flotta_ombra_probabile": true,
-   "destinazione": "GULF OF FINLAND",
-   "scia": [
-    [
-     25.859,
-     59.824,
-     "2026-11-23T15:20Z"
-    ],
-    [
-     25.8559,
-     59.8239,
-     "2026-11-24T15:17Z"
-    ],
-    [
      25.8618,
      59.823,
      "2026-11-25T14:56Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "273433260",
-   "imo": "",
-   "nome": "SBORSHCHIK-3",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "RU",
-   "lat": 60.01,
-   "lon": 29.3473,
-   "velocita_nodi": 1.0,
-   "rotta_gradi": 41.7,
-   "ora_utc": "2026-11-25T12:21Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "RULED",
-   "pescaggio_m": 2.1,
-   "scia": [
-    [
-     28.5485,
-     60.3986,
-     "2026-11-24T15:17Z"
     ],
     [
-     29.3473,
-     60.01,
-     "2026-11-25T12:21Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "219011922",
-   "imo": "9341419",
-   "nome": "SCANDINAVIA",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "DK",
-   "lat": 59.5795,
-   "lon": 23.025,
-   "velocita_nodi": 8.9,
-   "rotta_gradi": 261.5,
-   "ora_utc": "2026-11-25T14:51Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "KAPELLSKAR",
-   "pescaggio_m": 4.1,
-   "scia": [
-    [
-     22.9553,
-     59.8218,
-     "2026-11-22T12:54Z"
-    ],
-    [
-     24.9402,
-     59.4962,
-     "2026-11-23T15:20Z"
-    ],
-    [
-     24.9402,
-     59.4962,
-     "2026-11-24T15:14Z"
-    ],
-    [
-     23.025,
-     59.5795,
-     "2026-11-25T14:51Z"
+     25.8617,
+     59.8227,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -3552,11 +3280,11 @@
    "nome": "SEA OWL I",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "GQ",
-   "lat": 59.9087,
-   "lon": 28.6273,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 110.0,
-   "ora_utc": "2026-11-25T12:44Z",
+   "lat": 59.9085,
+   "lon": 28.628,
+   "velocita_nodi": 0.2,
+   "rotta_gradi": 129.0,
+   "ora_utc": "2026-11-26T12:39Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3568,30 +3296,35 @@
      28.6273,
      59.9087,
      "2026-11-25T12:44Z"
+    ],
+    [
+     28.628,
+     59.9085,
+     "2026-11-26T12:39Z"
     ]
    ]
   },
   {
-   "mmsi": "352004593",
-   "imo": "9332078",
-   "nome": "SHEN MI",
+   "mmsi": "273458830",
+   "imo": "8033089",
+   "nome": "SGV-FLOT",
    "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "PA",
-   "lat": 60.1487,
-   "lon": 28.1456,
-   "velocita_nodi": 14.0,
-   "rotta_gradi": 283.8,
-   "ora_utc": "2026-11-25T14:51Z",
+   "bandiera": "RU",
+   "lat": 59.6491,
+   "lon": 23.9822,
+   "velocita_nodi": 6.5,
+   "rotta_gradi": 74.3,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "TURKEY FOR ORDERS",
-   "pescaggio_m": 10.2,
+   "destinazione": "RU KGD",
+   "pescaggio_m": 2.6,
    "scia": [
     [
-     28.1456,
-     60.1487,
-     "2026-11-25T14:51Z"
+     23.9822,
+     59.6491,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -3601,11 +3334,11 @@
    "nome": "SINO PROSPERITY",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "PA",
-   "lat": 59.8525,
-   "lon": 26.0261,
-   "velocita_nodi": 0.2,
-   "rotta_gradi": 90.3,
-   "ora_utc": "2026-11-25T14:49Z",
+   "lat": 59.8482,
+   "lon": 26.0279,
+   "velocita_nodi": 0.5,
+   "rotta_gradi": 249.3,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3621,6 +3354,11 @@
      26.0261,
      59.8525,
      "2026-11-25T14:49Z"
+    ],
+    [
+     26.0279,
+     59.8482,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -3630,11 +3368,11 @@
    "nome": "SKYF",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.9061,
-   "lon": 28.6456,
+   "lat": 59.9047,
+   "lon": 28.6465,
    "velocita_nodi": 0.2,
-   "rotta_gradi": 263.3,
-   "ora_utc": "2026-11-25T14:48Z",
+   "rotta_gradi": 116.9,
+   "ora_utc": "2026-11-26T14:17Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3642,11 +3380,6 @@
    "destinazione": "UST-LUGA",
    "pescaggio_m": 9.0,
    "scia": [
-    [
-     28.6427,
-     59.9166,
-     "2026-11-19T13:36Z"
-    ],
     [
      28.6432,
      59.9172,
@@ -3676,6 +3409,36 @@
      28.6456,
      59.9061,
      "2026-11-25T14:48Z"
+    ],
+    [
+     28.6465,
+     59.9047,
+     "2026-11-26T14:17Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "273298320",
+   "imo": "9398046",
+   "nome": "SMP NOVODVINSK",
+   "tipo": "cargo (AIS 70)",
+   "bandiera": "RU",
+   "lat": 60.0723,
+   "lon": 28.4367,
+   "velocita_nodi": 8.6,
+   "rotta_gradi": 295.4,
+   "ora_utc": "2026-11-26T14:20Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "sì: USA",
+   "fonte": "Digitraffic (Fintraffic)",
+   "flotta_ombra_probabile": false,
+   "destinazione": "RU VY B",
+   "pescaggio_m": 3.9,
+   "scia": [
+    [
+     28.4367,
+     60.0723,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -3685,11 +3448,11 @@
    "nome": "SOGLASIYE",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.827,
-   "lon": 28.4151,
+   "lat": 59.8269,
+   "lon": 28.4147,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 9.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "rotta_gradi": 316.0,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3697,11 +3460,6 @@
    "destinazione": "RU ULU",
    "pescaggio_m": 14.4,
    "scia": [
-    [
-     28.4263,
-     59.8577,
-     "2026-11-19T13:47Z"
-    ],
     [
      28.4265,
      59.7058,
@@ -3731,35 +3489,11 @@
      28.4151,
      59.827,
      "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "266420000",
-   "imo": "9428085",
-   "nome": "SOLERO",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "SE",
-   "lat": 60.3055,
-   "lon": 25.5519,
-   "velocita_nodi": 0.0,
-   "rotta_gradi": 127.3,
-   "ora_utc": "2026-11-25T14:51Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "LTKLJ",
-   "pescaggio_m": 6.7,
-   "scia": [
-    [
-     25.4347,
-     59.9386,
-     "2026-11-24T15:26Z"
     ],
     [
-     25.5519,
-     60.3055,
-     "2026-11-25T14:51Z"
+     28.4147,
+     59.8269,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -3769,11 +3503,11 @@
    "nome": "SONGA PEARL",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "MT",
-   "lat": 59.8154,
-   "lon": 25.1798,
-   "velocita_nodi": 12.4,
-   "rotta_gradi": 77.5,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 60.3046,
+   "lon": 25.5514,
+   "velocita_nodi": 0.0,
+   "rotta_gradi": 349.9,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3781,32 +3515,14 @@
    "pescaggio_m": 7.1,
    "scia": [
     [
-     25.1798,
-     59.8154,
-     "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "248897000",
-   "imo": "9444455",
-   "nome": "SONGA PEARL",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "MT",
-   "lat": 59.8204,
-   "lon": 25.2377,
-   "velocita_nodi": 12.6,
-   "rotta_gradi": 81.6,
-   "ora_utc": "2026-11-25T15:00Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "FISKV",
-   "scia": [
-    [
      25.2377,
      59.8204,
      "2026-11-25T15:00Z"
+    ],
+    [
+     25.5514,
+     60.3046,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -3816,16 +3532,16 @@
    "nome": "SPESSARTIN",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.8443,
-   "lon": 25.9985,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 235.3,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.9398,
+   "lon": 28.4829,
+   "velocita_nodi": 1.4,
+   "rotta_gradi": 217.1,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
    "flotta_ombra_probabile": true,
-   "destinazione": "FORORDER",
+   "destinazione": "RUULU",
    "pescaggio_m": 8.0,
    "scia": [
     [
@@ -3842,60 +3558,11 @@
      25.9985,
      59.8443,
      "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "572142220",
-   "imo": "9273636",
-   "nome": "SPICA",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "TV",
-   "lat": 60.0324,
-   "lon": 28.9731,
-   "velocita_nodi": 9.6,
-   "rotta_gradi": 91.1,
-   "ora_utc": "2026-11-24T17:41Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "RU LED",
-   "pescaggio_m": 10.9,
-   "scia": [
-    [
-     26.0031,
-     59.8257,
-     "2026-11-19T13:47Z"
     ],
     [
-     26.0034,
-     59.8259,
-     "2026-11-20T13:32Z"
-    ],
-    [
-     25.5089,
-     59.8422,
-     "2026-11-21T12:57Z"
-    ],
-    [
-     24.9558,
-     59.4945,
-     "2026-11-22T12:52Z"
-    ],
-    [
-     26.1132,
-     59.8806,
-     "2026-11-23T15:19Z"
-    ],
-    [
-     28.2477,
-     60.121,
-     "2026-11-24T15:17Z"
-    ],
-    [
-     28.9731,
-     60.0324,
-     "2026-11-24T17:41Z"
+     28.4829,
+     59.9398,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -3905,11 +3572,11 @@
    "nome": "STANISLAV GOVORUKHIN",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 60.0172,
-   "lon": 29.3787,
+   "lat": 60.0171,
+   "lon": 29.3773,
    "velocita_nodi": 0.1,
-   "rotta_gradi": 0.0,
-   "ora_utc": "2026-11-25T14:42Z",
+   "rotta_gradi": 357.9,
+   "ora_utc": "2026-11-26T12:12Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -3931,73 +3598,35 @@
      29.3787,
      60.0172,
      "2026-11-25T14:42Z"
+    ],
+    [
+     29.3773,
+     60.0171,
+     "2026-11-26T12:12Z"
     ]
    ]
   },
   {
-   "mmsi": "255915979",
-   "imo": "9407988",
-   "nome": "STEN BERGEN",
+   "mmsi": "354536000",
+   "imo": "9773935",
+   "nome": "STAR ENERGY",
    "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "PT",
-   "lat": 59.8483,
-   "lon": 24.9562,
-   "velocita_nodi": 12.7,
-   "rotta_gradi": 256.1,
-   "ora_utc": "2026-11-25T14:51Z",
+   "bandiera": "PA",
+   "lat": 59.8232,
+   "lon": 25.3495,
+   "velocita_nodi": 12.2,
+   "rotta_gradi": 75.5,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "FIKOK",
-   "pescaggio_m": 9.0,
+   "destinazione": "RUULU",
+   "pescaggio_m": 9.5,
    "scia": [
     [
-     25.5096,
-     60.0136,
-     "2026-11-23T15:17Z"
-    ],
-    [
-     25.5529,
-     60.3095,
-     "2026-11-24T15:12Z"
-    ],
-    [
-     24.9562,
-     59.8483,
-     "2026-11-25T14:51Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "255915979",
-   "imo": "9407988",
-   "nome": "STEN BERGEN",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "PT",
-   "lat": 59.8424,
-   "lon": 24.8899,
-   "velocita_nodi": 12.4,
-   "rotta_gradi": 278.9,
-   "ora_utc": "2026-11-25T15:01Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "FIKOK",
-   "scia": [
-    [
-     25.5096,
-     60.0136,
-     "2026-11-23T15:17Z"
-    ],
-    [
-     25.5529,
-     60.3095,
-     "2026-11-24T15:12Z"
-    ],
-    [
-     24.8899,
-     59.8424,
-     "2026-11-25T15:01Z"
+     25.3495,
+     59.8232,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -4011,12 +3640,12 @@
    "lon": 25.5543,
    "velocita_nodi": 0.0,
    "rotta_gradi": 190.9,
-   "ora_utc": "2026-11-25T14:51Z",
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "FIPRV",
-   "pescaggio_m": 6.8,
+   "destinazione": "GBLON",
+   "pescaggio_m": 11.1,
    "scia": [
     [
      25.0288,
@@ -4027,6 +3656,11 @@
      25.5543,
      60.308,
      "2026-11-25T14:51Z"
+    ],
+    [
+     25.5543,
+     60.308,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -4036,17 +3670,18 @@
    "nome": "STILGAR",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SL",
-   "lat": 60.0846,
-   "lon": 28.4209,
-   "velocita_nodi": 11.3,
-   "rotta_gradi": 208.7,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.9162,
+   "lon": 28.5289,
+   "velocita_nodi": 4.4,
+   "rotta_gradi": 213.2,
+   "ora_utc": "2026-11-25T17:07Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito",
    "fonte": "Digitraffic (Fintraffic)",
    "flotta_ombra_probabile": true,
    "destinazione": "RUULU",
    "pescaggio_m": 7.0,
+   "avviso_ais": "nessuna posizione da 21 ore",
    "scia": [
     [
      25.2122,
@@ -4072,6 +3707,11 @@
      28.4209,
      60.0846,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.5289,
+     59.9162,
+     "2026-11-25T17:07Z"
     ]
    ]
   },
@@ -4081,11 +3721,11 @@
    "nome": "TERN LAND",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "DK",
-   "lat": 59.6975,
-   "lon": 24.1937,
-   "velocita_nodi": 12.0,
-   "rotta_gradi": 68.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 60.3096,
+   "lon": 25.553,
+   "velocita_nodi": 0.0,
+   "rotta_gradi": 182.2,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -4096,6 +3736,11 @@
      24.1937,
      59.6975,
      "2026-11-25T14:51Z"
+    ],
+    [
+     25.553,
+     60.3096,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -4108,8 +3753,8 @@
    "lat": 60.312,
    "lon": 25.5569,
    "velocita_nodi": 0.1,
-   "rotta_gradi": 11.6,
-   "ora_utc": "2026-11-25T14:50Z",
+   "rotta_gradi": 45.5,
+   "ora_utc": "2026-11-26T14:17Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -4130,6 +3775,11 @@
      25.5569,
      60.312,
      "2026-11-25T14:50Z"
+    ],
+    [
+     25.5569,
+     60.312,
+     "2026-11-26T14:17Z"
     ]
    ]
   },
@@ -4150,6 +3800,7 @@
    "flotta_ombra_probabile": true,
    "destinazione": "UST-LUGA",
    "pescaggio_m": 3.9,
+   "avviso_ais": "nessuna posizione da 24 ore",
    "scia": [
     [
      28.4436,
@@ -4164,22 +3815,17 @@
    "nome": "VASILII NIKITIN",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 60.1234,
-   "lon": 29.2195,
-   "velocita_nodi": 0.3,
-   "rotta_gradi": 77.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 60.0945,
+   "lon": 29.1269,
+   "velocita_nodi": 16.0,
+   "rotta_gradi": 90.3,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "",
    "pescaggio_m": 7.0,
    "scia": [
-    [
-     29.0429,
-     60.1051,
-     "2026-11-19T13:45Z"
-    ],
     [
      29.2104,
      60.1291,
@@ -4209,6 +3855,11 @@
      29.2195,
      60.1234,
      "2026-11-25T14:51Z"
+    ],
+    [
+     29.1269,
+     60.0945,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -4218,11 +3869,11 @@
    "nome": "VASILY LANOVOY",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 60.1043,
-   "lon": 29.3791,
-   "velocita_nodi": 0.5,
-   "rotta_gradi": 203.2,
-   "ora_utc": "2026-11-25T14:49Z",
+   "lat": 60.104,
+   "lon": 29.3789,
+   "velocita_nodi": 0.1,
+   "rotta_gradi": 360.0,
+   "ora_utc": "2026-11-26T14:19Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, USA, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -4230,11 +3881,6 @@
    "destinazione": "RU LED FOR ORDER",
    "pescaggio_m": 6.9,
    "scia": [
-    [
-     29.3732,
-     60.1067,
-     "2026-11-19T13:41Z"
-    ],
     [
      29.3737,
      60.1071,
@@ -4264,32 +3910,11 @@
      29.3791,
      60.1043,
      "2026-11-25T14:49Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "273337270",
-   "imo": "9299173",
-   "nome": "VELES",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "RU",
-   "lat": 60.0239,
-   "lon": 29.24,
-   "velocita_nodi": 3.8,
-   "rotta_gradi": 90.1,
-   "ora_utc": "2026-11-25T01:28Z",
-   "area": "Golfo di Finlandia",
-   "sanzionata": "sì: Regno Unito, Unione europea",
-   "fonte": "Digitraffic (Fintraffic)",
-   "flotta_ombra_probabile": true,
-   "destinazione": "RU<LED",
-   "pescaggio_m": 5.7,
-   "avviso_ais": "nessuna posizione da 14 ore",
-   "scia": [
+    ],
     [
-     29.24,
-     60.0239,
-     "2026-11-25T01:28Z"
+     29.3789,
+     60.104,
+     "2026-11-26T14:19Z"
     ]
    ]
   },
@@ -4299,11 +3924,11 @@
    "nome": "VOZROZHDENIYE",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "RU",
-   "lat": 59.8502,
-   "lon": 25.9726,
-   "velocita_nodi": 0.4,
-   "rotta_gradi": 254.1,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.8494,
+   "lon": 25.9704,
+   "velocita_nodi": 0.6,
+   "rotta_gradi": 87.7,
+   "ora_utc": "2026-11-26T14:20Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
@@ -4325,6 +3950,11 @@
      25.9726,
      59.8502,
      "2026-11-25T14:51Z"
+    ],
+    [
+     25.9704,
+     59.8494,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -4334,11 +3964,11 @@
    "nome": "WARRIOR SPIRIT",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "BB",
-   "lat": 59.9119,
-   "lon": 28.6108,
-   "velocita_nodi": 0.2,
-   "rotta_gradi": 97.0,
-   "ora_utc": "2026-11-25T14:51Z",
+   "lat": 59.7001,
+   "lon": 28.4268,
+   "velocita_nodi": 0.7,
+   "rotta_gradi": 302.5,
+   "ora_utc": "2026-11-26T09:52Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
@@ -4359,6 +3989,35 @@
      28.6108,
      59.9119,
      "2026-11-25T14:51Z"
+    ],
+    [
+     28.4268,
+     59.7001,
+     "2026-11-26T09:52Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "257970000",
+   "imo": "9246152",
+   "nome": "XANTHIA",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "NO",
+   "lat": 59.9762,
+   "lon": 22.8009,
+   "velocita_nodi": 13.2,
+   "rotta_gradi": 356.8,
+   "ora_utc": "2026-11-26T14:20Z",
+   "area": "Golfo di Finlandia",
+   "sanzionata": "no",
+   "fonte": "Digitraffic (Fintraffic)",
+   "destinazione": "NO ELN>FI FOR",
+   "pescaggio_m": 8.7,
+   "scia": [
+    [
+     22.8009,
+     59.9762,
+     "2026-11-26T14:20Z"
     ]
    ]
   },
@@ -4368,18 +4027,17 @@
    "nome": "YODAN",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "GQ",
-   "lat": 59.8743,
-   "lon": 28.4721,
-   "velocita_nodi": 9.6,
-   "rotta_gradi": 216.3,
-   "ora_utc": "2026-11-24T17:37Z",
+   "lat": 60.0875,
+   "lon": 29.3871,
+   "velocita_nodi": 2.0,
+   "rotta_gradi": 14.4,
+   "ora_utc": "2026-11-26T13:26Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "sì: Regno Unito, USA, Unione europea",
    "fonte": "Digitraffic (Fintraffic)",
    "flotta_ombra_probabile": true,
    "destinazione": "GOF FOR ORDERS",
-   "pescaggio_m": 8.0,
-   "avviso_ais": "nessuna posizione da 21 ore",
+   "pescaggio_m": 9.7,
    "scia": [
     [
      28.5825,
@@ -4390,6 +4048,11 @@
      28.4721,
      59.8743,
      "2026-11-24T17:37Z"
+    ],
+    [
+     29.3871,
+     60.0875,
+     "2026-11-26T13:26Z"
     ]
    ]
   },
@@ -4399,22 +4062,17 @@
    "nome": "YORIK",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "GM",
-   "lat": 59.7138,
-   "lon": 28.4271,
+   "lat": 59.9113,
+   "lon": 28.5994,
    "velocita_nodi": 0.0,
-   "rotta_gradi": 90.9,
-   "ora_utc": "2026-11-25T06:49Z",
+   "rotta_gradi": 111.2,
+   "ora_utc": "2026-11-26T14:18Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
-   "destinazione": "RU LED",
-   "pescaggio_m": 5.8,
+   "destinazione": "RU ULU",
+   "pescaggio_m": 7.0,
    "scia": [
-    [
-     28.4689,
-     60.0251,
-     "2026-11-19T13:47Z"
-    ],
     [
      28.4693,
      60.0256,
@@ -4444,6 +4102,11 @@
      28.4271,
      59.7138,
      "2026-11-25T06:49Z"
+    ],
+    [
+     28.5994,
+     59.9113,
+     "2026-11-26T14:18Z"
     ]
    ]
   },
@@ -4457,18 +4120,13 @@
    "lon": 24.6501,
    "velocita_nodi": 0.0,
    "rotta_gradi": 24.5,
-   "ora_utc": "2026-11-25T14:47Z",
+   "ora_utc": "2026-11-26T14:17Z",
    "area": "Golfo di Finlandia",
    "sanzionata": "no",
    "fonte": "Digitraffic (Fintraffic)",
    "destinazione": "TALLINN",
    "pescaggio_m": 5.0,
    "scia": [
-    [
-     24.65,
-     59.4625,
-     "2026-11-19T13:37Z"
-    ],
     [
      24.65,
      59.4625,
@@ -4498,52 +4156,34 @@
      24.6501,
      59.4625,
      "2026-11-25T14:47Z"
+    ],
+    [
+     24.6501,
+     59.4625,
+     "2026-11-26T14:17Z"
     ]
    ]
   },
   {
-   "mmsi": "311000820",
-   "imo": "9823041",
-   "nome": "ALFA FINLANDIA",
+   "mmsi": "538006197",
+   "imo": "9419888",
+   "nome": "ADVANTAGE SPICE",
    "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "BS",
-   "lat": 55.6995,
-   "lon": 10.7402,
-   "velocita_nodi": 8,
-   "rotta_gradi": 226.4,
-   "ora_utc": "2026-11-25T15:03Z",
+   "bandiera": "MH",
+   "lat": 57.5014,
+   "lon": 11.066,
+   "velocita_nodi": 13.4,
+   "rotta_gradi": 84.4,
+   "ora_utc": "2026-11-26T14:30Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "DKFRC",
+   "destinazione": "FI PRV",
    "scia": [
     [
-     10.7402,
-     55.6995,
-     "2026-11-25T15:03Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "219002067",
-   "imo": "",
-   "nome": "ALSIN",
-   "tipo": "militare",
-   "bandiera": "DK",
-   "lat": 55.3314,
-   "lon": 11.1261,
-   "velocita_nodi": 0,
-   "rotta_gradi": 201.4,
-   "ora_utc": "2026-11-25T15:01Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "KORSOR",
-   "scia": [
-    [
-     11.1261,
-     55.3314,
-     "2026-11-25T15:01Z"
+     11.066,
+     57.5014,
+     "2026-11-26T14:30Z"
     ]
    ]
   },
@@ -4553,15 +4193,15 @@
    "nome": "AMAK SWAN",
    "tipo": "petroliera/gasiera (AIS 89)",
    "bandiera": "DK",
-   "lat": 57.6874,
-   "lon": 11.871,
-   "velocita_nodi": 6.9,
-   "rotta_gradi": 232,
-   "ora_utc": "2026-11-25T14:58Z",
+   "lat": 57.6221,
+   "lon": 11.0161,
+   "velocita_nodi": 11.5,
+   "rotta_gradi": 272,
+   "ora_utc": "2026-11-26T14:28Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "SEGOT",
+   "destinazione": "DKSKA",
    "scia": [
     [
      11.6815,
@@ -4572,6 +4212,57 @@
      11.871,
      57.6874,
      "2026-11-25T14:58Z"
+    ],
+    [
+     11.0161,
+     57.6221,
+     "2026-11-26T14:28Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "636018830",
+   "imo": "9826897",
+   "nome": "AREIOS",
+   "tipo": "petroliera/gasiera (AIS 89)",
+   "bandiera": "LR",
+   "lat": 56.5842,
+   "lon": 11.7182,
+   "velocita_nodi": 13.9,
+   "rotta_gradi": 212.9,
+   "ora_utc": "2026-11-26T14:31Z",
+   "area": "Stretti danesi",
+   "sanzionata": "no",
+   "fonte": "aisstream.io",
+   "destinazione": "RU LED",
+   "scia": [
+    [
+     11.7182,
+     56.5842,
+     "2026-11-26T14:31Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "266466000",
+   "imo": "9488839",
+   "nome": "ASTREA",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "SE",
+   "lat": 55.6662,
+   "lon": 11.0932,
+   "velocita_nodi": 0,
+   "rotta_gradi": 33,
+   "ora_utc": "2026-11-26T14:29Z",
+   "area": "Stretti danesi",
+   "sanzionata": "no",
+   "fonte": "aisstream.io",
+   "destinazione": "DKKAL",
+   "scia": [
+    [
+     11.0932,
+     55.6662,
+     "2026-11-26T14:29Z"
     ]
    ]
   },
@@ -4582,10 +4273,10 @@
    "tipo": "petroliera/gasiera (AIS 82)",
    "bandiera": "MT",
    "lat": 57.6909,
-   "lon": 11.8812,
+   "lon": 11.8813,
    "velocita_nodi": 0,
    "rotta_gradi": 342.2,
-   "ora_utc": "2026-11-25T14:59Z",
+   "ora_utc": "2026-11-26T14:26Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
@@ -4595,269 +4286,103 @@
      11.8812,
      57.6909,
      "2026-11-25T14:59Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "211212560",
-   "imo": "",
-   "nome": "BORBY",
-   "tipo": "militare",
-   "bandiera": "DE",
-   "lat": 54.3581,
-   "lon": 10.1433,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 175.4,
-   "ora_utc": "2026-11-25T14:55Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "ECKERNFOERDE",
-   "scia": [
-    [
-     10.1433,
-     54.3581,
-     "2026-11-25T14:55Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "265056000",
-   "imo": "9970595",
-   "nome": "BRISEN",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "SE",
-   "lat": 57.5836,
-   "lon": 11.6947,
-   "velocita_nodi": 2,
-   "rotta_gradi": 29.2,
-   "ora_utc": "2026-11-25T15:03Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "OFF SEGOT",
-   "scia": [
-    [
-     11.6947,
-     57.5836,
-     "2026-11-25T15:03Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "563315600",
-   "imo": "9968944",
-   "nome": "BW BOREALIS",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "SG",
-   "lat": 57.677,
-   "lon": 10.7239,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 170,
-   "ora_utc": "2026-11-25T14:59Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "NL RTM>DK SKA",
-   "scia": [
-    [
-     10.7239,
-     57.677,
-     "2026-11-25T14:59Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "249222000",
-   "imo": "9578048",
-   "nome": "CGAS COUGAR",
-   "tipo": "petroliera/gasiera (AIS 84)",
-   "bandiera": "MT",
-   "lat": 55.4412,
-   "lon": 12.6702,
-   "velocita_nodi": 10.9,
-   "rotta_gradi": 196,
-   "ora_utc": "2026-11-25T14:59Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "PLSZZ",
-   "scia": [
-    [
-     12.6702,
-     55.4412,
-     "2026-11-25T14:59Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "249362000",
-   "imo": "9578000",
-   "nome": "CGAS PANTHER",
-   "tipo": "petroliera/gasiera (AIS 89)",
-   "bandiera": "MT",
-   "lat": 55.5031,
-   "lon": 12.6966,
-   "velocita_nodi": 11,
-   "rotta_gradi": 192.8,
-   "ora_utc": "2026-11-25T15:01Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "PL GDN",
-   "scia": [
-    [
-     12.6966,
-     55.5031,
-     "2026-11-25T15:01Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "352002692",
-   "imo": "9349631",
-   "nome": "CHIBA",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "PA",
-   "lat": 57.7315,
-   "lon": 11.0703,
-   "velocita_nodi": 11.8,
-   "rotta_gradi": 316.5,
-   "ora_utc": "2026-11-25T14:57Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "ATLANTIC FOR ORDERS",
-   "scia": [
-    [
-     11.0703,
-     57.7315,
-     "2026-11-25T14:57Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "220614000",
-   "imo": "9327487",
-   "nome": "COPENHAGEN",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "DK",
-   "lat": 57.5546,
-   "lon": 11.5748,
-   "velocita_nodi": 0,
-   "rotta_gradi": 148.4,
-   "ora_utc": "2026-11-25T14:57Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "DKSKA PEC 6",
-   "scia": [
-    [
-     11.6845,
-     57.5792,
-     "2026-11-24T15:23Z"
     ],
     [
-     11.5748,
-     57.5546,
-     "2026-11-25T14:57Z"
+     11.8813,
+     57.6909,
+     "2026-11-26T14:26Z"
     ]
    ]
   },
   {
-   "mmsi": "636016149",
-   "imo": "9350898",
-   "nome": "CORAL LACERA",
-   "tipo": "petroliera/gasiera (AIS 84)",
-   "bandiera": "LR",
-   "lat": 57.6039,
-   "lon": 11.6915,
-   "velocita_nodi": 0.4,
-   "rotta_gradi": 196.5,
-   "ora_utc": "2026-11-25T15:00Z",
+   "mmsi": "219031111",
+   "imo": "9474450",
+   "nome": "BISCAY",
+   "tipo": "petroliera/gasiera (AIS 89)",
+   "bandiera": "DK",
+   "lat": 54.4721,
+   "lon": 10.2539,
+   "velocita_nodi": 12,
+   "rotta_gradi": 199.3,
+   "ora_utc": "2026-11-26T14:29Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "SE GOT",
+   "destinazione": "ROTTERDAM",
    "scia": [
     [
-     11.6915,
-     57.6039,
-     "2026-11-25T15:00Z"
+     10.2539,
+     54.4721,
+     "2026-11-26T14:29Z"
     ]
    ]
   },
   {
-   "mmsi": "244036000",
-   "imo": "9404625",
-   "nome": "CORAL LEAF",
+   "mmsi": "215936000",
+   "imo": "9895915",
+   "nome": "EUROSAILOR",
    "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "NL",
-   "lat": 57.5841,
-   "lon": 11.6808,
-   "velocita_nodi": 0.3,
-   "rotta_gradi": 328.1,
-   "ora_utc": "2026-11-25T14:57Z",
+   "bandiera": "MT",
+   "lat": 57.5954,
+   "lon": 10.5705,
+   "velocita_nodi": 0,
+   "rotta_gradi": 271.2,
+   "ora_utc": "2026-11-26T14:28Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "SE GOT",
+   "destinazione": "KLAIPEDA FOR ORDERS",
    "scia": [
     [
-     11.6808,
-     57.5841,
-     "2026-11-25T14:57Z"
+     10.5705,
+     57.5954,
+     "2026-11-26T14:28Z"
     ]
    ]
   },
   {
-   "mmsi": "257089150",
-   "imo": "9833113",
-   "nome": "EAGLE BALDER",
+   "mmsi": "257086660",
+   "imo": "9114763",
+   "nome": "FJORDSTRAUM",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "NO",
-   "lat": 57.6648,
-   "lon": 10.6134,
+   "lat": 54.3625,
+   "lon": 10.1484,
    "velocita_nodi": 0,
-   "rotta_gradi": 345.4,
-   "ora_utc": "2026-11-25T14:57Z",
+   "rotta_gradi": 104,
+   "ora_utc": "2026-11-26T14:31Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "SKAW ROADS",
+   "destinazione": "DE KEL",
    "scia": [
     [
-     10.6134,
-     57.6648,
-     "2026-11-25T14:57Z"
+     10.1484,
+     54.3625,
+     "2026-11-26T14:31Z"
     ]
    ]
   },
   {
-   "mmsi": "265068510",
-   "imo": "9980332",
-   "nome": "FURE VESBORG",
+   "mmsi": "266203000",
+   "imo": "9333917",
+   "nome": "FOX SUNRISE",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SE",
-   "lat": 57.6915,
-   "lon": 11.8709,
+   "lat": 57.6914,
+   "lon": 11.8993,
    "velocita_nodi": 0,
-   "rotta_gradi": 25.7,
-   "ora_utc": "2026-11-25T15:00Z",
+   "rotta_gradi": 24.3,
+   "ora_utc": "2026-11-26T14:22Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
    "destinazione": "SEGOT",
    "scia": [
     [
-     11.8709,
-     57.6915,
-     "2026-11-24T15:26Z"
-    ],
-    [
-     11.8709,
-     57.6915,
-     "2026-11-25T15:00Z"
+     11.8993,
+     57.6914,
+     "2026-11-26T14:22Z"
     ]
    ]
   },
@@ -4867,11 +4392,11 @@
    "nome": "GC SAPPHIRE",
    "tipo": "petroliera/gasiera (AIS 83)",
    "bandiera": "HK",
-   "lat": 57.5954,
-   "lon": 11.6703,
-   "velocita_nodi": 0.4,
-   "rotta_gradi": 342.4,
-   "ora_utc": "2026-11-25T15:01Z",
+   "lat": 57.5963,
+   "lon": 11.6746,
+   "velocita_nodi": 0.1,
+   "rotta_gradi": 181.4,
+   "ora_utc": "2026-11-26T14:28Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
@@ -4886,103 +4411,80 @@
      11.6703,
      57.5954,
      "2026-11-25T15:01Z"
+    ],
+    [
+     11.6746,
+     57.5963,
+     "2026-11-26T14:28Z"
     ]
    ]
   },
   {
-   "mmsi": "211211490",
+   "mmsi": "211211450",
    "imo": "",
-   "nome": "GERMAN WARSHIP",
+   "nome": "GERMAN WARSHIP A50",
    "tipo": "militare",
    "bandiera": "DE",
-   "lat": 54.3537,
-   "lon": 10.1441,
-   "velocita_nodi": 0,
-   "rotta_gradi": 349.2,
-   "ora_utc": "2026-11-25T15:02Z",
+   "lat": 54.4666,
+   "lon": 9.8701,
+   "velocita_nodi": 7.1,
+   "rotta_gradi": 76.6,
+   "ora_utc": "2026-11-26T14:31Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
    "destinazione": "",
    "scia": [
     [
-     10.1441,
-     54.3537,
-     "2026-11-24T15:23Z"
-    ],
-    [
-     10.1441,
-     54.3537,
-     "2026-11-25T15:02Z"
+     9.8701,
+     54.4666,
+     "2026-11-26T14:31Z"
     ]
    ]
   },
   {
-   "mmsi": "209415000",
-   "imo": "9819052",
-   "nome": "GIOCONDA",
-   "tipo": "petroliera/gasiera (AIS 82)",
-   "bandiera": "CY",
-   "lat": 54.583,
-   "lon": 11.0037,
-   "velocita_nodi": 11.6,
-   "rotta_gradi": 85.8,
-   "ora_utc": "2026-11-25T15:03Z",
+   "mmsi": "230707000",
+   "imo": "9818278",
+   "nome": "HALTI",
+   "tipo": "petroliera/gasiera (AIS 89)",
+   "bandiera": "FI",
+   "lat": 57.63,
+   "lon": 10.7587,
+   "velocita_nodi": 12.9,
+   "rotta_gradi": 19.8,
+   "ora_utc": "2026-11-26T14:29Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "FIKTK",
+   "destinazione": "FISKV",
    "scia": [
     [
-     11.0037,
-     54.583,
-     "2026-11-25T15:03Z"
+     10.7587,
+     57.63,
+     "2026-11-26T14:29Z"
     ]
    ]
   },
   {
-   "mmsi": "258849000",
-   "imo": "9390991",
-   "nome": "GOLFSTRAUM",
+   "mmsi": "255804570",
+   "imo": "9473119",
+   "nome": "HARBOUR FIRST",
    "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "NO",
-   "lat": 54.4884,
-   "lon": 10.2755,
-   "velocita_nodi": 12.5,
-   "rotta_gradi": 223,
-   "ora_utc": "2026-11-25T15:01Z",
+   "bandiera": "PT",
+   "lat": 54.4993,
+   "lon": 10.2937,
+   "velocita_nodi": 7.9,
+   "rotta_gradi": 231.6,
+   "ora_utc": "2026-11-26T14:25Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "BE ANR",
+   "destinazione": "DECKL",
    "scia": [
     [
-     10.2755,
-     54.4884,
-     "2026-11-25T15:01Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "636024820",
-   "imo": "9926934",
-   "nome": "GUADALUPE EXPLORER",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "LR",
-   "lat": 57.6378,
-   "lon": 11.0804,
-   "velocita_nodi": 14.4,
-   "rotta_gradi": 138,
-   "ora_utc": "2026-11-25T15:03Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "USMAH - LVRIX",
-   "scia": [
-    [
-     11.0804,
-     57.6378,
-     "2026-11-25T15:03Z"
+     10.2937,
+     54.4993,
+     "2026-11-26T14:25Z"
     ]
    ]
   },
@@ -4995,8 +4497,8 @@
    "lat": 57.6796,
    "lon": 11.8636,
    "velocita_nodi": 0,
-   "rotta_gradi": 65.8,
-   "ora_utc": "2026-11-25T15:01Z",
+   "rotta_gradi": 4.6,
+   "ora_utc": "2026-11-26T14:31Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
@@ -5011,80 +4513,127 @@
      11.8636,
      57.6796,
      "2026-11-25T15:01Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "266475000",
-   "imo": "9377183",
-   "nome": "NAUTILUS",
-   "tipo": "petroliera/gasiera (AIS 89)",
-   "bandiera": "SE",
-   "lat": 57.6686,
-   "lon": 11.7981,
-   "velocita_nodi": 0.1,
-   "rotta_gradi": 74.1,
-   "ora_utc": "2026-11-25T14:56Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "SEGOT",
-   "scia": [
-    [
-     11.7981,
-     57.6686,
-     "2026-11-25T14:56Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "266468000",
-   "imo": "9410507",
-   "nome": "NIMBUS",
-   "tipo": "petroliera/gasiera (AIS 89)",
-   "bandiera": "SE",
-   "lat": 55.6662,
-   "lon": 11.0929,
-   "velocita_nodi": 0,
-   "rotta_gradi": 351,
-   "ora_utc": "2026-11-25T15:03Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "DKKAL",
-   "scia": [
-    [
-     10.9898,
-     55.6786,
-     "2026-11-24T15:24Z"
     ],
     [
-     11.0929,
-     55.6662,
-     "2026-11-25T15:03Z"
+     11.8636,
+     57.6796,
+     "2026-11-26T14:31Z"
     ]
    ]
   },
   {
-   "mmsi": "538004145",
-   "imo": "9433597",
-   "nome": "ORANGE STARS",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "MH",
-   "lat": 57.5969,
-   "lon": 11.4981,
-   "velocita_nodi": 11.6,
-   "rotta_gradi": 302.2,
-   "ora_utc": "2026-11-25T15:03Z",
+   "mmsi": "212878000",
+   "imo": "9525572",
+   "nome": "KEY STREAM",
+   "tipo": "petroliera/gasiera (AIS 82)",
+   "bandiera": "CY",
+   "lat": 55.0388,
+   "lon": 11.039,
+   "velocita_nodi": 10.7,
+   "rotta_gradi": 5.1,
+   "ora_utc": "2026-11-26T14:28Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "SEGOT",
+   "destinazione": "NL RTM>DK AAR",
    "scia": [
     [
-     11.4981,
-     57.5969,
-     "2026-11-25T15:03Z"
+     11.039,
+     55.0388,
+     "2026-11-26T14:28Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "219000416",
+   "imo": "",
+   "nome": "METTE MILJOE",
+   "tipo": "militare",
+   "bandiera": "DK",
+   "lat": 57.5927,
+   "lon": 9.957,
+   "velocita_nodi": 0,
+   "rotta_gradi": 77.7,
+   "ora_utc": "2026-11-26T14:30Z",
+   "area": "Stretti danesi",
+   "sanzionata": "no",
+   "fonte": "aisstream.io",
+   "destinazione": "",
+   "scia": [
+    [
+     9.957,
+     57.5927,
+     "2026-11-26T14:30Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "266476000",
+   "imo": "9410519",
+   "nome": "NEPTUNUS",
+   "tipo": "petroliera/gasiera (AIS 89)",
+   "bandiera": "SE",
+   "lat": 54.3654,
+   "lon": 10.1441,
+   "velocita_nodi": 0.7,
+   "rotta_gradi": 283.7,
+   "ora_utc": "2026-11-26T14:29Z",
+   "area": "Stretti danesi",
+   "sanzionata": "no",
+   "fonte": "aisstream.io",
+   "destinazione": "NL RTM VIA KIEL",
+   "scia": [
+    [
+     10.1441,
+     54.3654,
+     "2026-11-26T14:29Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "273125420",
+   "imo": "9378620",
+   "nome": "REGLAMENT",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "RU",
+   "lat": 55.9523,
+   "lon": 10.9889,
+   "velocita_nodi": 10.7,
+   "rotta_gradi": 218.7,
+   "ora_utc": "2026-11-26T14:31Z",
+   "area": "Stretti danesi",
+   "sanzionata": "sì: Regno Unito, Unione europea",
+   "fonte": "aisstream.io",
+   "flotta_ombra_probabile": true,
+   "destinazione": "FOR ORDERS",
+   "scia": [
+    [
+     10.9889,
+     55.9523,
+     "2026-11-26T14:31Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "255806519",
+   "imo": "9344423",
+   "nome": "RUBIKON 202",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "PT",
+   "lat": 55.6354,
+   "lon": 13.0211,
+   "velocita_nodi": 0.1,
+   "rotta_gradi": 14,
+   "ora_utc": "2026-11-26T14:26Z",
+   "area": "Stretti danesi",
+   "sanzionata": "no",
+   "fonte": "aisstream.io",
+   "destinazione": "SEMMA",
+   "scia": [
+    [
+     13.0211,
+     55.6354,
+     "2026-11-26T14:26Z"
     ]
    ]
   },
@@ -5094,11 +4643,11 @@
    "nome": "SAGAFJORD",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SE",
-   "lat": 57.5969,
-   "lon": 11.7062,
-   "velocita_nodi": 0.3,
-   "rotta_gradi": 353.2,
-   "ora_utc": "2026-11-25T15:01Z",
+   "lat": 57.6913,
+   "lon": 11.8757,
+   "velocita_nodi": 0,
+   "rotta_gradi": 348.5,
+   "ora_utc": "2026-11-26T14:32Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
@@ -5108,34 +4657,80 @@
      11.7062,
      57.5969,
      "2026-11-25T15:01Z"
+    ],
+    [
+     11.8757,
+     57.6913,
+     "2026-11-26T14:32Z"
     ]
    ]
   },
   {
-   "mmsi": "265550210",
-   "imo": "8327105",
-   "nome": "TANKSKAR",
+   "mmsi": "211129120",
+   "imo": "1044209",
+   "nome": "SEADEVIL",
    "tipo": "petroliera/gasiera (AIS 89)",
-   "bandiera": "SE",
-   "lat": 57.6731,
-   "lon": 11.664,
+   "bandiera": "DE",
+   "lat": 57.055,
+   "lon": 9.9582,
    "velocita_nodi": 0,
-   "rotta_gradi": 360,
-   "ora_utc": "2026-11-25T15:03Z",
+   "rotta_gradi": 339.5,
+   "ora_utc": "2026-11-26T14:22Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "GOTHENBURG",
+   "destinazione": "THRGQ>",
    "scia": [
     [
-     11.6916,
-     57.6789,
-     "2026-11-24T15:26Z"
-    ],
+     9.9582,
+     57.055,
+     "2026-11-26T14:22Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "255915986",
+   "imo": "9283978",
+   "nome": "STENBERG",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "PT",
+   "lat": 57.6898,
+   "lon": 11.889,
+   "velocita_nodi": 0,
+   "rotta_gradi": 330.9,
+   "ora_utc": "2026-11-26T14:31Z",
+   "area": "Stretti danesi",
+   "sanzionata": "no",
+   "fonte": "aisstream.io",
+   "destinazione": "SE GOT",
+   "scia": [
     [
-     11.664,
-     57.6731,
-     "2026-11-25T15:03Z"
+     11.889,
+     57.6898,
+     "2026-11-26T14:31Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "219015298",
+   "imo": "9372652",
+   "nome": "TARNBRIS",
+   "tipo": "petroliera/gasiera (AIS 89)",
+   "bandiera": "DK",
+   "lat": 55.8393,
+   "lon": 12.7572,
+   "velocita_nodi": 11.8,
+   "rotta_gradi": 342.3,
+   "ora_utc": "2026-11-26T14:30Z",
+   "area": "Stretti danesi",
+   "sanzionata": "no",
+   "fonte": "aisstream.io",
+   "destinazione": "ROTTERDAM",
+   "scia": [
+    [
+     12.7572,
+     55.8393,
+     "2026-11-26T14:30Z"
     ]
    ]
   },
@@ -5145,11 +4740,11 @@
    "nome": "TERN FORS",
    "tipo": "petroliera/gasiera (AIS 89)",
    "bandiera": "DK",
-   "lat": 57.68,
-   "lon": 11.692,
+   "lat": 57.6799,
+   "lon": 11.6923,
    "velocita_nodi": 0,
-   "rotta_gradi": 329.4,
-   "ora_utc": "2026-11-25T14:59Z",
+   "rotta_gradi": 327.3,
+   "ora_utc": "2026-11-26T14:32Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
@@ -5164,57 +4759,34 @@
      11.692,
      57.68,
      "2026-11-25T14:59Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "219775000",
-   "imo": "9722390",
-   "nome": "TERNSUND",
-   "tipo": "petroliera/gasiera (AIS 89)",
-   "bandiera": "DK",
-   "lat": 57.69,
-   "lon": 11.8784,
-   "velocita_nodi": 0,
-   "rotta_gradi": 22.7,
-   "ora_utc": "2026-11-25T15:00Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "SEGOT",
-   "scia": [
-    [
-     11.8784,
-     57.69,
-     "2026-11-25T15:00Z"
-    ]
-   ]
-  },
-  {
-   "mmsi": "244678000",
-   "imo": "9393345",
-   "nome": "THUN GARLAND",
-   "tipo": "petroliera/gasiera (AIS 80)",
-   "bandiera": "NL",
-   "lat": 55.677,
-   "lon": 11.0041,
-   "velocita_nodi": 0,
-   "rotta_gradi": 205.8,
-   "ora_utc": "2026-11-25T15:02Z",
-   "area": "Stretti danesi",
-   "sanzionata": "no",
-   "fonte": "aisstream.io",
-   "destinazione": "DKKAL PEC 473",
-   "scia": [
-    [
-     10.2272,
-     56.1565,
-     "2026-11-24T15:25Z"
     ],
     [
-     11.0041,
-     55.677,
-     "2026-11-25T15:02Z"
+     11.6923,
+     57.6799,
+     "2026-11-26T14:32Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "255806146",
+   "imo": "9403906",
+   "nome": "THEODOR ESSBERGER",
+   "tipo": "petroliera/gasiera (AIS 89)",
+   "bandiera": "PT",
+   "lat": 54.4787,
+   "lon": 10.2612,
+   "velocita_nodi": 11,
+   "rotta_gradi": 189,
+   "ora_utc": "2026-11-26T14:30Z",
+   "area": "Stretti danesi",
+   "sanzionata": "no",
+   "fonte": "aisstream.io",
+   "destinazione": "BE ANR",
+   "scia": [
+    [
+     10.2612,
+     54.4787,
+     "2026-11-26T14:30Z"
     ]
    ]
   },
@@ -5224,15 +4796,15 @@
    "nome": "TRANS FJELL",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "MT",
-   "lat": 55.9792,
-   "lon": 12.7278,
+   "lat": 55.9786,
+   "lon": 12.7259,
    "velocita_nodi": 0,
-   "rotta_gradi": 89.5,
-   "ora_utc": "2026-11-25T15:02Z",
+   "rotta_gradi": 9,
+   "ora_utc": "2026-11-26T14:29Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "SEHEL-TC-RAA",
+   "destinazione": "SEHEL",
    "scia": [
     [
      12.3444,
@@ -5243,29 +4815,57 @@
      12.7278,
      55.9792,
      "2026-11-25T15:02Z"
+    ],
+    [
+     12.7259,
+     55.9786,
+     "2026-11-26T14:29Z"
     ]
    ]
   },
   {
-   "mmsi": "265002000",
-   "imo": "9254977",
-   "nome": "TRESFJORD",
-   "tipo": "petroliera/gasiera (AIS 88)",
+   "mmsi": "265012140",
+   "imo": "9864277",
+   "nome": "VINGAREN",
+   "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "SE",
-   "lat": 57.691,
-   "lon": 11.8769,
-   "velocita_nodi": 0,
-   "rotta_gradi": 22.5,
-   "ora_utc": "2026-11-25T15:01Z",
+   "lat": 57.5967,
+   "lon": 11.6911,
+   "velocita_nodi": 0.3,
+   "rotta_gradi": 134.9,
+   "ora_utc": "2026-11-26T14:30Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
-   "destinazione": "SEGOT",
+   "destinazione": "OFF GOTHENBURG",
    "scia": [
     [
-     11.8769,
-     57.691,
-     "2026-11-25T15:01Z"
+     11.6911,
+     57.5967,
+     "2026-11-26T14:30Z"
+    ]
+   ]
+  },
+  {
+   "mmsi": "249279000",
+   "imo": "9693082",
+   "nome": "YPAPANTI",
+   "tipo": "petroliera/gasiera (AIS 80)",
+   "bandiera": "MT",
+   "lat": 54.4425,
+   "lon": 11.9457,
+   "velocita_nodi": 13.3,
+   "rotta_gradi": 269.5,
+   "ora_utc": "2026-11-26T14:25Z",
+   "area": "Stretti danesi",
+   "sanzionata": "no",
+   "fonte": "aisstream.io",
+   "destinazione": "GIGIB",
+   "scia": [
+    [
+     11.9457,
+     54.4425,
+     "2026-11-26T14:25Z"
     ]
    ]
   },
@@ -5275,11 +4875,11 @@
    "nome": "YUAN NAN HAI",
    "tipo": "petroliera/gasiera (AIS 80)",
    "bandiera": "CN",
-   "lat": 57.6819,
-   "lon": 11.7881,
+   "lat": 57.682,
+   "lon": 11.788,
    "velocita_nodi": 0,
-   "rotta_gradi": 25,
-   "ora_utc": "2026-11-25T15:03Z",
+   "rotta_gradi": 320.2,
+   "ora_utc": "2026-11-26T14:30Z",
    "area": "Stretti danesi",
    "sanzionata": "no",
    "fonte": "aisstream.io",
@@ -5289,6 +4889,11 @@
      11.7881,
      57.6819,
      "2026-11-25T15:03Z"
+    ],
+    [
+     11.788,
+     57.682,
+     "2026-11-26T14:30Z"
     ]
    ]
   }
